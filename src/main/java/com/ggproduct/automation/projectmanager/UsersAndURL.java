@@ -1,0 +1,77 @@
+package com.ggproduct.automation.projectmanager;
+
+import java.io.IOException;
+
+import com.automation.rei.handlers.Properties_Logs;
+import com.cucumber.listener.Reporter;
+
+public class UsersAndURL {
+    
+    /**
+     * @REI-Systems
+     * @author nauman.shahid
+     * @category Handles users based on different environments
+     */
+
+    /**** BELOW ARE SAMPLE METHODS TO HANDLE USERS BASED ON DIFFERENT ENVIRONEMNTS*******/
+    /**** IT ALSO HANDLE ANY ADDITIONAL URL IN ADDITION TO STANDARD PROJECT**********/
+    /**** SINCE THESE ARE GENERIC METHODS SO YOU MAY KEEP THE SAME WITH MODIFICTION******/
+    
+    
+    public String handleUsersForEnv(String userLevel) {
+        String userName = null;
+        if (System.getProperty("env").equalsIgnoreCase("qa")) {
+            userName = performLoginQAEnvironment(userLevel);
+        } else if (System.getProperty("env").equalsIgnoreCase("uat")) {
+            userName = performLoginUATEnvironment(userLevel);
+        }
+        return userName;
+    }
+
+    public String performLoginQAEnvironment(String userLevel) {
+        String username;
+        
+        switch (userLevel.toUpperCase()) {
+        case "ADMIN":
+            username = "admin.automation@product.com";
+            break;
+        case "EXE":
+            username = "test@gmaildemo.com";
+            break;
+        case "PM":
+            username = "donald_pm@ggp.test7";
+            break;
+        case "PO":
+            username = "sdgdg45435dj@gmail.com";
+            break;    
+        default:
+            username = "admin.automation@product.com";
+        }
+        return username;
+    }
+
+    private String performLoginUATEnvironment(String userLevel) {
+        String username;
+        switch ("") {
+        case "EXE":
+            username = "To be implemented";
+        default:
+            username = "To be implemented";
+            break;
+        }
+        return username;
+    }
+    
+    public static String navigateToAnyUrl(String urlName) throws IOException {
+        String url=null;
+        switch(urlName.toUpperCase()) {
+        case "GRANTEE PORTAL":
+            url = new Properties_Logs().ReadPropertyFile("environment.properties", "ExternalLink");
+            Reporter.addScenarioLog("Scenario is running using External Link" + " & Url is " + url);
+            break;
+        }
+        return url;
+            }
+
+}
+
