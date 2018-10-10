@@ -87,5 +87,39 @@ public class GenericPage extends ProjectManager{
 	public void clickOnFlexTableButton(String buttonName){
 		reiDriver.govGrants().clickRightHeaderButtonInsideFlexTableDetailPage(buttonName);
 	}
+	
+	/** Quick search on a table */
+	public void quickSearchOnTable(String searchText, String tableName) {
+		reiDriver.govGrants().performTableSpecificQuickSearch(tableName, searchText);
+	}
+	
+	/** Clicking on flextable icon */
+	public void clickOnFlexTableIcon(String iconName, String uniqueTextValue) {
+		reiDriver.govGrants().waitForNavigationLogoToDisappear();
+		reiDriver.govGrants().clickTableActionIcons(uniqueTextValue, iconName);
+	}
+	
+	public void clickOnSubtab(String subtabName) {
+		reiDriver.govGrants().clickSubTabsInsideTableView(subtabName);
+	}
+	
+	/** Clicking on flextable button  */
+	public void clickOnFlextableButton(String buttonName, String flextableName) {
+		reiDriver.JavaScript().scrollpageToSpecificElement(By.xpath("//span[text()='"+flextableName+"']/../preceding-sibling::div[1]"));
+		reiDriver.govGrants().clickRightHeaderButtonInsideFlexTableDetailPage(buttonName);
+	}
+	
+	/** Assert a column is present in a table part1 */
+	public void assertColumnOnTable(String columnUniqueValue, String flextableName){
+		Assert.assertTrue(isColumnPresent(columnUniqueValue,flextableName));
+	}
+	
+	/** Assert a column is present in a table part2 */
+	public boolean isColumnPresent(String columnUniqueValue,String flextableName) {
+		reiDriver.WaitFor().WaitForElementListToBePresent(By.xpath("//span[text()='"+flextableName+"']"));
+		reiDriver.JavaScript().scrollpageToSpecificElement(By.xpath("//span[text()='"+flextableName+"']/../preceding-sibling::div[1]"));
+		return reiDriver.findMyElement().getElement(By.xpath("//span[text()='"+columnUniqueValue+"']/../../../../../../../../../../../../../../../../../..//span[text()='"+flextableName+"']")).isEnabled();
+	}
+	
 
 }

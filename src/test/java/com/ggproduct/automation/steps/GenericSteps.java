@@ -49,6 +49,26 @@ public class GenericSteps {
 		genericPage.clickOnFlexTableButton(buttonName);
 	}
 	
+	@When("^I quick search \"([^\"]*)\" on table \"([^\"]*)\"$")
+	public void quickSearchOnTable(String searchText, String tableName) {
+		genericPage.quickSearchOnTable(searchText, tableName);
+	}
+
+	@When("^I click on the \"([^\"]*)\" icon for the \"([^\"]*)\"$")
+	public void clickOnFlexTableIcon(String iconName, String uniqueTextValue) {
+		genericPage.clickOnFlexTableIcon(iconName, uniqueTextValue);
+	}
+	
+	@When("^I click on \"([^\"]*)\" subtab$")
+	public void clickOnSubtab(String subtabName) {
+		genericPage.clickOnSubtab(subtabName);
+	}
+	
+	@When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" flextable$")
+	public void clickOnFlextableButton(String buttonName, String flextableName) {
+		genericPage.clickOnFlextableButton(buttonName, flextableName);
+	}
+	
 	@Then("^I see that \"([^\"]*)\" is created in status \"([^\"]*)\"$")
 	public void assertStatus(String record, String status){
 		genericPage.assertStatus(record,status);
@@ -62,5 +82,10 @@ public class GenericSteps {
 	@Then("^I see that the status is \"([^\"]*)\"$")
 	public void assertStatusOnTable(String status) {
 		genericPage.assertStatusOnTable(status);
+	}
+	
+	@Then("^I see that \"([^\"]*)\" has been added in \"([^\"]*)\" flextable$")
+	public void assertColumnOnTable(String columnUniqueValue, String flextableName){
+		genericPage.assertColumnOnTable(columnUniqueValue, flextableName);
 	}
 }
