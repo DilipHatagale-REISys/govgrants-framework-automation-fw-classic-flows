@@ -1,6 +1,7 @@
 @planning
 Feature: Validate all scenarios in the Planning tab
 
+
   @34730 @ProgramListView @InternalProgram @Program @Planning
   Scenario Outline: Verifying if the EXE,PM,PO has access to Internal Programs list view
     Given I login as "<User>" User
@@ -25,11 +26,11 @@ Feature: Validate all scenarios in the Planning tab
     And I fill the fields "<Title>","<Program Type>","<Primary Funding Organization>"
     When I click on "Save and Continue" button
     When I click on "Save" button
-    Then I see that "Internal Program" is created in status "Created"
+    Then I see that "Internal Program" is in status "Created"
     
     Examples:
     | User | Title | Program Type | Primary Funding Organization |
-    | EXE | Automation Program | Project Grants | Preparedness - OG&T |
+    | EXE | Automation Program | Project Grants | Research And Innovative Technology Administration |
     
     
   @34732 @ProgramContactsAssociation @InternalProgram @Program @Planning
@@ -43,7 +44,7 @@ Feature: Validate all scenarios in the Planning tab
     And I click on the "View" icon for the "<Quick Search Text>" 
     And I click on "Overview" subtab
     When I click on "Associate" button on "Contacts" flextable
-    And I choose the "<Contact>" as the contact
+    And I choose the "Contact" with "<Contact>" and click "Add" button
     Then I see that "<Contact>" has been added in "Contacts" flextable
     
     Examples:
@@ -61,12 +62,116 @@ Feature: Validate all scenarios in the Planning tab
     When I quick search "<Quick Search Text>" on table "Programs"
     And I click on the "View" icon for the "<Quick Search Text>" 
     And I click on "Responsibilities" subtab
-    When I click on the "Edit" icon for the "<Approver>" on the flextable "Approvers"
-    And I fill in the "<Name>","<Description>","<Due Date>" for the Approver details
-    Then I see that "<Name>" has been added in "Approvers" flextable
-	
+    When I click on the "Edit" icon for the "Program Approver" on the flextable "Approvers"
+    And I fill in the "<Approver Name>" for the Approver details
+    When I click on the "Edit" icon for the "Executive Approver" on the flextable "Approvers"
+    And I fill in the "<Approver Name>" for the Approver details
+    Then I see that "<Approver Name>" has been added in "Approvers" flextable
 	
 	Examples:
-	| User | Quick Search Text | Approver | Name | Description | Due Date |
-	| EXE | Automation Program | Program Approver | Automation EXE | Test Automation | 11/10/2018 |
-	| EXE | Automation Program | Executive Approver | Automation EXE | Test Automation | 11/10/2018 |
+	| User | Quick Search Text | Approver Name |
+	| EXE | Automation Program | Automation PM |
+	
+	
+  @34616 @FocusAreaAssociation @InternalProgram @Program @Planning
+  Scenario Outline: Validate the assignment of Approvers for the Internal Program
+	Given I login as "<User>" User
+	When I toggle to "As a Grantor" app
+	When I navigate to "Planning" tab
+	And I click "Internal Programs" inside side bar "Programs"
+	When I click on flextable and toggle to "Draft Internal Programs"
+    When I quick search "<Quick Search Text>" on table "Programs"
+    And I click on the "View" icon for the "<Quick Search Text>" 
+    And I click on "Setup" subtab
+    When I click on "Associate" button on "<Flextable Name>" flextable
+    And I choose the "Focus Area" with "<Focus Area Id>" and click "Associate" button
+    Then I see that "<Focus Area Id>" has been added in "<Flextable Name>" flextable
+	
+	Examples:
+	| User | Quick Search Text | Flextable Name | Focus Area Id |
+	| EXE | Automation Program | Focus Areas | 00000 |
+	
+	
+  @34737 @GoalAssociation @InternalProgram @Program @Planning
+  Scenario Outline: Validate the assignment of Approvers for the Internal Program
+	Given I login as "<User>" User
+	When I toggle to "As a Grantor" app
+	When I navigate to "Planning" tab
+	And I click "Internal Programs" inside side bar "Programs"
+	When I click on flextable and toggle to "Draft Internal Programs"
+    When I quick search "<Quick Search Text>" on table "Programs"
+    And I click on the "View" icon for the "<Quick Search Text>" 
+    And I click on "Setup" subtab
+    When I click on "Associate" button on "<Flextable Name>" flextable
+    And I choose the "Goals And Objectives" with "<Goal Id>" and click "Associate" button
+    Then I see that "<Goal Id>" has been added in "<Flextable Name>" flextable
+	
+	Examples:
+	| User | Quick Search Text | Flextable Name | Goal Id |
+	| EXE | Automation Program | Objectives | SPN-0019 |
+	
+	
+  @34738 @KPIAssociation @InternalProgram @Program @Planning
+  Scenario Outline: Validate the assignment of Approvers for the Internal Program
+	Given I login as "<User>" User
+	When I toggle to "As a Grantor" app
+	When I navigate to "Planning" tab
+	And I click "Internal Programs" inside side bar "Programs"
+	When I click on flextable and toggle to "Draft Internal Programs"
+    When I quick search "<Quick Search Text>" on table "Programs"
+    And I click on the "View" icon for the "<Quick Search Text>" 
+    And I click on "Setup" subtab
+    When I click on "Associate" button on "<Flextable Name>" flextable
+    And I choose the "Key Performance Indicators" with "<KPI>" and click "Associate" button
+    Then I see that "<KPI>" has been added in "<Flextable Name>" flextable
+	
+	Examples:
+	| User | Quick Search Text |  Flextable Name | KPI |
+	| EXE | Automation Program | Key Performance Indicators (KPIs) | KPI-0000 |
+	
+  @34750 @SubmittingProgramForApproval @InternalProgram @Program @Planning
+  Scenario Outline: Validate the assignment of Approvers for the Internal Program
+	Given I login as "<User>" User
+	When I toggle to "As a Grantor" app
+	When I navigate to "Planning" tab
+	And I click "Internal Programs" inside side bar "Programs"
+	When I click on flextable and toggle to "Draft Internal Programs"
+    When I quick search "<Quick Search Text>" on table "Programs"
+    And I click on the "View" icon for the "<Quick Search Text>" 
+    When I click on "Submit For Approval" button
+    Then I see that "Internal Program" is in status "Submitted for Approval"
+	
+	Examples:
+	| User | Quick Search Text |
+	| EXE | Automation Program |
+	
+  @programHappyPath
+  Scenario Outline: Verifying if the EXE, PM, PO has create access to Internal Program
+    Given I login as "<User>" User
+    When I toggle to "As a Grantor" app
+    When I navigate to "Planning" tab
+    And I click "Internal Programs" inside side bar "Programs"
+    When I click on "New" button on the flextable
+    And I fill the fields "<Title>","<Program Type>","<Primary Funding Organization>"
+    When I click on "Save and Continue" button
+    When I click on "Save" button
+    And I click on "Overview" subtab
+    When I click on "Associate" button on "Contacts" flextable
+    And I choose the "Contact" with "<Name>" and click "Add" button
+    And I click on "Responsibilities" subtab
+    When I click on the "Edit" icon for the "Program Approver" on the flextable "Approvers"
+    And I fill in the "<Name>" for the Approver details
+    When I click on the "Edit" icon for the "Executive Approver" on the flextable "Approvers"
+    And I fill in the "<Name>" for the Approver details
+	And I click on "Setup" subtab
+	When I click on "Associate" button on "Objectives" flextable
+    And I choose the "Objectives" with "SPN-0019" and click "Associate" button
+    When I click on "Submit For Approval" button
+    Then I see that "Internal Program" is in status "Submitted for Approval"
+  
+	Examples:
+	| User |  Title | Program Type | Primary Funding Organization | Name |
+	| EXE |  Automation Program | Project Grants | Research And Innovative Technology Administration | Automation EXE |
+
+	
+	

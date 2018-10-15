@@ -69,7 +69,12 @@ public class GenericSteps {
 		genericPage.clickOnFlextableButton(buttonName, flextableName);
 	}
 	
-	@Then("^I see that \"([^\"]*)\" is created in status \"([^\"]*)\"$")
+	@When("^I click on the \"([^\"]*)\" icon for the \"([^\"]*)\" on the flextable \"([^\"]*)\"$")
+	public void clickOnFlextableRowButton(String buttonName, String uniqueColumnvalue, String flexTableName) {
+		genericPage.clickOnFlextableRowButton(buttonName, uniqueColumnvalue, flexTableName);
+	}
+	
+	@Then("^I see that \"([^\"]*)\" is in status \"([^\"]*)\"$")
 	public void assertStatus(String record, String status){
 		genericPage.assertStatus(record,status);
 	}
@@ -81,7 +86,7 @@ public class GenericSteps {
 	
 	@Then("^I see that the status is \"([^\"]*)\"$")
 	public void assertStatusOnTable(String status) {
-		genericPage.assertStatusOnTable(status);
+		genericPage.assertColumnValueOnTable(status);
 	}
 	
 	@Then("^I see that \"([^\"]*)\" has been added in \"([^\"]*)\" flextable$")

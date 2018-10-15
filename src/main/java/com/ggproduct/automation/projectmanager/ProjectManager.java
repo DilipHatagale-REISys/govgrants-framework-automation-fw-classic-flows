@@ -19,6 +19,7 @@ public class ProjectManager extends ProjectWebServices {
     public Handlers reiDriver;
     public Controller controller;
     public final String defaultPassword="SALESFORCE2018";
+    public final String defaultLongText="Automation test description";
     
     /**
      * Super Constructor

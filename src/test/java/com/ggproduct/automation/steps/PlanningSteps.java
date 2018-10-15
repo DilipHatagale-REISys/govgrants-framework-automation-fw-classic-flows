@@ -18,10 +18,15 @@ public class PlanningSteps {
 	public void fillInProgramCreationFields(String title, String programType, String primaryFundingOrganization){
 		planningPage.fillInProgramCreationFields(title, programType, primaryFundingOrganization);
 	}
+
+	@When("^I fill in the \"([^\"]*)\" for the Approver details$")
+	public void fillInApproverDetails(String approverName) {
+		planningPage.fillInApproverDetails(approverName);
+	}
 	
-	@When("^I choose the \"([^\"]*)\" as the contact$")
-	public void chooseContact(String contactName) {
-		planningPage.chooseContact(contactName);
+	@When("^I choose the \"([^\"]*)\" with \"([^\"]*)\" and click \"([^\"]*)\" button$")
+	public void chooseRecordforAssociation(String recordName, String recordUniqueName, String buttonName) {
+		planningPage.chooseRecordforAssociation(recordName, recordUniqueName, buttonName);
 	}
 	
 

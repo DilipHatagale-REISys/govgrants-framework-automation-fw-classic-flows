@@ -26,8 +26,8 @@ public class HomeSteps {
 	}
 	
 	@When("^I click on \"([^\"]*)\" icon on the Draft Internal Organizations$")
-	public void clickOnViewIcon(String iconName){
-		homepage.clickOnViewIcon(iconName);
+	public void clickOnflexTableIcon(String iconName){
+		homepage.clickOnflexTableIcon(iconName);
 	}
 	
 }
