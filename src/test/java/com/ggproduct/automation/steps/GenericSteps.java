@@ -74,6 +74,16 @@ public class GenericSteps {
 		genericPage.clickOnFlextableRowButton(buttonName, uniqueColumnvalue, flexTableName);
 	}
 	
+	@When("^I enter \"([^\"]*)\" values from \"([^\"]*)\"$")
+	public void enterFieldValues(String sheetName, String excelName) {
+	    genericPage.enterFieldValues(sheetName, excelName);
+	}
+	
+	@When("^I click on \"([^\"]*)\" on the approval decision box$")
+    public void clickOnApprovalDecisionBox(String approvalDesicion){
+	    genericPage.clickOnApprovalDecisionBox(approvalDesicion);
+    }
+	
 	@Then("^I see that \"([^\"]*)\" is in status \"([^\"]*)\"$")
 	public void assertStatus(String record, String status){
 		genericPage.assertStatus(record,status);

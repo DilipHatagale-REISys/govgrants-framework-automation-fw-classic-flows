@@ -7,18 +7,14 @@ import com.automation.rei.handlers.Handlers;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 
 public class PlanningPage extends ProjectManager {
-    private final By programTitlePath, programTypePath, primaryFundingOrganizationPath, lookUpIFramePath,
+    private final By lookUpIFramePath,
             lookUpSearchPath, selectPath, contactPopUpPath, approverDetailsPopUpPath, approverDescription,
             approverDueDate, focusAreaPopUpPath, goalsObjectivesPopUpPath, keyPerformanceIndicatorPopUpPath,
             approverCloseButtonPath, focusAreaCloseButtonPath, goalsObjectivesCloseButtonPath,
-            keyPerformanceIndicatorCloseButtonPath, contactCloseButtonPath, modalQuickSearchPath, modalSavePath;
+            keyPerformanceIndicatorCloseButtonPath, contactCloseButtonPath, modalQuickSearchPath, modalSavePath; 
 
     public PlanningPage(Controller controller, Handlers handler) {
         super(controller, handler);
-        programTitlePath = By.xpath("//span[@id='ProgramName__c']/input[@type='text']");
-        programTypePath = By.xpath("//span/select");
-        primaryFundingOrganizationPath = By.xpath(
-                "//span[@id='PrimaryFundingOrganization__cparentCustomLookup']/span/span[@class='lookupInput']/a");
         lookUpIFramePath = By.xpath("//iframe[@id='iframeCustomLookupModalId']");
         lookUpSearchPath = By.xpath("//span[@class='fa fa-search']");
         selectPath = By.xpath("//a[@title='Select']");
@@ -35,30 +31,13 @@ public class PlanningPage extends ProjectManager {
         keyPerformanceIndicatorPopUpPath = By.xpath("//iframe[@id='ProgramKeyOutcomesiframeContentId']");
         keyPerformanceIndicatorCloseButtonPath = By.xpath("//button[@id='ProgramKeyOutcomesmodalDivCloseIcon']");
         modalQuickSearchPath = By.xpath("//div[@class='quick-search']");
-        modalSavePath = By.xpath("//input[@value='Save']"); 
+        modalSavePath = By.xpath("//input[@value='Save']");
     }
 
-    /**
-     * Handles filling up of the fields in a program creation page
-     * 
-     * @param title
-     * @param programType
-     * @param primaryFundingOrganization
-     */
-    public void fillInProgramCreationFields(String title, String programType, String primaryFundingOrganization) {
-        reiDriver.findMyElement().getElement(programTitlePath).sendKeys(title);
-        reiDriver.findMyElement().getDropDown(programTypePath).selectByValue(programType);
-        reiDriver.WaitFor().WaitForElementToBePresent(primaryFundingOrganizationPath).click();
-        reiDriver.WaitFor().WaitForElementClickAble(lookUpIFramePath);
-        reiDriver.switchTo().switchToFrame(lookUpIFramePath);
-        reiDriver.govGrants().performModalSpecificQuickSearch("lookuploading", primaryFundingOrganization);
-        reiDriver.WaitFor().makeThreadSleep(2000);
-        reiDriver.WaitFor().WaitForElementToBePresent(selectPath).click();
-        reiDriver.switchTo().switchToParentFrame();
-    }
-
+ 
     /**
      * Handles selection of approver for a program
+     * 
      * @param approverName
      */
     public void fillInApproverDetails(String approverName) {
@@ -84,6 +63,7 @@ public class PlanningPage extends ProjectManager {
 
     /**
      * Handles association of various related records to a program
+     * 
      * @param recordName
      * @param recordUniqueName
      * @param buttonName
@@ -116,14 +96,14 @@ public class PlanningPage extends ProjectManager {
         reiDriver.switchTo().switchToParentFrame();
         reiDriver.findMyElement().getElement(closeButton).click();
     }
-    
+
     private By getUniqueRecordNameToSelect(String recordUniqueName) {
         return By.xpath("//td//span[text()='" + recordUniqueName
                 + "']/../../../preceding-sibling::td//input[@type='checkbox']");
     }
-    
+
     private By getModalButtonName(String buttonName) {
-        return By.xpath("//div[@id='modaltemp']//button[text()='"+ buttonName +"']");
+        return By.xpath("//div[@id='modaltemp']//button[text()='" + buttonName + "']");
     }
 
 }

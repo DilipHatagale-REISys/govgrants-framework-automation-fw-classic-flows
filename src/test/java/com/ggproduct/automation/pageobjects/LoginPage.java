@@ -55,7 +55,23 @@ public class LoginPage extends ProjectManager{
         return reiDriver.findMyElement().getElement(By.xpath("//div/ul/li/a[@title='HOME']")).isDisplayed();
     }
 	
+    /**
+     * Handles logging into the system
+     * @param userName
+     */
     public void login(String userName) {
 		reiDriver.govGrants().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);
 	}
+    
+    public void reloginAsDifferentUser(String userName){
+        reiDriver.govGrants().waitForNavigationLogoToDisappear();
+        reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//img[@alt='User Avatar']/..//i[@class='fa fa-caret-down']")).click();
+        reiDriver.govGrants().getLoginDropDownItems("Logout").click();
+        try {
+            navigateToURL("PRODUCT PORTAL");
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        reiDriver.govGrants().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);
+    }
 }

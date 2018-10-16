@@ -8,11 +8,13 @@ import com.automation.rei.handlers.Handlers;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 
 public class GenericPage extends ProjectManager {
-    private final By headerOverviewPath;
+    private final By headerOverviewPath, approvalDecisionComments, approvalDecisionSubmit;
 
     public GenericPage(Controller controller, Handlers handler) {
         super(controller, handler);
         headerOverviewPath = By.xpath("//div[@class='panel-heading overview-header']");
+        approvalDecisionComments = By.xpath("//div[@id='ApprovalDecisionComponent']//textarea[@id='descriptionInput']");
+        approvalDecisionSubmit = By.xpath("//div[@id='ApprovalDecisionComponent']//input[@value='Submit']");
     }
 
     /**
@@ -60,18 +62,15 @@ public class GenericPage extends ProjectManager {
      * @param buttonName
      */
     public void clickOnButton(String buttonName) {
-        reiDriver.govGrants().waitForNavigationLogoToDisappear();
-        if (buttonName.equals("Submit For Approval")) {
-            reiDriver.get().getRefresh();
-            reiDriver.WaitFor().WaitForElementToBePresent(getPageButtonName(buttonName)).click();
-        } else {
-            reiDriver.WaitFor().WaitForElementToBePresent(getPageButtonName(buttonName)).click();
-        }
-        //reiDriver.govGrants().clickRightHeaderButtonInsideFlexTableDetailPage(buttonName);
-
+        reiDriver.JavaScript().scrollPageDocumentJS("Pageup", 0, 0);
+        reiDriver.WaitFor().WaitForElementToBePresent(getPageButtonName(buttonName)).click();
         if (buttonName.equals("Submit For Approval")) {
             clickOKForAlert();
         }
+    }
+    
+    public void enterFieldValues(String sheetName, String excelName) {
+        enterInputForFormsFromExcelFile(excelName,sheetName);
     }
 
     /**
@@ -188,6 +187,17 @@ public class GenericPage extends ProjectManager {
         reiDriver.JavaScript().scrollpageToSpecificElement(getScrollToPreviousSection(flextableName));
         reiDriver.govGrants().clickTableActionIcons(uniqueColumnvalue, buttonName);
     }
+    
+    /**
+     * Handles clicking on Approval Decision and clicks submit
+     * @param approvalDesicion
+     */
+    public void clickOnApprovalDecisionBox(String approvalDesicion){
+        reiDriver.WaitFor().WaitForElementToBePresent(getApprovalDecisionRadioButton(approvalDesicion)).click();
+        reiDriver.WaitFor().WaitForElementToBePresent(approvalDecisionComments).sendKeys(defaultLongText);
+        reiDriver.WaitFor().WaitForElementToBePresent(approvalDecisionSubmit).click();
+        
+    }
 
     private By getPageButtonName(String buttonName) {
         return By.xpath("//button[@title='" + buttonName + "'] | //input[@value='" + buttonName + "']");
@@ -204,6 +214,10 @@ public class GenericPage extends ProjectManager {
     private By getButtonOnFlexTable(String buttonName, String flextableName) {
         return By.xpath("//span[text()='" + flextableName + "']/..//div[contains(@class,'col-xs-6')]//button[text()='"
                 + buttonName + "']");
+    }
+    
+    private By getApprovalDecisionRadioButton(String approvalDesicion) {
+        return By.xpath("//div[@id='ApprovalDecisionComponent']//input[@value='"+approvalDesicion+"']");
     }
 
     private boolean isStatus(String record, String status) {
@@ -243,5 +257,7 @@ public class GenericPage extends ProjectManager {
         reiDriver.switchTo().acceptAlert();
         reiDriver.switchTo().switchToParentFrame();
     }
+    
+   
 
 }

@@ -23,14 +23,30 @@ Feature: Validate all scenarios in the Planning tab
     When I navigate to "Planning" tab
     And I click "Internal Programs" inside side bar "Programs"
     When I click on "New" button on the flextable
-    And I fill the fields "<Title>","<Program Type>","<Primary Funding Organization>"
+    When I enter "RequiredForSave" values from "Program_Field_Values.xlsx"
     When I click on "Save and Continue" button
     When I click on "Save" button
     Then I see that "Internal Program" is in status "Created"
     
     Examples:
-    | User | Title | Program Type | Primary Funding Organization |
-    | EXE | Automation Program | Project Grants | Research And Innovative Technology Administration |
+    | User |
+    | EXE |
+    
+  @34731 @ProgramEdition @InternalProgram @Program @Planning
+  Scenario Outline: Verifying if the EXE, PM, PO has create access to Internal Program
+    Given I login as "<User>" User
+    When I toggle to "As a Grantor" app
+    When I navigate to "Planning" tab
+    And I click "Internal Programs" inside side bar "Programs"
+    When I quick search "<Quick Search Text>" on table "Programs"
+    And I click on the "Edit" icon for the "<Quick Search Text>" 
+    When I enter "RequiredForSubmit" values from "Program_Field_Values.xlsx"
+    And I click on "Save" button
+    Then I see that "Abbreviation" field is modified to "AuPr"
+    
+    Examples:
+    | User | Quick Search Text |
+    | EXE | Automation Program |
     
     
   @34732 @ProgramContactsAssociation @InternalProgram @Program @Planning
@@ -145,6 +161,29 @@ Feature: Validate all scenarios in the Planning tab
 	| User | Quick Search Text |
 	| EXE | Automation Program |
 	
+	
+  @34752 @34754 @ProgramApproval @InternalProgram @Program @Planning
+  Scenario Outline: Validate the assignment of Approvers for the Internal Program
+	Given I login as "<Program Approver>" User
+	When I toggle to "As a Grantor" app
+	When I navigate to "Planning" tab
+	And I click "Pending Tasks" inside side bar "MyTasks"
+    When I quick search "<Quick Search Text>" on table "PhasePendingTasks"
+    And I click on the "Start" icon for the "<Quick Search Text>" 
+    When I click on "Approve" on the approval decision box
+    When I re-login as "<Executive Approver>" User
+    When I toggle to "As a Grantor" app
+	When I navigate to "Planning" tab
+	And I click "Pending Tasks" inside side bar "MyTasks"
+    When I quick search "<Quick Search Text>" on table "PhasePendingTasks"
+    And I click on the "Start" icon for the "<Quick Search Text>" 
+    When I click on "Approve" on the approval decision box
+    Then I see that "Internal Program" is in status "Approved"
+	
+	Examples:
+	| Program Approver | Quick Search Text | Executive Approver |
+	| PM | Automation Program | PM |
+	
   @programHappyPath
   Scenario Outline: Verifying if the EXE, PM, PO has create access to Internal Program
     Given I login as "<User>" User
@@ -152,8 +191,9 @@ Feature: Validate all scenarios in the Planning tab
     When I navigate to "Planning" tab
     And I click "Internal Programs" inside side bar "Programs"
     When I click on "New" button on the flextable
-    And I fill the fields "<Title>","<Program Type>","<Primary Funding Organization>"
+    When I enter "RequiredForSave" values from "Program_Field_Values.xlsx"
     When I click on "Save and Continue" button
+    When I enter "RequiredForSubmit" values from "Program_Field_Values.xlsx"
     When I click on "Save" button
     And I click on "Overview" subtab
     When I click on "Associate" button on "Contacts" flextable
@@ -167,11 +207,25 @@ Feature: Validate all scenarios in the Planning tab
 	When I click on "Associate" button on "Objectives" flextable
     And I choose the "Objectives" with "SPN-0019" and click "Associate" button
     When I click on "Submit For Approval" button
-    Then I see that "Internal Program" is in status "Submitted for Approval"
+    When I re-login as "<Program Approver>" User
+	When I toggle to "As a Grantor" app
+	When I navigate to "Planning" tab
+	And I click "Pending Tasks" inside side bar "MyTasks"
+    When I quick search "<Quick Search Text>" on table "PhasePendingTasks"
+    And I click on the "Start" icon for the "<Quick Search Text>" 
+    When I click on "Approve" on the approval decision box
+    When I re-login as "<Executive Approver>" User
+    When I toggle to "As a Grantor" app
+	When I navigate to "Planning" tab
+	And I click "Pending Tasks" inside side bar "MyTasks"
+    When I quick search "<Quick Search Text>" on table "PhasePendingTasks"
+    And I click on the "Start" icon for the "<Quick Search Text>" 
+    When I click on "Approve" on the approval decision box
+    Then I see that "Internal Program" is in status "Approved"
   
 	Examples:
-	| User |  Title | Program Type | Primary Funding Organization | Name |
-	| EXE |  Automation Program | Project Grants | Research And Innovative Technology Administration | Automation EXE |
+	| User | Name | Program Approver | Executive Approver | Quick Search Text |
+	| EXE | Automation PM | PM | PM |  Automation Program |
 
 	
 	

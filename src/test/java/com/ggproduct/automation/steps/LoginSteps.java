@@ -39,6 +39,11 @@ public class LoginSteps {
 		
 	}
 	
+	@When("^I re-login as \"([^\"]*)\" User$")
+	public void reloginAsDifferentUser(String userName){
+	    loginpage.reloginAsDifferentUser(userName);
+	}
+	
 	@Then("^I see that i am on the homepage \"([^\"]*)\"$")
 	public void assertHomeTab(){
 		loginpage.assertHomeTab();
