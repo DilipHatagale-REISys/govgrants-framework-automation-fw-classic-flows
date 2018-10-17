@@ -62,8 +62,13 @@ public class GenericPage extends ProjectManager {
      * @param buttonName
      */
     public void clickOnButton(String buttonName) {
-        reiDriver.JavaScript().scrollPageDocumentJS("Pageup", 0, 0);
-        reiDriver.WaitFor().WaitForElementToBePresent(getPageButtonName(buttonName)).click();
+        scrollToTop();
+        if (buttonName.equals("Submit For Approval")) {
+            reiDriver.govGrants().waitForNavigationLogoToDisappear();
+            reiDriver.WaitFor().WaitForElementToBePresent(getPageButtonName(buttonName)).click();
+        } else {
+            reiDriver.WaitFor().WaitForElementToBePresent(getPageButtonName(buttonName)).click();
+        }
         if (buttonName.equals("Submit For Approval")) {
             clickOKForAlert();
         }

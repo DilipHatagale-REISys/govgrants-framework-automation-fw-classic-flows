@@ -88,8 +88,8 @@ public class PlanningPage extends ProjectManager {
         reiDriver.WaitFor().WaitForElementClickAble(popUpPath);
         reiDriver.switchTo().switchToFrame(popUpPath);
         reiDriver.WaitFor().makeThreadSleep(1000);
-        reiDriver.WaitFor().WaitForElementListToBePresent(modalQuickSearchPath);
-        reiDriver.JavaScript().scrollpageToSpecificElement(modalQuickSearchPath);
+        //reiDriver.WaitFor().WaitForElementListToBePresent(modalQuickSearchPath);
+        //reiDriver.JavaScript().scrollpageToSpecificElement(modalQuickSearchPath);
         reiDriver.WaitFor().WaitForElementToBePresent(getUniqueRecordNameToSelect(recordUniqueName)).click();
         reiDriver.WaitFor().WaitForElementToBePresent(getModalButtonName(buttonName)).click();
         reiDriver.govGrants().waitForNavigationLogoToDisappear();

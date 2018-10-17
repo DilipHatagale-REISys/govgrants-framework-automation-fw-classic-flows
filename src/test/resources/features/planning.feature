@@ -161,7 +161,6 @@ Feature: Validate all scenarios in the Planning tab
 	| User | Quick Search Text |
 	| EXE | Automation Program |
 	
-	
   @34752 @34754 @ProgramApproval @InternalProgram @Program @Planning
   Scenario Outline: Validate the assignment of Approvers for the Internal Program
 	Given I login as "<Program Approver>" User
@@ -190,14 +189,18 @@ Feature: Validate all scenarios in the Planning tab
     When I toggle to "As a Grantor" app
     When I navigate to "Planning" tab
     And I click "Internal Programs" inside side bar "Programs"
-    When I click on "New" button on the flextable
-    When I enter "RequiredForSave" values from "Program_Field_Values.xlsx"
-    When I click on "Save and Continue" button
-    When I enter "RequiredForSubmit" values from "Program_Field_Values.xlsx"
-    When I click on "Save" button
+    
+    When I quick search "Automation Program" on table "Programs"
+    And I click on the "View" icon for the "Automation Program" 
+    
+    #When I click on "New" button on the flextable
+    #When I enter "RequiredForSave" values from "Program_Field_Values.xlsx"
+    #When I click on "Save and Continue" button
+    #When I enter "RequiredForSubmit" values from "Program_Field_Values.xlsx"
+    #When I click on "Save" button
     And I click on "Overview" subtab
     When I click on "Associate" button on "Contacts" flextable
-    And I choose the "Contact" with "<Name>" and click "Add" button
+    And I choose the "Contact" with "Automation EXE" and click "Add" button
     And I click on "Responsibilities" subtab
     When I click on the "Edit" icon for the "Program Approver" on the flextable "Approvers"
     And I fill in the "<Name>" for the Approver details

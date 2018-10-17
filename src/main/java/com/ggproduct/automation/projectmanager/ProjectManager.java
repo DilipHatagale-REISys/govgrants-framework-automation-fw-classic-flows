@@ -150,6 +150,12 @@ public class ProjectManager extends ProjectWebServices {
         }
     }
     
+    public void scrollToTop() {
+        WebDriver driver = reiDriver.switchTo().switchToParentFrame();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("document.body.scrollTo(0, 0);");
+    }
+    
     /******* "Local Methods with Limited functionality " **********/
 
     /**
