@@ -167,6 +167,20 @@ public class GenericPage extends ProjectManager {
         reiDriver.JavaScript().scrollpageToSpecificElement(getScrollToPreviousSection(flextableName));
         reiDriver.WaitFor().WaitForElementToBePresent(getButtonOnFlexTable(buttonName, flextableName)).click();
     }
+    
+    /**
+     * Clicks on flextable row level buttons in list view where
+     * there are number of flextables
+     * 
+     * @param buttonName
+     * @param uniqueColumnvalue
+     * @param flextableName
+     */
+    public void clickOnFlexTableIconWithTableId(String iconName, String tableId, String searchText){
+        reiDriver.govGrants().performTableSpecificQuickSearch(tableId, searchText);
+        reiDriver.govGrants().waitForNavigationLogoToDisappear();
+        reiDriver.govGrants().clickTableActionIcons(searchText, iconName);
+    }
 
     /**
      * Asserts if a column value is present inside the given flextable

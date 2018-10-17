@@ -3,16 +3,26 @@ package com.ggproduct.automation.steps;
 import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.Handlers;
 import com.ggproduct.automation.pageobjects.GenericPage;
+import com.ggproduct.automation.pageobjects.LoginPage;
 
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class GenericSteps {
 	GenericPage genericPage;
+	LoginPage loginpage;
 	
 	public GenericSteps(Controller controller, Handlers handler) {
 		genericPage=new GenericPage(controller,handler);
+		loginpage=new LoginPage(controller,handler);
 	}
+	
+	@Given("^I login to \"([^\"]*)\" app as \"([^\"]*)\" User$")
+    public void loginToggleToApp(String appName, String userName) {
+        loginpage.login(userName);
+        genericPage.toggleApp(appName);
+    }
 	
 	@When("^I navigate to \"([^\"]*)\" tab$")
 	public void navigateToTab(String tabName) {
@@ -39,7 +49,7 @@ public class GenericSteps {
 		genericPage.changeFieldValueText(fieldId,text);
 	}
 	
-	@When("^I click on flextable and toggle to \"([^\"]*)\"$")
+	@When("^I click on flextable toggle to \"([^\"]*)\"$")
 	public void changeFlexTableView(String tableViewName){
 		genericPage.changeFlexTableView(tableViewName);
 	}
@@ -49,7 +59,7 @@ public class GenericSteps {
 		genericPage.clickOnFlexTableButton(buttonName);
 	}
 	
-	@When("^I quick search \"([^\"]*)\" on table \"([^\"]*)\"$")
+	@When("^I perform quick search \"([^\"]*)\" on table \"([^\"]*)\"$")
 	public void quickSearchOnTable(String searchText, String tableName) {
 		genericPage.quickSearchOnTable(searchText, tableName);
 	}
@@ -57,6 +67,11 @@ public class GenericSteps {
 	@When("^I click on the \"([^\"]*)\" icon for the \"([^\"]*)\"$")
 	public void clickOnFlexTableIcon(String iconName, String uniqueTextValue) {
 		genericPage.clickOnFlexTableIcon(iconName, uniqueTextValue);
+	}
+	
+	@When("^I click on \"([^\"]*)\" icon on \"([^\"]*)\" table against \"([^\"]*)\"$")
+	public void clickOnFlexTableIconWithTableId(String iconName, String tableId, String searchText){
+	    genericPage.clickOnFlexTableIconWithTableId(iconName, tableId, searchText);
 	}
 	
 	@When("^I click on \"([^\"]*)\" subtab$")
@@ -68,6 +83,7 @@ public class GenericSteps {
 	public void clickOnFlextableButton(String buttonName, String flextableName) {
 		genericPage.clickOnFlextableButton(buttonName, flextableName);
 	}
+	
 	
 	@When("^I click on the \"([^\"]*)\" icon for the \"([^\"]*)\" on the flextable \"([^\"]*)\"$")
 	public void clickOnFlextableRowButton(String buttonName, String uniqueColumnvalue, String flexTableName) {
@@ -84,7 +100,7 @@ public class GenericSteps {
 	    genericPage.clickOnApprovalDecisionBox(approvalDesicion);
     }
 	
-	@Then("^I see that \"([^\"]*)\" is in status \"([^\"]*)\"$")
+	@Then("^I see that \"([^\"]*)\" is in \"([^\"]*)\" status$")
 	public void assertStatus(String record, String status){
 		genericPage.assertStatus(record,status);
 	}

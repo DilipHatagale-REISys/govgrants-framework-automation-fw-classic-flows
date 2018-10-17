@@ -4,11 +4,10 @@ Feature: Validate all scenarios in the Planning tab
 
   @34730 @ProgramListView @InternalProgram @Program @Planning
   Scenario Outline: Verifying if the EXE,PM,PO has access to Internal Programs list view
-    Given I login as "<User>" User
-    When I toggle to "As a Grantor" app
+    Given I login to "As a Grantor" app as "<User>" User
     When I navigate to "Planning" tab
     And I click "Internal Programs" inside side bar "Programs"
-    When I click on flextable and toggle to "<Program flextable Header>"
+    When I click on flextable toggle to "<Program flextable Header>"
     Then I see that the status is "<Program Status>"
     
     Examples:
@@ -18,15 +17,14 @@ Feature: Validate all scenarios in the Planning tab
   
   @34503 @ProgramCreation @InternalProgram @Program @Planning
   Scenario Outline: Verifying if the EXE, PM, PO has create access to Internal Program
-    Given I login as "<User>" User
-    When I toggle to "As a Grantor" app
+    Given I login to "As a Grantor" app as "<User>" User
     When I navigate to "Planning" tab
     And I click "Internal Programs" inside side bar "Programs"
     When I click on "New" button on the flextable
     When I enter "RequiredForSave" values from "Program_Field_Values.xlsx"
     When I click on "Save and Continue" button
     When I click on "Save" button
-    Then I see that "Internal Program" is in status "Created"
+    Then I see that "Internal Program" is in "Created" status
     
     Examples:
     | User |
@@ -34,11 +32,10 @@ Feature: Validate all scenarios in the Planning tab
     
   @34731 @ProgramEdition @InternalProgram @Program @Planning
   Scenario Outline: Verifying if the EXE, PM, PO has create access to Internal Program
-    Given I login as "<User>" User
-    When I toggle to "As a Grantor" app
+    Given I login to "As a Grantor" app as "<User>" User
     When I navigate to "Planning" tab
     And I click "Internal Programs" inside side bar "Programs"
-    When I quick search "<Quick Search Text>" on table "Programs"
+    When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "Edit" icon for the "<Quick Search Text>" 
     When I enter "RequiredForSubmit" values from "Program_Field_Values.xlsx"
     And I click on "Save" button
@@ -51,12 +48,11 @@ Feature: Validate all scenarios in the Planning tab
     
   @34732 @ProgramContactsAssociation @InternalProgram @Program @Planning
   Scenario Outline: Verifying if the EXE, PM, PO can associate contact with Internal Program
-    Given I login as "<User>" User
-    When I toggle to "As a Grantor" app
+    Given I login to "As a Grantor" app as "<User>" User
     When I navigate to "Planning" tab
     And I click "Internal Programs" inside side bar "Programs"
-    When I click on flextable and toggle to "Draft Internal Programs"
-    When I quick search "<Quick Search Text>" on table "Programs"
+    When I click on flextable toggle to "Draft Internal Programs"
+    When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "View" icon for the "<Quick Search Text>" 
     And I click on "Overview" subtab
     When I click on "Associate" button on "Contacts" flextable
@@ -70,12 +66,11 @@ Feature: Validate all scenarios in the Planning tab
     
   @34740 @ApproverSelection @InternalProgram @Program @Planning
   Scenario Outline: Validate the assignment of Approvers for the Internal Program
-	Given I login as "<User>" User
-	When I toggle to "As a Grantor" app
+	Given I login to "As a Grantor" app as "<User>" User
 	When I navigate to "Planning" tab
 	And I click "Internal Programs" inside side bar "Programs"
-	When I click on flextable and toggle to "Draft Internal Programs"
-    When I quick search "<Quick Search Text>" on table "Programs"
+	When I click on flextable toggle to "Draft Internal Programs"
+    When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "View" icon for the "<Quick Search Text>" 
     And I click on "Responsibilities" subtab
     When I click on the "Edit" icon for the "Program Approver" on the flextable "Approvers"
@@ -91,12 +86,11 @@ Feature: Validate all scenarios in the Planning tab
 	
   @34616 @FocusAreaAssociation @InternalProgram @Program @Planning
   Scenario Outline: Validate the assignment of Approvers for the Internal Program
-	Given I login as "<User>" User
-	When I toggle to "As a Grantor" app
+	Given I login to "As a Grantor" app as "<User>" User
 	When I navigate to "Planning" tab
 	And I click "Internal Programs" inside side bar "Programs"
-	When I click on flextable and toggle to "Draft Internal Programs"
-    When I quick search "<Quick Search Text>" on table "Programs"
+	When I click on flextable toggle to "Draft Internal Programs"
+    When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "View" icon for the "<Quick Search Text>" 
     And I click on "Setup" subtab
     When I click on "Associate" button on "<Flextable Name>" flextable
@@ -110,12 +104,11 @@ Feature: Validate all scenarios in the Planning tab
 	
   @34737 @GoalAssociation @InternalProgram @Program @Planning
   Scenario Outline: Validate the assignment of Approvers for the Internal Program
-	Given I login as "<User>" User
-	When I toggle to "As a Grantor" app
+	Given I login to "As a Grantor" app as "<User>" User
 	When I navigate to "Planning" tab
 	And I click "Internal Programs" inside side bar "Programs"
-	When I click on flextable and toggle to "Draft Internal Programs"
-    When I quick search "<Quick Search Text>" on table "Programs"
+	When I click on flextable toggle to "Draft Internal Programs"
+    When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "View" icon for the "<Quick Search Text>" 
     And I click on "Setup" subtab
     When I click on "Associate" button on "<Flextable Name>" flextable
@@ -129,12 +122,11 @@ Feature: Validate all scenarios in the Planning tab
 	
   @34738 @KPIAssociation @InternalProgram @Program @Planning
   Scenario Outline: Validate the assignment of Approvers for the Internal Program
-	Given I login as "<User>" User
-	When I toggle to "As a Grantor" app
+	Given I login to "As a Grantor" app as "<User>" User
 	When I navigate to "Planning" tab
 	And I click "Internal Programs" inside side bar "Programs"
-	When I click on flextable and toggle to "Draft Internal Programs"
-    When I quick search "<Quick Search Text>" on table "Programs"
+	When I click on flextable toggle to "Draft Internal Programs"
+    When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "View" icon for the "<Quick Search Text>" 
     And I click on "Setup" subtab
     When I click on "Associate" button on "<Flextable Name>" flextable
@@ -147,15 +139,14 @@ Feature: Validate all scenarios in the Planning tab
 	
   @34750 @SubmittingProgramForApproval @InternalProgram @Program @Planning
   Scenario Outline: Validate the assignment of Approvers for the Internal Program
-	Given I login as "<User>" User
-	When I toggle to "As a Grantor" app
+	Given I login to "As a Grantor" app as "<User>" User
 	When I navigate to "Planning" tab
 	And I click "Internal Programs" inside side bar "Programs"
-	When I click on flextable and toggle to "Draft Internal Programs"
-    When I quick search "<Quick Search Text>" on table "Programs"
+	When I click on flextable toggle to "Draft Internal Programs"
+    When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "View" icon for the "<Quick Search Text>" 
     When I click on "Submit For Approval" button
-    Then I see that "Internal Program" is in status "Submitted for Approval"
+    Then I see that "Internal Program" is in "Submitted for Approval" status
 	
 	Examples:
 	| User | Quick Search Text |
@@ -163,11 +154,10 @@ Feature: Validate all scenarios in the Planning tab
 	
   @34752 @34754 @ProgramApproval @InternalProgram @Program @Planning
   Scenario Outline: Validate the assignment of Approvers for the Internal Program
-	Given I login as "<Program Approver>" User
-	When I toggle to "As a Grantor" app
+	Given I login to "As a Grantor" app as "<User>" User
 	When I navigate to "Planning" tab
 	And I click "Pending Tasks" inside side bar "MyTasks"
-    When I quick search "<Quick Search Text>" on table "PhasePendingTasks"
+    When I perform quick search "<Quick Search Text>" on table "PhasePendingTasks"
     And I click on the "Start" icon for the "<Quick Search Text>" 
     When I click on "Approve" on the approval decision box
     When I re-login as "<Executive Approver>" User
@@ -177,7 +167,7 @@ Feature: Validate all scenarios in the Planning tab
     When I quick search "<Quick Search Text>" on table "PhasePendingTasks"
     And I click on the "Start" icon for the "<Quick Search Text>" 
     When I click on "Approve" on the approval decision box
-    Then I see that "Internal Program" is in status "Approved"
+    Then I see that "Internal Program" is in "Approved" status
 	
 	Examples:
 	| Program Approver | Quick Search Text | Executive Approver |
@@ -185,19 +175,14 @@ Feature: Validate all scenarios in the Planning tab
 	
   @programHappyPath
   Scenario Outline: Verifying if the EXE, PM, PO has create access to Internal Program
-    Given I login as "<User>" User
-    When I toggle to "As a Grantor" app
+    Given I login to "As a Grantor" app as "<User>" User
     When I navigate to "Planning" tab
     And I click "Internal Programs" inside side bar "Programs"
-    
-    When I quick search "Automation Program" on table "Programs"
-    And I click on the "View" icon for the "Automation Program" 
-    
-    #When I click on "New" button on the flextable
-    #When I enter "RequiredForSave" values from "Program_Field_Values.xlsx"
-    #When I click on "Save and Continue" button
-    #When I enter "RequiredForSubmit" values from "Program_Field_Values.xlsx"
-    #When I click on "Save" button
+    When I click on "New" button on the flextable
+    When I enter "RequiredForSave" values from "Program_Field_Values.xlsx"
+    When I click on "Save and Continue" button
+    When I enter "RequiredForSubmit" values from "Program_Field_Values.xlsx"
+    When I click on "Save" button
     And I click on "Overview" subtab
     When I click on "Associate" button on "Contacts" flextable
     And I choose the "Contact" with "Automation EXE" and click "Add" button
@@ -214,17 +199,17 @@ Feature: Validate all scenarios in the Planning tab
 	When I toggle to "As a Grantor" app
 	When I navigate to "Planning" tab
 	And I click "Pending Tasks" inside side bar "MyTasks"
-    When I quick search "<Quick Search Text>" on table "PhasePendingTasks"
+    When I perform quick search "<Quick Search Text>" on table "PhasePendingTasks"
     And I click on the "Start" icon for the "<Quick Search Text>" 
     When I click on "Approve" on the approval decision box
     When I re-login as "<Executive Approver>" User
     When I toggle to "As a Grantor" app
 	When I navigate to "Planning" tab
 	And I click "Pending Tasks" inside side bar "MyTasks"
-    When I quick search "<Quick Search Text>" on table "PhasePendingTasks"
+    When I perform quick search "<Quick Search Text>" on table "PhasePendingTasks"
     And I click on the "Start" icon for the "<Quick Search Text>" 
     When I click on "Approve" on the approval decision box
-    Then I see that "Internal Program" is in status "Approved"
+    Then I see that "Internal Program" is in "Approved" status
   
 	Examples:
 	| User | Name | Program Approver | Executive Approver | Quick Search Text |

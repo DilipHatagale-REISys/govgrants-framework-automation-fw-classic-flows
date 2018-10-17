@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Description;
 
 import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.Handlers;
+import com.ggproduct.automation.pageobjects.GenericPage;
 import com.ggproduct.automation.pageobjects.LoginPage;
 
 import cucumber.api.java.en.Given;

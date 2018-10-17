@@ -36,19 +36,6 @@ public class HomePage extends ProjectManager {
     }
 
     /**
-     * Filling the fields with values for Internal Organization
-     */
-    public void fillInFieldsforInternalOrganization() {
-        reiDriver.findMyElement().getElement(internalOrgName).sendKeys("Internal Automation Organization Test");
-        reiDriver.findMyElement().getElement(code).sendKeys("InAuOr");
-        reiDriver.findMyElement().getElement(agencyAbbreviationPath).sendKeys("IAO");
-        reiDriver.findMyElement().getElement(EIN).sendKeys("987587646");
-        reiDriver.findMyElement().getDropDown(organizationLevelPath).selectByValue("Agency");
-        // reiDriver.findMyElement().getElement(grantingAgencyCheck).click();
-        // reiDriver.findMyElement().getElement(isActiveAgency).click();
-    }
-
-    /**
      * Clicks on flex table row level icon
      * 
      * @param iconName
