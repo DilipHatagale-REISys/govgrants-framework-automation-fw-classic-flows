@@ -1,12 +1,10 @@
 package com.ggproduct.automation.projectmanager;
 
 import java.io.IOException;
-import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.Handlers;
@@ -50,7 +48,8 @@ public class ProjectManager extends ProjectWebServices {
      * @throws IOException 
      */
     public void navigateToURL(String urlName) throws IOException {
-        reiDriver.get().navigateToUrl(new UsersAndURL().navigateToAnyUrl(urlName));
+        new UsersAndURL();
+        reiDriver.get().navigateToUrl(UsersAndURL.navigateToAnyUrl(urlName));
     }
     
 
@@ -89,7 +88,6 @@ public class ProjectManager extends ProjectWebServices {
      *
      */
     public void enterInputForFormsFromExcelFile(String fileName, String sheetName) {
-
         String[][] data = reiDriver.excelReader().readExcelFile(fileName, sheetName);
         String currentSubTab = "";
 
@@ -161,10 +159,6 @@ public class ProjectManager extends ProjectWebServices {
     /**
      * get any specific column value in pending tasks (Assigned to me)
      */
-    private List<WebElement> getToPendingTasksAssignedToMeDesiredColumn(String mycolumnValue) {
-        return reiDriver.findMyElement()
-                .getElements(By.xpath("//div/table/tbody/tr/td/span/span/span[text()='" + mycolumnValue + "']"));
-    }
     
     private void handleTextInput(String fieldApiName, String fieldValue) {
         By fieldInput = By.xpath("//div[@id='field" + fieldApiName + "']//input[@type='text']");

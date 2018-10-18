@@ -6,7 +6,7 @@ Feature: Validate all scenarios in the Planning tab
     Given I login to "As a Grantor" app as "<User>" User
     When I navigate to "Planning" tab
     And I click "Internal Programs" inside side bar "Programs"
-    When I click on flextable toggle to "<Program flextable Header>"
+    When I toggle to "<Program flextable Header>"
     Then I see that the status is "<Program Status>"
     
     Examples:
@@ -51,7 +51,7 @@ Feature: Validate all scenarios in the Planning tab
     Given I login to "As a Grantor" app as "<User>" User
     When I navigate to "Planning" tab
     And I click "Internal Programs" inside side bar "Programs"
-    When I click on flextable toggle to "Draft Internal Programs"
+    When I toggle to "Draft Internal Programs"
     When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "View" icon for the "<Quick Search Text>" 
     And I click on "Overview" subtab
@@ -69,7 +69,7 @@ Feature: Validate all scenarios in the Planning tab
 	Given I login to "As a Grantor" app as "<User>" User
 	When I navigate to "Planning" tab
 	And I click "Internal Programs" inside side bar "Programs"
-	When I click on flextable toggle to "Draft Internal Programs"
+	When I toggle to "Draft Internal Programs"
     When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "View" icon for the "<Quick Search Text>" 
     And I click on "Responsibilities" subtab
@@ -89,7 +89,7 @@ Feature: Validate all scenarios in the Planning tab
 	Given I login to "As a Grantor" app as "<User>" User
 	When I navigate to "Planning" tab
 	And I click "Internal Programs" inside side bar "Programs"
-	When I click on flextable toggle to "Draft Internal Programs"
+	When I toggle to "Draft Internal Programs"
     When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "View" icon for the "<Quick Search Text>" 
     And I click on "Setup" subtab
@@ -99,7 +99,7 @@ Feature: Validate all scenarios in the Planning tab
 	
 	Examples:
 	| User | Quick Search Text | Flextable Name | Focus Area Id |
-	| EXE | Automation Program | Focus Areas | 00000 |
+	| EXE | Automation Program | Focus Areas | 00003 |
 	
 	
   @34737 @GoalAssociation @InternalProgram @Program @Planning
@@ -107,12 +107,12 @@ Feature: Validate all scenarios in the Planning tab
 	Given I login to "As a Grantor" app as "<User>" User
 	When I navigate to "Planning" tab
 	And I click "Internal Programs" inside side bar "Programs"
-	When I click on flextable toggle to "Draft Internal Programs"
+	When I toggle to "Draft Internal Programs"
     When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "View" icon for the "<Quick Search Text>" 
     And I click on "Setup" subtab
     When I click on "Associate" button on "<Flextable Name>" flextable
-    And I choose the "Goals And Objectives" with "<Goal Id>" and click "Associate" button
+    And I choose the "Objectives" with "<Goal Id>" and click "Add" button
     Then I see that "<Goal Id>" has been added in "<Flextable Name>" flextable
 	
 	Examples:
@@ -125,24 +125,24 @@ Feature: Validate all scenarios in the Planning tab
 	Given I login to "As a Grantor" app as "<User>" User
 	When I navigate to "Planning" tab
 	And I click "Internal Programs" inside side bar "Programs"
-	When I click on flextable toggle to "Draft Internal Programs"
+	When I toggle to "Draft Internal Programs"
     When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "View" icon for the "<Quick Search Text>" 
     And I click on "Setup" subtab
     When I click on "Associate" button on "<Flextable Name>" flextable
-    And I choose the "Key Performance Indicators" with "<KPI>" and click "Associate" button
+    And I choose the "Key Performance Indicators" with "<KPI>" and click "Add" button
     Then I see that "<KPI>" has been added in "<Flextable Name>" flextable
 	
 	Examples:
 	| User | Quick Search Text |  Flextable Name | KPI |
-	| EXE | Automation Program | Key Performance Indicators (KPIs) | KPI-0000 |
+	| EXE | Automation Program | Key Performance Indicators (KPIs) | KPI-0001 |
 	
   @34745 @AttachmentChecklist @InternalProgram @Program @Planning
   Scenario Outline: Validate the assignment of Approvers for the Internal Program
 	Given I login to "As a Grantor" app as "<User>" User
 	When I navigate to "Planning" tab
 	And I click "Internal Programs" inside side bar "Programs"
-	When I click on flextable toggle to "Draft Internal Programs"
+	When I toggle to "Draft Internal Programs"
     When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "View" icon for the "<Quick Search Text>" 
     And I click on "Setup" subtab
@@ -161,7 +161,7 @@ Feature: Validate all scenarios in the Planning tab
 	Given I login to "As a Grantor" app as "<User>" User
 	When I navigate to "Planning" tab
 	And I click "Internal Programs" inside side bar "Programs"
-	When I click on flextable toggle to "Draft Internal Programs"
+	When I toggle to "Draft Internal Programs"
     When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "View" icon for the "<Quick Search Text>" 
     And I click on "Attachments" subtab
@@ -178,7 +178,7 @@ Feature: Validate all scenarios in the Planning tab
 	Given I login to "As a Grantor" app as "<User>" User
 	When I navigate to "Planning" tab
 	And I click "Internal Programs" inside side bar "Programs"
-	When I click on flextable toggle to "Draft Internal Programs"
+	When I toggle to "Draft Internal Programs"
     When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "View" icon for the "<Quick Search Text>" 
     When I click on "Submit For Approval" button
@@ -205,7 +205,7 @@ Feature: Validate all scenarios in the Planning tab
     Then I see that "Internal Program" is in "Approved" status
 	
 	Examples:
-	| Program Approver | Quick Search Text | Executive Approver |
+	| User | Quick Search Text | Executive Approver |
 	| PM | Automation Program | PM |
 	
   @34756 @ProgramActivation @InternalProgram @Program @Planning
@@ -213,11 +213,11 @@ Feature: Validate all scenarios in the Planning tab
 	Given I login to "As a Grantor" app as "<User>" User
 	When I navigate to "Planning" tab
 	And I click "Internal Programs" inside side bar "Programs"
-	When I click on flextable toggle to "Draft Internal Programs"
+	When I toggle to "Draft Internal Programs"
     When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "View" icon for the "<Quick Search Text>" 
     When I click on "Activate" button
-    Then I see that "Internal Program" is in "Activated" status
+    Then I see that "Internal Program" is in "Active" status
 	
 	Examples:
 	| User | Quick Search Text |
@@ -246,7 +246,7 @@ Feature: Validate all scenarios in the Planning tab
     And I choose the "Focus Area" with "00001" and click "Associate" button
 	And I click on "Setup" subtab
 	When I click on "Associate" button on "Objectives" flextable
-    And I choose the "Objectives" with "SPN-0019" and click "Associate" button
+    And I choose the "Objectives" with "SPN-0019" and click "Add" button
     When I click on "Submit For Approval" button
     When I re-login to "As a Grantor" app as "<Program Approver>" User
 	When I navigate to "Planning" tab

@@ -49,7 +49,7 @@ public class GenericSteps {
 		genericPage.changeFieldValueText(fieldId,text);
 	}
 	
-	@When("^I click on flextable toggle to \"([^\"]*)\"$")
+	@When("^I toggle to \"([^\"]*)\"$")
 	public void changeFlexTableView(String tableViewName){
 		genericPage.changeFlexTableView(tableViewName);
 	}

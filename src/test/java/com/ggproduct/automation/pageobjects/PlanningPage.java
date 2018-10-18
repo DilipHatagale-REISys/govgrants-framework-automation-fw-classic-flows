@@ -7,11 +7,10 @@ import com.automation.rei.handlers.Handlers;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 
 public class PlanningPage extends ProjectManager {
-    private final By lookUpIFramePath,
-            lookUpSearchPath, selectPath, contactPopUpPath, approverDetailsPopUpPath, approverDescription,
-            approverDueDate, focusAreaPopUpPath, goalsObjectivesPopUpPath, keyPerformanceIndicatorPopUpPath,
-            approverCloseButtonPath, focusAreaCloseButtonPath, goalsObjectivesCloseButtonPath,
-            keyPerformanceIndicatorCloseButtonPath, contactCloseButtonPath, modalQuickSearchPath, modalSavePath; 
+    private final By lookUpIFramePath, lookUpSearchPath, selectPath, approverDetailsPopUpPath, approverDescription,
+            approverDueDate, approverCloseButtonPath, focusAreaCloseButtonPath, goalsObjectivesCloseButtonPath,
+            keyPerformanceIndicatorCloseButtonPath, contactCloseButtonPath, modalQuickSearchPath, modalSavePath,
+            focusAreaPopUpPath, goalsObjectivesPopUpPath, keyPerformanceIndicatorPopUpPath, contactPopUpPath;
 
     public PlanningPage(Controller controller, Handlers handler) {
         super(controller, handler);
@@ -34,7 +33,6 @@ public class PlanningPage extends ProjectManager {
         modalSavePath = By.xpath("//input[@value='Save']");
     }
 
- 
     /**
      * Handles selection of approver for a program
      * 
@@ -46,8 +44,8 @@ public class PlanningPage extends ProjectManager {
         reiDriver.WaitFor().WaitForElementToBePresent(lookUpSearchPath).click();
         reiDriver.WaitFor().WaitForElementClickAble(lookUpIFramePath);
         reiDriver.switchTo().switchToFrame(lookUpIFramePath);
+        reiDriver.WaitFor().makeThreadSleep(3000);
         reiDriver.govGrants().performModalSpecificQuickSearch("lookuploading", approverName);
-        reiDriver.WaitFor().makeThreadSleep(5000);
         reiDriver.WaitFor().WaitForElementToBePresent(selectPath).click();
         reiDriver.switchTo().switchToParentFrame();
         reiDriver.WaitFor().WaitForElementClickAble(approverDetailsPopUpPath);
@@ -96,20 +94,22 @@ public class PlanningPage extends ProjectManager {
         reiDriver.switchTo().switchToParentFrame();
         reiDriver.findMyElement().getElement(closeButton).click();
     }
-    
+
     /**
      * Handles filling in the fields for attachment checklist
      */
-    public void fillFieldsAttachmentChecklist(){
+    public void fillFieldsAttachmentChecklist() {
         reiDriver.findMyElement().getElement(By.xpath("//td//textarea")).sendKeys(defaultLongText);
-        reiDriver.findMyElement().getElement(By.xpath("//td//select/option[text()='Optional' or text()='Mandatory']/..")).click();
+        reiDriver.findMyElement()
+                .getElement(By.xpath("//td//select/option[text()='Optional' or text()='Mandatory']/..")).click();
         reiDriver.findMyElement().getElement(By.xpath("//td//select/option[text()='Mandatory']")).click();
-        reiDriver.findMyElement().getElement(By.xpath("//td//select/option[text()='Application' or text()='Award']/..")).click();
+        reiDriver.findMyElement().getElement(By.xpath("//td//select/option[text()='Application' or text()='Award']/.."))
+                .click();
         reiDriver.findMyElement().getElement(By.xpath("//td//select/option[text()='Application']")).click();
-        reiDriver.findMyElement().getElement(By.xpath("//div/a[contains(@title,'Checklist')]/../..//div[@class='pull-right flex-grid-btns']//button[@title='Save']")).click();
+        reiDriver.findMyElement().getElement(By.xpath(
+                "//div/a[contains(@title,'Checklist')]/../..//div[@class='pull-right flex-grid-btns']//button[@title='Save']"))
+                .click();
     }
-    
-    
 
     private By getUniqueRecordNameToSelect(String recordUniqueName) {
         return By.xpath("//td//span[text()='" + recordUniqueName

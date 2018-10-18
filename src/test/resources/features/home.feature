@@ -9,7 +9,7 @@ Feature: Validate all scenarios in the home tab
     When I click on "New" button on the Draft Internal Organizations
     When I enter "RequiredForSave" values from "InternalOrganization_Field_Values.xlsx"
     When I click on "Save" button
-    Then I see that "State Organization" is in status "Created"
+    Then I see that "State Organization" is in "Created" status
     
   @35637 @InternalOrganizationEdit @InternalOrganization
   Scenario Outline: Verifying if the Admin has edit access to Internal Organization

@@ -69,13 +69,10 @@ public class GenericPage extends ProjectManager {
      * @param buttonName
      */
     public void clickOnButton(String buttonName) {
-        scrollToTop();
-        if (buttonName.equals("Submit For Approval")) {
-            reiDriver.govGrants().waitForNavigationLogoToDisappear();
-            reiDriver.WaitFor().WaitForElementToBePresent(getPageButtonName(buttonName)).click();
-        } else {
-            reiDriver.WaitFor().WaitForElementToBePresent(getPageButtonName(buttonName)).click();
-        }
+        reiDriver.govGrants().waitForNavigationLogoToDisappear();
+        reiDriver.JavaScript().scrollPageDocumentJS("pageup", 0, 0);
+        reiDriver.govGrants().clickRightHeaderButtonInsideFlexTableDetailPage(buttonName);
+
         if (buttonName.equals("Submit For Approval")) {
             clickOKForAlert();
         }
@@ -171,7 +168,7 @@ public class GenericPage extends ProjectManager {
      * @param flextableName
      */
     public void clickOnFlextableButton(String buttonName, String flextableName) {
-        reiDriver.JavaScript().scrollpageToSpecificElement(getScrollToPreviousSection(flextableName));
+        reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
         reiDriver.WaitFor().WaitForElementToBePresent(getButtonOnFlexTable(buttonName, flextableName)).click();
     }
 
@@ -196,6 +193,7 @@ public class GenericPage extends ProjectManager {
      * @param flextableName
      */
     public void assertColumnOnTable(String columnUniqueValue, String flextableName) {
+        reiDriver.govGrants().waitForNavigationLogoToDisappear();
         Assert.assertTrue(isColumnPresent(columnUniqueValue, flextableName));
     }
 
@@ -209,15 +207,12 @@ public class GenericPage extends ProjectManager {
      */
     public void clickOnFlextableRowButton(String buttonName, String uniqueColumnvalue, String flextableName) {
         reiDriver.govGrants().waitForNavigationLogoToDisappear();
-        reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//span[text()='" + flextableName + "']"));
-        reiDriver.JavaScript().scrollpageToSpecificElement(getScrollToPreviousSection(flextableName));
+        reiDriver.WaitFor().WaitForElementToBePresent(getScrollToSection(flextableName));
+        reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
         try {
             reiDriver.govGrants().clickTableActionIcons(uniqueColumnvalue, buttonName);
-        } catch (Exception e) {
-            reiDriver.findMyElement()
-                    .getElement(By.xpath("//td//span[contains(text(),'" + uniqueColumnvalue
-                            + "')]/../../../../../../following-sibling::td//span//a[@title='" + buttonName + "']"))
-                    .click();
+        } catch(Exception e) {
+            reiDriver.findMyElement().getElement(By.xpath("//td//span[contains(@title,'"+uniqueColumnvalue+"') or contains(text(),'"+uniqueColumnvalue+"')]/../../../../../../following-sibling::td//span//a[@title='"+buttonName+"']")).click();
         }
     }
 
@@ -252,24 +247,19 @@ public class GenericPage extends ProjectManager {
         reiDriver.WaitFor().WaitForElementToBePresent(getApprovalDecisionRadioButton(approvalDesicion)).click();
         reiDriver.WaitFor().WaitForElementToBePresent(approvalDecisionComments).sendKeys(defaultLongText);
         reiDriver.WaitFor().WaitForElementToBePresent(approvalDecisionSubmit).click();
-
-    }
-
-    private By getPageButtonName(String buttonName) {
-        return By.xpath("//button[@title='" + buttonName + "'] | //input[@value='" + buttonName + "']");
     }
 
     private By getTextInputFields(String fieldId) {
         return By.xpath("//span[@id='" + fieldId + "']/input[@type='text']");
     }
-
-    private By getScrollToPreviousSection(String flextableName) {
-        return By.xpath("//span[text()='" + flextableName + "']/../preceding-sibling::div[1]");
-    }
-
+    
     private By getButtonOnFlexTable(String buttonName, String flextableName) {
         return By.xpath("//span[text()='" + flextableName + "']/..//div[contains(@class,'col-xs-6')]//button[text()='"
                 + buttonName + "']");
+    }
+
+    private By getScrollToSection(String flextableName) {
+        return By.xpath("//div[@class='panel-heading']//*[@title='" + flextableName + "']");
     }
 
     private By getApprovalDecisionRadioButton(String approvalDesicion) {
@@ -284,7 +274,7 @@ public class GenericPage extends ProjectManager {
                         + "']"))
                 .isDisplayed();
     }
-
+    
     private boolean isFieldModified(String fieldLabel, String text) {
         reiDriver.govGrants().waitForNavigationLogoToDisappear();
         reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//span[text()='" + fieldLabel + "']/../..//span"));
