@@ -1,7 +1,6 @@
 @planning
 Feature: Validate all scenarios in the Planning tab
 
-
   @34730 @ProgramListView @InternalProgram @Program @Planning
   Scenario Outline: Verifying if the EXE,PM,PO has access to Internal Programs list view
     Given I login to "As a Grantor" app as "<User>" User
@@ -37,6 +36,7 @@ Feature: Validate all scenarios in the Planning tab
     And I click "Internal Programs" inside side bar "Programs"
     When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "Edit" icon for the "<Quick Search Text>" 
+    And I click on "Overview" subtab
     When I enter "RequiredForSubmit" values from "Program_Field_Values.xlsx"
     And I click on "Save" button
     Then I see that "Abbreviation" field is modified to "AuPr"
@@ -137,6 +137,42 @@ Feature: Validate all scenarios in the Planning tab
 	| User | Quick Search Text |  Flextable Name | KPI |
 	| EXE | Automation Program | Key Performance Indicators (KPIs) | KPI-0000 |
 	
+  @34745 @AttachmentChecklist @InternalProgram @Program @Planning
+  Scenario Outline: Validate the assignment of Approvers for the Internal Program
+	Given I login to "As a Grantor" app as "<User>" User
+	When I navigate to "Planning" tab
+	And I click "Internal Programs" inside side bar "Programs"
+	When I click on flextable toggle to "Draft Internal Programs"
+    When I perform quick search "<Quick Search Text>" on table "Programs"
+    And I click on the "View" icon for the "<Quick Search Text>" 
+    And I click on "Setup" subtab
+    When I click on "Add" button on "<Flextable Name>" flextable
+    And I fill in the attachment checklist fields
+    When I click on the "Upload Template" icon for the "Automation test description" on the flextable "Supporting Documents Checklist"
+    When I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "None"
+    Then I see that "Active" has been added in "<Flextable Name>" flextable
+	
+	Examples:
+	| User | Quick Search Text |  Flextable Name |
+	| EXE | Automation Program | Supporting Documents Checklist |
+	
+  @34746 @AddAttachment @InternalProgram @Program @Planning
+  Scenario Outline: Validate the assignment of Approvers for the Internal Program
+	Given I login to "As a Grantor" app as "<User>" User
+	When I navigate to "Planning" tab
+	And I click "Internal Programs" inside side bar "Programs"
+	When I click on flextable toggle to "Draft Internal Programs"
+    When I perform quick search "<Quick Search Text>" on table "Programs"
+    And I click on the "View" icon for the "<Quick Search Text>" 
+    And I click on "Attachments" subtab
+    When I click on "Add" button on "<Flextable Name>" flextable
+    When I choose the file "Program_Field_Values.xlsx" to upload for "Attachment" of type "Program Artifacts"
+    Then I see that "Program Artifacts" has been added in "<Flextable Name>" flextable
+	
+	Examples:
+	| User | Quick Search Text |  Flextable Name |
+	| EXE | Automation Program | Attachments |
+	
   @34750 @SubmittingProgramForApproval @InternalProgram @Program @Planning
   Scenario Outline: Validate the assignment of Approvers for the Internal Program
 	Given I login to "As a Grantor" app as "<User>" User
@@ -160,11 +196,10 @@ Feature: Validate all scenarios in the Planning tab
     When I perform quick search "<Quick Search Text>" on table "PhasePendingTasks"
     And I click on the "Start" icon for the "<Quick Search Text>" 
     When I click on "Approve" on the approval decision box
-    When I re-login as "<Executive Approver>" User
-    When I toggle to "As a Grantor" app
+    When I re-login to "As a Grantor" app as "<Executive Approver>" User
 	When I navigate to "Planning" tab
 	And I click "Pending Tasks" inside side bar "MyTasks"
-    When I quick search "<Quick Search Text>" on table "PhasePendingTasks"
+    When I perform quick search "<Quick Search Text>" on table "PhasePendingTasks"
     And I click on the "Start" icon for the "<Quick Search Text>" 
     When I click on "Approve" on the approval decision box
     Then I see that "Internal Program" is in "Approved" status
@@ -172,6 +207,21 @@ Feature: Validate all scenarios in the Planning tab
 	Examples:
 	| Program Approver | Quick Search Text | Executive Approver |
 	| PM | Automation Program | PM |
+	
+  @34756 @ProgramActivation @InternalProgram @Program @Planning
+  Scenario Outline: Validate the assignment of Approvers for the Internal Program
+	Given I login to "As a Grantor" app as "<User>" User
+	When I navigate to "Planning" tab
+	And I click "Internal Programs" inside side bar "Programs"
+	When I click on flextable toggle to "Draft Internal Programs"
+    When I perform quick search "<Quick Search Text>" on table "Programs"
+    And I click on the "View" icon for the "<Quick Search Text>" 
+    When I click on "Activate" button
+    Then I see that "Internal Program" is in "Activated" status
+	
+	Examples:
+	| User | Quick Search Text |
+	| EXE | Automation Program |
 	
   @programHappyPath
   Scenario Outline: Verifying if the EXE, PM, PO has create access to Internal Program
@@ -191,25 +241,28 @@ Feature: Validate all scenarios in the Planning tab
     And I fill in the "<Name>" for the Approver details
     When I click on the "Edit" icon for the "Executive Approver" on the flextable "Approvers"
     And I fill in the "<Name>" for the Approver details
+    And I click on "Setup" subtab
+    When I click on "Associate" button on "Focus Areas" flextable
+    And I choose the "Focus Area" with "00001" and click "Associate" button
 	And I click on "Setup" subtab
 	When I click on "Associate" button on "Objectives" flextable
     And I choose the "Objectives" with "SPN-0019" and click "Associate" button
     When I click on "Submit For Approval" button
-    When I re-login as "<Program Approver>" User
-	When I toggle to "As a Grantor" app
+    When I re-login to "As a Grantor" app as "<Program Approver>" User
 	When I navigate to "Planning" tab
 	And I click "Pending Tasks" inside side bar "MyTasks"
     When I perform quick search "<Quick Search Text>" on table "PhasePendingTasks"
     And I click on the "Start" icon for the "<Quick Search Text>" 
     When I click on "Approve" on the approval decision box
-    When I re-login as "<Executive Approver>" User
-    When I toggle to "As a Grantor" app
+    When I re-login to "As a Grantor" app as "<Executive Approver>" User
 	When I navigate to "Planning" tab
 	And I click "Pending Tasks" inside side bar "MyTasks"
     When I perform quick search "<Quick Search Text>" on table "PhasePendingTasks"
     And I click on the "Start" icon for the "<Quick Search Text>" 
     When I click on "Approve" on the approval decision box
-    Then I see that "Internal Program" is in "Approved" status
+    When I re-login to "As a Grantor" app as "<User>" User
+    When I click on "Activate" button
+    Then I see that "Internal Program" is in "Active" status
   
 	Examples:
 	| User | Name | Program Approver | Executive Approver | Quick Search Text |

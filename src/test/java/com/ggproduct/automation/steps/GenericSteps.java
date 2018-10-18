@@ -95,9 +95,20 @@ public class GenericSteps {
 	    genericPage.enterFieldValues(sheetName, excelName);
 	}
 	
+	@When("^I re-login to \"([^\"]*)\" app as \"([^\"]*)\" User$")
+	public void reloginToggleToApp(String appName, String userName) {
+	    loginpage.reloginAsDifferentUser(userName);
+	    genericPage.toggleApp(appName);
+	}
+	
 	@When("^I click on \"([^\"]*)\" on the approval decision box$")
     public void clickOnApprovalDecisionBox(String approvalDesicion){
 	    genericPage.clickOnApprovalDecisionBox(approvalDesicion);
+    }
+	
+	@When("^I choose the file \"([^\"]*)\" to upload for \"([^\"]*)\" of type \"([^\"]*)\"$")
+    public void uploadFile(String fileName, String uploadSectionName, String attachmentType){
+	    genericPage.uploadFile(fileName, uploadSectionName, attachmentType);
     }
 	
 	@Then("^I see that \"([^\"]*)\" is in \"([^\"]*)\" status$")

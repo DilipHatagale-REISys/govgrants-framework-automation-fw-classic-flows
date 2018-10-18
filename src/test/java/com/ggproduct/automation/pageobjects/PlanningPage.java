@@ -88,14 +88,28 @@ public class PlanningPage extends ProjectManager {
         reiDriver.WaitFor().WaitForElementClickAble(popUpPath);
         reiDriver.switchTo().switchToFrame(popUpPath);
         reiDriver.WaitFor().makeThreadSleep(1000);
-        //reiDriver.WaitFor().WaitForElementListToBePresent(modalQuickSearchPath);
-        //reiDriver.JavaScript().scrollpageToSpecificElement(modalQuickSearchPath);
+        reiDriver.WaitFor().WaitForElementListToBePresent(modalQuickSearchPath);
+        reiDriver.JavaScript().scrollpageToSpecificElement(modalQuickSearchPath);
         reiDriver.WaitFor().WaitForElementToBePresent(getUniqueRecordNameToSelect(recordUniqueName)).click();
         reiDriver.WaitFor().WaitForElementToBePresent(getModalButtonName(buttonName)).click();
         reiDriver.govGrants().waitForNavigationLogoToDisappear();
         reiDriver.switchTo().switchToParentFrame();
         reiDriver.findMyElement().getElement(closeButton).click();
     }
+    
+    /**
+     * Handles filling in the fields for attachment checklist
+     */
+    public void fillFieldsAttachmentChecklist(){
+        reiDriver.findMyElement().getElement(By.xpath("//td//textarea")).sendKeys(defaultLongText);
+        reiDriver.findMyElement().getElement(By.xpath("//td//select/option[text()='Optional' or text()='Mandatory']/..")).click();
+        reiDriver.findMyElement().getElement(By.xpath("//td//select/option[text()='Mandatory']")).click();
+        reiDriver.findMyElement().getElement(By.xpath("//td//select/option[text()='Application' or text()='Award']/..")).click();
+        reiDriver.findMyElement().getElement(By.xpath("//td//select/option[text()='Application']")).click();
+        reiDriver.findMyElement().getElement(By.xpath("//div/a[contains(@title,'Checklist')]/../..//div[@class='pull-right flex-grid-btns']//button[@title='Save']")).click();
+    }
+    
+    
 
     private By getUniqueRecordNameToSelect(String recordUniqueName) {
         return By.xpath("//td//span[text()='" + recordUniqueName

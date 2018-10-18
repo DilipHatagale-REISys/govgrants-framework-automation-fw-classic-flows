@@ -2,7 +2,6 @@ package com.ggproduct.automation.steps;
 
 import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.Handlers;
-import com.ggproduct.automation.pageobjects.GenericPage;
 import com.ggproduct.automation.pageobjects.PlanningPage;
 
 import cucumber.api.java.en.When;
@@ -22,5 +21,10 @@ public class PlanningSteps {
 	@When("^I choose the \"([^\"]*)\" with \"([^\"]*)\" and click \"([^\"]*)\" button$")
 	public void chooseRecordforAssociation(String recordName, String recordUniqueName, String buttonName) {
 		planningPage.chooseRecordforAssociation(recordName, recordUniqueName, buttonName);
+	}
+	
+	@When("^I fill in the attachment checklist fields$")
+	public void fillFieldsAttachmentChecklist(){
+	    planningPage.fillFieldsAttachmentChecklist();
 	}
 }

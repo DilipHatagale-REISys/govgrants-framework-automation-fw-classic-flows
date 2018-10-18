@@ -8,13 +8,20 @@ import com.automation.rei.handlers.Handlers;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 
 public class GenericPage extends ProjectManager {
-    private final By headerOverviewPath, approvalDecisionComments, approvalDecisionSubmit;
+    private final By headerOverviewPath, approvalDecisionComments, approvalDecisionSubmit, programChecklistFramePath,
+            attachmentFramePath, attachmentClassificationPath, attachmentDescriptionPath, attachmentFilePath;
 
     public GenericPage(Controller controller, Handlers handler) {
         super(controller, handler);
         headerOverviewPath = By.xpath("//div[@class='panel-heading overview-header']");
         approvalDecisionComments = By.xpath("//div[@id='ApprovalDecisionComponent']//textarea[@id='descriptionInput']");
         approvalDecisionSubmit = By.xpath("//div[@id='ApprovalDecisionComponent']//input[@value='Submit']");
+        programChecklistFramePath = By.xpath("//iframe[@id='ProgramChecklistsiframeContentId']");
+        attachmentFramePath = By.xpath("//iframe[contains(@id,'iframeAddAttContentId')]");
+        attachmentClassificationPath = By.xpath("//select[@title='Classification']");
+        attachmentDescriptionPath = By.xpath("//div//label[text()='Description']/..//textarea");
+        attachmentFilePath = By.xpath(
+                "//td//label[text()='File']/../..//input[@type='file'] | //div//label[text()='File']/..//input[@type='file']");
     }
 
     /**
@@ -73,9 +80,9 @@ public class GenericPage extends ProjectManager {
             clickOKForAlert();
         }
     }
-    
+
     public void enterFieldValues(String sheetName, String excelName) {
-        enterInputForFormsFromExcelFile(excelName,sheetName);
+        enterInputForFormsFromExcelFile(excelName, sheetName);
     }
 
     /**
@@ -167,16 +174,16 @@ public class GenericPage extends ProjectManager {
         reiDriver.JavaScript().scrollpageToSpecificElement(getScrollToPreviousSection(flextableName));
         reiDriver.WaitFor().WaitForElementToBePresent(getButtonOnFlexTable(buttonName, flextableName)).click();
     }
-    
+
     /**
-     * Clicks on flextable row level buttons in list view where
-     * there are number of flextables
+     * Clicks on flextable row level buttons in list view where there are number of
+     * flextables
      * 
      * @param buttonName
      * @param uniqueColumnvalue
      * @param flextableName
      */
-    public void clickOnFlexTableIconWithTableId(String iconName, String tableId, String searchText){
+    public void clickOnFlexTableIconWithTableId(String iconName, String tableId, String searchText) {
         reiDriver.govGrants().performTableSpecificQuickSearch(tableId, searchText);
         reiDriver.govGrants().waitForNavigationLogoToDisappear();
         reiDriver.govGrants().clickTableActionIcons(searchText, iconName);
@@ -193,8 +200,8 @@ public class GenericPage extends ProjectManager {
     }
 
     /**
-     * Clicks on flextable row level buttons inside the record view page where
-     * there are number of flextables
+     * Clicks on flextable row level buttons inside the record view page where there
+     * are number of flextables
      * 
      * @param buttonName
      * @param uniqueColumnvalue
@@ -204,18 +211,48 @@ public class GenericPage extends ProjectManager {
         reiDriver.govGrants().waitForNavigationLogoToDisappear();
         reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//span[text()='" + flextableName + "']"));
         reiDriver.JavaScript().scrollpageToSpecificElement(getScrollToPreviousSection(flextableName));
-        reiDriver.govGrants().clickTableActionIcons(uniqueColumnvalue, buttonName);
+        try {
+            reiDriver.govGrants().clickTableActionIcons(uniqueColumnvalue, buttonName);
+        } catch (Exception e) {
+            reiDriver.findMyElement()
+                    .getElement(By.xpath("//td//span[contains(text(),'" + uniqueColumnvalue
+                            + "')]/../../../../../../following-sibling::td//span//a[@title='" + buttonName + "']"))
+                    .click();
+        }
     }
-    
+
+    /**
+     * Handles uploading of file
+     * 
+     * @param fileName
+     * @param uploadSectionName
+     */
+    public void uploadFile(String fileName, String uploadSectionName, String attachmentType) {
+        String defaultFilePath = System.getProperty("user.dir") + "/src/main/resources/";
+
+        if (uploadSectionName.equals("Checklist")) {
+            reiDriver.WaitFor().WaitForElementClickAble(programChecklistFramePath);
+            reiDriver.switchTo().switchToFrame(programChecklistFramePath);
+        } else {
+            reiDriver.WaitFor().WaitForElementClickAble(attachmentFramePath);
+            reiDriver.switchTo().switchToFrame(attachmentFramePath);
+            reiDriver.findMyElement().getDropDown(attachmentClassificationPath).selectByValue(attachmentType);
+            reiDriver.findMyElement().getElement(attachmentDescriptionPath).sendKeys(defaultLongText);
+        }
+        reiDriver.findMyElement().getElement(attachmentFilePath).sendKeys(defaultFilePath + fileName);
+        reiDriver.govGrants().clickModalContentSpecificButton("Save");
+    }
+
     /**
      * Handles clicking on Approval Decision and clicks submit
+     * 
      * @param approvalDesicion
      */
-    public void clickOnApprovalDecisionBox(String approvalDesicion){
+    public void clickOnApprovalDecisionBox(String approvalDesicion) {
         reiDriver.WaitFor().WaitForElementToBePresent(getApprovalDecisionRadioButton(approvalDesicion)).click();
         reiDriver.WaitFor().WaitForElementToBePresent(approvalDecisionComments).sendKeys(defaultLongText);
         reiDriver.WaitFor().WaitForElementToBePresent(approvalDecisionSubmit).click();
-        
+
     }
 
     private By getPageButtonName(String buttonName) {
@@ -234,9 +271,9 @@ public class GenericPage extends ProjectManager {
         return By.xpath("//span[text()='" + flextableName + "']/..//div[contains(@class,'col-xs-6')]//button[text()='"
                 + buttonName + "']");
     }
-    
+
     private By getApprovalDecisionRadioButton(String approvalDesicion) {
-        return By.xpath("//div[@id='ApprovalDecisionComponent']//input[@value='"+approvalDesicion+"']");
+        return By.xpath("//div[@id='ApprovalDecisionComponent']//input[@value='" + approvalDesicion + "']");
     }
 
     private boolean isStatus(String record, String status) {
@@ -276,7 +313,5 @@ public class GenericPage extends ProjectManager {
         reiDriver.switchTo().acceptAlert();
         reiDriver.switchTo().switchToParentFrame();
     }
-    
-   
 
 }
