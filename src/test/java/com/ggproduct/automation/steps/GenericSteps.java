@@ -1,18 +1,29 @@
 package com.ggproduct.automation.steps;
 
 import com.automation.rei.controller.Controller;
+import com.automation.rei.handlers.GovGrantsHandler;
 import com.automation.rei.handlers.Handlers;
 import com.ggproduct.automation.pageobjects.GenericPage;
+import com.ggproduct.automation.pageobjects.LoginPage;
 
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class GenericSteps {
 	GenericPage genericPage;
+	LoginPage loginpage;
 	
-	public GenericSteps(Controller controller, Handlers handler) {
-		genericPage=new GenericPage(controller,handler);
+	public GenericSteps(Controller controller, Handlers handler, GovGrantsHandler govgrants) {
+		genericPage=new GenericPage(controller,handler,govgrants);
+		loginpage=new LoginPage(controller,handler,govgrants);
 	}
+	
+	@Given("^I login to \"([^\"]*)\" app as \"([^\"]*)\" User$")
+    public void loginToggleToApp(String appName, String userName) {
+        loginpage.login(userName);
+        genericPage.toggleApp(appName);
+    }
 	
 	@When("^I navigate to \"([^\"]*)\" tab$")
 	public void navigateToTab(String tabName) {
@@ -39,17 +50,68 @@ public class GenericSteps {
 		genericPage.changeFieldValueText(fieldId,text);
 	}
 	
-	@When("^I click on flextable and toggle to \"([^\"]*)\"$")
+	@When("^I toggle to \"([^\"]*)\"$")
 	public void changeFlexTableView(String tableViewName){
 		genericPage.changeFlexTableView(tableViewName);
 	}
 	
-	@When("^I click on \"([^\"]*)\" button on the flextable$")
-	public void clickOnFlexTableButton(String buttonName){
-		genericPage.clickOnFlexTableButton(buttonName);
+	@When("^I perform quick search \"([^\"]*)\" on table \"([^\"]*)\"$")
+	public void quickSearchOnTable(String searchText, String tableName) {
+		genericPage.quickSearchOnTable(searchText, tableName);
+	}
+
+	@When("^I click on the \"([^\"]*)\" icon for the \"([^\"]*)\"$")
+	public void clickOnFlexTableIcon(String iconName, String uniqueTextValue) {
+		genericPage.clickOnFlexTableIcon(iconName, uniqueTextValue);
 	}
 	
-	@Then("^I see that \"([^\"]*)\" is created in status \"([^\"]*)\"$")
+	@When("^I click on \"([^\"]*)\" icon on \"([^\"]*)\" table against \"([^\"]*)\"$")
+	public void clickOnFlexTableIconWithTableId(String iconName, String tableId, String searchText){
+	    genericPage.clickOnFlexTableIconWithTableId(iconName, tableId, searchText);
+	}
+	
+	@When("^I click on \"([^\"]*)\" subtab$")
+	public void clickOnSubtab(String subtabName) {
+		genericPage.clickOnSubtab(subtabName);
+	}
+	
+	@When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" flextable$")
+	public void clickOnFlextableButton(String buttonName, String flextableName) {
+		genericPage.clickOnFlextableButton(buttonName, flextableName);
+	}
+	
+	@When("^I click on \"([^\"]*)\" button on \"([^\\\"]*)\" phase flextable$")
+    public void clickOnFlexTableButton(String buttonName, String flextableName){
+        genericPage.clickOnFlexTableButton(buttonName,flextableName);
+    }
+	
+	@When("^I click on the \"([^\"]*)\" icon for the \"([^\"]*)\" on the flextable \"([^\"]*)\"$")
+	public void clickOnFlextableRowButton(String buttonName, String uniqueColumnvalue, String flexTableName) {
+		genericPage.clickOnFlextableRowButton(buttonName, uniqueColumnvalue, flexTableName);
+	}
+	
+	@When("^I enter \"([^\"]*)\" values from \"([^\"]*)\"$")
+	public void enterFieldValues(String sheetName, String excelName) {
+	    genericPage.enterFieldValues(sheetName, excelName);
+	}
+	
+	@When("^I re-login to \"([^\"]*)\" app as \"([^\"]*)\" User$")
+	public void reloginToggleToApp(String appName, String userName) {
+	    loginpage.reloginAsDifferentUser(userName);
+	    genericPage.toggleApp(appName);
+	}
+	
+	@When("^I click on \"([^\"]*)\" on the approval decision box$")
+    public void clickOnApprovalDecisionBox(String approvalDesicion){
+	    genericPage.clickOnApprovalDecisionBox(approvalDesicion);
+    }
+	
+	@When("^I choose the file \"([^\"]*)\" to upload for \"([^\"]*)\" of type \"([^\"]*)\"$")
+    public void uploadFile(String fileName, String uploadSectionName, String attachmentType){
+	    genericPage.uploadFile(fileName, uploadSectionName, attachmentType);
+    }
+	
+	@Then("^I see that \"([^\"]*)\" is in \"([^\"]*)\" status$")
 	public void assertStatus(String record, String status){
 		genericPage.assertStatus(record,status);
 	}
@@ -61,6 +123,11 @@ public class GenericSteps {
 	
 	@Then("^I see that the status is \"([^\"]*)\"$")
 	public void assertStatusOnTable(String status) {
-		genericPage.assertStatusOnTable(status);
+		genericPage.assertColumnValueOnTable(status);
+	}
+	
+	@Then("^I see that \"([^\"]*)\" has been added in \"([^\"]*)\" flextable$")
+	public void assertColumnOnTable(String columnUniqueValue, String flextableName){
+		genericPage.assertColumnOnTable(columnUniqueValue, flextableName);
 	}
 }
