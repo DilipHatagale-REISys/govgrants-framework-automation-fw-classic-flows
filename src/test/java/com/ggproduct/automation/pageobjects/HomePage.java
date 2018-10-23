@@ -3,6 +3,7 @@ package com.ggproduct.automation.pageobjects;
 import org.openqa.selenium.By;
 
 import com.automation.rei.controller.Controller;
+import com.automation.rei.handlers.GovGrantsHandler;
 import com.automation.rei.handlers.Handlers;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 
@@ -10,8 +11,8 @@ public class HomePage extends ProjectManager {
     private final By scrollTo, internalOrgName, code, EIN, grantingAgencyCheck, isActiveAgency, internalOrgViewIcon,
             organizationLevelPath, agencyAbbreviationPath;
 
-    public HomePage(Controller controller, Handlers handler) {
-        super(controller, handler);
+    public HomePage(Controller controller, Handlers handler, GovGrantsHandler govgrants) {
+        super(controller, handler, govgrants);
         scrollTo = By.xpath("//tfoot");
         internalOrgName = By.xpath("//span[@id='Name']/div/input");
         code = By.xpath("//span[@id='Code__c']/input[@type='text']");
@@ -32,7 +33,7 @@ public class HomePage extends ProjectManager {
     public void clickOnFlexTableButton(String buttonName) {
         reiDriver.WaitFor().WaitForElementListToBePresent(scrollTo);
         reiDriver.JavaScript().scrollpageToSpecificElement(scrollTo);
-        reiDriver.govGrants().clickRightHeaderButtonInsideFlexTableDetailPage(buttonName);
+        //govgrants.phasePannel().clickAnyRightButton(pannelTitleName, menuItemName);
     }
 
     /**

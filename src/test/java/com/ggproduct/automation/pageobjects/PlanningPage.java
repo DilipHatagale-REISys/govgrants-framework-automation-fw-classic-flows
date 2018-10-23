@@ -3,6 +3,7 @@ package com.ggproduct.automation.pageobjects;
 import org.openqa.selenium.By;
 
 import com.automation.rei.controller.Controller;
+import com.automation.rei.handlers.GovGrantsHandler;
 import com.automation.rei.handlers.Handlers;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 
@@ -12,8 +13,8 @@ public class PlanningPage extends ProjectManager {
             keyPerformanceIndicatorCloseButtonPath, contactCloseButtonPath, modalQuickSearchPath, modalSavePath,
             focusAreaPopUpPath, goalsObjectivesPopUpPath, keyPerformanceIndicatorPopUpPath, contactPopUpPath;
 
-    public PlanningPage(Controller controller, Handlers handler) {
-        super(controller, handler);
+    public PlanningPage(Controller controller, Handlers handler, GovGrantsHandler govgrants) {
+        super(controller, handler, govgrants);
         lookUpIFramePath = By.xpath("//iframe[@id='iframeCustomLookupModalId']");
         lookUpSearchPath = By.xpath("//span[@class='fa fa-search']");
         selectPath = By.xpath("//a[@title='Select']");
@@ -41,11 +42,13 @@ public class PlanningPage extends ProjectManager {
     public void fillInApproverDetails(String approverName) {
         reiDriver.WaitFor().WaitForElementClickAble(approverDetailsPopUpPath);
         reiDriver.switchTo().switchToFrame(approverDetailsPopUpPath);
+        reiDriver.WaitFor().makeThreadSleep(2000);
         reiDriver.WaitFor().WaitForElementToBePresent(lookUpSearchPath).click();
         reiDriver.WaitFor().WaitForElementClickAble(lookUpIFramePath);
         reiDriver.switchTo().switchToFrame(lookUpIFramePath);
         reiDriver.WaitFor().makeThreadSleep(3000);
-        reiDriver.govGrants().performModalSpecificQuickSearch("lookuploading", approverName);
+        govgrants.quickSearch().performModalSpecificQuickSearch("lookuploading", approverName);
+        reiDriver.WaitFor().makeThreadSleep(2000);
         reiDriver.WaitFor().WaitForElementToBePresent(selectPath).click();
         reiDriver.switchTo().switchToParentFrame();
         reiDriver.WaitFor().WaitForElementClickAble(approverDetailsPopUpPath);
@@ -53,8 +56,9 @@ public class PlanningPage extends ProjectManager {
         reiDriver.textInput().clearText(approverDescription);
         reiDriver.textInput().enterText(approverDescription, defaultLongText);
         reiDriver.textInput().enterText(approverDueDate, reiDriver.get().getCurrentDate_MMDDYYYY());
+        reiDriver.WaitFor().makeThreadSleep(5000);
         reiDriver.WaitFor().WaitForElementToBePresent(modalSavePath).click();
-        reiDriver.govGrants().waitForNavigationLogoToDisappear();
+        govgrants.mainPage().waitForNavigationLogoToDisappear();
         reiDriver.switchTo().switchToParentFrame();
         reiDriver.WaitFor().WaitForElementToBePresent(approverCloseButtonPath).click();
     }
@@ -90,7 +94,7 @@ public class PlanningPage extends ProjectManager {
         reiDriver.JavaScript().scrollpageToSpecificElement(modalQuickSearchPath);
         reiDriver.WaitFor().WaitForElementToBePresent(getUniqueRecordNameToSelect(recordUniqueName)).click();
         reiDriver.WaitFor().WaitForElementToBePresent(getModalButtonName(buttonName)).click();
-        reiDriver.govGrants().waitForNavigationLogoToDisappear();
+        govgrants.mainPage().waitForNavigationLogoToDisappear();
         reiDriver.switchTo().switchToParentFrame();
         reiDriver.findMyElement().getElement(closeButton).click();
     }

@@ -1,6 +1,7 @@
 package com.ggproduct.automation.steps;
 
 import com.automation.rei.controller.Controller;
+import com.automation.rei.handlers.GovGrantsHandler;
 import com.automation.rei.handlers.Handlers;
 import com.ggproduct.automation.pageobjects.GenericPage;
 import com.ggproduct.automation.pageobjects.LoginPage;
@@ -13,9 +14,9 @@ public class GenericSteps {
 	GenericPage genericPage;
 	LoginPage loginpage;
 	
-	public GenericSteps(Controller controller, Handlers handler) {
-		genericPage=new GenericPage(controller,handler);
-		loginpage=new LoginPage(controller,handler);
+	public GenericSteps(Controller controller, Handlers handler, GovGrantsHandler govgrants) {
+		genericPage=new GenericPage(controller,handler,govgrants);
+		loginpage=new LoginPage(controller,handler,govgrants);
 	}
 	
 	@Given("^I login to \"([^\"]*)\" app as \"([^\"]*)\" User$")
@@ -54,11 +55,6 @@ public class GenericSteps {
 		genericPage.changeFlexTableView(tableViewName);
 	}
 	
-	@When("^I click on \"([^\"]*)\" button on the flextable$")
-	public void clickOnFlexTableButton(String buttonName){
-		genericPage.clickOnFlexTableButton(buttonName);
-	}
-	
 	@When("^I perform quick search \"([^\"]*)\" on table \"([^\"]*)\"$")
 	public void quickSearchOnTable(String searchText, String tableName) {
 		genericPage.quickSearchOnTable(searchText, tableName);
@@ -84,6 +80,10 @@ public class GenericSteps {
 		genericPage.clickOnFlextableButton(buttonName, flextableName);
 	}
 	
+	@When("^I click on \"([^\"]*)\" button on \"([^\\\"]*)\" phase flextable$")
+    public void clickOnFlexTableButton(String buttonName, String flextableName){
+        genericPage.clickOnFlexTableButton(buttonName,flextableName);
+    }
 	
 	@When("^I click on the \"([^\"]*)\" icon for the \"([^\"]*)\" on the flextable \"([^\"]*)\"$")
 	public void clickOnFlextableRowButton(String buttonName, String uniqueColumnvalue, String flexTableName) {

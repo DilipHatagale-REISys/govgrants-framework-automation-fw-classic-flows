@@ -1,6 +1,7 @@
 package com.ggproduct.automation.steps;
 
 import com.automation.rei.controller.Controller;
+import com.automation.rei.handlers.GovGrantsHandler;
 import com.automation.rei.handlers.Handlers;
 import com.ggproduct.automation.pageobjects.GenericPage;
 import com.ggproduct.automation.pageobjects.HomePage;
@@ -12,8 +13,8 @@ import cucumber.api.java.en.When;
 public class HomeSteps {
 	HomePage homepage;
 	
-	public HomeSteps(Controller controller, Handlers handler) {
-		homepage=new HomePage(controller,handler);
+	public HomeSteps(Controller controller, Handlers handler, GovGrantsHandler govgrants) {
+		homepage=new HomePage(controller,handler,govgrants);
 	}
 
 	@When("^I click on \"([^\"]*)\" button on the Draft Internal Organizations$")

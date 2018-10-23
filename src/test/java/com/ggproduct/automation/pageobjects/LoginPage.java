@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import com.automation.rei.controller.Controller;
+import com.automation.rei.handlers.GovGrantsHandler;
 import com.automation.rei.handlers.Handlers;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 import com.ggproduct.automation.projectmanager.UsersAndURL;
@@ -16,29 +17,8 @@ public class LoginPage extends ProjectManager{
 	/**
      * Constructor to handle dependency injection and framework library
      */
-	public LoginPage(Controller controller, Handlers handler) {
-		super(controller,handler);
-	}
-	
-	/**
-     * Enter user name to login page
-     */
-	public void enterUserName(String userNameText) {
-		reiDriver.textInput().enterText(reiDriver.govGrants().userName, userNameText);
-	}
-	
-	/**
-     * Enter password to login page
-     */
-	public void enterPassword(String passwordText) {
-		reiDriver.textInput().enterText(reiDriver.govGrants().password, passwordText);
-	}
-	
-	/**
-     * Click on the login Button
-     */
-	public void clickLoginButton() {
-		reiDriver.findMyElement().getElement(reiDriver.govGrants().loginButton).click();
+	public LoginPage(Controller controller, Handlers handler, GovGrantsHandler govgrants) {
+		super(controller,handler,govgrants);
 	}
 	
 	/**
@@ -60,18 +40,22 @@ public class LoginPage extends ProjectManager{
      * @param userName
      */
     public void login(String userName) {
-		reiDriver.govGrants().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);
+		govgrants.mainPage().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);
 	}
     
     public void reloginAsDifferentUser(String userName){
-        reiDriver.govGrants().waitForNavigationLogoToDisappear();
+        govgrants.mainPage().waitForNavigationLogoToDisappear();
+        reiDriver.WaitFor().makeThreadSleep(5000);
         reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//img[@alt='User Avatar']/..//i[@class='fa fa-caret-down']")).click();
-        reiDriver.govGrants().getLoginDropDownItems("Logout").click();
+        govgrants.mainPage().getLoginDropDownItems("Logout").click();
         try {
+            reiDriver.eatCookies().deleteAllCookies();
+            reiDriver.WaitFor().makeThreadSleep(500);
             navigateToURL("PRODUCT PORTAL");
         } catch(Exception e) {
             System.out.println(e);
         }
-        reiDriver.govGrants().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);
+        govgrants.mainPage().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);
+        govgrants.mainPage().waitForEgmsHeader();
     }
 }
