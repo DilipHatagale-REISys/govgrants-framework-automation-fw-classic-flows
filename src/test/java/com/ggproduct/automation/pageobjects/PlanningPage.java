@@ -42,13 +42,13 @@ public class PlanningPage extends ProjectManager {
     public void fillInApproverDetails(String approverName) {
         reiDriver.WaitFor().WaitForElementClickAble(approverDetailsPopUpPath);
         reiDriver.switchTo().switchToFrame(approverDetailsPopUpPath);
-        reiDriver.WaitFor().makeThreadSleep(2000);
+        reiDriver.WaitFor().makeThreadSleep(1000);
         reiDriver.WaitFor().WaitForElementToBePresent(lookUpSearchPath).click();
         reiDriver.WaitFor().WaitForElementClickAble(lookUpIFramePath);
         reiDriver.switchTo().switchToFrame(lookUpIFramePath);
-        reiDriver.WaitFor().makeThreadSleep(3000);
+        reiDriver.WaitFor().makeThreadSleep(1000);
         govgrants.quickSearch().performModalSpecificQuickSearch("lookuploading", approverName);
-        reiDriver.WaitFor().makeThreadSleep(2000);
+        reiDriver.WaitFor().makeThreadSleep(1000);
         reiDriver.WaitFor().WaitForElementToBePresent(selectPath).click();
         reiDriver.switchTo().switchToParentFrame();
         reiDriver.WaitFor().WaitForElementClickAble(approverDetailsPopUpPath);
@@ -56,7 +56,7 @@ public class PlanningPage extends ProjectManager {
         reiDriver.textInput().clearText(approverDescription);
         reiDriver.textInput().enterText(approverDescription, defaultLongText);
         reiDriver.textInput().enterText(approverDueDate, reiDriver.get().getCurrentDate_MMDDYYYY());
-        reiDriver.WaitFor().makeThreadSleep(5000);
+        reiDriver.WaitFor().makeThreadSleep(1000);
         reiDriver.WaitFor().WaitForElementToBePresent(modalSavePath).click();
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         reiDriver.switchTo().switchToParentFrame();

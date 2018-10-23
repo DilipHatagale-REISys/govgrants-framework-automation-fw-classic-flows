@@ -210,7 +210,7 @@ public class ProjectManager extends ProjectWebServices {
             } catch (Exception e) {
             }
         }
-        reiDriver.WaitFor().makeThreadSleep(2000);
+        reiDriver.WaitFor().makeThreadSleep(1000);
         WebDriver driver = reiDriver.switchTo().switchToFrame(By.xpath("//iframe[@id='iframeCustomLookupModalId']"));
 
         String tableid = reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='ModalDivID']//div[1]"))
@@ -226,7 +226,7 @@ public class ProjectManager extends ProjectWebServices {
 
         attempts = 0;
         while (attempts < 10 && reiDriver.is().IsElementPresentQuick(By.xpath("//body/*"))) {
-            reiDriver.WaitFor().makeThreadSleep(3000);
+            reiDriver.WaitFor().makeThreadSleep(1000);
             reiDriver.WaitFor()
                     .WaitForElementToBePresent(
                             By.xpath("//td//*[text()='" + searchTerm + "']//ancestor::tr[1]//a[@title='Select']"))
