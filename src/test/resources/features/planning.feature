@@ -224,7 +224,7 @@ Feature: Validate all scenarios in the Planning tab
 	| EXE | Automation Program |
 	
   @programHappyPath
-  Scenario Outline: Verifying if the EXE, PM, PO has create access to Internal Program
+  Scenario Outline: End to End of a Program
     Given I login to "As a Grantor" app as "<User>" User
     When I navigate to "Planning" tab
     And I click "Internal Programs" inside side bar "Programs"

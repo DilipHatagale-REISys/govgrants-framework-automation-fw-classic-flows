@@ -237,8 +237,23 @@ Feature: Validate all scenarios in the Announcement tab
 	| Quick Search Text |
 	| Automation Announcement |
 	
+  @34462 @PublishingAnnouncement @Announcement
+  Scenario Outline: Validate the activation of Internal Program
+	Given I login to "As a Grantor" app as "<User>" User
+	When I navigate to "Announcements" tab
+	And I click "Competitive" inside side bar "Announcements"
+	When I toggle to "Draft Announcements"
+    When I perform quick search "<Quick Search Text>" on table "ActiveFundingOpportunitiesCompitive"
+    And I click on the "View" icon for the "<Quick Search Text>" 
+    When I click on "Publish" button
+    Then I see that "Announcement" is in "Published" status
+	
+	Examples:
+	| User | Quick Search Text |
+	| EXE | Automation Announcement |
+	
   @AnnouncementHappyPath
-  Scenario Outline: Creation of an Announcement
+  Scenario Outline: End to End of an Announcement
     Given I login to "As a Grantor" app as "<User>" User
     When I navigate to "Announcements" tab
 	And I click "Competitive" inside side bar "Announcements"
@@ -250,7 +265,7 @@ Feature: Validate all scenarios in the Announcement tab
 	When I click on "Save" button
 	And I click on "Overview" subtab
     When I click on "Associate" button on "Contacts" flextable
-    And I choose the "Contact" with "<Contact>" and click "Add" button for announcement
+    And I choose the "Contact" with "Automation EXE" and click "Add" button for announcement
     And I click on "Financials" subtab
     When I click on "Associate" button on "Funding Accounts" flextable
     And I choose the "Funding Account" with "FA--20" and click "Add" button for announcement
@@ -283,8 +298,27 @@ Feature: Validate all scenarios in the Announcement tab
     When I click on "Add" button on " Attachments" flextable
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
     When I click on "Submit For Approval" button
-    Then I see that "Announcement" is in "Created" status
+    When I re-login to "As a Grantor" app as "PM" User
+	When I navigate to "Announcements" tab
+	And I click "Pending Tasks" inside side bar "My Tasks"
+    When I perform quick search "<Quick Search Text>" on table "PhasePendingTasks"
+    And I click on the "Start" icon for the "<Quick Search Text>" 
+    When I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "FO" User
+	When I navigate to "Announcements" tab
+	And I click "Pending Tasks" inside side bar "My Tasks"
+    When I perform quick search "<Quick Search Text>" on table "PhasePendingTasks"
+    And I click on the "Start" icon for the "<Quick Search Text>" 
+    When I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "EXE" User
+	When I navigate to "Announcements" tab
+	And I click "Pending Tasks" inside side bar "My Tasks"
+    When I perform quick search "<Quick Search Text>" on table "PhasePendingTasks"
+    And I click on the "Start" icon for the "<Quick Search Text>" 
+    When I click on "Approve" on the approval decision box
+    When I click on "Publish" button
+    Then I see that "Announcement" is in "Published" status
 
 	Examples:
-	| User | Contact |
-	| EXE | Automation EXE |
+	| User | Quick Search Text |
+	| EXE | Automation Announcement |

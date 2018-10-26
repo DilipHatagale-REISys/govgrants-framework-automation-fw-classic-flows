@@ -79,6 +79,7 @@ public class AnnouncementPage extends ProjectManager {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         reiDriver.switchTo().switchToParentFrame();
         reiDriver.findMyElement().getElement(closeButton).click();
+        reiDriver.get().getRefresh();
     }
 
     /**
@@ -107,7 +108,6 @@ public class AnnouncementPage extends ProjectManager {
         reiDriver.switchTo().switchToFrame(lookUpIFramePath);
         reiDriver.WaitFor().makeThreadSleep(1000);
         govgrants.quickSearch().performModalSpecificQuickSearch("lookuploading", approverName);
-        System.out.println("clicked quick search btn");
         reiDriver.WaitFor().makeThreadSleep(1000);
         reiDriver.WaitFor().WaitForElementToBePresent(selectPath).click();
         reiDriver.switchTo().switchToParentFrame();
@@ -121,6 +121,7 @@ public class AnnouncementPage extends ProjectManager {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         reiDriver.switchTo().switchToParentFrame();
         reiDriver.WaitFor().WaitForElementToBePresent(approverCloseButtonPath).click();
+        reiDriver.get().getRefresh();
     }
 
     private By getUniqueRecordNameToSelect(String recordUniqueName) {
