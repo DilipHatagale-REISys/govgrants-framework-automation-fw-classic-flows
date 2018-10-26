@@ -45,7 +45,7 @@ public class LoginPage extends ProjectManager{
     
     public void reloginAsDifferentUser(String userName){
         govgrants.mainPage().waitForNavigationLogoToDisappear();
-        reiDriver.WaitFor().makeThreadSleep(5000);
+        reiDriver.WaitFor().makeThreadSleep(1000);
         reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//img[@alt='User Avatar']/..//i[@class='fa fa-caret-down']")).click();
         govgrants.mainPage().getLoginDropDownItems("Logout").click();
         try {

@@ -45,6 +45,11 @@ public class GenericSteps {
 		genericPage.clickOnButton(buttonName);
 	}
 	
+	@When("^I click on \"([^\"]*)\" button in the \"([^\"]*)\" modal$")
+    public void clickOnModalButton(String buttonName, String CloseButtonPresent) {
+        genericPage.clickOnModalButton(buttonName, CloseButtonPresent);
+    }
+	
 	@When("^I change the \"([^\"]*)\" field to \"([^\"]*)\"$")
 	public void changeFieldValue(String fieldId, String text) {
 		genericPage.changeFieldValueText(fieldId,text);
@@ -95,6 +100,11 @@ public class GenericSteps {
 	    genericPage.enterFieldValues(sheetName, excelName);
 	}
 	
+	@When("^I enter \"([^\"]*)\" values from \"([^\"]*)\" in the modal for \"([^\"]*)\"$")
+    public void enterFieldValuesInModal(String sheetName, String excelName, String framePath) {
+        genericPage.enterFieldValuesInModal(sheetName, excelName, framePath);
+    }
+	
 	@When("^I re-login to \"([^\"]*)\" app as \"([^\"]*)\" User$")
 	public void reloginToggleToApp(String appName, String userName) {
 	    loginpage.reloginAsDifferentUser(userName);
@@ -109,6 +119,11 @@ public class GenericSteps {
 	@When("^I choose the file \"([^\"]*)\" to upload for \"([^\"]*)\" of type \"([^\"]*)\"$")
     public void uploadFile(String fileName, String uploadSectionName, String attachmentType){
 	    genericPage.uploadFile(fileName, uploadSectionName, attachmentType);
+    }
+    
+    @When("^I fill in the attachment checklist fields$")
+    public void fillFieldsAttachmentChecklist(){
+        genericPage.fillFieldsAttachmentChecklist();
     }
 	
 	@Then("^I see that \"([^\"]*)\" is in \"([^\"]*)\" status$")

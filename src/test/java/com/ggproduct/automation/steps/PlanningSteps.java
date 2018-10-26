@@ -14,18 +14,13 @@ public class PlanningSteps {
 		planningPage=new PlanningPage(controller,handler,govgrants);
 	}
 
-	@When("^I fill in the \"([^\"]*)\" for the Approver details$")
+	@When("^I fill in the \"([^\"]*)\" for the Approver details for program$")
 	public void fillInApproverDetails(String approverName) {
 		planningPage.fillInApproverDetails(approverName);
 	}
 	
-	@When("^I choose the \"([^\"]*)\" with \"([^\"]*)\" and click \"([^\"]*)\" button$")
-	public void chooseRecordforAssociation(String recordName, String recordUniqueName, String buttonName) {
-		planningPage.chooseRecordforAssociation(recordName, recordUniqueName, buttonName);
-	}
-	
-	@When("^I fill in the attachment checklist fields$")
-	public void fillFieldsAttachmentChecklist(){
-	    planningPage.fillFieldsAttachmentChecklist();
+	@When("^I choose the \"([^\"]*)\" with \"([^\"]*)\" and click \"([^\"]*)\" button for program$")
+	public void chooseRecordforProgramAssociation(String recordName, String recordUniqueName, String buttonName) {
+		planningPage.chooseRecordforProgramAssociation(recordName, recordUniqueName, buttonName);
 	}
 }

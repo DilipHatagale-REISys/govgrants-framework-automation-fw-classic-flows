@@ -70,7 +70,7 @@ public class PlanningPage extends ProjectManager {
      * @param recordUniqueName
      * @param buttonName
      */
-    public void chooseRecordforAssociation(String recordName, String recordUniqueName, String buttonName) {
+    public void chooseRecordforProgramAssociation(String recordName, String recordUniqueName, String buttonName) {
         By popUpPath = By.xpath("//iframe");
         By closeButton = By.xpath("//button");
         if (recordName.equals("Focus Area")) {
@@ -92,6 +92,7 @@ public class PlanningPage extends ProjectManager {
         reiDriver.WaitFor().makeThreadSleep(1000);
         reiDriver.WaitFor().WaitForElementListToBePresent(modalQuickSearchPath);
         reiDriver.JavaScript().scrollpageToSpecificElement(modalQuickSearchPath);
+        reiDriver.WaitFor().makeThreadSleep(1000);
         reiDriver.WaitFor().WaitForElementToBePresent(getUniqueRecordNameToSelect(recordUniqueName)).click();
         reiDriver.WaitFor().WaitForElementToBePresent(getModalButtonName(buttonName)).click();
         govgrants.mainPage().waitForNavigationLogoToDisappear();
@@ -99,21 +100,7 @@ public class PlanningPage extends ProjectManager {
         reiDriver.findMyElement().getElement(closeButton).click();
     }
 
-    /**
-     * Handles filling in the fields for attachment checklist
-     */
-    public void fillFieldsAttachmentChecklist() {
-        reiDriver.findMyElement().getElement(By.xpath("//td//textarea")).sendKeys(defaultLongText);
-        reiDriver.findMyElement()
-                .getElement(By.xpath("//td//select/option[text()='Optional' or text()='Mandatory']/..")).click();
-        reiDriver.findMyElement().getElement(By.xpath("//td//select/option[text()='Mandatory']")).click();
-        reiDriver.findMyElement().getElement(By.xpath("//td//select/option[text()='Application' or text()='Award']/.."))
-                .click();
-        reiDriver.findMyElement().getElement(By.xpath("//td//select/option[text()='Application']")).click();
-        reiDriver.findMyElement().getElement(By.xpath(
-                "//div/a[contains(@title,'Checklist')]/../..//div[@class='pull-right flex-grid-btns']//button[@title='Save']"))
-                .click();
-    }
+   
 
     private By getUniqueRecordNameToSelect(String recordUniqueName) {
         return By.xpath("//td//span[text()='" + recordUniqueName

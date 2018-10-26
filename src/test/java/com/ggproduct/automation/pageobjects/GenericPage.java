@@ -1,6 +1,7 @@
 package com.ggproduct.automation.pageobjects;
 
 import org.openqa.selenium.By;
+
 import org.testng.Assert;
 
 import com.automation.rei.controller.Controller;
@@ -11,7 +12,9 @@ import com.ggproduct.automation.projectmanager.ProjectManager;
 public class GenericPage extends ProjectManager {
     private final By headerOverviewPath, approvalDecisionComments, approvalDecisionSubmit, programChecklistFramePath,
             attachmentFramePath, attachmentClassificationPath, attachmentDescriptionPath, attachmentFilePath,
-            programChecklistCloseButtonPath, attachmentCloseButtonPath;
+            programChecklistCloseButtonPath, attachmentCloseButtonPath, announcementCreationFramePath,
+            announcementChecklistFramePath, announcementChecklistCloseButtonPath, announcementBudgetPeriodFramePath,
+            announcementBudgetPeriodCloseButtonPath;
 
     public GenericPage(Controller controller, Handlers handler, GovGrantsHandler govgrants) {
         super(controller, handler, govgrants);
@@ -27,6 +30,12 @@ public class GenericPage extends ProjectManager {
         programChecklistCloseButtonPath = By.xpath("//button[@id='ProgramChecklistsiframeContentIdButton']");
         attachmentCloseButtonPath = By.xpath(
                 "//div[@class='clearfix']//span[text()=' Attachments']/..//p[text()='Add Attachments']/..//button");
+        announcementCreationFramePath = By.xpath("//iframe[@id='ActiveFundingOpportunitiesCompitiveiframeContentId']");
+        announcementChecklistFramePath = By.xpath("//iframe[@id='AnnouncementChecklistsiframeContentId']");
+        announcementChecklistCloseButtonPath = By.xpath("//button[@id='AnnouncementChecklistsiframeContentIdButton']");
+        announcementBudgetPeriodFramePath = By.xpath("//iframe[@id='AnnouncementBudgetPeriodiframeContentId']");
+        announcementBudgetPeriodCloseButtonPath = By.xpath("//button[@id='AnnouncementBudgetPeriodmodalDivCloseIcon']");
+
     }
 
     /**
@@ -84,7 +93,50 @@ public class GenericPage extends ProjectManager {
         }
     }
 
+    /**
+     * Handles clicking on the given button inside a modal
+     * 
+     * @param buttonName
+     */
+    public void clickOnModalButton(String buttonName, String CloseButtonPresent) {
+        By closeButton = By.xpath("//button");
+        if (CloseButtonPresent.equals("Budget Period")) {
+            closeButton = announcementBudgetPeriodCloseButtonPath;
+        }
+        if (buttonName.equals("Save and Close")) {
+            govgrants.modal().clickModalContentSpecificButton("Save");
+            reiDriver.switchTo().switchToParentFrame();
+            reiDriver.findMyElement().getElement(closeButton).click();
+        } else {
+            govgrants.modal().clickModalContentSpecificButton(buttonName);
+        }
+        govgrants.mainPage().waitForNavigationLogoToDisappear();
+    }
+
+    /**
+     * Handles entering of field values
+     * 
+     * @param sheetName
+     * @param excelName
+     */
     public void enterFieldValues(String sheetName, String excelName) {
+        enterInputForFormsFromExcelFile(excelName, sheetName);
+    }
+
+    /**
+     * Handles entering of field values inside a modal
+     * 
+     * @param sheetName
+     * @param excelName
+     */
+    public void enterFieldValuesInModal(String sheetName, String excelName, String framePath) {
+        By popUpPath = By.xpath("//iframe");
+        if (framePath.equals("Announcement Creation")) {
+            popUpPath = announcementCreationFramePath;
+        } else if (framePath.equals("Budget Period")) {
+            popUpPath = announcementBudgetPeriodFramePath;
+        }
+        reiDriver.switchTo().switchToFrame(popUpPath);
         enterInputForFormsFromExcelFile(excelName, sheetName);
     }
 
@@ -143,7 +195,7 @@ public class GenericPage extends ProjectManager {
      * @param buttonName
      */
     public void clickOnFlexTableButton(String buttonName, String flextableName) {
-        govgrants.phasePannel().clickAnyRightButton(flextableName, buttonName);
+        reiDriver.findMyElement().getElement(getFlextableTopBtton(buttonName, flextableName)).click();
     }
 
     /**
@@ -217,17 +269,27 @@ public class GenericPage extends ProjectManager {
      */
     public void clickOnFlextableRowButton(String buttonName, String uniqueColumnvalue, String flextableName) {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
+        reiDriver.WaitFor().makeThreadSleep(1000);
         reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
         try {
             govgrants.flexTable().clickTableActionIcons(uniqueColumnvalue, buttonName);
         } catch (Exception e) {
             reiDriver.get().getRefresh();
             reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
-            reiDriver.findMyElement()
-                    .getElement(By.xpath("//td//span[contains(@title,'" + uniqueColumnvalue + "') or contains(text(),'"
-                            + uniqueColumnvalue + "')]/../../../../../../following-sibling::td//span//a[@title='"
-                            + buttonName + "']"))
-                    .click();
+            try {
+                reiDriver.findMyElement()
+                        .getElement(By.xpath("//td//span[contains(@title,'" + uniqueColumnvalue
+                                + "') or contains(text(),'" + uniqueColumnvalue
+                                + "')]/../../../../../../following-sibling::td//span//a[@title='" + buttonName + "']"))
+                        .click();
+            } catch (Exception ex) {
+                reiDriver.findMyElement()
+                        .getElement(By.xpath("//td//span/*[contains(@title,'" + uniqueColumnvalue
+                                + "') or contains(text(),'" + uniqueColumnvalue
+                                + "')]/../../../../../../../following-sibling::td//span//a[@title='" + buttonName
+                                + "']"))
+                        .click();
+            }
         }
     }
 
@@ -239,12 +301,19 @@ public class GenericPage extends ProjectManager {
      */
     public void uploadFile(String fileName, String uploadSectionName, String attachmentType) {
         String defaultFilePath = System.getProperty("user.dir") + "/src/main/resources/";
+        By popUpPath = By.xpath("//iframe");
         By closeButton = By.xpath("//button");
 
         if (uploadSectionName.equals("Checklist")) {
-            reiDriver.WaitFor().WaitForElementClickAble(programChecklistFramePath);
-            reiDriver.switchTo().switchToFrame(programChecklistFramePath);
-            closeButton = programChecklistCloseButtonPath;
+            if (attachmentType.equals("Program")) {
+                popUpPath = programChecklistFramePath;
+                closeButton = programChecklistCloseButtonPath;
+            } else if (attachmentType.equals("Announcement")) {
+                popUpPath = announcementChecklistFramePath;
+                closeButton = announcementChecklistCloseButtonPath;
+            }
+            reiDriver.WaitFor().WaitForElementClickAble(popUpPath);
+            reiDriver.switchTo().switchToFrame(popUpPath);
         } else {
             reiDriver.WaitFor().WaitForElementClickAble(attachmentFramePath);
             reiDriver.switchTo().switchToFrame(attachmentFramePath);
@@ -270,6 +339,22 @@ public class GenericPage extends ProjectManager {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
     }
 
+    /**
+     * Handles filling in the fields for attachment checklist
+     */
+    public void fillFieldsAttachmentChecklist() {
+        reiDriver.findMyElement().getElement(By.xpath("//td//textarea")).sendKeys(defaultLongText);
+        reiDriver.findMyElement()
+                .getElement(By.xpath("//td//select/option[text()='Optional' or text()='Mandatory']/..")).click();
+        reiDriver.findMyElement().getElement(By.xpath("//td//select/option[text()='Mandatory']")).click();
+        reiDriver.findMyElement().getElement(By.xpath("//td//select/option[text()='Application' or text()='Award']/.."))
+                .click();
+        reiDriver.findMyElement().getElement(By.xpath("//td//select/option[text()='Application']")).click();
+        reiDriver.findMyElement().getElement(By.xpath(
+                "//div/a[contains(@title,'Supporting Documents')]/../..//div[@class='pull-right flex-grid-btns']//button[@title='Save']"))
+                .click();
+    }
+
     private By getTextInputFields(String fieldId) {
         return By.xpath("//span[@id='" + fieldId + "']/input[@type='text']");
     }
@@ -281,6 +366,10 @@ public class GenericPage extends ProjectManager {
 
     private By getScrollToSection(String flextableName) {
         return By.xpath("//div[@class='panel-heading']//*[@title='" + flextableName + "']");
+    }
+    
+    private By getFlextableTopBtton(String buttonName, String flextableName) {
+        return By.xpath("//div[contains(text(),'"+flextableName+"')]/../../../../..//*[text()='"+buttonName+"']");
     }
 
     private By getApprovalDecisionRadioButton(String approvalDesicion) {
@@ -310,16 +399,15 @@ public class GenericPage extends ProjectManager {
     }
 
     private boolean isColumnPresent(String columnUniqueValue, String flextableName) {
-            reiDriver.WaitFor().WaitForElementListToBePresent(By.xpath("//span[text()='" + flextableName + "']"));
-            reiDriver.JavaScript().scrollElementToPageDetailCenter(
-                    By.xpath("//span[text()='" + flextableName + "']"));
-            //reiDriver.JavaScript().scrollpageToSpecificElement(
-             //       By.xpath("//span[text()='" + flextableName + "']/../preceding-sibling::div[1]"));
-            return reiDriver.findMyElement()
-                    .getElement(By.xpath("//span[text()='" + columnUniqueValue
-                            + "']/../../../../../../../../../../../../../../../../../..//span[text()='" + flextableName
-                            + "']"))
-                    .isEnabled();
+        reiDriver.WaitFor().WaitForElementListToBePresent(By.xpath("//span[text()='" + flextableName + "']"));
+        reiDriver.JavaScript().scrollElementToPageDetailCenter(By.xpath("//span[text()='" + flextableName + "']"));
+        return reiDriver.findMyElement()
+                .getElement(By.xpath("//span[text()='" + columnUniqueValue
+                        + "']/../../../../../../../../../../../../../../../../../..//span[text()='" + flextableName
+                        + "'] | //span/*[text()='" + columnUniqueValue
+                        + "']/../../../../../../../../../../../../../../../../../..//*[text()='" + flextableName
+                        + "']"))
+                .isEnabled();
     }
 
     private void clickOKForAlert() {
