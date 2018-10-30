@@ -55,8 +55,8 @@ Feature: Validate all scenarios in the Planning tab
     When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "View" icon for the "<Quick Search Text>" 
     And I click on "Overview" subtab
-    When I click on "Associate" button on "Contacts" flextable
-    When I click "Add" after selection of "<Contact>" in the frame "ProgramContactsiframeContentId"
+    When I click on "Associate" button on "Contacts" flextable to switch to frame "ProgramContactsiframeContentId"
+    When I click "Add" after selection of "<Contact>" in the table "AssociateProgramContactsTable"
     And I close Modal "ProgramContactsiframeContentIdButton"
     Then I see that "<Contact>" has been added in "Contacts" flextable
     
@@ -74,10 +74,10 @@ Feature: Validate all scenarios in the Planning tab
     When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "View" icon for the "<Quick Search Text>" 
     And I click on "Responsibilities" subtab
-    When I click on the "Edit" icon for the "Program Approver" on the flextable "Approvers"
+    When I click on the "Edit" icon for the "Program Approver" on the flextable "Approvers" to switch to frame "ProgramRolesAndResponsibilitiesiframeContentId"
     And I fill in the "<Approver Name>" in the frame "ProgramRolesAndResponsibilitiesiframeContentId" for the Approver details
     And I close Modal "ProgramRolesAndResponsibilitiesmodalDivCloseIcon"
-    When I click on the "Edit" icon for the "Executive Approver" on the flextable "Approvers"
+    When I click on the "Edit" icon for the "Executive Approver" on the flextable "Approvers" to switch to frame "ProgramRolesAndResponsibilitiesiframeContentId"
     And I fill in the "<Approver Name>" in the frame "ProgramRolesAndResponsibilitiesiframeContentId" for the Approver details
     And I close Modal "ProgramRolesAndResponsibilitiesmodalDivCloseIcon"
     Then I see that "<Approver Name>" has been added in "Approvers" flextable
@@ -96,8 +96,8 @@ Feature: Validate all scenarios in the Planning tab
     When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "View" icon for the "<Quick Search Text>" 
     And I click on "Setup" subtab
-    When I click on "Associate" button on "<Flextable Name>" flextable
-    When I click "Associate" after selection of "<EGMS Id>" in the frame "GrantorServiceAreasProgramiframeContentId"
+    When I click on "Associate" button on "<Flextable Name>" flextable to switch to frame "GrantorServiceAreasProgramiframeContentId"
+    When I click "Associate" after selection of "<EGMS Id>" in the table "popupflextable"
     And I close Modal "GrantorServiceAreasProgrammodalDivCloseIcon"
     Then I see that "<EGMS Id>" has been added in "<Flextable Name>" flextable
 	
@@ -115,8 +115,8 @@ Feature: Validate all scenarios in the Planning tab
     When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "View" icon for the "<Quick Search Text>" 
     And I click on "Setup" subtab
-    When I click on "Associate" button on "<Flextable Name>" flextable
-    When I click "Add" after selection of "<EGMS Id>" in the frame "RelatedProgramGoalsandObjectivesiframeContentId"
+    When I click on "Associate" button on "<Flextable Name>" flextable to switch to frame "RelatedProgramGoalsandObjectivesiframeContentId"
+    When I click "Add" after selection of "<EGMS Id>" in the table "popupflextable"
     And I close Modal "RelatedProgramGoalsandObjectivesmodalDivCloseIcon"
     Then I see that "<EGMS Id>" has been added in "<Flextable Name>" flextable
 	
@@ -134,8 +134,8 @@ Feature: Validate all scenarios in the Planning tab
     When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "View" icon for the "<Quick Search Text>" 
     And I click on "Setup" subtab
-    When I click on "Associate" button on "<Flextable Name>" flextable
-    When I click "Add" after selection of "<EGMS Id>" in the frame "ProgramKeyOutcomesiframeContentId"
+    When I click on "Associate" button on "<Flextable Name>" flextable to switch to frame "ProgramKeyOutcomesiframeContentId"
+    When I click "Add" after selection of "<EGMS Id>" in the table "popupflextable"
     And I close Modal "ProgramKeyOutcomesmodalDivCloseIcon"
     Then I see that "<EGMS Id>" has been added in "<Flextable Name>" flextable
 	
@@ -154,8 +154,9 @@ Feature: Validate all scenarios in the Planning tab
     And I click on "Setup" subtab
     When I click on "Add" button on "<Flextable Name>" flextable
     And I fill in the attachment checklist fields
-    When I click on the "Upload Template" icon for the "Not Applicable" on the flextable "<Flextable Name>"
+    When I click on the "Upload Template" icon for the "Not Applicable" on the flextable "<Flextable Name>" to switch to frame "ProgramChecklistsiframeContentId"
     When I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    And I close Modal "ProgramChecklistsiframeContentIdButton"
     Then I see that "Active" has been added in "<Flextable Name>" flextable
 	
 	Examples:
@@ -169,10 +170,11 @@ Feature: Validate all scenarios in the Planning tab
 	And I click "Internal Programs" inside side bar "Programs"
 	When I toggle to "Draft Internal Programs"
     When I perform quick search "<Quick Search Text>" on table "Programs"
-    And I click on the "View" icon for the "<Quick Search Text>" 
+    And I click on the "View" icon for the "<Quick Search Text>"
     And I click on "Attachments" subtab
-    When I click on "Add" button on " Attachments" flextable
+    When I click on "Add" button on " Attachments" flextable to switch to frame "iframeAddAttContentId"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Program Artifacts"
+    And I close Modal "Attachment"
     Then I see that "Program Artifacts" has been added in "Attachments" flextable
 	
 	Examples:
@@ -241,32 +243,34 @@ Feature: Validate all scenarios in the Planning tab
     When I enter "RequiredForSubmit" values from "Program_Field_Values.xlsx"
     When I click on "Save" button
     And I click on "Overview" subtab
-    When I click on "Associate" button on "Contacts" flextable
-    When I click "Add" after selection of "<Contact>" in the frame "ProgramContactsiframeContentId"
+    When I click on "Associate" button on "Contacts" flextable to switch to frame "ProgramContactsiframeContentId"
+    When I click "Add" after selection of "Automation EXE" in the table "AssociateProgramContactsTable"
     And I close Modal "ProgramContactsiframeContentIdButton"
-    And I click on "Responsibilities" subtab
-    When I click on the "Edit" icon for the "Program Approver" on the flextable "Approvers"
+     And I click on "Responsibilities" subtab
+    When I click on the "Edit" icon for the "Program Approver" on the flextable "Approvers" to switch to frame "ProgramRolesAndResponsibilitiesiframeContentId"
     And I fill in the "<Approver Name>" in the frame "ProgramRolesAndResponsibilitiesiframeContentId" for the Approver details
     And I close Modal "ProgramRolesAndResponsibilitiesmodalDivCloseIcon"
-    When I click on the "Edit" icon for the "Executive Approver" on the flextable "Approvers"
+    When I click on the "Edit" icon for the "Executive Approver" on the flextable "Approvers" to switch to frame "ProgramRolesAndResponsibilitiesiframeContentId"
     And I fill in the "<Approver Name>" in the frame "ProgramRolesAndResponsibilitiesiframeContentId" for the Approver details
     And I close Modal "ProgramRolesAndResponsibilitiesmodalDivCloseIcon"
     And I click on "Setup" subtab
-    When I click on "Associate" button on "Focus Areas" flextable
-    When I click "Associate" after selection of "<EGMS Id>" in the frame "GrantorServiceAreasProgramiframeContentId"
+    When I click on "Associate" button on "Focus Areas" flextable to switch to frame "GrantorServiceAreasProgramiframeContentId"
+    When I click "Associate" after selection of "00005" in the table "popupflextable"
     And I close Modal "GrantorServiceAreasProgrammodalDivCloseIcon"
 	And I click on "Setup" subtab
-	When I click on "Associate" button on "Objectives" flextable
-    When I click "Associate" after selection of "<EGMS Id>" in the frame "GrantorServiceAreasProgramiframeContentId"
-    And I close Modal "GrantorServiceAreasProgrammodalDivCloseIcon"
+	When I click on "Associate" button on "Objectives" flextable to switch to frame "RelatedProgramGoalsandObjectivesiframeContentId"
+    When I click "Add" after selection of "SPO-0006" in the table "popupflextable"
+    And I close Modal "RelatedProgramGoalsandObjectivesmodalDivCloseIcon"
     And I click on "Setup" subtab
     When I click on "Add" button on "Supporting Documents Checklist" flextable
     And I fill in the attachment checklist fields
-    When I click on the "Upload Template" icon for the "Not Applicable" on the flextable "Supporting Documents Checklist"
+    When I click on the "Upload Template" icon for the "Not Applicable" on the flextable "Supporting Documents Checklist" to switch to frame "ProgramChecklistsiframeContentId"
     When I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    And I close Modal "ProgramChecklistsiframeContentIdButton"
     And I click on "Attachments" subtab
-    When I click on "Add" button on " Attachments" flextable
+    When I click on "Add" button on " Attachments" flextable to switch to frame "iframeAddAttContentId"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Program Artifacts"
+    And I close Modal "Attachment"
     When I click on "Submit For Approval" button
     When I re-login to "As a Grantor" app as "<Program Approver>" User
 	When I navigate to "Planning" tab
@@ -290,8 +294,8 @@ Feature: Validate all scenarios in the Planning tab
     Then I see that "Internal Program" is in "Active" status
   
 	Examples:
-	| User | Name | Program Approver | Executive Approver | Quick Search Text |
-	| EXE | Automation PM | FO | PM |  Automation Program |
+	| User | Approver Name | Program Approver | Executive Approver | Quick Search Text |
+	| EXE | Automation PM | PM | PM |  Automation Program |
 
 	
 	
