@@ -245,12 +245,21 @@ public class GenericPage extends ProjectManager {
      * @param iFrameId
      */
     public void clickOnFlextableButtonToOpenModal(String buttonName, String flextableName, String iFrameId) {
-        if (flextableName.equals(" Attachments")) {
-            govgrants.modal().clickTopRightButtonWithModalById(iFrameId, buttonName);
-        } else {
             reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
             govgrants.modal().clickTopRightButtonWithModalById(iFrameId, buttonName);
-        }
+        
+    }
+    
+    /**
+     * Handles clicking on the top button of the given flextable to open a modal and
+     * switch to the modal frame
+     * 
+     * @param buttonName
+     * @param flextableName
+     */
+    public void clickOnButtonForAttachmentNotesToOpenModal(String buttonName, String flextableName) {
+        reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
+        govgrants.modal().clickTopRightButtonForAttachmentNotes(flextableName, buttonName);
     }
 
     /**

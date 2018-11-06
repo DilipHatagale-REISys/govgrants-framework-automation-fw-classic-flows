@@ -318,7 +318,7 @@ Feature: Validate all scenarios in the Announcement tab
     When I perform quick search "<Quick Search Text>" on table "ActiveFundingOpportunitiesCompitive"
     And I click on the "View" icon for the "<Quick Search Text>" 
     And I click on "Attachments" subtab
-    When I click on "Add" button on " Attachments" flextable to switch to frame "iframeAddAttContentId"
+    When I click on "Add" button on " Attachments" flextable to switch to frame
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
     And I close Modal "Attachment"
     Then I see that "Funding Opportunity Announcement" has been added in "Attachments" flextable
@@ -438,10 +438,10 @@ Feature: Validate all scenarios in the Announcement tab
     When I click on the "Edit" icon for the "Executive Approver" on the flextable "Approvers" to switch to frame "GrantorAnnouncementRolesandResponsibilitiesiframeContentId"
     And I fill in the "Automation EXE" in the frame "GrantorAnnouncementRolesandResponsibilitiesiframeContentId" for the Approver details
     And I close Modal "GrantorAnnouncementRolesandResponsibilitiesmodalDivCloseIcon"
-    #And I click on "Attachments" subtab
-    #When I click on "Add" button on " Attachments" flextable to switch to frame "iframeAddAttContentId"
-    #When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
-    #And I close Modal "Attachment"
+    And I click on "Attachments" subtab
+    When I click on "Add" button on " Attachments" flextable to switch to frame
+    When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
+    And I close Modal "Attachment"
     And I click on "Responsibilities" subtab
 	When I click on "New" button on "Peer Reviewers" flextable to switch to frame "GrantorAnnouncementReviewersTempiframeContentId"
 	When I enter "Reviewer" values from "Announcement_Field_Values.xlsx"
@@ -559,7 +559,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I fill in the "Automation EXE" in the frame "GrantorAnnouncementRolesandResponsibilitiesiframeContentId" for the Approver details
     And I close Modal "GrantorAnnouncementRolesandResponsibilitiesmodalDivCloseIcon"
     And I click on "Attachments" subtab
-    When I click on "Add" button on " Attachments" flextable to switch to frame "iframeAddAttContentId"
+    When I click on "Add" button on " Attachments" flextable to switch to frame
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
     And I close Modal "Attachment"
     And I click on "Responsibilities" subtab
@@ -680,7 +680,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I fill in the "Automation EXE" in the frame "GrantorAnnouncementRolesandResponsibilitiesiframeContentId" for the Approver details
     And I close Modal "GrantorAnnouncementRolesandResponsibilitiesmodalDivCloseIcon"
     And I click on "Attachments" subtab
-    When I click on "Add" button on " Attachments" flextable to switch to frame "iframeAddAttContentId"
+    When I click on "Add" button on " Attachments" flextable to switch to frame
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
     And I close Modal "Attachment"
     And I click on "Responsibilities" subtab

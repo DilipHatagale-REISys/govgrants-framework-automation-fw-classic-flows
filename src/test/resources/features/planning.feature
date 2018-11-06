@@ -177,7 +177,7 @@ Feature: Validate all scenarios in the Planning tab
     When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "View" icon for the "<Quick Search Text>"
     And I click on "Attachments" subtab
-    When I click on "Add" button on " Attachments" flextable to switch to frame "iframeAddAttContentId"
+    When I click on "Add" button on " Attachments" flextable to switch to frame
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Program Artifacts"
     And I close Modal "Attachment"
     Then I see that "Program Artifacts" has been added in "Attachments" flextable
@@ -278,7 +278,7 @@ Feature: Validate all scenarios in the Planning tab
     When I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
     And I close Modal "ProgramChecklistsiframeContentIdButton"
     And I click on "Attachments" subtab
-    When I click on "Add" button on " Attachments" flextable to switch to frame "iframeAddAttContentId"
+    When I click on "Add" button on " Attachments" flextable to switch to frame
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Program Artifacts"
     And I close Modal "Attachment"
     When I click on "Submit For Approval" button

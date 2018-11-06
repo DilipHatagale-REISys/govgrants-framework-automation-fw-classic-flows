@@ -81,6 +81,11 @@ public class GenericSteps {
     public void clickOnFlextableButtonToOpenModal(String buttonName, String flextableName, String iFrameId) {
         genericPage.clickOnFlextableButtonToOpenModal(buttonName, flextableName, iFrameId);
     }
+    
+    @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" flextable to switch to frame$")
+    public void clickOnButtonForAttachmentNotesToOpenModal(String buttonName, String flextableName) {
+        genericPage.clickOnButtonForAttachmentNotesToOpenModal(buttonName, flextableName);
+    }
 
     @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" flextable$")
     public void clickOnFlextableButton(String buttonName, String flextableName) {
