@@ -188,12 +188,17 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I login to "As a Grantor" app as "<User>" User
 	When I navigate to "Announcements" tab
 	And I click "Competitive" inside side bar "Announcements"
-	When I toggle to "Draft Announcements"
+	When I toggle to "Published Announcements"
     When I perform quick search "<Quick Search Text>" on table "ActiveFundingOpportunitiesCompitive"
     And I click on the "View" icon for the "<Quick Search Text>" 
     And I click on "Setup" subtab
-    When I click on "Add" button on "<Flextable Name>" flextable
-    And I fill in the attachment checklist fields
+    When I click on "Add" button on "<Flextable Name>" flextable    
+    And I fill the fields in the table "toggleFGridAnnouncementChecklists":
+    |tableColumnNumber| inputype|inputValue                 |
+    |1                |text     |Automation test description|
+    |2                |dropdown |Mandatory                  |
+    |3                |dropdown |Application                |
+    When I click on "Save" button on "<Flextable Name>" flextable  
     When I click on the "Upload Template" icon for the "Not Applicable" on the flextable "<Flextable Name>" to switch to frame "AnnouncementChecklistsiframeContentId"
     When I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     And I close Modal "AnnouncementChecklistsiframeContentIdButton"
@@ -415,7 +420,11 @@ Feature: Validate all scenarios in the Announcement tab
     And I close Modal "AnnouncementGranteeStrategicGoalsObjectivesmodalDivCloseIcon"
     And I click on "Setup" subtab
     When I click on "Add" button on "Supporting Documents" flextable
-    And I fill in the attachment checklist fields
+    And I fill the fields in the table "toggleFGridAnnouncementChecklists":
+    |tableColumnNumber| inputype|inputValue                 |
+    |1                |text     |Automation test description|
+    |2                |dropdown |Mandatory                  |
+    |3                |dropdown |Application                |
     When I click on the "Upload Template" icon for the "Not Applicable" on the flextable "Supporting Documents" to switch to frame "AnnouncementChecklistsiframeContentId"
     When I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     And I close Modal "AnnouncementChecklistsiframeContentIdButton"
@@ -531,7 +540,11 @@ Feature: Validate all scenarios in the Announcement tab
     And I close Modal "AnnouncementGranteeStrategicGoalsObjectivesmodalDivCloseIcon"
     And I click on "Setup" subtab
     When I click on "Add" button on "Supporting Documents" flextable
-    And I fill in the attachment checklist fields
+    And I fill the fields in the table "toggleFGridAnnouncementChecklists":
+    |tableColumnNumber| inputype|inputValue                 |
+    |1                |text     |Automation test description|
+    |2                |dropdown |Mandatory                  |
+    |3                |dropdown |Application                |
     When I click on the "Upload Template" icon for the "Not Applicable" on the flextable "Supporting Documents" to switch to frame "AnnouncementChecklistsiframeContentId"
     When I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     And I close Modal "AnnouncementChecklistsiframeContentIdButton"
@@ -648,7 +661,11 @@ Feature: Validate all scenarios in the Announcement tab
     And I close Modal "AnnouncementGranteeStrategicGoalsObjectivesmodalDivCloseIcon"
     And I click on "Setup" subtab
     When I click on "Add" button on "Supporting Documents" flextable
-    And I fill in the attachment checklist fields
+    And I fill the fields in the table "toggleFGridAnnouncementChecklists":
+    |tableColumnNumber| inputype|inputValue                 |
+    |1                |text     |Automation test description|
+    |2                |dropdown |Mandatory                  |
+    |3                |dropdown |Application                |
     When I click on the "Upload Template" icon for the "Not Applicable" on the flextable "Supporting Documents" to switch to frame "AnnouncementChecklistsiframeContentId"
     When I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     And I close Modal "AnnouncementChecklistsiframeContentIdButton"

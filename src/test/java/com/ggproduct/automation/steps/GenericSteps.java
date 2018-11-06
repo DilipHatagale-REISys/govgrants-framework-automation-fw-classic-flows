@@ -1,11 +1,14 @@
 package com.ggproduct.automation.steps;
 
+import java.util.Map;
+
 import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.automation.rei.handlers.Handlers;
 import com.ggproduct.automation.pageobjects.GenericPage;
 import com.ggproduct.automation.pageobjects.LoginPage;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -21,18 +24,12 @@ public class GenericSteps {
 
     @Given("^I login to \"([^\"]*)\" app as \"([^\"]*)\" User$")
     public void loginToggleToApp(String appName, String userName) {
-        loginpage.login(userName);
-        genericPage.toggleApp(appName);
+        genericPage.loginToggleToApp(appName, userName);
     }
 
     @When("^I navigate to \"([^\"]*)\" tab$")
     public void navigateToTab(String tabName) {
         genericPage.navigateToTab(tabName);
-    }
-
-    @When("^I toggle to \"([^\"]*)\" app$")
-    public void toggleApp(String appName) {
-        genericPage.toggleApp(appName);
     }
 
     @When("^I click \"([^\"]*)\" inside side bar \"([^\"]*)\"$")
@@ -128,8 +125,7 @@ public class GenericSteps {
 
     @When("^I re-login to \"([^\"]*)\" app as \"([^\"]*)\" User$")
     public void reloginToggleToApp(String appName, String userName) {
-        loginpage.reloginAsDifferentUser(userName);
-        genericPage.toggleApp(appName);
+        genericPage.reloginToggleToApp(appName, userName);
     }
 
     @When("^I click \"([^\"]*)\" after selection of \"([^\"]*)\" in the table \"([^\"]*)\"$")
@@ -152,9 +148,11 @@ public class GenericSteps {
         genericPage.uploadFile(fileName, uploadSectionName, attachmentType);
     }
 
-    @When("^I fill in the attachment checklist fields$")
-    public void fillFieldsAttachmentChecklist() {
-        genericPage.fillFieldsAttachmentChecklist();
+    @When("^I fill the fields in the table \"([^\"]*)\":$")
+    public void fillFieldsForInlineTable(String tableId, DataTable inLineEditFields) throws Throwable {
+        for(Map<String,String> parameters:inLineEditFields.asMaps(String.class, String.class)) {
+            genericPage.fillFieldsForInlineTable(tableId,parameters.get("tableColumnNumber"),parameters.get("inputype"),parameters.get("inputValue"));
+        }
     }
 
     @Then("^I see that \"([^\"]*)\" is in \"([^\"]*)\" status$")

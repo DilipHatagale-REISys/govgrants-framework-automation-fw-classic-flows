@@ -153,7 +153,12 @@ Feature: Validate all scenarios in the Planning tab
     And I click on the "View" icon for the "<Quick Search Text>" 
     And I click on "Setup" subtab
     When I click on "Add" button on "<Flextable Name>" flextable
-    And I fill in the attachment checklist fields
+    And I fill the fields in the table "flexGridHeaderButtonsProgramChecklists":
+    |tableColumnNumber| inputype|inputValue                 |
+    |1                |text     |Automation test description|
+    |2                |dropdown |Mandatory                  |
+    |3                |dropdown |Application                |
+    When I click on "Save" button on "<Flextable Name>" flextable  
     When I click on the "Upload Template" icon for the "Not Applicable" on the flextable "<Flextable Name>" to switch to frame "ProgramChecklistsiframeContentId"
     When I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
     And I close Modal "ProgramChecklistsiframeContentIdButton"
@@ -214,7 +219,7 @@ Feature: Validate all scenarios in the Planning tab
 	
 	Examples:
 	| User | Quick Search Text | Executive Approver |
-	| FO | Automation Program | PM |
+	| PM | Automation Program | EXE |
 	
   @34756 @ProgramActivation @program
   Scenario Outline: Validate the activation of Internal Program
@@ -263,7 +268,12 @@ Feature: Validate all scenarios in the Planning tab
     And I close Modal "RelatedProgramGoalsandObjectivesmodalDivCloseIcon"
     And I click on "Setup" subtab
     When I click on "Add" button on "Supporting Documents Checklist" flextable
-    And I fill in the attachment checklist fields
+    And I fill the fields in the table "flexGridHeaderButtonsProgramChecklists":
+    |tableColumnNumber| inputype|inputValue                 |
+    |1                |text     |Automation test description|
+    |2                |dropdown |Mandatory                  |
+    |3                |dropdown |Application                |
+    When I click on "Save" button on "<Flextable Name>" flextable  
     When I click on the "Upload Template" icon for the "Not Applicable" on the flextable "Supporting Documents Checklist" to switch to frame "ProgramChecklistsiframeContentId"
     When I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
     And I close Modal "ProgramChecklistsiframeContentIdButton"
