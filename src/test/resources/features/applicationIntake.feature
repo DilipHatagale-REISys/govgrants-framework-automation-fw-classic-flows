@@ -11,7 +11,6 @@ Feature: Validate all scenarios in the Application Intake
     When I click on "Qualify" button
     Then I see that "Opportunity" is in "Qualified" status
 	
-
 	Examples:
 	| User | Quick Search Text |
 	| SPI | Automation Announcement |
