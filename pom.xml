@@ -15,18 +15,19 @@
 		<tags>~@ignore</tags>
 		<!-- Versions -->
 		<java.version>1.8</java.version>
-		<rei.version>0.0.2</rei.version>
-		<selenium.version>3.8.0</selenium.version>
-		<selenium-server.version>3.8.1</selenium-server.version>
+		<rei.version>0.0.3</rei.version>
+		<selenium.version>3.10.0</selenium.version>
+		<selenium-server.version>3.10.0</selenium-server.version>
 		<appium.version>5.0.4</appium.version>
-		<cucumber-jvm.version>2.0.0</cucumber-jvm.version>
+		<cucumber-jvm.version>4.1.0</cucumber-jvm.version>
 		<cucumber-testng.version>1.2.5</cucumber-testng.version>
 		<cucumber-picocontainer.version>1.2.5</cucumber-picocontainer.version>
-		<testng.version>6.11</testng.version>
+		<testng.version>6.14.3</testng.version>
 		<cucumber-extentsreport.version>3.0.2</cucumber-extentsreport.version>
 		<webdrivermanager.version>2.1.0</webdrivermanager.version>
 		<rest-assured.version>2.9.0</rest-assured.version>
-	</properties>
+		<maven-failsafe-plugin.version>2.22.1</maven-failsafe-plugin.version>
+	</properties> 
 
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
@@ -155,6 +156,11 @@
 			<artifactId>itextpdf</artifactId>
 			<version>5.5.13</version>
 		</dependency>
+		   <dependency>
+           <groupId>org.apache.maven.shared</groupId>
+           <artifactId>maven-invoker</artifactId>
+           <version>3.0.1</version>
+        </dependency> 
 		<dependency>
 			<groupId>com.automation</groupId>
 			<artifactId>REI-AutomationFramework</artifactId>
@@ -163,11 +169,10 @@
 	</dependencies>
 	<repositories>
 		<repository>
-			<id>snapshots</id>
-			<name>DL41-J8K40N2-snapshots</name>
-			<url>http://10.200.45.16:8081/artifactory/libs-snapshot-local</url>
+			<id>govgrants-releases</id>
+			<url>http://nexus.reisys.com:8081/nexus/content/repositories/govgrants-releases</url>
 		</repository>
-	</repositories>
+	</repositories> 
 	<build>
 		<plugins>
 			<plugin>
