@@ -23,7 +23,7 @@ Feature: Validate all scenarios in the Planning tab
     When I enter "RequiredForSave" values from "Program_Field_Values.xlsx"
     When I click on "Save and Continue" button
     When I click on "Save" button
-    Then I see that "Internal Program" is in "Created" status
+    Then I see that the record is in "Created" status on progress bar
     
     Examples:
     | User |
@@ -195,7 +195,7 @@ Feature: Validate all scenarios in the Planning tab
     When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "View" icon for the "<Quick Search Text>" 
     When I click on "Submit For Approval" button
-    Then I see that "Internal Program" is in "Submitted for Approval" status
+    Then I see that the record is in "Submitted for Approval" status on progress bar
 	
 	Examples:
 	| User | Quick Search Text |
@@ -215,7 +215,7 @@ Feature: Validate all scenarios in the Planning tab
     When I perform quick search "<Quick Search Text>" on table "PhasePendingTasks"
     And I click on the "Start" icon for the "<Quick Search Text>" 
     When I click on "Approve" on the approval decision box
-    Then I see that "Internal Program" is in "Approved" status
+    Then I see that the record is in "Approved" status on progress bar
 	
 	Examples:
 	| User | Quick Search Text | Executive Approver |
@@ -230,7 +230,7 @@ Feature: Validate all scenarios in the Planning tab
     When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "View" icon for the "<Quick Search Text>" 
     When I click on "Activate" button
-    Then I see that "Internal Program" is in "Active" status
+    Then I see that the record is in "Active" status on progress bar
 	
 	Examples:
 	| User | Quick Search Text |
@@ -301,7 +301,7 @@ Feature: Validate all scenarios in the Planning tab
     When I perform quick search "<Quick Search Text>" on table "Programs"
     And I click on the "View" icon for the "<Quick Search Text>" 
     When I click on "Activate" button
-    Then I see that "Internal Program" is in "Active" status
+    Then I see that the record is in "Active" status on progress bar
   
 	Examples:
 	| User | Approver Name | Program Approver | Executive Approver | Quick Search Text |

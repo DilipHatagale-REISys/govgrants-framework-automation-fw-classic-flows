@@ -24,6 +24,8 @@ public class UsersAndURL {
             userName = performLoginQAEnvironment(userLevel);
         } else if (System.getProperty("env").equalsIgnoreCase("uat")) {
             userName = performLoginUATEnvironment(userLevel);
+        } else if (System.getProperty("env").equalsIgnoreCase("uat")) {
+            userName = performLoginUATEnvironment(userLevel);
         }
         return userName;
     }
@@ -46,7 +48,10 @@ public class UsersAndURL {
             break;  
         case "FO":
             username = "auto.fm@auto.com";
-            break;     
+            break;
+        case "SPI":
+            username = "gcooper@yopmail.com20";
+            break;
         default:
             username = "admin.automation@product.com";
         }
@@ -70,6 +75,10 @@ public class UsersAndURL {
         switch(urlName.toUpperCase()) {
         case "PRODUCT PORTAL":
             url = new Properties_Logs().ReadPropertyFile("environment.properties", "QA");
+            Reporter.addScenarioLog("Scenario is running using External Link" + " & Url is " + url);
+            break;
+        case "SUBRECIPIENT PORTAL":
+            url = new Properties_Logs().ReadPropertyFile("environment.properties", "SubrecipientPortal");
             Reporter.addScenarioLog("Scenario is running using External Link" + " & Url is " + url);
             break;
         }

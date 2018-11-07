@@ -43,6 +43,18 @@ public class LoginPage extends ProjectManager{
 		govgrants.mainPage().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);
 	}
     
+    public void loginAsSubrecipient(String userName) {
+        try {
+            reiDriver.eatCookies().deleteAllCookies();
+            reiDriver.WaitFor().makeThreadSleep(500);
+            navigateToURL("SUBRECIPIENT PORTAL");
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        govgrants.mainPage().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);
+        govgrants.mainPage().waitForEgmsHeader();
+    }
+    
     public void reloginAsDifferentUser(String userName){
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         reiDriver.WaitFor().makeThreadSleep(1000);

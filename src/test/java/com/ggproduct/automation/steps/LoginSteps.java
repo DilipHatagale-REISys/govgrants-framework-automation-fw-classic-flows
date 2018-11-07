@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Description;
 import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.automation.rei.handlers.Handlers;
-import com.ggproduct.automation.pageobjects.GenericPage;
 import com.ggproduct.automation.pageobjects.LoginPage;
 
 import cucumber.api.java.en.Given;
@@ -24,6 +23,11 @@ public class LoginSteps {
 	public void login(String userName) {
 		loginpage.login(userName);
 	}
+	
+	@Given("^I login as \"([^\"]*)\" User to subrecipient portal$")
+    public void loginAsSubrecipient(String userName) {
+        loginpage.loginAsSubrecipient(userName);
+    }
 	
 	@When("^I re-login as \"([^\"]*)\" User$")
 	public void reloginAsDifferentUser(String userName){

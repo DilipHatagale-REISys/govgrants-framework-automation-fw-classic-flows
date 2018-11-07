@@ -1,7 +1,6 @@
 package com.ggproduct.automation.pageobjects;
 
 import org.openqa.selenium.By;
-
 import org.testng.Assert;
 
 import com.automation.rei.controller.Controller;
@@ -69,11 +68,11 @@ public class GenericPage extends ProjectManager {
     }
 
     /**
-     * Handles clicking on the given button
+     * Handles clicking on the given page button
      * 
      * @param buttonName
      */
-    public void clickOnButton(String buttonName) {
+    public void clickOnPageButton(String buttonName) {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         reiDriver.JavaScript().scrollPageDocumentJS("pageup", 0, 0);
         govgrants.pageDetails().clickAnyTopRightButton(buttonName);
@@ -82,6 +81,18 @@ public class GenericPage extends ProjectManager {
             clickOKForAlert();
             govgrants.mainPage().waitForNavigationLogoToDisappear();
         }
+    }
+    
+    /**
+     * Handles clicking on the given page button
+     * 
+     * @param buttonName
+     */
+    public void clickOnPageButtonWithModalId(String buttonName, String IframeId) {
+        govgrants.mainPage().waitForNavigationLogoToDisappear();
+        reiDriver.JavaScript().scrollPageDocumentJS("pageup", 0, 0);
+        govgrants.pageDetails().clickAnyTopRightButton(buttonName);
+        reiDriver.switchTo().switchToFrame(getIFramePath(IframeId));
     }
 
     /**
@@ -110,7 +121,17 @@ public class GenericPage extends ProjectManager {
     }
 
     /**
-     * Assert the status for overviewHeader
+     * Assert the status for a record through progress bar
+     * 
+     * @param record
+     * @param status
+     */
+    public void assertStatusProgressBar(String status) {
+        Assert.assertTrue(isStatusProgressBar(status));
+    }
+    
+    /**
+     * Assert the status for a record through overview header
      * 
      * @param record
      * @param status
@@ -258,7 +279,6 @@ public class GenericPage extends ProjectManager {
      * @param flextableName
      */
     public void clickOnButtonForAttachmentNotesToOpenModal(String buttonName, String flextableName) {
-        reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
         govgrants.modal().clickTopRightButtonForAttachmentNotes(flextableName, buttonName);
     }
 
@@ -455,9 +475,18 @@ public class GenericPage extends ProjectManager {
         }
     }
 
-    private boolean isStatus(String record, String status) {
+    private boolean isStatusProgressBar(String status) {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         return govgrants.pageDetails().isStepProgressBarStatusInSpecifiedColor(status, "green");
+    }
+    
+    private boolean isStatus(String record, String status) {
+        govgrants.mainPage().waitForNavigationLogoToDisappear();
+        return reiDriver.WaitFor()
+                .WaitForElementToBePresent(By.xpath("//span[text()='" + record
+                        + "']/../../../../../../../..//div//dt/span[text()='Status']/../..//dd//span[text()='" + status
+                        + "']"))
+                .isDisplayed();
     }
 
     private boolean isFieldModified(String fieldLabel, String text) {

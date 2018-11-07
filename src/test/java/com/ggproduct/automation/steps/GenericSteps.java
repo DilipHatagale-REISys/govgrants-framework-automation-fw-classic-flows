@@ -6,7 +6,6 @@ import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.automation.rei.handlers.Handlers;
 import com.ggproduct.automation.pageobjects.GenericPage;
-import com.ggproduct.automation.pageobjects.LoginPage;
 
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
@@ -15,11 +14,9 @@ import cucumber.api.java.en.When;
 
 public class GenericSteps {
     GenericPage genericPage;
-    LoginPage loginpage;
 
     public GenericSteps(Controller controller, Handlers handler, GovGrantsHandler govgrants) {
         genericPage = new GenericPage(controller, handler, govgrants);
-        loginpage = new LoginPage(controller, handler, govgrants);
     }
 
     @Given("^I login to \"([^\"]*)\" app as \"([^\"]*)\" User$")
@@ -38,8 +35,13 @@ public class GenericSteps {
     }
 
     @When("^I click on \"([^\"]*)\" button$")
-    public void clickOnButton(String buttonName) {
-        genericPage.clickOnButton(buttonName);
+    public void clickOnPageButton(String buttonName) {
+        genericPage.clickOnPageButton(buttonName);
+    }
+    
+    @When("^I click on \"([^\"]*)\" button to switch to frame \"([^\"]*)\"$")
+    public void clickOnPageButtonWithModalId(String buttonName, String IframeId) {
+        genericPage.clickOnPageButtonWithModalId(buttonName, IframeId);
     }
 
     @When("^I click on \"([^\"]*)\" button in the modal$")
@@ -159,10 +161,15 @@ public class GenericSteps {
             genericPage.fillFieldsForInlineTable(tableId,parameters.get("tableColumnNumber"),parameters.get("inputype"),parameters.get("inputValue"));
         }
     }
-
+    
     @Then("^I see that \"([^\"]*)\" is in \"([^\"]*)\" status$")
     public void assertStatus(String record, String status) {
         genericPage.assertStatus(record, status);
+    }
+
+    @Then("^I see that the record is in \"([^\"]*)\" status on progress bar$")
+    public void assertStatusProgressBar(String status) {
+        genericPage.assertStatusProgressBar(status);
     }
 
     @Then("^I see that \"([^\"]*)\" field is modified to \"([^\"]*)\"$")
