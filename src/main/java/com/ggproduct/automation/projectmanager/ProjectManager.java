@@ -2,6 +2,7 @@ package com.ggproduct.automation.projectmanager;
 
 import java.io.IOException;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -129,6 +130,9 @@ public class ProjectManager extends ProjectWebServices {
         if ("Text".equalsIgnoreCase(fieldType)) {
             handleTextInput(fieldApiName, fieldValue);
         }
+        if ("TextArea".equalsIgnoreCase(fieldType)) {
+            handleTextAreaInput(fieldApiName, fieldValue);
+        }
         if ("Date".equalsIgnoreCase(fieldType)) {
             handleDateInput(fieldApiName, fieldValue, false);
         }
@@ -166,6 +170,12 @@ public class ProjectManager extends ProjectWebServices {
 
     private void handleTextInput(String fieldApiName, String fieldValue) {
         By fieldInput = By.xpath("//div[@id='field" + fieldApiName + "']//input[@type='text']");
+        reiDriver.textInput().clearText(fieldInput);
+        reiDriver.textInput().enterText(fieldInput, fieldValue);
+    }
+    
+    private void handleTextAreaInput(String fieldApiName, String fieldValue) {
+        By fieldInput = By.xpath("//div[@id='field" + fieldApiName + "']//textarea");
         reiDriver.textInput().clearText(fieldInput);
         reiDriver.textInput().enterText(fieldInput, fieldValue);
     }

@@ -22,7 +22,7 @@ import java.io.File;
 #end
         glue = #stringArray($glue))
         
-@Listeners({com.automation.rei.listeners.MyTransformer.class})
+
 public class $className extends AbstractTestNGCucumberTests {
   @BeforeClass
     public  static void setup() {

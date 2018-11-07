@@ -43,7 +43,10 @@ public class UsersAndURL {
             break;
         case "PO":
             username = "sdgdg45435dj@gmail.com";
-            break;    
+            break;  
+        case "FO":
+            username = "auto.fm@auto.com";
+            break;     
         default:
             username = "admin.automation@product.com";
         }
