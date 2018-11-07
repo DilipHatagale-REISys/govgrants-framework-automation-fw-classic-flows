@@ -15,7 +15,7 @@
 		<tags>~@ignore</tags>
 		<!-- Versions -->
 		<java.version>1.8</java.version>
-		<rei.version>0.0.2</rei.version>
+		<rei.version>0.0.3</rei.version>
 		<selenium.version>3.8.0</selenium.version>
 		<selenium-server.version>3.8.1</selenium-server.version>
 		<appium.version>5.0.4</appium.version>
