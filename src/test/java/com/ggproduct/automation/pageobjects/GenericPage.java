@@ -258,7 +258,6 @@ public class GenericPage extends ProjectManager {
      * @param flextableName
      */
     public void clickOnButtonForAttachmentNotesToOpenModal(String buttonName, String flextableName) {
-        reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
         govgrants.modal().clickTopRightButtonForAttachmentNotes(flextableName, buttonName);
     }
 
