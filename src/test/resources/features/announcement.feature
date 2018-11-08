@@ -425,6 +425,7 @@ Feature: Validate all scenarios in the Announcement tab
     |1                |text     |Automation test description|
     |2                |dropdown |Mandatory                  |
     |3                |dropdown |Application                |
+    When I click on "Save" button on "Supporting Documents" flextable
     When I click on the "Upload Template" icon for the "Not Applicable" on the flextable "Supporting Documents" to switch to frame "AnnouncementChecklistsiframeContentId"
     When I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     And I close Modal "AnnouncementChecklistsiframeContentIdButton"
@@ -545,6 +546,7 @@ Feature: Validate all scenarios in the Announcement tab
     |1                |text     |Automation test description|
     |2                |dropdown |Mandatory                  |
     |3                |dropdown |Application                |
+    When I click on "Save" button on "Supporting Documents" flextable
     When I click on the "Upload Template" icon for the "Not Applicable" on the flextable "Supporting Documents" to switch to frame "AnnouncementChecklistsiframeContentId"
     When I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     And I close Modal "AnnouncementChecklistsiframeContentIdButton"
@@ -666,6 +668,7 @@ Feature: Validate all scenarios in the Announcement tab
     |1                |text     |Automation test description|
     |2                |dropdown |Mandatory                  |
     |3                |dropdown |Application                |
+    When I click on "Save" button on "Supporting Documents" flextable
     When I click on the "Upload Template" icon for the "Not Applicable" on the flextable "Supporting Documents" to switch to frame "AnnouncementChecklistsiframeContentId"
     When I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     And I close Modal "AnnouncementChecklistsiframeContentIdButton"

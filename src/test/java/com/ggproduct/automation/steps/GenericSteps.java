@@ -84,6 +84,16 @@ public class GenericSteps {
         genericPage.clickOnFlextableButtonToOpenModal(buttonName, flextableName, iFrameId);
     }
     
+    @When("^I click on Agree in \"([^\"]*)\" section$")
+    public void clickOnAcknowledgement(String sectionName) {
+        genericPage.clickOnAcknowledgement(sectionName);
+    }
+    
+    @When("^I expand the grid \"([^\"]*)\"$")
+    public void expandGrid(String sectionName) {
+        genericPage.expandGrid(sectionName);
+    }
+    
     @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" flextable to switch to frame$")
     public void clickOnButtonForAttachmentNotesToOpenModal(String buttonName, String flextableName) {
         genericPage.clickOnButtonForAttachmentNotesToOpenModal(buttonName, flextableName);

@@ -12,7 +12,7 @@ import com.ggproduct.automation.projectmanager.UsersAndURL;
 public class GenericPage extends ProjectManager {
     private final By headerOverviewPath, attachmentClassificationPath,
             attachmentDescriptionPath, attachmentFilePath, lookUpSearchPath, lookUpIFramePath, approverDescription,
-            approverDueDate;
+            approverDueDate, acknowledgementCheckboxPath;
 
     public GenericPage(Controller controller, Handlers handler, GovGrantsHandler govgrants) {
         super(controller, handler, govgrants);
@@ -25,6 +25,7 @@ public class GenericPage extends ProjectManager {
         lookUpIFramePath = By.xpath("//iframe[@id='iframeCustomLookupModalId']");
         approverDescription = By.xpath("//div/label[text()=' Description ']/../span/textarea");
         approverDueDate = By.xpath("//span[@class='dateInput dateOnlyInput']/input");
+        acknowledgementCheckboxPath = By.xpath("//input[@type='checkbox' and @value='I Agree']");
     }
     
     /**
@@ -317,6 +318,24 @@ public class GenericPage extends ProjectManager {
         reiDriver.switchTo().switchToParentFrame();
         reiDriver.WaitFor().WaitForElementToBePresent(getCloseButtonPath(closeButtonId)).click();
         reiDriver.get().getRefresh();
+    }
+    
+    /**
+     * Handles acknowledging a record
+     * @param sectionName
+     */
+    public void clickOnAcknowledgement(String sectionName) {
+        reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(sectionName));
+        reiDriver.findMyElement().getElement(acknowledgementCheckboxPath).click();
+    }
+    
+    /**
+     * Handles grid expansion
+     * @param sectionName
+     */
+    public void expandGrid(String sectionName) {
+        reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(sectionName));
+        reiDriver.findMyElement().getElement(By.xpath("//i[contains(@class,'fa-plus-circle')]")).click();
     }
 
     /**
