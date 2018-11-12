@@ -241,8 +241,7 @@ public class GenericPage extends ProjectManager {
     public void clickOnFlextableButton(String buttonName, String flextableName) {
         reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
         reiDriver.WaitFor().makeThreadSleep(1000);
-        
-        reiDriver.WaitFor().WaitForElementToBePresent(getButtonOnFlexTable(buttonName, flextableName)).click();
+        govgrants.flexTable().clickTableTopRightButton(flextableName, buttonName);
     }
 
     /**
@@ -324,7 +323,7 @@ public class GenericPage extends ProjectManager {
      * @param tableId
      */
     public void clickButtonOnChildGrid(String iconName, String uniqueColumnValue, String tableId){
-        
+        govgrants.flexTable().slideNestedFlexTable(tableId, 150);
          govgrants.flexTable().clickTableActionIcons(uniqueColumnValue, iconName);
     }
     
