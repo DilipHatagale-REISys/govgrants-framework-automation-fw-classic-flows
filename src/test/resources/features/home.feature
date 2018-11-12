@@ -23,7 +23,7 @@ Feature: Validate all scenarios in the home tab
     Then I see that "Agency Abbreviation" field is modified to "Automation"
     
 	Examples:
-	| Organization name |
+	| Organization name 				    |
 	| Internal Automation Organization Test |
 	
 	

@@ -6,7 +6,6 @@ import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.automation.rei.handlers.Handlers;
 import com.ggproduct.automation.pageobjects.GenericPage;
-import com.ggproduct.automation.pageobjects.LoginPage;
 
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
@@ -15,13 +14,12 @@ import cucumber.api.java.en.When;
 
 public class GenericSteps {
     GenericPage genericPage;
-    LoginPage loginpage;
 
     public GenericSteps(Controller controller, Handlers handler, GovGrantsHandler govgrants) {
         genericPage = new GenericPage(controller, handler, govgrants);
-        loginpage = new LoginPage(controller, handler, govgrants);
     }
 
+   
     @Given("^I login to \"([^\"]*)\" app as \"([^\"]*)\" User$")
     public void loginToggleToApp(String appName, String userName) {
         genericPage.loginToggleToApp(appName, userName);
@@ -38,8 +36,13 @@ public class GenericSteps {
     }
 
     @When("^I click on \"([^\"]*)\" button$")
-    public void clickOnButton(String buttonName) {
-        genericPage.clickOnButton(buttonName);
+    public void clickOnPageButton(String buttonName) {
+        genericPage.clickOnPageButton(buttonName);
+    }
+    
+    @When("^I click on \"([^\"]*)\" button to switch to frame \"([^\"]*)\"$")
+    public void clickOnPageButtonWithModalId(String buttonName, String IframeId) {
+        genericPage.clickOnPageButtonWithModalId(buttonName, IframeId);
     }
 
     @When("^I click on \"([^\"]*)\" button in the modal$")
@@ -82,6 +85,16 @@ public class GenericSteps {
         genericPage.clickOnFlextableButtonToOpenModal(buttonName, flextableName, iFrameId);
     }
     
+    @When("^I click on Agree in \"([^\"]*)\" section$")
+    public void clickOnAcknowledgement(String sectionName) {
+        genericPage.clickOnAcknowledgement(sectionName);
+    }
+    
+    @When("^I expand the \"([^\"]*)\" on grid \"([^\"]*)\"$")
+    public void expandGrid(String uniqueColumnValue, String gridName) {
+        genericPage.expandGrid(uniqueColumnValue, gridName);
+    }
+    
     @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" flextable to switch to frame$")
     public void clickOnButtonForAttachmentNotesToOpenModal(String buttonName, String flextableName) {
         genericPage.clickOnButtonForAttachmentNotesToOpenModal(buttonName, flextableName);
@@ -105,6 +118,11 @@ public class GenericSteps {
     @When("^I click on the \"([^\"]*)\" icon for the \"([^\"]*)\" on the flextable \"([^\"]*)\"$")
     public void clickOnFlextableRowButton(String iconName, String uniqueColumnValue, String flexTableName) {
         genericPage.clickOnFlextableRowButton(iconName, uniqueColumnValue, flexTableName);
+    }
+    
+    @When("^I click on \"([^\"]*)\" on the child grid against \"([^\"]*)\" in the table \"([^\"]*)\"$")
+    public void clickButtonOnChildGrid(String iconName, String uniqueColumnValue, String tableId){
+        genericPage.clickButtonOnChildGrid(iconName, uniqueColumnValue, tableId);
     }
 
     @When("^I click on the \"([^\"]*)\" icon for the \"([^\"]*)\" on the flextable \"([^\"]*)\" to switch to frame \"([^\"]*)\"$")
@@ -159,10 +177,15 @@ public class GenericSteps {
             genericPage.fillFieldsForInlineTable(tableId,parameters.get("tableColumnNumber"),parameters.get("inputype"),parameters.get("inputValue"));
         }
     }
-
+    
     @Then("^I see that \"([^\"]*)\" is in \"([^\"]*)\" status$")
     public void assertStatus(String record, String status) {
         genericPage.assertStatus(record, status);
+    }
+
+    @Then("^I see that \"([^\"]*)\" status is in \"([^\"]*)\" on progress bar$")
+    public void assertStatusProgressBar(String status, String color) {
+        genericPage.assertStatusProgressBar(status, color);
     }
 
     @Then("^I see that \"([^\"]*)\" field is modified to \"([^\"]*)\"$")

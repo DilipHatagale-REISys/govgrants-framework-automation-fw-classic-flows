@@ -1,7 +1,6 @@
 package com.ggproduct.automation.pageobjects;
 
 import org.openqa.selenium.By;
-
 import org.testng.Assert;
 
 import com.automation.rei.controller.Controller;
@@ -13,7 +12,7 @@ import com.ggproduct.automation.projectmanager.UsersAndURL;
 public class GenericPage extends ProjectManager {
     private final By headerOverviewPath, attachmentClassificationPath,
             attachmentDescriptionPath, attachmentFilePath, lookUpSearchPath, lookUpIFramePath, approverDescription,
-            approverDueDate;
+            acknowledgementCheckboxPath;
 
     public GenericPage(Controller controller, Handlers handler, GovGrantsHandler govgrants) {
         super(controller, handler, govgrants);
@@ -25,7 +24,7 @@ public class GenericPage extends ProjectManager {
         lookUpSearchPath = By.xpath("//span[@class='fa fa-search']");
         lookUpIFramePath = By.xpath("//iframe[@id='iframeCustomLookupModalId']");
         approverDescription = By.xpath("//div/label[text()=' Description ']/../span/textarea");
-        approverDueDate = By.xpath("//span[@class='dateInput dateOnlyInput']/input");
+        acknowledgementCheckboxPath = By.xpath("//input[@type='checkbox' and @value='I Agree']");
     }
     
     /**
@@ -69,19 +68,31 @@ public class GenericPage extends ProjectManager {
     }
 
     /**
-     * Handles clicking on the given button
+     * Handles clicking on the given page button
      * 
      * @param buttonName
      */
-    public void clickOnButton(String buttonName) {
+    public void clickOnPageButton(String buttonName) {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         reiDriver.JavaScript().scrollPageDocumentJS("pageup", 0, 0);
         govgrants.pageDetails().clickAnyTopRightButton(buttonName);
 
-        if (buttonName.equals("Submit For Approval")) {
+        if (buttonName.equals("Submit For Approval") || buttonName.equals("Submit Application")) {
             clickOKForAlert();
             govgrants.mainPage().waitForNavigationLogoToDisappear();
         }
+    }
+    
+    /**
+     * Handles clicking on the given page button
+     * 
+     * @param buttonName
+     */
+    public void clickOnPageButtonWithModalId(String buttonName, String IframeId) {
+        govgrants.mainPage().waitForNavigationLogoToDisappear();
+        reiDriver.JavaScript().scrollPageDocumentJS("pageup", 0, 0);
+        govgrants.pageDetails().clickAnyTopRightButton(buttonName);
+        reiDriver.switchTo().switchToFrame(getIFramePath(IframeId));
     }
 
     /**
@@ -110,7 +121,17 @@ public class GenericPage extends ProjectManager {
     }
 
     /**
-     * Assert the status for overviewHeader
+     * Assert the status for a record through progress bar
+     * 
+     * @param record
+     * @param status
+     */
+    public void assertStatusProgressBar(String status,String color) {
+        Assert.assertTrue(isStatusProgressBar(status, color));
+    }
+    
+    /**
+     * Assert the status for a record through overview header
      * 
      * @param record
      * @param status
@@ -218,12 +239,9 @@ public class GenericPage extends ProjectManager {
      * @param iFrameId
      */
     public void clickOnFlextableButton(String buttonName, String flextableName) {
-        if (flextableName.equals(" Attachments")) {
-            reiDriver.WaitFor().WaitForElementToBePresent(getButtonOnFlexTable(buttonName, flextableName)).click();
-        } else {
-            reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
-            reiDriver.WaitFor().WaitForElementToBePresent(getButtonOnFlexTable(buttonName, flextableName)).click();
-        }
+        reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
+        reiDriver.WaitFor().makeThreadSleep(1000);
+        govgrants.flexTable().clickTableTopRightButton(flextableName, buttonName);
     }
 
     /**
@@ -297,6 +315,35 @@ public class GenericPage extends ProjectManager {
         reiDriver.WaitFor().WaitForElementToBePresent(getCloseButtonPath(closeButtonId)).click();
         reiDriver.get().getRefresh();
     }
+    
+    /**
+     * Handles sliding to the right of the child grid and clicking on the row level icon
+     * @param buttonName
+     * @param uniqueColumnName
+     * @param tableId
+     */
+    public void clickButtonOnChildGrid(String iconName, String uniqueColumnValue, String tableId){
+        govgrants.flexTable().slideNestedFlexTable(tableId, 150);
+         govgrants.flexTable().clickTableActionIcons(uniqueColumnValue, iconName);
+    }
+    
+    /**
+     * Handles acknowledging a record
+     * @param sectionName
+     */
+    public void clickOnAcknowledgement(String sectionName) {
+        reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(sectionName));
+        reiDriver.findMyElement().getElement(acknowledgementCheckboxPath).click();
+    }
+    
+    /**
+     * Handles grid expansion
+     * @param sectionName
+     */
+    public void expandGrid(String uniqueColumnValue, String gridName) {
+        reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(gridName));
+        govgrants.flexTable().expandOrCollapseNestedTable(uniqueColumnValue, true);
+    }
 
     /**
      * Clicks on flextable row level buttons inside the record view page where there
@@ -306,11 +353,11 @@ public class GenericPage extends ProjectManager {
      * @param uniqueColumnvalue
      * @param flextableName
      */
-    public void clickOnFlextableRowButton(String buttonName, String uniqueColumnvalue, String flextableName) {
+    public void clickOnFlextableRowButton(String iconName, String uniqueColumnvalue, String flextableName) {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         reiDriver.WaitFor().makeThreadSleep(1000);
         reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
-        govgrants.flexTable().clickTableActionIcons(uniqueColumnvalue, buttonName);
+        govgrants.flexTable().clickTableActionIcons(uniqueColumnvalue, iconName);
     }
 
     /**
@@ -356,6 +403,7 @@ public class GenericPage extends ProjectManager {
             reiDriver.findMyElement().getDropDown(attachmentClassificationPath).selectByValue(attachmentType);
             reiDriver.findMyElement().getElement(attachmentDescriptionPath).sendKeys(defaultLongText);
         }
+        reiDriver.WaitFor().makeThreadSleep(1000);
         reiDriver.findMyElement().getElement(attachmentFilePath).sendKeys(defaultFilePath + fileName);
         govgrants.modal().clickModalContentSpecificButton("Save");
     }
@@ -372,12 +420,14 @@ public class GenericPage extends ProjectManager {
         reiDriver.switchTo().switchToFrame(lookUpIFramePath);
         reiDriver.WaitFor().makeThreadSleep(1000);
         govgrants.flexTable().clickTableActionIcons(approverName, "Select");
+        reiDriver.WaitFor().makeThreadSleep(1000);
         reiDriver.switchTo().switchToParentFrame();
+        reiDriver.WaitFor().makeThreadSleep(1000);
         reiDriver.WaitFor().WaitForElementClickAble(getIFramePath(iFrameId));
         reiDriver.switchTo().switchToFrame(getIFramePath(iFrameId));
+        reiDriver.WaitFor().makeThreadSleep(1000);
         reiDriver.textInput().clearText(approverDescription);
         reiDriver.textInput().enterText(approverDescription, defaultLongText);
-        reiDriver.textInput().enterText(approverDueDate, reiDriver.get().getCurrentDate_MMDDYYYY());
         reiDriver.WaitFor().makeThreadSleep(1000);
         govgrants.modal().clickModalContentSpecificButton("Save");
     }
@@ -454,9 +504,18 @@ public class GenericPage extends ProjectManager {
         }
     }
 
+    private boolean isStatusProgressBar(String status, String color) {
+        govgrants.mainPage().waitForNavigationLogoToDisappear();
+        return govgrants.pageDetails().isStepProgressBarStatusInSpecifiedColor(status, color);
+    }
+    
     private boolean isStatus(String record, String status) {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
-        return govgrants.pageDetails().isStepProgressBarStatusInSpecifiedColor(status, "green");
+        return reiDriver.WaitFor()
+                .WaitForElementToBePresent(By.xpath("//span[text()='" + record
+                        + "']/../../../../../../../..//div//dt/span[text()='Status']/../..//dd//span[text()='" + status
+                        + "']"))
+                .isDisplayed();
     }
 
     private boolean isFieldModified(String fieldLabel, String text) {
