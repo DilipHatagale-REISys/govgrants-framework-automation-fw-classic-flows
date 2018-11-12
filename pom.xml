@@ -169,8 +169,8 @@
 	</dependencies>
 	<repositories>
 		<repository>
-			<id>govgrants-releases</id>
-			<url>http://nexus.reisys.com:8081/nexus/content/repositories/govgrants-releases</url>
+			<id>REI-Automation-Framework</id>
+			<url>http://nexus.reisys.com:8081/nexus/content/repositories/REI-Automation-Framework</url>
 		</repository>
 	</repositories> 
 	<build>
