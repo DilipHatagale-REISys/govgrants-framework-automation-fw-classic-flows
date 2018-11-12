@@ -10,6 +10,6 @@ Feature: Test all login based scenarios
     
   
     Examples:
-    | username | password |
+    | username 		| password   |
     | hema@ggp.dev7 | Product@06 |
    

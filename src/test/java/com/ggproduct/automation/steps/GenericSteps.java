@@ -89,9 +89,9 @@ public class GenericSteps {
         genericPage.clickOnAcknowledgement(sectionName);
     }
     
-    @When("^I expand the grid \"([^\"]*)\"$")
-    public void expandGrid(String sectionName) {
-        genericPage.expandGrid(sectionName);
+    @When("^I expand the \"([^\"]*)\" on grid \"([^\"]*)\"$")
+    public void expandGrid(String uniqueColumnValue, String gridName) {
+        genericPage.expandGrid(uniqueColumnValue, gridName);
     }
     
     @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" flextable to switch to frame$")
@@ -117,6 +117,11 @@ public class GenericSteps {
     @When("^I click on the \"([^\"]*)\" icon for the \"([^\"]*)\" on the flextable \"([^\"]*)\"$")
     public void clickOnFlextableRowButton(String iconName, String uniqueColumnValue, String flexTableName) {
         genericPage.clickOnFlextableRowButton(iconName, uniqueColumnValue, flexTableName);
+    }
+    
+    @When("^I click on \"([^\"]*)\" on the child grid against \"([^\"]*)\" in the table \"([^\"]*)\"$")
+    public void clickButtonOnChildGrid(String iconName, String uniqueColumnValue, String tableId){
+        genericPage.clickButtonOnChildGrid(iconName, uniqueColumnValue, tableId);
     }
 
     @When("^I click on the \"([^\"]*)\" icon for the \"([^\"]*)\" on the flextable \"([^\"]*)\" to switch to frame \"([^\"]*)\"$")

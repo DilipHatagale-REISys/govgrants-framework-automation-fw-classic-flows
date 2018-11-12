@@ -11,7 +11,7 @@ Feature: Validate all scenarios in the Planning tab
     
     Examples:
     | User | Program flextable Header | Program Status |
-    | EXE | Draft Internal Programs | Created |
+    | EXE  | Draft Internal Programs  | Created  	   |
    
   
   @34503 @programCreation @program
@@ -27,7 +27,7 @@ Feature: Validate all scenarios in the Planning tab
     
     Examples:
     | User |
-    | EXE |
+    | EXE  |
     
   @34731 @programEdition @program
   Scenario Outline: Verifying if the EXE, PM, PO has create access to Internal Program
@@ -42,8 +42,8 @@ Feature: Validate all scenarios in the Planning tab
     Then I see that "Abbreviation" field is modified to "AuPr"
     
     Examples:
-    | User | Quick Search Text |
-    | EXE | Automation Program |
+    | User | Quick Search Text  |
+    | EXE  | Automation Program |
     
     
   @34732 @programContactsAssociation @program
@@ -61,8 +61,8 @@ Feature: Validate all scenarios in the Planning tab
     Then I see that "<Contact>" has been added in "Contacts" flextable
     
     Examples:
-    | User | Quick Search Text | Contact |
-    | EXE | Automation Program | Automation EXE |
+    | User | Quick Search Text  | Contact		 |
+    | EXE  | Automation Program | Automation EXE |
     
     
   @34740 @ProgramApproverSelection @program
@@ -83,8 +83,8 @@ Feature: Validate all scenarios in the Planning tab
     Then I see that "<Approver Name>" has been added in "Approvers" flextable
 	
 	Examples:
-	| User | Quick Search Text | Approver Name |
-	| EXE | Automation Program | Automation PM |
+	| User | Quick Search Text  | Approver Name |
+	| EXE  | Automation Program | Automation PM |
 	
 	
   @34616 @programFocusAreaAssociation @program
@@ -102,8 +102,8 @@ Feature: Validate all scenarios in the Planning tab
     Then I see that "<EGMS Id>" has been added in "<Flextable Name>" flextable
 	
 	Examples:
-	| User | Quick Search Text | Flextable Name | EGMS Id |
-	| EXE | Automation Program | Focus Areas | 00005 |
+	| User | Quick Search Text  | Flextable Name | EGMS Id |
+	| EXE  | Automation Program | Focus Areas    | 00005   |
 	
 	
   @34737 @programObjectiveAssociation @program
@@ -121,8 +121,8 @@ Feature: Validate all scenarios in the Planning tab
     Then I see that "<EGMS Id>" has been added in "<Flextable Name>" flextable
 	
 	Examples:
-	| User | Quick Search Text | Flextable Name | EGMS Id |
-	| EXE | Automation Program | Objectives | SPO-0006 |
+	| User | Quick Search Text  | Flextable Name | EGMS Id  |
+	| EXE  | Automation Program | Objectives     | SPO-0006 |
 	
 	
   @34738 @programKPIAssociation @program
@@ -140,8 +140,8 @@ Feature: Validate all scenarios in the Planning tab
     Then I see that "<EGMS Id>" has been added in "<Flextable Name>" flextable
 	
 	Examples:
-	| User | Quick Search Text |  Flextable Name | EGMS Id |
-	| EXE | Automation Program | Key Performance Indicators (KPIs) | KPI-0005 |
+	| User | Quick Search Text  |  Flextable Name 				    | EGMS Id  |
+	| EXE  | Automation Program | Key Performance Indicators (KPIs) | KPI-0005 |
 	
   @34745 @programAttachmentChecklist @program
   Scenario Outline: Validate the attachment checklist for the Internal Program
@@ -154,10 +154,10 @@ Feature: Validate all scenarios in the Planning tab
     And I click on "Setup" subtab
     When I click on "Add" button on "<Flextable Name>" flextable
     And I fill the fields in the table "flexGridHeaderButtonsProgramChecklists":
-    |tableColumnNumber| inputype|inputValue                 |
-    |1                |text     |Automation test description|
-    |2                |dropdown |Mandatory                  |
-    |3                |dropdown |Application                |
+    | tableColumnNumber | inputype | inputValue                  |
+    | 1                 | text     | Automation test description |
+    | 2                 | dropdown | Mandatory                   |
+    | 3                 | dropdown  |Application                 |
     When I click on "Save" button on "<Flextable Name>" flextable  
     When I click on the "Upload Template" icon for the "Not Applicable" on the flextable "<Flextable Name>" to switch to frame "ProgramChecklistsiframeContentId"
     When I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
@@ -165,8 +165,8 @@ Feature: Validate all scenarios in the Planning tab
     Then I see that "Active" has been added in "<Flextable Name>" flextable
 	
 	Examples:
-	| User | Quick Search Text |  Flextable Name |
-	| EXE | Automation Program | Supporting Documents Checklist |
+	| User | Quick Search Text  |  Flextable Name				 |
+	| EXE  | Automation Program | Supporting Documents Checklist |
 	
   @34746 @programAddAttachment @program
   Scenario Outline: Validate the attachment for the Internal Program
@@ -183,8 +183,8 @@ Feature: Validate all scenarios in the Planning tab
     Then I see that "Program Artifacts" has been added in "Attachments" flextable
 	
 	Examples:
-	| User | Quick Search Text |
-	| EXE | Automation Program |
+	| User | Quick Search Text  |
+	| EXE  | Automation Program |
 	
   @34750 @submittingProgramForApproval @program
   Scenario Outline: Validate the submission of Program for Approval
@@ -198,8 +198,8 @@ Feature: Validate all scenarios in the Planning tab
     Then I see that the record is in "Submitted for Approval" status on progress bar
 	
 	Examples:
-	| User | Quick Search Text |
-	| EXE | Automation Program |
+	| User | Quick Search Text  |
+	| EXE  | Automation Program |
 	
   @34752 @34754 @programApproval @program
   Scenario Outline: Validate the approval of Internal Program
@@ -218,8 +218,8 @@ Feature: Validate all scenarios in the Planning tab
     Then I see that the record is in "Approved" status on progress bar
 	
 	Examples:
-	| User | Quick Search Text | Executive Approver |
-	| PM | Automation Program | EXE |
+	| User | Quick Search Text  | Executive Approver |
+	| PM   | Automation Program | EXE				 |
 	
   @34756 @ProgramActivation @program
   Scenario Outline: Validate the activation of Internal Program
@@ -233,8 +233,8 @@ Feature: Validate all scenarios in the Planning tab
     Then I see that the record is in "Active" status on progress bar
 	
 	Examples:
-	| User | Quick Search Text |
-	| EXE | Automation Program |
+	| User | Quick Search Text  |
+	| EXE  | Automation Program |
 	
   @programHappyPath
   Scenario Outline: End to End of a Program
@@ -269,10 +269,10 @@ Feature: Validate all scenarios in the Planning tab
     And I click on "Setup" subtab
     When I click on "Add" button on "Supporting Documents Checklist" flextable
     And I fill the fields in the table "flexGridHeaderButtonsProgramChecklists":
-    |tableColumnNumber| inputype|inputValue                 |
-    |1                |text     |Automation test description|
-    |2                |dropdown |Mandatory                  |
-    |3                |dropdown |Application                |
+    | tableColumnNumber | inputype | inputValue                  |
+    | 1                 | text     | Automation test description |
+    | 2                 | dropdown | Mandatory                   |
+    | 3                 | dropdown | Application                 |
     When I click on "Save" button on "<Flextable Name>" flextable  
     When I click on the "Upload Template" icon for the "Not Applicable" on the flextable "Supporting Documents Checklist" to switch to frame "ProgramChecklistsiframeContentId"
     When I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
@@ -304,8 +304,8 @@ Feature: Validate all scenarios in the Planning tab
     Then I see that the record is in "Active" status on progress bar
   
 	Examples:
-	| User | Approver Name | Program Approver | Executive Approver | Quick Search Text |
-	| EXE | Automation PM | PM | PM |  Automation Program |
+	| User | Approver Name | Program Approver | Executive Approver | Quick Search Text   |
+	| EXE  | Automation PM | PM				  | PM				   |  Automation Program |
 
 	
 	

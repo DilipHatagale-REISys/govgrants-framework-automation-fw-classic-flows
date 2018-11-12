@@ -12,7 +12,7 @@ import com.ggproduct.automation.projectmanager.UsersAndURL;
 public class GenericPage extends ProjectManager {
     private final By headerOverviewPath, attachmentClassificationPath,
             attachmentDescriptionPath, attachmentFilePath, lookUpSearchPath, lookUpIFramePath, approverDescription,
-            approverDueDate, acknowledgementCheckboxPath;
+            acknowledgementCheckboxPath;
 
     public GenericPage(Controller controller, Handlers handler, GovGrantsHandler govgrants) {
         super(controller, handler, govgrants);
@@ -24,7 +24,6 @@ public class GenericPage extends ProjectManager {
         lookUpSearchPath = By.xpath("//span[@class='fa fa-search']");
         lookUpIFramePath = By.xpath("//iframe[@id='iframeCustomLookupModalId']");
         approverDescription = By.xpath("//div/label[text()=' Description ']/../span/textarea");
-        approverDueDate = By.xpath("//span[@class='dateInput dateOnlyInput']/input");
         acknowledgementCheckboxPath = By.xpath("//input[@type='checkbox' and @value='I Agree']");
     }
     
@@ -78,7 +77,7 @@ public class GenericPage extends ProjectManager {
         reiDriver.JavaScript().scrollPageDocumentJS("pageup", 0, 0);
         govgrants.pageDetails().clickAnyTopRightButton(buttonName);
 
-        if (buttonName.equals("Submit For Approval")) {
+        if (buttonName.equals("Submit For Approval") || buttonName.equals("Submit Application")) {
             clickOKForAlert();
             govgrants.mainPage().waitForNavigationLogoToDisappear();
         }
@@ -240,12 +239,9 @@ public class GenericPage extends ProjectManager {
      * @param iFrameId
      */
     public void clickOnFlextableButton(String buttonName, String flextableName) {
-        if (flextableName.equals(" Attachments")) {
-            reiDriver.WaitFor().WaitForElementToBePresent(getButtonOnFlexTable(buttonName, flextableName)).click();
-        } else {
-            reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
-            reiDriver.WaitFor().WaitForElementToBePresent(getButtonOnFlexTable(buttonName, flextableName)).click();
-        }
+        reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
+        reiDriver.WaitFor().makeThreadSleep(1000);
+        reiDriver.WaitFor().WaitForElementToBePresent(getButtonOnFlexTable(buttonName, flextableName)).click();
     }
 
     /**
@@ -321,6 +317,17 @@ public class GenericPage extends ProjectManager {
     }
     
     /**
+     * Handles sliding to the right of the child grid and clicking on the row level icon
+     * @param buttonName
+     * @param uniqueColumnName
+     * @param tableId
+     */
+    public void clickButtonOnChildGrid(String iconName, String uniqueColumnValue, String tableId){
+        reiDriver.Clickers().moveslider(reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='"+tableId+"']//tfoot[@class='tbody-no-border-top']")));
+        govgrants.flexTable().clickTableActionIcons(uniqueColumnValue, iconName);
+    }
+    
+    /**
      * Handles acknowledging a record
      * @param sectionName
      */
@@ -333,9 +340,9 @@ public class GenericPage extends ProjectManager {
      * Handles grid expansion
      * @param sectionName
      */
-    public void expandGrid(String sectionName) {
-        reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(sectionName));
-        reiDriver.findMyElement().getElement(By.xpath("//i[contains(@class,'fa-plus-circle')]")).click();
+    public void expandGrid(String uniqueColumnValue, String gridName) {
+        reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(gridName));
+        govgrants.flexTable().expandOrCollapseNestedTable(uniqueColumnValue, true);
     }
 
     /**
@@ -346,11 +353,11 @@ public class GenericPage extends ProjectManager {
      * @param uniqueColumnvalue
      * @param flextableName
      */
-    public void clickOnFlextableRowButton(String buttonName, String uniqueColumnvalue, String flextableName) {
+    public void clickOnFlextableRowButton(String iconName, String uniqueColumnvalue, String flextableName) {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         reiDriver.WaitFor().makeThreadSleep(1000);
         reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
-        govgrants.flexTable().clickTableActionIcons(uniqueColumnvalue, buttonName);
+        govgrants.flexTable().clickTableActionIcons(uniqueColumnvalue, iconName);
     }
 
     /**
@@ -396,6 +403,7 @@ public class GenericPage extends ProjectManager {
             reiDriver.findMyElement().getDropDown(attachmentClassificationPath).selectByValue(attachmentType);
             reiDriver.findMyElement().getElement(attachmentDescriptionPath).sendKeys(defaultLongText);
         }
+        reiDriver.WaitFor().makeThreadSleep(1000);
         reiDriver.findMyElement().getElement(attachmentFilePath).sendKeys(defaultFilePath + fileName);
         govgrants.modal().clickModalContentSpecificButton("Save");
     }
@@ -412,12 +420,14 @@ public class GenericPage extends ProjectManager {
         reiDriver.switchTo().switchToFrame(lookUpIFramePath);
         reiDriver.WaitFor().makeThreadSleep(1000);
         govgrants.flexTable().clickTableActionIcons(approverName, "Select");
+        reiDriver.WaitFor().makeThreadSleep(1000);
         reiDriver.switchTo().switchToParentFrame();
+        reiDriver.WaitFor().makeThreadSleep(1000);
         reiDriver.WaitFor().WaitForElementClickAble(getIFramePath(iFrameId));
         reiDriver.switchTo().switchToFrame(getIFramePath(iFrameId));
+        reiDriver.WaitFor().makeThreadSleep(1000);
         reiDriver.textInput().clearText(approverDescription);
         reiDriver.textInput().enterText(approverDescription, defaultLongText);
-        reiDriver.textInput().enterText(approverDueDate, reiDriver.get().getCurrentDate_MMDDYYYY());
         reiDriver.WaitFor().makeThreadSleep(1000);
         govgrants.modal().clickModalContentSpecificButton("Save");
     }

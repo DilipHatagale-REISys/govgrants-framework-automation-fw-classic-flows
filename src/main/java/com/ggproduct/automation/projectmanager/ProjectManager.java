@@ -232,7 +232,7 @@ public class ProjectManager extends ProjectWebServices {
             attempts++;
             govgrants.quickSearch().performModalSpecificQuickSearch(tableid, searchTerm);
         }
-        reiDriver.WaitFor().makeThreadSleep(200); // avoid stale elements
+        reiDriver.WaitFor().makeThreadSleep(1000); // avoid stale elements
 
         attempts = 0;
         while (attempts < 10 && reiDriver.is().IsElementPresentQuick(By.xpath("//body/*"))) {
