@@ -10,7 +10,7 @@ Feature: Validate all scenarios in the Announcement tab
 	When I click on "New" button on "Draft Announcements" phase flextable to switch to frame "ActiveFundingOpportunitiesCompitiveiframeContentId"
 	When I enter "Creation" values from "Announcement_Field_Values.xlsx"
 	When I click on "Save and Close Modal" button in the modal
-	Then I see that the record is in "Created" status on progress bar
+	Then I see that "Created" status is in "green" on progress bar
 
 	Examples:
 	| User |
@@ -26,7 +26,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I click on the "Edit" icon for the "<Quick Search Text>" 
 	When I enter "Edition" values from "Announcement_Field_Values.xlsx"
 	When I click on "Save" button
-	Then I see that the record is in "Created" status on progress bar
+	Then I see that "Created" status is in "green" on progress bar
 
 	Examples:
 	| User | Quick Search Text 		 |
@@ -170,7 +170,6 @@ Feature: Validate all scenarios in the Announcement tab
 	| User | Quick Search Text 		 | Flextable Name | EGMS Id  |
 	| EXE  | Automation Announcement | Objectives	  | SPO-0008 |
 	
-	
   @34773 @announcementKPIAssociation @announcement
   Scenario Outline: Validate the association of KPI for the announcement
 	Given I login to "As a Grantor" app as "<User>" User
@@ -268,7 +267,6 @@ Feature: Validate all scenarios in the Announcement tab
 	And I close Modal "GrantorAnnouncementReviewersTempmodalDivCloseIcon"
 	Then I see that "Automation FO" has been added in "<Flextable Name>" flextable
 	
-	
 	Examples:
 	| User | Quick Search Text 		 | Flextable Name |
 	| EXE  | Automation Announcement | Peer Reviewers |
@@ -284,7 +282,6 @@ Feature: Validate all scenarios in the Announcement tab
     And I click on "Responsibilities" subtab
     When I click on the "Send for Review" icon for the "Created" on the flextable "<Flextable Name>"
 	Then I see that "Sent for Review" has been added in "<Flextable Name>" flextable
-	
 	
 	Examples:
 	| User | Quick Search Text 		 | Flextable Name |
@@ -309,7 +306,7 @@ Feature: Validate all scenarios in the Announcement tab
     When I perform quick search "<Quick Search Text>" on table "ActiveFundingOpportunitiesCompitive"
     And I click on the "View" icon for the "<Quick Search Text>"
     When I click on "Complete Review" button
-    Then I see that the record is in "Reviewed" status on progress bar
+    Then I see that "Reviewed" status is in "green" on progress bar
 	
 	Examples:
 	| User | Quick Search Text 		 | Flextable Name |
@@ -342,7 +339,7 @@ Feature: Validate all scenarios in the Announcement tab
     When I perform quick search "<Quick Search Text>" on table "ActiveFundingOpportunitiesCompitive"
     And I click on the "View" icon for the "<Quick Search Text>" 
     When I click on "Submit For Approval" button
-    Then I see that the record is in "Submitted for Approval" status on progress bar
+    Then I see that "Submitted for Approval" status is in "green" on progress bar
 	
 	Examples:
 	| User | Quick Search Text		 |
@@ -368,7 +365,7 @@ Feature: Validate all scenarios in the Announcement tab
     When I perform quick search "<Quick Search Text>" on table "PhasePendingTasks"
     And I click on the "Start" icon for the "<Quick Search Text>" 
     When I click on "Approve" on the approval decision box
-    Then I see that the record is in "Approved" status on progress bar
+    Then I see that "Approved" status is in "green" on progress bar
 	
 	Examples:
 	| Quick Search Text		  |
@@ -383,7 +380,7 @@ Feature: Validate all scenarios in the Announcement tab
     When I perform quick search "<Quick Search Text>" on table "ActiveFundingOpportunitiesCompitive"
     And I click on the "View" icon for the "<Quick Search Text>" 
     When I click on "Publish" button
-    Then I see that the record is in "Published" status on progress bar
+    Then I see that "Published" status is in "green" on progress bar
 	
 	Examples:
 	| User | Quick Search Text 		 |
@@ -501,13 +498,11 @@ Feature: Validate all scenarios in the Announcement tab
     When I perform quick search "<Quick Search Text>" on table "ActiveFundingOpportunitiesCompitive"
     And I click on the "View" icon for the "<Quick Search Text>"
     When I click on "Publish" button
-    Then I see that the record is in "Published" status on progress bar
+    Then I see that "Published" status is in "green" on progress bar
 
 	Examples:
 	| User | Quick Search Text		 |
 	| EXE  | Automation Announcement |
-	
-	
 	
   @announcementDirectedHappyPath
   Scenario Outline: End to End of an Announcement
@@ -625,12 +620,11 @@ Feature: Validate all scenarios in the Announcement tab
     When I perform quick search "<Quick Search Text>" on table "ActiveFundingOpportunitiesCompitive"
     And I click on the "View" icon for the "<Quick Search Text>" 
     When I click on "Publish" button
-    Then I see that the record is in "Published" status on progress bar
+    Then I see that "Published" status is in "green" on progress bar
 
 	Examples:
 	| User | Quick Search Text 				  |
 	| EXE  | Automation Announcement Directed |
-	
 	
   @announcementFormulaHappyPath
   Scenario Outline: End to End of an Announcement
@@ -753,7 +747,7 @@ Feature: Validate all scenarios in the Announcement tab
     When I perform quick search "<Quick Search Text>" on table "ActiveFundingOpportunitiesCompitive"
     And I click on the "View" icon for the "<Quick Search Text>" 
     When I click on "Publish" button
-    Then I see that the record is in "Published" status on progress bar
+    Then I see that "Published" status is in "green" on progress bar
 
 	Examples:
 	| User | Quick Search Text				 |

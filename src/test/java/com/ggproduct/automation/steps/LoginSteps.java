@@ -24,10 +24,6 @@ public class LoginSteps {
 		loginpage.login(userName);
 	}
 	
-	@Given("^I login as \"([^\"]*)\" User to subrecipient portal$")
-    public void loginAsSubrecipient(String userName) {
-        loginpage.loginAsSubrecipient(userName);
-    }
 	
 	@When("^I re-login as \"([^\"]*)\" User$")
 	public void reloginAsDifferentUser(String userName){

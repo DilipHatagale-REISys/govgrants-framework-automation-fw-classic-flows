@@ -19,6 +19,7 @@ public class GenericSteps {
         genericPage = new GenericPage(controller, handler, govgrants);
     }
 
+   
     @Given("^I login to \"([^\"]*)\" app as \"([^\"]*)\" User$")
     public void loginToggleToApp(String appName, String userName) {
         genericPage.loginToggleToApp(appName, userName);
@@ -182,9 +183,9 @@ public class GenericSteps {
         genericPage.assertStatus(record, status);
     }
 
-    @Then("^I see that the record is in \"([^\"]*)\" status on progress bar$")
-    public void assertStatusProgressBar(String status) {
-        genericPage.assertStatusProgressBar(status);
+    @Then("^I see that \"([^\"]*)\" status is in \"([^\"]*)\" on progress bar$")
+    public void assertStatusProgressBar(String status, String color) {
+        genericPage.assertStatusProgressBar(status, color);
     }
 
     @Then("^I see that \"([^\"]*)\" field is modified to \"([^\"]*)\"$")

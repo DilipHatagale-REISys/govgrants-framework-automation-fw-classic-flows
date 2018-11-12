@@ -3,7 +3,7 @@ Feature: Validate all scenarios in the Application Intake
 
   @announcementQualification @applicationIntake
   Scenario Outline: Qualifying an Application
-    Given I login as "<User>" User to subrecipient portal
+    Given I login to "Grants Portal" app as "<User>" User
     When I navigate to "Opportunities" tab
 	And I click "Active" inside side bar "Opportunities"
 	When I perform quick search "<Quick Search Text>" on table "popupflextable"
@@ -17,7 +17,7 @@ Feature: Validate all scenarios in the Application Intake
 	
   @preapplicationCreation @applicationIntake
   Scenario Outline: Creating an Application
-    Given I login as "<User>" User to subrecipient portal
+    Given I login to "Grants Portal" app as "<User>" User
     When I navigate to "Opportunities" tab
 	And I click "Qualified" inside side bar "Opportunities"
 	When I perform quick search "<Quick Search Text>" on table "qleads"
@@ -33,7 +33,7 @@ Feature: Validate all scenarios in the Application Intake
 	
   @34044 @applicationCreation @applicationIntake
   Scenario Outline: Creating an Application
-    Given I login as "<User>" User to subrecipient portal
+    Given I login to "Grants Portal" app as "<User>" User
     When I navigate to "Opportunities" tab
 	And I click "Qualified" inside side bar "Opportunities"
 	When I perform quick search "<Quick Search Text>" on table "qleads"
@@ -50,7 +50,7 @@ Feature: Validate all scenarios in the Application Intake
 	
   @34045 @applicationEdition @applicationIntake
   Scenario Outline: Edition of an application
-    Given I login as "<User>" User to subrecipient portal
+    Given I login to "Grants Portal" app as "<User>" User
     When I navigate to "Applications" tab
 	And I click "Applications" inside side bar "Applications"
 	When I toggle to "Active Applications"
@@ -58,7 +58,7 @@ Feature: Validate all scenarios in the Application Intake
     And I click on the "Edit" icon for the "<Quick Search Text>"
 	When I enter "Edition" values from "Application_Field_Values.xlsx"
 	When I click on "Save" button
-	Then I see that the record is in "Created" status on progress bar
+	Then I see that "Created" status is in "green" on progress bar
 
 	Examples:
 	| User | Quick Search Text                   |
@@ -66,7 +66,7 @@ Feature: Validate all scenarios in the Application Intake
 	
   @34303 @addFocusAreaToApplication @applicationIntake
   Scenario Outline: Addition of Focus area to an application
-	Given I login as "<User>" User to subrecipient portal
+	Given I login to "Grants Portal" app as "<User>" User
 	When I navigate to "Applications" tab
 	And I click "Applications" inside side bar "Applications"
 	When I toggle to "Active Applications"
@@ -84,7 +84,7 @@ Feature: Validate all scenarios in the Application Intake
 	
   @addBudgetDetailsToApplication @applicationIntake
   Scenario Outline: Addition of budget in the budget grid to an application
-	Given I login as "<User>" User to subrecipient portal
+	Given I login to "Grants Portal" app as "<User>" User
 	When I navigate to "Applications" tab
 	And I click "Applications" inside side bar "Applications"
 	When I toggle to "Active Applications"
@@ -105,10 +105,9 @@ Feature: Validate all scenarios in the Application Intake
 	| User | Quick Search Text                   | Flextable Name |
 	| SPI  | Automation Announcement Application | Budget Details |	
 	
-	
   @addTargetToKPIInApplication @applicationIntake
   Scenario Outline: Addition of KPI target to an application
-	Given I login as "<User>" User to subrecipient portal
+	Given I login to "Grants Portal" app as "<User>" User
 	When I navigate to "Applications" tab
 	And I click "Applications" inside side bar "Applications"
 	When I toggle to "Active Applications"
@@ -133,7 +132,7 @@ Feature: Validate all scenarios in the Application Intake
 	
   @uploadAttachmentForChecklistInApplication @applicationIntake
   Scenario Outline: Attachind a document for attachment checklist in an application
-	Given I login as "<User>" User to subrecipient portal
+	Given I login to "Grants Portal" app as "<User>" User
 	When I navigate to "Applications" tab
 	And I click "Applications" inside side bar "Applications"
 	When I toggle to "Active Applications"
@@ -153,7 +152,7 @@ Feature: Validate all scenarios in the Application Intake
 	
   @applicationAcknowledgement @applicationIntake
   Scenario Outline: Acknowledging an application
-    Given I login as "<User>" User to subrecipient portal
+    Given I login to "Grants Portal" app as "<User>" User
     When I navigate to "Applications" tab
 	And I click "Applications" inside side bar "Applications"
 	When I toggle to "Active Applications"
@@ -162,7 +161,7 @@ Feature: Validate all scenarios in the Application Intake
 	And I click on "Overview" subtab
 	When I click on Agree in "Acknowledgement" section
 	When I click on "Save" button
-	Then I see that the record is in "Created" status on progress bar
+	Then I see that "Created" status is in "green" on progress bar
 
 	Examples:
 	| User | Quick Search Text                   |
@@ -170,23 +169,22 @@ Feature: Validate all scenarios in the Application Intake
 	
   @34156 @submitApplication @applicationIntake
   Scenario Outline: Acknowledging an application
-    Given I login as "<User>" User to subrecipient portal
+    Given I login to "Grants Portal" app as "<User>" User
     When I navigate to "Applications" tab
 	And I click "Applications" inside side bar "Applications"
 	When I toggle to "Active Applications"
 	When I perform quick search "<Quick Search Text>" on table "RecipientApplications"
 	And I click on the "View" icon for the "<Quick Search Text>"
     When I click on "Submit Application" button
-    Then I see that the record is in "Submitted" status on progress bar
+    Then I see that "Submitted" status is in "green" on progress bar
 
 	Examples:
 	| User | Quick Search Text                   |
 	| SPI  | Automation Announcement Application |
 	
-	
   @34346 @viewSubmitedApplication @applicationIntake
   Scenario Outline: Viewing the application submitted by subrecipient as Internal user
-    Given I login as "<User>" User to subrecipient portal
+    Given I login to "Grants Portal" app as "<User>" User
     When I navigate to "Applications" tab
 	And I click "Applications" inside side bar "Applications"
 	When I toggle to "Submitted Applications"
@@ -197,10 +195,9 @@ Feature: Validate all scenarios in the Application Intake
 	| User | Quick Search Text                   |
 	| EXE  | Automation Announcement Application |
 	
-	
   @applicationIntakeHappyPath @applicationIntake
   Scenario Outline: Happy path of Application intake
- 	Given I login as "<User>" User to subrecipient portal
+ 	Given I login to "Grants Portal" app as "<User>" User
     When I navigate to "Opportunities" tab
 	And I click "Active" inside side bar "Opportunities"
 	When I perform quick search "<Quick Search Text>" on table "popupflextable"
@@ -248,7 +245,7 @@ Feature: Validate all scenarios in the Application Intake
 	When I click on Agree in "Acknowledgement" section
 	When I click on "Save" button
 	When I click on "Submit Application" button
-	Then I see that the record is in "Submitted" status on progress bar
+	Then I see that "Submitted" status is in "green" on progress bar
 
 	Examples:
 	| User | Quick Search Text       |

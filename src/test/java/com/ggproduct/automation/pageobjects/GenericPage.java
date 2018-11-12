@@ -126,8 +126,8 @@ public class GenericPage extends ProjectManager {
      * @param record
      * @param status
      */
-    public void assertStatusProgressBar(String status) {
-        Assert.assertTrue(isStatusProgressBar(status));
+    public void assertStatusProgressBar(String status,String color) {
+        Assert.assertTrue(isStatusProgressBar(status, color));
     }
     
     /**
@@ -241,6 +241,7 @@ public class GenericPage extends ProjectManager {
     public void clickOnFlextableButton(String buttonName, String flextableName) {
         reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
         reiDriver.WaitFor().makeThreadSleep(1000);
+        
         reiDriver.WaitFor().WaitForElementToBePresent(getButtonOnFlexTable(buttonName, flextableName)).click();
     }
 
@@ -323,8 +324,8 @@ public class GenericPage extends ProjectManager {
      * @param tableId
      */
     public void clickButtonOnChildGrid(String iconName, String uniqueColumnValue, String tableId){
-        reiDriver.Clickers().moveslider(reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='"+tableId+"']//tfoot[@class='tbody-no-border-top']")));
-        govgrants.flexTable().clickTableActionIcons(uniqueColumnValue, iconName);
+        
+         govgrants.flexTable().clickTableActionIcons(uniqueColumnValue, iconName);
     }
     
     /**
@@ -504,9 +505,9 @@ public class GenericPage extends ProjectManager {
         }
     }
 
-    private boolean isStatusProgressBar(String status) {
+    private boolean isStatusProgressBar(String status, String color) {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
-        return govgrants.pageDetails().isStepProgressBarStatusInSpecifiedColor(status, "green");
+        return govgrants.pageDetails().isStepProgressBarStatusInSpecifiedColor(status, color);
     }
     
     private boolean isStatus(String record, String status) {

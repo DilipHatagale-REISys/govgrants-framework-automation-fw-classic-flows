@@ -24,9 +24,9 @@ public class UsersAndURL {
             userName = performLoginQAEnvironment(userLevel);
         } else if (System.getProperty("env").equalsIgnoreCase("uat")) {
             userName = performLoginUATEnvironment(userLevel);
-        } else if (System.getProperty("env").equalsIgnoreCase("uat")) {
-            userName = performLoginUATEnvironment(userLevel);
-        }
+        } else if (System.getProperty("env").equalsIgnoreCase("subportal")) {
+            userName = performLoginSubPortalEnvironment(userLevel);
+        } 
         return userName;
     }
 
@@ -49,9 +49,6 @@ public class UsersAndURL {
         case "FO":
             username = "auto.fm@auto.com";
             break;
-        case "SPI":
-            username = "gcooper@yopmail.com20";
-            break;
         default:
             username = "admin.automation@product.com";
         }
@@ -66,6 +63,19 @@ public class UsersAndURL {
         default:
             username = "To be implemented";
             break;
+        }
+        return username;
+    }
+    
+    public String performLoginSubPortalEnvironment(String userLevel) {
+        String username;
+        
+        switch (userLevel.toUpperCase()) {
+        case "SPI":
+            username = "gcooper@yopmail.com20";
+            break;
+        default:
+            username = "admin.automation@product.com";
         }
         return username;
     }
