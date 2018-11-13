@@ -1,6 +1,10 @@
 @planning
 Feature: Validate all scenarios in the Planning tab
 
+Background: Create Program
+    Given I create a Program
+    #Given delete the created program
+
   @34730 @programListView @program
   Scenario Outline: Verifying if the EXE,PM,PO has access to Internal Programs list view
     Given I login to "As a Grantor" app as "<User>" User
@@ -15,13 +19,6 @@ Feature: Validate all scenarios in the Planning tab
   
   @34503 @programCreation @program
   Scenario Outline: Verifying if the EXE, PM, PO has create access to Internal Program
-    Given I login to "As a Grantor" app as "<User>" User
-    When I navigate to "Planning" tab
-    And I click "Internal Programs" inside side bar "Programs"
-    When I click on "New" button on "Draft Internal Programs" phase flextable
-    When I enter "RequiredForSave" values from "Program_Field_Values.xlsx"
-    When I click on "Save and Continue" button
-    When I click on "Save" button
     Then I see that "Created" status is in "green" on progress bar
     
     Examples:
@@ -54,8 +51,8 @@ Feature: Validate all scenarios in the Planning tab
     And I click on the "View" icon for the "<Quick Search Text>" 
     And I click on "Overview" subtab
     When I click on "Associate" button on "Contacts" flextable to switch to frame "ProgramContactsiframeContentId"
-    When I click "Add" after selection of "<Contact>" in the table "AssociateProgramContactsTable"
-    And I close Modal "ProgramContactsiframeContentIdButton"
+    When I click "Add" after selection of "<Contact>" in the table "AssociateProgramContacts"
+    And I close Modal "ProgramContactsmodalDivCloseIcon"
     Then I see that "<Contact>" has been added in "Contacts" flextable
     
     Examples:
@@ -151,7 +148,7 @@ Feature: Validate all scenarios in the Planning tab
     | tableColumnNumber | inputype | inputValue                  |
     | 1                 | text     | Automation test description |
     | 2                 | dropdown | Mandatory                   |
-    | 3                 | dropdown  |Application                 |
+    | 3                 | dropdown | Application                 |
     When I click on "Save" button on "<Flextable Name>" flextable  
     When I click on the "Upload Template" icon for the "Not Applicable" on the flextable "<Flextable Name>" to switch to frame "ProgramChecklistsiframeContentId"
     When I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
@@ -182,6 +179,11 @@ Feature: Validate all scenarios in the Planning tab
 	
   @34750 @submittingProgramForApproval @program
   Scenario Outline: Validate the submission of Program for Approval
+    Given I enter all the fields for the program
+    Given I associate Contact, Focus Area, Objective to the program
+    Given I select the approvers for the program
+    Given I add an attachment checklist to the program
+    Given I add an attachment to a program
 	Given I login to "As a Grantor" app as "<User>" User
 	When I navigate to "Planning" tab
 	And I click "Internal Programs" inside side bar "Programs"
@@ -197,7 +199,13 @@ Feature: Validate all scenarios in the Planning tab
 	
   @34752 @34754 @programApproval @program
   Scenario Outline: Validate the approval of Internal Program
-	Given I login to "As a Grantor" app as "<User>" User
+  	Given I enter all the fields for the program
+    Given I associate Contact, Focus Area, Objective to the program
+    Given I select the approvers for the program
+    Given I add an attachment checklist to the program
+    Given I add an attachment to a program
+    Given I click on "Submit For Approval" button
+	Given I re-login to "As a Grantor" app as "<User>" User
 	When I navigate to "Planning" tab
 	And I click "Pending Tasks" inside side bar "MyTasks"
     When I perform quick search "<Quick Search Text>" on table "PhasePendingTasks"
@@ -217,6 +225,13 @@ Feature: Validate all scenarios in the Planning tab
 	
   @34756 @ProgramActivation @program
   Scenario Outline: Validate the activation of Internal Program
+  	Given I enter all the fields for the program
+    Given I associate Contact, Focus Area, Objective to the program
+    Given I select the approvers for the program
+    Given I add an attachment checklist to the program
+    Given I add an attachment to a program
+    Given I click on "Submit For Approval" button
+    Given Approvers approve the Program
 	Given I login to "As a Grantor" app as "<User>" User
 	When I navigate to "Planning" tab
 	And I click "Internal Programs" inside side bar "Programs"

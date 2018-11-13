@@ -1,8 +1,7 @@
 @planning
 Feature: Validate all scenarios in the Announcement tab
 
-  @33936 @announcementCreation @announcement
-  Scenario Outline: Creation of an Announcement
+Background: Create Announcement
     Given I login to "As a Grantor" app as "<User>" User
     When I navigate to "Announcements" tab
 	And I click "Competitive" inside side bar "Announcements"
@@ -10,6 +9,9 @@ Feature: Validate all scenarios in the Announcement tab
 	When I click on "New" button on "Draft Announcements" phase flextable to switch to frame "ActiveFundingOpportunitiesCompitiveiframeContentId"
 	When I enter "Creation" values from "Announcement_Field_Values.xlsx"
 	When I click on "Save and Close Modal" button in the modal
+
+  @33936 @announcementCreation @announcement
+  Scenario Outline: Creation of an Announcement
 	Then I see that "Created" status is in "green" on progress bar
 
 	Examples:
