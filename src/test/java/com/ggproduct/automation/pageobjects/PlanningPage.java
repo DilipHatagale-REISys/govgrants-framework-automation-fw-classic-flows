@@ -6,89 +6,89 @@ import com.automation.rei.handlers.GovGrantsHandler;
 import com.automation.rei.handlers.Handlers;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 
-public class ProgramPage extends ProjectManager {
-    public ProgramPage(Controller controller, Handlers handler, GovGrantsHandler govgrants) {
+public class PlanningPage extends ProjectManager {
+    public PlanningPage(Controller controller, Handlers handler, GovGrantsHandler govgrants) {
         super(controller, handler, govgrants);
     }
     
-    public void creationOfProgram() {
-        loginToggleToApp("As a Grantor", "EXE");
+    public void creationOfProgram(String user, String sheetName, String excelFileName) {
+        loginToggleToApp("As a Grantor", user);
         navigateToTab("Planning");
         clickOnSidebar("Internal Programs", "Programs");
+        changeFlexTableView("Draft Internal Programs");
         clickOnFlexTableButton("New", "Draft Internal Programs");
-        enterFieldValues("RequiredForSave", "Program_Field_Values.xlsx");
+        enterFieldValues(sheetName, excelFileName);
         clickOnPageButton("Save and Continue");
         clickOnPageButton("Save");
     }
     
-    public void editionOfProgram() {
+    public void editionOfProgram(String sheetName, String excelFileName) {
         clickOnPageButton("Edit");
-        clickOnSubtab("Overview");
-        enterFieldValues("RequiredForSubmit", "Program_Field_Values.xlsx");
+        enterFieldValues(sheetName, excelFileName);
         clickOnPageButton("Save");
     }
     
-    public void associationOfRecordsToProgram() {
+    public void associationOfRecordsToProgram(String contact, String focusArea, String objective) {
         //Contact association
         clickOnSubtab("Overview");
         clickOnFlextableButtonToOpenModal("Associate", "Contacts", "ProgramContactsiframeContentId");
-        chooseRecordForAssociation("Add", "Automation EXE", "AssociateProgramContacts");
+        chooseRecordForAssociation("Add", contact, "AssociateProgramContacts");
         closeModal("ProgramContactsmodalDivCloseIcon");
         
         //Focus Area association
         clickOnSubtab("Setup");
         clickOnFlextableButtonToOpenModal("Associate", "Focus Areas", "GrantorServiceAreasProgramiframeContentId");
-        chooseRecordForAssociation("Associate", "00005", "popupflextable");
+        chooseRecordForAssociation("Associate", focusArea, "popupflextable");
         closeModal("GrantorServiceAreasProgrammodalDivCloseIcon");
         
         //Objective association
         clickOnSubtab("Setup");
         clickOnFlextableButtonToOpenModal("Associate", "Objectives", "RelatedProgramGoalsandObjectivesiframeContentId");
-        chooseRecordForAssociation("Add", "SPO-0006", "popupflextable");
+        chooseRecordForAssociation("Add", objective, "popupflextable");
         closeModal("RelatedProgramGoalsandObjectivesmodalDivCloseIcon");
     }
     
-    public void approverSelectionForProgram() {
+    public void approverSelectionForProgram(String programApprover, String executiveApprover) {
         clickOnSubtab("Responsibilities");
         clickOnFlextableRowButtontoOpenModal("Edit", "Program Approver", "Approvers", "ProgramRolesAndResponsibilitiesiframeContentId");
-        fillInApproverDetails("Automation PM", "ProgramRolesAndResponsibilitiesiframeContentId");
+        fillInApproverDetails(programApprover, "ProgramRolesAndResponsibilitiesiframeContentId");
         closeModal("ProgramRolesAndResponsibilitiesmodalDivCloseIcon");
         clickOnFlextableRowButtontoOpenModal("Edit", "Executive Approver", "Approvers", "ProgramRolesAndResponsibilitiesiframeContentId");
-        fillInApproverDetails("Automation PM", "ProgramRolesAndResponsibilitiesiframeContentId");
+        fillInApproverDetails(executiveApprover, "ProgramRolesAndResponsibilitiesiframeContentId");
         closeModal("ProgramRolesAndResponsibilitiesmodalDivCloseIcon");
     }
     
-    public void additionOfChecklistToProgram() {
+    public void additionOfChecklistToProgram(String description, String required, String appliesTo, String fileName) {
         clickOnSubtab("Setup");
-        clickOnFlextableButton("Add", "Supporting Documents Checklist");
-        fillFieldsForInlineTable("flexGridHeaderButtonsProgramChecklists", "1", "text", "Automation test description");
-        fillFieldsForInlineTable("flexGridHeaderButtonsProgramChecklists", "2", "dropdown", "Mandatory");
-        fillFieldsForInlineTable("flexGridHeaderButtonsProgramChecklists", "3", "dropdown", "Application");
+        clickOnFlextableButton("Add", "inlineEditGridProgramChecklists");
+        fillFieldsForInlineTable("flexGridHeaderButtonsProgramChecklists", "1", "text", description);
+        fillFieldsForInlineTable("flexGridHeaderButtonsProgramChecklists", "2", "dropdown", required);
+        fillFieldsForInlineTable("flexGridHeaderButtonsProgramChecklists", "3", "dropdown", appliesTo);
         clickOnFlextableButton("Save", "Supporting Documents Checklist");
         clickOnFlextableRowButtontoOpenModal("Upload Template", "Not Applicable", "Supporting Documents Checklist", "ProgramChecklistsiframeContentId");
-        uploadFile("Program_Field_Values.xlsx", "Checklist", "Program");
+        uploadFile(fileName, "Checklist", "Program");
         closeModal("ProgramChecklistsiframeContentIdButton");
     }
     
-    public void additionOfAttachmentToProgram() {
+    public void additionOfAttachmentToProgram(String fileName) {
         clickOnSubtab("Attachments");
         clickOnButtonForAttachmentNotesToOpenModal("Add", "Attachments");
-        uploadFile("InternalOrganization_Field_Values.xlsx", "Attachment", "Program Artifacts");
+        uploadFile(fileName, "Attachment", "Program Artifacts");
         closeModal("Attachment");
     }
     
-    public void approversApproveProgram() {
-        reloginToggleToApp("As a Grantor", "PM");
+    public void approversApproveProgram(String programApprover, String executiveApprover, String programName) {
+        reloginToggleToApp("As a Grantor", programApprover);
         navigateToTab("Planning");
         clickOnSidebar("Pending Tasks", "MyTasks");
-        quickSearchOnTable("Automation Program", "PhasePendingTasks");
-        clickOnFlexTableIcon("Start", "Automation Program");
+        quickSearchOnTable(programName, "PhasePendingTasks");
+        clickOnFlexTableIcon("Start", programName);
         clickOnApprovalDecisionBox("Approve");
-        reloginToggleToApp("As a Grantor", "EXE");
+        reloginToggleToApp("As a Grantor", executiveApprover);
         navigateToTab("Planning");
         clickOnSidebar("Pending Tasks", "MyTasks");
-        quickSearchOnTable("Automation Program", "PhasePendingTasks");
-        clickOnFlexTableIcon("Start", "Automation Program");
+        quickSearchOnTable(programName, "PhasePendingTasks");
+        clickOnFlexTableIcon("Start", programName);
         clickOnApprovalDecisionBox("Approve");
     }
 }

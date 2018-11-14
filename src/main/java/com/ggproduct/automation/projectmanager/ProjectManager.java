@@ -390,7 +390,7 @@ public class ProjectManager extends ProjectWebServices {
     public void clickOnFlextableButton(String buttonName, String flextableName) {
         reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
         reiDriver.WaitFor().makeThreadSleep(1000);
-        govgrants.flexTable().clickTableTopRightButton(flextableName, buttonName);
+        govgrants.phasePannel().clickTopRightButton(flextableName, buttonName);
     }
 
     /**
@@ -563,19 +563,18 @@ public class ProjectManager extends ProjectWebServices {
      * @param approverName
      */
     public void fillInApproverDetails(String approverName, String iFrameId) {
-        reiDriver.WaitFor().makeThreadSleep(1000);
+        reiDriver.WaitFor().makeThreadSleep(700);
         reiDriver.findMyElement().getElement(By.xpath("//span[@class='lookupInput']//input")).sendKeys(approverName);
         reiDriver.WaitFor().WaitForElementToBePresent(lookUpSearchPath).click();
-        reiDriver.WaitFor().makeThreadSleep(1000);
         reiDriver.switchTo().switchToFrame(lookUpIFramePath);
         reiDriver.WaitFor().makeThreadSleep(1000);
         govgrants.flexTable().clickTableActionIcons(approverName, "Select");
-        reiDriver.WaitFor().makeThreadSleep(1000);
+        reiDriver.WaitFor().makeThreadSleep(500);
         reiDriver.switchTo().switchToParentFrame();
-        reiDriver.WaitFor().makeThreadSleep(1000);
-        reiDriver.WaitFor().WaitForElementClickAble(getIFramePath(iFrameId));
-        reiDriver.switchTo().switchToFrame(getIFramePath(iFrameId));
-        reiDriver.WaitFor().makeThreadSleep(1000);
+        reiDriver.WaitFor().makeThreadSleep(500);
+        //reiDriver.WaitFor().makeThreadSleep(1000);
+        //reiDriver.WaitFor().WaitForElementToBePresent(getIFramePath(iFrameId));
+        //reiDriver.switchTo().switchToFrame(getIFramePath(iFrameId));
         reiDriver.textInput().clearText(approverDescription);
         reiDriver.textInput().enterText(approverDescription, defaultLongText);
         reiDriver.WaitFor().makeThreadSleep(1000);
