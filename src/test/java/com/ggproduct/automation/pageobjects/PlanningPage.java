@@ -1,6 +1,5 @@
 package com.ggproduct.automation.pageobjects;
 
-
 import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.automation.rei.handlers.Handlers;
@@ -11,6 +10,12 @@ public class PlanningPage extends ProjectManager {
         super(controller, handler, govgrants);
     }
     
+    /**
+     * Handles creation of a program from the sheet in an excel
+     * @param user
+     * @param sheetName
+     * @param excelFileName
+     */
     public void creationOfProgram(String user, String sheetName, String excelFileName) {
         loginToggleToApp("As a Grantor", user);
         navigateToTab("Planning");
@@ -22,12 +27,23 @@ public class PlanningPage extends ProjectManager {
         clickOnPageButton("Save");
     }
     
+    /**
+     * Handles filling up of fields from the sheet in an excel
+     * @param sheetName
+     * @param excelFileName
+     */
     public void editionOfProgram(String sheetName, String excelFileName) {
         clickOnPageButton("Edit");
         enterFieldValues(sheetName, excelFileName);
         clickOnPageButton("Save");
     }
     
+    /**
+     * Handles association of contact, focus area and objective to a program
+     * @param contact
+     * @param focusArea
+     * @param objective
+     */
     public void associationOfRecordsToProgram(String contact, String focusArea, String objective) {
         //Contact association
         clickOnSubtab("Overview");
@@ -48,6 +64,11 @@ public class PlanningPage extends ProjectManager {
         closeModal("RelatedProgramGoalsandObjectivesmodalDivCloseIcon");
     }
     
+    /**
+     * Handles assigning of approvers to a program
+     * @param programApprover
+     * @param executiveApprover
+     */
     public void approverSelectionForProgram(String programApprover, String executiveApprover) {
         clickOnSubtab("Responsibilities");
         clickOnFlextableRowButtontoOpenModal("Edit", "Program Approver", "Approvers", "ProgramRolesAndResponsibilitiesiframeContentId");
@@ -58,6 +79,13 @@ public class PlanningPage extends ProjectManager {
         closeModal("ProgramRolesAndResponsibilitiesmodalDivCloseIcon");
     }
     
+    /**
+     * Handles adition of checklist to a program
+     * @param description
+     * @param required
+     * @param appliesTo
+     * @param fileName
+     */
     public void additionOfChecklistToProgram(String description, String required, String appliesTo, String fileName) {
         clickOnSubtab("Setup");
         clickOnFlextableButton("Add", "inlineEditGridProgramChecklists");
@@ -70,6 +98,10 @@ public class PlanningPage extends ProjectManager {
         closeModal("ProgramChecklistsiframeContentIdButton");
     }
     
+    /**
+     * Handles adding an attachment to a program
+     * @param fileName
+     */
     public void additionOfAttachmentToProgram(String fileName) {
         clickOnSubtab("Attachments");
         clickOnButtonForAttachmentNotesToOpenModal("Add", "Attachments");
@@ -77,6 +109,12 @@ public class PlanningPage extends ProjectManager {
         closeModal("Attachment");
     }
     
+    /**
+     * Handles approving a program by the assigned approvers
+     * @param programApprover
+     * @param executiveApprover
+     * @param programName
+     */
     public void approversApproveProgram(String programApprover, String executiveApprover, String programName) {
         reloginToggleToApp("As a Grantor", programApprover);
         navigateToTab("Planning");
