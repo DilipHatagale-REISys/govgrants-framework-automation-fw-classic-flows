@@ -6,6 +6,7 @@ import com.automation.rei.handlers.Handlers;
 import com.ggproduct.automation.pageobjects.ApplicationPage;
 
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.When;
 
 public class ApplicationSteps {
     ApplicationPage applicationPage;
@@ -47,5 +48,25 @@ public class ApplicationSteps {
     @Given("^I upload checklist \"([^\"]*)\" to the application$")
     public void uploadChecklistToApplication(String fileName) {
         applicationPage.uploadChecklistToApplication(fileName);
+    }
+    
+    @Given("^Pre-Screen Review is done for Application \"([^\"]*)\" as user \"([^\"]*)\" submitted for announcement \"([^\"]*)\"$")
+    public void completePreScreenReviewForApplication(String applicationName, String announcementOwner, String announcementName) {
+        applicationPage.completePreScreenReviewForApplication(applicationName, announcementOwner, announcementName);
+    }
+    
+    @Given("^I enter the Due In Days as \"([^\"]*)\" for all SME review steps$")
+    public void enterDueInDaysSME(String dueInDays) {
+        applicationPage.enterDueInDaysSME(dueInDays);
+    }
+    
+    @Given("^I assign Reviewers \"([^\"]*)\" for Program Review, \"([^\"]*)\" for Fiscal Review, \"([^\"]*)\" for Compliance Review in SME Review$")
+    public void assignApplicationForReviewerSME(String programReviewer, String fiscalReviewer, String complianceReviewer) {
+        applicationPage.assignApplicationForReviewerSME(programReviewer, fiscalReviewer, complianceReviewer);
+    }
+    
+    @When("^I add \"([^\"]*)\" as reviewer in the table \"([^\"]*)\"$")
+    public void addReviewerForReview(String reviewer, String tableId) {
+        applicationPage.addReviewerForReview(reviewer, tableId);
     }
 }

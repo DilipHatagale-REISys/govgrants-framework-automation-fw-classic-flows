@@ -259,6 +259,15 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     /**
+     * Handles scrolling to a specific section
+     * 
+     * @param sectionName
+     */
+    public void scrollToSection(String sectionName) {
+        reiDriver.JavaScript().scrollpageToSpecificElement(getScrollToSection(sectionName));
+    }
+
+    /**
      * Handles entering of field values
      * 
      * @param sheetName
@@ -381,6 +390,16 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     /**
+     * Handles clicking on confirmation dialog box
+     * 
+     * @param alertDecision
+     */
+    public void clickOnConfirmationtBox(String confirmationDecision) {
+        govgrants.modal().handleModalAlert("Yes");
+        reiDriver.WaitFor().makeThreadSleep(5000);
+    }
+
+    /**
      * Handles clicking on the top button of the given flextable
      * 
      * @param buttonName
@@ -390,7 +409,23 @@ public class ProjectManager extends ProjectWebServices {
     public void clickOnFlextableButton(String buttonName, String flextableName) {
         reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
         reiDriver.WaitFor().makeThreadSleep(1000);
-        govgrants.phasePannel().clickTopRightButton(flextableName, buttonName);
+        try {
+            govgrants.phasePannel().clickTopRightButton(flextableName, buttonName);
+        } catch (Exception ex) {
+            reiDriver.findMyElement().getElement(By.xpath("//*[text()='" + flextableName
+                    + "']/ancestor::div[1]/following-sibling::div//*[text()='" + buttonName + "']")).click();
+        }
+    }
+
+    /**
+     * Handles selecting a record in the flextable
+     * 
+     * @param uniqueColumnValue
+     * @param flexTableName
+     */
+    public void clickOnCheckbox(String uniqueColumnValue, String flextableName) {
+        reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
+        reiDriver.findMyElement().getElement(getCheckboxForSpecificRecord(uniqueColumnValue)).click();
     }
 
     /**
@@ -473,8 +508,13 @@ public class ProjectManager extends ProjectWebServices {
      * @param uniqueColumnName
      * @param tableId
      */
-    public void clickButtonOnChildGrid(String iconName, String uniqueColumnValue, String tableId) {
-        govgrants.flexTable().slideNestedFlexTable(tableId, 150);
+    public void clickButtonOnGrid(String iconName, String uniqueColumnValue, String tableId) {
+        try {
+            govgrants.flexTable().slideNestedFlexTable(tableId, 150);
+        } catch (Exception ex) {
+            reiDriver.Clickers()
+                    .moveslider(reiDriver.findMyElement().getElement(By.xpath("//div[@id='" + tableId + "']//tfoot")));
+        }
         govgrants.flexTable().clickTableActionIcons(uniqueColumnValue, iconName);
     }
 
@@ -494,8 +534,31 @@ public class ProjectManager extends ProjectWebServices {
      * @param sectionName
      */
     public void expandGrid(String uniqueColumnValue, String gridName) {
-        reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(gridName));
-        govgrants.flexTable().expandOrCollapseNestedTable(uniqueColumnValue, true);
+        reiDriver.WaitFor().makeThreadSleep(500);
+        reiDriver.JavaScript().scrollpageToSpecificElement(getScrollToSection(gridName));
+        try {
+            govgrants.flexTable().expandOrCollapseNestedTable(uniqueColumnValue, true);
+        } catch (Exception ex) {
+            reiDriver.findMyElement().getElement(By.xpath(
+                    "//td//*[text()='" + uniqueColumnValue + "']//ancestor::tr[1]//i[contains(@class, 'plus')]")).click();
+        }
+    }
+    
+    
+    /**
+     * Handles grid collapsing
+     * 
+     * @param sectionName
+     */
+    public void collapseGrid(String uniqueColumnValue, String gridName) {
+        reiDriver.WaitFor().makeThreadSleep(500);
+        reiDriver.JavaScript().scrollpageToSpecificElement(getScrollToSection(gridName));
+        try {
+            govgrants.flexTable().expandOrCollapseNestedTable(uniqueColumnValue, false);
+        } catch (Exception ex) {
+            reiDriver.findMyElement().getElement(By.xpath(
+                    "//td//*[text()='" + uniqueColumnValue + "']//ancestor::tr[1]//i[contains(@class, 'minus')]")).click();
+        }
     }
 
     /**
@@ -600,7 +663,16 @@ public class ProjectManager extends ProjectWebServices {
      * Handles filling in the fields for attachment checklist
      */
     public void fillFieldsForInlineTable(String tableId, String columnNumber, String inputType, String inputValue) {
-        govgrants.flexTable().inlineEdit(tableId, columnNumber, inputType, inputValue);
+        try {
+            govgrants.flexTable().inlineEdit(tableId, columnNumber, inputType, inputValue);
+        } catch (Exception ex) {
+            reiDriver.findMyElement().getElement(By.xpath("//*[@id = '" + tableId
+                    + "']/ancestor::div[contains(@class,'panel')]//td[" + columnNumber + "]//input")).clear();
+            reiDriver
+                    .findMyElement().getElement(By.xpath("//*[@id = '" + tableId
+                            + "']/ancestor::div[contains(@class,'panel')]//td[" + columnNumber + "]//input"))
+                    .sendKeys(inputValue);
+        }
     }
 
     /******* "Local Methods with Limited functionality " **********/
@@ -621,9 +693,9 @@ public class ProjectManager extends ProjectWebServices {
         return By.xpath("//span[@id='" + fieldId + "']/input[@type='text']");
     }
 
-    private By getScrollToSection(String flextableName) {
-        return By.xpath("//div[contains(@class,'panel-heading')]//*[@title='" + flextableName
-                + "']|//div[contains(@class,'panel-heading')]//*[text()='" + flextableName + "']");
+    private By getScrollToSection(String sectionName) {
+        return By.xpath("//div[contains(@class,'panel-heading')]//*[@title='" + sectionName
+                + "']|//div[contains(@class,'panel-heading')]//*[text()='" + sectionName + "']");
     }
 
     private void reloginAsDifferentUser(String userName) {
@@ -646,6 +718,10 @@ public class ProjectManager extends ProjectWebServices {
 
     private By getIFramePath(String iFrameId) {
         return By.xpath("//iframe[@id='" + iFrameId + "']");
+    }
+
+    private By getCheckboxForSpecificRecord(String uniqueColumnValue) {
+        return By.xpath("//td//*[text()='" + uniqueColumnValue + "']/ancestor::tr[1]//td//input[@type='checkbox']");
     }
 
     private By getCheckbox() {

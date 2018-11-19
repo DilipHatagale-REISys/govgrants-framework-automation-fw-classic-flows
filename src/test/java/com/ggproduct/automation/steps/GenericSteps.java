@@ -94,6 +94,11 @@ public class GenericSteps {
         projectManager.expandGrid(uniqueColumnValue, gridName);
     }
     
+    @When("^I collapse the \"([^\"]*)\" on grid \"([^\"]*)\"$")
+    public void collapseGrid(String uniqueColumnValue, String gridName) {
+        projectManager.collapseGrid(uniqueColumnValue, gridName);
+    }
+    
     @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" flextable to switch to frame$")
     public void clickOnButtonForAttachmentNotesToOpenModal(String buttonName, String flextableName) {
         projectManager.clickOnButtonForAttachmentNotesToOpenModal(buttonName, flextableName);
@@ -102,6 +107,16 @@ public class GenericSteps {
     @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" flextable$")
     public void clickOnFlextableButton(String buttonName, String flextableName) {
         projectManager.clickOnFlextableButton(buttonName, flextableName);
+    }
+    
+    @When("^I click \"([^\"]*)\" on the confirmation dialog box$")
+    public void clickOnConfirmationtBox(String confirmationDecision) {
+        projectManager.clickOnConfirmationtBox(confirmationDecision);
+    }
+    
+    @When("^I choose \"([^\"]*)\" in the flextable \"([^\"]*)\"$")
+    public void clickOnCheckbox(String uniqueColumnValue, String flextableName) {
+        projectManager.clickOnCheckbox(uniqueColumnValue, flextableName);
     }
 
     @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" phase flextable$")
@@ -119,9 +134,14 @@ public class GenericSteps {
         projectManager.clickOnFlextableRowButton(iconName, uniqueColumnValue, flexTableName);
     }
     
-    @When("^I click on \"([^\"]*)\" on the child grid against \"([^\"]*)\" in the table \"([^\"]*)\"$")
-    public void clickButtonOnChildGrid(String iconName, String uniqueColumnValue, String tableId){
-        projectManager.clickButtonOnChildGrid(iconName, uniqueColumnValue, tableId);
+    @When("^I scroll to \"([^\"]*)\" section$")
+    public void scrollToSection(String sectionName){
+        projectManager.scrollToSection(sectionName);
+    }
+    
+    @When("^I click on \"([^\"]*)\" on the grid against \"([^\"]*)\" in the table \"([^\"]*)\"$")
+    public void clickButtonOnGrid(String iconName, String uniqueColumnValue, String tableId){
+        projectManager.clickButtonOnGrid(iconName, uniqueColumnValue, tableId);
     }
 
     @When("^I click on the \"([^\"]*)\" icon for the \"([^\"]*)\" on the flextable \"([^\"]*)\" to switch to frame \"([^\"]*)\"$")

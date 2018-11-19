@@ -40,7 +40,7 @@ Feature: Validate all scenarios in the Application Intake
 	    When I click on "Financials" subtab
 	    And I expand the "BP01" on grid "<Flextable Name>"
 	    When I expand the "Proposed Budget" on grid "<Flextable Name>"
-	    And I click on "Edit" on the child grid against "Construction" in the table "toggleFGridApplicationBudgetCategoryGrantorFlexGrid"
+	    And I click on "Edit" on the grid against "Construction" in the table "toggleFGridApplicationBudgetCategoryGrantorFlexGrid"
 		When I fill the fields in the table "childTableId":
 	    | tableColumnNumber | inputype | inputValue                 |
 	    | 3                 | text     | 5000                       |

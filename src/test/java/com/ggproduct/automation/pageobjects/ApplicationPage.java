@@ -1,5 +1,8 @@
 package com.ggproduct.automation.pageobjects;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
 import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.automation.rei.handlers.Handlers;
@@ -68,7 +71,7 @@ public class ApplicationPage extends ProjectManager {
         clickOnSubtab("Financials");
         expandGrid("BP01", "Budget Details");
         expandGrid("Proposed Budget", "Budget Details");
-        clickButtonOnChildGrid("Edit", "Construction", "toggleFGridApplicationBudgetCategoryGrantorFlexGrid");
+        clickButtonOnGrid("Edit", "Construction", "toggleFGridApplicationBudgetCategoryGrantorFlexGrid");
         fillFieldsForInlineTable("childTableId", "3", "text", awardBudget);
         fillFieldsForInlineTable("childTableId", "4", "text", cashMatch);
         fillFieldsForInlineTable("childTableId", "5", "text", nonCashMatch);
@@ -105,5 +108,54 @@ public class ApplicationPage extends ProjectManager {
         closeModal("ApplicationChecklistsiframeContentIdButton");
     }
     
+    public void completePreScreenReviewForApplication(String applicationName, String announcementOwner, String announcementName) {
+        loginToggleToApp("As a Grantor", announcementOwner);
+        navigateToTab("Applications");
+        clickOnSidebar("Reviews", "Application Review");
+        changeFlexTableView("Applications Under Review");
+        quickSearchOnTable(announcementName, "flexTableRandomID1");
+        clickOnFlexTableIcon("View", announcementName);
+        clickOnSubtab("Related Logs");
+        scrollToSection("Manage Reviews");
+        clickButtonOnGrid("View", "Pre-Screen Review", "AnnouncementReviewStepsFlexToggle");
+        clickOnCheckbox(applicationName, "Review Decisions");
+        clickOnFlextableButton("Promote to Next Step", "Review Decisions");
+        clickOnConfirmationtBox("Yes");
+    }
     
+    public void addReviewerForReview(String reviewer, String tableId) {
+        reiDriver.findMyElement().getElement(By.xpath("//*[@id = '"+tableId+"']//following-sibling::td[1]//input")).sendKeys(reviewer);
+        reiDriver.WaitFor().makeThreadSleep(1000);
+        reiDriver.findMyElement().getElement(By.xpath("//ul[@class='select2-results']//li//span[text()='"+reviewer+"']")).click();
+    }
+    
+    public void enterDueInDaysSME(String dueInDays) {
+        clickOnFlextableRowButton("Edit", "Program Review", "Review Forms");
+        fillFieldsForInlineTable("RelatedReviewPanelGridresizable", "8", "text", dueInDays);
+        clickOnFlextableButton("Save", "Review Forms");
+        clickOnFlextableRowButton("Edit", "Fiscal Review", "Review Forms");
+        fillFieldsForInlineTable("RelatedReviewPanelGridresizable", "8", "text", dueInDays);
+        clickOnFlextableButton("Save", "Review Forms");
+        clickOnFlextableRowButton("Edit", "Compliance Review", "Review Forms");
+        fillFieldsForInlineTable("RelatedReviewPanelGridresizable", "8", "text", dueInDays);
+        clickOnFlextableButton("Save", "Review Forms");
+    }
+    
+    public void assignApplicationForReviewerSME(String programReviewer, String fiscalReviewer, String complianceReviewer) {
+        expandGrid("Program Review", "Review Forms");
+        clickOnFlextableButton("Add", "Reviewers");
+        addReviewerForReview(programReviewer, "RelatedExternalReviewersGridresizable");
+        clickOnFlextableButton("Save", "Review Forms");
+        collapseGrid("Program Review", "Review Forms");
+        expandGrid("Fiscal Review", "Review Forms");
+        clickOnFlextableButton("Add", "Reviewers");
+        addReviewerForReview(fiscalReviewer, "RelatedExternalReviewersGridresizable");
+        clickOnFlextableButton("Save", "Review Forms");
+        collapseGrid("Fiscal Review", "Review Forms");
+        expandGrid("Compliance Review", "Review Forms");
+        clickOnFlextableButton("Add", "Reviewers");
+        addReviewerForReview(complianceReviewer, "RelatedExternalReviewersGridresizable");
+        clickOnFlextableButton("Save", "Review Forms");
+        collapseGrid("Compliance Review", "Review Forms");
+    }
 }
