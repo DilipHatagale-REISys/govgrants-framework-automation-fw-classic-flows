@@ -118,6 +118,11 @@ public class GenericSteps {
     public void clickOnCheckbox(String uniqueColumnValue, String flextableName) {
         projectManager.clickOnCheckbox(uniqueColumnValue, flextableName);
     }
+    
+    @When("^I switch to Parent frame$")
+    public void switchToParentFrame() {
+        projectManager.switchToParentFrame();
+    }
 
     @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" phase flextable$")
     public void clickOnFlexTableButton(String buttonName, String flextableName) {

@@ -153,13 +153,13 @@ Feature: Validate all scenarios in the Announcement tab
 	    When I click on "Responsibilities" subtab
 	    And I click on the "Edit" icon for the "Program Approver" on the flextable "Approvers" to switch to frame "GrantorAnnouncementRolesandResponsibilitiesiframeContentId"
 	    When I fill in the "Automation PM" in the frame "GrantorAnnouncementRolesandResponsibilitiesiframeContentId" for the Approver details
-	    And I close Modal "GrantorAnnouncementRolesandResponsibilitiesmodalDivCloseIcon"
+	    And I switch to Parent frame
 	    When I click on the "Edit" icon for the "Fiscal Approver" on the flextable "Approvers" to switch to frame "GrantorAnnouncementRolesandResponsibilitiesiframeContentId"
 	    And I fill in the "Automation FO" in the frame "GrantorAnnouncementRolesandResponsibilitiesiframeContentId" for the Approver details
-	    When I close Modal "GrantorAnnouncementRolesandResponsibilitiesmodalDivCloseIcon"
+	    And I switch to Parent frame
 	    And I click on the "Edit" icon for the "Executive Approver" on the flextable "Approvers" to switch to frame "GrantorAnnouncementRolesandResponsibilitiesiframeContentId"
 	    When I fill in the "Automation EXE" in the frame "GrantorAnnouncementRolesandResponsibilitiesiframeContentId" for the Approver details
-	    And I close Modal "GrantorAnnouncementRolesandResponsibilitiesmodalDivCloseIcon"
+	    And I switch to Parent frame
 	    Then I see that "Automation EXE" has been added in "Approvers" flextable
 	    
   	@34232 @announcementReviewerAssignment @announcement
@@ -273,7 +273,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Quick Search Text		  |
 	| Automation Announcement |
 
-  	@34462 @publishingCompetitiveAnnouncement @announcement
+  	@34462 @publishingCompetitiveAnnouncement @announcementCompetitiveHappyPath @announcement
   	Scenario Outline: Validate the activation of Internal Program
   		Given I complete the Announcement fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
   		And I add a Funding Account "FA--21" with the amount "100000" to an announcement
@@ -299,7 +299,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| User | Quick Search Text 					   |
 	| EXE  | Automation Announcement to be deleted |
 	
-	@34462 @publishingDirectedAnnouncement @announcement
+	@34462 @publishingDirectedAnnouncement @announcementDirectedHappyPath @announcement
   	Scenario Outline: Validate the activation of Internal Program
   		Given I complete the Announcement fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
   		And I associate an agency "RG-000010" to the annoucement
@@ -326,7 +326,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| User | Quick Search Text 		 |
 	| EXE  | Automation Announcement |
 	
-	@34462 @publishingFormulaAnnouncement @announcement
+	@34462 @publishingFormulaAnnouncement @announcementFormulaHappyPath @announcement
   	Scenario Outline: Validate the activation of Internal Program
   		Given I complete the Announcement fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
   		And I associate an agency "RG-000010" with amount "100000" to the annoucement

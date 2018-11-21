@@ -1,9 +1,9 @@
 @applicationIntake
 Feature: Validate all scenarios in the Application Intake
 
-	Background: Qualify Announcement and Create Application
-		Given I qualiy the announcement "Automation Announcement for Application Intake" as user "SPI"
-		And I create an Application from sheet "Creation" in excel "Application_Field_Values.xlsx"
+	#Background: Qualify Announcement and Create Application
+		#Given I qualiy the announcement "Automation Announcement for Application Intake" as user "SPI"
+		#And I create an Application from sheet "Creation" in excel "Application_Field_Values.xlsx"
 	
   	@preapplicationCreation @applicationIntake
   	Scenario: Creating a Pre-Application
@@ -108,7 +108,7 @@ Feature: Validate all scenarios in the Application Intake
 	| User | Quick Search Text                   |
 	| SPI  | Automation Announcement Application |
 	
-  	@34156 @submitApplication @applicationIntake
+  	@34156 @submitApplication @applicationIntakeHappyPath @applicationIntake
   	Scenario Outline: Acknowledging an application
   		Given I complete the Application fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
   		And I add focus area "00005" to the application

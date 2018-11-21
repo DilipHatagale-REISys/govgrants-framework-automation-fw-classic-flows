@@ -50,9 +50,9 @@ public class ApplicationSteps {
         applicationPage.uploadChecklistToApplication(fileName);
     }
     
-    @Given("^Pre-Screen Review is done for Application \"([^\"]*)\" as user \"([^\"]*)\" submitted for announcement \"([^\"]*)\"$")
-    public void completePreScreenReviewForApplication(String applicationName, String announcementOwner, String announcementName) {
-        applicationPage.completePreScreenReviewForApplication(applicationName, announcementOwner, announcementName);
+    @Given("^\"([^\"]*)\" is done for Application \"([^\"]*)\" as user \"([^\"]*)\" submitted for announcement \"([^\"]*)\"$")
+    public void completeReviewStepForApplication(String reviewStep, String applicationName, String announcementOwner, String announcementName) {
+        applicationPage.completeReviewStepForApplication(reviewStep, applicationName, announcementOwner, announcementName);
     }
     
     @Given("^I enter the Due In Days as \"([^\"]*)\" for all SME review steps$")
@@ -60,13 +60,53 @@ public class ApplicationSteps {
         applicationPage.enterDueInDaysSME(dueInDays);
     }
     
-    @Given("^I assign Reviewers \"([^\"]*)\" for Program Review, \"([^\"]*)\" for Fiscal Review, \"([^\"]*)\" for Compliance Review in SME Review$")
-    public void assignApplicationForReviewerSME(String programReviewer, String fiscalReviewer, String complianceReviewer) {
-        applicationPage.assignApplicationForReviewerSME(programReviewer, fiscalReviewer, complianceReviewer);
+    @Given("^I add Reviewers \"([^\"]*)\" for Program Review, \"([^\"]*)\" for Fiscal Review, \"([^\"]*)\" for Compliance Review in SME Review$")
+    public void addReviewerForReviewSME(String programReviewer, String fiscalReviewer, String complianceReviewer) {
+        applicationPage.addReviewerForReviewSME(programReviewer, fiscalReviewer, complianceReviewer);
+    }
+    
+    @Given("^I assign application \"([^\"]*)\" to the Reviewers for SME Review$")
+    public void assignApplicationToReviewerSME(String applicationName) {
+        applicationPage.assignApplicationToReviewerSME(applicationName);
+    }
+    
+    @Given("^I choose Reviews for SME review and Send for Review$")
+    public void chooseAndSendReviewsSME() {
+        applicationPage.chooseAndSendReviewsSME();
+    }
+    
+    @Given("^I complete review form as assigned reviewers for SME review$")
+    public void completeReviewFormSME() {
+        applicationPage.completeReviewFormSME();
     }
     
     @When("^I add \"([^\"]*)\" as reviewer in the table \"([^\"]*)\"$")
     public void addReviewerForReview(String reviewer, String tableId) {
         applicationPage.addReviewerForReview(reviewer, tableId);
+    }
+    
+    @When("^I fill in the Review form$")
+    public void fillInReviewForm() {
+        applicationPage.fillInReviewForm();
+    }
+    
+    @Given("^I enter the Due In Days as \"([^\"]*)\" for all Management review steps$")
+    public void enterDueInDaysManagement(String dueInDays) {
+        applicationPage.enterDueInDaysManagement(dueInDays);
+    }
+    
+    @Given("^I add Reviewers \"([^\"]*)\" for Management Review$")
+    public void addReviewerForReviewManagement(String ManagementReviewer) {
+        applicationPage.addReviewerForReviewManagement(ManagementReviewer);
+    }
+    
+    @Given("^I assign application \"([^\"]*)\" to the Reviewers for Management Review$")
+    public void assignApplicationToReviewerManagement(String applicationName) {
+        applicationPage.assignApplicationToReviewerManagement(applicationName);
+    }
+    
+    @Given("^I choose Reviews for Management review and Send for Review$")
+    public void chooseAndSendReviewsManagement() {
+        applicationPage.chooseAndSendReviewsManagement();
     }
 }

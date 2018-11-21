@@ -73,10 +73,10 @@ public class PlanningPage extends ProjectManager {
         clickOnSubtab("Responsibilities");
         clickOnFlextableRowButtontoOpenModal("Edit", "Program Approver", "Approvers", "ProgramRolesAndResponsibilitiesiframeContentId");
         fillInApproverDetails(programApprover, "ProgramRolesAndResponsibilitiesiframeContentId");
-        closeModal("ProgramRolesAndResponsibilitiesmodalDivCloseIcon");
+        switchToParentFrame();
         clickOnFlextableRowButtontoOpenModal("Edit", "Executive Approver", "Approvers", "ProgramRolesAndResponsibilitiesiframeContentId");
         fillInApproverDetails(executiveApprover, "ProgramRolesAndResponsibilitiesiframeContentId");
-        closeModal("ProgramRolesAndResponsibilitiesmodalDivCloseIcon");
+        switchToParentFrame();
     }
     
     /**

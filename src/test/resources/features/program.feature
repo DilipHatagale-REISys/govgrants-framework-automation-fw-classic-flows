@@ -43,10 +43,10 @@ Feature: Validate all scenarios in the Planning tab
 	    When I click on "Responsibilities" subtab
 	    And I click on the "Edit" icon for the "Program Approver" on the flextable "Approvers" to switch to frame "ProgramRolesAndResponsibilitiesiframeContentId"
 	    When I fill in the "<Program Approver Name>" in the frame "ProgramRolesAndResponsibilitiesiframeContentId" for the Approver details
-	    And I close Modal "ProgramRolesAndResponsibilitiesmodalDivCloseIcon"
+	    And I switch to Parent frame
 	    When I click on the "Edit" icon for the "Executive Approver" on the flextable "Approvers" to switch to frame "ProgramRolesAndResponsibilitiesiframeContentId"
 	    And I fill in the "<Executive Approver Name>" in the frame "ProgramRolesAndResponsibilitiesiframeContentId" for the Approver details
-	    When I close Modal "ProgramRolesAndResponsibilitiesmodalDivCloseIcon"
+	   	And I switch to Parent frame
 	    Then I see that "<Program Approver Name>" has been added in "Approvers" flextable
 	
 	Examples:
@@ -152,7 +152,7 @@ Feature: Validate all scenarios in the Planning tab
 	| Program Approver | Quick Search Text  			  | Executive Approver |
 	| PM               | Automation Program to be deleted | EXE			  	   |
 	
-  	@34756 @ProgramActivation @program
+  	@34756 @ProgramActivation @programHappyPath @program
   	Scenario Outline: Validate the activation of Internal Program
 	  	Given I complete the Program fields from the sheet "RequiredForSubmit" in excel "Program_Field_Values.xlsx"
 	    And I associate Contact "Automation EXE", Focus Area "00005", Objective "SPO-0006" to the program

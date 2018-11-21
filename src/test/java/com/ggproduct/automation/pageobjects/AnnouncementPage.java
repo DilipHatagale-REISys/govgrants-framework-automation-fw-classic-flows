@@ -136,15 +136,15 @@ public class AnnouncementPage extends ProjectManager {
         clickOnFlextableRowButtontoOpenModal("Edit", "Program Approver", "Approvers",
                 "GrantorAnnouncementRolesandResponsibilitiesiframeContentId");
         fillInApproverDetails(programApprover, "GrantorAnnouncementRolesandResponsibilitiesiframeContentId");
-        closeModal("GrantorAnnouncementRolesandResponsibilitiesmodalDivCloseIcon");
+        switchToParentFrame();
         clickOnFlextableRowButtontoOpenModal("Edit", "Fiscal Approver", "Approvers",
                 "GrantorAnnouncementRolesandResponsibilitiesiframeContentId");
         fillInApproverDetails(fiscalApprover, "GrantorAnnouncementRolesandResponsibilitiesiframeContentId");
-        closeModal("GrantorAnnouncementRolesandResponsibilitiesmodalDivCloseIcon");
+        switchToParentFrame();
         clickOnFlextableRowButtontoOpenModal("Edit", "Executive Approver", "Approvers",
                 "GrantorAnnouncementRolesandResponsibilitiesiframeContentId");
         fillInApproverDetails(executiveApprover, "GrantorAnnouncementRolesandResponsibilitiesiframeContentId");
-        closeModal("GrantorAnnouncementRolesandResponsibilitiesmodalDivCloseIcon");
+        switchToParentFrame();
     }
 
     /**
