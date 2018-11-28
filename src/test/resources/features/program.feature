@@ -29,7 +29,7 @@ Feature: Validate all scenarios in the Planning tab
   	@34732 @programContactsAssociation @program
   	Scenario Outline: Verifying if the EXE, PM, PO can associate contact with Internal Program
 	    When I click on "Overview" subtab
-	    And I click on "Associate" button on "Contacts" flextable to switch to frame "ProgramContactsiframeContentId"
+	    And I click on "Associate" button on "Contacts" flextable
 	    When I click "Add" after selection of "<Contact>" in the table "AssociateProgramContacts"
 	    And I close Modal "ProgramContactsmodalDivCloseIcon"
 	    Then I see that "<Contact>" has been added in "Contacts" flextable
@@ -56,7 +56,7 @@ Feature: Validate all scenarios in the Planning tab
   	@34616 @programFocusAreaAssociation @program
   	Scenario Outline: Validate the association of Focus Area for the Internal Program
 	    When I click on "Setup" subtab
-	    And I click on "Associate" button on "<Flextable Name>" flextable to switch to frame "GrantorServiceAreasProgramiframeContentId"
+	    And I click on "Associate" button on "<Flextable Name>" flextable
 	    When I click "Associate" after selection of "<EGMS Id>" in the table "popupflextable"
 	    And I close Modal "GrantorServiceAreasProgrammodalDivCloseIcon"
 	    Then I see that "<EGMS Id>" has been added in "<Flextable Name>" flextable
@@ -68,7 +68,7 @@ Feature: Validate all scenarios in the Planning tab
   	@34737 @programObjectiveAssociation @program
   	Scenario Outline: Validate the Association of Objective to the Internal Program
 	    When I click on "Setup" subtab
-	    And I click on "Associate" button on "<Flextable Name>" flextable to switch to frame "RelatedProgramGoalsandObjectivesiframeContentId"
+	    And I click on "Associate" button on "<Flextable Name>" flextable
 	    When I click "Add" after selection of "<EGMS Id>" in the table "popupflextable"
 	    And I close Modal "RelatedProgramGoalsandObjectivesmodalDivCloseIcon"
 	    Then I see that "<EGMS Id>" has been added in "<Flextable Name>" flextable
@@ -80,7 +80,7 @@ Feature: Validate all scenarios in the Planning tab
   	@34738 @programKPIAssociation @program
   	Scenario Outline: Validate the assignment of Approvers for the Internal Program
 	    When I click on "Setup" subtab
-	    And I click on "Associate" button on "<Flextable Name>" flextable to switch to frame "ProgramKeyOutcomesiframeContentId"
+	    And I click on "Associate" button on "<Flextable Name>" flextable
 	    When I click "Add" after selection of "<EGMS Id>" in the table "popupflextable"
 	    And I close Modal "ProgramKeyOutcomesmodalDivCloseIcon"
 	    Then I see that "<EGMS Id>" has been added in "<Flextable Name>" flextable

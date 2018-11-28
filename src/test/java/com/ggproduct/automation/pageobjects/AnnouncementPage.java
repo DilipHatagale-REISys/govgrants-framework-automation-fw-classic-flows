@@ -1,12 +1,12 @@
 package com.ggproduct.automation.pageobjects;
 
 import com.automation.rei.controller.Controller;
+import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
-import com.automation.rei.handlers.Handlers;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 
 public class AnnouncementPage extends ProjectManager {
-    public AnnouncementPage(Controller controller, Handlers handler, GovGrantsHandler govgrants) {
+    public AnnouncementPage(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
         super(controller, handler, govgrants);
     }
     
@@ -22,8 +22,7 @@ public class AnnouncementPage extends ProjectManager {
         navigateToTab("Announcements");
         clickOnSidebar(AnnouncementType, "Announcements");
         changeFlexTableView("Draft Announcements");
-        clickOnFlexTableButtonToOpenModal("New", "Draft Announcements",
-                "ActiveFundingOpportunitiesCompitiveiframeContentId");
+        clickOnFlexTableButtonToOpenModal("New", "ActiveFundingOpportunitiesCompitive");
         enterFieldValues(sheetName, excelFileName);
         clickOnModalButton("Save And Close");
         clickOnPageButton("Save");
@@ -46,7 +45,7 @@ public class AnnouncementPage extends ProjectManager {
      */
     public void associateAgencyToAnnouncement(String agency) {
         clickOnSubtab("Overview");
-        clickOnFlextableButtonToOpenModal("Add Organizations", "Invited Applicants", "FormulaGrantsAwardOrganizationsiframeContentId");
+        clickOnFlextableButtonToOpenModal("Add Organizations", "Invited Applicants");
         chooseRecordForAssociation("Add", agency, "SoleSourceAwardRecipientsTable");
         closeModal("FormulaGrantsAwardOrganizationsiframeContentIdButton");
     }
@@ -70,8 +69,7 @@ public class AnnouncementPage extends ProjectManager {
      */
     public void addFundingAccountToAnnouncement(String fundingAccount, String amount) {
         clickOnSubtab("Financials");
-        clickOnFlextableButtonToOpenModal("Associate", "Funding Accounts",
-                "AnnouncementFundingAccountGrantoriframeContentId");
+        clickOnFlextableButtonToOpenModal("Associate", "Funding Accounts");
         chooseRecordForAssociation("Add", fundingAccount, "popupflextable");
         closeModal("AnnouncementFundingAccountGrantoriframeContentIdButton");
         clickOnFlextableRowButton("Edit", fundingAccount, "Funding Accounts");
@@ -106,20 +104,19 @@ public class AnnouncementPage extends ProjectManager {
     public void associationOfRecordsToAnnouncement(String contact, String focusArea, String objective) {
         // Contact association
         clickOnSubtab("Overview");
-        clickOnFlextableButtonToOpenModal("Associate", "Contacts", "AnnouncementContactsiframeContentId");
+        clickOnFlextableButtonToOpenModal("Associate", "Contacts");
         chooseRecordForAssociation("Add", contact, "AssociateAnnouncementContacts");
         closeModal("AnnouncementContactsmodalDivCloseIcon");
 
         // Focus Area association
         clickOnSubtab("Setup");
-        clickOnFlextableButtonToOpenModal("Associate", "Focus Areas", "AnnouncementServiceArea1iframeContentId");
+        clickOnFlextableButtonToOpenModal("Associate", "Focus Areas");
         chooseRecordForAssociation("Add", focusArea, "popupflextable");
         closeModal("AnnouncementServiceArea1modalDivCloseIcon");
 
         // Objective association
         clickOnSubtab("Setup");
-        clickOnFlextableButtonToOpenModal("Associate", "Objectives",
-                "AnnouncementGranteeStrategicGoalsObjectivesiframeContentId");
+        clickOnFlextableButtonToOpenModal("Associate", "Objectives");
         chooseRecordForAssociation("Add", objective, "popupflextable");
         closeModal("AnnouncementGranteeStrategicGoalsObjectivesmodalDivCloseIcon");
     }
@@ -215,7 +212,7 @@ public class AnnouncementPage extends ProjectManager {
      */
     public void initiateReviewForAnnouncement(String sheetName, String excelFileName) {
         clickOnSubtab("Responsibilities");
-        clickOnFlextableButtonToOpenModal("New", "Peer Reviewers", "GrantorAnnouncementReviewersTempiframeContentId");
+        clickOnFlextableButtonToOpenModal("New", "Peer Reviewers");
         enterFieldValues(sheetName, excelFileName);
         clickOnModalButton("Save");
         closeModal("GrantorAnnouncementReviewersTempmodalDivCloseIcon");

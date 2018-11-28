@@ -18,7 +18,7 @@ Feature: Validate all scenarios in the Announcement tab
   	@37029 @announcementContactAssociation @announcement
   	Scenario Outline: Contact association to an Announcement
 		When I click on "Overview" subtab
-	    And I click on "Associate" button on "<Flextable Name>" flextable to switch to frame "AnnouncementContactsiframeContentId"
+	    And I click on "Associate" button on "ActiveFundingOpportunitiesCompitive" flextable
 	    When I click "Add" after selection of "<Contact>" in the table "AssociateAnnouncementContacts"
 	    And I close Modal "AnnouncementContactsmodalDivCloseIcon"
 	    Then I see that "<Contact>" has been added in "<Flextable Name>" flextable
@@ -30,13 +30,13 @@ Feature: Validate all scenarios in the Announcement tab
   	@34759 @announcementDirectedInviteApplicant @announcementDirected
   	Scenario Outline: Organization association to an Announcement
 		When I click on "Overview" subtab
-	    And I click on "Add Organizations" button on "<Flextable Name>" flextable to switch to frame "FormulaGrantsAwardOrganizationsiframeContentId"
+	    And I click on "Add Organizations" button on "<Flextable Name>" flextable
 	    When I click "Add" after selection of "<Agency Code>" in the table "SoleSourceAwardRecipientsTable"
 	    And I close Modal "FormulaGrantsAwardOrganizationsiframeContentIdButton"
 	    Then I see that "<Agency Code>" has been added in "<Flextable Name>" flextable
 
 	Examples:
-	| Agency Code | Flextable Name	 |
+	| Agency Code | Flextable Name	   |
 	| RG-000010   | Invited Applicants |
 
   	@34760 @announcementFormulaInviteApplicant @announcementFormula
@@ -56,7 +56,7 @@ Feature: Validate all scenarios in the Announcement tab
   	@34769 @announcementFundingAccountAssociation @announcement
  	Scenario Outline: Funding Account association to an Announcement
 		When I click on "Financials" subtab
-	    And I click on "Associate" button on "<Flextable Name>" flextable to switch to frame "AnnouncementFundingAccountGrantoriframeContentId"
+	    And I click on "Associate" button on "<Flextable Name>" flextable
 	    When I click "Add" after selection of "<EGMS Id>" in the table "popupflextable"
 	    And I close Modal "AnnouncementFundingAccountGrantoriframeContentIdButton"
 	    When I click on the "Edit" icon for the "<EGMS Id>" on the flextable "<Flextable Name>"
@@ -87,7 +87,7 @@ Feature: Validate all scenarios in the Announcement tab
   	@34775 @announcementFocusAreaAssociation @announcement
   	Scenario Outline: Validate the association of Focus Area to Announcement
 	    When I click on "Setup" subtab
-	    And I click on "Associate" button on "<Flextable Name>" flextable to switch to frame "AnnouncementServiceArea1iframeContentId"
+	    And I click on "Associate" button on "<Flextable Name>" flextable
 	    When I click "Add" after selection of "<EGMS Id>" in the table "popupflextable"
 	    And I close Modal "AnnouncementServiceArea1modalDivCloseIcon"
 	    Then I see that "<EGMS Id>" has been added in "<Flextable Name>" flextable
@@ -99,7 +99,7 @@ Feature: Validate all scenarios in the Announcement tab
   	@34774 @announcementObjectiveAssociation @announcement
   	Scenario Outline: Validate the association of objective to the Announcement 
 	    When I click on "Setup" subtab
-	    And I click on "Associate" button on "<Flextable Name>" flextable to switch to frame "AnnouncementGranteeStrategicGoalsObjectivesiframeContentId"
+	    And I click on "Associate" button on "<Flextable Name>" flextable
 	    When I click "Add" after selection of "<EGMS Id>" in the table "popupflextable"
 	    And I close Modal "AnnouncementGranteeStrategicGoalsObjectivesmodalDivCloseIcon"
 	    Then I see that "<EGMS Id>" has been added in "<Flextable Name>" flextable
@@ -111,7 +111,7 @@ Feature: Validate all scenarios in the Announcement tab
   	@34773 @announcementKPIAssociation @announcement
   	Scenario Outline: Validate the association of KPI for the announcement
 	    When I click on "Setup" subtab
-	    And I click on "Associate" button on "<Flextable Name>" flextable to switch to frame "ProgramKeyOutcomesiframeContentId"
+	    And I click on "Associate" button on "<Flextable Name>" flextable
 	    When I click "Add" after selection of "<EGMS Id>" in the table "popupflextable"
 	    And I close Modal "ProgramKeyOutcomesmodalDivCloseIcon"
 	    Then I see that "<KPI>" has been added in "<Flextable Name>" flextable
@@ -165,7 +165,7 @@ Feature: Validate all scenarios in the Announcement tab
   	@34232 @announcementReviewerAssignment @announcement
   	Scenario Outline: Validate the assignment of Reviewer for the Announcement
 	    When I click on "Responsibilities" subtab
-		And I click on "New" button on "<Flextable Name>" flextable to switch to frame "GrantorAnnouncementReviewersTempiframeContentId"
+		And I click on "New" button on "<Flextable Name>" flextable
 		When I enter "Reviewer" values from "Announcement_Field_Values.xlsx"
 		And I click on "Save" button in the modal
 		When I close Modal "GrantorAnnouncementReviewersTempmodalDivCloseIcon"
@@ -178,7 +178,7 @@ Feature: Validate all scenarios in the Announcement tab
   	@34778 @announcementReviewerInitiation @announcement
   	Scenario Outline: Validate the assignment of Reviewer for the Announcement
 	    When I click on "Responsibilities" subtab
-		And I click on "New" button on "<Flextable Name>" flextable to switch to frame "GrantorAnnouncementReviewersTempiframeContentId"
+		And I click on "New" button on "<Flextable Name>" flextable
 		When I enter "Reviewer" values from "Announcement_Field_Values.xlsx"
 		And I click on "Save" button in the modal
 		When I close Modal "GrantorAnnouncementReviewersTempmodalDivCloseIcon"

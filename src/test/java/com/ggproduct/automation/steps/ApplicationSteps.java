@@ -1,8 +1,8 @@
 package com.ggproduct.automation.steps;
 
 import com.automation.rei.controller.Controller;
+import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
-import com.automation.rei.handlers.Handlers;
 import com.ggproduct.automation.pageobjects.ApplicationPage;
 
 import cucumber.api.java.en.Given;
@@ -11,7 +11,7 @@ import cucumber.api.java.en.When;
 public class ApplicationSteps {
     ApplicationPage applicationPage;
 
-    public ApplicationSteps(Controller controller, Handlers handler, GovGrantsHandler govgrants) {
+    public ApplicationSteps(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
         applicationPage = new ApplicationPage(controller, handler, govgrants);
     }
     
@@ -108,5 +108,10 @@ public class ApplicationSteps {
     @Given("^I choose Reviews for Management review and Send for Review$")
     public void chooseAndSendReviewsManagement() {
         applicationPage.chooseAndSendReviewsManagement();
+    }
+    
+    @Given("^I complete review form as assigned reviewers for Management review$")
+    public void completeReviewFormManagement() {
+        applicationPage.completeReviewFormManagement();
     }
 }

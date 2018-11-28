@@ -1,20 +1,21 @@
 package com.ggproduct.automation.pageobjects;
 
 import java.util.ArrayList;
+
 import java.util.Collections;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.automation.rei.controller.Controller;
+import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
-import com.automation.rei.handlers.Handlers;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 
 public class ApplicationPage extends ProjectManager {
     private final By getTitles, ConflictOfInterestReviewFromPath;
 
-    public ApplicationPage(Controller controller, Handlers handler, GovGrantsHandler govgrants) {
+    public ApplicationPage(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
         super(controller, handler, govgrants);
         getTitles = By.xpath("//div[@class='panel-heading']//h3");
         ConflictOfInterestReviewFromPath = By.xpath("//span//input[@type='radio'][@value='I agree']");
@@ -67,7 +68,7 @@ public class ApplicationPage extends ProjectManager {
      */
     public void additionOfFocusAreaToApplication(String focusArea) {
         clickOnSubtab("Financials");
-        clickOnFlextableButtonToOpenModal("Add Focus Area", "Focus Area", "FocusAreaAppiframeContentId");
+        clickOnFlextableButtonToOpenModal("Add Focus Area", "Focus Area");
         chooseRecordForAssociation("Add", focusArea, "popupflextable");
         closeModal("FocusAreaAppmodalDivCloseIcon");
     }
@@ -122,6 +123,13 @@ public class ApplicationPage extends ProjectManager {
         closeModal("ApplicationChecklistsiframeContentIdButton");
     }
 
+    /**
+     * Handles completion of one review process by clicking on Promote to Next step button for the passed application
+     * @param reviewStep
+     * @param applicationName
+     * @param announcementOwner
+     * @param announcementName
+     */
     public void completeReviewStepForApplication(String reviewStep, String applicationName, String announcementOwner,
             String announcementName) {
         loginToggleToApp("As a Grantor", announcementOwner);
@@ -138,6 +146,11 @@ public class ApplicationPage extends ProjectManager {
         clickOnConfirmationtBox("Yes");
     }
 
+    /**
+     * Handles adding reviewer to a review step
+     * @param reviewer
+     * @param tableId
+     */
     public void addReviewerForReview(String reviewer, String tableId) {
         reiDriver.findMyElement().getElement(By.xpath("//*[@id = '" + tableId + "']//following-sibling::td[1]//input"))
                 .sendKeys(reviewer);
@@ -145,7 +158,11 @@ public class ApplicationPage extends ProjectManager {
         reiDriver.findMyElement()
                 .getElement(By.xpath("//ul[@class='select2-results']//li//span[text()='" + reviewer + "']")).click();
     }
-
+    
+    /**
+     * Handles entering of due date for SME review
+     * @param dueInDays
+     */
     public void enterDueInDaysSME(String dueInDays) {
         clickOnFlextableRowButton("Edit", "Program Review", "Review Forms");
         fillFieldsForInlineTable("RelatedReviewPanelGridresizable", "8", "text", dueInDays);
@@ -158,6 +175,12 @@ public class ApplicationPage extends ProjectManager {
         clickOnFlextableButton("Save", "Review Forms");
     }
 
+    /**
+     * Handles adding reviewer to SME review
+     * @param programReviewer
+     * @param fiscalReviewer
+     * @param complianceReviewer
+     */
     public void addReviewerForReviewSME(String programReviewer, String fiscalReviewer, String complianceReviewer) {
         expandGrid("Program Review", "Review Forms");
         clickOnFlextableButton("Add", "Reviewers");
@@ -176,6 +199,10 @@ public class ApplicationPage extends ProjectManager {
         collapseGrid("Compliance Review", "Review Forms");
     }
 
+    /**
+     * Handles assigning of given application to the reviewer
+     * @param applicationName
+     */
     public void assignApplicationToReviewerSME(String applicationName) {
         expandGrid("Program Review", "Review Forms");
         clickOnFlextableRowButtontoOpenModal("Assign", "Automation PM", "Reviewers",
@@ -194,6 +221,9 @@ public class ApplicationPage extends ProjectManager {
         switchToParentFrame();
     }
 
+    /**
+     * Handles choosing and sending the review records for review
+     */
     public void chooseAndSendReviewsSME() {
         clickOnCheckbox("Program Review", "Reviews");
         clickOnCheckbox("Fiscal Review", "Reviews");
@@ -201,6 +231,9 @@ public class ApplicationPage extends ProjectManager {
         clickOnFlextableButton("Send for Review", "Reviews");
     }
 
+    /**
+     * Handles completing review form as a reviewer in SME review
+     */
     public void completeReviewFormSME() {
         reloginToggleToApp("As a Grantor", "PM");
         navigateToTab("Applications");
@@ -228,12 +261,20 @@ public class ApplicationPage extends ProjectManager {
         clickOnPageButton("Submit");
     }
     
+    /**
+     * Handles entering of due in days for management review
+     * @param dueInDays
+     */
     public void enterDueInDaysManagement(String dueInDays) {
         clickOnFlextableRowButton("Edit", "Management Review", "Review Forms");
         fillFieldsForInlineTable("RelatedReviewPanelGridresizable", "8", "text", dueInDays);
         clickOnFlextableButton("Save", "Review Forms");
     }
     
+    /**
+     * Handles adding of reviewer to the management review
+     * @param managementReviewer
+     */
     public void addReviewerForReviewManagement(String managementReviewer) {
         expandGrid("Program Review", "Review Forms");
         clickOnFlextableButton("Add", "Reviewers");
@@ -241,6 +282,10 @@ public class ApplicationPage extends ProjectManager {
         clickOnFlextableButton("Save", "Review Forms");
     }
     
+    /**
+     * Handles assigning of given application to reviewer
+     * @param applicationName
+     */
     public void assignApplicationToReviewerManagement(String applicationName) {
         expandGrid("Management Review", "Review Forms");
         clickOnFlextableRowButtontoOpenModal("Assign", "Automation EXE", "Reviewers",
@@ -249,11 +294,31 @@ public class ApplicationPage extends ProjectManager {
         switchToParentFrame();
     }
     
+    /**
+     * Handles choosing and sending the review records for review
+     */
     public void chooseAndSendReviewsManagement() {
         clickOnCheckbox("Management Review", "Reviews");
         clickOnFlextableButton("Send for Review", "Reviews");
     }
+    
+    /**
+     * Handles completing review form as a reviewer in Management review
+     */
+    public void completeReviewFormManagement() {
+        reloginToggleToApp("As a Grantor", "EXE");
+        navigateToTab("Applications");
+        clickOnSidebar("Pending Tasks", "My Tasks");
+        quickSearchOnTable("Management Review", "PhasePendingTasks");
+        clickOnFlexTableIcon("Start", "Management Review");
+        fillInReviewForm();
+        clickOnPageButton("Save");
+        clickOnPageButton("Submit");
+    }
 
+    /**
+     * Handles filling up of any given review form
+     */
     public void fillInReviewForm() {
         reiDriver.findMyElement().getElement(ConflictOfInterestReviewFromPath).click();
         for (int i = 0; i < getTitlesReviewForm().size(); i++) {

@@ -9,7 +9,7 @@ import org.testng.Assert;
 
 import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.GovGrantsHandler;
-import com.automation.rei.handlers.Handlers;
+import com.automation.rei.handlers.CoreHandlers;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
@@ -21,7 +21,7 @@ import com.google.gson.JsonParser;
  * 
  */
 public class ProjectManager extends ProjectWebServices {
-    public Handlers reiDriver;
+    public CoreHandlers reiDriver;
     public Controller controller;
     public GovGrantsHandler govgrants;
     public final String defaultPassword = "SALESFORCE2018";
@@ -35,7 +35,7 @@ public class ProjectManager extends ProjectWebServices {
      * @param controller
      * @param reiDriver
      */
-    public ProjectManager(Controller controller, Handlers reiDriver, GovGrantsHandler govgrants) {
+    public ProjectManager(Controller controller, CoreHandlers reiDriver, GovGrantsHandler govgrants) {
         this.controller = controller;
         this.reiDriver = reiDriver;
         this.govgrants = govgrants;
@@ -364,8 +364,8 @@ public class ProjectManager extends ProjectWebServices {
      * @param flextableName
      * @param iFrameId
      */
-    public void clickOnFlexTableButtonToOpenModal(String buttonName, String flextableName, String iFrameId) {
-        govgrants.modal().clickModalContentSpecificButton(buttonName);
+    public void clickOnFlexTableButtonToOpenModal(String buttonName, String flextableName) {
+        govgrants.flexTable().clickTableTopRightButton(flextableName, buttonName);
     }
 
     /**
@@ -446,7 +446,7 @@ public class ProjectManager extends ProjectWebServices {
      * @param flextableName
      * @param iFrameId
      */
-    public void clickOnFlextableButtonToOpenModal(String buttonName, String flextableName, String iFrameId) {
+    public void clickOnFlextableButtonToOpenModal(String buttonName, String flextableName) {
         reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
         govgrants.modal().clickModalContentSpecificButton(buttonName);
 
@@ -617,7 +617,7 @@ public class ProjectManager extends ProjectWebServices {
             govgrants.quickSearch().performModalSpecificQuickSearch(tableId, recordUniqueName);
         } catch(Exception ex) {
             By searchInputBox = By.cssSelector("div#" + tableId + " div>input[placeholder='Quick Search']");
-            //reiDriver.findMyElement().getElement(searchInputBox);
+            reiDriver.findMyElement().getElement(searchInputBox);
             reiDriver.WaitFor().WaitForElementToBePresent(searchInputBox).clear();
             reiDriver.WaitFor().WaitForElementToBePresent(searchInputBox).sendKeys(recordUniqueName);
             reiDriver.WaitFor().WaitForElementToBePresent(By.cssSelector("div#" + tableId + " a>i.fa.fa-search")).click();

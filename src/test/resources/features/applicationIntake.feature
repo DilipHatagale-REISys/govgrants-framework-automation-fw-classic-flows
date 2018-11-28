@@ -1,9 +1,5 @@
 @applicationIntake
 Feature: Validate all scenarios in the Application Intake
-
-	#Background: Qualify Announcement and Create Application
-		#Given I qualiy the announcement "Automation Announcement for Application Intake" as user "SPI"
-		#And I create an Application from sheet "Creation" in excel "Application_Field_Values.xlsx"
 	
   	@preapplicationCreation @applicationIntake
   	Scenario: Creating a Pre-Application
@@ -26,7 +22,7 @@ Feature: Validate all scenarios in the Application Intake
   	@34303 @addFocusAreaToApplication @applicationIntake
   	Scenario Outline: Addition of Focus area to an application
 	    When I click on "Financials" subtab
-	    And I click on "Add Focus Area" button on "<Flextable Name>" flextable to switch to frame "FocusAreaAppiframeContentId"
+	    And I click on "Add Focus Area" button on "<Flextable Name>" flextable
 	    When I click "Add" after selection of "<EGMS Id>" in the table "popupflextable"
 	    And I close Modal "FocusAreaAppmodalDivCloseIcon"
 	    Then I see that "<EGMS Id>" has been added in "<Flextable Name>" flextable

@@ -2,8 +2,8 @@ package com.ggproduct.automation.steps;
 
 import java.util.Map;
 import com.automation.rei.controller.Controller;
+import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
-import com.automation.rei.handlers.Handlers;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 
 import cucumber.api.DataTable;
@@ -14,7 +14,7 @@ import cucumber.api.java.en.When;
 public class GenericSteps {
     ProjectManager projectManager;
 
-    public GenericSteps(Controller controller, Handlers handler, GovGrantsHandler govgrants) {
+    public GenericSteps(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
         projectManager = new ProjectManager(controller, handler, govgrants);
     }
 
@@ -78,11 +78,6 @@ public class GenericSteps {
     public void clickOnSubtab(String subtabName) {
         projectManager.clickOnSubtab(subtabName);
     }
-
-    @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" flextable to switch to frame \"([^\"]*)\"$")
-    public void clickOnFlextableButtonToOpenModal(String buttonName, String flextableName, String iFrameId) {
-        projectManager.clickOnFlextableButtonToOpenModal(buttonName, flextableName, iFrameId);
-    }
     
     @When("^I click on Agree in \"([^\"]*)\" section$")
     public void clickOnAcknowledgement(String sectionName) {
@@ -123,15 +118,10 @@ public class GenericSteps {
     public void switchToParentFrame() {
         projectManager.switchToParentFrame();
     }
-
-    @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" phase flextable$")
-    public void clickOnFlexTableButton(String buttonName, String flextableName) {
-        projectManager.clickOnFlexTableButton(buttonName, flextableName);
-    }
     
-    @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" phase flextable to switch to frame \"([^\"]*)\"$")
-    public void clickOnFlexTableButtonToOpenModal(String buttonName, String flextableName, String iFrameId) {
-        projectManager.clickOnFlexTableButtonToOpenModal(buttonName, flextableName, iFrameId);
+    @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" phase flextable$")
+    public void clickOnFlexTableButtonToOpenModal(String buttonName, String flextableName) {
+        projectManager.clickOnFlexTableButtonToOpenModal(buttonName, flextableName);
     }
 
     @When("^I click on the \"([^\"]*)\" icon for the \"([^\"]*)\" on the flextable \"([^\"]*)\"$")
