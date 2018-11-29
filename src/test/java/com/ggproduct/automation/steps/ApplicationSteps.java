@@ -1,16 +1,17 @@
 package com.ggproduct.automation.steps;
 
 import com.automation.rei.controller.Controller;
+import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
-import com.automation.rei.handlers.Handlers;
 import com.ggproduct.automation.pageobjects.ApplicationPage;
 
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.When;
 
 public class ApplicationSteps {
     ApplicationPage applicationPage;
 
-    public ApplicationSteps(Controller controller, Handlers handler, GovGrantsHandler govgrants) {
+    public ApplicationSteps(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
         applicationPage = new ApplicationPage(controller, handler, govgrants);
     }
     
@@ -47,5 +48,85 @@ public class ApplicationSteps {
     @Given("^I upload checklist \"([^\"]*)\" to the application$")
     public void uploadChecklistToApplication(String fileName) {
         applicationPage.uploadChecklistToApplication(fileName);
+    }
+    
+    @Given("^\"([^\"]*)\" is completed by clicking \"([^\"]*)\" for Application \"([^\"]*)\" as user \"([^\"]*)\" submitted for announcement \"([^\"]*)\"$")
+    public void completeReviewStepForApplication(String reviewStep, String buttonName, String applicationName, String announcementOwner, String announcementName) {
+        applicationPage.completeReviewStepForApplication(reviewStep, buttonName, applicationName, announcementOwner, announcementName);
+    }
+    
+    @Given("^I enter the Due In Days as \"([^\"]*)\" for all SME review steps$")
+    public void enterDueInDaysSME(String dueInDays) {
+        applicationPage.enterDueInDaysSME(dueInDays);
+    }
+    
+    @Given("^I add Reviewers \"([^\"]*)\" for Program Review, \"([^\"]*)\" for Fiscal Review, \"([^\"]*)\" for Compliance Review in SME Review$")
+    public void addReviewerForReviewSME(String programReviewer, String fiscalReviewer, String complianceReviewer) {
+        applicationPage.addReviewerForReviewSME(programReviewer, fiscalReviewer, complianceReviewer);
+    }
+    
+    @Given("^I assign application \"([^\"]*)\" to the Reviewers for SME Review$")
+    public void assignApplicationToReviewerSME(String applicationName) {
+        applicationPage.assignApplicationToReviewerSME(applicationName);
+    }
+    
+    @Given("^I choose Reviews for SME review and Send for Review$")
+    public void chooseAndSendReviewsSME() {
+        applicationPage.chooseAndSendReviewsSME();
+    }
+    
+    @Given("^I complete review form as assigned reviewers for SME review$")
+    public void completeReviewFormSME() {
+        applicationPage.completeReviewFormSME();
+    }
+    
+    @When("^I add \"([^\"]*)\" as reviewer in the table \"([^\"]*)\"$")
+    public void addReviewerForReview(String reviewer, String tableId) {
+        applicationPage.addReviewerForReview(reviewer, tableId);
+    }
+    
+    @When("^I fill in the Review form$")
+    public void fillInReviewForm() {
+        applicationPage.fillInReviewForm();
+    }
+    
+    @Given("^I enter the Due In Days as \"([^\"]*)\" for all Management review steps$")
+    public void enterDueInDaysManagement(String dueInDays) {
+        applicationPage.enterDueInDaysManagement(dueInDays);
+    }
+    
+    @Given("^I add Reviewers \"([^\"]*)\" for Management Review$")
+    public void addReviewerForReviewManagement(String ManagementReviewer) {
+        applicationPage.addReviewerForReviewManagement(ManagementReviewer);
+    }
+    
+    @Given("^I assign application \"([^\"]*)\" to the Reviewers for Management Review$")
+    public void assignApplicationToReviewerManagement(String applicationName) {
+        applicationPage.assignApplicationToReviewerManagement(applicationName);
+    }
+    
+    @Given("^I choose Reviews for Management review and Send for Review$")
+    public void chooseAndSendReviewsManagement() {
+        applicationPage.chooseAndSendReviewsManagement();
+    }
+    
+    @Given("^I complete review form as assigned reviewers for Management review$")
+    public void completeReviewFormManagement() {
+        applicationPage.completeReviewFormManagement();
+    }
+    
+    @Given("^I enter Subaward Abbreviation as \"([^\"]*)\"$")
+    public void enterSubAwardAbbreviationFDM(String value) {
+        applicationPage.enterSubAwardAbbreviationFDM(value);
+    }
+    
+    @Given("^I enter the recommendation as \"([^\"]*)\" with budget \"([^\"]*)\" for application \"([^\"]*)\" on the flextable \"([^\"]*)\"$")
+    public void enterRecommendationFDM(String recommendation, String budget, String applicationName, String flextableName) {
+        applicationPage.enterRecommendationFDM(recommendation, budget,applicationName, flextableName);
+    }
+    
+    @Given("^I select \"([^\"]*)\" as \"([^\"]*)\" for Approver details$")
+    public void selectApproverFDM(String approverName, String approverType) {
+        applicationPage.selectApproverFDM(approverName, approverType);
     }
 }

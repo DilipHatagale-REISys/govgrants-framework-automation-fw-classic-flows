@@ -29,7 +29,7 @@ Feature: Validate all scenarios in the Planning tab
   	@34732 @programContactsAssociation @program
   	Scenario Outline: Verifying if the EXE, PM, PO can associate contact with Internal Program
 	    When I click on "Overview" subtab
-	    And I click on "Associate" button on "Contacts" flextable to switch to frame "ProgramContactsiframeContentId"
+	    And I click on "Associate" button on "Contacts" flextable
 	    When I click "Add" after selection of "<Contact>" in the table "AssociateProgramContacts"
 	    And I close Modal "ProgramContactsmodalDivCloseIcon"
 	    Then I see that "<Contact>" has been added in "Contacts" flextable
@@ -41,12 +41,12 @@ Feature: Validate all scenarios in the Planning tab
   	@34740 @programApproverSelection @program
   	Scenario Outline: Validate the assignment of Approvers for the Internal Program 
 	    When I click on "Responsibilities" subtab
-	    And I click on the "Edit" icon for the "Program Approver" on the flextable "Approvers" to switch to frame "ProgramRolesAndResponsibilitiesiframeContentId"
-	    When I fill in the "<Program Approver Name>" in the frame "ProgramRolesAndResponsibilitiesiframeContentId" for the Approver details
-	    And I close Modal "ProgramRolesAndResponsibilitiesmodalDivCloseIcon"
-	    When I click on the "Edit" icon for the "Executive Approver" on the flextable "Approvers" to switch to frame "ProgramRolesAndResponsibilitiesiframeContentId"
-	    And I fill in the "<Executive Approver Name>" in the frame "ProgramRolesAndResponsibilitiesiframeContentId" for the Approver details
-	    When I close Modal "ProgramRolesAndResponsibilitiesmodalDivCloseIcon"
+	    And I click on the "Edit" icon for the "Program Approver" on the flextable "Approvers"
+	    When I fill in the "<Program Approver Name>" for the Approver details
+	    And I switch to Parent frame
+	    When I click on the "Edit" icon for the "Executive Approver" on the flextable "Approvers"
+	    And I fill in the "<Executive Approver Name>" for the Approver details
+	   	And I switch to Parent frame
 	    Then I see that "<Program Approver Name>" has been added in "Approvers" flextable
 	
 	Examples:
@@ -56,7 +56,7 @@ Feature: Validate all scenarios in the Planning tab
   	@34616 @programFocusAreaAssociation @program
   	Scenario Outline: Validate the association of Focus Area for the Internal Program
 	    When I click on "Setup" subtab
-	    And I click on "Associate" button on "<Flextable Name>" flextable to switch to frame "GrantorServiceAreasProgramiframeContentId"
+	    And I click on "Associate" button on "<Flextable Name>" flextable
 	    When I click "Associate" after selection of "<EGMS Id>" in the table "popupflextable"
 	    And I close Modal "GrantorServiceAreasProgrammodalDivCloseIcon"
 	    Then I see that "<EGMS Id>" has been added in "<Flextable Name>" flextable
@@ -68,7 +68,7 @@ Feature: Validate all scenarios in the Planning tab
   	@34737 @programObjectiveAssociation @program
   	Scenario Outline: Validate the Association of Objective to the Internal Program
 	    When I click on "Setup" subtab
-	    And I click on "Associate" button on "<Flextable Name>" flextable to switch to frame "RelatedProgramGoalsandObjectivesiframeContentId"
+	    And I click on "Associate" button on "<Flextable Name>" flextable
 	    When I click "Add" after selection of "<EGMS Id>" in the table "popupflextable"
 	    And I close Modal "RelatedProgramGoalsandObjectivesmodalDivCloseIcon"
 	    Then I see that "<EGMS Id>" has been added in "<Flextable Name>" flextable
@@ -80,7 +80,7 @@ Feature: Validate all scenarios in the Planning tab
   	@34738 @programKPIAssociation @program
   	Scenario Outline: Validate the assignment of Approvers for the Internal Program
 	    When I click on "Setup" subtab
-	    And I click on "Associate" button on "<Flextable Name>" flextable to switch to frame "ProgramKeyOutcomesiframeContentId"
+	    And I click on "Associate" button on "<Flextable Name>" flextable
 	    When I click "Add" after selection of "<EGMS Id>" in the table "popupflextable"
 	    And I close Modal "ProgramKeyOutcomesmodalDivCloseIcon"
 	    Then I see that "<EGMS Id>" has been added in "<Flextable Name>" flextable
@@ -152,7 +152,7 @@ Feature: Validate all scenarios in the Planning tab
 	| Program Approver | Quick Search Text  			  | Executive Approver |
 	| PM               | Automation Program to be deleted | EXE			  	   |
 	
-  	@34756 @ProgramActivation @program
+  	@34756 @ProgramActivation @programHappyPath @program
   	Scenario Outline: Validate the activation of Internal Program
 	  	Given I complete the Program fields from the sheet "RequiredForSubmit" in excel "Program_Field_Values.xlsx"
 	    And I associate Contact "Automation EXE", Focus Area "00005", Objective "SPO-0006" to the program

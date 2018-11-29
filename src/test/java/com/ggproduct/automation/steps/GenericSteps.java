@@ -2,8 +2,8 @@ package com.ggproduct.automation.steps;
 
 import java.util.Map;
 import com.automation.rei.controller.Controller;
+import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
-import com.automation.rei.handlers.Handlers;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 
 import cucumber.api.DataTable;
@@ -14,7 +14,7 @@ import cucumber.api.java.en.When;
 public class GenericSteps {
     ProjectManager projectManager;
 
-    public GenericSteps(Controller controller, Handlers handler, GovGrantsHandler govgrants) {
+    public GenericSteps(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
         projectManager = new ProjectManager(controller, handler, govgrants);
     }
 
@@ -78,11 +78,6 @@ public class GenericSteps {
     public void clickOnSubtab(String subtabName) {
         projectManager.clickOnSubtab(subtabName);
     }
-
-    @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" flextable to switch to frame \"([^\"]*)\"$")
-    public void clickOnFlextableButtonToOpenModal(String buttonName, String flextableName, String iFrameId) {
-        projectManager.clickOnFlextableButtonToOpenModal(buttonName, flextableName, iFrameId);
-    }
     
     @When("^I click on Agree in \"([^\"]*)\" section$")
     public void clickOnAcknowledgement(String sectionName) {
@@ -94,6 +89,11 @@ public class GenericSteps {
         projectManager.expandGrid(uniqueColumnValue, gridName);
     }
     
+    @When("^I collapse the \"([^\"]*)\" on grid \"([^\"]*)\"$")
+    public void collapseGrid(String uniqueColumnValue, String gridName) {
+        projectManager.collapseGrid(uniqueColumnValue, gridName);
+    }
+    
     @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" flextable to switch to frame$")
     public void clickOnButtonForAttachmentNotesToOpenModal(String buttonName, String flextableName) {
         projectManager.clickOnButtonForAttachmentNotesToOpenModal(buttonName, flextableName);
@@ -103,15 +103,25 @@ public class GenericSteps {
     public void clickOnFlextableButton(String buttonName, String flextableName) {
         projectManager.clickOnFlextableButton(buttonName, flextableName);
     }
-
-    @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" phase flextable$")
-    public void clickOnFlexTableButton(String buttonName, String flextableName) {
-        projectManager.clickOnFlexTableButton(buttonName, flextableName);
+    
+    @When("^I click \"([^\"]*)\" on the confirmation dialog box$")
+    public void clickOnConfirmationtBox(String confirmationDecision) {
+        projectManager.clickOnConfirmationtBox(confirmationDecision);
     }
     
-    @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" phase flextable to switch to frame \"([^\"]*)\"$")
-    public void clickOnFlexTableButtonToOpenModal(String buttonName, String flextableName, String iFrameId) {
-        projectManager.clickOnFlexTableButtonToOpenModal(buttonName, flextableName, iFrameId);
+    @When("^I choose \"([^\"]*)\" in the flextable \"([^\"]*)\"$")
+    public void clickOnCheckbox(String uniqueColumnValue, String flextableName) {
+        projectManager.clickOnCheckbox(uniqueColumnValue, flextableName);
+    }
+    
+    @When("^I switch to Parent frame$")
+    public void switchToParentFrame() {
+        projectManager.switchToParentFrame();
+    }
+    
+    @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" phase flextable$")
+    public void clickOnFlexTableButtonToOpenModal(String buttonName, String flextableName) {
+        projectManager.clickOnFlexTableButtonToOpenModal(buttonName, flextableName);
     }
 
     @When("^I click on the \"([^\"]*)\" icon for the \"([^\"]*)\" on the flextable \"([^\"]*)\"$")
@@ -119,15 +129,19 @@ public class GenericSteps {
         projectManager.clickOnFlextableRowButton(iconName, uniqueColumnValue, flexTableName);
     }
     
-    @When("^I click on \"([^\"]*)\" on the child grid against \"([^\"]*)\" in the table \"([^\"]*)\"$")
-    public void clickButtonOnChildGrid(String iconName, String uniqueColumnValue, String tableId){
-        projectManager.clickButtonOnChildGrid(iconName, uniqueColumnValue, tableId);
+    @When("^I enter \"([^\"]*)\" as \"([^\"]*)\"$")
+    public void enterFieldValue(String fieldAPIName, String value) {
+        projectManager.enterFieldValue(fieldAPIName, value);
     }
-
-    @When("^I click on the \"([^\"]*)\" icon for the \"([^\"]*)\" on the flextable \"([^\"]*)\" to switch to frame \"([^\"]*)\"$")
-    public void clickOnFlextableRowButtontoOpenModal(String iconName, String uniqueColumnValue, String flexTableName,
-            String iFrameId) {
-        projectManager.clickOnFlextableRowButtontoOpenModal(iconName, uniqueColumnValue, flexTableName, iFrameId);
+    
+    @When("^I scroll to \"([^\"]*)\" section$")
+    public void scrollToSection(String sectionName){
+        projectManager.scrollToSection(sectionName);
+    }
+    
+    @When("^I click on \"([^\"]*)\" on the grid against \"([^\"]*)\" in the table \"([^\"]*)\"$")
+    public void clickButtonOnGrid(String iconName, String uniqueColumnValue, String tableId){
+        projectManager.clickButtonOnGrid(iconName, uniqueColumnValue, tableId);
     }
 
     @When("^I close Modal \"([^\"]*)\"$")
@@ -155,9 +169,9 @@ public class GenericSteps {
         projectManager.chooseRecordForAssociation(buttonName, recordUniqueName, tableId);
     }
 
-    @When("^I fill in the \"([^\"]*)\" in the frame \"([^\"]*)\" for the Approver details$")
-    public void fillInApproverDetails(String approverName, String iFrameId) {
-        projectManager.fillInApproverDetails(approverName, iFrameId);
+    @When("^I fill in the \"([^\"]*)\" for the Approver details$")
+    public void fillInApproverDetails(String approverName) {
+        projectManager.fillInApproverDetails(approverName);
     }
 
     @When("^I click on \"([^\"]*)\" on the approval decision box$")

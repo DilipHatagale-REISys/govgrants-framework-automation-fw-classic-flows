@@ -1,12 +1,12 @@
 package com.ggproduct.automation.pageobjects;
 
 import com.automation.rei.controller.Controller;
+import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
-import com.automation.rei.handlers.Handlers;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 
 public class PlanningPage extends ProjectManager {
-    public PlanningPage(Controller controller, Handlers handler, GovGrantsHandler govgrants) {
+    public PlanningPage(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
         super(controller, handler, govgrants);
     }
     
@@ -21,9 +21,9 @@ public class PlanningPage extends ProjectManager {
         navigateToTab("Planning");
         clickOnSidebar("Internal Programs", "Programs");
         changeFlexTableView("Draft Internal Programs");
-        clickOnFlexTableButton("New", "Draft Internal Programs");
+        clickOnFlexTableButtonToOpenModal("New", "Programs");
         enterFieldValues(sheetName, excelFileName);
-        clickOnPageButton("Save and Continue");
+        clickOnModalButton("Save And Close");
         clickOnPageButton("Save");
     }
     
@@ -47,19 +47,19 @@ public class PlanningPage extends ProjectManager {
     public void associationOfRecordsToProgram(String contact, String focusArea, String objective) {
         //Contact association
         clickOnSubtab("Overview");
-        clickOnFlextableButtonToOpenModal("Associate", "Contacts", "ProgramContactsiframeContentId");
+        clickOnFlextableButtonToOpenModal("Associate", "Contacts");
         chooseRecordForAssociation("Add", contact, "AssociateProgramContacts");
         closeModal("ProgramContactsmodalDivCloseIcon");
         
         //Focus Area association
         clickOnSubtab("Setup");
-        clickOnFlextableButtonToOpenModal("Associate", "Focus Areas", "GrantorServiceAreasProgramiframeContentId");
+        clickOnFlextableButtonToOpenModal("Associate", "Focus Areas");
         chooseRecordForAssociation("Associate", focusArea, "popupflextable");
         closeModal("GrantorServiceAreasProgrammodalDivCloseIcon");
         
         //Objective association
         clickOnSubtab("Setup");
-        clickOnFlextableButtonToOpenModal("Associate", "Objectives", "RelatedProgramGoalsandObjectivesiframeContentId");
+        clickOnFlextableButtonToOpenModal("Associate", "Objectives");
         chooseRecordForAssociation("Add", objective, "popupflextable");
         closeModal("RelatedProgramGoalsandObjectivesmodalDivCloseIcon");
     }
@@ -72,11 +72,11 @@ public class PlanningPage extends ProjectManager {
     public void approverSelectionForProgram(String programApprover, String executiveApprover) {
         clickOnSubtab("Responsibilities");
         clickOnFlextableRowButtontoOpenModal("Edit", "Program Approver", "Approvers", "ProgramRolesAndResponsibilitiesiframeContentId");
-        fillInApproverDetails(programApprover, "ProgramRolesAndResponsibilitiesiframeContentId");
-        closeModal("ProgramRolesAndResponsibilitiesmodalDivCloseIcon");
+        fillInApproverDetails(programApprover);
+        switchToParentFrame();
         clickOnFlextableRowButtontoOpenModal("Edit", "Executive Approver", "Approvers", "ProgramRolesAndResponsibilitiesiframeContentId");
-        fillInApproverDetails(executiveApprover, "ProgramRolesAndResponsibilitiesiframeContentId");
-        closeModal("ProgramRolesAndResponsibilitiesmodalDivCloseIcon");
+        fillInApproverDetails(executiveApprover);
+        switchToParentFrame();
     }
     
     /**

@@ -9,7 +9,7 @@ import org.testng.Assert;
 
 import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.GovGrantsHandler;
-import com.automation.rei.handlers.Handlers;
+import com.automation.rei.handlers.CoreHandlers;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
@@ -21,7 +21,7 @@ import com.google.gson.JsonParser;
  * 
  */
 public class ProjectManager extends ProjectWebServices {
-    public Handlers reiDriver;
+    public CoreHandlers reiDriver;
     public Controller controller;
     public GovGrantsHandler govgrants;
     public final String defaultPassword = "SALESFORCE2018";
@@ -35,7 +35,7 @@ public class ProjectManager extends ProjectWebServices {
      * @param controller
      * @param reiDriver
      */
-    public ProjectManager(Controller controller, Handlers reiDriver, GovGrantsHandler govgrants) {
+    public ProjectManager(Controller controller, CoreHandlers reiDriver, GovGrantsHandler govgrants) {
         this.controller = controller;
         this.reiDriver = reiDriver;
         this.govgrants = govgrants;
@@ -259,6 +259,15 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     /**
+     * Handles scrolling to a specific section
+     * 
+     * @param sectionName
+     */
+    public void scrollToSection(String sectionName) {
+        reiDriver.JavaScript().scrollpageToSpecificElement(getScrollToSection(sectionName));
+    }
+
+    /**
      * Handles entering of field values
      * 
      * @param sheetName
@@ -355,8 +364,8 @@ public class ProjectManager extends ProjectWebServices {
      * @param flextableName
      * @param iFrameId
      */
-    public void clickOnFlexTableButtonToOpenModal(String buttonName, String flextableName, String iFrameId) {
-        govgrants.modal().clickTopRightButtonWithModalById(iFrameId, buttonName);
+    public void clickOnFlexTableButtonToOpenModal(String buttonName, String flextableName) {
+        govgrants.flexTable().clickTableTopRightButton(flextableName, buttonName);
     }
 
     /**
@@ -375,9 +384,19 @@ public class ProjectManager extends ProjectWebServices {
      * @param iconName
      * @param uniqueTextValue
      */
-    public void clickOnFlexTableIcon(String iconName, String uniqueTextValue) {
+    public void clickOnFlexTableIcon(String iconName, String anyUniqueColumnValues) {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
-        govgrants.flexTable().clickTableActionIcons(uniqueTextValue, iconName);
+        govgrants.flexTable().clickTableActionIcons(iconName, anyUniqueColumnValues);
+    }
+
+    /**
+     * Handles clicking on confirmation dialog box
+     * 
+     * @param alertDecision
+     */
+    public void clickOnConfirmationtBox(String confirmationDecision) {
+        govgrants.modal().handleModalAlert("Yes");
+        reiDriver.get().getRefresh();
     }
 
     /**
@@ -390,7 +409,23 @@ public class ProjectManager extends ProjectWebServices {
     public void clickOnFlextableButton(String buttonName, String flextableName) {
         reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
         reiDriver.WaitFor().makeThreadSleep(1000);
-        govgrants.phasePannel().clickTopRightButton(flextableName, buttonName);
+        try {
+            govgrants.phasePannel().clickTopRightButton(flextableName, buttonName);
+        } catch (Exception ex) {
+            reiDriver.findMyElement().getElement(By.xpath("//*[text()='" + flextableName
+                    + "']/ancestor::div[1]/following-sibling::div//*[text()='" + buttonName + "']")).click();
+        }
+    }
+
+    /**
+     * Handles selecting a record in the flextable
+     * 
+     * @param uniqueColumnValue
+     * @param flexTableName
+     */
+    public void clickOnCheckbox(String uniqueColumnValue, String flextableName) {
+        reiDriver.JavaScript().scrollpageToSpecificElement(getScrollToSection(flextableName));
+        reiDriver.findMyElement().getElement(getCheckboxForSpecificRecord(flextableName, uniqueColumnValue)).click();
     }
 
     /**
@@ -411,9 +446,9 @@ public class ProjectManager extends ProjectWebServices {
      * @param flextableName
      * @param iFrameId
      */
-    public void clickOnFlextableButtonToOpenModal(String buttonName, String flextableName, String iFrameId) {
+    public void clickOnFlextableButtonToOpenModal(String buttonName, String flextableName) {
         reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
-        govgrants.modal().clickTopRightButtonWithModalById(iFrameId, buttonName);
+        govgrants.modal().clickModalContentSpecificButton(buttonName);
 
     }
 
@@ -439,7 +474,7 @@ public class ProjectManager extends ProjectWebServices {
     public void clickOnFlexTableIconWithTableId(String iconName, String tableId, String searchText) {
         govgrants.quickSearch().performTableSpecificQuickSearch(tableId, searchText);
         govgrants.mainPage().waitForNavigationLogoToDisappear();
-        govgrants.flexTable().clickTableActionIcons(searchText, iconName);
+        govgrants.flexTable().clickTableActionIcons(iconName, searchText);
     }
 
     /**
@@ -473,9 +508,14 @@ public class ProjectManager extends ProjectWebServices {
      * @param uniqueColumnName
      * @param tableId
      */
-    public void clickButtonOnChildGrid(String iconName, String uniqueColumnValue, String tableId) {
-        govgrants.flexTable().slideNestedFlexTable(tableId, 150);
-        govgrants.flexTable().clickTableActionIcons(uniqueColumnValue, iconName);
+    public void clickButtonOnGrid(String iconName, String uniqueColumnValue, String tableId) {
+        try {
+            govgrants.flexTable().clickTableActionIcons(iconName, uniqueColumnValue);
+        } catch(Exception ex) {
+            govgrants.flexTable().slideNestedFlexTable(tableId, 150);
+            govgrants.flexTable().clickTableActionIcons(iconName, uniqueColumnValue);
+        }
+        
     }
 
     /**
@@ -494,8 +534,43 @@ public class ProjectManager extends ProjectWebServices {
      * @param sectionName
      */
     public void expandGrid(String uniqueColumnValue, String gridName) {
-        reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(gridName));
-        govgrants.flexTable().expandOrCollapseNestedTable(uniqueColumnValue, true);
+        reiDriver.WaitFor().makeThreadSleep(500);
+        reiDriver.JavaScript().scrollpageToSpecificElement(getScrollToSection(gridName));
+        try {
+            govgrants.flexTable().expandOrCollapseNestedTable(uniqueColumnValue, true);
+        } catch (Exception ex) {
+            reiDriver.findMyElement().getElement(By
+                    .xpath("//td//*[text()='" + uniqueColumnValue + "']//ancestor::tr[1]//i[contains(@class, 'plus')]"))
+                    .click();
+        }
+    }
+
+    /**
+     * Handles switching to parent frame
+     * 
+     * @param uniqueColumnValue
+     * @param flextableName
+     */
+    public void switchToParentFrame() {
+        govgrants.mainPage().waitForNavigationLogoToDisappear();
+        reiDriver.switchTo().switchToParentFrame();
+    }
+
+    /**
+     * Handles grid collapsing
+     * 
+     * @param sectionName
+     */
+    public void collapseGrid(String uniqueColumnValue, String gridName) {
+        reiDriver.WaitFor().makeThreadSleep(500);
+        reiDriver.JavaScript().scrollpageToSpecificElement(getScrollToSection(gridName));
+        try {
+            govgrants.flexTable().expandOrCollapseNestedTable(uniqueColumnValue, false);
+        } catch (Exception ex) {
+            reiDriver.findMyElement().getElement(By.xpath(
+                    "//td//*[text()='" + uniqueColumnValue + "']//ancestor::tr[1]//i[contains(@class, 'minus')]"))
+                    .click();
+        }
     }
 
     /**
@@ -508,9 +583,9 @@ public class ProjectManager extends ProjectWebServices {
      */
     public void clickOnFlextableRowButton(String iconName, String uniqueColumnvalue, String flextableName) {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
-        reiDriver.WaitFor().makeThreadSleep(1000);
+        reiDriver.WaitFor().makeThreadSleep(500);
         reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
-        govgrants.flexTable().clickTableActionIcons(uniqueColumnvalue, iconName);
+        govgrants.flexTable().clickTableActionIcons(iconName, uniqueColumnvalue);
     }
 
     /**
@@ -521,12 +596,11 @@ public class ProjectManager extends ProjectWebServices {
      * @param uniqueColumnvalue
      * @param flextableName
      */
-    public void clickOnFlextableRowButtontoOpenModal(String iconName, String uniqueColumnValue, String flextableName,
-            String iFrameId) {
+    public void clickOnFlextableRowButtontoOpenModal(String iconName, String uniqueColumnValue, String flextableName) {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         reiDriver.WaitFor().makeThreadSleep(1000);
         reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
-        govgrants.modal().clickRowIconWithModalById(iFrameId, uniqueColumnValue, iconName);
+        govgrants.flexTable().clickTableActionIcons(iconName, uniqueColumnValue);
     }
 
     /**
@@ -538,7 +612,15 @@ public class ProjectManager extends ProjectWebServices {
      */
     public void chooseRecordForAssociation(String buttonName, String recordUniqueName, String tableId) {
         reiDriver.WaitFor().makeThreadSleep(1000);
-        govgrants.quickSearch().performModalSpecificQuickSearch(tableId, recordUniqueName);
+        try {
+            govgrants.quickSearch().performModalSpecificQuickSearch(tableId, recordUniqueName);
+        } catch(Exception ex) {
+            By searchInputBox = By.cssSelector("div#" + tableId + " div>input[placeholder='Quick Search']");
+            reiDriver.findMyElement().getElement(searchInputBox);
+            reiDriver.WaitFor().WaitForElementToBePresent(searchInputBox).clear();
+            reiDriver.WaitFor().WaitForElementToBePresent(searchInputBox).sendKeys(recordUniqueName);
+            reiDriver.WaitFor().WaitForElementToBePresent(By.cssSelector("div#" + tableId + " a>i.fa.fa-search")).click();
+        }
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         reiDriver.WaitFor().makeThreadSleep(1000);
         reiDriver.WaitFor().WaitForElementToBePresent(getCheckbox()).click();
@@ -567,19 +649,16 @@ public class ProjectManager extends ProjectWebServices {
      * 
      * @param approverName
      */
-    public void fillInApproverDetails(String approverName, String iFrameId) {
+    public void fillInApproverDetails(String approverName) {
         reiDriver.WaitFor().makeThreadSleep(700);
         reiDriver.findMyElement().getElement(By.xpath("//span[@class='lookupInput']//input")).sendKeys(approverName);
         reiDriver.WaitFor().WaitForElementToBePresent(lookUpSearchPath).click();
         reiDriver.switchTo().switchToFrame(lookUpIFramePath);
         reiDriver.WaitFor().makeThreadSleep(1000);
-        govgrants.flexTable().clickTableActionIcons(approverName, "Select");
+        govgrants.flexTable().clickTableActionIcons("Select", approverName);
         reiDriver.WaitFor().makeThreadSleep(500);
         reiDriver.switchTo().switchToParentFrame();
         reiDriver.WaitFor().makeThreadSleep(500);
-        // reiDriver.WaitFor().makeThreadSleep(1000);
-        // reiDriver.WaitFor().WaitForElementToBePresent(getIFramePath(iFrameId));
-        // reiDriver.switchTo().switchToFrame(getIFramePath(iFrameId));
         reiDriver.textInput().clearText(approverDescription);
         reiDriver.textInput().enterText(approverDescription, defaultLongText);
         reiDriver.WaitFor().makeThreadSleep(1000);
@@ -595,19 +674,33 @@ public class ProjectManager extends ProjectWebServices {
         govgrants.approvals().completeApprovalFlow(approvalDesicion, defaultLongText);
         govgrants.mainPage().waitForNavigationLogoToDisappear();
     }
+    
+    /**
+     * Handles entering of a single field value
+     * @param fieldAPIName
+     * @param value
+     */
+    public void enterFieldValue(String fieldAPIName, String value) {
+        handleTextInput(fieldAPIName, value);
+    }
 
     /**
      * Handles filling in the fields for attachment checklist
      */
     public void fillFieldsForInlineTable(String tableId, String columnNumber, String inputType, String inputValue) {
-        govgrants.flexTable().inlineEdit(tableId, columnNumber, inputType, inputValue);
+        try {
+            govgrants.flexTable().inlineEdit(tableId, columnNumber, inputType, inputValue);
+        } catch (Exception ex) {
+            reiDriver.findMyElement().getElement(By.xpath("//*[@id = '" + tableId
+                    + "']/ancestor::div[contains(@class,'panel')]//td[" + columnNumber + "]//input")).clear();
+            reiDriver
+                    .findMyElement().getElement(By.xpath("//*[@id = '" + tableId
+                            + "']/ancestor::div[contains(@class,'panel')]//td[" + columnNumber + "]//input"))
+                    .sendKeys(inputValue);
+        }
     }
 
     /******* "Local Methods with Limited functionality " **********/
-
-    /**
-     * get any specific column value in pending tasks (Assigned to me)
-     */
 
     private void login(String userName) {
         govgrants.mainPage().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);
@@ -621,9 +714,9 @@ public class ProjectManager extends ProjectWebServices {
         return By.xpath("//span[@id='" + fieldId + "']/input[@type='text']");
     }
 
-    private By getScrollToSection(String flextableName) {
-        return By.xpath("//div[contains(@class,'panel-heading')]//*[@title='" + flextableName
-                + "']|//div[contains(@class,'panel-heading')]//*[text()='" + flextableName + "']");
+    private By getScrollToSection(String sectionName) {
+        return By.xpath("//div[contains(@class,'panel-heading')]//*[@title='" + sectionName
+                + "']|//div[contains(@class,'panel-heading')]//*[text()='" + sectionName + "']");
     }
 
     private void reloginAsDifferentUser(String userName) {
@@ -646,6 +739,10 @@ public class ProjectManager extends ProjectWebServices {
 
     private By getIFramePath(String iFrameId) {
         return By.xpath("//iframe[@id='" + iFrameId + "']");
+    }
+
+    private By getCheckboxForSpecificRecord(String flexttableName,String uniqueColumnValue) {
+        return By.xpath("//span[text()='"+flexttableName+"']/..//div[@class='table-responsive']//td//*[text()='"+uniqueColumnValue+"']/ancestor::tr[1]//td//input[@type='checkbox']");
     }
 
     private By getCheckbox() {

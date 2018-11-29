@@ -1,11 +1,12 @@
 package com.ggproduct.automation.pageobjects;
 
 import org.openqa.selenium.By;
+
 import org.testng.Assert;
 
 import com.automation.rei.controller.Controller;
+import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
-import com.automation.rei.handlers.Handlers;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 import com.ggproduct.automation.projectmanager.UsersAndURL;
 
@@ -17,7 +18,7 @@ public class LoginPage extends ProjectManager{
 	/**
      * Constructor to handle dependency injection and framework library
      */
-	public LoginPage(Controller controller, Handlers handler, GovGrantsHandler govgrants) {
+	public LoginPage(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
 		super(controller,handler,govgrants);
 	}
 	

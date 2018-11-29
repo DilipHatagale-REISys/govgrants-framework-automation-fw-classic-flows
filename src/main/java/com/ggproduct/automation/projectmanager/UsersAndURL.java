@@ -2,22 +2,27 @@ package com.ggproduct.automation.projectmanager;
 
 import java.io.IOException;
 
-import com.automation.rei.handlers.Properties_Logs;
+import com.automation.rei.corelib.Properties_Logs;
 import com.cucumber.listener.Reporter;
 
 public class UsersAndURL {
-    
+
     /**
      * @REI-Systems
      * @author nauman.shahid
      * @category Handles users based on different environments
      */
 
-    /**** BELOW ARE SAMPLE METHODS TO HANDLE USERS BASED ON DIFFERENT ENVIRONEMNTS*******/
-    /**** IT ALSO HANDLE ANY ADDITIONAL URL IN ADDITION TO STANDARD PROJECT**********/
-    /**** SINCE THESE ARE GENERIC METHODS SO YOU MAY KEEP THE SAME WITH MODIFICTION******/
-    
-    
+    /****
+     * BELOW ARE SAMPLE METHODS TO HANDLE USERS BASED ON DIFFERENT ENVIRONEMNTS
+     *******/
+    /****
+     * IT ALSO HANDLE ANY ADDITIONAL URL IN ADDITION TO STANDARD PROJECT
+     **********/
+    /****
+     * SINCE THESE ARE GENERIC METHODS SO YOU MAY KEEP THE SAME WITH MODIFICTION
+     ******/
+
     public String handleUsersForEnv(String userLevel) {
         String userName = null;
         if (System.getProperty("env").equalsIgnoreCase("qa")) {
@@ -26,13 +31,13 @@ public class UsersAndURL {
             userName = performLoginUATEnvironment(userLevel);
         } else if (System.getProperty("env").equalsIgnoreCase("subportal")) {
             userName = performLoginSubPortalEnvironment(userLevel);
-        } 
+        }
         return userName;
     }
 
     public String performLoginQAEnvironment(String userLevel) {
         String username;
-        
+
         switch (userLevel.toUpperCase()) {
         case "ADMIN":
             username = "admin.automation@product.com";
@@ -45,7 +50,7 @@ public class UsersAndURL {
             break;
         case "PO":
             username = "sdgdg45435dj@gmail.com";
-            break;  
+            break;
         case "FO":
             username = "auto.fm@auto.com";
             break;
@@ -66,10 +71,10 @@ public class UsersAndURL {
         }
         return username;
     }
-    
+
     public String performLoginSubPortalEnvironment(String userLevel) {
         String username;
-        
+
         switch (userLevel.toUpperCase()) {
         case "SPI":
             username = "gcooper@yopmail.com20";
@@ -79,10 +84,10 @@ public class UsersAndURL {
         }
         return username;
     }
-    
+
     public static String navigateToAnyUrl(String urlName) throws IOException {
-        String url=null;
-        switch(urlName.toUpperCase()) {
+        String url = null;
+        switch (urlName.toUpperCase()) {
         case "PRODUCT PORTAL":
             url = new Properties_Logs().ReadPropertyFile("environment.properties", "QA");
             Reporter.addScenarioLog("Scenario is running using External Link" + " & Url is " + url);
@@ -93,7 +98,6 @@ public class UsersAndURL {
             break;
         }
         return url;
-            }
+    }
 
 }
-
