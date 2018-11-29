@@ -650,7 +650,7 @@ public class ProjectManager extends ProjectWebServices {
      * 
      * @param approverName
      */
-    public void fillInApproverDetails(String approverName, String iFrameId) {
+    public void fillInApproverDetails(String approverName) {
         reiDriver.WaitFor().makeThreadSleep(700);
         reiDriver.findMyElement().getElement(By.xpath("//span[@class='lookupInput']//input")).sendKeys(approverName);
         reiDriver.WaitFor().WaitForElementToBePresent(lookUpSearchPath).click();
@@ -660,9 +660,6 @@ public class ProjectManager extends ProjectWebServices {
         reiDriver.WaitFor().makeThreadSleep(500);
         reiDriver.switchTo().switchToParentFrame();
         reiDriver.WaitFor().makeThreadSleep(500);
-        // reiDriver.WaitFor().makeThreadSleep(1000);
-        // reiDriver.WaitFor().WaitForElementToBePresent(getIFramePath(iFrameId));
-        // reiDriver.switchTo().switchToFrame(getIFramePath(iFrameId));
         reiDriver.textInput().clearText(approverDescription);
         reiDriver.textInput().enterText(approverDescription, defaultLongText);
         reiDriver.WaitFor().makeThreadSleep(1000);
@@ -677,6 +674,15 @@ public class ProjectManager extends ProjectWebServices {
     public void clickOnApprovalDecisionBox(String approvalDesicion) {
         govgrants.approvals().completeApprovalFlow(approvalDesicion, defaultLongText);
         govgrants.mainPage().waitForNavigationLogoToDisappear();
+    }
+    
+    /**
+     * Handles entering of a single field value
+     * @param fieldAPIName
+     * @param value
+     */
+    public void enterFieldValue(String fieldAPIName, String value) {
+        handleTextInput(fieldAPIName, value);
     }
 
     /**

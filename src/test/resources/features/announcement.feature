@@ -152,13 +152,13 @@ Feature: Validate all scenarios in the Announcement tab
   	Scenario: Validate the assignment of Approvers for the Announcement 
 	    When I click on "Responsibilities" subtab
 	    And I click on the "Edit" icon for the "Program Approver" on the flextable "Approvers" to switch to frame "GrantorAnnouncementRolesandResponsibilitiesiframeContentId"
-	    When I fill in the "Automation PM" in the frame "GrantorAnnouncementRolesandResponsibilitiesiframeContentId" for the Approver details
+	    When I fill in the "Automation PM" for the Approver details
 	    And I switch to Parent frame
 	    When I click on the "Edit" icon for the "Fiscal Approver" on the flextable "Approvers" to switch to frame "GrantorAnnouncementRolesandResponsibilitiesiframeContentId"
-	    And I fill in the "Automation FO" in the frame "GrantorAnnouncementRolesandResponsibilitiesiframeContentId" for the Approver details
+	    And I fill in the "Automation FO" for the Approver details
 	    And I switch to Parent frame
 	    And I click on the "Edit" icon for the "Executive Approver" on the flextable "Approvers" to switch to frame "GrantorAnnouncementRolesandResponsibilitiesiframeContentId"
-	    When I fill in the "Automation EXE" in the frame "GrantorAnnouncementRolesandResponsibilitiesiframeContentId" for the Approver details
+	    When I fill in the "Automation EXE" for the Approver details
 	    And I switch to Parent frame
 	    Then I see that "Automation EXE" has been added in "Approvers" flextable
 	    

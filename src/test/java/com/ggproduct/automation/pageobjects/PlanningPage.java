@@ -72,10 +72,10 @@ public class PlanningPage extends ProjectManager {
     public void approverSelectionForProgram(String programApprover, String executiveApprover) {
         clickOnSubtab("Responsibilities");
         clickOnFlextableRowButtontoOpenModal("Edit", "Program Approver", "Approvers", "ProgramRolesAndResponsibilitiesiframeContentId");
-        fillInApproverDetails(programApprover, "ProgramRolesAndResponsibilitiesiframeContentId");
+        fillInApproverDetails(programApprover);
         switchToParentFrame();
         clickOnFlextableRowButtontoOpenModal("Edit", "Executive Approver", "Approvers", "ProgramRolesAndResponsibilitiesiframeContentId");
-        fillInApproverDetails(executiveApprover, "ProgramRolesAndResponsibilitiesiframeContentId");
+        fillInApproverDetails(executiveApprover);
         switchToParentFrame();
     }
     

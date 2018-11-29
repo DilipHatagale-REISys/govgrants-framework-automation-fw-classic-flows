@@ -50,9 +50,9 @@ public class ApplicationSteps {
         applicationPage.uploadChecklistToApplication(fileName);
     }
     
-    @Given("^\"([^\"]*)\" is done for Application \"([^\"]*)\" as user \"([^\"]*)\" submitted for announcement \"([^\"]*)\"$")
-    public void completeReviewStepForApplication(String reviewStep, String applicationName, String announcementOwner, String announcementName) {
-        applicationPage.completeReviewStepForApplication(reviewStep, applicationName, announcementOwner, announcementName);
+    @Given("^\"([^\"]*)\" is completed by clicking \"([^\"]*)\" for Application \"([^\"]*)\" as user \"([^\"]*)\" submitted for announcement \"([^\"]*)\"$")
+    public void completeReviewStepForApplication(String reviewStep, String buttonName, String applicationName, String announcementOwner, String announcementName) {
+        applicationPage.completeReviewStepForApplication(reviewStep, buttonName, applicationName, announcementOwner, announcementName);
     }
     
     @Given("^I enter the Due In Days as \"([^\"]*)\" for all SME review steps$")
@@ -113,5 +113,20 @@ public class ApplicationSteps {
     @Given("^I complete review form as assigned reviewers for Management review$")
     public void completeReviewFormManagement() {
         applicationPage.completeReviewFormManagement();
+    }
+    
+    @Given("^I enter Subaward Abbreviation as \"([^\"]*)\"$")
+    public void enterSubAwardAbbreviationFDM(String value) {
+        applicationPage.enterSubAwardAbbreviationFDM(value);
+    }
+    
+    @Given("^I enter the recommendation as \"([^\"]*)\" with budget \"([^\"]*)\" for application \"([^\"]*)\" on the flextable \"([^\"]*)\"$")
+    public void enterRecommendationFDM(String recommendation, String budget, String applicationName, String flextableName) {
+        applicationPage.enterRecommendationFDM(recommendation, budget,applicationName, flextableName);
+    }
+    
+    @Given("^I select \"([^\"]*)\" as \"([^\"]*)\" for Approver details$")
+    public void selectApproverFDM(String approverName, String approverType) {
+        applicationPage.selectApproverFDM(approverName, approverType);
     }
 }

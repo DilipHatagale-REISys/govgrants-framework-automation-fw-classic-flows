@@ -129,6 +129,11 @@ public class GenericSteps {
         projectManager.clickOnFlextableRowButton(iconName, uniqueColumnValue, flexTableName);
     }
     
+    @When("^I enter \"([^\"]*)\" as \"([^\"]*)\"$")
+    public void enterFieldValue(String fieldAPIName, String value) {
+        projectManager.enterFieldValue(fieldAPIName, value);
+    }
+    
     @When("^I scroll to \"([^\"]*)\" section$")
     public void scrollToSection(String sectionName){
         projectManager.scrollToSection(sectionName);
@@ -170,9 +175,9 @@ public class GenericSteps {
         projectManager.chooseRecordForAssociation(buttonName, recordUniqueName, tableId);
     }
 
-    @When("^I fill in the \"([^\"]*)\" in the frame \"([^\"]*)\" for the Approver details$")
-    public void fillInApproverDetails(String approverName, String iFrameId) {
-        projectManager.fillInApproverDetails(approverName, iFrameId);
+    @When("^I fill in the \"([^\"]*)\" for the Approver details$")
+    public void fillInApproverDetails(String approverName) {
+        projectManager.fillInApproverDetails(approverName);
     }
 
     @When("^I click on \"([^\"]*)\" on the approval decision box$")

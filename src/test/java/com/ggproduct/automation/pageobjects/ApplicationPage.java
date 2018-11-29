@@ -130,9 +130,13 @@ public class ApplicationPage extends ProjectManager {
      * @param announcementOwner
      * @param announcementName
      */
-    public void completeReviewStepForApplication(String reviewStep, String applicationName, String announcementOwner,
+    public void completeReviewStepForApplication(String reviewStep, String buttonName, String applicationName, String announcementOwner,
             String announcementName) {
-        loginToggleToApp("As a Grantor", announcementOwner);
+        try {
+            loginToggleToApp("As a Grantor", announcementOwner);
+        } catch(Exception ex) {
+            reloginToggleToApp("As a Grantor", announcementOwner);
+        }
         navigateToTab("Applications");
         clickOnSidebar("Reviews", "Application Review");
         changeFlexTableView("Applications Under Review");
@@ -142,7 +146,7 @@ public class ApplicationPage extends ProjectManager {
         scrollToSection("Manage Reviews");
         clickButtonOnGrid("View", reviewStep, "AnnouncementReviewStepsFlexToggle");
         clickOnCheckbox(applicationName, "Review Decisions");
-        clickOnFlextableButton("Promote to Next Step", "Review Decisions");
+        clickOnFlextableButton(buttonName, "Review Decisions");
         clickOnConfirmationtBox("Yes");
     }
 
@@ -314,6 +318,43 @@ public class ApplicationPage extends ProjectManager {
         fillInReviewForm();
         clickOnPageButton("Save");
         clickOnPageButton("Submit");
+    }
+    
+    /**
+     * Handles entering the given value in Subaward Abbreviation in FDM
+     * @param value
+     */
+    public void enterSubAwardAbbreviationFDM(String value) {
+        clickOnPageButton("Edit");
+        enterFieldValue("GrantCode__c", value);
+        clickOnPageButton("Save");
+    }
+    
+    /**
+     * Handles entering of recommendation for the given application in FDM
+     * @param recommendation
+     * @param budget
+     * @param applicationName
+     * @param flextableName
+     */
+    public void enterRecommendationFDM(String recommendation, String budget, String applicationName, String flextableName) {
+        clickOnFlextableRowButton("Edit", applicationName, flextableName);
+        fillFieldsForInlineTable("toggleFGridFundingDecisionMemoApplications", "6", "text", budget);
+        fillFieldsForInlineTable("toggleFGridFundingDecisionMemoApplications", "8", "dropdown", recommendation);
+        fillFieldsForInlineTable("toggleFGridFundingDecisionMemoApplications", "9", "text", defaultLongText);
+        clickOnFlextableButton("Save", flextableName);
+    }
+    
+    /**
+     * Handles assigning of approver to FDM
+     * @param approverName
+     * @param approverType
+     */
+    public void selectApproverFDM(String approverName, String approverType) {
+        clickOnSubtab("Responsibilities");
+        clickOnFlextableRowButton("Edit", approverType, "Responsibilities");
+        fillInApproverDetails(approverName);
+        switchToParentFrame();
     }
 
     /**
