@@ -596,8 +596,7 @@ public class ProjectManager extends ProjectWebServices {
      * @param uniqueColumnvalue
      * @param flextableName
      */
-    public void clickOnFlextableRowButtontoOpenModal(String iconName, String uniqueColumnValue, String flextableName,
-            String iFrameId) {
+    public void clickOnFlextableRowButtontoOpenModal(String iconName, String uniqueColumnValue, String flextableName) {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         reiDriver.WaitFor().makeThreadSleep(1000);
         reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
@@ -702,10 +701,6 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     /******* "Local Methods with Limited functionality " **********/
-
-    /**
-     * get any specific column value in pending tasks (Assigned to me)
-     */
 
     private void login(String userName) {
         govgrants.mainPage().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);

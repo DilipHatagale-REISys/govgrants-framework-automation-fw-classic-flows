@@ -113,12 +113,10 @@ public class ApplicationPage extends ProjectManager {
      */
     public void uploadChecklistToApplication(String fileName) {
         clickOnSubtab("Attachments");
-        clickOnFlextableRowButtontoOpenModal("Attach", "Not Applicable", "Attachment Checklist",
-                "ApplicationChecklistsiframeContentId");
+        clickOnFlextableRowButtontoOpenModal("Attach", "Not Applicable", "Attachment Checklist");
         uploadFile(fileName, "Checklist", "Application");
         closeModal("ApplicationChecklistsiframeContentIdButton");
-        clickOnFlextableRowButtontoOpenModal("Attach", "Not Applicable", "Attachment Checklist",
-                "ApplicationChecklistsiframeContentId");
+        clickOnFlextableRowButtontoOpenModal("Attach", "Not Applicable", "Attachment Checklist");
         uploadFile(fileName, "Checklist", "Application");
         closeModal("ApplicationChecklistsiframeContentIdButton");
     }
@@ -209,18 +207,15 @@ public class ApplicationPage extends ProjectManager {
      */
     public void assignApplicationToReviewerSME(String applicationName) {
         expandGrid("Program Review", "Review Forms");
-        clickOnFlextableRowButtontoOpenModal("Assign", "Automation PM", "Reviewers",
-                "RelatedExternalReviewersGridiframeContentId");
+        clickOnFlextableRowButtontoOpenModal("Assign", "Automation PM", "Reviewers");
         chooseRecordForAssociation("Assign", applicationName, "AssignPanelApplicationsTable");
         switchToParentFrame();
         expandGrid("Fiscal Review", "Review Forms");
-        clickOnFlextableRowButtontoOpenModal("Assign", "Automation PM", "Reviewers",
-                "RelatedExternalReviewersGridiframeContentId");
+        clickOnFlextableRowButtontoOpenModal("Assign", "Automation PM", "Reviewers");
         chooseRecordForAssociation("Assign", applicationName, "AssignPanelApplicationsTable");
         switchToParentFrame();
         expandGrid("Compliance Review", "Review Forms");
-        clickOnFlextableRowButtontoOpenModal("Assign", "Automation PM", "Reviewers",
-                "RelatedExternalReviewersGridiframeContentId");
+        clickOnFlextableRowButtontoOpenModal("Assign", "Automation PM", "Reviewers");
         chooseRecordForAssociation("Assign", applicationName, "AssignPanelApplicationsTable");
         switchToParentFrame();
     }
@@ -292,8 +287,7 @@ public class ApplicationPage extends ProjectManager {
      */
     public void assignApplicationToReviewerManagement(String applicationName) {
         expandGrid("Management Review", "Review Forms");
-        clickOnFlextableRowButtontoOpenModal("Assign", "Automation EXE", "Reviewers",
-                "RelatedExternalReviewersGridiframeContentId");
+        clickOnFlextableRowButtontoOpenModal("Assign", "Automation EXE", "Reviewers");
         chooseRecordForAssociation("Assign", applicationName, "AssignPanelApplicationsTable");
         switchToParentFrame();
     }
@@ -434,6 +428,8 @@ public class ApplicationPage extends ProjectManager {
         }
         return applicationReviewFormTitles;
     }
+    
+    /******* "Local Methods with Limited functionality " **********/
 
     private int getcountForRowsReviewForm(String title) {
         return reiDriver.findMyElement().getElements(By.xpath("//div[@class='panel-heading']//h3[text()='" + title

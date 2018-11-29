@@ -144,12 +144,6 @@ public class GenericSteps {
         projectManager.clickButtonOnGrid(iconName, uniqueColumnValue, tableId);
     }
 
-    @When("^I click on the \"([^\"]*)\" icon for the \"([^\"]*)\" on the flextable \"([^\"]*)\" to switch to frame \"([^\"]*)\"$")
-    public void clickOnFlextableRowButtontoOpenModal(String iconName, String uniqueColumnValue, String flexTableName,
-            String iFrameId) {
-        projectManager.clickOnFlextableRowButtontoOpenModal(iconName, uniqueColumnValue, flexTableName, iFrameId);
-    }
-
     @When("^I close Modal \"([^\"]*)\"$")
     public void closeModal(String closeButtonId) {
         projectManager.closeModal(closeButtonId);
