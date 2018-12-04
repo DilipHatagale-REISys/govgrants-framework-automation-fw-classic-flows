@@ -21,7 +21,7 @@ public class PlanningPage extends ProjectManager {
         navigateToTab("Planning");
         clickOnSidebar("Internal Programs", "Programs");
         changeFlexTableView("Draft Internal Programs");
-        clickOnFlexTableButtonToOpenModal("New", "Programs");
+        clickOnPhaseFlexTableButton("New", "Programs");
         enterFieldValues(sheetName, excelFileName);
         clickOnModalButton("Save And Close");
         clickOnPageButton("Save");
@@ -47,19 +47,19 @@ public class PlanningPage extends ProjectManager {
     public void associationOfRecordsToProgram(String contact, String focusArea, String objective) {
         //Contact association
         clickOnSubtab("Overview");
-        clickOnFlextableButtonToOpenModal("Associate", "Contacts");
+        clickOnFlextableButton("Associate", "Contacts", "ProgramContacts");
         chooseRecordForAssociation("Add", contact, "AssociateProgramContacts");
         closeModal("ProgramContactsmodalDivCloseIcon");
         
         //Focus Area association
         clickOnSubtab("Setup");
-        clickOnFlextableButtonToOpenModal("Associate", "Focus Areas");
+        clickOnFlextableButton("Associate", "Related Focus Areas", "GrantorServiceAreasProgram");
         chooseRecordForAssociation("Associate", focusArea, "popupflextable");
         closeModal("GrantorServiceAreasProgrammodalDivCloseIcon");
         
         //Objective association
         clickOnSubtab("Setup");
-        clickOnFlextableButtonToOpenModal("Associate", "Objectives");
+        clickOnFlextableButton("Associate", "Objectives", "RelatedProgramGoalsandObjectives");
         chooseRecordForAssociation("Add", objective, "popupflextable");
         closeModal("RelatedProgramGoalsandObjectivesmodalDivCloseIcon");
     }
@@ -71,10 +71,10 @@ public class PlanningPage extends ProjectManager {
      */
     public void approverSelectionForProgram(String programApprover, String executiveApprover) {
         clickOnSubtab("Responsibilities");
-        clickOnFlextableRowButtontoOpenModal("Edit", "Program Approver", "Approvers", "ProgramRolesAndResponsibilitiesiframeContentId");
+        clickOnFlextableRowButton("Edit", "Program Approver", "Approvers");
         fillInApproverDetails(programApprover);
         switchToParentFrame();
-        clickOnFlextableRowButtontoOpenModal("Edit", "Executive Approver", "Approvers", "ProgramRolesAndResponsibilitiesiframeContentId");
+        clickOnFlextableRowButton("Edit", "Executive Approver", "Approvers");
         fillInApproverDetails(executiveApprover);
         switchToParentFrame();
     }
@@ -88,12 +88,12 @@ public class PlanningPage extends ProjectManager {
      */
     public void additionOfChecklistToProgram(String description, String required, String appliesTo, String fileName) {
         clickOnSubtab("Setup");
-        clickOnFlextableButton("Add", "inlineEditGridProgramChecklists");
+        clickOnFlextableButton("Add", "Supporting Documents Checklist", "inlineEditGridProgramChecklists");
         fillFieldsForInlineTable("flexGridHeaderButtonsProgramChecklists", "1", "text", description);
         fillFieldsForInlineTable("flexGridHeaderButtonsProgramChecklists", "2", "dropdown", required);
         fillFieldsForInlineTable("flexGridHeaderButtonsProgramChecklists", "3", "dropdown", appliesTo);
-        clickOnFlextableButton("Save", "Supporting Documents Checklist");
-        clickOnFlextableRowButtontoOpenModal("Upload Template", "Not Applicable", "Supporting Documents Checklist", "ProgramChecklistsiframeContentId");
+        clickOnFlextableButton("Save", "Supporting Documents Checklist","");
+        clickOnFlextableRowButton("Upload Template", "Not Applicable", "Supporting Documents Checklist");
         uploadFile(fileName, "Checklist", "Program");
         closeModal("ProgramChecklistsiframeContentIdButton");
     }
@@ -104,7 +104,7 @@ public class PlanningPage extends ProjectManager {
      */
     public void additionOfAttachmentToProgram(String fileName) {
         clickOnSubtab("Attachments");
-        clickOnButtonForAttachmentNotesToOpenModal("Add", "Attachments");
+        clickOnButtonForAttachmentNotesToOpenModal("Add", " Attachments");
         uploadFile(fileName, "Attachment", "Program Artifacts");
         closeModal("Attachment");
     }

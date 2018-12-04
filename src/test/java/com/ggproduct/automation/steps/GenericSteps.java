@@ -99,14 +99,19 @@ public class GenericSteps {
         projectManager.clickOnButtonForAttachmentNotesToOpenModal(buttonName, flextableName);
     }
 
-    @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" flextable$")
-    public void clickOnFlextableButton(String buttonName, String flextableName) {
-        projectManager.clickOnFlextableButton(buttonName, flextableName);
+    @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" flextable with Id \"([^\"]*)\"$")
+    public void clickOnFlextableButton(String buttonName, String flextableName, String flextableId) {
+        projectManager.clickOnFlextableButton(buttonName, flextableName, flextableId);
     }
     
     @When("^I click \"([^\"]*)\" on the confirmation dialog box$")
     public void clickOnConfirmationtBox(String confirmationDecision) {
         projectManager.clickOnConfirmationtBox(confirmationDecision);
+    }
+    
+    @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" phase flextable$")
+    public void clickOnPhaseFlexTableButton(String buttonName, String flextableName) {
+        projectManager.clickOnPhaseFlexTableButton(buttonName, flextableName);
     }
     
     @When("^I choose \"([^\"]*)\" in the flextable \"([^\"]*)\"$")
@@ -117,11 +122,6 @@ public class GenericSteps {
     @When("^I switch to Parent frame$")
     public void switchToParentFrame() {
         projectManager.switchToParentFrame();
-    }
-    
-    @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" phase flextable$")
-    public void clickOnFlexTableButtonToOpenModal(String buttonName, String flextableName) {
-        projectManager.clickOnFlexTableButtonToOpenModal(buttonName, flextableName);
     }
 
     @When("^I click on the \"([^\"]*)\" icon for the \"([^\"]*)\" on the flextable \"([^\"]*)\"$")
@@ -185,7 +185,7 @@ public class GenericSteps {
     }
 
     @When("^I fill the fields in the table \"([^\"]*)\":$")
-    public void fillFieldsForInlineTable(String tableId, DataTable inLineEditFields) throws Throwable {
+    public void fillFieldsForInlineTable(String tableId, DataTable inLineEditFields) {
         for(Map<String,String> parameters:inLineEditFields.asMaps(String.class, String.class)) {
             projectManager.fillFieldsForInlineTable(tableId,parameters.get("tableColumnNumber"),parameters.get("inputype"),parameters.get("inputValue"));
         }
@@ -210,9 +210,9 @@ public class GenericSteps {
     public void assertStatusOnTable(String status) {
         projectManager.assertColumnValueOnTable(status);
     }
-
-    @Then("^I see that \"([^\"]*)\" has been added in \"([^\"]*)\" flextable$")
-    public void assertColumnOnTable(String columnUniqueValue, String flextableName) {
-        projectManager.assertColumnOnTable(columnUniqueValue, flextableName);
+    
+    @Then("^I see that \"([^\"]*)\" has been added in flextable \"([^\"]*)\" with Id \"([^\"]*)\"$")
+    public void assertColumnOnTable(String columnUniqueValue, String flextableName, String flextableId) {
+        projectManager.assertColumnOnTable(columnUniqueValue, flextableName, flextableId);
     }
 }

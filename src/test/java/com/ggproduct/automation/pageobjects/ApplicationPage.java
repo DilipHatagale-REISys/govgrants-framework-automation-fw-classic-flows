@@ -43,7 +43,8 @@ public class ApplicationPage extends ProjectManager {
      * @param excelFileName
      */
     public void applicationCreation(String sheetName, String excelFileName) {
-        clickOnPageButtonWithModalId("Create Application", "iframeActionModalIdViewLayout");
+        //clickOnPageButtonWithModalId("Create Application", "iframeActionModalIdViewLayout");
+        clickOnPageButton("Create Application");
         enterFieldValues(sheetName, excelFileName);
         clickOnModalButton("Save And Close");
         clickOnPageButton("Save");
@@ -67,10 +68,10 @@ public class ApplicationPage extends ProjectManager {
      * @param focusArea
      */
     public void additionOfFocusAreaToApplication(String focusArea) {
-        clickOnSubtab("Financials");
-        clickOnFlextableButtonToOpenModal("Add Focus Area", "Focus Area");
+        clickOnSubtab("Budget");
+        clickOnFlextableButton("Add Focus Area", "Focus Area", "FocusAreaApp");
         chooseRecordForAssociation("Add", focusArea, "popupflextable");
-        closeModal("FocusAreaAppmodalDivCloseIcon");
+        switchToParentFrame();
     }
 
     /**
@@ -81,14 +82,14 @@ public class ApplicationPage extends ProjectManager {
      * @param nonCashMatch
      */
     public void additionOfBudgetToApplication(String awardBudget, String cashMatch, String nonCashMatch) {
-        clickOnSubtab("Financials");
+        clickOnSubtab("Budget");
         expandGrid("BP01", "Budget Details");
         expandGrid("Proposed Budget", "Budget Details");
         clickButtonOnGrid("Edit", "Construction", "toggleFGridApplicationBudgetCategoryGrantorFlexGrid");
         fillFieldsForInlineTable("childTableId", "3", "text", awardBudget);
         fillFieldsForInlineTable("childTableId", "4", "text", cashMatch);
         fillFieldsForInlineTable("childTableId", "5", "text", nonCashMatch);
-        clickOnFlextableButton("Save", "Budget Details");
+        clickOnFlextableButton("Save", "Budget Details","");
     }
 
     /**
@@ -100,10 +101,10 @@ public class ApplicationPage extends ProjectManager {
         clickOnSubtab("Proposal");
         clickOnFlextableRowButton("Edit", "KPI-0005", "Key Performance Indicators");
         fillFieldsForInlineTable("toggleFGridRecipientApplicationRelatedKPIs", "5", "text", target);
-        clickOnFlextableButton("Save", "Key Performance Indicators");
+        clickOnFlextableButton("Save", "Key Performance Indicators","inlineEditGridRecipientApplicationRelatedKPIs");
         clickOnFlextableRowButton("Edit", "KPI-0006", "Key Performance Indicators");
         fillFieldsForInlineTable("toggleFGridRecipientApplicationRelatedKPIs", "5", "text", target);
-        clickOnFlextableButton("Save", "Key Performance Indicators");
+        clickOnFlextableButton("Save", "Key Performance Indicators","inlineEditGridRecipientApplicationRelatedKPIs");
     }
 
     /**
@@ -113,10 +114,10 @@ public class ApplicationPage extends ProjectManager {
      */
     public void uploadChecklistToApplication(String fileName) {
         clickOnSubtab("Attachments");
-        clickOnFlextableRowButtontoOpenModal("Attach", "Not Applicable", "Attachment Checklist");
+        clickOnFlextableRowButton("Attach", "Not Applicable", "Supporting Documents Checklist");
         uploadFile(fileName, "Checklist", "Application");
         closeModal("ApplicationChecklistsiframeContentIdButton");
-        clickOnFlextableRowButtontoOpenModal("Attach", "Not Applicable", "Attachment Checklist");
+        clickOnFlextableRowButton("Attach", "Not Applicable", "Supporting Documents Checklist" );
         uploadFile(fileName, "Checklist", "Application");
         closeModal("ApplicationChecklistsiframeContentIdButton");
     }
@@ -144,7 +145,7 @@ public class ApplicationPage extends ProjectManager {
         scrollToSection("Manage Reviews");
         clickButtonOnGrid("View", reviewStep, "AnnouncementReviewStepsFlexToggle");
         clickOnCheckbox(applicationName, "Review Decisions");
-        clickOnFlextableButton(buttonName, "Review Decisions");
+        clickOnFlextableButton(buttonName, "Review Decisions","");
         clickOnConfirmationtBox("Yes");
     }
 
@@ -168,13 +169,13 @@ public class ApplicationPage extends ProjectManager {
     public void enterDueInDaysSME(String dueInDays) {
         clickOnFlextableRowButton("Edit", "Program Review", "Review Forms");
         fillFieldsForInlineTable("RelatedReviewPanelGridresizable", "8", "text", dueInDays);
-        clickOnFlextableButton("Save", "Review Forms");
+        clickOnFlextableButton("Save", "Review Forms","");
         clickOnFlextableRowButton("Edit", "Fiscal Review", "Review Forms");
         fillFieldsForInlineTable("RelatedReviewPanelGridresizable", "8", "text", dueInDays);
-        clickOnFlextableButton("Save", "Review Forms");
+        clickOnFlextableButton("Save", "Review Forms","");
         clickOnFlextableRowButton("Edit", "Compliance Review", "Review Forms");
         fillFieldsForInlineTable("RelatedReviewPanelGridresizable", "8", "text", dueInDays);
-        clickOnFlextableButton("Save", "Review Forms");
+        clickOnFlextableButton("Save", "Review Forms","");
     }
 
     /**
@@ -185,19 +186,19 @@ public class ApplicationPage extends ProjectManager {
      */
     public void addReviewerForReviewSME(String programReviewer, String fiscalReviewer, String complianceReviewer) {
         expandGrid("Program Review", "Review Forms");
-        clickOnFlextableButton("Add", "Reviewers");
+        clickOnFlextableButton("Add", "Reviewers","");
         addReviewerForReview(programReviewer, "RelatedExternalReviewersGridresizable");
-        clickOnFlextableButton("Save", "Review Forms");
+        clickOnFlextableButton("Save", "Review Forms","");
         collapseGrid("Program Review", "Review Forms");
         expandGrid("Fiscal Review", "Review Forms");
-        clickOnFlextableButton("Add", "Reviewers");
+        clickOnFlextableButton("Add", "Reviewers","");
         addReviewerForReview(fiscalReviewer, "RelatedExternalReviewersGridresizable");
-        clickOnFlextableButton("Save", "Review Forms");
+        clickOnFlextableButton("Save", "Review Forms","");
         collapseGrid("Fiscal Review", "Review Forms");
         expandGrid("Compliance Review", "Review Forms");
-        clickOnFlextableButton("Add", "Reviewers");
+        clickOnFlextableButton("Add", "Reviewers","");
         addReviewerForReview(complianceReviewer, "RelatedExternalReviewersGridresizable");
-        clickOnFlextableButton("Save", "Review Forms");
+        clickOnFlextableButton("Save", "Review Forms","");
         collapseGrid("Compliance Review", "Review Forms");
     }
 
@@ -207,15 +208,15 @@ public class ApplicationPage extends ProjectManager {
      */
     public void assignApplicationToReviewerSME(String applicationName) {
         expandGrid("Program Review", "Review Forms");
-        clickOnFlextableRowButtontoOpenModal("Assign", "Automation PM", "Reviewers");
+        clickOnFlextableRowButton("Assign", "Automation PM", "Reviewers");
         chooseRecordForAssociation("Assign", applicationName, "AssignPanelApplicationsTable");
         switchToParentFrame();
         expandGrid("Fiscal Review", "Review Forms");
-        clickOnFlextableRowButtontoOpenModal("Assign", "Automation PM", "Reviewers");
+        clickOnFlextableRowButton("Assign", "Automation PM", "Reviewers");
         chooseRecordForAssociation("Assign", applicationName, "AssignPanelApplicationsTable");
         switchToParentFrame();
         expandGrid("Compliance Review", "Review Forms");
-        clickOnFlextableRowButtontoOpenModal("Assign", "Automation PM", "Reviewers");
+        clickOnFlextableRowButton("Assign", "Automation PM", "Reviewers");
         chooseRecordForAssociation("Assign", applicationName, "AssignPanelApplicationsTable");
         switchToParentFrame();
     }
@@ -227,7 +228,7 @@ public class ApplicationPage extends ProjectManager {
         clickOnCheckbox("Program Review", "Reviews");
         clickOnCheckbox("Fiscal Review", "Reviews");
         clickOnCheckbox("Compliance Review", "Reviews");
-        clickOnFlextableButton("Send for Review", "Reviews");
+        clickOnFlextableButton("Send for Review", "Reviews","");
     }
 
     /**
@@ -267,7 +268,7 @@ public class ApplicationPage extends ProjectManager {
     public void enterDueInDaysManagement(String dueInDays) {
         clickOnFlextableRowButton("Edit", "Management Review", "Review Forms");
         fillFieldsForInlineTable("RelatedReviewPanelGridresizable", "8", "text", dueInDays);
-        clickOnFlextableButton("Save", "Review Forms");
+        clickOnFlextableButton("Save", "Review Forms","");
     }
     
     /**
@@ -276,9 +277,9 @@ public class ApplicationPage extends ProjectManager {
      */
     public void addReviewerForReviewManagement(String managementReviewer) {
         expandGrid("Program Review", "Review Forms");
-        clickOnFlextableButton("Add", "Reviewers");
+        clickOnFlextableButton("Add", "Reviewers","");
         addReviewerForReview(managementReviewer, "RelatedExternalReviewersGridresizable");
-        clickOnFlextableButton("Save", "Review Forms");
+        clickOnFlextableButton("Save", "Review Forms","");
     }
     
     /**
@@ -287,7 +288,7 @@ public class ApplicationPage extends ProjectManager {
      */
     public void assignApplicationToReviewerManagement(String applicationName) {
         expandGrid("Management Review", "Review Forms");
-        clickOnFlextableRowButtontoOpenModal("Assign", "Automation EXE", "Reviewers");
+        clickOnFlextableRowButton("Assign", "Automation EXE", "Reviewers");
         chooseRecordForAssociation("Assign", applicationName, "AssignPanelApplicationsTable");
         switchToParentFrame();
     }
@@ -297,7 +298,7 @@ public class ApplicationPage extends ProjectManager {
      */
     public void chooseAndSendReviewsManagement() {
         clickOnCheckbox("Management Review", "Reviews");
-        clickOnFlextableButton("Send for Review", "Reviews");
+        clickOnFlextableButton("Send for Review", "Reviews","");
     }
     
     /**
@@ -336,7 +337,7 @@ public class ApplicationPage extends ProjectManager {
         fillFieldsForInlineTable("toggleFGridFundingDecisionMemoApplications", "6", "text", budget);
         fillFieldsForInlineTable("toggleFGridFundingDecisionMemoApplications", "8", "dropdown", recommendation);
         fillFieldsForInlineTable("toggleFGridFundingDecisionMemoApplications", "9", "text", defaultLongText);
-        clickOnFlextableButton("Save", flextableName);
+        clickOnFlextableButton("Save", flextableName,"");
     }
     
     /**
