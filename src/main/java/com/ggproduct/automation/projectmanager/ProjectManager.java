@@ -437,7 +437,6 @@ public class ProjectManager extends ProjectWebServices {
      */
     public void clickOnButtonForAttachmentNotesToOpenModal(String buttonName, String flextableName) {
         govgrants.modal().clickTopRightButtonForAttachmentNotes(flextableName, buttonName);
-        //clickOnFlextableButton(buttonName, flextableName, flextableId);
     }
 
     /**
@@ -613,6 +612,7 @@ public class ProjectManager extends ProjectWebServices {
      */
     public void fillInApproverDetails(String approverName) {
         reiDriver.WaitFor().makeThreadSleep(700);
+        reiDriver.findMyElement().getElement(By.xpath("//span[@class='lookupInput']//input")).clear();
         reiDriver.findMyElement().getElement(By.xpath("//span[@class='lookupInput']//input")).sendKeys(approverName);
         reiDriver.WaitFor().WaitForElementToBePresent(lookUpSearchPath).click();
         reiDriver.switchTo().switchToFrame(lookUpIFramePath);
@@ -651,11 +651,8 @@ public class ProjectManager extends ProjectWebServices {
      */
     public void fillFieldsForInlineTable(String tableId, String columnNumber, String inputType, String inputValue) {
         try {
-            System.out.println("Strarted input in try");
             govgrants.flexTable().inlineEdit(tableId, columnNumber, inputType, inputValue);
-            System.out.println("End input in try");
         } catch (Exception ex) {
-            System.out.println("Start input in catch ");
             ex.printStackTrace();
             reiDriver.findMyElement().getElement(By.xpath("//*[@id = '" + tableId
                     + "']/ancestor::div[contains(@class,'panel')]//td[" + columnNumber + "]//input")).clear();
@@ -663,7 +660,6 @@ public class ProjectManager extends ProjectWebServices {
                     .findMyElement().getElement(By.xpath("//*[@id = '" + tableId
                             + "']/ancestor::div[contains(@class,'panel')]//td[" + columnNumber + "]//input"))
                     .sendKeys(inputValue);
-            System.out.println("End input in catch");
         }
     }
 

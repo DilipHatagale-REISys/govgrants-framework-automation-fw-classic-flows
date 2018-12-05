@@ -145,8 +145,12 @@ public class ApplicationPage extends ProjectManager {
         scrollToSection("Manage Reviews");
         clickButtonOnGrid("View", reviewStep, "AnnouncementReviewStepsFlexToggle");
         clickOnCheckbox(applicationName, "Review Decisions");
-        clickOnFlextableButton(buttonName, "Review Decisions","");
+        clickOnFlextableButton(buttonName, "Review Decisions","flexGridPreScreenRelatedStepApplicationsFinal");
+        try {
         clickOnConfirmationtBox("Yes");
+        } catch(Exception e) {
+            
+        }
     }
 
     /**
@@ -169,13 +173,13 @@ public class ApplicationPage extends ProjectManager {
     public void enterDueInDaysSME(String dueInDays) {
         clickOnFlextableRowButton("Edit", "Program Review", "Review Forms");
         fillFieldsForInlineTable("RelatedReviewPanelGridresizable", "8", "text", dueInDays);
-        clickOnFlextableButton("Save", "Review Forms","");
+        clickOnFlextableButton("Save", "Review Forms","flexGridApplicationReviewTree");
         clickOnFlextableRowButton("Edit", "Fiscal Review", "Review Forms");
         fillFieldsForInlineTable("RelatedReviewPanelGridresizable", "8", "text", dueInDays);
-        clickOnFlextableButton("Save", "Review Forms","");
+        clickOnFlextableButton("Save", "Review Forms","flexGridApplicationReviewTree");
         clickOnFlextableRowButton("Edit", "Compliance Review", "Review Forms");
         fillFieldsForInlineTable("RelatedReviewPanelGridresizable", "8", "text", dueInDays);
-        clickOnFlextableButton("Save", "Review Forms","");
+        clickOnFlextableButton("Save", "Review Forms","flexGridApplicationReviewTree");
     }
 
     /**
@@ -186,19 +190,19 @@ public class ApplicationPage extends ProjectManager {
      */
     public void addReviewerForReviewSME(String programReviewer, String fiscalReviewer, String complianceReviewer) {
         expandGrid("Program Review", "Review Forms");
-        clickOnFlextableButton("Add", "Reviewers","");
+        clickOnFlextableButton("Add", "Reviewers","flexGridApplicationReviewTree");
         addReviewerForReview(programReviewer, "RelatedExternalReviewersGridresizable");
-        clickOnFlextableButton("Save", "Review Forms","");
+        clickOnFlextableButton("Save", "Review Forms","flexGridApplicationReviewTree");
         collapseGrid("Program Review", "Review Forms");
         expandGrid("Fiscal Review", "Review Forms");
-        clickOnFlextableButton("Add", "Reviewers","");
+        clickOnFlextableButton("Add", "Reviewers","flexGridApplicationReviewTree");
         addReviewerForReview(fiscalReviewer, "RelatedExternalReviewersGridresizable");
-        clickOnFlextableButton("Save", "Review Forms","");
+        clickOnFlextableButton("Save", "Review Forms","flexGridApplicationReviewTree");
         collapseGrid("Fiscal Review", "Review Forms");
         expandGrid("Compliance Review", "Review Forms");
-        clickOnFlextableButton("Add", "Reviewers","");
+        clickOnFlextableButton("Add", "Reviewers","flexGridApplicationReviewTree");
         addReviewerForReview(complianceReviewer, "RelatedExternalReviewersGridresizable");
-        clickOnFlextableButton("Save", "Review Forms","");
+        clickOnFlextableButton("Save", "Review Forms","flexGridApplicationReviewTree");
         collapseGrid("Compliance Review", "Review Forms");
     }
 
@@ -212,11 +216,11 @@ public class ApplicationPage extends ProjectManager {
         chooseRecordForAssociation("Assign", applicationName, "AssignPanelApplicationsTable");
         switchToParentFrame();
         expandGrid("Fiscal Review", "Review Forms");
-        clickOnFlextableRowButton("Assign", "Automation PM", "Reviewers");
+        clickOnFlextableRowButton("Assign", "Automation FO", "Reviewers");
         chooseRecordForAssociation("Assign", applicationName, "AssignPanelApplicationsTable");
         switchToParentFrame();
         expandGrid("Compliance Review", "Review Forms");
-        clickOnFlextableRowButton("Assign", "Automation PM", "Reviewers");
+        clickOnFlextableRowButton("Assign", "Automation EXE", "Reviewers");
         chooseRecordForAssociation("Assign", applicationName, "AssignPanelApplicationsTable");
         switchToParentFrame();
     }
@@ -228,7 +232,7 @@ public class ApplicationPage extends ProjectManager {
         clickOnCheckbox("Program Review", "Reviews");
         clickOnCheckbox("Fiscal Review", "Reviews");
         clickOnCheckbox("Compliance Review", "Reviews");
-        clickOnFlextableButton("Send for Review", "Reviews","");
+        clickOnFlextableButton("Send for Review", "Reviews","flexGridStepReviews");
     }
 
     /**
@@ -268,7 +272,7 @@ public class ApplicationPage extends ProjectManager {
     public void enterDueInDaysManagement(String dueInDays) {
         clickOnFlextableRowButton("Edit", "Management Review", "Review Forms");
         fillFieldsForInlineTable("RelatedReviewPanelGridresizable", "8", "text", dueInDays);
-        clickOnFlextableButton("Save", "Review Forms","");
+        clickOnFlextableButton("Save", "Review Forms","flexGridApplicationReviewTree");
     }
     
     /**
@@ -276,10 +280,11 @@ public class ApplicationPage extends ProjectManager {
      * @param managementReviewer
      */
     public void addReviewerForReviewManagement(String managementReviewer) {
-        expandGrid("Program Review", "Review Forms");
-        clickOnFlextableButton("Add", "Reviewers","");
+        expandGrid("Management Review", "Review Forms");
+        clickOnFlextableButton("Add", "Reviewers","flexGridApplicationReviewTree");
         addReviewerForReview(managementReviewer, "RelatedExternalReviewersGridresizable");
-        clickOnFlextableButton("Save", "Review Forms","");
+        clickOnFlextableButton("Save", "Review Forms","flexGridApplicationReviewTree");
+        collapseGrid("Management Review", "Review Forms");
     }
     
     /**
@@ -298,7 +303,7 @@ public class ApplicationPage extends ProjectManager {
      */
     public void chooseAndSendReviewsManagement() {
         clickOnCheckbox("Management Review", "Reviews");
-        clickOnFlextableButton("Send for Review", "Reviews","");
+        clickOnFlextableButton("Send for Review", "Reviews","flexGridStepReviews");
     }
     
     /**

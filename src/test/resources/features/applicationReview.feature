@@ -1,4 +1,4 @@
-@applicationIntake
+@applicationReview
 Feature: Validate all scenarios in the Application Review
 
 	@preScreenApplicationReview @applicationReview
@@ -388,7 +388,7 @@ Feature: Validate all scenarios in the Application Review
 	| User | Announcement Name  	 | Review Step Name	      | Application Name 	           	    |
 	| EXE  | Automation Announcement | Funding Decision Memo  | Automation Announcement Application |
 		
-	@ApproveFDM @applicationReview
+	@approveFDM @applicationReview
   	Scenario Outline: Approving FDM as the assigned user
 	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
 	And I click on "Next Review Step" button
@@ -418,5 +418,5 @@ Feature: Validate all scenarios in the Application Review
 	When I click on "Approve" on the approval decision box
 	Then I see that "Approved" status is in "green" on progress bar
 	Examples: 
-	| User | Announcement Name  	 | Review Step Name	      | Application Name 	           	    |
-	| EXE  | Automation Announcement | Funding Decision Memo  | Automation Announcement Application |
+	| User | Announcement Name  				   | Review Step Name	    | Application Name 	            	    			  |
+	| EXE  | Automation Announcement to be deleted | Funding Decision Memo  | Automation Announcement to be deleted Application |

@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in the Application Intake
 
 	Background: Qualify Announcement and Create Application
-	Given I qualiy the announcement "Automation Announcement for Application Intake" as user "SPI"
+	Given I qualiy the announcement "Automation Announcement to be deleted" as user "SPI"
 	And I create an Application from sheet "Creation" in excel "Application_Field_Values.xlsx"
 	
   	@preapplicationCreation @applicationIntake

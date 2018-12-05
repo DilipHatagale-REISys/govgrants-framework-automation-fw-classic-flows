@@ -1,4 +1,4 @@
-@planning
+@announcement
 Feature: Validate all scenarios in the Announcement tab
 
 	Background: Create Announcement
