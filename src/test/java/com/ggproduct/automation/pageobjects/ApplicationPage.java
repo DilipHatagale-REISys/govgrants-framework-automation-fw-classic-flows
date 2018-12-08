@@ -1,6 +1,7 @@
 package com.ggproduct.automation.pageobjects;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import java.util.Collections;
 import java.util.List;
@@ -43,7 +44,6 @@ public class ApplicationPage extends ProjectManager {
      * @param excelFileName
      */
     public void applicationCreation(String sheetName, String excelFileName) {
-        //clickOnPageButtonWithModalId("Create Application", "iframeActionModalIdViewLayout");
         clickOnPageButton("Create Application");
         enterFieldValues(sheetName, excelFileName);
         clickOnModalButton("Save And Close");
@@ -81,15 +81,11 @@ public class ApplicationPage extends ProjectManager {
      * @param cashMatch
      * @param nonCashMatch
      */
-    public void additionOfBudgetToApplication(String awardBudget, String cashMatch, String nonCashMatch) {
+    public void additionOfBudgetToApplication(Map<String, Map<String, String>> rowValues) {
         clickOnSubtab("Budget");
         expandGrid("BP01", "Budget Details");
         expandGrid("Proposed Budget", "Budget Details");
-        clickButtonOnGrid("Edit", "Construction", "toggleFGridApplicationBudgetCategoryGrantorFlexGrid");
-        fillFieldsForInlineTable("childTableId", "3", "text", awardBudget);
-        fillFieldsForInlineTable("childTableId", "4", "text", cashMatch);
-        fillFieldsForInlineTable("childTableId", "5", "text", nonCashMatch);
-        clickOnFlextableButton("Save", "Budget Details","");
+        fillFieldsForInlineTable("inlineEditGridApplicationBudgetCategoryGrantorFlexGrid", "Edit", rowValues);
     }
 
     /**
@@ -97,14 +93,9 @@ public class ApplicationPage extends ProjectManager {
      * 
      * @param target
      */
-    public void additionOfTargetToKPIInApplication(String target) {
+    public void additionOfTargetToKPIInApplication(Map<String, Map<String, String>> rowValues) {
         clickOnSubtab("Proposal");
-        clickOnFlextableRowButton("Edit", "KPI-0005", "Key Performance Indicators");
-        fillFieldsForInlineTable("toggleFGridRecipientApplicationRelatedKPIs", "5", "text", target);
-        clickOnFlextableButton("Save", "Key Performance Indicators","inlineEditGridRecipientApplicationRelatedKPIs");
-        clickOnFlextableRowButton("Edit", "KPI-0006", "Key Performance Indicators");
-        fillFieldsForInlineTable("toggleFGridRecipientApplicationRelatedKPIs", "5", "text", target);
-        clickOnFlextableButton("Save", "Key Performance Indicators","inlineEditGridRecipientApplicationRelatedKPIs");
+        fillFieldsForInlineTable("inlineEditGridRecipientApplicationRelatedKPIs", "Edit", rowValues);
     }
 
     /**
@@ -170,16 +161,8 @@ public class ApplicationPage extends ProjectManager {
      * Handles entering of due date for SME review
      * @param dueInDays
      */
-    public void enterDueInDaysSME(String dueInDays) {
-        clickOnFlextableRowButton("Edit", "Program Review", "Review Forms");
-        fillFieldsForInlineTable("RelatedReviewPanelGridresizable", "8", "text", dueInDays);
-        clickOnFlextableButton("Save", "Review Forms","flexGridApplicationReviewTree");
-        clickOnFlextableRowButton("Edit", "Fiscal Review", "Review Forms");
-        fillFieldsForInlineTable("RelatedReviewPanelGridresizable", "8", "text", dueInDays);
-        clickOnFlextableButton("Save", "Review Forms","flexGridApplicationReviewTree");
-        clickOnFlextableRowButton("Edit", "Compliance Review", "Review Forms");
-        fillFieldsForInlineTable("RelatedReviewPanelGridresizable", "8", "text", dueInDays);
-        clickOnFlextableButton("Save", "Review Forms","flexGridApplicationReviewTree");
+    public void enterDueInDaysSME(Map<String, Map<String, String>> rowValues) {
+        fillFieldsForInlineTable("flexGridApplicationReviewTree", "Edit", rowValues);
     }
 
     /**
@@ -269,10 +252,8 @@ public class ApplicationPage extends ProjectManager {
      * Handles entering of due in days for management review
      * @param dueInDays
      */
-    public void enterDueInDaysManagement(String dueInDays) {
-        clickOnFlextableRowButton("Edit", "Management Review", "Review Forms");
-        fillFieldsForInlineTable("RelatedReviewPanelGridresizable", "8", "text", dueInDays);
-        clickOnFlextableButton("Save", "Review Forms","flexGridApplicationReviewTree");
+    public void enterDueInDaysManagement(Map<String, Map<String, String>> rowValues) {
+        fillFieldsForInlineTable("flexGridApplicationReviewTree", "Edit", rowValues);
     }
     
     /**
@@ -337,12 +318,8 @@ public class ApplicationPage extends ProjectManager {
      * @param applicationName
      * @param flextableName
      */
-    public void enterRecommendationFDM(String recommendation, String budget, String applicationName, String flextableName) {
-        clickOnFlextableRowButton("Edit", applicationName, flextableName);
-        fillFieldsForInlineTable("toggleFGridFundingDecisionMemoApplications", "6", "text", budget);
-        fillFieldsForInlineTable("toggleFGridFundingDecisionMemoApplications", "8", "dropdown", recommendation);
-        fillFieldsForInlineTable("toggleFGridFundingDecisionMemoApplications", "9", "text", defaultLongText);
-        clickOnFlextableButton("Save", flextableName,"");
+    public void enterRecommendationFDM(Map<String, Map<String, String>> rowValues) {
+        fillFieldsForInlineTable("inlineEditGridFundingDecisionMemoApplications", "Edit", rowValues);
     }
     
     /**

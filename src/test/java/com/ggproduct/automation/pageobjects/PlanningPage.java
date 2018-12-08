@@ -4,6 +4,8 @@ import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.projectmanager.ProjectManager;
+import java.util.List;
+import java.util.Map;
 
 public class PlanningPage extends ProjectManager {
     public PlanningPage(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
@@ -86,13 +88,9 @@ public class PlanningPage extends ProjectManager {
      * @param appliesTo
      * @param fileName
      */
-    public void additionOfChecklistToProgram(String description, String required, String appliesTo, String fileName) {
+    public void additionOfChecklistToProgram(String fileName, List<Map<String, String>> rowValues) {
         clickOnSubtab("Setup");
-        clickOnFlextableButton("Add", "Supporting Documents Checklist", "inlineEditGridProgramChecklists");
-        fillFieldsForInlineTable("flexGridHeaderButtonsProgramChecklists", "1", "text", description);
-        fillFieldsForInlineTable("flexGridHeaderButtonsProgramChecklists", "2", "dropdown", required);
-        fillFieldsForInlineTable("flexGridHeaderButtonsProgramChecklists", "3", "dropdown", appliesTo);
-        clickOnFlextableButton("Save", "Supporting Documents Checklist","");
+        addFieldsForInlineTable("inlineEditGridProgramChecklists", "Add", rowValues);
         clickOnFlextableRowButton("Upload Template", "Not Applicable", "Supporting Documents Checklist");
         uploadFile(fileName, "Checklist", "Program");
         closeModal("ProgramChecklistsiframeContentIdButton");

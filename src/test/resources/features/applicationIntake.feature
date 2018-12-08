@@ -40,13 +40,9 @@ Feature: Validate all scenarios in the Application Intake
     When I click on "Budget" subtab
     And I expand the "BP01" on grid "<Flextable Name>"
     When I expand the "Proposed Budget" on grid "<Flextable Name>"
-    And I click on "Edit" on the grid against "Construction" in the table "toggleFGridApplicationBudgetCategoryGrantorFlexGrid"
-	When I fill the fields in the table "childTableId":
-    | tableColumnNumber | inputype | inputValue                 |
-    | 3                 | text     | 5000                       |
-    | 4                 | text     | 1000                       |
-    | 5                 | text     | 3000                       |
-	And I click on "Save" button on "<Flextable Name>" flextable with Id "inlineEditGridApplicationBudgetCategoryGrantorFlexGrid"
+    When I edit the following rows inline in flex table with id "inlineEditGridApplicationBudgetCategoryGrantorFlexGrid" by clicking "Edit" :
+	| 		       | Budget | Cash Match | Non-Cash Match |
+	| Construction | 5000 	| 1000   	 | 3000 		  | 
 	Examples:
 	| Flextable Name |
 	| Budget Details |	
@@ -54,16 +50,10 @@ Feature: Validate all scenarios in the Application Intake
   	@addTargetToKPIInApplication @applicationIntake
   	Scenario Outline: Addition of KPI target to an application 
     When I click on "Proposal" subtab
-    And I click on the "Edit" icon for the "KPI-0005" on the flextable "<Flextable Name>"
-    When I fill the fields in the table "toggleFGridRecipientApplicationRelatedKPIs":
-    | tableColumnNumber | inputype | inputValue                 |
-    | 5                 | text     | 10                         |
-	And I click on "Save" button on "<Flextable Name>" flextable with Id "inlineEditGridRecipientApplicationRelatedKPIs"
-	When I click on the "Edit" icon for the "KPI-0006" on the flextable "<Flextable Name>"
-    And I fill the fields in the table "toggleFGridRecipientApplicationRelatedKPIs":
-    | tableColumnNumber | inputype | inputValue                 |
-    | 5                 | text     | 10                         |
-	When I click on "Save" button on "<Flextable Name>" flextable with Id "inlineEditGridRecipientApplicationRelatedKPIs"
+    When I edit the following rows inline in flex table with id "inlineEditGridRecipientApplicationRelatedKPIs" by clicking "Edit" :
+	| 		   | Target |
+	| KPI-0005 | 10		|
+	| KPI-0006 | 10		|
 	Then I see that "10" has been added in flextable "<Flextable Name>" with Id "inlineEditGridRecipientApplicationRelatedKPIs"
 	Examples:
 	| Flextable Name             |
@@ -96,8 +86,13 @@ Feature: Validate all scenarios in the Application Intake
   	Scenario Outline: Submitting an application to Grantor
 	Given I complete the Application fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
 	And I add focus area "00005" to the application
-	Given I add budget details Award budget "5000", Cash match "1000", Non-cash match "3000" to the application
-	And I add target "10" to the KPI in the application
+	Given I add budget details to the application
+	| 		       | Budget | Cash Match | Non-Cash Match |
+	| Construction | 5000 	| 1000   	 | 3000 		  |
+	And I add target to the KPI in the application
+	| 		   | Target |
+	| KPI-0005 | 10		|
+	| KPI-0006 | 10		|
 	Given I upload checklist "Announcement_Field_Values.xlsx" to the application
     When I click on "Submit Application" button
     Then I see that "Submitted" status is in "green" on progress bar
@@ -109,8 +104,13 @@ Feature: Validate all scenarios in the Application Intake
   	Scenario Outline: Viewing the application submitted by subrecipient as Internal user
   	Given I complete the Application fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
 	And I add focus area "00005" to the application
-	Given I add budget details Award budget "5000", Cash match "1000", Non-cash match "3000" to the application
-	And I add target "10" to the KPI in the application
+	Given I add budget details to the application
+	| 		       | Budget | Cash Match | Non-Cash Match |
+	| Construction | 5000 	| 1000   	 | 3000 		  |
+	And I add target to the KPI in the application
+	| 		   | Target |
+	| KPI-0005 | 10		|
+	| KPI-0006 | 10		|
 	Given I upload checklist "Annoluncement_Field_Values.xlsx" to the application
     When I click on "Submit Application" button
     Given I login to "As a Grantor" app as "<User>" User

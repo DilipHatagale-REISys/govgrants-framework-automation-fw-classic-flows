@@ -1,6 +1,7 @@
 package com.ggproduct.automation.steps;
 
 import com.automation.rei.controller.Controller;
+import java.util.Map;
 import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.pageobjects.ApplicationPage;
@@ -35,14 +36,14 @@ public class ApplicationSteps {
         applicationPage.additionOfFocusAreaToApplication(focusArea);
     }
     
-    @Given("^I add budget details Award budget \"([^\"]*)\", Cash match \"([^\"]*)\", Non-cash match \"([^\"]*)\" to the application$")
-    public void additionOfBudgetToApplication(String awardBudget, String cashMatch, String nonCashMatch) {
-        applicationPage.additionOfBudgetToApplication(awardBudget, cashMatch, nonCashMatch);
+    @Given("^I add budget details to the application$")
+    public void additionOfBudgetToApplication(Map<String, Map<String, String>> rowValues) {
+        applicationPage.additionOfBudgetToApplication(rowValues);
     }
     
-    @Given("^I add target \"([^\"]*)\" to the KPI in the application$")
-    public void additionOfTargetToKPIInApplication(String target) {
-        applicationPage.additionOfTargetToKPIInApplication(target);
+    @Given("^I add target to the KPI in the application$")
+    public void additionOfTargetToKPIInApplication(Map<String, Map<String, String>> rowValues) {
+        applicationPage.additionOfTargetToKPIInApplication(rowValues);
     }
     
     @Given("^I upload checklist \"([^\"]*)\" to the application$")
@@ -55,9 +56,9 @@ public class ApplicationSteps {
         applicationPage.completeReviewStepForApplication(reviewStep, buttonName, applicationName, announcementOwner, announcementName);
     }
     
-    @Given("^I enter the Due In Days as \"([^\"]*)\" for all SME review steps$")
-    public void enterDueInDaysSME(String dueInDays) {
-        applicationPage.enterDueInDaysSME(dueInDays);
+    @Given("^I enter the Due In Days for all SME review steps$")
+    public void enterDueInDaysSME(Map<String, Map<String, String>> rowValues) {
+        applicationPage.enterDueInDaysSME(rowValues);
     }
     
     @Given("^I add Reviewers \"([^\"]*)\" for Program Review, \"([^\"]*)\" for Fiscal Review, \"([^\"]*)\" for Compliance Review in SME Review$")
@@ -90,9 +91,9 @@ public class ApplicationSteps {
         applicationPage.fillInReviewForm();
     }
     
-    @Given("^I enter the Due In Days as \"([^\"]*)\" for all Management review steps$")
-    public void enterDueInDaysManagement(String dueInDays) {
-        applicationPage.enterDueInDaysManagement(dueInDays);
+    @Given("^I enter the Due In Days for all Management review steps$")
+    public void enterDueInDaysManagement(Map<String, Map<String, String>> rowValues) {
+        applicationPage.enterDueInDaysManagement(rowValues);
     }
     
     @Given("^I add Reviewers \"([^\"]*)\" for Management Review$")
@@ -120,9 +121,9 @@ public class ApplicationSteps {
         applicationPage.enterSubAwardAbbreviationFDM(value);
     }
     
-    @Given("^I enter the recommendation as \"([^\"]*)\" with budget \"([^\"]*)\" for application \"([^\"]*)\" on the flextable \"([^\"]*)\"$")
-    public void enterRecommendationFDM(String recommendation, String budget, String applicationName, String flextableName) {
-        applicationPage.enterRecommendationFDM(recommendation, budget,applicationName, flextableName);
+    @Given("^I enter the recommendation in FDM$")
+    public void enterRecommendationFDM(Map<String, Map<String, String>> rowValues) {
+        applicationPage.enterRecommendationFDM(rowValues);
     }
     
     @Given("^I select \"([^\"]*)\" as \"([^\"]*)\" for Approver details$")

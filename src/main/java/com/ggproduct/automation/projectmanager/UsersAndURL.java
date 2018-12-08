@@ -54,6 +54,9 @@ public class UsersAndURL {
         case "FO":
             username = "auto.fm@auto.com";
             break;
+        case "SPI":
+            username = "gcooper@yopmail.com20";
+            break;
         default:
             username = "admin.automation@product.com";
         }
@@ -93,7 +96,7 @@ public class UsersAndURL {
             Reporter.addScenarioLog("Scenario is running using External Link" + " & Url is " + url);
             break;
         case "SUBRECIPIENT PORTAL":
-            url = new Properties_Logs().ReadPropertyFile("environment.properties", "SubrecipientPortal");
+            url = new Properties_Logs().ReadPropertyFile("environment.properties", "SUBPORTAL");
             Reporter.addScenarioLog("Scenario is running using External Link" + " & Url is " + url);
             break;
         }

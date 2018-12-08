@@ -1,5 +1,8 @@
 package com.ggproduct.automation.pageobjects;
 
+import java.util.Map;
+
+import java.util.List;
 import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
@@ -61,11 +64,9 @@ public class AnnouncementPage extends ProjectManager {
      * @param agency
      * @param amount
      */
-    public void associateAgencyAmountToAnnouncement(String agency, String amount) {
+    public void associateAgencyAmountToAnnouncement(String agency, Map<String, Map<String, String>> rowValues) {
         associateAgencyToAnnouncement(agency);
-        clickOnFlextableRowButton("Edit", agency, "Invited Applicants");
-        fillFieldsForInlineTable("toggleFGridSoleSourceAwardOrganizations", "5", "text", amount);
-        clickOnFlextableButton("Save", "Invited Applicants","");
+        fillFieldsForInlineTable("inlineEditGridSoleSourceAwardOrganizations", "Edit", rowValues);
     }
 
     /**
@@ -73,14 +74,12 @@ public class AnnouncementPage extends ProjectManager {
      * @param fundingAccount
      * @param amount
      */
-    public void addFundingAccountToAnnouncement(String fundingAccount, String amount) {
+    public void addFundingAccountToAnnouncement(String fundingAccount, Map<String, Map<String, String>> rowValues) {
         clickOnSubtab("Financials");
         clickOnFlextableButton("Associate", "Funding Accounts", "flexGridAnnouncementFundingAccountGrantor");
         chooseRecordForAssociation("Add", fundingAccount, "popupflextable");
         closeModal("AnnouncementFundingAccountGrantormodalDivCloseIcon");
-        clickOnFlextableRowButton("Edit", fundingAccount, "Funding Accounts");
-        fillFieldsForInlineTable("AnnouncementFundingAccountGrantorresizable", "5", "text", amount);
-        clickOnFlextableButton("Save", "Funding Accounts","flexGridAnnouncementFundingAccountGrantor");
+        fillFieldsForInlineTable("flexGridAnnouncementFundingAccountGrantor", "Edit", rowValues);
     }
 
     /**
@@ -152,14 +151,9 @@ public class AnnouncementPage extends ProjectManager {
      * @param appliesTo
      * @param fileName
      */
-    public void additionOfChecklistToAnnouncement(String description, String required, String appliesTo,
-            String fileName) {
+    public void additionOfChecklistToAnnouncement(String fileName, List<Map<String, String>> rowValues) {
         clickOnSubtab("Setup");
-        clickOnFlextableButton("Add", "Supporting Documents","inlineEditGridAnnouncementChecklists");
-        fillFieldsForInlineTable("toggleFGridAnnouncementChecklists", "1", "text", description);
-        fillFieldsForInlineTable("toggleFGridAnnouncementChecklists", "2", "dropdown", required);
-        fillFieldsForInlineTable("toggleFGridAnnouncementChecklists", "3", "dropdown", appliesTo);
-        clickOnFlextableButton("Save", "Supporting Documents","");
+        addFieldsForInlineTable("inlineEditGridAnnouncementChecklists", "Add", rowValues);
         clickOnFlextableRowButton("Upload Template", "Not Applicable", "Supporting Documents");
         uploadFile(fileName, "Checklist", "Announcement");
         closeModal("AnnouncementChecklistsiframeContentIdButton");

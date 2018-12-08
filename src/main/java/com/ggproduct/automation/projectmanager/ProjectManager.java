@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import java.util.List;
+import java.util.Map;
 
 import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.GovGrantsHandler;
@@ -374,7 +376,7 @@ public class ProjectManager extends ProjectWebServices {
      * @param alertDecision
      */
     public void clickOnConfirmationtBox(String confirmationDecision) {
-        govgrants.modal().handleModalAlert("Yes");
+        govgrants.modal().handleModalAlert(confirmationDecision);
         reiDriver.get().getRefresh();
     }
 
@@ -402,7 +404,6 @@ public class ProjectManager extends ProjectWebServices {
      * @param buttonName
      */
     public void clickOnPhaseFlexTableButton(String buttonName, String flextableName) {
-        //govgrants.phasePannel().clickTopRightButton(flextableName, buttonName);
         govgrants.flexTable().clickTableTopRightButton(flextableName, buttonName);
     }
 
@@ -643,24 +644,31 @@ public class ProjectManager extends ProjectWebServices {
      * @param value
      */
     public void enterFieldValue(String fieldAPIName, String value) {
-        handleTextInput(fieldAPIName, value);
+            handleTextInput(fieldAPIName, value);
+        
     }
-
+    
     /**
-     * Handles filling in the fields for attachment checklist
+     * Handles entering the comments in a confirmation box and click OK
+     * @param comments
+     * @param confirmation
      */
-    public void fillFieldsForInlineTable(String tableId, String columnNumber, String inputType, String inputValue) {
-        try {
-            govgrants.flexTable().inlineEdit(tableId, columnNumber, inputType, inputValue);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            reiDriver.findMyElement().getElement(By.xpath("//*[@id = '" + tableId
-                    + "']/ancestor::div[contains(@class,'panel')]//td[" + columnNumber + "]//input")).clear();
-            reiDriver
-                    .findMyElement().getElement(By.xpath("//*[@id = '" + tableId
-                            + "']/ancestor::div[contains(@class,'panel')]//td[" + columnNumber + "]//input"))
-                    .sendKeys(inputValue);
-        }
+    public void enteringCommentsOnConfirmation(String comments, String confirmation) {
+        reiDriver.findMyElement().getElement(By.xpath("//form[@class='bootbox-form']//textarea")).sendKeys(comments);
+        clickOnConfirmationtBox(confirmation);
+    }
+    
+    /**
+     * Handles addition of row and filling in fields in a flex table
+     */
+    public void addFieldsForInlineTable(String tableId, String iconName, List<Map<String, String>> rowValues) {
+            govgrants.flexTable().enterFlexTableRows(tableId, iconName, rowValues);
+    }
+    
+    /**
+     */
+    public void fillFieldsForInlineTable(String tableId, String iconName, Map<String, Map<String, String>> rowValues) {
+            govgrants.flexTable().editFlexTableRowsInline(tableId, iconName, rowValues);
     }
 
     /******* "Local Methods with Limited functionality " **********/
@@ -873,5 +881,4 @@ public class ProjectManager extends ProjectWebServices {
             reiDriver.WaitFor().FluentWaitForClick(fieldInput).click();
         }
     }
-
 }

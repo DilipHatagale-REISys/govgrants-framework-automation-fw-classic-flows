@@ -40,12 +40,10 @@ Feature: Validate all scenarios in the Announcement tab
   	@34760 @announcementFormulaInviteApplicant @announcementFormula
   	Scenario Outline: Amount addition to Invited applicant association to an Announcement
     Given I associate an agency "RG-000010" to the annoucement
-    When I click on the "Edit" icon for the "<Agency Code>" on the flextable "<Flextable Name>"
-	And I fill the fields in the table "toggleFGridSoleSourceAwardOrganizations":
-    | tableColumnNumber | inputype | inputValue                 |
-    | 5                 | text     | 100000                     |
-    When I click on "Save" button on "<Flextable Name>" flextable with Id "inlineEditGridFormulaGrantsAwardOrganizations"
-    Then I see that "<Agency Code>" has been added in flextable "<Flextable Name>"  with Id "inlineEditGridFormulaGrantsAwardOrganizations"
+    When I edit the following rows inline in flex table with id "inlineEditGridFormulaGrantsAwardOrganizations" by clicking "Edit" :
+	| 		    | Allocated Amount   |
+	| RG-000010 | 100000 			 | 
+   Then I see that "<Agency Code>" has been added in flextable "<Flextable Name>"  with Id "inlineEditGridFormulaGrantsAwardOrganizations"
 	Examples:
 	| Agency Code | Flextable Name 	   |
 	| RG-000010   | Invited Applicants |
@@ -56,12 +54,10 @@ Feature: Validate all scenarios in the Announcement tab
     And I click on "Associate" button on "<Flextable Name>" flextable with Id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "<EGMS Id>" in the table "popupflextable"
     And I close Modal "AnnouncementFundingAccountGrantormodalDivCloseIcon"
-    When I click on the "Edit" icon for the "<EGMS Id>" on the flextable "<Flextable Name>"
-    And I fill the fields in the table "AnnouncementFundingAccountGrantorresizable":
-    | tableColumnNumber | inputype | inputValue                 |
-    | 5                 | text     | 100000                     |
-    When I click on "Save" button on "<Flextable Name>" flextable with Id "flexGridAnnouncementFundingAccountGrantor"
-    Then I see that "<EGMS Id>" has been added in flextable "<Flextable Name>" with Id "flexGridAnnouncementFundingAccountGrantor"
+    When I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
+	| 		 | Announcement Pre-Encumbrance |
+	| FA--21 | 100000 				        | 
+	Then I see that "<EGMS Id>" has been added in flextable "<Flextable Name>" with Id "flexGridAnnouncementFundingAccountGrantor"
 	Examples:
 	| EGMS Id | Flextable Name   |
 	| FA--21  | Funding Accounts |
@@ -115,13 +111,9 @@ Feature: Validate all scenarios in the Announcement tab
   	@35002 @announcementAttachmentChecklist @announcement
   	Scenario Outline: Validate the attachment checklist of the announcement
     When I click on "Setup" subtab
-    And I click on "Add" button on "<Flextable Name>" flextable with Id "inlineEditGridAnnouncementChecklists"
-    When I fill the fields in the table "toggleFGridAnnouncementChecklists":
-    | tableColumnNumber | inputype | inputValue                  |
-    | 1                 | text     | Automation test description |
-    | 2                 | dropdown | Mandatory                   |
-    | 3                 | dropdown | Award           	         |
-    And I click on "Save" button on "<Flextable Name>" flextable with Id "inlineEditGridAnnouncementChecklists"
+   	When I enter the following values into flex table with id "inlineEditGridAnnouncementChecklists" by clicking "Add" :
+    | Description        		  | Required  | Applies To |
+    | Automation test description | Mandatory | Award  	   |
     When I click on the "Upload Template" icon for the "Not Applicable" on the flextable "<Flextable Name>"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal "AnnouncementChecklistsiframeContentIdButton"
@@ -199,7 +191,7 @@ Feature: Validate all scenarios in the Announcement tab
     When I click on "Complete Review" button
     Then I see that "Reviewed" status is in "green" on progress bar
 	Examples:
-	| User | Quick Search Text 		 | Flextable Name |
+	| User | Quick Search Text 			           | Flextable Name |
 	| FO   | Automation Announcement to be deleted | Peer Reviewers |
 
   	@35003 @announcementAddAttachment @announcement
@@ -213,12 +205,16 @@ Feature: Validate all scenarios in the Announcement tab
   	@34461 @submittingAnnouncementForApproval @announcement
   	Scenario: Validate the submission of Announcement for Approval
 	Given I complete the Announcement fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-	And I add a Funding Account "FA--21" with the amount "100000" to an announcement
+	And I add a Funding Account "FA--21" with the amount to an announcement
+	| 		 | Announcement Pre-Encumbrance |
+	| FA--21 | 100000 				        |
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	And I associate Contact "Automation EXE", Focus Area "00006", Objective "SPO-0008" to the announcement
 	Given I select the Program Approver "Automation PM",Fiscal Approver "Automation FO",Executive Approver "Automation EXE" for the announcement
-	And I add an attachment checklist "Automation test description","Mandatory","Application" to upload the file "Program_Field_Values.xlsx" to the announcement
-	Given I add an attachment "InternalOrganization_Field_Values.xlsx" to announcement
+	Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx" to the announcement
+	| Description        		  | Required  | Applies To |
+    | Automation test description | Mandatory | Award  	   |
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx" to announcement
 	And I assign, initiate a reviewer for an announcement from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
 	Given Review is completed as user "FO" for the "Competitive" announcement "Automation Announcement" created by "EXE" 
     When I click on "Submit For Approval" button
@@ -227,12 +223,16 @@ Feature: Validate all scenarios in the Announcement tab
   	@34763 @34765 @34766 @announcementApproval @announcement
   	Scenario Outline: Validate the approval of an Announcement
 	Given I complete the Announcement fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-	And I add a Funding Account "FA--21" with the amount "100000" to an announcement
+	And I add a Funding Account "FA--21" with the amount to an announcement
+	| 		 | Announcement Pre-Encumbrance |
+	| FA--21 | 100000 				        |
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	And I associate Contact "Automation EXE", Focus Area "00006", Objective "SPO-0008" to the announcement
 	Given I select the Program Approver "Automation PM",Fiscal Approver "Automation FO",Executive Approver "Automation EXE" for the announcement
-	And I add an attachment checklist "Automation test description","Mandatory","Application" to upload the file "Program_Field_Values.xlsx" to the announcement
-	Given I add an attachment "InternalOrganization_Field_Values.xlsx" to announcement
+	Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx" to the announcement
+	| Description        		  | Required  | Applies To |
+    | Automation test description | Mandatory | Award  	   |
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx" to announcement
 	And I assign, initiate a reviewer for an announcement from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
 	Given Review is completed as user "FO" for the "Competitive" announcement "Automation Announcement" created by "EXE" 
 	And I click on "Submit For Approval" button
@@ -262,12 +262,16 @@ Feature: Validate all scenarios in the Announcement tab
   	@34462 @publishingCompetitiveAnnouncement @announcementCompetitiveHappyPath @announcement
   	Scenario Outline: Validate the activation of Internal Program
 	Given I complete the Announcement fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-	And I add a Funding Account "FA--21" with the amount "100000" to an announcement
+	And I add a Funding Account "FA--21" with the amount to an announcement
+	| 		 | Announcement Pre-Encumbrance |
+	| FA--21 | 100000 				        |
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	And I associate Contact "Automation EXE", Focus Area "00006", Objective "SPO-0008" to the announcement
 	Given I select the Program Approver "Automation PM",Fiscal Approver "Automation FO",Executive Approver "Automation EXE" for the announcement
-	And I add an attachment checklist "Automation test description","Mandatory","Application" to upload the file "Program_Field_Values.xlsx" to the announcement
-	Given I add an attachment "InternalOrganization_Field_Values.xlsx" to announcement
+	Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx" to the announcement
+	| Description        		  | Required  | Applies To |
+    | Automation test description | Mandatory | Award  	   |
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx" to announcement
 	And I assign, initiate a reviewer for an announcement from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
 	Given Review is completed as user "FO" for the "Competitive" announcement "<Quick Search Text>" created by "EXE" 
 	And I click on "Submit For Approval" button
@@ -288,12 +292,16 @@ Feature: Validate all scenarios in the Announcement tab
   	Scenario Outline: Validate the activation of Internal Program
 	Given I complete the Announcement fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
 	And I associate an agency "RG-000010" to the annoucement
-	Given I add a Funding Account "FA--20" with the amount "100000" to an announcement
+	Given I add a Funding Account "FA--21" with the amount to an announcement
+	| 		 | Announcement Pre-Encumbrance |
+	| FA--21 | 100000 				        |
 	And I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	Given I associate Contact "Automation EXE", Focus Area "00006", Objective "SPO-0008" to the announcement
 	And I select the Program Approver "Automation PM",Fiscal Approver "Automation FO",Executive Approver "Automation EXE" for the announcement
-	Given I add an attachment checklist "Automation test description","Mandatory","Application" to upload the file "Program_Field_Values.xlsx" to the announcement
-	And I add an attachment "InternalOrganization_Field_Values.xlsx" to announcement
+	Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx" to the announcement
+	| Description        		  | Required  | Applies To |
+    | Automation test description | Mandatory | Award  	   |
+    And I add an attachment "InternalOrganization_Field_Values.xlsx" to announcement
 	Given I assign, initiate a reviewer  for an announcement from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
 	And Review is completed as user "FO" for the "Directed" announcement "Automation Announcement" created by "EXE" 
 	And I click on "Submit For Approval" button
@@ -313,12 +321,18 @@ Feature: Validate all scenarios in the Announcement tab
 	@34462 @publishingFormulaAnnouncement @announcementFormulaHappyPath @announcement
   	Scenario Outline: Validate the activation of Internal Program
 	Given I complete the Announcement fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-	And I associate an agency "RG-000010" with amount "100000" to the annoucement
-	Given I add a Funding Account "FA--20" with the amount "100000" to an announcement
+	And I associate an agency "RG-000010" with amount to the annoucement
+	| 		    | Allocated Amount   |
+	| RG-000010 | 100000 			 | 
+	Given I add a Funding Account "FA--21" with the amount to an announcement
+	| 		 | Announcement Pre-Encumbrance |
+	| FA--21 | 100000 				        |
 	And I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	Given I associate Contact "Automation EXE", Focus Area "00006", Objective "SPO-0008" to the announcement
 	And I select the Program Approver "Automation PM",Fiscal Approver "Automation FO",Executive Approver "Automation EXE" for the announcement
-	Given I add an attachment checklist "Automation test description","Mandatory","Application" to upload the file "Program_Field_Values.xlsx" to the announcement
+	Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx" to the announcement
+	| Description        		  | Required  | Applies To |
+    | Automation test description | Mandatory | Award  	   |
 	And I add an attachment "InternalOrganization_Field_Values.xlsx" to announcement
 	Given I assign, initiate a reviewer  for an announcement from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
 	And Review is completed as user "FO" for the "Directed" announcement "Automation Announcement" created by "EXE" 

@@ -1,5 +1,8 @@
 package com.ggproduct.automation.steps;
 
+import java.util.List;
+import java.util.Map;
+
 import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
@@ -29,14 +32,14 @@ public class AnnouncementSteps {
         announcementPage.associateAgencyToAnnouncement(agency);
     }
     
-    @Given("^I associate an agency \"([^\"]*)\" with amount \"([^\"]*)\" to the annoucement$")
-    public void associateAgencyAmountToAnnouncement(String agency, String amount) {
-        announcementPage.associateAgencyAmountToAnnouncement(agency, amount);
+    @Given("^I associate an agency \"([^\"]*)\" with amount to the annoucement$")
+    public void associateAgencyAmountToAnnouncement(String agency, Map<String, Map<String, String>> rowValues) {
+        announcementPage.associateAgencyAmountToAnnouncement(agency, rowValues);
     }
     
-    @Given("^I add a Funding Account \"([^\"]*)\" with the amount \"([^\"]*)\" to an announcement$")
-    public void addFundingAccountToAnnouncement(String fundingAccount, String amount) {
-        announcementPage.addFundingAccountToAnnouncement(fundingAccount, amount);
+    @Given("^I add a Funding Account \"([^\"]*)\" with the amount to an announcement$")
+    public void addFundingAccountToAnnouncement(String fundingAccount, Map<String, Map<String, String>> rowValues) {
+        announcementPage.addFundingAccountToAnnouncement(fundingAccount, rowValues);
     }
     
     @Given("^I add Budget Period Details \"([^\"]*)\" from sheet \"([^\"]*)\" in excel \"([^\"]*)\" to an announcement$")
@@ -54,9 +57,9 @@ public class AnnouncementSteps {
         announcementPage.approverSelectionForAnnouncement(programApprover, fiscalApprover, executiveApprover);
     }
     
-    @Given("^I add an attachment checklist \"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\" to upload the file \"([^\"]*)\" to the announcement$")
-    public void additionOfChecklistToAnnouncement(String description, String required, String appliesTo, String fileName) {
-        announcementPage.additionOfChecklistToAnnouncement(description, required, appliesTo, fileName);
+    @Given("^I add an attachment checklist to upload the file \"([^\"]*)\" to the announcement$")
+    public void additionOfChecklistToAnnouncement(String fileName, List<Map<String, String>> rowValues) {
+        announcementPage.additionOfChecklistToAnnouncement(fileName, rowValues);
     }
     
     @Given("^I add an attachment \"([^\"]*)\" to announcement$")

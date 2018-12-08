@@ -3,7 +3,7 @@ Feature: Validate all scenarios in the Planning tab
 
 	Background: Create Program
 	Given I create a Program as user "EXE" from sheet "RequiredForSave" in excel "Program_Field_Values.xlsx"
-
+	
   	@34730 @programListView @program
   	Scenario Outline: Verifying if the EXE,PM,PO has access to Internal Programs list view
     When I navigate to "Planning" tab
@@ -86,13 +86,9 @@ Feature: Validate all scenarios in the Planning tab
   	@34745 @programAttachmentChecklist @program
   	Scenario Outline: Validate the attachment checklist for the Internal Program
     When I click on "Setup" subtab
-    And I click on "Add" button on "<Flextable Name>" flextable with Id "flexGridProgramChecklists"
-    When I fill the fields in the table "flexGridHeaderButtonsProgramChecklists":
-    | tableColumnNumber | inputype | inputValue                  |
-    | 1                 | text     | Automation test description |
-    | 2                 | dropdown | Mandatory                   |
-    | 3                 | dropdown | Application                 |
-    And I click on "Save" button on "<Flextable Name>" flextable with Id "flexGridProgramChecklists"  
+    When I enter the following values into flex table with id "flexGridProgramChecklists" by clicking "Add" :
+    | Description        		  | Required  | Applies To  |
+    | Automation test description | Mandatory | Application |     
     When I click on the "Upload Template" icon for the "Not Applicable" on the flextable "<Flextable Name>"
     And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
     When I close Modal "ProgramChecklistsiframeContentIdButton"
@@ -114,7 +110,9 @@ Feature: Validate all scenarios in the Planning tab
     Given I complete the Program fields from the sheet "RequiredForSubmit" in excel "Program_Field_Values.xlsx"
     And I associate Contact "Automation EXE", Focus Area "00005", Objective "SPO-0006" to the program
     Given I select the Program Approver "Automation PM", Executive Approver "Automation EXE" for the program
-    And I add an attachment checklist "Automation test description","Mandatory","Application" to upload the file "Program_Field_Values.xlsx" to the program
+    And I add an attachment checklist to upload the file "Program_Field_Values.xlsx" to the program
+    | Description        		  | Required  | Applies To  |
+    | Automation test description | Mandatory | Application | 
     Given I add an attachment "InternalOrganization_Field_Values.xlsx" to a program
     When I click on "Submit For Approval" button
     Then I see that "Submitted for Approval" status is in "green" on progress bar
@@ -124,7 +122,9 @@ Feature: Validate all scenarios in the Planning tab
   	Given I complete the Program fields from the sheet "RequiredForSubmit" in excel "Program_Field_Values.xlsx"
     And I associate Contact "Automation EXE", Focus Area "00005", Objective "SPO-0006" to the program
     Given I select the Program Approver "Automation PM", Executive Approver "Automation EXE" for the program
-    And I add an attachment checklist "Automation test description","Mandatory","Application" to upload the file "Program_Field_Values.xlsx" to the program
+    And I add an attachment checklist to upload the file "Program_Field_Values.xlsx" to the program
+    | Description        		  | Required  | Applies To  |
+    | Automation test description | Mandatory | Application |
     Given I add an attachment "InternalOrganization_Field_Values.xlsx" to a program
     And I click on "Submit For Approval" button
 	Given I re-login to "As a Grantor" app as "<Program Approver>" User
@@ -149,7 +149,9 @@ Feature: Validate all scenarios in the Planning tab
   	Given I complete the Program fields from the sheet "RequiredForSubmit" in excel "Program_Field_Values.xlsx"
     And I associate Contact "Automation EXE", Focus Area "00005", Objective "SPO-0006" to the program
     Given I select the Program Approver "Automation PM", Executive Approver "Automation EXE" for the program
-    And I add an attachment checklist "Automation test description","Mandatory","Application" to upload the file "Program_Field_Values.xlsx" to the program
+    And I add an attachment checklist to upload the file "Program_Field_Values.xlsx" to the program
+    | Description        		  | Required  | Applies To  |
+    | Automation test description | Mandatory | Application |
     Given I add an attachment "InternalOrganization_Field_Values.xlsx" to a program
     And I click on "Submit For Approval" button
     Given Approvers "PM", "EXE" approve the Program "<Quick Search Text>"
