@@ -1,5 +1,15 @@
 @award
 Feature: Validate all scenarios in the award tab
+
+	Background: Create Award from FDM
+	Given I login to "As a Grantor" app as "EXE" User
+	When I navigate to "Applications" tab
+	And I click "Funding Decision Memo (FDM)" inside side bar "Applications"
+	And I perform quick search "<Announcement Name>" on table "FDMList1"
+	When I click on the "View" icon for the "<Announcement Name>"
+	And I click on the "Create Subaward" icon for the "<Application Name>" on the flextable "Recommended Applications"
+	When I click "Yes" on the confirmation dialog box
+	And I click on "Save" button
 	
 	@38213 @awardCreation @award
 	Scenario: Creation of an award
