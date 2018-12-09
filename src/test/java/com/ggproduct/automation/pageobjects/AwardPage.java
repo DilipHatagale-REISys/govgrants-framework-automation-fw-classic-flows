@@ -13,17 +13,31 @@ public class AwardPage extends ProjectManager  {
         loginPage = new LoginPage(controller, handler, govgrants);
     }
     
+    /**
+     * Handles edition of Award
+     * @param sheetName
+     * @param excelName
+     */
     public void editionOfAward(String sheetName, String excelName) {
         clickOnPageButton("Edit");
         enterFieldValues(sheetName, excelName);
         clickOnPageButton("Save");
     }
     
+    /**
+     * Handles addtion of budget Funding Account to an award
+     * @param rowValues
+     */
     public void budgetAddtionInFundingAccountForAward(Map<String, Map<String, String>> rowValues) {
         clickOnSubtab("Budget");
         fillFieldsForInlineTable("flexGridAwardFundingAccounts", "Edit", rowValues);
     }
     
+    /**
+     * Handles edition of budget grid in an award
+     * @param lineItem
+     * @param rowValues
+     */
     public void budgetEditionForAward(String lineItem, Map<String, Map<String, String>> rowValues) {
         clickOnSubtab("Budget");
         clickOnFlextableRowButton("Add Line Items", lineItem, "Award Budget");
@@ -31,6 +45,11 @@ public class AwardPage extends ProjectManager  {
         closeModal("AwardBudgetCategoryFlexGridiframeContentIdButton");
     }
     
+    /**
+     * Handles addition of PAyment Request to an award
+     * @param sheetName
+     * @param excelName
+     */
     public void additionOfPaymentRequestToAward(String sheetName, String excelName) {
         clickOnSubtab("Management");
         clickOnFlextableButton("New", "Progress Report Schedule", "flexGridTnCSchedules");
@@ -39,6 +58,11 @@ public class AwardPage extends ProjectManager  {
         closeModal("GranteeReportingRequirementsmodalDivCloseIcon");
     }
     
+    /**
+     * Handles addition on Progress Report to an award
+     * @param sheetName
+     * @param excelName
+     */
     public void additionOfProgressReportToAward(String sheetName, String excelName) {
         clickOnSubtab("Management");
         clickOnFlextableButton("New", "Payment Request Schedules", "flexGridPaymentSchedules");
@@ -47,6 +71,11 @@ public class AwardPage extends ProjectManager  {
         closeModal("PaymentRequestSchedulemodalDivCloseIcon");
     }
     
+    /**
+     * Handles creation of Risk Assessment to an award
+     * @param sheetName
+     * @param excelName
+     */
     public void creationOfRiskAssessment(String sheetName, String excelName) {
         clickOnSubtab("Management");
         clickOnFlextableButton("New", "Risk Assessments", "flexGridAwardRiskAssessmentView");
@@ -54,6 +83,11 @@ public class AwardPage extends ProjectManager  {
         clickOnPageButton("Save");
     }
     
+    /**
+     * Handles selection of approver to the award Risk Assessment
+     * @param pragramApprover
+     * @param fiscalApprover
+     */
     public void approverSelectionOfRiskAssessment(String pragramApprover, String fiscalApprover) {
         clickOnSubtab("Responsibilities");
         clickOnFlextableRowButton("Edit", "Program Approver", "Approvers");
@@ -64,6 +98,11 @@ public class AwardPage extends ProjectManager  {
         closeModal("GrantorRiskAssessmentRolesandResponsibilitiesmodalDivCloseIcon");
     }
     
+    /**
+     * Handles approval of Award Risk Assessment
+     * @param pragramApprover
+     * @param fiscalApprover
+     */
     public void approvalOfRiskAssessmentInAward(String pragramApprover, String fiscalApprover) {
         reloginToggleToApp("As a Grantor", pragramApprover);
         navigateToTab("Monitoring");
@@ -79,6 +118,12 @@ public class AwardPage extends ProjectManager  {
         clickOnApprovalDecisionBox("Approve");
     }
     
+    /**
+     * Handles re-logging in and to view the given award
+     * @param awardId
+     * @param awardName
+     * @param awardOwner
+     */
     public void reloginToViewAward(String awardId, String awardName, String awardOwner) {
         reloginToggleToApp("As a Grantor", awardOwner);
         navigateToTab("Grants");
@@ -90,6 +135,12 @@ public class AwardPage extends ProjectManager  {
         clickOnFlextableRowButton("View", awardId, "Subawards");
     }
     
+    /**
+     * Handles selection of approvers to an award
+     * @param pragramApprover
+     * @param fiscalApprover
+     * @param executiveApprover
+     */
     public void approverSelectionOfAward(String pragramApprover, String fiscalApprover, String executiveApprover) {
         clickOnSubtab("Responsibilities");
         clickOnFlextableRowButton("Edit", "Program Approver", "Approvers");
@@ -103,6 +154,12 @@ public class AwardPage extends ProjectManager  {
         closeModal("GrantorAwardApprovermodalDivCloseIcon");
     }
     
+    /**
+     * Handles acceptance of Award by subrecipient before award approval
+     * @param subrecipientUser
+     * @param awardName
+     * @param comments
+     */
     public void acceptanceOfAward(String subrecipientUser, String awardName, String comments) {
         loginPage.reloginToGrantsPortal(subrecipientUser);
         navigateToTab("Grants");
@@ -131,6 +188,13 @@ public class AwardPage extends ProjectManager  {
         clickOnFlextableRowButton("Send for Review", "Created", "Peer Reviewers");
     }
     
+    /**
+     * Handles completion of review for the given award
+     * @param reviewer
+     * @param awardId
+     * @param awardName
+     * @param awardOwner
+     */
     public void completeReviewForAward(String reviewer, String awardId, String awardName, String awardOwner) {
         reloginToggleToApp("As a Grantor", reviewer);
         navigateToTab("Grants");
@@ -146,6 +210,13 @@ public class AwardPage extends ProjectManager  {
         reloginToViewAward(awardId, awardName, awardOwner);
     }
     
+    /**
+     * Handles approval of award
+     * @param programApprover
+     * @param fiscalApprover
+     * @param executiveApprover
+     * @param awardName
+     */
     public void approversApproveAward(String programApprover, String fiscalApprover, String executiveApprover, String awardName) {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         reloginToggleToApp("As a Grantor", programApprover);

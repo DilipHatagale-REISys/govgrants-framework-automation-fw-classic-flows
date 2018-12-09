@@ -15,7 +15,7 @@ Feature: Validate all scenarios in the award tab
 	@awardFundingAccount @award
  	Scenario Outline: Funding Account budget addition to Award
 	When I click on "Budget" subtab
-	When I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
+	And I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
 	| 		 | Award Encumbrance |
 	| FA--21 | 100000 			 | 
     Then I see that "<EGMS Id>" has been added in flextable "<Flextable Name>" with Id "flexGridAwardFundingAccounts"
@@ -201,13 +201,13 @@ Feature: Validate all scenarios in the award tab
     And I click on "Send to Subrecipient" button
   	Given The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
   	When I re-login to "As a Grantor" app as "EXE" User
-  	When I navigate to "Grants" tab
-	And I click "Grants and Subawards" inside side bar "Grants, Awards & Amendments"
+  	And I navigate to "Grants" tab
+	When I click "Grants and Subawards" inside side bar "Grants, Awards & Amendments"
 	And I toggle to "Draft Grants"
-	And I perform quick search "<Award Name>" on table "ActiveGrants"
-	When I click on the "View" icon for the "<Award Name>"
+	When I perform quick search "<Award Name>" on table "ActiveGrants"
+	And I click on the "View" icon for the "<Award Name>"
 	When I click on "Subawards" subtab
-	When I click on the "View" icon for the "<Award EGMS Id>" on the flextable "Subawards"
+	And I click on the "View" icon for the "<Award EGMS Id>" on the flextable "Subawards"
 	When I click on "Responsibilities" subtab
 	And I click on "New" button on "<Flextable Name>" flextable with Id "flexGridGrantorAwardReviewer"
 	When I enter "Reviewer" values from "Award_Field_Values.xlsx"
@@ -238,13 +238,13 @@ Feature: Validate all scenarios in the award tab
     And I click on "Send to Subrecipient" button
   	Given The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
   	When I re-login to "As a Grantor" app as "EXE" User
-  	When I navigate to "Grants" tab
-	And I click "Grants and Subawards" inside side bar "Grants, Awards & Amendments"
+  	And I navigate to "Grants" tab
+	When I click "Grants and Subawards" inside side bar "Grants, Awards & Amendments"
 	And I toggle to "Draft Grants"
-	And I perform quick search "<Award Name>" on table "ActiveGrants"
-	When I click on the "View" icon for the "<Award Name>"
+	When I perform quick search "<Award Name>" on table "ActiveGrants"
+	And I click on the "View" icon for the "<Award Name>"
 	When I click on "Subawards" subtab
-	When I click on the "View" icon for the "<Award EGMS Id>" on the flextable "Subawards"
+	And I click on the "View" icon for the "<Award EGMS Id>" on the flextable "Subawards"
 	When I click on "Responsibilities" subtab
 	And I click on "New" button on "<Flextable Name>" flextable with Id "flexGridGrantorAwardReviewer"
 	When I enter "Reviewer" values from "Award_Field_Values.xlsx"
@@ -281,7 +281,7 @@ Feature: Validate all scenarios in the award tab
 	When I click "Pending Tasks" inside side bar "My Tasks"
     And I perform quick search "<Award Name>" on table "PhasePendingTasks"
     When I click on the "Start" icon for the "<Award Name>" 
-    When I click on "Responsibilities" subtab
+    And I click on "Responsibilities" subtab
     When I click on the "Enter Review" icon for the "Automation FO" on the flextable "<Flextable Name>"
     And I enter a review
     When I click on "Save" button in the modal
@@ -341,7 +341,7 @@ Feature: Validate all scenarios in the award tab
   	Given The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
   	And I assign, initiate a reviewer for an award from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
   	Given Review is completed as user "FO" for the award "<Award EGMS Id>" with name "<Award Name>" created by "EXE"
-  	Given I click on "Submit for Approval" button
+  	And I click on "Submit for Approval" button
   	Given I re-login to "As a Grantor" app as "PM" User
 	When I navigate to "Grants" tab
 	And I click "Pending Tasks" inside side bar "My Tasks"
@@ -472,22 +472,3 @@ Feature: Validate all scenarios in the award tab
 	| Award Name 				     	    	    	| Award EGMS Id |
 	| Automation Announcement to be deleted Application | AD-AuGr--01   |
 	
-	@awardSiteVisit @award
-  	Scenario Outline: Site Visit initiation in an award
-  	Given I login to "As a Grantor" app as "EXE" User
-	When I navigate to "Grants" tab
-	And I click "Grants and Subawards" inside side bar "Grants, Awards & Amendments"
-	And I toggle to "Draft Grants"
-	And I perform quick search "<Application Name>" on table "ActiveGrants"
-	When I click on the "View" icon for the "<Application Name>"
-	When I click on "Subawards" subtab
-	When I click on the "View" icon for the "<Award EGMS Id>" on the flextable "Subawards"
-	When I click on "Management" subtab
-   	And I click on "Initiate Site Visit" button on "<Flextable Name>" flextable with Id "GrantorSiteVisitsAward"
-    And I enter "Site Visit" values from "Award_Field_Values.xlsx"
-    When I click on "Save" button in the modal
-    And I close Modal "GrantorSiteVisitsAwardmodalDivCloseIcon"
-    Then I see that "Program & Fiscal" has been added in flextable "<Flextable Name>" with Id "GrantorSiteVisitsAward"
-	Examples:
-	| Flextable Name	| Application Name 				     	   			| Award EGMS Id |
-	| Site Visits	    | Automation Announcement to be deleted Application | AD-AuGr--01   |
