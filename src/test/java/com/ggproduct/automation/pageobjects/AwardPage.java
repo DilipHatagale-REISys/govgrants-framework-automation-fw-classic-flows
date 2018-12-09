@@ -7,10 +7,8 @@ import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 
 public class AwardPage extends ProjectManager  {
-    LoginPage loginPage;
     public AwardPage(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
         super(controller, handler, govgrants);
-        loginPage = new LoginPage(controller, handler, govgrants);
     }
     
     /**
@@ -161,7 +159,7 @@ public class AwardPage extends ProjectManager  {
      * @param comments
      */
     public void acceptanceOfAward(String subrecipientUser, String awardName, String comments) {
-        loginPage.reloginToGrantsPortal(subrecipientUser);
+        reloginToGrantsPortal(subrecipientUser);
         navigateToTab("Grants");
         clickOnSidebar("Pending Tasks", "My Tasks");
         quickSearchOnTable(awardName, "PhasePendingTasks");

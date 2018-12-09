@@ -707,6 +707,22 @@ public class ProjectManager extends ProjectWebServices {
         govgrants.mainPage().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);
         govgrants.mainPage().waitForEgmsHeader();
     }
+    
+    public void reloginToGrantsPortal(String userName) {
+        govgrants.mainPage().waitForNavigationLogoToDisappear();
+        reiDriver.WaitFor().makeThreadSleep(1000);
+        reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//img[@alt='User Avatar']/..//i[@class='fa fa-caret-down']")).click();
+        govgrants.mainPage().getLoginDropDownItems("Logout").click();
+        try {
+            reiDriver.eatCookies().deleteAllCookies();
+            reiDriver.WaitFor().makeThreadSleep(500);
+            navigateToURL("SUBRECIPIENT PORTAL");
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        govgrants.mainPage().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);
+        govgrants.mainPage().waitForEgmsHeader();
+    }
 
     private By getIFramePath(String iFrameId) {
         return By.xpath("//iframe[@id='" + iFrameId + "']");
