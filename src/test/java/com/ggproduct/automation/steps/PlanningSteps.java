@@ -7,6 +7,8 @@ import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.pageobjects.PlanningPage;
 
 import cucumber.api.java.en.Given;
+import java.util.List;
+import java.util.Map;
 
 
 public class PlanningSteps {
@@ -36,9 +38,9 @@ public class PlanningSteps {
         planningPage.approverSelectionForProgram(programApprover, executiveApprover);
     }
     
-    @Given("^I add an attachment checklist \"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\" to upload the file \"([^\"]*)\" to the program$")
-    public void additionOfChecklistToProgram(String description, String required, String appliesTo, String fileName) {
-        planningPage.additionOfChecklistToProgram(description, required, appliesTo, fileName);
+    @Given("^I add an attachment checklist to upload the file \"([^\"]*)\" to the program$")
+    public void additionOfChecklistToProgram(String fileName, List<Map<String, String>> rowValues) {
+        planningPage.additionOfChecklistToProgram(fileName, rowValues);
     }
     
     @Given("^I add an attachment \"([^\"]*)\" to a program$")

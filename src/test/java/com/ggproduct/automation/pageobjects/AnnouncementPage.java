@@ -1,5 +1,8 @@
 package com.ggproduct.automation.pageobjects;
 
+import java.util.Map;
+
+import java.util.List;
 import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
@@ -22,7 +25,13 @@ public class AnnouncementPage extends ProjectManager {
         navigateToTab("Announcements");
         clickOnSidebar(AnnouncementType, "Announcements");
         changeFlexTableView("Draft Announcements");
-        clickOnFlexTableButtonToOpenModal("New", "ActiveFundingOpportunitiesCompitive");
+        if(AnnouncementType.equals("Competitive")) {
+            clickOnPhaseFlexTableButton("New", "ActiveFundingOpportunitiesCompitive");
+        } else if(AnnouncementType.equals("Directed")) {
+            clickOnPhaseFlexTableButton("New", "ActiveFundingOpportunities");
+        } else {
+            clickOnPhaseFlexTableButton("New", "ActiveFundingOpportunitiesFormula");
+        }
         enterFieldValues(sheetName, excelFileName);
         clickOnModalButton("Save And Close");
         clickOnPageButton("Save");
@@ -45,7 +54,7 @@ public class AnnouncementPage extends ProjectManager {
      */
     public void associateAgencyToAnnouncement(String agency) {
         clickOnSubtab("Overview");
-        clickOnFlextableButtonToOpenModal("Add Organizations", "Invited Applicants");
+        clickOnFlextableButton("Add Organizations", "Invited Applicants", "inlineEditGridFormulaGrantsAwardOrganizations");
         chooseRecordForAssociation("Add", agency, "SoleSourceAwardRecipientsTable");
         closeModal("FormulaGrantsAwardOrganizationsiframeContentIdButton");
     }
@@ -55,11 +64,9 @@ public class AnnouncementPage extends ProjectManager {
      * @param agency
      * @param amount
      */
-    public void associateAgencyAmountToAnnouncement(String agency, String amount) {
+    public void associateAgencyAmountToAnnouncement(String agency, Map<String, Map<String, String>> rowValues) {
         associateAgencyToAnnouncement(agency);
-        clickOnFlextableRowButton("Edit", agency, "Invited Applicants");
-        fillFieldsForInlineTable("toggleFGridSoleSourceAwardOrganizations", "5", "text", amount);
-        clickOnFlextableButton("Save", "Invited Applicants");
+        fillFieldsForInlineTable("inlineEditGridSoleSourceAwardOrganizations", "Edit", rowValues);
     }
 
     /**
@@ -67,14 +74,12 @@ public class AnnouncementPage extends ProjectManager {
      * @param fundingAccount
      * @param amount
      */
-    public void addFundingAccountToAnnouncement(String fundingAccount, String amount) {
+    public void addFundingAccountToAnnouncement(String fundingAccount, Map<String, Map<String, String>> rowValues) {
         clickOnSubtab("Financials");
-        clickOnFlextableButtonToOpenModal("Associate", "Funding Accounts");
+        clickOnFlextableButton("Associate", "Funding Accounts", "flexGridAnnouncementFundingAccountGrantor");
         chooseRecordForAssociation("Add", fundingAccount, "popupflextable");
-        closeModal("AnnouncementFundingAccountGrantoriframeContentIdButton");
-        clickOnFlextableRowButton("Edit", fundingAccount, "Funding Accounts");
-        fillFieldsForInlineTable("toggleFGridAnnouncementFundingAccountGrantor", "5", "text", amount);
-        clickOnFlextableButton("Save", "Funding Accounts");
+        closeModal("AnnouncementFundingAccountGrantormodalDivCloseIcon");
+        fillFieldsForInlineTable("flexGridAnnouncementFundingAccountGrantor", "Edit", rowValues);
     }
 
     /**
@@ -86,10 +91,8 @@ public class AnnouncementPage extends ProjectManager {
     public void addBudgetPeriodToAnnouncement(String budgetPeriod, String sheetName, String excelFileName) {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         clickOnSubtab("Financials");
-        clickOnFlextableButton("Add Budget Period", "Budget Period Details ");
-        reiDriver.WaitFor().makeThreadSleep(500);
-        clickOnFlextableRowButtontoOpenModal("Edit", budgetPeriod, "Budget Period Details",
-                "AnnouncementBudgetPeriodiframeContentId");
+        clickOnFlextableButton("Add Budget Period", "Budget Period Details ","AnnouncementBudgetPeriod");
+        clickOnFlextableRowButton("Edit", budgetPeriod, "Budget Period Details");
         enterFieldValues(sheetName, excelFileName);
         clickOnModalButton("Save");
         closeModal("AnnouncementBudgetPeriodmodalDivCloseIcon");
@@ -104,19 +107,19 @@ public class AnnouncementPage extends ProjectManager {
     public void associationOfRecordsToAnnouncement(String contact, String focusArea, String objective) {
         // Contact association
         clickOnSubtab("Overview");
-        clickOnFlextableButtonToOpenModal("Associate", "Contacts");
+        clickOnFlextableButton("Associate", "Contacts", "AnnouncementContacts");
         chooseRecordForAssociation("Add", contact, "AssociateAnnouncementContacts");
         closeModal("AnnouncementContactsmodalDivCloseIcon");
 
         // Focus Area association
         clickOnSubtab("Setup");
-        clickOnFlextableButtonToOpenModal("Associate", "Focus Areas");
+        clickOnFlextableButton("Associate", "Focus Areas", "AnnouncementServiceArea1");
         chooseRecordForAssociation("Add", focusArea, "popupflextable");
         closeModal("AnnouncementServiceArea1modalDivCloseIcon");
 
         // Objective association
         clickOnSubtab("Setup");
-        clickOnFlextableButtonToOpenModal("Associate", "Objectives");
+        clickOnFlextableButton("Associate", "Objectives", "AnnouncementGranteeStrategicGoalsObjectives");
         chooseRecordForAssociation("Add", objective, "popupflextable");
         closeModal("AnnouncementGranteeStrategicGoalsObjectivesmodalDivCloseIcon");
     }
@@ -130,16 +133,13 @@ public class AnnouncementPage extends ProjectManager {
     public void approverSelectionForAnnouncement(String programApprover, String fiscalApprover,
             String executiveApprover) {
         clickOnSubtab("Responsibilities");
-        clickOnFlextableRowButtontoOpenModal("Edit", "Program Approver", "Approvers",
-                "GrantorAnnouncementRolesandResponsibilitiesiframeContentId");
+        clickOnFlextableRowButton("Edit", "Program Approver", "Approvers");
         fillInApproverDetails(programApprover);
         switchToParentFrame();
-        clickOnFlextableRowButtontoOpenModal("Edit", "Fiscal Approver", "Approvers",
-                "GrantorAnnouncementRolesandResponsibilitiesiframeContentId");
+        clickOnFlextableRowButton("Edit", "Fiscal Approver", "Approvers");
         fillInApproverDetails(fiscalApprover);
         switchToParentFrame();
-        clickOnFlextableRowButtontoOpenModal("Edit", "Executive Approver", "Approvers",
-                "GrantorAnnouncementRolesandResponsibilitiesiframeContentId");
+        clickOnFlextableRowButton("Edit", "Executive Approver", "Approvers");
         fillInApproverDetails(executiveApprover);
         switchToParentFrame();
     }
@@ -151,16 +151,10 @@ public class AnnouncementPage extends ProjectManager {
      * @param appliesTo
      * @param fileName
      */
-    public void additionOfChecklistToAnnouncement(String description, String required, String appliesTo,
-            String fileName) {
+    public void additionOfChecklistToAnnouncement(String fileName, List<Map<String, String>> rowValues) {
         clickOnSubtab("Setup");
-        clickOnFlextableButton("Add", "Supporting Documents");
-        fillFieldsForInlineTable("toggleFGridAnnouncementChecklists", "1", "text", description);
-        fillFieldsForInlineTable("toggleFGridAnnouncementChecklists", "2", "dropdown", required);
-        fillFieldsForInlineTable("toggleFGridAnnouncementChecklists", "3", "dropdown", appliesTo);
-        clickOnFlextableButton("Save", "Supporting Documents");
-        clickOnFlextableRowButtontoOpenModal("Upload Template", "Not Applicable", "Supporting Documents",
-                "AnnouncementChecklistsiframeContentId");
+        addFieldsForInlineTable("inlineEditGridAnnouncementChecklists", "Add", rowValues);
+        clickOnFlextableRowButton("Upload Template", "Not Applicable", "Supporting Documents");
         uploadFile(fileName, "Checklist", "Announcement");
         closeModal("AnnouncementChecklistsiframeContentIdButton");
     }
@@ -185,18 +179,21 @@ public class AnnouncementPage extends ProjectManager {
      */
     public void approversApproveAnnouncement(String programApprover, String fiscalApprover, String executiveApprover,
             String announcementName) {
+        govgrants.mainPage().waitForNavigationLogoToDisappear();
         reloginToggleToApp("As a Grantor", programApprover);
         navigateToTab("Announcements");
         clickOnSidebar("Pending Tasks", "My Tasks");
         quickSearchOnTable(announcementName, "PhasePendingTasks");
         clickOnFlexTableIcon("Start", announcementName);
         clickOnApprovalDecisionBox("Approve");
+        govgrants.mainPage().waitForNavigationLogoToDisappear();
         reloginToggleToApp("As a Grantor", fiscalApprover);
         navigateToTab("Announcements");
         clickOnSidebar("Pending Tasks", "My Tasks");
         quickSearchOnTable(announcementName, "PhasePendingTasks");
         clickOnFlexTableIcon("Start", announcementName);
         clickOnApprovalDecisionBox("Approve");
+        govgrants.mainPage().waitForNavigationLogoToDisappear();
         reloginToggleToApp("As a Grantor", executiveApprover);
         navigateToTab("Announcements");
         clickOnSidebar("Pending Tasks", "My Tasks");
@@ -212,7 +209,7 @@ public class AnnouncementPage extends ProjectManager {
      */
     public void initiateReviewForAnnouncement(String sheetName, String excelFileName) {
         clickOnSubtab("Responsibilities");
-        clickOnFlextableButtonToOpenModal("New", "Peer Reviewers");
+        clickOnFlextableButton("New", "Peer Reviewers", "flexGridApproverRoles");
         enterFieldValues(sheetName, excelFileName);
         clickOnModalButton("Save");
         closeModal("GrantorAnnouncementReviewersTempmodalDivCloseIcon");
@@ -232,8 +229,7 @@ public class AnnouncementPage extends ProjectManager {
         clickOnSidebar("Pending Tasks", "My Tasks");
         quickSearchOnTable(announcementName, "PhasePendingTasks");
         clickOnFlexTableIcon("Start", announcementName);
-        clickOnFlextableRowButtontoOpenModal("Enter Review", reviewer, "Peer Reviewers",
-                "GrantorAnnouncementReviewersTempiframeContentId");
+        clickOnFlextableRowButton("Enter Review", "Fiscal Reviewer", "Peer Reviewers");
         enterReview();
         clickOnModalButton("Save");
         clickOnModalButton("Submit Review");
