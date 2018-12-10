@@ -75,8 +75,8 @@ public class AwardSteps {
     }
     
     @Given("^I assign, initiate a reviewer for an award from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
-    public void initiateReviewForAward(String sheetName, String excelFileName) {
-        awardPage.initiateReviewForAward(sheetName, excelFileName);
+    public void initiateReviewForAward(String sheetName, String excelName) {
+        awardPage.initiateReviewForAward(sheetName, excelName);
     }
     
     @Given("^Review is completed as user \"([^\"]*)\" for the award \"([^\"]*)\" with name \"([^\"]*)\" created by \"([^\"]*)\"$")
@@ -90,7 +90,12 @@ public class AwardSteps {
     }
     
     @Given("^I initiate Site Visit from sheet \"([^\"]*)\" in excel \"([^\"]*)\" for award$")
-    public void initiateSitVisitInAward(String sheetName, String excelFileName) {
-        awardPage.initiateSitVisitInAward(sheetName, excelFileName);
+    public void initiateSiteVisitInAward(String sheetName, String excelName) {
+        awardPage.initiateSiteVisitInAward(sheetName, excelName);
+    }
+    
+    @Given("^I initiate Desk Review from sheet \"([^\"]*)\" in excel \"([^\"]*)\" for award$")
+    public void initiateDeskReviewInAward(String sheetName, String excelName) {
+        awardPage.initiateDeskReviewInAward(sheetName, excelName);
     }
 }
