@@ -130,18 +130,18 @@ Feature: Validate all scenarios in the Planning tab
 	Given I re-login to "As a Grantor" app as "<Program Approver>" User
 	When I navigate to "Planning" tab
 	And I click "Pending Tasks" inside side bar "MyTasks"
-    When I perform quick search "<Quick Search Text>" on table "PhasePendingTasks"
-    And I click on the "Start" icon for the "<Quick Search Text>" 
+    When I perform quick search "<Program Name>" on table "PhasePendingTasks"
+    And I click on the "Start" icon for the "<Program Name>" 
     When I click on "Approve" on the approval decision box
     And I re-login to "As a Grantor" app as "<Executive Approver>" User
 	When I navigate to "Planning" tab
 	And I click "Pending Tasks" inside side bar "MyTasks"
-    When I perform quick search "<Quick Search Text>" on table "PhasePendingTasks"
-    And I click on the "Start" icon for the "<Quick Search Text>" 
+    When I perform quick search "<Program Name>" on table "PhasePendingTasks"
+    And I click on the "Start" icon for the "<Program Name>" 
     When I click on "Approve" on the approval decision box
     Then I see that "Approved" status is in "green" on progress bar
 	Examples:
-	| Program Approver | Quick Search Text  			  | Executive Approver |
+	| Program Approver | Program Name		  			  | Executive Approver |
 	| PM               | Automation Program to be deleted | EXE			  	   |
 	
   	@34756 @ProgramActivation @programHappyPath @program
@@ -154,15 +154,15 @@ Feature: Validate all scenarios in the Planning tab
     | Automation test description | Mandatory | Application |
     Given I add an attachment "InternalOrganization_Field_Values.xlsx" to a program
     And I click on "Submit For Approval" button
-    Given Approvers "PM", "EXE" approve the Program "<Quick Search Text>"
+    Given Approvers "PM", "EXE" approve the Program "<QProgram Name>"
 	And I re-login to "As a Grantor" app as "<User>" User
 	When I navigate to "Planning" tab
 	And I click "Internal Programs" inside side bar "Programs"
 	When I toggle to "Draft Internal Programs"
-    And I perform quick search "<Quick Search Text>" on table "Programs"
-    When I click on the "View" icon for the "<Quick Search Text>" 
+    And I perform quick search "<Program Name>" on table "Programs"
+    When I click on the "View" icon for the "<Program Name>" 
     And I click on "Activate" button
     Then I see that "Active" status is in "green" on progress bar
 	Examples:
-	| User | Quick Search Text 				  |
-	| EXE  | Automation Program to be deleted |
+	| User | Program Name  			  |
+	| EXE  | Automation Program Dec10 |

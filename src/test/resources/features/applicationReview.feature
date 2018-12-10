@@ -7,8 +7,8 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Applications" tab
     And I click "Reviews" inside side bar "Application Review"
     When I toggle to "Applications Under Review"
-    And I perform quick search "<Quick Search Text>" on table "flexTableRandomID1"
-    When I click on the "View" icon for the "<Quick Search Text>"
+    And I perform quick search "<Announcement Name>" on table "flexTableRandomID1"
+    When I click on the "View" icon for the "<Announcement Name>"
     And I click on "Related Logs" subtab
     When I scroll to "Manage Reviews" section
     And I click on "View" on the grid against "<Review Step Name>" in the table "AnnouncementReviewStepsFlexToggle"
@@ -17,7 +17,7 @@ Feature: Validate all scenarios in the Application Review
     When I click "Yes" on the confirmation dialog box
     Then I see that "Review Step" is in "Completed" status
 	Examples:
-	| User | Quick Search Text  	 | Review Step Name  | Application Name 				   |
+	| User | Announcement Name  	 | Review Step Name  | Application Name 				   |
 	| EXE  | Automation Announcement | Pre-Screen Review | Automation Announcement Application |
 	
 	@smeReviewEnterDueInDays @applicationReview
@@ -153,8 +153,8 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Applications" tab
     And I click "Reviews" inside side bar "Application Review"
     When I toggle to "Applications Under Review"
-    And I perform quick search "<Quick Search Text>" on table "flexTableRandomID1"
-    When I click on the "View" icon for the "<Quick Search Text>"
+    And I perform quick search "<Announcement Name>" on table "flexTableRandomID1"
+    When I click on the "View" icon for the "<Announcement Name>"
     And I click on "Related Logs" subtab
     When I scroll to "Manage Reviews" section
     And I click on "View" on the grid against "<Review Step Name>" in the table "AnnouncementReviewStepsFlexToggle"
@@ -163,7 +163,7 @@ Feature: Validate all scenarios in the Application Review
     When I click "Yes" on the confirmation dialog box
     Then I see that "Review Step" is in "Completed" status
 	Examples:
-	| User | Quick Search Text  	 | Review Step Name | Application Name 				      |
+	| User | Announcement Name  	 | Review Step Name | Application Name 				      |
 	| EXE  | Automation Announcement | SME Review 		| Automation Announcement Application |
 	
 	

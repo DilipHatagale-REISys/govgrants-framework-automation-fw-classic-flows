@@ -69,26 +69,23 @@ Feature: Validate all scenarios in the Application Intake
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Application"
     When I close Modal "ApplicationChecklistsiframeContentIdButton"
     Examples:
-	| User | Quick Search Text                   | Flextable Name  	 		      |
-	| SPI  | Automation Announcement Application | Supporting Documents Checklist |
+	| Flextable Name  	 		     |
+	| Supporting Documents Checklist |
 	
   	@applicationAcknowledgement @applicationIntake
-  	Scenario Outline: Acknowledging an application
+  	Scenario: Acknowledging an application
 	When I click on "Overview" subtab
 	And I click on Agree in "Acknowledgement" section
 	When I click on "Save" button
 	Then I see that "Created" status is in "green" on progress bar
-	Examples:
-	| User | Quick Search Text                   |
-	| SPI  | Automation Announcement Application |
 	
   	@34156 @submitApplication @applicationIntakeHappyPath @applicationIntake
-  	Scenario Outline: Submitting an application to Grantor
+  	Scenario: Submitting an application to Grantor
 	Given I complete the Application fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
 	And I add focus area "00005" to the application
 	Given I add budget details to the application
 	| Category Name | Budget | Cash Match | Non-Cash Match |
-	| Construction  | 5000 	| 1000   	 | 3000 		  |
+	| Construction  | 5000 	| 1000   	 | 3000 		   |
 	And I add target to the KPI in the application
 	| EGMS ID  | Target |
 	| KPI-0005 | 10		|
@@ -96,9 +93,6 @@ Feature: Validate all scenarios in the Application Intake
 	Given I upload checklist "Announcement_Field_Values.xlsx" to the application
     When I click on "Submit Application" button
     Then I see that "Submitted" status is in "green" on progress bar
-	Examples:
-	| User | Quick Search Text                   |
-	| SPI  | Automation Announcement Application |
 	
   	@34346 @viewSubmitedApplication @applicationIntake
   	Scenario Outline: Viewing the application submitted by subrecipient as Internal user
@@ -117,8 +111,8 @@ Feature: Validate all scenarios in the Application Intake
     When I navigate to "Applications" tab
 	And I click "Applications" inside side bar "Applications"
 	When I toggle to "Submitted Applications"
-	And I perform quick search "<Quick Search Text>" on table "ApplicantGrantorApplications"
-	When I click on the "View" icon for the "<Quick Search Text>"
+	And I perform quick search "<Application Name>" on table "ApplicantGrantorApplications"
+	When I click on the "View" icon for the "<Application Name>"
 	Examples:
-	| User | Quick Search Text                   |
+	| User | Application Name                    |
 	| EXE  | Automation Announcement Application |

@@ -2,6 +2,9 @@ package com.ggproduct.automation.pageobjects;
 
 import com.automation.rei.controller.Controller;
 import java.util.Map;
+
+import org.openqa.selenium.By;
+
 import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.projectmanager.ProjectManager;
@@ -193,10 +196,10 @@ public class AwardPage extends ProjectManager  {
      * @param sheetName
      * @param excelFileName
      */
-    public void initiateReviewForAward(String sheetName, String excelFileName) {
+    public void initiateReviewForAward(String sheetName, String excelName) {
         clickOnSubtab("Responsibilities");
         clickOnFlextableButton("New", "Peer Reviewers", "flexGridGrantorAwardReviewer");
-        enterFieldValues(sheetName, excelFileName);
+        enterFieldValues(sheetName, excelName);
         clickOnModalButton("Save");
         closeModal("GrantorAwardReviewersTempmodalDivCloseIcon");
         clickOnFlextableRowButton("Send for Review", "Created", "Peer Reviewers");
@@ -255,7 +258,31 @@ public class AwardPage extends ProjectManager  {
         clickOnApprovalDecisionBox("Approve");
     }
     
-    public void initiateSitVisitInAward(String sheetName, String excelFileName) {
-        
+    /**
+     * Handles initiating Site Visit in an award
+     * @param sheetName
+     * @param excelName
+     */
+    public void initiateSiteVisitInAward(String sheetName, String excelName) {
+        clickOnSubtab("Management");
+        clickOnFlextableButton("Initiate Site Visit", "Site Visits", "GrantorSiteVisitsAward");
+        enterFieldValues(sheetName, excelName);
+        clickOnModalButton("Save And Close");
+        clickOnPageButton("Cancel");
+        reiDriver.findMyElement().getElement(By.xpath("//a[contains(@id,'award__c')]")).click();
+    }
+    
+    /**
+     * Handles initiating Desk Review in an award
+     * @param sheetName
+     * @param excelName
+     */
+    public void initiateDeskReviewInAward(String sheetName, String excelName) {
+        clickOnSubtab("Management");
+        clickOnFlextableButton("Initiate Desk Review", "Desk Reviews", "GrantorDeskReviewAward");
+        enterFieldValues(sheetName, excelName);
+        clickOnModalButton("Save And Close");
+        clickOnPageButton("Cancel");
+        reiDriver.findMyElement().getElement(By.xpath("//a[contains(@id,'award__c')]")).click();
     }
 }

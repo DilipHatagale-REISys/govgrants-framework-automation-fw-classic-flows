@@ -552,3 +552,38 @@ Feature: Validate all scenarios in the award tab
 	Examples:
 	| Award Name 				     	    	    	| Award EGMS Id | Flextable Name |
 	| Automation Announcement to be deleted Application | AD-AuGr--01   | Desk Reviews   |
+	
+	@awardHappyPath @award
+  	Scenario Outline: Validate award Approval by respective approvers	
+  	Given I complete the Award fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
+  	And I add budget in the Award Funding Account
+  	| Funding Account | Award Encumbrance |
+	| FA--21 		  | 100000 			  |
+  	Given I edit the Budget details in award for line item "Construction"
+  	| Budget Category | Cash Match  |
+	| Construction 	  | 2000 		| 
+  	And I add the Payment Request schedule from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx" to an award
+  	Given I add the Progress Report schedule from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx" to an award
+  	And I create a Risk Assessment from sheet "Risk Assessment" in excel "Award_Field_Values.xlsx"
+    Given I select the Program Approver as "Automation PM" and Fiscal Approver as "Automation FO" for Risk Assessment
+    And I click on "Submit for Approval" button
+    Given I approve Risk Assessment as Program Approver "PM" and Fiscal Approver "FO"
+    And I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+    Given I select the Program Approver as "Automation PM", Fiscal Approver as "Automation FO" and Executive Approver as "Automation EXE" for Award
+    And I click on "Send to Subrecipient" button
+  	Given The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
+  	And I assign, initiate a reviewer for an award from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
+  	Given Review is completed as user "FO" for the award "<Award EGMS Id>" with name "<Award Name>" created by "EXE"
+  	And I click on "Submit for Approval" button
+  	Given Approvers "PM", "FO", "EXE" approve the award "<Award Name>"
+  	And I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+  	Given I click on "Send to Subrecipient after Approval" button
+  	And The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
+  	Given I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+	And I click on "Activate" button	
+	Given I initiate Site Visit from sheet "Site Visit" in excel "Award_Field_Values.xlsx" for award
+	And I initiate Desk Review from sheet "Desk Review" in excel "Award_Field_Values.xlsx" for award
+	Then I see that "Subaward" is in "Activated" status
+	Examples:
+	| Award Name 				     	    	    	| Award EGMS Id |
+	| Automation Announcement to be deleted Application | AD-AuGr--01   |
