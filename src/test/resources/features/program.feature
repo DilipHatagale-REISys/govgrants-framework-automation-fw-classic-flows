@@ -80,7 +80,7 @@ Feature: Validate all scenarios in the Planning tab
     And I close Modal "ProgramKeyOutcomesmodalDivCloseIcon"
     Then I see that "<EGMS Id>" has been added in flextable "<Flextable Name>" with Id "ProgramKeyOutcomes"
 	Examples:
-	|  Flextable Name 				    | EGMS Id  |
+	| Flextable Name 				    | EGMS Id  |
 	| Key Performance Indicators (KPIs) | KPI-0005 |
 	
   	@34745 @programAttachmentChecklist @program
@@ -94,7 +94,7 @@ Feature: Validate all scenarios in the Planning tab
     When I close Modal "ProgramChecklistsiframeContentIdButton"
     Then I see that "Active" has been added in flextable "<Flextable Name>" with Id "flexGridProgramChecklists"
 	Examples:
-	|  Flextable Name				 |
+	| Flextable Name				 |
 	| Supporting Documents Checklist |
 	
   	@34746 @programAddAttachment @program

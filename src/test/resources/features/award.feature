@@ -2,15 +2,8 @@
 Feature: Validate all scenarios in the award tab
 
 	Background: Create Award from FDM
-	Given I login to "As a Grantor" app as "EXE" User
-	When I navigate to "Applications" tab
-	And I click "Funding Decision Memo (FDM)" inside side bar "Applications"
-	And I perform quick search "<Announcement Name>" on table "FDMList1"
-	When I click on the "View" icon for the "<Announcement Name>"
-	And I click on the "Create Subaward" icon for the "<Application Name>" on the flextable "Recommended Applications"
-	When I click "Yes" on the confirmation dialog box
-	And I click on "Save" button
-	
+	Given I create a subaward from the Announcement "Automation Announcement" for the Application "Automation Announcement application"
+		
 	@38213 @awardCreation @award
 	Scenario: Creation of an award
 	Then I see that "Created" status is in "green" on progress bar
@@ -26,8 +19,8 @@ Feature: Validate all scenarios in the award tab
  	Scenario Outline: Funding Account budget addition to Award
 	When I click on "Budget" subtab
 	And I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
-	| 		 | Award Encumbrance |
-	| FA--21 | 100000 			 | 
+	| Funding Account | Award Encumbrance |
+	| FA--21 		  | 100000 			 | 
     Then I see that "<EGMS Id>" has been added in flextable "<Flextable Name>" with Id "flexGridAwardFundingAccounts"
 	Examples:
 	| EGMS Id | Flextable Name 			    |
@@ -38,8 +31,8 @@ Feature: Validate all scenarios in the award tab
 	When I click on "Budget" subtab
     And I click on the "Add Line Items" icon for the "Construction" on the flextable "<Flextable Name>"
     When I edit the following rows inline in flex table with id "inlineEditGridLineItem" by clicking "Edit" :
-	| 		       | Cash Match |
-	| Construction | 2000 		| 
+	| Budget Category | Cash Match |
+	| Construction    | 2000 	   | 
     And I close Modal "AwardBudgetCategoryFlexGridiframeContentIdButton"
     Then I see that "Construction" has been added in flextable "<Flextable Name>" with Id "inlineEditGridAwardBudgetCategoryFlexGrid"
 	Examples:
@@ -143,11 +136,11 @@ Feature: Validate all scenarios in the award tab
   	Scenario Outline: Validate the assignment of Approvers for the award 
   	Given I complete the Award fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
   	And I add budget in the Award Funding Account
-  	| 		 | Award Encumbrance |
-	| FA--21 | 100000 			 |
+  	| Funding Account | Award Encumbrance |
+	| FA--21 		  | 100000 			  |
   	Given I edit the Budget details in award for line item "Construction"
-  	| 		       | Cash Match |
-	| Construction | 2000 		| 
+  	| Budget Category | Cash Match |
+	| Construction 	  | 2000 	   | 
   	And I add the Payment Request schedule from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx" to an award
   	Given I add the Progress Report schedule from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx" to an award
   	And I create a Risk Assessment from sheet "Risk Assessment" in excel "Award_Field_Values.xlsx"
@@ -165,11 +158,11 @@ Feature: Validate all scenarios in the award tab
   	Scenario Outline: Validate the assignment of Approvers for the award 
   	Given I complete the Award fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
   	And I add budget in the Award Funding Account
-  	| 		 | Award Encumbrance |
-	| FA--21 | 100000 			 |
+  	| Funding Account | Award Encumbrance |
+	| FA--21 		  | 100000 			  |
   	Given I edit the Budget details in award for line item "Construction"
-  	| 		       | Cash Match |
-	| Construction | 2000 		| 
+  	| Budget Category | Cash Match |
+	| Construction	  | 2000 	   | 
   	And I add the Payment Request schedule from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx" to an award
   	Given I add the Progress Report schedule from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx" to an award
   	And I create a Risk Assessment from sheet "Risk Assessment" in excel "Award_Field_Values.xlsx"
@@ -192,14 +185,14 @@ Feature: Validate all scenarios in the award tab
 	| Automation Announcement to be deleted Application | AD-AuGr--01   |
 	
 	@awardReviewerAssignment @award
-  	Scenario Outline: Validate the assignment of Reviewer for the award 
+  	Scenario Outline: Validate the assignment of Reviewer for the award
   	Given I complete the Award fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
   	And I add budget in the Award Funding Account
-  	| 		 | Award Encumbrance |
-	| FA--21 | 100000 			 |
+  	| Funding Account | Award Encumbrance |
+	| FA--21 		  | 100000 			  |
   	Given I edit the Budget details in award for line item "Construction"
-  	| 		        | Cash Match |
-	| Construction | 2000 		| 
+  	| Budget Category | Cash Match |
+	| Construction    | 2000 	   |
   	And I add the Payment Request schedule from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx" to an award
   	Given I add the Progress Report schedule from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx" to an award
   	And I create a Risk Assessment from sheet "Risk Assessment" in excel "Award_Field_Values.xlsx"
@@ -232,11 +225,11 @@ Feature: Validate all scenarios in the award tab
   	Scenario Outline: Validate initiation of review for the award 
   	Given I complete the Award fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
   	And I add budget in the Award Funding Account
-  	| 		 | Award Encumbrance |
-	| FA--21 | 100000 			 |
+  	| Funding Account | Award Encumbrance |
+	| FA--21 		  | 100000 			  |
   	Given I edit the Budget details in award for line item "Construction"
-  	| 		        | Cash Match |
-	| Construction | 2000 		| 
+  	| Budget Category | Cash Match |
+	| Construction    | 2000 	   | 
   	And I add the Payment Request schedule from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx" to an award
   	Given I add the Progress Report schedule from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx" to an award
   	And I create a Risk Assessment from sheet "Risk Assessment" in excel "Award_Field_Values.xlsx"
@@ -270,11 +263,11 @@ Feature: Validate all scenarios in the award tab
   	Scenario Outline: Validate completion of review for the award 
   	Given I complete the Award fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
   	And I add budget in the Award Funding Account
-  	| 		 | Award Encumbrance |
-	| FA--21 | 100000 			 |
+  	| Funding Account	| Award Encumbrance |
+	| FA--21 			| 100000 			|
   	Given I edit the Budget details in award for line item "Construction"
-  	| 		        | Cash Match |
-	| Construction | 2000 		| 
+  	| Budget Category | Cash Match |
+	| Construction    | 2000 	   | 
   	And I add the Payment Request schedule from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx" to an award
   	Given I add the Progress Report schedule from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx" to an award
   	And I create a Risk Assessment from sheet "Risk Assessment" in excel "Award_Field_Values.xlsx"
@@ -307,11 +300,11 @@ Feature: Validate all scenarios in the award tab
   	Scenario Outline: Validate award submission for approval	
   	Given I complete the Award fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
   	And I add budget in the Award Funding Account
-  	| 		 | Award Encumbrance |
-	| FA--21 | 100000 			 |
+  	| Funding Account | Award Encumbrance |
+	| FA--21 		  | 100000 			  |
   	Given I edit the Budget details in award for line item "Construction"
-  	| 		        | Cash Match |
-	| Construction | 2000 		| 
+  	| Budget Category | Cash Match |
+	| Construction 	  | 2000 	   | 
   	And I add the Payment Request schedule from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx" to an award
   	Given I add the Progress Report schedule from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx" to an award
   	And I create a Risk Assessment from sheet "Risk Assessment" in excel "Award_Field_Values.xlsx"
@@ -334,11 +327,11 @@ Feature: Validate all scenarios in the award tab
   	Scenario Outline: Validate award Approval by respective approvers	
   	Given I complete the Award fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
   	And I add budget in the Award Funding Account
-  	| 		 | Award Encumbrance |
-	| FA--21 | 100000 			 |
+  	| Funding Account | Award Encumbrance |
+	| FA--21 		  | 100000 			  |
   	Given I edit the Budget details in award for line item "Construction"
-  	| 		        | Cash Match |
-	| Construction | 2000 		| 
+  	| Budget Category | Cash Match |
+	| Construction 	  | 2000 	   | 
   	And I add the Payment Request schedule from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx" to an award
   	Given I add the Progress Report schedule from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx" to an award
   	And I create a Risk Assessment from sheet "Risk Assessment" in excel "Award_Field_Values.xlsx"
@@ -379,11 +372,11 @@ Feature: Validate all scenarios in the award tab
   	Scenario Outline: Validate award Approval by respective approvers	
   	Given I complete the Award fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
   	And I add budget in the Award Funding Account
-  	| 		 | Award Encumbrance |
-	| FA--21 | 100000 			 |
+  	| Funding Account | Award Encumbrance |
+	| FA--21 		  | 100000 			 |
   	Given I edit the Budget details in award for line item "Construction"
-  	| 		        | Cash Match |
-	| Construction | 2000 		| 
+  	| Budget Category | Cash Match |
+	| Construction 	  | 2000 		| 
   	And I add the Payment Request schedule from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx" to an award
   	Given I add the Progress Report schedule from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx" to an award
   	And I create a Risk Assessment from sheet "Risk Assessment" in excel "Award_Field_Values.xlsx"
@@ -416,11 +409,11 @@ Feature: Validate all scenarios in the award tab
   	Scenario Outline: Validate award Approval by respective approvers	
   	Given I complete the Award fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
   	And I add budget in the Award Funding Account
-  	| 		 | Award Encumbrance |
-	| FA--21 | 100000 			 |
+  	| Funding Account | Award Encumbrance |
+	| FA--21 		  | 100000 			  |
   	Given I edit the Budget details in award for line item "Construction"
-  	| 		        | Cash Match |
-	| Construction | 2000 		| 
+  	| Budget Category | Cash Match |
+	| Construction    | 2000 	   | 
   	And I add the Payment Request schedule from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx" to an award
   	Given I add the Progress Report schedule from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx" to an award
   	And I create a Risk Assessment from sheet "Risk Assessment" in excel "Award_Field_Values.xlsx"
@@ -449,15 +442,15 @@ Feature: Validate all scenarios in the award tab
 	| Award Name 				     	    	    	| Award EGMS Id |
 	| Automation Announcement to be deleted Application | AD-AuGr--01   |
 	
-	@awardAcctivation @award
+	@awardActivation @award
   	Scenario Outline: Validate award Approval by respective approvers	
   	Given I complete the Award fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
   	And I add budget in the Award Funding Account
-  	| 		 | Award Encumbrance |
-	| FA--21 | 100000 			 |
+  	| Funding Account | Award Encumbrance |
+	| FA--21 		  | 100000 			  |
   	Given I edit the Budget details in award for line item "Construction"
-  	| 		        | Cash Match |
-	| Construction | 2000 		| 
+  	| Budget Category | Cash Match |
+	| Construction    | 2000 	   | 
   	And I add the Payment Request schedule from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx" to an award
   	Given I add the Progress Report schedule from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx" to an award
   	And I create a Risk Assessment from sheet "Risk Assessment" in excel "Award_Field_Values.xlsx"
@@ -482,3 +475,80 @@ Feature: Validate all scenarios in the award tab
 	| Award Name 				     	    	    	| Award EGMS Id |
 	| Automation Announcement to be deleted Application | AD-AuGr--01   |
 	
+	@awardSiteVisit @award
+  	Scenario Outline: Validate award Approval by respective approvers	
+  	Given I complete the Award fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
+  	And I add budget in the Award Funding Account
+  	| 		 | Award Encumbrance |
+	| FA--21 | 100000 			 |
+  	Given I edit the Budget details in award for line item "Construction"
+  	| Budget Category | Cash Match |
+	| Construction 	  | 2000 	   | 
+  	And I add the Payment Request schedule from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx" to an award
+  	Given I add the Progress Report schedule from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx" to an award
+  	And I create a Risk Assessment from sheet "Risk Assessment" in excel "Award_Field_Values.xlsx"
+    Given I select the Program Approver as "Automation PM" and Fiscal Approver as "Automation FO" for Risk Assessment
+    And I click on "Submit for Approval" button
+    Given I approve Risk Assessment as Program Approver "PM" and Fiscal Approver "FO"
+    And I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+    Given I select the Program Approver as "Automation PM", Fiscal Approver as "Automation FO" and Executive Approver as "Automation EXE" for Award
+    And I click on "Send to Subrecipient" button
+  	Given The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
+  	And I assign, initiate a reviewer for an award from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
+  	Given Review is completed as user "FO" for the award "<Award EGMS Id>" with name "<Award Name>" created by "EXE"
+  	And I click on "Submit for Approval" button
+  	Given Approvers "PM", "FO", "EXE" approve the award "<Award Name>"
+  	And I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+  	Given I click on "Send to Subrecipient after Approval" button
+  	And The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
+  	Given I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+	And I click on "Activate" button
+	When I click on "Management" subtab
+	When I click on "Initiate Site Visit" button on "<Flextable Name>" flextable with Id "GrantorSiteVisitsAward"
+    And I enter "Site Visit" values from "Award_Field_Values.xlsx"
+    When I click on "Save And Close" button in the modal
+    And I click on "Cancel" button
+    Then I see that "Created" status is in "green" on progress bar
+	 	
+	Examples:
+	| Award Name 				     	    	    	| Award EGMS Id | Flextable Name |
+	| Automation Announcement to be deleted Application | AD-AuGr--01   | Site Visits    |
+	
+	@awardDeskReview @award
+  	Scenario Outline: Validate award Approval by respective approvers	
+  	Given I complete the Award fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
+  	And I add budget in the Award Funding Account
+  	| Funding Account | Award Encumbrance |
+	| FA--21 		  | 100000 			  |
+  	Given I edit the Budget details in award for line item "Construction"
+  	| Budget Category | Cash Match |
+	| Construction	  | 2000 	   | 
+  	And I add the Payment Request schedule from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx" to an award
+  	Given I add the Progress Report schedule from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx" to an award
+  	And I create a Risk Assessment from sheet "Risk Assessment" in excel "Award_Field_Values.xlsx"
+    Given I select the Program Approver as "Automation PM" and Fiscal Approver as "Automation FO" for Risk Assessment
+    And I click on "Submit for Approval" button
+    Given I approve Risk Assessment as Program Approver "PM" and Fiscal Approver "FO"
+    And I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+    Given I select the Program Approver as "Automation PM", Fiscal Approver as "Automation FO" and Executive Approver as "Automation EXE" for Award
+    And I click on "Send to Subrecipient" button
+  	Given The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
+  	And I assign, initiate a reviewer for an award from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
+  	Given Review is completed as user "FO" for the award "<Award EGMS Id>" with name "<Award Name>" created by "EXE"
+  	And I click on "Submit for Approval" button
+  	Given Approvers "PM", "FO", "EXE" approve the award "<Award Name>"
+  	And I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+  	Given I click on "Send to Subrecipient after Approval" button
+  	And The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
+  	Given I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+	And I click on "Activate" button	
+	When I click on "Management" subtab
+	When I click on "Initiate Desk Review" button on "<Flextable Name>" flextable with Id "GrantorDeskReviewAward"
+    And I enter "Desk Review" values from "Award_Field_Values.xlsx"
+    When I click on "Save And Close" button in the modal
+    And I click on "Cancel" button
+    Then I see that "Created" status is in "green" on progress bar
+	 	
+	Examples:
+	| Award Name 				     	    	    	| Award EGMS Id | Flextable Name |
+	| Automation Announcement to be deleted Application | AD-AuGr--01   | Desk Reviews   |

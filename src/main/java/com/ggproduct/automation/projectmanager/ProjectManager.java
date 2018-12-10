@@ -228,7 +228,8 @@ public class ProjectManager extends ProjectWebServices {
         govgrants.pageDetails().clickAnyTopRightButton(buttonName);
 
         if (buttonName.equals("Submit For Approval") || buttonName.equals("Submit Application")) {
-            clickOKForAlert();
+            reiDriver.switchTo().acceptAlert();
+            reiDriver.switchTo().switchToParentFrame();
             govgrants.mainPage().waitForNavigationLogoToDisappear();
         }
     }
@@ -644,8 +645,7 @@ public class ProjectManager extends ProjectWebServices {
      * @param value
      */
     public void enterFieldValue(String fieldAPIName, String value) {
-            handleTextInput(fieldAPIName, value);
-        
+        govgrants.inputForms().inputFormDataByFieldApiName(fieldAPIName, value);        
     }
     
     /**
@@ -776,11 +776,6 @@ public class ProjectManager extends ProjectWebServices {
         reiDriver.WaitFor().WaitForElementListToBePresent(By.xpath("//span[text()='" + flextableName + "']"));
         reiDriver.JavaScript().scrollElementToPageDetailCenter(By.xpath("//span[text()='" + flextableName + "']"));
         return govgrants.flexTable().getSpecificTableColumn(flextableId, columnUniqueValue).isEnabled();
-    }
-
-    private void clickOKForAlert() {
-        reiDriver.switchTo().acceptAlert();
-        reiDriver.switchTo().switchToParentFrame();
     }
 
     private void handleTextInput(String fieldApiName, String fieldValue) {

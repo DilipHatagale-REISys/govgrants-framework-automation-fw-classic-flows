@@ -41,8 +41,8 @@ Feature: Validate all scenarios in the Application Intake
     And I expand the "BP01" on grid "<Flextable Name>"
     When I expand the "Proposed Budget" on grid "<Flextable Name>"
     When I edit the following rows inline in flex table with id "inlineEditGridApplicationBudgetCategoryGrantorFlexGrid" by clicking "Edit" :
-	| 		       | Budget | Cash Match | Non-Cash Match |
-	| Construction | 5000 	| 1000   	 | 3000 		  | 
+	| Category Name | Budget | Cash Match | Non-Cash Match |
+	| Construction	| 5000 	| 1000   	 | 3000 		  | 
 	Examples:
 	| Flextable Name |
 	| Budget Details |	
@@ -51,7 +51,7 @@ Feature: Validate all scenarios in the Application Intake
   	Scenario Outline: Addition of KPI target to an application 
     When I click on "Proposal" subtab
     When I edit the following rows inline in flex table with id "inlineEditGridRecipientApplicationRelatedKPIs" by clicking "Edit" :
-	| 		   | Target |
+	| EGMS ID  | Target |
 	| KPI-0005 | 10		|
 	| KPI-0006 | 10		|
 	Then I see that "10" has been added in flextable "<Flextable Name>" with Id "inlineEditGridRecipientApplicationRelatedKPIs"
@@ -87,10 +87,10 @@ Feature: Validate all scenarios in the Application Intake
 	Given I complete the Application fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
 	And I add focus area "00005" to the application
 	Given I add budget details to the application
-	| 		       | Budget | Cash Match | Non-Cash Match |
-	| Construction | 5000 	| 1000   	 | 3000 		  |
+	| Category Name | Budget | Cash Match | Non-Cash Match |
+	| Construction  | 5000 	| 1000   	 | 3000 		  |
 	And I add target to the KPI in the application
-	| 		   | Target |
+	| EGMS ID  | Target |
 	| KPI-0005 | 10		|
 	| KPI-0006 | 10		|
 	Given I upload checklist "Announcement_Field_Values.xlsx" to the application
@@ -105,10 +105,10 @@ Feature: Validate all scenarios in the Application Intake
   	Given I complete the Application fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
 	And I add focus area "00005" to the application
 	Given I add budget details to the application
-	| 		       | Budget | Cash Match | Non-Cash Match |
-	| Construction | 5000 	| 1000   	 | 3000 		  |
+	| Category Name | Budget | Cash Match | Non-Cash Match |
+	| Construction 	| 5000 	 | 1000   	 | 3000 		  |
 	And I add target to the KPI in the application
-	| 		   | Target |
+	| EGMS ID  | Target |
 	| KPI-0005 | 10		|
 	| KPI-0006 | 10		|
 	Given I upload checklist "Annoluncement_Field_Values.xlsx" to the application

@@ -25,7 +25,7 @@ Feature: Validate all scenarios in the Application Review
 	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
 	And I click on "Next Review Step" button
 	 When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
-	| 		   		    | Due in Days |
+	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
 	| Compliance Review | 10   		  | 
@@ -36,7 +36,7 @@ Feature: Validate all scenarios in the Application Review
 	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
 	And I click on "Next Review Step" button
 	Given I enter the Due In Days for all SME review steps
-	| 		   		    | Due in Days |
+	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
 	| Compliance Review | 10   		  | 
@@ -62,7 +62,7 @@ Feature: Validate all scenarios in the Application Review
 	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
 	And I click on "Next Review Step" button
 	Given I enter the Due In Days for all SME review steps
-	| 		   		    | Due in Days |
+	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
 	| Compliance Review | 10   		  |
@@ -86,7 +86,7 @@ Feature: Validate all scenarios in the Application Review
 	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
 	And I click on "Next Review Step" button
 	Given I enter the Due In Days for all SME review steps
-	| 		   		    | Due in Days |
+	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
 	| Compliance Review | 10   		  |
@@ -103,7 +103,7 @@ Feature: Validate all scenarios in the Application Review
 	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
 	And I click on "Next Review Step" button
 	Given I enter the Due In Days for all SME review steps
-	| 		   		    | Due in Days |
+	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
 	| Compliance Review | 10   		  |
@@ -141,7 +141,7 @@ Feature: Validate all scenarios in the Application Review
 	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
 	And I click on "Next Review Step" button
 	Given I enter the Due In Days for all SME review steps
-	| 		   		    | Due in Days |
+	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
 	| Compliance Review | 10   		  |
@@ -172,7 +172,7 @@ Feature: Validate all scenarios in the Application Review
 	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
 	And I click on "Next Review Step" button
 	Given I enter the Due In Days for all SME review steps
-	| 		   		    | Due in Days |
+	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
 	| Compliance Review | 10   		  |
@@ -183,7 +183,7 @@ Feature: Validate all scenarios in the Application Review
 	And "SME Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
 	When I click on "Next Review Step" button
 	When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
-	| 		    		| Due in Days |
+	| Form Name   		| Due in Days |
 	| Management Review | 10     	  | 
 	Then I see that "Management Review" is in "In Progress" status
 		
@@ -192,7 +192,7 @@ Feature: Validate all scenarios in the Application Review
 	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
 	And I click on "Next Review Step" button
 	Given I enter the Due In Days for all SME review steps
-	| 		   		    | Due in Days |
+	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
 	| Compliance Review | 10   		  |
@@ -203,7 +203,7 @@ Feature: Validate all scenarios in the Application Review
 	And "SME Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
 	Given I click on "Next Review Step" button
 	And I enter the Due In Days for all Management review steps
-	| 		    		| Due in Days |
+	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
     When I expand the "Management Review" on grid "Review Forms"
     And I click on "Add" button on "Reviewers" flextable with Id "flexGridApplicationReviewTree"
@@ -215,7 +215,7 @@ Feature: Validate all scenarios in the Application Review
 	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
 	And I click on "Next Review Step" button
 	Given I enter the Due In Days for all SME review steps
-	| 		   		    | Due in Days |
+	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
 	| Compliance Review | 10   		  |
@@ -226,7 +226,7 @@ Feature: Validate all scenarios in the Application Review
 	And "SME Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
 	Given I click on "Next Review Step" button
 	And I enter the Due In Days for all Management review steps
-	| 		    		| Due in Days |
+	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
 	Given I add Reviewers "Automation EXE" for Management Review
     When I expand the "Management Review" on grid "Review Forms"
@@ -239,7 +239,7 @@ Feature: Validate all scenarios in the Application Review
 	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
 	And I click on "Next Review Step" button
 	Given I enter the Due In Days for all SME review steps
-	| 		   		    | Due in Days |
+	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
 	| Compliance Review | 10   		  |
@@ -250,7 +250,7 @@ Feature: Validate all scenarios in the Application Review
 	And "SME Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
 	Given I click on "Next Review Step" button
 	And I enter the Due In Days for all Management review steps
-	| 		    		| Due in Days |
+	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
 	And I add Reviewers "Automation EXE" for Management Review
 	Given I assign application "Automation Announcement Application" to the Reviewers for Management Review
@@ -262,7 +262,7 @@ Feature: Validate all scenarios in the Application Review
 	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
 	And I click on "Next Review Step" button
 	Given I enter the Due In Days for all SME review steps
-	| 		   		    | Due in Days |
+	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
 	| Compliance Review | 10   		  |
@@ -273,7 +273,7 @@ Feature: Validate all scenarios in the Application Review
 	And "SME Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
 	Given I click on "Next Review Step" button
 	And I enter the Due In Days for all Management review steps
-	| 		    		| Due in Days |
+	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
 	And I add Reviewers "Automation EXE" for Management Review
 	Given I assign application "Automation Announcement Application" to the Reviewers for Management Review
@@ -292,7 +292,7 @@ Feature: Validate all scenarios in the Application Review
 	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
 	And I click on "Next Review Step" button
 	Given I enter the Due In Days for all SME review steps
-	| 		   		    | Due in Days |
+	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
 	| Compliance Review | 10   		  |
@@ -303,7 +303,7 @@ Feature: Validate all scenarios in the Application Review
 	And "SME Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
 	Given I click on "Next Review Step" button
 	And I enter the Due In Days for all Management review steps
-	| 		    		| Due in Days |
+	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
 	And I add Reviewers "Automation EXE" for Management Review
 	Given I assign application "<Application Name>" to the Reviewers for Management Review
@@ -331,7 +331,7 @@ Feature: Validate all scenarios in the Application Review
 	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
 	And I click on "Next Review Step" button
 	Given I enter the Due In Days for all SME review steps
-	| 		   		    | Due in Days |
+	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
 	| Compliance Review | 10   		  |
@@ -342,7 +342,7 @@ Feature: Validate all scenarios in the Application Review
 	And "SME Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
 	Given I click on "Next Review Step" button
 	And I enter the Due In Days for all Management review steps
-	| 		    		| Due in Days |
+	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
 	And I add Reviewers "Automation EXE" for Management Review
 	Given I assign application "<Application Name>" to the Reviewers for Management Review
@@ -363,7 +363,7 @@ Feature: Validate all scenarios in the Application Review
 	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
 	And I click on "Next Review Step" button
 	Given I enter the Due In Days for all SME review steps
-	| 		   		    | Due in Days |
+	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
 	| Compliance Review | 10   		  |
@@ -374,7 +374,7 @@ Feature: Validate all scenarios in the Application Review
 	And "SME Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
 	Given I click on "Next Review Step" button
 	And I enter the Due In Days for all Management review steps
-	| 		    		| Due in Days |
+	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
 	And I add Reviewers "Automation EXE" for Management Review
 	Given I assign application "<Application Name>" to the Reviewers for Management Review
@@ -384,8 +384,8 @@ Feature: Validate all scenarios in the Application Review
 	Given I click on "Funding Decision Memo" button
 	And I enter Subaward Abbreviation as "AuGr"
 	When I edit the following rows inline in flex table with id "inlineEditGridFundingDecisionMemoApplications" by clicking "Edit" :
-	| 		    	 					  | Recommended Budget | Recommend for Funding | Comments 	  |
-	| Automation Announcement Application | 100000 		    | Yes					| Recommended |
+	| Application Title 				  | Recommended Budget | Recommend for Funding | Comments 	  |
+	| Automation Announcement Application | 100000 			   | Yes				   | Recommended  |
 	Then I see that "Funding Decision Memo" is in "Created" status
 	
 	Examples: 
@@ -397,7 +397,7 @@ Feature: Validate all scenarios in the Application Review
 	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
 	And I click on "Next Review Step" button
 	Given I enter the Due In Days for all SME review steps
-	| 		   		    | Due in Days |
+	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
 	| Compliance Review | 10   		  |
@@ -408,7 +408,7 @@ Feature: Validate all scenarios in the Application Review
 	And "SME Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
 	Given I click on "Next Review Step" button
 	And I enter the Due In Days for all Management review steps
-	| 		    		| Due in Days |
+	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
 	Given I add Reviewers "Automation EXE" for Management Review
 	And I assign application "<Application Name>" to the Reviewers for Management Review
@@ -418,7 +418,7 @@ Feature: Validate all scenarios in the Application Review
 	And I click on "Funding Decision Memo" button
 	Given I enter Subaward Abbreviation as "AuGr"
 	And I enter the recommendation in FDM
-	| 		    	 					  | Recommended Budget | Recommend for Funding | Comments 	 |
+	| Application Title 				  | Recommended Budget | Recommend for Funding | Comments 	 |
 	| Automation Announcement Application | 100000 		       | Yes				   | Recommended |
 	When I click on "Responsibilities" subtab
 	And I click on the "Edit" icon for the "Executive Approver" on the flextable "Responsibilities"
@@ -434,7 +434,7 @@ Feature: Validate all scenarios in the Application Review
 	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
 	And I click on "Next Review Step" button
 	Given I enter the Due In Days for all SME review steps
-	| 		   		    | Due in Days |
+	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
 	| Compliance Review | 10   		  |
@@ -445,7 +445,7 @@ Feature: Validate all scenarios in the Application Review
 	And "SME Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
 	And I click on "Next Review Step" button
 	When I enter the Due In Days for all Management review steps
-	| 		    		| Due in Days |
+	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
 	And I add Reviewers "Automation EXE" for Management Review
 	Given I assign application "<Application Name>" to the Reviewers for Management Review
@@ -455,7 +455,7 @@ Feature: Validate all scenarios in the Application Review
 	And I click on "Funding Decision Memo" button
 	Given I enter Subaward Abbreviation as "AuGr"
 	And I enter the recommendation in FDM
-	| 		    	 					  | Recommended Budget | Recommend for Funding | Comments 	 |
+	| Application Title 				  | Recommended Budget | Recommend for Funding | Comments 	 |
 	| Automation Announcement Application | 100000 		       | Yes				   | Recommended |
 	Given I select "Automation EXE" as "Executive Approver" for Approver details
 	When I click on "Submit for Approval" button
@@ -469,7 +469,7 @@ Feature: Validate all scenarios in the Application Review
 	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
 	And I click on "Next Review Step" button
 	Given I enter the Due In Days for all SME review steps
-	| 		   		    | Due in Days |
+	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
 	| Compliance Review | 10   		  |
@@ -480,7 +480,7 @@ Feature: Validate all scenarios in the Application Review
 	And "SME Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
 	Given I click on "Next Review Step" button
 	And I enter the Due In Days for all Management review steps
-	| 		    		| Due in Days |
+	| Form Name   		| Due in Days |
 	| Management Review | 10     	  | 
 	And I add Reviewers "Automation EXE" for Management Review
 	Given I assign application "<Application Name>" to the Reviewers for Management Review
@@ -490,7 +490,7 @@ Feature: Validate all scenarios in the Application Review
 	Given I click on "Funding Decision Memo" button
 	And I enter Subaward Abbreviation as "AuGr"
 	And I enter the recommendation in FDM
-	| 		    	 					  | Recommended Budget | Recommend for Funding | Comments 	 |
+	| Application Title 				  | Recommended Budget | Recommend for Funding | Comments 	 |
 	| Automation Announcement Application | 100000 		       | Yes				   | Recommended |
 	And I select "Automation EXE" as "Executive Approver" for Approver details
 	Given I click on "Submit for Approval" button

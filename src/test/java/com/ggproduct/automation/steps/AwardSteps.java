@@ -14,6 +14,11 @@ public class AwardSteps {
         awardPage = new AwardPage(controller, handler, govgrants);
     }
     
+    @Given("^I create a subaward from the Announcement \"([^\"]*)\" for the Application \"([^\"]*)\"$")
+    public void creationOfAward(String announcementName, String applicationName) {
+        awardPage.creationOfAward(announcementName, applicationName);
+    }
+    
     @Given("^I complete the Award fields from the sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
     public void editionOfAward(String sheetName, String excelName) {
         awardPage.editionOfAward(sheetName, excelName);
@@ -82,5 +87,10 @@ public class AwardSteps {
     @Given("^Approvers \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\" approve the award \"([^\"]*)\"$")
     public void approversApproveAward(String programApprover, String fiscalApprover, String executiveApprover, String awardName) {
         awardPage.approversApproveAward(programApprover, fiscalApprover, executiveApprover, awardName);
+    }
+    
+    @Given("^I initiate Site Visit from sheet \"([^\"]*)\" in excel \"([^\"]*)\" for award$")
+    public void initiateSitVisitInAward(String sheetName, String excelFileName) {
+        awardPage.initiateSitVisitInAward(sheetName, excelFileName);
     }
 }

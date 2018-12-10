@@ -41,8 +41,8 @@ Feature: Validate all scenarios in the Announcement tab
   	Scenario Outline: Amount addition to Invited applicant association to an Announcement
     Given I associate an agency "RG-000010" to the annoucement
     When I edit the following rows inline in flex table with id "inlineEditGridFormulaGrantsAwardOrganizations" by clicking "Edit" :
-	| 		    | Allocated Amount   |
-	| RG-000010 | 100000 			 | 
+	| Agency Code | Allocated Amount   |
+	| RG-000010   | 100000 			 | 
    Then I see that "<Agency Code>" has been added in flextable "<Flextable Name>"  with Id "inlineEditGridFormulaGrantsAwardOrganizations"
 	Examples:
 	| Agency Code | Flextable Name 	   |
@@ -55,8 +55,8 @@ Feature: Validate all scenarios in the Announcement tab
     When I click "Add" after selection of "<EGMS Id>" in the table "popupflextable"
     And I close Modal "AnnouncementFundingAccountGrantormodalDivCloseIcon"
     When I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| 		 | Announcement Pre-Encumbrance |
-	| FA--21 | 100000 				        | 
+	| Funding Account | Announcement Pre-Encumbrance |
+	| FA--21 		  | 100000 				        | 
 	Then I see that "<EGMS Id>" has been added in flextable "<Flextable Name>" with Id "flexGridAnnouncementFundingAccountGrantor"
 	Examples:
 	| EGMS Id | Flextable Name   |
@@ -105,7 +105,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I close Modal "ProgramKeyOutcomesmodalDivCloseIcon"
     Then I see that "<KPI>" has been added in flextable "<Flextable Name>" with Id "AnnouncementKeyOutcomes"
 	Examples:
-	|  Flextable Name					 | KPI 		|
+	| Flextable Name					 | KPI 		|
 	| Key Performance Indicators (KPIs)  | KPI-0006 |
 
   	@35002 @announcementAttachmentChecklist @announcement
@@ -119,7 +119,7 @@ Feature: Validate all scenarios in the Announcement tab
     When I close Modal "AnnouncementChecklistsiframeContentIdButton"
     Then I see that "Active" has been added in flextable "<Flextable Name>" with Id "inlineEditGridAnnouncementChecklists"
 	Examples:
-	|  Flextable Name 		|
+	| Flextable Name 		|
 	| Supporting Documents  |
 
   	@announcementReviewStepsValidate @announcement
@@ -175,8 +175,8 @@ Feature: Validate all scenarios in the Announcement tab
 	And I re-login to "As a Grantor" app as "<User>" User
 	When I navigate to "Announcements" tab
 	And I click "Pending Tasks" inside side bar "My Tasks"
-    When I perform quick search "<Quick Search Text>" on table "PhasePendingTasks"
-    And I click on the "Start" icon for the "<Quick Search Text>" 
+    When I perform quick search "<Announcement Name>" on table "PhasePendingTasks"
+    And I click on the "Start" icon for the "<Announcement Name>" 
     When I click on the "Enter Review" icon for the "Automation FO" on the flextable "<Flextable Name>"
     And I enter a review
     When I click on "Save" button in the modal
@@ -186,12 +186,12 @@ Feature: Validate all scenarios in the Announcement tab
     When I navigate to "Announcements" tab
 	And I click "Competitive" inside side bar "Announcements"
 	When I toggle to "Draft Announcements"
-    When I perform quick search "<Quick Search Text>" on table "ActiveFundingOpportunitiesCompitive"
-    And I click on the "View" icon for the "<Quick Search Text>"
+    When I perform quick search "<Announcement Name>" on table "ActiveFundingOpportunitiesCompitive"
+    And I click on the "View" icon for the "<Announcement Name>"
     When I click on "Complete Review" button
     Then I see that "Reviewed" status is in "green" on progress bar
 	Examples:
-	| User | Quick Search Text 			           | Flextable Name |
+	| User | Announcement Name 			           | Flextable Name |
 	| FO   | Automation Announcement to be deleted | Peer Reviewers |
 
   	@35003 @announcementAddAttachment @announcement
@@ -206,8 +206,8 @@ Feature: Validate all scenarios in the Announcement tab
   	Scenario: Validate the submission of Announcement for Approval
 	Given I complete the Announcement fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
 	And I add a Funding Account "FA--21" with the amount to an announcement
-	| 		 | Announcement Pre-Encumbrance |
-	| FA--21 | 100000 				        |
+	| Funding Account | Announcement Pre-Encumbrance |
+	| FA--21 		  | 100000 				         |
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	And I associate Contact "Automation EXE", Focus Area "00006", Objective "SPO-0008" to the announcement
 	Given I select the Program Approver "Automation PM",Fiscal Approver "Automation FO",Executive Approver "Automation EXE" for the announcement
@@ -224,8 +224,8 @@ Feature: Validate all scenarios in the Announcement tab
   	Scenario Outline: Validate the approval of an Announcement
 	Given I complete the Announcement fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
 	And I add a Funding Account "FA--21" with the amount to an announcement
-	| 		 | Announcement Pre-Encumbrance |
-	| FA--21 | 100000 				        |
+	| Funding Account | Announcement Pre-Encumbrance |
+	| FA--21 		  | 100000 				        |
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	And I associate Contact "Automation EXE", Focus Area "00006", Objective "SPO-0008" to the announcement
 	Given I select the Program Approver "Automation PM",Fiscal Approver "Automation FO",Executive Approver "Automation EXE" for the announcement
@@ -239,32 +239,32 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I re-login to "As a Grantor" app as "PM" User
 	When I navigate to "Announcements" tab
 	And I click "Pending Tasks" inside side bar "My Tasks"
-    When I perform quick search "<Quick Search Text>" on table "PhasePendingTasks"
-    And I click on the "Start" icon for the "<Quick Search Text>" 
+    When I perform quick search "<Announcement Name>" on table "PhasePendingTasks"
+    And I click on the "Start" icon for the "<Announcement Name>" 
     When I click on "Approve" on the approval decision box
     And I re-login to "As a Grantor" app as "FO" User
 	When I navigate to "Announcements" tab
 	And I click "Pending Tasks" inside side bar "My Tasks"
-    When I perform quick search "<Quick Search Text>" on table "PhasePendingTasks"
-    And I click on the "Start" icon for the "<Quick Search Text>" 
+    When I perform quick search "<Announcement Name>" on table "PhasePendingTasks"
+    And I click on the "Start" icon for the "<Announcement Name>" 
     When I click on "Approve" on the approval decision box
     And I re-login to "As a Grantor" app as "EXE" User
 	When I navigate to "Announcements" tab
 	And I click "Pending Tasks" inside side bar "My Tasks"
-    When I perform quick search "<Quick Search Text>" on table "PhasePendingTasks"
-    And I click on the "Start" icon for the "<Quick Search Text>" 
+    When I perform quick search "<Announcement Name>" on table "PhasePendingTasks"
+    And I click on the "Start" icon for the "<Announcement Name>" 
     When I click on "Approve" on the approval decision box
     Then I see that "Approved" status is in "green" on progress bar
 	Examples:
-	| Quick Search Text		  |
+	| Announcement Name		  |
 	| Automation Announcement |
 
   	@34462 @publishingCompetitiveAnnouncement @announcementCompetitiveHappyPath @announcement
   	Scenario Outline: Validate the activation of Internal Program
 	Given I complete the Announcement fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
 	And I add a Funding Account "FA--21" with the amount to an announcement
-	| 		 | Announcement Pre-Encumbrance |
-	| FA--21 | 100000 				        |
+	| Funding Account | Announcement Pre-Encumbrance |
+	| FA--21 		  | 100000 				         |
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	And I associate Contact "Automation EXE", Focus Area "00006", Objective "SPO-0008" to the announcement
 	Given I select the Program Approver "Automation PM",Fiscal Approver "Automation FO",Executive Approver "Automation EXE" for the announcement
@@ -273,19 +273,19 @@ Feature: Validate all scenarios in the Announcement tab
     | Automation test description | Mandatory | Award  	   |
     Given I add an attachment "InternalOrganization_Field_Values.xlsx" to announcement
 	And I assign, initiate a reviewer for an announcement from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
-	Given Review is completed as user "FO" for the "Competitive" announcement "<Quick Search Text>" created by "EXE" 
+	Given Review is completed as user "FO" for the "Competitive" announcement "<Announcement Name>" created by "EXE" 
 	And I click on "Submit For Approval" button
-	Given Approvers "PM", "FO", "EXE" approve the announcement "<Quick Search Text>"
+	Given Approvers "PM", "FO", "EXE" approve the announcement "<Announcement Name>"
 	And I re-login to "As a Grantor" app as "<User>" User
 	When I navigate to "Announcements" tab
 	And I click "Competitive" inside side bar "Announcements"
 	When I toggle to "Draft Announcements"
-    And I perform quick search "<Quick Search Text>" on table "ActiveFundingOpportunitiesCompitive"
-    When I click on the "View" icon for the "<Quick Search Text>" 
+    And I perform quick search "<Announcement Name>" on table "ActiveFundingOpportunitiesCompitive"
+    When I click on the "View" icon for the "<Announcement Name>" 
     And I click on "Publish" button
     Then I see that "Published" status is in "green" on progress bar
 	Examples:
-	| User | Quick Search Text 					   |
+	| User | Announcement Name 					   |
 	| EXE  | Automation Announcement to be deleted |
 	
 	@34462 @publishingDirectedAnnouncement @announcementDirectedHappyPath @announcement
@@ -293,8 +293,8 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I complete the Announcement fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
 	And I associate an agency "RG-000010" to the annoucement
 	Given I add a Funding Account "FA--21" with the amount to an announcement
-	| 		 | Announcement Pre-Encumbrance |
-	| FA--21 | 100000 				        |
+	| Funding Account | Announcement Pre-Encumbrance |
+	| FA--21 		  | 100000 				        |
 	And I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	Given I associate Contact "Automation EXE", Focus Area "00006", Objective "SPO-0008" to the announcement
 	And I select the Program Approver "Automation PM",Fiscal Approver "Automation FO",Executive Approver "Automation EXE" for the announcement
@@ -310,23 +310,23 @@ Feature: Validate all scenarios in the Announcement tab
 	When I navigate to "Announcements" tab
 	And I click "Directed" inside side bar "Announcements"
 	When I toggle to "Draft Announcements"
-    And I perform quick search "<Quick Search Text>" on table "ActiveFundingOpportunitiesCompitive"
-    When I click on the "View" icon for the "<Quick Search Text>" 
+    And I perform quick search "<Announcement Name>" on table "ActiveFundingOpportunitiesCompitive"
+    When I click on the "View" icon for the "<Announcement Name>" 
     And I click on "Publish" button
     Then I see that "Published" status is in "green" on progress bar
 	Examples:
-	| User | Quick Search Text 		 |
+	| User | Announcement Name 		 |
 	| EXE  | Automation Announcement |
 	
 	@34462 @publishingFormulaAnnouncement @announcementFormulaHappyPath @announcement
   	Scenario Outline: Validate the activation of Internal Program
 	Given I complete the Announcement fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
 	And I associate an agency "RG-000010" with amount to the annoucement
-	| 		    | Allocated Amount   |
-	| RG-000010 | 100000 			 | 
+	| Agency Code | Allocated Amount   |
+	| RG-000010   | 100000 			 | 
 	Given I add a Funding Account "FA--21" with the amount to an announcement
-	| 		 | Announcement Pre-Encumbrance |
-	| FA--21 | 100000 				        |
+	| Funding Account | Announcement Pre-Encumbrance |
+	| FA--21 		  | 100000 				        |
 	And I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	Given I associate Contact "Automation EXE", Focus Area "00006", Objective "SPO-0008" to the announcement
 	And I select the Program Approver "Automation PM",Fiscal Approver "Automation FO",Executive Approver "Automation EXE" for the announcement
@@ -342,11 +342,11 @@ Feature: Validate all scenarios in the Announcement tab
 	And I navigate to "Announcements" tab
 	When I click "Directed" inside side bar "Announcements"
 	And I toggle to "Draft Announcements"
-    When I perform quick search "<Quick Search Text>" on table "ActiveFundingOpportunitiesCompitive"
-    And I click on the "View" icon for the "<Quick Search Text>" 
+    When I perform quick search "<QAnnouncement Name>" on table "ActiveFundingOpportunitiesCompitive"
+    And I click on the "View" icon for the "<Announcement Name>" 
     When I click on "Publish" button
     Then I see that "Published" status is in "green" on progress bar
 	Examples:
-	| User | Quick Search Text 		 |
+	| User | Announcement Name 		 |
 	| EXE  | Automation Announcement |
  	

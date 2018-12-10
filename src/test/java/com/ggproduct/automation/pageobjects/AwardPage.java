@@ -12,6 +12,22 @@ public class AwardPage extends ProjectManager  {
     }
     
     /**
+     * Handles creation of Award from FDM
+     * @param announcementName
+     * @param applicationName
+     */
+    public void creationOfAward(String announcementName, String applicationName) {
+        loginToggleToApp("As a Grantor", "EXE");
+        navigateToTab("Applications");
+        clickOnSidebar("Funding Decision Memo (FDM)", "Applications");
+        quickSearchOnTable(announcementName, "FDMList1");
+        clickOnFlexTableIcon("View", announcementName);
+        clickOnFlextableRowButton("Create Subaward", applicationName, "Recommended Applications");
+        clickOnConfirmationtBox("Yes");
+        clickOnPageButton("Save");
+    }
+    
+    /**
      * Handles edition of Award
      * @param sheetName
      * @param excelName
@@ -237,5 +253,9 @@ public class AwardPage extends ProjectManager  {
         quickSearchOnTable(awardName, "PhasePendingTasks");
         clickOnFlexTableIcon("Start", awardName);
         clickOnApprovalDecisionBox("Approve");
+    }
+    
+    public void initiateSitVisitInAward(String sheetName, String excelFileName) {
+        
     }
 }
