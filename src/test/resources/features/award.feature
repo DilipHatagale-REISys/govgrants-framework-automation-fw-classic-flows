@@ -1,5 +1,5 @@
 @award
-Feature: Validate all scenarios in the award tab
+Feature: Validate all scenarios in the Award
 
 	Background: Create Award from FDM
 	Given I create a subaward from the Announcement "Automation Announcement" for the Application "Automation Announcement application"
@@ -20,7 +20,7 @@ Feature: Validate all scenarios in the award tab
 	When I click on "Budget" subtab
 	And I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
 	| Funding Account | Award Encumbrance |
-	| FA--21 		  | 100000 			 | 
+	| FA--21 		  | 100000 			  | 
     Then I see that "<EGMS Id>" has been added in flextable "<Flextable Name>" with Id "flexGridAwardFundingAccounts"
 	Examples:
 	| EGMS Id | Flextable Name 			    |
@@ -33,7 +33,7 @@ Feature: Validate all scenarios in the award tab
     When I edit the following rows inline in flex table with id "inlineEditGridLineItem" by clicking "Edit" :
 	| Budget Category | Cash Match |
 	| Construction    | 2000 	   | 
-    And I close Modal "AwardBudgetCategoryFlexGridiframeContentIdButton"
+    And I close Modal
     Then I see that "Construction" has been added in flextable "<Flextable Name>" with Id "inlineEditGridAwardBudgetCategoryFlexGrid"
 	Examples:
 	| Flextable Name |
@@ -45,7 +45,7 @@ Feature: Validate all scenarios in the award tab
    	And I click on "New" button on "<Flextable Name>" flextable with Id "flexGridPaymentSchedules"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click on "Save" button in the modal
-    When I close Modal "PaymentRequestSchedulemodalDivCloseIcon"
+    When I close Modal
     Then I see that "Payment Request" has been added in flextable "<Flextable Name>" with Id "flexGridPaymentSchedules"
 	Examples:
 	| Flextable Name			|
@@ -57,7 +57,7 @@ Feature: Validate all scenarios in the award tab
    	And I click on "New" button on "<Flextable Name>" flextable with Id "flexGridTnCSchedules"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click on "Save" button in the modal
-    When I close Modal "GranteeReportingRequirementsmodalDivCloseIcon"
+    When I close Modal
     Then I see that "Progress Report" has been added in flextable "<Flextable Name>" with Id "flexGridTnCSchedules"
 	Examples:
 	| Flextable Name			|
@@ -80,10 +80,10 @@ Feature: Validate all scenarios in the award tab
     When I click on "Responsibilities" subtab
     And I click on the "Edit" icon for the "Program Approver" on the flextable "<Flextable Name>"
     When I fill in the "Automation PM" for the Approver details
-    And I close Modal "GrantorRiskAssessmentRolesandResponsibilitiesmodalDivCloseIcon"
+    And I close Modal
     When I click on the "Edit" icon for the "Fiscal Approver" on the flextable "<Flextable Name>"
     And I fill in the "Automation FO" for the Approver details
-    When I close Modal "GrantorRiskAssessmentRolesandResponsibilitiesmodalDivCloseIcon"
+    When I close Modal
     Then I see that "Automation PM" has been added in flextable "Approvers" with Id "GrantorRiskAssessmentRolesandResponsibilities"
 	Examples:
 	| Flextable Name |
@@ -120,13 +120,13 @@ Feature: Validate all scenarios in the award tab
     When I click on "Responsibilities" subtab
     And I click on the "Edit" icon for the "Program Approver" on the flextable "<Flextable Name>"
     When I fill in the "Automation PM" for the Approver details
-    And I close Modal "GrantorAwardApprovermodalDivCloseIcon"
+    And I close Modal
     When I click on the "Edit" icon for the "Fiscal Approver" on the flextable "<Flextable Name>"
     And I fill in the "Automation FO" for the Approver details
-    And I close Modal "GrantorAwardApprovermodalDivCloseIcon"
+    And I close Modal
     And I click on the "Edit" icon for the "Executive Approver" on the flextable "<Flextable Name>"
     When I fill in the "Automation EXE" for the Approver details
-    And I close Modal "GrantorAwardApprovermodalDivCloseIcon"
+    And I close Modal
     Then I see that "Automation EXE" has been added in flextable "Approvers" with Id "GrantorAwardApprover"
     Examples:
 	| Flextable Name |
@@ -215,7 +215,7 @@ Feature: Validate all scenarios in the award tab
 	And I click on "New" button on "<Flextable Name>" flextable with Id "flexGridGrantorAwardReviewer"
 	When I enter "Reviewer" values from "Award_Field_Values.xlsx"
 	And I click on "Save" button in the modal
-	When I close Modal "GrantorAwardReviewersTempmodalDivCloseIcon"
+	When I close Modal
 	Then I see that "Automation FO" has been added in flextable "<Flextable Name>" with Id "flexGridGrantorAwardReviewer"
 	Examples:
 	| Award Name 				     	    	    	| Award EGMS Id | Flextable Name |
@@ -252,7 +252,7 @@ Feature: Validate all scenarios in the award tab
 	And I click on "New" button on "<Flextable Name>" flextable with Id "flexGridGrantorAwardReviewer"
 	When I enter "Reviewer" values from "Award_Field_Values.xlsx"
 	And I click on "Save" button in the modal
-	When I close Modal "GrantorAwardReviewersTempmodalDivCloseIcon"
+	When I close Modal
 	And I click on the "Send for Review" icon for the "Created" on the flextable "<Flextable Name>"
 	Then I see that "Sent for Review" has been added in flextable "<Flextable Name>" with Id "flexGridGrantorAwardReviewer"
 	Examples:
@@ -289,7 +289,7 @@ Feature: Validate all scenarios in the award tab
     And I enter a review
     When I click on "Save" button in the modal
     And I click on "Submit Review" button in the modal
-    And I close Modal "GrantorAwardReviewersTempmodalDivCloseIcon"
+    And I close Modal
     Then I see that "Submitted" has been added in flextable "<Flextable Name>" with Id "flexGridGrantorAwardReviewer"
 	Examples:
 	| Award Name 				     	    	    	| Award EGMS Id | Flextable Name |
@@ -509,7 +509,6 @@ Feature: Validate all scenarios in the award tab
     When I click on "Save And Close" button in the modal
     And I click on "Cancel" button
     Then I see that "Created" status is in "green" on progress bar
-	 	
 	Examples:
 	| Award Name 				     	    	    	| Award EGMS Id | Flextable Name |
 	| Automation Announcement to be deleted Application | AD-AuGr--01   | Site Visits    |
@@ -548,7 +547,6 @@ Feature: Validate all scenarios in the award tab
     When I click on "Save And Close" button in the modal
     And I click on "Cancel" button
     Then I see that "Created" status is in "green" on progress bar
-	 	
 	Examples:
 	| Award Name 				     	    	    	| Award EGMS Id | Flextable Name |
 	| Automation Announcement to be deleted Application | AD-AuGr--01   | Desk Reviews   |
@@ -561,7 +559,7 @@ Feature: Validate all scenarios in the award tab
 	| FA--21 		  | 100000 			  |
   	Given I edit the Budget details in award for line item "Construction"
   	| Budget Category | Cash Match  |
-	| Construction 	  | 2000 		| 
+	| Construction 	  | 2000 		|
   	And I add the Payment Request schedule from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx" to an award
   	Given I add the Progress Report schedule from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx" to an award
   	And I create a Risk Assessment from sheet "Risk Assessment" in excel "Award_Field_Values.xlsx"
@@ -583,7 +581,7 @@ Feature: Validate all scenarios in the award tab
 	And I click on "Activate" button	
 	Given I initiate Site Visit from sheet "Site Visit" in excel "Award_Field_Values.xlsx" for award
 	And I initiate Desk Review from sheet "Desk Review" in excel "Award_Field_Values.xlsx" for award
-	Then I see that "Subaward" is in "Activated" status
+	Then I see that "Activated" status is in "green" on progress bar
 	Examples:
 	| Award Name 				     	    	    	| Award EGMS Id |
 	| Automation Announcement to be deleted Application | AD-AuGr--01   |

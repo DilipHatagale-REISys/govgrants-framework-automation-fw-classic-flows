@@ -8,6 +8,7 @@ import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.pageobjects.AnnouncementPage;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 
 public class AnnouncementSteps {
@@ -33,12 +34,12 @@ public class AnnouncementSteps {
     }
     
     @Given("^I associate an agency \"([^\"]*)\" with amount to the annoucement$")
-    public void associateAgencyAmountToAnnouncement(String agency, Map<String, Map<String, String>> rowValues) {
+    public void associateAgencyAmountToAnnouncement(String agency, DataTable rowValues) {
         announcementPage.associateAgencyAmountToAnnouncement(agency, rowValues);
     }
     
     @Given("^I add a Funding Account \"([^\"]*)\" with the amount to an announcement$")
-    public void addFundingAccountToAnnouncement(String fundingAccount, Map<String, Map<String, String>> rowValues) {
+    public void addFundingAccountToAnnouncement(String fundingAccount, DataTable rowValues) {
         announcementPage.addFundingAccountToAnnouncement(fundingAccount, rowValues);
     }
     

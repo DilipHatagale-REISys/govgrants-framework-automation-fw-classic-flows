@@ -9,6 +9,8 @@ import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 
+import cucumber.api.DataTable;
+
 public class AwardPage extends ProjectManager  {
     public AwardPage(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
         super(controller, handler, govgrants);
@@ -42,10 +44,10 @@ public class AwardPage extends ProjectManager  {
     }
     
     /**
-     * Handles addtion of budget Funding Account to an award
+     * Handles addition of budget Funding Account to an award
      * @param rowValues
      */
-    public void budgetAddtionInFundingAccountForAward(Map<String, Map<String, String>> rowValues) {
+    public void budgetAddtionInFundingAccountForAward(DataTable rowValues) {
         clickOnSubtab("Budget");
         fillFieldsForInlineTable("flexGridAwardFundingAccounts", "Edit", rowValues);
     }
@@ -55,15 +57,15 @@ public class AwardPage extends ProjectManager  {
      * @param lineItem
      * @param rowValues
      */
-    public void budgetEditionForAward(String lineItem, Map<String, Map<String, String>> rowValues) {
+    public void budgetEditionForAward(String lineItem, DataTable rowValues) {
         clickOnSubtab("Budget");
         clickOnFlextableRowButton("Add Line Items", lineItem, "Award Budget");
         fillFieldsForInlineTable("inlineEditGridLineItem", "Edit", rowValues);
-        closeModal("AwardBudgetCategoryFlexGridiframeContentIdButton");
+        closeModal();
     }
     
     /**
-     * Handles addition of PAyment Request to an award
+     * Handles addition of Payment Request to an award
      * @param sheetName
      * @param excelName
      */
@@ -72,7 +74,7 @@ public class AwardPage extends ProjectManager  {
         clickOnFlextableButton("New", "Progress Report Schedule", "flexGridTnCSchedules");
         enterFieldValues(sheetName, excelName);
         clickOnModalButton("Save");
-        closeModal("GranteeReportingRequirementsmodalDivCloseIcon");
+        closeModal();
     }
     
     /**
@@ -85,7 +87,7 @@ public class AwardPage extends ProjectManager  {
         clickOnFlextableButton("New", "Payment Request Schedules", "flexGridPaymentSchedules");
         enterFieldValues(sheetName, excelName);
         clickOnModalButton("Save");
-        closeModal("PaymentRequestSchedulemodalDivCloseIcon");
+        closeModal();
     }
     
     /**
@@ -109,10 +111,10 @@ public class AwardPage extends ProjectManager  {
         clickOnSubtab("Responsibilities");
         clickOnFlextableRowButton("Edit", "Program Approver", "Approvers");
         fillInApproverDetails(pragramApprover);
-        closeModal("GrantorRiskAssessmentRolesandResponsibilitiesmodalDivCloseIcon");
+        closeModal();
         clickOnFlextableRowButton("Edit", "Fiscal Approver", "Approvers");
         fillInApproverDetails(fiscalApprover);
-        closeModal("GrantorRiskAssessmentRolesandResponsibilitiesmodalDivCloseIcon");
+        closeModal();
     }
     
     /**
@@ -162,13 +164,13 @@ public class AwardPage extends ProjectManager  {
         clickOnSubtab("Responsibilities");
         clickOnFlextableRowButton("Edit", "Program Approver", "Approvers");
         fillInApproverDetails(pragramApprover);
-        closeModal("GrantorAwardApprovermodalDivCloseIcon");
+        closeModal();
         clickOnFlextableRowButton("Edit", "Fiscal Approver", "Approvers");
         fillInApproverDetails(fiscalApprover);
-        closeModal("GrantorAwardApprovermodalDivCloseIcon");
+        closeModal();
         clickOnFlextableRowButton("Edit", "Fiscal Approver", "Approvers");
         fillInApproverDetails(executiveApprover);
-        closeModal("GrantorAwardApprovermodalDivCloseIcon");
+        closeModal();
     }
     
     /**
@@ -201,7 +203,7 @@ public class AwardPage extends ProjectManager  {
         clickOnFlextableButton("New", "Peer Reviewers", "flexGridGrantorAwardReviewer");
         enterFieldValues(sheetName, excelName);
         clickOnModalButton("Save");
-        closeModal("GrantorAwardReviewersTempmodalDivCloseIcon");
+        closeModal();
         clickOnFlextableRowButton("Send for Review", "Created", "Peer Reviewers");
     }
     
@@ -223,7 +225,7 @@ public class AwardPage extends ProjectManager  {
         enterReview();
         clickOnModalButton("Save");
         clickOnModalButton("Submit Review");
-        closeModal("GrantorAwardReviewersTempmodalDivCloseIcon");
+        closeModal();
         reloginToViewAward(awardId, awardName, awardOwner);
     }
     

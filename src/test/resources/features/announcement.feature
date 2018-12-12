@@ -20,7 +20,7 @@ Feature: Validate all scenarios in the Announcement tab
 	When I click on "Overview" subtab
     And I click on "Associate" button on "Contacts" flextable with Id "AnnouncementContacts"
     When I click "Add" after selection of "<Contact>" in the table "AssociateAnnouncementContacts"
-    And I close Modal "AnnouncementContactsmodalDivCloseIcon"
+    And I close Modal
     Then I see that "<Contact>" has been added in flextable "<Flextable Name>" with Id "AnnouncementContacts"
 	Examples:
 	| Contact		  | Flextable Name |
@@ -31,7 +31,7 @@ Feature: Validate all scenarios in the Announcement tab
 	When I click on "Overview" subtab
     And I click on "Add Organizations" button on "<Flextable Name>" flextable with Id "inlineEditGridFormulaGrantsAwardOrganizations"
     When I click "Add" after selection of "<Agency Code>" in the table "SoleSourceAwardRecipientsTable"
-    And I close Modal "FormulaGrantsAwardOrganizationsiframeContentIdButton"
+    And I close Modal
     Then I see that "<Agency Code>" has been added in flextable "<Flextable Name>" with Id "inlineEditGridFormulaGrantsAwardOrganizations"
 	Examples:
 	| Agency Code | Flextable Name	   |
@@ -41,7 +41,7 @@ Feature: Validate all scenarios in the Announcement tab
   	Scenario Outline: Amount addition to Invited applicant association to an Announcement
     Given I associate an agency "RG-000010" to the annoucement
     When I edit the following rows inline in flex table with id "inlineEditGridFormulaGrantsAwardOrganizations" by clicking "Edit" :
-	| Agency Code | Allocated Amount   |
+	| Agency Code | Allocated Amount |
 	| RG-000010   | 100000 			 | 
    Then I see that "<Agency Code>" has been added in flextable "<Flextable Name>"  with Id "inlineEditGridFormulaGrantsAwardOrganizations"
 	Examples:
@@ -53,7 +53,7 @@ Feature: Validate all scenarios in the Announcement tab
 	When I click on "Financials" subtab
     And I click on "Associate" button on "<Flextable Name>" flextable with Id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "<EGMS Id>" in the table "popupflextable"
-    And I close Modal "AnnouncementFundingAccountGrantormodalDivCloseIcon"
+    And I close Modal
     When I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Announcement Pre-Encumbrance |
 	| FA--21 		  | 100000 				        | 
@@ -69,7 +69,7 @@ Feature: Validate all scenarios in the Announcement tab
     When I click on the "Edit" icon for the "<Budget Period Id>" on the flextable "<Flextable Name>"
     And I enter "BudgetPeriod" values from "Announcement_Field_Values.xlsx"
     When I click on "Save" button in the modal
-    And I close Modal "AnnouncementBudgetPeriodmodalDivCloseIcon"
+    And I close Modal
     Then I see that "<Budget Period Id>" has been added in flextable "<Flextable Name>" with Id "AnnouncementBudgetPeriod"
 	Examples:
 	| Budget Period Id | Flextable Name	       |
@@ -80,7 +80,7 @@ Feature: Validate all scenarios in the Announcement tab
     When I click on "Setup" subtab
     And I click on "Associate" button on "<Flextable Name>" flextable with Id "AnnouncementServiceArea1"
     When I click "Add" after selection of "<EGMS Id>" in the table "popupflextable"
-    And I close Modal "AnnouncementServiceArea1modalDivCloseIcon"
+    And I close Modal
     Then I see that "<EGMS Id>" has been added in flextable "<Flextable Name>" with Id "AnnouncementServiceArea1"
 	Examples:
 	| Flextable Name | EGMS Id |
@@ -91,7 +91,7 @@ Feature: Validate all scenarios in the Announcement tab
     When I click on "Setup" subtab
     And I click on "Associate" button on "<Flextable Name>" flextable with Id "AnnouncementGranteeStrategicGoalsObjectives"
     When I click "Add" after selection of "<EGMS Id>" in the table "popupflextable"
-    And I close Modal "AnnouncementGranteeStrategicGoalsObjectivesmodalDivCloseIcon"
+    And I close Modal
     Then I see that "<EGMS Id>" has been added in flextable "<Flextable Name>" with Id "AnnouncementGranteeStrategicGoalsObjectives"
 	Examples:
 	| Flextable Name | EGMS Id  |
@@ -102,7 +102,7 @@ Feature: Validate all scenarios in the Announcement tab
     When I click on "Setup" subtab
     And I click on "Associate" button on "<Flextable Name>" flextable with Id "AnnouncementKeyOutcomes"
     When I click "Add" after selection of "<EGMS Id>" in the table "popupflextable"
-    And I close Modal "ProgramKeyOutcomesmodalDivCloseIcon"
+    And I close Modal
     Then I see that "<KPI>" has been added in flextable "<Flextable Name>" with Id "AnnouncementKeyOutcomes"
 	Examples:
 	| Flextable Name					 | KPI 		|
@@ -116,7 +116,7 @@ Feature: Validate all scenarios in the Announcement tab
     | Automation test description | Mandatory | Award  	   |
     When I click on the "Upload Template" icon for the "Not Applicable" on the flextable "<Flextable Name>"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
-    When I close Modal "AnnouncementChecklistsiframeContentIdButton"
+    When I close Modal
     Then I see that "Active" has been added in flextable "<Flextable Name>" with Id "inlineEditGridAnnouncementChecklists"
 	Examples:
 	| Flextable Name 		|
@@ -150,7 +150,7 @@ Feature: Validate all scenarios in the Announcement tab
 	And I click on "New" button on "<Flextable Name>" flextable with Id "flexGridApproverRoles"
 	When I enter "Reviewer" values from "Announcement_Field_Values.xlsx"
 	And I click on "Save" button in the modal
-	When I close Modal "GrantorAnnouncementReviewersTempmodalDivCloseIcon"
+	When I close Modal
 	Then I see that "Automation FO" has been added in flextable "<Flextable Name>" with Id "flexGridApproverRoles"
 	Examples:
 	| Flextable Name |
@@ -162,7 +162,7 @@ Feature: Validate all scenarios in the Announcement tab
 	And I click on "New" button on "<Flextable Name>" flextable with Id "flexGridApproverRoles"
 	When I enter "Reviewer" values from "Announcement_Field_Values.xlsx"
 	And I click on "Save" button in the modal
-	When I close Modal "GrantorAnnouncementReviewersTempmodalDivCloseIcon"
+	When I close Modal
     And I click on the "Send for Review" icon for the "Created" on the flextable "<Flextable Name>"
 	Then I see that "Sent for Review" has been added in flextable "<Flextable Name>" with Id "flexGridApproverRoles"
 	Examples:
@@ -181,7 +181,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I enter a review
     When I click on "Save" button in the modal
     And I click on "Submit Review" button in the modal
-    And I close Modal "GrantorAnnouncementReviewersTempmodalDivCloseIcon"
+    And I close Modal
     When I re-login to "As a Grantor" app as "EXE" User
     When I navigate to "Announcements" tab
 	And I click "Competitive" inside side bar "Announcements"
@@ -199,7 +199,7 @@ Feature: Validate all scenarios in the Announcement tab
     When I click on "Attachments" subtab
     And I click on "Add" button on " Attachments" flextable to switch to frame
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
-    And I close Modal "Attachment"
+    And I close Modal
     Then I see that "Funding Opportunity Announcement" has been added in flextable "Attachments" with Id "a150b000003epC4AAI"
 
   	@34461 @submittingAnnouncementForApproval @announcement

@@ -1,8 +1,12 @@
-@planning
-Feature: Validate all scenarios in the Planning tab
+@program
+Feature: Validate all scenarios for program
 
 	Background: Create Program
-	Given I create a Program as user "EXE" from sheet "RequiredForSave" in excel "Program_Field_Values.xlsx"
+	Given I create a record as user "EXE" from sheet "RequiredForSave" in excel "Program_Field_Values.xlsx"
+	| Actions 			 | Value 1 	   		 | Value 2    	  | Value 3 				   |
+	| Program Navigation | As a Grantor		 | Planning  	  |						       |
+	| Program FlexTable  | Internal Programs | Programs 	  | Draft Internal Programs    |
+	| Program Creation   | New				 | Save And Close | Save					   |
 	
   	@34730 @programListView @program
   	Scenario Outline: Verifying if the EXE,PM,PO has access to Internal Programs list view
@@ -30,7 +34,7 @@ Feature: Validate all scenarios in the Planning tab
     When I click on "Overview" subtab
     And I click on "Associate" button on "Contacts" flextable with Id "ProgramContacts"
     When I click "Add" after selection of "<Contact>" in the table "AssociateProgramContacts"
-    And I close Modal "ProgramContactsmodalDivCloseIcon"
+    And I close Modal
     Then I see that "<Contact>" has been added in flextable "Contacts" with Id "ProgramContacts"
     Examples:
     | Contact		  |
@@ -55,7 +59,7 @@ Feature: Validate all scenarios in the Planning tab
     When I click on "Setup" subtab
     And I click on "Associate" button on "<Flextable Name>" flextable with Id "flexGridGrantorServiceAreasProgram"
     When I click "Associate" after selection of "<EGMS Id>" in the table "popupflextable"
-    And I close Modal "GrantorServiceAreasProgrammodalDivCloseIcon"
+    And I close Modal
     Then I see that "<EGMS Id>" has been added in flextable "<Flextable Name>" with Id "flexGridGrantorServiceAreasProgram"
 	Examples:
 	| Flextable Name 		 | EGMS Id |
@@ -66,7 +70,7 @@ Feature: Validate all scenarios in the Planning tab
     When I click on "Setup" subtab
     And I click on "Associate" button on "<Flextable Name>" flextable with Id "RelatedProgramGoalsandObjectives"
     When I click "Add" after selection of "<EGMS Id>" in the table "popupflextable"
-    And I close Modal "RelatedProgramGoalsandObjectivesmodalDivCloseIcon"
+    And I close Modal
     Then I see that "<EGMS Id>" has been added in flextable "<Flextable Name>" with Id "RelatedProgramGoalsandObjectives"
 	Examples:
 	| Flextable Name | EGMS Id  |
@@ -77,7 +81,7 @@ Feature: Validate all scenarios in the Planning tab
     When I click on "Setup" subtab
     And I click on "Associate" button on "<Flextable Name>" flextable with Id "ProgramKeyOutcomes"
     When I click "Add" after selection of "<EGMS Id>" in the table "popupflextable"
-    And I close Modal "ProgramKeyOutcomesmodalDivCloseIcon"
+    And I close Modal
     Then I see that "<EGMS Id>" has been added in flextable "<Flextable Name>" with Id "ProgramKeyOutcomes"
 	Examples:
 	| Flextable Name 				    | EGMS Id  |
@@ -91,7 +95,7 @@ Feature: Validate all scenarios in the Planning tab
     | Automation test description | Mandatory | Application |     
     When I click on the "Upload Template" icon for the "Not Applicable" on the flextable "<Flextable Name>"
     And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close Modal "ProgramChecklistsiframeContentIdButton"
+    When I close Modal 
     Then I see that "Active" has been added in flextable "<Flextable Name>" with Id "flexGridProgramChecklists"
 	Examples:
 	| Flextable Name				 |
@@ -102,7 +106,7 @@ Feature: Validate all scenarios in the Planning tab
     When I click on "Attachments" subtab
     And I click on "Add" button on " Attachments" flextable to switch to frame
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Program Artifacts"
-    And I close Modal "Attachment"
+    And I close Modal 
     Then I see that "Program Artifacts" has been added in flextable "Attachments" with Id "a150b000003epC4AAI"
 
   	@34750 @submittingProgramForApproval @program
@@ -111,8 +115,13 @@ Feature: Validate all scenarios in the Planning tab
     And I associate Contact "Automation EXE", Focus Area "00005", Objective "SPO-0006" to the program
     Given I select the Program Approver "Automation PM", Executive Approver "Automation EXE" for the program
     And I add an attachment checklist to upload the file "Program_Field_Values.xlsx" to the program
-    | Description        		  | Required  | Applies To  |
-    | Automation test description | Mandatory | Application | 
+    | Actions 			   | Value 1 	   		       | Value 2    	  | Value 3 				   	  	|
+	| Checklist Navigation | Setup		      		   |   		   		  |						  		    |
+	| Checklist FlexTable  | flexGridProgramChecklists | Add	   		  |   							   	|
+	| Upload Modal  	   | Upload Template		   | Not Applicable   | Supporting Documents Checklist 	|
+	| Upload file     	   | Checklist 				   | Program 		  |									|
+    | Inline Column Title  | Description       	  	   | Required  	  	  | Applies To  			       	|
+    | Inline values 	   | Automation Description    | Mandatory	      | Application     		       	|
     Given I add an attachment "InternalOrganization_Field_Values.xlsx" to a program
     When I click on "Submit For Approval" button
     Then I see that "Submitted for Approval" status is in "green" on progress bar
@@ -144,7 +153,7 @@ Feature: Validate all scenarios in the Planning tab
 	| Program Approver | Program Name		  			  | Executive Approver |
 	| PM               | Automation Program to be deleted | EXE			  	   |
 	
-  	@34756 @ProgramActivation @programHappyPath @program
+  	@34756 @programActivation @programHappyPath @program
   	Scenario Outline: Validate the activation of Internal Program
   	Given I complete the Program fields from the sheet "RequiredForSubmit" in excel "Program_Field_Values.xlsx"
     And I associate Contact "Automation EXE", Focus Area "00005", Objective "SPO-0006" to the program

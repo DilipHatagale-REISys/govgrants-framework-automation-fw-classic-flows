@@ -64,10 +64,10 @@ Feature: Validate all scenarios in the Application Intake
     When I click on "Attachments" subtab
     And I click on the "Attach" icon for the "Not Applicable" on the flextable "<Flextable Name>"
     When I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Application"
-    And I close Modal "ApplicationChecklistsiframeContentIdButton"
+    And I close Modal
     When I click on the "Attach" icon for the "Not Applicable" on the flextable "<Flextable Name>"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Application"
-    When I close Modal "ApplicationChecklistsiframeContentIdButton"
+    When I close Modal
     Examples:
 	| Flextable Name  	 		     |
 	| Supporting Documents Checklist |

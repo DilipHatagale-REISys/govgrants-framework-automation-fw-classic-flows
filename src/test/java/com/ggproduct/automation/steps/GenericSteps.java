@@ -6,6 +6,8 @@ import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 import java.util.List;
+
+import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -22,10 +24,10 @@ public class GenericSteps {
         projectManager.loginToggleToApp(appName, userName);
     }
     
-    @When("^I navigate to \"([^\"]*)\" tab$")
+   /* @When("^I navigate to \"([^\"]*)\" tab$")
     public void navigateToTab(String tabName) {
         projectManager.navigateToTab(tabName);
-    }
+    }*/
 
     @When("^I click \"([^\"]*)\" inside side bar \"([^\"]*)\"$")
     public void clickOnSidebar(String sidebarContent, String sidebarSubHeader) {
@@ -147,9 +149,9 @@ public class GenericSteps {
         projectManager.clickButtonOnGrid(iconName, uniqueColumnValue, tableId);
     }
 
-    @When("^I close Modal \"([^\"]*)\"$")
-    public void closeModal(String closeButtonId) {
-        projectManager.closeModal(closeButtonId);
+    @When("^I close Modal$")
+    public void closeModal() {
+        projectManager.closeModal();
     }
 
     @When("^I enter \"([^\"]*)\" values from \"([^\"]*)\"$")
@@ -193,7 +195,7 @@ public class GenericSteps {
     }
     
     @When("^I edit the following rows inline in flex table with id \"([^\"]*)\" by clicking \"([^\"]*)\" :$")
-    public void fillFieldsForInlineTable(String flexTableId, String buttonName, Map<String, Map<String, String>> rowValues) {
+    public void fillFieldsForInlineTable(String flexTableId, String buttonName, DataTable rowValues) {
         projectManager.fillFieldsForInlineTable(flexTableId, buttonName, rowValues);
     }
 

@@ -5,9 +5,14 @@ import java.io.IOException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.GovGrantsHandler;
@@ -15,6 +20,8 @@ import com.automation.rei.handlers.CoreHandlers;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+
+import cucumber.api.DataTable;
 
 /**
  * for Rei Systems
@@ -391,12 +398,7 @@ public class ProjectManager extends ProjectWebServices {
     public void clickOnFlextableButton(String buttonName, String flextableName, String flextableId) {
         reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
         reiDriver.WaitFor().makeThreadSleep(1000);
-        try {
-            govgrants.flexTable().clickTableTopRightButton(flextableId, buttonName);
-        } catch (Exception ex) {
-            reiDriver.findMyElement().getElement(By.xpath("//*[text()='" + flextableName
-                    + "']/ancestor::div[1]/following-sibling::div//*[text()='" + buttonName + "']")).click();
-        }
+        govgrants.flexTable().clickTableTopRightButton(flextableId, buttonName);
     }
     
     /**
@@ -471,10 +473,9 @@ public class ProjectManager extends ProjectWebServices {
      * 
      * @param closeButtonId
      */
-    public void closeModal(String closeButtonId) {
+    public void closeModal() {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
-        reiDriver.switchTo().switchToParentFrame();
-        reiDriver.WaitFor().WaitForElementToBePresent(getCloseButtonPath(closeButtonId)).click();
+        govgrants.modal().closeModalByClickingTopRightCloseButton();
         reiDriver.get().getRefresh();
     }
 
@@ -512,7 +513,7 @@ public class ProjectManager extends ProjectWebServices {
      * @param sectionName
      */
     public void expandGrid(String uniqueColumnValue, String gridName) {
-        reiDriver.WaitFor().makeThreadSleep(500);
+        reiDriver.WaitFor().makeThreadSleep(1500);
         reiDriver.JavaScript().scrollpageToSpecificElement(getScrollToSection(gridName));
         try {
             govgrants.flexTable().expandOrCollapseNestedTable(uniqueColumnValue, true);
@@ -667,7 +668,7 @@ public class ProjectManager extends ProjectWebServices {
     
     /**
      */
-    public void fillFieldsForInlineTable(String tableId, String iconName, Map<String, Map<String, String>> rowValues) {
+    public void fillFieldsForInlineTable(String tableId, String iconName, DataTable rowValues) {
             govgrants.flexTable().editFlexTableRowsInline(tableId, iconName, rowValues);
     }
 
@@ -822,12 +823,14 @@ public class ProjectManager extends ProjectWebServices {
         reiDriver.switchTo().switchToParentFrame();
     }
 
-    private void handleLookUpInput(String fieldApiName, String searchTerm) {
+    private void handleLookUpInput(String fieldApiName, String fieldValue) {
         int attempts = 0;
         while (attempts < 10
                 && !reiDriver.is().IsElementPresentQuick(By.xpath("//body[contains(@class, 'modal-open')]"))) {
             attempts++;
             try {
+                reiDriver.WaitFor().FluentWaitForClick(By.xpath("//div[@id='field" + fieldApiName + "']//dd//span[@class='lookupInput']/input")).sendKeys(fieldValue);
+              
                 reiDriver.WaitFor().FluentWaitForClick(By.xpath("//div[@id='field" + fieldApiName + "']//dd//a"))
                         .click();
                 reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//body[contains(@class, 'modal-open')]"));
@@ -836,24 +839,12 @@ public class ProjectManager extends ProjectWebServices {
         }
         reiDriver.WaitFor().makeThreadSleep(1000);
         WebDriver driver = reiDriver.switchTo().switchToFrame(By.xpath("//iframe[@id='iframeCustomLookupModalId']"));
-
-        String tableid = reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='ModalDivID']//div[1]"))
-                .getAttribute("id");
-        govgrants.quickSearch().performModalSpecificQuickSearch(tableid, searchTerm);
-        attempts = 0;
-        while (attempts < 10
-                && !reiDriver.is().IsElementPresentQuick(By.xpath("//td//*[text()='" + searchTerm + "']"))) {
-            attempts++;
-            govgrants.quickSearch().performModalSpecificQuickSearch(tableid, searchTerm);
-        }
-        reiDriver.WaitFor().makeThreadSleep(1000); // avoid stale elements
-
         attempts = 0;
         while (attempts < 10 && reiDriver.is().IsElementPresentQuick(By.xpath("//body/*"))) {
             reiDriver.WaitFor().makeThreadSleep(1000);
             reiDriver.WaitFor()
                     .WaitForElementToBePresent(
-                            By.xpath("//td//*[text()='" + searchTerm + "']//ancestor::tr[1]//a[@title='Select']"))
+                            By.xpath("//td//*[text()='" + fieldValue + "']//ancestor::tr[1]//a[@title='Select']"))
                     .click();
         }
 

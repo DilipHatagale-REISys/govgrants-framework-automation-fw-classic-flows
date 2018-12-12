@@ -2,10 +2,12 @@ package com.ggproduct.automation.steps;
 
 
 import com.automation.rei.controller.Controller;
+
 import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.pageobjects.PlanningPage;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import java.util.List;
 import java.util.Map;
@@ -18,14 +20,14 @@ public class PlanningSteps {
         planningPage = new PlanningPage(controller, handler, govgrants);
     }
     
-    @Given("^I create a Program as user \"([^\"]*)\" from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
-    public void creationOfProgram(String user,String sheetName, String excelFileName) {
-        planningPage.creationOfProgram(user, sheetName, excelFileName);
+    @Given("^I create a record as user \"([^\"]*)\" from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
+    public void creationOfProgram(String user,String sheetName, String excelFileName, DataTable dataTable) {
+        planningPage.creationOfProgram(user, sheetName, excelFileName, dataTable);
     }
     
     @Given("^I complete the Program fields from the sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
-    public void editionOfProgram(String sheetName, String excelFileName) {
-        planningPage.editionOfProgram(sheetName, excelFileName);
+    public void editionOfProgram(String sheetName, String excelFileName, DataTable dataTable) {
+        planningPage.editionOfProgram(sheetName, excelFileName, dataTable);
     }
     
     @Given("^I associate Contact \"([^\"]*)\", Focus Area \"([^\"]*)\", Objective \"([^\"]*)\" to the program$")
@@ -39,8 +41,8 @@ public class PlanningSteps {
     }
     
     @Given("^I add an attachment checklist to upload the file \"([^\"]*)\" to the program$")
-    public void additionOfChecklistToProgram(String fileName, List<Map<String, String>> rowValues) {
-        planningPage.additionOfChecklistToProgram(fileName, rowValues);
+    public void additionOfChecklistToProgram(String fileName, DataTable dataTable) {
+        planningPage.additionOfChecklistToProgram(fileName, dataTable);
     }
     
     @Given("^I add an attachment \"([^\"]*)\" to a program$")
