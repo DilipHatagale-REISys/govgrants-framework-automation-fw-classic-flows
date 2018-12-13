@@ -1,7 +1,6 @@
 package com.ggproduct.automation.pageobjects;
 
 import com.automation.rei.controller.Controller;
-
 import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.projectmanager.ProjectManager;
@@ -27,16 +26,16 @@ public class PlanningPage extends ProjectManager {
      */
     public void creationOfProgram(String user, String sheetName, String excelFileName, DataTable dataTable) {
         Map<String, Map<String, String>> parameterMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
-        loginToggleToApp(parameterMap.get("Program Navigation").get("Value 1"), user);
-        navigateToTab(parameterMap.get("Program Navigation").get("Value 2"));
-        clickOnSidebar(parameterMap.get("Program FlexTable").get("Value 1"),
-                parameterMap.get("Program FlexTable").get("Value 2"));
-        changeFlexTableView(parameterMap.get("Program FlexTable").get("Value 3"));
-        clickOnPhaseFlexTableButton(parameterMap.get("Program Creation").get("Value 1"),
-                parameterMap.get("Program FlexTable").get("Value 2"));
+        loginToggleToApp(parameterMap.get("Program Navigation").get("Step 1"), user);
+        navigateToTab(parameterMap.get("Program Navigation").get("Step 2"));
+        clickOnSidebar(parameterMap.get("Program FlexTable").get("Step 1"),
+                parameterMap.get("Program Navigation").get("Step 3"));
+        changeFlexTableView(parameterMap.get("Program FlexTable").get("Step 3"));
+        clickOnPhaseFlexTableButton(parameterMap.get("Program Creation").get("Step 1"),
+                parameterMap.get("Program FlexTable").get("Step 2"));
         enterFieldValues(sheetName, excelFileName);
-        clickOnModalButton(parameterMap.get("Program Creation").get("Value 2"));
-        clickOnPageButton(parameterMap.get("Program Creation").get("Value 3"));
+        clickOnModalButton(parameterMap.get("Program Creation").get("Step 2"));
+        clickOnPageButton(parameterMap.get("Program Creation").get("Step 3"));
     }
 
     /**
@@ -47,7 +46,6 @@ public class PlanningPage extends ProjectManager {
      */
     public void editionOfProgram(String sheetName, String excelFileName, DataTable dataTable) {
         Map<String, Map<String, String>> parameterMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
-        Map<String, String> firstMap = parameterMap.get("Actions");
         clickOnPageButton("Edit");
         enterFieldValues(sheetName, excelFileName);
         clickOnPageButton("Save");

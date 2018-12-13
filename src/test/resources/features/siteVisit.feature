@@ -62,7 +62,7 @@ Feature: Validate all scenarios in the Site Visit
 	When I expand the "<Award Name>" on grid "Site Visits for Active Grants"
 	And I expand the "<Award Name>" on grid "Site Visits for Active Grants"
 	When I click on the "View" icon for the "<Site Visit Name>"
-	 When I click on "Responsibilities" subtab
+	When I click on "Responsibilities" subtab
     And I click on the "Edit" icon for the "Program Approver" on the flextable "Approvers"
     When I fill in the "<Program Approver Name>" for the Approver details
     And I close Modal
@@ -73,3 +73,58 @@ Feature: Validate all scenarios in the Site Visit
 	Examples:
 	| Award Name 				     	    	    	| Site Visit Name	    | Program Approver Name | Fiscal Approver Name |
 	| Automation Announcement to be deleted Application | Automation Site Visit | Automation PM         | Automation FO        |
+	
+	@notifySubrecipientSiteVisit @siteVisit
+	Scenario Outline: Creation of Site Visit
+	Given I login to "As a Grantor" app as "EXE" User
+	When I navigate to "Monitoring" tab
+	And I click "Manage Site Visits" inside side bar "Monitoring Activities"
+	When I expand the "<Award Name>" on grid "Site Visits for Active Grants"
+	And I expand the "<Award Name>" on grid "Site Visits for Active Grants"
+	When I click on the "View" icon for the "<Site Visit Name>"
+	And I click on "Notify" button
+	Then I see that "Notified" status is in "green" on progress bar
+	Examples:
+	| Award Name 				     	    	    	| Site Visit Name	    |
+	| Automation Announcement to be deleted Application | Automation Site Visit |
+	
+	@notifyPendingTaskForSubrecipientSiteVisit @siteVisit
+	Scenario Outline: Creation of Site Visit
+	Given I login to "Grants Portal" app as "SPI" User
+	When I navigate to "Monitoring" tab
+	And I click "Pending Tasks" inside side bar "My Tasks"
+	And I perform quick search "<Site Visit Name>" on table "PhasePendingTasks"
+	When I click on the "Start" icon for the "<Site Visit Name>"
+	Then I see that "Notified" status is in "green" on progress bar
+	Examples:
+	| Award Name 				     	    	    	| Site Visit Name	    |
+	| Automation Announcement to be deleted Application | Automation Site Visit |
+	
+	@conductSiteVisit @siteVisit
+	Scenario Outline: Creation of Site Visit
+	Given I login to "As a Grantor" app as "EXE" User
+	When I navigate to "Monitoring" tab
+	And I click "Manage Site Visits" inside side bar "Monitoring Activities"
+	When I expand the "<Award Name>" on grid "Site Visits for Active Grants"
+	And I expand the "<Award Name>" on grid "Site Visits for Active Grants"
+	When I click on the "View" icon for the "<Site Visit Name>"
+	And I click on "Conduct" button
+	Then I see that "In Progress" status is in "green" on progress bar
+	Examples:
+	| Award Name 				     	    	    	| Site Visit Name	    |
+	| Automation Announcement to be deleted Application | Automation Site Visit |
+	
+	@formFillingSiteVisit @siteVisit
+	Scenario Outline: Creation of Site Visit
+	Given I login to "As a Grantor" app as "EXE" User
+	When I navigate to "Monitoring" tab
+	And I click "Manage Site Visits" inside side bar "Monitoring Activities"
+	When I expand the "<Award Name>" on grid "Site Visits for Active Grants"
+	And I expand the "<Award Name>" on grid "Site Visits for Active Grants"
+	When I click on the "View" icon for the "<Site Visit Name>"
+	And I click on "Reports and Outcomes" subtab
+	When I click on the "Edit" icon for the "General Review Form" on the flextable "<FlexTable Name>"
+	
+	Examples:
+	| Award Name 				     	    	    	| Site Visit Name	    | FlexTable Name |
+	| Automation Announcement to be deleted Application | Automation Site Visit | Review Forms	 |

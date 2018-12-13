@@ -3,10 +3,10 @@ Feature: Validate all scenarios for program
 
 	Background: Create Program
 	Given I create a record as user "EXE" from sheet "RequiredForSave" in excel "Program_Field_Values.xlsx"
-	| Actions 			 | Value 1 	   		 | Value 2    	  | Value 3 				   |
-	| Program Navigation | As a Grantor		 | Planning  	  |						       |
-	| Program FlexTable  | Internal Programs | Programs 	  | Draft Internal Programs    |
-	| Program Creation   | New				 | Save And Close | Save					   |
+	| Actions 			 | Step 1 	   		 | Step 2    	  | Step 3 				    |
+	| Program Navigation | As a Grantor		 | Planning  	  |	Programs				|
+	| Program FlexTable  | Internal Programs | Programs 	  | Draft Internal Programs |
+	| Program Creation   | New				 | Save And Close | Save					|
 	
   	@34730 @programListView @program
   	Scenario Outline: Verifying if the EXE,PM,PO has access to Internal Programs list view
@@ -115,13 +115,13 @@ Feature: Validate all scenarios for program
     And I associate Contact "Automation EXE", Focus Area "00005", Objective "SPO-0006" to the program
     Given I select the Program Approver "Automation PM", Executive Approver "Automation EXE" for the program
     And I add an attachment checklist to upload the file "Program_Field_Values.xlsx" to the program
-    | Actions 			   | Value 1 	   		       | Value 2    	  | Value 3 				   	  	|
+    | Actions 			   | Step 1 	   		       | Step 2	    	  | Step 3 					   	  	|
+    | $Inline Column Title | Description       	  	   | Required  	  	  | Applies To  			       	|
+    | $Inline values 	   | Automation Description    | Mandatory	      | Application     		       	|
 	| Checklist Navigation | Setup		      		   |   		   		  |						  		    |
 	| Checklist FlexTable  | flexGridProgramChecklists | Add	   		  |   							   	|
 	| Upload Modal  	   | Upload Template		   | Not Applicable   | Supporting Documents Checklist 	|
 	| Upload file     	   | Checklist 				   | Program 		  |									|
-    | Inline Column Title  | Description       	  	   | Required  	  	  | Applies To  			       	|
-    | Inline values 	   | Automation Description    | Mandatory	      | Application     		       	|
     Given I add an attachment "InternalOrganization_Field_Values.xlsx" to a program
     When I click on "Submit For Approval" button
     Then I see that "Submitted for Approval" status is in "green" on progress bar
