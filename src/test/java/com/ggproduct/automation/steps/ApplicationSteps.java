@@ -1,11 +1,13 @@
 package com.ggproduct.automation.steps;
 
 import com.automation.rei.controller.Controller;
+
 import java.util.Map;
 import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.pageobjects.ApplicationPage;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 
@@ -37,12 +39,12 @@ public class ApplicationSteps {
     }
     
     @Given("^I add budget details to the application$")
-    public void additionOfBudgetToApplication(Map<String, Map<String, String>> rowValues) {
+    public void additionOfBudgetToApplication(DataTable rowValues) {
         applicationPage.additionOfBudgetToApplication(rowValues);
     }
     
     @Given("^I add target to the KPI in the application$")
-    public void additionOfTargetToKPIInApplication(Map<String, Map<String, String>> rowValues) {
+    public void additionOfTargetToKPIInApplication(DataTable rowValues) {
         applicationPage.additionOfTargetToKPIInApplication(rowValues);
     }
     
@@ -57,7 +59,7 @@ public class ApplicationSteps {
     }
     
     @Given("^I enter the Due In Days for all SME review steps$")
-    public void enterDueInDaysSME(Map<String, Map<String, String>> rowValues) {
+    public void enterDueInDaysSME(DataTable rowValues) {
         applicationPage.enterDueInDaysSME(rowValues);
     }
     
@@ -92,7 +94,7 @@ public class ApplicationSteps {
     }
     
     @Given("^I enter the Due In Days for all Management review steps$")
-    public void enterDueInDaysManagement(Map<String, Map<String, String>> rowValues) {
+    public void enterDueInDaysManagement(DataTable rowValues) {
         applicationPage.enterDueInDaysManagement(rowValues);
     }
     
@@ -122,7 +124,7 @@ public class ApplicationSteps {
     }
     
     @Given("^I enter the recommendation in FDM$")
-    public void enterRecommendationFDM(Map<String, Map<String, String>> rowValues) {
+    public void enterRecommendationFDM(DataTable rowValues) {
         applicationPage.enterRecommendationFDM(rowValues);
     }
     

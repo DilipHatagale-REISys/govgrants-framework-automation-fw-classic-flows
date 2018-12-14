@@ -13,6 +13,8 @@ import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 
+import cucumber.api.DataTable;
+
 public class ApplicationPage extends ProjectManager {
     private final By getTitles, ConflictOfInterestReviewFromPath;
 
@@ -81,7 +83,7 @@ public class ApplicationPage extends ProjectManager {
      * @param cashMatch
      * @param nonCashMatch
      */
-    public void additionOfBudgetToApplication(Map<String, Map<String, String>> rowValues) {
+    public void additionOfBudgetToApplication(DataTable rowValues) {
         clickOnSubtab("Budget");
         expandGrid("BP01", "Budget Details");
         expandGrid("Proposed Budget", "Budget Details");
@@ -93,7 +95,7 @@ public class ApplicationPage extends ProjectManager {
      * 
      * @param target
      */
-    public void additionOfTargetToKPIInApplication(Map<String, Map<String, String>> rowValues) {
+    public void additionOfTargetToKPIInApplication(DataTable rowValues) {
         clickOnSubtab("Proposal");
         fillFieldsForInlineTable("inlineEditGridRecipientApplicationRelatedKPIs", "Edit", rowValues);
     }
@@ -107,10 +109,10 @@ public class ApplicationPage extends ProjectManager {
         clickOnSubtab("Attachments");
         clickOnFlextableRowButton("Attach", "Not Applicable", "Supporting Documents Checklist");
         uploadFile(fileName, "Checklist", "Application");
-        closeModal("ApplicationChecklistsiframeContentIdButton");
+        closeModal();
         clickOnFlextableRowButton("Attach", "Not Applicable", "Supporting Documents Checklist" );
         uploadFile(fileName, "Checklist", "Application");
-        closeModal("ApplicationChecklistsiframeContentIdButton");
+        closeModal();
     }
 
     /**
@@ -161,7 +163,7 @@ public class ApplicationPage extends ProjectManager {
      * Handles entering of due date for SME review
      * @param dueInDays
      */
-    public void enterDueInDaysSME(Map<String, Map<String, String>> rowValues) {
+    public void enterDueInDaysSME(DataTable rowValues) {
         fillFieldsForInlineTable("flexGridApplicationReviewTree", "Edit", rowValues);
     }
 
@@ -252,7 +254,7 @@ public class ApplicationPage extends ProjectManager {
      * Handles entering of due in days for management review
      * @param dueInDays
      */
-    public void enterDueInDaysManagement(Map<String, Map<String, String>> rowValues) {
+    public void enterDueInDaysManagement(DataTable rowValues) {
         fillFieldsForInlineTable("flexGridApplicationReviewTree", "Edit", rowValues);
     }
     
@@ -318,7 +320,7 @@ public class ApplicationPage extends ProjectManager {
      * @param applicationName
      * @param flextableName
      */
-    public void enterRecommendationFDM(Map<String, Map<String, String>> rowValues) {
+    public void enterRecommendationFDM(DataTable rowValues) {
         fillFieldsForInlineTable("inlineEditGridFundingDecisionMemoApplications", "Edit", rowValues);
     }
     

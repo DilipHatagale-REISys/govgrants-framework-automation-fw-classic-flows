@@ -1,11 +1,13 @@
 package com.ggproduct.automation.projectmanager;
 
 import java.io.IOException;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +17,8 @@ import com.automation.rei.handlers.CoreHandlers;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+
+import cucumber.api.DataTable;
 
 /**
  * for Rei Systems
@@ -391,12 +395,7 @@ public class ProjectManager extends ProjectWebServices {
     public void clickOnFlextableButton(String buttonName, String flextableName, String flextableId) {
         reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
         reiDriver.WaitFor().makeThreadSleep(1000);
-        try {
-            govgrants.flexTable().clickTableTopRightButton(flextableId, buttonName);
-        } catch (Exception ex) {
-            reiDriver.findMyElement().getElement(By.xpath("//*[text()='" + flextableName
-                    + "']/ancestor::div[1]/following-sibling::div//*[text()='" + buttonName + "']")).click();
-        }
+        govgrants.flexTable().clickTableTopRightButton(flextableId, buttonName);
     }
     
     /**
@@ -471,10 +470,9 @@ public class ProjectManager extends ProjectWebServices {
      * 
      * @param closeButtonId
      */
-    public void closeModal(String closeButtonId) {
+    public void closeModal() {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
-        reiDriver.switchTo().switchToParentFrame();
-        reiDriver.WaitFor().WaitForElementToBePresent(getCloseButtonPath(closeButtonId)).click();
+        govgrants.modal().closeModalByClickingTopRightCloseButton();
         reiDriver.get().getRefresh();
     }
 
@@ -512,7 +510,7 @@ public class ProjectManager extends ProjectWebServices {
      * @param sectionName
      */
     public void expandGrid(String uniqueColumnValue, String gridName) {
-        reiDriver.WaitFor().makeThreadSleep(500);
+        reiDriver.WaitFor().makeThreadSleep(1500);
         reiDriver.JavaScript().scrollpageToSpecificElement(getScrollToSection(gridName));
         try {
             govgrants.flexTable().expandOrCollapseNestedTable(uniqueColumnValue, true);
@@ -667,8 +665,155 @@ public class ProjectManager extends ProjectWebServices {
     
     /**
      */
-    public void fillFieldsForInlineTable(String tableId, String iconName, Map<String, Map<String, String>> rowValues) {
+    public void fillFieldsForInlineTable(String tableId, String iconName, DataTable rowValues) {
             govgrants.flexTable().editFlexTableRowsInline(tableId, iconName, rowValues);
+    }
+    
+    /******* "Consolidated Generic Methods across the Modules" **********/
+    
+    /**
+     * Handles creation of a program from the sheet in an excel
+     * 
+     * @param user
+     * @param sheetName
+     * @param excelFileName
+     */
+    public void creationOfRecord(String user, String sheetName, String excelFileName, DataTable dataTable) {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        loginToggleToApp(dataTableMap.get("Program Navigation").get("Step 1"), user);
+        navigateToTab(dataTableMap.get("Program Navigation").get("Step 2"));
+        clickOnSidebar(dataTableMap.get("Program FlexTable").get("Step 1"),
+                dataTableMap.get("Program Navigation").get("Step 3"));
+        changeFlexTableView(dataTableMap.get("Program FlexTable").get("Step 3"));
+        clickOnPhaseFlexTableButton(dataTableMap.get("Program Creation").get("Step 1"),
+                dataTableMap.get("Program FlexTable").get("Step 2"));
+        enterFieldValues(sheetName, excelFileName);
+        clickOnModalButton(dataTableMap.get("Program Creation").get("Step 2"));
+        clickOnPageButton(dataTableMap.get("Program Creation").get("Step 3"));
+    }
+
+    /**
+     * Handles filling up of fields from the sheet in an excel
+     * 
+     * @param sheetName
+     * @param excelFileName
+     */
+    public void editionOfRecord(String sheetName, String excelFileName, DataTable dataTable) {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        clickOnPageButton(dataTableMap.get("Edition Buttons").get("Step 1"));
+        enterFieldValues(sheetName, excelFileName);
+        clickOnPageButton(dataTableMap.get("Edition Buttons").get("Step 2"));
+    }
+
+    /**
+     * Handles association of contact, focus area and objective to a program
+     * 
+     * @param contact
+     * @param focusArea
+     * @param objective
+     */
+    public void associationOfRecords(String contact, String focusArea, String objective, DataTable dataTable) {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        // Contact association
+        clickOnSubtab(dataTableMap.get("Contact").get("Step 1"));
+        clickOnFlextableButton(dataTableMap.get("Contact").get("Step 2"), dataTableMap.get("Contact").get("Step 3"),
+                dataTableMap.get("Contact").get("Step 4"));
+        chooseRecordForAssociation(dataTableMap.get("Contact").get("Step 5"), contact,
+                dataTableMap.get("Contact").get("Step 6"));
+        closeModal();
+
+        // Focus Area association
+        clickOnSubtab(dataTableMap.get("Focus Area").get("Step 1"));
+        clickOnFlextableButton(dataTableMap.get("Focus Area").get("Step 2"),
+                dataTableMap.get("Focus Area").get("Step 3"), dataTableMap.get("Focus Area").get("Step 4"));
+        chooseRecordForAssociation(dataTableMap.get("Focus Area").get("Step 5"), focusArea,
+                dataTableMap.get("Focus Area").get("Step 6"));
+        closeModal();
+
+        // Objective association
+        clickOnSubtab(dataTableMap.get("Objective").get("Step 1"));
+        clickOnFlextableButton(dataTableMap.get("Objective").get("Step 2"), dataTableMap.get("Objective").get("Step 3"),
+                dataTableMap.get("Objective").get("Step 4"));
+        chooseRecordForAssociation(dataTableMap.get("Objective").get("Step 5"), objective,
+                dataTableMap.get("Objective").get("Step 6"));
+        closeModal();
+    }
+
+    /**
+     * Handles assigning of approvers to a program
+     * 
+     * @param programApprover
+     * @param executiveApprover
+     */
+    public void twoApproverSelection(String programApprover, String executiveApprover, DataTable dataTable) {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        clickOnSubtab(dataTableMap.get("Subtab").get("Step 1"));
+        clickOnFlextableRowButton(dataTableMap.get("Approver 1").get("Step 1"),dataTableMap.get("Approver 1").get("Step 2"),dataTableMap.get("Approver 1").get("Step 3"));
+        fillInApproverDetails(programApprover);
+        switchToParentFrame();
+        clickOnFlextableRowButton(dataTableMap.get("Approver 2").get("Step 1"),dataTableMap.get("Approver 2").get("Step 2"),dataTableMap.get("Approver 2").get("Step 3"));
+        fillInApproverDetails(executiveApprover);
+        switchToParentFrame();
+    }
+    
+    /**
+     * Handles addition of checklist to a program
+     * 
+     * @param description
+     * @param required
+     * @param appliesTo
+     * @param fileName
+     */
+    public void additionOfChecklist(String fileName, DataTable dataTable) {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        clickOnSubtab(dataTableMap.get("Checklist Navigation").get("Step 1"));
+        addFieldsForInlineTable(dataTableMap.get("Checklist FlexTable").get("Step 1"),
+                dataTableMap.get("Checklist FlexTable").get("Step 2"), inlineRowAdditionDatableSeperator(dataTableMap));
+        clickOnFlextableRowButton(dataTableMap.get("Upload Modal").get("Step 1"),
+                dataTableMap.get("Upload Modal").get("Value 2"), dataTableMap.get("Upload Modal").get("Step 3"));
+        uploadFile(fileName, dataTableMap.get("Upload file").get("ValStepue 1"),
+                dataTableMap.get("Upload file").get("Step 2"));
+        closeModal();
+    }
+    
+    
+    /**
+     * Handles adding an attachment to a program
+     * 
+     * @param fileName
+     */
+    public void additionOfAttachment(String fileName, String flexTableName, DataTable dataTable) {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        clickOnSubtab(dataTableMap.get("Attachment Navigation").get("Step 1"));
+        clickOnButtonForAttachmentNotesToOpenModal(dataTableMap.get("Attachment Navigation").get("Step 2"),
+                flexTableName);
+        uploadFile(fileName, dataTableMap.get("Attachment Details").get("Step 1"),
+                dataTableMap.get("Attachment Details").get("Step 2"));
+        closeModal();
+    }
+    
+
+    /**
+     * Handles approving a program by the assigned approvers
+     * 
+     * @param programApprover
+     * @param executiveApprover
+     * @param programName
+     */
+    public void twoApproversApproveRecord(String programApprover, String executiveApprover, String recordName, DataTable dataTable) {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        reloginToggleToApp(dataTableMap.get("Program Navigation").get("Step 1"), programApprover);
+        navigateToTab(dataTableMap.get("Program Navigation").get("Step 2"));
+        clickOnSidebar(dataTableMap.get("Pending Task").get("Step 1"), dataTableMap.get("Pending Task").get("Step 2"));
+        quickSearchOnTable(recordName, dataTableMap.get("Pending Task").get("Step 3"));
+        clickOnFlexTableIcon(dataTableMap.get("Approval Buttons").get("Step 1"), recordName);
+        clickOnApprovalDecisionBox(dataTableMap.get("Approval Buttons").get("Step 2"));
+        reloginToggleToApp(dataTableMap.get("Program Navigation").get("Step 1"), executiveApprover);
+        navigateToTab(dataTableMap.get("Program Navigation").get("Step 2"));
+        clickOnSidebar(dataTableMap.get("Pending Task").get("Step 1"), dataTableMap.get("Pending Task").get("Step 2"));
+        quickSearchOnTable(recordName, dataTableMap.get("Pending Task").get("Step 3"));
+        clickOnFlexTableIcon(dataTableMap.get("Approval Buttons").get("Step 1"), recordName);
+        clickOnApprovalDecisionBox(dataTableMap.get("Approval Buttons").get("Step 2"));
     }
 
     /******* "Local Methods with Limited functionality " **********/
@@ -734,15 +879,6 @@ public class ProjectManager extends ProjectWebServices {
 
     private By getCheckbox() {
         return By.xpath("//td//input[@type='checkbox']");
-    }
-
-    private By getCloseButtonPath(String closeButtonId) {
-        if (closeButtonId.equals("Attachment")) {
-            return By.xpath(
-                    "//div[@class='clearfix']//span[text()=' Attachments']/..//p[text()='Add Attachments']/..//button");
-        } else {
-            return By.xpath("//button[@id='" + closeButtonId + "']");
-        }
     }
 
     private boolean isStatusProgressBar(String status, String color) {
@@ -822,12 +958,14 @@ public class ProjectManager extends ProjectWebServices {
         reiDriver.switchTo().switchToParentFrame();
     }
 
-    private void handleLookUpInput(String fieldApiName, String searchTerm) {
+    private void handleLookUpInput(String fieldApiName, String fieldValue) {
         int attempts = 0;
         while (attempts < 10
                 && !reiDriver.is().IsElementPresentQuick(By.xpath("//body[contains(@class, 'modal-open')]"))) {
             attempts++;
             try {
+                reiDriver.WaitFor().FluentWaitForClick(By.xpath("//div[@id='field" + fieldApiName + "']//dd//span[@class='lookupInput']/input")).sendKeys(fieldValue);
+              
                 reiDriver.WaitFor().FluentWaitForClick(By.xpath("//div[@id='field" + fieldApiName + "']//dd//a"))
                         .click();
                 reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//body[contains(@class, 'modal-open')]"));
@@ -836,24 +974,12 @@ public class ProjectManager extends ProjectWebServices {
         }
         reiDriver.WaitFor().makeThreadSleep(1000);
         WebDriver driver = reiDriver.switchTo().switchToFrame(By.xpath("//iframe[@id='iframeCustomLookupModalId']"));
-
-        String tableid = reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='ModalDivID']//div[1]"))
-                .getAttribute("id");
-        govgrants.quickSearch().performModalSpecificQuickSearch(tableid, searchTerm);
-        attempts = 0;
-        while (attempts < 10
-                && !reiDriver.is().IsElementPresentQuick(By.xpath("//td//*[text()='" + searchTerm + "']"))) {
-            attempts++;
-            govgrants.quickSearch().performModalSpecificQuickSearch(tableid, searchTerm);
-        }
-        reiDriver.WaitFor().makeThreadSleep(1000); // avoid stale elements
-
         attempts = 0;
         while (attempts < 10 && reiDriver.is().IsElementPresentQuick(By.xpath("//body/*"))) {
             reiDriver.WaitFor().makeThreadSleep(1000);
             reiDriver.WaitFor()
                     .WaitForElementToBePresent(
-                            By.xpath("//td//*[text()='" + searchTerm + "']//ancestor::tr[1]//a[@title='Select']"))
+                            By.xpath("//td//*[text()='" + fieldValue + "']//ancestor::tr[1]//a[@title='Select']"))
                     .click();
         }
 
@@ -891,5 +1017,24 @@ public class ProjectManager extends ProjectWebServices {
                 && reiDriver.WaitFor().WaitForElementToBePresent(fieldInput).isSelected()) {
             reiDriver.WaitFor().FluentWaitForClick(fieldInput).click();
         }
+    }
+    
+    private List<Map<String, String>> inlineRowAdditionDatableSeperator(Map<String, Map<String, String>> convertedMapOfMaps){
+        List<Map<String, String>> listOfMapForInlineMethod = new ArrayList<Map<String, String>>();
+        Map<String, String> inlineMap = new HashMap<String, String>();
+        for (String mainMapKey : convertedMapOfMaps.keySet()) {
+            System.out.println("forString " + mainMapKey);
+            if (mainMapKey.equals("Inline Column Title")) {
+                for (String innerMapKey : convertedMapOfMaps.get(mainMapKey).keySet()) {
+                    System.out.println("innerFor " + innerMapKey);
+                    inlineMap.put(convertedMapOfMaps.get(mainMapKey).get(innerMapKey),
+                            convertedMapOfMaps.get("Inline values").get(innerMapKey));
+                    System.out.println("inlineMap " + inlineMap);
+                }
+                listOfMapForInlineMethod.add(inlineMap);
+                System.out.println("inlineDataTableList " + listOfMapForInlineMethod);
+            }
+        }
+        return listOfMapForInlineMethod;
     }
 }

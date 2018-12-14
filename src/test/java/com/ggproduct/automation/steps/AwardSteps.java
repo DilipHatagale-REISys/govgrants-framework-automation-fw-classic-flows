@@ -5,6 +5,8 @@ import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.pageobjects.AwardPage;
 import java.util.Map;
+
+import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 
 public class AwardSteps {
@@ -25,12 +27,12 @@ public class AwardSteps {
     }
     
     @Given("^I add budget in the Award Funding Account$")
-    public void budgetAddtionInFundingAccountForAward(Map<String, Map<String, String>> rowValues) {
+    public void budgetAddtionInFundingAccountForAward(DataTable rowValues) {
         awardPage.budgetAddtionInFundingAccountForAward(rowValues);
     }
     
     @Given("^I edit the Budget details in award for line item \"([^\"]*)\"$")
-    public void budgetEditionForAward(String lineItem, Map<String, Map<String, String>> rowValues) {
+    public void budgetEditionForAward(String lineItem, DataTable rowValues) {
         awardPage.budgetEditionForAward(lineItem, rowValues);
     }
     

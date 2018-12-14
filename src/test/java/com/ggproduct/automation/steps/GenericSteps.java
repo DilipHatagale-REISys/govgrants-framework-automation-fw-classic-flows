@@ -6,6 +6,8 @@ import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 import java.util.List;
+
+import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -22,10 +24,10 @@ public class GenericSteps {
         projectManager.loginToggleToApp(appName, userName);
     }
     
-    @When("^I navigate to \"([^\"]*)\" tab$")
+   /* @When("^I navigate to \"([^\"]*)\" tab$")
     public void navigateToTab(String tabName) {
         projectManager.navigateToTab(tabName);
-    }
+    }*/
 
     @When("^I click \"([^\"]*)\" inside side bar \"([^\"]*)\"$")
     public void clickOnSidebar(String sidebarContent, String sidebarSubHeader) {
@@ -147,9 +149,9 @@ public class GenericSteps {
         projectManager.clickButtonOnGrid(iconName, uniqueColumnValue, tableId);
     }
 
-    @When("^I close Modal \"([^\"]*)\"$")
-    public void closeModal(String closeButtonId) {
-        projectManager.closeModal(closeButtonId);
+    @When("^I close Modal$")
+    public void closeModal() {
+        projectManager.closeModal();
     }
 
     @When("^I enter \"([^\"]*)\" values from \"([^\"]*)\"$")
@@ -193,7 +195,7 @@ public class GenericSteps {
     }
     
     @When("^I edit the following rows inline in flex table with id \"([^\"]*)\" by clicking \"([^\"]*)\" :$")
-    public void fillFieldsForInlineTable(String flexTableId, String buttonName, Map<String, Map<String, String>> rowValues) {
+    public void fillFieldsForInlineTable(String flexTableId, String buttonName, DataTable rowValues) {
         projectManager.fillFieldsForInlineTable(flexTableId, buttonName, rowValues);
     }
 
@@ -220,5 +222,40 @@ public class GenericSteps {
     @Then("^I see that \"([^\"]*)\" has been added in flextable \"([^\"]*)\" with Id \"([^\"]*)\"$")
     public void assertColumnOnTable(String columnUniqueValue, String flextableName, String flextableId) {
         projectManager.assertColumnOnTable(columnUniqueValue, flextableName, flextableId);
+    }
+    
+    @Given("^I create a record as user \"([^\"]*)\" from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
+    public void creationOfRecord(String user,String sheetName, String excelFileName, DataTable dataTable) {
+        projectManager.creationOfRecord(user, sheetName, excelFileName, dataTable);
+    }
+    
+    @Given("^I complete the fields from the sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
+    public void editionOfRecord(String sheetName, String excelFileName, DataTable dataTable) {
+        projectManager.editionOfRecord(sheetName, excelFileName, dataTable);
+    }
+    
+    @Given("^I associate Contact \"([^\"]*)\", Focus Area \"([^\"]*)\", Objective \"([^\"]*)\"$")
+    public void associationOfRecords(String contact, String focusArea, String objective, DataTable dataTable) {
+        projectManager.associationOfRecords(contact, focusArea, objective, dataTable);
+    }
+    
+    @Given("^I select two approvers Program Approver \"([^\"]*)\", Executive Approver \"([^\"]*)\"$")
+    public void twoApproverSelection(String programApprover, String executiveApprover, DataTable dataTable) {
+        projectManager.twoApproverSelection(programApprover, executiveApprover, dataTable);
+    }
+    
+    @Given("^I add an attachment checklist to upload the file \"([^\"]*)\"$")
+    public void additionOfChecklist(String fileName, DataTable dataTable) {
+        projectManager.additionOfChecklist(fileName, dataTable);
+    }
+    
+    @Given("^I add an attachment \"([^\"]*)\" in the flextable \"([^\"]*)\"$")
+    public void additionOfAttachment(String fileName, String flexTableName, DataTable dataTable) {
+        projectManager.additionOfAttachment(fileName, flexTableName, dataTable);
+    }
+    
+    @Given("^Two Approvers \"([^\"]*)\", \"([^\"]*)\" approve \"([^\"]*)\"$")
+    public void twoApproversApproveRecord(String programApprover, String executiveApprover, String recordName, DataTable dataTable) {
+        projectManager.twoApproversApproveRecord(programApprover, executiveApprover, recordName, dataTable);
     }
 }

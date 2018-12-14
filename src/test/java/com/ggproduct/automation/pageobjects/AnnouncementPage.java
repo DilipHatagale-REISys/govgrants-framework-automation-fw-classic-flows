@@ -8,6 +8,8 @@ import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 
+import cucumber.api.DataTable;
+
 public class AnnouncementPage extends ProjectManager {
     public AnnouncementPage(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
         super(controller, handler, govgrants);
@@ -56,7 +58,7 @@ public class AnnouncementPage extends ProjectManager {
         clickOnSubtab("Overview");
         clickOnFlextableButton("Add Organizations", "Invited Applicants", "inlineEditGridFormulaGrantsAwardOrganizations");
         chooseRecordForAssociation("Add", agency, "SoleSourceAwardRecipientsTable");
-        closeModal("FormulaGrantsAwardOrganizationsiframeContentIdButton");
+        closeModal();
     }
     
     /**
@@ -64,7 +66,7 @@ public class AnnouncementPage extends ProjectManager {
      * @param agency
      * @param amount
      */
-    public void associateAgencyAmountToAnnouncement(String agency, Map<String, Map<String, String>> rowValues) {
+    public void associateAgencyAmountToAnnouncement(String agency, DataTable rowValues) {
         associateAgencyToAnnouncement(agency);
         fillFieldsForInlineTable("inlineEditGridSoleSourceAwardOrganizations", "Edit", rowValues);
     }
@@ -74,11 +76,11 @@ public class AnnouncementPage extends ProjectManager {
      * @param fundingAccount
      * @param amount
      */
-    public void addFundingAccountToAnnouncement(String fundingAccount, Map<String, Map<String, String>> rowValues) {
+    public void addFundingAccountToAnnouncement(String fundingAccount, DataTable rowValues) {
         clickOnSubtab("Financials");
         clickOnFlextableButton("Associate", "Funding Accounts", "flexGridAnnouncementFundingAccountGrantor");
         chooseRecordForAssociation("Add", fundingAccount, "popupflextable");
-        closeModal("AnnouncementFundingAccountGrantormodalDivCloseIcon");
+        closeModal();
         fillFieldsForInlineTable("flexGridAnnouncementFundingAccountGrantor", "Edit", rowValues);
     }
 
@@ -95,7 +97,7 @@ public class AnnouncementPage extends ProjectManager {
         clickOnFlextableRowButton("Edit", budgetPeriod, "Budget Period Details");
         enterFieldValues(sheetName, excelFileName);
         clickOnModalButton("Save");
-        closeModal("AnnouncementBudgetPeriodmodalDivCloseIcon");
+        closeModal();
     }
 
     /**
@@ -109,19 +111,19 @@ public class AnnouncementPage extends ProjectManager {
         clickOnSubtab("Overview");
         clickOnFlextableButton("Associate", "Contacts", "AnnouncementContacts");
         chooseRecordForAssociation("Add", contact, "AssociateAnnouncementContacts");
-        closeModal("AnnouncementContactsmodalDivCloseIcon");
+        closeModal();
 
         // Focus Area association
         clickOnSubtab("Setup");
         clickOnFlextableButton("Associate", "Focus Areas", "AnnouncementServiceArea1");
         chooseRecordForAssociation("Add", focusArea, "popupflextable");
-        closeModal("AnnouncementServiceArea1modalDivCloseIcon");
+        closeModal();
 
         // Objective association
         clickOnSubtab("Setup");
         clickOnFlextableButton("Associate", "Objectives", "AnnouncementGranteeStrategicGoalsObjectives");
         chooseRecordForAssociation("Add", objective, "popupflextable");
-        closeModal("AnnouncementGranteeStrategicGoalsObjectivesmodalDivCloseIcon");
+        closeModal();
     }
 
     /**
@@ -156,7 +158,7 @@ public class AnnouncementPage extends ProjectManager {
         addFieldsForInlineTable("inlineEditGridAnnouncementChecklists", "Add", rowValues);
         clickOnFlextableRowButton("Upload Template", "Not Applicable", "Supporting Documents");
         uploadFile(fileName, "Checklist", "Announcement");
-        closeModal("AnnouncementChecklistsiframeContentIdButton");
+        closeModal();
     }
 
     /**
@@ -167,7 +169,7 @@ public class AnnouncementPage extends ProjectManager {
         clickOnSubtab("Attachments");
         clickOnButtonForAttachmentNotesToOpenModal("Add", " Attachments");
         uploadFile(fileName, "Attachment", "Funding Opportunity Announcement");
-        closeModal("Attachment");
+        closeModal();
     }
 
     /**
@@ -212,7 +214,7 @@ public class AnnouncementPage extends ProjectManager {
         clickOnFlextableButton("New", "Peer Reviewers", "flexGridApproverRoles");
         enterFieldValues(sheetName, excelFileName);
         clickOnModalButton("Save");
-        closeModal("GrantorAnnouncementReviewersTempmodalDivCloseIcon");
+        closeModal();
         clickOnFlextableRowButton("Send for Review", "Created", "Peer Reviewers");
     }
 
@@ -233,7 +235,7 @@ public class AnnouncementPage extends ProjectManager {
         enterReview();
         clickOnModalButton("Save");
         clickOnModalButton("Submit Review");
-        closeModal("GrantorAnnouncementReviewersTempmodalDivCloseIcon");
+        closeModal();
         reloginToggleToApp("As a Grantor", announcementOwner);
         navigateToTab("Announcements");
         clickOnSidebar(announcementType, "Announcements");
