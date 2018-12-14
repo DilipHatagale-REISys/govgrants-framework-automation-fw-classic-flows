@@ -223,4 +223,39 @@ public class GenericSteps {
     public void assertColumnOnTable(String columnUniqueValue, String flextableName, String flextableId) {
         projectManager.assertColumnOnTable(columnUniqueValue, flextableName, flextableId);
     }
+    
+    @Given("^I create a record as user \"([^\"]*)\" from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
+    public void creationOfRecord(String user,String sheetName, String excelFileName, DataTable dataTable) {
+        projectManager.creationOfRecord(user, sheetName, excelFileName, dataTable);
+    }
+    
+    @Given("^I complete the fields from the sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
+    public void editionOfRecord(String sheetName, String excelFileName, DataTable dataTable) {
+        projectManager.editionOfRecord(sheetName, excelFileName, dataTable);
+    }
+    
+    @Given("^I associate Contact \"([^\"]*)\", Focus Area \"([^\"]*)\", Objective \"([^\"]*)\"$")
+    public void associationOfRecords(String contact, String focusArea, String objective, DataTable dataTable) {
+        projectManager.associationOfRecords(contact, focusArea, objective, dataTable);
+    }
+    
+    @Given("^I select two approvers Program Approver \"([^\"]*)\", Executive Approver \"([^\"]*)\"$")
+    public void twoApproverSelection(String programApprover, String executiveApprover, DataTable dataTable) {
+        projectManager.twoApproverSelection(programApprover, executiveApprover, dataTable);
+    }
+    
+    @Given("^I add an attachment checklist to upload the file \"([^\"]*)\"$")
+    public void additionOfChecklist(String fileName, DataTable dataTable) {
+        projectManager.additionOfChecklist(fileName, dataTable);
+    }
+    
+    @Given("^I add an attachment \"([^\"]*)\" in the flextable \"([^\"]*)\"$")
+    public void additionOfAttachment(String fileName, String flexTableName, DataTable dataTable) {
+        projectManager.additionOfAttachment(fileName, flexTableName, dataTable);
+    }
+    
+    @Given("^Two Approvers \"([^\"]*)\", \"([^\"]*)\" approve \"([^\"]*)\"$")
+    public void twoApproversApproveRecord(String programApprover, String executiveApprover, String recordName, DataTable dataTable) {
+        projectManager.twoApproversApproveRecord(programApprover, executiveApprover, recordName, dataTable);
+    }
 }

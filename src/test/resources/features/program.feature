@@ -111,30 +111,61 @@ Feature: Validate all scenarios for program
 
   	@34750 @submittingProgramForApproval @program
   	Scenario: Validate the submission of Program for Approval
-    Given I complete the Program fields from the sheet "RequiredForSubmit" in excel "Program_Field_Values.xlsx"
-    And I associate Contact "Automation EXE", Focus Area "00005", Objective "SPO-0006" to the program
-    Given I select the Program Approver "Automation PM", Executive Approver "Automation EXE" for the program
-    And I add an attachment checklist to upload the file "Program_Field_Values.xlsx" to the program
+    Given I complete the fields from the sheet "RequiredForSubmit" in excel "Program_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+    And I associate Contact "Automation EXE", Focus Area "00005", Objective "SPO-0006"
+    | Actions 	 | Step 1   | Step 2	| Step 3  			  | Step 4 		 					   | Step 5  	| Step 6 				   |
+    | Contact    | Overview | Associate | Contacts 			  | ProgramContacts 				   | Add	  	| AssociateProgramContacts |
+    | Focus Area | Setup	| Associate | Related Focus Areas | flexGridGrantorServiceAreasProgram | Associate	| popupflextable 		   |
+    | Objective  | Setup 	| Associate | Objectives		  | RelatedProgramGoalsandObjectives   | Add	  	| popupflextable 		   |
+    Given I select two approvers Program Approver "Automation PM", Executive Approver "Automation EXE"
+    | Actions 	 | Step 1   		| Step 2		     | Step 3    |
+    | Subtab	 | Responsibilities | 				     |		     |
+    | Approver 1 | Edit				| Program Approver   | Approvers |
+    | Approver 2 | Edit				| Executive Approver | Approvers |
+    And I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
     | Actions 			   | Step 1 	   		       | Step 2	    	  | Step 3 					   	  	|
-    | $Inline Column Title | Description       	  	   | Required  	  	  | Applies To  			       	|
-    | $Inline values 	   | Automation Description    | Mandatory	      | Application     		       	|
 	| Checklist Navigation | Setup		      		   |   		   		  |						  		    |
 	| Checklist FlexTable  | flexGridProgramChecklists | Add	   		  |   							   	|
 	| Upload Modal  	   | Upload Template		   | Not Applicable   | Supporting Documents Checklist 	|
 	| Upload file     	   | Checklist 				   | Program 		  |									|
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx" to a program
+	| Inline Column Title  | Description       	  	   | Required  	  	  | Applies To  			       	|
+    | Inline values 	   | Automation Description    | Mandatory	      | Application     		       	|
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx" in the flextable " Attachments"
+    | Actions 			    | Step 1 	  | Step 2	 		  |
+    | Attachment Navigation | Attachments | Add				  |
+    | Attachment Details    | Attachment  | Program Artifacts |
     When I click on "Submit For Approval" button
     Then I see that "Submitted for Approval" status is in "green" on progress bar
 	
   	@34752 @34754 @programApproval @program
   	Scenario Outline: Validate the approval of Internal Program
-  	Given I complete the Program fields from the sheet "RequiredForSubmit" in excel "Program_Field_Values.xlsx"
-    And I associate Contact "Automation EXE", Focus Area "00005", Objective "SPO-0006" to the program
-    Given I select the Program Approver "Automation PM", Executive Approver "Automation EXE" for the program
-    And I add an attachment checklist to upload the file "Program_Field_Values.xlsx" to the program
-    | Description        		  | Required  | Applies To  |
-    | Automation test description | Mandatory | Application |
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx" to a program
+    Given I complete the fields from the sheet "RequiredForSubmit" in excel "Program_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+     And I associate Contact "Automation EXE", Focus Area "00005", Objective "SPO-0006"
+    | Actions 	 | Step 1   | Step 2	| Step 3  			  | Step 4 		 					   | Step 5  	| Step 6 				   |
+    | Contact    | Overview | Associate | Contacts 			  | ProgramContacts 				   | Add	  	| AssociateProgramContacts |
+    | Focus Area | Setup	| Associate | Related Focus Areas | flexGridGrantorServiceAreasProgram | Associate	| popupflextable 		   |
+    | Objective  | Setup 	| Associate | Objectives		  | RelatedProgramGoalsandObjectives   | Add	  	| popupflextable 		   |
+    Given I select two approvers Program Approver "Automation PM", Executive Approver "Automation EXE"
+    | Actions 	 | Step 1   		| Step 2		     | Step 3    |
+    | Subtab	 | Responsibilities | 				     |		     |
+    | Approver 1 | Edit				| Program Approver   | Approvers |
+    | Approver 2 | Edit				| Executive Approver | Approvers |
+    And I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+    | Actions 			   | Step 1 	   		       | Step 2	    	  | Step 3 					   	  	|
+	| Checklist Navigation | Setup		      		   |   		   		  |						  		    |
+	| Checklist FlexTable  | flexGridProgramChecklists | Add	   		  |   							   	|
+	| Upload Modal  	   | Upload Template		   | Not Applicable   | Supporting Documents Checklist 	|
+	| Upload file     	   | Checklist 				   | Program 		  |									|
+	| Inline Column Title  | Description       	  	   | Required  	  	  | Applies To  			       	|
+    | Inline values 	   | Automation Description    | Mandatory	      | Application     		       	|
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx" in the flextable " Attachments"
+    | Actions 			    | Step 1 	  | Step 2	 		  |
+    | Attachment Navigation | Attachments | Add				  |
+    | Attachment Details    | Attachment  | Program Artifacts |
     And I click on "Submit For Approval" button
 	Given I re-login to "As a Grantor" app as "<Program Approver>" User
 	When I navigate to "Planning" tab
@@ -155,16 +186,38 @@ Feature: Validate all scenarios for program
 	
   	@34756 @programActivation @programHappyPath @program
   	Scenario Outline: Validate the activation of Internal Program
-  	Given I complete the Program fields from the sheet "RequiredForSubmit" in excel "Program_Field_Values.xlsx"
-    And I associate Contact "Automation EXE", Focus Area "00005", Objective "SPO-0006" to the program
-    Given I select the Program Approver "Automation PM", Executive Approver "Automation EXE" for the program
-    And I add an attachment checklist to upload the file "Program_Field_Values.xlsx" to the program
-    | Description        		  | Required  | Applies To  |
-    | Automation test description | Mandatory | Application |
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx" to a program
+    Given I complete the fields from the sheet "RequiredForSubmit" in excel "Program_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+     And I associate Contact "Automation EXE", Focus Area "00005", Objective "SPO-0006"
+    | Actions 	 | Step 1   | Step 2	| Step 3  			  | Step 4 		 					   | Step 5  	| Step 6 				   |
+    | Contact    | Overview | Associate | Contacts 			  | ProgramContacts 				   | Add	  	| AssociateProgramContacts |
+    | Focus Area | Setup	| Associate | Related Focus Areas | flexGridGrantorServiceAreasProgram | Associate	| popupflextable 		   |
+    | Objective  | Setup 	| Associate | Objectives		  | RelatedProgramGoalsandObjectives   | Add	  	| popupflextable 		   |
+    Given I select two approvers Program Approver "Automation PM", Executive Approver "Automation EXE"
+    | Actions 	 | Step 1   		| Step 2		     | Step 3    |
+    | Subtab	 | Responsibilities | 				     |		     |
+    | Approver 1 | Edit				| Program Approver   | Approvers |
+    | Approver 2 | Edit				| Executive Approver | Approvers |
+    And I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+    | Actions 			   | Step 1 	   		       | Step 2	    	  | Step 3 					   	  	|
+    | Inline Column Title  | Description       	  	   | Required  	  	  | Applies To  			       	|
+    | Inline values 	   | Automation Description    | Mandatory	      | Application     		       	|
+	| Checklist Navigation | Setup		      		   |   		   		  |						  		    |
+	| Checklist FlexTable  | flexGridProgramChecklists | Add	   		  |   							   	|
+	| Upload Modal  	   | Upload Template		   | Not Applicable   | Supporting Documents Checklist 	|
+	| Upload file     	   | Checklist 				   | Program 		  |									|
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx" in the flextable " Attachments"
+    | Actions 			    | Step 1 	  | Step 2	 		  |
+    | Attachment Navigation | Attachments | Add				  |
+    | Attachment Details    | Attachment  | Program Artifacts |
     And I click on "Submit For Approval" button
-    Given Approvers "PM", "EXE" approve the Program "<QProgram Name>"
-	And I re-login to "As a Grantor" app as "<User>" User
+    Given Two Approvers "PM", "EXE" approve "<Program Name>"
+    | Actions 			 | Step 1 	   	 | Step 2	| Step 3 			|
+    | Program Navigation | As a Grantor  | Planning |					|
+    | Pending Task 		 | Pending Tasks | MyTasks  | PhasePendingTasks |
+    | Approval Buttons 	 | Start		 | Approve  |					|
+    And I re-login to "As a Grantor" app as "<User>" User
 	When I navigate to "Planning" tab
 	And I click "Internal Programs" inside side bar "Programs"
 	When I toggle to "Draft Internal Programs"
