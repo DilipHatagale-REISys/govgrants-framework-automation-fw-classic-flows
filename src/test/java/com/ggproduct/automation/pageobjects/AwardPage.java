@@ -144,7 +144,11 @@ public class AwardPage extends ProjectManager  {
      * @param awardOwner
      */
     public void reloginToViewAward(String awardId, String awardName, String awardOwner) {
-        reloginToggleToApp("As a Grantor", awardOwner);
+        try {
+            loginToggleToApp("As a Grantor", awardOwner);
+        } catch (Exception ex) {
+            reloginToggleToApp("As a Grantor", awardOwner);
+        }
         navigateToTab("Grants");
         clickOnSidebar("Grants and Subawards", "Grants, Awards & Amendments");
         changeFlexTableView("Draft Grants");

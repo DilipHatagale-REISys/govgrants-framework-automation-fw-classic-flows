@@ -224,9 +224,14 @@ public class GenericSteps {
         projectManager.assertColumnOnTable(columnUniqueValue, flextableName, flextableId);
     }
     
-    @Given("^I create a record as user \"([^\"]*)\" from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
-    public void creationOfRecord(String user,String sheetName, String excelFileName, DataTable dataTable) {
-        projectManager.creationOfRecord(user, sheetName, excelFileName, dataTable);
+    @Given("^I create a pre-award record as user \"([^\"]*)\" from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
+    public void creationOfPreAwardRecord(String user,String sheetName, String excelFileName, DataTable dataTable) {
+        projectManager.creationOfPreAwardRecord(user, sheetName, excelFileName, dataTable);
+    }
+    
+    @Given("^I create a post award record from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
+    public void creationOfPostAwardRecord(String sheetName, String excelFileName, DataTable dataTable) {
+        projectManager.creationOfPostAwardRecord(sheetName, excelFileName, dataTable);
     }
     
     @Given("^I complete the fields from the sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
@@ -239,7 +244,12 @@ public class GenericSteps {
         projectManager.associationOfRecords(contact, focusArea, objective, dataTable);
     }
     
-    @Given("^I select two approvers Program Approver \"([^\"]*)\", Executive Approver \"([^\"]*)\"$")
+    @Given("^I associate Participant \"([^\"]*)\"$")
+    public void associationOfRecord(String participant, DataTable dataTable) {
+        projectManager.associationOfRecord(participant, dataTable);
+    }
+    
+    @Given("^I select two approvers \"([^\"]*)\", \"([^\"]*)\"$")
     public void twoApproverSelection(String programApprover, String executiveApprover, DataTable dataTable) {
         projectManager.twoApproverSelection(programApprover, executiveApprover, dataTable);
     }
@@ -258,4 +268,19 @@ public class GenericSteps {
     public void twoApproversApproveRecord(String programApprover, String executiveApprover, String recordName, DataTable dataTable) {
         projectManager.twoApproversApproveRecord(programApprover, executiveApprover, recordName, dataTable);
     }
+    
+    @Given("^I login and view the award \"([^\"]*)\" with name \"([^\"]*)\" as User \"([^\"]*)\"$")
+    public void reloginToViewAward(String awardId, String awardName, String awardOwner) {
+        projectManager.reloginToViewAward(awardId, awardName, awardOwner);
+    }
+    
+    @Given("^Subrecipient \"([^\"]*)\" receives the task for \"([^\"]*)\"$")
+    public void subrecipientTask(String subrecipient, String uniqueColumnValue,  DataTable dataTable) {
+        projectManager.subrecipientTask(subrecipient, uniqueColumnValue, dataTable);
+    }
+    
+    @Given("^I fill in the form$")
+    public void fillForm() {
+        projectManager.fillForm();
+    } 
 }

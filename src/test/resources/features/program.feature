@@ -2,11 +2,11 @@
 Feature: Validate all scenarios for program
 
 	Background: Create Program
-	Given I create a record as user "EXE" from sheet "RequiredForSave" in excel "Program_Field_Values.xlsx"
+	Given I create a pre-award record as user "EXE" from sheet "RequiredForSave" in excel "Program_Field_Values.xlsx"
 	| Actions 			 | Step 1 	   		 | Step 2    	  | Step 3 				    |
-	| Program Navigation | As a Grantor		 | Planning  	  |	Programs				|
-	| Program FlexTable  | Internal Programs | Programs 	  | Draft Internal Programs |
-	| Program Creation   | New				 | Save And Close | Save					|
+	| Navigation | As a Grantor		 | Planning  	  |	Programs				|
+	| FlexTable  | Internal Programs | Programs 	  | Draft Internal Programs |
+	| Creation   | New				 | Save And Close | Save					|
 	
   	@34730 @programListView @program
   	Scenario Outline: Verifying if the EXE,PM,PO has access to Internal Programs list view
@@ -119,7 +119,7 @@ Feature: Validate all scenarios for program
     | Contact    | Overview | Associate | Contacts 			  | ProgramContacts 				   | Add	  	| AssociateProgramContacts |
     | Focus Area | Setup	| Associate | Related Focus Areas | flexGridGrantorServiceAreasProgram | Associate	| popupflextable 		   |
     | Objective  | Setup 	| Associate | Objectives		  | RelatedProgramGoalsandObjectives   | Add	  	| popupflextable 		   |
-    Given I select two approvers Program Approver "Automation PM", Executive Approver "Automation EXE"
+    Given I select two approvers "Automation PM", "Automation EXE"
     | Actions 	 | Step 1   		| Step 2		     | Step 3    |
     | Subtab	 | Responsibilities | 				     |		     |
     | Approver 1 | Edit				| Program Approver   | Approvers |
@@ -144,12 +144,12 @@ Feature: Validate all scenarios for program
     Given I complete the fields from the sheet "RequiredForSubmit" in excel "Program_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-     And I associate Contact "Automation EXE", Focus Area "00005", Objective "SPO-0006"
+    And I associate Contact "Automation EXE", Focus Area "00005", Objective "SPO-0006"
     | Actions 	 | Step 1   | Step 2	| Step 3  			  | Step 4 		 					   | Step 5  	| Step 6 				   |
     | Contact    | Overview | Associate | Contacts 			  | ProgramContacts 				   | Add	  	| AssociateProgramContacts |
     | Focus Area | Setup	| Associate | Related Focus Areas | flexGridGrantorServiceAreasProgram | Associate	| popupflextable 		   |
     | Objective  | Setup 	| Associate | Objectives		  | RelatedProgramGoalsandObjectives   | Add	  	| popupflextable 		   |
-    Given I select two approvers Program Approver "Automation PM", Executive Approver "Automation EXE"
+    Given I select two approvers "Automation PM", "Automation EXE"
     | Actions 	 | Step 1   		| Step 2		     | Step 3    |
     | Subtab	 | Responsibilities | 				     |		     |
     | Approver 1 | Edit				| Program Approver   | Approvers |
@@ -194,7 +194,7 @@ Feature: Validate all scenarios for program
     | Contact    | Overview | Associate | Contacts 			  | ProgramContacts 				   | Add	  	| AssociateProgramContacts |
     | Focus Area | Setup	| Associate | Related Focus Areas | flexGridGrantorServiceAreasProgram | Associate	| popupflextable 		   |
     | Objective  | Setup 	| Associate | Objectives		  | RelatedProgramGoalsandObjectives   | Add	  	| popupflextable 		   |
-    Given I select two approvers Program Approver "Automation PM", Executive Approver "Automation EXE"
+    Given I select two approvers "Automation PM", "Automation EXE"
     | Actions 	 | Step 1   		| Step 2		     | Step 3    |
     | Subtab	 | Responsibilities | 				     |		     |
     | Approver 1 | Edit				| Program Approver   | Approvers |
@@ -213,10 +213,10 @@ Feature: Validate all scenarios for program
     | Attachment Details    | Attachment  | Program Artifacts |
     And I click on "Submit For Approval" button
     Given Two Approvers "PM", "EXE" approve "<Program Name>"
-    | Actions 			 | Step 1 	   	 | Step 2	| Step 3 			|
-    | Program Navigation | As a Grantor  | Planning |					|
-    | Pending Task 		 | Pending Tasks | MyTasks  | PhasePendingTasks |
-    | Approval Buttons 	 | Start		 | Approve  |					|
+    | Actions 		   | Step 1 	   | Step 2	  | Step 3 			  |
+    | Navigation       | As a Grantor  | Planning |					  |
+    | Pending Task 	   | Pending Tasks | MyTasks  | PhasePendingTasks |
+    | Approval Buttons | Start		   | Approve  |					  |
     And I re-login to "As a Grantor" app as "<User>" User
 	When I navigate to "Planning" tab
 	And I click "Internal Programs" inside side bar "Programs"
