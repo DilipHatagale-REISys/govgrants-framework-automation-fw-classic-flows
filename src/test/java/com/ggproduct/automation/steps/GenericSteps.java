@@ -24,7 +24,7 @@ public class GenericSteps {
         projectManager.loginToggleToApp(appName, userName);
     }
     
-   /* @When("^I navigate to \"([^\"]*)\" tab$")
+   /*@When("^I navigate to \"([^\"]*)\" tab$")
     public void navigateToTab(String tabName) {
         projectManager.navigateToTab(tabName);
     }*/
@@ -153,6 +153,11 @@ public class GenericSteps {
     public void closeModal() {
         projectManager.closeModal();
     }
+    
+    @Given("^I fill in the form$")
+    public void fillForm() {
+        projectManager.fillForm();
+    } 
 
     @When("^I enter \"([^\"]*)\" values from \"([^\"]*)\"$")
     public void enterFieldValues(String sheetName, String excelName) {
@@ -279,8 +284,8 @@ public class GenericSteps {
         projectManager.subrecipientTask(subrecipient, uniqueColumnValue, dataTable);
     }
     
-    @Given("^I fill in the form$")
-    public void fillForm() {
-        projectManager.fillForm();
-    } 
+    @Given("^I fill in the form \"([^\"]*)\"$")
+    public void fillingUpForm(String formName, DataTable dataTable) {
+        projectManager.fillingUpForm(formName, dataTable);
+    }
 }

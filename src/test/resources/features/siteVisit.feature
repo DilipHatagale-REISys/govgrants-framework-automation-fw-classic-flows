@@ -149,5 +149,43 @@ Feature: Validate all scenarios in the Site Visit
 	And I click on "Validate" button on "<FlexTable Name>" flextable with Id "FormComponent"
 	Then I see that "100.00%" has been added in flextable "<FlexTable Name>" with Id "FormComponent"
 	Examples:
-	| Award Name 				     	    	    	| Site Visit Name	    | FlexTable Name |
-	| Automation Announcement to be deleted Application | Automation Site Visit | Review Forms	 |
+	| FlexTable Name |
+	| Review Forms	 |
+	
+	@submittingForApprovalSiteVisit @siteVisit
+	Scenario Outline: Submitting Site Visit for approval
+	Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+    And I associate Participant "Automation EXE"
+    | Actions 	  | Step 1   | Step 2	 | Step 3  		| Step 4 		 		   | Step 5    | Step 6 		|
+    | Participant | Overview | Associate | Participants | GrantorSiteVisitContacts | Associate | popupflextable |
+    Given I select two approvers "Automation PM", "Automation FO"
+    | Actions 	 | Step 1   		| Step 2		   | Step 3    |
+    | Subtab	 | Responsibilities | 				   |		   |
+    | Approver 1 | Edit				| Program Approver | Approvers |
+    | Approver 2 | Edit				| Fiscal Approver  | Approvers |
+	And I click on "Notify" button
+	Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
+	| Actions 	 | Step 1   		 | Step 2	|
+	| Navigation | Monitoring 		 | 			|
+	| Left Panel | Pending Tasks 	 | My Tasks |
+	| FlexTable  | PhasePendingTasks | Start 	|
+	And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "Award Name"
+	| Actions 	 | Step 1   		 			     | Step 2		  		  |
+	| Navigation | As a Grantor 	  				 | Monitoring 			  |
+	| Left Panel | Manage Site Visits 				 | Monitoring Activities  |
+	| FlexTable  | Site Visits for Active Grants	 | View				   	  |
+	Given I click on "Conduct" button
+	And I fill in the form "General Review Form"
+	| Actions 	  | Step 1   		 	 | Step 2		 |
+	| Navigation  | Reports and Outcomes | 			 	 |
+	| FlexTable   | Edit				 | Review Forms  |
+	| Form Button | Save				 | Back 		 |
+	| Validation  | Validate			 | FormComponent |
+	When I click on "Submit for Approval" button
+	Then I see that "Submitted for Approval" status is in "green" on progress bar
+	Examples:
+	| Award Name 				     	    	    	| Site Visit Name	    |
+	| Automation Announcement to be deleted Application | Automation Site Visit |
+	

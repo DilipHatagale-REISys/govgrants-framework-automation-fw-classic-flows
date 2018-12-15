@@ -678,6 +678,27 @@ public class ProjectManager extends ProjectWebServices {
         govgrants.flexTable().editFlexTableRowsInline(tableId, iconName, rowValues);
     }
 
+    public void fillForm() {
+        for (int i = 0; i < getTitlesForForm().size(); i++) {
+            for (int j = 1; j <= getcountofTextAreaInForm(getTitlesForForm().get(i)); j++) {
+                reiDriver.textInput().clearText(getTextAreaInForm(getTitlesForForm().get(i), j));
+                reiDriver.textInput().enterText(getTextAreaInForm(getTitlesForForm().get(i), j), defaultLongText);
+            }
+        }
+
+        for (int i = 0; i < getTitlesForForm().size(); i++) {
+            for (int j = 1; j <= getcountofDropdownInForm(getTitlesForForm().get(i)); j++) {
+                reiDriver.findMyElement().getElement(getDropdownInForm(getTitlesForForm().get(i), j)).click();
+            }
+        }
+
+        for (int i = 0; i < getTitlesForForm().size(); i++) {
+            for (int j = 1; j <= getcountofCheckboxInForm(getTitlesForForm().get(i)); j++) {
+                reiDriver.findMyElement().getElement(getCheckboxInForm(getTitlesForForm().get(i), j)).click();
+            }
+        }
+    }
+
     /******* "Consolidated Generic Methods across the Modules" **********/
 
     /**
@@ -897,25 +918,16 @@ public class ProjectManager extends ProjectWebServices {
         clickOnFlexTableIcon(dataTableMap.get("FlexTable").get("Step 2"), uniqueColumnValue);
     }
 
-    public void fillForm() {
-        for (int i = 0; i < getTitlesForForm().size(); i++) {
-            for (int j = 1; j <= getcountofTextAreaInForm(getTitlesForForm().get(i)); j++) {
-                reiDriver.textInput().clearText(getTextAreaInForm(getTitlesForForm().get(i), j));
-                reiDriver.textInput().enterText(getTextAreaInForm(getTitlesForForm().get(i), j), defaultLongText);
-            }
-        }
-
-        for (int i = 0; i < getTitlesForForm().size(); i++) {
-            for (int j = 1; j <= getcountofDropdownInForm(getTitlesForForm().get(i)); j++) {
-                reiDriver.findMyElement().getElement(getDropdownInForm(getTitlesForForm().get(i), j)).click();
-            }
-        }
-
-        for (int i = 0; i < getTitlesForForm().size(); i++) {
-            for (int j = 1; j <= getcountofCheckboxInForm(getTitlesForForm().get(i)); j++) {
-                reiDriver.findMyElement().getElement(getCheckboxInForm(getTitlesForForm().get(i), j)).click();
-            }
-        }
+    public void fillingUpForm(String formName, DataTable dataTable) {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        clickOnSubtab(dataTableMap.get("Navigation").get("Step 1"));
+        clickOnFlextableRowButton(dataTableMap.get("FlexTable").get("Step 1"), formName,
+                dataTableMap.get("FlexTable").get("Step 2"));
+        fillForm();
+        clickOnPageButton(dataTableMap.get("Form Button").get("Step 1"));
+        clickOnPageButton(dataTableMap.get("Form Button").get("Step 2"));
+        clickOnFlextableButton(dataTableMap.get("Validation").get("Step 1"),
+                dataTableMap.get("FlexTable").get("Step 2"), dataTableMap.get("Validation").get("Step 2"));
     }
 
     /******* "Local Methods with Limited functionality " **********/
