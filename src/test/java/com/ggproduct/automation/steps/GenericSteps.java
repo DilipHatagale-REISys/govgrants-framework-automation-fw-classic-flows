@@ -5,6 +5,8 @@ import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.projectmanager.ProjectManager;
+
+import java.io.IOException;
 import java.util.List;
 
 import cucumber.api.DataTable;
@@ -24,7 +26,7 @@ public class GenericSteps {
         projectManager.loginToggleToApp(appName, userName);
     }
     
-   /*@When("^I navigate to \"([^\"]*)\" tab$")
+  /* @When("^I navigate to \"([^\"]*)\" tab$")
     public void navigateToTab(String tabName) {
         projectManager.navigateToTab(tabName);
     }*/
@@ -62,6 +64,11 @@ public class GenericSteps {
     @When("^I perform quick search \"([^\"]*)\" on table \"([^\"]*)\"$")
     public void quickSearchOnTable(String searchText, String tableName) {
         projectManager.quickSearchOnTable(searchText, tableName);
+    }
+    
+    @When("^I perform quick search for \"([^\"]*)\" for the parent value \"([^\"]*)\" on grid \"([^\"]*)\"$")
+    public void quickSearchOnGridTable(String searchTerm, String anyUniqueColumnValueFromParent, String flexTableDivId) {
+        projectManager.quickSearchOnGridTable(flexTableDivId, anyUniqueColumnValueFromParent, searchTerm);
     }
 
     @When("^I click on the \"([^\"]*)\" icon for the \"([^\"]*)\"$")
@@ -154,9 +161,9 @@ public class GenericSteps {
         projectManager.closeModal();
     }
     
-    @Given("^I fill in the form$")
-    public void fillForm() {
-        projectManager.fillForm();
+    @Given("^I complete filling up the standard form$")
+    public void fillStandardForm() {
+        projectManager.fillStandardForm();
     } 
 
     @When("^I enter \"([^\"]*)\" values from \"([^\"]*)\"$")
@@ -170,7 +177,7 @@ public class GenericSteps {
     }
 
     @When("^I re-login to \"([^\"]*)\" app as \"([^\"]*)\" User$")
-    public void reloginToggleToApp(String appName, String userName) {
+    public void reloginToggleToApp(String appName, String userName) throws IOException {
         projectManager.reloginToggleToApp(appName, userName);
     }
 
@@ -270,17 +277,17 @@ public class GenericSteps {
     }
     
     @Given("^Two Approvers \"([^\"]*)\", \"([^\"]*)\" approve \"([^\"]*)\"$")
-    public void twoApproversApproveRecord(String programApprover, String executiveApprover, String recordName, DataTable dataTable) {
+    public void twoApproversApproveRecord(String programApprover, String executiveApprover, String recordName, DataTable dataTable) throws IOException {
         projectManager.twoApproversApproveRecord(programApprover, executiveApprover, recordName, dataTable);
     }
     
     @Given("^I login and view the award \"([^\"]*)\" with name \"([^\"]*)\" as User \"([^\"]*)\"$")
-    public void reloginToViewAward(String awardId, String awardName, String awardOwner) {
+    public void reloginToViewAward(String awardId, String awardName, String awardOwner) throws IOException {
         projectManager.reloginToViewAward(awardId, awardName, awardOwner);
     }
     
     @Given("^Subrecipient \"([^\"]*)\" receives the task for \"([^\"]*)\"$")
-    public void subrecipientTask(String subrecipient, String uniqueColumnValue,  DataTable dataTable) {
+    public void subrecipientTask(String subrecipient, String uniqueColumnValue,  DataTable dataTable) throws IOException {
         projectManager.subrecipientTask(subrecipient, uniqueColumnValue, dataTable);
     }
     

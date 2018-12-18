@@ -1,5 +1,6 @@
 package com.ggproduct.automation.pageobjects;
 
+import java.io.IOException;
 import java.util.Map;
 
 import com.automation.rei.controller.Controller;
@@ -14,7 +15,7 @@ public class MonitoringPage extends ProjectManager {
         super(controller, handler, govgrants);
     }
 
-    public void navigateToMonitoringRecord(String user, String recordName, String awardName, DataTable dataTable) {
+    public void navigateToMonitoringRecord(String user, String recordName, String awardName, DataTable dataTable) throws IOException {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
         navigateToTab(dataTableMap.get("Navigation").get("Step 2"));

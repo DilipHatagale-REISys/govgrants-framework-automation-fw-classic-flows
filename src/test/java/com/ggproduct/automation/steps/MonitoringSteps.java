@@ -1,5 +1,7 @@
 package com.ggproduct.automation.steps;
 
+import java.io.IOException;
+
 import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
@@ -16,7 +18,7 @@ public class MonitoringSteps {
     }
     
     @Given("^I re-login as \"([^\"]*)\" to view the monitoring record \"([^\"]*)\" for the award \"([^\"]*)\"$")
-    public void navigateToMonitoringRecord(String user, String recordName, String awardName, DataTable dataTable) {
+    public void navigateToMonitoringRecord(String user, String recordName, String awardName, DataTable dataTable) throws IOException {
         monitoringPage.navigateToMonitoringRecord(user, recordName, awardName, dataTable);
     }
 }

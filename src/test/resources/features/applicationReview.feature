@@ -115,7 +115,7 @@ Feature: Validate all scenarios in the Application Review
     And I click "Pending Tasks" inside side bar "My Tasks"
     When I perform quick search "SME Review" on table "PhasePendingTasks"
     And I click on the "Start" icon for the "SME Review"
-    When I fill in the Review form
+    When I complete filling in the Review form
     And I click on "Save" button
     When I click on "Submit" button
     And I re-login to "As a Grantor" app as "FO" User
@@ -123,7 +123,7 @@ Feature: Validate all scenarios in the Application Review
     And I click "Pending Tasks" inside side bar "My Tasks"
     When I perform quick search "SME Review" on table "PhasePendingTasks"
     And I click on the "Start" icon for the "SME Review"
-    When I fill in the Review form
+    When I complete filling in the Review form
     And I click on "Save" button
     When I click on "Submit" button
     And I re-login to "As a Grantor" app as "EXE" User
@@ -131,7 +131,7 @@ Feature: Validate all scenarios in the Application Review
     And I click "Pending Tasks" inside side bar "My Tasks"
     When I perform quick search "SME Review" on table "PhasePendingTasks"
     And I click on the "Start" icon for the "SME Review"
-    When I fill in the Review form
+    When I complete filling in the Review form
     And I click on "Save" button
     When I click on "Submit" button
 	Then I see that "SME Review" is in "In Progress" status
@@ -283,7 +283,7 @@ Feature: Validate all scenarios in the Application Review
     And I click "Pending Tasks" inside side bar "My Tasks"
     When I perform quick search "Management Review" on table "PhasePendingTasks"
     And I click on the "Start" icon for the "Management Review"
-    When I fill in the Review form
+    When I complete filling in the Review form
     And I click on "Save" button
     When I click on "Submit" button
 	    

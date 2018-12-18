@@ -4,11 +4,9 @@ import java.io.IOException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +33,7 @@ public class ProjectManager extends ProjectWebServices {
     public final String defaultPassword = "SALESFORCE2018";
     public final String defaultLongText = "Automation test description";
     private final By headerOverviewPath, attachmentClassificationPath, attachmentDescriptionPath, attachmentFilePath,
-            lookUpSearchPath, lookUpIFramePath, approverDescription, acknowledgementCheckboxPath, getFormTitles;
+            lookUpSearchPath, lookUpIFramePath, approverDescription, acknowledgementCheckboxPath;
 
     /**
      * Super Constructor
@@ -56,7 +54,6 @@ public class ProjectManager extends ProjectWebServices {
         lookUpIFramePath = By.xpath("//iframe[@id='iframeCustomLookupModalId']");
         approverDescription = By.xpath("//div/label[text()=' Description ']/../span/textarea");
         acknowledgementCheckboxPath = By.xpath("//input[@type='checkbox' and @value='I Agree']");
-        getFormTitles = By.xpath("//div[@class='panel-heading']//h3");
     }
 
     /********* BELOW ARE ONLY EXAMPLE METHODS AND SHALL BE REMOVED ************/
@@ -322,8 +319,9 @@ public class ProjectManager extends ProjectWebServices {
      * 
      * @param appName
      * @param userName
+     * @throws IOException 
      */
-    public void reloginToggleToApp(String appName, String userName) {
+    public void reloginToggleToApp(String appName, String userName) throws IOException {
         reloginAsDifferentUser(userName);
         toggleApp(appName);
     }
@@ -354,6 +352,17 @@ public class ProjectManager extends ProjectWebServices {
      */
     public void assertColumnValueOnTable(String status) {
         Assert.assertTrue(isStatusCorrect(status));
+    }
+
+    /**
+     * To perform quick search on a table
+     * 
+     * @param searchText
+     * @param tableName
+     */
+    public void quickSearchOnGridTable(String flexTableDivId, String anyUniqueColumnValueFromParent,
+            String searchTerm) {
+        govgrants.quickSearch().performEnhancedGridSearch(flexTableDivId, anyUniqueColumnValueFromParent, searchTerm);
     }
 
     /**
@@ -678,25 +687,8 @@ public class ProjectManager extends ProjectWebServices {
         govgrants.flexTable().editFlexTableRowsInline(tableId, iconName, rowValues);
     }
 
-    public void fillForm() {
-        for (int i = 0; i < getTitlesForForm().size(); i++) {
-            for (int j = 1; j <= getcountofTextAreaInForm(getTitlesForForm().get(i)); j++) {
-                reiDriver.textInput().clearText(getTextAreaInForm(getTitlesForForm().get(i), j));
-                reiDriver.textInput().enterText(getTextAreaInForm(getTitlesForForm().get(i), j), defaultLongText);
-            }
-        }
-
-        for (int i = 0; i < getTitlesForForm().size(); i++) {
-            for (int j = 1; j <= getcountofDropdownInForm(getTitlesForForm().get(i)); j++) {
-                reiDriver.findMyElement().getElement(getDropdownInForm(getTitlesForForm().get(i), j)).click();
-            }
-        }
-
-        for (int i = 0; i < getTitlesForForm().size(); i++) {
-            for (int j = 1; j <= getcountofCheckboxInForm(getTitlesForForm().get(i)); j++) {
-                reiDriver.findMyElement().getElement(getCheckboxInForm(getTitlesForForm().get(i), j)).click();
-            }
-        }
+    public void fillStandardForm() {
+        govgrants.inputForms().completeFillingStandardForm();
     }
 
     /******* "Consolidated Generic Methods across the Modules" **********/
@@ -775,7 +767,11 @@ public class ProjectManager extends ProjectWebServices {
                 dataTableMap.get("Focus Area").get("Step 3"), dataTableMap.get("Focus Area").get("Step 4"));
         chooseRecordForAssociation(dataTableMap.get("Focus Area").get("Step 5"), focusArea,
                 dataTableMap.get("Focus Area").get("Step 6"));
-        closeModal();
+        try {
+            closeModal();
+        } catch(Exception ex) {
+            reiDriver.get().getRefresh();
+        }
 
         // Objective association
         clickOnSubtab(dataTableMap.get("Objective").get("Step 1"));
@@ -835,8 +831,8 @@ public class ProjectManager extends ProjectWebServices {
         addFieldsForInlineTable(dataTableMap.get("Checklist FlexTable").get("Step 1"),
                 dataTableMap.get("Checklist FlexTable").get("Step 2"), inlineRowAdditionDatableSeperator(dataTableMap));
         clickOnFlextableRowButton(dataTableMap.get("Upload Modal").get("Step 1"),
-                dataTableMap.get("Upload Modal").get("Value 2"), dataTableMap.get("Upload Modal").get("Step 3"));
-        uploadFile(fileName, dataTableMap.get("Upload file").get("ValStepue 1"),
+                dataTableMap.get("Upload Modal").get("Step 2"), dataTableMap.get("Upload Modal").get("Step 3"));
+        uploadFile(fileName, dataTableMap.get("Upload file").get("Step 1"),
                 dataTableMap.get("Upload file").get("Step 2"));
         closeModal();
     }
@@ -862,9 +858,10 @@ public class ProjectManager extends ProjectWebServices {
      * @param programApprover
      * @param executiveApprover
      * @param programName
+     * @throws IOException 
      */
     public void twoApproversApproveRecord(String programApprover, String executiveApprover, String recordName,
-            DataTable dataTable) {
+            DataTable dataTable) throws IOException {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), programApprover);
         navigateToTab(dataTableMap.get("Navigation").get("Step 2"));
@@ -886,8 +883,9 @@ public class ProjectManager extends ProjectWebServices {
      * @param awardId
      * @param awardName
      * @param awardOwner
+     * @throws IOException 
      */
-    public void reloginToViewAward(String awardId, String awardName, String awardOwner) {
+    public void reloginToViewAward(String awardId, String awardName, String awardOwner) throws IOException {
         try {
             loginToggleToApp("As a Grantor", awardOwner);
         } catch (Exception ex) {
@@ -908,8 +906,9 @@ public class ProjectManager extends ProjectWebServices {
      * @param subrecipient
      * @param uniqueColumnValue
      * @param dataTable
+     * @throws IOException 
      */
-    public void subrecipientTask(String subrecipient, String uniqueColumnValue, DataTable dataTable) {
+    public void subrecipientTask(String subrecipient, String uniqueColumnValue, DataTable dataTable) throws IOException {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         reloginToGrantsPortal(subrecipient);
         navigateToTab(dataTableMap.get("Navigation").get("Step 1"));
@@ -923,7 +922,7 @@ public class ProjectManager extends ProjectWebServices {
         clickOnSubtab(dataTableMap.get("Navigation").get("Step 1"));
         clickOnFlextableRowButton(dataTableMap.get("FlexTable").get("Step 1"), formName,
                 dataTableMap.get("FlexTable").get("Step 2"));
-        fillForm();
+        govgrants.inputForms().completeFillingStandardForm();
         clickOnPageButton(dataTableMap.get("Form Button").get("Step 1"));
         clickOnPageButton(dataTableMap.get("Form Button").get("Step 2"));
         clickOnFlextableButton(dataTableMap.get("Validation").get("Step 1"),
@@ -949,38 +948,26 @@ public class ProjectManager extends ProjectWebServices {
                 + "']|//div[contains(@class,'panel-heading')]//*[text()='" + sectionName + "']");
     }
 
-    private void reloginAsDifferentUser(String userName) {
+    private void reloginAsDifferentUser(String userName) throws IOException {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         reiDriver.WaitFor().makeThreadSleep(1000);
-        reiDriver.WaitFor()
-                .WaitForElementToBePresent(By.xpath("//img[@alt='User Avatar']/..//i[@class='fa fa-caret-down']"))
-                .click();
+        govgrants.mainPage().clickLoginDropDown();
         govgrants.mainPage().getLoginDropDownItems("Logout").click();
-        try {
-            reiDriver.eatCookies().deleteAllCookies();
-            reiDriver.WaitFor().makeThreadSleep(500);
-            navigateToURL("PRODUCT PORTAL");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        reiDriver.eatCookies().deleteAllCookies();
+        reiDriver.WaitFor().makeThreadSleep(500);
+        navigateToURL("PRODUCT PORTAL");
         govgrants.mainPage().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);
         govgrants.mainPage().waitForEgmsHeader();
     }
 
-    public void reloginToGrantsPortal(String userName) {
+    public void reloginToGrantsPortal(String userName) throws IOException {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         reiDriver.WaitFor().makeThreadSleep(1000);
-        reiDriver.WaitFor()
-                .WaitForElementToBePresent(By.xpath("//img[@alt='User Avatar']/..//i[@class='fa fa-caret-down']"))
-                .click();
+        govgrants.mainPage().clickLoginDropDown();
         govgrants.mainPage().getLoginDropDownItems("Logout").click();
-        try {
-            reiDriver.eatCookies().deleteAllCookies();
-            reiDriver.WaitFor().makeThreadSleep(500);
-            navigateToURL("SUBRECIPIENT PORTAL");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        reiDriver.eatCookies().deleteAllCookies();
+        reiDriver.WaitFor().makeThreadSleep(500);
+        navigateToURL("SUBRECIPIENT PORTAL");
         govgrants.mainPage().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);
         govgrants.mainPage().waitForEgmsHeader();
     }
@@ -1144,60 +1131,14 @@ public class ProjectManager extends ProjectWebServices {
         List<Map<String, String>> listOfMapForInlineMethod = new ArrayList<Map<String, String>>();
         Map<String, String> inlineMap = new HashMap<String, String>();
         for (String mainMapKey : convertedMapOfMaps.keySet()) {
-            System.out.println("forString " + mainMapKey);
             if (mainMapKey.equals("Inline Column Title")) {
                 for (String innerMapKey : convertedMapOfMaps.get(mainMapKey).keySet()) {
-                    System.out.println("innerFor " + innerMapKey);
                     inlineMap.put(convertedMapOfMaps.get(mainMapKey).get(innerMapKey),
                             convertedMapOfMaps.get("Inline values").get(innerMapKey));
-                    System.out.println("inlineMap " + inlineMap);
                 }
                 listOfMapForInlineMethod.add(inlineMap);
-                System.out.println("inlineDataTableList " + listOfMapForInlineMethod);
             }
         }
         return listOfMapForInlineMethod;
     }
-
-    private List<String> getTitlesForForm() {
-        List<String> formTitles = new ArrayList<String>();
-        for (WebElement myElement : reiDriver.findMyElement().getElements(getFormTitles)) {
-            Collections.addAll(formTitles, myElement.getText());
-        }
-        return formTitles;
-    }
-
-    private int getcountofTextAreaInForm(String title) {
-        return reiDriver.findMyElement()
-                .getElements(By.xpath("//div[@class='panel-heading']//*[text()='" + title + "']/../..//textarea"))
-                .size();
-    }
-
-    private int getcountofDropdownInForm(String title) {
-        return reiDriver.findMyElement()
-                .getElements(By.xpath("//div[@class='panel-heading']//*[text()='" + title + "']/../..//select")).size();
-    }
-
-    private int getcountofCheckboxInForm(String title) {
-        return reiDriver.findMyElement()
-                .getElements(By.xpath(
-                        "//div[@class='panel-heading']//*[text()='" + title + "']/../..//input[@type='checkbox']"))
-                .size();
-    }
-
-    private By getTextAreaInForm(String title, int qNumber) {
-        return By.xpath("//div[@class='panel-heading']//*[text()='" + title
-                + "']/../..//div[contains(@class,'edit-layout')]/div[" + qNumber + "]//textarea");
-    }
-
-    private By getDropdownInForm(String title, int qNumber) {
-        return By.xpath("//div[@class='panel-heading']//*[text()='" + title
-                + "']/../..//div[contains(@class,'edit-layout')]/div[" + qNumber + "]//select/option[2]");
-    }
-
-    private By getCheckboxInForm(String title, int qNumber) {
-        return By.xpath("//div[@class='panel-heading']//*[text()='" + title
-                + "']/../..//div[contains(@class,'edit-layout')]/div[" + qNumber + "]//input[@type='checkbox']");
-    }
-
 }

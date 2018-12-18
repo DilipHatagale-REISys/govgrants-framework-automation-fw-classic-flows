@@ -3,7 +3,7 @@ Feature: Validate all scenarios for program
 
 	Background: Create Program
 	Given I create a pre-award record as user "EXE" from sheet "RequiredForSave" in excel "Program_Field_Values.xlsx"
-	| Actions 			 | Step 1 	   		 | Step 2    	  | Step 3 				    |
+	| Actions 	 | Step 1 	   		 | Step 2    	  | Step 3 				    |
 	| Navigation | As a Grantor		 | Planning  	  |	Programs				|
 	| FlexTable  | Internal Programs | Programs 	  | Draft Internal Programs |
 	| Creation   | New				 | Save And Close | Save					|
@@ -20,7 +20,7 @@ Feature: Validate all scenarios for program
   
   	@34503 @programCreation @program
   	Scenario: Verifying if the EXE, PM, PO has create access to Internal Program
-	Then I see that "Created" status is in "green" on progress bar
+  	Then I see that "Created" status is in "green" on progress bar
     
   	@34731 @programEdition @program
   	Scenario: Verifying if the EXE, PM, PO has create access to Internal Program
@@ -189,7 +189,7 @@ Feature: Validate all scenarios for program
     Given I complete the fields from the sheet "RequiredForSubmit" in excel "Program_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-     And I associate Contact "Automation EXE", Focus Area "00005", Objective "SPO-0006"
+    And I associate Contact "Automation EXE", Focus Area "00005", Objective "SPO-0006"
     | Actions 	 | Step 1   | Step 2	| Step 3  			  | Step 4 		 					   | Step 5  	| Step 6 				   |
     | Contact    | Overview | Associate | Contacts 			  | ProgramContacts 				   | Add	  	| AssociateProgramContacts |
     | Focus Area | Setup	| Associate | Related Focus Areas | flexGridGrantorServiceAreasProgram | Associate	| popupflextable 		   |

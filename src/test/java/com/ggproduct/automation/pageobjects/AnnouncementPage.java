@@ -1,7 +1,7 @@
 package com.ggproduct.automation.pageobjects;
 
 import java.util.Map;
-
+import java.io.IOException;
 import java.util.List;
 import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.CoreHandlers;
@@ -178,9 +178,10 @@ public class AnnouncementPage extends ProjectManager {
      * @param fiscalApprover
      * @param executiveApprover
      * @param announcementName
+     * @throws IOException 
      */
     public void approversApproveAnnouncement(String programApprover, String fiscalApprover, String executiveApprover,
-            String announcementName) {
+            String announcementName) throws IOException {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         reloginToggleToApp("As a Grantor", programApprover);
         navigateToTab("Announcements");
@@ -224,8 +225,9 @@ public class AnnouncementPage extends ProjectManager {
      * @param announcementType
      * @param announcementName
      * @param announcementOwner
+     * @throws IOException 
      */
-    public void completeReviewForAnnouncement(String reviewer, String announcementType, String announcementName, String announcementOwner) {
+    public void completeReviewForAnnouncement(String reviewer, String announcementType, String announcementName, String announcementOwner) throws IOException {
         reloginToggleToApp("As a Grantor", reviewer);
         navigateToTab("Announcements");
         clickOnSidebar("Pending Tasks", "My Tasks");

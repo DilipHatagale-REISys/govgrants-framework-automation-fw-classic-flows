@@ -2,7 +2,7 @@ package com.ggproduct.automation.steps;
 
 import com.automation.rei.controller.Controller;
 
-import java.util.Map;
+import java.io.IOException;
 import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.pageobjects.ApplicationPage;
@@ -54,7 +54,7 @@ public class ApplicationSteps {
     }
     
     @Given("^\"([^\"]*)\" is completed by clicking \"([^\"]*)\" for Application \"([^\"]*)\" as user \"([^\"]*)\" submitted for announcement \"([^\"]*)\"$")
-    public void completeReviewStepForApplication(String reviewStep, String buttonName, String applicationName, String announcementOwner, String announcementName) {
+    public void completeReviewStepForApplication(String reviewStep, String buttonName, String applicationName, String announcementOwner, String announcementName) throws IOException {
         applicationPage.completeReviewStepForApplication(reviewStep, buttonName, applicationName, announcementOwner, announcementName);
     }
     
@@ -79,7 +79,7 @@ public class ApplicationSteps {
     }
     
     @Given("^I complete review form as assigned reviewers for SME review$")
-    public void completeReviewFormSME() {
+    public void completeReviewFormSME() throws IOException {
         applicationPage.completeReviewFormSME();
     }
     
@@ -88,7 +88,7 @@ public class ApplicationSteps {
         applicationPage.addReviewerForReview(reviewer, tableId);
     }
     
-    @When("^I fill in the Review form$")
+    @When("^I complete filling in the Review form$")
     public void fillInReviewForm() {
         applicationPage.fillInReviewForm();
     }
@@ -114,7 +114,7 @@ public class ApplicationSteps {
     }
     
     @Given("^I complete review form as assigned reviewers for Management review$")
-    public void completeReviewFormManagement() {
+    public void completeReviewFormManagement() throws IOException {
         applicationPage.completeReviewFormManagement();
     }
     

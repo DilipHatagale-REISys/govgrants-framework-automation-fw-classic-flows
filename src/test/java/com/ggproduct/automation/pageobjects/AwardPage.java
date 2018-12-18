@@ -1,6 +1,8 @@
 package com.ggproduct.automation.pageobjects;
 
 import com.automation.rei.controller.Controller;
+
+import java.io.IOException;
 import java.util.Map;
 
 import org.openqa.selenium.By;
@@ -121,8 +123,9 @@ public class AwardPage extends ProjectManager  {
      * Handles approval of Award Risk Assessment
      * @param pragramApprover
      * @param fiscalApprover
+     * @throws IOException 
      */
-    public void approvalOfRiskAssessmentInAward(String pragramApprover, String fiscalApprover) {
+    public void approvalOfRiskAssessmentInAward(String pragramApprover, String fiscalApprover) throws IOException {
         reloginToggleToApp("As a Grantor", pragramApprover);
         navigateToTab("Monitoring");
         clickOnSidebar("Pending Tasks", "My Tasks");
@@ -142,8 +145,9 @@ public class AwardPage extends ProjectManager  {
      * @param awardId
      * @param awardName
      * @param awardOwner
+     * @throws IOException 
      */
-    public void reloginToViewAward(String awardId, String awardName, String awardOwner) {
+    public void reloginToViewAward(String awardId, String awardName, String awardOwner) throws IOException {
         try {
             loginToggleToApp("As a Grantor", awardOwner);
         } catch (Exception ex) {
@@ -182,8 +186,9 @@ public class AwardPage extends ProjectManager  {
      * @param subrecipientUser
      * @param awardName
      * @param comments
+     * @throws IOException 
      */
-    public void acceptanceOfAward(String subrecipientUser, String awardName, String comments) {
+    public void acceptanceOfAward(String subrecipientUser, String awardName, String comments) throws IOException {
         reloginToGrantsPortal(subrecipientUser);
         navigateToTab("Grants");
         clickOnSidebar("Pending Tasks", "My Tasks");
@@ -217,8 +222,9 @@ public class AwardPage extends ProjectManager  {
      * @param awardId
      * @param awardName
      * @param awardOwner
+     * @throws IOException 
      */
-    public void completeReviewForAward(String reviewer, String awardId, String awardName, String awardOwner) {
+    public void completeReviewForAward(String reviewer, String awardId, String awardName, String awardOwner) throws IOException {
         reloginToggleToApp("As a Grantor", reviewer);
         navigateToTab("Grants");
         clickOnSidebar("Pending Tasks", "My Tasks");
@@ -239,8 +245,9 @@ public class AwardPage extends ProjectManager  {
      * @param fiscalApprover
      * @param executiveApprover
      * @param awardName
+     * @throws IOException 
      */
-    public void approversApproveAward(String programApprover, String fiscalApprover, String executiveApprover, String awardName) {
+    public void approversApproveAward(String programApprover, String fiscalApprover, String executiveApprover, String awardName) throws IOException {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         reloginToggleToApp("As a Grantor", programApprover);
         navigateToTab("Announcements");
