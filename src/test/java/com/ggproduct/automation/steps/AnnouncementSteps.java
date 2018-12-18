@@ -1,5 +1,6 @@
 package com.ggproduct.automation.steps;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -69,7 +70,7 @@ public class AnnouncementSteps {
     }
     
     @Given("^Approvers \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\" approve the announcement \"([^\"]*)\"$")
-    public void approversApproveAnnouncement(String programApprover, String fiscalApprover, String executiveApprover, String announcementName) {
+    public void approversApproveAnnouncement(String programApprover, String fiscalApprover, String executiveApprover, String announcementName) throws IOException {
         announcementPage.approversApproveAnnouncement(programApprover, fiscalApprover, executiveApprover, announcementName);
     }
     
@@ -79,7 +80,7 @@ public class AnnouncementSteps {
     }
     
     @Given("^Review is completed as user \"([^\"]*)\" for the \"([^\"]*)\" announcement \"([^\"]*)\" created by \"([^\"]*)\"$")
-    public void completeReviewForAnnouncement(String reviewer, String announcementType, String announcementName, String announcementOwner) {
+    public void completeReviewForAnnouncement(String reviewer, String announcementType, String announcementName, String announcementOwner) throws IOException {
         announcementPage.completeReviewForAnnouncement(reviewer, announcementType, announcementName, announcementOwner);
     }
    

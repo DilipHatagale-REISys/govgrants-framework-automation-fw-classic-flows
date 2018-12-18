@@ -54,7 +54,6 @@ public class ProjectManager extends ProjectWebServices {
         lookUpIFramePath = By.xpath("//iframe[@id='iframeCustomLookupModalId']");
         approverDescription = By.xpath("//div/label[text()=' Description ']/../span/textarea");
         acknowledgementCheckboxPath = By.xpath("//input[@type='checkbox' and @value='I Agree']");
-
     }
 
     /********* BELOW ARE ONLY EXAMPLE METHODS AND SHALL BE REMOVED ************/
@@ -320,8 +319,9 @@ public class ProjectManager extends ProjectWebServices {
      * 
      * @param appName
      * @param userName
+     * @throws IOException 
      */
-    public void reloginToggleToApp(String appName, String userName) {
+    public void reloginToggleToApp(String appName, String userName) throws IOException {
         reloginAsDifferentUser(userName);
         toggleApp(appName);
     }
@@ -352,7 +352,18 @@ public class ProjectManager extends ProjectWebServices {
      */
     public void assertColumnValueOnTable(String status) {
         Assert.assertTrue(isStatusCorrect(status));
-    }   
+    }
+
+    /**
+     * To perform quick search on a table
+     * 
+     * @param searchText
+     * @param tableName
+     */
+    public void quickSearchOnGridTable(String flexTableDivId, String anyUniqueColumnValueFromParent,
+            String searchTerm) {
+        govgrants.quickSearch().performEnhancedGridSearch(flexTableDivId, anyUniqueColumnValueFromParent, searchTerm);
+    }
 
     /**
      * To perform quick search on a table
@@ -395,9 +406,14 @@ public class ProjectManager extends ProjectWebServices {
     public void clickOnFlextableButton(String buttonName, String flextableName, String flextableId) {
         reiDriver.JavaScript().scrollElementToPageDetailCenter(getScrollToSection(flextableName));
         reiDriver.WaitFor().makeThreadSleep(1000);
-        govgrants.flexTable().clickTableTopRightButton(flextableId, buttonName);
+        try {
+            govgrants.flexTable().clickTableTopRightButton(flextableId, buttonName);
+        } catch (Exception ex) {
+            reiDriver.findMyElement().getElement(By.xpath("//*[@id = '" + flextableId + "']//*[text() = '" + buttonName
+                    + "' or @value = '" + buttonName + "' or @type = '" + buttonName + "']")).click();
+        }
     }
-    
+
     /**
      * Clicking on flextable top button when one flextable is present in the page
      * 
@@ -427,7 +443,6 @@ public class ProjectManager extends ProjectWebServices {
         reiDriver.findMyElement().getElement(By.xpath("//div[@id='fieldReviewComments__c']//textarea"))
                 .sendKeys("Automation Reviewer comments");
     }
-
 
     /**
      * Handles clicking on the top button of the given flextable to open a modal and
@@ -460,7 +475,7 @@ public class ProjectManager extends ProjectWebServices {
      * @param columnUniqueValue
      * @param flextableName
      */
-    public void assertColumnOnTable(String columnUniqueValue, String flextableName ,String flextableId) {
+    public void assertColumnOnTable(String columnUniqueValue, String flextableName, String flextableId) {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         Assert.assertTrue(isColumnPresent(columnUniqueValue, flextableName, flextableId));
     }
@@ -487,11 +502,11 @@ public class ProjectManager extends ProjectWebServices {
     public void clickButtonOnGrid(String iconName, String uniqueColumnValue, String tableId) {
         try {
             govgrants.flexTable().clickTableActionIcons(iconName, uniqueColumnValue);
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             govgrants.flexTable().slideNestedFlexTable(tableId, 150);
             govgrants.flexTable().clickTableActionIcons(iconName, uniqueColumnValue);
         }
-        
+
     }
 
     /**
@@ -510,7 +525,7 @@ public class ProjectManager extends ProjectWebServices {
      * @param sectionName
      */
     public void expandGrid(String uniqueColumnValue, String gridName) {
-        reiDriver.WaitFor().makeThreadSleep(1500);
+        reiDriver.WaitFor().makeThreadSleep(3500);
         reiDriver.JavaScript().scrollpageToSpecificElement(getScrollToSection(gridName));
         try {
             govgrants.flexTable().expandOrCollapseNestedTable(uniqueColumnValue, true);
@@ -575,12 +590,13 @@ public class ProjectManager extends ProjectWebServices {
         reiDriver.WaitFor().makeThreadSleep(1000);
         try {
             govgrants.quickSearch().performModalSpecificQuickSearch(tableId, recordUniqueName);
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             By searchInputBox = By.cssSelector("div#" + tableId + " div>input[placeholder='Quick Search']");
             reiDriver.findMyElement().getElement(searchInputBox);
             reiDriver.WaitFor().WaitForElementToBePresent(searchInputBox).clear();
             reiDriver.WaitFor().WaitForElementToBePresent(searchInputBox).sendKeys(recordUniqueName);
-            reiDriver.WaitFor().WaitForElementToBePresent(By.cssSelector("div#" + tableId + " a>i.fa.fa-search")).click();
+            reiDriver.WaitFor().WaitForElementToBePresent(By.cssSelector("div#" + tableId + " a>i.fa.fa-search"))
+                    .click();
         }
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         reiDriver.WaitFor().makeThreadSleep(1000);
@@ -636,18 +652,20 @@ public class ProjectManager extends ProjectWebServices {
         govgrants.approvals().completeApprovalFlow(approvalDesicion, defaultLongText);
         govgrants.mainPage().waitForNavigationLogoToDisappear();
     }
-    
+
     /**
      * Handles entering of a single field value
+     * 
      * @param fieldAPIName
      * @param value
      */
     public void enterFieldValue(String fieldAPIName, String value) {
-        govgrants.inputForms().inputFormDataByFieldApiName(fieldAPIName, value);        
+        govgrants.inputForms().inputFormDataByFieldApiName(fieldAPIName, value);
     }
-    
+
     /**
      * Handles entering the comments in a confirmation box and click OK
+     * 
      * @param comments
      * @param confirmation
      */
@@ -655,41 +673,62 @@ public class ProjectManager extends ProjectWebServices {
         reiDriver.findMyElement().getElement(By.xpath("//form[@class='bootbox-form']//textarea")).sendKeys(comments);
         clickOnConfirmationtBox(confirmation);
     }
-    
+
     /**
      * Handles addition of row and filling in fields in a flex table
      */
     public void addFieldsForInlineTable(String tableId, String iconName, List<Map<String, String>> rowValues) {
-            govgrants.flexTable().enterFlexTableRows(tableId, iconName, rowValues);
+        govgrants.flexTable().enterFlexTableRows(tableId, iconName, rowValues);
     }
-    
+
     /**
      */
     public void fillFieldsForInlineTable(String tableId, String iconName, DataTable rowValues) {
-            govgrants.flexTable().editFlexTableRowsInline(tableId, iconName, rowValues);
+        govgrants.flexTable().editFlexTableRowsInline(tableId, iconName, rowValues);
     }
-    
+
+    public void fillStandardForm() {
+        govgrants.inputForms().completeFillingStandardForm();
+    }
+
     /******* "Consolidated Generic Methods across the Modules" **********/
-    
+
     /**
-     * Handles creation of a program from the sheet in an excel
+     * Handles creation of a pre-award record from the sheet in an excel
      * 
      * @param user
      * @param sheetName
      * @param excelFileName
      */
-    public void creationOfRecord(String user, String sheetName, String excelFileName, DataTable dataTable) {
+    public void creationOfPreAwardRecord(String user, String sheetName, String excelFileName, DataTable dataTable) {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
-        loginToggleToApp(dataTableMap.get("Program Navigation").get("Step 1"), user);
-        navigateToTab(dataTableMap.get("Program Navigation").get("Step 2"));
-        clickOnSidebar(dataTableMap.get("Program FlexTable").get("Step 1"),
-                dataTableMap.get("Program Navigation").get("Step 3"));
-        changeFlexTableView(dataTableMap.get("Program FlexTable").get("Step 3"));
-        clickOnPhaseFlexTableButton(dataTableMap.get("Program Creation").get("Step 1"),
-                dataTableMap.get("Program FlexTable").get("Step 2"));
+        loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
+        navigateToTab(dataTableMap.get("Navigation").get("Step 2"));
+        clickOnSidebar(dataTableMap.get("FlexTable").get("Step 1"), dataTableMap.get("Navigation").get("Step 3"));
+        changeFlexTableView(dataTableMap.get("FlexTable").get("Step 3"));
+        clickOnPhaseFlexTableButton(dataTableMap.get("Creation").get("Step 1"),
+                dataTableMap.get("FlexTable").get("Step 2"));
         enterFieldValues(sheetName, excelFileName);
-        clickOnModalButton(dataTableMap.get("Program Creation").get("Step 2"));
-        clickOnPageButton(dataTableMap.get("Program Creation").get("Step 3"));
+        clickOnModalButton(dataTableMap.get("Creation").get("Step 2"));
+        clickOnPageButton(dataTableMap.get("Creation").get("Step 3"));
+    }
+
+    /**
+     * Handles creation of a post award record from the sheet in an excel
+     * 
+     * @param user
+     * @param sheetName
+     * @param excelFileName
+     * @param dataTable
+     */
+    public void creationOfPostAwardRecord(String sheetName, String excelFileName, DataTable dataTable) {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        clickOnSubtab(dataTableMap.get("Navigation").get("Step 1"));
+        clickOnFlextableButton(dataTableMap.get("FlexTable").get("Step 1"), dataTableMap.get("FlexTable").get("Step 2"),
+                dataTableMap.get("FlexTable").get("Step 3"));
+        enterFieldValues(sheetName, excelFileName);
+        clickOnModalButton(dataTableMap.get("Creation").get("Step 1"));
+        clickOnPageButton(dataTableMap.get("Creation").get("Step 2"));
     }
 
     /**
@@ -706,7 +745,7 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     /**
-     * Handles association of contact, focus area and objective to a program
+     * Handles association of contact, focus area and objective
      * 
      * @param contact
      * @param focusArea
@@ -728,7 +767,11 @@ public class ProjectManager extends ProjectWebServices {
                 dataTableMap.get("Focus Area").get("Step 3"), dataTableMap.get("Focus Area").get("Step 4"));
         chooseRecordForAssociation(dataTableMap.get("Focus Area").get("Step 5"), focusArea,
                 dataTableMap.get("Focus Area").get("Step 6"));
-        closeModal();
+        try {
+            closeModal();
+        } catch(Exception ex) {
+            reiDriver.get().getRefresh();
+        }
 
         // Objective association
         clickOnSubtab(dataTableMap.get("Objective").get("Step 1"));
@@ -740,7 +783,23 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     /**
-     * Handles assigning of approvers to a program
+     * Handles association of participant
+     * 
+     * @param participant
+     * @param dataTable
+     */
+    public void associationOfRecord(String participant, DataTable dataTable) {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        clickOnSubtab(dataTableMap.get("Participant").get("Step 1"));
+        clickOnFlextableButton(dataTableMap.get("Participant").get("Step 2"),
+                dataTableMap.get("Participant").get("Step 3"), dataTableMap.get("Participant").get("Step 4"));
+        chooseRecordForAssociation(dataTableMap.get("Participant").get("Step 5"), participant,
+                dataTableMap.get("Participant").get("Step 6"));
+        closeModal();
+    }
+
+    /**
+     * Handles assigning two of approvers
      * 
      * @param programApprover
      * @param executiveApprover
@@ -748,16 +807,18 @@ public class ProjectManager extends ProjectWebServices {
     public void twoApproverSelection(String programApprover, String executiveApprover, DataTable dataTable) {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         clickOnSubtab(dataTableMap.get("Subtab").get("Step 1"));
-        clickOnFlextableRowButton(dataTableMap.get("Approver 1").get("Step 1"),dataTableMap.get("Approver 1").get("Step 2"),dataTableMap.get("Approver 1").get("Step 3"));
+        clickOnFlextableRowButton(dataTableMap.get("Approver 1").get("Step 1"),
+                dataTableMap.get("Approver 1").get("Step 2"), dataTableMap.get("Approver 1").get("Step 3"));
         fillInApproverDetails(programApprover);
         switchToParentFrame();
-        clickOnFlextableRowButton(dataTableMap.get("Approver 2").get("Step 1"),dataTableMap.get("Approver 2").get("Step 2"),dataTableMap.get("Approver 2").get("Step 3"));
+        clickOnFlextableRowButton(dataTableMap.get("Approver 2").get("Step 1"),
+                dataTableMap.get("Approver 2").get("Step 2"), dataTableMap.get("Approver 2").get("Step 3"));
         fillInApproverDetails(executiveApprover);
         switchToParentFrame();
     }
-    
+
     /**
-     * Handles addition of checklist to a program
+     * Handles addition of checklist
      * 
      * @param description
      * @param required
@@ -770,15 +831,14 @@ public class ProjectManager extends ProjectWebServices {
         addFieldsForInlineTable(dataTableMap.get("Checklist FlexTable").get("Step 1"),
                 dataTableMap.get("Checklist FlexTable").get("Step 2"), inlineRowAdditionDatableSeperator(dataTableMap));
         clickOnFlextableRowButton(dataTableMap.get("Upload Modal").get("Step 1"),
-                dataTableMap.get("Upload Modal").get("Value 2"), dataTableMap.get("Upload Modal").get("Step 3"));
-        uploadFile(fileName, dataTableMap.get("Upload file").get("ValStepue 1"),
+                dataTableMap.get("Upload Modal").get("Step 2"), dataTableMap.get("Upload Modal").get("Step 3"));
+        uploadFile(fileName, dataTableMap.get("Upload file").get("Step 1"),
                 dataTableMap.get("Upload file").get("Step 2"));
         closeModal();
     }
-    
-    
+
     /**
-     * Handles adding an attachment to a program
+     * Handles adding an attachment
      * 
      * @param fileName
      */
@@ -791,29 +851,82 @@ public class ProjectManager extends ProjectWebServices {
                 dataTableMap.get("Attachment Details").get("Step 2"));
         closeModal();
     }
-    
 
     /**
-     * Handles approving a program by the assigned approvers
+     * Handles approving a record by the assigned approvers
      * 
      * @param programApprover
      * @param executiveApprover
      * @param programName
+     * @throws IOException 
      */
-    public void twoApproversApproveRecord(String programApprover, String executiveApprover, String recordName, DataTable dataTable) {
+    public void twoApproversApproveRecord(String programApprover, String executiveApprover, String recordName,
+            DataTable dataTable) throws IOException {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
-        reloginToggleToApp(dataTableMap.get("Program Navigation").get("Step 1"), programApprover);
-        navigateToTab(dataTableMap.get("Program Navigation").get("Step 2"));
+        reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), programApprover);
+        navigateToTab(dataTableMap.get("Navigation").get("Step 2"));
         clickOnSidebar(dataTableMap.get("Pending Task").get("Step 1"), dataTableMap.get("Pending Task").get("Step 2"));
         quickSearchOnTable(recordName, dataTableMap.get("Pending Task").get("Step 3"));
         clickOnFlexTableIcon(dataTableMap.get("Approval Buttons").get("Step 1"), recordName);
         clickOnApprovalDecisionBox(dataTableMap.get("Approval Buttons").get("Step 2"));
-        reloginToggleToApp(dataTableMap.get("Program Navigation").get("Step 1"), executiveApprover);
-        navigateToTab(dataTableMap.get("Program Navigation").get("Step 2"));
+        reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), executiveApprover);
+        navigateToTab(dataTableMap.get("Navigation").get("Step 2"));
         clickOnSidebar(dataTableMap.get("Pending Task").get("Step 1"), dataTableMap.get("Pending Task").get("Step 2"));
         quickSearchOnTable(recordName, dataTableMap.get("Pending Task").get("Step 3"));
         clickOnFlexTableIcon(dataTableMap.get("Approval Buttons").get("Step 1"), recordName);
         clickOnApprovalDecisionBox(dataTableMap.get("Approval Buttons").get("Step 2"));
+    }
+
+    /**
+     * Handles re-logging in and to view the given award
+     * 
+     * @param awardId
+     * @param awardName
+     * @param awardOwner
+     * @throws IOException 
+     */
+    public void reloginToViewAward(String awardId, String awardName, String awardOwner) throws IOException {
+        try {
+            loginToggleToApp("As a Grantor", awardOwner);
+        } catch (Exception ex) {
+            reloginToggleToApp("As a Grantor", awardOwner);
+        }
+        navigateToTab("Grants");
+        clickOnSidebar("Grants and Subawards", "Grants, Awards & Amendments");
+        changeFlexTableView("Draft Grants");
+        quickSearchOnTable(awardName, "ActiveGrants");
+        clickOnFlexTableIcon("View", awardName);
+        clickOnSubtab("Subawards");
+        clickOnFlextableRowButton("View", awardId, "Subawards");
+    }
+
+    /**
+     * Handles logging in as specified subrecipient and checking for task
+     * 
+     * @param subrecipient
+     * @param uniqueColumnValue
+     * @param dataTable
+     * @throws IOException 
+     */
+    public void subrecipientTask(String subrecipient, String uniqueColumnValue, DataTable dataTable) throws IOException {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        reloginToGrantsPortal(subrecipient);
+        navigateToTab(dataTableMap.get("Navigation").get("Step 1"));
+        clickOnSidebar(dataTableMap.get("Left Panel").get("Step 1"), dataTableMap.get("Left Panel").get("Step 2"));
+        quickSearchOnTable(uniqueColumnValue, dataTableMap.get("FlexTable").get("Step 1"));
+        clickOnFlexTableIcon(dataTableMap.get("FlexTable").get("Step 2"), uniqueColumnValue);
+    }
+
+    public void fillingUpForm(String formName, DataTable dataTable) {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        clickOnSubtab(dataTableMap.get("Navigation").get("Step 1"));
+        clickOnFlextableRowButton(dataTableMap.get("FlexTable").get("Step 1"), formName,
+                dataTableMap.get("FlexTable").get("Step 2"));
+        govgrants.inputForms().completeFillingStandardForm();
+        clickOnPageButton(dataTableMap.get("Form Button").get("Step 1"));
+        clickOnPageButton(dataTableMap.get("Form Button").get("Step 2"));
+        clickOnFlextableButton(dataTableMap.get("Validation").get("Step 1"),
+                dataTableMap.get("FlexTable").get("Step 2"), dataTableMap.get("Validation").get("Step 2"));
     }
 
     /******* "Local Methods with Limited functionality " **********/
@@ -835,36 +948,26 @@ public class ProjectManager extends ProjectWebServices {
                 + "']|//div[contains(@class,'panel-heading')]//*[text()='" + sectionName + "']");
     }
 
-    private void reloginAsDifferentUser(String userName) {
+    private void reloginAsDifferentUser(String userName) throws IOException {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         reiDriver.WaitFor().makeThreadSleep(1000);
-        reiDriver.WaitFor()
-                .WaitForElementToBePresent(By.xpath("//img[@alt='User Avatar']/..//i[@class='fa fa-caret-down']"))
-                .click();
+        govgrants.mainPage().clickLoginDropDown();
         govgrants.mainPage().getLoginDropDownItems("Logout").click();
-        try {
-            reiDriver.eatCookies().deleteAllCookies();
-            reiDriver.WaitFor().makeThreadSleep(500);
-            navigateToURL("PRODUCT PORTAL");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        reiDriver.eatCookies().deleteAllCookies();
+        reiDriver.WaitFor().makeThreadSleep(500);
+        navigateToURL("PRODUCT PORTAL");
         govgrants.mainPage().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);
         govgrants.mainPage().waitForEgmsHeader();
     }
-    
-    public void reloginToGrantsPortal(String userName) {
+
+    public void reloginToGrantsPortal(String userName) throws IOException {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         reiDriver.WaitFor().makeThreadSleep(1000);
-        reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//img[@alt='User Avatar']/..//i[@class='fa fa-caret-down']")).click();
+        govgrants.mainPage().clickLoginDropDown();
         govgrants.mainPage().getLoginDropDownItems("Logout").click();
-        try {
-            reiDriver.eatCookies().deleteAllCookies();
-            reiDriver.WaitFor().makeThreadSleep(500);
-            navigateToURL("SUBRECIPIENT PORTAL");
-        } catch(Exception e) {
-            System.out.println(e);
-        }
+        reiDriver.eatCookies().deleteAllCookies();
+        reiDriver.WaitFor().makeThreadSleep(500);
+        navigateToURL("SUBRECIPIENT PORTAL");
         govgrants.mainPage().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);
         govgrants.mainPage().waitForEgmsHeader();
     }
@@ -873,8 +976,9 @@ public class ProjectManager extends ProjectWebServices {
         return By.xpath("//iframe[@id='" + iFrameId + "']");
     }
 
-    private By getCheckboxForSpecificRecord(String flexttableName,String uniqueColumnValue) {
-        return By.xpath("//span[text()='"+flexttableName+"']/..//div[@class='table-responsive']//td//*[text()='"+uniqueColumnValue+"']/ancestor::tr[1]//td//input[@type='checkbox']");
+    private By getCheckboxForSpecificRecord(String flexttableName, String uniqueColumnValue) {
+        return By.xpath("//span[text()='" + flexttableName + "']/..//div[@class='table-responsive']//td//*[text()='"
+                + uniqueColumnValue + "']/ancestor::tr[1]//td//input[@type='checkbox']");
     }
 
     private By getCheckbox() {
@@ -944,9 +1048,9 @@ public class ProjectManager extends ProjectWebServices {
         reiDriver.textInput().enterText(fieldInput,
                 reiDriver.get().getCurrentDateWithOffsetInDesiredFormat(offset, inputFormat));
         try {
-        reiDriver.WaitFor().WaitForElementToBePresent(fieldInput).click();
+            reiDriver.WaitFor().WaitForElementToBePresent(fieldInput).click();
         } catch (Exception e) {
-            
+
         }
     }
 
@@ -964,8 +1068,11 @@ public class ProjectManager extends ProjectWebServices {
                 && !reiDriver.is().IsElementPresentQuick(By.xpath("//body[contains(@class, 'modal-open')]"))) {
             attempts++;
             try {
-                reiDriver.WaitFor().FluentWaitForClick(By.xpath("//div[@id='field" + fieldApiName + "']//dd//span[@class='lookupInput']/input")).sendKeys(fieldValue);
-              
+                reiDriver.WaitFor()
+                        .FluentWaitForClick(By
+                                .xpath("//div[@id='field" + fieldApiName + "']//dd//span[@class='lookupInput']/input"))
+                        .sendKeys(fieldValue);
+
                 reiDriver.WaitFor().FluentWaitForClick(By.xpath("//div[@id='field" + fieldApiName + "']//dd//a"))
                         .click();
                 reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//body[contains(@class, 'modal-open')]"));
@@ -1018,21 +1125,18 @@ public class ProjectManager extends ProjectWebServices {
             reiDriver.WaitFor().FluentWaitForClick(fieldInput).click();
         }
     }
-    
-    private List<Map<String, String>> inlineRowAdditionDatableSeperator(Map<String, Map<String, String>> convertedMapOfMaps){
+
+    private List<Map<String, String>> inlineRowAdditionDatableSeperator(
+            Map<String, Map<String, String>> convertedMapOfMaps) {
         List<Map<String, String>> listOfMapForInlineMethod = new ArrayList<Map<String, String>>();
         Map<String, String> inlineMap = new HashMap<String, String>();
         for (String mainMapKey : convertedMapOfMaps.keySet()) {
-            System.out.println("forString " + mainMapKey);
             if (mainMapKey.equals("Inline Column Title")) {
                 for (String innerMapKey : convertedMapOfMaps.get(mainMapKey).keySet()) {
-                    System.out.println("innerFor " + innerMapKey);
                     inlineMap.put(convertedMapOfMaps.get(mainMapKey).get(innerMapKey),
                             convertedMapOfMaps.get("Inline values").get(innerMapKey));
-                    System.out.println("inlineMap " + inlineMap);
                 }
                 listOfMapForInlineMethod.add(inlineMap);
-                System.out.println("inlineDataTableList " + listOfMapForInlineMethod);
             }
         }
         return listOfMapForInlineMethod;

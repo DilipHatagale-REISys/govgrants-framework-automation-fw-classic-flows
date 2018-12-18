@@ -4,6 +4,8 @@ import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.pageobjects.AwardPage;
+
+import java.io.IOException;
 import java.util.Map;
 
 import cucumber.api.DataTable;
@@ -57,12 +59,12 @@ public class AwardSteps {
     }
     
     @Given("^I approve Risk Assessment as Program Approver \"([^\"]*)\" and Fiscal Approver \"([^\"]*)\"$")
-    public void approvalOfRiskAssessmentInAward(String pragramApprover, String fiscalApprover) {
+    public void approvalOfRiskAssessmentInAward(String pragramApprover, String fiscalApprover) throws IOException {
         awardPage.approvalOfRiskAssessmentInAward(pragramApprover, fiscalApprover);
     }
     
     @Given("^I re-login and view the award \"([^\"]*)\" with name \"([^\"]*)\" as User \"([^\"]*)\"$")
-    public void reloginToViewAward(String awardId, String awardName, String awardOwner) {
+    public void reloginToViewAward(String awardId, String awardName, String awardOwner) throws IOException {
         awardPage.reloginToViewAward(awardId, awardName, awardOwner);
     }
     
@@ -72,7 +74,7 @@ public class AwardSteps {
     }
     
     @Given("^The subrecipient user \"([^\"]*)\" accepts the award \"([^\"]*)\" with comments \"([^\"]*)\"$")
-    public void acceptanceOfAward(String subrecipientUser, String awardName, String comments) {
+    public void acceptanceOfAward(String subrecipientUser, String awardName, String comments) throws IOException {
         awardPage.acceptanceOfAward(subrecipientUser, awardName, comments);
     }
     
@@ -82,12 +84,12 @@ public class AwardSteps {
     }
     
     @Given("^Review is completed as user \"([^\"]*)\" for the award \"([^\"]*)\" with name \"([^\"]*)\" created by \"([^\"]*)\"$")
-    public void completeReviewForAward(String reviewer, String awardId, String awardName, String awardOwner) {
+    public void completeReviewForAward(String reviewer, String awardId, String awardName, String awardOwner) throws IOException {
         awardPage.completeReviewForAward(reviewer, awardId, awardName, awardOwner);
     }
     
     @Given("^Approvers \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\" approve the award \"([^\"]*)\"$")
-    public void approversApproveAward(String programApprover, String fiscalApprover, String executiveApprover, String awardName) {
+    public void approversApproveAward(String programApprover, String fiscalApprover, String executiveApprover, String awardName) throws IOException {
         awardPage.approversApproveAward(programApprover, fiscalApprover, executiveApprover, awardName);
     }
     

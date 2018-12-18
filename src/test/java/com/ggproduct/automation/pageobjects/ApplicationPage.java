@@ -1,27 +1,16 @@
 package com.ggproduct.automation.pageobjects;
 
-import java.util.ArrayList;
-import java.util.Map;
-
-import java.util.Collections;
-import java.util.List;
+import java.io.IOException;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
 import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.projectmanager.ProjectManager;
-
 import cucumber.api.DataTable;
 
 public class ApplicationPage extends ProjectManager {
-    private final By getTitles, ConflictOfInterestReviewFromPath;
-
     public ApplicationPage(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
         super(controller, handler, govgrants);
-        getTitles = By.xpath("//div[@class='panel-heading']//h3");
-        ConflictOfInterestReviewFromPath = By.xpath("//span//input[@type='radio'][@value='I agree']");
     }
 
     /**
@@ -110,23 +99,26 @@ public class ApplicationPage extends ProjectManager {
         clickOnFlextableRowButton("Attach", "Not Applicable", "Supporting Documents Checklist");
         uploadFile(fileName, "Checklist", "Application");
         closeModal();
-        clickOnFlextableRowButton("Attach", "Not Applicable", "Supporting Documents Checklist" );
+        clickOnFlextableRowButton("Attach", "Not Applicable", "Supporting Documents Checklist");
         uploadFile(fileName, "Checklist", "Application");
         closeModal();
     }
 
     /**
-     * Handles completion of one review process by clicking on Promote to Next step button for the passed application
+     * Handles completion of one review process by clicking on Promote to Next step
+     * button for the passed application
+     * 
      * @param reviewStep
      * @param applicationName
      * @param announcementOwner
      * @param announcementName
+     * @throws IOException 
      */
-    public void completeReviewStepForApplication(String reviewStep, String buttonName, String applicationName, String announcementOwner,
-            String announcementName) {
+    public void completeReviewStepForApplication(String reviewStep, String buttonName, String applicationName,
+            String announcementOwner, String announcementName) throws IOException {
         try {
             loginToggleToApp("As a Grantor", announcementOwner);
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             reloginToggleToApp("As a Grantor", announcementOwner);
         }
         navigateToTab("Applications");
@@ -138,16 +130,17 @@ public class ApplicationPage extends ProjectManager {
         scrollToSection("Manage Reviews");
         clickButtonOnGrid("View", reviewStep, "AnnouncementReviewStepsFlexToggle");
         clickOnCheckbox(applicationName, "Review Decisions");
-        clickOnFlextableButton(buttonName, "Review Decisions","flexGridPreScreenRelatedStepApplicationsFinal");
+        clickOnFlextableButton(buttonName, "Review Decisions", "flexGridPreScreenRelatedStepApplicationsFinal");
         try {
-        clickOnConfirmationtBox("Yes");
-        } catch(Exception e) {
-            
+            clickOnConfirmationtBox("Yes");
+        } catch (Exception e) {
+
         }
     }
 
     /**
      * Handles adding reviewer to a review step
+     * 
      * @param reviewer
      * @param tableId
      */
@@ -158,9 +151,10 @@ public class ApplicationPage extends ProjectManager {
         reiDriver.findMyElement()
                 .getElement(By.xpath("//ul[@class='select2-results']//li//span[text()='" + reviewer + "']")).click();
     }
-    
+
     /**
      * Handles entering of due date for SME review
+     * 
      * @param dueInDays
      */
     public void enterDueInDaysSME(DataTable rowValues) {
@@ -169,30 +163,32 @@ public class ApplicationPage extends ProjectManager {
 
     /**
      * Handles adding reviewer to SME review
+     * 
      * @param programReviewer
      * @param fiscalReviewer
      * @param complianceReviewer
      */
     public void addReviewerForReviewSME(String programReviewer, String fiscalReviewer, String complianceReviewer) {
         expandGrid("Program Review", "Review Forms");
-        clickOnFlextableButton("Add", "Reviewers","flexGridApplicationReviewTree");
+        clickOnFlextableButton("Add", "Reviewers", "flexGridApplicationReviewTree");
         addReviewerForReview(programReviewer, "RelatedExternalReviewersGridresizable");
-        clickOnFlextableButton("Save", "Review Forms","flexGridApplicationReviewTree");
+        clickOnFlextableButton("Save", "Review Forms", "flexGridApplicationReviewTree");
         collapseGrid("Program Review", "Review Forms");
         expandGrid("Fiscal Review", "Review Forms");
-        clickOnFlextableButton("Add", "Reviewers","flexGridApplicationReviewTree");
+        clickOnFlextableButton("Add", "Reviewers", "flexGridApplicationReviewTree");
         addReviewerForReview(fiscalReviewer, "RelatedExternalReviewersGridresizable");
-        clickOnFlextableButton("Save", "Review Forms","flexGridApplicationReviewTree");
+        clickOnFlextableButton("Save", "Review Forms", "flexGridApplicationReviewTree");
         collapseGrid("Fiscal Review", "Review Forms");
         expandGrid("Compliance Review", "Review Forms");
-        clickOnFlextableButton("Add", "Reviewers","flexGridApplicationReviewTree");
+        clickOnFlextableButton("Add", "Reviewers", "flexGridApplicationReviewTree");
         addReviewerForReview(complianceReviewer, "RelatedExternalReviewersGridresizable");
-        clickOnFlextableButton("Save", "Review Forms","flexGridApplicationReviewTree");
+        clickOnFlextableButton("Save", "Review Forms", "flexGridApplicationReviewTree");
         collapseGrid("Compliance Review", "Review Forms");
     }
 
     /**
      * Handles assigning of given application to the reviewer
+     * 
      * @param applicationName
      */
     public void assignApplicationToReviewerSME(String applicationName) {
@@ -217,13 +213,14 @@ public class ApplicationPage extends ProjectManager {
         clickOnCheckbox("Program Review", "Reviews");
         clickOnCheckbox("Fiscal Review", "Reviews");
         clickOnCheckbox("Compliance Review", "Reviews");
-        clickOnFlextableButton("Send for Review", "Reviews","flexGridStepReviews");
+        clickOnFlextableButton("Send for Review", "Reviews", "flexGridStepReviews");
     }
 
     /**
      * Handles completing review form as a reviewer in SME review
+     * @throws IOException 
      */
-    public void completeReviewFormSME() {
+    public void completeReviewFormSME() throws IOException {
         reloginToggleToApp("As a Grantor", "PM");
         navigateToTab("Applications");
         clickOnSidebar("Pending Tasks", "My Tasks");
@@ -249,29 +246,32 @@ public class ApplicationPage extends ProjectManager {
         clickOnPageButton("Save");
         clickOnPageButton("Submit");
     }
-    
+
     /**
      * Handles entering of due in days for management review
+     * 
      * @param dueInDays
      */
     public void enterDueInDaysManagement(DataTable rowValues) {
         fillFieldsForInlineTable("flexGridApplicationReviewTree", "Edit", rowValues);
     }
-    
+
     /**
      * Handles adding of reviewer to the management review
+     * 
      * @param managementReviewer
      */
     public void addReviewerForReviewManagement(String managementReviewer) {
         expandGrid("Management Review", "Review Forms");
-        clickOnFlextableButton("Add", "Reviewers","flexGridApplicationReviewTree");
+        clickOnFlextableButton("Add", "Reviewers", "flexGridApplicationReviewTree");
         addReviewerForReview(managementReviewer, "RelatedExternalReviewersGridresizable");
-        clickOnFlextableButton("Save", "Review Forms","flexGridApplicationReviewTree");
+        clickOnFlextableButton("Save", "Review Forms", "flexGridApplicationReviewTree");
         collapseGrid("Management Review", "Review Forms");
     }
-    
+
     /**
      * Handles assigning of given application to reviewer
+     * 
      * @param applicationName
      */
     public void assignApplicationToReviewerManagement(String applicationName) {
@@ -280,19 +280,20 @@ public class ApplicationPage extends ProjectManager {
         chooseRecordForAssociation("Assign", applicationName, "AssignPanelApplicationsTable");
         switchToParentFrame();
     }
-    
+
     /**
      * Handles choosing and sending the review records for review
      */
     public void chooseAndSendReviewsManagement() {
         clickOnCheckbox("Management Review", "Reviews");
-        clickOnFlextableButton("Send for Review", "Reviews","flexGridStepReviews");
+        clickOnFlextableButton("Send for Review", "Reviews", "flexGridStepReviews");
     }
-    
+
     /**
      * Handles completing review form as a reviewer in Management review
+     * @throws IOException 
      */
-    public void completeReviewFormManagement() {
+    public void completeReviewFormManagement() throws IOException {
         reloginToggleToApp("As a Grantor", "EXE");
         navigateToTab("Applications");
         clickOnSidebar("Pending Tasks", "My Tasks");
@@ -302,9 +303,10 @@ public class ApplicationPage extends ProjectManager {
         clickOnPageButton("Save");
         clickOnPageButton("Submit");
     }
-    
+
     /**
      * Handles entering the given value in Subaward Abbreviation in FDM
+     * 
      * @param value
      */
     public void enterSubAwardAbbreviationFDM(String value) {
@@ -312,9 +314,10 @@ public class ApplicationPage extends ProjectManager {
         enterFieldValue("GrantCode__c", value);
         clickOnPageButton("Save");
     }
-    
+
     /**
      * Handles entering of recommendation for the given application in FDM
+     * 
      * @param recommendation
      * @param budget
      * @param applicationName
@@ -323,9 +326,10 @@ public class ApplicationPage extends ProjectManager {
     public void enterRecommendationFDM(DataTable rowValues) {
         fillFieldsForInlineTable("inlineEditGridFundingDecisionMemoApplications", "Edit", rowValues);
     }
-    
+
     /**
      * Handles assigning of approver to FDM
+     * 
      * @param approverName
      * @param approverType
      */
@@ -340,175 +344,6 @@ public class ApplicationPage extends ProjectManager {
      * Handles filling up of any given review form
      */
     public void fillInReviewForm() {
-        reiDriver.findMyElement().getElement(ConflictOfInterestReviewFromPath).click();
-        for (int i = 0; i < getTitlesReviewForm().size(); i++) {
-            for (int j = 1; j <= getcountForRowsReviewForm(getTitlesReviewForm().get(i)); j++) {
-                reiDriver.textInput().clearText(getTextAreaReviewForm(getTitlesReviewForm().get(i), j));
-                reiDriver.textInput().enterText(getTextAreaReviewForm(getTitlesReviewForm().get(i), j),
-                        defaultLongText);
-            }
-        }
-
-        for (int i = 0; i < getTitlesReviewForm().size(); i++) {
-            for (int j = 1; j <= getcountForRowsReviewForm(getTitlesReviewForm().get(i)); j++) {
-                if (checkTextInputScorePresentReviewForm(getTitlesReviewForm().get(i), j) > 0) {
-                    reiDriver.textInput().clearText(getTextInputScoreReviewForm(getTitlesReviewForm().get(i), j));
-                    reiDriver.textInput().enterText(getTextInputScoreReviewForm(getTitlesReviewForm().get(i), j), "3");
-                }
-                continue;
-            }
-        }
-
-        for (int i = 0; i < getTitlesReviewForm().size(); i++) {
-            for (int j = 1; j <= getcountForRowsReviewForm(getTitlesReviewForm().get(i)); j++) {
-                if (checkDropdownPresentReviewForm(getTitlesReviewForm().get(i), j) > 0) {
-                    clickYesOnDropdownReviewForm(getTitlesReviewForm().get(i), j);
-                }
-                continue;
-            }
-        }
-
-        for (int i = 0; i < getTitlesReviewForm().size(); i++) {
-            for (int j = 1; j <= getcountForRowsReviewForm(getTitlesReviewForm().get(i)); j++) {
-                if (checkTextInputPercentPresentReviewForm(getTitlesReviewForm().get(i), j) > 0) {
-                    reiDriver.textInput().clearText(getTextInputPercentReviewForm(getTitlesReviewForm().get(i), j));
-                    reiDriver.textInput().enterText(getTextInputPercentReviewForm(getTitlesReviewForm().get(i), j),
-                            "25");
-                }
-                continue;
-            }
-        }
-
-        for (int i = 0; i < getTitlesReviewForm().size(); i++) {
-            for (int j = 1; j <= getcountForRowsReviewForm(getTitlesReviewForm().get(i)); j++) {
-                if (checkTextInputDollarPresentReviewForm(getTitlesReviewForm().get(i), j) > 0) {
-                    reiDriver.textInput().clearText(getTextInputDollarReviewForm(getTitlesReviewForm().get(i), j));
-                    reiDriver.textInput().enterText(getTextInputDollarReviewForm(getTitlesReviewForm().get(i), j),
-                            "1000");
-                }
-                continue;
-            }
-        }
-
-        for (int i = 0; i < getTitlesReviewForm().size(); i++) {
-            for (int j = 1; j <= getcountForRowsReviewForm(getTitlesReviewForm().get(i)); j++) {
-                if (checkTextInputDatePresentReviewForm(getTitlesReviewForm().get(i), j) > 0) {
-                    reiDriver.textInput().clearText(getTextInputDateReviewForm(getTitlesReviewForm().get(i), j));
-                    reiDriver.textInput().enterText(getTextInputDateReviewForm(getTitlesReviewForm().get(i), j),
-                            "05/05/2020");
-                }
-                continue;
-            }
-        }
-    }
-
-    private List<String> getTitlesReviewForm() {
-        List<String> applicationReviewFormTitles = new ArrayList<String>();
-        for (WebElement myElement : reiDriver.findMyElement().getElements(getTitles)) {
-            if (myElement.getText().equalsIgnoreCase("Conflict of Interest")
-                    || myElement.getText().equalsIgnoreCase("Overview")) {
-                continue;
-            }
-            Collections.addAll(applicationReviewFormTitles, myElement.getText());
-        }
-        return applicationReviewFormTitles;
-    }
-    
-    /******* "Local Methods with Limited functionality " **********/
-
-    private int getcountForRowsReviewForm(String title) {
-        return reiDriver.findMyElement().getElements(By.xpath("//div[@class='panel-heading']//h3[text()='" + title
-                + "']/../../..//div[contains(@class,'panel-body')]/div[@class='row reviewRow']")).size();
-    }
-
-    private By getTextAreaReviewForm(String title, int qNumber) {
-        return By.xpath("//div[@class='panel-heading']//h3[text()='" + title
-                + "']/../../..//div[contains(@class,'panel-body')]/div[@class='row reviewRow'][" + qNumber
-                + "]//textarea");
-    }
-
-    private int checkTextInputScorePresentReviewForm(String title, int qNumber) {
-        return reiDriver.findMyElement()
-                .getElements(By.xpath("//div[@class='panel-heading']//h3[text()='" + title
-                        + "']/../../..//div[contains(@class,'panel-body')]/div[@class='row reviewRow'][" + qNumber
-                        + "]//input[@placeholder='Enter a number']"))
-                .size();
-    }
-
-    private By getTextInputScoreReviewForm(String title, int qNumber) {
-        return By.xpath("//div[@class='panel-heading']//h3[text()='" + title
-                + "']/../../..//div[contains(@class,'panel-body')]/div[@class='row reviewRow'][" + qNumber
-                + "]//input[@placeholder='Enter a number']");
-    }
-
-    private int checkTextInputPercentPresentReviewForm(String title, int qNumber) {
-        return reiDriver.findMyElement()
-                .getElements(By.xpath("//div[@class='panel-heading']//h3[text()='" + title
-                        + "']/../../..//div[contains(@class,'panel-body')]/div[@class='row reviewRow'][" + qNumber
-                        + "]//input[@placeholder='Enter a percentage']"))
-                .size();
-    }
-
-    private By getTextInputPercentReviewForm(String title, int qNumber) {
-        return By.xpath("//div[@class='panel-heading']//h3[text()='" + title
-                + "']/../../..//div[contains(@class,'panel-body')]/div[@class='row reviewRow'][" + qNumber
-                + "]//input[@placeholder='Enter a percentage']");
-    }
-
-    private int checkTextInputDollarPresentReviewForm(String title, int qNumber) {
-        return reiDriver.findMyElement()
-                .getElements(By.xpath("//div[@class='panel-heading']//h3[text()='" + title
-                        + "']/../../..//div[contains(@class,'panel-body')]/div[@class='row reviewRow'][" + qNumber
-                        + "]//input[@placeholder='Enter a dollar value']"))
-                .size();
-    }
-
-    private By getTextInputDollarReviewForm(String title, int qNumber) {
-        return By.xpath("//div[@class='panel-heading']//h3[text()='" + title
-                + "']/../../..//div[contains(@class,'panel-body')]/div[@class='row reviewRow'][" + qNumber
-                + "]//input[@placeholder='Enter a dollar value']");
-    }
-
-    private int checkTextInputDatePresentReviewForm(String title, int qNumber) {
-        return reiDriver.findMyElement()
-                .getElements(By.xpath("//div[@class='panel-heading']//h3[text()='" + title
-                        + "']/../../..//div[contains(@class,'panel-body')]/div[@class='row reviewRow'][" + qNumber
-                        + "]//input[@placeholder='mm/dd/yyyy']"))
-                .size();
-    }
-
-    private By getTextInputDateReviewForm(String title, int qNumber) {
-        return By.xpath("//div[@class='panel-heading']//h3[text()='" + title
-                + "']/../../..//div[contains(@class,'panel-body')]/div[@class='row reviewRow'][" + qNumber
-                + "]//input[@placeholder='mm/dd/yyyy']");
-    }
-
-    private int checkDropdownPresentReviewForm(String title, int qNumber) {
-        return reiDriver.findMyElement()
-                .getElements(By.xpath("//div[@class='panel-heading']//h3[text()='" + title
-                        + "']/../../..//div[contains(@class,'panel-body')]/div[@class='row reviewRow'][" + qNumber
-                        + "]//select"))
-                .size();
-    }
-
-    private void clickYesOnDropdownReviewForm(String title, int qNumber) {
-        try {
-            reiDriver.findMyElement()
-                    .getDropDown(By.xpath("//div[@class='panel-heading']//h3[text()='" + title
-                            + "']/../../..//div[contains(@class,'panel-body')]/div[" + qNumber + "]//select"))
-                    .selectByValue("Yes");
-        } catch (Exception ex) {
-            try {
-                reiDriver.findMyElement()
-                        .getDropDown(By.xpath("//div[@class='panel-heading']//h3[text()='" + title
-                                + "']/../../..//div[contains(@class,'panel-body')]/div[" + qNumber + "]//select"))
-                        .selectByValue("Medium");
-            } catch (Exception e) {
-                reiDriver.findMyElement()
-                        .getDropDown(By.xpath("//div[@class='panel-heading']//h3[text()='" + title
-                                + "']/../../..//div[contains(@class,'panel-body')]/div[" + qNumber + "]//select"))
-                        .selectByValue("Recommended");
-            }
-        }
+        govgrants.inputForms().completeFillingReviewForm();
     }
 }
