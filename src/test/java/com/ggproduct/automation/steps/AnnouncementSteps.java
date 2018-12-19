@@ -20,13 +20,8 @@ public class AnnouncementSteps {
     }
     
     @Given("^I create a \"([^\"]*)\" Announcement as user \"([^\"]*)\" from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
-    public void creationOfAnnouncement(String AnnouncementType, String user,String sheetName, String excelFileName) {
-        announcementPage.creationOfAnnouncement(AnnouncementType, user, sheetName, excelFileName);
-    }
-    
-    @Given("^I complete the Announcement fields from the sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
-    public void editionOfAnnouncement(String sheetName, String excelFileName) {
-        announcementPage.editionOfAnnouncement(sheetName, excelFileName);
+    public void creationOfAnnouncement(String AnnouncementType, String user,String sheetName, String excelFileName, DataTable dataTable) {
+        announcementPage.creationOfAnnouncement(AnnouncementType, user, sheetName, excelFileName, dataTable);
     }
     
     @Given("^I associate an agency \"([^\"]*)\" to the annoucement$")

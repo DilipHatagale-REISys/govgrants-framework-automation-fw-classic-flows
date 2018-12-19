@@ -60,7 +60,7 @@ public class ApplicationPage extends ProjectManager {
      */
     public void additionOfFocusAreaToApplication(String focusArea) {
         clickOnSubtab("Budget");
-        clickOnFlextableButton("Add Focus Area", "Focus Area", "FocusAreaApp");
+        clickOnFlextableButton("Add Focus Area", "FocusAreaApp");
         chooseRecordForAssociation("Add", focusArea, "popupflextable");
         switchToParentFrame();
     }
@@ -130,7 +130,7 @@ public class ApplicationPage extends ProjectManager {
         scrollToSection("Manage Reviews");
         clickButtonOnGrid("View", reviewStep, "AnnouncementReviewStepsFlexToggle");
         clickOnCheckbox(applicationName, "Review Decisions");
-        clickOnFlextableButton(buttonName, "Review Decisions", "flexGridPreScreenRelatedStepApplicationsFinal");
+        clickOnFlextableButton(buttonName, "flexGridPreScreenRelatedStepApplicationsFinal");
         try {
             clickOnConfirmationtBox("Yes");
         } catch (Exception e) {
@@ -170,19 +170,19 @@ public class ApplicationPage extends ProjectManager {
      */
     public void addReviewerForReviewSME(String programReviewer, String fiscalReviewer, String complianceReviewer) {
         expandGrid("Program Review", "Review Forms");
-        clickOnFlextableButton("Add", "Reviewers", "flexGridApplicationReviewTree");
+        clickOnFlextableButton("Add", "flexGridApplicationReviewTree");
         addReviewerForReview(programReviewer, "RelatedExternalReviewersGridresizable");
-        clickOnFlextableButton("Save", "Review Forms", "flexGridApplicationReviewTree");
+        clickOnFlextableButton("Save", "flexGridApplicationReviewTree");
         collapseGrid("Program Review", "Review Forms");
         expandGrid("Fiscal Review", "Review Forms");
-        clickOnFlextableButton("Add", "Reviewers", "flexGridApplicationReviewTree");
+        clickOnFlextableButton("Add", "flexGridApplicationReviewTree");
         addReviewerForReview(fiscalReviewer, "RelatedExternalReviewersGridresizable");
-        clickOnFlextableButton("Save", "Review Forms", "flexGridApplicationReviewTree");
+        clickOnFlextableButton("Save", "flexGridApplicationReviewTree");
         collapseGrid("Fiscal Review", "Review Forms");
         expandGrid("Compliance Review", "Review Forms");
-        clickOnFlextableButton("Add", "Reviewers", "flexGridApplicationReviewTree");
+        clickOnFlextableButton("Add", "flexGridApplicationReviewTree");
         addReviewerForReview(complianceReviewer, "RelatedExternalReviewersGridresizable");
-        clickOnFlextableButton("Save", "Review Forms", "flexGridApplicationReviewTree");
+        clickOnFlextableButton("Save", "flexGridApplicationReviewTree");
         collapseGrid("Compliance Review", "Review Forms");
     }
 
@@ -213,7 +213,7 @@ public class ApplicationPage extends ProjectManager {
         clickOnCheckbox("Program Review", "Reviews");
         clickOnCheckbox("Fiscal Review", "Reviews");
         clickOnCheckbox("Compliance Review", "Reviews");
-        clickOnFlextableButton("Send for Review", "Reviews", "flexGridStepReviews");
+        clickOnFlextableButton("Send for Review", "flexGridStepReviews");
     }
 
     /**
@@ -263,9 +263,9 @@ public class ApplicationPage extends ProjectManager {
      */
     public void addReviewerForReviewManagement(String managementReviewer) {
         expandGrid("Management Review", "Review Forms");
-        clickOnFlextableButton("Add", "Reviewers", "flexGridApplicationReviewTree");
+        clickOnFlextableButton("Add", "flexGridApplicationReviewTree");
         addReviewerForReview(managementReviewer, "RelatedExternalReviewersGridresizable");
-        clickOnFlextableButton("Save", "Review Forms", "flexGridApplicationReviewTree");
+        clickOnFlextableButton("Save", "flexGridApplicationReviewTree");
         collapseGrid("Management Review", "Review Forms");
     }
 
@@ -286,7 +286,7 @@ public class ApplicationPage extends ProjectManager {
      */
     public void chooseAndSendReviewsManagement() {
         clickOnCheckbox("Management Review", "Reviews");
-        clickOnFlextableButton("Send for Review", "Reviews", "flexGridStepReviews");
+        clickOnFlextableButton("Send for Review", "flexGridStepReviews");
     }
 
     /**

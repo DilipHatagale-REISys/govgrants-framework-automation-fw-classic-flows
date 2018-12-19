@@ -1,9 +1,7 @@
 package com.ggproduct.automation.pageobjects;
 
 import com.automation.rei.controller.Controller;
-
 import java.io.IOException;
-import java.util.Map;
 
 import org.openqa.selenium.By;
 
@@ -73,7 +71,7 @@ public class AwardPage extends ProjectManager  {
      */
     public void additionOfPaymentRequestToAward(String sheetName, String excelName) {
         clickOnSubtab("Management");
-        clickOnFlextableButton("New", "Progress Report Schedule", "flexGridTnCSchedules");
+        clickOnFlextableButton("New", "flexGridTnCSchedules");
         enterFieldValues(sheetName, excelName);
         clickOnModalButton("Save");
         closeModal();
@@ -86,7 +84,7 @@ public class AwardPage extends ProjectManager  {
      */
     public void additionOfProgressReportToAward(String sheetName, String excelName) {
         clickOnSubtab("Management");
-        clickOnFlextableButton("New", "Payment Request Schedules", "flexGridPaymentSchedules");
+        clickOnFlextableButton("New", "flexGridPaymentSchedules");
         enterFieldValues(sheetName, excelName);
         clickOnModalButton("Save");
         closeModal();
@@ -99,7 +97,7 @@ public class AwardPage extends ProjectManager  {
      */
     public void creationOfRiskAssessment(String sheetName, String excelName) {
         clickOnSubtab("Management");
-        clickOnFlextableButton("New", "Risk Assessments", "flexGridAwardRiskAssessmentView");
+        clickOnFlextableButton("New", "flexGridAwardRiskAssessmentView");
         enterFieldValues(sheetName, excelName);
         clickOnPageButton("Save");
     }
@@ -209,7 +207,7 @@ public class AwardPage extends ProjectManager  {
      */
     public void initiateReviewForAward(String sheetName, String excelName) {
         clickOnSubtab("Responsibilities");
-        clickOnFlextableButton("New", "Peer Reviewers", "flexGridGrantorAwardReviewer");
+        clickOnFlextableButton("New", "flexGridGrantorAwardReviewer");
         enterFieldValues(sheetName, excelName);
         clickOnModalButton("Save");
         closeModal();
@@ -278,7 +276,7 @@ public class AwardPage extends ProjectManager  {
      */
     public void initiateSiteVisitInAward(String sheetName, String excelName) {
         clickOnSubtab("Management");
-        clickOnFlextableButton("Initiate Site Visit", "Site Visits", "GrantorSiteVisitsAward");
+        clickOnFlextableButton("Initiate Site Visit", "GrantorSiteVisitsAward");
         enterFieldValues(sheetName, excelName);
         clickOnModalButton("Save And Close");
         clickOnPageButton("Cancel");
@@ -292,7 +290,7 @@ public class AwardPage extends ProjectManager  {
      */
     public void initiateDeskReviewInAward(String sheetName, String excelName) {
         clickOnSubtab("Management");
-        clickOnFlextableButton("Initiate Desk Review", "Desk Reviews", "GrantorDeskReviewAward");
+        clickOnFlextableButton("Initiate Desk Review", "GrantorDeskReviewAward");
         enterFieldValues(sheetName, excelName);
         clickOnModalButton("Save And Close");
         clickOnPageButton("Cancel");

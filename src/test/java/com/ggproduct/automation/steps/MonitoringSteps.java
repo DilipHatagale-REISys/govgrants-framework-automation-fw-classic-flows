@@ -17,8 +17,8 @@ public class MonitoringSteps {
         monitoringPage = new MonitoringPage(controller, handler, govgrants);
     }
     
-    @Given("^I re-login as \"([^\"]*)\" to view the monitoring record \"([^\"]*)\" for the award \"([^\"]*)\"$")
-    public void navigateToMonitoringRecord(String user, String recordName, String awardName, DataTable dataTable) throws IOException {
-        monitoringPage.navigateToMonitoringRecord(user, recordName, awardName, dataTable);
+    @Given("^I re-login as \"([^\"]*)\" to view the monitoring record \"([^\"]*)\" for the award \"([^\"]*)\" with Id \"([^\"]*)\"$")
+    public void navigateToMonitoringRecord(String user, String recordName, String awardName, String awardId, DataTable dataTable) throws IOException {
+        monitoringPage.navigateToMonitoringRecord(user, recordName, awardName, awardId, dataTable);
     }
 }

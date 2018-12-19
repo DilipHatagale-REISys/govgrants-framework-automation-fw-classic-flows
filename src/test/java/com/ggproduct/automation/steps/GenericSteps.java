@@ -31,12 +31,12 @@ public class GenericSteps {
         projectManager.navigateToTab(tabName);
     }*/
 
-    @When("^I click \"([^\"]*)\" inside side bar \"([^\"]*)\"$")
+    @When("^I navigate to \"([^\"]*)\" content inside \"([^\"]*)\" subheader on left panel$")
     public void clickOnSidebar(String sidebarContent, String sidebarSubHeader) {
         projectManager.clickOnSidebar(sidebarContent, sidebarSubHeader);
     }
 
-    @When("^I click on \"([^\"]*)\" button$")
+    @When("^I click on \"([^\"]*)\" in the page details$")
     public void clickOnPageButton(String buttonName) {
         projectManager.clickOnPageButton(buttonName);
     }
@@ -46,7 +46,7 @@ public class GenericSteps {
         projectManager.clickOnPageButtonWithModalId(buttonName, IframeId);
     }
 
-    @When("^I click on \"([^\"]*)\" button in the modal$")
+    @When("^I click modal button \"([^\"]*)\"$")
     public void clickOnModalButton(String buttonName) {
         projectManager.clickOnModalButton(buttonName);
     }
@@ -81,7 +81,7 @@ public class GenericSteps {
         projectManager.clickOnFlexTableIconWithTableId(iconName, tableId, searchText);
     }
 
-    @When("^I click on \"([^\"]*)\" subtab$")
+    @When("^I navigate to \"([^\"]*)\" sub tab$")
     public void clickOnSubtab(String subtabName) {
         projectManager.clickOnSubtab(subtabName);
     }
@@ -106,9 +106,9 @@ public class GenericSteps {
         projectManager.clickOnButtonForAttachmentNotesToOpenModal(buttonName, flextableName);
     }
 
-    @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" flextable with Id \"([^\"]*)\"$")
-    public void clickOnFlextableButton(String buttonName, String flextableName, String flextableId) {
-        projectManager.clickOnFlextableButton(buttonName, flextableName, flextableId);
+    @When("^I click on top right button \"([^\"]*)\" in flex table with id \"([^\"]*)\"$")
+    public void clickOnFlextableButton(String buttonName, String flextableId) {
+        projectManager.clickOnFlextableButton(buttonName, flextableId);
     }
 
     @When("^I click \"([^\"]*)\" on the confirmation dialog box$")
@@ -131,9 +131,9 @@ public class GenericSteps {
         projectManager.switchToParentFrame();
     }
 
-    @When("^I click on the \"([^\"]*)\" icon for the \"([^\"]*)\" on the flextable \"([^\"]*)\"$")
-    public void clickOnFlextableRowButton(String iconName, String uniqueColumnValue, String flexTableName) {
-        projectManager.clickOnFlextableRowButton(iconName, uniqueColumnValue, flexTableName);
+    @When("^I click on \"([^\"]*)\" icon for \"([^\"]*)\" inside flex table with id \"([^\"]*)\"$")
+    public void clickOnFlextableRowButton(String iconName, String uniqueColumnValue, String flexTableId) {
+        projectManager.clickOnFlextableRowButton(flexTableId, iconName, uniqueColumnValue);
     }
 
     @When("^I enter \"([^\"]*)\" as \"([^\"]*)\"$")
@@ -216,7 +216,7 @@ public class GenericSteps {
         projectManager.assertStatus(record, status);
     }
 
-    @Then("^I see that \"([^\"]*)\" status is in \"([^\"]*)\" on progress bar$")
+    @Then("^I see status in Progress-bar is \"([^\"]*)\" and is \"([^\"]*)\"$")
     public void assertStatusProgressBar(String status, String color) {
         projectManager.assertStatusProgressBar(status, color);
     }
@@ -231,14 +231,9 @@ public class GenericSteps {
         projectManager.assertColumnValueOnTable(status);
     }
 
-    @Then("^I see that \"([^\"]*)\" has been added in flextable \"([^\"]*)\" with Id \"([^\"]*)\"$")
-    public void assertColumnOnTable(String columnUniqueValue, String flextableName, String flextableId) {
-        projectManager.assertColumnOnTable(columnUniqueValue, flextableName, flextableId);
-    }
-    
-    @Given("^I create a pre-award record as user \"([^\"]*)\" from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
-    public void creationOfPreAwardRecord(String user,String sheetName, String excelFileName, DataTable dataTable) {
-        projectManager.creationOfPreAwardRecord(user, sheetName, excelFileName, dataTable);
+    @Then("^I see that \"([^\"]*)\" has been added in flextable with Id \"([^\"]*)\"$")
+    public void assertColumnOnTable(String columnUniqueValue, String flextableId) {
+        projectManager.assertColumnOnTable(columnUniqueValue, flextableId);
     }
     
     @Given("^I create a post award record from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
@@ -292,7 +287,7 @@ public class GenericSteps {
     }
     
     @Given("^I fill in the form \"([^\"]*)\"$")
-    public void fillingUpForm(String formName, DataTable dataTable) {
-        projectManager.fillingUpForm(formName, dataTable);
+    public void fillingUpStandardForm(String formName, DataTable dataTable) {
+        projectManager.fillingUpStandardForm(formName, dataTable);
     }
 }
