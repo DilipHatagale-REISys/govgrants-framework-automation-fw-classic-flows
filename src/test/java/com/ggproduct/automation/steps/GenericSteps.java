@@ -276,9 +276,9 @@ public class GenericSteps {
         projectManager.twoApproversApproveRecord(programApprover, executiveApprover, recordName, dataTable);
     }
     
-    @Given("^I login and view the award \"([^\"]*)\" with name \"([^\"]*)\" as User \"([^\"]*)\"$")
-    public void reloginToViewAward(String awardId, String awardName, String awardOwner) throws IOException {
-        projectManager.reloginToViewAward(awardId, awardName, awardOwner);
+    @Given("^I login and view the \"([^\"]*)\" award \"([^\"]*)\" with name \"([^\"]*)\" as User \"([^\"]*)\"$")
+    public void reloginToViewAward(String awardState, String awardId, String awardName, String awardOwner) throws IOException {
+        projectManager.reloginToViewAward(awardState, awardId, awardName, awardOwner);
     }
     
     @Given("^Subrecipient \"([^\"]*)\" receives the task for \"([^\"]*)\"$")

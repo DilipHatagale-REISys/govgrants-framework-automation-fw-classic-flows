@@ -129,7 +129,7 @@ Feature: Validate all scenarios in the Award
     Given I select the Program Approver as "Automation PM" and Fiscal Approver as "Automation FO" for Risk Assessment
     And I click on "Submit for Approval" in the page details
     Given I approve Risk Assessment as Program Approver "PM" and Fiscal Approver "FO"
-    And I re-login and view the award "<Award EGMS Id>" with name "<Application Name>" as User "Exe"
+    And I login and view the "Draft" award "<Award EGMS Id>" with name "<Application Name>" as User "Exe"
     Given I select the Program Approver as "Automation PM", Fiscal Approver as "Automation FO" and Executive Approver as "Automation EXE" for Award
 	Then I click on "Send to Subrecipient" in the page details
 	Examples:
@@ -151,7 +151,7 @@ Feature: Validate all scenarios in the Award
     Given I select the Program Approver as "Automation PM" and Fiscal Approver as "Automation FO" for Risk Assessment
     And I click on "Submit for Approval" in the page details
     Given I approve Risk Assessment as Program Approver "PM" and Fiscal Approver "FO"
-    And I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+    And I login and view the "Draft" award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
     Given I select the Program Approver as "Automation PM", Fiscal Approver as "Automation FO" and Executive Approver as "Automation EXE" for Award
     And I click on "Send to Subrecipient" in the page details
   	When I re-login to Grants Portal as "SPI"
@@ -181,7 +181,7 @@ Feature: Validate all scenarios in the Award
     Given I select the Program Approver as "Automation PM" and Fiscal Approver as "Automation FO" for Risk Assessment
     And I click on "Submit for Approval" in the page details
     Given I approve Risk Assessment as Program Approver "PM" and Fiscal Approver "FO"
-    And I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+    And I login and view the "Draft" award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
     Given I select the Program Approver as "Automation PM", Fiscal Approver as "Automation FO" and Executive Approver as "Automation EXE" for Award
     And I click on "Send to Subrecipient" in the page details
   	Given The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
@@ -218,7 +218,7 @@ Feature: Validate all scenarios in the Award
     Given I select the Program Approver as "Automation PM" and Fiscal Approver as "Automation FO" for Risk Assessment
     And I click on "Submit for Approval" in the page details
     Given I approve Risk Assessment as Program Approver "PM" and Fiscal Approver "FO"
-    And I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+    And I login and view the "Draft" award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
     Given I select the Program Approver as "Automation PM", Fiscal Approver as "Automation FO" and Executive Approver as "Automation EXE" for Award
     And I click on "Send to Subrecipient" in the page details
   	Given The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
@@ -256,7 +256,7 @@ Feature: Validate all scenarios in the Award
     Given I select the Program Approver as "Automation PM" and Fiscal Approver as "Automation FO" for Risk Assessment
     And I click on "Submit for Approval" in the page details
     Given I approve Risk Assessment as Program Approver "PM" and Fiscal Approver "FO"
-    And I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+    And I login and view the "Draft" award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
     Given I select the Program Approver as "Automation PM", Fiscal Approver as "Automation FO" and Executive Approver as "Automation EXE" for Award
     And I click on "Send to Subrecipient" in the page details
   	Given The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
@@ -293,12 +293,12 @@ Feature: Validate all scenarios in the Award
     Given I select the Program Approver as "Automation PM" and Fiscal Approver as "Automation FO" for Risk Assessment
     And I click on "Submit for Approval" in the page details
     Given I approve Risk Assessment as Program Approver "PM" and Fiscal Approver "FO"
-    And I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+    And I login and view the "Draft" award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
     Given I select the Program Approver as "Automation PM", Fiscal Approver as "Automation FO" and Executive Approver as "Automation EXE" for Award
     And I click on "Send to Subrecipient" in the page details
   	Given The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
   	And I assign, initiate a reviewer for an award from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
-  	Given Review is completed as user "FO" for the award "<Award EGMS Id>" with name "<Award Name>" created by "EXE"
+  	Given Review is completed as user "FO" for the "Draft" award "<Award EGMS Id>" with name "<Award Name>" created by "EXE"
   	When I click on "Submit for Approval" in the page details
 	Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 	Examples:
@@ -320,12 +320,12 @@ Feature: Validate all scenarios in the Award
     Given I select the Program Approver as "Automation PM" and Fiscal Approver as "Automation FO" for Risk Assessment
     And I click on "Submit for Approval" in the page details
     Given I approve Risk Assessment as Program Approver "PM" and Fiscal Approver "FO"
-    And I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+    And I login and view the "Draft" award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
     Given I select the Program Approver as "Automation PM", Fiscal Approver as "Automation FO" and Executive Approver as "Automation EXE" for Award
     And I click on "Send to Subrecipient" in the page details
   	Given The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
   	And I assign, initiate a reviewer for an award from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
-  	Given Review is completed as user "FO" for the award "<Award EGMS Id>" with name "<Award Name>" created by "EXE"
+  	Given Review is completed as user "FO" for the "Draft" award "<Award EGMS Id>" with name "<Award Name>" created by "EXE"
   	And I click on "Submit for Approval" in the page details
   	Given I re-login to "As a Grantor" app as "PM" User
 	When I navigate to "Grants" tab
@@ -365,12 +365,12 @@ Feature: Validate all scenarios in the Award
     Given I select the Program Approver as "Automation PM" and Fiscal Approver as "Automation FO" for Risk Assessment
     And I click on "Submit for Approval" in the page details
     Given I approve Risk Assessment as Program Approver "PM" and Fiscal Approver "FO"
-    And I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+    And I login and view the "Draft" award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
     Given I select the Program Approver as "Automation PM", Fiscal Approver as "Automation FO" and Executive Approver as "Automation EXE" for Award
     And I click on "Send to Subrecipient" in the page details
   	Given The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
   	And I assign, initiate a reviewer for an award from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
-  	Given Review is completed as user "FO" for the award "<Award EGMS Id>" with name "<Award Name>" created by "EXE"
+  	Given Review is completed as user "FO" for the "Draft" award "<Award EGMS Id>" with name "<Award Name>" created by "EXE"
   	And I click on "Submit for Approval" in the page details
   	Given Approvers "PM", "FO", "EXE" approve the award "<Award Name>"
   	When I re-login to "As a Grantor" app as "EXE" User
@@ -402,15 +402,15 @@ Feature: Validate all scenarios in the Award
     Given I select the Program Approver as "Automation PM" and Fiscal Approver as "Automation FO" for Risk Assessment
     And I click on "Submit for Approval" in the page details
     Given I approve Risk Assessment as Program Approver "PM" and Fiscal Approver "FO"
-    And I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+    And I login and view the "Draft" award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
     Given I select the Program Approver as "Automation PM", Fiscal Approver as "Automation FO" and Executive Approver as "Automation EXE" for Award
     And I click on "Send to Subrecipient" in the page details
   	Given The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
   	And I assign, initiate a reviewer for an award from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
-  	Given Review is completed as user "FO" for the award "<Award EGMS Id>" with name "<Award Name>" created by "EXE"
+  	Given Review is completed as user "FO" for the "Draft" award "<Award EGMS Id>" with name "<Award Name>" created by "EXE"
   	And I click on "Submit for Approval" in the page details
   	Given Approvers "PM", "FO", "EXE" approve the award "<Award Name>"
-  	And I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+  	And I login and view the "Draft" award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
   	Given I click on "Send to Subrecipient after Approval" in the page details
   	When I re-login to Grants Portal as "SPI"
 	And I navigate to "Grants" tab
@@ -439,18 +439,18 @@ Feature: Validate all scenarios in the Award
     Given I select the Program Approver as "Automation PM" and Fiscal Approver as "Automation FO" for Risk Assessment
     And I click on "Submit for Approval" in the page details
     Given I approve Risk Assessment as Program Approver "PM" and Fiscal Approver "FO"
-    And I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+    And I login and view the "Draft" award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
     Given I select the Program Approver as "Automation PM", Fiscal Approver as "Automation FO" and Executive Approver as "Automation EXE" for Award
     And I click on "Send to Subrecipient" in the page details
   	Given The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
   	And I assign, initiate a reviewer for an award from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
-  	Given Review is completed as user "FO" for the award "<Award EGMS Id>" with name "<Award Name>" created by "EXE"
+  	Given Review is completed as user "FO" for the "Draft" award "<Award EGMS Id>" with name "<Award Name>" created by "EXE"
   	And I click on "Submit for Approval" in the page details
   	Given Approvers "PM", "FO", "EXE" approve the award "<Award Name>"
-  	And I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+  	And I login and view the "Draft" award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
   	Given I click on "Send to Subrecipient after Approval" in the page details
   	And The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
-  	Given I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+  	Given I login and view the "Draft" award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
 	When I click on "Activate" in the page details
 	Then I see that "Subaward" is in "Activated" status  	
 	Examples:
@@ -472,18 +472,18 @@ Feature: Validate all scenarios in the Award
     Given I select the Program Approver as "Automation PM" and Fiscal Approver as "Automation FO" for Risk Assessment
     And I click on "Submit for Approval" in the page details
     Given I approve Risk Assessment as Program Approver "PM" and Fiscal Approver "FO"
-    And I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+    And I login and view the "Draft" award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
     Given I select the Program Approver as "Automation PM", Fiscal Approver as "Automation FO" and Executive Approver as "Automation EXE" for Award
     And I click on "Send to Subrecipient" in the page details
   	Given The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
   	And I assign, initiate a reviewer for an award from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
-  	Given Review is completed as user "FO" for the award "<Award EGMS Id>" with name "<Award Name>" created by "EXE"
+  	Given Review is completed as user "FO" for the "Draft" award "<Award EGMS Id>" with name "<Award Name>" created by "EXE"
   	And I click on "Submit for Approval" in the page details
   	Given Approvers "PM", "FO", "EXE" approve the award "<Award Name>"
-  	And I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+  	And I login and view the "Draft" award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
   	Given I click on "Send to Subrecipient after Approval" in the page details
   	And The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
-  	Given I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+  	Given I login and view the "Draft" award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
 	And I click on "Activate" in the page details
 	When I navigate to "Management" sub tab
 	When I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
@@ -510,18 +510,18 @@ Feature: Validate all scenarios in the Award
     Given I select the Program Approver as "Automation PM" and Fiscal Approver as "Automation FO" for Risk Assessment
     And I click on "Submit for Approval" in the page details
     Given I approve Risk Assessment as Program Approver "PM" and Fiscal Approver "FO"
-    And I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+    And I login and view the "Draft" award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
     Given I select the Program Approver as "Automation PM", Fiscal Approver as "Automation FO" and Executive Approver as "Automation EXE" for Award
     And I click on "Send to Subrecipient" in the page details
   	Given The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
   	And I assign, initiate a reviewer for an award from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
-  	Given Review is completed as user "FO" for the award "<Award EGMS Id>" with name "<Award Name>" created by "EXE"
+  	Given Review is completed as user "FO" for the "Draft" award "<Award EGMS Id>" with name "<Award Name>" created by "EXE"
   	And I click on "Submit for Approval" in the page details
   	Given Approvers "PM", "FO", "EXE" approve the award "<Award Name>"
-  	And I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+  	And I login and view the "Draft" award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
   	Given I click on "Send to Subrecipient after Approval" in the page details
   	And The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
-  	Given I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+  	Given I login and view the "Draft" award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
 	And I click on "Activate" in the page details
 	When I navigate to "Management" sub tab
 	When I click on top right button "Initiate Desk Review" in flex table with id "GrantorDeskReviewAward"
@@ -548,18 +548,18 @@ Feature: Validate all scenarios in the Award
     Given I select the Program Approver as "Automation PM" and Fiscal Approver as "Automation FO" for Risk Assessment
     And I click on "Submit for Approval" in the page details
     Given I approve Risk Assessment as Program Approver "PM" and Fiscal Approver "FO"
-    And I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+    And I login and view the "Draft" award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
     Given I select the Program Approver as "Automation PM", Fiscal Approver as "Automation FO" and Executive Approver as "Automation EXE" for Award
     And I click on "Send to Subrecipient" in the page details
   	Given The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
   	And I assign, initiate a reviewer for an award from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
-  	Given Review is completed as user "FO" for the award "<Award EGMS Id>" with name "<Award Name>" created by "EXE"
+  	Given Review is completed as user "FO" for the "Draft" award "<Award EGMS Id>" with name "<Award Name>" created by "EXE"
   	And I click on "Submit for Approval" in the page details
   	Given Approvers "PM", "FO", "EXE" approve the award "<Award Name>"
-  	And I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+  	And I login and view the "Draft" award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
   	Given I click on "Send to Subrecipient after Approval" in the page details
   	And The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
-  	Given I re-login and view the award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
+  	Given I login and view the "Draft" award "<Award EGMS Id>" with name "<Award Name>" as User "Exe"
 	And I click on "Activate" in the page details	
 	Given I initiate Site Visit from sheet "Site Visit" in excel "Award_Field_Values.xlsx" for award
 	And I initiate Desk Review from sheet "Desk Review" in excel "Award_Field_Values.xlsx" for award

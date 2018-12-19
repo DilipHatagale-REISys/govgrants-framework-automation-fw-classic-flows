@@ -139,28 +139,6 @@ public class AwardPage extends ProjectManager  {
     }
     
     /**
-     * Handles re-logging in and to view the given award
-     * @param awardId
-     * @param awardName
-     * @param awardOwner
-     * @throws IOException 
-     */
-    public void reloginToViewAward(String awardId, String awardName, String awardOwner) throws IOException {
-        try {
-            loginToggleToApp("As a Grantor", awardOwner);
-        } catch (Exception ex) {
-            reloginToggleToApp("As a Grantor", awardOwner);
-        }
-        navigateToTab("Grants");
-        clickOnSidebar("Grants and Subawards", "Grants, Awards & Amendments");
-        changeFlexTableView("Draft Grants");
-        quickSearchOnTable(awardName, "ActiveGrants");
-        clickOnFlexTableIcon("View", awardName);
-        clickOnSubtab("Subawards");
-        clickOnFlextableRowButton("View", awardId, "Subawards");
-    }
-    
-    /**
      * Handles selection of approvers to an award
      * @param pragramApprover
      * @param fiscalApprover
@@ -222,7 +200,7 @@ public class AwardPage extends ProjectManager  {
      * @param awardOwner
      * @throws IOException 
      */
-    public void completeReviewForAward(String reviewer, String awardId, String awardName, String awardOwner) throws IOException {
+    public void completeReviewForAward(String reviewer, String awardState, String awardId, String awardName, String awardOwner) throws IOException {
         reloginToggleToApp("As a Grantor", reviewer);
         navigateToTab("Grants");
         clickOnSidebar("Pending Tasks", "My Tasks");
@@ -234,7 +212,7 @@ public class AwardPage extends ProjectManager  {
         clickOnModalButton("Save");
         clickOnModalButton("Submit Review");
         closeModal();
-        reloginToViewAward(awardId, awardName, awardOwner);
+        reloginToViewAward(awardState, awardId, awardName, awardOwner);
     }
     
     /**

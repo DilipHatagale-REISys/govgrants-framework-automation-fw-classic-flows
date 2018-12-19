@@ -873,7 +873,7 @@ public class ProjectManager extends ProjectWebServices {
      * @param awardOwner
      * @throws IOException 
      */
-    public void reloginToViewAward(String awardId, String awardName, String awardOwner) throws IOException {
+    public void reloginToViewAward(String awardState, String awardId, String awardName, String awardOwner) throws IOException {
         try {
             loginToggleToApp("As a Grantor", awardOwner);
         } catch (Exception ex) {
@@ -881,7 +881,7 @@ public class ProjectManager extends ProjectWebServices {
         }
         navigateToTab("Grants");
         clickOnSidebar("Grants and Subawards", "Grants, Awards & Amendments");
-        changeFlexTableView("Active Grants");
+        changeFlexTableView(awardState+" Grants");
         quickSearchOnTable(awardName, "ActiveGrants");
         clickOnFlexTableIcon("View", awardName);
         clickOnSubtab("Subawards");

@@ -1,13 +1,13 @@
 @siteVisit
 Feature: Validate all scenarios in the Site Visit
 
-	#Background: Create Program
-	#Given I login and view the award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "EXE"
-	#And I create a post award record from sheet "Creation" in excel "SiteVisit_Field_Values.xlsx"
-	#| Actions 	 | Step 1 	   		   | Step 2    	 |
-	#| Navigation | Management		   | 			 |	
-	#| FlexTable  | Initiate Site Visit| GrantorSiteVisitsAward  |
-	#| Creation   | Save And Close	   | Cancel		 | 	
+	Background: Create Program
+	Given I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "EXE"
+	And I create a post award record from sheet "Creation" in excel "SiteVisit_Field_Values.xlsx"
+	| Actions 	 | Step 1 	   		   | Step 2    	 |
+	| Navigation | Management		   | 			 |	
+	| FlexTable  | Initiate Site Visit| GrantorSiteVisitsAward  |
+	| Creation   | Save And Close	   | Cancel		 | 	
 
 	@siteVisitCreation @siteVisit
 	Scenario: Creation of Site Visit
