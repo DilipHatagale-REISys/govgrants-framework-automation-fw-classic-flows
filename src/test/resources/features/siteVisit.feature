@@ -348,68 +348,229 @@ Feature: Validate all scenarios in the Site Visit
 	
 	@siteVisitCorrectiveActionsBySubrecipient @siteVisit
 	Scenario Outline: Send Site Visit to Subrecipient
-	#Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
-    #| Actions 		  | Step 1 | Step 2	|
-    #| Edition Buttons | Edit   | Save   |
-    #And I associate Participant "Automation EXE"
-    #| Actions 	  | Step 1   | Step 2	 | Step 3  		| Step 4 		 		   | Step 5    | Step 6 		|
-    #| Participant | Overview | Associate | Participants | GrantorSiteVisitContacts | Associate | popupflextable |
-    #Given I select two approvers "Automation PM", "Automation FO"
-    #| Actions 	 | Step 1   		| Step 2		   | Step 3    |
-    #| Subtab	 | Responsibilities | 				   |		   |
-    #| Approver 1 | Edit				| Program Approver | Approvers |
-    #| Approver 2 | Edit				| Fiscal Approver  | Approvers |
-	#And I click on "Notify" button
-	#Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
-	#| Actions 	 | Step 1   		 | Step 2	|
-	#| Navigation | Monitoring 		 | 			|
-	#| Left Panel | Pending Tasks 	 | My Tasks |
-	#| FlexTable  | PhasePendingTasks | Start 	|
-	#And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Award Name>" with Id "<Award EGMS ID>"
-	#| Actions 	 | Step 1   		 			     | Step 2		  		  			|
-	#| Navigation | As a Grantor 	  				 | Monitoring 			 			|
-	#| Left Panel | Manage Site Visits 				 | Monitoring Activities  			|
-	#| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
-	#| Button 	 | View								 | 						            |
-	#Given I click on "Conduct" button
-	#And I fill in the form "General Review Form"
-	#| Actions 	  | Step 1   		 	 | Step 2		 |
-	#| Navigation  | Reports and Outcomes | 			 	 |
-	#| FlexTable   | Edit				 | Review Forms  |
-	#| Form Button | Save				 | Back 		 |
-	#| Validation  | Validate			 | FormComponent |
-	#Given Two Approvers "PM", "FO" approve "<Site Visit Name>"
-    #| Actions 		   | Step 1 	   | Step 2	    | Step 3 			  |
-    #| Navigation       | As a Grantor  | Monitoring |					  |
-    #| Pending Task 	   | Pending Tasks | My Tasks   | PhasePendingTasks   |
-    #| Approval Buttons | Start		   | Approve    |					  |
-    #And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Award Name>" with Id "<Award EGMS ID>"
-	#| Actions 	 | Step 1   		 			     | Step 2		  		  			|
-	#| Navigation | As a Grantor 	  				 | Monitoring 			 			|
-	#| Left Panel | Manage Site Visits 				 | Monitoring Activities  			|
-	#| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
-	#| Button 	 | View								 | 						            |
-	#Given I click on "Send to Subrecipient" button
-	#When Subrecipient "SPI" receives the task for "<Site Visit Name>"
-	#| Actions 	 | Step 1   		 | Step 2	|
-	#| Navigation | Monitoring 		 | 			|
-	#| Left Panel | Pending Tasks 	 | My Tasks |
-	#| FlexTable  | PhasePendingTasks | Start 	|
-	#When I re-login to Grants Portal as "SPI"
-	Given I login to "Grants Portal" app as "SPI" User
+	Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+    And I associate Participant "Automation EXE"
+    | Actions 	  | Step 1   | Step 2	 | Step 3  		| Step 4 		 		   | Step 5    | Step 6 		|
+    | Participant | Overview | Associate | Participants | GrantorSiteVisitContacts | Associate | popupflextable |
+    Given I select two approvers "Automation PM", "Automation FO"
+    | Actions 	 | Step 1   		| Step 2		   | Step 3    |
+    | Subtab	 | Responsibilities | 				   |		   |
+    | Approver 1 | Edit				| Program Approver | Approvers |
+    | Approver 2 | Edit				| Fiscal Approver  | Approvers |
+	And I click on "Notify" in the page details
+	Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
+	| Actions 	 | Step 1   		 | Step 2	|
+	| Navigation | Monitoring 		 | 			|
+	| Left Panel | Pending Tasks 	 | My Tasks |
+	| FlexTable  | PhasePendingTasks | Start 	|
+	And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Award Name>" with Id "<Award EGMS ID>"
+	| Actions 	 | Step 1   		 			     | Step 2		  		  			|
+	| Navigation | As a Grantor 	  				 | Monitoring 			 			|
+	| Left Panel | Manage Site Visits 				 | Monitoring Activities  			|
+	| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
+	| Button 	 | View								 | 						            |
+	Given I click on "Conduct" in the page details
+	And I fill in the form "General Review Form"
+	| Actions 	  | Step 1   		 	 | Step 2		 |
+	| Navigation  | Reports and Outcomes | 			 	 |
+	| FlexTable   | Edit				 | Review Forms  |
+	| Form Button | Save				 | Back 		 |
+	| Validation  | Validate			 | FormComponent |
+	Given Two Approvers "PM", "FO" approve "<Site Visit Name>"
+    | Actions 		   | Step 1 	   | Step 2	    | Step 3 			  |
+    | Navigation       | As a Grantor  | Monitoring |					  |
+    | Pending Task 	   | Pending Tasks | My Tasks   | PhasePendingTasks   |
+    | Approval Buttons | Start		   | Approve    |					  |
+    And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Award Name>" with Id "<Award EGMS ID>"
+	| Actions 	 | Step 1   		 			     | Step 2		  		  			|
+	| Navigation | As a Grantor 	  				 | Monitoring 			 			|
+	| Left Panel | Manage Site Visits 				 | Monitoring Activities  			|
+	| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
+	| Button 	 | View								 | 						            |
+	Given I click on "Send to Subrecipient" in the page details
+	When Subrecipient "SPI" receives the task for "<Site Visit Name>"
+	| Actions 	 | Step 1   		 | Step 2	|
+	| Navigation | Monitoring 		 | 			|
+	| Left Panel | Pending Tasks 	 | My Tasks |
+	| FlexTable  | PhasePendingTasks | Start 	|
+	When I re-login to Grants Portal as "SPI"
 	When I navigate to "Monitoring" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
 	When I perform quick search "<Site Visit Name>" on table "PhasePendingTasks"
 	And I click on the "Start" icon for the "<Site Visit Name>"
     When I navigate to "Reports and Outcomes" sub tab
-    When I expand the "Automation Observation" on grid "Outcomes"
+    And I expand the "Automation Observation" on grid "Outcomes"
     When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGridRecipient" by clicking "New" :
-    | Description            | Required  | Applies To  |
-    | Automation test description | Mandatory | Application |
-    
-	Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
+    | Title            				 	  | Description  		   | Status  	 | Due Date   | Assigned To    |
+    | Automation Observation Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
+    When I collapse the "Automation Observation" on grid "Outcomes"
+    And I expand the "Automation Concern" on grid "Outcomes"
+    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGridRecipient" by clicking "New" :
+    | Title            				  | Description  		   | Status  	 | Due Date   | Assigned To    |
+    | Automation Concern Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
+    When I collapse the "Automation Concern" on grid "Outcomes"
+    And I expand the "Automation Finding" on grid "Outcomes"
+    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGridRecipient" by clicking "New" :
+    | Title            				  | Description  		   | Status  	 | Due Date   | Assigned To    |
+    | Automation Finding Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
+    And I collapse the "Automation Finding" on grid "Outcomes"
+    Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
 	Examples:
 	| Award Name 				     	    	    	| Award EGMS ID | Site Visit Name	    |
 	| Automation Announcement to be deleted Application | AD-AuGr--01   | Automation Site Visit |
 	
+	@siteVisitSubmitToGrantorBySubrecipient @siteVisit
+	Scenario Outline: Send Site Visit to Subrecipient
+	Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+    And I associate Participant "Automation EXE"
+    | Actions 	  | Step 1   | Step 2	 | Step 3  		| Step 4 		 		   | Step 5    | Step 6 		|
+    | Participant | Overview | Associate | Participants | GrantorSiteVisitContacts | Associate | popupflextable |
+    Given I select two approvers "Automation PM", "Automation FO"
+    | Actions 	 | Step 1   		| Step 2		   | Step 3    |
+    | Subtab	 | Responsibilities | 				   |		   |
+    | Approver 1 | Edit				| Program Approver | Approvers |
+    | Approver 2 | Edit				| Fiscal Approver  | Approvers |
+	And I click on "Notify" in the page details
+	Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
+	| Actions 	 | Step 1   		 | Step 2	|
+	| Navigation | Monitoring 		 | 			|
+	| Left Panel | Pending Tasks 	 | My Tasks |
+	| FlexTable  | PhasePendingTasks | Start 	|
+	And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Award Name>" with Id "<Award EGMS ID>"
+	| Actions 	 | Step 1   		 			     | Step 2		  		  			|
+	| Navigation | As a Grantor 	  				 | Monitoring 			 			|
+	| Left Panel | Manage Site Visits 				 | Monitoring Activities  			|
+	| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
+	| Button 	 | View								 | 						            |
+	Given I click on "Conduct" in the page details
+	And I fill in the form "General Review Form"
+	| Actions 	  | Step 1   		 	 | Step 2		 |
+	| Navigation  | Reports and Outcomes | 			 	 |
+	| FlexTable   | Edit				 | Review Forms  |
+	| Form Button | Save				 | Back 		 |
+	| Validation  | Validate			 | FormComponent |
+	Given Two Approvers "PM", "FO" approve "<Site Visit Name>"
+    | Actions 		   | Step 1 	   | Step 2	    | Step 3 			  |
+    | Navigation       | As a Grantor  | Monitoring |					  |
+    | Pending Task 	   | Pending Tasks | My Tasks   | PhasePendingTasks   |
+    | Approval Buttons | Start		   | Approve    |					  |
+    And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Award Name>" with Id "<Award EGMS ID>"
+	| Actions 	 | Step 1   		 			     | Step 2		  		  			|
+	| Navigation | As a Grantor 	  				 | Monitoring 			 			|
+	| Left Panel | Manage Site Visits 				 | Monitoring Activities  			|
+	| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
+	| Button 	 | View								 | 						            |
+	Given I click on "Send to Subrecipient" in the page details
+	When Subrecipient "SPI" receives the task for "<Site Visit Name>"
+	| Actions 	 | Step 1   		 | Step 2	|
+	| Navigation | Monitoring 		 | 			|
+	| Left Panel | Pending Tasks 	 | My Tasks |
+	| FlexTable  | PhasePendingTasks | Start 	|
+	When I re-login to Grants Portal as "SPI"
+	When I navigate to "Monitoring" tab
+	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+	When I perform quick search "<Site Visit Name>" on table "PhasePendingTasks"
+	And I click on the "Start" icon for the "<Site Visit Name>"
+    When I navigate to "Reports and Outcomes" sub tab
+    And I expand the "Automation Observation" on grid "Outcomes"
+    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGridRecipient" by clicking "New" :
+    | Title            				 	  | Description  		   | Status  	 | Due Date   | Assigned To    |
+    | Automation Observation Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
+    When I collapse the "Automation Observation" on grid "Outcomes"
+    And I expand the "Automation Concern" on grid "Outcomes"
+    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGridRecipient" by clicking "New" :
+    | Title            				  | Description  		   | Status  	 | Due Date   | Assigned To    |
+    | Automation Concern Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
+    When I collapse the "Automation Concern" on grid "Outcomes"
+    And I expand the "Automation Finding" on grid "Outcomes"
+    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGridRecipient" by clicking "New" :
+    | Title            				  | Description  		   | Status  	 | Due Date   | Assigned To    |
+    | Automation Finding Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
+    And I collapse the "Automation Finding" on grid "Outcomes"
+    When I click on "Submit to Grantor" in the page details
+    Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
+	Examples:
+	| Award Name 				     	    	    	| Award EGMS ID | Site Visit Name	    |
+	| Automation Announcement to be deleted Application | AD-AuGr--01   | Automation Site Visit |
+	
+	@siteVisitAcceptAndClose @siteVisit
+	Scenario Outline: Send Site Visit to Subrecipient
+	Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+    And I associate Participant "Automation EXE"
+    | Actions 	  | Step 1   | Step 2	 | Step 3  		| Step 4 		 		   | Step 5    | Step 6 		|
+    | Participant | Overview | Associate | Participants | GrantorSiteVisitContacts | Associate | popupflextable |
+    Given I select two approvers "Automation PM", "Automation FO"
+    | Actions 	 | Step 1   		| Step 2		   | Step 3    |
+    | Subtab	 | Responsibilities | 				   |		   |
+    | Approver 1 | Edit				| Program Approver | Approvers |
+    | Approver 2 | Edit				| Fiscal Approver  | Approvers |
+	And I click on "Notify" in the page details
+	Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
+	| Actions 	 | Step 1   		 | Step 2	|
+	| Navigation | Monitoring 		 | 			|
+	| Left Panel | Pending Tasks 	 | My Tasks |
+	| FlexTable  | PhasePendingTasks | Start 	|
+	And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Award Name>" with Id "<Award EGMS ID>"
+	| Actions 	 | Step 1   		 			     | Step 2		  		  			|
+	| Navigation | As a Grantor 	  				 | Monitoring 			 			|
+	| Left Panel | Manage Site Visits 				 | Monitoring Activities  			|
+	| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
+	| Button 	 | View								 | 						            |
+	Given I click on "Conduct" in the page details
+	And I fill in the form "General Review Form"
+	| Actions 	  | Step 1   		 	 | Step 2		 |
+	| Navigation  | Reports and Outcomes | 			 	 |
+	| FlexTable   | Edit				 | Review Forms  |
+	| Form Button | Save				 | Back 		 |
+	| Validation  | Validate			 | FormComponent |
+	Given Two Approvers "PM", "FO" approve "<Site Visit Name>"
+    | Actions 		   | Step 1 	   | Step 2	    | Step 3 			  |
+    | Navigation       | As a Grantor  | Monitoring |					  |
+    | Pending Task 	   | Pending Tasks | My Tasks   | PhasePendingTasks   |
+    | Approval Buttons | Start		   | Approve    |					  |
+    And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Award Name>" with Id "<Award EGMS ID>"
+	| Actions 	 | Step 1   		 			     | Step 2		  		  			|
+	| Navigation | As a Grantor 	  				 | Monitoring 			 			|
+	| Left Panel | Manage Site Visits 				 | Monitoring Activities  			|
+	| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
+	| Button 	 | View								 | 						            |
+	Given I click on "Send to Subrecipient" in the page details
+	When Subrecipient "SPI" receives the task for "<Site Visit Name>"
+	| Actions 	 | Step 1   		 | Step 2	|
+	| Navigation | Monitoring 		 | 			|
+	| Left Panel | Pending Tasks 	 | My Tasks |
+	| FlexTable  | PhasePendingTasks | Start 	|
+	When I re-login to Grants Portal as "SPI"
+	When I navigate to "Monitoring" tab
+	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+	When I perform quick search "<Site Visit Name>" on table "PhasePendingTasks"
+	And I click on the "Start" icon for the "<Site Visit Name>"
+    When I navigate to "Reports and Outcomes" sub tab
+    And I expand the "Automation Observation" on grid "Outcomes"
+    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGridRecipient" by clicking "New" :
+    | Title            				 	  | Description  		   | Status  	 | Due Date   | Assigned To    |
+    | Automation Observation Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
+    When I collapse the "Automation Observation" on grid "Outcomes"
+    And I expand the "Automation Concern" on grid "Outcomes"
+    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGridRecipient" by clicking "New" :
+    | Title            				  | Description  		   | Status  	 | Due Date   | Assigned To    |
+    | Automation Concern Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
+    When I collapse the "Automation Concern" on grid "Outcomes"
+    And I expand the "Automation Finding" on grid "Outcomes"
+    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGridRecipient" by clicking "New" :
+    | Title            				  | Description  		   | Status  	 | Due Date   | Assigned To    |
+    | Automation Finding Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
+    And I collapse the "Automation Finding" on grid "Outcomes"
+    When I click on "Submit to Grantor" in the page details
+    And I click on "Accept And Close" in the page details
+    Then I see status in Progress-bar is "Closed" and is "green"
+	Examples:
+	| Award Name 				     	    	    	| Award EGMS ID | Site Visit Name	    |
+	| Automation Announcement to be deleted Application | AD-AuGr--01   | Automation Site Visit |
 	

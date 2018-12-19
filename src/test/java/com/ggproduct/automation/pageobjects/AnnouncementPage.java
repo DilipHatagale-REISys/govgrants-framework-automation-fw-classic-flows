@@ -33,12 +33,12 @@ public class AnnouncementPage extends ProjectManager {
         changeFlexTableView(dataTableMap.get("FlexTable").get("Step 2"));
         if (AnnouncementType.equals("Competitive")) {
             clickOnPhaseFlexTableButton(dataTableMap.get("Creation").get("Step 1"),
-                    "ActiveFundingOpportunitiesCompitive");
+                    dataTableMap.get("FlexTableId").get("Step 1"));
         } else if (AnnouncementType.equals("Directed")) {
-            clickOnPhaseFlexTableButton(dataTableMap.get("Creation").get("Step 1"), "ActiveFundingOpportunities");
+            clickOnPhaseFlexTableButton(dataTableMap.get("Creation").get("Step 1"), dataTableMap.get("FlexTableId").get("Step 2"));
         } else {
             clickOnPhaseFlexTableButton(dataTableMap.get("Creation").get("Step 1"),
-                    "ActiveFundingOpportunitiesFormula");
+                    dataTableMap.get("FlexTableId").get("Step 3"));
         }
         enterFieldValues(sheetName, excelFileName);
         clickOnModalButton(dataTableMap.get("Creation").get("Step 2"));

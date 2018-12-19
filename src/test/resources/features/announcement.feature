@@ -3,10 +3,11 @@ Feature: Validate all scenarios in the Announcement tab
 
 	Background: Create Announcement
 	Given I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-	| Actions 	 | Step 1 	   	 | Step 2    	   	   | Step 3 |
-	| Navigation | As a Grantor	 | Announcements 	   |		|
-	| FlexTable  | Announcements | Draft Announcements |  		|
-	| Creation   | New			 | Save And Close 	   | Save	|
+	| Actions 	  | Step 1 	   	  					    | Step 2    	   	   		 | Step 3 							 |
+	| Navigation  | As a Grantor  						| Announcements 	   		 |									 |
+	| FlexTable   | Announcements 						| Draft Announcements 		 |  								 |
+	| FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+	| Creation    | New			  						| Save And Close 	   		 | Save								 |
 
 	@33936 @announcementCreation @announcement
 	Scenario: Creation of an Announcement
@@ -200,12 +201,13 @@ Feature: Validate all scenarios in the Announcement tab
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
 	And I add a Funding Account "FA--21" with the amount to an announcement
-	| Actions 		  	  | Step 1 			| Step 2					   | Step 3 								   |
-	| Navigation 		  | Financials 		| 							   | 										   |
-	| FlexTable 		  | Associate 		| Funding Accounts 			   | flexGridAnnouncementFundingAccountGrantor |
-	| Funding Account 	  | Add				| popupflextable		       | Edit 									   |
-	| Inline Column Title | Funding Account | Announcement Pre-Encumbrance |										   |
-	| Inline values 	  | FA--21 		  	| 100000 				       |										   |
+	| Actions 		  	  | Step 1 			| Step 2					   			   |
+	| Navigation 		  | Financials 		| 							   			   |
+	| FlexTable 		  | Associate 		| lexGridAnnouncementFundingAccountGrantor | 
+	| Funding Account 	  | Add				| popupflextable		       			   |
+	| Button			  | Edit			| 										   |
+	| Inline Column Title | Funding Account | Announcement Pre-Encumbrance 			   |
+	| Inline values 	  | FA--21 		  	| 100000 				       			   |
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	And I associate Contact "Automation EXE", Focus Area "00006", Objective "SPO-0008" to the announcement
 	Given I select the Program Approver "Automation PM",Fiscal Approver "Automation FO",Executive Approver "Automation EXE" for the announcement
@@ -224,8 +226,13 @@ Feature: Validate all scenarios in the Announcement tab
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
 	And I add a Funding Account "FA--21" with the amount to an announcement
-	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--21 		  | 100000 				        |
+	| Actions 		  	  | Step 1 			| Step 2					   			   |
+	| Navigation 		  | Financials 		| 							   			   |
+	| FlexTable 		  | Associate 		| lexGridAnnouncementFundingAccountGrantor | 
+	| Funding Account 	  | Add				| popupflextable		       			   |
+	| Button			  | Edit			| 										   |
+	| Inline Column Title | Funding Account | Announcement Pre-Encumbrance 			   |
+	| Inline values 	  | FA--21 		  	| 100000 				       			   |
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	And I associate Contact "Automation EXE", Focus Area "00006", Objective "SPO-0008" to the announcement
 	Given I select the Program Approver "Automation PM",Fiscal Approver "Automation FO",Executive Approver "Automation EXE" for the announcement
@@ -296,9 +303,14 @@ Feature: Validate all scenarios in the Announcement tab
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
 	And I associate an agency "RG-000010" to the annoucement
-	Given I add a Funding Account "FA--21" with the amount to an announcement
-	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--21 		  | 100000 				        |
+	And I add a Funding Account "FA--21" with the amount to an announcement
+	| Actions 		  	  | Step 1 			| Step 2					   			   |
+	| Navigation 		  | Financials 		| 							   			   |
+	| FlexTable 		  | Associate 		| lexGridAnnouncementFundingAccountGrantor | 
+	| Funding Account 	  | Add				| popupflextable		       			   |
+	| Button			  | Edit			| 										   |
+	| Inline Column Title | Funding Account | Announcement Pre-Encumbrance 			   |
+	| Inline values 	  | FA--21 		  	| 100000 				       			   |
 	And I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	Given I associate Contact "Automation EXE", Focus Area "00006", Objective "SPO-0008" to the announcement
 	And I select the Program Approver "Automation PM",Fiscal Approver "Automation FO",Executive Approver "Automation EXE" for the announcement

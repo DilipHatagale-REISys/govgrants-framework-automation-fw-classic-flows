@@ -1,9 +1,9 @@
 @applicationIntake
 Feature: Validate all scenarios in the Application Intake
 
-	#Background: Qualify Announcement and Create Application
-	#Given I qualify the announcement "Automation Announcement Dec10" as user "SPI"
-	 #And I create an Application from sheet "Creation" in excel "Application_Field_Values.xlsx"
+	Background: Qualify Announcement and Create Application
+	Given I qualify the announcement "Automation Announcement Dec10" as user "SPI"
+	And I create an Application from sheet "Creation" in excel "Application_Field_Values.xlsx"
 	
   	@preapplicationCreation @applicationIntake
   	Scenario: Creating a Pre-Application
@@ -36,32 +36,27 @@ Feature: Validate all scenarios in the Application Intake
 
   	@addBudgetDetailsToApplication @applicationIntake
   	Scenario Outline: Addition of budget in the budget grid to an application
-  	#Given I add focus area "00005" to the application
-  	
-  	Given I login to "Grants Portal" app as "SPI" User
-	When I navigate to "Applications" tab
-	And I navigate to "Applications" content inside "Applications" subheader on left panel
-	When I perform quick search "<Application Name>" on table "RecipientApplications"
-	And I click on the "View" icon for the "<Application Name>"
-  	
-    When I navigate to "Budget" sub tab
+  	Given I add focus area "00005" to the application
+  	When I navigate to "Budget" sub tab
     And I expand the "BP01" on grid "<Flextable Name>"
     When I expand the "Proposed Budget" on grid "<Flextable Name>"
     When I edit the following rows inline in flex table with id "inlineEditGridApplicationBudgetCategoryGrantorFlexGrid" by clicking "Edit" :
 	| Category Name | Budget | Cash Match | Non-Cash Match |
 	| Construction	| 5000 	 | 1000   	  | 3000 		   | 
 	Examples:
-	| Application Name 											|
-	| Automation Announcement for Application Intake Application |
+	| Application Name 											 | Flextable Name |
+	| Automation Announcement for Application Intake Application | Budget Details |
 	
   	@addTargetToKPIInApplication @applicationIntake
-  	Scenario: Addition of KPI target to an application 
-    When I navigate to "Proposal" sub tab
-    When I edit the following rows inline in flex table with id "inlineEditGridRecipientApplicationRelatedKPIs" by clicking "Edit" :
+  	Scenario Outline: Addition of KPI target to an application When I navigate to "Proposal" sub tab
+    When I edit the following rows inline in flex table with id "flexGridRecipientApplicationRelatedKPIs" by clicking "Edit" :
 	| EGMS ID  | Target |
 	| KPI-0005 | 10		|
 	| KPI-0006 | 10		|
 	Then I see that "10" has been added in flextable with Id "inlineEditGridRecipientApplicationRelatedKPIs"
+	Examples:
+	| Application Name 											 | Flextable Name |
+	| Automation App Dec10 | Budget Details |
 	
   	@uploadAttachmentForChecklistInApplication @applicationIntake
   	Scenario: Attaching a document for attachment checklist in an application
@@ -86,7 +81,7 @@ Feature: Validate all scenarios in the Application Intake
 	And I add focus area "00005" to the application
 	Given I add budget details to the application
 	| Category Name | Budget | Cash Match | Non-Cash Match |
-	| Construction  | 5000 	| 1000   	 | 3000 		   |
+	| Construction  | 5000 	 | 1000   	  | 3000 		   |
 	And I add target to the KPI in the application
 	| EGMS ID  | Target |
 	| KPI-0005 | 10		|

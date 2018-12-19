@@ -86,7 +86,7 @@ public class ApplicationPage extends ProjectManager {
      */
     public void additionOfTargetToKPIInApplication(DataTable rowValues) {
         clickOnSubtab("Proposal");
-        fillFieldsForInlineTable("inlineEditGridRecipientApplicationRelatedKPIs", "Edit", rowValues);
+        fillFieldsForInlineTable("flexGridRecipientApplicationRelatedKPIs", "Edit", rowValues);
     }
 
     /**
