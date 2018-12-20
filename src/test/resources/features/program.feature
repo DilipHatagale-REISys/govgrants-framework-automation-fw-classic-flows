@@ -13,7 +13,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Planning" tab
     And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
     When I click toggle button for "<Program flextable Header>"
-    Then I see that the status is "<Program Status>"
+    Then I see that "Automation Program" has been added in flextable with Id "Programs"
     Examples:
     | Program flextable Header | Program Status |
     | Draft Internal Programs  | Created  	    |
@@ -101,7 +101,7 @@ Feature: Validate all scenarios for program
   	@34746 @programAddAttachment @program
   	Scenario: Validate the attachment for the Internal Program
     When I navigate to "Attachments" sub tab
-    And I click on "Add" button on " Attachments" flextable to switch to frame
+    And I click on "Add" button on " Attachments" flextable for Attachment
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Program Artifacts"
     And I close Modal 
     Then I see that "Program Artifacts" has been added in flextable with Id "a150b000003epC4AAI"

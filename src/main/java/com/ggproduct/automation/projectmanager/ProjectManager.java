@@ -196,15 +196,7 @@ public class ProjectManager extends ProjectWebServices {
         toggleApp(appName);
     }
 
-    /**
-     * Assert the text value for the given field label
-     * 
-     * @param fieldLabel
-     * @param text
-     */
-    public void assertfieldValue(String fieldLabel, String text) {
-        Assert.assertTrue(isFieldModified(fieldLabel, text));
-    }
+
 
     /**
      * Handles toggling between different list views
@@ -215,14 +207,7 @@ public class ProjectManager extends ProjectWebServices {
         govgrants.phasePannel().clickDoubleArrowDropDownAndSelectItem(tableViewName);
     }
 
-    /**
-     * Assert if a column value is present in a flextable
-     * 
-     * @param status
-     */
-    public void assertColumnValueOnTable(String status) {
-        Assert.assertTrue(isStatusCorrect(status));
-    }
+
 
     /**
      * To perform quick search on a table

@@ -190,7 +190,7 @@ Feature: Validate all scenarios in the Announcement tab
   	@35003 @announcementAddAttachment @announcement
   	Scenario: Validate the attachment for an Announcement
     When I navigate to "Attachments" sub tab
-    And I click on "Add" button on " Attachments" flextable to switch to frame
+    And I click on "Add" button on " Attachments" flextable for Attachment
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
     And I close Modal
     Then I see that "Funding Opportunity Announcement" has been added in flextable with Id "a150b000003epC4AAI"

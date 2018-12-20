@@ -345,7 +345,7 @@ Feature: Validate all scenarios in the Application Review
 	And "Management Review" is completed by clicking "Promote to FDM" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
 	When I click on "Funding Decision Memo" in the page details
 	And I click on "Edit" in the page details
-	When I enter "GrantCode__c" as "AuGr"
+	When I enter value "AuGr" into field "GrantCode__c"
 	And I click on "Save" in the page details
 	Then I see that "Funding Decision Memo" is in "Created" status
 	Examples: 

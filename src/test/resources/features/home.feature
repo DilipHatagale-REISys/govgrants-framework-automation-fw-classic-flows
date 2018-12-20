@@ -19,9 +19,9 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Internal Organizations" content inside "Manage Organizations" subheader on left panel
     When I click on "View" icon for "<Organization name>" inside flex table with id "OrganizationId"
     When I click on "Edit" in the page details
-    When I enter "Abbreviation__c" as "Automation"
+    When I enter value "Automation" into field "Abbreviation__c"
     And I click on "Save" in the page details
-    Then I see that "Agency Abbreviation" field is modified to "Automation"
+    Then I see that "State Organization" is in "Created" status
 	Examples:
 	| Organization name 				    |
 	| Internal Automation Organization Test |

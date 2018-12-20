@@ -21,6 +21,7 @@ public class GenericSteps {
         projectManager = new ProjectManager(controller, handler, govgrants);
     }
     
+    
     /******** Global Common Steps************/
     /* @When("^I navigate to \"([^\"]*)\" tab$")
     public void navigateToTab(String tabName) {
@@ -72,62 +73,11 @@ public class GenericSteps {
         projectManager.collapseGrid(uniqueColumnValue);
     }
     
-    /****** Product Common Steps ***********/
-
-    @Given("^I login to \"([^\"]*)\" app as \"([^\"]*)\" User$")
-    public void loginToggleToApp(String appName, String userName) {
-        projectManager.loginToggleToApp(appName, userName);
-    }
-    
-    @When("^I perform quick search for \"([^\"]*)\" for the parent value \"([^\"]*)\" on grid \"([^\"]*)\"$")
-    public void quickSearchOnGridTable(String searchTerm, String anyUniqueColumnValueFromParent, String flexTableDivId) {
-        projectManager.quickSearchOnGridTable(flexTableDivId, anyUniqueColumnValueFromParent, searchTerm);
-    }
-    
-    
- 
-
-   
-
-    
-
-    
-    
-
-   
-
-   
-    
- 
-
- 
-    
-   
-
-   
-
-  
-
-    @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" flextable to switch to frame$")
-    public void clickOnButtonForAttachmentNotesToOpenModal(String buttonName, String flextableName) {
-        projectManager.clickOnButtonForAttachmentNotesToOpenModal(buttonName, flextableName);
-    }
-
     @When("^I click on top right button \"([^\"]*)\" in flex table with id \"([^\"]*)\"$")
     public void clickOnFlextableButton(String buttonName, String flextableId) {
         projectManager.clickOnFlextableButton(buttonName, flextableId);
     }
-
-    @When("^I click \"([^\"]*)\" on the confirmation dialog box$")
-    public void clickOnConfirmationtBox(String confirmationDecision) {
-        projectManager.clickOnConfirmationtBox(confirmationDecision);
-    }
-
-    @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" phase flextable$")
-    public void clickOnPhaseFlexTableButton(String buttonName, String flextableName) {
-        projectManager.clickOnPhaseFlexTableButton(buttonName, flextableName);
-    }
-
+    
     @When("^I check \"([^\"]*)\" boxes in flex table with id \"([^\"]*)\"$")
     public void clickOnMultipleCheckbox(String uniqueColumnValues, String flextableId) {
         if ("All".equalsIgnoreCase(uniqueColumnValues)) {
@@ -136,70 +86,20 @@ public class GenericSteps {
             projectManager.clickOnMultipleCheckbox(flextableId, uniqueColumnValues.split(","));
         }
     }
-
-    @When("^I switch to Parent frame$")
-    public void switchToParentFrame() {
-        projectManager.switchToParentFrame();
-    }
-
-    @When("^I click on \"([^\"]*)\" icon for \"([^\"]*)\" inside flex table with id \"([^\"]*)\"$")
-    public void clickOnFlextableRowButton(String iconName, String uniqueColumnValue, String flexTableId) {
-        projectManager.clickOnFlextableRowButton(flexTableId, iconName, uniqueColumnValue);
-    }
-
-    @When("^I enter \"([^\"]*)\" as \"([^\"]*)\"$")
-    public void enterFieldValue(String fieldAPIName, String value) {
+    
+    @When("^I enter value \"([^\"]*)\" into field \"([^\"]*)\"$")
+    public void enterFieldValue(String value, String fieldAPIName) {
         projectManager.enterFieldValue(fieldAPIName, value);
     }
-
-    @When("^I enter \"([^\"]*)\" for comments and click \"([^\"]*)\"$")
-    public void enteringCommentsOnConfirmation(String comments, String confirmation) {
-        projectManager.enteringCommentsOnConfirmation(comments, confirmation);
-    }
-
-    @When("^I close Modal$")
-    public void closeModal() {
-        projectManager.closeModal();
-    }
     
-    @Given("^I complete filling up the standard form$")
-    public void fillStandardForm() {
-        projectManager.fillStandardForm();
-    } 
-
     @When("^I enter \"([^\"]*)\" values from \"([^\"]*)\"$")
     public void enterFieldValues(String sheetName, String excelName) {
         projectManager.enterFieldValues(sheetName, excelName);
     }
 
-    @When("^I enter a review as \"([^\"]*)\"$")
-    public void enterReview(String rating) {
-        projectManager.enterReview(rating);
-    }
-
-    @When("^I re-login to \"([^\"]*)\" app as \"([^\"]*)\" User$")
-    public void reloginToggleToApp(String appName, String userName) throws IOException {
-        projectManager.reloginToggleToApp(appName, userName);
-    }
-
-    @When("^I click \"([^\"]*)\" after selection of \"([^\"]*)\" in the table \"([^\"]*)\"$")
-    public void chooseRecordForProgramAssociation(String buttonName, String recordUniqueValues, String tableId) {
-        projectManager.chooseRecordForAssociation(buttonName, tableId, recordUniqueValues.split(","));
-    }
-
-    @When("^I fill in the \"([^\"]*)\" for the Approver details$")
-    public void fillInApproverDetails(String approverName) {
-        projectManager.fillInApproverDetails(approverName);
-    }
-
-    @When("^I click on \"([^\"]*)\" on the approval decision box$")
-    public void clickOnApprovalDecisionBox(String approvalDesicion) {
-        projectManager.clickOnApprovalDecisionBox(approvalDesicion);
-    }
-
-    @When("^I choose the file \"([^\"]*)\" to upload for \"([^\"]*)\" of type \"([^\"]*)\"$")
-    public void uploadFile(String fileName, String uploadSectionName, String attachmentType) {
-        projectManager.uploadFile(fileName, uploadSectionName, attachmentType);
+    @When("^I click on \"([^\"]*)\" icon for \"([^\"]*)\" inside flex table with id \"([^\"]*)\"$")
+    public void clickOnFlextableRowButton(String iconName, String uniqueColumnValue, String flexTableId) {
+        projectManager.clickOnFlextableRowButton(flexTableId, iconName, uniqueColumnValue);
     }
     
     @When("^I enter the following values into flex table with id \"([^\"]*)\" by clicking \"([^\"]*)\" :$")
@@ -211,31 +111,102 @@ public class GenericSteps {
     public void fillFieldsForInlineTable(String flexTableId, String buttonName, DataTable rowValues) {
         projectManager.fillFieldsForInlineTable(flexTableId, buttonName, rowValues);
     }
-
-    @Then("^I see that \"([^\"]*)\" is in \"([^\"]*)\" status$")
-    public void assertStatus(String record, String status) {
-        projectManager.assertStatus(record, status);
-    }
-
+    
     @Then("^I see status in Progress-bar is \"([^\"]*)\" and is \"([^\"]*)\"$")
     public void assertStatusProgressBar(String status, String color) {
         projectManager.assertStatusProgressBar(status, color);
     }
+    
+    
+    /****** Product Common Steps ***********/
 
-    @Then("^I see that \"([^\"]*)\" field is modified to \"([^\"]*)\"$")
-    public void assertfieldValue(String fieldLabel, String text) {
-        projectManager.assertfieldValue(fieldLabel, text);
+    @Given("^I login to \"([^\"]*)\" app as \"([^\"]*)\" User$")
+    public void loginToggleToApp(String appName, String userName) {
+        projectManager.loginToggleToApp(appName, userName);
+    }
+    
+    @Given("^I fill in the form \"([^\"]*)\"$")
+    public void fillingUpStandardForm(String formName, DataTable dataTable) {
+        projectManager.fillingUpStandardForm(formName, dataTable);
+    }
+    
+    @When("^I re-login to \"([^\"]*)\" app as \"([^\"]*)\" User$")
+    public void reloginToggleToApp(String appName, String userName) throws IOException {
+        projectManager.reloginToggleToApp(appName, userName);
+    }
+    
+    @When("^I perform quick search for \"([^\"]*)\" for the parent value \"([^\"]*)\" on grid \"([^\"]*)\"$")
+    public void quickSearchOnGridTable(String searchTerm, String anyUniqueColumnValueFromParent, String flexTableDivId) {
+        projectManager.quickSearchOnGridTable(flexTableDivId, anyUniqueColumnValueFromParent, searchTerm);
+    }
+    
+    @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" flextable for Attachment$")
+    public void clickOnButtonForAttachmentNotesToOpenModal(String buttonName, String flextableName) {
+        projectManager.clickOnButtonForAttachmentNotesToOpenModal(buttonName, flextableName);
+    }
+ 
+    @When("^I click \"([^\"]*)\" on the confirmation dialog box$")
+    public void clickOnConfirmationtBox(String confirmationDecision) {
+        projectManager.clickOnConfirmationtBox(confirmationDecision);
+    }
+    
+    @When("^I switch to Parent frame$")
+    public void switchToParentFrame() {
+        projectManager.switchToParentFrame();
     }
 
-    @Then("^I see that the status is \"([^\"]*)\"$")
-    public void assertStatusOnTable(String status) {
-        projectManager.assertColumnValueOnTable(status);
+    @When("^I enter \"([^\"]*)\" for comments and click \"([^\"]*)\"$")
+    public void enteringCommentsOnConfirmation(String comments, String confirmation) {
+        projectManager.enteringCommentsOnConfirmation(comments, confirmation);
     }
-
+    
+    @When("^I close Modal$")
+    public void closeModal() {
+        projectManager.closeModal();
+    }
+    
+    @Given("^I complete filling up the standard form$")
+    public void fillStandardForm() {
+        projectManager.fillStandardForm();
+    } 
+    
+    @When("^I enter a review as \"([^\"]*)\"$")
+    public void enterReview(String rating) {
+        projectManager.enterReview(rating);
+    }
+    
+    @When("^I click \"([^\"]*)\" after selection of \"([^\"]*)\" in the table \"([^\"]*)\"$")
+    public void chooseRecordForProgramAssociation(String buttonName, String recordUniqueValues, String tableId) {
+        projectManager.chooseRecordForAssociation(buttonName, tableId, recordUniqueValues.split(","));
+    }
+    
+    @When("^I fill in the \"([^\"]*)\" for the Approver details$")
+    public void fillInApproverDetails(String approverName) {
+        projectManager.fillInApproverDetails(approverName);
+    }
+    
+    @When("^I click on \"([^\"]*)\" on the approval decision box$")
+    public void clickOnApprovalDecisionBox(String approvalDesicion) {
+        projectManager.clickOnApprovalDecisionBox(approvalDesicion);
+    }
+    
+    @When("^I choose the file \"([^\"]*)\" to upload for \"([^\"]*)\" of type \"([^\"]*)\"$")
+    public void uploadFile(String fileName, String uploadSectionName, String attachmentType) {
+        projectManager.uploadFile(fileName, uploadSectionName, attachmentType);
+    }
+    
+    @Then("^I see that \"([^\"]*)\" is in \"([^\"]*)\" status$")
+    public void assertStatus(String record, String status) {
+        projectManager.assertStatus(record, status);
+    }
+    
     @Then("^I see that \"([^\"]*)\" has been added in flextable with Id \"([^\"]*)\"$")
     public void assertColumnOnTable(String columnUniqueValue, String flextableId) {
         projectManager.assertColumnOnTable(columnUniqueValue, flextableId);
     }
+    
+    
+    /**** Generic Consolidated Product Steps ******/
     
     @Given("^I create a post award record from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
     public void creationOfPostAwardRecord(String sheetName, String excelFileName, DataTable dataTable) {
@@ -287,9 +258,4 @@ public class GenericSteps {
         projectManager.subrecipientTask(subrecipient, uniqueColumnValue, dataTable);
     }
     
-    @Given("^I fill in the form \"([^\"]*)\"$")
-    public void fillingUpStandardForm(String formName, DataTable dataTable) {
-        projectManager.fillingUpStandardForm(formName, dataTable);
-    }
-    /**** Generic Consolidated Steps ******/
 }
