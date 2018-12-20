@@ -78,8 +78,8 @@ Feature: Validate all scenarios in the Site Visit
 	When I re-login to Grants Portal as "SPI"
 	And I navigate to "Monitoring" tab
 	When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-	And I perform quick search "<Site Visit Name>" on table "PhasePendingTasks"
-	When I click on the "Start" icon for the "<Site Visit Name>"
+	And I perform quick search for "<Site Visit Name>" in "PhasePendingTasks" panel
+	When I click on "Start" icon for "<Site Visit Name>" inside table
 	Then I see status in Progress-bar is "Notified" and is "green"
 	Examples:
 	| Site Visit Name	    |
@@ -107,9 +107,9 @@ Feature: Validate all scenarios in the Site Visit
 	When I re-login to "As a Grantor" app as "EXE" User
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-	And I expand the "<Award Name>" on grid "Site Visits for Active Grants"
-	When I expand the "<Award Name>" on grid "Site Visits for Active Grants"
-	And I click on the "View" icon for the "<Site Visit Name>"
+	And I expand nested table containing column value "<Award Name>"
+	When I expand nested table containing column value "<Award Name>"
+	And I click on "View" icon for "<Site Visit Name>" inside table
 	When I click on "Conduct" in the page details
 	Then I see status in Progress-bar is "In Progress" and is "green"
 	Examples:
@@ -138,9 +138,9 @@ Feature: Validate all scenarios in the Site Visit
 	When I re-login to "As a Grantor" app as "EXE" User
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-	And I expand the "<Award Name>" on grid "Site Visits for Active Grants"
-	When I expand the "<Award Name>" on grid "Site Visits for Active Grants"
-	And I click on the "View" icon for the "<Site Visit Name>"
+	And I expand nested table containing column value "<Award Name>"
+	When I expand nested table containing column value "<Award Name>"
+	And I click on "View" icon for "<Site Visit Name>" inside table
 	When I click on "Conduct" in the page details
 	And I navigate to "Reports and Outcomes" sub tab
 	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
@@ -276,14 +276,14 @@ Feature: Validate all scenarios in the Site Visit
 	Given I login to "As a Grantor" app as "PM" User
 	When I navigate to "Monitoring" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search "<Site Visit Name>" on table "PhasePendingTasks"
-    And I click on the "Start" icon for the "<Site Visit Name>" 
+    When I perform quick search for "<Site Visit Name>" in "PhasePendingTasks" panel
+    And I click on "View" icon for "<Site Visit Name>" inside table 
     When I click on "Approve" on the approval decision box
     And I login to "As a Grantor" app as "FO" User
 	When I navigate to "Monitoring" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search "<Site Visit Name>" on table "PhasePendingTasks"
-    And I click on the "Start" icon for the "<Site Visit Name>" 
+    When I perform quick search for "<Site Visit Name>" in "PhasePendingTasks" panel
+    And I click on "View" icon for "<Site Visit Name>" inside table 
     When I click on "Approve" on the approval decision box
 	Then I see status in Progress-bar is "Approved" and is "green"
 	Examples:
@@ -336,10 +336,10 @@ Feature: Validate all scenarios in the Site Visit
     When I re-login to "As a Grantor" app as "EXE" User
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-	And I expand the "<Award Name>" on grid "Site Visits for Active Grants"
-	When I expand the "<Award Name>" on grid "Site Visits for Active Grants"
+	And I expand nested table containing column value "<Award Name>"
+	When I expand nested table containing column value "<Award Name>"
 	And I perform quick search for "<Site Visit Name>" for the parent value "AD-AuGr--01" on grid "inlineEditGridSiteVisitsGridView"
-	When I click on the "View" icon for the "<Site Visit Name>"
+	When I click on "Start" icon for "<Site Visit Name>" inside table
 	And I click on "Send to Subrecipient" in the page details
 	Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
 	Examples:
@@ -398,24 +398,24 @@ Feature: Validate all scenarios in the Site Visit
 	When I re-login to Grants Portal as "SPI"
 	When I navigate to "Monitoring" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-	When I perform quick search "<Site Visit Name>" on table "PhasePendingTasks"
-	And I click on the "Start" icon for the "<Site Visit Name>"
+	When I perform quick search for "<Site Visit Name>" in "PhasePendingTasks" panel
+	And I click on "Start" icon for "<Site Visit Name>" inside table
     When I navigate to "Reports and Outcomes" sub tab
-    And I expand the "Automation Observation" on grid "Outcomes"
+    And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGridRecipient" by clicking "New" :
     | Title            				 	  | Description  		   | Status  	 | Due Date   | Assigned To    |
     | Automation Observation Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
-    When I collapse the "Automation Observation" on grid "Outcomes"
-    And I expand the "Automation Concern" on grid "Outcomes"
+    When I collapse nested table containing column value "Automation Observation"
+    And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGridRecipient" by clicking "New" :
     | Title            				  | Description  		   | Status  	 | Due Date   | Assigned To    |
     | Automation Concern Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
-    When I collapse the "Automation Concern" on grid "Outcomes"
-    And I expand the "Automation Finding" on grid "Outcomes"
+    When I collapse nested table containing column value "Automation Concern"
+    And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGridRecipient" by clicking "New" :
     | Title            				  | Description  		   | Status  	 | Due Date   | Assigned To    |
     | Automation Finding Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
-    And I collapse the "Automation Finding" on grid "Outcomes"
+    And I collapse nested table containing column value "Automation Finding"
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
 	Examples:
 	| Award Name 				     	    	    	| Award EGMS ID | Site Visit Name	    |
@@ -473,24 +473,24 @@ Feature: Validate all scenarios in the Site Visit
 	When I re-login to Grants Portal as "SPI"
 	When I navigate to "Monitoring" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-	When I perform quick search "<Site Visit Name>" on table "PhasePendingTasks"
-	And I click on the "Start" icon for the "<Site Visit Name>"
+	When I perform quick search for "<Site Visit Name>" in "PhasePendingTasks" panel
+	And I click on "Start" icon for "<Site Visit Name>" inside table
     When I navigate to "Reports and Outcomes" sub tab
-    And I expand the "Automation Observation" on grid "Outcomes"
+    And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGridRecipient" by clicking "New" :
     | Title            				 	  | Description  		   | Status  	 | Due Date   | Assigned To    |
     | Automation Observation Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
-    When I collapse the "Automation Observation" on grid "Outcomes"
-    And I expand the "Automation Concern" on grid "Outcomes"
+    When I collapse nested table containing column value "Automation Observation"
+    And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGridRecipient" by clicking "New" :
     | Title            				  | Description  		   | Status  	 | Due Date   | Assigned To    |
     | Automation Concern Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
-    When I collapse the "Automation Concern" on grid "Outcomes"
-    And I expand the "Automation Finding" on grid "Outcomes"
+    When I collapse nested table containing column value "Automation Concern"
+    And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGridRecipient" by clicking "New" :
     | Title            				  | Description  		   | Status  	 | Due Date   | Assigned To    |
     | Automation Finding Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
-    And I collapse the "Automation Finding" on grid "Outcomes"
+    And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
 	Examples:
@@ -549,24 +549,24 @@ Feature: Validate all scenarios in the Site Visit
 	When I re-login to Grants Portal as "SPI"
 	When I navigate to "Monitoring" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-	When I perform quick search "<Site Visit Name>" on table "PhasePendingTasks"
-	And I click on the "Start" icon for the "<Site Visit Name>"
+	When I perform quick search for "<Site Visit Name>" in "PhasePendingTasks" panel
+	And I click on "Start" icon for "<Site Visit Name>" inside table
     When I navigate to "Reports and Outcomes" sub tab
-    And I expand the "Automation Observation" on grid "Outcomes"
+    And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGridRecipient" by clicking "New" :
     | Title            				 	  | Description  		   | Status  	 | Due Date   | Assigned To    |
     | Automation Observation Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
-    When I collapse the "Automation Observation" on grid "Outcomes"
-    And I expand the "Automation Concern" on grid "Outcomes"
+    When I collapse nested table containing column value "Automation Observation"
+    And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGridRecipient" by clicking "New" :
     | Title            				  | Description  		   | Status  	 | Due Date   | Assigned To    |
     | Automation Concern Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
-    When I collapse the "Automation Concern" on grid "Outcomes"
-    And I expand the "Automation Finding" on grid "Outcomes"
+    When I collapse nested table containing column value "Automation Concern"
+    And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGridRecipient" by clicking "New" :
     | Title            				  | Description  		   | Status  	 | Due Date   | Assigned To    |
     | Automation Finding Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
-    And I collapse the "Automation Finding" on grid "Outcomes"
+    And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     And I click on "Accept And Close" in the page details
     Then I see status in Progress-bar is "Closed" and is "green"

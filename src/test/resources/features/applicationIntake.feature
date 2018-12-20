@@ -4,13 +4,6 @@ Feature: Validate all scenarios in the Application Intake
 	Background: Qualify Announcement and Create Application
 	Given I qualify the announcement "Automation Announcement Dec10" as user "SPI"
 	And I create an Application from sheet "Creation" in excel "Application_Field_Values.xlsx"
-	
-  	@preapplicationCreation @applicationIntake
-  	Scenario: Creating a Pre-Application
-    When I click on "Create Pre-Application" button to switch to frame "iframeActionModalIdViewLayout"
-	And I enter "Creation" values from "Application_Field_Values.xlsx"
-	When I click modal button "Save and Close Modal"
-	Then I see that "Pre-Application" is in "Created" status
 
   	@34044 @applicationCreation @applicationIntake
   	Scenario: Creating an Application
@@ -38,8 +31,8 @@ Feature: Validate all scenarios in the Application Intake
   	Scenario Outline: Addition of budget in the budget grid to an application
   	Given I add focus area "00005" to the application
   	When I navigate to "Budget" sub tab
-    And I expand the "BP01" on grid "<Flextable Name>"
-    When I expand the "Proposed Budget" on grid "<Flextable Name>"
+    And I expand nested table containing column value "BP01"
+    When I expand nested table containing column value "Proposed Budget"
     When I edit the following rows inline in flex table with id "inlineEditGridApplicationBudgetCategoryGrantorFlexGrid" by clicking "Edit" :
 	| Category Name | Budget | Cash Match | Non-Cash Match |
 	| Construction	| 5000 	 | 1000   	  | 3000 		   | 
@@ -67,13 +60,6 @@ Feature: Validate all scenarios in the Application Intake
     When I click on "Attach" icon for "Not Applicable" inside flex table with id "inlineEditGridApplicationChecklists"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Application"
     When I close Modal
-	
-  	@applicationAcknowledgement @applicationIntake
-  	Scenario: Acknowledging an application
-	When I navigate to "Overview" sub tab
-	And I click on Agree in "Acknowledgement" section
-	When I click on "Save" in the page details
-	Then I see status in Progress-bar is "Created" and is "green"
 	
   	@34156 @submitApplication @applicationIntakeHappyPath @applicationIntake
   	Scenario: Submitting an application to Grantor
@@ -106,9 +92,9 @@ Feature: Validate all scenarios in the Application Intake
     Given I login to "As a Grantor" app as "<User>" User
     When I navigate to "Applications" tab
 	And I navigate to "Applications" content inside "Applications" subheader on left panel
-	When I toggle to "Submitted Applications"
-	And I perform quick search "<Application Name>" on table "ApplicantGrantorApplications"
-	When I click on the "View" icon for the "<Application Name>"
+	When I click toggle button for "Submitted Applications"
+	And I perform quick search for "<Application Name>" in "ApplicantGrantorApplications" panel
+	When I click on "View" icon for "<Application Name>" inside table
 	Examples:
 	| User | Application Name                    |
 	| EXE  | Automation Announcement Application |

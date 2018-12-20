@@ -208,7 +208,7 @@ public class AwardPage extends ProjectManager  {
         clickOnFlexTableIcon("Start", awardName);
         clickOnSubtab("Responsibilities");
         clickOnFlextableRowButton("Enter Review", "Automation FO", "Peer Reviewers");
-        enterReview();
+        enterReview("Passed");
         clickOnModalButton("Save");
         clickOnModalButton("Submit Review");
         closeModal();

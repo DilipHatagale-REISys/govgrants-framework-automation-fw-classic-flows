@@ -6,7 +6,7 @@ Feature: Validate all scenarios in the home tab
   	Given I login to "As Administrator" app as "Admin" User
     When I navigate to "Setup" tab
     And I navigate to "Internal" content inside "Organizations" subheader on left panel
-    When I toggle to "Draft Internal Organizations"
+    When I click toggle button for "Draft Internal Organizations"
     And I click on top right button "New" in flex table with id "inlineEditGridInternalOrganizationHierarchy"
     When I enter "RequiredForSave" values from "InternalOrganization_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -17,11 +17,11 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As Administrator" app as "Admin" User
     When I navigate to "Setup" tab
     And I navigate to "Internal Organizations" content inside "Manage Organizations" subheader on left panel
-    When I click on "View" icon on "Organizations" table against "<Organization name>"
+    When I click on "View" icon for "<Organization name>" inside flex table with id "OrganizationId"
     When I click on "Edit" in the page details
-    When I change the "Abbreviation__c" field to "Automation"
+    When I enter value "Automation" into field "Abbreviation__c"
     And I click on "Save" in the page details
-    Then I see that "Agency Abbreviation" field is modified to "Automation"
+    Then I see that "State Organization" is in "Created" status
 	Examples:
 	| Organization name 				    |
 	| Internal Automation Organization Test |

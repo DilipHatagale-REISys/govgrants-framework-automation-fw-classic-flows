@@ -89,14 +89,14 @@ Feature: Validate all scenarios in the Award
     When I re-login to "As a Grantor" app as "PM" User
     And I navigate to "Monitoring" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search "Approve Risk Assessment" on table "PhasePendingTasks"
-    When I click on the "Start" icon for the "Approve Risk Assessment" 
+    And I perform quick search for "Approve Risk Assessment" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Approve Risk Assessment" inside table
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "FO" User
     And I navigate to "Monitoring" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search "Approve Risk Assessment" on table "PhasePendingTasks"
-    When I click on the "Start" icon for the "Approve Risk Assessment" 
+    And I perform quick search for "Approve Risk Assessment" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Approve Risk Assessment" inside table 
     And I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Active" and is "green"
 	
@@ -157,8 +157,8 @@ Feature: Validate all scenarios in the Award
   	When I re-login to Grants Portal as "SPI"
 	And I navigate to "Grants" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search "<Award Name>" on table "PhasePendingTasks"
-    When I click on the "Start" icon for the "<Award Name>" 
+    And I perform quick search for "<Award Name>" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "<Award Name>" inside table 
     And I click on "Accept" in the page details
     When I enter "Automation Award accepted" for comments and click "OK"
     Then I see that "Subaward" is in "Created" status
@@ -188,9 +188,9 @@ Feature: Validate all scenarios in the Award
   	When I re-login to "As a Grantor" app as "EXE" User
   	And I navigate to "Grants" tab
   	And I navigate to "Grants and Subawards" content inside "Grants, Awards & Amendments" subheader on left panel
-	And I toggle to "Draft Grants"
-	When I perform quick search "<Award Name>" on table "ActiveGrants"
-	And I click on the "View" icon for the "<Award Name>"
+	And I click toggle button for "Draft Grants"
+	When I perform quick search for "<Award Name>" in "ActiveGrants" panel
+	And I click on "View" icon for "<Award Name>" inside table 
 	When I navigate to "Subawards" sub tab
 	And I click on "View" icon for "<Award EGMS Id>" inside flex table with id "RelatedAwards1"
 	When I navigate to "Responsibilities" sub tab
@@ -225,9 +225,9 @@ Feature: Validate all scenarios in the Award
   	When I re-login to "As a Grantor" app as "EXE" User
   	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Awards & Amendments" subheader on left panel
-	And I toggle to "Draft Grants"
-	When I perform quick search "<Award Name>" on table "ActiveGrants"
-	And I click on the "View" icon for the "<Award Name>"
+	And I click toggle button for "Draft Grants"
+	When I perform quick search for "<Award Name>" in "ActiveGrants" panel
+	And I click on "View" icon for "<Award Name>" inside table 
 	When I navigate to "Subawards" sub tab
 	And I click on "View" icon for "<Award EGMS Id>" inside flex table with id "RelatedAwards1"
 	When I navigate to "Responsibilities" sub tab
@@ -264,11 +264,11 @@ Feature: Validate all scenarios in the Award
   	When I re-login to "As a Grantor" app as "FO" User
     And I navigate to "Grants" tab
 	When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search "<Award Name>" on table "PhasePendingTasks"
-    When I click on the "Start" icon for the "<Award Name>" 
+    And I perform quick search for "<Award Name>" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "<Award Name>" inside table  
     And I navigate to "Responsibilities" sub tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridGrantorAwardReviewer"
-    And I enter a review
+    And I enter a review as "Passed"
     When I click modal button "Save"
     And I click modal button "Submit Review"
     And I close Modal
@@ -330,20 +330,20 @@ Feature: Validate all scenarios in the Award
   	Given I re-login to "As a Grantor" app as "PM" User
 	When I navigate to "Grants" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search "<Award Name>" on table "PhasePendingTasks"
-    And I click on the "Start" icon for the "<Award Name>" 
+    When I perform quick search for "<Award Name>" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "<Award Name>" inside table  
     When I click on "Approve" on the approval decision box
     And I re-login to "As a Grantor" app as "FO" User
 	When I navigate to "Grants" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search "<Award Name>" on table "PhasePendingTasks"
-    And I click on the "Start" icon for the "<Award Name>" 
+    When I perform quick search for "<Award Name>" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "<Award Name>" inside table 
     When I click on "Approve" on the approval decision box
     And I re-login to "As a Grantor" app as "EXE" User
 	When I navigate to "Grants" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search "<Award Name>" on table "PhasePendingTasks"
-    And I click on the "Start" icon for the "<Award Name>" 
+    When I perform quick search for "<Award Name>" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "<Award Name>" inside table 
     When I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Approved" and is "green"
 	Examples:
@@ -376,9 +376,9 @@ Feature: Validate all scenarios in the Award
   	When I re-login to "As a Grantor" app as "EXE" User
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Awards & Amendments" subheader on left panel
-	And I toggle to "Draft Grants"
-	When I perform quick search "<Award Name>" on table "ActiveGrants"
-	And I click on the "View" icon for the "<Award Name>"
+	And I click toggle button for "Draft Grants"
+	When I perform quick search for "<Award Name>" in "ActiveGrants" panel
+	And I click on "View" icon for "<Award Name>" inside table
 	When I navigate to "Subawards" sub tab
 	And I click on "View" icon for "<Award EGMS Id>" inside flex table with id "RelatedAwards1"
 	When I click on "Send to Subrecipient after Approval" in the page details
@@ -415,8 +415,8 @@ Feature: Validate all scenarios in the Award
   	When I re-login to Grants Portal as "SPI"
 	And I navigate to "Grants" tab
 	When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search "<Award Name>" on table "PhasePendingTasks"
-    When I click on the "Start" icon for the "<Award Name>" 
+    And I perform quick search for "<Award Name>" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "<Award Name>" inside table 
     And I click on "Accept after Approval" in the page details
     When I enter "Automation Award accepted" for comments and click "OK"
     Then I see that "Subaward" is in "Accepted" status

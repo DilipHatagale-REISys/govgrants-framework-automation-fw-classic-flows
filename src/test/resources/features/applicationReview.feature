@@ -6,13 +6,12 @@ Feature: Validate all scenarios in the Application Review
     Given I login to "As a Grantor" app as "<User>" User
     When I navigate to "Applications" tab
 	And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    When I toggle to "Applications Under Review"
-    And I perform quick search "<Announcement Name>" on table "flexTableRandomID1"
-    When I click on the "View" icon for the "<Announcement Name>"
+    When I click toggle button for "Applications Under Review"
+    And I perform quick search for "<Announcement Name>" in "flexTableRandomID1" panel
+    When I click on "View" icon for "<Announcement Name>" inside table
     And I navigate to "Related Logs" sub tab
-    When I scroll to "Manage Reviews" section
-    And I click on "View" on the grid against "<Review Step Name>" in the table "AnnouncementReviewStepsFlexToggle"
-    When I choose "<Application Name>" in the flextable "Review Decisions"
+    And I click on "View" icon for "<Review Step Name>" inside flex table with id "AnnouncementReviewStepsFlexToggle"
+    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
     And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
     When I click "Yes" on the confirmation dialog box
     Then I see that "Review Step" is in "Completed" status
@@ -40,21 +39,21 @@ Feature: Validate all scenarios in the Application Review
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
 	| Compliance Review | 10   		  | 
-    When I expand the "Program Review" on grid "Review Forms"
+    When I expand nested table containing column value "Program Review"
     And I click on top right button "Add" in flex table with id "flexGridApplicationReviewTree"
     When I add "Automation PM" as reviewer in the table "RelatedExternalReviewersGridresizable"
     And I click on top right button "Save" in flex table with id "flexGridApplicationReviewTree"
-    When I collapse the "Program Review" on grid "Review Forms"
-    And I expand the "Fiscal Review" on grid "Review Forms"
+    When I collapse nested table containing column value "Program Review"
+    And I expand nested table containing column value "Fiscal Review"
     When I click on top right button "Add" in flex table with id "flexGridApplicationReviewTree"
     And I add "Automation FO" as reviewer in the table "RelatedExternalReviewersGridresizable"
     When I click on top right button "Save" in flex table with id "flexGridApplicationReviewTree"
-    And I collapse the "Fiscal Review" on grid "Review Forms"
-    When I expand the "Compliance Review" on grid "Review Forms"
+    And I collapse nested table containing column value "Fiscal Review"
+    When I expand nested table containing column value "Compliance Review"
     And I click on top right button "Add" in flex table with id "flexGridApplicationReviewTree"
     When I add "Automation EXE" as reviewer in the table "RelatedExternalReviewersGridresizable"
     And I click on top right button "Save" in flex table with id "flexGridApplicationReviewTree"
-    When I collapse the "Compliance Review" on grid "Review Forms"
+    When I collapse nested table containing column value "Compliance Review"
 	Then I see that "SME Review" is in "In Progress" status
 	
 	@38462 @smeReviewAssignApplicationToReviewer @applicationReview
@@ -67,15 +66,15 @@ Feature: Validate all scenarios in the Application Review
 	| Fiscal Review     | 10   		  | 
 	| Compliance Review | 10   		  |
 	And I add Reviewers "Automation PM" for Program Review, "Automation FO" for Fiscal Review, "Automation EXE" for Compliance Review in SME Review
-	When I expand the "Program Review" on grid "Review Forms"
+	When I expand nested table containing column value "Program Review"
     And I click on "Assign" icon for "Automation PM" inside flex table with id "flexGridApplicationReviewTree"
     When I click "Assign" after selection of "Automation Announcement Application" in the table "AssignPanelApplicationsTable"
     And I switch to Parent frame
-    When I expand the "Fiscal Review" on grid "Review Forms"
+    When I expand nested table containing column value "Fiscal Review"
     And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridApplicationReviewTree"
     When I click "Assign" after selection of "Automation Announcement Application" in the table "AssignPanelApplicationsTable"
     And I switch to Parent frame
-    When I expand the "Compliance Review" on grid "Review Forms"
+    When I expand nested table containing column value "Compliance Review"
     And I click on "Assign" icon for "Automation EXE" inside flex table with id "flexGridApplicationReviewTree"
     When I click "Assign" after selection of "Automation Announcement Application" in the table "AssignPanelApplicationsTable"
     And I switch to Parent frame
@@ -92,9 +91,7 @@ Feature: Validate all scenarios in the Application Review
 	| Compliance Review | 10   		  |
 	And I add Reviewers "Automation PM" for Program Review, "Automation FO" for Fiscal Review, "Automation EXE" for Compliance Review in SME Review
 	Given I assign application "Automation Announcement Application" to the Reviewers for SME Review
-	When I choose "Program Review" in the flextable "<Flextable Name>"
-    And I choose "Fiscal Review" in the flextable "<Flextable Name>"
-    When I choose "Compliance Review" in the flextable "<Flextable Name>"
+	When I check "Program Review,Fiscal Review,Compliance Review" boxes in flex table with id "flexGridStepReviews"
     And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
 	Then I see that "SME Review" is in "In Progress" status
 	
@@ -113,24 +110,24 @@ Feature: Validate all scenarios in the Application Review
     Given I re-login to "As a Grantor" app as "PM" User
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search "SME Review" on table "PhasePendingTasks"
-    And I click on the "Start" icon for the "SME Review"
+    When I perform quick search for "SME Review" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "SME Review" inside table
     When I complete filling in the Review form
     And I click on "Save" in the page details
     When I click on "Submit" in the page details
     And I re-login to "As a Grantor" app as "FO" User
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search "SME Review" on table "PhasePendingTasks"
-    And I click on the "Start" icon for the "SME Review"
+    When I perform quick search for "SME Review" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "SME Review" inside table
     When I complete filling in the Review form
     And I click on "Save" in the page details
     When I click on "Submit" in the page details
     And I re-login to "As a Grantor" app as "EXE" User
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search "SME Review" on table "PhasePendingTasks"
-    And I click on the "Start" icon for the "SME Review"
+    When I perform quick search for "SME Review" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "SME Review" inside table
     When I complete filling in the Review form
     And I click on "Save" in the page details
     When I click on "Submit" in the page details
@@ -152,13 +149,12 @@ Feature: Validate all scenarios in the Application Review
     And I re-login to "As a Grantor" app as "<User>" User
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    When I toggle to "Applications Under Review"
-    And I perform quick search "<Announcement Name>" on table "flexTableRandomID1"
-    When I click on the "View" icon for the "<Announcement Name>"
+    When I click toggle button for "Applications Under Review"
+    And I perform quick search for "<Announcement Name>" in "flexTableRandomID1" panel
+    When I click on "View" icon for "<Announcement Name>" inside table
     And I navigate to "Related Logs" sub tab
-    When I scroll to "Manage Reviews" section
-    And I click on "View" on the grid against "<Review Step Name>" in the table "AnnouncementReviewStepsFlexToggle"
-    When I choose "<Application Name>" in the flextable "Review Decisions"
+    And I click on "View" icon for "<Review Step Name>" inside flex table with id "AnnouncementReviewStepsFlexToggle"
+    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
     And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
     When I click "Yes" on the confirmation dialog box
     Then I see that "Review Step" is in "Completed" status
@@ -204,7 +200,7 @@ Feature: Validate all scenarios in the Application Review
 	And I enter the Due In Days for all Management review steps
 	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
-    When I expand the "Management Review" on grid "Review Forms"
+    When I expand nested table containing column value "Management Review"
     And I click on top right button "Add" in flex table with id "flexGridApplicationReviewTree"
     When I add "Automation EXE" as reviewer in the table "RelatedExternalReviewersGridresizable"
     And I click on top right button "Save" in flex table with id "flexGridApplicationReviewTree"
@@ -228,7 +224,7 @@ Feature: Validate all scenarios in the Application Review
 	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
 	Given I add Reviewers "Automation EXE" for Management Review
-    When I expand the "Management Review" on grid "Review Forms"
+    When I expand nested table containing column value "Management Review"
     And I click on "Assign" icon for "Automation EXE" inside flex table with id "flexGridApplicationReviewTree"
     When I click "Assign" after selection of "Automation Announcement Application" in the table "AssignPanelApplicationsTable"
     And I switch to Parent frame
@@ -253,7 +249,7 @@ Feature: Validate all scenarios in the Application Review
 	| Management Review | 10     	  | 
 	And I add Reviewers "Automation EXE" for Management Review
 	Given I assign application "Automation Announcement Application" to the Reviewers for Management Review
-    When I choose "Management Review" in the flextable "<Flextable Name>"
+    When I check "Management Review" boxes in flex table with id "flexGridStepReviews"
     And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
 
 	@managementReviewCompleteReviewForm @applicationReview
@@ -280,8 +276,8 @@ Feature: Validate all scenarios in the Application Review
 	Given I re-login to "As a Grantor" app as "EXE" User
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search "Management Review" on table "PhasePendingTasks"
-    And I click on the "Start" icon for the "Management Review"
+    When I perform quick search for "Management Review" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "Management Review" inside table
     When I complete filling in the Review form
     And I click on "Save" in the page details
     When I click on "Submit" in the page details
@@ -311,13 +307,12 @@ Feature: Validate all scenarios in the Application Review
 	And I re-login to "As a Grantor" app as "<User>" User
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    When I toggle to "Applications Under Review"
-    And I perform quick search "<Announcement Name>" on table "flexTableRandomID1"
-    When I click on the "View" icon for the "<Announcement Name>"
+    When I click toggle button for "Applications Under Review"
+    And I perform quick search for "<Announcement Name>" in "flexTableRandomID1" panel
+    When I click on "View" icon for "<Announcement Name>" inside table
     And I navigate to "Related Logs" sub tab
-    When I scroll to "Manage Reviews" section
-    And I click on "View" on the grid against "<Review Step Name>" in the table "AnnouncementReviewStepsFlexToggle"
-    When I choose "<Application Name>" in the flextable "Review Decisions"
+    And I click on "View" icon for "<Review Step Name>" inside flex table with id "AnnouncementReviewStepsFlexToggle"
+    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
     And I click on top right button "Promote to FDM" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
     When I click "Yes" on the confirmation dialog box
     Then I see that "Review Step" is in "Completed" status
@@ -350,7 +345,7 @@ Feature: Validate all scenarios in the Application Review
 	And "Management Review" is completed by clicking "Promote to FDM" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
 	When I click on "Funding Decision Memo" in the page details
 	And I click on "Edit" in the page details
-	When I enter "GrantCode__c" as "AuGr"
+	When I enter value "AuGr" into field "GrantCode__c"
 	And I click on "Save" in the page details
 	Then I see that "Funding Decision Memo" is in "Created" status
 	Examples: 
@@ -496,8 +491,8 @@ Feature: Validate all scenarios in the Application Review
 	And I re-login to "As a Grantor" app as "EXE" User
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search "Approve FDM" on table "PhasePendingTasks"
-    And I click on the "Start" icon for the "Approve FDM"
+    When I perform quick search for "Approve FDM" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "Approve FDM" inside table
 	When I click on "Approve" on the approval decision box
 	Then I see status in Progress-bar is "Approved" and is "green"
 	Examples: 

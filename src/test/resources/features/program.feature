@@ -12,8 +12,8 @@ Feature: Validate all scenarios for program
   	Scenario Outline: Verifying if the EXE,PM,PO has access to Internal Programs list view
     When I navigate to "Planning" tab
     And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-    When I toggle to "<Program flextable Header>"
-    Then I see that the status is "<Program Status>"
+    When I click toggle button for "<Program flextable Header>"
+    Then I see that "Automation Program" has been added in flextable with Id "Programs"
     Examples:
     | Program flextable Header | Program Status |
     | Draft Internal Programs  | Created  	    |
@@ -58,7 +58,7 @@ Feature: Validate all scenarios for program
   	Scenario Outline: Validate the association of Focus Area for the Internal Program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridGrantorServiceAreasProgram"
-    When I click "Associate" after selection of "<EGMS Id>" in the table "popupflextable"
+    When I click "Associate" after selection of "00005,00006" in the table "popupflextable"
     And I close Modal
     Then I see that "<EGMS Id>" has been added in flextable with Id "flexGridGrantorServiceAreasProgram"
 	Examples:
@@ -91,8 +91,8 @@ Feature: Validate all scenarios for program
   	Scenario: Validate the attachment checklist for the Internal Program
     When I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "flexGridProgramChecklists" by clicking "Add" :
-    | Description        		  | Required  | Applies To  |
-    | Automation test description | Mandatory | Application |     
+    | Description        		  | Required  | Applies To  | Status |
+    | Automation test description | Mandatory | Application | Active |    
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "flexGridProgramChecklists"
     And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
     When I close Modal 
@@ -101,7 +101,7 @@ Feature: Validate all scenarios for program
   	@34746 @programAddAttachment @program
   	Scenario: Validate the attachment for the Internal Program
     When I navigate to "Attachments" sub tab
-    And I click on "Add" button on " Attachments" flextable to switch to frame
+    And I click on "Add" button on " Attachments" flextable for Attachment
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Program Artifacts"
     And I close Modal 
     Then I see that "Program Artifacts" has been added in flextable with Id "a150b000003epC4AAI"
@@ -167,14 +167,14 @@ Feature: Validate all scenarios for program
 	Given I re-login to "As a Grantor" app as "<Program Approver>" User
 	When I navigate to "Planning" tab
 	And I navigate to "Pending Tasks" content inside "MyTasks" subheader on left panel
-    When I perform quick search "<Program Name>" on table "PhasePendingTasks"
-    And I click on the "Start" icon for the "<Program Name>" 
+    When I perform quick search for "<Program Name>" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "<Program Name>" inside table
     When I click on "Approve" on the approval decision box
     And I re-login to "As a Grantor" app as "<Executive Approver>" User
 	When I navigate to "Planning" tab
 	And I navigate to "Pending Tasks" content inside "MyTasks" subheader on left panel
-    When I perform quick search "<Program Name>" on table "PhasePendingTasks"
-    And I click on the "Start" icon for the "<Program Name>" 
+    When I perform quick search for "<Program Name>" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "<Program Name>" inside table 
     When I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Approved" and is "green"
 	Examples:
@@ -217,9 +217,9 @@ Feature: Validate all scenarios for program
     And I re-login to "As a Grantor" app as "<User>" User
 	When I navigate to "Planning" tab
 	And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-	When I toggle to "Draft Internal Programs"
-    And I perform quick search "<Program Name>" on table "Programs"
-    When I click on the "View" icon for the "<Program Name>" 
+	When I click toggle button for "Draft Internal Programs"
+    And I perform quick search for "<Program Name>" in "Programs" panel
+    When I click on "View" icon for "<Program Name>" inside table 
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "green"
 	Examples:
