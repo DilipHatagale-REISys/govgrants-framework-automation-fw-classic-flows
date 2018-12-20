@@ -12,7 +12,7 @@ Feature: Validate all scenarios for program
   	Scenario Outline: Verifying if the EXE,PM,PO has access to Internal Programs list view
     When I navigate to "Planning" tab
     And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-    When I toggle to "<Program flextable Header>"
+    When I click toggle button for "<Program flextable Header>"
     Then I see that the status is "<Program Status>"
     Examples:
     | Program flextable Header | Program Status |
@@ -167,14 +167,14 @@ Feature: Validate all scenarios for program
 	Given I re-login to "As a Grantor" app as "<Program Approver>" User
 	When I navigate to "Planning" tab
 	And I navigate to "Pending Tasks" content inside "MyTasks" subheader on left panel
-    When I perform quick search "<Program Name>" on table "PhasePendingTasks"
-    And I click on the "Start" icon for the "<Program Name>" 
+    When I perform quick search for "<Program Name>" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "<Program Name>" inside table
     When I click on "Approve" on the approval decision box
     And I re-login to "As a Grantor" app as "<Executive Approver>" User
 	When I navigate to "Planning" tab
 	And I navigate to "Pending Tasks" content inside "MyTasks" subheader on left panel
-    When I perform quick search "<Program Name>" on table "PhasePendingTasks"
-    And I click on the "Start" icon for the "<Program Name>" 
+    When I perform quick search for "<Program Name>" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "<Program Name>" inside table 
     When I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Approved" and is "green"
 	Examples:
@@ -217,9 +217,9 @@ Feature: Validate all scenarios for program
     And I re-login to "As a Grantor" app as "<User>" User
 	When I navigate to "Planning" tab
 	And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-	When I toggle to "Draft Internal Programs"
-    And I perform quick search "<Program Name>" on table "Programs"
-    When I click on the "View" icon for the "<Program Name>" 
+	When I click toggle button for "Draft Internal Programs"
+    And I perform quick search for "<Program Name>" in "Programs" panel
+    When I click on "View" icon for "<Program Name>" inside table 
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "green"
 	Examples:

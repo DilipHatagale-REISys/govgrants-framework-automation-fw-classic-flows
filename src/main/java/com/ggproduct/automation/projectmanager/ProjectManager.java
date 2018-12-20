@@ -364,8 +364,8 @@ public class ProjectManager extends ProjectWebServices {
      * @param searchText
      * @param tableName
      */
-    public void quickSearchOnTable(String searchText, String tableName) {
-        govgrants.quickSearch().performTableSpecificQuickSearch(tableName, searchText);
+    public void quickSearchOnTable(String searchText, String tableId) {
+        govgrants.quickSearch().performTableSpecificQuickSearch(tableId, searchText);
     }
 
     /**
@@ -415,9 +415,9 @@ public class ProjectManager extends ProjectWebServices {
      * @param uniqueColumnValue
      * @param flexTableName
      */
-    public void clickOnCheckbox(String uniqueColumnValue, String flextableName) {
-        reiDriver.JavaScript().scrollpageToSpecificElement(getScrollToSection(flextableName));
-        reiDriver.findMyElement().getElement(getCheckboxForSpecificRecord(flextableName, uniqueColumnValue)).click();
+    public void clickOnCheckbox(String uniqueColumnValues, String flextableId) {
+        reiDriver.JavaScript().scrollpageToSpecificElement(getScrollToSection(flextableId));
+        govgrants.flexTable().selectCheckBoxes(flextableId, uniqueColumnValues);
     }
 
     /**
@@ -510,16 +510,9 @@ public class ProjectManager extends ProjectWebServices {
      * 
      * @param sectionName
      */
-    public void expandGrid(String uniqueColumnValue, String gridName) {
-        reiDriver.WaitFor().makeThreadSleep(2000);
-        reiDriver.JavaScript().scrollpageToSpecificElement(getScrollToSection(gridName));
-        try {
-            govgrants.flexTable().expandOrCollapseNestedTable(uniqueColumnValue, true);
-        } catch (Exception ex) {
-            reiDriver.findMyElement().getElement(By
-                    .xpath("//td//*[text()='" + uniqueColumnValue + "']//ancestor::tr[1]//i[contains(@class, 'plus')]"))
-                    .click();
-        }
+    public void expandGrid(String uniqueColumnValue) {
+        reiDriver.WaitFor().makeThreadSleep(1500);
+        govgrants.flexTable().expandOrCollapseNestedTable(uniqueColumnValue, true);
     }
 
     /**
@@ -538,16 +531,8 @@ public class ProjectManager extends ProjectWebServices {
      * 
      * @param sectionName
      */
-    public void collapseGrid(String uniqueColumnValue, String gridName) {
-        reiDriver.WaitFor().makeThreadSleep(500);
-        reiDriver.JavaScript().scrollpageToSpecificElement(getScrollToSection(gridName));
-        try {
-            govgrants.flexTable().expandOrCollapseNestedTable(uniqueColumnValue, false);
-        } catch (Exception ex) {
-            reiDriver.findMyElement().getElement(By.xpath(
-                    "//td//*[text()='" + uniqueColumnValue + "']//ancestor::tr[1]//i[contains(@class, 'minus')]"))
-                    .click();
-        }
+    public void collapseGrid(String uniqueColumnValue) {
+        govgrants.flexTable().expandOrCollapseNestedTable(uniqueColumnValue, false);
     }
 
     /**

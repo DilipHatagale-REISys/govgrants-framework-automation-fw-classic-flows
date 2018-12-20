@@ -56,14 +56,14 @@ public class GenericSteps {
         projectManager.changeFieldValueText(fieldId, text);
     }
 
-    @When("^I toggle to \"([^\"]*)\"$")
+    @When("^I click toggle button for \"([^\"]*)\"$")
     public void changeFlexTableView(String tableViewName) {
         projectManager.changeFlexTableView(tableViewName);
     }
 
-    @When("^I perform quick search \"([^\"]*)\" on table \"([^\"]*)\"$")
-    public void quickSearchOnTable(String searchText, String tableName) {
-        projectManager.quickSearchOnTable(searchText, tableName);
+    @When("^I perform quick search for \"([^\"]*)\" in \"([^\"]*)\" panel$")
+    public void quickSearchOnTable(String searchText, String tableId) {
+        projectManager.quickSearchOnTable(searchText, tableId);
     }
     
     @When("^I perform quick search for \"([^\"]*)\" for the parent value \"([^\"]*)\" on grid \"([^\"]*)\"$")
@@ -71,34 +71,24 @@ public class GenericSteps {
         projectManager.quickSearchOnGridTable(flexTableDivId, anyUniqueColumnValueFromParent, searchTerm);
     }
 
-    @When("^I click on the \"([^\"]*)\" icon for the \"([^\"]*)\"$")
+    @When("^I click on \"([^\"]*)\" icon for \"([^\"]*)\" inside table$")
     public void clickOnFlexTableIcon(String iconName, String uniqueTextValue) {
         projectManager.clickOnFlexTableIcon(iconName, uniqueTextValue);
     }
-
-    @When("^I click on \"([^\"]*)\" icon on \"([^\"]*)\" table against \"([^\"]*)\"$")
-    public void clickOnFlexTableIconWithTableId(String iconName, String tableId, String searchText) {
-        projectManager.clickOnFlexTableIconWithTableId(iconName, tableId, searchText);
-    }
-
+    
     @When("^I navigate to \"([^\"]*)\" sub tab$")
     public void clickOnSubtab(String subtabName) {
         projectManager.clickOnSubtab(subtabName);
     }
 
-    @When("^I click on Agree in \"([^\"]*)\" section$")
-    public void clickOnAcknowledgement(String sectionName) {
-        projectManager.clickOnAcknowledgement(sectionName);
+    @When("^I expand nested table containing column value \"([^\"]*)\"$")
+    public void expandGrid(String uniqueColumnValue) {
+        projectManager.expandGrid(uniqueColumnValue);
     }
 
-    @When("^I expand the \"([^\"]*)\" on grid \"([^\"]*)\"$")
-    public void expandGrid(String uniqueColumnValue, String gridName) {
-        projectManager.expandGrid(uniqueColumnValue, gridName);
-    }
-
-    @When("^I collapse the \"([^\"]*)\" on grid \"([^\"]*)\"$")
-    public void collapseGrid(String uniqueColumnValue, String gridName) {
-        projectManager.collapseGrid(uniqueColumnValue, gridName);
+    @When("^I collapse nested table containing column value \"([^\"]*)\"$")
+    public void collapseGrid(String uniqueColumnValue) {
+        projectManager.collapseGrid(uniqueColumnValue);
     }
 
     @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" flextable to switch to frame$")
@@ -121,9 +111,9 @@ public class GenericSteps {
         projectManager.clickOnPhaseFlexTableButton(buttonName, flextableName);
     }
 
-    @When("^I choose \"([^\"]*)\" in the flextable \"([^\"]*)\"$")
-    public void clickOnCheckbox(String uniqueColumnValue, String flextableName) {
-        projectManager.clickOnCheckbox(uniqueColumnValue, flextableName);
+    @When("^I check \"([^\"]*)\" boxes in flex table with id \"([^\"]*)\"$")
+    public void clickOnCheckbox(String uniqueColumnValues, String flextableId) {
+        projectManager.clickOnCheckbox(uniqueColumnValues, flextableId);
     }
 
     @When("^I switch to Parent frame$")

@@ -168,8 +168,8 @@ Feature: Validate all scenarios in the Announcement tab
 	And I re-login to "As a Grantor" app as "<User>" User
 	When I navigate to "Announcements" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search "<Announcement Name>" on table "PhasePendingTasks"
-    And I click on the "Start" icon for the "<Announcement Name>" 
+    When I perform quick search for "<Announcement Name>" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "<Announcement Name>" inside table 
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter a review
     When I click modal button "Save"
@@ -178,9 +178,9 @@ Feature: Validate all scenarios in the Announcement tab
     When I re-login to "As a Grantor" app as "EXE" User
     When I navigate to "Announcements" tab
     And I navigate to "Competitive" content inside "Announcements" subheader on left panel
-	When I toggle to "Draft Announcements"
-    When I perform quick search "<Announcement Name>" on table "ActiveFundingOpportunitiesCompitive"
-    And I click on the "View" icon for the "<Announcement Name>"
+	When I click toggle button for "Draft Announcements"
+    When I perform quick search for "<Announcement Name>" in "ActiveFundingOpportunitiesCompitive" panel
+    And I click on "View" icon for "<Announcement Name>" inside table
     When I click on "Complete Review" in the page details
     Then I see status in Progress-bar is "Reviewed" and is "green"
 	Examples:
@@ -246,20 +246,20 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I re-login to "As a Grantor" app as "PM" User
 	When I navigate to "Announcements" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search "<Announcement Name>" on table "PhasePendingTasks"
-    And I click on the "Start" icon for the "<Announcement Name>" 
+    When I perform quick search for "<Announcement Name>" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "<Announcement Name>" inside table
     When I click on "Approve" on the approval decision box
     And I re-login to "As a Grantor" app as "FO" User
 	When I navigate to "Announcements" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search "<Announcement Name>" on table "PhasePendingTasks"
-    And I click on the "Start" icon for the "<Announcement Name>" 
+    When I perform quick search for "<Announcement Name>" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "<Announcement Name>" inside table 
     When I click on "Approve" on the approval decision box
     And I re-login to "As a Grantor" app as "EXE" User
 	When I navigate to "Announcements" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search "<Announcement Name>" on table "PhasePendingTasks"
-    And I click on the "Start" icon for the "<Announcement Name>" 
+    When I perform quick search for "<Announcement Name>" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "<Announcement Name>" inside table 
     When I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Approved" and is "green"
 	Examples:
@@ -288,9 +288,9 @@ Feature: Validate all scenarios in the Announcement tab
 	And I re-login to "As a Grantor" app as "<User>" User
 	When I navigate to "Announcements" tab
 	And I navigate to "Competitive" content inside "Announcements" subheader on left panel
-	When I toggle to "Draft Announcements"
-    And I perform quick search "<Announcement Name>" on table "ActiveFundingOpportunitiesCompitive"
-    When I click on the "View" icon for the "<Announcement Name>" 
+	When I click toggle button for "Draft Announcements"
+    And I perform quick search for "<Announcement Name>" in "ActiveFundingOpportunitiesCompitive" panel
+    When I click on "View" icon for "<Announcement Name>" inside table 
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
 	Examples:
@@ -325,9 +325,9 @@ Feature: Validate all scenarios in the Announcement tab
 	And I re-login to "As a Grantor" app as "<User>" User
 	When I navigate to "Announcements" tab
 	And I navigate to "Directed" content inside "Announcements" subheader on left panel
-	When I toggle to "Draft Announcements"
-    And I perform quick search "<Announcement Name>" on table "ActiveFundingOpportunitiesCompitive"
-    When I click on the "View" icon for the "<Announcement Name>" 
+	When I click toggle button for "Draft Announcements"
+    And I perform quick search for "<Announcement Name>" in "ActiveFundingOpportunitiesCompitive" panel
+    When I click on "View" icon for "<Announcement Name>" inside table 
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
 	Examples:
@@ -359,9 +359,9 @@ Feature: Validate all scenarios in the Announcement tab
 	When I re-login to "As a Grantor" app as "<User>" User
 	And I navigate to "Announcements" tab
 	When I navigate to "IDirected" content inside "Announcements" subheader on left panel
-	And I toggle to "Draft Announcements"
-    When I perform quick search "<QAnnouncement Name>" on table "ActiveFundingOpportunitiesCompitive"
-    And I click on the "View" icon for the "<Announcement Name>" 
+	And I click toggle button for "Draft Announcements"
+    When I perform quick search for "<Announcement Name>" in "ActiveFundingOpportunitiesCompitive" panel
+    And I click on "View" icon for "<Announcement Name>" inside table 
     When I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
 	Examples:
