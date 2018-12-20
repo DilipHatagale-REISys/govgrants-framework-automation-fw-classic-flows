@@ -1,6 +1,7 @@
 package com.ggproduct.automation.pageobjects;
 
 import java.util.Map;
+
 import java.io.IOException;
 import java.util.List;
 import com.automation.rei.controller.Controller;
@@ -14,55 +15,53 @@ public class AnnouncementPage extends ProjectManager {
     public AnnouncementPage(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
         super(controller, handler, govgrants);
     }
-    
+
     /**
      * Handles creation of an announcement from the sheet in an excel
+     * 
      * @param AnnouncementType
      * @param user
      * @param sheetName
      * @param excelFileName
      */
-    public void creationOfAnnouncement(String AnnouncementType, String user, String sheetName, String excelFileName) {
-        loginToggleToApp("As a Grantor", user);
-        navigateToTab("Announcements");
-        clickOnSidebar(AnnouncementType, "Announcements");
-        changeFlexTableView("Draft Announcements");
-        if(AnnouncementType.equals("Competitive")) {
-            clickOnPhaseFlexTableButton("New", "ActiveFundingOpportunitiesCompitive");
-        } else if(AnnouncementType.equals("Directed")) {
-            clickOnPhaseFlexTableButton("New", "ActiveFundingOpportunities");
+    public void creationOfAnnouncement(String AnnouncementType, String user, String sheetName, String excelFileName,
+            DataTable dataTable) {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
+        navigateToTab(dataTableMap.get("Navigation").get("Step 2"));
+        clickOnSidebar(AnnouncementType, dataTableMap.get("FlexTable").get("Step 1"));
+        changeFlexTableView(dataTableMap.get("FlexTable").get("Step 2"));
+        if (AnnouncementType.equals("Competitive")) {
+            clickOnPhaseFlexTableButton(dataTableMap.get("Creation").get("Step 1"),
+                    dataTableMap.get("FlexTableId").get("Step 1"));
+        } else if (AnnouncementType.equals("Directed")) {
+            clickOnPhaseFlexTableButton(dataTableMap.get("Creation").get("Step 1"), dataTableMap.get("FlexTableId").get("Step 2"));
         } else {
-            clickOnPhaseFlexTableButton("New", "ActiveFundingOpportunitiesFormula");
+            clickOnPhaseFlexTableButton(dataTableMap.get("Creation").get("Step 1"),
+                    dataTableMap.get("FlexTableId").get("Step 3"));
         }
         enterFieldValues(sheetName, excelFileName);
-        clickOnModalButton("Save And Close");
-        clickOnPageButton("Save");
+        clickOnModalButton(dataTableMap.get("Creation").get("Step 2"));
+        clickOnPageButton(dataTableMap.get("Creation").get("Step 3"));
     }
 
     /**
-     * Handles filling up of field from a sheet in an excel
-     * @param sheetName
-     * @param excelFileName
-     */
-    public void editionOfAnnouncement(String sheetName, String excelFileName) {
-        clickOnPageButton("Edit");
-        enterFieldValues(sheetName, excelFileName);
-        clickOnPageButton("Save");
-    }
-    
-    /**
      * Handles associating an agency in case of directed announcement
+     * 
      * @param agency
      */
     public void associateAgencyToAnnouncement(String agency) {
         clickOnSubtab("Overview");
-        clickOnFlextableButton("Add Organizations", "Invited Applicants", "inlineEditGridFormulaGrantsAwardOrganizations");
+        clickOnFlextableButton("Add Organizations",
+                "inlineEditGridFormulaGrantsAwardOrganizations");
         chooseRecordForAssociation("Add", agency, "SoleSourceAwardRecipientsTable");
         closeModal();
     }
-    
+
     /**
-     * Handles associating an agency and filling the amount in case of formula announcement
+     * Handles associating an agency and filling the amount in case of formula
+     * announcement
+     * 
      * @param agency
      * @param amount
      */
@@ -73,19 +72,24 @@ public class AnnouncementPage extends ProjectManager {
 
     /**
      * Handles addition of funding account to an announcement
+     * 
      * @param fundingAccount
      * @param amount
      */
-    public void addFundingAccountToAnnouncement(String fundingAccount, DataTable rowValues) {
+    public void addFundingAccountToAnnouncement(String fundingAccount, DataTable dataTable) {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        DataTable inlineEditDataTable = seperateInlineDataTable(dataTableMap);
+
         clickOnSubtab("Financials");
-        clickOnFlextableButton("Associate", "Funding Accounts", "flexGridAnnouncementFundingAccountGrantor");
+        clickOnFlextableButton("Associate", "flexGridAnnouncementFundingAccountGrantor");
         chooseRecordForAssociation("Add", fundingAccount, "popupflextable");
         closeModal();
-        fillFieldsForInlineTable("flexGridAnnouncementFundingAccountGrantor", "Edit", rowValues);
+        fillFieldsForInlineTable("flexGridAnnouncementFundingAccountGrantor", "Edit", inlineEditDataTable);
     }
 
     /**
      * Handles addition of budget details to an announcement
+     * 
      * @param budgetPeriod
      * @param sheetName
      * @param excelFileName
@@ -93,7 +97,7 @@ public class AnnouncementPage extends ProjectManager {
     public void addBudgetPeriodToAnnouncement(String budgetPeriod, String sheetName, String excelFileName) {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         clickOnSubtab("Financials");
-        clickOnFlextableButton("Add Budget Period", "Budget Period Details ","AnnouncementBudgetPeriod");
+        clickOnFlextableButton("Add Budget Period", "AnnouncementBudgetPeriod");
         clickOnFlextableRowButton("Edit", budgetPeriod, "Budget Period Details");
         enterFieldValues(sheetName, excelFileName);
         clickOnModalButton("Save");
@@ -102,6 +106,7 @@ public class AnnouncementPage extends ProjectManager {
 
     /**
      * Handles association of contact, focus area and objective to an announcement
+     * 
      * @param contact
      * @param focusArea
      * @param objective
@@ -109,25 +114,26 @@ public class AnnouncementPage extends ProjectManager {
     public void associationOfRecordsToAnnouncement(String contact, String focusArea, String objective) {
         // Contact association
         clickOnSubtab("Overview");
-        clickOnFlextableButton("Associate", "Contacts", "AnnouncementContacts");
+        clickOnFlextableButton("Associate", "AnnouncementContacts");
         chooseRecordForAssociation("Add", contact, "AssociateAnnouncementContacts");
         closeModal();
 
         // Focus Area association
         clickOnSubtab("Setup");
-        clickOnFlextableButton("Associate", "Focus Areas", "AnnouncementServiceArea1");
+        clickOnFlextableButton("Associate", "AnnouncementServiceArea1");
         chooseRecordForAssociation("Add", focusArea, "popupflextable");
         closeModal();
 
         // Objective association
         clickOnSubtab("Setup");
-        clickOnFlextableButton("Associate", "Objectives", "AnnouncementGranteeStrategicGoalsObjectives");
+        clickOnFlextableButton("Associate", "AnnouncementGranteeStrategicGoalsObjectives");
         chooseRecordForAssociation("Add", objective, "popupflextable");
         closeModal();
     }
 
     /**
      * Handles assigning of approvers to an announcement
+     * 
      * @param programApprover
      * @param fiscalApprover
      * @param executiveApprover
@@ -148,6 +154,7 @@ public class AnnouncementPage extends ProjectManager {
 
     /**
      * Handles addition of checklist to an announcement
+     * 
      * @param description
      * @param required
      * @param appliesTo
@@ -163,6 +170,7 @@ public class AnnouncementPage extends ProjectManager {
 
     /**
      * Handles addition of attachment to an announcement
+     * 
      * @param fileName
      */
     public void additionOfAttachmentToAnnouncement(String fileName) {
@@ -174,11 +182,12 @@ public class AnnouncementPage extends ProjectManager {
 
     /**
      * Handles approving of an announcement by all approvers
+     * 
      * @param programApprover
      * @param fiscalApprover
      * @param executiveApprover
      * @param announcementName
-     * @throws IOException 
+     * @throws IOException
      */
     public void approversApproveAnnouncement(String programApprover, String fiscalApprover, String executiveApprover,
             String announcementName) throws IOException {
@@ -207,12 +216,13 @@ public class AnnouncementPage extends ProjectManager {
 
     /**
      * Handles assigning of reviewer and initiating the review process
+     * 
      * @param sheetName
      * @param excelFileName
      */
     public void initiateReviewForAnnouncement(String sheetName, String excelFileName) {
         clickOnSubtab("Responsibilities");
-        clickOnFlextableButton("New", "Peer Reviewers", "flexGridApproverRoles");
+        clickOnFlextableButton("New", "flexGridApproverRoles");
         enterFieldValues(sheetName, excelFileName);
         clickOnModalButton("Save");
         closeModal();
@@ -220,14 +230,17 @@ public class AnnouncementPage extends ProjectManager {
     }
 
     /**
-     * Handles reviewing the announcement and completing the review process for an announcement
+     * Handles reviewing the announcement and completing the review process for an
+     * announcement
+     * 
      * @param reviewer
      * @param announcementType
      * @param announcementName
      * @param announcementOwner
-     * @throws IOException 
+     * @throws IOException
      */
-    public void completeReviewForAnnouncement(String reviewer, String announcementType, String announcementName, String announcementOwner) throws IOException {
+    public void completeReviewForAnnouncement(String reviewer, String announcementType, String announcementName,
+            String announcementOwner) throws IOException {
         reloginToggleToApp("As a Grantor", reviewer);
         navigateToTab("Announcements");
         clickOnSidebar("Pending Tasks", "My Tasks");

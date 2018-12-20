@@ -2,7 +2,7 @@
 Feature: Validate all scenarios for program
 
 	Background: Create Program
-	Given I create a pre-award record as user "EXE" from sheet "RequiredForSave" in excel "Program_Field_Values.xlsx"
+	Given I create a program as user "EXE" from sheet "RequiredForSave" in excel "Program_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	  | Step 3 				    |
 	| Navigation | As a Grantor		 | Planning  	  |	Programs				|
 	| FlexTable  | Internal Programs | Programs 	  | Draft Internal Programs |
@@ -11,7 +11,7 @@ Feature: Validate all scenarios for program
   	@34730 @programListView @program
   	Scenario Outline: Verifying if the EXE,PM,PO has access to Internal Programs list view
     When I navigate to "Planning" tab
-    And I click "Internal Programs" inside side bar "Programs"
+    And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
     When I toggle to "<Program flextable Header>"
     Then I see that the status is "<Program Status>"
     Examples:
@@ -20,94 +20,91 @@ Feature: Validate all scenarios for program
   
   	@34503 @programCreation @program
   	Scenario: Verifying if the EXE, PM, PO has create access to Internal Program
-  	Then I see that "Created" status is in "green" on progress bar
+  	Then I see status in Progress-bar is "Created" and is "green"
     
   	@34731 @programEdition @program
   	Scenario: Verifying if the EXE, PM, PO has create access to Internal Program
-    When I click on "Edit" button
+    When I click on "Edit" in the page details
     And I enter "RequiredForSubmit" values from "Program_Field_Values.xlsx"
-    When I click on "Save" button
-    Then I see that "Created" status is in "green" on progress bar
+    When I click on "Save" in the page details
+    Then I see status in Progress-bar is "Created" and is "green"
     
   	@34732 @programContactsAssociation @program
   	Scenario Outline: Verifying if the EXE, PM, PO can associate contact with Internal Program
-    When I click on "Overview" subtab
-    And I click on "Associate" button on "Contacts" flextable with Id "ProgramContacts"
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "ProgramContacts"
     When I click "Add" after selection of "<Contact>" in the table "AssociateProgramContacts"
     And I close Modal
-    Then I see that "<Contact>" has been added in flextable "Contacts" with Id "ProgramContacts"
+    Then I see that "<Contact>" has been added in flextable with Id "ProgramContacts"
     Examples:
     | Contact		  |
     | Automation EXE  |
     
   	@34740 @programApproverSelection @program
   	Scenario Outline: Validate the assignment of Approvers for the Internal Program
-    When I click on "Responsibilities" subtab
-    And I click on the "Edit" icon for the "Program Approver" on the flextable "Approvers"
+    When I navigate to "Responsibilities" sub tab
+    And I click on "Edit" icon for "Program Approver" inside flex table with id "ProgramRolesAndResponsibilities"
     When I fill in the "<Program Approver Name>" for the Approver details
     And I switch to Parent frame
-    When I click on the "Edit" icon for the "Executive Approver" on the flextable "Approvers"
+    When I click on "Edit" icon for "Executive Approver" inside flex table with id "ProgramRolesAndResponsibilities"
     And I fill in the "<Executive Approver Name>" for the Approver details
-   	And I switch to Parent frame
-    Then I see that "<Program Approver Name>" has been added in flextable "Approvers" with Id "ProgramRolesAndResponsibilities"
+   	When I switch to Parent frame
+    Then I see that "<Program Approver Name>" has been added in flextable with Id "ProgramRolesAndResponsibilities"
 	Examples:
 	| Program Approver Name | Executive Approver Name |
 	| Automation PM         | Automation EXE          |
 	
   	@34616 @programFocusAreaAssociation @program
   	Scenario Outline: Validate the association of Focus Area for the Internal Program
-    When I click on "Setup" subtab
-    And I click on "Associate" button on "<Flextable Name>" flextable with Id "flexGridGrantorServiceAreasProgram"
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "flexGridGrantorServiceAreasProgram"
     When I click "Associate" after selection of "<EGMS Id>" in the table "popupflextable"
     And I close Modal
-    Then I see that "<EGMS Id>" has been added in flextable "<Flextable Name>" with Id "flexGridGrantorServiceAreasProgram"
+    Then I see that "<EGMS Id>" has been added in flextable with Id "flexGridGrantorServiceAreasProgram"
 	Examples:
-	| Flextable Name 		 | EGMS Id |
-	| Related Focus Areas    | 00005   |
+	| EGMS Id |
+	| 00005   |
 	
   	@34737 @programObjectiveAssociation @program
   	Scenario Outline: Validate the Association of Objective to the Internal Program
-    When I click on "Setup" subtab
-    And I click on "Associate" button on "<Flextable Name>" flextable with Id "RelatedProgramGoalsandObjectives"
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "RelatedProgramGoalsandObjectives"
     When I click "Add" after selection of "<EGMS Id>" in the table "popupflextable"
     And I close Modal
-    Then I see that "<EGMS Id>" has been added in flextable "<Flextable Name>" with Id "RelatedProgramGoalsandObjectives"
+    Then I see that "<EGMS Id>" has been added in flextable with Id "RelatedProgramGoalsandObjectives"
 	Examples:
-	| Flextable Name | EGMS Id  |
-	| Objectives     | SPO-0006 |
+	| EGMS Id  |
+	| SPO-0006 |
 	
   	@34738 @programKPIAssociation @program
   	Scenario Outline: Validate the assignment of Approvers for the Internal Program
-    When I click on "Setup" subtab
-    And I click on "Associate" button on "<Flextable Name>" flextable with Id "ProgramKeyOutcomes"
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "ProgramKeyOutcomes"
     When I click "Add" after selection of "<EGMS Id>" in the table "popupflextable"
     And I close Modal
-    Then I see that "<EGMS Id>" has been added in flextable "<Flextable Name>" with Id "ProgramKeyOutcomes"
+    Then I see that "<EGMS Id>" has been added in flextable with Id "ProgramKeyOutcomes"
 	Examples:
-	| Flextable Name 				    | EGMS Id  |
-	| Key Performance Indicators (KPIs) | KPI-0005 |
+	| EGMS Id  |
+	| KPI-0005 |
 	
   	@34745 @programAttachmentChecklist @program
-  	Scenario Outline: Validate the attachment checklist for the Internal Program
-    When I click on "Setup" subtab
+  	Scenario: Validate the attachment checklist for the Internal Program
+    When I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "flexGridProgramChecklists" by clicking "Add" :
     | Description        		  | Required  | Applies To  |
     | Automation test description | Mandatory | Application |     
-    When I click on the "Upload Template" icon for the "Not Applicable" on the flextable "<Flextable Name>"
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "flexGridProgramChecklists"
     And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
     When I close Modal 
-    Then I see that "Active" has been added in flextable "<Flextable Name>" with Id "flexGridProgramChecklists"
-	Examples:
-	| Flextable Name				 |
-	| Supporting Documents Checklist |
-	
+    Then I see that "Active" has been added in flextable with Id "flexGridProgramChecklists"
+    
   	@34746 @programAddAttachment @program
   	Scenario: Validate the attachment for the Internal Program
-    When I click on "Attachments" subtab
+    When I navigate to "Attachments" sub tab
     And I click on "Add" button on " Attachments" flextable to switch to frame
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Program Artifacts"
     And I close Modal 
-    Then I see that "Program Artifacts" has been added in flextable "Attachments" with Id "a150b000003epC4AAI"
+    Then I see that "Program Artifacts" has been added in flextable with Id "a150b000003epC4AAI"
 
   	@34750 @submittingProgramForApproval @program
   	Scenario: Validate the submission of Program for Approval
@@ -115,10 +112,10 @@ Feature: Validate all scenarios for program
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     And I associate Contact "Automation EXE", Focus Area "00005", Objective "SPO-0006"
-    | Actions 	 | Step 1   | Step 2	| Step 3  			  | Step 4 		 					   | Step 5  	| Step 6 				   |
-    | Contact    | Overview | Associate | Contacts 			  | ProgramContacts 				   | Add	  	| AssociateProgramContacts |
-    | Focus Area | Setup	| Associate | Related Focus Areas | flexGridGrantorServiceAreasProgram | Associate	| popupflextable 		   |
-    | Objective  | Setup 	| Associate | Objectives		  | RelatedProgramGoalsandObjectives   | Add	  	| popupflextable 		   |
+    | Actions 	 | Step 1   | Step 2	| Step 3  			  				 | Step 4 	 | Step 5  				    |
+    | Contact    | Overview | Associate | ProgramContacts 				     | Add	  	 | AssociateProgramContacts |
+    | Focus Area | Setup	| Associate | flexGridGrantorServiceAreasProgram | Associate | popupflextable 		    |
+    | Objective  | Setup 	| Associate | RelatedProgramGoalsandObjectives   | Add	  	 | popupflextable 		    |
     Given I select two approvers "Automation PM", "Automation EXE"
     | Actions 	 | Step 1   		| Step 2		     | Step 3    |
     | Subtab	 | Responsibilities | 				     |		     |
@@ -136,8 +133,8 @@ Feature: Validate all scenarios for program
     | Actions 			    | Step 1 	  | Step 2	 		  |
     | Attachment Navigation | Attachments | Add				  |
     | Attachment Details    | Attachment  | Program Artifacts |
-    When I click on "Submit For Approval" button
-    Then I see that "Submitted for Approval" status is in "green" on progress bar
+    When I click on "Submit For Approval" in the page details
+    Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 	
   	@34752 @34754 @programApproval @program
   	Scenario Outline: Validate the approval of Internal Program
@@ -145,10 +142,10 @@ Feature: Validate all scenarios for program
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     And I associate Contact "Automation EXE", Focus Area "00005", Objective "SPO-0006"
-    | Actions 	 | Step 1   | Step 2	| Step 3  			  | Step 4 		 					   | Step 5  	| Step 6 				   |
-    | Contact    | Overview | Associate | Contacts 			  | ProgramContacts 				   | Add	  	| AssociateProgramContacts |
-    | Focus Area | Setup	| Associate | Related Focus Areas | flexGridGrantorServiceAreasProgram | Associate	| popupflextable 		   |
-    | Objective  | Setup 	| Associate | Objectives		  | RelatedProgramGoalsandObjectives   | Add	  	| popupflextable 		   |
+    | Actions 	 | Step 1   | Step 2	| Step 3  			  				 | Step 4 	 | Step 5  				    |
+    | Contact    | Overview | Associate | ProgramContacts 				     | Add	  	 | AssociateProgramContacts |
+    | Focus Area | Setup	| Associate | flexGridGrantorServiceAreasProgram | Associate | popupflextable 		    |
+    | Objective  | Setup 	| Associate | RelatedProgramGoalsandObjectives   | Add	  	 | popupflextable 		    |
     Given I select two approvers "Automation PM", "Automation EXE"
     | Actions 	 | Step 1   		| Step 2		     | Step 3    |
     | Subtab	 | Responsibilities | 				     |		     |
@@ -166,20 +163,20 @@ Feature: Validate all scenarios for program
     | Actions 			    | Step 1 	  | Step 2	 		  |
     | Attachment Navigation | Attachments | Add				  |
     | Attachment Details    | Attachment  | Program Artifacts |
-    And I click on "Submit For Approval" button
+    And I click on "Submit For Approval" in the page details
 	Given I re-login to "As a Grantor" app as "<Program Approver>" User
 	When I navigate to "Planning" tab
-	And I click "Pending Tasks" inside side bar "MyTasks"
+	And I navigate to "Pending Tasks" content inside "MyTasks" subheader on left panel
     When I perform quick search "<Program Name>" on table "PhasePendingTasks"
     And I click on the "Start" icon for the "<Program Name>" 
     When I click on "Approve" on the approval decision box
     And I re-login to "As a Grantor" app as "<Executive Approver>" User
 	When I navigate to "Planning" tab
-	And I click "Pending Tasks" inside side bar "MyTasks"
+	And I navigate to "Pending Tasks" content inside "MyTasks" subheader on left panel
     When I perform quick search "<Program Name>" on table "PhasePendingTasks"
     And I click on the "Start" icon for the "<Program Name>" 
     When I click on "Approve" on the approval decision box
-    Then I see that "Approved" status is in "green" on progress bar
+    Then I see status in Progress-bar is "Approved" and is "green"
 	Examples:
 	| Program Approver | Program Name		  			  | Executive Approver |
 	| PM               | Automation Program to be deleted | EXE			  	   |
@@ -190,10 +187,10 @@ Feature: Validate all scenarios for program
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     And I associate Contact "Automation EXE", Focus Area "00005", Objective "SPO-0006"
-    | Actions 	 | Step 1   | Step 2	| Step 3  			  | Step 4 		 					   | Step 5  	| Step 6 				   |
-    | Contact    | Overview | Associate | Contacts 			  | ProgramContacts 				   | Add	  	| AssociateProgramContacts |
-    | Focus Area | Setup	| Associate | Related Focus Areas | flexGridGrantorServiceAreasProgram | Associate	| popupflextable 		   |
-    | Objective  | Setup 	| Associate | Objectives		  | RelatedProgramGoalsandObjectives   | Add	  	| popupflextable 		   |
+    | Actions 	 | Step 1   | Step 2	| Step 3  			  				 | Step 4 	 | Step 5  				    |
+    | Contact    | Overview | Associate | ProgramContacts 				     | Add	  	 | AssociateProgramContacts |
+    | Focus Area | Setup	| Associate | flexGridGrantorServiceAreasProgram | Associate | popupflextable 		    |
+    | Objective  | Setup 	| Associate | RelatedProgramGoalsandObjectives   | Add	  	 | popupflextable 		    |
     Given I select two approvers "Automation PM", "Automation EXE"
     | Actions 	 | Step 1   		| Step 2		     | Step 3    |
     | Subtab	 | Responsibilities | 				     |		     |
@@ -211,7 +208,7 @@ Feature: Validate all scenarios for program
     | Actions 			    | Step 1 	  | Step 2	 		  |
     | Attachment Navigation | Attachments | Add				  |
     | Attachment Details    | Attachment  | Program Artifacts |
-    And I click on "Submit For Approval" button
+    And I click on "Submit For Approval" in the page details
     Given Two Approvers "PM", "EXE" approve "<Program Name>"
     | Actions 		   | Step 1 	   | Step 2	  | Step 3 			  |
     | Navigation       | As a Grantor  | Planning |					  |
@@ -219,12 +216,12 @@ Feature: Validate all scenarios for program
     | Approval Buttons | Start		   | Approve  |					  |
     And I re-login to "As a Grantor" app as "<User>" User
 	When I navigate to "Planning" tab
-	And I click "Internal Programs" inside side bar "Programs"
+	And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
 	When I toggle to "Draft Internal Programs"
     And I perform quick search "<Program Name>" on table "Programs"
     When I click on the "View" icon for the "<Program Name>" 
-    And I click on "Activate" button
-    Then I see that "Active" status is in "green" on progress bar
+    And I click on "Activate" in the page details
+    Then I see status in Progress-bar is "Active" and is "green"
 	Examples:
 	| User | Program Name  			  |
 	| EXE  | Automation Program Dec10 |

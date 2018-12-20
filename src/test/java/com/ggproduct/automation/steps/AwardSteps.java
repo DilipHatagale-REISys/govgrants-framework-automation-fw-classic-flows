@@ -6,7 +6,6 @@ import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.pageobjects.AwardPage;
 
 import java.io.IOException;
-import java.util.Map;
 
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
@@ -63,11 +62,6 @@ public class AwardSteps {
         awardPage.approvalOfRiskAssessmentInAward(pragramApprover, fiscalApprover);
     }
     
-    @Given("^I re-login and view the award \"([^\"]*)\" with name \"([^\"]*)\" as User \"([^\"]*)\"$")
-    public void reloginToViewAward(String awardId, String awardName, String awardOwner) throws IOException {
-        awardPage.reloginToViewAward(awardId, awardName, awardOwner);
-    }
-    
     @Given("^I select the Program Approver as \"([^\"]*)\", Fiscal Approver as \"([^\"]*)\" and Executive Approver as \"([^\"]*)\" for Award$")
     public void approverSelectionOfAward(String pragramApprover, String fiscalApprover, String executiveApprover) {
         awardPage.approverSelectionOfAward(pragramApprover, fiscalApprover, executiveApprover);
@@ -83,9 +77,9 @@ public class AwardSteps {
         awardPage.initiateReviewForAward(sheetName, excelName);
     }
     
-    @Given("^Review is completed as user \"([^\"]*)\" for the award \"([^\"]*)\" with name \"([^\"]*)\" created by \"([^\"]*)\"$")
-    public void completeReviewForAward(String reviewer, String awardId, String awardName, String awardOwner) throws IOException {
-        awardPage.completeReviewForAward(reviewer, awardId, awardName, awardOwner);
+    @Given("^Review is completed as user \"([^\"]*)\" for the \"([^\"]*)\" award \"([^\"]*)\" with name \"([^\"]*)\" created by \"([^\"]*)\"$")
+    public void completeReviewForAward(String reviewer, String awardState, String awardId, String awardName, String awardOwner) throws IOException {
+        awardPage.completeReviewForAward(reviewer, awardState, awardId, awardName, awardOwner);
     }
     
     @Given("^Approvers \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\" approve the award \"([^\"]*)\"$")

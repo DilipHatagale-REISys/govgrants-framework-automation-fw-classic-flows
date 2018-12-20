@@ -1,9 +1,7 @@
 package com.ggproduct.automation.pageobjects;
 
 import com.automation.rei.controller.Controller;
-
 import java.io.IOException;
-import java.util.Map;
 
 import org.openqa.selenium.By;
 
@@ -73,7 +71,7 @@ public class AwardPage extends ProjectManager  {
      */
     public void additionOfPaymentRequestToAward(String sheetName, String excelName) {
         clickOnSubtab("Management");
-        clickOnFlextableButton("New", "Progress Report Schedule", "flexGridTnCSchedules");
+        clickOnFlextableButton("New", "flexGridTnCSchedules");
         enterFieldValues(sheetName, excelName);
         clickOnModalButton("Save");
         closeModal();
@@ -86,7 +84,7 @@ public class AwardPage extends ProjectManager  {
      */
     public void additionOfProgressReportToAward(String sheetName, String excelName) {
         clickOnSubtab("Management");
-        clickOnFlextableButton("New", "Payment Request Schedules", "flexGridPaymentSchedules");
+        clickOnFlextableButton("New", "flexGridPaymentSchedules");
         enterFieldValues(sheetName, excelName);
         clickOnModalButton("Save");
         closeModal();
@@ -99,7 +97,7 @@ public class AwardPage extends ProjectManager  {
      */
     public void creationOfRiskAssessment(String sheetName, String excelName) {
         clickOnSubtab("Management");
-        clickOnFlextableButton("New", "Risk Assessments", "flexGridAwardRiskAssessmentView");
+        clickOnFlextableButton("New", "flexGridAwardRiskAssessmentView");
         enterFieldValues(sheetName, excelName);
         clickOnPageButton("Save");
     }
@@ -138,28 +136,6 @@ public class AwardPage extends ProjectManager  {
         quickSearchOnTable("Approve Risk Assessment", "PhasePendingTasks");
         clickOnFlexTableIcon("Start", "Approve Risk Assessment");
         clickOnApprovalDecisionBox("Approve");
-    }
-    
-    /**
-     * Handles re-logging in and to view the given award
-     * @param awardId
-     * @param awardName
-     * @param awardOwner
-     * @throws IOException 
-     */
-    public void reloginToViewAward(String awardId, String awardName, String awardOwner) throws IOException {
-        try {
-            loginToggleToApp("As a Grantor", awardOwner);
-        } catch (Exception ex) {
-            reloginToggleToApp("As a Grantor", awardOwner);
-        }
-        navigateToTab("Grants");
-        clickOnSidebar("Grants and Subawards", "Grants, Awards & Amendments");
-        changeFlexTableView("Draft Grants");
-        quickSearchOnTable(awardName, "ActiveGrants");
-        clickOnFlexTableIcon("View", awardName);
-        clickOnSubtab("Subawards");
-        clickOnFlextableRowButton("View", awardId, "Subawards");
     }
     
     /**
@@ -209,7 +185,7 @@ public class AwardPage extends ProjectManager  {
      */
     public void initiateReviewForAward(String sheetName, String excelName) {
         clickOnSubtab("Responsibilities");
-        clickOnFlextableButton("New", "Peer Reviewers", "flexGridGrantorAwardReviewer");
+        clickOnFlextableButton("New", "flexGridGrantorAwardReviewer");
         enterFieldValues(sheetName, excelName);
         clickOnModalButton("Save");
         closeModal();
@@ -224,7 +200,7 @@ public class AwardPage extends ProjectManager  {
      * @param awardOwner
      * @throws IOException 
      */
-    public void completeReviewForAward(String reviewer, String awardId, String awardName, String awardOwner) throws IOException {
+    public void completeReviewForAward(String reviewer, String awardState, String awardId, String awardName, String awardOwner) throws IOException {
         reloginToggleToApp("As a Grantor", reviewer);
         navigateToTab("Grants");
         clickOnSidebar("Pending Tasks", "My Tasks");
@@ -236,7 +212,7 @@ public class AwardPage extends ProjectManager  {
         clickOnModalButton("Save");
         clickOnModalButton("Submit Review");
         closeModal();
-        reloginToViewAward(awardId, awardName, awardOwner);
+        reloginToViewAward(awardState, awardId, awardName, awardOwner);
     }
     
     /**
@@ -278,7 +254,7 @@ public class AwardPage extends ProjectManager  {
      */
     public void initiateSiteVisitInAward(String sheetName, String excelName) {
         clickOnSubtab("Management");
-        clickOnFlextableButton("Initiate Site Visit", "Site Visits", "GrantorSiteVisitsAward");
+        clickOnFlextableButton("Initiate Site Visit", "GrantorSiteVisitsAward");
         enterFieldValues(sheetName, excelName);
         clickOnModalButton("Save And Close");
         clickOnPageButton("Cancel");
@@ -292,7 +268,7 @@ public class AwardPage extends ProjectManager  {
      */
     public void initiateDeskReviewInAward(String sheetName, String excelName) {
         clickOnSubtab("Management");
-        clickOnFlextableButton("Initiate Desk Review", "Desk Reviews", "GrantorDeskReviewAward");
+        clickOnFlextableButton("Initiate Desk Review", "GrantorDeskReviewAward");
         enterFieldValues(sheetName, excelName);
         clickOnModalButton("Save And Close");
         clickOnPageButton("Cancel");

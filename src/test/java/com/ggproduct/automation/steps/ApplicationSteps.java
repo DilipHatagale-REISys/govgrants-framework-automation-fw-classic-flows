@@ -18,7 +18,7 @@ public class ApplicationSteps {
         applicationPage = new ApplicationPage(controller, handler, govgrants);
     }
     
-    @Given("^I qualiy the announcement \"([^\"]*)\" as user \"([^\"]*)\"$")
+    @Given("^I qualify the announcement \"([^\"]*)\" as user \"([^\"]*)\"$")
     public void qualifyAnnouncement(String announcementName, String user) {
         applicationPage.qualifyAnnouncement(announcementName, user);
     }
