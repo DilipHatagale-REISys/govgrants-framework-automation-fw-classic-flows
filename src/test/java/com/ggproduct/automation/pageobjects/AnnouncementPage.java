@@ -247,7 +247,7 @@ public class AnnouncementPage extends ProjectManager {
         quickSearchOnTable(announcementName, "PhasePendingTasks");
         clickOnFlexTableIcon("Start", announcementName);
         clickOnFlextableRowButton("Enter Review", "Fiscal Reviewer", "Peer Reviewers");
-        enterReview();
+        enterReview("Passed");
         clickOnModalButton("Save");
         clickOnModalButton("Submit Review");
         closeModal();

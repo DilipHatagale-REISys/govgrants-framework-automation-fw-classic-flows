@@ -58,7 +58,7 @@ Feature: Validate all scenarios for program
   	Scenario Outline: Validate the association of Focus Area for the Internal Program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridGrantorServiceAreasProgram"
-    When I click "Associate" after selection of "<EGMS Id>" in the table "popupflextable"
+    When I click "Associate" after selection of "00005,00006" in the table "popupflextable"
     And I close Modal
     Then I see that "<EGMS Id>" has been added in flextable with Id "flexGridGrantorServiceAreasProgram"
 	Examples:
@@ -91,8 +91,8 @@ Feature: Validate all scenarios for program
   	Scenario: Validate the attachment checklist for the Internal Program
     When I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "flexGridProgramChecklists" by clicking "Add" :
-    | Description        		  | Required  | Applies To  |
-    | Automation test description | Mandatory | Application |     
+    | Description        		  | Required  | Applies To  | Status |
+    | Automation test description | Mandatory | Application | Active |    
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "flexGridProgramChecklists"
     And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
     When I close Modal 

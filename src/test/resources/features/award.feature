@@ -268,7 +268,7 @@ Feature: Validate all scenarios in the Award
     When I click on "Start" icon for "<Award Name>" inside table  
     And I navigate to "Responsibilities" sub tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridGrantorAwardReviewer"
-    And I enter a review
+    And I enter a review as "Passed"
     When I click modal button "Save"
     And I click modal button "Submit Review"
     And I close Modal

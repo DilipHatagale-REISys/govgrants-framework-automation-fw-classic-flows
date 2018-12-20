@@ -171,7 +171,7 @@ Feature: Validate all scenarios in the Announcement tab
     When I perform quick search for "<Announcement Name>" in "PhasePendingTasks" panel
     And I click on "Start" icon for "<Announcement Name>" inside table 
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
-    And I enter a review
+    And I enter a review as "Passed"
     When I click modal button "Save"
     And I click modal button "Submit Review"
     And I close Modal

@@ -74,8 +74,8 @@ public class ApplicationPage extends ProjectManager {
      */
     public void additionOfBudgetToApplication(DataTable rowValues) {
         clickOnSubtab("Budget");
-        expandGrid("BP01", "Budget Details");
-        expandGrid("Proposed Budget", "Budget Details");
+        expandGrid("BP01");
+        expandGrid("Proposed Budget");
         fillFieldsForInlineTable("inlineEditGridApplicationBudgetCategoryGrantorFlexGrid", "Edit", rowValues);
     }
 
@@ -128,8 +128,8 @@ public class ApplicationPage extends ProjectManager {
         clickOnFlexTableIcon("View", announcementName);
         clickOnSubtab("Related Logs");
         scrollToSection("Manage Reviews");
-        clickButtonOnGrid("View", reviewStep, "AnnouncementReviewStepsFlexToggle");
-        clickOnCheckbox(applicationName, "Review Decisions");
+        clickOnFlextableRowButton("AnnouncementReviewStepsFlexToggle", "View", reviewStep);
+        clickOnMultipleCheckbox(applicationName, "flexGridPreScreenRelatedStepApplicationsFinal");
         clickOnFlextableButton(buttonName, "flexGridPreScreenRelatedStepApplicationsFinal");
         try {
             clickOnConfirmationtBox("Yes");
@@ -169,21 +169,21 @@ public class ApplicationPage extends ProjectManager {
      * @param complianceReviewer
      */
     public void addReviewerForReviewSME(String programReviewer, String fiscalReviewer, String complianceReviewer) {
-        expandGrid("Program Review", "Review Forms");
+        expandGrid("Program Review");
         clickOnFlextableButton("Add", "flexGridApplicationReviewTree");
         addReviewerForReview(programReviewer, "RelatedExternalReviewersGridresizable");
         clickOnFlextableButton("Save", "flexGridApplicationReviewTree");
-        collapseGrid("Program Review", "Review Forms");
-        expandGrid("Fiscal Review", "Review Forms");
+        collapseGrid("Program Review");
+        expandGrid("Fiscal Review");
         clickOnFlextableButton("Add", "flexGridApplicationReviewTree");
         addReviewerForReview(fiscalReviewer, "RelatedExternalReviewersGridresizable");
         clickOnFlextableButton("Save", "flexGridApplicationReviewTree");
-        collapseGrid("Fiscal Review", "Review Forms");
-        expandGrid("Compliance Review", "Review Forms");
+        collapseGrid("Fiscal Review");
+        expandGrid("Compliance Review");
         clickOnFlextableButton("Add", "flexGridApplicationReviewTree");
         addReviewerForReview(complianceReviewer, "RelatedExternalReviewersGridresizable");
         clickOnFlextableButton("Save", "flexGridApplicationReviewTree");
-        collapseGrid("Compliance Review", "Review Forms");
+        collapseGrid("Compliance Review");
     }
 
     /**
@@ -192,15 +192,15 @@ public class ApplicationPage extends ProjectManager {
      * @param applicationName
      */
     public void assignApplicationToReviewerSME(String applicationName) {
-        expandGrid("Program Review", "Review Forms");
+        expandGrid("Program Review");
         clickOnFlextableRowButton("Assign", "Automation PM", "Reviewers");
         chooseRecordForAssociation("Assign", applicationName, "AssignPanelApplicationsTable");
         switchToParentFrame();
-        expandGrid("Fiscal Review", "Review Forms");
+        expandGrid("Fiscal Review");
         clickOnFlextableRowButton("Assign", "Automation FO", "Reviewers");
         chooseRecordForAssociation("Assign", applicationName, "AssignPanelApplicationsTable");
         switchToParentFrame();
-        expandGrid("Compliance Review", "Review Forms");
+        expandGrid("Compliance Review");
         clickOnFlextableRowButton("Assign", "Automation EXE", "Reviewers");
         chooseRecordForAssociation("Assign", applicationName, "AssignPanelApplicationsTable");
         switchToParentFrame();
@@ -210,9 +210,7 @@ public class ApplicationPage extends ProjectManager {
      * Handles choosing and sending the review records for review
      */
     public void chooseAndSendReviewsSME() {
-        clickOnCheckbox("Program Review", "Reviews");
-        clickOnCheckbox("Fiscal Review", "Reviews");
-        clickOnCheckbox("Compliance Review", "Reviews");
+        clickOnMultipleCheckbox("flexGridStepReviews", "Program Review", "Fiscal Review", "Compliance Review");
         clickOnFlextableButton("Send for Review", "flexGridStepReviews");
     }
 
@@ -262,11 +260,11 @@ public class ApplicationPage extends ProjectManager {
      * @param managementReviewer
      */
     public void addReviewerForReviewManagement(String managementReviewer) {
-        expandGrid("Management Review", "Review Forms");
+        expandGrid("Management Review");
         clickOnFlextableButton("Add", "flexGridApplicationReviewTree");
         addReviewerForReview(managementReviewer, "RelatedExternalReviewersGridresizable");
         clickOnFlextableButton("Save", "flexGridApplicationReviewTree");
-        collapseGrid("Management Review", "Review Forms");
+        collapseGrid("Management Review");
     }
 
     /**
@@ -275,7 +273,7 @@ public class ApplicationPage extends ProjectManager {
      * @param applicationName
      */
     public void assignApplicationToReviewerManagement(String applicationName) {
-        expandGrid("Management Review", "Review Forms");
+        expandGrid("Management Review");
         clickOnFlextableRowButton("Assign", "Automation EXE", "Reviewers");
         chooseRecordForAssociation("Assign", applicationName, "AssignPanelApplicationsTable");
         switchToParentFrame();
@@ -285,7 +283,7 @@ public class ApplicationPage extends ProjectManager {
      * Handles choosing and sending the review records for review
      */
     public void chooseAndSendReviewsManagement() {
-        clickOnCheckbox("Management Review", "Reviews");
+        clickOnMultipleCheckbox("flexGridStepReviews", "Management Review");
         clickOnFlextableButton("Send for Review", "flexGridStepReviews");
     }
 

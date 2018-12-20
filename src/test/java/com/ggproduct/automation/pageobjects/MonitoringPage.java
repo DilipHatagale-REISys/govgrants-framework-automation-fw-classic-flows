@@ -21,8 +21,8 @@ public class MonitoringPage extends ProjectManager {
         reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
         navigateToTab(dataTableMap.get("Navigation").get("Step 2"));
         clickOnSidebar(dataTableMap.get("Left Panel").get("Step 1"), dataTableMap.get("Left Panel").get("Step 2"));
-        expandGrid(awardName, dataTableMap.get("FlexTable").get("Step 1"));
-        expandGrid(awardName, dataTableMap.get("FlexTable").get("Step 1"));
+        expandGrid(awardName);
+        expandGrid(awardName);
         quickSearchOnGridTable(dataTableMap.get("FlexTable").get("Step 2"), awardId, recordName);
         clickOnFlexTableIcon(dataTableMap.get("Button").get("Step 1"), recordName);
     }

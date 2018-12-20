@@ -10,8 +10,7 @@ Feature: Validate all scenarios in the Application Review
     And I perform quick search for "<Announcement Name>" in "flexTableRandomID1" panel
     When I click on "View" icon for "<Announcement Name>" inside table
     And I navigate to "Related Logs" sub tab
-    When I scroll to "Manage Reviews" section
-    And I click on "View" on the grid against "<Review Step Name>" in the table "AnnouncementReviewStepsFlexToggle"
+    And I click on "View" icon for "<Review Step Name>" inside flex table with id "AnnouncementReviewStepsFlexToggle"
     When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
     And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
     When I click "Yes" on the confirmation dialog box
@@ -154,8 +153,7 @@ Feature: Validate all scenarios in the Application Review
     And I perform quick search for "<Announcement Name>" in "flexTableRandomID1" panel
     When I click on "View" icon for "<Announcement Name>" inside table
     And I navigate to "Related Logs" sub tab
-    When I scroll to "Manage Reviews" section
-    And I click on "View" on the grid against "<Review Step Name>" in the table "AnnouncementReviewStepsFlexToggle"
+    And I click on "View" icon for "<Review Step Name>" inside flex table with id "AnnouncementReviewStepsFlexToggle"
     When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
     And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
     When I click "Yes" on the confirmation dialog box
@@ -313,8 +311,7 @@ Feature: Validate all scenarios in the Application Review
     And I perform quick search for "<Announcement Name>" in "flexTableRandomID1" panel
     When I click on "View" icon for "<Announcement Name>" inside table
     And I navigate to "Related Logs" sub tab
-    When I scroll to "Manage Reviews" section
-    And I click on "View" on the grid against "<Review Step Name>" in the table "AnnouncementReviewStepsFlexToggle"
+    And I click on "View" icon for "<Review Step Name>" inside flex table with id "AnnouncementReviewStepsFlexToggle"
     When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
     And I click on top right button "Promote to FDM" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
     When I click "Yes" on the confirmation dialog box

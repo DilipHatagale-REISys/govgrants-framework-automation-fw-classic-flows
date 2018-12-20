@@ -19,7 +19,7 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Internal Organizations" content inside "Manage Organizations" subheader on left panel
     When I click on "View" icon for "<Organization name>" inside flex table with id "OrganizationId"
     When I click on "Edit" in the page details
-    When I change the "Abbreviation__c" field to "Automation"
+    When I enter "Abbreviation__c" as "Automation"
     And I click on "Save" in the page details
     Then I see that "Agency Abbreviation" field is modified to "Automation"
 	Examples:

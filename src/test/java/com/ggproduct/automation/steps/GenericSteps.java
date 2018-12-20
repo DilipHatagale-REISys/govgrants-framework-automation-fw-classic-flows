@@ -20,57 +20,38 @@ public class GenericSteps {
     public GenericSteps(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
         projectManager = new ProjectManager(controller, handler, govgrants);
     }
-
-    @Given("^I login to \"([^\"]*)\" app as \"([^\"]*)\" User$")
-    public void loginToggleToApp(String appName, String userName) {
-        projectManager.loginToggleToApp(appName, userName);
-    }
     
-  /* @When("^I navigate to \"([^\"]*)\" tab$")
+    /******** Global Common Steps************/
+    /* @When("^I navigate to \"([^\"]*)\" tab$")
     public void navigateToTab(String tabName) {
         projectManager.navigateToTab(tabName);
     }*/
-
+    
     @When("^I navigate to \"([^\"]*)\" content inside \"([^\"]*)\" subheader on left panel$")
     public void clickOnSidebar(String sidebarContent, String sidebarSubHeader) {
         projectManager.clickOnSidebar(sidebarContent, sidebarSubHeader);
     }
-
+    
     @When("^I click on \"([^\"]*)\" in the page details$")
     public void clickOnPageButton(String buttonName) {
         projectManager.clickOnPageButton(buttonName);
     }
-
-    @When("^I click on \"([^\"]*)\" button to switch to frame \"([^\"]*)\"$")
-    public void clickOnPageButtonWithModalId(String buttonName, String IframeId) {
-        projectManager.clickOnPageButtonWithModalId(buttonName, IframeId);
-    }
-
+    
     @When("^I click modal button \"([^\"]*)\"$")
     public void clickOnModalButton(String buttonName) {
         projectManager.clickOnModalButton(buttonName);
     }
-
-    @When("^I change the \"([^\"]*)\" field to \"([^\"]*)\"$")
-    public void changeFieldValue(String fieldId, String text) {
-        projectManager.changeFieldValueText(fieldId, text);
-    }
-
+    
     @When("^I click toggle button for \"([^\"]*)\"$")
     public void changeFlexTableView(String tableViewName) {
         projectManager.changeFlexTableView(tableViewName);
     }
-
+    
     @When("^I perform quick search for \"([^\"]*)\" in \"([^\"]*)\" panel$")
     public void quickSearchOnTable(String searchText, String tableId) {
         projectManager.quickSearchOnTable(searchText, tableId);
     }
     
-    @When("^I perform quick search for \"([^\"]*)\" for the parent value \"([^\"]*)\" on grid \"([^\"]*)\"$")
-    public void quickSearchOnGridTable(String searchTerm, String anyUniqueColumnValueFromParent, String flexTableDivId) {
-        projectManager.quickSearchOnGridTable(flexTableDivId, anyUniqueColumnValueFromParent, searchTerm);
-    }
-
     @When("^I click on \"([^\"]*)\" icon for \"([^\"]*)\" inside table$")
     public void clickOnFlexTableIcon(String iconName, String uniqueTextValue) {
         projectManager.clickOnFlexTableIcon(iconName, uniqueTextValue);
@@ -80,16 +61,52 @@ public class GenericSteps {
     public void clickOnSubtab(String subtabName) {
         projectManager.clickOnSubtab(subtabName);
     }
-
+    
     @When("^I expand nested table containing column value \"([^\"]*)\"$")
     public void expandGrid(String uniqueColumnValue) {
         projectManager.expandGrid(uniqueColumnValue);
     }
-
+    
     @When("^I collapse nested table containing column value \"([^\"]*)\"$")
     public void collapseGrid(String uniqueColumnValue) {
         projectManager.collapseGrid(uniqueColumnValue);
     }
+    
+    /****** Product Common Steps ***********/
+
+    @Given("^I login to \"([^\"]*)\" app as \"([^\"]*)\" User$")
+    public void loginToggleToApp(String appName, String userName) {
+        projectManager.loginToggleToApp(appName, userName);
+    }
+    
+    @When("^I perform quick search for \"([^\"]*)\" for the parent value \"([^\"]*)\" on grid \"([^\"]*)\"$")
+    public void quickSearchOnGridTable(String searchTerm, String anyUniqueColumnValueFromParent, String flexTableDivId) {
+        projectManager.quickSearchOnGridTable(flexTableDivId, anyUniqueColumnValueFromParent, searchTerm);
+    }
+    
+    
+ 
+
+   
+
+    
+
+    
+    
+
+   
+
+   
+    
+ 
+
+ 
+    
+   
+
+   
+
+  
 
     @When("^I click on \"([^\"]*)\" button on \"([^\"]*)\" flextable to switch to frame$")
     public void clickOnButtonForAttachmentNotesToOpenModal(String buttonName, String flextableName) {
@@ -112,8 +129,12 @@ public class GenericSteps {
     }
 
     @When("^I check \"([^\"]*)\" boxes in flex table with id \"([^\"]*)\"$")
-    public void clickOnCheckbox(String uniqueColumnValues, String flextableId) {
-        projectManager.clickOnCheckbox(uniqueColumnValues, flextableId);
+    public void clickOnMultipleCheckbox(String uniqueColumnValues, String flextableId) {
+        if ("All".equalsIgnoreCase(uniqueColumnValues)) {
+            projectManager.clickOnMultipleCheckbox(flextableId);
+        } else {
+            projectManager.clickOnMultipleCheckbox(flextableId, uniqueColumnValues.split(","));
+        }
     }
 
     @When("^I switch to Parent frame$")
@@ -136,16 +157,6 @@ public class GenericSteps {
         projectManager.enteringCommentsOnConfirmation(comments, confirmation);
     }
 
-    @When("^I scroll to \"([^\"]*)\" section$")
-    public void scrollToSection(String sectionName) {
-        projectManager.scrollToSection(sectionName);
-    }
-
-    @When("^I click on \"([^\"]*)\" on the grid against \"([^\"]*)\" in the table \"([^\"]*)\"$")
-    public void clickButtonOnGrid(String iconName, String uniqueColumnValue, String tableId) {
-        projectManager.clickButtonOnGrid(iconName, uniqueColumnValue, tableId);
-    }
-
     @When("^I close Modal$")
     public void closeModal() {
         projectManager.closeModal();
@@ -161,9 +172,9 @@ public class GenericSteps {
         projectManager.enterFieldValues(sheetName, excelName);
     }
 
-    @When("^I enter a review$")
-    public void enterReview() {
-        projectManager.enterReview();
+    @When("^I enter a review as \"([^\"]*)\"$")
+    public void enterReview(String rating) {
+        projectManager.enterReview(rating);
     }
 
     @When("^I re-login to \"([^\"]*)\" app as \"([^\"]*)\" User$")
@@ -172,8 +183,8 @@ public class GenericSteps {
     }
 
     @When("^I click \"([^\"]*)\" after selection of \"([^\"]*)\" in the table \"([^\"]*)\"$")
-    public void chooseRecordForProgramAssociation(String buttonName, String recordUniqueName, String tableId) {
-        projectManager.chooseRecordForAssociation(buttonName, recordUniqueName, tableId);
+    public void chooseRecordForProgramAssociation(String buttonName, String recordUniqueValues, String tableId) {
+        projectManager.chooseRecordForAssociation(buttonName, tableId, recordUniqueValues.split(","));
     }
 
     @When("^I fill in the \"([^\"]*)\" for the Approver details$")
@@ -280,4 +291,5 @@ public class GenericSteps {
     public void fillingUpStandardForm(String formName, DataTable dataTable) {
         projectManager.fillingUpStandardForm(formName, dataTable);
     }
+    /**** Generic Consolidated Steps ******/
 }

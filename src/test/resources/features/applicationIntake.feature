@@ -4,13 +4,6 @@ Feature: Validate all scenarios in the Application Intake
 	Background: Qualify Announcement and Create Application
 	Given I qualify the announcement "Automation Announcement Dec10" as user "SPI"
 	And I create an Application from sheet "Creation" in excel "Application_Field_Values.xlsx"
-	
-  	@preapplicationCreation @applicationIntake
-  	Scenario: Creating a Pre-Application
-    When I click on "Create Pre-Application" button to switch to frame "iframeActionModalIdViewLayout"
-	And I enter "Creation" values from "Application_Field_Values.xlsx"
-	When I click modal button "Save and Close Modal"
-	Then I see that "Pre-Application" is in "Created" status
 
   	@34044 @applicationCreation @applicationIntake
   	Scenario: Creating an Application
