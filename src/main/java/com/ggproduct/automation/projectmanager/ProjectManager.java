@@ -663,13 +663,6 @@ public class ProjectManager extends ProjectWebServices {
         }
     }
 
-    private void singleChecklistDocumentUpload(String fileName, Map<String, Map<String, String>> dataTableMap) {
-        clickOnFlextableRowButton(dataTableMap.get("FlexTable").get("Step 1"),
-                dataTableMap.get("FlexTable").get("Step 2"), dataTableMap.get("FlexTable").get("Step 3"));
-        uploadFile(fileName, dataTableMap.get("Upload").get("Step 1"), dataTableMap.get("Upload").get("Step 2"));
-        closeModal();
-    }
-
     /**
      * Handles assigning of reviewer and initiating the review process
      * 
@@ -895,6 +888,14 @@ public class ProjectManager extends ProjectWebServices {
         quickSearchOnTable(recordName, dataTableMap.get("FlexTable").get("Step 3"));
         clickOnFlexTableIcon(dataTableMap.get("Approval").get("Step 1"), recordName);
         clickOnApprovalDecisionBox(dataTableMap.get("Approval").get("Step 2"));
+    }
+    
+
+    private void singleChecklistDocumentUpload(String fileName, Map<String, Map<String, String>> dataTableMap) {
+        clickOnFlextableRowButton(dataTableMap.get("FlexTable").get("Step 1"),
+                dataTableMap.get("FlexTable").get("Step 2"), dataTableMap.get("FlexTable").get("Step 3"));
+        uploadFile(fileName, dataTableMap.get("Upload").get("Step 1"), dataTableMap.get("Upload").get("Step 2"));
+        closeModal();
     }
 
     private List<Map<String, String>> inlineRowAdditionDatableSeperator(
