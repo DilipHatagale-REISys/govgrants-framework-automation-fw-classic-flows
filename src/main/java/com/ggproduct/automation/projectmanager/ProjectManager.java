@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.automation.rei.controller.Controller;
+import com.automation.rei.corelib.Properties_Logs;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.automation.rei.handlers.CoreHandlers;
 import cucumber.api.DataTable;
@@ -196,8 +197,6 @@ public class ProjectManager extends ProjectWebServices {
         toggleApp(appName);
     }
 
-
-
     /**
      * Handles toggling between different list views
      * 
@@ -206,8 +205,6 @@ public class ProjectManager extends ProjectWebServices {
     public void changeFlexTableView(String tableViewName) {
         govgrants.phasePannel().clickDoubleArrowDropDownAndSelectItem(tableViewName);
     }
-
-
 
     /**
      * To perform quick search on a table
@@ -602,30 +599,19 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     /**
-     * Handles assigning two of approvers
+     * Handles assigning given n# of approvers
      * 
      * @param programApprover
      * @param executiveApprover
      */
-    public void twoApproverSelection(String programApprover, String executiveApprover, DataTable dataTable) {
+    public void approverSelection(String noOfApprovers, DataTable dataTable, String... approvers) {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        int numberOfApprovers = Integer.parseInt(noOfApprovers);
         clickOnSubtab(dataTableMap.get("Subtab").get("Step 1"));
-        clickOnFlextableRowButton(dataTableMap.get("Approver 1").get("Step 1"),
-                dataTableMap.get("Approver 1").get("Step 2"), dataTableMap.get("Approver 1").get("Step 3"));
-        fillInApproverDetails(programApprover);
-        try {
-            closeModal();
-        } catch (Exception ex) {
-            switchToParentFrame();
+        for (int i = 1; i <= numberOfApprovers; i++) {
+            singleApproverSelection(i, approvers[i - 1], dataTableMap);
         }
-        clickOnFlextableRowButton(dataTableMap.get("Approver 2").get("Step 1"),
-                dataTableMap.get("Approver 2").get("Step 2"), dataTableMap.get("Approver 2").get("Step 3"));
-        fillInApproverDetails(executiveApprover);
-        try {
-            closeModal();
-        } catch (Exception ex) {
-            switchToParentFrame();
-        }
+
     }
 
     /**
@@ -641,8 +627,8 @@ public class ProjectManager extends ProjectWebServices {
         clickOnSubtab(dataTableMap.get("Checklist Navigation").get("Step 1"));
         addFieldsForInlineTable(dataTableMap.get("Checklist FlexTable").get("Step 1"),
                 dataTableMap.get("Checklist FlexTable").get("Step 2"), inlineRowAdditionDatableSeperator(dataTableMap));
-        clickOnFlextableRowButton(dataTableMap.get("Upload Modal").get("Step 1"),
-                dataTableMap.get("Upload Modal").get("Step 2"), dataTableMap.get("Upload Modal").get("Step 3"));
+        clickOnFlextableRowButton(dataTableMap.get("Checklist FlexTable").get("Step 1"),
+                dataTableMap.get("Upload Modal").get("Step 1"), dataTableMap.get("Upload Modal").get("Step 2"));
         uploadFile(fileName, dataTableMap.get("Upload file").get("Step 1"),
                 dataTableMap.get("Upload file").get("Step 2"));
         closeModal();
@@ -664,28 +650,95 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     /**
-     * Handles approving a record by the assigned approvers
+     * Handles uploading of checklist files
      * 
-     * @param programApprover
-     * @param executiveApprover
-     * @param programName
+     * @param fileName
+     */
+    public void uploadChecklistDocument(String noOfDocuments, DataTable dataTable, String... fileName) {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        clickOnSubtab(dataTableMap.get("Navigation").get("Step 1"));
+        int numberOfDocuments = Integer.parseInt(noOfDocuments);
+        for (int i = 1; i <= numberOfDocuments; i++) {
+            singleChecklistDocumentUpload(fileName[i - 1], dataTableMap);
+        }
+    }
+
+    private void singleChecklistDocumentUpload(String fileName, Map<String, Map<String, String>> dataTableMap) {
+        clickOnFlextableRowButton(dataTableMap.get("FlexTable").get("Step 1"),
+                dataTableMap.get("FlexTable").get("Step 2"), dataTableMap.get("FlexTable").get("Step 3"));
+        uploadFile(fileName, dataTableMap.get("Upload").get("Step 1"), dataTableMap.get("Upload").get("Step 2"));
+        closeModal();
+    }
+
+    /**
+     * Handles assigning of reviewer and initiating the review process
+     * 
+     * @param sheetName
+     * @param excelFileName
+     */
+    public void initiateReviewForAnnouncement(String sheetName, String excelFileName, DataTable dataTable) {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        clickOnSubtab(dataTableMap.get("Reviewer Navigation").get("Step 1"));
+        clickOnFlextableButton(dataTableMap.get("FlexTable").get("Step 1"),
+                dataTableMap.get("FlexTable").get("Step 2"));
+        enterFieldValues(sheetName, excelFileName);
+        clickOnModalButton(dataTableMap.get("FlexTable").get("Step 3"));
+        closeModal();
+        clickOnFlextableRowButton(dataTableMap.get("FlexTable").get("Step 2"),
+                dataTableMap.get("Send Review").get("Step 1"), dataTableMap.get("Send Review").get("Step 1"));
+    }
+
+    /**
+     * Handles reviewing the announcement and completing the review process for an
+     * announcement
+     * 
+     * @param reviewer
+     * @param announcementType
+     * @param announcementName
+     * @param announcementOwner
      * @throws IOException
      */
-    public void twoApproversApproveRecord(String programApprover, String executiveApprover, String recordName,
-            DataTable dataTable) throws IOException {
+    public void completePeerReview(String reviewer, String recordName, String recordOwner, DataTable dataTable)
+            throws IOException {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
-        reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), programApprover);
-        navigateToTab(dataTableMap.get("Navigation").get("Step 2"));
-        clickOnSidebar(dataTableMap.get("Pending Task").get("Step 1"), dataTableMap.get("Pending Task").get("Step 2"));
-        quickSearchOnTable(recordName, dataTableMap.get("Pending Task").get("Step 3"));
-        clickOnFlexTableIcon(dataTableMap.get("Approval Buttons").get("Step 1"), recordName);
-        clickOnApprovalDecisionBox(dataTableMap.get("Approval Buttons").get("Step 2"));
-        reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), executiveApprover);
-        navigateToTab(dataTableMap.get("Navigation").get("Step 2"));
-        clickOnSidebar(dataTableMap.get("Pending Task").get("Step 1"), dataTableMap.get("Pending Task").get("Step 2"));
-        quickSearchOnTable(recordName, dataTableMap.get("Pending Task").get("Step 3"));
-        clickOnFlexTableIcon(dataTableMap.get("Approval Buttons").get("Step 1"), recordName);
-        clickOnApprovalDecisionBox(dataTableMap.get("Approval Buttons").get("Step 2"));
+        reloginToggleToApp(dataTableMap.get("Reviewer Navigation").get("Step 1"), reviewer);
+        navigateToTab(dataTableMap.get("Reviewer Navigation").get("Step 2"));
+        clickOnSidebar(dataTableMap.get("Reviewer Navigation").get("Step 3"),
+                dataTableMap.get("Reviewer Navigation").get("Step 4"));
+        quickSearchOnTable(recordName, dataTableMap.get("FlexTable").get("Step 1"));
+        clickOnFlexTableIcon(dataTableMap.get("FlexTable").get("Step 2"), recordName);
+        clickOnFlextableRowButton(dataTableMap.get("FlexTable").get("Step 3"),
+                dataTableMap.get("FlexTable").get("Step 4"), dataTableMap.get("Enter Review").get("Step 1"));
+        enterReview(dataTableMap.get("Enter Review").get("Step 2"));
+        clickOnModalButton(dataTableMap.get("Enter Review").get("Step 3"));
+        clickOnModalButton(dataTableMap.get("Enter Review").get("Step 4"));
+        closeModal();
+        reloginToggleToApp(dataTableMap.get("Owner Navigation").get("Step 1"), recordOwner);
+        navigateToTab(dataTableMap.get("Owner Navigation").get("Step 2"));
+        clickOnSidebar(dataTableMap.get("Owner Navigation").get("Step 3"),
+                dataTableMap.get("Owner Navigation").get("Step 4"));
+        changeFlexTableView(dataTableMap.get("Complete Review").get("Step 1"));
+        quickSearchOnTable(recordName, dataTableMap.get("Complete Review").get("Step 2"));
+        clickOnFlexTableIcon(dataTableMap.get("Complete Review").get("Step 3"), recordName);
+        clickOnPageButton(dataTableMap.get("Complete Review").get("Step 4"));
+    }
+
+    /**
+     * Handles approving of any record by all approvers
+     * 
+     * @param programApprover
+     * @param fiscalApprover
+     * @param executiveApprover
+     * @param announcementName
+     * @throws IOException
+     */
+    public void approversApproveRecord(String noOfApprovers, String recordName, DataTable dataTable,
+            String... approvers) throws IOException {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        int numberOfApprovers = Integer.parseInt(noOfApprovers);
+        for (int i = 1; i <= numberOfApprovers; i++) {
+            singleApproverApproval(recordName, approvers[i - 1], dataTableMap);
+        }
     }
 
     /**
@@ -742,6 +795,39 @@ public class ProjectManager extends ProjectWebServices {
                 dataTableMap.get("Validation").get("Step 2"));
     }
 
+    public void reloginToGrantsPortal(String userName) throws IOException {
+        govgrants.mainPage().waitForNavigationLogoToDisappear();
+        reiDriver.WaitFor().makeThreadSleep(1000);
+        govgrants.mainPage().clickLoginDropDown();
+        govgrants.mainPage().getLoginDropDownItems("Logout").click();
+        reiDriver.eatCookies().deleteAllCookies();
+        reiDriver.WaitFor().makeThreadSleep(500);
+        navigateToURL("SUBRECIPIENT PORTAL");
+        govgrants.mainPage().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);
+        govgrants.mainPage().waitForEgmsHeader();
+    }
+
+    /**
+     * Handles re-logging as a different user and toggling to the app specified
+     * 
+     * @param appName
+     * @param userName
+     * @throws IOException
+     */
+    public void reloginToggleToAppInURL(String appName, String userName, String env) throws IOException {
+        govgrants.mainPage().waitForNavigationLogoToDisappear();
+        reiDriver.WaitFor().makeThreadSleep(1000);
+        govgrants.mainPage().clickLoginDropDown();
+        govgrants.mainPage().getLoginDropDownItems("Logout").click();
+        reiDriver.eatCookies().deleteAllCookies();
+        reiDriver.WaitFor().makeThreadSleep(500);
+        reiDriver.get().navigateToUrl(new Properties_Logs().ReadPropertyFile("environment.properties", env));
+        govgrants.mainPage().login(new UsersAndURL().handleUsersForEnv(userName),
+                new Properties_Logs().ReadPropertyFile("environment.properties", "DEFAULTPASSWORD"));
+        govgrants.mainPage().waitForEgmsHeader();
+        govgrants.mainPage().setUpCustomAppDropDown(appName);
+    }
+
     /******* "Local Methods with Limited functionality " **********/
 
     private void login(String userName) {
@@ -769,18 +855,6 @@ public class ProjectManager extends ProjectWebServices {
         govgrants.mainPage().waitForEgmsHeader();
     }
 
-    public void reloginToGrantsPortal(String userName) throws IOException {
-        govgrants.mainPage().waitForNavigationLogoToDisappear();
-        reiDriver.WaitFor().makeThreadSleep(1000);
-        govgrants.mainPage().clickLoginDropDown();
-        govgrants.mainPage().getLoginDropDownItems("Logout").click();
-        reiDriver.eatCookies().deleteAllCookies();
-        reiDriver.WaitFor().makeThreadSleep(500);
-        navigateToURL("SUBRECIPIENT PORTAL");
-        govgrants.mainPage().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);
-        govgrants.mainPage().waitForEgmsHeader();
-    }
-    
     private boolean isStatusProgressBar(String status, String color) {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         return govgrants.pageDetails().isStepProgressBarStatusInSpecifiedColor(status, color);
@@ -795,21 +869,32 @@ public class ProjectManager extends ProjectWebServices {
                 .isDisplayed();
     }
 
-    private boolean isFieldModified(String fieldLabel, String text) {
-        govgrants.mainPage().waitForNavigationLogoToDisappear();
-        reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//span[text()='" + fieldLabel + "']/../..//span"));
-        return reiDriver.findMyElement()
-                .getElement(By.xpath("//span[text()='" + fieldLabel + "']/../..//span[text()='" + text + "']"))
-                .isDisplayed();
-    }
-
-    private boolean isStatusCorrect(String status) {
-        reiDriver.WaitFor().WaitForElementListToBePresent(By.xpath("//table"));
-        return reiDriver.findMyElement().getElement(govgrants.flexTable().getFlexTableColumn(status)).isDisplayed();
-    }
-
     private boolean isColumnPresent(String columnUniqueValue, String flextableId) {
         return govgrants.flexTable().getSpecificTableColumn(flextableId, columnUniqueValue).isEnabled();
+    }
+
+    private void singleApproverSelection(int qNumber, String approverName,
+            Map<String, Map<String, String>> dataTableMap) {
+        clickOnFlextableRowButton(dataTableMap.get("Approver " + qNumber).get("Step 1"),
+                dataTableMap.get("Approver " + qNumber).get("Step 2"),
+                dataTableMap.get("Approver " + qNumber).get("Step 3"));
+        fillInApproverDetails(approverName);
+        try {
+            closeModal();
+        } catch (Exception ex) {
+            switchToParentFrame();
+        }
+    }
+
+    private void singleApproverApproval(String recordName, String approver,
+            Map<String, Map<String, String>> dataTableMap) throws IOException {
+        govgrants.mainPage().waitForNavigationLogoToDisappear();
+        reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), approver);
+        navigateToTab(dataTableMap.get("Navigation").get("Step 2"));
+        clickOnSidebar(dataTableMap.get("FlexTable").get("Step 1"), dataTableMap.get("FlexTable").get("Step 2"));
+        quickSearchOnTable(recordName, dataTableMap.get("FlexTable").get("Step 3"));
+        clickOnFlexTableIcon(dataTableMap.get("Approval").get("Step 1"), recordName);
+        clickOnApprovalDecisionBox(dataTableMap.get("Approval").get("Step 2"));
     }
 
     private List<Map<String, String>> inlineRowAdditionDatableSeperator(
@@ -827,4 +912,5 @@ public class ProjectManager extends ProjectWebServices {
         }
         return listOfMapForInlineMethod;
     }
+
 }

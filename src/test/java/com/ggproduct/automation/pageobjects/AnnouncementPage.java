@@ -2,8 +2,6 @@ package com.ggproduct.automation.pageobjects;
 
 import java.util.Map;
 
-import java.io.IOException;
-import java.util.List;
 import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
@@ -79,12 +77,11 @@ public class AnnouncementPage extends ProjectManager {
     public void addFundingAccountToAnnouncement(String fundingAccount, DataTable dataTable) {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         DataTable inlineEditDataTable = seperateInlineDataTable(dataTableMap);
-
-        clickOnSubtab("Financials");
-        clickOnFlextableButton("Associate", "flexGridAnnouncementFundingAccountGrantor");
-        chooseRecordForAssociation("Add", fundingAccount, "popupflextable");
+        clickOnSubtab(dataTableMap.get("Navigation").get("Step 1"));
+        clickOnFlextableButton(dataTableMap.get("Associate").get("Step 2"), dataTableMap.get("Associate").get("Step 1"));
+        chooseRecordForAssociation(dataTableMap.get("Funding Account").get("Step 1"), dataTableMap.get("Funding Account").get("Step 2"), fundingAccount.split(","));
         closeModal();
-        fillFieldsForInlineTable("flexGridAnnouncementFundingAccountGrantor", "Edit", inlineEditDataTable);
+        fillFieldsForInlineTable(dataTableMap.get("Associate").get("Step 2"), dataTableMap.get("Button").get("Step 1"), inlineEditDataTable);
     }
 
     /**
@@ -94,169 +91,17 @@ public class AnnouncementPage extends ProjectManager {
      * @param sheetName
      * @param excelFileName
      */
-    public void addBudgetPeriodToAnnouncement(String budgetPeriod, String sheetName, String excelFileName) {
+    public void addBudgetPeriodToAnnouncement(String budgetPeriod, String sheetName, String excelFileName, DataTable dataTable) {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         govgrants.mainPage().waitForNavigationLogoToDisappear();
-        clickOnSubtab("Financials");
-        clickOnFlextableButton("Add Budget Period", "AnnouncementBudgetPeriod");
-        clickOnFlextableRowButton("Edit", budgetPeriod, "Budget Period Details");
+        clickOnSubtab(dataTableMap.get("Navigation").get("Step 1"));
+        clickOnFlextableButton(dataTableMap.get("Navigation").get("Step 2"), dataTableMap.get("Navigation").get("Step 3"));
+        clickOnFlextableRowButton(dataTableMap.get("Flextable").get("Step 1"), budgetPeriod, dataTableMap.get("Flextable").get("Step 2"));
         enterFieldValues(sheetName, excelFileName);
-        clickOnModalButton("Save");
+        clickOnModalButton(dataTableMap.get("Flextable").get("Step 3"));
         closeModal();
     }
 
-    /**
-     * Handles association of contact, focus area and objective to an announcement
-     * 
-     * @param contact
-     * @param focusArea
-     * @param objective
-     */
-    public void associationOfRecordsToAnnouncement(String contact, String focusArea, String objective) {
-        // Contact association
-        clickOnSubtab("Overview");
-        clickOnFlextableButton("Associate", "AnnouncementContacts");
-        chooseRecordForAssociation("Add", contact, "AssociateAnnouncementContacts");
-        closeModal();
-
-        // Focus Area association
-        clickOnSubtab("Setup");
-        clickOnFlextableButton("Associate", "AnnouncementServiceArea1");
-        chooseRecordForAssociation("Add", focusArea, "popupflextable");
-        closeModal();
-
-        // Objective association
-        clickOnSubtab("Setup");
-        clickOnFlextableButton("Associate", "AnnouncementGranteeStrategicGoalsObjectives");
-        chooseRecordForAssociation("Add", objective, "popupflextable");
-        closeModal();
-    }
-
-    /**
-     * Handles assigning of approvers to an announcement
-     * 
-     * @param programApprover
-     * @param fiscalApprover
-     * @param executiveApprover
-     */
-    public void approverSelectionForAnnouncement(String programApprover, String fiscalApprover,
-            String executiveApprover) {
-        clickOnSubtab("Responsibilities");
-        clickOnFlextableRowButton("Edit", "Program Approver", "Approvers");
-        fillInApproverDetails(programApprover);
-        switchToParentFrame();
-        clickOnFlextableRowButton("Edit", "Fiscal Approver", "Approvers");
-        fillInApproverDetails(fiscalApprover);
-        switchToParentFrame();
-        clickOnFlextableRowButton("Edit", "Executive Approver", "Approvers");
-        fillInApproverDetails(executiveApprover);
-        switchToParentFrame();
-    }
-
-    /**
-     * Handles addition of checklist to an announcement
-     * 
-     * @param description
-     * @param required
-     * @param appliesTo
-     * @param fileName
-     */
-    public void additionOfChecklistToAnnouncement(String fileName, List<Map<String, String>> rowValues) {
-        clickOnSubtab("Setup");
-        addFieldsForInlineTable("inlineEditGridAnnouncementChecklists", "Add", rowValues);
-        clickOnFlextableRowButton("Upload Template", "Not Applicable", "Supporting Documents");
-        uploadFile(fileName, "Checklist", "Announcement");
-        closeModal();
-    }
-
-    /**
-     * Handles addition of attachment to an announcement
-     * 
-     * @param fileName
-     */
-    public void additionOfAttachmentToAnnouncement(String fileName) {
-        clickOnSubtab("Attachments");
-        clickOnButtonForAttachmentNotesToOpenModal("Add", " Attachments");
-        uploadFile(fileName, "Attachment", "Funding Opportunity Announcement");
-        closeModal();
-    }
-
-    /**
-     * Handles approving of an announcement by all approvers
-     * 
-     * @param programApprover
-     * @param fiscalApprover
-     * @param executiveApprover
-     * @param announcementName
-     * @throws IOException
-     */
-    public void approversApproveAnnouncement(String programApprover, String fiscalApprover, String executiveApprover,
-            String announcementName) throws IOException {
-        govgrants.mainPage().waitForNavigationLogoToDisappear();
-        reloginToggleToApp("As a Grantor", programApprover);
-        navigateToTab("Announcements");
-        clickOnSidebar("Pending Tasks", "My Tasks");
-        quickSearchOnTable(announcementName, "PhasePendingTasks");
-        clickOnFlexTableIcon("Start", announcementName);
-        clickOnApprovalDecisionBox("Approve");
-        govgrants.mainPage().waitForNavigationLogoToDisappear();
-        reloginToggleToApp("As a Grantor", fiscalApprover);
-        navigateToTab("Announcements");
-        clickOnSidebar("Pending Tasks", "My Tasks");
-        quickSearchOnTable(announcementName, "PhasePendingTasks");
-        clickOnFlexTableIcon("Start", announcementName);
-        clickOnApprovalDecisionBox("Approve");
-        govgrants.mainPage().waitForNavigationLogoToDisappear();
-        reloginToggleToApp("As a Grantor", executiveApprover);
-        navigateToTab("Announcements");
-        clickOnSidebar("Pending Tasks", "My Tasks");
-        quickSearchOnTable(announcementName, "PhasePendingTasks");
-        clickOnFlexTableIcon("Start", announcementName);
-        clickOnApprovalDecisionBox("Approve");
-    }
-
-    /**
-     * Handles assigning of reviewer and initiating the review process
-     * 
-     * @param sheetName
-     * @param excelFileName
-     */
-    public void initiateReviewForAnnouncement(String sheetName, String excelFileName) {
-        clickOnSubtab("Responsibilities");
-        clickOnFlextableButton("New", "flexGridApproverRoles");
-        enterFieldValues(sheetName, excelFileName);
-        clickOnModalButton("Save");
-        closeModal();
-        clickOnFlextableRowButton("Send for Review", "Created", "Peer Reviewers");
-    }
-
-    /**
-     * Handles reviewing the announcement and completing the review process for an
-     * announcement
-     * 
-     * @param reviewer
-     * @param announcementType
-     * @param announcementName
-     * @param announcementOwner
-     * @throws IOException
-     */
-    public void completeReviewForAnnouncement(String reviewer, String announcementType, String announcementName,
-            String announcementOwner) throws IOException {
-        reloginToggleToApp("As a Grantor", reviewer);
-        navigateToTab("Announcements");
-        clickOnSidebar("Pending Tasks", "My Tasks");
-        quickSearchOnTable(announcementName, "PhasePendingTasks");
-        clickOnFlexTableIcon("Start", announcementName);
-        clickOnFlextableRowButton("Enter Review", "Fiscal Reviewer", "Peer Reviewers");
-        enterReview("Passed");
-        clickOnModalButton("Save");
-        clickOnModalButton("Submit Review");
-        closeModal();
-        reloginToggleToApp("As a Grantor", announcementOwner);
-        navigateToTab("Announcements");
-        clickOnSidebar(announcementType, "Announcements");
-        changeFlexTableView("Draft Announcements");
-        quickSearchOnTable(announcementName, "ActiveFundingOpportunitiesCompitive");
-        clickOnFlexTableIcon("View", announcementName);
-        clickOnPageButton("Complete Review");
-    }
+   
+   
 }
