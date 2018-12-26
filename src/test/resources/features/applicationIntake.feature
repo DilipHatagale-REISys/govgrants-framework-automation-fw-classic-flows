@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in the Application Intake
 
 	Background: Qualify Announcement and Create Application
-	Given I qualify the announcement "Automation Announcement Dec10" as user "SPI"
+	Given I qualify the announcement "Automation Announcement Dec25" as user "SPI"
 	And I create an Application from sheet "Creation" in excel "Application_Field_Values.xlsx"
 
   	@34044 @applicationCreation @applicationIntake
@@ -71,15 +71,18 @@ Feature: Validate all scenarios in the Application Intake
 	| Navigation | Budget | Add Focus Area | FocusAreaApp |
 	| FlexTable	 | Add 	  | popupflextable | 			  |
 	Given I add budget details to the application
-	| Actions 	   		  | Step 1 												   | Step 2	| Step 3 	      | Step 4		   |
-	| Navigation 		  | Budget 												   | BP01 	| Proposed Budget |				   |
-	| FlexTable 		  | inlineEditGridApplicationBudgetCategoryGrantorFlexGrid | Edit 	| 				  |				   |
-	| Inline Column Title | Category Name 										   | Budget | Cash Match 	  | Non-Cash Match |
-	| Inline values		  | Construction  										   | 5000 	| 1000   	  	  | 3000 		   |
+	| Actions 	   		  | Step 1 												   | Step 2	| Step 3 	      | Step 4		   | Step 5      	|
+	| Navigation 		  | Budget 												   | BP01 	| Proposed Budget |				   |				|
+	| FlexTable 		  | inlineEditGridApplicationBudgetCategoryGrantorFlexGrid | Edit 	| 				  |				   |				|
+	| Inline Column Title | Category Name 										   | Budget | Cash Match 	  | Non-Cash Match | Other Leverage |
+	| Inline values		  | Construction  										   | 5000 	| 1000   	  	  | 3000 		   | 1000			|
 	And I add target to the KPI in the application
-	| EGMS ID  | Target |
-	| KPI-0005 | 10		|
-	| KPI-0006 | 10		|
+	| Actions 	   		  | Step 1 									| Step 2 |
+	| Navigation		  | Proposal							    | 		 |
+	| FlexTable 		  | flexGridRecipientApplicationRelatedKPIs | Edit   |
+	| Inline Column Title | EGMS ID  								| Target |
+	| Inline values 	  | KPI-0005								| 10	 |
+	| Inline values 	  | KPI-0006 								| 10	 |
 	Given I upload "2" checklist document "Announcement_Field_Values.xlsx,Application_Field_Values.xlsx"
 	| Actions 	 | Step 1 							   | Step 2		 | Step 3 	      |
 	| Navigation | Attachments 						   | 			 |				  |

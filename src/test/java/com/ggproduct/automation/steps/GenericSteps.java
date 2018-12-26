@@ -172,7 +172,6 @@ public class GenericSteps {
     
     @Given("^I complete filling up the standard form$")
     public void fillStandardForm() {
-        projectManager.fillStandardForm();
     } 
     
     @When("^I enter a review as \"([^\"]*)\"$")
@@ -264,7 +263,7 @@ public class GenericSteps {
     }
     
     @Given("^\"([^\"]*)\" Approvers \"([^\"]*)\" approve the record \"([^\"]*)\"$")
-    public void approversApproveRecord(String noOfApprovers, String recordName, String approvers, DataTable dataTable) throws IOException {
+    public void approversApproveRecord(String noOfApprovers, String approvers, String recordName, DataTable dataTable) throws IOException {
         projectManager.approversApproveRecord(noOfApprovers, recordName, dataTable, approvers.split(","));
     }
    

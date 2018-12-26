@@ -78,10 +78,10 @@ public class AnnouncementPage extends ProjectManager {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         DataTable inlineEditDataTable = seperateInlineDataTable(dataTableMap);
         clickOnSubtab(dataTableMap.get("Navigation").get("Step 1"));
-        clickOnFlextableButton(dataTableMap.get("Associate").get("Step 2"), dataTableMap.get("Associate").get("Step 1"));
+        clickOnFlextableButton(dataTableMap.get("FlexTable").get("Step 1"), dataTableMap.get("FlexTable").get("Step 2"));
         chooseRecordForAssociation(dataTableMap.get("Funding Account").get("Step 1"), dataTableMap.get("Funding Account").get("Step 2"), fundingAccount.split(","));
         closeModal();
-        fillFieldsForInlineTable(dataTableMap.get("Associate").get("Step 2"), dataTableMap.get("Button").get("Step 1"), inlineEditDataTable);
+        fillFieldsForInlineTable(dataTableMap.get("FlexTable").get("Step 2"), dataTableMap.get("Button").get("Step 1"), inlineEditDataTable);
     }
 
     /**
@@ -96,9 +96,9 @@ public class AnnouncementPage extends ProjectManager {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         clickOnSubtab(dataTableMap.get("Navigation").get("Step 1"));
         clickOnFlextableButton(dataTableMap.get("Navigation").get("Step 2"), dataTableMap.get("Navigation").get("Step 3"));
-        clickOnFlextableRowButton(dataTableMap.get("Flextable").get("Step 1"), budgetPeriod, dataTableMap.get("Flextable").get("Step 2"));
+        clickOnFlextableRowButton(dataTableMap.get("Navigation").get("Step 3"),dataTableMap.get("Flextable").get("Step 1"), budgetPeriod);
         enterFieldValues(sheetName, excelFileName);
-        clickOnModalButton(dataTableMap.get("Flextable").get("Step 3"));
+        clickOnModalButton(dataTableMap.get("Flextable").get("Step 2"));
         closeModal();
     }
 

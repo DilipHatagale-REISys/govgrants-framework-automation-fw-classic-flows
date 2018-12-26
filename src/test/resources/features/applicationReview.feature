@@ -20,8 +20,13 @@ Feature: Validate all scenarios in the Application Review
 	| EXE  | Automation Announcement | Pre-Screen Review | Automation Announcement Application |
 	
 	@smeReviewEnterDueInDays @applicationReview
-	Scenario: Enter Due in Days for all review forms in SME-review
-	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
+	Scenario Outline: Enter Due in Days for all review forms in SME-review
+	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
 	 When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name 	    | Due in Days |
@@ -29,84 +34,168 @@ Feature: Validate all scenarios in the Application Review
 	| Fiscal Review     | 10   		  | 
 	| Compliance Review | 10   		  | 
 	Then I see that "SME Review" is in "In Progress" status
+	Examples: 
+	| User | Announcement Name  				   | Application Name 	            	    			|
+	| EXE  | Automation Announcement to be deleted | Automation Announcement to be deleted Application  |
 	    
 	@38463 @smeReviewAddReviewer @applicationReview
-	Scenario: Add a reviewer to each review step in SME Review
-	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
+	Scenario Outline: Add a reviewer to each review step in SME Review
+	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days for all SME review steps
+	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
 	| Compliance Review | 10   		  | 
     When I expand nested table containing column value "Program Review"
-    And I click on top right button "Add" in flex table with id "flexGridApplicationReviewTree"
-    When I add "Automation PM" as reviewer in the table "RelatedExternalReviewersGridresizable"
-    And I click on top right button "Save" in flex table with id "flexGridApplicationReviewTree"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation PM  |
     When I collapse nested table containing column value "Program Review"
     And I expand nested table containing column value "Fiscal Review"
-    When I click on top right button "Add" in flex table with id "flexGridApplicationReviewTree"
-    And I add "Automation FO" as reviewer in the table "RelatedExternalReviewersGridresizable"
-    When I click on top right button "Save" in flex table with id "flexGridApplicationReviewTree"
+    When I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation FO	 |
     And I collapse nested table containing column value "Fiscal Review"
     When I expand nested table containing column value "Compliance Review"
-    And I click on top right button "Add" in flex table with id "flexGridApplicationReviewTree"
-    When I add "Automation EXE" as reviewer in the table "RelatedExternalReviewersGridresizable"
-    And I click on top right button "Save" in flex table with id "flexGridApplicationReviewTree"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation EXE |
     When I collapse nested table containing column value "Compliance Review"
-	Then I see that "SME Review" is in "In Progress" status
+    Then I see that "SME Review" is in "In Progress" status
+    Examples: 
+	| User | Announcement Name  				   | Application Name 	            	    			|
+	| EXE  | Automation Announcement to be deleted | Automation Announcement to be deleted Application  |
 	
 	@38462 @smeReviewAssignApplicationToReviewer @applicationReview
-	Scenario: Add a reviewer to each review step in SME Review
-	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
+	Scenario Outline: Add a reviewer to each review step in SME Review
+	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days for all SME review steps
+	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
-	| Compliance Review | 10   		  |
-	And I add Reviewers "Automation PM" for Program Review, "Automation FO" for Fiscal Review, "Automation EXE" for Compliance Review in SME Review
-	When I expand nested table containing column value "Program Review"
+	| Compliance Review | 10   		  | 
+	Given I expand nested table containing column value "Program Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation PM  |
+    Given I collapse nested table containing column value "Program Review"
+    And I expand nested table containing column value "Fiscal Review"
+    Given I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation FO	 |
+    And I collapse nested table containing column value "Fiscal Review"
+    Given I expand nested table containing column value "Compliance Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation EXE |
+    Given I collapse nested table containing column value "Compliance Review"
+    When I expand nested table containing column value "Program Review"
     And I click on "Assign" icon for "Automation PM" inside flex table with id "flexGridApplicationReviewTree"
-    When I click "Assign" after selection of "Automation Announcement Application" in the table "AssignPanelApplicationsTable"
+    When I click "Assign" after selection of "<Application Name>" in the table "AssignPanelApplicationsTable"
     And I switch to Parent frame
     When I expand nested table containing column value "Fiscal Review"
     And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridApplicationReviewTree"
-    When I click "Assign" after selection of "Automation Announcement Application" in the table "AssignPanelApplicationsTable"
+    When I click "Assign" after selection of "<Application Name>" in the table "AssignPanelApplicationsTable"
     And I switch to Parent frame
     When I expand nested table containing column value "Compliance Review"
     And I click on "Assign" icon for "Automation EXE" inside flex table with id "flexGridApplicationReviewTree"
-    When I click "Assign" after selection of "Automation Announcement Application" in the table "AssignPanelApplicationsTable"
+    When I click "Assign" after selection of "<Application Name>" in the table "AssignPanelApplicationsTable"
     And I switch to Parent frame
 	Then I see that "SME Review" is in "In Progress" status
+	Examples: 
+	| User | Announcement Name  				   | Application Name 	            	    			|
+	| EXE  | Automation Announcement to be deleted | Automation Announcement to be deleted Application  |
 	
 	@38464 @smeReviewSendForReview @applicationReview
-	Scenario: Choose the reviews and send for review in SME Review
-	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
+	Scenario Outline: Choose the reviews and send for review in SME Review
+	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days for all SME review steps
+	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
-	| Compliance Review | 10   		  |
-	And I add Reviewers "Automation PM" for Program Review, "Automation FO" for Fiscal Review, "Automation EXE" for Compliance Review in SME Review
-	Given I assign application "Automation Announcement Application" to the Reviewers for SME Review
+	| Compliance Review | 10   		  | 
+	Given I expand nested table containing column value "Program Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation PM  |
+    Given I collapse nested table containing column value "Program Review"
+    And I expand nested table containing column value "Fiscal Review"
+    Given I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation FO	 |
+    And I collapse nested table containing column value "Fiscal Review"
+    Given I expand nested table containing column value "Compliance Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation EXE |
+    Given I collapse nested table containing column value "Compliance Review"
+    And I assign application "<Application Name>" to the "3" Reviewers "Automation PM,Automation FO,Automation EXE" for each step
+    | Actions 	  | Step 1 		   | Step 2			 			   | Step 3  		   |
+    | Review	  | Program Review | Fiscal Review				   | Compliance Review |
+    | FlexTable   | Assign		   | flexGridApplicationReviewTree |		 		   |			
+    | Application | Assign 		   | AssignPanelApplicationsTable  |				   |
 	When I check "Program Review,Fiscal Review,Compliance Review" boxes in flex table with id "flexGridStepReviews"
     And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
 	Then I see that "SME Review" is in "In Progress" status
+	Examples: 
+	| User | Announcement Name  				   | Application Name 	            	    			|
+	| EXE  | Automation Announcement to be deleted | Automation Announcement to be deleted Application  |
 	
 	@smeReviewCompleteReviewForm @applicationReview
-	Scenario: Complete Review form as Various reviewers in SME Review
-	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
+	Scenario Outline: Complete Review form as Various reviewers in SME Review
+	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days for all SME review steps
+	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
-	| Compliance Review | 10   		  |
-	And I add Reviewers "Automation PM" for Program Review, "Automation FO" for Fiscal Review, "Automation EXE" for Compliance Review in SME Review
-	Given I assign application "Automation Announcement Application" to the Reviewers for SME Review
-	And I choose Reviews for SME review and Send for Review
+	| Compliance Review | 10   		  | 
+	Given I expand nested table containing column value "Program Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation PM  |
+    Given I collapse nested table containing column value "Program Review"
+    And I expand nested table containing column value "Fiscal Review"
+    Given I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation FO	 |
+    And I collapse nested table containing column value "Fiscal Review"
+    Given I expand nested table containing column value "Compliance Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation EXE |
+    Given I collapse nested table containing column value "Compliance Review"
+    And I assign application "<Application Name>" to the "3" Reviewers "Automation PM,Automation FO,Automation EXE" for each step
+    | Actions 	  | Step 1 		   | Step 2			 			   | Step 3  		   |
+    | Review	  | Program Review | Fiscal Review				   | Compliance Review |
+    | FlexTable   | Assign		   | flexGridApplicationReviewTree |		 		   |			
+    | Application | Assign 		   | AssignPanelApplicationsTable  |				   |
+	And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
+	| Actions 	| Step 1 		  	  | Step 2			|
+	| FlexTable | flexGridStepReviews | Send for Review |
     Given I re-login to "As a Grantor" app as "PM" User
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -132,20 +221,52 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Save" in the page details
     When I click on "Submit" in the page details
 	Then I see that "SME Review" is in "In Progress" status
+	Examples: 
+	| User | Announcement Name  				   | Application Name 	            	    			|
+	| EXE  | Automation Announcement to be deleted | Automation Announcement to be deleted Application  |
 	    
 	@promoteToNextFromSMEReview @applicationReview
   	Scenario Outline:Promoting from Pre-Screen review to the next review step for an application
-	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
+	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days for all SME review steps
+	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
-	| Compliance Review | 10   		  |
-	And I add Reviewers "Automation PM" for Program Review, "Automation FO" for Fiscal Review, "Automation EXE" for Compliance Review in SME Review
-	Given I assign application "Automation Announcement Application" to the Reviewers for SME Review
-	And I choose Reviews for SME review and Send for Review
-	Given I complete review form as assigned reviewers for SME review
+	| Compliance Review | 10   		  | 
+	Given I expand nested table containing column value "Program Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation PM  |
+    Given I collapse nested table containing column value "Program Review"
+    And I expand nested table containing column value "Fiscal Review"
+    Given I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation FO	 |
+    And I collapse nested table containing column value "Fiscal Review"
+    Given I expand nested table containing column value "Compliance Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation EXE |
+    Given I collapse nested table containing column value "Compliance Review"
+    And I assign application "<Application Name>" to the "3" Reviewers "Automation PM,Automation FO,Automation EXE" for each step
+    | Actions 	  | Step 1 		   | Step 2			 			   | Step 3  		   |
+    | Review	  | Program Review | Fiscal Review				   | Compliance Review |
+    | FlexTable   | Assign		   | flexGridApplicationReviewTree |		 		   |			
+    | Application | Assign 		   | AssignPanelApplicationsTable  |				   |
+	And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
+	| Actions 	| Step 1 		  	  | Step 2			|
+	| FlexTable | flexGridStepReviews | Send for Review |
+	Given I complete "3" review form as "PM,FO,EXE"
+	| Actions 	 | Step 1 		| Step 2			| Step 3  		| Step 4   |
+	| Navigation | As a Grantor | Applications 		| Pending Tasks | My Tasks |
+	| FlexTable  | SME Review   | PhasePendingTasks | Start 		| 		   |
+	| Button	 | Save 		| Submit 			| 				| 		   |
     And I re-login to "As a Grantor" app as "<User>" User
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
@@ -163,116 +284,321 @@ Feature: Validate all scenarios in the Application Review
 	| EXE  | Automation Announcement | SME Review 		| Automation Announcement Application |
 	
 	@managementReviewEnterDueInDays @applicationReview
-	Scenario: Enter Due in Days for all review forms in Management review
-	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
+	Scenario Outline: Enter Due in Days for all review forms in Management review
+	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days for all SME review steps
+	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
-	| Compliance Review | 10   		  |
-	And I add Reviewers "Automation PM" for Program Review, "Automation FO" for Fiscal Review, "Automation EXE" for Compliance Review in SME Review
-	Given I assign application "Automation Announcement Application" to the Reviewers for SME Review
-	And I choose Reviews for SME review and Send for Review
-	Given I complete review form as assigned reviewers for SME review
-	And "SME Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
+	| Compliance Review | 10   		  | 
+	Given I expand nested table containing column value "Program Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation PM  |
+    Given I collapse nested table containing column value "Program Review"
+    And I expand nested table containing column value "Fiscal Review"
+    Given I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation FO	 |
+    And I collapse nested table containing column value "Fiscal Review"
+    Given I expand nested table containing column value "Compliance Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation EXE |
+    Given I collapse nested table containing column value "Compliance Review"
+    And I assign application "<Application Name>" to the "3" Reviewers "Automation PM,Automation FO,Automation EXE" for each step
+    | Actions 	  | Step 1 		   | Step 2			 			   | Step 3  		   |
+    | Review	  | Program Review | Fiscal Review				   | Compliance Review |
+    | FlexTable   | Assign		   | flexGridApplicationReviewTree |		 		   |			
+    | Application | Assign 		   | AssignPanelApplicationsTable  |				   |
+	And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
+	| Actions 	| Step 1 		  	  | Step 2			|
+	| FlexTable | flexGridStepReviews | Send for Review |
+	Given I complete "3" review form as "PM,FO,EXE"
+	| Actions 	 | Step 1 		| Step 2			| Step 3  		| Step 4   |
+	| Navigation | As a Grantor | Applications 		| Pending Tasks | My Tasks |
+	| FlexTable  | SME Review   | PhasePendingTasks | Start 		| 		   |
+	| Button	 | Save 		| Submit 			| 				| 		   |
+	And "SME Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	When I click on "Next Review Step" in the page details
 	When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name   		| Due in Days |
 	| Management Review | 10     	  | 
 	Then I see that "Management Review" is in "In Progress" status
+	Examples: 
+	| User | Announcement Name  				   | Application Name 	            	    			|
+	| EXE  | Automation Announcement to be deleted | Automation Announcement to be deleted Application  |
 		
 	@managementReviewAddReviewer @applicationReview
-	Scenario: Add a reviewer to each review step in Management Review
-	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
+	Scenario Outline: Add a reviewer to each review step in Management Review
+	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days for all SME review steps
+	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
-	| Compliance Review | 10   		  |
-	And I add Reviewers "Automation PM" for Program Review, "Automation FO" for Fiscal Review, "Automation EXE" for Compliance Review in SME Review
-	Given I assign application "Automation Announcement Application" to the Reviewers for SME Review
-	And I choose Reviews for SME review and Send for Review
-	Given I complete review form as assigned reviewers for SME review
-	And "SME Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
+	| Compliance Review | 10   		  | 
+	Given I expand nested table containing column value "Program Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation PM  |
+    Given I collapse nested table containing column value "Program Review"
+    And I expand nested table containing column value "Fiscal Review"
+    Given I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation FO	 |
+    And I collapse nested table containing column value "Fiscal Review"
+    Given I expand nested table containing column value "Compliance Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation EXE |
+    Given I collapse nested table containing column value "Compliance Review"
+    And I assign application "<Application Name>" to the "3" Reviewers "Automation PM,Automation FO,Automation EXE" for each step
+    | Actions 	  | Step 1 		   | Step 2			 			   | Step 3  		   |
+    | Review	  | Program Review | Fiscal Review				   | Compliance Review |
+    | FlexTable   | Assign		   | flexGridApplicationReviewTree |		 		   |			
+    | Application | Assign 		   | AssignPanelApplicationsTable  |				   |
+	And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
+	| Actions 	| Step 1 		  	  | Step 2			|
+	| FlexTable | flexGridStepReviews | Send for Review |
+	Given I complete "3" review form as "PM,FO,EXE"
+	| Actions 	 | Step 1 		| Step 2			| Step 3  		| Step 4   |
+	| Navigation | As a Grantor | Applications 		| Pending Tasks | My Tasks |
+	| FlexTable  | SME Review   | PhasePendingTasks | Start 		| 		   |
+	| Button	 | Save 		| Submit 			| 				| 		   |
+	And "SME Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	Given I click on "Next Review Step" in the page details
-	And I enter the Due In Days for all Management review steps
+	And I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
     When I expand nested table containing column value "Management Review"
-    And I click on top right button "Add" in flex table with id "flexGridApplicationReviewTree"
-    When I add "Automation EXE" as reviewer in the table "RelatedExternalReviewersGridresizable"
-    And I click on top right button "Save" in flex table with id "flexGridApplicationReviewTree"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		  |
+    | Automation EXE  |
+    When I collapse nested table containing column value "Management Review"
+	Examples: 
+	| User | Announcement Name  				   | Application Name 	            	    			|
+	| EXE  | Automation Announcement to be deleted | Automation Announcement to be deleted Application  |
 		
 	@managementReviewAssignApplicationToReviewer @applicationReview
-	Scenario: Add a reviewer to each review step in management Review
-	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
+	Scenario Outline: Add a reviewer to each review step in management Review
+	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days for all SME review steps
+	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
-	| Compliance Review | 10   		  |
-	And I add Reviewers "Automation PM" for Program Review, "Automation FO" for Fiscal Review, "Automation EXE" for Compliance Review in SME Review
-	Given I assign application "Automation Announcement Application" to the Reviewers for SME Review
-	And I choose Reviews for SME review and Send for Review
-	Given I complete review form as assigned reviewers for SME review
-	And "SME Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
+	| Compliance Review | 10   		  | 
+	Given I expand nested table containing column value "Program Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation PM  |
+    Given I collapse nested table containing column value "Program Review"
+    And I expand nested table containing column value "Fiscal Review"
+    Given I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation FO	 |
+    And I collapse nested table containing column value "Fiscal Review"
+    Given I expand nested table containing column value "Compliance Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation EXE |
+    Given I collapse nested table containing column value "Compliance Review"
+    And I assign application "<Application Name>" to the "3" Reviewers "Automation PM,Automation FO,Automation EXE" for each step
+    | Actions 	  | Step 1 		   | Step 2			 			   | Step 3  		   |
+    | Review	  | Program Review | Fiscal Review				   | Compliance Review |
+    | FlexTable   | Assign		   | flexGridApplicationReviewTree |		 		   |			
+    | Application | Assign 		   | AssignPanelApplicationsTable  |				   |
+	And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
+	| Actions 	| Step 1 		  	  | Step 2			|
+	| FlexTable | flexGridStepReviews | Send for Review |
+	Given I complete "3" review form as "PM,FO,EXE"
+	| Actions 	 | Step 1 		| Step 2			| Step 3  		| Step 4   |
+	| Navigation | As a Grantor | Applications 		| Pending Tasks | My Tasks |
+	| FlexTable  | SME Review   | PhasePendingTasks | Start 		| 		   |
+	| Button	 | Save 		| Submit 			| 				| 		   |
+	And "SME Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	Given I click on "Next Review Step" in the page details
-	And I enter the Due In Days for all Management review steps
+	And I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
-	Given I add Reviewers "Automation EXE" for Management Review
+	Given I expand nested table containing column value "Management Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		  |
+    | Automation EXE  |
+    Given I collapse nested table containing column value "Management Review"
     When I expand nested table containing column value "Management Review"
     And I click on "Assign" icon for "Automation EXE" inside flex table with id "flexGridApplicationReviewTree"
-    When I click "Assign" after selection of "Automation Announcement Application" in the table "AssignPanelApplicationsTable"
+    When I click "Assign" after selection of "<Application Name>" in the table "AssignPanelApplicationsTable"
     And I switch to Parent frame
+	Examples: 
+	| User | Announcement Name  				   | Application Name 	            	    			|
+	| EXE  | Automation Announcement to be deleted | Automation Announcement to be deleted Application  |
 		
 	@managementReviewSendForReview @applicationReview
-	Scenario: Choose the reviews and send for review in Management Review
-	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
+	Scenario Outline: Choose the reviews and send for review in Management Review
+	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days for all SME review steps
+	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
-	| Compliance Review | 10   		  |
-	And I add Reviewers "Automation PM" for Program Review, "Automation FO" for Fiscal Review, "Automation EXE" for Compliance Review in SME Review
-	Given I assign application "Automation Announcement Application" to the Reviewers for SME Review
-	And I choose Reviews for SME review and Send for Review
-	Given I complete review form as assigned reviewers for SME review
-	And "SME Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
+	| Compliance Review | 10   		  | 
+ 	Given I expand nested table containing column value "Program Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation PM  |
+    Given I collapse nested table containing column value "Program Review"
+    And I expand nested table containing column value "Fiscal Review"
+    Given I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation FO	 |
+    And I collapse nested table containing column value "Fiscal Review"
+    Given I expand nested table containing column value "Compliance Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation EXE |
+    Given I collapse nested table containing column value "Compliance Review"
+    Given I assign application "<Application Name>" to the "3" Reviewers "Automation PM,Automation FO,Automation EXE" for each step
+    | Actions 	  | Step 1 		   | Step 2			 			   | Step 3  		   |
+    | Review	  | Program Review | Fiscal Review				   | Compliance Review |
+    | FlexTable   | Assign		   | flexGridApplicationReviewTree |		 		   |			
+    | Application | Assign 		   | AssignPanelApplicationsTable  |				   |
+	And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
+	| Actions 	| Step 1 		  	  | Step 2			|
+	| FlexTable | flexGridStepReviews | Send for Review |
+	Given I complete "3" review form as "PM,FO,EXE"
+	| Actions 	 | Step 1 		| Step 2			| Step 3  		| Step 4   |
+	| Navigation | As a Grantor | Applications 		| Pending Tasks | My Tasks |
+	| FlexTable  | SME Review   | PhasePendingTasks | Start 		| 		   |
+	| Button	 | Save 		| Submit 			| 				| 		   |
+	And "SME Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	Given I click on "Next Review Step" in the page details
-	And I enter the Due In Days for all Management review steps
+	And I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
-	And I add Reviewers "Automation EXE" for Management Review
-	Given I assign application "Automation Announcement Application" to the Reviewers for Management Review
+	Given I expand nested table containing column value "Management Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		  |
+    | Automation EXE  |
+    Given I collapse nested table containing column value "Management Review"
+	And I assign application "<Application Name>" to the "1" Reviewers "Automation EXE" for each step
+    | Actions 	  | Step 1 		   	  | Step 2			 			  |
+    | Review	  | Management Review | 							  |
+    | FlexTable   | Assign		  	  | flexGridApplicationReviewTree |
+    | Application | Assign 		  	  | AssignPanelApplicationsTable  |
     When I check "Management Review" boxes in flex table with id "flexGridStepReviews"
     And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
-
+	Examples: 
+	| User | Announcement Name  				   | Application Name 	            	    			|
+	| EXE  | Automation Announcement to be deleted | Automation Announcement to be deleted Application  |
+	
 	@managementReviewCompleteReviewForm @applicationReview
-	Scenario: Complete Review form as Various reviewers in Management Review
-	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
+	Scenario Outline: Complete Review form as Various reviewers in Management Review
+	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days for all SME review steps
+	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
-	| Compliance Review | 10   		  |
-	And I add Reviewers "Automation PM" for Program Review, "Automation FO" for Fiscal Review, "Automation EXE" for Compliance Review in SME Review
-	Given I assign application "Automation Announcement Application" to the Reviewers for SME Review
-	And I choose Reviews for SME review and Send for Review
-	Given I complete review form as assigned reviewers for SME review
-	And "SME Review" is completed by clicking "Promote to Next Step" for Application "Automation Announcement Application" as user "EXE" submitted for announcement "Automation Announcement"
+	| Compliance Review | 10   		  | 
+	Given I expand nested table containing column value "Program Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation PM  |
+    Given I collapse nested table containing column value "Program Review"
+    And I expand nested table containing column value "Fiscal Review"
+    Given I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation FO	 |
+    And I collapse nested table containing column value "Fiscal Review"
+    Given I expand nested table containing column value "Compliance Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation EXE |
+    Given I collapse nested table containing column value "Compliance Review"
+    And I assign application "<Application Name>" to the "3" Reviewers "Automation PM,Automation FO,Automation EXE" for each step
+    | Actions 	  | Step 1 		   | Step 2			 			   | Step 3  		   |
+    | Review	  | Program Review | Fiscal Review				   | Compliance Review |
+    | FlexTable   | Assign		   | flexGridApplicationReviewTree |		 		   |			
+    | Application | Assign 		   | AssignPanelApplicationsTable  |				   |
+	And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
+	| Actions 	| Step 1 		  	  | Step 2			|
+	| FlexTable | flexGridStepReviews | Send for Review |
+	Given I complete "3" review form as "PM,FO,EXE"
+	| Actions 	 | Step 1 		| Step 2			| Step 3  		| Step 4   |
+	| Navigation | As a Grantor | Applications 		| Pending Tasks | My Tasks |
+	| FlexTable  | SME Review   | PhasePendingTasks | Start 		| 		   |
+	| Button	 | Save 		| Submit 			| 				| 		   |
+	And "SME Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	Given I click on "Next Review Step" in the page details
-	And I enter the Due In Days for all Management review steps
+	And I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
-	And I add Reviewers "Automation EXE" for Management Review
-	Given I assign application "Automation Announcement Application" to the Reviewers for Management Review
-	And I choose Reviews for Management review and Send for Review
+	Given I expand nested table containing column value "Management Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		  |
+    | Automation EXE  |
+    Given I collapse nested table containing column value "Management Review"
+	And I assign application "<Application Name>" to the "1" Reviewers "Automation EXE" for each step
+    | Actions 	  | Step 1 		   	  | Step 2			 			  |
+    | Review	  | Management Review | 							  |
+    | FlexTable   | Assign		  	  | flexGridApplicationReviewTree |
+    | Application | Assign 		  	  | AssignPanelApplicationsTable  |
+	And I choose Reviews "Management review" and Send for Review
+	| Actions 	| Step 1 		  	  | Step 2			|
+	| FlexTable | flexGridStepReviews | Send for Review |
 	Given I re-login to "As a Grantor" app as "EXE" User
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -281,29 +607,80 @@ Feature: Validate all scenarios in the Application Review
     When I complete filling in the Review form
     And I click on "Save" in the page details
     When I click on "Submit" in the page details
+	Examples: 
+	| User | Announcement Name  				   | Application Name 	            	    			|
+	| EXE  | Automation Announcement to be deleted | Automation Announcement to be deleted Application  |
 	    
 	@promoteToFDMFromManagementReview @applicationReview
   	Scenario Outline:Promoting from Last review step review to the FDM step for an application
-	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
+	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days for all SME review steps
+	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
-	| Compliance Review | 10   		  |
-	And I add Reviewers "Automation PM" for Program Review, "Automation FO" for Fiscal Review, "Automation EXE" for Compliance Review in SME Review
-	Given I assign application "<Application Name>" to the Reviewers for SME Review
-	And I choose Reviews for SME review and Send for Review
-	Given I complete review form as assigned reviewers for SME review
-	And "SME Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
+	| Compliance Review | 10   		  | 
+	Given I expand nested table containing column value "Program Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation PM  |
+    Given I collapse nested table containing column value "Program Review"
+    And I expand nested table containing column value "Fiscal Review"
+    Given I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation FO	 |
+    And I collapse nested table containing column value "Fiscal Review"
+    Given I expand nested table containing column value "Compliance Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation EXE |
+    Given I collapse nested table containing column value "Compliance Review"
+    And I assign application "<Application Name>" to the "3" Reviewers "Automation PM,Automation FO,Automation EXE" for each step
+    | Actions 	  | Step 1 		   | Step 2			 			   | Step 3  		   |
+    | Review	  | Program Review | Fiscal Review				   | Compliance Review |
+    | FlexTable   | Assign		   | flexGridApplicationReviewTree |		 		   |			
+    | Application | Assign 		   | AssignPanelApplicationsTable  |				   |
+	And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
+	| Actions 	| Step 1 		  	  | Step 2			|
+	| FlexTable | flexGridStepReviews | Send for Review |
+	Given I complete "3" review form as "PM,FO,EXE"
+	| Actions 	 | Step 1 		| Step 2			| Step 3  		| Step 4   |
+	| Navigation | As a Grantor | Applications 		| Pending Tasks | My Tasks |
+	| FlexTable  | SME Review   | PhasePendingTasks | Start 		| 		   |
+	| Button	 | Save 		| Submit 			| 				| 		   |
+	And "SME Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	Given I click on "Next Review Step" in the page details
-	And I enter the Due In Days for all Management review steps
+	And I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
-	And I add Reviewers "Automation EXE" for Management Review
-	Given I assign application "<Application Name>" to the Reviewers for Management Review
-	And I choose Reviews for Management review and Send for Review
-	Given I complete review form as assigned reviewers for Management review
+	Given I expand nested table containing column value "Management Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		  |
+    | Automation EXE  |
+    Given I collapse nested table containing column value "Management Review"
+	And I assign application "<Application Name>" to the "1" Reviewers "Automation EXE" for each step
+    | Actions 	  | Step 1 		   	  | Step 2			 			  |
+    | Review	  | Management Review | 							  |
+    | FlexTable   | Assign		  	  | flexGridApplicationReviewTree |
+    | Application | Assign 		  	  | AssignPanelApplicationsTable  |
+	And I choose Reviews "Management review" and Send for Review
+	| Actions 	| Step 1 		  	  | Step 2			|
+	| FlexTable | flexGridStepReviews | Send for Review |
+	Given I complete "1" review form as "EXE"
+	| Actions 	 | Step 1 		| Step 2			| Step 3  		| Step 4   |
+	| Navigation | As a Grantor | Applications 		| Pending Tasks | My Tasks |
+	| FlexTable  | SME Review   | PhasePendingTasks | Start 		| 		   |
+	| Button	 | Save 		| Submit 			| 				| 		   |
 	And I re-login to "As a Grantor" app as "<User>" User
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
@@ -322,27 +699,80 @@ Feature: Validate all scenarios in the Application Review
 	
 	@subAwardAbbreviationInFDM @applicationReview
   	Scenario Outline: Adding a sub-award abbreviation in FDM
-	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
+	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days for all SME review steps
+	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
-	| Compliance Review | 10   		  |
-	And I add Reviewers "Automation PM" for Program Review, "Automation FO" for Fiscal Review, "Automation EXE" for Compliance Review in SME Review
-	Given I assign application "<Application Name>" to the Reviewers for SME Review
-	And I choose Reviews for SME review and Send for Review
-	Given I complete review form as assigned reviewers for SME review
-	And "SME Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
+	| Compliance Review | 10   		  | 
+	Given I expand nested table containing column value "Program Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation PM  |
+    Given I collapse nested table containing column value "Program Review"
+    And I expand nested table containing column value "Fiscal Review"
+    Given I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation FO	 |
+    And I collapse nested table containing column value "Fiscal Review"
+    Given I expand nested table containing column value "Compliance Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation EXE |
+    Given I collapse nested table containing column value "Compliance Review"
+    And I assign application "<Application Name>" to the "3" Reviewers "Automation PM,Automation FO,Automation EXE" for each step
+    | Actions 	  | Step 1 		   | Step 2			 			   | Step 3  		   |
+    | Review	  | Program Review | Fiscal Review				   | Compliance Review |
+    | FlexTable   | Assign		   | flexGridApplicationReviewTree |		 		   |			
+    | Application | Assign 		   | AssignPanelApplicationsTable  |				   |
+	And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
+	| Actions 	| Step 1 		  	  | Step 2			|
+	| FlexTable | flexGridStepReviews | Send for Review |
+	Given I complete "3" review form as "PM,FO,EXE"
+	| Actions 	 | Step 1 		| Step 2			| Step 3  		| Step 4   |
+	| Navigation | As a Grantor | Applications 		| Pending Tasks | My Tasks |
+	| FlexTable  | SME Review   | PhasePendingTasks | Start 		| 		   |
+	| Button	 | Save 		| Submit 			| 				| 		   |
+	And "SME Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	Given I click on "Next Review Step" in the page details
-	And I enter the Due In Days for all Management review steps
+	And I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
-	And I add Reviewers "Automation EXE" for Management Review
-	Given I assign application "<Application Name>" to the Reviewers for Management Review
-	And I choose Reviews for Management review and Send for Review
-	Given I complete review form as assigned reviewers for Management review
-	And "Management Review" is completed by clicking "Promote to FDM" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
+	Given I expand nested table containing column value "Management Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		  |
+    | Automation EXE  |
+    Given I collapse nested table containing column value "Management Review"
+	And I assign application "<Application Name>" to the "1" Reviewers "Automation EXE" for each step
+    | Actions 	  | Step 1 		   	  | Step 2			 			  |
+    | Review	  | Management Review | 							  |
+    | FlexTable   | Assign		  	  | flexGridApplicationReviewTree |
+    | Application | Assign 		  	  | AssignPanelApplicationsTable  |
+	And I choose Reviews "Management review" and Send for Review
+	| Actions 	| Step 1 		  	  | Step 2			|
+	| FlexTable | flexGridStepReviews | Send for Review |
+	Given I complete "1" review form as "EXE"
+	| Actions 	 | Step 1 		| Step 2			| Step 3  		| Step 4   |
+	| Navigation | As a Grantor | Applications 		| Pending Tasks | My Tasks |
+	| FlexTable  | SME Review   | PhasePendingTasks | Start 		| 		   |
+	| Button	 | Save 		| Submit 			| 				| 		   |
+	And "Management Review" is completed by clicking "Promote to FDM" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	When I click on "Funding Decision Memo" in the page details
 	And I click on "Edit" in the page details
 	When I enter value "AuGr" into field "GrantCode__c"
@@ -354,64 +784,173 @@ Feature: Validate all scenarios in the Application Review
 		
 	@recommendationForApplicationInFDM @applicationReview
   	Scenario Outline: Adding a recommendation for an application in FDM
-	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
+	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days for all SME review steps
+	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
-	| Compliance Review | 10   		  |
-	And I add Reviewers "Automation PM" for Program Review, "Automation FO" for Fiscal Review, "Automation EXE" for Compliance Review in SME Review
-	Given I assign application "<Application Name>" to the Reviewers for SME Review
-	And I choose Reviews for SME review and Send for Review
-	Given I complete review form as assigned reviewers for SME review
-	And "SME Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
+	| Compliance Review | 10   		  | 
+	Given I expand nested table containing column value "Program Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation PM  |
+    Given I collapse nested table containing column value "Program Review"
+    And I expand nested table containing column value "Fiscal Review"
+    Given I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation FO	 |
+    And I collapse nested table containing column value "Fiscal Review"
+    Given I expand nested table containing column value "Compliance Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation EXE |
+    Given I collapse nested table containing column value "Compliance Review"
+    And I assign application "<Application Name>" to the "3" Reviewers "Automation PM,Automation FO,Automation EXE" for each step
+    | Actions 	  | Step 1 		   | Step 2			 			   | Step 3  		   |
+    | Review	  | Program Review | Fiscal Review				   | Compliance Review |
+    | FlexTable   | Assign		   | flexGridApplicationReviewTree |		 		   |			
+    | Application | Assign 		   | AssignPanelApplicationsTable  |				   |
+	And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
+	| Actions 	| Step 1 		  	  | Step 2			|
+	| FlexTable | flexGridStepReviews | Send for Review |
+	Given I complete "3" review form as "PM,FO,EXE"
+	| Actions 	 | Step 1 		| Step 2			| Step 3  		| Step 4   |
+	| Navigation | As a Grantor | Applications 		| Pending Tasks | My Tasks |
+	| FlexTable  | SME Review   | PhasePendingTasks | Start 		| 		   |
+	| Button	 | Save 		| Submit 			| 				| 		   |
+	And "SME Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	Given I click on "Next Review Step" in the page details
-	And I enter the Due In Days for all Management review steps
+	And I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
-	And I add Reviewers "Automation EXE" for Management Review
-	Given I assign application "<Application Name>" to the Reviewers for Management Review
-	And I choose Reviews for Management review and Send for Review
-	Given I complete review form as assigned reviewers for Management review
-	And "Management Review" is completed by clicking "Promote to FDM" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
+	Given I expand nested table containing column value "Management Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		  |
+    | Automation EXE  |
+    Given I collapse nested table containing column value "Management Review"
+	And I assign application "<Application Name>" to the "1" Reviewers "Automation EXE" for each step
+    | Actions 	  | Step 1 		   	  | Step 2			 			  |
+    | Review	  | Management Review | 							  |
+    | FlexTable   | Assign		  	  | flexGridApplicationReviewTree |
+    | Application | Assign 		  	  | AssignPanelApplicationsTable  |
+	And I choose Reviews "Management review" and Send for Review
+	| Actions 	| Step 1 		  	  | Step 2			|
+	| FlexTable | flexGridStepReviews | Send for Review |
+	Given I complete "1" review form as "EXE"
+	| Actions 	 | Step 1 		| Step 2			| Step 3  		| Step 4   |
+	| Navigation | As a Grantor | Applications 		| Pending Tasks | My Tasks |
+	| FlexTable  | SME Review   | PhasePendingTasks | Start 		| 		   |
+	| Button	 | Save 		| Submit 			| 				| 		   |
+	And "Management Review" is completed by clicking "Promote to FDM" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	Given I click on "Funding Decision Memo" in the page details
 	And I enter Subaward Abbreviation as "AuGr"
+	| Actions | Step 1 | Step 2		  | Step 3 |
+	| Field   | Edit   | GrantCode__c | Save   |
 	When I edit the following rows inline in flex table with id "inlineEditGridFundingDecisionMemoApplications" by clicking "Edit" :
 	| Application Title 				  | Recommended Budget | Recommend for Funding | Comments 	  |
 	| Automation Announcement Application | 100000 			   | Yes				   | Recommended  |
 	Then I see that "Funding Decision Memo" is in "Created" status
-	
 	Examples: 
 	| User | Announcement Name  	 | Review Step Name	      | Application Name 	           	    |
 	| EXE  | Automation Announcement | Funding Decision Memo  | Automation Announcement Application |
 		
 	@approverAssignmentForApplicationInFDM @applicationReview
   	Scenario Outline: Assigning an approver in FDM
-	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
+	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days for all SME review steps
+	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
-	| Compliance Review | 10   		  |
-	And I add Reviewers "Automation PM" for Program Review, "Automation FO" for Fiscal Review, "Automation EXE" for Compliance Review in SME Review
-	Given I assign application "<Application Name>" to the Reviewers for SME Review
-	And I choose Reviews for SME review and Send for Review
-	Given I complete review form as assigned reviewers for SME review
-	And "SME Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
+	| Compliance Review | 10   		  | 
+	Given I expand nested table containing column value "Program Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation PM  |
+    Given I collapse nested table containing column value "Program Review"
+    And I expand nested table containing column value "Fiscal Review"
+    Given I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation FO	 |
+    And I collapse nested table containing column value "Fiscal Review"
+    Given I expand nested table containing column value "Compliance Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation EXE |
+    Given I collapse nested table containing column value "Compliance Review"
+    And I assign application "<Application Name>" to the "3" Reviewers "Automation PM,Automation FO,Automation EXE" for each step
+    | Actions 	  | Step 1 		   | Step 2			 			   | Step 3  		   |
+    | Review	  | Program Review | Fiscal Review				   | Compliance Review |
+    | FlexTable   | Assign		   | flexGridApplicationReviewTree |		 		   |			
+    | Application | Assign 		   | AssignPanelApplicationsTable  |				   |
+	And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
+	| Actions 	| Step 1 		  	  | Step 2			|
+	| FlexTable | flexGridStepReviews | Send for Review |
+	Given I complete "3" review form as "PM,FO,EXE"
+	| Actions 	 | Step 1 		| Step 2			| Step 3  		| Step 4   |
+	| Navigation | As a Grantor | Applications 		| Pending Tasks | My Tasks |
+	| FlexTable  | SME Review   | PhasePendingTasks | Start 		| 		   |
+	| Button	 | Save 		| Submit 			| 				| 		   |
+	And "SME Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	Given I click on "Next Review Step" in the page details
-	And I enter the Due In Days for all Management review steps
+	And I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
-	Given I add Reviewers "Automation EXE" for Management Review
-	And I assign application "<Application Name>" to the Reviewers for Management Review
-	Given I choose Reviews for Management review and Send for Review
-	And I complete review form as assigned reviewers for Management review
-	Given "Management Review" is completed by clicking "Promote to FDM" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
+	Given I expand nested table containing column value "Management Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		  |
+    | Automation EXE  |
+    Given I collapse nested table containing column value "Management Review"
+	And I assign application "<Application Name>" to the "1" Reviewers "Automation EXE" for each step
+    | Actions 	  | Step 1 		   	  | Step 2			 			  |
+    | Review	  | Management Review | 							  |
+    | FlexTable   | Assign		  	  | flexGridApplicationReviewTree |
+    | Application | Assign 		  	  | AssignPanelApplicationsTable  |
+	Given I choose Reviews "Management review" and Send for Review
+	| Actions 	| Step 1 		  	  | Step 2			|
+	| FlexTable | flexGridStepReviews | Send for Review |
+	And I complete "1" review form as "EXE"
+	| Actions 	 | Step 1 		| Step 2			| Step 3  		| Step 4   |
+	| Navigation | As a Grantor | Applications 		| Pending Tasks | My Tasks |
+	| FlexTable  | SME Review   | PhasePendingTasks | Start 		| 		   |
+	| Button	 | Save 		| Submit 			| 				| 		   |
+	Given "Management Review" is completed by clicking "Promote to FDM" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Funding Decision Memo" in the page details
 	Given I enter Subaward Abbreviation as "AuGr"
-	And I enter the recommendation in FDM
+	| Actions | Step 1 | Step 2		  | Step 3 |
+	| Field   | Edit   | GrantCode__c | Save   |
+	And I enter the recommendation in FDM in flex table with id "inlineEditGridFundingDecisionMemoApplications" by clicking "Edit"
 	| Application Title 				  | Recommended Budget | Recommend for Funding | Comments 	 |
 	| Automation Announcement Application | 100000 		       | Yes				   | Recommended |
 	When I navigate to "Responsibilities" sub tab
@@ -425,33 +964,91 @@ Feature: Validate all scenarios in the Application Review
 		
 	@submitForApprovalFDM @applicationReview
   	Scenario Outline: Submitting the FDM for approval
-	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
+	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days for all SME review steps
+	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
-	| Compliance Review | 10   		  |
-	And I add Reviewers "Automation PM" for Program Review, "Automation FO" for Fiscal Review, "Automation EXE" for Compliance Review in SME Review
-	Given I assign application "<Application Name>" to the Reviewers for SME Review
-	And I choose Reviews for SME review and Send for Review
-	Given I complete review form as assigned reviewers for SME review
-	And "SME Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
+	| Compliance Review | 10   		  | 
+	Given I expand nested table containing column value "Program Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation PM  |
+    Given I collapse nested table containing column value "Program Review"
+    And I expand nested table containing column value "Fiscal Review"
+    Given I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation FO	 |
+    And I collapse nested table containing column value "Fiscal Review"
+    Given I expand nested table containing column value "Compliance Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation EXE |
+    Given I collapse nested table containing column value "Compliance Review"
+    And I assign application "<Application Name>" to the "3" Reviewers "Automation PM,Automation FO,Automation EXE" for each step
+	| Actions 	  | Step 1 		   | Step 2			 			   | Step 3  		   |
+    | Review	  | Program Review | Fiscal Review				   | Compliance Review |
+    | FlexTable   | Assign		   | flexGridApplicationReviewTree |		 		   |			
+    | Application | Assign 		   | AssignPanelApplicationsTable  |				   |
+	And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
+	| Actions 	| Step 1 		  	  | Step 2			|
+	| FlexTable | flexGridStepReviews | Send for Review |
+	Given I complete "3" review form as "PM,FO,EXE"
+	| Actions 	 | Step 1 		| Step 2			| Step 3  		| Step 4   |
+	| Navigation | As a Grantor | Applications 		| Pending Tasks | My Tasks |
+	| FlexTable  | SME Review   | PhasePendingTasks | Start 		| 		   |
+	| Button	 | Save 		| Submit 			| 				| 		   |
+	And "SME Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	When I enter the Due In Days for all Management review steps
+	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
-	And I add Reviewers "Automation EXE" for Management Review
-	Given I assign application "<Application Name>" to the Reviewers for Management Review
-	And I choose Reviews for Management review and Send for Review
-	Given I complete review form as assigned reviewers for Management review
-	And "Management Review" is completed by clicking "Promote to FDM" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
+	Given I expand nested table containing column value "Management Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		  |
+    | Automation EXE  |
+    Given I collapse nested table containing column value "Management Review"
+	And I assign application "<Application Name>" to the "1" Reviewers "Automation EXE" for each step
+    | Actions 	  | Step 1 		   	  | Step 2			 			  |
+    | Review	  | Management Review | 							  |
+    | FlexTable   | Assign		  	  | flexGridApplicationReviewTree |
+    | Application | Assign 		  	  | AssignPanelApplicationsTable  |
+	And I choose Reviews "Management review" and Send for Review
+	| Actions 	| Step 1 		  	  | Step 2			|
+	| FlexTable | flexGridStepReviews | Send for Review |
+	Given I complete "1" review form as "EXE"
+	| Actions 	 | Step 1 		| Step 2			| Step 3  		| Step 4   |
+	| Navigation | As a Grantor | Applications 		| Pending Tasks | My Tasks |
+	| FlexTable  | SME Review   | PhasePendingTasks | Start 		| 		   |
+	| Button	 | Save 		| Submit 			| 				| 		   |
+	And "Management Review" is completed by clicking "Promote to FDM" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Funding Decision Memo" in the page details
 	Given I enter Subaward Abbreviation as "AuGr"
-	And I enter the recommendation in FDM
+	| Actions | Step 1 | Step 2		  | Step 3 |
+	| Field   | Edit   | GrantCode__c | Save   |
+	And I enter the recommendation in FDM in flex table with id "inlineEditGridFundingDecisionMemoApplications" by clicking "Edit"
 	| Application Title 				  | Recommended Budget | Recommend for Funding | Comments 	 |
 	| Automation Announcement Application | 100000 		       | Yes				   | Recommended |
-	Given I select "Automation EXE" as "Executive Approver" for Approver details
+	Given I select "1" approvers "Automation EXE"
+    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
+    | Subtab	 | Responsibilities 						   | 		|		    		  |
+    | Approver 1 | GrantorReviewStepRolesandResponsibilities   | Edit   | Executive Approver  |
 	When I click on "Submit for Approval" in the page details
 	Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 	Examples: 
@@ -460,33 +1057,91 @@ Feature: Validate all scenarios in the Application Review
 		
 	@approveFDM @applicationReview
   	Scenario Outline: Approving FDM as the assigned user
-	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
+	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days for all SME review steps
+	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
-	| Compliance Review | 10   		  |
-	And I add Reviewers "Automation PM" for Program Review, "Automation FO" for Fiscal Review, "Automation EXE" for Compliance Review in SME Review
-	Given I assign application "<Application Name>" to the Reviewers for SME Review
-	And I choose Reviews for SME review and Send for Review
-	Given I complete review form as assigned reviewers for SME review
-	And "SME Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
+	| Compliance Review | 10   		  | 
+	Given I expand nested table containing column value "Program Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation PM  |
+    Given I collapse nested table containing column value "Program Review"
+    And I expand nested table containing column value "Fiscal Review"
+    Given I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation FO	 |
+    And I collapse nested table containing column value "Fiscal Review"
+    Given I expand nested table containing column value "Compliance Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		 |
+    | Automation EXE |
+    Given I collapse nested table containing column value "Compliance Review"
+    And I assign application "<Application Name>" to the "3" Reviewers "Automation PM,Automation FO,Automation EXE" for each step
+    | Actions 	  | Step 1 		   | Step 2			 			   | Step 3  		   |
+    | Review	  | Program Review | Fiscal Review				   | Compliance Review |
+    | FlexTable   | Assign		   | flexGridApplicationReviewTree |		 		   |			
+    | Application | Assign 		   | AssignPanelApplicationsTable  |				   |
+	And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
+	| Actions 	| Step 1 		  	  | Step 2			|
+	| FlexTable | flexGridStepReviews | Send for Review |
+	Given I complete "3" review form as "PM,FO,EXE"
+	| Actions 	 | Step 1 		| Step 2			| Step 3  		| Step 4   |
+	| Navigation | As a Grantor | Applications 		| Pending Tasks | My Tasks |
+	| FlexTable  | SME Review   | PhasePendingTasks | Start 		| 		   |
+	| Button	 | Save 		| Submit 			| 				| 		   |
+	And "SME Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	Given I click on "Next Review Step" in the page details
-	And I enter the Due In Days for all Management review steps
+	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
 	| Form Name   		| Due in Days |
 	| Management Review | 10     	  | 
-	And I add Reviewers "Automation EXE" for Management Review
-	Given I assign application "<Application Name>" to the Reviewers for Management Review
-	And I choose Reviews for Management review and Send for Review
-	Given I complete review form as assigned reviewers for Management review
-	And "Management Review" is completed by clicking "Promote to FDM" for Application "<Application Name>" as user "EXE" submitted for announcement "<Announcement Name>"
+	Given I expand nested table containing column value "Management Review"
+    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    | Reviewer 		  |
+    | Automation EXE  |
+    Given I collapse nested table containing column value "Management Review"
+	And I assign application "<Application Name>" to the "1" Reviewers "Automation EXE" for each step
+    | Actions 	  | Step 1 		   	  | Step 2			 			  |
+    | Review	  | Management Review | 							  |
+    | FlexTable   | Assign		  	  | flexGridApplicationReviewTree |
+    | Application | Assign 		  	  | AssignPanelApplicationsTable  |
+	And I choose Reviews "Management review" and Send for Review
+	| Actions 	| Step 1 		  	  | Step 2			|
+	| FlexTable | flexGridStepReviews | Send for Review |
+	Given I complete "1" review form as "EXE"
+	| Actions 	 | Step 1 		| Step 2			| Step 3  		| Step 4   |
+	| Navigation | As a Grantor | Applications 		| Pending Tasks | My Tasks |
+	| FlexTable  | SME Review   | PhasePendingTasks | Start 		| 		   |
+	| Button	 | Save 		| Submit 			| 				| 		   |
+	And "Management Review" is completed by clicking "Promote to FDM" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
+	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
+	| Navigation | As a Grantor									 | Applications 	  | Reviews | Application Review |
+	| FlexTable  | Applications Under Review					 | flexTableRandomID1 | View	| Related Logs		 |
+	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
+	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	Given I click on "Funding Decision Memo" in the page details
-	And I enter Subaward Abbreviation as "AuGr"
-	And I enter the recommendation in FDM
+	Given I enter Subaward Abbreviation as "AuGr"
+	| Actions | Step 1 | Step 2		  | Step 3 |
+	| Field   | Edit   | GrantCode__c | Save   |
+	And I enter the recommendation in FDM in flex table with id "inlineEditGridFundingDecisionMemoApplications" by clicking "Edit"
 	| Application Title 				  | Recommended Budget | Recommend for Funding | Comments 	 |
 	| Automation Announcement Application | 100000 		       | Yes				   | Recommended |
-	And I select "Automation EXE" as "Executive Approver" for Approver details
+	Given I select "1" approvers "Automation EXE"
+    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
+    | Subtab	 | Responsibilities 						   | 		|		    		  |
+    | Approver 1 | GrantorReviewStepRolesandResponsibilities   | Edit   | Executive Approver  |
 	Given I click on "Submit for Approval" in the page details
 	And I re-login to "As a Grantor" app as "EXE" User
     When I navigate to "Applications" tab
@@ -496,5 +1151,5 @@ Feature: Validate all scenarios in the Application Review
 	When I click on "Approve" on the approval decision box
 	Then I see status in Progress-bar is "Approved" and is "green"
 	Examples: 
-	| User | Announcement Name  				   | Review Step Name	    | Application Name 	            	    			  |
+	| User | Announcement Name  				   | Review Step Name	    | Application Name 	            	    			|
 	| EXE  | Automation Announcement to be deleted | Funding Decision Memo  | Automation Announcement to be deleted Application |

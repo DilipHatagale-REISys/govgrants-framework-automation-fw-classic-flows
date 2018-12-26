@@ -275,7 +275,6 @@ public class ProjectManager extends ProjectWebServices {
      * @param flexTableName
      */
     public void clickOnMultipleCheckbox(String flextableId, String... uniqueColumnValues) {
-        reiDriver.JavaScript().scrollpageToSpecificElement(getScrollToSection(flextableId));
         govgrants.flexTable().selectCheckBoxes(flextableId, uniqueColumnValues);
     }
 
@@ -283,10 +282,8 @@ public class ProjectManager extends ProjectWebServices {
      * Handles entering of Peer review
      */
     public void enterReview(String rating) {
-        reiDriver.findMyElement().getDropDown(By.xpath("//div[@id='fieldRating__c']//select"))
-                .selectByVisibleText(rating);
-        reiDriver.findMyElement().getElement(By.xpath("//div[@id='fieldReviewComments__c']//textarea"))
-                .sendKeys("Automation Reviewer comments");
+        govgrants.inputForms().inputFormDataByFieldApiName("fieldRating__c", rating);
+        govgrants.inputForms().inputFormDataByFieldApiName("ReviewComments__c", "Automation Reviewer comments");
     }
 
     /**
@@ -500,7 +497,7 @@ public class ProjectManager extends ProjectWebServices {
                 for (String innerMapKey : dataTableMap.get(mainMapKey).keySet()) {
                     inlineColumnTitleList.add(dataTableMap.get(mainMapKey).get(innerMapKey));
                 }
-            } else if (mainMapKey.equals("Inline values")) {
+            } else if (mainMapKey.contains("Inline values")) {
                 for (String innerMapKey : dataTableMap.get(mainMapKey).keySet()) {
                     inlineValueList.add(dataTableMap.get(mainMapKey).get(innerMapKey));
                 }
