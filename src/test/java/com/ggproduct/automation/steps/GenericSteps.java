@@ -172,6 +172,7 @@ public class GenericSteps {
     
     @Given("^I complete filling up the standard form$")
     public void fillStandardForm() {
+        projectManager.fillStandardForm();
     } 
     
     @When("^I enter a review as \"([^\"]*)\"$")
