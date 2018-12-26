@@ -63,23 +63,40 @@ Feature: Validate all scenarios in the Application Intake
 	
   	@34156 @submitApplication @applicationIntakeHappyPath @applicationIntake
   	Scenario: Submitting an application to Grantor
-	Given I complete the Application fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
+	Given I complete the fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
+	| Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
 	And I add focus area "00005" to the application
+	| Actions 	 | Step 1 | Step 2		   | Step 3 	  |
+	| Navigation | Budget | Add Focus Area | FocusAreaApp |
+	| FlexTable	 | Add 	  | popupflextable | 			  |
 	Given I add budget details to the application
-	| Category Name | Budget | Cash Match | Non-Cash Match |
-	| Construction  | 5000 	 | 1000   	  | 3000 		   |
+	| Actions 	   		  | Step 1 												   | Step 2	| Step 3 	      | Step 4		   |
+	| Navigation 		  | Budget 												   | BP01 	| Proposed Budget |				   |
+	| FlexTable 		  | inlineEditGridApplicationBudgetCategoryGrantorFlexGrid | Edit 	| 				  |				   |
+	| Inline Column Title | Category Name 										   | Budget | Cash Match 	  | Non-Cash Match |
+	| Inline values		  | Construction  										   | 5000 	| 1000   	  	  | 3000 		   |
 	And I add target to the KPI in the application
 	| EGMS ID  | Target |
 	| KPI-0005 | 10		|
 	| KPI-0006 | 10		|
-	Given I upload checklist "Announcement_Field_Values.xlsx" to the application
+	Given I upload "2" checklist document "Announcement_Field_Values.xlsx,Application_Field_Values.xlsx"
+	| Actions 	 | Step 1 							   | Step 2		 | Step 3 	      |
+	| Navigation | Attachments 						   | 			 |				  |
+	| FlexTable  | inlineEditGridApplicationChecklists | Attach 	 | Not Applicable |
+	| Upload	 | Checklist 						   | Application |				  |
     When I click on "Submit Application" in the page details
     Then I see status in Progress-bar is "Submitted" and is "green"
 	
   	@34346 @viewSubmitedApplication @applicationIntake
   	Scenario Outline: Viewing the application submitted by subrecipient as Internal user
-  	Given I complete the Application fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
+  	Given I complete the fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
+	| Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
 	And I add focus area "00005" to the application
+	| Actions 	 | Step 1 | Step 2		   | Step 3 	  |
+	| Navigation | Budget | Add Focus Area | FocusAreaApp |
+	| FlexTable	 | Add 	  | popupflextable | 			  |
 	Given I add budget details to the application
 	| Category Name | Budget | Cash Match | Non-Cash Match |
 	| Construction 	| 5000 	 | 1000   	 | 3000 		   |
@@ -87,7 +104,11 @@ Feature: Validate all scenarios in the Application Intake
 	| EGMS ID  | Target |
 	| KPI-0005 | 10		|
 	| KPI-0006 | 10		|
-	Given I upload checklist "Annoluncement_Field_Values.xlsx" to the application
+	Given I upload "2" checklist document "Announcement_Field_Values.xlsx,Application_Field_Values.xlsx"
+	| Actions 	 | Step 1 							   | Step 2		 | Step 3 	      |
+	| Navigation | Attachments 						   | 			 |				  |
+	| FlexTable  | inlineEditGridApplicationChecklists | Attach 	 | Not Applicable |
+	| Upload	 | Checklist 						   | Application |				  |
     When I click on "Submit Application" in the page details
     Given I login to "As a Grantor" app as "<User>" User
     When I navigate to "Applications" tab

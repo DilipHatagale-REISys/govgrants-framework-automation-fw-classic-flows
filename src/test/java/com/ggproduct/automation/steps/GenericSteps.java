@@ -135,6 +135,11 @@ public class GenericSteps {
         projectManager.reloginToggleToApp(appName, userName);
     }
     
+    @When("^I re-login to \"([^\"]*)\" app as \"([^\"]*)\" User with environment \"([^\"]*)\"$")
+    public void reloginToggleToAppInURL(String appName, String userName, String env) throws IOException {
+        projectManager.reloginToggleToAppInURL(appName, userName, env);
+    }
+    
     @When("^I perform quick search for \"([^\"]*)\" for the parent value \"([^\"]*)\" on grid \"([^\"]*)\"$")
     public void quickSearchOnGridTable(String searchTerm, String anyUniqueColumnValueFromParent, String flexTableDivId) {
         projectManager.quickSearchOnGridTable(flexTableDivId, anyUniqueColumnValueFromParent, searchTerm);
@@ -228,9 +233,9 @@ public class GenericSteps {
         projectManager.associationOfRecord(participant, dataTable);
     }
     
-    @Given("^I select two approvers \"([^\"]*)\", \"([^\"]*)\"$")
-    public void twoApproverSelection(String programApprover, String executiveApprover, DataTable dataTable) {
-        projectManager.twoApproverSelection(programApprover, executiveApprover, dataTable);
+    @Given("^I select \"([^\"]*)\" approvers \"([^\"]*)\"$")
+    public void approverSelection(String noOfApprovers, String approvers, DataTable dataTable) {
+        projectManager.approverSelection(noOfApprovers, dataTable, approvers.split(","));
     }
     
     @Given("^I add an attachment checklist to upload the file \"([^\"]*)\"$")
@@ -238,15 +243,31 @@ public class GenericSteps {
         projectManager.additionOfChecklist(fileName, dataTable);
     }
     
+    @Given("^I upload \"([^\"]*)\" checklist document \"([^\"]*)\"$")
+    public void uploadChecklistDocument(String noOfDocuments, String fileName, DataTable dataTable) {
+        projectManager.uploadChecklistDocument(noOfDocuments, dataTable, fileName.split(","));
+    }
+    
     @Given("^I add an attachment \"([^\"]*)\" in the flextable \"([^\"]*)\"$")
     public void additionOfAttachment(String fileName, String flexTableName, DataTable dataTable) {
         projectManager.additionOfAttachment(fileName, flexTableName, dataTable);
     }
     
-    @Given("^Two Approvers \"([^\"]*)\", \"([^\"]*)\" approve \"([^\"]*)\"$")
-    public void twoApproversApproveRecord(String programApprover, String executiveApprover, String recordName, DataTable dataTable) throws IOException {
-        projectManager.twoApproversApproveRecord(programApprover, executiveApprover, recordName, dataTable);
+    @Given("^I assign, initiate a reviewer from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
+    public void initiateReviewForAnnouncement(String sheetName, String excelFileName, DataTable dataTable) {
+        projectManager.initiateReviewForAnnouncement(sheetName, excelFileName, dataTable);
     }
+    
+    @Given("^Review is completed as user \"([^\"]*)\" for the record \"([^\"]*)\" created by \"([^\"]*)\"$")
+    public void completePeerReview(String reviewer, String recordName, String recordOwner, DataTable dataTable) throws IOException {
+        projectManager.completePeerReview(reviewer, recordName, recordOwner, dataTable);
+    }
+    
+    @Given("^\"([^\"]*)\" Approvers \"([^\"]*)\" approve the record \"([^\"]*)\"$")
+    public void approversApproveRecord(String noOfApprovers, String recordName, String approvers, DataTable dataTable) throws IOException {
+        projectManager.approversApproveRecord(noOfApprovers, recordName, dataTable, approvers.split(","));
+    }
+   
     
     @Given("^I login and view the \"([^\"]*)\" award \"([^\"]*)\" with name \"([^\"]*)\" as User \"([^\"]*)\"$")
     public void reloginToViewAward(String awardState, String awardId, String awardName, String awardOwner) throws IOException {

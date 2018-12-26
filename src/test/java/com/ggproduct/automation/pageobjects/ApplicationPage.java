@@ -1,6 +1,8 @@
 package com.ggproduct.automation.pageobjects;
 
 import java.io.IOException;
+import java.util.Map;
+
 import org.openqa.selenium.By;
 import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.CoreHandlers;
@@ -42,26 +44,17 @@ public class ApplicationPage extends ProjectManager {
     }
 
     /**
-     * Handles filling up of all fields in an application
-     * 
-     * @param sheetName
-     * @param excelFileName
-     */
-    public void editionOfApplication(String sheetName, String excelFileName) {
-        clickOnPageButton("Edit");
-        enterFieldValues(sheetName, excelFileName);
-        clickOnPageButton("Save");
-    }
-
-    /**
      * Handles addition of focus area for an application
      * 
      * @param focusArea
      */
-    public void additionOfFocusAreaToApplication(String focusArea) {
-        clickOnSubtab("Budget");
-        clickOnFlextableButton("Add Focus Area", "FocusAreaApp");
-        chooseRecordForAssociation("Add", focusArea, "popupflextable");
+    public void additionOfFocusAreaToApplication(DataTable dataTable, String... focusArea) {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        clickOnSubtab(dataTableMap.get("Navigation").get("Step 1"));
+        clickOnFlextableButton(dataTableMap.get("Navigation").get("Step 3"),
+                dataTableMap.get("Navigation").get("Step 3"));
+        chooseRecordForAssociation(dataTableMap.get("FlexTable").get("Step 1"),
+                dataTableMap.get("FlexTable").get("Step 2"), focusArea);
         switchToParentFrame();
     }
 
@@ -72,11 +65,14 @@ public class ApplicationPage extends ProjectManager {
      * @param cashMatch
      * @param nonCashMatch
      */
-    public void additionOfBudgetToApplication(DataTable rowValues) {
-        clickOnSubtab("Budget");
-        expandGrid("BP01");
-        expandGrid("Proposed Budget");
-        fillFieldsForInlineTable("inlineEditGridApplicationBudgetCategoryGrantorFlexGrid", "Edit", rowValues);
+    public void additionOfBudgetToApplication(DataTable dataTable) {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        DataTable inlineEditDataTable = seperateInlineDataTable(dataTableMap);
+        clickOnSubtab(dataTableMap.get("Navigation").get("Step 1"));
+        expandGrid(dataTableMap.get("Navigation").get("Step 2"));
+        expandGrid(dataTableMap.get("Navigation").get("Step 3"));
+        fillFieldsForInlineTable(dataTableMap.get("FlexTable").get("Step 1"),
+                dataTableMap.get("FlexTable").get("Step 2"), inlineEditDataTable);
     }
 
     /**
@@ -89,21 +85,7 @@ public class ApplicationPage extends ProjectManager {
         fillFieldsForInlineTable("flexGridRecipientApplicationRelatedKPIs", "Edit", rowValues);
     }
 
-    /**
-     * Handles uploading of checklist files
-     * 
-     * @param fileName
-     */
-    public void uploadChecklistToApplication(String fileName) {
-        clickOnSubtab("Attachments");
-        clickOnFlextableRowButton("Attach", "Not Applicable", "Supporting Documents Checklist");
-        uploadFile(fileName, "Checklist", "Application");
-        closeModal();
-        clickOnFlextableRowButton("Attach", "Not Applicable", "Supporting Documents Checklist");
-        uploadFile(fileName, "Checklist", "Application");
-        closeModal();
-    }
-
+    
     /**
      * Handles completion of one review process by clicking on Promote to Next step
      * button for the passed application
@@ -112,7 +94,7 @@ public class ApplicationPage extends ProjectManager {
      * @param applicationName
      * @param announcementOwner
      * @param announcementName
-     * @throws IOException 
+     * @throws IOException
      */
     public void completeReviewStepForApplication(String reviewStep, String buttonName, String applicationName,
             String announcementOwner, String announcementName) throws IOException {
@@ -216,7 +198,8 @@ public class ApplicationPage extends ProjectManager {
 
     /**
      * Handles completing review form as a reviewer in SME review
-     * @throws IOException 
+     * 
+     * @throws IOException
      */
     public void completeReviewFormSME() throws IOException {
         reloginToggleToApp("As a Grantor", "PM");
@@ -289,7 +272,8 @@ public class ApplicationPage extends ProjectManager {
 
     /**
      * Handles completing review form as a reviewer in Management review
-     * @throws IOException 
+     * 
+     * @throws IOException
      */
     public void completeReviewFormManagement() throws IOException {
         reloginToggleToApp("As a Grantor", "EXE");

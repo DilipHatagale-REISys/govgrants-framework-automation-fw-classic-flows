@@ -61,7 +61,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I close Modal
     When I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--21 		  | 100000 				        | 
+	| FA--21 		  | 100000 				         |
 	Then I see that "<EGMS Id>" has been added in flextable with Id "flexGridAnnouncementFundingAccountGrantor"
 	Examples:
 	| EGMS Id |
@@ -164,7 +164,11 @@ Feature: Validate all scenarios in the Announcement tab
 
   	@34779 @announcementReviewComplete @announcement
   	Scenario Outline: Validate the review for the Announcement
-	Given I assign, initiate a reviewer for an announcement from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
+	Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
+	| Actions 			  | Step 1 	  		      | Step 2	 		   	  | Step 3  |
+	| Reviewer Navigation | Responsibilities      | 					  |			|
+	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
+	| Send Review		  | Send for Review       | Created 			  |			|
 	And I re-login to "As a Grantor" app as "<User>" User
 	When I navigate to "Announcements" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -201,22 +205,52 @@ Feature: Validate all scenarios in the Announcement tab
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
 	And I add a Funding Account "FA--21" with the amount to an announcement
-	| Actions 		  	  | Step 1 			| Step 2					   			   |
-	| Navigation 		  | Financials 		| 							   			   |
-	| FlexTable 		  | Associate 		| lexGridAnnouncementFundingAccountGrantor | 
-	| Funding Account 	  | Add				| popupflextable		       			   |
-	| Button			  | Edit			| 										   |
-	| Inline Column Title | Funding Account | Announcement Pre-Encumbrance 			   |
-	| Inline values 	  | FA--21 		  	| 100000 				       			   |
+	| Actions 		  	  | Step 1 			| Step 2					   			    |
+	| Navigation 		  | Financials 		| 							   			    |
+	| FlexTable 		  | Associate 		| flexGridAnnouncementFundingAccountGrantor | 
+	| Funding Account 	  | Add				| popupflextable		       			    |
+	| Button			  | Edit			| 										    |
+	| Inline Column Title | Funding Account | Announcement Pre-Encumbrance 			    |
+	| Inline values 	  | FA--21 		  	| 100000 				       			    |
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
-	And I associate Contact "Automation EXE", Focus Area "00006", Objective "SPO-0008" to the announcement
-	Given I select the Program Approver "Automation PM",Fiscal Approver "Automation FO",Executive Approver "Automation EXE" for the announcement
-	Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx" to the announcement
-	| Description        		  | Required  | Applies To |
-    | Automation test description | Mandatory | Award  	   |
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx" to announcement
-	And I assign, initiate a reviewer for an announcement from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
-	Given Review is completed as user "FO" for the "Competitive" announcement "Automation Announcement" created by "EXE" 
+	| Actions 	 | Step 1 		| Step 2				| Step 3 				   |
+	| Navigation | Financials 	| Add Budget Period 	| AnnouncementBudgetPeriod |
+	| Flextable  | Edit 	    | Budget Period Details | Save					   |
+	And I associate Contact "Automation EXE", Focus Area "00006", Objective "SPO-0008"
+	| Actions 	 | Step 1   | Step 2	| Step 3  			  							| Step 4 | Step 5  				    	 |
+    | Contact    | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
+    | Focus Area | Setup	| Associate | AnnouncementServiceArea1			 			| Add    | popupflextable 		   		 |
+    | Objective  | Setup 	| Associate | AnnouncementGranteeStrategicGoalsObjectives   | Add	 | popupflextable 		   		 |
+    Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
+    | Subtab	 | Responsibilities 						   | 		|		    		  |
+    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
+    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
+    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+	And I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+    | Actions 			   | Step 1 	   		       			  | Step 2	       | Step 3 	|
+    | Inline Column Title  | Description       	  	  			  | Required  	   | Applies To |
+    | Inline values 	   | Automation Description    			  | Mandatory	   | Award		|
+	| Checklist Navigation | Setup		      		   			  |   		   	   |			|
+	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
+	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
+	| Upload file     	   | Checklist 				   			  | Announcement   |			|
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx" in the flextable " Attachments"
+    | Actions 			    | Step 1 	  | Step 2	 		  				 |
+    | Attachment Navigation | Attachments | Add								 |
+    | Attachment Details    | Attachment  | Funding Opportunity Announcement |
+	And I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
+	| Actions 			  | Step 1 	  		      | Step 2	 		   	  | Step 3  |
+	| Reviewer Navigation | Responsibilities      | 					  |			|
+	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
+	| Send Review		  | Send for Review       | Created 			  |			|
+	Given Review is completed as user "FO" for the record "Automation Announcement" created by "EXE" 
+	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
+	| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
+	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
+	| Enter Review		  | Passed      	    | Save	  							  |	Submit Review 		  | Fiscal Reviewer |
+	| Owner Navigation 	  | As a Grantor 		| Announcements 					  | Competitive   		  | Announcements   |
+	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | Complete Review |
     When I click on "Submit For Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
@@ -226,22 +260,52 @@ Feature: Validate all scenarios in the Announcement tab
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
 	And I add a Funding Account "FA--21" with the amount to an announcement
-	| Actions 		  	  | Step 1 			| Step 2					   			   |
-	| Navigation 		  | Financials 		| 							   			   |
-	| FlexTable 		  | Associate 		| lexGridAnnouncementFundingAccountGrantor | 
-	| Funding Account 	  | Add				| popupflextable		       			   |
-	| Button			  | Edit			| 										   |
-	| Inline Column Title | Funding Account | Announcement Pre-Encumbrance 			   |
-	| Inline values 	  | FA--21 		  	| 100000 				       			   |
+	| Actions 		  	  | Step 1 			| Step 2					   			    |
+	| Navigation 		  | Financials 		| 							   			    |
+	| FlexTable 		  | Associate 		| flexGridAnnouncementFundingAccountGrantor | 
+	| Funding Account 	  | Add				| popupflextable		       			    |
+	| Button			  | Edit			| 										    |
+	| Inline Column Title | Funding Account | Announcement Pre-Encumbrance 			    |
+	| Inline values 	  | FA--21 		  	| 100000 				       			    |
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
-	And I associate Contact "Automation EXE", Focus Area "00006", Objective "SPO-0008" to the announcement
-	Given I select the Program Approver "Automation PM",Fiscal Approver "Automation FO",Executive Approver "Automation EXE" for the announcement
-	Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx" to the announcement
-	| Description        		  | Required  | Applies To |
-    | Automation test description | Mandatory | Award  	   |
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx" to announcement
-	And I assign, initiate a reviewer for an announcement from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
-	Given Review is completed as user "FO" for the "Competitive" announcement "Automation Announcement" created by "EXE" 
+	| Actions 	 | Step 1 		| Step 2				| Step 3 				   |
+	| Navigation | Financials 	| Add Budget Period 	| AnnouncementBudgetPeriod |
+	| Flextable  | Edit 	    | Budget Period Details | Save					   |
+	And I associate Contact "Automation EXE", Focus Area "00006", Objective "SPO-0008"
+	| Actions 	 | Step 1   | Step 2	| Step 3  			  							| Step 4 | Step 5  				    	 |
+    | Contact    | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
+    | Focus Area | Setup	| Associate | AnnouncementServiceArea1			 			| Add    | popupflextable 		   		 |
+    | Objective  | Setup 	| Associate | AnnouncementGranteeStrategicGoalsObjectives   | Add	 | popupflextable 		   		 |
+	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
+    | Subtab	 | Responsibilities 						   | 		|		    		  |
+    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
+    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
+    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+    | Actions 			   | Step 1 	   		       			  | Step 2	       | Step 3 	|
+    | Inline Column Title  | Description       	  	  			  | Required  	   | Applies To |
+    | Inline values 	   | Automation Description    			  | Mandatory	   | Award		|
+	| Checklist Navigation | Setup		      		   			  |   		   	   |			|
+	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
+	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
+	| Upload file     	   | Checklist 				   			  | Announcement   |			|
+    And I add an attachment "InternalOrganization_Field_Values.xlsx" in the flextable " Attachments"
+    | Actions 			    | Step 1 	  | Step 2	 		  				 |
+    | Attachment Navigation | Attachments | Add								 |
+    | Attachment Details    | Attachment  | Funding Opportunity Announcement |
+	Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
+	| Actions 			  | Step 1 	  		      | Step 2	 		   	  | Step 3  |
+	| Reviewer Navigation | Responsibilities      | 					  |			|
+	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
+	| Send Review		  | Send for Review       | Created 			  |			|
+		Given Review is completed as user "FO" for the record "Automation Announcement" created by "EXE" 
+	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
+	| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
+	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
+	| Enter Review		  | Passed      	    | Save	  							  |	Submit Review 		  | Fiscal Reviewer |
+	| Owner Navigation 	  | As a Grantor 		| Announcements 					  | Competitive   		  | Announcements   |
+	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | Complete Review |
 	And I click on "Submit For Approval" in the page details
 	Given I re-login to "As a Grantor" app as "PM" User
 	When I navigate to "Announcements" tab
@@ -272,19 +336,58 @@ Feature: Validate all scenarios in the Announcement tab
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
 	And I add a Funding Account "FA--21" with the amount to an announcement
-	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--21 		  | 100000 				         |
+	| Actions 		  	  | Step 1 			| Step 2					   			    |
+	| Navigation 		  | Financials 		| 							   			    |
+	| FlexTable 		  | Associate 		| flexGridAnnouncementFundingAccountGrantor | 
+	| Funding Account 	  | Add				| popupflextable		       			    |
+	| Button			  | Edit			| 										    |
+	| Inline Column Title | Funding Account | Announcement Pre-Encumbrance 			    |
+	| Inline values 	  | FA--21 		  	| 100000 				       			    |
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
-	And I associate Contact "Automation EXE", Focus Area "00006", Objective "SPO-0008" to the announcement
-	Given I select the Program Approver "Automation PM",Fiscal Approver "Automation FO",Executive Approver "Automation EXE" for the announcement
-	Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx" to the announcement
-	| Description        		  | Required  | Applies To |
-    | Automation test description | Mandatory | Award  	   |
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx" to announcement
-	And I assign, initiate a reviewer for an announcement from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
-	Given Review is completed as user "FO" for the "Competitive" announcement "<Announcement Name>" created by "EXE" 
+	| Actions 	 | Step 1 		| Step 2				| Step 3 				   |
+	| Navigation | Financials 	| Add Budget Period 	| AnnouncementBudgetPeriod |
+	| Flextable  | Edit 	    | Budget Period Details | Save					   |
+	And I associate Contact "Automation EXE", Focus Area "00006", Objective "SPO-0008"
+	| Actions 	 | Step 1   | Step 2	| Step 3  			  							| Step 4 | Step 5  				    	 |
+    | Contact    | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
+    | Focus Area | Setup	| Associate | AnnouncementServiceArea1			 			| Add    | popupflextable 		   		 |
+    | Objective  | Setup 	| Associate | AnnouncementGranteeStrategicGoalsObjectives   | Add	 | popupflextable 		   		 |
+	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
+    | Subtab	 | Responsibilities 						   | 		|		    		  |
+    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
+    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
+    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+    | Actions 			   | Step 1 	   		       			  | Step 2	       | Step 3 	|
+    | Inline Column Title  | Description       	  	  			  | Required  	   | Applies To |
+    | Inline values 	   | Automation Description    			  | Mandatory	   | Award		|
+	| Checklist Navigation | Setup		      		   			  |   		   	   |			|
+	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
+	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
+	| Upload file     	   | Checklist 				   			  | Announcement   |			|
+    And I add an attachment "InternalOrganization_Field_Values.xlsx" in the flextable " Attachments"
+    | Actions 			    | Step 1 	  | Step 2	 		  				 |
+    | Attachment Navigation | Attachments | Add								 |
+    | Attachment Details    | Attachment  | Funding Opportunity Announcement |
+	Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
+	| Actions 			  | Step 1 	  		      | Step 2	 		   	  | Step 3  |
+	| Reviewer Navigation | Responsibilities      | 					  |			|
+	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
+	| Send Review		  | Send for Review       | Created 			  |			|
+		Given Review is completed as user "FO" for the record "Automation Announcement" created by "EXE" 
+	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
+	| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
+	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
+	| Enter Review		  | Passed      	    | Save	  							  |	Submit Review 		  | Fiscal Reviewer |
+	| Owner Navigation 	  | As a Grantor 		| Announcements 					  | Competitive   		  | Announcements   |
+	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | Complete Review |
 	And I click on "Submit For Approval" in the page details
-	Given Approvers "PM", "FO", "EXE" approve the announcement "<Announcement Name>"
+	Given "3" Approvers "PM,FO,EXE" approve the record "<Announcement Name>"
+	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
+	| Navigation | As a Grantor  | Announcements | 				  	 |
+	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
+	| Approval 	 | Start 		 | Approve 		 | 					 |
 	And I re-login to "As a Grantor" app as "<User>" User
 	When I navigate to "Announcements" tab
 	And I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -294,7 +397,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
 	Examples:
-	| User | Announcement Name 					   |
+	| User | Announcement Name 			   |
 	| EXE  | Automation Announcement Dec10 |
 	
 	@34462 @publishingDirectedAnnouncement @announcementDirectedHappyPath @announcement
@@ -303,7 +406,7 @@ Feature: Validate all scenarios in the Announcement tab
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
 	And I associate an agency "RG-000010" to the annoucement
-	And I add a Funding Account "FA--21" with the amount to an announcement
+	Given I add a Funding Account "FA--21" with the amount to an announcement
 	| Actions 		  	  | Step 1 			| Step 2					   			   |
 	| Navigation 		  | Financials 		| 							   			   |
 	| FlexTable 		  | Associate 		| lexGridAnnouncementFundingAccountGrantor | 
@@ -312,16 +415,50 @@ Feature: Validate all scenarios in the Announcement tab
 	| Inline Column Title | Funding Account | Announcement Pre-Encumbrance 			   |
 	| Inline values 	  | FA--21 		  	| 100000 				       			   |
 	And I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
-	Given I associate Contact "Automation EXE", Focus Area "00006", Objective "SPO-0008" to the announcement
-	And I select the Program Approver "Automation PM",Fiscal Approver "Automation FO",Executive Approver "Automation EXE" for the announcement
-	Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx" to the announcement
-	| Description        		  | Required  | Applies To |
-    | Automation test description | Mandatory | Award  	   |
-    And I add an attachment "InternalOrganization_Field_Values.xlsx" to announcement
-	Given I assign, initiate a reviewer  for an announcement from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
-	And Review is completed as user "FO" for the "Directed" announcement "Automation Announcement" created by "EXE" 
+	| Actions 	 | Step 1 		| Step 2				| Step 3 				   |
+	| Navigation | Financials 	| Add Budget Period 	| AnnouncementBudgetPeriod |
+	| Flextable  | Edit 	    | Budget Period Details | Save					   |
+	Given I associate Contact "Automation EXE", Focus Area "00006", Objective "SPO-0008"
+	| Actions 	 | Step 1   | Step 2	| Step 3  			  							| Step 4 | Step 5  				    	 |
+    | Contact    | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
+    | Focus Area | Setup	| Associate | AnnouncementServiceArea1			 			| Add    | popupflextable 		   		 |
+    | Objective  | Setup 	| Associate | AnnouncementGranteeStrategicGoalsObjectives   | Add	 | popupflextable 		   		 |
+	And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
+    | Subtab	 | Responsibilities 						   | 		|		    		  |
+    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
+    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
+    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+    | Actions 			   | Step 1 	   		       			  | Step 2	       | Step 3 	|
+    | Inline Column Title  | Description       	  	  			  | Required  	   | Applies To |
+    | Inline values 	   | Automation Description    			  | Mandatory	   | Award		|
+	| Checklist Navigation | Setup		      		   			  |   		   	   |			|
+	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
+	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
+	| Upload file     	   | Checklist 				   			  | Announcement   |			|
+    And I add an attachment "InternalOrganization_Field_Values.xlsx" in the flextable " Attachments"
+    | Actions 			    | Step 1 	  | Step 2	 		  				 |
+    | Attachment Navigation | Attachments | Add								 |
+    | Attachment Details    | Attachment  | Funding Opportunity Announcement |
+	Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
+	| Actions 			  | Step 1 	  		      | Step 2	 		   	  | Step 3  |
+	| Reviewer Navigation | Responsibilities      | 					  |			|
+	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
+	| Send Review		  | Send for Review       | Created 			  |			|
+	And Review is completed as user "FO" for the record "Automation Announcement" created by "EXE" 
+	| Actions 			  | Step 1 	  		    | Step 2	 		   	  	 | Step 3  	 		     | Step 4 		   |
+	| Reviewer Navigation | As a Grantor        | Announcements 			 | Pending Tasks 		 | My Tasks 	   |
+	| FlexTable 		  | PhasePendingTasks   | Start						 | flexGridApproverRoles | Enter Review    | 
+	| Enter Review		  | Passed      	    | Save	  					 |	Submit Review 		 | Fiscal Reviewer |
+	| Owner Navigation 	  | As a Grantor 		| Announcements 			 | Directed	   		     | Announcements   |
+	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunities | View 		  		 | Complete Review |
 	And I click on "Submit For Approval" in the page details
-	Given Approvers "PM", "FO", "EXE" approve the announcement "Automation Announcement"
+	Given "3" Approvers "PM,FO,EXE" approve the record "<Announcement Name>"
+	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
+	| Navigation | As a Grantor  | Announcements | 				  	 |
+	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
+	| Approval 	 | Start 		 | Approve 		 | 					 |
 	And I re-login to "As a Grantor" app as "<User>" User
 	When I navigate to "Announcements" tab
 	And I navigate to "Directed" content inside "Announcements" subheader on left panel
@@ -343,22 +480,61 @@ Feature: Validate all scenarios in the Announcement tab
 	| Agency Code | Allocated Amount   |
 	| RG-000010   | 100000 			   | 
 	Given I add a Funding Account "FA--21" with the amount to an announcement
-	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--21 		  | 100000 				        |
+	| Actions 		  	  | Step 1 			| Step 2					   			    |
+	| Navigation 		  | Financials 		| 							   			    |
+	| FlexTable 		  | Associate 		| flexGridAnnouncementFundingAccountGrantor | 
+	| Funding Account 	  | Add				| popupflextable		       			    |
+	| Button			  | Edit			| 										    |
+	| Inline Column Title | Funding Account | Announcement Pre-Encumbrance 			    |
+	| Inline values 	  | FA--21 		  	| 100000 				       			    |
 	And I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
-	Given I associate Contact "Automation EXE", Focus Area "00006", Objective "SPO-0008" to the announcement
-	And I select the Program Approver "Automation PM",Fiscal Approver "Automation FO",Executive Approver "Automation EXE" for the announcement
-	Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx" to the announcement
-	| Description        		  | Required  | Applies To |
-    | Automation test description | Mandatory | Award  	   |
-	And I add an attachment "InternalOrganization_Field_Values.xlsx" to announcement
-	Given I assign, initiate a reviewer  for an announcement from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
-	And Review is completed as user "FO" for the "Directed" announcement "Automation Announcement" created by "EXE" 
+	| Actions 	 | Step 1 		| Step 2				| Step 3 				   |
+	| Navigation | Financials 	| Add Budget Period 	| AnnouncementBudgetPeriod |
+	| Flextable  | Edit 	    | Budget Period Details | Save					   |
+	Given I associate Contact "Automation EXE", Focus Area "00006", Objective "SPO-0008"
+	| Actions 	 | Step 1   | Step 2	| Step 3  			  							| Step 4 | Step 5  				    	 |
+    | Contact    | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
+    | Focus Area | Setup	| Associate | AnnouncementServiceArea1			 			| Add    | popupflextable 		   		 |
+    | Objective  | Setup 	| Associate | AnnouncementGranteeStrategicGoalsObjectives   | Add	 | popupflextable 		   		 |
+	And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
+    | Subtab	 | Responsibilities 						   | 		|		    		  |
+    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
+    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
+    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+	Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+    | Actions 			   | Step 1 	   		       			  | Step 2	       | Step 3 	|
+    | Inline Column Title  | Description       	  	  			  | Required  	   | Applies To |
+    | Inline values 	   | Automation Description    			  | Mandatory	   | Award		|
+	| Checklist Navigation | Setup		      		   			  |   		   	   |			|
+	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
+	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
+	| Upload file     	   | Checklist 				   			  | Announcement   |			|
+	And I add an attachment "InternalOrganization_Field_Values.xlsx" in the flextable " Attachments"
+    | Actions 			    | Step 1 	  | Step 2	 		  				 |
+    | Attachment Navigation | Attachments | Add								 |
+    | Attachment Details    | Attachment  | Funding Opportunity Announcement |
+	Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
+	| Actions 			  | Step 1 	  		      | Step 2	 		   	  | Step 3  |
+	| Reviewer Navigation | Responsibilities      | 					  |			|
+	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
+	| Send Review		  | Send for Review       | Created 			  |			|
+	And Review is completed as user "FO" for the record "Automation Announcement" created by "EXE" 
+	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
+	| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
+	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
+	| Enter Review		  | Passed      	    | Save	  							  |	Submit Review 		  | Fiscal Reviewer |
+	| Owner Navigation 	  | As a Grantor 		| Announcements 					  | Formula		  		  | Announcements   |
+	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesFormula   | View 		  		  | Complete Review | 
 	And I click on "Submit For Approval" in the page details
-	Given Approvers "PM", "FO", "EXE" approve the announcement "Automation Announcement"
+	Given "3" Approvers "PM,FO,EXE" approve the record "<Announcement Name>"
+	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
+	| Navigation | As a Grantor  | Announcements | 				  	 |
+	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
+	| Approval 	 | Start 		 | Approve 		 | 					 |
 	When I re-login to "As a Grantor" app as "<User>" User
 	And I navigate to "Announcements" tab
-	When I navigate to "IDirected" content inside "Announcements" subheader on left panel
+	When I navigate to "Formula" content inside "Announcements" subheader on left panel
 	And I click toggle button for "Draft Announcements"
     When I perform quick search for "<Announcement Name>" in "ActiveFundingOpportunitiesCompitive" panel
     And I click on "View" icon for "<Announcement Name>" inside table 

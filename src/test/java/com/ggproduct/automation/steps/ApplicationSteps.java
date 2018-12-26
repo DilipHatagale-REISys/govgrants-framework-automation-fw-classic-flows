@@ -28,14 +28,9 @@ public class ApplicationSteps {
         applicationPage.applicationCreation(sheetName, excelFileName);
     }
     
-    @Given("^I complete the Application fields from the sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
-    public void editionOfApplication(String sheetName, String excelFileName) {
-        applicationPage.editionOfApplication(sheetName, excelFileName);
-    }
-    
     @Given("^I add focus area \"([^\"]*)\" to the application$")
-    public void additionOfFocusAreaToApplication(String focusArea) {
-        applicationPage.additionOfFocusAreaToApplication(focusArea);
+    public void additionOfFocusAreaToApplication(String focusArea, DataTable dataTable) {
+        applicationPage.additionOfFocusAreaToApplication(dataTable, focusArea.split(","));
     }
     
     @Given("^I add budget details to the application$")
@@ -46,11 +41,6 @@ public class ApplicationSteps {
     @Given("^I add target to the KPI in the application$")
     public void additionOfTargetToKPIInApplication(DataTable rowValues) {
         applicationPage.additionOfTargetToKPIInApplication(rowValues);
-    }
-    
-    @Given("^I upload checklist \"([^\"]*)\" to the application$")
-    public void uploadChecklistToApplication(String fileName) {
-        applicationPage.uploadChecklistToApplication(fileName);
     }
     
     @Given("^\"([^\"]*)\" is completed by clicking \"([^\"]*)\" for Application \"([^\"]*)\" as user \"([^\"]*)\" submitted for announcement \"([^\"]*)\"$")

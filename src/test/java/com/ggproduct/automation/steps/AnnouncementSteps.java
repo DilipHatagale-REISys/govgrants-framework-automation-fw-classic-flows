@@ -1,9 +1,5 @@
 package com.ggproduct.automation.steps;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-
 import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
@@ -30,53 +26,18 @@ public class AnnouncementSteps {
     }
     
     @Given("^I associate an agency \"([^\"]*)\" with amount to the annoucement$")
-    public void associateAgencyAmountToAnnouncement(String agency, DataTable rowValues) {
-        announcementPage.associateAgencyAmountToAnnouncement(agency, rowValues);
+    public void associateAgencyAmountToAnnouncement(String agency, DataTable dataTable) {
+        announcementPage.associateAgencyAmountToAnnouncement(agency, dataTable);
     }
     
     @Given("^I add a Funding Account \"([^\"]*)\" with the amount to an announcement$")
-    public void addFundingAccountToAnnouncement(String fundingAccount, DataTable rowValues) {
-        announcementPage.addFundingAccountToAnnouncement(fundingAccount, rowValues);
+    public void addFundingAccountToAnnouncement(String fundingAccount, DataTable dataTable) {
+        announcementPage.addFundingAccountToAnnouncement(fundingAccount, dataTable);
     }
     
     @Given("^I add Budget Period Details \"([^\"]*)\" from sheet \"([^\"]*)\" in excel \"([^\"]*)\" to an announcement$")
-    public void addBudgetPeriodToAnnouncement(String budgetPeriod, String sheetName, String excelFileName) {
-        announcementPage.addBudgetPeriodToAnnouncement(budgetPeriod, sheetName, excelFileName);
+    public void addBudgetPeriodToAnnouncement(String budgetPeriod, String sheetName, String excelFileName, DataTable dataTable) {
+        announcementPage.addBudgetPeriodToAnnouncement(budgetPeriod, sheetName, excelFileName, dataTable);
     }
     
-    @Given("^I associate Contact \"([^\"]*)\", Focus Area \"([^\"]*)\", Objective \"([^\"]*)\" to the announcement$")
-    public void associationOfRecordsToAnnouncement(String contact, String focusArea, String objective) {
-        announcementPage.associationOfRecordsToAnnouncement(contact, focusArea, objective);
-    }
-    
-    @Given("^I select the Program Approver \"([^\"]*)\",Fiscal Approver \"([^\"]*)\",Executive Approver \"([^\"]*)\" for the announcement$")
-    public void approverSelectionForAnnouncement(String programApprover, String fiscalApprover, String executiveApprover) {
-        announcementPage.approverSelectionForAnnouncement(programApprover, fiscalApprover, executiveApprover);
-    }
-    
-    @Given("^I add an attachment checklist to upload the file \"([^\"]*)\" to the announcement$")
-    public void additionOfChecklistToAnnouncement(String fileName, List<Map<String, String>> rowValues) {
-        announcementPage.additionOfChecklistToAnnouncement(fileName, rowValues);
-    }
-    
-    @Given("^I add an attachment \"([^\"]*)\" to announcement$")
-    public void additionOfAttachmentToAnnouncement(String fileName) {
-        announcementPage.additionOfAttachmentToAnnouncement(fileName);
-    }
-    
-    @Given("^Approvers \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\" approve the announcement \"([^\"]*)\"$")
-    public void approversApproveAnnouncement(String programApprover, String fiscalApprover, String executiveApprover, String announcementName) throws IOException {
-        announcementPage.approversApproveAnnouncement(programApprover, fiscalApprover, executiveApprover, announcementName);
-    }
-    
-    @Given("^I assign, initiate a reviewer for an announcement from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
-    public void initiateReviewForAnnouncement(String sheetName, String excelFileName) {
-        announcementPage.initiateReviewForAnnouncement(sheetName, excelFileName);
-    }
-    
-    @Given("^Review is completed as user \"([^\"]*)\" for the \"([^\"]*)\" announcement \"([^\"]*)\" created by \"([^\"]*)\"$")
-    public void completeReviewForAnnouncement(String reviewer, String announcementType, String announcementName, String announcementOwner) throws IOException {
-        announcementPage.completeReviewForAnnouncement(reviewer, announcementType, announcementName, announcementOwner);
-    }
-   
 }
