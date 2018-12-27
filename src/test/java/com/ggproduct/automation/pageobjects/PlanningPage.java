@@ -27,7 +27,7 @@ public class PlanningPage extends ProjectManager {
         navigateToTab(dataTableMap.get("Navigation").get("Step 2"));
         clickOnSidebar(dataTableMap.get("FlexTable").get("Step 1"), dataTableMap.get("Navigation").get("Step 3"));
         changeFlexTableView(dataTableMap.get("FlexTable").get("Step 3"));
-        clickOnPhaseFlexTableButton(dataTableMap.get("Creation").get("Step 1"),
+        clickOnFlextableButton(dataTableMap.get("Creation").get("Step 1"),
                 dataTableMap.get("FlexTable").get("Step 2"));
         enterFieldValues(sheetName, excelFileName);
         clickOnModalButton(dataTableMap.get("Creation").get("Step 2"));

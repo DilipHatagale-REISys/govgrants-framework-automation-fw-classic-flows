@@ -29,7 +29,7 @@ public class ProjectManager extends ProjectWebServices {
     public final String defaultPassword = "SALESFORCE2018";
     public final String defaultLongText = "Automation test description";
     private final By headerOverviewPath, attachmentClassificationPath, attachmentDescriptionPath, attachmentFilePath,
-            lookUpSearchPath, lookUpIFramePath, approverDescription, acknowledgementCheckboxPath;
+            approverDescription, acknowledgementCheckboxPath;
 
     /**
      * Super Constructor
@@ -46,8 +46,6 @@ public class ProjectManager extends ProjectWebServices {
         attachmentDescriptionPath = By.xpath("//div//label[text()='Description']/..//textarea");
         attachmentFilePath = By.xpath(
                 "//td//label[text()='File']/../..//input[@type='file'] | //div//label[text()='File']/..//input[@type='file']");
-        lookUpSearchPath = By.xpath("//span[@class='fa fa-search']");
-        lookUpIFramePath = By.xpath("//iframe[@id='iframeCustomLookupModalId']");
         approverDescription = By.xpath("//div/label[text()=' Description ']/../span/textarea");
         acknowledgementCheckboxPath = By.xpath("//input[@type='checkbox' and @value='I Agree']");
     }
@@ -260,15 +258,6 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     /**
-     * Clicking on flextable top button when one flextable is present in the page
-     * 
-     * @param buttonName
-     */
-    public void clickOnPhaseFlexTableButton(String buttonName, String flextableName) {
-        govgrants.flexTable().clickTableTopRightButton(flextableName, buttonName);
-    }
-
-    /**
      * Handles selecting a record in the flextable
      * 
      * @param uniqueColumnValue
@@ -426,14 +415,7 @@ public class ProjectManager extends ProjectWebServices {
      */
     public void fillInApproverDetails(String approverName) {
         reiDriver.WaitFor().makeThreadSleep(700);
-        reiDriver.findMyElement().getElement(By.xpath("//span[@class='lookupInput']//input")).clear();
-        reiDriver.findMyElement().getElement(By.xpath("//span[@class='lookupInput']//input")).sendKeys(approverName);
-        reiDriver.WaitFor().WaitForElementToBePresent(lookUpSearchPath).click();
-        reiDriver.switchTo().switchToFrame(lookUpIFramePath);
-        reiDriver.WaitFor().makeThreadSleep(1000);
-        govgrants.flexTable().clickTableActionIcons("Select", approverName);
-        reiDriver.WaitFor().makeThreadSleep(500);
-        reiDriver.switchTo().switchToParentFrame();
+        govgrants.inputForms().inputFormDataByFieldApiName("Name__c", approverName);
         reiDriver.WaitFor().makeThreadSleep(500);
         reiDriver.textInput().clearText(approverDescription);
         reiDriver.textInput().enterText(approverDescription, defaultLongText);
@@ -752,7 +734,7 @@ public class ProjectManager extends ProjectWebServices {
         quickSearchOnTable(awardName, "ActiveGrants");
         clickOnFlexTableIcon("View", awardName);
         clickOnSubtab("Subawards");
-        clickOnFlextableRowButton("View", awardId, "Subawards");
+        clickOnFlextableRowButton("RelatedAwards1", "View", awardId);
     }
 
     /**
@@ -776,8 +758,7 @@ public class ProjectManager extends ProjectWebServices {
     public void fillingUpStandardForm(String formName, DataTable dataTable) {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         clickOnSubtab(dataTableMap.get("Navigation").get("Step 1"));
-        clickOnFlextableRowButton(dataTableMap.get("FlexTable").get("Step 1"), formName,
-                dataTableMap.get("FlexTable").get("Step 2"));
+        clickOnFlextableRowButton(dataTableMap.get("FlexTable").get("Step 2"), dataTableMap.get("FlexTable").get("Step 1"), formName);
         govgrants.inputForms().completeFillingStandardForm();
         clickOnPageButton(dataTableMap.get("Form Button").get("Step 1"));
         clickOnPageButton(dataTableMap.get("Form Button").get("Step 2"));

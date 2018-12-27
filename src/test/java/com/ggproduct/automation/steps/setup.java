@@ -31,8 +31,8 @@ public class setup {
         setupController.initializer();
     }
 
-    @After
+    /*@After
     public void wrapUp(Scenario scenario) {
         setupController.theEnd(scenario);
-    }
+    }*/
 }
