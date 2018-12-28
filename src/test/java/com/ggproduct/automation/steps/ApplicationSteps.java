@@ -9,7 +9,6 @@ import com.ggproduct.automation.pageobjects.ApplicationPage;
 
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.When;
 
 public class ApplicationSteps {
     ApplicationPage applicationPage;
@@ -68,11 +67,6 @@ public class ApplicationSteps {
     @Given("^I complete \"([^\"]*)\" review form as \"([^\"]*)\"$")
     public void completeReviewForm(String noOfReviewers, DataTable dataTable, String reviewers) throws IOException {
         applicationPage.completeReviewForm(noOfReviewers, dataTable, reviewers.split(","));
-    }
-
-    @When("^I complete filling in the Review form$")
-    public void fillInReviewForm() {
-        applicationPage.fillInReviewForm();
     }
 
     @Given("^I enter Subaward Abbreviation as \"([^\"]*)\"$")

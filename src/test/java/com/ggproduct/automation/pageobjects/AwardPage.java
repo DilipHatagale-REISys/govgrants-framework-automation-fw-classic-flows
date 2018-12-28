@@ -23,13 +23,13 @@ public class AwardPage extends ProjectManager  {
      */
     public void creationOfAward(String announcementName, String applicationName) {
         loginToggleToApp("As a Grantor", "EXE");
-        navigateToTab("Applications");
+        govgrants.mainPage().clickMainMenuBar("Applications");
         clickOnSidebar("Funding Decision Memo (FDM)", "Applications");
-        quickSearchOnTable(announcementName, "FDMList1");
-        clickOnFlexTableIcon("View", announcementName);
-        clickOnFlextableRowButton("Create Subaward", applicationName, "Recommended Applications");
+        govgrants.quickSearch().performTableSpecificQuickSearch("FDMList1", announcementName);
+        govgrants.flexTable().clickTableActionIcons("View", announcementName);
+        govgrants.flexTable().clickTableActionIcon("Create Subaward", applicationName, "Recommended Applications");
         clickOnConfirmationtBox("Yes");
-        clickOnPageButton("Save");
+        govgrants.pageDetails().clickAnyTopRightButton("Save");
     }
     
     /**
@@ -38,9 +38,9 @@ public class AwardPage extends ProjectManager  {
      * @param excelName
      */
     public void editionOfAward(String sheetName, String excelName) {
-        clickOnPageButton("Edit");
-        enterFieldValues(sheetName, excelName);
-        clickOnPageButton("Save");
+        govgrants.pageDetails().clickAnyTopRightButton("Edit");
+        govgrants.inputForms().enterInputFieldsFromExcelFile(excelName, sheetName);
+        govgrants.pageDetails().clickAnyTopRightButton("Save");
     }
     
     /**
@@ -48,8 +48,8 @@ public class AwardPage extends ProjectManager  {
      * @param rowValues
      */
     public void budgetAddtionInFundingAccountForAward(DataTable rowValues) {
-        clickOnSubtab("Budget");
-        fillFieldsForInlineTable("flexGridAwardFundingAccounts", "Edit", rowValues);
+        govgrants.pageDetails().clickSubTabsInsideTableView("Budget");
+        govgrants.flexTable().editFlexTableRowsInline("flexGridAwardFundingAccounts", "Edit", rowValues);
     }
     
     /**
@@ -58,9 +58,9 @@ public class AwardPage extends ProjectManager  {
      * @param rowValues
      */
     public void budgetEditionForAward(String lineItem, DataTable rowValues) {
-        clickOnSubtab("Budget");
-        clickOnFlextableRowButton("Add Line Items", lineItem, "Award Budget");
-        fillFieldsForInlineTable("inlineEditGridLineItem", "Edit", rowValues);
+        govgrants.pageDetails().clickSubTabsInsideTableView("Budget");
+        govgrants.flexTable().clickTableActionIcon("Add Line Items", lineItem, "Award Budget");
+        govgrants.flexTable().editFlexTableRowsInline("inlineEditGridLineItem", "Edit", rowValues);
         closeModal();
     }
     
@@ -70,10 +70,10 @@ public class AwardPage extends ProjectManager  {
      * @param excelName
      */
     public void additionOfPaymentRequestToAward(String sheetName, String excelName) {
-        clickOnSubtab("Management");
-        clickOnFlextableButton("New", "flexGridTnCSchedules");
-        enterFieldValues(sheetName, excelName);
-        clickOnModalButton("Save");
+        govgrants.pageDetails().clickSubTabsInsideTableView("Management");
+        govgrants.flexTable().clickTableTopRightButton("flexGridTnCSchedules", "New");
+        govgrants.inputForms().enterInputFieldsFromExcelFile(excelName, sheetName);
+        govgrants.modal().clickModalContentSpecificButton("Save");
         closeModal();
     }
     
@@ -83,10 +83,10 @@ public class AwardPage extends ProjectManager  {
      * @param excelName
      */
     public void additionOfProgressReportToAward(String sheetName, String excelName) {
-        clickOnSubtab("Management");
-        clickOnFlextableButton("New", "flexGridPaymentSchedules");
-        enterFieldValues(sheetName, excelName);
-        clickOnModalButton("Save");
+        govgrants.pageDetails().clickSubTabsInsideTableView("Management");
+        govgrants.flexTable().clickTableTopRightButton("flexGridPaymentSchedules", "New");
+        govgrants.inputForms().enterInputFieldsFromExcelFile(excelName, sheetName);
+        govgrants.modal().clickModalContentSpecificButton("Save");
         closeModal();
     }
     
@@ -96,10 +96,10 @@ public class AwardPage extends ProjectManager  {
      * @param excelName
      */
     public void creationOfRiskAssessment(String sheetName, String excelName) {
-        clickOnSubtab("Management");
-        clickOnFlextableButton("New", "flexGridAwardRiskAssessmentView");
-        enterFieldValues(sheetName, excelName);
-        clickOnPageButton("Save");
+        govgrants.pageDetails().clickSubTabsInsideTableView("Management");
+        govgrants.flexTable().clickTableTopRightButton("flexGridAwardRiskAssessmentView", "New");
+        govgrants.inputForms().enterInputFieldsFromExcelFile(excelName, sheetName);
+        govgrants.pageDetails().clickAnyTopRightButton("Save");
     }
     
     /**
@@ -108,11 +108,11 @@ public class AwardPage extends ProjectManager  {
      * @param fiscalApprover
      */
     public void approverSelectionOfRiskAssessment(String pragramApprover, String fiscalApprover) {
-        clickOnSubtab("Responsibilities");
-        clickOnFlextableRowButton("Edit", "Program Approver", "Approvers");
+        govgrants.pageDetails().clickSubTabsInsideTableView("Responsibilities");
+        govgrants.flexTable().clickTableActionIcon("Edit", "Program Approver", "Approvers");
         fillInApproverDetails(pragramApprover);
         closeModal();
-        clickOnFlextableRowButton("Edit", "Fiscal Approver", "Approvers");
+        govgrants.flexTable().clickTableActionIcon("Edit", "Fiscal Approver", "Approvers");
         fillInApproverDetails(fiscalApprover);
         closeModal();
     }
@@ -125,16 +125,16 @@ public class AwardPage extends ProjectManager  {
      */
     public void approvalOfRiskAssessmentInAward(String pragramApprover, String fiscalApprover) throws IOException {
         reloginToggleToApp("As a Grantor", pragramApprover);
-        navigateToTab("Monitoring");
+        govgrants.mainPage().clickMainMenuBar("Monitoring");
         clickOnSidebar("Pending Tasks", "My Tasks");
-        quickSearchOnTable("Approve Risk Assessment", "PhasePendingTasks");
-        clickOnFlexTableIcon("Start", "Approve Risk Assessment");
+        govgrants.quickSearch().performTableSpecificQuickSearch("PhasePendingTasks", "Approve Risk Assessment");
+        govgrants.flexTable().clickTableActionIcons("Start", "Approve Risk Assessment");
         clickOnApprovalDecisionBox("Approve");
         reloginToggleToApp("As a Grantor", fiscalApprover);
-        navigateToTab("Monitoring");
+        govgrants.mainPage().clickMainMenuBar("Monitoring");
         clickOnSidebar("Pending Tasks", "My Tasks");
-        quickSearchOnTable("Approve Risk Assessment", "PhasePendingTasks");
-        clickOnFlexTableIcon("Start", "Approve Risk Assessment");
+        govgrants.quickSearch().performTableSpecificQuickSearch("PhasePendingTasks", "Approve Risk Assessment");
+        govgrants.flexTable().clickTableActionIcons("Start", "Approve Risk Assessment");
         clickOnApprovalDecisionBox("Approve");
     }
     
@@ -145,14 +145,14 @@ public class AwardPage extends ProjectManager  {
      * @param executiveApprover
      */
     public void approverSelectionOfAward(String pragramApprover, String fiscalApprover, String executiveApprover) {
-        clickOnSubtab("Responsibilities");
-        clickOnFlextableRowButton("Edit", "Program Approver", "Approvers");
+        govgrants.pageDetails().clickSubTabsInsideTableView("Responsibilities");
+        govgrants.flexTable().clickTableActionIcon("Edit", "Program Approver", "Approvers");
         fillInApproverDetails(pragramApprover);
         closeModal();
-        clickOnFlextableRowButton("Edit", "Fiscal Approver", "Approvers");
+        govgrants.flexTable().clickTableActionIcon("Edit", "Fiscal Approver", "Approvers");
         fillInApproverDetails(fiscalApprover);
         closeModal();
-        clickOnFlextableRowButton("Edit", "Fiscal Approver", "Approvers");
+        govgrants.flexTable().clickTableActionIcon("Edit", "Fiscal Approver", "Approvers");
         fillInApproverDetails(executiveApprover);
         closeModal();
     }
@@ -166,14 +166,14 @@ public class AwardPage extends ProjectManager  {
      */
     public void acceptanceOfAward(String subrecipientUser, String awardName, String comments) throws IOException {
         reloginToGrantsPortal(subrecipientUser);
-        navigateToTab("Grants");
+        govgrants.mainPage().clickMainMenuBar("Grants");
         clickOnSidebar("Pending Tasks", "My Tasks");
-        quickSearchOnTable(awardName, "PhasePendingTasks");
-        clickOnFlexTableIcon("Start", awardName);
+        govgrants.quickSearch().performTableSpecificQuickSearch("PhasePendingTasks", awardName);
+        govgrants.flexTable().clickTableActionIcons("Start", awardName);
         try {
-            clickOnPageButton("Accept");
+            govgrants.pageDetails().clickAnyTopRightButton("Accept");
         } catch (Exception ex) {
-            clickOnPageButton("Accept after Approval");
+            govgrants.pageDetails().clickAnyTopRightButton("Accept after Approval");
         }
         enteringCommentsOnConfirmation(comments, "OK");
     }
@@ -184,12 +184,12 @@ public class AwardPage extends ProjectManager  {
      * @param excelFileName
      */
     public void initiateReviewForAward(String sheetName, String excelName) {
-        clickOnSubtab("Responsibilities");
-        clickOnFlextableButton("New", "flexGridGrantorAwardReviewer");
-        enterFieldValues(sheetName, excelName);
-        clickOnModalButton("Save");
+        govgrants.pageDetails().clickSubTabsInsideTableView("Responsibilities");
+        govgrants.flexTable().clickTableTopRightButton("flexGridGrantorAwardReviewer", "New");
+        govgrants.inputForms().enterInputFieldsFromExcelFile(excelName, sheetName);
+        govgrants.modal().clickModalContentSpecificButton("Save");
         closeModal();
-        clickOnFlextableRowButton("Send for Review", "Created", "Peer Reviewers");
+        govgrants.flexTable().clickTableActionIcon("Send for Review", "Created", "Peer Reviewers");
     }
     
     /**
@@ -202,15 +202,15 @@ public class AwardPage extends ProjectManager  {
      */
     public void completeReviewForAward(String reviewer, String awardState, String awardId, String awardName, String awardOwner) throws IOException {
         reloginToggleToApp("As a Grantor", reviewer);
-        navigateToTab("Grants");
+        govgrants.mainPage().clickMainMenuBar("Grants");
         clickOnSidebar("Pending Tasks", "My Tasks");
-        quickSearchOnTable(awardName, "PhasePendingTasks");
-        clickOnFlexTableIcon("Start", awardName);
-        clickOnSubtab("Responsibilities");
-        clickOnFlextableRowButton("Enter Review", "Automation FO", "Peer Reviewers");
+        govgrants.quickSearch().performTableSpecificQuickSearch("PhasePendingTasks", awardName);
+        govgrants.flexTable().clickTableActionIcons("Start", awardName);
+        govgrants.pageDetails().clickSubTabsInsideTableView("Responsibilities");
+        govgrants.flexTable().clickTableActionIcon("Enter Review", "Automation FO", "Peer Reviewers");
         enterReview("Passed");
-        clickOnModalButton("Save");
-        clickOnModalButton("Submit Review");
+        govgrants.modal().clickModalContentSpecificButton("Save");
+        govgrants.modal().clickModalContentSpecificButton("Submit Review");
         closeModal();
         reloginToViewAward(awardState, awardId, awardName, awardOwner);
     }
@@ -226,24 +226,24 @@ public class AwardPage extends ProjectManager  {
     public void approversApproveAward(String programApprover, String fiscalApprover, String executiveApprover, String awardName) throws IOException {
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         reloginToggleToApp("As a Grantor", programApprover);
-        navigateToTab("Announcements");
+        govgrants.mainPage().clickMainMenuBar("Announcements");
         clickOnSidebar("Pending Tasks", "My Tasks");
-        quickSearchOnTable(awardName, "PhasePendingTasks");
-        clickOnFlexTableIcon("Start", awardName);
+        govgrants.quickSearch().performTableSpecificQuickSearch("PhasePendingTasks", awardName);
+        govgrants.flexTable().clickTableActionIcons("Start", awardName);
         clickOnApprovalDecisionBox("Approve");
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         reloginToggleToApp("As a Grantor", fiscalApprover);
-        navigateToTab("Announcements");
+        govgrants.mainPage().clickMainMenuBar("Announcements");
         clickOnSidebar("Pending Tasks", "My Tasks");
-        quickSearchOnTable(awardName, "PhasePendingTasks");
-        clickOnFlexTableIcon("Start", awardName);
+        govgrants.quickSearch().performTableSpecificQuickSearch("PhasePendingTasks", awardName);
+        govgrants.flexTable().clickTableActionIcons("Start", awardName);
         clickOnApprovalDecisionBox("Approve");
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         reloginToggleToApp("As a Grantor", executiveApprover);
-        navigateToTab("Announcements");
+        govgrants.mainPage().clickMainMenuBar("Announcements");
         clickOnSidebar("Pending Tasks", "My Tasks");
-        quickSearchOnTable(awardName, "PhasePendingTasks");
-        clickOnFlexTableIcon("Start", awardName);
+        govgrants.quickSearch().performTableSpecificQuickSearch("PhasePendingTasks", awardName);
+        govgrants.flexTable().clickTableActionIcons("Start", awardName);
         clickOnApprovalDecisionBox("Approve");
     }
     
@@ -253,11 +253,11 @@ public class AwardPage extends ProjectManager  {
      * @param excelName
      */
     public void initiateSiteVisitInAward(String sheetName, String excelName) {
-        clickOnSubtab("Management");
-        clickOnFlextableButton("Initiate Site Visit", "GrantorSiteVisitsAward");
-        enterFieldValues(sheetName, excelName);
-        clickOnModalButton("Save And Close");
-        clickOnPageButton("Cancel");
+        govgrants.pageDetails().clickSubTabsInsideTableView("Management");
+        govgrants.flexTable().clickTableTopRightButton("GrantorSiteVisitsAward", "Initiate Site Visit");
+        govgrants.inputForms().enterInputFieldsFromExcelFile(excelName, sheetName);
+        govgrants.modal().clickModalContentSpecificButton("Save And Close");
+        govgrants.pageDetails().clickAnyTopRightButton("Cancel");
         reiDriver.findMyElement().getElement(By.xpath("//a[contains(@id,'award__c')]")).click();
     }
     
@@ -267,11 +267,11 @@ public class AwardPage extends ProjectManager  {
      * @param excelName
      */
     public void initiateDeskReviewInAward(String sheetName, String excelName) {
-        clickOnSubtab("Management");
-        clickOnFlextableButton("Initiate Desk Review", "GrantorDeskReviewAward");
-        enterFieldValues(sheetName, excelName);
-        clickOnModalButton("Save And Close");
-        clickOnPageButton("Cancel");
+        govgrants.pageDetails().clickSubTabsInsideTableView("Management");
+        govgrants.flexTable().clickTableTopRightButton( "GrantorDeskReviewAward", "Initiate Desk Review");
+        govgrants.inputForms().enterInputFieldsFromExcelFile(excelName, sheetName);
+        govgrants.modal().clickModalContentSpecificButton("Save And Close");
+        govgrants.pageDetails().clickAnyTopRightButton("Cancel");
         reiDriver.findMyElement().getElement(By.xpath("//a[contains(@id,'award__c')]")).click();
     }
 }

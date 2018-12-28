@@ -19,11 +19,11 @@ public class MonitoringPage extends ProjectManager {
             DataTable dataTable) throws IOException {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
-        navigateToTab(dataTableMap.get("Navigation").get("Step 2"));
+        govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
         clickOnSidebar(dataTableMap.get("Left Panel").get("Step 1"), dataTableMap.get("Left Panel").get("Step 2"));
         expandGrid(awardName);
         expandGrid(awardName);
-        quickSearchOnGridTable(dataTableMap.get("FlexTable").get("Step 2"), awardId, recordName);
-        clickOnFlexTableIcon(dataTableMap.get("Button").get("Step 1"), recordName);
+        govgrants.quickSearch().performEnhancedGridSearch(dataTableMap.get("FlexTable").get("Step 2"), awardId, recordName);
+        govgrants.flexTable().clickTableActionIcons(dataTableMap.get("Button").get("Step 1"), recordName);
     }
 }
