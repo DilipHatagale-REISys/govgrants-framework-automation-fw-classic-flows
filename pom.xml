@@ -163,6 +163,11 @@
 			<version>3.0.1</version>
 		</dependency>
 		<dependency>
+			<groupId>com.pojosontheweb</groupId>
+			<artifactId>monte-repack</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+		<dependency>
 			<groupId>com.automation</groupId>
 			<artifactId>REI-AutomationFramework</artifactId>
 			<version>${rei.version}</version>
@@ -233,7 +238,7 @@
 							<goal>generateRunners</goal>
 						</goals>
 						<configuration>
-							<glue>							
+							<glue>
 								<package>com.ggproduct.automation.steps</package>
 								<package>com.automation.rei.govgrantsSteps</package>
 							</glue>
