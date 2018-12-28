@@ -160,7 +160,12 @@
            <groupId>org.apache.maven.shared</groupId>
            <artifactId>maven-invoker</artifactId>
            <version>3.0.1</version>
-        </dependency> 
+        </dependency>
+        <dependency>
+			<groupId>com.pojosontheweb</groupId>
+			<artifactId>monte-repack</artifactId>
+			<version>1.0.1</version>
+		</dependency> 
 		<dependency>
 			<groupId>com.automation</groupId>
 			<artifactId>REI-AutomationFramework</artifactId>
@@ -234,6 +239,7 @@
 						<configuration>
 							<glue>
 								<package>com.ggproduct.automation.steps</package>
+                                <package>com.automation.rei.steps</package>
 							</glue>
 							<featuresDirectory>src/test/resources/features/</featuresDirectory>
 							<plugins>
