@@ -258,7 +258,7 @@ public class ProjectManager extends ProjectWebServices {
         reiDriver.WaitFor().makeThreadSleep(1000);
         govgrants.modal().clickModalContentSpecificButton("Save");
     }
-    
+
     /**
      * Handles entering the comments in a confirmation box and click OK
      * 
@@ -333,42 +333,12 @@ public class ProjectManager extends ProjectWebServices {
         govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("Edition Buttons").get("Step 2"));
     }
 
-    /**
-     * Handles association of contact, focus area and objective
-     * 
-     * @param contact
-     * @param focusArea
-     * @param objective
-     */
-    public void associationOfRecords(String contact, String focusArea, String objective, DataTable dataTable) {
+    public void associationOfRecords(String noOfRecords, DataTable dataTable, String... recordsToAssociate) {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
-        // Contact association
-        govgrants.pageDetails().clickSubTabsInsideTableView(dataTableMap.get("Contact").get("Step 1"));
-        govgrants.flexTable().clickTableTopRightButton(dataTableMap.get("Contact").get("Step 3"),
-                dataTableMap.get("Contact").get("Step 2"));
-        chooseRecordForAssociation(dataTableMap.get("Contact").get("Step 4"), dataTableMap.get("Contact").get("Step 5"),
-                contact.split(","));
-        closeModal();
-
-        // Focus Area association
-        govgrants.pageDetails().clickSubTabsInsideTableView(dataTableMap.get("Focus Area").get("Step 1"));
-        govgrants.flexTable().clickTableTopRightButton(dataTableMap.get("Focus Area").get("Step 3"),
-                dataTableMap.get("Focus Area").get("Step 2"));
-        chooseRecordForAssociation(dataTableMap.get("Focus Area").get("Step 4"),
-                dataTableMap.get("Focus Area").get("Step 5"), focusArea.split(","));
-        try {
-            closeModal();
-        } catch (Exception ex) {
-            reiDriver.get().getRefresh();
+        int numberOfRecords = Integer.parseInt(noOfRecords);
+        for (int i = 1; i <= numberOfRecords; i++) {
+            singleRecordAssociation(i, recordsToAssociate[i - 1], dataTableMap);
         }
-
-        // Objective association
-        govgrants.pageDetails().clickSubTabsInsideTableView(dataTableMap.get("Objective").get("Step 1"));
-        govgrants.flexTable().clickTableTopRightButton(dataTableMap.get("Objective").get("Step 3"),
-                dataTableMap.get("Objective").get("Step 2"));
-        chooseRecordForAssociation(dataTableMap.get("Objective").get("Step 4"),
-                dataTableMap.get("Objective").get("Step 5"), objective.split(","));
-        closeModal();
     }
 
     /**
@@ -480,7 +450,7 @@ public class ProjectManager extends ProjectWebServices {
      * @param announcementOwner
      * @throws IOException
      */
-    public void completePeerReview(String reviewer, String recordName, String recordOwner, DataTable dataTable)
+    public void completePeerReview(String reviewer, String recordName, DataTable dataTable)
             throws IOException {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         reloginToggleToApp(dataTableMap.get("Reviewer Navigation").get("Step 1"), reviewer);
@@ -496,6 +466,10 @@ public class ProjectManager extends ProjectWebServices {
         govgrants.modal().clickModalContentSpecificButton(dataTableMap.get("Enter Review").get("Step 3"));
         govgrants.modal().clickModalContentSpecificButton(dataTableMap.get("Enter Review").get("Step 4"));
         closeModal();
+    }
+    
+    public void reloginToViewRecord(String recordName, String recordOwner, DataTable dataTable) throws IOException {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         reloginToggleToApp(dataTableMap.get("Owner Navigation").get("Step 1"), recordOwner);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Owner Navigation").get("Step 2"));
         clickOnSidebar(dataTableMap.get("Owner Navigation").get("Step 3"),
@@ -533,20 +507,22 @@ public class ProjectManager extends ProjectWebServices {
      * @param awardOwner
      * @throws IOException
      */
-    public void reloginToViewAward(String awardState, String awardId, String awardName, String awardOwner)
-            throws IOException {
+    public void reloginToViewAward(String awardState, String awardId, String awardName, String awardOwner,
+            DataTable dataTable) throws IOException {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         try {
-            loginToggleToApp("As a Grantor", awardOwner);
+            loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), awardOwner);
         } catch (Exception ex) {
-            reloginToggleToApp("As a Grantor", awardOwner);
+            reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), awardOwner);
         }
-        govgrants.mainPage().clickMainMenuBar("Grants");
-        clickOnSidebar("Grants and Subawards", "Grants, Awards & Amendments");
-        changeFlexTableView(awardState + " Grants");
-        govgrants.quickSearch().performTableSpecificQuickSearch("ActiveGrants", awardName);
-        govgrants.flexTable().clickTableActionIcons("View", awardName);
-        govgrants.pageDetails().clickSubTabsInsideTableView("Subawards");
-        govgrants.flexTable().clickTableActionIcon("RelatedAwards1", "View", awardId);
+        govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
+        clickOnSidebar(dataTableMap.get("Navigation").get("Step 3"), dataTableMap.get("Navigation").get("Step 4"));
+        changeFlexTableView(awardState + " " + dataTableMap.get("FlexTable").get("Step 1"));
+        govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 2"), awardName);
+        govgrants.flexTable().clickTableActionIcons(dataTableMap.get("FlexTable").get("Step 3"), awardName);
+        govgrants.pageDetails().clickSubTabsInsideTableView(dataTableMap.get("Subaward").get("Step 1"));
+        govgrants.flexTable().clickTableActionIcon(dataTableMap.get("Subaward").get("Step 2"),
+                dataTableMap.get("Subaward").get("Step 2"), awardId);
     }
 
     /**
@@ -563,7 +539,8 @@ public class ProjectManager extends ProjectWebServices {
         reloginToGrantsPortal(subrecipient);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 1"));
         clickOnSidebar(dataTableMap.get("Left Panel").get("Step 1"), dataTableMap.get("Left Panel").get("Step 2"));
-        govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 1"), uniqueColumnValue);
+        govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 1"),
+                uniqueColumnValue);
         govgrants.flexTable().clickTableActionIcons(dataTableMap.get("FlexTable").get("Step 2"), uniqueColumnValue);
     }
 
@@ -658,7 +635,8 @@ public class ProjectManager extends ProjectWebServices {
         reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), approver);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
         clickOnSidebar(dataTableMap.get("FlexTable").get("Step 1"), dataTableMap.get("FlexTable").get("Step 2"));
-        govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 3"), recordName);
+        govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 3"),
+                recordName);
         govgrants.flexTable().clickTableActionIcons(dataTableMap.get("Approval").get("Step 1"), recordName);
         clickOnApprovalDecisionBox(dataTableMap.get("Approval").get("Step 2"));
     }
@@ -667,6 +645,16 @@ public class ProjectManager extends ProjectWebServices {
         govgrants.flexTable().clickTableActionIcon(dataTableMap.get("FlexTable").get("Step 1"),
                 dataTableMap.get("FlexTable").get("Step 2"), dataTableMap.get("FlexTable").get("Step 3"));
         uploadFile(fileName, dataTableMap.get("Upload").get("Step 1"), dataTableMap.get("Upload").get("Step 2"));
+        closeModal();
+    }
+
+    private void singleRecordAssociation(int qNumber, String recordToAssociate,
+            Map<String, Map<String, String>> dataTableMap) {
+        govgrants.pageDetails().clickSubTabsInsideTableView(dataTableMap.get("Associate " + qNumber).get("Step 1"));
+        govgrants.flexTable().clickTableTopRightButton(dataTableMap.get("Associate " + qNumber).get("Step 3"),
+                dataTableMap.get("Associate " + qNumber).get("Step 2"));
+        chooseRecordForAssociation(dataTableMap.get("Associate " + qNumber).get("Step 4"),
+                dataTableMap.get("Associate " + qNumber).get("Step 5"), recordToAssociate.split(";"));
         closeModal();
     }
 

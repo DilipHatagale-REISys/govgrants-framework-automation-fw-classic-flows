@@ -45,50 +45,6 @@ public class AnnouncementPage extends ProjectManager {
     }
 
     /**
-     * Handles associating an agency in case of directed announcement
-     * 
-     * @param agency
-     */
-    public void associateAgencyToAnnouncement(String agency) {
-        govgrants.pageDetails().clickSubTabsInsideTableView("Overview");
-        govgrants.flexTable().clickTableTopRightButton("inlineEditGridFormulaGrantsAwardOrganizations",
-                "Add Organizations");
-        chooseRecordForAssociation("Add", agency, "SoleSourceAwardRecipientsTable");
-        closeModal();
-    }
-
-    /**
-     * Handles associating an agency and filling the amount in case of formula
-     * announcement
-     * 
-     * @param agency
-     * @param amount
-     */
-    public void associateAgencyAmountToAnnouncement(String agency, DataTable rowValues) {
-        associateAgencyToAnnouncement(agency);
-        govgrants.flexTable().editFlexTableRowsInline("inlineEditGridSoleSourceAwardOrganizations", "Edit", rowValues);
-    }
-
-    /**
-     * Handles addition of funding account to an announcement
-     * 
-     * @param fundingAccount
-     * @param amount
-     */
-    public void addFundingAccountToAnnouncement(String fundingAccount, DataTable dataTable) {
-        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
-        DataTable inlineEditDataTable = seperateInlineDataTable(dataTableMap);
-        govgrants.pageDetails().clickSubTabsInsideTableView(dataTableMap.get("Navigation").get("Step 1"));
-        govgrants.flexTable().clickTableTopRightButton(dataTableMap.get("FlexTable").get("Step 2"),
-                dataTableMap.get("FlexTable").get("Step 1"));
-        chooseRecordForAssociation(dataTableMap.get("Funding Account").get("Step 1"),
-                dataTableMap.get("Funding Account").get("Step 2"), fundingAccount.split(","));
-        closeModal();
-        govgrants.flexTable().editFlexTableRowsInline(dataTableMap.get("FlexTable").get("Step 2"), dataTableMap.get("Button").get("Step 1"),
-                inlineEditDataTable);
-    }
-
-    /**
      * Handles addition of budget details to an announcement
      * 
      * @param budgetPeriod

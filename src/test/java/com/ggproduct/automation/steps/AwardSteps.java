@@ -22,11 +22,6 @@ public class AwardSteps {
         awardPage.creationOfAward(announcementName, applicationName);
     }
     
-    @Given("^I complete the Award fields from the sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
-    public void editionOfAward(String sheetName, String excelName) {
-        awardPage.editionOfAward(sheetName, excelName);
-    }
-    
     @Given("^I add budget in the Award Funding Account$")
     public void budgetAddtionInFundingAccountForAward(DataTable rowValues) {
         awardPage.budgetAddtionInFundingAccountForAward(rowValues);
@@ -37,63 +32,13 @@ public class AwardSteps {
         awardPage.budgetEditionForAward(lineItem, rowValues);
     }
     
-    @Given("^I add the Payment Request schedule from sheet \"([^\"]*)\" in excel \"([^\"]*)\" to an award$")
-    public void additionOfPaymentRequestToAward(String sheetName, String excelName) {
-        awardPage.additionOfPaymentRequestToAward(sheetName, excelName);
-    }
-    
-    @Given("^I add the Progress Report schedule from sheet \"([^\"]*)\" in excel \"([^\"]*)\" to an award$")
-    public void additionOfProgressReportToAward(String sheetName, String excelName) {
-        awardPage.additionOfProgressReportToAward(sheetName, excelName);
-    }
-    
-    @Given("^I create a Risk Assessment from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
-    public void creationOfRiskAssessment(String sheetName, String excelName) {
-        awardPage.creationOfRiskAssessment(sheetName, excelName);
-    }
-    
-    @Given("^I select the Program Approver as \"([^\"]*)\" and Fiscal Approver as \"([^\"]*)\" for Risk Assessment$")
-    public void approverSelectionOfRiskAssessment(String pragramApprover, String fiscalApprover) {
-        awardPage.approverSelectionOfRiskAssessment(pragramApprover, fiscalApprover);
-    }
-    
-    @Given("^I approve Risk Assessment as Program Approver \"([^\"]*)\" and Fiscal Approver \"([^\"]*)\"$")
-    public void approvalOfRiskAssessmentInAward(String pragramApprover, String fiscalApprover) throws IOException {
-        awardPage.approvalOfRiskAssessmentInAward(pragramApprover, fiscalApprover);
-    }
-    
-    @Given("^I select the Program Approver as \"([^\"]*)\", Fiscal Approver as \"([^\"]*)\" and Executive Approver as \"([^\"]*)\" for Award$")
-    public void approverSelectionOfAward(String pragramApprover, String fiscalApprover, String executiveApprover) {
-        awardPage.approverSelectionOfAward(pragramApprover, fiscalApprover, executiveApprover);
+    @Given("^I create a monitoring record from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
+    public void creationOfMonitoringRecord(String sheetName, String excelName, DataTable dataTable) {
+        awardPage.creationOfMonitoringRecord(sheetName, excelName, dataTable);
     }
     
     @Given("^The subrecipient user \"([^\"]*)\" accepts the award \"([^\"]*)\" with comments \"([^\"]*)\"$")
-    public void acceptanceOfAward(String subrecipientUser, String awardName, String comments) throws IOException {
-        awardPage.acceptanceOfAward(subrecipientUser, awardName, comments);
-    }
-    
-    @Given("^I assign, initiate a reviewer for an award from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
-    public void initiateReviewForAward(String sheetName, String excelName) {
-        awardPage.initiateReviewForAward(sheetName, excelName);
-    }
-    
-    @Given("^Review is completed as user \"([^\"]*)\" for the \"([^\"]*)\" award \"([^\"]*)\" with name \"([^\"]*)\" created by \"([^\"]*)\"$")
-    public void completeReviewForAward(String reviewer, String awardState, String awardId, String awardName, String awardOwner) throws IOException {
-        awardPage.completeReviewForAward(reviewer, awardState, awardId, awardName, awardOwner);
-    }
-    
-    @Given("^Approvers \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\" approve the award \"([^\"]*)\"$")
-    public void approversApproveAward(String programApprover, String fiscalApprover, String executiveApprover, String awardName) throws IOException {
-        awardPage.approversApproveAward(programApprover, fiscalApprover, executiveApprover, awardName);
-    }
-    
-    @Given("^I initiate Site Visit from sheet \"([^\"]*)\" in excel \"([^\"]*)\" for award$")
-    public void initiateSiteVisitInAward(String sheetName, String excelName) {
-        awardPage.initiateSiteVisitInAward(sheetName, excelName);
-    }
-    
-    @Given("^I initiate Desk Review from sheet \"([^\"]*)\" in excel \"([^\"]*)\" for award$")
-    public void initiateDeskReviewInAward(String sheetName, String excelName) {
-        awardPage.initiateDeskReviewInAward(sheetName, excelName);
+    public void acceptanceOfAward(String subrecipientUser, String awardName, String comments, DataTable dataTable) throws IOException {
+        awardPage.acceptanceOfAward(subrecipientUser, awardName, comments, dataTable);
     }
 }

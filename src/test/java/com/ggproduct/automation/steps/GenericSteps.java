@@ -46,9 +46,9 @@ public class GenericSteps {
         projectManager.editionOfRecord(sheetName, excelFileName, dataTable);
     }
     
-    @Given("^I associate Contact \"([^\"]*)\", Focus Area \"([^\"]*)\", Objective \"([^\"]*)\"$")
-    public void associationOfRecords(String contact, String focusArea, String objective, DataTable dataTable) {
-        projectManager.associationOfRecords(contact, focusArea, objective, dataTable);
+    @Given("^I associate \"([^\"]*)\" records \"([^\"]*)\"$")
+    public void associationOfRecords(String noOfRecords, String recordsToAssociate, DataTable dataTable) {
+        projectManager.associationOfRecords(noOfRecords, dataTable, recordsToAssociate.split(","));
     }
     
     @Given("^I associate Participant \"([^\"]*)\"$")
@@ -81,9 +81,9 @@ public class GenericSteps {
         projectManager.initiateReviewForAnnouncement(sheetName, excelFileName, dataTable);
     }
     
-    @Given("^Review is completed as user \"([^\"]*)\" for the record \"([^\"]*)\" created by \"([^\"]*)\"$")
-    public void completePeerReview(String reviewer, String recordName, String recordOwner, DataTable dataTable) throws IOException {
-        projectManager.completePeerReview(reviewer, recordName, recordOwner, dataTable);
+    @Given("^Review is completed as user \"([^\"]*)\" for the record \"([^\"]*)\"$")
+    public void completePeerReview(String reviewer, String recordName, DataTable dataTable) throws IOException {
+        projectManager.completePeerReview(reviewer, recordName, dataTable);
     }
     
     @Given("^\"([^\"]*)\" Approvers \"([^\"]*)\" approve the record \"([^\"]*)\"$")
@@ -91,9 +91,14 @@ public class GenericSteps {
         projectManager.approversApproveRecord(noOfApprovers, recordName, dataTable, approvers.split(","));
     }
     
+    @Given("^I login and view the record \"([^\"]*)\" as \"([^\"]*)\"$")
+    public void reloginToViewRecord(String recordName, String recordOwner, DataTable dataTable) throws IOException {
+        projectManager.reloginToViewRecord(recordName, recordOwner, dataTable);
+    }
+    
     @Given("^I login and view the \"([^\"]*)\" award \"([^\"]*)\" with name \"([^\"]*)\" as User \"([^\"]*)\"$")
-    public void reloginToViewAward(String awardState, String awardId, String awardName, String awardOwner) throws IOException {
-        projectManager.reloginToViewAward(awardState, awardId, awardName, awardOwner);
+    public void reloginToViewAward(String awardState, String awardId, String awardName, String awardOwner, DataTable dataTable) throws IOException {
+        projectManager.reloginToViewAward(awardState, awardId, awardName, awardOwner, dataTable);
     }
     
     @Given("^Subrecipient \"([^\"]*)\" receives the task for \"([^\"]*)\"$")

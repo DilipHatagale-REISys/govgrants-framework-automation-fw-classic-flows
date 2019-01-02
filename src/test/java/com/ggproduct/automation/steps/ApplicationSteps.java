@@ -18,13 +18,13 @@ public class ApplicationSteps {
     }
 
     @Given("^I qualify the announcement \"([^\"]*)\" as user \"([^\"]*)\"$")
-    public void qualifyAnnouncement(String announcementName, String user) {
-        applicationPage.qualifyAnnouncement(announcementName, user);
+    public void qualifyAnnouncement(String announcementName, String user, DataTable dataTable) {
+        applicationPage.qualifyAnnouncement(announcementName, user, dataTable);
     }
 
     @Given("^I create an Application from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
-    public void applicationCreation(String sheetName, String excelFileName) {
-        applicationPage.applicationCreation(sheetName, excelFileName);
+    public void applicationCreation(String sheetName, String excelFileName, DataTable dataTable) {
+        applicationPage.applicationCreation(sheetName, excelFileName, dataTable);
     }
 
     @Given("^I add focus area \"([^\"]*)\" to the application$")

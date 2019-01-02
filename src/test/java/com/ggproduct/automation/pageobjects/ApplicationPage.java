@@ -20,13 +20,14 @@ public class ApplicationPage extends ProjectManager {
      * @param announcementName
      * @param user
      */
-    public void qualifyAnnouncement(String announcementName, String user) {
-        loginToggleToApp("Grants Portal", user);
-        govgrants.mainPage().clickMainMenuBar("Opportunities");
-        clickOnSidebar("Active", "Opportunities");
-        govgrants.quickSearch().performTableSpecificQuickSearch("popupflextable", announcementName);
-        govgrants.flexTable().clickTableActionIcons("View", announcementName);
-        govgrants.pageDetails().clickAnyTopRightButton("Qualify");
+    public void qualifyAnnouncement(String announcementName, String user, DataTable dataTable) {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
+        govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
+        clickOnSidebar(dataTableMap.get("Navigation").get("Step 3"), dataTableMap.get("Navigation").get("Step 4"));
+        govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 1"), announcementName);
+        govgrants.flexTable().clickTableActionIcons(dataTableMap.get("FlexTable").get("Step 2"), announcementName);
+        govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("FlexTable").get("Step 3"));
     }
 
     /**
@@ -35,11 +36,12 @@ public class ApplicationPage extends ProjectManager {
      * @param sheetName
      * @param excelFileName
      */
-    public void applicationCreation(String sheetName, String excelFileName) {
-        govgrants.pageDetails().clickAnyTopRightButton("Create Application");
+    public void applicationCreation(String sheetName, String excelFileName, DataTable dataTable) {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("Creation").get("Step 1"));
         govgrants.inputForms().enterInputFieldsFromExcelFile(excelFileName, sheetName);
-        govgrants.modal().clickModalContentSpecificButton("Save And Close");
-        govgrants.pageDetails().clickAnyTopRightButton("Save");
+        govgrants.modal().clickModalContentSpecificButton(dataTableMap.get("Creation").get("Step 2"));
+        govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("Creation").get("Step 3"));
     }
 
     /**

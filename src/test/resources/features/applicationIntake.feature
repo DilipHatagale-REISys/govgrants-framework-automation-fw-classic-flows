@@ -3,7 +3,12 @@ Feature: Validate all scenarios in the Application Intake
 
 	Background: Qualify Announcement and Create Application
 	Given I qualify the announcement "Automation Announcement Dec25" as user "SPI"
+	| Actions 	 | Step 1 	      | Step 2		  | Step 3  | Step 4 	    |
+	| Navigation | Grants Portal  | Opportunities | Active  | Opportunities |
+	| FlexTable  | popupflextable | View		  | Qualify | 				|
 	And I create an Application from sheet "Creation" in excel "Application_Field_Values.xlsx"
+	| Actions  | Step 1 	        | Step 2		 | Step 3 |
+	| Creation | Create Application | Save And Close | Save   |
 
   	@34044 @applicationCreation @applicationIntake
   	Scenario: Creating an Application
@@ -66,6 +71,10 @@ Feature: Validate all scenarios in the Application Intake
 	Given I complete the fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
 	| Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
+    And I associate "1" records "FA--21"
+	| Actions 	  | Step 1  | Step 2	     | Step 3  			  					   | Step 4  | Step 5  		  |
+    | Associate 1 | Budget  | Add Focus Area | flexGridAnnouncementFundingAccountGrantor | Add	 | popupflextable |
+ 
 	And I add focus area "00005" to the application
 	| Actions 	 | Step 1 | Step 2		   | Step 3 	  |
 	| Navigation | Budget | Add Focus Area | FocusAreaApp |
@@ -116,7 +125,7 @@ Feature: Validate all scenarios in the Application Intake
     Given I login to "As a Grantor" app as "<User>" User
     When I navigate to "Applications" tab
 	And I navigate to "Applications" content inside "Applications" subheader on left panel
-	When I click toggle button for "Submitted Applications"
+	When I click toggle button to select "Submitted Applications"
 	And I perform quick search for "<Application Name>" in "ApplicantGrantorApplications" panel
 	When I click on "View" icon for "<Application Name>" inside table
 	Examples:
