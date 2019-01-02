@@ -12,7 +12,7 @@ Feature: Validate all scenarios for program
   	Scenario Outline: Verifying if the EXE,PM,PO has access to Internal Programs list view
     When I navigate to "Planning" tab
     And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-    When I click toggle button for "<Program flextable Header>"
+    And I click toggle button to select "<Program flextable Header>"
     Then I see that "Automation Program" has been added in flextable with Id "Programs"
     Examples:
     | Program flextable Header | Program Status |
@@ -111,11 +111,11 @@ Feature: Validate all scenarios for program
     Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate Contact "Automation EXE", Focus Area "00005", Objective "SPO-0006"
-    | Actions 	 | Step 1   | Step 2	| Step 3  			  				 | Step 4 	 | Step 5  				    |
-    | Contact    | Overview | Associate | ProgramContacts 				     | Add	  	 | AssociateProgramContacts |
-    | Focus Area | Setup	| Associate | flexGridGrantorServiceAreasProgram | Associate | popupflextable 		    |
-    | Objective  | Setup 	| Associate | RelatedProgramGoalsandObjectives   | Add	  	 | popupflextable 		    |
+    And I associate "3" records "Automation EXE,00005,SPO-0006"
+    | Actions 	  | Step 1   | Step 2	 | Step 3  			  				  | Step 4 	  | Step 5  				 |
+    | Associate 1 | Overview | Associate | ProgramContacts 				      | Add	  	  | AssociateProgramContacts |
+    | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Associate | popupflextable 		     |
+    | Associate 3 | Setup 	 | Associate | RelatedProgramGoalsandObjectives   | Add	  	  | popupflextable 		     |
     Given I select "2" approvers "Automation PM,Automation EXE"
     | Actions 	 | Step 1   				       | Step 2	| Step 3 			  |
     | Subtab	 | Responsibilities 			   | 		|		    		  |
@@ -141,11 +141,11 @@ Feature: Validate all scenarios for program
     Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate Contact "Automation EXE", Focus Area "00005", Objective "SPO-0006"
-    | Actions 	 | Step 1   | Step 2	| Step 3  			  				 | Step 4 	 | Step 5  				    |
-    | Contact    | Overview | Associate | ProgramContacts 				     | Add	  	 | AssociateProgramContacts |
-    | Focus Area | Setup	| Associate | flexGridGrantorServiceAreasProgram | Associate | popupflextable 		    |
-    | Objective  | Setup 	| Associate | RelatedProgramGoalsandObjectives   | Add	  	 | popupflextable 		    |
+    And I associate "3" records "Automation EXE,00005,SPO-0006"
+    | Actions 	  | Step 1   | Step 2	 | Step 3  			  				  | Step 4 	  | Step 5  				 |
+    | Associate 1 | Overview | Associate | ProgramContacts 				      | Add	  	  | AssociateProgramContacts |
+    | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Associate | popupflextable 		     |
+    | Associate 3 | Setup 	 | Associate | RelatedProgramGoalsandObjectives   | Add	  	  | popupflextable 		     |
     Given I select "2" approvers "Automation PM,Automation EXE"
     | Actions 	 | Step 1   				       | Step 2	| Step 3 			  |
     | Subtab	 | Responsibilities 			   | 		|		    		  |
@@ -186,11 +186,11 @@ Feature: Validate all scenarios for program
     Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate Contact "Automation EXE", Focus Area "00005", Objective "SPO-0006"
-    | Actions 	 | Step 1   | Step 2	| Step 3  			  				 | Step 4 	 | Step 5  				    |
-    | Contact    | Overview | Associate | ProgramContacts 				     | Add	  	 | AssociateProgramContacts |
-    | Focus Area | Setup	| Associate | flexGridGrantorServiceAreasProgram | Associate | popupflextable 		    |
-    | Objective  | Setup 	| Associate | RelatedProgramGoalsandObjectives   | Add	  	 | popupflextable 		    |
+    And I associate "3" records "Automation EXE,00005,SPO-0006"
+    | Actions 	  | Step 1   | Step 2	 | Step 3  			  				  | Step 4 	  | Step 5  				 |
+    | Associate 1 | Overview | Associate | ProgramContacts 				      | Add	  	  | AssociateProgramContacts |
+    | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Associate | popupflextable 		     |
+    | Associate 3 | Setup 	 | Associate | RelatedProgramGoalsandObjectives   | Add	  	  | popupflextable 		     |
     Given I select "2" approvers "Automation PM,Automation EXE"
     | Actions 	 | Step 1   				       | Step 2	| Step 3 			  |
     | Subtab	 | Responsibilities 			   | 		|		    		  |
@@ -217,7 +217,7 @@ Feature: Validate all scenarios for program
     And I re-login to "As a Grantor" app as "<User>" User
 	When I navigate to "Planning" tab
 	And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-	When I click toggle button for "Draft Internal Programs"
+	And I click toggle button to select "Draft Internal Programs"
     And I perform quick search for "<Program Name>" in "Programs" panel
     When I click on "View" icon for "<Program Name>" inside table 
     And I click on "Activate" in the page details

@@ -6,7 +6,7 @@ Feature: Validate all scenarios in the Site Visit
 	And I create a post award record from sheet "Creation" in excel "SiteVisit_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		   | Step 2    			    |
 	| Navigation | Management		   | 			 		    |	
-	| FlexTable  | Initiate Site Visit| GrantorSiteVisitsAward  |
+	| FlexTable  | Initiate Site Visit | GrantorSiteVisitsAward |
 	| Creation   | Save And Close	   | Cancel				 	| 	
 
 	@siteVisitCreation @siteVisit
