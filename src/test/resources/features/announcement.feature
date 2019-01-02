@@ -200,7 +200,7 @@ Feature: Validate all scenarios in the Announcement tab
     Then I see that "Funding Opportunity Announcement" has been added in flextable with Id "a150b000003epC4AAI"
 
   	@34461 @submittingAnnouncementForApproval @announcement
-  	Scenario: Validate the submission of Announcement for Approval
+  	Scenario Outline: Validate the submission of Announcement for Approval
 	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
@@ -244,15 +244,18 @@ Feature: Validate all scenarios in the Announcement tab
 	| Reviewer Navigation | Responsibilities      | 					  |			|
 	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
 	| Send Review		  | Send for Review       | Created 			  |			|
-	Given Review is completed as user "FO" for the record "Automation Announcement" created by "EXE" 
+	Given Review is completed as user "FO" for the record "<Announcement Name>" created by "EXE" 
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
 	| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
-	| Enter Review		  | Passed      	    | Save	  							  |	Submit Review 		  | Fiscal Reviewer |
+	| Enter Review		  | Sent for Review	    | Save	  							  |	Submit Review 		  | Fiscal Reviewer |
 	| Owner Navigation 	  | As a Grantor 		| Announcements 					  | Competitive   		  | Announcements   |
 	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | Complete Review |
     When I click on "Submit For Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
+    Examples:
+	| Announcement Name		  |
+	| Automation Announcement |
 
   	@34763 @34765 @34766 @announcementApproval @announcement
   	Scenario Outline: Validate the approval of an Announcement
@@ -299,11 +302,11 @@ Feature: Validate all scenarios in the Announcement tab
 	| Reviewer Navigation | Responsibilities      | 					  |			|
 	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
 	| Send Review		  | Send for Review       | Created 			  |			|
-		Given Review is completed as user "FO" for the record "Automation Announcement" created by "EXE" 
+	And Review is completed as user "FO" for the record "<Announcement Name>" created by "EXE" 
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
 	| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
-	| Enter Review		  | Passed      	    | Save	  							  |	Submit Review 		  | Fiscal Reviewer |
+	| Enter Review		  | Sent for Review     | Save	  							  |	Submit Review 		  | Fiscal Reviewer |
 	| Owner Navigation 	  | As a Grantor 		| Announcements 					  | Competitive   		  | Announcements   |
 	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | Complete Review |
 	And I click on "Submit For Approval" in the page details
@@ -346,7 +349,7 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				   |
 	| Navigation | Financials 	| Add Budget Period 	| AnnouncementBudgetPeriod |
-	| Flextable  | Edit 	    | Budget Period Details | Save					   |
+	| Flextable  | Edit 	    | Save					| 						   |
 	And I associate Contact "Automation EXE", Focus Area "00006", Objective "SPO-0008"
 	| Actions 	 | Step 1   | Step 2	| Step 3  			  							| Step 4 | Step 5  				    	 |
     | Contact    | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
@@ -375,11 +378,11 @@ Feature: Validate all scenarios in the Announcement tab
 	| Reviewer Navigation | Responsibilities      | 					  |			|
 	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
 	| Send Review		  | Send for Review       | Created 			  |			|
-		Given Review is completed as user "FO" for the record "Automation Announcement" created by "EXE" 
+	Given Review is completed as user "FO" for the record "<Announcement Name>" created by "EXE" 
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
 	| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
-	| Enter Review		  | Passed      	    | Save	  							  |	Submit Review 		  | Fiscal Reviewer |
+	| Enter Review		  | Sent for Review	    | Passed	  						  |	 Save		  		  | Submit Review   |
 	| Owner Navigation 	  | As a Grantor 		| Announcements 					  | Competitive   		  | Announcements   |
 	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | Complete Review |
 	And I click on "Submit For Approval" in the page details
@@ -398,7 +401,7 @@ Feature: Validate all scenarios in the Announcement tab
     Then I see status in Progress-bar is "Published" and is "green"
 	Examples:
 	| User | Announcement Name 			   |
-	| EXE  | Automation Announcement Dec10 |
+	| EXE  | Automation Announcement Dec25 |
 	
 	@34462 @publishingDirectedAnnouncement @announcementDirectedHappyPath @announcement
   	Scenario Outline: Validate the activation of Internal Program

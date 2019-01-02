@@ -1,13 +1,13 @@
 @siteVisit
 Feature: Validate all scenarios in the Site Visit
 
-	Background: Create Program
+	Background: Create Site Visit
 	Given I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "EXE"
 	And I create a post award record from sheet "Creation" in excel "SiteVisit_Field_Values.xlsx"
-	| Actions 	 | Step 1 	   		   | Step 2    	 |
-	| Navigation | Management		   | 			 |	
+	| Actions 	 | Step 1 	   		   | Step 2    			    |
+	| Navigation | Management		   | 			 		    |	
 	| FlexTable  | Initiate Site Visit| GrantorSiteVisitsAward  |
-	| Creation   | Save And Close	   | Cancel		 | 	
+	| Creation   | Save And Close	   | Cancel				 	| 	
 
 	@siteVisitCreation @siteVisit
 	Scenario: Creation of Site Visit
@@ -50,14 +50,14 @@ Feature: Validate all scenarios in the Site Visit
 	Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate Participant "Automation EXE"
-    | Actions 	  | Step 1   | Step 2	 | Step 3  		| Step 4 		 		   | Step 5    | Step 6 		|
-    | Participant | Overview | Associate | Participants | GrantorSiteVisitContacts | Associate | popupflextable |
-    Given I select two approvers "Automation PM", "Automation FO"
-    | Actions 	 | Step 1   		| Step 2		   | Step 3    |
-    | Subtab	 | Responsibilities | 				   |		   |
-    | Approver 1 | Edit				| Program Approver | Approvers |
-    | Approver 2 | Edit				| Fiscal Approver  | Approvers |
+    And I associate Participant "Automation SPI"
+    | Actions 	  | Step 1   | Step 2	 | Step 3  					| Step 4 	| Step 5    	 |
+    | Participant | Overview | Associate | GrantorSiteVisitContacts | Associate | popupflextable |
+    Given I select "2" approvers "Automation PM,Automation FO"
+    | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
+    | Subtab	 | Responsibilities 			  			| 		 |		    		  |
+    | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
+    | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
 	Then I see status in Progress-bar is "Notified" and is "green"
 	
@@ -67,13 +67,13 @@ Feature: Validate all scenarios in the Site Visit
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     And I associate Participant "Automation EXE"
-    | Actions 	  | Step 1   | Step 2	 | Step 3  		| Step 4 		 		   | Step 5    | Step 6 		|
-    | Participant | Overview | Associate | Participants | GrantorSiteVisitContacts | Associate | popupflextable |
-    Given I select two approvers "Automation PM", "Automation FO"
-    | Actions 	 | Step 1   		| Step 2		   | Step 3    |
-    | Subtab	 | Responsibilities | 				   |		   |
-    | Approver 1 | Edit				| Program Approver | Approvers |
-    | Approver 2 | Edit				| Fiscal Approver  | Approvers |
+    | Actions 	  | Step 1   | Step 2	 | Step 3  					| Step 4 	| Step 5    	 |
+    | Participant | Overview | Associate | GrantorSiteVisitContacts | Associate | popupflextable |
+    Given I select "2" approvers "Automation PM,Automation FO"
+    | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
+    | Subtab	 | Responsibilities 			  			| 		 |		    		  |
+    | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
+    | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
 	When I re-login to Grants Portal as "SPI"
 	And I navigate to "Monitoring" tab
@@ -91,13 +91,13 @@ Feature: Validate all scenarios in the Site Visit
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     And I associate Participant "Automation EXE"
-    | Actions 	  | Step 1   | Step 2	 | Step 3  		| Step 4 		 		   | Step 5    | Step 6 		|
-    | Participant | Overview | Associate | Participants | GrantorSiteVisitContacts | Associate | popupflextable |
-    Given I select two approvers "Automation PM", "Automation FO"
-    | Actions 	 | Step 1   		| Step 2		   | Step 3    |
-    | Subtab	 | Responsibilities | 				   |		   |
-    | Approver 1 | Edit				| Program Approver | Approvers |
-    | Approver 2 | Edit				| Fiscal Approver  | Approvers |
+    | Actions 	  | Step 1   | Step 2	 | Step 3  					| Step 4 	| Step 5    	 |
+    | Participant | Overview | Associate | GrantorSiteVisitContacts | Associate | popupflextable |
+    Given I select "2" approvers "Automation PM,Automation FO"
+    | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
+    | Subtab	 | Responsibilities 			  			| 		 |		    		  |
+    | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
+    | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
 	Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
 	| Actions 	 | Step 1   		 | Step 2	|
@@ -122,13 +122,13 @@ Feature: Validate all scenarios in the Site Visit
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     And I associate Participant "Automation EXE"
-    | Actions 	  | Step 1   | Step 2	 | Step 3  		| Step 4 		 		   | Step 5    | Step 6 		|
-    | Participant | Overview | Associate | Participants | GrantorSiteVisitContacts | Associate | popupflextable |
-    Given I select two approvers "Automation PM", "Automation FO"
-    | Actions 	 | Step 1   		| Step 2		   | Step 3    |
-    | Subtab	 | Responsibilities | 				   |		   |
-    | Approver 1 | Edit				| Program Approver | Approvers |
-    | Approver 2 | Edit				| Fiscal Approver  | Approvers |
+    | Actions 	  | Step 1   | Step 2	 | Step 3  					| Step 4 	| Step 5    	 |
+    | Participant | Overview | Associate | GrantorSiteVisitContacts | Associate | popupflextable |
+   Given I select "2" approvers "Automation PM,Automation FO"
+    | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
+    | Subtab	 | Responsibilities 			  			| 		 |		    		  |
+    | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
+    | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
 	Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
 	| Actions 	 | Step 1   		 | Step 2	|
@@ -161,11 +161,11 @@ Feature: Validate all scenarios in the Site Visit
     And I associate Participant "Automation EXE"
     | Actions 	  | Step 1   | Step 2	 | Step 3  				    | Step 4 	| Step 5         |
     | Participant | Overview | Associate | GrantorSiteVisitContacts | Associate | popupflextable |
-    Given I select two approvers "Automation PM", "Automation FO"
-    | Actions 	 | Step 1   		| Step 2		   | Step 3    |
-    | Subtab	 | Responsibilities | 				   |		   |
-    | Approver 1 | Edit				| Program Approver | Approvers |
-    | Approver 2 | Edit				| Fiscal Approver  | Approvers |
+    Given I select "2" approvers "Automation PM,Automation FO"
+    | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
+    | Subtab	 | Responsibilities 			  			| 		 |		    		  |
+    | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
+    | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
 	Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
 	| Actions 	 | Step 1   		 | Step 2	|
@@ -199,13 +199,13 @@ Feature: Validate all scenarios in the Site Visit
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     And I associate Participant "Automation EXE"
-    | Actions 	  | Step 1   | Step 2	 | Step 3  		| Step 4 		 		   | Step 5    | Step 6 		|
-    | Participant | Overview | Associate | Participants | GrantorSiteVisitContacts | Associate | popupflextable |
-    Given I select two approvers "Automation PM", "Automation FO"
-    | Actions 	 | Step 1   		| Step 2		   | Step 3    |
-    | Subtab	 | Responsibilities | 				   |		   |
-    | Approver 1 | Edit				| Program Approver | Approvers |
-    | Approver 2 | Edit				| Fiscal Approver  | Approvers |
+    | Actions 	  | Step 1   | Step 2	 | Step 3  					| Step 4 	| Step 5    	 |
+    | Participant | Overview | Associate | GrantorSiteVisitContacts | Associate | popupflextable |
+    Given I select "2" approvers "Automation PM,Automation FO"
+    | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
+    | Subtab	 | Responsibilities 			  			| 		 |		    		  |
+    | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
+    | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
 	Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
 	| Actions 	 | Step 1   		 | Step 2	|
@@ -228,7 +228,7 @@ Feature: Validate all scenarios in the Site Visit
 	And I fill in the form "General Review Form"
 	| Actions 	  | Step 1   		 	 | Step 2		 |
 	| Navigation  | Reports and Outcomes | 			 	 |
-	| FlexTable   | Edit				 | Review Forms  |
+	| FlexTable   | Edit				 | FormComponent |
 	| Form Button | Save				 | Back 		 |
 	| Validation  | Validate			 | FormComponent |
 	When I click on "Submit for Approval" in the page details
@@ -240,13 +240,13 @@ Feature: Validate all scenarios in the Site Visit
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     And I associate Participant "Automation EXE"
-    | Actions 	  | Step 1   | Step 2	 | Step 3  		| Step 4 		 		   | Step 5    | Step 6 		|
-    | Participant | Overview | Associate | Participants | GrantorSiteVisitContacts | Associate | popupflextable |
-    Given I select two approvers "Automation PM", "Automation FO"
-    | Actions 	 | Step 1   		| Step 2		   | Step 3    |
-    | Subtab	 | Responsibilities | 				   |		   |
-    | Approver 1 | Edit				| Program Approver | Approvers |
-    | Approver 2 | Edit				| Fiscal Approver  | Approvers |
+    | Actions 	  | Step 1   | Step 2	 | Step 3  					| Step 4 	| Step 5    	 |
+    | Participant | Overview | Associate | GrantorSiteVisitContacts | Associate | popupflextable |
+    Given I select "2" approvers "Automation PM,Automation FO"
+    | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
+    | Subtab	 | Responsibilities 			  			| 		 |		    		  |
+    | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
+    | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
 	Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
 	| Actions 	 | Step 1   		 | Step 2	|
@@ -269,21 +269,21 @@ Feature: Validate all scenarios in the Site Visit
 	And I fill in the form "General Review Form"
 	| Actions 	  | Step 1   		 	 | Step 2		 |
 	| Navigation  | Reports and Outcomes | 			 	 |
-	| FlexTable   | Edit				 | Review Forms  |
+	| FlexTable   | Edit				 | FormComponent |
 	| Form Button | Save				 | Back 		 |
 	| Validation  | Validate			 | FormComponent |
 	When I click on "Submit for Approval" in the page details
-	Given I login to "As a Grantor" app as "PM" User
+	Given I re-login to "As a Grantor" app as "PM" User
 	When I navigate to "Monitoring" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "<Site Visit Name>" in "PhasePendingTasks" panel
-    And I click on "View" icon for "<Site Visit Name>" inside table 
+    And I click on "Start" icon for "<Site Visit Name>" inside table 
     When I click on "Approve" on the approval decision box
-    And I login to "As a Grantor" app as "FO" User
+    And I re-login to "As a Grantor" app as "FO" User
 	When I navigate to "Monitoring" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "<Site Visit Name>" in "PhasePendingTasks" panel
-    And I click on "View" icon for "<Site Visit Name>" inside table 
+    And I click on "Start" icon for "<Site Visit Name>" inside table 
     When I click on "Approve" on the approval decision box
 	Then I see status in Progress-bar is "Approved" and is "green"
 	Examples:
@@ -296,13 +296,13 @@ Feature: Validate all scenarios in the Site Visit
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     And I associate Participant "Automation EXE"
-    | Actions 	  | Step 1   | Step 2	 | Step 3  		| Step 4 		 		   | Step 5    | Step 6 		|
-    | Participant | Overview | Associate | Participants | GrantorSiteVisitContacts | Associate | popupflextable |
-    Given I select two approvers "Automation PM", "Automation FO"
-    | Actions 	 | Step 1   		| Step 2		   | Step 3    |
-    | Subtab	 | Responsibilities | 				   |		   |
-    | Approver 1 | Edit				| Program Approver | Approvers |
-    | Approver 2 | Edit				| Fiscal Approver  | Approvers |
+    | Actions 	  | Step 1   | Step 2	 | Step 3  					| Step 4 	| Step 5    	 |
+    | Participant | Overview | Associate | GrantorSiteVisitContacts | Associate | popupflextable |
+    Given I select "2" approvers "Automation PM,Automation FO"
+    | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
+    | Subtab	 | Responsibilities 			  			| 		 |		    		  |
+    | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
+    | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
 	Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
 	| Actions 	 | Step 1   		 | Step 2	|
@@ -325,14 +325,14 @@ Feature: Validate all scenarios in the Site Visit
 	And I fill in the form "General Review Form"
 	| Actions 	  | Step 1   		 	 | Step 2		 |
 	| Navigation  | Reports and Outcomes | 			 	 |
-	| FlexTable   | Edit				 | Review Forms  |
+	| FlexTable   | Edit				 | FormComponent |
 	| Form Button | Save				 | Back 		 |
 	| Validation  | Validate			 | FormComponent |
-	Given Two Approvers "PM", "FO" approve "<Site Visit Name>"
-    | Actions 		   | Step 1 	   | Step 2	    | Step 3 			  |
-    | Navigation       | As a Grantor  | Monitoring |					  |
-    | Pending Task 	   | Pending Tasks | My Tasks   | PhasePendingTasks   |
-    | Approval Buttons | Start		   | Approve    |					  |
+	Given "2" Approvers "PM,FO" approve the record "<Site Visit Name>"
+	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
+	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
+	| FlexTable  | Pending Tasks | MyTasks  	 | PhasePendingTasks |
+	| Approval 	 | Start 		 | Approve 		 | 					 |
     When I re-login to "As a Grantor" app as "EXE" User
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
@@ -352,13 +352,13 @@ Feature: Validate all scenarios in the Site Visit
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     And I associate Participant "Automation EXE"
-    | Actions 	  | Step 1   | Step 2	 | Step 3  		| Step 4 		 		   | Step 5    | Step 6 		|
-    | Participant | Overview | Associate | Participants | GrantorSiteVisitContacts | Associate | popupflextable |
-    Given I select two approvers "Automation PM", "Automation FO"
-    | Actions 	 | Step 1   		| Step 2		   | Step 3    |
-    | Subtab	 | Responsibilities | 				   |		   |
-    | Approver 1 | Edit				| Program Approver | Approvers |
-    | Approver 2 | Edit				| Fiscal Approver  | Approvers |
+    | Actions 	  | Step 1   | Step 2	 | Step 3  					| Step 4 	| Step 5    	 |
+    | Participant | Overview | Associate | GrantorSiteVisitContacts | Associate | popupflextable |
+    Given I select "2" approvers "Automation PM,Automation FO"
+    | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
+    | Subtab	 | Responsibilities 			  			| 		 |		    		  |
+    | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
+    | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
 	Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
 	| Actions 	 | Step 1   		 | Step 2	|
@@ -375,14 +375,14 @@ Feature: Validate all scenarios in the Site Visit
 	And I fill in the form "General Review Form"
 	| Actions 	  | Step 1   		 	 | Step 2		 |
 	| Navigation  | Reports and Outcomes | 			 	 |
-	| FlexTable   | Edit				 | Review Forms  |
+	| FlexTable   | Edit				 | FormComponent |
 	| Form Button | Save				 | Back 		 |
 	| Validation  | Validate			 | FormComponent |
-	Given Two Approvers "PM", "FO" approve "<Site Visit Name>"
-    | Actions 		   | Step 1 	   | Step 2	    | Step 3 			  |
-    | Navigation       | As a Grantor  | Monitoring |					  |
-    | Pending Task 	   | Pending Tasks | My Tasks   | PhasePendingTasks   |
-    | Approval Buttons | Start		   | Approve    |					  |
+	Given "2" Approvers "PM,FO" approve the record "<Site Visit Name>"
+	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
+	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
+	| FlexTable  | Pending Tasks | MyTasks  	 | PhasePendingTasks |
+	| Approval 	 | Start 		 | Approve 		 | 					 |
     And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Award Name>" with Id "<Award EGMS ID>"
 	| Actions 	 | Step 1   		 			     | Step 2		  		  			|
 	| Navigation | As a Grantor 	  				 | Monitoring 			 			|
@@ -427,13 +427,13 @@ Feature: Validate all scenarios in the Site Visit
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     And I associate Participant "Automation EXE"
-    | Actions 	  | Step 1   | Step 2	 | Step 3  		| Step 4 		 		   | Step 5    | Step 6 		|
-    | Participant | Overview | Associate | Participants | GrantorSiteVisitContacts | Associate | popupflextable |
-    Given I select two approvers "Automation PM", "Automation FO"
-    | Actions 	 | Step 1   		| Step 2		   | Step 3    |
-    | Subtab	 | Responsibilities | 				   |		   |
-    | Approver 1 | Edit				| Program Approver | Approvers |
-    | Approver 2 | Edit				| Fiscal Approver  | Approvers |
+    | Actions 	  | Step 1   | Step 2	 | Step 3  					| Step 4 	| Step 5    	 |
+    | Participant | Overview | Associate | GrantorSiteVisitContacts | Associate | popupflextable |
+    Given I select "2" approvers "Automation PM,Automation FO"
+    | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
+    | Subtab	 | Responsibilities 			  			| 		 |		    		  |
+    | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
+    | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
 	Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
 	| Actions 	 | Step 1   		 | Step 2	|
@@ -450,14 +450,14 @@ Feature: Validate all scenarios in the Site Visit
 	And I fill in the form "General Review Form"
 	| Actions 	  | Step 1   		 	 | Step 2		 |
 	| Navigation  | Reports and Outcomes | 			 	 |
-	| FlexTable   | Edit				 | Review Forms  |
+	| FlexTable   | Edit				 | FormComponent |
 	| Form Button | Save				 | Back 		 |
 	| Validation  | Validate			 | FormComponent |
-	Given Two Approvers "PM", "FO" approve "<Site Visit Name>"
-    | Actions 		   | Step 1 	   | Step 2	    | Step 3 			  |
-    | Navigation       | As a Grantor  | Monitoring |					  |
-    | Pending Task 	   | Pending Tasks | My Tasks   | PhasePendingTasks   |
-    | Approval Buttons | Start		   | Approve    |					  |
+	Given "2" Approvers "PM,FO" approve the record "<Site Visit Name>"
+	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
+	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
+	| FlexTable  | Pending Tasks | MyTasks  	 | PhasePendingTasks |
+	| Approval 	 | Start 		 | Approve 		 | 					 |
     And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Award Name>" with Id "<Award EGMS ID>"
 	| Actions 	 | Step 1   		 			     | Step 2		  		  			|
 	| Navigation | As a Grantor 	  				 | Monitoring 			 			|
@@ -503,13 +503,13 @@ Feature: Validate all scenarios in the Site Visit
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     And I associate Participant "Automation EXE"
-    | Actions 	  | Step 1   | Step 2	 | Step 3  		| Step 4 		 		   | Step 5    | Step 6 		|
-    | Participant | Overview | Associate | Participants | GrantorSiteVisitContacts | Associate | popupflextable |
-    Given I select two approvers "Automation PM", "Automation FO"
-    | Actions 	 | Step 1   		| Step 2		   | Step 3    |
-    | Subtab	 | Responsibilities | 				   |		   |
-    | Approver 1 | Edit				| Program Approver | Approvers |
-    | Approver 2 | Edit				| Fiscal Approver  | Approvers |
+    | Actions 	  | Step 1   | Step 2	 | Step 3  					| Step 4 	| Step 5    	 |
+    | Participant | Overview | Associate | GrantorSiteVisitContacts | Associate | popupflextable |
+    Given I select "2" approvers "Automation PM,Automation FO"
+    | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
+    | Subtab	 | Responsibilities 			  			| 		 |		    		  |
+    | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
+    | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
 	Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
 	| Actions 	 | Step 1   		 | Step 2	|
@@ -526,14 +526,14 @@ Feature: Validate all scenarios in the Site Visit
 	And I fill in the form "General Review Form"
 	| Actions 	  | Step 1   		 	 | Step 2		 |
 	| Navigation  | Reports and Outcomes | 			 	 |
-	| FlexTable   | Edit				 | Review Forms  |
+	| FlexTable   | Edit				 | FormComponent |
 	| Form Button | Save				 | Back 		 |
 	| Validation  | Validate			 | FormComponent |
-	Given Two Approvers "PM", "FO" approve "<Site Visit Name>"
-    | Actions 		   | Step 1 	   | Step 2	    | Step 3 			  |
-    | Navigation       | As a Grantor  | Monitoring |					  |
-    | Pending Task 	   | Pending Tasks | My Tasks   | PhasePendingTasks   |
-    | Approval Buttons | Start		   | Approve    |					  |
+	Given "2" Approvers "PM,FO" approve the record "<Site Visit Name>"
+	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
+	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
+	| FlexTable  | Pending Tasks | MyTasks  	 | PhasePendingTasks |
+	| Approval 	 | Start 		 | Approve 		 | 					 |
     And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Award Name>" with Id "<Award EGMS ID>"
 	| Actions 	 | Step 1   		 			     | Step 2		  		  			|
 	| Navigation | As a Grantor 	  				 | Monitoring 			 			|

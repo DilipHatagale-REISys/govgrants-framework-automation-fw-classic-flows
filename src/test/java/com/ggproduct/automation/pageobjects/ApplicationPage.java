@@ -1,9 +1,8 @@
 package com.ggproduct.automation.pageobjects;
 
 import java.io.IOException;
-import java.util.Map;
 
-import org.openqa.selenium.By;
+import java.util.Map;
 import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
@@ -23,11 +22,11 @@ public class ApplicationPage extends ProjectManager {
      */
     public void qualifyAnnouncement(String announcementName, String user) {
         loginToggleToApp("Grants Portal", user);
-        navigateToTab("Opportunities");
+        govgrants.mainPage().clickMainMenuBar("Opportunities");
         clickOnSidebar("Active", "Opportunities");
-        quickSearchOnTable(announcementName, "popupflextable");
-        clickOnFlexTableIcon("View", announcementName);
-        clickOnPageButton("Qualify");
+        govgrants.quickSearch().performTableSpecificQuickSearch("popupflextable", announcementName);
+        govgrants.flexTable().clickTableActionIcons("View", announcementName);
+        govgrants.pageDetails().clickAnyTopRightButton("Qualify");
     }
 
     /**
@@ -37,10 +36,10 @@ public class ApplicationPage extends ProjectManager {
      * @param excelFileName
      */
     public void applicationCreation(String sheetName, String excelFileName) {
-        clickOnPageButton("Create Application");
-        enterFieldValues(sheetName, excelFileName);
-        clickOnModalButton("Save And Close");
-        clickOnPageButton("Save");
+        govgrants.pageDetails().clickAnyTopRightButton("Create Application");
+        govgrants.inputForms().enterInputFieldsFromExcelFile(excelFileName, sheetName);
+        govgrants.modal().clickModalContentSpecificButton("Save And Close");
+        govgrants.pageDetails().clickAnyTopRightButton("Save");
     }
 
     /**
@@ -50,12 +49,12 @@ public class ApplicationPage extends ProjectManager {
      */
     public void additionOfFocusAreaToApplication(DataTable dataTable, String... focusArea) {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
-        clickOnSubtab(dataTableMap.get("Navigation").get("Step 1"));
-        clickOnFlextableButton(dataTableMap.get("Navigation").get("Step 3"),
-                dataTableMap.get("Navigation").get("Step 3"));
+        govgrants.pageDetails().clickSubTabsInsideTableView(dataTableMap.get("Navigation").get("Step 1"));
+        govgrants.flexTable().clickTableTopRightButton(dataTableMap.get("Navigation").get("Step 3"),
+                dataTableMap.get("Navigation").get("Step 2"));
         chooseRecordForAssociation(dataTableMap.get("FlexTable").get("Step 1"),
                 dataTableMap.get("FlexTable").get("Step 2"), focusArea);
-        switchToParentFrame();
+        reiDriver.switchTo().switchToParentFrame();
     }
 
     /**
@@ -68,10 +67,10 @@ public class ApplicationPage extends ProjectManager {
     public void additionOfBudgetToApplication(DataTable dataTable) {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         DataTable inlineEditDataTable = seperateInlineDataTable(dataTableMap);
-        clickOnSubtab(dataTableMap.get("Navigation").get("Step 1"));
+        govgrants.pageDetails().clickSubTabsInsideTableView(dataTableMap.get("Navigation").get("Step 1"));
         expandGrid(dataTableMap.get("Navigation").get("Step 2"));
         expandGrid(dataTableMap.get("Navigation").get("Step 3"));
-        fillFieldsForInlineTable(dataTableMap.get("FlexTable").get("Step 1"),
+        govgrants.flexTable().editFlexTableRowsInline(dataTableMap.get("FlexTable").get("Step 1"),
                 dataTableMap.get("FlexTable").get("Step 2"), inlineEditDataTable);
     }
 
@@ -80,12 +79,14 @@ public class ApplicationPage extends ProjectManager {
      * 
      * @param target
      */
-    public void additionOfTargetToKPIInApplication(DataTable rowValues) {
-        clickOnSubtab("Proposal");
-        fillFieldsForInlineTable("flexGridRecipientApplicationRelatedKPIs", "Edit", rowValues);
+    public void additionOfTargetToKPIInApplication(DataTable dataTable) {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        DataTable inlineEditDataTable = seperateInlineDataTable(dataTableMap);
+        govgrants.pageDetails().clickSubTabsInsideTableView(dataTableMap.get("Navigation").get("Step 1"));
+        govgrants.flexTable().editFlexTableRowsInline(dataTableMap.get("FlexTable").get("Step 1"),
+                dataTableMap.get("FlexTable").get("Step 2"), inlineEditDataTable);
     }
 
-    
     /**
      * Handles completion of one review process by clicking on Promote to Next step
      * button for the passed application
@@ -97,41 +98,30 @@ public class ApplicationPage extends ProjectManager {
      * @throws IOException
      */
     public void completeReviewStepForApplication(String reviewStep, String buttonName, String applicationName,
-            String announcementOwner, String announcementName) throws IOException {
+            String announcementOwner, String announcementName, DataTable dataTable) throws IOException {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         try {
-            loginToggleToApp("As a Grantor", announcementOwner);
+            loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), announcementOwner);
         } catch (Exception ex) {
-            reloginToggleToApp("As a Grantor", announcementOwner);
+            reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), announcementOwner);
         }
-        navigateToTab("Applications");
-        clickOnSidebar("Reviews", "Application Review");
-        changeFlexTableView("Applications Under Review");
-        quickSearchOnTable(announcementName, "flexTableRandomID1");
-        clickOnFlexTableIcon("View", announcementName);
-        clickOnSubtab("Related Logs");
-        scrollToSection("Manage Reviews");
-        clickOnFlextableRowButton("AnnouncementReviewStepsFlexToggle", "View", reviewStep);
-        clickOnMultipleCheckbox(applicationName, "flexGridPreScreenRelatedStepApplicationsFinal");
-        clickOnFlextableButton(buttonName, "flexGridPreScreenRelatedStepApplicationsFinal");
+        govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
+        clickOnSidebar(dataTableMap.get("Navigation").get("Step 3"), dataTableMap.get("Navigation").get("Step 4"));
+        changeFlexTableView(dataTableMap.get("FlexTable").get("Step 1"));
+        govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 2"),
+                announcementName);
+        govgrants.flexTable().clickTableActionIcons(dataTableMap.get("FlexTable").get("Step 3"), announcementName);
+        govgrants.pageDetails().clickSubTabsInsideTableView(dataTableMap.get("FlexTable").get("Step 4"));
+        scrollToSection(dataTableMap.get("Review").get("Step 2"));
+        govgrants.flexTable().clickTableActionIcon(dataTableMap.get("Review").get("Step 1"),
+                dataTableMap.get("Review").get("Step 3"), reviewStep);
+        clickOnMultipleCheckbox(dataTableMap.get("Promotion").get("Step 1"), applicationName);
+        govgrants.flexTable().clickTableTopRightButton(dataTableMap.get("Promotion").get("Step 1"), buttonName);
         try {
-            clickOnConfirmationtBox("Yes");
+            clickOnConfirmationtBox(dataTableMap.get("Promotion").get("Step 2"));
         } catch (Exception e) {
 
         }
-    }
-
-    /**
-     * Handles adding reviewer to a review step
-     * 
-     * @param reviewer
-     * @param tableId
-     */
-    public void addReviewerForReview(String reviewer, String tableId) {
-        reiDriver.findMyElement().getElement(By.xpath("//*[@id = '" + tableId + "']//following-sibling::td[1]//input"))
-                .sendKeys(reviewer);
-        reiDriver.WaitFor().makeThreadSleep(1000);
-        reiDriver.findMyElement()
-                .getElement(By.xpath("//ul[@class='select2-results']//li//span[text()='" + reviewer + "']")).click();
     }
 
     /**
@@ -139,33 +129,8 @@ public class ApplicationPage extends ProjectManager {
      * 
      * @param dueInDays
      */
-    public void enterDueInDaysSME(DataTable rowValues) {
-        fillFieldsForInlineTable("flexGridApplicationReviewTree", "Edit", rowValues);
-    }
-
-    /**
-     * Handles adding reviewer to SME review
-     * 
-     * @param programReviewer
-     * @param fiscalReviewer
-     * @param complianceReviewer
-     */
-    public void addReviewerForReviewSME(String programReviewer, String fiscalReviewer, String complianceReviewer) {
-        expandGrid("Program Review");
-        clickOnFlextableButton("Add", "flexGridApplicationReviewTree");
-        addReviewerForReview(programReviewer, "RelatedExternalReviewersGridresizable");
-        clickOnFlextableButton("Save", "flexGridApplicationReviewTree");
-        collapseGrid("Program Review");
-        expandGrid("Fiscal Review");
-        clickOnFlextableButton("Add", "flexGridApplicationReviewTree");
-        addReviewerForReview(fiscalReviewer, "RelatedExternalReviewersGridresizable");
-        clickOnFlextableButton("Save", "flexGridApplicationReviewTree");
-        collapseGrid("Fiscal Review");
-        expandGrid("Compliance Review");
-        clickOnFlextableButton("Add", "flexGridApplicationReviewTree");
-        addReviewerForReview(complianceReviewer, "RelatedExternalReviewersGridresizable");
-        clickOnFlextableButton("Save", "flexGridApplicationReviewTree");
-        collapseGrid("Compliance Review");
+    public void enterDueInDays(String flexTableId, String iconName, DataTable rowValues) {
+        govgrants.flexTable().editFlexTableRowsInline(flexTableId, iconName, rowValues);
     }
 
     /**
@@ -173,27 +138,23 @@ public class ApplicationPage extends ProjectManager {
      * 
      * @param applicationName
      */
-    public void assignApplicationToReviewerSME(String applicationName) {
-        expandGrid("Program Review");
-        clickOnFlextableRowButton("Assign", "Automation PM", "Reviewers");
-        chooseRecordForAssociation("Assign", applicationName, "AssignPanelApplicationsTable");
-        switchToParentFrame();
-        expandGrid("Fiscal Review");
-        clickOnFlextableRowButton("Assign", "Automation FO", "Reviewers");
-        chooseRecordForAssociation("Assign", applicationName, "AssignPanelApplicationsTable");
-        switchToParentFrame();
-        expandGrid("Compliance Review");
-        clickOnFlextableRowButton("Assign", "Automation EXE", "Reviewers");
-        chooseRecordForAssociation("Assign", applicationName, "AssignPanelApplicationsTable");
-        switchToParentFrame();
+    public void assignApplicationToReviewer(String applicationName, String noOfReviewers, DataTable dataTable,
+            String... reviewer) {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        int numberOfReviewers = Integer.parseInt(noOfReviewers);
+        for (int i = 1; i <= numberOfReviewers; i++) {
+            singleApplicationAssignmentToReviewer(i, applicationName, reviewer[i - 1], dataTableMap);
+        }
     }
 
     /**
      * Handles choosing and sending the review records for review
      */
-    public void chooseAndSendReviewsSME() {
-        clickOnMultipleCheckbox("flexGridStepReviews", "Program Review", "Fiscal Review", "Compliance Review");
-        clickOnFlextableButton("Send for Review", "flexGridStepReviews");
+    public void chooseAndSendReviews(DataTable dataTable, String... reviews) {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        clickOnMultipleCheckbox(dataTableMap.get("FlexTable").get("Step 1"), reviews);
+        govgrants.flexTable().clickTableTopRightButton(dataTableMap.get("FlexTable").get("Step 1"),
+                dataTableMap.get("FlexTable").get("Step 2"));
     }
 
     /**
@@ -201,89 +162,12 @@ public class ApplicationPage extends ProjectManager {
      * 
      * @throws IOException
      */
-    public void completeReviewFormSME() throws IOException {
-        reloginToggleToApp("As a Grantor", "PM");
-        navigateToTab("Applications");
-        clickOnSidebar("Pending Tasks", "My Tasks");
-        quickSearchOnTable("SME Review", "PhasePendingTasks");
-        clickOnFlexTableIcon("Start", "SME Review");
-        fillInReviewForm();
-        clickOnPageButton("Save");
-        clickOnPageButton("Submit");
-        reloginToggleToApp("As a Grantor", "FO");
-        navigateToTab("Applications");
-        clickOnSidebar("Pending Tasks", "My Tasks");
-        quickSearchOnTable("SME Review", "PhasePendingTasks");
-        clickOnFlexTableIcon("Start", "SME Review");
-        fillInReviewForm();
-        clickOnPageButton("Save");
-        clickOnPageButton("Submit");
-        reloginToggleToApp("As a Grantor", "EXE");
-        navigateToTab("Applications");
-        clickOnSidebar("Pending Tasks", "My Tasks");
-        quickSearchOnTable("SME Review", "PhasePendingTasks");
-        clickOnFlexTableIcon("Start", "SME Review");
-        fillInReviewForm();
-        clickOnPageButton("Save");
-        clickOnPageButton("Submit");
-    }
-
-    /**
-     * Handles entering of due in days for management review
-     * 
-     * @param dueInDays
-     */
-    public void enterDueInDaysManagement(DataTable rowValues) {
-        fillFieldsForInlineTable("flexGridApplicationReviewTree", "Edit", rowValues);
-    }
-
-    /**
-     * Handles adding of reviewer to the management review
-     * 
-     * @param managementReviewer
-     */
-    public void addReviewerForReviewManagement(String managementReviewer) {
-        expandGrid("Management Review");
-        clickOnFlextableButton("Add", "flexGridApplicationReviewTree");
-        addReviewerForReview(managementReviewer, "RelatedExternalReviewersGridresizable");
-        clickOnFlextableButton("Save", "flexGridApplicationReviewTree");
-        collapseGrid("Management Review");
-    }
-
-    /**
-     * Handles assigning of given application to reviewer
-     * 
-     * @param applicationName
-     */
-    public void assignApplicationToReviewerManagement(String applicationName) {
-        expandGrid("Management Review");
-        clickOnFlextableRowButton("Assign", "Automation EXE", "Reviewers");
-        chooseRecordForAssociation("Assign", applicationName, "AssignPanelApplicationsTable");
-        switchToParentFrame();
-    }
-
-    /**
-     * Handles choosing and sending the review records for review
-     */
-    public void chooseAndSendReviewsManagement() {
-        clickOnMultipleCheckbox("flexGridStepReviews", "Management Review");
-        clickOnFlextableButton("Send for Review", "flexGridStepReviews");
-    }
-
-    /**
-     * Handles completing review form as a reviewer in Management review
-     * 
-     * @throws IOException
-     */
-    public void completeReviewFormManagement() throws IOException {
-        reloginToggleToApp("As a Grantor", "EXE");
-        navigateToTab("Applications");
-        clickOnSidebar("Pending Tasks", "My Tasks");
-        quickSearchOnTable("Management Review", "PhasePendingTasks");
-        clickOnFlexTableIcon("Start", "Management Review");
-        fillInReviewForm();
-        clickOnPageButton("Save");
-        clickOnPageButton("Submit");
+    public void completeReviewForm(String noOfReviewers, DataTable dataTable, String... reviewers) throws IOException {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        int numberOfReviewers = Integer.parseInt(noOfReviewers);
+        for (int i = 1; i <= numberOfReviewers; i++) {
+            singleReviewFormCompletion(reviewers[i - 1], dataTableMap);
+        }
     }
 
     /**
@@ -291,10 +175,11 @@ public class ApplicationPage extends ProjectManager {
      * 
      * @param value
      */
-    public void enterSubAwardAbbreviationFDM(String value) {
-        clickOnPageButton("Edit");
-        enterFieldValue("GrantCode__c", value);
-        clickOnPageButton("Save");
+    public void enterSubAwardAbbreviationFDM(String value, DataTable dataTable) {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("Field").get("Step 1"));
+        govgrants.inputForms().inputFormDataByFieldApiName(dataTableMap.get("Field").get("Step 2"), value);
+        govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("Field").get("Step 3"));
     }
 
     /**
@@ -305,27 +190,31 @@ public class ApplicationPage extends ProjectManager {
      * @param applicationName
      * @param flextableName
      */
-    public void enterRecommendationFDM(DataTable rowValues) {
-        fillFieldsForInlineTable("inlineEditGridFundingDecisionMemoApplications", "Edit", rowValues);
+    public void enterRecommendationFDM(String flexTableId, String iconName, DataTable dataTable) {
+        govgrants.flexTable().editFlexTableRowsInline(flexTableId, iconName, dataTable);
     }
 
-    /**
-     * Handles assigning of approver to FDM
-     * 
-     * @param approverName
-     * @param approverType
-     */
-    public void selectApproverFDM(String approverName, String approverType) {
-        clickOnSubtab("Responsibilities");
-        clickOnFlextableRowButton("Edit", approverType, "Responsibilities");
-        fillInApproverDetails(approverName);
-        switchToParentFrame();
+    private void singleApplicationAssignmentToReviewer(int qNumber, String applicationName, String reviewer,
+            Map<String, Map<String, String>> dataTableMap) {
+        expandGrid(dataTableMap.get("Review").get("Step " + qNumber));
+        govgrants.flexTable().clickTableActionIcon(dataTableMap.get("FlexTable").get("Step 2"),
+                dataTableMap.get("FlexTable").get("Step 1"), reviewer);
+        chooseRecordForAssociation(dataTableMap.get("Application").get("Step 1"), applicationName,
+                dataTableMap.get("Application").get("Step 2"));
+        reiDriver.switchTo().switchToParentFrame();
     }
 
-    /**
-     * Handles filling up of any given review form
-     */
-    public void fillInReviewForm() {
+    private void singleReviewFormCompletion(String reviewer, Map<String, Map<String, String>> dataTableMap)
+            throws IOException {
+        reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), reviewer);
+        govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
+        clickOnSidebar(dataTableMap.get("Navigation").get("Step 3"), dataTableMap.get("Navigation").get("Step 4"));
+        govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 2"),
+                dataTableMap.get("FlexTable").get("Step 1"));
+        govgrants.flexTable().clickTableActionIcons(dataTableMap.get("FlexTable").get("Step 3"),
+                dataTableMap.get("FlexTable").get("Step 1"));
         govgrants.inputForms().completeFillingReviewForm();
+        govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("Button").get("Step 1"));
+        govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("Button").get("Step 2"));
     }
 }

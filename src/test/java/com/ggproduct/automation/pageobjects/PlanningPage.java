@@ -24,13 +24,13 @@ public class PlanningPage extends ProjectManager {
     public void creationOfPrrogram(String user, String sheetName, String excelFileName, DataTable dataTable) {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
-        navigateToTab(dataTableMap.get("Navigation").get("Step 2"));
+        govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
         clickOnSidebar(dataTableMap.get("FlexTable").get("Step 1"), dataTableMap.get("Navigation").get("Step 3"));
         changeFlexTableView(dataTableMap.get("FlexTable").get("Step 3"));
-        clickOnPhaseFlexTableButton(dataTableMap.get("Creation").get("Step 1"),
-                dataTableMap.get("FlexTable").get("Step 2"));
-        enterFieldValues(sheetName, excelFileName);
-        clickOnModalButton(dataTableMap.get("Creation").get("Step 2"));
-        clickOnPageButton(dataTableMap.get("Creation").get("Step 3"));
+        govgrants.flexTable().clickTableTopRightButton(dataTableMap.get("FlexTable").get("Step 2"),
+                dataTableMap.get("Creation").get("Step 1"));
+        govgrants.inputForms().enterInputFieldsFromExcelFile(excelFileName, sheetName);
+        govgrants.modal().clickModalContentSpecificButton(dataTableMap.get("Creation").get("Step 2"));
+        govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("Creation").get("Step 3"));
     }
 }

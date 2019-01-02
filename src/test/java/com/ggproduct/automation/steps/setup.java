@@ -1,6 +1,7 @@
 package com.ggproduct.automation.steps;
 
 
+import java.awt.AWTException;
 import java.io.IOException;
 import com.automation.rei.controller.Controller;
 import com.automation.rei.controller.SetupController;
@@ -27,12 +28,12 @@ public class setup {
     }
 
     @Before
-    public void startUp() throws IOException {
+    public void startUp() throws IOException, AWTException {
         setupController.initializer();
     }
 
     @After
-    public void wrapUp(Scenario scenario) {
+    public void wrapUp(Scenario scenario) throws IOException {
         setupController.theEnd(scenario);
     }
 }
