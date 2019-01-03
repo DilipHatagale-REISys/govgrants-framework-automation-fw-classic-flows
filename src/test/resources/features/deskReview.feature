@@ -50,9 +50,9 @@ Feature: Validate all scenarios in Desk Review
 	Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate Participant "Automation SPI,Automation EXE"
-    | Actions 	  | Step 1   | Step 2	 | Step 3  					| Step 4 	| Step 5    	 |
-    | Participant | Overview | Associate | GrantorSiteVisitContacts | Associate | popupflextable |
+    And I associate "1" records "Automation SPI"
+	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		  |
+    | Associate 1 | Overview   | AAssociate | GrantorSiteVisitContacts | Associate	 | popupflextable |
     Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
     | Subtab	 | Responsibilities 			  			| 		 |		    		  |
@@ -66,9 +66,9 @@ Feature: Validate all scenarios in Desk Review
 	Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate Participant "Automation EXE"
-    | Actions 	  | Step 1   | Step 2	 | Step 3  					| Step 4 	| Step 5    	 |
-    | Participant | Overview | Associate | GrantorSiteVisitContacts | Associate | popupflextable |
+    And I associate "1" records "Automation SPI"
+	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		  |
+    | Associate 1 | Overview   | AAssociate | GrantorSiteVisitContacts | Associate	 | popupflextable |
     Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
     | Subtab	 | Responsibilities 			  			| 		 |		    		  |
@@ -90,9 +90,9 @@ Feature: Validate all scenarios in Desk Review
 	Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate Participant "Automation EXE"
-    | Actions 	  | Step 1   | Step 2	 | Step 3  					| Step 4 	| Step 5    	 |
-    | Participant | Overview | Associate | GrantorSiteVisitContacts | Associate | popupflextable |
+    And I associate "1" records "Automation SPI"
+	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		  |
+    | Associate 1 | Overview   | AAssociate | GrantorSiteVisitContacts | Associate	 | popupflextable |
     Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
     | Subtab	 | Responsibilities 			  			| 		 |		    		  |
@@ -121,9 +121,9 @@ Feature: Validate all scenarios in Desk Review
 	Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate Participant "Automation EXE"
-    | Actions 	  | Step 1   | Step 2	 | Step 3  					| Step 4 	| Step 5    	 |
-    | Participant | Overview | Associate | GrantorSiteVisitContacts | Associate | popupflextable |
+    And I associate "1" records "Automation SPI"
+	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		  |
+    | Associate 1 | Overview   | AAssociate | GrantorSiteVisitContacts | Associate	 | popupflextable |
     Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
     | Subtab	 | Responsibilities 			  			| 		 |		    		  |
@@ -158,9 +158,9 @@ Feature: Validate all scenarios in Desk Review
 	Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate Participant "Automation EXE"
-    | Actions 	  | Step 1   | Step 2	 | Step 3  				    | Step 4 	| Step 5         |
-    | Participant | Overview | Associate | GrantorSiteVisitContacts | Associate | popupflextable |
+    And I associate "1" records "Automation SPI"
+	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		  |
+    | Associate 1 | Overview   | AAssociate | GrantorSiteVisitContacts | Associate	 | popupflextable |
     Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
     | Subtab	 | Responsibilities 			  			| 		 |		    		  |
@@ -201,9 +201,9 @@ Feature: Validate all scenarios in Desk Review
 	Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate Participant "Automation EXE"
-    | Actions 	  | Step 1   | Step 2	 | Step 3  					| Step 4 	| Step 5    	 |
-    | Participant | Overview | Associate | GrantorSiteVisitContacts | Associate | popupflextable |
+    And I associate "1" records "Automation SPI"
+	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		  |
+    | Associate 1 | Overview   | AAssociate | GrantorSiteVisitContacts | Associate	 | popupflextable |
     Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
     | Subtab	 | Responsibilities 			  			| 		 |		    		  |
@@ -245,9 +245,9 @@ Feature: Validate all scenarios in Desk Review
 	Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate Participant "Automation EXE"
-    | Actions 	  | Step 1   | Step 2	 | Step 3  					| Step 4 	| Step 5    	 |
-    | Participant | Overview | Associate | GrantorSiteVisitContacts | Associate | popupflextable |
+    And I associate "1" records "Automation SPI"
+	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		  |
+    | Associate 1 | Overview   | AAssociate | GrantorSiteVisitContacts | Associate	 | popupflextable |
     Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
     | Subtab	 | Responsibilities 			  			| 		 |		    		  |
@@ -301,9 +301,9 @@ Feature: Validate all scenarios in Desk Review
 	Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate Participant "Automation EXE"
-    | Actions 	  | Step 1   | Step 2	 | Step 3  					| Step 4 	| Step 5    	 |
-    | Participant | Overview | Associate | GrantorSiteVisitContacts | Associate | popupflextable |
+    And I associate "1" records "Automation SPI"
+	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		  |
+    | Associate 1 | Overview   | AAssociate | GrantorSiteVisitContacts | Associate	 | popupflextable |
     Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
     | Subtab	 | Responsibilities 			  			| 		 |		    		  |
@@ -357,9 +357,9 @@ Feature: Validate all scenarios in Desk Review
 	Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate Participant "Automation EXE"
-    | Actions 	  | Step 1   | Step 2	 | Step 3  					| Step 4 	| Step 5    	 |
-    | Participant | Overview | Associate | GrantorSiteVisitContacts | Associate | popupflextable |
+    And I associate "1" records "Automation SPI"
+	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		  |
+    | Associate 1 | Overview   | AAssociate | GrantorSiteVisitContacts | Associate	 | popupflextable |
     Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
     | Subtab	 | Responsibilities 			  			| 		 |		    		  |
@@ -432,9 +432,9 @@ Feature: Validate all scenarios in Desk Review
 	Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate Participant "Automation EXE"
-    | Actions 	  | Step 1   | Step 2	 | Step 3  					| Step 4 	| Step 5    	 |
-    | Participant | Overview | Associate | GrantorSiteVisitContacts | Associate | popupflextable |
+    And I associate "1" records "Automation SPI"
+	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		  |
+    | Associate 1 | Overview   | AAssociate | GrantorSiteVisitContacts | Associate	 | popupflextable |
     Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
     | Subtab	 | Responsibilities 			  			| 		 |		    		  |
@@ -508,9 +508,9 @@ Feature: Validate all scenarios in Desk Review
 	Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate Participant "Automation EXE"
-    | Actions 	  | Step 1   | Step 2	 | Step 3  					| Step 4 	| Step 5    	 |
-    | Participant | Overview | Associate | GrantorSiteVisitContacts | Associate | popupflextable |
+    And I associate "1" records "Automation SPI"
+	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		  |
+    | Associate 1 | Overview   | AAssociate | GrantorSiteVisitContacts | Associate	 | popupflextable |
     Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
     | Subtab	 | Responsibilities 			  			| 		 |		    		  |

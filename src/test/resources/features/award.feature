@@ -2,7 +2,11 @@
 Feature: Validate all scenarios in the Award
 
 	Background: Create Award from FDM
-	Given I create a subaward from the Announcement "Automation Announcement" for the Application "Automation Announcement application"
+	Given I create a subaward from the Announcement "Automation Announcement" for the Application "Automation Announcement application" as user "EXE"
+	 | Actions    | Step 1       | Step 2		| Step 3		  | Step 4 						|
+	 | Navigation | As a Grantor | Applications | Applications    | Funding Decision Memo (FDM) |
+	 | FlexTable  | FDMList1	 | View			| Create Subaward | Recommended Applications	|
+	 | Buttons 	  | Yes			 | Save			|				  |								|
 		
 	@38213 @awardCreation @award
 	Scenario: Creation of an award
@@ -133,8 +137,9 @@ Feature: Validate all scenarios in the Award
   	Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-  	And I add budget in the Award Funding Account
-  	| Funding Account | Award Encumbrance |
+    And I navigate to "Budget" sub tab
+    Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
+	| Funding Account | Award Encumbrance |
 	| FA--21 		  | 100000 			  |
   	Given I edit the Budget details in award for line item "Construction"
   	| Budget Category | Cash Match |
@@ -180,8 +185,9 @@ Feature: Validate all scenarios in the Award
   	Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-  	And I add budget in the Award Funding Account
-  	| Funding Account | Award Encumbrance |
+  	And I navigate to "Budget" sub tab
+    Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
+	| Funding Account | Award Encumbrance |
 	| FA--21 		  | 100000 			  |
   	Given I edit the Budget details in award for line item "Construction"
   	| Budget Category | Cash Match |
@@ -235,7 +241,8 @@ Feature: Validate all scenarios in the Award
   	Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-  	And I add budget in the Award Funding Account
+  	And I navigate to "Budget" sub tab
+    Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Award Encumbrance |
 	| FA--21 		  | 100000 			  |
   	Given I edit the Budget details in award for line item "Construction"
@@ -302,7 +309,8 @@ Feature: Validate all scenarios in the Award
   	Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-  	And I add budget in the Award Funding Account
+  	And I navigate to "Budget" sub tab
+    Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Award Encumbrance |
 	| FA--21 		  | 100000 			  |
   	Given I edit the Budget details in award for line item "Construction"
@@ -368,7 +376,8 @@ Feature: Validate all scenarios in the Award
   	Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-  	And I add budget in the Award Funding Account
+  	And I navigate to "Budget" sub tab
+    Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account	| Award Encumbrance |
 	| FA--21 			| 100000 			|
   	Given I edit the Budget details in award for line item "Construction"
@@ -437,7 +446,8 @@ Feature: Validate all scenarios in the Award
   	Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-  	And I add budget in the Award Funding Account
+  	And I navigate to "Budget" sub tab
+    Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Award Encumbrance |
 	| FA--21 		  | 100000 			  |
   	Given I edit the Budget details in award for line item "Construction"
@@ -505,7 +515,8 @@ Feature: Validate all scenarios in the Award
   	Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-  	And I add budget in the Award Funding Account
+  	And I navigate to "Budget" sub tab
+    Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Award Encumbrance |
 	| FA--21 		  | 100000 			  |
   	Given I edit the Budget details in award for line item "Construction"
@@ -591,7 +602,8 @@ Feature: Validate all scenarios in the Award
   	Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-  	And I add budget in the Award Funding Account
+  	And I navigate to "Budget" sub tab
+    Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Award Encumbrance |
 	| FA--21 		  | 100000 			 |
   	Given I edit the Budget details in award for line item "Construction"
@@ -673,7 +685,8 @@ Feature: Validate all scenarios in the Award
   	Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-  	And I add budget in the Award Funding Account
+  	And I navigate to "Budget" sub tab
+    Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Award Encumbrance |
 	| FA--21 		  | 100000 			  |
   	Given I edit the Budget details in award for line item "Construction"
@@ -759,7 +772,8 @@ Feature: Validate all scenarios in the Award
   	Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-  	And I add budget in the Award Funding Account
+  	And I navigate to "Budget" sub tab
+    Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Award Encumbrance |
 	| FA--21 		  | 100000 			  |
   	Given I edit the Budget details in award for line item "Construction"
@@ -848,7 +862,8 @@ Feature: Validate all scenarios in the Award
   	Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-  	And I add budget in the Award Funding Account
+  	And I navigate to "Budget" sub tab
+    Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| 		 | Award Encumbrance |
 	| FA--21 | 100000 			 |
   	Given I edit the Budget details in award for line item "Construction"
@@ -942,7 +957,8 @@ Feature: Validate all scenarios in the Award
   	Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-  	And I add budget in the Award Funding Account
+  	And I navigate to "Budget" sub tab
+    Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Award Encumbrance |
 	| FA--21 		  | 100000 			  |
   	Given I edit the Budget details in award for line item "Construction"
@@ -1036,7 +1052,8 @@ Feature: Validate all scenarios in the Award
   	Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-  	And I add budget in the Award Funding Account
+  	And I navigate to "Budget" sub tab
+    Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Award Encumbrance |
 	| FA--21 		  | 100000 			  |
   	Given I edit the Budget details in award for line item "Construction"

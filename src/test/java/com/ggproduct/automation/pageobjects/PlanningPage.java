@@ -25,7 +25,7 @@ public class PlanningPage extends ProjectManager {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
-        clickOnSidebar(dataTableMap.get("FlexTable").get("Step 1"), dataTableMap.get("Navigation").get("Step 3"));
+        govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 3"), dataTableMap.get("FlexTable").get("Step 1"));
         changeFlexTableView(dataTableMap.get("FlexTable").get("Step 3"));
         govgrants.flexTable().clickTableTopRightButton(dataTableMap.get("FlexTable").get("Step 2"),
                 dataTableMap.get("Creation").get("Step 1"));

@@ -64,11 +64,6 @@ public class ApplicationSteps {
         applicationPage.chooseAndSendReviews(dataTable, reviews.split(","));
     }
 
-    @Given("^I complete \"([^\"]*)\" review form as \"([^\"]*)\"$")
-    public void completeReviewForm(String noOfReviewers, DataTable dataTable, String reviewers) throws IOException {
-        applicationPage.completeReviewForm(noOfReviewers, dataTable, reviewers.split(","));
-    }
-
     @Given("^I enter Subaward Abbreviation as \"([^\"]*)\"$")
     public void enterSubAwardAbbreviationFDM(String value, DataTable dataTable) {
         applicationPage.enterSubAwardAbbreviationFDM(value, dataTable);
