@@ -17,14 +17,9 @@ public class AwardSteps {
         awardPage = new AwardPage(controller, handler, govgrants);
     }
     
-    @Given("^I create a subaward from the Announcement \"([^\"]*)\" for the Application \"([^\"]*)\"$")
-    public void creationOfAward(String announcementName, String applicationName) {
-        awardPage.creationOfAward(announcementName, applicationName);
-    }
-    
-    @Given("^I add budget in the Award Funding Account$")
-    public void budgetAddtionInFundingAccountForAward(DataTable rowValues) {
-        awardPage.budgetAddtionInFundingAccountForAward(rowValues);
+    @Given("^I create a subaward from the Announcement \"([^\"]*)\" for the Application \"([^\"]*)\" as user \"([^\"]*)\"$")
+    public void creationOfAward(String announcementName, String applicationName, String User, DataTable dataTable) {
+        awardPage.creationOfAward(announcementName, applicationName, User, dataTable);
     }
     
     @Given("^I edit the Budget details in award for line item \"([^\"]*)\"$")

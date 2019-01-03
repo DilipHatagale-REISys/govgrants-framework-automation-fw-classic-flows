@@ -6,7 +6,7 @@ Feature: Validate all scenarios in the Application Review
     Given I login to "As a Grantor" app as "<User>" User
     When I navigate to "Applications" tab
 	And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    When I click toggle button for "Applications Under Review"
+	When I click toggle button to select "Applications Under Review"
     And I perform quick search for "<Announcement Name>" in "flexTableRandomID1" panel
     When I click on "View" icon for "<Announcement Name>" inside table
     And I navigate to "Related Logs" sub tab
@@ -270,7 +270,7 @@ Feature: Validate all scenarios in the Application Review
     And I re-login to "As a Grantor" app as "<User>" User
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    When I click toggle button for "Applications Under Review"
+    And I click toggle button to select "Applications Under Review"
     And I perform quick search for "<Announcement Name>" in "flexTableRandomID1" panel
     When I click on "View" icon for "<Announcement Name>" inside table
     And I navigate to "Related Logs" sub tab
@@ -684,7 +684,7 @@ Feature: Validate all scenarios in the Application Review
 	And I re-login to "As a Grantor" app as "<User>" User
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    When I click toggle button for "Applications Under Review"
+    And I click toggle button to select "Applications Under Review"
     And I perform quick search for "<Announcement Name>" in "flexTableRandomID1" panel
     When I click on "View" icon for "<Announcement Name>" inside table
     And I navigate to "Related Logs" sub tab

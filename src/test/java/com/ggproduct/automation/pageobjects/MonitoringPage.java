@@ -20,7 +20,7 @@ public class MonitoringPage extends ProjectManager {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
-        clickOnSidebar(dataTableMap.get("Left Panel").get("Step 1"), dataTableMap.get("Left Panel").get("Step 2"));
+        govgrants.sideBar().getSideBarContent(dataTableMap.get("Left Panel").get("Step 2"), dataTableMap.get("Left Panel").get("Step 1"));
         expandGrid(awardName);
         expandGrid(awardName);
         govgrants.quickSearch().performEnhancedGridSearch(dataTableMap.get("FlexTable").get("Step 2"), awardId, recordName);

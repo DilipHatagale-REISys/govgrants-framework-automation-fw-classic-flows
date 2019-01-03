@@ -24,7 +24,7 @@ public class ApplicationPage extends ProjectManager {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
-        clickOnSidebar(dataTableMap.get("Navigation").get("Step 3"), dataTableMap.get("Navigation").get("Step 4"));
+        govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 4"), dataTableMap.get("Navigation").get("Step 3"));
         govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 1"), announcementName);
         govgrants.flexTable().clickTableActionIcons(dataTableMap.get("FlexTable").get("Step 2"), announcementName);
         govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("FlexTable").get("Step 3"));
@@ -108,7 +108,7 @@ public class ApplicationPage extends ProjectManager {
             reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), announcementOwner);
         }
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
-        clickOnSidebar(dataTableMap.get("Navigation").get("Step 3"), dataTableMap.get("Navigation").get("Step 4"));
+        govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 4"), dataTableMap.get("Navigation").get("Step 3"));
         changeFlexTableView(dataTableMap.get("FlexTable").get("Step 1"));
         govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 2"),
                 announcementName);
@@ -210,7 +210,7 @@ public class ApplicationPage extends ProjectManager {
             throws IOException {
         reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), reviewer);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
-        clickOnSidebar(dataTableMap.get("Navigation").get("Step 3"), dataTableMap.get("Navigation").get("Step 4"));
+        govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 4"), dataTableMap.get("Navigation").get("Step 3"));
         govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 2"),
                 dataTableMap.get("FlexTable").get("Step 1"));
         govgrants.flexTable().clickTableActionIcons(dataTableMap.get("FlexTable").get("Step 3"),
