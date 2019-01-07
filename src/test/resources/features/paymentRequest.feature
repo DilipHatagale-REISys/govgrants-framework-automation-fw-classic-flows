@@ -1,0 +1,141 @@
+@paymentRequest
+Feature: Validate all scenarios in Payment Request
+
+	#Background: Create Site Visit
+	#Given I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "SPI"
+	#| Actions 	 | Step 1 	  	 | Step 2		 		   | Step 3  	 		   | Step 4						 |
+    #| Navigation | Grants Portal | Grants		 		   | Grants and Subawards  | Grants, Awards, Amendments  |
+    #| FlexTable  | Grants		 | RecipientActiveGrants   | View				   |							 |
+    #| Subaward   | Subawards	 | RecipientsRelatedAwards1| View				   |							 |
+	
+	@38840 @creationOfAdhocReimbursementPaymentRequest @reimbursementPaymentRequest @paymentRequest
+	Scenario: To create an Adhoc Reimbursement Payment Request
+	When I navigate to "Requests" sub tab
+	And I click on top right button "Reimbursement Request" in flex table with id "flexGridRecipientsAwardPaymentRequests"
+	When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+	And I click modal button "Save And Close"
+	When I click on "Save" in the page details
+	Then I see status in Progress-bar is "Created" and is "green"
+	
+	@38661 @EditionOfPaymentRequest @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest
+	Scenario: To edit an Adhoc Reimbursement Payment Request
+	Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
+	| Actions 	 | Step 1 	  							  | Step 2		 		    | Step 3  	 		   | 
+	| Navigation | Requests								  | Reimbursement Request   | Advance			   |
+	| FlexTable  | flexGridRecipientsAwardPaymentRequests | Save And Close			| Save				   |
+	When I click on "Edit" in the page details
+	And I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+	When I click on "Save" in the page details
+	Then I see field "Acknowledgement" as "I Agree"
+	
+	@38660 @budgetAdditionPaymentRequest @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest
+	Scenario: To edit the budget an Adhoc Reimbursement Payment Request
+	Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
+	| Actions 	 | Step 1 	  							  | Step 2		 		    | Step 3  	 		   | 
+	| Navigation | Requests								  | Reimbursement Request   | Advance			   |
+	| FlexTable  | flexGridRecipientsAwardPaymentRequests | Save And Close			| Save				   |
+	Given I complete the fields from the sheet "Edition" in excel "PaymentRequest_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+	When I navigate to "Financials" sub tab
+	When I edit the following rows inline in flex table with id "flexGridReimbursementRequestEnhanced" by clicking "Edit" :
+ 	| Budget Category | Spent This Action | Program Income Spent | Cash Match | Non Cash Match |
+ 	| Construction 	  | 1000              | 500					 | 200		  | 200			   |
+	Then I see that "1000" has been added in flextable with Id "flexGridReimbursementRequestEnhanced"
+	
+	@paymentRequestAddAttachment @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest
+  	Scenario: Validate the attachment for Payment Request
+  	Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
+	| Actions 	 | Step 1 	  							  | Step 2		 		    | Step 3  	 		   | 
+	| Navigation | Requests								  | Reimbursement Request   | Advance			   |
+	| FlexTable  | flexGridRecipientsAwardPaymentRequests | Save And Close			| Save				   |
+    When I navigate to "Attachments" sub tab
+    And I click on "Add" button on "Attachment" flextable for Attachment
+    When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Invoice"
+    And I close Modal
+    Then I see that "Invoice" has been added in flextable with Id "a150b000003epDJAAY"
+    
+    @paymentRequestSendToGrantor @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest
+    Scenario: Send Payment Request to Grantor
+    Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
+	| Actions 	 | Step 1 	  							  | Step 2		 		    | Step 3  	 		   | 
+	| Navigation | Requests								  | Reimbursement Request   | Advance			   |
+	| FlexTable  | flexGridRecipientsAwardPaymentRequests | Save And Close			| Save				   |
+	And I complete the fields from the sheet "Edition" in excel "PaymentRequest_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+	Given I navigate to "Financials" sub tab
+	And I edit the following rows inline in flex table with id "flexGridReimbursementRequestEnhanced" by clicking "Edit" :
+ 	| Budget Category | Spent This Action | Program Income Spent | Cash Match | Non Cash Match |
+ 	| Construction 	  | 1000              | 500					 | 200		  | 200			   |
+ 	Given I add an attachment "InternalOrganization_Field_Values.xlsx" in the flextable "Attachment"
+    | Actions 			    | Step 1 	  | Step 2	|
+    | Attachment Navigation | Attachments | Add		|
+    | Attachment Details    | Attachment  | Invoice |
+    When I click on "Submit to Grantor" in the page details
+    
+    @enterFundingAccountAmountPaymentRequest @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest
+    Scenario: Enter Funding Account amount in Payment Request
+    Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
+	| Actions 	 | Step 1 	  							  | Step 2		 		    | Step 3  	 		   | 
+	| Navigation | Requests								  | Reimbursement Request   | Advance			   |
+	| FlexTable  | flexGridRecipientsAwardPaymentRequests | Save And Close			| Save				   |
+	And I complete the fields from the sheet "Edition" in excel "PaymentRequest_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+	Given I navigate to "Financials" sub tab
+	And I edit the following rows inline in flex table with id "flexGridReimbursementRequestEnhanced" by clicking "Edit" :
+ 	| Budget Category | Spent This Action | Program Income Spent | Cash Match | Non Cash Match |
+ 	| Construction 	  | 1000              | 500					 | 200		  | 200			   |
+ 	Given I add an attachment "InternalOrganization_Field_Values.xlsx" in the flextable "Attachment"
+    | Actions 			    | Step 1 	  | Step 2	|
+    | Attachment Navigation | Attachments | Add		|
+    | Attachment Details    | Attachment  | Invoice |
+    And I click on "Submit to Grantor" in the page details
+    Given I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "FO"
+	| Actions 	 | Step 1 	  	 | Step 2		 		   | Step 3  	 		   | Step 4						 |
+    | Navigation | As a Grantor  | Grants		 		   | Grants and Subawards  | Grants, Awards & Amendments |
+    | FlexTable  | Grants		 | ActiveGrants			   | View				   |							 |
+    | Subaward   | Subawards	 | RelatedAwards1		   | View				   |							 |
+    When I navigate to "Requests" sub tab
+    And I click on "View" icon for "Submitted to Grantor" inside flex table with id "flexGridAwardPaymentRequest"
+    When I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "flexGridPaymentFundingAccountsEnhanced" by clicking "Edit" :
+ 	| Funding Account | Net Spent This Action |
+ 	| FA--21 	  	  | 1000             	  |
+ 	Then I see that "1000" has been added in flextable with Id "flexGridPaymentFundingAccountsEnhanced"
+    
+    @approverSelectionPaymentRequest @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest
+    Scenario: Enter Funding Account amount in Payment Request
+    Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
+	| Actions 	 | Step 1 	  							  | Step 2		 		    | Step 3  	 		   | 
+	| Navigation | Requests								  | Reimbursement Request   | Advance			   |
+	| FlexTable  | flexGridRecipientsAwardPaymentRequests | Save And Close			| Save				   |
+	And I complete the fields from the sheet "Edition" in excel "PaymentRequest_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+	Given I navigate to "Financials" sub tab
+	And I edit the following rows inline in flex table with id "flexGridReimbursementRequestEnhanced" by clicking "Edit" :
+ 	| Budget Category | Spent This Action | Program Income Spent | Cash Match | Non Cash Match |
+ 	| Construction 	  | 1000              | 500					 | 200		  | 200			   |
+ 	Given I add an attachment "InternalOrganization_Field_Values.xlsx" in the flextable "Attachment"
+    | Actions 			    | Step 1 	  | Step 2	|
+    | Attachment Navigation | Attachments | Add		|
+    | Attachment Details    | Attachment  | Invoice |
+    And I click on "Submit to Grantor" in the page details
+    Given I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "FO"
+	| Actions 	 | Step 1 	  	 | Step 2		 		   | Step 3  	 		   | Step 4						 |
+    | Navigation | As a Grantor  | Grants		 		   | Grants and Subawards  | Grants, Awards & Amendments |
+    | FlexTable  | Grants		 | ActiveGrants			   | View				   |							 |
+    | Subaward   | Subawards	 | RelatedAwards1		   | View				   |							 |
+    And I navigate to "Requests" sub tab
+    Given I click on "View" icon for "Submitted to Grantor" inside flex table with id "flexGridAwardPaymentRequest"
+    And I navigate to "Financials" sub tab
+    Given I edit the following rows inline in flex table with id "flexGridPaymentFundingAccountsEnhanced" by clicking "Edit" :
+ 	| Funding Account | Net Spent This Action |
+ 	| FA--21 	  	  | 1000             	  |
+    When I navigate to "Responsibilities" sub tab
+    And I click on "Edit" icon for "Fiscal Approver" inside flex table with id "flexGridPaymentRequestRolesandResponsibilities"
+    When I fill in the "Automation FO" for the Approver details
+    And I close Modal
+    Then I see that "Automation FO" has been added in flextable with Id "flexGridPaymentRequestRolesandResponsibilities"

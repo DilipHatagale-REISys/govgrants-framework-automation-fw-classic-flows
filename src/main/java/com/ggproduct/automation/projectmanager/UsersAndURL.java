@@ -82,8 +82,11 @@ public class UsersAndURL {
         case "SPI":
             username = "gcooper@yopmail.com20";
             break;
+        case "FO":
+            username = "auto.fm@auto.com";
+            break;
         default:
-            username = "admin.automation@product.com";
+            username = "admin.automation@subportal.com";
         }
         return username;
     }

@@ -144,13 +144,13 @@ public class DefaultPage extends ProjectManager {
         }
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
         govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 4"),
-                dataTableMap.get("Navigation").get("Step 3"));
+                dataTableMap.get("Navigation").get("Step 3")).click();
         changeFlexTableView(awardState + " " + dataTableMap.get("FlexTable").get("Step 1"));
         govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 2"), awardName);
         govgrants.flexTable().clickTableActionIcons(dataTableMap.get("FlexTable").get("Step 3"), awardName);
         govgrants.pageDetails().clickSubTabsInsideTableView(dataTableMap.get("Subaward").get("Step 1"));
         govgrants.flexTable().clickTableActionIcon(dataTableMap.get("Subaward").get("Step 2"),
-                dataTableMap.get("Subaward").get("Step 2"), awardId);
+                dataTableMap.get("Subaward").get("Step 3"), awardId);
     }
 
     /**

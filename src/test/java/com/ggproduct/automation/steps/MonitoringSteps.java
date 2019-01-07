@@ -21,4 +21,9 @@ public class MonitoringSteps {
     public void navigateToMonitoringRecord(String user, String recordName, String awardName, String awardId, DataTable dataTable) throws IOException {
         monitoringPage.navigateToMonitoringRecord(user, recordName, awardName, awardId, dataTable);
     }
+    
+    @Given("^I create a adhoc \"([^\"]*)\" Payment Request from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
+    public void creationOfAdhocPaymentRequest(String paymentRequestType, String sheetName, String excelName,  DataTable dataTable) {
+        monitoringPage.creationOfAdhocPaymentRequest(paymentRequestType, sheetName, excelName, dataTable);
+    }
 }
