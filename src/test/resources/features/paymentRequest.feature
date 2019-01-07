@@ -1,12 +1,12 @@
 @paymentRequest
 Feature: Validate all scenarios in Payment Request
 
-	#Background: Create Site Visit
-	#Given I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "SPI"
-	#| Actions 	 | Step 1 	  	 | Step 2		 		   | Step 3  	 		   | Step 4						 |
-    #| Navigation | Grants Portal | Grants		 		   | Grants and Subawards  | Grants, Awards, Amendments  |
-    #| FlexTable  | Grants		 | RecipientActiveGrants   | View				   |							 |
-    #| Subaward   | Subawards	 | RecipientsRelatedAwards1| View				   |							 |
+	Background: Create Site Visit
+	Given I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "SPI"
+	| Actions 	 | Step 1 	  	 | Step 2		 		   | Step 3  	 		   | Step 4						 |
+    | Navigation | Grants Portal | Grants		 		   | Grants and Subawards  | Grants, Awards, Amendments  |
+    | FlexTable  | Grants		 | RecipientActiveGrants   | View				   |							 |
+    | Subaward   | Subawards	 | RecipientsRelatedAwards1| View				   |							 |
 	
 	@38840 @creationOfAdhocReimbursementPaymentRequest @reimbursementPaymentRequest @paymentRequest
 	Scenario: To create an Adhoc Reimbursement Payment Request
