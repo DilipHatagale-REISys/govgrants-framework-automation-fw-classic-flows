@@ -74,8 +74,7 @@ Feature: Validate all scenarios in the Application Intake
     And I associate "1" records "FA--21"
 	| Actions 	  | Step 1  | Step 2	     | Step 3  			  					   | Step 4  | Step 5  		  |
     | Associate 1 | Budget  | Add Focus Area | flexGridAnnouncementFundingAccountGrantor | Add	 | popupflextable |
- 
-	And I add focus area "00005" to the application
+ 	And I add focus area "00005" to the application
 	| Actions 	 | Step 1 | Step 2		   | Step 3 	  |
 	| Navigation | Budget | Add Focus Area | FocusAreaApp |
 	| FlexTable	 | Add 	  | popupflextable | 			  |

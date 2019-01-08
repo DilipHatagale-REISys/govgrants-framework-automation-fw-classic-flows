@@ -24,6 +24,11 @@ public class LoginSteps {
 		loginpage.login(userName);
 	}
 	
+	@Given("^I login to Grants Portal as \"([^\"]*)\"$")
+    public void loginToGrantsPortal(String userName) {
+        loginpage.loginToGrantsPortal(userName);
+    }
+	
 	@When("^I re-login to Grants Portal as \"([^\"]*)\"$")
     public void reloginToGrantsPortal(String userName) {
         loginpage.reloginToGrantsPortal(userName);

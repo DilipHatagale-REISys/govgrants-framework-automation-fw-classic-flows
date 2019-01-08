@@ -3,6 +3,10 @@ Feature: Validate all scenarios in Desk Review
 
 	Background: Create Desk Review
 	Given I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "EXE"
+	| Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
+    | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
 	And I create a post award record from sheet "Creation" in excel "DeskReview_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		    | Step 2    		 	 |
 	| Navigation | Management		    | 			 			 |	

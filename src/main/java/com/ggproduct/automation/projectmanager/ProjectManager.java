@@ -59,7 +59,7 @@ public class ProjectManager extends ProjectWebServices {
         new UsersAndURL();
         reiDriver.get().navigateToUrl(UsersAndURL.navigateToAnyUrl(urlName));
     }
-   
+
     /**
      * Handles scrolling to a specific section
      * 
@@ -68,8 +68,6 @@ public class ProjectManager extends ProjectWebServices {
     public void scrollToSection(String sectionName) {
         reiDriver.JavaScript().scrollpageToSpecificElement(getScrollToSection(sectionName));
     }
-
-    
 
     /**
      * Handles toggling between different list views
@@ -243,9 +241,7 @@ public class ProjectManager extends ProjectWebServices {
 
         return inlineSeperatedDataTable;
     }
-    
 
-    
     /**
      * Handles re-logging as a different user and toggling to the app specified
      * 
@@ -259,13 +255,13 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     /******* "Consolidated Generic Methods across the Modules" **********/
-    
+
     public void reloginToViewRecord(String recordName, String recordOwner, DataTable dataTable) throws IOException {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         reloginToggleToApp(dataTableMap.get("Owner Navigation").get("Step 1"), recordOwner);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Owner Navigation").get("Step 2"));
-        clickOnSidebar(dataTableMap.get("Owner Navigation").get("Step 3"),
-                dataTableMap.get("Owner Navigation").get("Step 4"));
+        govgrants.sideBar().getSideBarContent(dataTableMap.get("Owner Navigation").get("Step 4"),
+                dataTableMap.get("Owner Navigation").get("Step 3"));
         changeFlexTableView(dataTableMap.get("Complete Review").get("Step 1"));
         govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("Complete Review").get("Step 2"),
                 recordName);
@@ -290,7 +286,8 @@ public class ProjectManager extends ProjectWebServices {
             reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), awardOwner);
         }
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
-        clickOnSidebar(dataTableMap.get("Navigation").get("Step 3"), dataTableMap.get("Navigation").get("Step 4"));
+        govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 4"),
+                dataTableMap.get("Navigation").get("Step 3"));
         changeFlexTableView(awardState + " " + dataTableMap.get("FlexTable").get("Step 1"));
         govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 2"), awardName);
         govgrants.flexTable().clickTableActionIcons(dataTableMap.get("FlexTable").get("Step 3"), awardName);
@@ -298,7 +295,7 @@ public class ProjectManager extends ProjectWebServices {
         govgrants.flexTable().clickTableActionIcon(dataTableMap.get("Subaward").get("Step 2"),
                 dataTableMap.get("Subaward").get("Step 2"), awardId);
     }
-    
+
     /**
      * Performs login and toggles app
      * 
@@ -334,8 +331,6 @@ public class ProjectManager extends ProjectWebServices {
         govgrants.mainPage().waitForEgmsHeader();
     }
 
-
-
     private By getScrollToSection(String sectionName) {
         return By.xpath("//div[contains(@class,'panel-heading')]//*[@title='" + sectionName
                 + "']|//div[contains(@class,'panel-heading')]//*[text()='" + sectionName + "']");
@@ -344,7 +339,5 @@ public class ProjectManager extends ProjectWebServices {
     private void login(String userName) {
         govgrants.mainPage().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);
     }
-
-    
 
 }
