@@ -30,7 +30,7 @@ public class AwardPage extends ProjectManager {
         govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 1"), announcementName);
         govgrants.flexTable().clickTableActionIcons(dataTableMap.get("FlexTable").get("Step 2"), announcementName);
         govgrants.flexTable().clickTableActionIcon(dataTableMap.get("FlexTable").get("Step 3"), applicationName, dataTableMap.get("FlexTable").get("Step 4"));
-        clickOnConfirmationtBox(dataTableMap.get("Buttons").get("Step 1"));
+        govgrants.modal().handleModalAlert(dataTableMap.get("Buttons").get("Step 1"));
         govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("Buttons").get("Step 2"));
     }
 
@@ -44,7 +44,7 @@ public class AwardPage extends ProjectManager {
         govgrants.pageDetails().clickSubTabsInsideTableView("Budget");
         govgrants.flexTable().clickTableActionIcon("Add Line Items", lineItem, "Award Budget");
         govgrants.flexTable().editFlexTableRowsInline("inlineEditGridLineItem", "Edit", rowValues);
-        closeModal();
+        govgrants.modal().closeModalByClickingTopRightCloseButton();
     }
 
     /**

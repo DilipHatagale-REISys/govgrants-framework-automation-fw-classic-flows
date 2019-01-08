@@ -62,7 +62,7 @@ public class AnnouncementPage extends ProjectManager {
                 dataTableMap.get("Flextable").get("Step 1"), budgetPeriod);
         govgrants.inputForms().enterInputFieldsFromExcelFile(excelFileName, sheetName);
         govgrants.modal().clickModalContentSpecificButton(dataTableMap.get("Flextable").get("Step 2"));
-        closeModal();
+        govgrants.modal().closeModalByClickingTopRightCloseButton();
     }
 
 }
