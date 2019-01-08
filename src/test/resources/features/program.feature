@@ -101,7 +101,7 @@ Feature: Validate all scenarios for program
   	@34746 @programAddAttachment @program
   	Scenario: Validate the attachment for the Internal Program
     When I navigate to "Attachments" sub tab
-    And I click on "Add" button on " Attachments" flextable for Attachment
+    And I click on top right button "Add" in flex table with id "a150b000003epC4AAI"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Program Artifacts"
     And I close Modal 
     Then I see that "Program Artifacts" has been added in flextable with Id "a150b000003epC4AAI"
@@ -129,10 +129,10 @@ Feature: Validate all scenarios for program
 	| Upload file     	   | Checklist 				   | Program 		  |								   |
 	| Inline Column Title  | Description       	  	   | Required  	  	  | Applies To  			       |
     | Inline values 	   | Automation Description    | Mandatory	      | Application     		       |
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx" in the flextable " Attachments"
-    | Actions 			    | Step 1 	  | Step 2	 		  |
-    | Attachment Navigation | Attachments | Add				  |
-    | Attachment Details    | Attachment  | Program Artifacts |
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions 			    | Step 1 	  | Step 2	 		  | Step 3 			   |	
+    | Attachment Navigation | Attachments | Add				  | a150b000003epC4AAI |
+    | Attachment Details    | Attachment  | Program Artifacts | 				   |
     When I click on "Submit For Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 	
@@ -159,10 +159,10 @@ Feature: Validate all scenarios for program
 	| Upload file     	   | Checklist 				   | Program 		  |									|
 	| Inline Column Title  | Description       	  	   | Required  	  	  | Applies To  			       	|
     | Inline values 	   | Automation Description    | Mandatory	      | Application     		       	|
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx" in the flextable " Attachments"
-    | Actions 			    | Step 1 	  | Step 2	 		  |
-    | Attachment Navigation | Attachments | Add				  |
-    | Attachment Details    | Attachment  | Program Artifacts |
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions 			    | Step 1 	  | Step 2	 		  | Step 3 			   |	
+    | Attachment Navigation | Attachments | Add				  | a150b000003epC4AAI |
+    | Attachment Details    | Attachment  | Program Artifacts | 				   |
     And I click on "Submit For Approval" in the page details
 	Given I re-login to "As a Grantor" app as "<Program Approver>" User
 	When I navigate to "Planning" tab
@@ -204,10 +204,10 @@ Feature: Validate all scenarios for program
 	| Checklist FlexTable  | flexGridProgramChecklists | Add	   		  |   			|
 	| Upload Modal  	   | Upload Template 		   | Not Applicable   | 			|
 	| Upload file     	   | Checklist 				   | Program 		  |				|
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx" in the flextable " Attachments"
-    | Actions 			    | Step 1 	  | Step 2	 		  |
-    | Attachment Navigation | Attachments | Add				  |
-    | Attachment Details    | Attachment  | Program Artifacts |
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions 			    | Step 1 	  | Step 2	 		  | Step 3 			   |	
+    | Attachment Navigation | Attachments | Add				  | a150b000003epC4AAI |
+    | Attachment Details    | Attachment  | Program Artifacts | 				   |
     And I click on "Submit For Approval" in the page details
     Given "2" Approvers "PM,EXE" approve the record "<Program Name>"
 	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |

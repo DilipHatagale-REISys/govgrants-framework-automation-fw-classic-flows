@@ -5,6 +5,8 @@ import java.awt.AWTException;
 import java.io.IOException;
 import com.automation.rei.controller.Controller;
 import com.automation.rei.controller.SetupController;
+import com.ggproduct.automation.projectmanager.UsersAndURL;
+
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -30,6 +32,7 @@ public class setup {
     @Before
     public void startUp() throws IOException, AWTException {
         setupController.initializer();
+        setupController.usersController(new UsersAndURL());
     }
 
     @After

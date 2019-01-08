@@ -8,7 +8,6 @@ import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.projectmanager.ProjectManager;
-import com.ggproduct.automation.projectmanager.UsersAndURL;
 
 /**
  * Handles all login related methods
@@ -21,6 +20,7 @@ public class LoginPage extends ProjectManager{
 	public LoginPage(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
 		super(controller,handler,govgrants);
 	}
+	
 	
 	/**
      * Assert presence of home tab
@@ -35,59 +35,4 @@ public class LoginPage extends ProjectManager{
     public boolean isHometabPresent() {
         return reiDriver.findMyElement().getElement(By.xpath("//div/ul/li/a[@title='HOME']")).isDisplayed();
     }
-	
-    /**
-     * Handles logging into the system
-     * @param userName
-     */
-    public void login(String userName) {
-		govgrants.mainPage().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);
-	}
-    
-   
-    
-    public void reloginAsDifferentUser(String userName){
-        govgrants.mainPage().waitForNavigationLogoToDisappear();
-        reiDriver.WaitFor().makeThreadSleep(1000);
-        reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//img[@alt='User Avatar']/..//i[@class='fa fa-caret-down']")).click();
-        govgrants.mainPage().getLoginDropDownItems("Logout").click();
-        try {
-            reiDriver.eatCookies().deleteAllCookies();
-            reiDriver.WaitFor().makeThreadSleep(500);
-            navigateToURL("PRODUCT PORTAL");
-        } catch(Exception e) {
-            System.out.println(e);
-        }
-        govgrants.mainPage().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);
-        govgrants.mainPage().waitForEgmsHeader();
-    }
-    
-    public void reloginToGrantsPortal(String userName) {
-        govgrants.mainPage().waitForNavigationLogoToDisappear();
-        reiDriver.WaitFor().makeThreadSleep(1000);
-        reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//img[@alt='User Avatar']/..//i[@class='fa fa-caret-down']")).click();
-        govgrants.mainPage().getLoginDropDownItems("Logout").click();
-        try {
-            reiDriver.eatCookies().deleteAllCookies();
-            reiDriver.WaitFor().makeThreadSleep(500);
-            navigateToURL("SUBRECIPIENT PORTAL");
-        } catch(Exception e) {
-            System.out.println(e);
-        }
-        govgrants.mainPage().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);
-        govgrants.mainPage().waitForEgmsHeader();
-    }
-    
-    public void loginToGrantsPortal(String userName) {
-        try {
-            reiDriver.eatCookies().deleteAllCookies();
-            reiDriver.WaitFor().makeThreadSleep(500);
-            navigateToURL("SUBRECIPIENT PORTAL");
-        } catch(Exception e) {
-            System.out.println(e);
-        }
-        govgrants.mainPage().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);
-        govgrants.mainPage().waitForEgmsHeader();
-    }
-    
 }

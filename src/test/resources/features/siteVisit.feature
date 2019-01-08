@@ -79,7 +79,7 @@ Feature: Validate all scenarios in the Site Visit
     | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
-	When I re-login to Grants Portal as "SPI"
+	When I re-login to "Grants Portal" app as "SPI" User with environment "SUBPORTAL"
 	And I navigate to "Monitoring" tab
 	When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
 	And I perform quick search for "<Site Visit Name>" in "PhasePendingTasks" panel
@@ -104,10 +104,10 @@ Feature: Validate all scenarios in the Site Visit
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
 	Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
-	| Actions 	 | Step 1   		 | Step 2	|
-	| Navigation | Monitoring 		 | 			|
-	| Left Panel | Pending Tasks 	 | My Tasks |
-	| FlexTable  | PhasePendingTasks | Start 	|
+	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
+	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
+	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
+	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	When I re-login to "As a Grantor" app as "EXE" User
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
@@ -135,10 +135,10 @@ Feature: Validate all scenarios in the Site Visit
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
 	Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
-	| Actions 	 | Step 1   		 | Step 2	|
-	| Navigation | Monitoring 		 | 			|
-	| Left Panel | Pending Tasks 	 | My Tasks |
-	| FlexTable  | PhasePendingTasks | Start 	|
+	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
+	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
+	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
+	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	When I re-login to "As a Grantor" app as "EXE" User
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
@@ -172,10 +172,10 @@ Feature: Validate all scenarios in the Site Visit
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
 	Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
-	| Actions 	 | Step 1   		 | Step 2	|
-	| Navigation | Monitoring 		 | 			|
-	| Left Panel | Pending Tasks 	 | My Tasks |
-	| FlexTable  | PhasePendingTasks | Start 	|
+	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
+	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
+	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
+	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Award Name>" with Id "<Award EGMS ID>"
 	| Actions 	 | Step 1   		 			     | Step 2		  		  			|
 	| Navigation | As a Grantor 	  				 | Monitoring 			 			|
@@ -212,10 +212,10 @@ Feature: Validate all scenarios in the Site Visit
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
 	Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
-	| Actions 	 | Step 1   		 | Step 2	|
-	| Navigation | Monitoring 		 | 			|
-	| Left Panel | Pending Tasks 	 | My Tasks |
-	| FlexTable  | PhasePendingTasks | Start 	|
+	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
+	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
+	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
+	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Award Name>" with Id "<Award EGMS ID>"
 	| Actions 	 | Step 1   		 			     | Step 2		  		  			|
 	| Navigation | As a Grantor 	  				 | Monitoring 			 			|
@@ -253,10 +253,10 @@ Feature: Validate all scenarios in the Site Visit
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
 	Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
-	| Actions 	 | Step 1   		 | Step 2	|
-	| Navigation | Monitoring 		 | 			|
-	| Left Panel | Pending Tasks 	 | My Tasks |
-	| FlexTable  | PhasePendingTasks | Start 	|
+	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
+	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
+	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
+	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Award Name>" with Id "<Award EGMS ID>"
 	| Actions 	 | Step 1   		 			     | Step 2		  		  			|
 	| Navigation | As a Grantor 	  				 | Monitoring 			 			|
@@ -309,10 +309,10 @@ Feature: Validate all scenarios in the Site Visit
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
 	Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
-	| Actions 	 | Step 1   		 | Step 2	|
-	| Navigation | Monitoring 		 | 			|
-	| Left Panel | Pending Tasks 	 | My Tasks |
-	| FlexTable  | PhasePendingTasks | Start 	|
+	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
+	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
+	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
+	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Award Name>" with Id "<Award EGMS ID>"
 	| Actions 	 | Step 1   		 			     | Step 2		  		  			|
 	| Navigation | As a Grantor 	  				 | Monitoring 			 			|
@@ -365,10 +365,10 @@ Feature: Validate all scenarios in the Site Visit
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
 	Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
-	| Actions 	 | Step 1   		 | Step 2	|
-	| Navigation | Monitoring 		 | 			|
-	| Left Panel | Pending Tasks 	 | My Tasks |
-	| FlexTable  | PhasePendingTasks | Start 	|
+	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
+	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
+	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
+	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Award Name>" with Id "<Award EGMS ID>"
 	| Actions 	 | Step 1   		 			     | Step 2		  		  			|
 	| Navigation | As a Grantor 	  				 | Monitoring 			 			|
@@ -394,12 +394,12 @@ Feature: Validate all scenarios in the Site Visit
 	| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
 	| Button 	 | View								 | 						            |
 	Given I click on "Send to Subrecipient" in the page details
-	When Subrecipient "SPI" receives the task for "<Site Visit Name>"
-	| Actions 	 | Step 1   		 | Step 2	|
-	| Navigation | Monitoring 		 | 			|
-	| Left Panel | Pending Tasks 	 | My Tasks |
-	| FlexTable  | PhasePendingTasks | Start 	|
-	When I re-login to Grants Portal as "SPI"
+	Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
+	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
+	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
+	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
+	| FlexTable  | PhasePendingTasks | Start 		 |			 |
+	When I re-login to "Grants Portal" app as "SPI" User with environment "SUBPORTAL"
 	When I navigate to "Monitoring" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
 	When I perform quick search for "<Site Visit Name>" in "PhasePendingTasks" panel
@@ -440,10 +440,10 @@ Feature: Validate all scenarios in the Site Visit
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
 	Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
-	| Actions 	 | Step 1   		 | Step 2	|
-	| Navigation | Monitoring 		 | 			|
-	| Left Panel | Pending Tasks 	 | My Tasks |
-	| FlexTable  | PhasePendingTasks | Start 	|
+	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
+	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
+	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
+	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Award Name>" with Id "<Award EGMS ID>"
 	| Actions 	 | Step 1   		 			     | Step 2		  		  			|
 	| Navigation | As a Grantor 	  				 | Monitoring 			 			|
@@ -469,12 +469,12 @@ Feature: Validate all scenarios in the Site Visit
 	| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
 	| Button 	 | View								 | 						            |
 	Given I click on "Send to Subrecipient" in the page details
-	When Subrecipient "SPI" receives the task for "<Site Visit Name>"
-	| Actions 	 | Step 1   		 | Step 2	|
-	| Navigation | Monitoring 		 | 			|
-	| Left Panel | Pending Tasks 	 | My Tasks |
-	| FlexTable  | PhasePendingTasks | Start 	|
-	When I re-login to Grants Portal as "SPI"
+	Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
+	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
+	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
+	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
+	| FlexTable  | PhasePendingTasks | Start 		 |			 |
+	When I re-login to "Grants Portal" app as "SPI" User with environment "SUBPORTAL"
 	When I navigate to "Monitoring" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
 	When I perform quick search for "<Site Visit Name>" in "PhasePendingTasks" panel
@@ -516,10 +516,10 @@ Feature: Validate all scenarios in the Site Visit
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
 	Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
-	| Actions 	 | Step 1   		 | Step 2	|
-	| Navigation | Monitoring 		 | 			|
-	| Left Panel | Pending Tasks 	 | My Tasks |
-	| FlexTable  | PhasePendingTasks | Start 	|
+	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
+	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
+	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
+	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Award Name>" with Id "<Award EGMS ID>"
 	| Actions 	 | Step 1   		 			     | Step 2		  		  			|
 	| Navigation | As a Grantor 	  				 | Monitoring 			 			|
@@ -545,12 +545,12 @@ Feature: Validate all scenarios in the Site Visit
 	| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
 	| Button 	 | View								 | 						            |
 	Given I click on "Send to Subrecipient" in the page details
-	When Subrecipient "SPI" receives the task for "<Site Visit Name>"
-	| Actions 	 | Step 1   		 | Step 2	|
-	| Navigation | Monitoring 		 | 			|
-	| Left Panel | Pending Tasks 	 | My Tasks |
-	| FlexTable  | PhasePendingTasks | Start 	|
-	When I re-login to Grants Portal as "SPI"
+	Given Subrecipient "SPI" receives the task for "<Site Visit Name>"
+	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
+	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
+	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
+	| FlexTable  | PhasePendingTasks | Start 		 |			 |
+	When I re-login to "Grants Portal" app as "SPI" User with environment "SUBPORTAL"
 	When I navigate to "Monitoring" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
 	When I perform quick search for "<Site Visit Name>" in "PhasePendingTasks" panel

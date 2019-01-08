@@ -22,7 +22,7 @@ public class ApplicationPage extends ProjectManager {
      */
     public void qualifyAnnouncement(String announcementName, String user, DataTable dataTable) {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
-        loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
+        govgrants.mainPage().loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
         govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 4"), dataTableMap.get("Navigation").get("Step 3"));
         govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 1"), announcementName);
@@ -103,13 +103,13 @@ public class ApplicationPage extends ProjectManager {
             String announcementOwner, String announcementName, DataTable dataTable) throws IOException {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         try {
-            loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), announcementOwner);
+            govgrants.mainPage().loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), announcementOwner);
         } catch (Exception ex) {
-            reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), announcementOwner);
+            govgrants.mainPage().reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), announcementOwner);
         }
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
         govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 4"), dataTableMap.get("Navigation").get("Step 3"));
-        changeFlexTableView(dataTableMap.get("FlexTable").get("Step 1"));
+        govgrants.phasePannel().clickDoubleArrowDropDownAndSelectItem(dataTableMap.get("FlexTable").get("Step 1"));
         govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 2"),
                 announcementName);
         govgrants.flexTable().clickTableActionIcons(dataTableMap.get("FlexTable").get("Step 3"), announcementName);
@@ -208,7 +208,7 @@ public class ApplicationPage extends ProjectManager {
 
     private void singleReviewFormCompletion(String reviewer, Map<String, Map<String, String>> dataTableMap)
             throws IOException {
-        reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), reviewer);
+        govgrants.mainPage().reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), reviewer);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
         govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 4"), dataTableMap.get("Navigation").get("Step 3"));
         govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 2"),

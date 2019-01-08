@@ -1,6 +1,7 @@
 package com.ggproduct.automation.projectmanager;
 
 import java.io.IOException;
+
 import org.openqa.selenium.By;
 
 import java.util.ArrayList;
@@ -9,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.automation.rei.controller.Controller;
-import com.automation.rei.corelib.Properties_Logs;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.automation.rei.handlers.CoreHandlers;
 import cucumber.api.DataTable;
@@ -24,7 +24,6 @@ public class ProjectManager extends ProjectWebServices {
     public CoreHandlers reiDriver;
     public Controller controller;
     public GovGrantsHandler govgrants;
-    public final String defaultPassword = "SALESFORCE2018";
     public final String defaultLongText = "Automation test description";
     private final By attachmentClassificationPath, attachmentDescriptionPath, attachmentFilePath, approverDescription,
             acknowledgementCheckboxPath;
@@ -56,8 +55,8 @@ public class ProjectManager extends ProjectWebServices {
     /******* "Key Methods with complete functionality" *****************/
 
     public void navigateToURL(String urlName) throws IOException {
-        new UsersAndURL();
-        reiDriver.get().navigateToUrl(UsersAndURL.navigateToAnyUrl(urlName));
+        UsersAndURL usersAndURL = new UsersAndURL();
+        reiDriver.get().navigateToUrl(usersAndURL.navigateToAnyUrl(urlName));
     }
 
     /**
@@ -67,15 +66,6 @@ public class ProjectManager extends ProjectWebServices {
      */
     public void scrollToSection(String sectionName) {
         reiDriver.JavaScript().scrollpageToSpecificElement(getScrollToSection(sectionName));
-    }
-
-    /**
-     * Handles toggling between different list views
-     * 
-     * @param tableViewName
-     */
-    public void changeFlexTableView(String tableViewName) {
-        govgrants.phasePannel().clickDoubleArrowDropDownAndSelectItem(tableViewName);
     }
 
     /**
@@ -212,16 +202,6 @@ public class ProjectManager extends ProjectWebServices {
         clickOnConfirmationtBox(confirmation);
     }
 
-    /**
-     * Handles clicking on Approval Decision and clicks submit
-     * 
-     * @param approvalDesicion
-     */
-    public void clickOnApprovalDecisionBox(String approvalDesicion) {
-        govgrants.approvals().completeApprovalFlow(approvalDesicion, defaultLongText);
-        govgrants.mainPage().waitForNavigationLogoToDisappear();
-    }
-
     public DataTable seperateInlineDataTable(Map<String, Map<String, String>> dataTableMap) {
         List<String> inlineColumnTitleList = new ArrayList<String>();
         List<String> inlineValueList = new ArrayList<String>();
@@ -242,102 +222,16 @@ public class ProjectManager extends ProjectWebServices {
         return inlineSeperatedDataTable;
     }
 
-    /**
-     * Handles re-logging as a different user and toggling to the app specified
-     * 
-     * @param appName
-     * @param userName
-     * @throws IOException
-     */
-    public void reloginToggleToApp(String appName, String userName) throws IOException {
-        reloginAsDifferentUser(userName);
-        govgrants.mainPage().setUpCustomAppDropDown(appName);
-    }
 
     /******* "Consolidated Generic Methods across the Modules" **********/
 
-    public void reloginToViewRecord(String recordName, String recordOwner, DataTable dataTable) throws IOException {
-        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
-        reloginToggleToApp(dataTableMap.get("Owner Navigation").get("Step 1"), recordOwner);
-        govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Owner Navigation").get("Step 2"));
-        govgrants.sideBar().getSideBarContent(dataTableMap.get("Owner Navigation").get("Step 4"),
-                dataTableMap.get("Owner Navigation").get("Step 3"));
-        changeFlexTableView(dataTableMap.get("Complete Review").get("Step 1"));
-        govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("Complete Review").get("Step 2"),
-                recordName);
-        govgrants.flexTable().clickTableActionIcons(dataTableMap.get("Complete Review").get("Step 3"), recordName);
-        govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("Complete Review").get("Step 4"));
-    }
 
-    /**
-     * Handles re-logging in and to view the given award
-     * 
-     * @param awardId
-     * @param awardName
-     * @param awardOwner
-     * @throws IOException
-     */
-    public void reloginToViewAward(String awardState, String awardId, String awardName, String awardOwner,
-            DataTable dataTable) throws IOException {
-        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
-        try {
-            loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), awardOwner);
-        } catch (Exception ex) {
-            reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), awardOwner);
-        }
-        govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
-        govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 4"),
-                dataTableMap.get("Navigation").get("Step 3"));
-        changeFlexTableView(awardState + " " + dataTableMap.get("FlexTable").get("Step 1"));
-        govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 2"), awardName);
-        govgrants.flexTable().clickTableActionIcons(dataTableMap.get("FlexTable").get("Step 3"), awardName);
-        govgrants.pageDetails().clickSubTabsInsideTableView(dataTableMap.get("Subaward").get("Step 1"));
-        govgrants.flexTable().clickTableActionIcon(dataTableMap.get("Subaward").get("Step 2"),
-                dataTableMap.get("Subaward").get("Step 2"), awardId);
-    }
 
-    /**
-     * Performs login and toggles app
-     * 
-     * @param appName
-     * @param userName
-     */
-    public void loginToggleToApp(String appName, String userName) {
-        login(userName);
-        govgrants.mainPage().setUpCustomAppDropDown(appName);
-    }
-
-    public void reloginToGrantsPortal(String userName) throws IOException {
-        govgrants.mainPage().waitForNavigationLogoToDisappear();
-        reiDriver.WaitFor().makeThreadSleep(1000);
-        govgrants.mainPage().clickLoginDropDown();
-        govgrants.mainPage().getLoginDropDownItems("Logout").click();
-        reiDriver.eatCookies().deleteAllCookies();
-        reiDriver.WaitFor().makeThreadSleep(500);
-        navigateToURL("SUBRECIPIENT PORTAL");
-        govgrants.mainPage().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);
-        govgrants.mainPage().waitForEgmsHeader();
-    }
-
-    private void reloginAsDifferentUser(String userName) throws IOException {
-        govgrants.mainPage().waitForNavigationLogoToDisappear();
-        reiDriver.WaitFor().makeThreadSleep(1000);
-        govgrants.mainPage().clickLoginDropDown();
-        govgrants.mainPage().getLoginDropDownItems("Logout").click();
-        reiDriver.eatCookies().deleteAllCookies();
-        reiDriver.WaitFor().makeThreadSleep(500);
-        navigateToURL("PRODUCT PORTAL");
-        govgrants.mainPage().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);
-        govgrants.mainPage().waitForEgmsHeader();
-    }
+   
 
     private By getScrollToSection(String sectionName) {
         return By.xpath("//div[contains(@class,'panel-heading')]//*[@title='" + sectionName
                 + "']|//div[contains(@class,'panel-heading')]//*[text()='" + sectionName + "']");
-    }
-
-    private void login(String userName) {
-        govgrants.mainPage().login(new UsersAndURL().handleUsersForEnv(userName), defaultPassword);
     }
 
 }
