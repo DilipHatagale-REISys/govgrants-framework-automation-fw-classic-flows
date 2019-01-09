@@ -2,10 +2,11 @@ package com.ggproduct.automation.projectmanager;
 
 import java.io.IOException;
 
+import com.automation.rei.controller.UsersController;
 import com.automation.rei.corelib.Properties_Logs;
 import com.cucumber.listener.Reporter;
 
-public class UsersAndURL {
+public class UsersAndURL implements UsersController{
 
     /**
      * @REI-Systems
@@ -23,6 +24,7 @@ public class UsersAndURL {
      * SINCE THESE ARE GENERIC METHODS SO YOU MAY KEEP THE SAME WITH MODIFICTION
      ******/
 
+    @Override
     public String handleUsersForEnv(String userLevel) {
         String userName = null;
         if (System.getProperty("env").equalsIgnoreCase("qa")) {
@@ -33,6 +35,12 @@ public class UsersAndURL {
             userName = performLoginSubPortalEnvironment(userLevel);
         }
         return userName;
+    }
+    
+    @Override
+    public String getAutomationPassword() {
+        String defaultPassword = "SALESFORCE2018";
+        return defaultPassword;
     }
 
     public String performLoginQAEnvironment(String userLevel) {
@@ -91,7 +99,8 @@ public class UsersAndURL {
         return username;
     }
 
-    public static String navigateToAnyUrl(String urlName) throws IOException {
+    @Override
+    public String navigateToAnyUrl(String urlName) throws IOException {
         String url = null;
         switch (urlName.toUpperCase()) {
         case "PRODUCT PORTAL":

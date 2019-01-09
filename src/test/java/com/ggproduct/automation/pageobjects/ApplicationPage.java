@@ -22,7 +22,7 @@ public class ApplicationPage extends ProjectManager {
      */
     public void qualifyAnnouncement(String announcementName, String user, DataTable dataTable) {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
-        loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
+        govgrants.mainPage().loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
         govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 4"), dataTableMap.get("Navigation").get("Step 3"));
         govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 1"), announcementName);
@@ -70,8 +70,8 @@ public class ApplicationPage extends ProjectManager {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         DataTable inlineEditDataTable = seperateInlineDataTable(dataTableMap);
         govgrants.pageDetails().clickSubTabsInsideTableView(dataTableMap.get("Navigation").get("Step 1"));
-        expandGrid(dataTableMap.get("Navigation").get("Step 2"));
-        expandGrid(dataTableMap.get("Navigation").get("Step 3"));
+        govgrants.flexTable().expandOrCollapseNestedTable(dataTableMap.get("Navigation").get("Step 2"), true);
+        govgrants.flexTable().expandOrCollapseNestedTable(dataTableMap.get("Navigation").get("Step 3"), true);
         govgrants.flexTable().editFlexTableRowsInline(dataTableMap.get("FlexTable").get("Step 1"),
                 dataTableMap.get("FlexTable").get("Step 2"), inlineEditDataTable);
     }
@@ -103,24 +103,23 @@ public class ApplicationPage extends ProjectManager {
             String announcementOwner, String announcementName, DataTable dataTable) throws IOException {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         try {
-            loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), announcementOwner);
+            govgrants.mainPage().loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), announcementOwner);
         } catch (Exception ex) {
-            reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), announcementOwner);
+            govgrants.mainPage().reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), announcementOwner);
         }
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
         govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 4"), dataTableMap.get("Navigation").get("Step 3"));
-        changeFlexTableView(dataTableMap.get("FlexTable").get("Step 1"));
+        govgrants.phasePannel().clickDoubleArrowDropDownAndSelectItem(dataTableMap.get("FlexTable").get("Step 1"));
         govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 2"),
                 announcementName);
         govgrants.flexTable().clickTableActionIcons(dataTableMap.get("FlexTable").get("Step 3"), announcementName);
         govgrants.pageDetails().clickSubTabsInsideTableView(dataTableMap.get("FlexTable").get("Step 4"));
-        scrollToSection(dataTableMap.get("Review").get("Step 2"));
         govgrants.flexTable().clickTableActionIcon(dataTableMap.get("Review").get("Step 1"),
                 dataTableMap.get("Review").get("Step 3"), reviewStep);
-        clickOnMultipleCheckbox(dataTableMap.get("Promotion").get("Step 1"), applicationName);
+        govgrants.flexTable().selectCheckBoxes(dataTableMap.get("Promotion").get("Step 1"), applicationName);
         govgrants.flexTable().clickTableTopRightButton(dataTableMap.get("Promotion").get("Step 1"), buttonName);
         try {
-            clickOnConfirmationtBox(dataTableMap.get("Promotion").get("Step 2"));
+            govgrants.modal().handleModalAlert(dataTableMap.get("Promotion").get("Step 2"));
         } catch (Exception e) {
 
         }
@@ -154,7 +153,7 @@ public class ApplicationPage extends ProjectManager {
      */
     public void chooseAndSendReviews(DataTable dataTable, String... reviews) {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
-        clickOnMultipleCheckbox(dataTableMap.get("FlexTable").get("Step 1"), reviews);
+        govgrants.flexTable().selectCheckBoxes(dataTableMap.get("FlexTable").get("Step 1"), reviews);
         govgrants.flexTable().clickTableTopRightButton(dataTableMap.get("FlexTable").get("Step 1"),
                 dataTableMap.get("FlexTable").get("Step 2"));
     }
@@ -198,7 +197,7 @@ public class ApplicationPage extends ProjectManager {
 
     private void singleApplicationAssignmentToReviewer(int qNumber, String applicationName, String reviewer,
             Map<String, Map<String, String>> dataTableMap) {
-        expandGrid(dataTableMap.get("Review").get("Step " + qNumber));
+        govgrants.flexTable().expandOrCollapseNestedTable(dataTableMap.get("Review").get("Step " + qNumber), true);
         govgrants.flexTable().clickTableActionIcon(dataTableMap.get("FlexTable").get("Step 2"),
                 dataTableMap.get("FlexTable").get("Step 1"), reviewer);
         chooseRecordForAssociation(dataTableMap.get("Application").get("Step 1"), applicationName,
@@ -208,7 +207,7 @@ public class ApplicationPage extends ProjectManager {
 
     private void singleReviewFormCompletion(String reviewer, Map<String, Map<String, String>> dataTableMap)
             throws IOException {
-        reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), reviewer);
+        govgrants.mainPage().reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), reviewer);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
         govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 4"), dataTableMap.get("Navigation").get("Step 3"));
         govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 2"),

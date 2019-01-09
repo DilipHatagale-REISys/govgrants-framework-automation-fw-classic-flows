@@ -196,7 +196,7 @@ Feature: Validate all scenarios in the Announcement tab
   	@35003 @announcementAddAttachment @announcement
   	Scenario: Validate the attachment for an Announcement
     When I navigate to "Attachments" sub tab
-    And I click on "Add" button on " Attachments" flextable for Attachment
+    And I click on top right button "Add" in flex table with id "a150b000003epC4AAI"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
     And I close Modal
     Then I see that "Funding Opportunity Announcement" has been added in flextable with Id "a150b000003epC4AAI"
@@ -235,10 +235,10 @@ Feature: Validate all scenarios in the Announcement tab
 	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
 	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
 	| Upload file     	   | Checklist 				   			  | Announcement   |			|
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx" in the flextable " Attachments"
-    | Actions 			    | Step 1 	  | Step 2	 		  				 |
-    | Attachment Navigation | Attachments | Add								 |
-    | Attachment Details    | Attachment  | Funding Opportunity Announcement |
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
+    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
+    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
 	And I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
 	| Actions 			  | Step 1 	  		      | Step 2	 		   	  | Step 3  |
 	| Reviewer Navigation | Responsibilities      | 					  |			|
@@ -293,10 +293,10 @@ Feature: Validate all scenarios in the Announcement tab
 	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
 	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
 	| Upload file     	   | Checklist 				   			  | Announcement   |			|
-    And I add an attachment "InternalOrganization_Field_Values.xlsx" in the flextable " Attachments"
-    | Actions 			    | Step 1 	  | Step 2	 		  				 |
-    | Attachment Navigation | Attachments | Add								 |
-    | Attachment Details    | Attachment  | Funding Opportunity Announcement |
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
+    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
+    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
 	Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
 	| Actions 			  | Step 1 	  		      | Step 2	 		   	  | Step 3  |
 	| Reviewer Navigation | Responsibilities      | 					  |			|
@@ -369,10 +369,10 @@ Feature: Validate all scenarios in the Announcement tab
 	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
 	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
 	| Upload file     	   | Checklist 				   			  | Announcement   |			|
-    And I add an attachment "InternalOrganization_Field_Values.xlsx" in the flextable " Attachments"
-    | Actions 			    | Step 1 	  | Step 2	 		  				 |
-    | Attachment Navigation | Attachments | Add								 |
-    | Attachment Details    | Attachment  | Funding Opportunity Announcement |
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
+    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
+    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
 	Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
 	| Actions 			  | Step 1 	  		      | Step 2	 		   	  | Step 3  |
 	| Reviewer Navigation | Responsibilities      | 					  |			|
@@ -442,10 +442,10 @@ Feature: Validate all scenarios in the Announcement tab
 	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
 	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
 	| Upload file     	   | Checklist 				   			  | Announcement   |			|
-    And I add an attachment "InternalOrganization_Field_Values.xlsx" in the flextable " Attachments"
-    | Actions 			    | Step 1 	  | Step 2	 		  				 |
-    | Attachment Navigation | Attachments | Add								 |
-    | Attachment Details    | Attachment  | Funding Opportunity Announcement |
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
+    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
+    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
 	Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
 	| Actions 			  | Step 1 	  		      | Step 2	 		   	  | Step 3  |
 	| Reviewer Navigation | Responsibilities      | 					  |			|
@@ -521,10 +521,10 @@ Feature: Validate all scenarios in the Announcement tab
 	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
 	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
 	| Upload file     	   | Checklist 				   			  | Announcement   |			|
-	And I add an attachment "InternalOrganization_Field_Values.xlsx" in the flextable " Attachments"
-    | Actions 			    | Step 1 	  | Step 2	 		  				 |
-    | Attachment Navigation | Attachments | Add								 |
-    | Attachment Details    | Attachment  | Funding Opportunity Announcement |
+	And I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
+    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
+    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
 	Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
 	| Actions 			  | Step 1 	  		      | Step 2	 		   	  | Step 3  |
 	| Reviewer Navigation | Responsibilities      | 					  |			|

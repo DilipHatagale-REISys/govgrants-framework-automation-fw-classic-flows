@@ -25,10 +25,10 @@ public class AnnouncementPage extends ProjectManager {
     public void creationOfAnnouncement(String AnnouncementType, String user, String sheetName, String excelFileName,
             DataTable dataTable) {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
-        loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
+        govgrants.mainPage().loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
         govgrants.sideBar().getSideBarContent(dataTableMap.get("FlexTable").get("Step 1"), AnnouncementType);
-        changeFlexTableView(dataTableMap.get("FlexTable").get("Step 2"));
+        govgrants.phasePannel().clickDoubleArrowDropDownAndSelectItem(dataTableMap.get("FlexTable").get("Step 2"));
         if (AnnouncementType.equals("Competitive")) {
             govgrants.flexTable().clickTableTopRightButton(dataTableMap.get("FlexTableId").get("Step 1"),
                     dataTableMap.get("Creation").get("Step 1"));
@@ -62,7 +62,7 @@ public class AnnouncementPage extends ProjectManager {
                 dataTableMap.get("Flextable").get("Step 1"), budgetPeriod);
         govgrants.inputForms().enterInputFieldsFromExcelFile(excelFileName, sheetName);
         govgrants.modal().clickModalContentSpecificButton(dataTableMap.get("Flextable").get("Step 2"));
-        closeModal();
+        govgrants.modal().closeModalByClickingTopRightCloseButton();
     }
 
 }
