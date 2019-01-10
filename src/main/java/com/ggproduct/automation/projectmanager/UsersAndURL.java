@@ -38,7 +38,7 @@ public class UsersAndURL implements UsersController{
     }
     
     @Override
-    public String getAutomationPassword() {
+    public String getAutomationPassword(String userLevel) {
         String defaultPassword = "SALESFORCE2018";
         return defaultPassword;
     }
@@ -99,7 +99,6 @@ public class UsersAndURL implements UsersController{
         return username;
     }
 
-    @Override
     public String navigateToAnyUrl(String urlName) throws IOException {
         String url = null;
         switch (urlName.toUpperCase()) {
