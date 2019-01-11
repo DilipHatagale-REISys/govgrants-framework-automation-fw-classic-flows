@@ -1,10 +1,6 @@
 package com.ggproduct.automation.projectmanager;
 
-import java.io.IOException;
-
 import com.automation.rei.controller.UsersController;
-import com.automation.rei.corelib.Properties_Logs;
-import com.cucumber.listener.Reporter;
 
 public class UsersAndURL implements UsersController{
 
@@ -98,20 +94,4 @@ public class UsersAndURL implements UsersController{
         }
         return username;
     }
-
-    public String navigateToAnyUrl(String urlName) throws IOException {
-        String url = null;
-        switch (urlName.toUpperCase()) {
-        case "PRODUCT PORTAL":
-            url = new Properties_Logs().ReadPropertyFile("environment.properties", "QA");
-            Reporter.addScenarioLog("Scenario is running using External Link" + " & Url is " + url);
-            break;
-        case "SUBRECIPIENT PORTAL":
-            url = new Properties_Logs().ReadPropertyFile("environment.properties", "SUBPORTAL");
-            Reporter.addScenarioLog("Scenario is running using External Link" + " & Url is " + url);
-            break;
-        }
-        return url;
-    }
-
 }
