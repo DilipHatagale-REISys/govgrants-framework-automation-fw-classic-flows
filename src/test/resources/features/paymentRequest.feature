@@ -1,12 +1,13 @@
 @paymentRequest
 Feature: Validate all scenarios in Payment Request
 
-	#Background: Create Site Visit
-	#Given I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "SPI"
-	#| Actions 	 | Step 1 	  	 | Step 2		 		   | Step 3  	 		   | Step 4						 |
-    #| Navigation | Grants Portal | Grants		 		   | Grants and Subawards  | Grants, Awards, Amendments  |
-    #| FlexTable  | Grants		 | RecipientActiveGrants   | View				   |							 |
-    #| Subaward   | Subawards	 | RecipientsRelatedAwards1| View				   |							 |
+	Background: Create Site Visit
+	Given I navigate to environment "SUBPORTAL"
+	Given I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "SPI"
+	| Actions 	 | Step 1 	  	 | Step 2		 		   | Step 3  	 		   | Step 4						 |
+    | Navigation | Grants Portal | Grants		 		   | Grants and Subawards  | Grants, Awards, Amendments  |
+    | FlexTable  | Grants		 | RecipientActiveGrants   | View				   |							 |
+    | Subaward   | Subawards	 | RecipientsRelatedAwards1| View				   |							 |
 	
 	@38840 @creationOfAdhocReimbursementPaymentRequest @reimbursementPaymentRequest @paymentRequest
 	Scenario: To create an Adhoc Reimbursement Payment Request
@@ -218,7 +219,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Approved" and is "green"
     
-    @paidPaymentRequest @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest
+    @paidPaymentRequest @adhocReimbursementHappyPath @reimbursementPaymentRequest @paymentRequest
     Scenario: Enter Funding Account amount in Payment Request
     Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
 	| Actions 	 | Step 1 	  							  | Step 2		 		    | Step 3  	 		   | 
@@ -236,7 +237,7 @@ Feature: Validate all scenarios in Payment Request
     | Attachment Navigation | Attachments | Add		| a150b000003epDJAAY |
     | Attachment Details    | Attachment  | Invoice |					 |
     And I click on "Submit to Grantor" in the page details
-    Given I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "FO"
+    And I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "FO"
 	| Actions 	 | Step 1 	  	 | Step 2		 		   | Step 3  	 		   | Step 4						 |
     | Navigation | As a Grantor  | Grants		 		   | Grants and Subawards  | Grants, Awards & Amendments |
     | FlexTable  | Grants		 | ActiveGrants			   | View				   |							 |
@@ -269,3 +270,112 @@ Feature: Validate all scenarios in Payment Request
 	When I click modal button "Save"
 	And I close Modal
 	Then I see status in Progress-bar is "Paid" and is "green"
+    
+    @adhocAdvanceHappyPath @advancePaymentRequest @paymentRequest
+    Scenario: Enter Funding Account amount in Payment Request
+    Given I create a adhoc "Advance" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
+	| Actions 	 | Step 1 	  							  | Step 2		 		    | Step 3  	 		   | 
+	| Navigation | Requests								  | Reimbursement Request   | Advance			   |
+	| FlexTable  | flexGridRecipientsAwardPaymentRequests | Save And Close			| Save				   |
+	And I complete the fields from the sheet "Edition" in excel "PaymentRequest_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+	Given I navigate to "Financials" sub tab
+	And I edit the following rows inline in flex table with id "flexGridReimbursementRequestEnhanced" by clicking "Edit" :
+ 	| Budget Category | Advance Requested |
+ 	| Construction 	  | 500               |
+ 	Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions 			    | Step 1 	  | Step 2	| Step 3			 |
+    | Attachment Navigation | Attachments | Add		| a150b000003epDJAAY |
+    | Attachment Details    | Attachment  | Invoice |					 |
+    And I click on "Submit to Grantor" in the page details
+    And I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "FO"
+	| Actions 	 | Step 1 	  	 | Step 2		 		   | Step 3  	 		   | Step 4						 |
+    | Navigation | As a Grantor  | Grants		 		   | Grants and Subawards  | Grants, Awards & Amendments |
+    | FlexTable  | Grants		 | ActiveGrants			   | View				   |							 |
+    | Subaward   | Subawards	 | RelatedAwards1		   | View				   |							 |
+    And I navigate to "Requests" sub tab
+    Given I click on "View" icon for "Submitted to Grantor" inside flex table with id "flexGridAwardPaymentRequest"
+    And I navigate to "Financials" sub tab
+    Given I edit the following rows inline in flex table with id "flexGridPaymentFundingAccountsEnhanced" by clicking "Edit" :
+ 	| Funding Account | Advance Requested This Action |
+ 	| FA--21 	  	  | 500			            	  |
+    And I select "1" approvers "Automation FO"
+    | Actions 	 | Step 1   				    			  	  | Step 2	| Step 3 			  |
+    | Subtab	 | Responsibilities 						  	  | 		|		    		  |
+    | Approver 1 | flexGridPaymentRequestRolesandResponsibilities | Edit    | Fiscal Approver     |
+    Given I click on "Submit for Approval" in the page details
+    Given "1" Approvers "FO" approve the record "Approve Payment Request"
+	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
+	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
+	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
+	| Approval 	 | Start 		 | Approve 		 | 					 |
+	Given I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "FO"
+	| Actions 	 | Step 1 	  	 | Step 2		 		   | Step 3  	 		   | Step 4						 |
+    | Navigation | As a Grantor  | Grants		 		   | Grants and Subawards  | Grants, Awards & Amendments |
+    | FlexTable  | Grants		 | ActiveGrants			   | View				   |							 |
+    | Subaward   | Subawards	 | RelatedAwards1		   | View				   |							 |
+    And I navigate to "Requests" sub tab
+    Given I click on "View" icon for "Approved" inside flex table with id "flexGridAwardPaymentRequest"
+	When I click on "Mark As Paid" in the page details
+	And I enter "Paid Details" values from "PaymentRequest_Field_Values.xlsx" 
+	When I click modal button "Save"
+	And I close Modal
+	Then I see status in Progress-bar is "Paid" and is "green"
+	
+	@scheduledReimbursementHappyPath @advancePaymentRequest @paymentRequest
+    Scenario Outline: Enter Funding Account amount in Payment Request
+    Given Subrecipient "SPI" receives the task for "<Award Name>"
+	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
+	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
+	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
+	| FlexTable  | PhasePendingTasks | Start 		 |			 |
+	And I complete the fields from the sheet "Edition" in excel "PaymentRequest_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+	Given I navigate to "Financials" sub tab
+	And I edit the following rows inline in flex table with id "flexGridReimbursementRequestEnhanced" by clicking "Edit" :
+ 	| Budget Category | Advance Requested |
+ 	| Construction 	  | 500               |
+ 	Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions 			    | Step 1 	  | Step 2	| Step 3			 |
+    | Attachment Navigation | Attachments | Add		| a150b000003epDJAAY |
+    | Attachment Details    | Attachment  | Invoice |					 |
+    And I click on "Submit to Grantor" in the page details
+    And I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "FO"
+	| Actions 	 | Step 1 	  	 | Step 2		 		   | Step 3  	 		   | Step 4						 |
+    | Navigation | As a Grantor  | Grants		 		   | Grants and Subawards  | Grants, Awards & Amendments |
+    | FlexTable  | Grants		 | ActiveGrants			   | View				   |							 |
+    | Subaward   | Subawards	 | RelatedAwards1		   | View				   |							 |
+    And I navigate to "Requests" sub tab
+    Given I click on "View" icon for "Submitted to Grantor" inside flex table with id "flexGridAwardPaymentRequest"
+    And I navigate to "Financials" sub tab
+    Given I edit the following rows inline in flex table with id "flexGridPaymentFundingAccountsEnhanced" by clicking "Edit" :
+ 	| Funding Account | Advance Requested This Action |
+ 	| FA--21 	  	  | 500			            	  |
+    And I select "1" approvers "Automation FO"
+    | Actions 	 | Step 1   				    			  	  | Step 2	| Step 3 			  |
+    | Subtab	 | Responsibilities 						  	  | 		|		    		  |
+    | Approver 1 | flexGridPaymentRequestRolesandResponsibilities | Edit    | Fiscal Approver     |
+    Given I click on "Submit for Approval" in the page details
+    Given "1" Approvers "FO" approve the record "Approve Payment Request"
+	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
+	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
+	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
+	| Approval 	 | Start 		 | Approve 		 | 					 |
+	Given I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "FO"
+	| Actions 	 | Step 1 	  	 | Step 2		 		   | Step 3  	 		   | Step 4						 |
+    | Navigation | As a Grantor  | Grants		 		   | Grants and Subawards  | Grants, Awards & Amendments |
+    | FlexTable  | Grants		 | ActiveGrants			   | View				   |							 |
+    | Subaward   | Subawards	 | RelatedAwards1		   | View				   |							 |
+    And I navigate to "Requests" sub tab
+    Given I click on "View" icon for "Approved" inside flex table with id "flexGridAwardPaymentRequest"
+	When I click on "Mark As Paid" in the page details
+	And I enter "Paid Details" values from "PaymentRequest_Field_Values.xlsx" 
+	When I click modal button "Save"
+	And I close Modal
+	Then I see status in Progress-bar is "Paid" and is "green"
+	
+	Examples:
+	| Award Name |
+	| Automation Announcement to be deleted Application |

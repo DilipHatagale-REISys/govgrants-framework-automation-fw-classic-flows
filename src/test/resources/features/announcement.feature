@@ -252,7 +252,8 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I login and view the record "<Announcement Name>" as "EXE"
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
 	| Owner Navigation 	  | As a Grantor 		| Announcements 					  | Competitive   		  | Announcements   |
-	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | Complete Review |
+	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | 				|
+	Given I click on "Complete Review" in the page details
     When I click on "Submit For Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
     Examples:
@@ -310,7 +311,8 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I login and view the record "<Announcement Name>" as "EXE"
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
 	| Owner Navigation 	  | As a Grantor 		| Announcements 					  | Competitive   		  | Announcements   |
-	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | Complete Review |
+	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | 				|
+	Given I click on "Complete Review" in the page details
 	And I click on "Submit For Approval" in the page details
 	Given I re-login to "As a Grantor" app as "PM" User
 	When I navigate to "Announcements" tab
@@ -386,7 +388,8 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I login and view the record "<Announcement Name>" as "EXE"
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
 	| Owner Navigation 	  | As a Grantor 		| Announcements 					  | Competitive   		  | Announcements   |
-	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | Complete Review |
+	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | 			    |
+	Given I click on "Complete Review" in the page details
 	And I click on "Submit For Approval" in the page details
 	Given "3" Approvers "PM,FO,EXE" approve the record "<Announcement Name>"
 	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
@@ -459,7 +462,8 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I login and view the record "<Announcement Name>" as "EXE"
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
 	| Owner Navigation 	  | As a Grantor 		| Announcements 					  | Competitive   		  | Announcements   |
-	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | Complete Review |
+	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | 			    |
+	Given I click on "Complete Review" in the page details
 	And I click on "Submit For Approval" in the page details
 	Given "3" Approvers "PM,FO,EXE" approve the record "<Announcement Name>"
 	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
@@ -538,7 +542,8 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I login and view the record "<Announcement Name>" as "EXE"
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
 	| Owner Navigation 	  | As a Grantor 		| Announcements 					  | Competitive   		  | Announcements   |
-	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | Complete Review |
+	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | 				|
+	Given I click on "Complete Review" in the page details
 	And I click on "Submit For Approval" in the page details
 	Given "3" Approvers "PM,FO,EXE" approve the record "<Announcement Name>"
 	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
