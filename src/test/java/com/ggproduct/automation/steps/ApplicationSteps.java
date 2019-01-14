@@ -32,16 +32,6 @@ public class ApplicationSteps {
         applicationPage.additionOfFocusAreaToApplication(dataTable, focusArea.split(","));
     }
 
-    @Given("^I add budget details to the application$")
-    public void additionOfBudgetToApplication(DataTable rowValues) {
-        applicationPage.additionOfBudgetToApplication(rowValues);
-    }
-
-    @Given("^I add target to the KPI in the application$")
-    public void additionOfTargetToKPIInApplication(DataTable dataTable) {
-        applicationPage.additionOfTargetToKPIInApplication(dataTable);
-    }
-
     @Given("^\"([^\"]*)\" is completed by clicking \"([^\"]*)\" for Application \"([^\"]*)\" as user \"([^\"]*)\" submitted for announcement \"([^\"]*)\"$")
     public void completeReviewStepForApplication(String reviewStep, String buttonName, String applicationName,
             String announcementOwner, String announcementName, DataTable dataTable) throws IOException {

@@ -213,9 +213,9 @@ Feature: Validate all scenarios in the Announcement tab
 	| Funding Account | Announcement Pre-Encumbrance |
 	| FA--21 		  | 100000 				         |
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
-	| Actions 	 | Step 1 		| Step 2				| Step 3 				   |
-	| Navigation | Financials 	| Add Budget Period 	| AnnouncementBudgetPeriod |
-	| Flextable  | Edit 	    | Budget Period Details | Save					   |
+	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
+	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
+	| Flextable  | Edit 	    | Save					| 						           |
 	Given I associate "3" records "Automation EXE,00006,SPO-0008"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
@@ -272,9 +272,9 @@ Feature: Validate all scenarios in the Announcement tab
 	| Funding Account | Announcement Pre-Encumbrance |
 	| FA--21 		  | 100000 				         |
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
-	| Actions 	 | Step 1 		| Step 2				| Step 3 				   |
-	| Navigation | Financials 	| Add Budget Period 	| AnnouncementBudgetPeriod |
-	| Flextable  | Edit 	    | Budget Period Details | Save					   |
+	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
+	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
+	| Flextable  | Edit 	    | Save					| 						           |
 	Given I associate "3" records "Automation EXE,00006,SPO-0008"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
@@ -349,9 +349,9 @@ Feature: Validate all scenarios in the Announcement tab
 	| Funding Account | Announcement Pre-Encumbrance |
 	| FA--21 		  | 100000 				         |
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
-	| Actions 	 | Step 1 		| Step 2				| Step 3 				   |
-	| Navigation | Financials 	| Add Budget Period 	| AnnouncementBudgetPeriod |
-	| Flextable  | Edit 	    | Save					| 						   |
+	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
+	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
+	| Flextable  | Edit 	    | Save					| 						           |
 	Given I associate "3" records "Automation EXE,00006,SPO-0008"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
@@ -380,7 +380,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Reviewer Navigation | Responsibilities      | 					  |			|
 	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
 	| Send Review		  | Send for Review       | Created 			  |			|
-	Given Review is completed as user "FO" for the record "<Announcement Name>"
+	Given Review is completed as user "FO" for the record "Review Grantor Announcement"
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
 	| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
@@ -391,7 +391,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | 			    |
 	Given I click on "Complete Review" in the page details
 	And I click on "Submit For Approval" in the page details
-	Given "3" Approvers "PM,FO,EXE" approve the record "<Announcement Name>"
+	Given "3" Approvers "PM,FO,EXE" approve the record "Approve Funding Announcement"
 	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
 	| Navigation | As a Grantor  | Announcements | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
@@ -406,7 +406,7 @@ Feature: Validate all scenarios in the Announcement tab
     Then I see status in Progress-bar is "Published" and is "green"
 	Examples:
 	| User | Announcement Name 			   |
-	| EXE  | Automation Announcement Dec25 |
+	| EXE  | Automation Announcement Jan10 |
 	
 	@34462 @publishingDirectedAnnouncement @announcementDirectedHappyPath @announcement
   	Scenario Outline: Validate the activation of Internal Program
@@ -423,9 +423,9 @@ Feature: Validate all scenarios in the Announcement tab
 	| Funding Account | Announcement Pre-Encumbrance |
 	| FA--21 		  | 100000 				         |
 	And I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
-	| Actions 	 | Step 1 		| Step 2				| Step 3 				   |
-	| Navigation | Financials 	| Add Budget Period 	| AnnouncementBudgetPeriod |
-	| Flextable  | Edit 	    | Budget Period Details | Save					   |
+	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
+	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
+	| Flextable  | Edit 	    | Save					| 						           |
 	Given I associate "3" records "Automation EXE,00006,SPO-0008"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
@@ -503,9 +503,9 @@ Feature: Validate all scenarios in the Announcement tab
 	| Funding Account | Announcement Pre-Encumbrance |
 	| FA--21 		  | 100000 				         |
 	And I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
-	| Actions 	 | Step 1 		| Step 2				| Step 3 				   |
-	| Navigation | Financials 	| Add Budget Period 	| AnnouncementBudgetPeriod |
-	| Flextable  | Edit 	    | Budget Period Details | Save					   |
+	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
+	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
+	| Flextable  | Edit 	    | Save					| 						           |
 	Given I associate "3" records "Automation EXE,00006,SPO-0008"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
@@ -534,7 +534,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Reviewer Navigation | Responsibilities      | 					  |			|
 	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
 	| Send Review		  | Send for Review       | Created 			  |			|
-	And Review is completed as user "FO" for the record "Automation Announcement"
+	And Review is completed as user "FO" for the record "Review Grantor Announcement"
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
 	| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
@@ -559,6 +559,6 @@ Feature: Validate all scenarios in the Announcement tab
     When I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
 	Examples:
-	| User | Announcement Name 		 |
-	| EXE  | Automation Announcement |
+	| User | Announcement Name 		 		|
+	| EXE  | Automation Announcement Jan10 |
  	

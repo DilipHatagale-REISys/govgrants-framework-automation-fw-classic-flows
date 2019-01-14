@@ -56,37 +56,8 @@ public class ApplicationPage extends ProjectManager {
                 dataTableMap.get("Navigation").get("Step 2"));
         chooseRecordForAssociation(dataTableMap.get("FlexTable").get("Step 1"),
                 dataTableMap.get("FlexTable").get("Step 2"), focusArea);
+        govgrants.mainPage().waitForNavigationLogoToDisappear();
         reiDriver.switchTo().switchToParentFrame();
-    }
-
-    /**
-     * Handles addition of budget details to an application
-     * 
-     * @param awardBudget
-     * @param cashMatch
-     * @param nonCashMatch
-     */
-    public void additionOfBudgetToApplication(DataTable dataTable) {
-        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
-        DataTable inlineEditDataTable = seperateInlineDataTable(dataTableMap);
-        govgrants.pageDetails().clickSubTabsInsideTableView(dataTableMap.get("Navigation").get("Step 1"));
-        govgrants.flexTable().expandOrCollapseNestedTable(dataTableMap.get("Navigation").get("Step 2"), true);
-        govgrants.flexTable().expandOrCollapseNestedTable(dataTableMap.get("Navigation").get("Step 3"), true);
-        govgrants.flexTable().editFlexTableRowsInline(dataTableMap.get("FlexTable").get("Step 1"),
-                dataTableMap.get("FlexTable").get("Step 2"), inlineEditDataTable);
-    }
-
-    /**
-     * Handles addition of target values to a KPI in an application
-     * 
-     * @param target
-     */
-    public void additionOfTargetToKPIInApplication(DataTable dataTable) {
-        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
-        DataTable inlineEditDataTable = seperateInlineDataTable(dataTableMap);
-        govgrants.pageDetails().clickSubTabsInsideTableView(dataTableMap.get("Navigation").get("Step 1"));
-        govgrants.flexTable().editFlexTableRowsInline(dataTableMap.get("FlexTable").get("Step 1"),
-                dataTableMap.get("FlexTable").get("Step 2"), inlineEditDataTable);
     }
 
     /**
