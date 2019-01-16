@@ -3,7 +3,7 @@ Feature: Validate all scenarios in the Application Review
 
 	@preScreenApplicationReview @applicationReview
   	Scenario Outline: Pre-Screen review for an application
-    Given I login to "As a Grantor" app as "<User>" User
+    Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Applications" tab
 	And I navigate to "Reviews" content inside "Application Review" subheader on left panel
 	When I click toggle button to select "Applications Under Review"
@@ -28,7 +28,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	 When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+	When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
@@ -196,7 +196,7 @@ Feature: Validate all scenarios in the Application Review
 	And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
 	| Actions 	| Step 1 		  	  | Step 2			|
 	| FlexTable | flexGridStepReviews | Send for Review |
-    Given I re-login to "As a Grantor" app as "PM" User
+    Given I re-login to "As a Grantor" app as "PM" user
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "SME Review" in "PhasePendingTasks" panel
@@ -204,7 +204,7 @@ Feature: Validate all scenarios in the Application Review
     When I complete filling in the Review form
     And I click on "Save" in the page details
     When I click on "Submit" in the page details
-    And I re-login to "As a Grantor" app as "FO" User
+    And I re-login to "As a Grantor" app as "FO" user
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "SME Review" in "PhasePendingTasks" panel
@@ -212,7 +212,7 @@ Feature: Validate all scenarios in the Application Review
     When I complete filling in the Review form
     And I click on "Save" in the page details
     When I click on "Submit" in the page details
-    And I re-login to "As a Grantor" app as "EXE" User
+    And I re-login to "As a Grantor" app as "EXE" user
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "SME Review" in "PhasePendingTasks" panel
@@ -267,7 +267,7 @@ Feature: Validate all scenarios in the Application Review
 	| Navigation | As a Grantor | Applications 		| Pending Tasks | My Tasks |
 	| FlexTable  | SME Review   | PhasePendingTasks | Start 		| 		   |
 	| Button	 | Save 		| Submit 			| 				| 		   |
-    And I re-login to "As a Grantor" app as "<User>" User
+    And I re-login to "As a Grantor" app as "<User>" user
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
     And I click toggle button to select "Applications Under Review"
@@ -599,7 +599,7 @@ Feature: Validate all scenarios in the Application Review
 	And I choose Reviews "Management review" and Send for Review
 	| Actions 	| Step 1 		  	  | Step 2			|
 	| FlexTable | flexGridStepReviews | Send for Review |
-	Given I re-login to "As a Grantor" app as "EXE" User
+	Given I re-login to "As a Grantor" app as "EXE" user
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Management Review" in "PhasePendingTasks" panel
@@ -681,7 +681,7 @@ Feature: Validate all scenarios in the Application Review
 	| Navigation | As a Grantor | Applications 		| Pending Tasks | My Tasks |
 	| FlexTable  | SME Review   | PhasePendingTasks | Start 		| 		   |
 	| Button	 | Save 		| Submit 			| 				| 		   |
-	And I re-login to "As a Grantor" app as "<User>" User
+	And I re-login to "As a Grantor" app as "<User>" user
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
     And I click toggle button to select "Applications Under Review"
@@ -1055,7 +1055,7 @@ Feature: Validate all scenarios in the Application Review
 	| User | Announcement Name  	 | Review Step Name	      | Application Name 	           	    |
 	| EXE  | Automation Announcement | Funding Decision Memo  | Automation Announcement Application |
 		
-	@approveFDM @applicationReview
+	@approveFDM @applicationReviewAndFDMHappyPath @applicationReview
   	Scenario Outline: Approving FDM as the assigned user
 	Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
 	| Actions 	 | Step 1 										 | Step 2			  | Step 3  | Step 4			 |
@@ -1064,7 +1064,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	Given I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
@@ -1104,7 +1104,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	Given I click on "Next Review Step" in the page details
-	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	And I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name   		| Due in Days |
 	| Management Review | 10     	  | 
 	Given I expand nested table containing column value "Management Review"
@@ -1143,7 +1143,7 @@ Feature: Validate all scenarios in the Application Review
     | Subtab	 | Responsibilities 						   | 		|		    		  |
     | Approver 1 | GrantorReviewStepRolesandResponsibilities   | Edit   | Executive Approver  |
 	Given I click on "Submit for Approval" in the page details
-	And I re-login to "As a Grantor" app as "EXE" User
+	And I re-login to "As a Grantor" app as "EXE" user
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Approve FDM" in "PhasePendingTasks" panel
@@ -1152,4 +1152,4 @@ Feature: Validate all scenarios in the Application Review
 	Then I see status in Progress-bar is "Approved" and is "green"
 	Examples: 
 	| User | Announcement Name  				   | Review Step Name	    | Application Name 	            	    			|
-	| EXE  | Automation Announcement to be deleted | Funding Decision Memo  | Automation Announcement to be deleted Application |
+	| EXE  | Automation Announcement Jan16		   | Funding Decision Memo  | Automation App Jan16								|

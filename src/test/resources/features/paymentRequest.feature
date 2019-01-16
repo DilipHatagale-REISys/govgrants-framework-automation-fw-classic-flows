@@ -1,7 +1,7 @@
 @paymentRequest
 Feature: Validate all scenarios in Payment Request
 
-	Background: Create Site Visit
+	Background: Navigate to award
 	Given I navigate to environment "SUBPORTAL"
 	And I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "SPI"
 	| Actions 	 | Step 1 	  	 | Step 2		 		   | Step 3  	 		   | Step 4						 |
@@ -107,7 +107,7 @@ Feature: Validate all scenarios in Payment Request
  	Then I see that "1000" has been added in flextable with Id "flexGridPaymentFundingAccountsEnhanced"
     
     @approverSelectionPaymentRequest @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest
-    Scenario: Enter Funding Account amount in Payment Request
+    Scenario: Selection of approvers in Payment Request
     Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
 	| Actions 	 | Step 1 	  							  | Step 2		 		    | Step 3  	 		   | 
 	| Navigation | Requests								  | Reimbursement Request   | Advance			   |
@@ -142,7 +142,7 @@ Feature: Validate all scenarios in Payment Request
     Then I see that "Automation FO" has been added in flextable with Id "flexGridPaymentRequestRolesandResponsibilities"
     
     @submitPaymentRequestForApproval @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest
-    Scenario: Enter Funding Account amount in Payment Request
+    Scenario: Submitting Payment Request for approval
     Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
 	| Actions 	 | Step 1 	  							  | Step 2		 		    | Step 3  	 		   | 
 	| Navigation | Requests								  | Reimbursement Request   | Advance			   |
@@ -178,7 +178,7 @@ Feature: Validate all scenarios in Payment Request
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
     
     @approversApprovePaymentRequest @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest
-    Scenario: Enter Funding Account amount in Payment Request
+    Scenario: Approval of Payment Request
     Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
 	| Actions 	 | Step 1 	  							  | Step 2		 		    | Step 3  	 		   | 
 	| Navigation | Requests								  | Reimbursement Request   | Advance			   |
@@ -220,7 +220,7 @@ Feature: Validate all scenarios in Payment Request
     Then I see status in Progress-bar is "Approved" and is "green"
     
     @paidPaymentRequest @adhocReimbursementHappyPath @reimbursementPaymentRequest @paymentRequest
-    Scenario: Enter Funding Account amount in Payment Request
+    Scenario: Paid Payment Request
     Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
 	| Actions 	 | Step 1 	  							  | Step 2		 		    | Step 3  	 		   | 
 	| Navigation | Requests								  | Reimbursement Request   | Advance			   |
@@ -272,7 +272,7 @@ Feature: Validate all scenarios in Payment Request
 	Then I see status in Progress-bar is "Paid" and is "green"
     
     @adhocAdvanceHappyPath @advancePaymentRequest @paymentRequest
-    Scenario: Enter Funding Account amount in Payment Request
+    Scenario: Advance Payment Request happy path
     Given I create a adhoc "Advance" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
 	| Actions 	 | Step 1 	  							  | Step 2		 		    | Step 3  	 		   | 
 	| Navigation | Requests								  | Reimbursement Request   | Advance			   |
@@ -323,9 +323,9 @@ Feature: Validate all scenarios in Payment Request
 	And I close Modal
 	Then I see status in Progress-bar is "Paid" and is "green"
 	
-	@scheduledReimbursementHappyPath @advancePaymentRequest @paymentRequest
-    Scenario Outline: Enter Funding Account amount in Payment Request
-    Given Subrecipient "SPI" receives the task for "<Award Name>"
+	@scheduledReimbursementHappyPath @reimbursementPaymentRequest @paymentRequest
+    Scenario Outline: Scheduled Payment Request happy path
+    Given User "SPI" receives the task for "<Award Name>"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |

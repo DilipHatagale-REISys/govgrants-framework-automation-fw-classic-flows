@@ -2,12 +2,13 @@
 Feature: Validate all scenarios in the Announcement tab
 
 	Background: Create Announcement
-	Given I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
 	| Actions 	  | Step 1 	   	  					    | Step 2    	   	   		 | Step 3 							 |
 	| Navigation  | As a Grantor  						| Announcements 	   		 |									 |
 	| FlexTable   | Announcements 						| Draft Announcements 		 |  								 |
 	| FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-	| Creation    | New			  						| Save And Close 	   		 | Save								 |
+	| Creation    | New			  						| Save and Continue 	   	 | Save								 |
+
 
 	@33936 @announcementCreation @announcement
 	Scenario: Creation of an Announcement
@@ -34,10 +35,10 @@ Feature: Validate all scenarios in the Announcement tab
   	@34759 @announcementDirectedInviteApplicant @announcementDirected
   	Scenario Outline: Organization association to an Announcement
 	When I navigate to "Overview" sub tab
-    And I click on top right button "Add Organizations" in flex table with id "inlineEditGridFormulaGrantsAwardOrganizations"
+    And I click on top right button "Add Organizations" in flex table with id "inlineEditGridSoleSourceAwardOrganizations"
     When I click "Add" after selection of "<Agency Code>" in the table "SoleSourceAwardRecipientsTable"
     And I close Modal
-    Then I see that "<Agency Code>" has been added in flextable with Id "inlineEditGridFormulaGrantsAwardOrganizations"
+    Then I see that "<Agency Code>" has been added in flextable with Id "inlineEditGridSoleSourceAwardOrganizations"
 	Examples:
 	| Agency Code |
 	| RG-000010   |
@@ -45,12 +46,12 @@ Feature: Validate all scenarios in the Announcement tab
   	@34760 @announcementFormulaInviteApplicant @announcementFormula
   	Scenario Outline: Amount addition to Invited applicant association to an Announcement
   	Given I associate "1" records "RG-000010"
-	| Actions 	  | Step 1     | Step 2	   		   | Step 3  			  					       | Step 4  | Step 5  		 				  |
-    | Associate 1 | Overview   | Add Organizations | inlineEditGridFormulaGrantsAwardOrganizations | Add	 | SoleSourceAwardRecipientsTable |
-    When I edit the following rows inline in flex table with id "inlineEditGridFormulaGrantsAwardOrganizations" by clicking "Edit" :
+	| Actions 	  | Step 1     | Step 2	   		   | Step 3  			  					    | Step 4 | Step 5  		 			  	  |
+    | Associate 1 | Overview   | Add Organizations | inlineEditGridSoleSourceAwardOrganizations | Add	 | SoleSourceAwardRecipientsTable |
+    When I edit the following rows inline in flex table with id "inlineEditGridSoleSourceAwardOrganizations" by clicking "Edit" :
 	| Agency Code | Allocated Amount |
 	| RG-000010   | 100000 			 | 
-   Then I see that "<Agency Code>" has been added in flextable with Id "inlineEditGridFormulaGrantsAwardOrganizations"
+   Then I see that "<Agency Code>" has been added in flextable with Id "inlineEditGridSoleSourceAwardOrganizations"
 	Examples:
 	| Agency Code |
 	| RG-000010   |
@@ -59,7 +60,7 @@ Feature: Validate all scenarios in the Announcement tab
  	Scenario Outline: Funding Account association to an Announcement
 	When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
-    When I click "Add" after selection of "<EGMS Id>" in the table "popupflextable"
+    When I click "Add" after selection of "<EGMS Id>" in the table "SelectAnnFundingAccounts"
     And I close Modal
     When I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Announcement Pre-Encumbrance |
@@ -86,7 +87,7 @@ Feature: Validate all scenarios in the Announcement tab
   	Scenario Outline: Validate the association of Focus Area to Announcement
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementServiceArea1"
-    When I click "Add" after selection of "<EGMS Id>" in the table "popupflextable"
+    When I click "Add" after selection of "<EGMS Id>" in the table "SelectAnnouncementServiceArea1"
     And I close Modal
     Then I see that "<EGMS Id>" has been added in flextable with Id "AnnouncementServiceArea1"
 	Examples:
@@ -97,7 +98,7 @@ Feature: Validate all scenarios in the Announcement tab
   	Scenario Outline: Validate the association of objective to the Announcement 
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
-    When I click "Add" after selection of "<EGMS Id>" in the table "popupflextable"
+    When I click "Add" after selection of "<EGMS Id>" in the table "SelectAnnGoals"
     And I close Modal
     Then I see that "<EGMS Id>" has been added in flextable with Id "AnnouncementGranteeStrategicGoalsObjectives"
 	Examples:
@@ -171,7 +172,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Reviewer Navigation | Responsibilities      | 					  |			|
 	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
 	| Send Review		  | Send for Review       | Created 			  |			|
-	And I re-login to "As a Grantor" app as "<User>" User
+	And I re-login to "As a Grantor" app as "<User>" user
 	When I navigate to "Announcements" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "<Announcement Name>" in "PhasePendingTasks" panel
@@ -181,7 +182,7 @@ Feature: Validate all scenarios in the Announcement tab
     When I click modal button "Save"
     And I click modal button "Submit Review"
     And I close Modal
-    When I re-login to "As a Grantor" app as "EXE" User
+    When I re-login to "As a Grantor" app as "EXE" user
     When I navigate to "Announcements" tab
     And I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Announcements"
@@ -207,8 +208,8 @@ Feature: Validate all scenarios in the Announcement tab
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--21"
-	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  |
-    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | popupflextable |
+	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
+    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Announcement Pre-Encumbrance |
 	| FA--21 		  | 100000 				         |
@@ -219,8 +220,8 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I associate "3" records "Automation EXE,00006,SPO-0008"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
-    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | popupflextable 		   		 |
-    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | popupflextable 		   		 |
+    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
+    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
     | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
     | Subtab	 | Responsibilities 						   | 		|		    		  |
@@ -266,8 +267,8 @@ Feature: Validate all scenarios in the Announcement tab
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
 	And I associate "1" records "FA--21"
-	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  |
-    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | popupflextable |
+	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
+    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Announcement Pre-Encumbrance |
 	| FA--21 		  | 100000 				         |
@@ -278,8 +279,8 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I associate "3" records "Automation EXE,00006,SPO-0008"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
-    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | popupflextable 		   		 |
-    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | popupflextable 		   		 |
+    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
+    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
 	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
     | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
     | Subtab	 | Responsibilities 						   | 		|		    		  |
@@ -314,19 +315,19 @@ Feature: Validate all scenarios in the Announcement tab
 	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | 				|
 	Given I click on "Complete Review" in the page details
 	And I click on "Submit For Approval" in the page details
-	Given I re-login to "As a Grantor" app as "PM" User
+	Given I re-login to "As a Grantor" app as "PM" user
 	When I navigate to "Announcements" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "<Announcement Name>" in "PhasePendingTasks" panel
     And I click on "Start" icon for "<Announcement Name>" inside table
     When I click on "Approve" on the approval decision box
-    And I re-login to "As a Grantor" app as "FO" User
+    And I re-login to "As a Grantor" app as "FO" user
 	When I navigate to "Announcements" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "<Announcement Name>" in "PhasePendingTasks" panel
     And I click on "Start" icon for "<Announcement Name>" inside table 
     When I click on "Approve" on the approval decision box
-    And I re-login to "As a Grantor" app as "EXE" User
+    And I re-login to "As a Grantor" app as "EXE" user
 	When I navigate to "Announcements" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "<Announcement Name>" in "PhasePendingTasks" panel
@@ -343,8 +344,8 @@ Feature: Validate all scenarios in the Announcement tab
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
 	And I associate "1" records "FA--21"
-	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  |
-    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | popupflextable |
+	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
+    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Announcement Pre-Encumbrance |
 	| FA--21 		  | 100000 				         |
@@ -355,8 +356,8 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I associate "3" records "Automation EXE,00006,SPO-0008"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
-    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | popupflextable 		   		 |
-    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | popupflextable 		   		 |
+    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
+    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
 	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
     | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
     | Subtab	 | Responsibilities 						   | 		|		    		  |
@@ -396,7 +397,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Navigation | As a Grantor  | Announcements | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-	And I re-login to "As a Grantor" app as "<User>" User
+	And I re-login to "As a Grantor" app as "<User>" user
 	When I navigate to "Announcements" tab
 	And I navigate to "Competitive" content inside "Announcements" subheader on left panel
 	When I click toggle button to select "Draft Announcements"
@@ -406,7 +407,7 @@ Feature: Validate all scenarios in the Announcement tab
     Then I see status in Progress-bar is "Published" and is "green"
 	Examples:
 	| User | Announcement Name 			   |
-	| EXE  | Automation Announcement Jan10 |
+	| EXE  | Automation Announcement Jan16 |
 	
 	@34462 @publishingDirectedAnnouncement @announcementDirectedHappyPath @announcement
   	Scenario Outline: Validate the activation of Internal Program
@@ -414,11 +415,11 @@ Feature: Validate all scenarios in the Announcement tab
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
 	Given I associate "1" records "RG-000010"
-	| Actions 	  | Step 1     | Step 2	   		   | Step 3  			  					       | Step 4  | Step 5  		 				  |
-    | Associate 1 | Overview   | Add Organizations | inlineEditGridFormulaGrantsAwardOrganizations | Add	 | SoleSourceAwardRecipientsTable |
+	| Actions 	  | Step 1     | Step 2	   		   | Step 3  			  					    | Step 4  | Step 5  		 				  |
+    | Associate 1 | Overview   | Add Organizations | inlineEditGridSoleSourceAwardOrganizations | Add	 | SoleSourceAwardRecipientsTable |
     And I associate "1" records "FA--21"
-	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  |
-    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | popupflextable |
+	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
+    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Announcement Pre-Encumbrance |
 	| FA--21 		  | 100000 				         |
@@ -429,8 +430,8 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I associate "3" records "Automation EXE,00006,SPO-0008"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
-    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | popupflextable 		   		 |
-    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | popupflextable 		   		 |
+    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
+    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
 	And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
     | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
     | Subtab	 | Responsibilities 						   | 		|		    		  |
@@ -455,22 +456,22 @@ Feature: Validate all scenarios in the Announcement tab
 	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
 	| Send Review		  | Send for Review       | Created 			  |			|
 	And Review is completed as user "FO" for the record "Automation Announcement"
-	| Actions 			  | Step 1 	  		    | Step 2	 		   	  	 | Step 3  	 		     | Step 4 		   |
-	| Reviewer Navigation | As a Grantor        | Announcements 			 | Pending Tasks 		 | My Tasks 	   |
-	| FlexTable 		  | PhasePendingTasks   | Start						 | flexGridApproverRoles | Enter Review    | 
-	| Enter Review		  | Passed      	    | Save	  					 |	Submit Review 		 | Fiscal Reviewer |
+	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
+	| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
+	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
+	| Enter Review		  | Sent for Review	    | Passed	  						  |	 Save		  		  | Submit Review   |
 	Given I login and view the record "<Announcement Name>" as "EXE"
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
 	| Owner Navigation 	  | As a Grantor 		| Announcements 					  | Competitive   		  | Announcements   |
 	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | 			    |
 	Given I click on "Complete Review" in the page details
 	And I click on "Submit For Approval" in the page details
-	Given "3" Approvers "PM,FO,EXE" approve the record "<Announcement Name>"
+	Given "3" Approvers "PM,FO,EXE" approve the record "Approve Funding Announcement"
 	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
 	| Navigation | As a Grantor  | Announcements | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-	And I re-login to "As a Grantor" app as "<User>" User
+	And I re-login to "As a Grantor" app as "<User>" user
 	When I navigate to "Announcements" tab
 	And I navigate to "Directed" content inside "Announcements" subheader on left panel
 	When I click toggle button to select "Draft Announcements"
@@ -488,17 +489,14 @@ Feature: Validate all scenarios in the Announcement tab
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     Given I associate "1" records "RG-000010"
-	| Actions 	  | Step 1     | Step 2	   		   | Step 3  			  					       | Step 4  | Step 5  		 				  |
-    | Associate 1 | Overview   | Add Organizations | inlineEditGridFormulaGrantsAwardOrganizations | Add	 | SoleSourceAwardRecipientsTable |
-    And I edit the following rows inline in flex table with id "inlineEditGridFormulaGrantsAwardOrganizations" by clicking "Edit" :
-	| Agency Code | Allocated Amount |
-	| RG-000010   | 100000 			 | 
-	Given I edit the following rows inline in flex table with id "inlineEditGridFormulaGrantsAwardOrganizations" by clicking "Edit" :
+	| Actions 	  | Step 1     | Step 2	   		   | Step 3  			  					    | Step 4  | Step 5  		 			  |
+    | Associate 1 | Overview   | Add Organizations | inlineEditGridSoleSourceAwardOrganizations | Add	 | SoleSourceAwardRecipientsTable |
+    And I edit the following rows inline in flex table with id "inlineEditGridSoleSourceAwardOrganizations" by clicking "Edit" :
 	| Agency Code | Allocated Amount |
 	| RG-000010   | 100000 			 | 
 	And I associate "1" records "FA--21"
-	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  |
-    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | popupflextable |
+	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
+    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Announcement Pre-Encumbrance |
 	| FA--21 		  | 100000 				         |
@@ -509,8 +507,8 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I associate "3" records "Automation EXE,00006,SPO-0008"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
-    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | popupflextable 		   		 |
-    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | popupflextable 		   		 |
+    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
+    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
 	And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
     | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
     | Subtab	 | Responsibilities 						   | 		|		    		  |
@@ -538,19 +536,19 @@ Feature: Validate all scenarios in the Announcement tab
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
 	| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
-	| Enter Review		  | Passed      	    | Save	  							  |	Submit Review 		  | Fiscal Reviewer |
+	| Enter Review		  | Sent for Review	    | Passed	  						  |	 Save		  		  | Submit Review   |
 	Given I login and view the record "<Announcement Name>" as "EXE"
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
 	| Owner Navigation 	  | As a Grantor 		| Announcements 					  | Competitive   		  | Announcements   |
 	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | 				|
 	Given I click on "Complete Review" in the page details
 	And I click on "Submit For Approval" in the page details
-	Given "3" Approvers "PM,FO,EXE" approve the record "<Announcement Name>"
+	Given "3" Approvers "PM,FO,EXE" approve the record "Approve Funding Announcement"
 	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
 	| Navigation | As a Grantor  | Announcements | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-	When I re-login to "As a Grantor" app as "<User>" User
+	When I re-login to "As a Grantor" app as "<User>" user
 	And I navigate to "Announcements" tab
 	When I navigate to "Formula" content inside "Announcements" subheader on left panel
 	And I click toggle button to select "Draft Announcements"
@@ -559,6 +557,6 @@ Feature: Validate all scenarios in the Announcement tab
     When I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
 	Examples:
-	| User | Announcement Name 		 		|
-	| EXE  | Automation Announcement Jan10 |
+	| User | Announcement Name 		 		    |
+	| EXE  | Automation Announcement FOR Jan16  |
  	

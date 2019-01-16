@@ -39,11 +39,6 @@ public class ApplicationSteps {
                 announcementName, dataTable);
     }
 
-    @Given("^I enter the Due In Days in flex table with id \"([^\"]*)\" by clicking \"([^\"]*)\"$")
-    public void enterDueInDays(String flexTableId, String iconName, DataTable rowValues) {
-        applicationPage.enterDueInDays(flexTableId, iconName, rowValues);
-    }
-
     @Given("^I assign application \"([^\"]*)\" to the \"([^\"]*)\" Reviewers \"([^\"]*)\" for each step$")
     public void assignApplicationToReviewer(String applicationName, String noOfReviewers, String reviewers, DataTable dataTable) {
         applicationPage.assignApplicationToReviewer(applicationName, noOfReviewers, dataTable, reviewers.split(","));

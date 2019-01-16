@@ -3,13 +3,13 @@ Feature: Validate all scenarios in the Application Intake
 
 	Background: Qualify Announcement and Create Application
 	Given I navigate to environment "SUBPORTAL"
-	And I qualify the announcement "Automation Announcement Jan10" as user "SPI"
+	And I qualify the announcement "Automation Announcement Jan16" as user "SPI"
 	| Actions 	 | Step 1 	      | Step 2		  | Step 3  | Step 4 	    |
 	| Navigation | Grants Portal  | Opportunities | Active  | Opportunities |
 	| FlexTable  | popupflextable | View		  | Qualify | 				|
 	Given I create an Application from sheet "Creation" in excel "Application_Field_Values.xlsx"
-	| Actions  | Step 1 	       | Step 2		    | Step 3 |
-	|Creation | Create Application | Save And Close | Save   |
+	| Actions | Step 1 	       | Step 2		    	    | Step 3 |
+	|Creation | Create Application | Save and Continue  | Save   |
 
   	@34044 @applicationCreation @applicationIntake
   	Scenario: Creating an Application
@@ -26,7 +26,7 @@ Feature: Validate all scenarios in the Application Intake
   	Scenario Outline: Addition of Focus area to an application
     When I navigate to "Budget" sub tab
     And I click on top right button "Add Focus Area" in flex table with id "FocusAreaApp"
-    When I click "Add" after selection of "<EGMS Id>" in the table "popupflextable"
+    When I click "Add" after selection of "<EGMS Id>" in the table "AddAppProjects"
     And I switch to Parent frame
     Then I see that "<EGMS Id>" has been added in flextable with Id "FocusAreaApp"
 	Examples:
@@ -54,8 +54,21 @@ Feature: Validate all scenarios in the Application Intake
 	| KPI-0006 | 10		|
 	Then I see that "10" has been added in flextable with Id "inlineEditGridRecipientApplicationRelatedKPIs"
 	Examples:
-	| Application Name 											 | Flextable Name |
+	| Application Name 	   | Flextable Name |
 	| Automation App Dec10 | Budget Details |
+	
+	@formFillingApplication @applicationIntake
+    Scenario: To fill and complete the form in Progress Report
+    When I navigate to "Attachments" sub tab
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "FormEnhancedTable"
+    When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    And I click on "Edit" icon for "Application Form - Project H.E.A.T." inside flex table with id "FormEnhancedTable"
+    When I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    Then I see that "100.00%" has been added in flextable with Id "FormComponent"
 	
   	@uploadAttachmentForChecklistInApplication @applicationIntake
   	Scenario: Attaching a document for attachment checklist in an application
@@ -75,7 +88,7 @@ Feature: Validate all scenarios in the Application Intake
  	And I add focus area "00005" to the application
 	| Actions 	 | Step 1 | Step 2		   | Step 3 	  |
 	| Navigation | Budget | Add Focus Area | FocusAreaApp |
-	| FlexTable	 | Add 	  | popupflextable | 			  |
+	| FlexTable	 | Add 	  | AddAppProjects | 			  |
 	Given I expand nested table containing column value "Proposed Budget" inside nested table containing "BP01"
 	And I edit the following rows inline in flex table with id "inlineEditGridApplicationBudgetCategoryGrantorFlexGrid" by clicking "Edit" :
 	| Category Name | Budget | Cash Match | Non-Cash Match |
@@ -85,11 +98,20 @@ Feature: Validate all scenarios in the Application Intake
 	| EGMS ID  | Target |
 	| KPI-0005 | 10		|
 	| KPI-0006 | 10		|
-	Given I upload "2" checklist document "Announcement_Field_Values.xlsx,Application_Field_Values.xlsx"
+	Given I upload "1" checklist document "Announcement_Field_Values.xlsx"
 	| Actions 	 | Step 1 							   | Step 2		 | Step 3 	      |
 	| Navigation | Attachments 						   | 			 |				  |
 	| FlexTable  | inlineEditGridApplicationChecklists | Attach 	 | Not Applicable |
 	| Upload	 | Checklist 						   | Application |				  |
+	And I navigate to "Attachments" sub tab
+	And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "FormEnhancedTable"
+	Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    Given I click on "Back" in the page details
+    And I click on "Edit" icon for "Application Form - Project H.E.A.T." inside flex table with id "FormEnhancedTable"
+    Given I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    Given I click on "Back" in the page details
     When I click on "Submit Application" in the page details
     Then I see status in Progress-bar is "Submitted" and is "green"
 	
@@ -116,8 +138,17 @@ Feature: Validate all scenarios in the Application Intake
 	| Navigation | Attachments 						   | 			 |				  |
 	| FlexTable  | inlineEditGridApplicationChecklists | Attach 	 | Not Applicable |
 	| Upload	 | Checklist 						   | Application |				  |
+	And I navigate to "Attachments" sub tab
+	And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "FormEnhancedTable"
+	Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    Given I click on "Back" in the page details
+    And I click on "Edit" icon for "Application Form - Project H.E.A.T." inside flex table with id "FormEnhancedTable"
+    Given I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    Given I click on "Back" in the page details
     When I click on "Submit Application" in the page details
-    Given I login to "As a Grantor" app as "<User>" User
+    Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Applications" tab
 	And I navigate to "Applications" content inside "Applications" subheader on left panel
 	When I click toggle button to select "Submitted Applications"

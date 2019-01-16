@@ -103,12 +103,12 @@ Feature: Validate all scenarios in Desk Review
     | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
-	Given Subrecipient "SPI" receives the task for "<Desk Review Name>"
+	Given User "SPI" receives the task for "<Desk Review Name>"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" User
+	When I re-login to "As a Grantor" app as "EXE" user
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I expand nested table containing column value "<Award Name>"
@@ -134,12 +134,12 @@ Feature: Validate all scenarios in Desk Review
     | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
-	Given Subrecipient "SPI" receives the task for "<Desk Review Name>"
+	Given User "SPI" receives the task for "<Desk Review Name>"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" User
+	When I re-login to "As a Grantor" app as "EXE" user
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I expand nested table containing column value "<Award Name>"
@@ -171,7 +171,7 @@ Feature: Validate all scenarios in Desk Review
     | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
-	Given Subrecipient "SPI" receives the task for "<Desk Review Name>"
+	Given User "SPI" receives the task for "<Desk Review Name>"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
@@ -191,7 +191,7 @@ Feature: Validate all scenarios in Desk Review
     | Automation Observation | Automation Description | Observation    |
 	And I navigate to "Reports and Outcomes" sub tab
 	When I click on "Edit" icon for "General Review Form" inside flex table with id "FormComponent"
-	When I complete filling up the standard form
+	And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
 	And I click on "Save" in the page details
 	When I click on "Back" in the page details
 	And I click on top right button "Validate" in flex table with id "FormComponent"
@@ -214,7 +214,7 @@ Feature: Validate all scenarios in Desk Review
     | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
-	Given Subrecipient "SPI" receives the task for "<Desk Review Name>"
+	Given User "SPI" receives the task for "<Desk Review Name>"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
@@ -232,7 +232,7 @@ Feature: Validate all scenarios in Desk Review
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
     | Automation Observation | Automation Description | Observation    |
-	And I fill in the form "General Review Form"
+	And I fill in the form "General Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
 	| Actions 	  | Step 1   		 	 | Step 2		 |
 	| Navigation  | Reports and Outcomes | 			 	 |
 	| FlexTable   | Edit				 | FormComponent |
@@ -258,7 +258,7 @@ Feature: Validate all scenarios in Desk Review
     | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
-	Given Subrecipient "SPI" receives the task for "<Desk Review Name>"
+	Given User "SPI" receives the task for "<Desk Review Name>"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
@@ -276,20 +276,20 @@ Feature: Validate all scenarios in Desk Review
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
     | Automation Observation | Automation Description | Observation    |
-	And I fill in the form "General Review Form"
+	And I fill in the form "General Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
 	| Actions 	  | Step 1   		 	 | Step 2		 |
 	| Navigation  | Reports and Outcomes | 			 	 |
 	| FlexTable   | Edit				 | FormComponent |
 	| Form Button | Save				 | Back 		 |
 	| Validation  | Validate			 | FormComponent |
 	When I click on "Submit for Approval" in the page details
-	Given I re-login to "As a Grantor" app as "PM" User
+	Given I re-login to "As a Grantor" app as "PM" user
 	When I navigate to "Monitoring" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "<Desk Review Name>" in "PhasePendingTasks" panel
     And I click on "Start" icon for "<Desk Review Name>" inside table 
     When I click on "Approve" on the approval decision box
-    And I re-login to "As a Grantor" app as "FO" User
+    And I re-login to "As a Grantor" app as "FO" user
 	When I navigate to "Monitoring" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "<Desk Review Name>" in "PhasePendingTasks" panel
@@ -314,7 +314,7 @@ Feature: Validate all scenarios in Desk Review
     | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
-	Given Subrecipient "SPI" receives the task for "<Desk Review Name>"
+	Given User "SPI" receives the task for "<Desk Review Name>"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
@@ -332,7 +332,7 @@ Feature: Validate all scenarios in Desk Review
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
     | Automation Observation | Automation Description | Observation    |
-	And I fill in the form "General Review Form"
+	And I fill in the form "General Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
 	| Actions 	  | Step 1   		 	 | Step 2		 |
 	| Navigation  | Reports and Outcomes | 			 	 |
 	| FlexTable   | Edit				 | FormComponent |
@@ -343,7 +343,7 @@ Feature: Validate all scenarios in Desk Review
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | MyTasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-    When I re-login to "As a Grantor" app as "EXE" User
+    When I re-login to "As a Grantor" app as "EXE" user
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I expand nested table containing column value "<Award Name>"
@@ -370,7 +370,7 @@ Feature: Validate all scenarios in Desk Review
     | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
-	Given Subrecipient "SPI" receives the task for "<Desk Review Name>"
+	Given User "SPI" receives the task for "<Desk Review Name>"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
@@ -382,7 +382,7 @@ Feature: Validate all scenarios in Desk Review
 	| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
 	| Button 	 | View								 | 						            |
 	Given I click on "Conduct" in the page details
-	And I fill in the form "General Review Form"
+	And I fill in the form "General Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
 	| Actions 	  | Step 1   		 	 | Step 2		 |
 	| Navigation  | Reports and Outcomes | 			 	 |
 	| FlexTable   | Edit				 | FormComponent |
@@ -400,7 +400,7 @@ Feature: Validate all scenarios in Desk Review
 	| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
 	| Button 	 | View								 | 						            |
 	Given I click on "Send to Subrecipient" in the page details
-	Given Subrecipient "SPI" receives the task for "<Desk Review Name>"
+	Given User "SPI" receives the task for "<Desk Review Name>"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
@@ -445,7 +445,7 @@ Feature: Validate all scenarios in Desk Review
     | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
-	Given Subrecipient "SPI" receives the task for "<Desk Review Name>"
+	Given User "SPI" receives the task for "<Desk Review Name>"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
@@ -457,7 +457,7 @@ Feature: Validate all scenarios in Desk Review
 	| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
 	| Button 	 | View								 | 						            |
 	Given I click on "Conduct" in the page details
-	And I fill in the form "General Review Form"
+	And I fill in the form "General Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
 	| Actions 	  | Step 1   		 	 | Step 2		 |
 	| Navigation  | Reports and Outcomes | 			 	 |
 	| FlexTable   | Edit				 | FormComponent |
@@ -475,7 +475,7 @@ Feature: Validate all scenarios in Desk Review
 	| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
 	| Button 	 | View								 | 						            |
 	Given I click on "Send to Subrecipient" in the page details
-	Given Subrecipient "SPI" receives the task for "<Desk Review Name>"
+	Given User "SPI" receives the task for "<Desk Review Name>"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
@@ -521,7 +521,7 @@ Feature: Validate all scenarios in Desk Review
     | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
-	Given Subrecipient "SPI" receives the task for "<Desk Review Name>"
+	Given User "SPI" receives the task for "<Desk Review Name>"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
@@ -533,7 +533,7 @@ Feature: Validate all scenarios in Desk Review
 	| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
 	| Button 	 | View								 | 						            |
 	Given I click on "Conduct" in the page details
-	And I fill in the form "General Review Form"
+	And I fill in the form "General Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
 	| Actions 	  | Step 1   		 	 | Step 2		 |
 	| Navigation  | Reports and Outcomes | 			 	 |
 	| FlexTable   | Edit				 | FormComponent |
@@ -551,7 +551,7 @@ Feature: Validate all scenarios in Desk Review
 	| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
 	| Button 	 | View								 | 						            |
 	Given I click on "Send to Subrecipient" in the page details
-	Given Subrecipient "SPI" receives the task for "<Desk Review Name>"
+	Given User "SPI" receives the task for "<Desk Review Name>"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |

@@ -3,7 +3,7 @@ Feature: Validate all scenarios in the home tab
 
   	@35024 @internalOrganizationCreate @InternalOrganization
   	Scenario: Verifying if the Admin has create access to Internal Organization
-  	Given I login to "As Administrator" app as "Admin" User
+  	Given I login to "As Administrator" app as "Admin" user
     When I navigate to "Setup" tab
     And I navigate to "Internal" content inside "Organizations" subheader on left panel
     When I click toggle button for "Draft Internal Organizations"
@@ -14,7 +14,7 @@ Feature: Validate all scenarios in the home tab
     
   	@35637 @internalOrganizationEdit @InternalOrganization
   	Scenario Outline: Verifying if the Admin has edit access to Internal Organization
-    Given I login to "As Administrator" app as "Admin" User
+    Given I login to "As Administrator" app as "Admin" user
     When I navigate to "Setup" tab
     And I navigate to "Internal Organizations" content inside "Manage Organizations" subheader on left panel
     When I click on "View" icon for "<Organization name>" inside flex table with id "OrganizationId"

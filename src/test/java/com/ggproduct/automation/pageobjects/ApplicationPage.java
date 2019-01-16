@@ -24,7 +24,7 @@ public class ApplicationPage extends ProjectManager {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         govgrants.mainPage().loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
-        govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 4"), dataTableMap.get("Navigation").get("Step 3"));
+        govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 4"), dataTableMap.get("Navigation").get("Step 3")).click();
         govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 1"), announcementName);
         govgrants.flexTable().clickTableActionIcons(dataTableMap.get("FlexTable").get("Step 2"), announcementName);
         govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("FlexTable").get("Step 3"));
@@ -79,7 +79,7 @@ public class ApplicationPage extends ProjectManager {
             govgrants.mainPage().reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), announcementOwner);
         }
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
-        govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 4"), dataTableMap.get("Navigation").get("Step 3"));
+        govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 4"), dataTableMap.get("Navigation").get("Step 3")).click();
         govgrants.phasePannel().clickDoubleArrowDropDownAndSelectItem(dataTableMap.get("FlexTable").get("Step 1"));
         govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 2"),
                 announcementName);
@@ -94,15 +94,6 @@ public class ApplicationPage extends ProjectManager {
         } catch (Exception e) {
 
         }
-    }
-
-    /**
-     * Handles entering of due date for SME review
-     * 
-     * @param dueInDays
-     */
-    public void enterDueInDays(String flexTableId, String iconName, DataTable rowValues) {
-        govgrants.flexTable().editFlexTableRowsInline(flexTableId, iconName, rowValues);
     }
 
     /**
