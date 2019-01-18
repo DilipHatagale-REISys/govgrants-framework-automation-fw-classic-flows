@@ -47,7 +47,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	Given I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
@@ -81,7 +81,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	Given I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
@@ -127,7 +127,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	Given I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
@@ -168,7 +168,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	Given I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
@@ -234,7 +234,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	Given I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
@@ -292,7 +292,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	Given I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
@@ -349,7 +349,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	Given I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
@@ -389,7 +389,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	Given I click on "Next Review Step" in the page details
-	And I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	And I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
     When I expand nested table containing column value "Management Review"
@@ -410,7 +410,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	Given I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
@@ -450,7 +450,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	Given I click on "Next Review Step" in the page details
-	And I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	And I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
 	Given I expand nested table containing column value "Management Review"
@@ -475,7 +475,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	Given I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
@@ -515,7 +515,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	Given I click on "Next Review Step" in the page details
-	And I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	And I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
 	Given I expand nested table containing column value "Management Review"
@@ -543,7 +543,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	Given I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
@@ -583,7 +583,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	Given I click on "Next Review Step" in the page details
-	And I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	And I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
 	Given I expand nested table containing column value "Management Review"
@@ -620,7 +620,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	Given I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
@@ -660,7 +660,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	Given I click on "Next Review Step" in the page details
-	And I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	And I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
 	Given I expand nested table containing column value "Management Review"
@@ -706,7 +706,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	Given I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
@@ -746,7 +746,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	Given I click on "Next Review Step" in the page details
-	And I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	And I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
 	Given I expand nested table containing column value "Management Review"
@@ -791,7 +791,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	Given I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
@@ -831,7 +831,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	Given I click on "Next Review Step" in the page details
-	And I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	And I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
 	Given I expand nested table containing column value "Management Review"
@@ -879,7 +879,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	Given I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
@@ -919,7 +919,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	Given I click on "Next Review Step" in the page details
-	And I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	And I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
 	Given I expand nested table containing column value "Management Review"
@@ -971,7 +971,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	Given I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name 	    | Due in Days |
 	| Program Review    | 10   		  | 
 	| Fiscal Review     | 10   		  | 
@@ -1011,7 +1011,7 @@ Feature: Validate all scenarios in the Application Review
 	| Review 	 | AnnouncementReviewStepsFlexToggle 			 | Manage Reviews 	  | View 	| 					 |
 	| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes				  | 		|					 |
 	And I click on "Next Review Step" in the page details
-	Given I enter the Due In Days in flex table with id "flexGridApplicationReviewTree" by clicking "Edit"
+	Given I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
 	| Form Name    		| Due in Days |
 	| Management Review | 10     	  | 
 	Given I expand nested table containing column value "Management Review"
@@ -1070,17 +1070,17 @@ Feature: Validate all scenarios in the Application Review
 	| Fiscal Review     | 10   		  | 
 	| Compliance Review | 10   		  | 
 	Given I expand nested table containing column value "Program Review"
-    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    And I enter the following values into flex table with id "flexGridApplicationReviewTree" by clicking "Add" :
     | Reviewer 		 |
     | Automation PM  |
     Given I collapse nested table containing column value "Program Review"
     And I expand nested table containing column value "Fiscal Review"
-    Given I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    Given I enter the following values into flex table with id "flexGridApplicationReviewTree" by clicking "Add" :
     | Reviewer 		 |
     | Automation FO	 |
     And I collapse nested table containing column value "Fiscal Review"
     Given I expand nested table containing column value "Compliance Review"
-    And I enter the following values into flex table with id "RelatedExternalReviewersGridresizable" by clicking "Add" :
+    And I enter the following values into flex table with id "flexGridApplicationReviewTree" by clicking "Add" :
     | Reviewer 		 |
     | Automation EXE |
     Given I collapse nested table containing column value "Compliance Review"

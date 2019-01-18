@@ -6,7 +6,7 @@ Feature: Validate all scenarios in the home tab
   	Given I login to "As Administrator" app as "Admin" user
     When I navigate to "Setup" tab
     And I navigate to "Internal" content inside "Organizations" subheader on left panel
-    When I click toggle button for "Draft Internal Organizations"
+    When I click toggle button to select "Draft Internal Organizations"
     And I click on top right button "New" in flex table with id "inlineEditGridInternalOrganizationHierarchy"
     When I enter "RequiredForSave" values from "InternalOrganization_Field_Values.xlsx"
     And I click on "Save" in the page details

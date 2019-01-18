@@ -224,7 +224,7 @@ Feature: Validate all scenarios in the Award
     | Approver 2 | GrantorAwardRolesAndResponsibilities | Edit   | Fiscal Approver     |
     | Approver 3 | GrantorAwardRolesAndResponsibilities | Edit	 | Executive Approver  |
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" User with environment "SUBPORTAL"
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
 	And I navigate to "Grants" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "<Award Name>" in "PhasePendingTasks" panel
@@ -756,7 +756,7 @@ Feature: Validate all scenarios in the Award
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Send to Subrecipient after Approval" in the page details
-  	When I re-login to "Grants Portal" app as "SPI" User with environment "SUBPORTAL"
+  	When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "<Award Name>" in "PhasePendingTasks" panel

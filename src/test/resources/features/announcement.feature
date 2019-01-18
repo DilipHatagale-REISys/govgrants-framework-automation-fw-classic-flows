@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in the Announcement tab
 
 	Background: Create Announcement
-	Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	Given I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
 	| Actions 	  | Step 1 	   	  					    | Step 2    	   	   		 | Step 3 							 |
 	| Navigation  | As a Grantor  						| Announcements 	   		 |									 |
 	| FlexTable   | Announcements 						| Draft Announcements 		 |  								 |
@@ -245,7 +245,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Reviewer Navigation | Responsibilities      | 					  |			|
 	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
 	| Send Review		  | Send for Review       | Created 			  |			|
-	Given Review is completed as user "FO" for the record "<Announcement Name>"
+	Given Review is completed as user "FO" for the record "<Announcement Name>" on "QA" portal
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
 	| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
@@ -304,7 +304,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Reviewer Navigation | Responsibilities      | 					  |			|
 	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
 	| Send Review		  | Send for Review       | Created 			  |			|
-	And Review is completed as user "FO" for the record "<Announcement Name>"
+	And Review is completed as user "FO" for the record "<Announcement Name>" on "QA" portal
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
 	| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
@@ -349,7 +349,7 @@ Feature: Validate all scenarios in the Announcement tab
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Announcement Pre-Encumbrance |
 	| FA--21 		  | 100000 				         |
-	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
+	And I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
 	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
 	| Flextable  | Edit 	    | Save					| 						           |
@@ -358,7 +358,7 @@ Feature: Validate all scenarios in the Announcement tab
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
     | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
     | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
-	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+	And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
     | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
     | Subtab	 | Responsibilities 						   | 		|		    		  |
     | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
@@ -372,32 +372,32 @@ Feature: Validate all scenarios in the Announcement tab
 	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
 	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
 	| Upload file     	   | Checklist 				   			  | Announcement   |			|
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    And I add an attachment "InternalOrganization_Field_Values.xlsx"
     | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
     | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
     | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
-	Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
-	| Actions 			  | Step 1 	  		      | Step 2	 		   	  | Step 3  |
-	| Reviewer Navigation | Responsibilities      | 					  |			|
-	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
-	| Send Review		  | Send for Review       | Created 			  |			|
-	Given Review is completed as user "FO" for the record "Review Grantor Announcement"
-	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
-	| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
-	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
-	| Enter Review		  | Sent for Review	    | Passed	  						  |	 Save		  		  | Submit Review   |
-	Given I login and view the record "<Announcement Name>" as "EXE"
-	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
-	| Owner Navigation 	  | As a Grantor 		| Announcements 					  | Competitive   		  | Announcements   |
-	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | 			    |
-	Given I click on "Complete Review" in the page details
+	#Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
+	#| Actions 			  | Step 1 	  		      | Step 2	 		   	  | Step 3  |
+	#| Reviewer Navigation | Responsibilities      | 					  |			|
+	#| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
+	#| Send Review		  | Send for Review       | Created 			  |			|
+	#And Review is completed as user "FO" for the record "Review Grantor Announcement" on "QA" portal
+	#| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
+	#| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
+	#| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
+	#| Enter Review		  | Sent for Review	    | Passed	  						  |	 Save		  		  | Submit Review   |
+	#Given I login and view the record "<Announcement Name>" as "EXE"
+	#| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
+	#| Owner Navigation 	  | As a Grantor 		| Announcements 					  | Competitive   		  | Announcements   |
+	#| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | 			    |
+	#Given I click on "Complete Review" in the page details
 	And I click on "Submit For Approval" in the page details
 	Given "3" Approvers "PM,FO,EXE" approve the record "Approve Funding Announcement"
 	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
 	| Navigation | As a Grantor  | Announcements | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-	And I re-login to "As a Grantor" app as "<User>" user
+	And I re-login to "As a Grantor" app as "<User>" user on "QA" portal
 	When I navigate to "Announcements" tab
 	And I navigate to "Competitive" content inside "Announcements" subheader on left panel
 	When I click toggle button to select "Draft Announcements"
@@ -407,7 +407,7 @@ Feature: Validate all scenarios in the Announcement tab
     Then I see status in Progress-bar is "Published" and is "green"
 	Examples:
 	| User | Announcement Name 			   |
-	| EXE  | Automation Announcement Jan16 |
+	| EXE  | Automation Announcement Jan18 |
 	
 	@34462 @publishingDirectedAnnouncement @announcementDirectedHappyPath @announcement
   	Scenario Outline: Validate the activation of Internal Program
@@ -455,7 +455,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Reviewer Navigation | Responsibilities      | 					  |			|
 	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
 	| Send Review		  | Send for Review       | Created 			  |			|
-	And Review is completed as user "FO" for the record "Automation Announcement"
+	And Review is completed as user "FO" for the record "Automation Announcement" on "QA" portal
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
 	| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
@@ -471,7 +471,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Navigation | As a Grantor  | Announcements | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-	And I re-login to "As a Grantor" app as "<User>" user
+	And I re-login to "As a Grantor" app as "<User>" user on "QA" portal
 	When I navigate to "Announcements" tab
 	And I navigate to "Directed" content inside "Announcements" subheader on left panel
 	When I click toggle button to select "Draft Announcements"
@@ -532,7 +532,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Reviewer Navigation | Responsibilities      | 					  |			|
 	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
 	| Send Review		  | Send for Review       | Created 			  |			|
-	And Review is completed as user "FO" for the record "Review Grantor Announcement"
+	And Review is completed as user "FO" for the record "Review Grantor Announcement" on "QA" portal
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
 	| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
@@ -548,7 +548,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Navigation | As a Grantor  | Announcements | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-	When I re-login to "As a Grantor" app as "<User>" user
+	When I re-login to "As a Grantor" app as "<User>" user on "QA" portal
 	And I navigate to "Announcements" tab
 	When I navigate to "Formula" content inside "Announcements" subheader on left panel
 	And I click toggle button to select "Draft Announcements"

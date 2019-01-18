@@ -79,7 +79,7 @@ Feature: Validate all scenarios in Desk Review
     | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
-	When I re-login to "Grants Portal" app as "SPI" User with environment "SUBPORTAL"
+	When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
 	And I perform quick search for "<Desk Review Name>" in "PhasePendingTasks" panel
@@ -405,7 +405,7 @@ Feature: Validate all scenarios in Desk Review
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "Grants Portal" app as "SPI" User with environment "SUBPORTAL"
+	When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
 	When I navigate to "Monitoring" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
 	When I perform quick search for "<Desk Review Name>" in "PhasePendingTasks" panel
@@ -480,7 +480,7 @@ Feature: Validate all scenarios in Desk Review
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "Grants Portal" app as "SPI" User with environment "SUBPORTAL"
+	When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
 	When I navigate to "Monitoring" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
 	When I perform quick search for "<Desk Review Name>" in "PhasePendingTasks" panel
@@ -556,7 +556,7 @@ Feature: Validate all scenarios in Desk Review
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "Grants Portal" app as "SPI" User with environment "SUBPORTAL"
+	When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
 	When I navigate to "Monitoring" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
 	When I perform quick search for "<Desk Review Name>" in "PhasePendingTasks" panel

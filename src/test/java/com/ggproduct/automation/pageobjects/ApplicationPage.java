@@ -162,8 +162,8 @@ public class ApplicationPage extends ProjectManager {
         govgrants.flexTable().expandOrCollapseNestedTable(dataTableMap.get("Review").get("Step " + qNumber), true);
         govgrants.flexTable().clickTableActionIcon(dataTableMap.get("FlexTable").get("Step 2"),
                 dataTableMap.get("FlexTable").get("Step 1"), reviewer);
-        chooseRecordForAssociation(dataTableMap.get("Application").get("Step 1"), applicationName,
-                dataTableMap.get("Application").get("Step 2"));
+        chooseRecordForAssociation(dataTableMap.get("Application").get("Step 1"),
+                dataTableMap.get("Application").get("Step 2"), applicationName);
         reiDriver.switchTo().switchToParentFrame();
     }
 
