@@ -1,4 +1,7 @@
-/target/
-/classpath/
+target/
+/.classpath/
+/.metadata/
+/bin/
 /output/
 /test-output/
+/.settings/
