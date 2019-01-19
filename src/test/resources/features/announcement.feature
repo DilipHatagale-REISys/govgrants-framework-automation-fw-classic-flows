@@ -376,23 +376,23 @@ Feature: Validate all scenarios in the Announcement tab
     | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
     | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
     | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
-	#Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
-	#| Actions 			  | Step 1 	  		      | Step 2	 		   	  | Step 3  |
-	#| Reviewer Navigation | Responsibilities      | 					  |			|
-	#| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
-	#| Send Review		  | Send for Review       | Created 			  |			|
-	#And Review is completed as user "FO" for the record "Review Grantor Announcement" on "QA" portal
-	#| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
-	#| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
-	#| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
-	#| Enter Review		  | Sent for Review	    | Passed	  						  |	 Save		  		  | Submit Review   |
-	#Given I login and view the record "<Announcement Name>" as "EXE"
-	#| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
-	#| Owner Navigation 	  | As a Grantor 		| Announcements 					  | Competitive   		  | Announcements   |
-	#| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | 			    |
-	#Given I click on "Complete Review" in the page details
+	Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
+	| Actions 			  | Step 1 	  		      | Step 2	 		   	  | Step 3  |
+	| Reviewer Navigation | Responsibilities      | 					  |			|
+	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
+	| Send Review		  | Send for Review       | Created 			  |			|
+	And Review is completed as user "FO" for the record "Review Grantor Announcement" on "QA" portal
+	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
+	| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
+	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
+	| Enter Review		  | Sent for Review	    | Passed	  						  |	 Save		  		  | Submit Review   |
+	Given I login and view the record "<Announcement Name>" as "EXE"
+	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
+	| Owner Navigation 	  | As a Grantor 		| Announcements 					  | Competitive   		  | Announcements   |
+	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | 			    |
+	Given I click on "Complete Review" in the page details
 	And I click on "Submit For Approval" in the page details
-	Given "3" Approvers "PM,FO,EXE" approve the record "Approve Funding Announcement"
+	Given "3" Approvers "PM,FO,EXE" approve the record "EGMS ID"
 	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
 	| Navigation | As a Grantor  | Announcements | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |

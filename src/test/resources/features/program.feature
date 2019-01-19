@@ -57,7 +57,7 @@ Feature: Validate all scenarios for program
   	@34616 @programFocusAreaAssociation @program
   	Scenario Outline: Validate the association of Focus Area for the Internal Program
     When I navigate to "Setup" sub tab
-    And I click on top right button "Associate" in flex table with id "flexGridGrantorServiceAreasProgram"
+    And I click on top right button "Add" in flex table with id "flexGridGrantorServiceAreasProgram"
     When I click "Associate" after selection of "00005,00006" in the table "SelectProgramServiceArea"
     And I close Modal
     Then I see that "<EGMS Id>" has been added in flextable with Id "flexGridGrantorServiceAreasProgram"
@@ -114,7 +114,7 @@ Feature: Validate all scenarios for program
     And I associate "3" records "Automation EXE,00005,SPO-0006"
     | Actions 	  | Step 1   | Step 2	 | Step 3  			  				  | Step 4 	  | Step 5  				 |
     | Associate 1 | Overview | Associate | ProgramContacts 				      | Add	  	  | AssociateProgramContacts |
-    | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Associate | SelectProgramServiceArea |
+    | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Add		  | SelectProgramServiceArea |
     | Associate 3 | Setup 	 | Associate | RelatedProgramGoalsandObjectives   | Add	  	  | SelectGoals 		     |
     Given I select "2" approvers "Automation PM,Automation EXE"
     | Actions 	 | Step 1   				       | Step 2	| Step 3 			  |
@@ -143,7 +143,7 @@ Feature: Validate all scenarios for program
     And I associate "3" records "Automation EXE,00005,SPO-0006"
     | Actions 	  | Step 1   | Step 2	 | Step 3  			  				  | Step 4 	  | Step 5  				 |
     | Associate 1 | Overview | Associate | ProgramContacts 				      | Add	  	  | AssociateProgramContacts |
-    | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Associate | SelectProgramServiceArea |
+    | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Add		  | SelectProgramServiceArea |
     | Associate 3 | Setup 	 | Associate | RelatedProgramGoalsandObjectives   | Add	  	  | SelectGoals 		     |
     Given I select "2" approvers "Automation PM,Automation EXE"
     | Actions 	 | Step 1   				       | Step 2	| Step 3 			  |
@@ -187,7 +187,7 @@ Feature: Validate all scenarios for program
     And I associate "3" records "Automation EXE,00005,SPO-0006"
     | Actions 	  | Step 1   | Step 2	 | Step 3  			  				  | Step 4 	  | Step 5  				 |
     | Associate 1 | Overview | Associate | ProgramContacts 				      | Add	  	  | AssociateProgramContacts |
-    | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Associate | SelectProgramServiceArea |
+    | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Add		  | SelectProgramServiceArea |
     | Associate 3 | Setup 	 | Associate | RelatedProgramGoalsandObjectives   | Add	  	  | SelectGoals 		     |
     Given I select "2" approvers "Automation PM,Automation EXE"
     | Actions 	 | Step 1   				       | Step 2	| Step 3 			  |
@@ -206,7 +206,7 @@ Feature: Validate all scenarios for program
     | Attachment Navigation | Attachments | Add				  | a150b000003epY5AAI |
     | Attachment Details    | Attachment  | Program Artifacts | 				   |
     And I click on "Submit For Approval" in the page details
-    Given "2" Approvers "PM,EXE" approve the record "Approve Program"
+    Given "2" Approvers "PM,EXE" approve the record "EGMS ID"
 	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
 	| Navigation | As a Grantor  | Planning		 | 				  	 |
 	| FlexTable  | Pending Tasks | MyTasks  	 | PhasePendingTasks |
@@ -221,93 +221,6 @@ Feature: Validate all scenarios for program
     Then I see status in Progress-bar is "Active" and is "green"
 	Examples:
 	| User | Program Name  			        |
-	| EXE  | Automation Program Jan 18 2019 |
+	| EXE  | Automation Program EGMS chk    |	
 	
-	@34756 @programActivation @programHappyPath @program
-  	Scenario Outline: Validate the activation of Internal Program
-    Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
-    | Actions 		  | Step 1 | Step 2	|
-    | Edition Buttons | Edit   | Save   |
-    And I associate "3" records "Automation EXE,00005,SPO-0006"
-    | Actions 	  | Step 1   | Step 2	 | Step 3  			  				  | Step 4 	  | Step 5  				 |
-    | Associate 1 | Overview | Associate | ProgramContacts 				      | Add	  	  | AssociateProgramContacts |
-    | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Associate | SelectProgramServiceArea |
-    | Associate 3 | Setup 	 | Associate | RelatedProgramGoalsandObjectives   | Add	  	  | SelectGoals 		     |
-    Given I select "2" approvers "Automation PM,Automation EXE"
-    | Actions 	 | Step 1   				       | Step 2	| Step 3 			  |
-    | Subtab	 | Responsibilities 			   | 		|		    		  |
-    | Approver 1 | ProgramRolesAndResponsibilities | Edit   | Program Approver    |
-    | Approver 2 | ProgramRolesAndResponsibilities | Edit	| Executive Approver  |
-    When I navigate to "Setup" sub tab
-    When I enter the following values into flex table with id "flexGridProgramChecklists" by clicking "Add" :
-    | Description        		  | Required  | Applies To  | Status |
-    | Automation test description | Mandatory | Application | Active |    
-    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "flexGridProgramChecklists"
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close Modal 
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
-    | Actions 			    | Step 1 	  | Step 2	 		  | Step 3 			   |	
-    | Attachment Navigation | Attachments | Add				  | a150b000003epY5AAI |
-    | Attachment Details    | Attachment  | Program Artifacts | 				   |
-    And I click on "Submit For Approval" in the page details
-    Given "2" Approvers "PM,EXE" approve the record "Approve Program"
-	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
-	| Navigation | As a Grantor  | Planning		 | 				  	 |
-	| FlexTable  | Pending Tasks | MyTasks  	 | PhasePendingTasks |
-	| Approval 	 | Start 		 | Approve 		 | 					 |
-    And I re-login to "As a Grantor" app as "<User>" user on "QA" portal
-	When I navigate to "Planning" tab
-	And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-	And I click toggle button to select "Draft Internal Programs"
-    And I perform quick search for "<Program Name>" in "Programs" panel
-    When I click on "View" icon for "<Program Name>" inside table 
-    And I click on "Activate" in the page details
-    Then I see status in Progress-bar is "Active" and is "green"
-	Examples:
-	| User | Program Name  			        |
-	| EXE  | Automation Program Jan 18 2019 |
-	
-	@34756 @programActivation @programHappyPath @program
-  	Scenario Outline: Validate the activation of Internal Program
-    Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
-    | Actions 		  | Step 1 | Step 2	|
-    | Edition Buttons | Edit   | Save   |
-    And I associate "3" records "Automation EXE,00005,SPO-0006"
-    | Actions 	  | Step 1   | Step 2	 | Step 3  			  				  | Step 4 	  | Step 5  				 |
-    | Associate 1 | Overview | Associate | ProgramContacts 				      | Add	  	  | AssociateProgramContacts |
-    | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Associate | SelectProgramServiceArea |
-    | Associate 3 | Setup 	 | Associate | RelatedProgramGoalsandObjectives   | Add	  	  | SelectGoals 		     |
-    Given I select "2" approvers "Automation PM,Automation EXE"
-    | Actions 	 | Step 1   				       | Step 2	| Step 3 			  |
-    | Subtab	 | Responsibilities 			   | 		|		    		  |
-    | Approver 1 | ProgramRolesAndResponsibilities | Edit   | Program Approver    |
-    | Approver 2 | ProgramRolesAndResponsibilities | Edit	| Executive Approver  |
-    When I navigate to "Setup" sub tab
-    When I enter the following values into flex table with id "flexGridProgramChecklists" by clicking "Add" :
-    | Description        		  | Required  | Applies To  | Status |
-    | Automation test description | Mandatory | Application | Active |    
-    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "flexGridProgramChecklists"
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close Modal 
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
-    | Actions 			    | Step 1 	  | Step 2	 		  | Step 3 			   |	
-    | Attachment Navigation | Attachments | Add				  | a150b000003epY5AAI |
-    | Attachment Details    | Attachment  | Program Artifacts | 				   |
-    And I click on "Submit For Approval" in the page details
-    Given "2" Approvers "PM,EXE" approve the record "Approve Program"
-	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
-	| Navigation | As a Grantor  | Planning		 | 				  	 |
-	| FlexTable  | Pending Tasks | MyTasks  	 | PhasePendingTasks |
-	| Approval 	 | Start 		 | Approve 		 | 					 |
-    And I re-login to "As a Grantor" app as "<User>" user on "QA" portal
-	When I navigate to "Planning" tab
-	And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-	And I click toggle button to select "Draft Internal Programs"
-    And I perform quick search for "<Program Name>" in "Programs" panel
-    When I click on "View" icon for "<Program Name>" inside table 
-    And I click on "Activate" in the page details
-    Then I see status in Progress-bar is "Active" and is "green"
-	Examples:
-	| User | Program Name  			        |
-	| EXE  | Automation Program Jan 18 2019 |
 	

@@ -2,6 +2,8 @@ package com.ggproduct.automation.pageobjects;
 
 import java.util.Map;
 
+import org.openqa.selenium.By;
+
 import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
@@ -21,7 +23,7 @@ public class PlanningPage extends ProjectManager {
      * @param sheetName
      * @param excelFileName
      */
-    public void creationOfPrrogram(String user, String sheetName, String excelFileName, DataTable dataTable) {
+    public void creationOfProgram(String user, String sheetName, String excelFileName, DataTable dataTable) {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         govgrants.mainPage().loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
@@ -32,5 +34,6 @@ public class PlanningPage extends ProjectManager {
         govgrants.inputForms().enterInputFieldsFromExcelFile(excelFileName, sheetName);
         govgrants.modal().clickModalContentSpecificButton(dataTableMap.get("Creation").get("Step 2"));
         govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("Creation").get("Step 3"));
+        govgrants.mainPage().passEGMSId(getEGMSId());
     }
 }

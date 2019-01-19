@@ -90,4 +90,10 @@ public class ProjectManager extends ProjectWebServices {
 
         return inlineSeperatedDataTable;
     }
+    
+    public String getEGMSId() {
+        String egmsId = null;
+        egmsId = reiDriver.findMyElement().getElement(By.xpath("//dt/span[text()='EGMS ID']/../..//dd/span")).getText();
+        return egmsId;
+    }
 }
