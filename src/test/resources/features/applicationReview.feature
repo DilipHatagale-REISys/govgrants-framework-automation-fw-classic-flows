@@ -1151,5 +1151,5 @@ Feature: Validate all scenarios in the Application Review
 	When I click on "Approve" on the approval decision box
 	Then I see status in Progress-bar is "Approved" and is "green"
 	Examples: 
-	| User | Announcement Name  				   | Review Step Name	    | Application Name 	            	    			|
-	| EXE  | Automation Announcement Jan16		   | Funding Decision Memo  | Automation App Jan16								|
+	| User | Announcement Name  				   | Review Step Name	    | Application Name 	   |
+	| EXE  | Automation Announcement Jan19		   | Funding Decision Memo  | Automation App Jan19 |

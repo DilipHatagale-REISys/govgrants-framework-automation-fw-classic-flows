@@ -221,6 +221,4 @@ Feature: Validate all scenarios for program
     Then I see status in Progress-bar is "Active" and is "green"
 	Examples:
 	| User | Program Name  			        |
-	| EXE  | Automation Program EGMS chk    |	
-	
-	
+	| EXE  | Automation Program Jan19       |	

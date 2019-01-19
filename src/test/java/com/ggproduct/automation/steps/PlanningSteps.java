@@ -7,7 +7,6 @@ import com.ggproduct.automation.pageobjects.PlanningPage;
 
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.When;
 
 public class PlanningSteps {
     PlanningPage planningPage;

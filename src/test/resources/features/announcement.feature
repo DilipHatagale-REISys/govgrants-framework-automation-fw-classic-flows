@@ -407,7 +407,7 @@ Feature: Validate all scenarios in the Announcement tab
     Then I see status in Progress-bar is "Published" and is "green"
 	Examples:
 	| User | Announcement Name 			   |
-	| EXE  | Automation Announcement Jan18 |
+	| EXE  | Automation Announcement Jan19 |
 	
 	@34462 @publishingDirectedAnnouncement @announcementDirectedHappyPath @announcement
   	Scenario Outline: Validate the activation of Internal Program

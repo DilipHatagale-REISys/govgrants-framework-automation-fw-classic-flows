@@ -2,8 +2,6 @@ package com.ggproduct.automation.pageobjects;
 
 import java.util.Map;
 
-import org.openqa.selenium.By;
-
 import com.automation.rei.controller.Controller;
 import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
@@ -14,6 +12,7 @@ import cucumber.api.DataTable;
 public class PlanningPage extends ProjectManager {
     public PlanningPage(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
         super(controller, handler, govgrants);
+
     }
     
     /**

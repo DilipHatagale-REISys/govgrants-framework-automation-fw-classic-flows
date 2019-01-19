@@ -110,7 +110,7 @@ public class UsersAndURL implements UsersController{
                 e1.printStackTrace();
             }
             break;
-        case "SPI":
+        case "SUBPORTAL":
             try {
                 url= new Properties_Logs().ReadPropertyFile("environment.properties",EnvironmentFetcher.environmentName+portalType);
             } catch (IOException e) {
