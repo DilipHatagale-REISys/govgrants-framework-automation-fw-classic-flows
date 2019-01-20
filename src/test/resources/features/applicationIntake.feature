@@ -3,7 +3,7 @@ Feature: Validate all scenarios in the Application Intake
 
 	Background: Qualify Announcement and Create Application
 	Given I am on "SUBPORTAL" portal
-	And I qualify the announcement "Automation Announcement Jan19" as user "SPI"
+	And I qualify the announcement "Automation Announcement Jan19 Vi" as user "SPI"
 	| Actions 	 | Step 1 	      | Step 2		  | Step 3  | Step 4 	    |
 	| Navigation | Grants Portal  | Opportunities | Active  | Opportunities |
 	| FlexTable  | popupflextable | View		  | Qualify | 				|

@@ -495,7 +495,7 @@ Feature: Validate all scenarios in the Award
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "<Award Name>" 
+  	Given Review is completed as user "FO" for the record "<Award Name>" on "QA" portal
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
@@ -564,7 +564,7 @@ Feature: Validate all scenarios in the Award
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "<Award Name>" 
+  	Given Review is completed as user "FO" for the record "<Award Name>" on "QA" portal 
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
@@ -651,7 +651,7 @@ Feature: Validate all scenarios in the Award
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "<Award Name>" 
+  	Given Review is completed as user "FO" for the record "<Award Name>" on "QA" portal 
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
@@ -734,7 +734,7 @@ Feature: Validate all scenarios in the Award
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "<Award Name>" 
+  	Given Review is completed as user "FO" for the record "<Award Name>" on "QA" portal
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
@@ -821,7 +821,7 @@ Feature: Validate all scenarios in the Award
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "<Award Name>" 
+  	Given Review is completed as user "FO" for the record "<Award Name>" on "QA" portal
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
@@ -911,7 +911,7 @@ Feature: Validate all scenarios in the Award
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "<Award Name>"
+  	Given Review is completed as user "FO" for the record "<Award Name>" on "QA" portal
   	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
@@ -1006,7 +1006,7 @@ Feature: Validate all scenarios in the Award
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "<Award Name>" 
+  	Given Review is completed as user "FO" for the record "<Award Name>" on "QA" portal
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
@@ -1101,7 +1101,7 @@ Feature: Validate all scenarios in the Award
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "<Award Name>" 
+  	Given Review is completed as user "FO" for the record "<Award Name>" on "QA" portal
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
