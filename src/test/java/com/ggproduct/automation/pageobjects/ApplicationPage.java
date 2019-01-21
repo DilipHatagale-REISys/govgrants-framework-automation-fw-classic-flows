@@ -24,7 +24,7 @@ public class ApplicationPage extends ProjectManager {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         govgrants.mainPage().loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
-        govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 4"), dataTableMap.get("Navigation").get("Step 3"));
+        govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 4"), dataTableMap.get("Navigation").get("Step 3")).click();
         govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 1"), announcementName);
         govgrants.flexTable().clickTableActionIcons(dataTableMap.get("FlexTable").get("Step 2"), announcementName);
         govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("FlexTable").get("Step 3"));
@@ -56,37 +56,8 @@ public class ApplicationPage extends ProjectManager {
                 dataTableMap.get("Navigation").get("Step 2"));
         chooseRecordForAssociation(dataTableMap.get("FlexTable").get("Step 1"),
                 dataTableMap.get("FlexTable").get("Step 2"), focusArea);
+        govgrants.mainPage().waitForNavigationLogoToDisappear();
         reiDriver.switchTo().switchToParentFrame();
-    }
-
-    /**
-     * Handles addition of budget details to an application
-     * 
-     * @param awardBudget
-     * @param cashMatch
-     * @param nonCashMatch
-     */
-    public void additionOfBudgetToApplication(DataTable dataTable) {
-        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
-        DataTable inlineEditDataTable = seperateInlineDataTable(dataTableMap);
-        govgrants.pageDetails().clickSubTabsInsideTableView(dataTableMap.get("Navigation").get("Step 1"));
-        govgrants.flexTable().expandOrCollapseNestedTable(dataTableMap.get("Navigation").get("Step 2"), true);
-        govgrants.flexTable().expandOrCollapseNestedTable(dataTableMap.get("Navigation").get("Step 3"), true);
-        govgrants.flexTable().editFlexTableRowsInline(dataTableMap.get("FlexTable").get("Step 1"),
-                dataTableMap.get("FlexTable").get("Step 2"), inlineEditDataTable);
-    }
-
-    /**
-     * Handles addition of target values to a KPI in an application
-     * 
-     * @param target
-     */
-    public void additionOfTargetToKPIInApplication(DataTable dataTable) {
-        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
-        DataTable inlineEditDataTable = seperateInlineDataTable(dataTableMap);
-        govgrants.pageDetails().clickSubTabsInsideTableView(dataTableMap.get("Navigation").get("Step 1"));
-        govgrants.flexTable().editFlexTableRowsInline(dataTableMap.get("FlexTable").get("Step 1"),
-                dataTableMap.get("FlexTable").get("Step 2"), inlineEditDataTable);
     }
 
     /**
@@ -108,7 +79,7 @@ public class ApplicationPage extends ProjectManager {
             govgrants.mainPage().reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), announcementOwner);
         }
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
-        govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 4"), dataTableMap.get("Navigation").get("Step 3"));
+        govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 4"), dataTableMap.get("Navigation").get("Step 3")).click();
         govgrants.phasePannel().clickDoubleArrowDropDownAndSelectItem(dataTableMap.get("FlexTable").get("Step 1"));
         govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 2"),
                 announcementName);
@@ -123,15 +94,6 @@ public class ApplicationPage extends ProjectManager {
         } catch (Exception e) {
 
         }
-    }
-
-    /**
-     * Handles entering of due date for SME review
-     * 
-     * @param dueInDays
-     */
-    public void enterDueInDays(String flexTableId, String iconName, DataTable rowValues) {
-        govgrants.flexTable().editFlexTableRowsInline(flexTableId, iconName, rowValues);
     }
 
     /**
@@ -200,8 +162,8 @@ public class ApplicationPage extends ProjectManager {
         govgrants.flexTable().expandOrCollapseNestedTable(dataTableMap.get("Review").get("Step " + qNumber), true);
         govgrants.flexTable().clickTableActionIcon(dataTableMap.get("FlexTable").get("Step 2"),
                 dataTableMap.get("FlexTable").get("Step 1"), reviewer);
-        chooseRecordForAssociation(dataTableMap.get("Application").get("Step 1"), applicationName,
-                dataTableMap.get("Application").get("Step 2"));
+        chooseRecordForAssociation(dataTableMap.get("Application").get("Step 1"),
+                dataTableMap.get("Application").get("Step 2"), applicationName);
         reiDriver.switchTo().switchToParentFrame();
     }
 

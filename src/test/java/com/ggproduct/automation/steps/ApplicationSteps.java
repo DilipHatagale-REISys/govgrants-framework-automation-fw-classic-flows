@@ -32,26 +32,11 @@ public class ApplicationSteps {
         applicationPage.additionOfFocusAreaToApplication(dataTable, focusArea.split(","));
     }
 
-    @Given("^I add budget details to the application$")
-    public void additionOfBudgetToApplication(DataTable rowValues) {
-        applicationPage.additionOfBudgetToApplication(rowValues);
-    }
-
-    @Given("^I add target to the KPI in the application$")
-    public void additionOfTargetToKPIInApplication(DataTable dataTable) {
-        applicationPage.additionOfTargetToKPIInApplication(dataTable);
-    }
-
     @Given("^\"([^\"]*)\" is completed by clicking \"([^\"]*)\" for Application \"([^\"]*)\" as user \"([^\"]*)\" submitted for announcement \"([^\"]*)\"$")
     public void completeReviewStepForApplication(String reviewStep, String buttonName, String applicationName,
             String announcementOwner, String announcementName, DataTable dataTable) throws IOException {
         applicationPage.completeReviewStepForApplication(reviewStep, buttonName, applicationName, announcementOwner,
                 announcementName, dataTable);
-    }
-
-    @Given("^I enter the Due In Days in flex table with id \"([^\"]*)\" by clicking \"([^\"]*)\"$")
-    public void enterDueInDays(String flexTableId, String iconName, DataTable rowValues) {
-        applicationPage.enterDueInDays(flexTableId, iconName, rowValues);
     }
 
     @Given("^I assign application \"([^\"]*)\" to the \"([^\"]*)\" Reviewers \"([^\"]*)\" for each step$")

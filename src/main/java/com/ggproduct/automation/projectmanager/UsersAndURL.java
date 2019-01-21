@@ -1,6 +1,10 @@
 package com.ggproduct.automation.projectmanager;
 
+import java.io.IOException;
+
+import com.automation.rei.controller.EnvironmentFetcher;
 import com.automation.rei.controller.UsersController;
+import com.automation.rei.corelib.Properties_Logs;
 
 public class UsersAndURL implements UsersController{
 
@@ -21,25 +25,42 @@ public class UsersAndURL implements UsersController{
      ******/
 
     @Override
-    public String handleUsersForEnv(String userLevel) {
+    public String getUserName(String userLevel) {
         String userName = null;
-        if (System.getProperty("env").equalsIgnoreCase("qa")) {
-            userName = performLoginQAEnvironment(userLevel);
-        } else if (System.getProperty("env").equalsIgnoreCase("uat")) {
-            userName = performLoginUATEnvironment(userLevel);
-        } else if (System.getProperty("env").equalsIgnoreCase("subportal")) {
-            userName = performLoginSubPortalEnvironment(userLevel);
-        }
+        if ((EnvironmentFetcher.environmentName != null) && (EnvironmentFetcher.environmentName.contains("QA"))) {
+            userName = getQAEnvironmentUser(userLevel);
+        } else if ((EnvironmentFetcher.environmentName != null) && (EnvironmentFetcher.environmentName.contains("UAT"))) {
+            // To be implemented
+        } else {
+            userName = getQAEnvironmentUser(userLevel);
+        } 
         return userName;
     }
     
     @Override
-    public String getAutomationPassword(String userLevel) {
-        String defaultPassword = "SALESFORCE2018";
-        return defaultPassword;
+    public String getPassword(String userLevel) {
+        String password = null;      
+        if (EnvironmentFetcher.environmentName.contains("QA")) {
+            password = getQAEnvironmentPassword(userLevel);
+        } else if (EnvironmentFetcher.environmentName.contains("uat")) {
+            // To be implemented
+        }
+        return password;
+    }
+    
+    public String getQAEnvironmentPassword(String userLevel) {
+        String password;    
+        switch (userLevel.toUpperCase()) {
+            case "SARAH PO":
+                password = "test72018";
+                break;
+            default:
+                password = "SALESFORCE2018";
+        }
+        return password;
     }
 
-    public String performLoginQAEnvironment(String userLevel) {
+    public String getQAEnvironmentUser(String userLevel) {
         String username;
 
         switch (userLevel.toUpperCase()) {
@@ -61,24 +82,24 @@ public class UsersAndURL implements UsersController{
         case "SPI":
             username = "gcooper@yopmail.com20";
             break;
+        case "SIMON PM":
+            username = "simon_pm@ggp.test7";
+            break;
+        case "SARAH PO":
+            username = "sarah_po@ggp.test7";
+            break;
+        case "TOMMY EXE":
+            username = "tommy_exe@ggp.test7";
+            break;
+        case "OSCAR PM":
+            username = "oscar_pm@ggp.test7";
+            break;
         default:
             username = "admin.automation@product.com";
         }
         return username;
     }
-
-    private String performLoginUATEnvironment(String userLevel) {
-        String username;
-        switch ("") {
-        case "EXE":
-            username = "To be implemented";
-        default:
-            username = "To be implemented";
-            break;
-        }
-        return username;
-    }
-
+    
     public String performLoginSubPortalEnvironment(String userLevel) {
         String username;
 
@@ -93,5 +114,23 @@ public class UsersAndURL implements UsersController{
             username = "admin.automation@subportal.com";
         }
         return username;
+    }
+    
+    @Override
+    public  String getPortalUrl(String portalType) {
+        String url = null;
+            try {
+                if(EnvironmentFetcher.environmentName != null && !(EnvironmentFetcher.environmentName.contentEquals(portalType))) {
+                    url = new Properties_Logs().ReadPropertyFile("environment.properties",
+                            EnvironmentFetcher.environmentName + portalType);
+                } else {
+                    url = new Properties_Logs().ReadPropertyFile("environment.properties",
+                            portalType);
+                }
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        return url;
     }
 }

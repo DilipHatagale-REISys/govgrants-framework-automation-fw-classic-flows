@@ -10,8 +10,10 @@ import com.ggproduct.automation.projectmanager.ProjectManager;
 import cucumber.api.DataTable;
 
 public class PlanningPage extends ProjectManager {
+    private static int num = 1;
     public PlanningPage(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
         super(controller, handler, govgrants);
+
     }
     
     /**
@@ -21,16 +23,18 @@ public class PlanningPage extends ProjectManager {
      * @param sheetName
      * @param excelFileName
      */
-    public void creationOfPrrogram(String user, String sheetName, String excelFileName, DataTable dataTable) {
+    public void creationOfProgram(String user, String sheetName, String excelFileName, DataTable dataTable) {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         govgrants.mainPage().loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
-        govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 3"), dataTableMap.get("FlexTable").get("Step 1"));
+        govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 3"), dataTableMap.get("FlexTable").get("Step 1")).click();
         govgrants.phasePannel().clickDoubleArrowDropDownAndSelectItem(dataTableMap.get("FlexTable").get("Step 3"));
         govgrants.flexTable().clickTableTopRightButton(dataTableMap.get("FlexTable").get("Step 2"),
                 dataTableMap.get("Creation").get("Step 1"));
+        govgrants.inputForms().inputFormDataByFieldApiName("ProgramName__c", "Automation Performace Testing"+num++);
         govgrants.inputForms().enterInputFieldsFromExcelFile(excelFileName, sheetName);
         govgrants.modal().clickModalContentSpecificButton(dataTableMap.get("Creation").get("Step 2"));
         govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("Creation").get("Step 3"));
+        govgrants.pageDetails().getRecordId(dataTableMap.get("ID").get("Step 3"));
     }
 }

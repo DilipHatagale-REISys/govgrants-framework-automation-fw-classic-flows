@@ -104,13 +104,13 @@ Feature: Validate all scenarios in the Award
     | Approver 1 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Program Approver   |
     | Approver 2 | GrantorRiskAssessmentRolesandResponsibilities | Edit	  | Executive Approver |
     Given I click on "Submit for Approval" in the page details
-    When I re-login to "As a Grantor" app as "PM" User
+    When I re-login to "As a Grantor" app as "PM" user
     And I navigate to "Monitoring" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Approve Risk Assessment" in "PhasePendingTasks" panel
     When I click on "Start" icon for "Approve Risk Assessment" inside table
     And I click on "Approve" on the approval decision box
-    When I re-login to "As a Grantor" app as "FO" User
+    When I re-login to "As a Grantor" app as "FO" user
     And I navigate to "Monitoring" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Approve Risk Assessment" in "PhasePendingTasks" panel
@@ -224,7 +224,7 @@ Feature: Validate all scenarios in the Award
     | Approver 2 | GrantorAwardRolesAndResponsibilities | Edit   | Fiscal Approver     |
     | Approver 3 | GrantorAwardRolesAndResponsibilities | Edit	 | Executive Approver  |
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" User with environment "SUBPORTAL"
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
 	And I navigate to "Grants" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "<Award Name>" in "PhasePendingTasks" panel
@@ -287,7 +287,7 @@ Feature: Validate all scenarios in the Award
   	| Login		 | Grants Portal | SUBPORTAL	  |						  |					  |
   	| Navigation | Grants		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start 		 | Accept		  | Accept after Approval | OK				  |
-  	When I re-login to "As a Grantor" app as "EXE" User
+  	When I re-login to "As a Grantor" app as "EXE" user
   	And I navigate to "Grants" tab
   	When I navigate to "Grants and Subawards" content inside "Grants, Awards & Amendments" subheader on left panel
   	And I click toggle button to select "Draft Grants"
@@ -353,7 +353,7 @@ Feature: Validate all scenarios in the Award
   	| Actions 	 | Step 1 | Step 2		  | Step 3 			      | Step 4			  |
   	| Navigation | Grants | Pending Tasks | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start  | Accept		  | Accept after Approval | OK				  |
-  	When I re-login to "As a Grantor" app as "EXE" User
+  	When I re-login to "As a Grantor" app as "EXE" user
   	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Awards & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -425,7 +425,7 @@ Feature: Validate all scenarios in the Award
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	When I re-login to "As a Grantor" app as "FO" User
+  	When I re-login to "As a Grantor" app as "FO" user
     And I navigate to "Grants" tab
 	When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "<Award Name>" in "PhasePendingTasks" panel
@@ -495,7 +495,7 @@ Feature: Validate all scenarios in the Award
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "<Award Name>" 
+  	Given Review is completed as user "FO" for the record "<Award Name>" on "QA" portal
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
@@ -564,7 +564,7 @@ Feature: Validate all scenarios in the Award
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "<Award Name>" 
+  	Given Review is completed as user "FO" for the record "<Award Name>" on "QA" portal 
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
@@ -575,19 +575,19 @@ Feature: Validate all scenarios in the Award
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	And I click on "Submit for Approval" in the page details
-  	Given I re-login to "As a Grantor" app as "PM" User
+  	Given I re-login to "As a Grantor" app as "PM" user
 	When I navigate to "Grants" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "<Award Name>" in "PhasePendingTasks" panel
     And I click on "Start" icon for "<Award Name>" inside table  
     When I click on "Approve" on the approval decision box
-    And I re-login to "As a Grantor" app as "FO" User
+    And I re-login to "As a Grantor" app as "FO" user
 	When I navigate to "Grants" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "<Award Name>" in "PhasePendingTasks" panel
     And I click on "Start" icon for "<Award Name>" inside table 
     When I click on "Approve" on the approval decision box
-    And I re-login to "As a Grantor" app as "EXE" User
+    And I re-login to "As a Grantor" app as "EXE" user
 	When I navigate to "Grants" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "<Award Name>" in "PhasePendingTasks" panel
@@ -651,7 +651,7 @@ Feature: Validate all scenarios in the Award
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "<Award Name>" 
+  	Given Review is completed as user "FO" for the record "<Award Name>" on "QA" portal 
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
@@ -667,7 +667,7 @@ Feature: Validate all scenarios in the Award
 	| Navigation | As a Grantor  | Grants	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 	 | 					 |
-  	When I re-login to "As a Grantor" app as "EXE" User
+  	When I re-login to "As a Grantor" app as "EXE" user
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Awards & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -734,7 +734,7 @@ Feature: Validate all scenarios in the Award
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "<Award Name>" 
+  	Given Review is completed as user "FO" for the record "<Award Name>" on "QA" portal
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
@@ -756,7 +756,7 @@ Feature: Validate all scenarios in the Award
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Send to Subrecipient after Approval" in the page details
-  	When I re-login to "Grants Portal" app as "SPI" User with environment "SUBPORTAL"
+  	When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "<Award Name>" in "PhasePendingTasks" panel
@@ -821,7 +821,7 @@ Feature: Validate all scenarios in the Award
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "<Award Name>" 
+  	Given Review is completed as user "FO" for the record "<Award Name>" on "QA" portal
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
@@ -911,7 +911,7 @@ Feature: Validate all scenarios in the Award
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "<Award Name>"
+  	Given Review is completed as user "FO" for the record "<Award Name>" on "QA" portal
   	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
@@ -1006,7 +1006,7 @@ Feature: Validate all scenarios in the Award
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "<Award Name>" 
+  	Given Review is completed as user "FO" for the record "<Award Name>" on "QA" portal
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
@@ -1101,7 +1101,7 @@ Feature: Validate all scenarios in the Award
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "<Award Name>" 
+  	Given Review is completed as user "FO" for the record "<Award Name>" on "QA" portal
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 

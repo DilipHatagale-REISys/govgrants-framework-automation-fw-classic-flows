@@ -27,7 +27,7 @@ public class AnnouncementPage extends ProjectManager {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         govgrants.mainPage().loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
-        govgrants.sideBar().getSideBarContent(dataTableMap.get("FlexTable").get("Step 1"), AnnouncementType);
+        govgrants.sideBar().getSideBarContent(dataTableMap.get("FlexTable").get("Step 1"), AnnouncementType).click();
         govgrants.phasePannel().clickDoubleArrowDropDownAndSelectItem(dataTableMap.get("FlexTable").get("Step 2"));
         if (AnnouncementType.equals("Competitive")) {
             govgrants.flexTable().clickTableTopRightButton(dataTableMap.get("FlexTableId").get("Step 1"),
@@ -42,6 +42,7 @@ public class AnnouncementPage extends ProjectManager {
         govgrants.inputForms().enterInputFieldsFromExcelFile(excelFileName, sheetName);
         govgrants.modal().clickModalContentSpecificButton(dataTableMap.get("Creation").get("Step 2"));
         govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("Creation").get("Step 3"));
+        govgrants.pageDetails().getRecordId(dataTableMap.get("ID").get("Step 3"));
     }
 
     /**
