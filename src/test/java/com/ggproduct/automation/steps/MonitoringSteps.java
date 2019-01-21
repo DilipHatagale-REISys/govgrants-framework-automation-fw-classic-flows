@@ -26,4 +26,9 @@ public class MonitoringSteps {
     public void creationOfAdhocPaymentRequest(String paymentRequestType, String sheetName, String excelName,  DataTable dataTable) {
         monitoringPage.creationOfAdhocPaymentRequest(paymentRequestType, sheetName, excelName, dataTable);
     }
+    
+    @Given("^I create a closeout from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
+    public void creationOfCloseoutRequest(String sheetName, String excelName,  DataTable dataTable) {
+        monitoringPage.creationOfCloseoutRequest(sheetName, excelName, dataTable);
+    }
 }

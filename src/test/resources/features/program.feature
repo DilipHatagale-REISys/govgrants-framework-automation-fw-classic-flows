@@ -217,9 +217,10 @@ Feature: Validate all scenarios for program
 	And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
 	And I click toggle button to select "Draft Internal Programs"
     And I perform quick search for "Record Id" in "Programs" panel
-    When I click on "View" icon for "Record Id" inside table 
+    When I click on "View" icon for "Approved" inside table
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "green"
 	Examples:
 	| User | Program Name  			        |
-	| EXE  | Automation Program Jan19 Vi    |	
+	| EXE  | Automation Program Jan20    |	
+	

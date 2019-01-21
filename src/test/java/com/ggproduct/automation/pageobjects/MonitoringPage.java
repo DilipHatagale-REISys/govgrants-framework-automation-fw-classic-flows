@@ -44,4 +44,15 @@ public class MonitoringPage extends ProjectManager {
         govgrants.modal().clickModalContentSpecificButton(dataTableMap.get("FlexTable").get("Step 2"));
         govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("FlexTable").get("Step 3"));
     }
+    
+    public void creationOfCloseoutRequest(String sheetName, String excelName,  DataTable dataTable) {
+        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
+        govgrants.pageDetails().clickSubTabsInsideTableView(dataTableMap.get("Sub tab").get("Step 1"));
+        govgrants.flexTable().clickTableTopRightButton(dataTableMap.get("FlexTable").get("Step 2"),
+                dataTableMap.get("FlexTable").get("Step 1"));
+        govgrants.inputForms().enterInputFieldsFromExcelFile(excelName, sheetName);
+        govgrants.modal().clickModalContentSpecificButton(dataTableMap.get("Creation").get("Step 1"));
+        govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("Creation").get("Step 2"));
+        govgrants.pageDetails().getRecordId(dataTableMap.get("ID").get("Step 1"));
+    }
 }

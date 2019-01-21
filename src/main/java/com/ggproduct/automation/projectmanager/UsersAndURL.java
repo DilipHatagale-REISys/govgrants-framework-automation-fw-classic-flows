@@ -120,6 +120,7 @@ public class UsersAndURL implements UsersController{
     public  String getPortalUrl(String portalType) {
         String url = null;
             try {
+                System.out.println("EnvironmentFetcher.environmentName"+EnvironmentFetcher.environmentName);
                 if(EnvironmentFetcher.environmentName != null && !(EnvironmentFetcher.environmentName.contentEquals(portalType))) {
                     url = new Properties_Logs().ReadPropertyFile("environment.properties",
                             EnvironmentFetcher.environmentName + portalType);
