@@ -49,8 +49,14 @@ public class UsersAndURL implements UsersController{
     }
     
     public String getQAEnvironmentPassword(String userLevel) {
-        String password;
-        password = "SALESFORCE2018";
+        String password;    
+        switch (userLevel.toUpperCase()) {
+            case "SARAH PO":
+                password = "test72018";
+                break;
+            default:
+                password = "SALESFORCE2018";
+        }
         return password;
     }
 
@@ -75,6 +81,18 @@ public class UsersAndURL implements UsersController{
             break;
         case "SPI":
             username = "gcooper@yopmail.com20";
+            break;
+        case "SIMON PM":
+            username = "simon_pm@ggp.test7";
+            break;
+        case "SARAH PO":
+            username = "sarah_po@ggp.test7";
+            break;
+        case "TOMMY EXE":
+            username = "tommy_exe@ggp.test7";
+            break;
+        case "OSCAR PM":
+            username = "oscar_pm@ggp.test7";
             break;
         default:
             username = "admin.automation@product.com";
@@ -101,23 +119,18 @@ public class UsersAndURL implements UsersController{
     @Override
     public  String getPortalUrl(String portalType) {
         String url = null;
-        switch (portalType.toUpperCase()) {
-        case "QA":
             try {
-                url = new Properties_Logs().ReadPropertyFile("environment.properties", "QA");
-            } catch (IOException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
-            break;
-        case "SUBPORTAL":
-            try {
-                url= new Properties_Logs().ReadPropertyFile("environment.properties",EnvironmentFetcher.environmentName+portalType);
+                if(EnvironmentFetcher.environmentName != null && !(EnvironmentFetcher.environmentName.contentEquals(portalType))) {
+                    url = new Properties_Logs().ReadPropertyFile("environment.properties",
+                            EnvironmentFetcher.environmentName + portalType);
+                } else {
+                    url = new Properties_Logs().ReadPropertyFile("environment.properties",
+                            portalType);
+                }
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-        }
         return url;
     }
 }

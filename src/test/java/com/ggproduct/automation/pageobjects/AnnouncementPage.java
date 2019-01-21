@@ -42,7 +42,7 @@ public class AnnouncementPage extends ProjectManager {
         govgrants.inputForms().enterInputFieldsFromExcelFile(excelFileName, sheetName);
         govgrants.modal().clickModalContentSpecificButton(dataTableMap.get("Creation").get("Step 2"));
         govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("Creation").get("Step 3"));
-        govgrants.mainPage().passEGMSId(getEGMSId());
+        govgrants.pageDetails().getRecordId(dataTableMap.get("ID").get("Step 3"));
     }
 
     /**

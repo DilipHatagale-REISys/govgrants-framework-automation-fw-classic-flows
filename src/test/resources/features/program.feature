@@ -7,6 +7,7 @@ Feature: Validate all scenarios for program
 	| Navigation | As a Grantor		 | Planning  	 	 |	Programs				|
 	| FlexTable  | Internal Programs | Programs 	 	 | Draft Internal Programs  |
 	| Creation   | New				 | Save and Continue | Save						|
+	| ID		 | EGMS ID			 |					 |							|
 	
   	@34730 @programListView @program
   	Scenario Outline: Verifying if the EXE,PM,PO has access to Internal Programs list view
@@ -206,7 +207,7 @@ Feature: Validate all scenarios for program
     | Attachment Navigation | Attachments | Add				  | a150b000003epY5AAI |
     | Attachment Details    | Attachment  | Program Artifacts | 				   |
     And I click on "Submit For Approval" in the page details
-    Given "2" Approvers "PM,EXE" approve the record "EGMS ID"
+    Given "2" Approvers "PM,EXE" approve the record "Record Id"
 	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
 	| Navigation | As a Grantor  | Planning		 | 				  	 |
 	| FlexTable  | Pending Tasks | MyTasks  	 | PhasePendingTasks |
@@ -215,8 +216,8 @@ Feature: Validate all scenarios for program
 	When I navigate to "Planning" tab
 	And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
 	And I click toggle button to select "Draft Internal Programs"
-    And I perform quick search for "<Program Name>" in "Programs" panel
-    When I click on "View" icon for "<Program Name>" inside table 
+    And I perform quick search for "Record Id" in "Programs" panel
+    When I click on "View" icon for "Record Id" inside table 
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "green"
 	Examples:

@@ -8,7 +8,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| FlexTable   | Announcements 						| Draft Announcements 		 |  								 |
 	| FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
 	| Creation    | New			  						| Save and Continue 	   	 | Save								 |
-
+	| ID		  | EGMS ID								|							 |									 |
 
 	@33936 @announcementCreation @announcement
 	Scenario: Creation of an Announcement
@@ -392,7 +392,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | 			    |
 	Given I click on "Complete Review" in the page details
 	And I click on "Submit For Approval" in the page details
-	Given "3" Approvers "PM,FO,EXE" approve the record "EGMS ID"
+	Given "3" Approvers "PM,FO,EXE" approve the record "Record Id"
 	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
 	| Navigation | As a Grantor  | Announcements | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
@@ -406,7 +406,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
 	Examples:
-	| User | Announcement Name 			   |
+	| User | Announcement Name 			   	  |
 	| EXE  | Automation Announcement Jan19 Vi |
 	
 	@34462 @publishingDirectedAnnouncement @announcementDirectedHappyPath @announcement
