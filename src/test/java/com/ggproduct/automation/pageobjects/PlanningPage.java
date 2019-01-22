@@ -10,10 +10,8 @@ import com.ggproduct.automation.projectmanager.ProjectManager;
 import cucumber.api.DataTable;
 
 public class PlanningPage extends ProjectManager {
-    private static int num = 1;
     public PlanningPage(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
         super(controller, handler, govgrants);
-
     }
     
     /**
@@ -31,10 +29,9 @@ public class PlanningPage extends ProjectManager {
         govgrants.phasePannel().clickDoubleArrowDropDownAndSelectItem(dataTableMap.get("FlexTable").get("Step 3"));
         govgrants.flexTable().clickTableTopRightButton(dataTableMap.get("FlexTable").get("Step 2"),
                 dataTableMap.get("Creation").get("Step 1"));
-        govgrants.inputForms().inputFormDataByFieldApiName("ProgramName__c", "Automation Performace Testing"+num++);
         govgrants.inputForms().enterInputFieldsFromExcelFile(excelFileName, sheetName);
         govgrants.modal().clickModalContentSpecificButton(dataTableMap.get("Creation").get("Step 2"));
         govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("Creation").get("Step 3"));
-        govgrants.pageDetails().getRecordId(dataTableMap.get("ID").get("Step 3"));
+        govgrants.pageDetails().getRecordId(dataTableMap.get("ID").get("Step 1"));
     }
 }

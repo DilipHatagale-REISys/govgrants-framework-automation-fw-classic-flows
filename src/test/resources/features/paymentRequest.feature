@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in Payment Request
 
 	Background: Navigate to award
-	Given I navigate to environment "SUBPORTAL"
+	Given I am on "SUBPORTAL" portal
 	And I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "SPI"
 	| Actions 	 | Step 1 	  	 | Step 2		 		   | Step 3  	 		   | Step 4						 |
     | Navigation | Grants Portal | Grants		 		   | Grants and Subawards  | Grants, Awards, Amendments  |
@@ -211,7 +211,7 @@ Feature: Validate all scenarios in Payment Request
     | Subtab	 | Responsibilities 						  	  | 		|		    		  |
     | Approver 1 | flexGridPaymentRequestRolesandResponsibilities | Edit    | Fiscal Approver     |
     Given I click on "Submit for Approval" in the page details
-    When I re-login to "As a Grantor" app as "PM" User
+    When I re-login to "As a Grantor" app as "PM" user
 	When I navigate to "Monitoring" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Approve Payment Request" in "PhasePendingTasks" panel
