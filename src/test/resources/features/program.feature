@@ -2,6 +2,7 @@
 Feature: Validate all scenarios for program
 
 	Background: Create Program
+	Given I delete the record "Automation Program Jan21" from the object "Program"
 	Given I create a program as user "EXE" from sheet "Creation" in excel "Program_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 | Step 3 				    |
 	| Navigation | As a Grantor		 | Planning  	 	 |	Programs				|

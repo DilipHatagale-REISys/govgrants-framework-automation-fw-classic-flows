@@ -42,6 +42,16 @@ public class ProjectManager extends ProjectWebServices {
      ***/
 
     /******* "Key Methods with complete functionality" *****************/
+    
+    
+    /**
+     * deletes test data
+     *
+     * @param objectType currently accepts ServiceArea__c, FundingSource__c, and Program__C
+     */
+    public void deleteAutomationTestData(String recordName, String objectType) {
+        automationDeletionApi(recordName, objectType);
+    }
 
     /**
      * Handles association of various related records

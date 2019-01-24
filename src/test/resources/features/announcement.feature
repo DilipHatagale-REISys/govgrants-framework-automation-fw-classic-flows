@@ -73,12 +73,12 @@ Feature: Validate all scenarios in the Announcement tab
   	@34771 @announcementBudgetPeriodAddition @announcement
   	Scenario Outline: Budget Period Addition to an Announcement
 	When I navigate to "Financials" sub tab
-    And I click on top right button "Add Budget Period" in flex table with id "AnnouncementBudgetPeriod"
-    When I click on "Edit" icon for "<Budget Period Id>" inside flex table with id "AnnouncementBudgetPeriod"
+    And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
+    When I click on "Edit" icon for "<Budget Period Id>" inside flex table with id "flexGridAnnouncementBudgetPeriod"
     And I enter "BudgetPeriod" values from "Announcement_Field_Values.xlsx"
     When I click modal button "Save"
     And I close Modal
-    Then I see that "<Budget Period Id>" has been added in flextable with Id "AnnouncementBudgetPeriod"
+    Then I see that "<Budget Period Id>" has been added in flextable with Id "flexGridAnnouncementBudgetPeriod"
 	Examples:
 	| Budget Period Id |
 	| BP01			   |
@@ -122,7 +122,7 @@ Feature: Validate all scenarios in the Announcement tab
    	When I enter the following values into flex table with id "inlineEditGridAnnouncementChecklists" by clicking "Add" :
     | Description        		  | Required  | Applies To |
     | Automation test description | Mandatory | Award  	   |
-    When I click on "Upload Template" icon for "ot Applicable" inside flex table with id "inlineEditGridAnnouncementChecklists"
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "inlineEditGridAnnouncementChecklists"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
     Then I see that "Active" has been added in flextable with Id "inlineEditGridAnnouncementChecklists"
