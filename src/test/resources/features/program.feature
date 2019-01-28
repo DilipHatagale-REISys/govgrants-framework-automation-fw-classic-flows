@@ -2,8 +2,8 @@
 Feature: Validate all scenarios for program
 
 	Background: Create Program
-#	Given I delete the record "Automation Program Regression" from the object "Program" 
-	Given I create a program as user "OSCAR PM" from sheet "Creation" in excel "Surya_Program_Field_Values.xlsx"
+	I delete
+	Given I create a program as user "EXE" from sheet "Creation" in excel "Program_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 | Step 3 				    |
 	| Navigation | As a Grantor		 | Planning  	 	 |	Programs				|
 	| FlexTable  | Internal Programs | Programs 	 	 | Draft Internal Programs  |
@@ -19,7 +19,7 @@ Feature: Validate all scenarios for program
     Examples:
     | Program flextable Header | Program Status |
     | Draft Internal Programs  | Created  	    |
-  
+    
   	@34503 @programCreation @program
   	Scenario: Verifying if the EXE, PM, PO has create access to Internal Program
   	Then I see status in Progress-bar is "Created" and is "green"
@@ -186,11 +186,11 @@ Feature: Validate all scenarios for program
     Given I complete the fields from the sheet "Edition" in excel "Surya_Program_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate "2" records "George PM,02106"
+    And I associate "3" records "Automation EXE,02492,SPO-0071"
     | Actions 	  | Step 1   | Step 2	 | Step 3  			  				  | Step 4 	  | Step 5  				 |
     | Associate 1 | Overview | Associate | ProgramContacts 				      | Add	  	  | AssociateProgramContacts |
     | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Add		  | SelectProgramServiceArea |
-#    | Associate 3 | Setup 	 | Associate | RelatedProgramGoalsandObjectives   | Add	  	  | SelectGoals 		     |
+	| Associate 3 | Setup 	 | Associate | RelatedProgramGoalsandObjectives   | Add	  	  | SelectGoals 		     |
     Given I select "2" approvers "Cathy PM,Tommy EXE"
     | Actions 	 | Step 1   				       | Step 2	| Step 3 			  |
     | Subtab	 | Responsibilities 			   | 		|		    		  |
@@ -222,6 +222,6 @@ Feature: Validate all scenarios for program
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "green"
 	Examples:
-	| User       | Program Name     		        |
-	| Cathy PM   | Program for Newborn Screening  |	
+	| User | Program Name  			        |
+	| EXE  | Automation Program Jan25    	|	
 	

@@ -27,13 +27,13 @@ public class $className extends AbstractTestNGCucumberTests {
   @BeforeClass
     public  static void setup() {
         ExtentProperties extentProperties = ExtentProperties.INSTANCE;
-        extentProperties.setReportPath("target/automation-report/utah-Automation-report.html");
+        extentProperties.setReportPath("target/automation-report/Product-Automation-report.html");
     }
  @AfterClass
     public static void teardownn() {
         Reporter.loadXMLConfig(new File("src/test/resources/extent-config.xml"));
         Reporter.setSystemInfo("Environment", System.getProperty("env"));
         Reporter.setSystemInfo("Browser", System.getProperty("browser"));
-        Reporter.setTestRunnerOutput("Utah Gov Grant Project");
+        Reporter.setTestRunnerOutput("Product GovGrant Project");
     }
 }

@@ -1,0 +1,21 @@
+package com.ggproduct.automation.steps;
+
+import com.automation.rei.controller.Controller;
+import com.automation.rei.handlers.CoreHandlers;
+import com.automation.rei.handlers.GovGrantsHandler;
+import com.ggproduct.automation.projectmanager.ProjectManager;
+
+import cucumber.api.java.en.Given;
+
+public class GenericSteps {
+    ProjectManager projectManager;
+
+    public GenericSteps(Controller controller, CoreHandlers reiDriver, GovGrantsHandler govgrants) {
+        projectManager = new ProjectManager(controller, reiDriver, govgrants);
+    }
+    
+    @Given("I delete the record \"([^\"]*)\" from the object \"([^\"]*)\"$")
+    public void deleteTestData(String recordName, String objectType) {
+        projectManager.automationDeletionApi(recordName, objectType);
+    }
+}   

@@ -73,12 +73,12 @@ Feature: Validate all scenarios in the Announcement tab
   	@34771 @announcementBudgetPeriodAddition @announcement
   	Scenario Outline: Budget Period Addition to an Announcement
 	When I navigate to "Financials" sub tab
-    And I click on top right button "Add Budget Period" in flex table with id "AnnouncementBudgetPeriod"
-    When I click on "Edit" icon for "<Budget Period Id>" inside flex table with id "AnnouncementBudgetPeriod"
+    And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
+    When I click on "Edit" icon for "<Budget Period Id>" inside flex table with id "flexGridAnnouncementBudgetPeriod"
     And I enter "BudgetPeriod" values from "Announcement_Field_Values.xlsx"
     When I click modal button "Save"
     And I close Modal
-    Then I see that "<Budget Period Id>" has been added in flextable with Id "AnnouncementBudgetPeriod"
+    Then I see that "<Budget Period Id>" has been added in flextable with Id "flexGridAnnouncementBudgetPeriod"
 	Examples:
 	| Budget Period Id |
 	| BP01			   |
@@ -122,7 +122,7 @@ Feature: Validate all scenarios in the Announcement tab
    	When I enter the following values into flex table with id "inlineEditGridAnnouncementChecklists" by clicking "Add" :
     | Description        		  | Required  | Applies To |
     | Automation test description | Mandatory | Award  	   |
-    When I click on "Upload Template" icon for "ot Applicable" inside flex table with id "inlineEditGridAnnouncementChecklists"
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "inlineEditGridAnnouncementChecklists"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
     Then I see that "Active" has been added in flextable with Id "inlineEditGridAnnouncementChecklists"
@@ -343,17 +343,17 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--21"
+	And I associate "1" records "FA--77"
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--21 		  | 100000 				         |
+	| FA--77 		  | 100000 				         |
 	And I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
 	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
 	| Flextable  | Edit 	    | Save					| 						           |
-	Given I associate "3" records "Automation EXE,00006,SPO-0008"
+	Given I associate "3" records "Automation EXE,02493,SPO-0073"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
     | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
@@ -406,8 +406,8 @@ Feature: Validate all scenarios in the Announcement tab
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
 	Examples:
-	| User | Announcement Name 			   	  |
-	| EXE  | Automation Announcement Jan19 Vi |
+	| User | Announcement Name 			   |
+	| EXE  | Automation Announcement Jan25 |
 	
 	@34462 @publishingDirectedAnnouncement @announcementDirectedHappyPath @announcement
   	Scenario Outline: Validate the activation of Internal Program
@@ -417,17 +417,17 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I associate "1" records "RG-000010"
 	| Actions 	  | Step 1     | Step 2	   		   | Step 3  			  					    | Step 4  | Step 5  		 				  |
     | Associate 1 | Overview   | Add Organizations | inlineEditGridSoleSourceAwardOrganizations | Add	 | SoleSourceAwardRecipientsTable |
-    And I associate "1" records "FA--21"
+    And I associate "1" records "FA--77"
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--21 		  | 100000 				         |
+	| FA--77 		  | 100000 				         |
 	And I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
 	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
 	| Flextable  | Edit 	    | Save					| 						           |
-	Given I associate "3" records "Automation EXE,00006,SPO-0008"
+	Given I associate "3" records "Automation EXE,02493,SPO-0073"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
     | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
@@ -494,17 +494,17 @@ Feature: Validate all scenarios in the Announcement tab
     And I edit the following rows inline in flex table with id "inlineEditGridSoleSourceAwardOrganizations" by clicking "Edit" :
 	| Agency Code | Allocated Amount |
 	| RG-000010   | 100000 			 | 
-	And I associate "1" records "FA--21"
+	And I associate "1" records "FA--77"
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--21 		  | 100000 				         |
+	| FA--77 		  | 100000 				         |
 	And I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
 	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
 	| Flextable  | Edit 	    | Save					| 						           |
-	Given I associate "3" records "Automation EXE,00006,SPO-0008"
+	Given I associate "3" records "Automation EXE,02493,SPO-0073"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
     | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
