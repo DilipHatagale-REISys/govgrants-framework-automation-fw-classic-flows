@@ -88,8 +88,14 @@ public class UsersAndURL implements UsersController{
         case "SARAH PO":
             username = "sarah_po@ggp.test7";
             break;
+        case "ALEX FO":
+            username = "alex_fo@ggp.test7";
+            break;
         case "TOMMY EXE":
             username = "tommy_exe@ggp.test7";
+            break;
+        case "CATHY PM":
+            username = "cathy_pm@ggp.test7";
             break;
         case "OSCAR PM":
             username = "oscar_pm@ggp.test7";

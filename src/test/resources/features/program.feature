@@ -190,8 +190,8 @@ Feature: Validate all scenarios for program
     | Actions 	  | Step 1   | Step 2	 | Step 3  			  				  | Step 4 	  | Step 5  				 |
     | Associate 1 | Overview | Associate | ProgramContacts 				      | Add	  	  | AssociateProgramContacts |
     | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Add		  | SelectProgramServiceArea |
-    | Associate 3 | Setup 	 | Associate | RelatedProgramGoalsandObjectives   | Add	  	  | SelectGoals 		     |
-    Given I select "2" approvers "Automation PM,Automation EXE"
+	| Associate 3 | Setup 	 | Associate | RelatedProgramGoalsandObjectives   | Add	  	  | SelectGoals 		     |
+    Given I select "2" approvers "Automation PM, Automation EXE"
     | Actions 	 | Step 1   				       | Step 2	| Step 3 			  |
     | Subtab	 | Responsibilities 			   | 		|		    		  |
     | Approver 1 | ProgramRolesAndResponsibilities | Edit   | Program Approver    |
