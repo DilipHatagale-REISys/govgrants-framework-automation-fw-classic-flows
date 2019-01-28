@@ -2,6 +2,7 @@
 Feature: Validate all scenarios for program
 
 	Background: Create Program
+	I delete
 	Given I create a program as user "EXE" from sheet "Creation" in excel "Program_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 | Step 3 				    |
 	| Navigation | As a Grantor		 | Planning  	 	 |	Programs				|
@@ -18,7 +19,7 @@ Feature: Validate all scenarios for program
     Examples:
     | Program flextable Header | Program Status |
     | Draft Internal Programs  | Created  	    |
-  
+    
   	@34503 @programCreation @program
   	Scenario: Verifying if the EXE, PM, PO has create access to Internal Program
   	Then I see status in Progress-bar is "Created" and is "green"
@@ -185,7 +186,7 @@ Feature: Validate all scenarios for program
     Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate "3" records "Automation EXE,00005,SPO-0006"
+    And I associate "3" records "Automation EXE,02492,SPO-0071"
     | Actions 	  | Step 1   | Step 2	 | Step 3  			  				  | Step 4 	  | Step 5  				 |
     | Associate 1 | Overview | Associate | ProgramContacts 				      | Add	  	  | AssociateProgramContacts |
     | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Add		  | SelectProgramServiceArea |
@@ -222,5 +223,5 @@ Feature: Validate all scenarios for program
     Then I see status in Progress-bar is "Active" and is "green"
 	Examples:
 	| User | Program Name  			        |
-	| EXE  | Automation Program Jan20    |	
+	| EXE  | Automation Program Jan25    	|	
 	

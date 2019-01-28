@@ -80,7 +80,7 @@ public class UsersAndURL implements UsersController{
             username = "auto.fm@auto.com";
             break;
         case "SPI":
-            username = "gcooper@yopmail.com20";
+            username = "kyle.farrell@reisystems.com21";
             break;
         case "SIMON PM":
             username = "simon_pm@ggp.test7";

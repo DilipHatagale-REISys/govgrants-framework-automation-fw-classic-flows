@@ -23,8 +23,21 @@ public class ProjectWebServices {
         response.then().statusCode(200);
     }
     
-    public void createEndPoint() {
-        this.endPoint = EnvironmentFetcher.environment;
+    /**
+     * calls the api to delete test data
+     *
+     * @param objectType - the object for which test data should be deleted.
+     *                  Currently accepts Program, Announcement, Qualified Announcement, Application, Award,
+     *                  Grant, Site Visit, Desk Review, Payment Request, Progress Report, Closeout
+     * @param recordName - the name or title of the record            
+     */
+    public void automationDeletionApi(String recordName, String objectType) {
+        getAuthToken();
+        String finalEndPoint = endPoint + "/services/apexrest/productAutomationDeletionApi?objectType=" + objectType + "&recordName=" +recordName;
+        Response response = apiCall.DeleteCall(null, null, finalEndPoint,
+                "Authorization", "Bearer " + tokenString, null);
+        response.prettyPrint();
+        assertStatusCode(response);
     }
     
     

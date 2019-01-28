@@ -3,7 +3,7 @@ Feature: Validate all scenarios in the Application Intake
 
 	Background: Qualify Announcement and Create Application
 	Given I am on "SUBPORTAL" portal
-	And I qualify the announcement "Automation Announcement Jan19 Vi" as user "SPI"
+	And I qualify the announcement "Automation Announcement Jan25" as user "SPI"
 	| Actions 	 | Step 1 	      | Step 2		  | Step 3  | Step 4 	    |
 	| Navigation | Grants Portal  | Opportunities | Active  | Opportunities |
 	| FlexTable  | popupflextable | View		  | Qualify | 				|
@@ -38,7 +38,7 @@ Feature: Validate all scenarios in the Application Intake
   	Given I add focus area "00005" to the application
   	When I navigate to "Budget" sub tab
     And I expand nested table containing column value "Proposed Budget" inside nested table containing "BP01"
-    When I edit the following rows inline in flex table with id "inlineEditGridApplicationBudgetCategoryGrantorFlexGrid" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "flexGridEnhanceAppBudCatGrantorFlexGrid" by clicking "Edit" :
 	| Category Name | Budget | Cash Match | Non-Cash Match |
 	| Construction	| 5000 	 | 1000   	  | 3000 		   | 
 	Examples:
@@ -50,9 +50,9 @@ Feature: Validate all scenarios in the Application Intake
   	When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "flexGridRecipientApplicationRelatedKPIs" by clicking "Edit" :
 	| EGMS ID  | Target |
-	| KPI-0005 | 10		|
-	| KPI-0006 | 10		|
-	Then I see that "10" has been added in flextable with Id "inlineEditGridRecipientApplicationRelatedKPIs"
+	| KPI-0419 | 10		|
+	| KPI-0420 | 10		|
+	Then I see that "10" has been added in flextable with Id "flexGridRecipientApplicationRelatedKPIs"
 	Examples:
 	| Application Name 	   | Flextable Name |
 	| Automation App Dec10 | Budget Details |
@@ -85,19 +85,19 @@ Feature: Validate all scenarios in the Application Intake
 	Given I complete the fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
 	| Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
- 	And I add focus area "00005" to the application
+ 	And I add focus area "02492" to the application
 	| Actions 	 | Step 1 | Step 2		   | Step 3 	  |
 	| Navigation | Budget | Add Focus Area | FocusAreaApp |
 	| FlexTable	 | Add 	  | AddAppProjects | 			  |
-	Given I expand nested table containing column value "Proposed Budget" inside nested table containing "BP01"
-	And I edit the following rows inline in flex table with id "inlineEditGridApplicationBudgetCategoryGrantorFlexGrid" by clicking "Edit" :
+	Given I expand nested table containing column value "BP01"
+	And I edit the following rows inline in flex table with id "flexGridEnhanceAppBudCatGrantorFlexGrid" by clicking "Edit" :
 	| Category Name | Budget | Cash Match | Non-Cash Match |
 	| Construction	| 5000 	 | 1000   	  | 3000 		   |
 	When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "flexGridRecipientApplicationRelatedKPIs" by clicking "Edit" :
 	| EGMS ID  | Target |
-	| KPI-0005 | 10		|
-	| KPI-0006 | 10		|
+	| KPI-0419 | 10		|
+	| KPI-0420 | 10		|
 	Given I upload "1" checklist document "Announcement_Field_Values.xlsx"
 	| Actions 	 | Step 1 							   | Step 2		 | Step 3 	      |
 	| Navigation | Attachments 						   | 			 |				  |
@@ -131,8 +131,8 @@ Feature: Validate all scenarios in the Application Intake
 	When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "flexGridRecipientApplicationRelatedKPIs" by clicking "Edit" :
 	| EGMS ID  | Target |
-	| KPI-0005 | 10		|
-	| KPI-0006 | 10		|
+	| KPI-0419 | 10		|
+	| KPI-0420 | 10		|
 	Given I upload "1" checklist document "Announcement_Field_Values.xlsx"
 	| Actions 	 | Step 1 							   | Step 2		 | Step 3 	      |
 	| Navigation | Attachments 						   | 			 |				  |

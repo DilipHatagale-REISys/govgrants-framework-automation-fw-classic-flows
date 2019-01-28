@@ -166,12 +166,12 @@
 			<groupId>com.pojosontheweb</groupId>
 			<artifactId>monte-repack</artifactId>
 			<version>1.0.1</version>
-		</dependency>
-		<dependency>
+		</dependency>	
+	    <dependency>
 			<groupId>com.automation</groupId>
 			<artifactId>REI-AutomationFramework</artifactId>
 			<version>${rei.version}</version>
-		</dependency>
+		</dependency>					
 	</dependencies>
 	<repositories>
 		<repository>
