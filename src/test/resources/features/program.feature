@@ -2,7 +2,8 @@
 Feature: Validate all scenarios for program
 
 	Background: Create Program
-	Given I create a program as user "EXE" from sheet "Creation" in excel "Program_Field_Values.xlsx"
+#	Given I delete the record "Automation Program Regression" from the object "Program" 
+	Given I create a program as user "OSCAR PM" from sheet "Creation" in excel "Surya_Program_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 | Step 3 				    |
 	| Navigation | As a Grantor		 | Planning  	 	 |	Programs				|
 	| FlexTable  | Internal Programs | Programs 	 	 | Draft Internal Programs  |
@@ -182,15 +183,15 @@ Feature: Validate all scenarios for program
 	
   	@34756 @programActivation @programHappyPath @program
   	Scenario Outline: Validate the activation of Internal Program
-    Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Surya_Program_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate "3" records "Automation EXE,00005,SPO-0006"
+    And I associate "2" records "George PM,02106"
     | Actions 	  | Step 1   | Step 2	 | Step 3  			  				  | Step 4 	  | Step 5  				 |
     | Associate 1 | Overview | Associate | ProgramContacts 				      | Add	  	  | AssociateProgramContacts |
     | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Add		  | SelectProgramServiceArea |
-    | Associate 3 | Setup 	 | Associate | RelatedProgramGoalsandObjectives   | Add	  	  | SelectGoals 		     |
-    Given I select "2" approvers "Automation PM,Automation EXE"
+#    | Associate 3 | Setup 	 | Associate | RelatedProgramGoalsandObjectives   | Add	  	  | SelectGoals 		     |
+    Given I select "2" approvers "Cathy PM,Tommy EXE"
     | Actions 	 | Step 1   				       | Step 2	| Step 3 			  |
     | Subtab	 | Responsibilities 			   | 		|		    		  |
     | Approver 1 | ProgramRolesAndResponsibilities | Edit   | Program Approver    |
@@ -207,7 +208,7 @@ Feature: Validate all scenarios for program
     | Attachment Navigation | Attachments | Add				  | a150b000003epY5AAI |
     | Attachment Details    | Attachment  | Program Artifacts | 				   |
     And I click on "Submit For Approval" in the page details
-    Given "2" Approvers "PM,EXE" approve the record "Record Id"
+    Given "2" Approvers "CATHY PM,TOMMY EXE" approve the record "Record Id"
 	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
 	| Navigation | As a Grantor  | Planning		 | 				  	 |
 	| FlexTable  | Pending Tasks | MyTasks  	 | PhasePendingTasks |
@@ -221,6 +222,6 @@ Feature: Validate all scenarios for program
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "green"
 	Examples:
-	| User | Program Name  			        |
-	| EXE  | Automation Program Jan20    |	
+	| User       | Program Name     		        |
+	| Cathy PM   | Program for Newborn Screening  |	
 	
