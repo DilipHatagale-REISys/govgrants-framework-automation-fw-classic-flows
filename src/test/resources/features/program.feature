@@ -183,7 +183,7 @@ Feature: Validate all scenarios for program
 	
   	@34756 @programActivation @programHappyPath @program
   	Scenario Outline: Validate the activation of Internal Program
-    Given I complete the fields from the sheet "Edition" in excel "Surya_Program_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     And I associate "3" records "Automation EXE,02492,SPO-0071"
@@ -191,7 +191,7 @@ Feature: Validate all scenarios for program
     | Associate 1 | Overview | Associate | ProgramContacts 				      | Add	  	  | AssociateProgramContacts |
     | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Add		  | SelectProgramServiceArea |
 	| Associate 3 | Setup 	 | Associate | RelatedProgramGoalsandObjectives   | Add	  	  | SelectGoals 		     |
-    Given I select "2" approvers "Cathy PM,Tommy EXE"
+    Given I select "2" approvers "Automation PM, Automation EXE"
     | Actions 	 | Step 1   				       | Step 2	| Step 3 			  |
     | Subtab	 | Responsibilities 			   | 		|		    		  |
     | Approver 1 | ProgramRolesAndResponsibilities | Edit   | Program Approver    |
@@ -208,7 +208,7 @@ Feature: Validate all scenarios for program
     | Attachment Navigation | Attachments | Add				  | a150b000003epY5AAI |
     | Attachment Details    | Attachment  | Program Artifacts | 				   |
     And I click on "Submit For Approval" in the page details
-    Given "2" Approvers "CATHY PM,TOMMY EXE" approve the record "Record Id"
+    Given "2" Approvers "PM,EXE" approve the record "Record Id"
 	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
 	| Navigation | As a Grantor  | Planning		 | 				  	 |
 	| FlexTable  | Pending Tasks | MyTasks  	 | PhasePendingTasks |
