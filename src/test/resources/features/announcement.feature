@@ -2,7 +2,8 @@
 Feature: Validate all scenarios in the Announcement tab
 
 	Background: Create Announcement
-	Given I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	Given I delete the record "Automation Announcement Regression" from the object "Announcement"
+	And I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
 	| Actions 	  | Step 1 	   	  					    | Step 2    	   	   		 | Step 3 							 |
 	| Navigation  | As a Grantor  						| Announcements 	   		 |									 |
 	| FlexTable   | Announcements 						| Draft Announcements 		 |  								 |
@@ -10,18 +11,18 @@ Feature: Validate all scenarios in the Announcement tab
 	| Creation    | New			  						| Save and Continue 	   	 | Save								 |
 	| ID		  | EGMS ID								|							 |									 |
 
-	@33936 @announcementCreation @announcement
+	@33936 @announcementCreation @announcement @all
 	Scenario: Creation of an Announcement
 	Then I see status in Progress-bar is "Created" and is "green"
 
-	@34221 @34222 @announcementEdition @announcement
+	@34221 @34222 @announcementEdition @announcement @all
   	Scenario: Edition of an Announcement
  	When I click on "Edit" in the page details
 	And I enter "Edition" values from "Announcement_Field_Values.xlsx"
 	When I click on "Save" in the page details
 	Then I see status in Progress-bar is "Created" and is "green"
 
-  	@37029 @announcementContactAssociation @announcement
+  	@37029 @announcementContactAssociation @announcement @all
   	Scenario Outline: Contact association to an Announcement
 	When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
@@ -32,7 +33,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Contact		  |
 	| Automation EXE  |
 
-  	@34759 @announcementDirectedInviteApplicant @announcementDirected
+  	@34759 @announcementDirectedInviteApplicant @announcementDirected @all
   	Scenario Outline: Organization association to an Announcement
 	When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "inlineEditGridSoleSourceAwardOrganizations"
@@ -43,7 +44,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Agency Code |
 	| RG-000010   |
 	
-  	@34760 @announcementFormulaInviteApplicant @announcementFormula
+  	@34760 @announcementFormulaInviteApplicant @announcementFormula @all
   	Scenario Outline: Amount addition to Invited applicant association to an Announcement
   	Given I associate "1" records "RG-000010"
 	| Actions 	  | Step 1     | Step 2	   		   | Step 3  			  					    | Step 4 | Step 5  		 			  	  |
@@ -56,7 +57,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Agency Code |
 	| RG-000010   |
 
-  	@34769 @announcementFundingAccountAssociation @announcement
+  	@34769 @announcementFundingAccountAssociation @announcement @all
  	Scenario Outline: Funding Account association to an Announcement
 	When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
@@ -64,13 +65,13 @@ Feature: Validate all scenarios in the Announcement tab
     And I close Modal
     When I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--21 		  | 100000 				         |
+	| FA--77 		  | 100000 				         |
 	Then I see that "<EGMS Id>" has been added in flextable with Id "flexGridAnnouncementFundingAccountGrantor"
 	Examples:
 	| EGMS Id |
-	| FA--21  |
+	| FA--77  |
 	
-  	@34771 @announcementBudgetPeriodAddition @announcement
+  	@34771 @announcementBudgetPeriodAddition @announcement @all
   	Scenario Outline: Budget Period Addition to an Announcement
 	When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
@@ -83,7 +84,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Budget Period Id |
 	| BP01			   |
 
-  	@34775 @announcementFocusAreaAssociation @announcement
+  	@34775 @announcementFocusAreaAssociation @announcement @all
   	Scenario Outline: Validate the association of Focus Area to Announcement
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementServiceArea1"
@@ -92,9 +93,9 @@ Feature: Validate all scenarios in the Announcement tab
     Then I see that "<EGMS Id>" has been added in flextable with Id "AnnouncementServiceArea1"
 	Examples:
 	| EGMS Id |
-	| 00006   |
+	| 02493   |
 
-  	@34774 @announcementObjectiveAssociation @announcement
+  	@34774 @announcementObjectiveAssociation @announcement @all
   	Scenario Outline: Validate the association of objective to the Announcement 
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
@@ -103,9 +104,9 @@ Feature: Validate all scenarios in the Announcement tab
     Then I see that "<EGMS Id>" has been added in flextable with Id "AnnouncementGranteeStrategicGoalsObjectives"
 	Examples:
 	| EGMS Id  |
-	| SPO-0008 |
+	| SPO-0073 |
 
-  	@34773 @announcementKPIAssociation @announcement
+  	@34773 @announcementKPIAssociation @announcement @all
   	Scenario Outline: Validate the association of KPI for the announcement
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementKeyOutcomes"
@@ -116,7 +117,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| EGMS Id  |
 	| KPI-0006 |
 
-  	@35002 @announcementAttachmentChecklist @announcement
+  	@35002 @announcementAttachmentChecklist @announcement @all
   	Scenario: Validate the attachment checklist of the announcement
     When I navigate to "Setup" sub tab
    	When I enter the following values into flex table with id "inlineEditGridAnnouncementChecklists" by clicking "Add" :
@@ -127,12 +128,12 @@ Feature: Validate all scenarios in the Announcement tab
     When I close Modal
     Then I see that "Active" has been added in flextable with Id "inlineEditGridAnnouncementChecklists"
 
-  	@announcementReviewStepsValidate @announcement
+  	@announcementReviewStepsValidate @announcement @all
   	Scenario: Validate the review steps for the announcement
     When I navigate to "Setup" sub tab
     Then I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
 
-  	@34780 @announcementApproverSelection @announcement
+  	@34780 @announcementApproverSelection @announcement @all
   	Scenario: Validate the assignment of Approvers for the Announcement 
     When I navigate to "Responsibilities" sub tab
     And I click on "Edit" icon for "Program Approver" inside flex table with id "GrantorAnnouncementRolesandResponsibilities"
@@ -146,7 +147,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I switch to Parent frame
     Then I see that "Automation EXE" has been added in flextable with Id "GrantorAnnouncementRolesandResponsibilities"
 	    
-  	@34232 @announcementReviewerAssignment @announcement
+  	@34232 @announcementReviewerAssignment @announcement @all
   	Scenario: Validate the assignment of Reviewer for the Announcement
     When I navigate to "Responsibilities" sub tab
 	And I click on top right button "New" in flex table with id "flexGridApproverRoles"
@@ -155,7 +156,7 @@ Feature: Validate all scenarios in the Announcement tab
 	When I close Modal
 	Then I see that "Automation FO" has been added in flextable with Id "flexGridApproverRoles"
 
-  	@34778 @announcementReviewerInitiation @announcement
+  	@34778 @announcementReviewerInitiation @announcement @all
   	Scenario: Validate the assignment of Reviewer for the Announcement
     When I navigate to "Responsibilities" sub tab
 	And I click on top right button "New" in flex table with id "flexGridApproverRoles"
@@ -165,7 +166,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I click on "Send for Review" icon for "Created" inside flex table with id "flexGridApproverRoles"
 	Then I see that "Sent for Review" has been added in flextable with Id "flexGridApproverRoles"
 
-  	@34779 @announcementReviewComplete @announcement
+  	@34779 @announcementReviewComplete @announcement @all
   	Scenario Outline: Validate the review for the Announcement
 	Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
 	| Actions 			  | Step 1 	  		      | Step 2	 		   	  | Step 3  |
@@ -194,7 +195,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| User | Announcement Name 			           | Flextable Name |
 	| FO   | Automation Announcement to be deleted | Peer Reviewers |
 
-  	@35003 @announcementAddAttachment @announcement
+  	@35003 @announcementAddAttachment @announcement @all
   	Scenario: Validate the attachment for an Announcement
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add" in flex table with id "a150b000003epC4AAI"
@@ -207,17 +208,17 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--21"
+    And I associate "1" records "FA--77"
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--21 		  | 100000 				         |
+	| FA--77 		  | 100000 				         |
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
 	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
 	| Flextable  | Edit 	    | Save					| 						           |
-	Given I associate "3" records "Automation EXE,00006,SPO-0008"
+	Given I associate "3" records "Automation EXE,02493,SPO-0073"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
     | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
@@ -261,22 +262,22 @@ Feature: Validate all scenarios in the Announcement tab
 	| Announcement Name		  |
 	| Automation Announcement |
 
-  	@34763 @34765 @34766 @announcementApproval @announcement
+  	@34763 @34765 @34766 @announcementApproval @announcement @all
   	Scenario Outline: Validate the approval of an Announcement
 	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--21"
+	And I associate "1" records "FA--77"
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--21 		  | 100000 				         |
+	| FA--77 		  | 100000 				         |
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
 	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
 	| Flextable  | Edit 	    | Save					| 						           |
-	Given I associate "3" records "Automation EXE,00006,SPO-0008"
+	Given I associate "3" records "Automation EXE,02493,SPO-0073"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
     | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
@@ -338,7 +339,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Announcement Name		  |
 	| Automation Announcement |
 
-  	@34462 @publishingCompetitiveAnnouncement @announcementCompetitiveHappyPath @announcement
+  	@34462 @publishingCompetitiveAnnouncement @announcementCompetitiveHappyPath @announcement @all
   	Scenario Outline: Validate the activation of Internal Program
 	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -409,7 +410,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| User | Announcement Name 			   |
 	| EXE  | Automation Announcement Jan25 |
 	
-	@34462 @publishingDirectedAnnouncement @announcementDirectedHappyPath @announcement
+	@34462 @publishingDirectedAnnouncement @announcementDirectedHappyPath @announcement @all
   	Scenario Outline: Validate the activation of Internal Program
 	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -483,7 +484,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| User | Announcement Name 		 |
 	| EXE  | Automation Announcement |
 	
-	@34462 @publishingFormulaAnnouncement @announcementFormulaHappyPath @announcement
+	@34462 @publishingFormulaAnnouncement @announcementFormulaHappyPath @announcement @all
   	Scenario Outline: Validate the activation of Internal Program
 	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|

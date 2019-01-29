@@ -43,16 +43,10 @@ public class ProjectManager extends ProjectWebServices {
 
     /******* "Key Methods with complete functionality" *****************/
     
-    
-    /**
-     * deletes test data
-     *
-     * @param objectType currently accepts ServiceArea__c, FundingSource__c, and Program__C
-     */
-    public void deleteAutomationTestData(String recordName, String objectType) {
-        automationDeletionApi(recordName, objectType);
+    public void getRecordId(String recordIdLabel) {
+        govgrants.pageDetails().getRecordId(recordIdLabel);
     }
-
+    
     /**
      * Handles association of various related records
      * 
@@ -81,23 +75,5 @@ public class ProjectManager extends ProjectWebServices {
         govgrants.modal().handleModalAlert(confirmation);
     }
 
-    public DataTable seperateInlineDataTable(Map<String, Map<String, String>> dataTableMap) {
-        List<String> inlineColumnTitleList = new ArrayList<String>();
-        List<String> inlineValueList = new ArrayList<String>();
-        for (String mainMapKey : dataTableMap.keySet()) {
-            if (mainMapKey.equals("Inline Column Title")) {
-                for (String innerMapKey : dataTableMap.get(mainMapKey).keySet()) {
-                    inlineColumnTitleList.add(dataTableMap.get(mainMapKey).get(innerMapKey));
-                }
-            } else if (mainMapKey.contains("Inline values")) {
-                for (String innerMapKey : dataTableMap.get(mainMapKey).keySet()) {
-                    inlineValueList.add(dataTableMap.get(mainMapKey).get(innerMapKey));
-                }
-            }
-        }
-        List<List<String>> inlineInfoInTheRaw = Arrays.asList(inlineColumnTitleList, inlineValueList);
-        DataTable inlineSeperatedDataTable = DataTable.create(inlineInfoInTheRaw);
-
-        return inlineSeperatedDataTable;
-    }
+    
 }

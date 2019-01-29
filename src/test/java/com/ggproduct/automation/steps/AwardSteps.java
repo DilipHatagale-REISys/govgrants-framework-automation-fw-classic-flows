@@ -17,9 +17,14 @@ public class AwardSteps {
         awardPage = new AwardPage(controller, handler, govgrants);
     }
     
+    @Given("^I create a Grant as user \"([^\"]*)\" from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
+    public void creationOfStanAloneAward(String user,String sheetName, String excelFileName, DataTable dataTable) {
+        awardPage.creationOfStanAloneAward(user, sheetName, excelFileName, dataTable);
+    }
+    
     @Given("^I create a subaward from the Announcement \"([^\"]*)\" for the Application \"([^\"]*)\" as user \"([^\"]*)\"$")
     public void creationOfAward(String announcementName, String applicationName, String User, DataTable dataTable) {
-        awardPage.creationOfAward(announcementName, applicationName, User, dataTable);
+        awardPage.creationOfAwardFromFDM(announcementName, applicationName, User, dataTable);
     }
     
     @Given("^I edit the Budget details in award for line item \"([^\"]*)\"$")

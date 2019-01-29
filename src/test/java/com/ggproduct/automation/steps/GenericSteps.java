@@ -18,4 +18,9 @@ public class GenericSteps {
     public void deleteTestData(String recordName, String objectType) {
         projectManager.automationDeletionApi(recordName, objectType);
     }
+    
+    @Given("I get the \"([^\"]*)\"$")
+    public void getRecordId(String recordIdLabel) {
+        projectManager.getRecordId(recordIdLabel);
+    }
 }   

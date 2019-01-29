@@ -121,22 +121,4 @@ public class UsersAndURL implements UsersController{
         }
         return username;
     }
-    
-    @Override
-    public  String getPortalUrl(String portalType) {
-        String url = null;
-            try {
-                if(EnvironmentFetcher.environmentName != null && !(EnvironmentFetcher.environmentName.contentEquals(portalType))) {
-                    url = new Properties_Logs().ReadPropertyFile("environment.properties",
-                            EnvironmentFetcher.environmentName + portalType);
-                } else {
-                    url = new Properties_Logs().ReadPropertyFile("environment.properties",
-                            portalType);
-                }
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        return url;
-    }
 }
