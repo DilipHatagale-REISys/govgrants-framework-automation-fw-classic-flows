@@ -2,15 +2,15 @@
 Feature: Validate all scenarios for program
 
 	Background: Create Program
-	I delete
-	Given I create a program as user "EXE" from sheet "Creation" in excel "Program_Field_Values.xlsx"
+	Given I delete the record "Automation Program Regression" from the object "Program"
+	And I create a program as user "EXE" from sheet "Creation" in excel "Program_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 | Step 3 				    |
 	| Navigation | As a Grantor		 | Planning  	 	 |	Programs				|
 	| FlexTable  | Internal Programs | Programs 	 	 | Draft Internal Programs  |
 	| Creation   | New				 | Save and Continue | Save						|
 	| ID		 | EGMS ID			 |					 |							|
 	
-  	@34730 @programListView @program
+  	@34730 @programListView @program @all
   	Scenario Outline: Verifying if the EXE,PM,PO has access to Internal Programs list view
     When I navigate to "Planning" tab
     And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
@@ -20,18 +20,18 @@ Feature: Validate all scenarios for program
     | Program flextable Header | Program Status |
     | Draft Internal Programs  | Created  	    |
     
-  	@34503 @programCreation @program
+  	@34503 @programCreation @program @all
   	Scenario: Verifying if the EXE, PM, PO has create access to Internal Program
   	Then I see status in Progress-bar is "Created" and is "green"
     
-  	@34731 @programEdition @program
+  	@34731 @programEdition @program @all
   	Scenario: Verifying if the EXE, PM, PO has create access to Internal Program
     When I click on "Edit" in the page details
     And I enter "RequiredForSubmit" values from "Program_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
     
-  	@34732 @programContactsAssociation @program
+  	@34732 @programContactsAssociation @program @all
   	Scenario Outline: Verifying if the EXE, PM, PO can associate contact with Internal Program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "ProgramContacts"
@@ -42,7 +42,7 @@ Feature: Validate all scenarios for program
     | Contact		  |
     | Automation EXE  |
     
-  	@34740 @programApproverSelection @program
+  	@34740 @programApproverSelection @program @all
   	Scenario Outline: Validate the assignment of Approvers for the Internal Program
     When I navigate to "Responsibilities" sub tab
     And I click on "Edit" icon for "Program Approver" inside flex table with id "ProgramRolesAndResponsibilities"
@@ -56,18 +56,18 @@ Feature: Validate all scenarios for program
 	| Program Approver Name | Executive Approver Name |
 	| Automation PM         | Automation EXE          |
 	
-  	@34616 @programFocusAreaAssociation @program
+  	@34616 @programFocusAreaAssociation @program @all
   	Scenario Outline: Validate the association of Focus Area for the Internal Program
     When I navigate to "Setup" sub tab
     And I click on top right button "Add" in flex table with id "flexGridGrantorServiceAreasProgram"
-    When I click "Associate" after selection of "00005,00006" in the table "SelectProgramServiceArea"
+    When I click "Associate" after selection of "02492" in the table "SelectProgramServiceArea"
     And I close Modal
     Then I see that "<EGMS Id>" has been added in flextable with Id "flexGridGrantorServiceAreasProgram"
 	Examples:
 	| EGMS Id |
 	| 00005   |
 	
-  	@34737 @programObjectiveAssociation @program
+  	@34737 @programObjectiveAssociation @program @all
   	Scenario Outline: Validate the Association of Objective to the Internal Program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "RelatedProgramGoalsandObjectives"
@@ -76,9 +76,9 @@ Feature: Validate all scenarios for program
     Then I see that "<EGMS Id>" has been added in flextable with Id "RelatedProgramGoalsandObjectives"
 	Examples:
 	| EGMS Id  |
-	| SPO-0006 |
+	| SPO-0071 |
 	
-  	@34738 @programKPIAssociation @program
+  	@34738 @programKPIAssociation @program @all
   	Scenario Outline: Validate the assignment of Approvers for the Internal Program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "ProgramKeyOutcomes"
@@ -89,7 +89,7 @@ Feature: Validate all scenarios for program
 	| EGMS Id  |
 	| KPI-0005 |
 	
-  	@34745 @programAttachmentChecklist @program
+  	@34745 @programAttachmentChecklist @program @all
   	Scenario: Validate the attachment checklist for the Internal Program
   	When I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "flexGridProgramChecklists" by clicking "Add" :
@@ -100,7 +100,7 @@ Feature: Validate all scenarios for program
     When I close Modal 
     Then I see that "Active" has been added in flextable with Id "flexGridProgramChecklists"
     
-  	@34746 @programAddAttachment @program
+  	@34746 @programAddAttachment @program @all
   	Scenario: Validate the attachment for the Internal Program
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add" in flex table with id "a150b000003epY5AAI"
@@ -108,12 +108,12 @@ Feature: Validate all scenarios for program
     And I close Modal 
     Then I see that "Program Artifacts" has been added in flextable with Id "a150b000003epY5AAI"
 
-  	@34750 @submittingProgramForApproval @program
+  	@34750 @submittingProgramForApproval @program @all
   	Scenario: Validate the submission of Program for Approval
     Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate "3" records "Automation EXE,00005,SPO-0006"
+    And I associate "3" records "Automation EXE,02492,SPO-0071"
     | Actions 	  | Step 1   | Step 2	 | Step 3  			  				  | Step 4 	  | Step 5  				 |
     | Associate 1 | Overview | Associate | ProgramContacts 				      | Add	  	  | AssociateProgramContacts |
     | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Add		  | SelectProgramServiceArea |
@@ -137,12 +137,12 @@ Feature: Validate all scenarios for program
     When I click on "Submit For Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 	
-  	@34752 @34754 @programApproval @program
+  	@34752 @34754 @programApproval @program @all
   	Scenario Outline: Validate the approval of Internal Program
     Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate "3" records "Automation EXE,00005,SPO-0006"
+    And I associate "3" records "Automation EXE,02492,SPO-0071"
     | Actions 	  | Step 1   | Step 2	 | Step 3  			  				  | Step 4 	  | Step 5  				 |
     | Associate 1 | Overview | Associate | ProgramContacts 				      | Add	  	  | AssociateProgramContacts |
     | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Add		  | SelectProgramServiceArea |
@@ -181,7 +181,7 @@ Feature: Validate all scenarios for program
 	| Program Approver | Program Name		  			  | Executive Approver |
 	| PM               | Automation Program to be deleted | EXE			  	   |
 	
-  	@34756 @programActivation @programHappyPath @program
+  	@34756 @programActivation @programHappyPath @program @all
   	Scenario Outline: Validate the activation of Internal Program
     Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
