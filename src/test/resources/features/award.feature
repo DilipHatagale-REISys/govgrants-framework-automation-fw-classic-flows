@@ -1256,9 +1256,15 @@ Feature: Validate all scenarios in the Award
     | Approver 3 | GrantorAwardRolesAndResponsibilities | Edit	 | Executive Approver  |
     And I click on "Send to Subrecipient" in the page details
   	Given The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
-  	| Actions 	 | Step 1 | Step 2		  | Step 3 			      | Step 4			  |
-  	| Navigation | Grants | Pending Tasks | My Tasks			  | PhasePendingTasks |
-  	| Acceptance | Start  | Accept		  | Accept after Approval | OK				  |
+  	| Actions 	 | Step 1 		 | Step 2		  | Step 3 			      | Step 4			  |
+  	| Login		 | Grants Portal | SUBPORTAL 	  |   					  |  				  |
+  	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
+  	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
+  	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
+    | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
+    | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	And I assign, initiate a reviewer from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
 	| Actions 			  | Step 1 	  		      | Step 2	 		   	 		 | Step 3  |
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
@@ -1269,7 +1275,7 @@ Feature: Validate all scenarios in the Award
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
-  	And I login and view the "Draft" award "<Award Name>" with name "<Award Name>" as User "Exe"
+  	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
     | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
@@ -1280,17 +1286,18 @@ Feature: Validate all scenarios in the Award
 	| Navigation | As a Grantor  | Grants	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 	 | 					 |
-  	And I login and view the "Draft" award "<Award Name>" with name "<Award Name>" as User "Exe"
+  	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
     | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Send to Subrecipient after Approval" in the page details
-  	And The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
-  	| Actions 	 | Step 1 | Step 2		  | Step 3 			      | Step 4			  |
-  	| Navigation | Grants | Pending Tasks | My Tasks			  | PhasePendingTasks |
-  	| Acceptance | Start  | Accept		  | Accept after Approval | OK				  |
-  	Given I login and view the "Draft" award "<Award Name>" with name "<Award Name>" as User "Exe"
+  	Given The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
+  	| Actions 	 | Step 1 		 | Step 2		  | Step 3 			      | Step 4			  |
+  	| Login		 | Grants Portal | SUBPORTAL 	  |   					  |  				  |
+  	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
+  	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
+  	Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
     | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
@@ -1299,7 +1306,7 @@ Feature: Validate all scenarios in the Award
 	Given I create a monitoring record from sheet "Site Visit" in excel "Award_Field_Values.xlsx"
 	| Actions  | Step 1     | Step 2	   		   	 | Step 3 				  | Step 4			 |
     | Creation | Management | GrantorSiteVisitsAward | Initiate Site Visit    | Save And Close   |
-    Given I login and view the "Draft" award "<Award Name>" with name "<Award Name>" as User "Exe"
+    Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
     | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
@@ -1307,7 +1314,7 @@ Feature: Validate all scenarios in the Award
     Given I create a monitoring record from sheet "Desk Review" in excel "Award_Field_Values.xlsx"
 	| Actions  | Step 1     | Step 2	   		   	 | Step 3 				   | Step 4			  |
     | Creation | Management | GrantorDeskReviewAward | Initiate Desk Review    | Save And Close   |
-    Given I login and view the "Draft" award "<Award Name>" with name "<Award Name>" as User "Exe"
+    Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
     | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |

@@ -3,7 +3,7 @@ Feature: Validate all scenarios for program
 
 	Background: Create Program
 	Given I delete the record "Automation Program Regression" from the object "Program"
-	And I create a program as user "EXE" from sheet "Creation" in excel "Program_Field_Values.xlsx"
+	And I create a planning record as user "EXE" from sheet "Creation" in excel "Program_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 | Step 3 				    |
 	| Navigation | As a Grantor		 | Planning  	 	 |	Programs				|
 	| FlexTable  | Internal Programs | Programs 	 	 | Draft Internal Programs  |

@@ -21,7 +21,7 @@ public class PlanningPage extends ProjectManager {
      * @param sheetName
      * @param excelFileName
      */
-    public void creationOfProgram(String user, String sheetName, String excelFileName, DataTable dataTable) {
+    public void creationOfPlanningRecord(String user, String sheetName, String excelFileName, DataTable dataTable) {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         govgrants.mainPage().loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));

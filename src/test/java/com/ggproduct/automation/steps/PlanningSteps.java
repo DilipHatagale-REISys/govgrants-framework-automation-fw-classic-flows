@@ -16,8 +16,8 @@ public class PlanningSteps {
         planningPage = new PlanningPage(controller, handler, govgrants);
     }
     
-    @Given("^I create a program as user \"([^\"]*)\" from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
-    public void creationOfPrrogram(String user,String sheetName, String excelFileName, DataTable dataTable) {
-        planningPage.creationOfProgram(user, sheetName, excelFileName, dataTable);
+    @Given("^I create a planning record as user \"([^\"]*)\" from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
+    public void creationOfPlanningRecord(String user,String sheetName, String excelFileName, DataTable dataTable) {
+        planningPage.creationOfPlanningRecord(user, sheetName, excelFileName, dataTable);
     }
 }
