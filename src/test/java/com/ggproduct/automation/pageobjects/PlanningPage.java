@@ -30,7 +30,11 @@ public class PlanningPage extends ProjectManager {
         govgrants.flexTable().clickTableTopRightButton(dataTableMap.get("FlexTable").get("Step 2"),
                 dataTableMap.get("Creation").get("Step 1"));
         govgrants.inputForms().enterInputFieldsFromExcelFile(excelFileName, sheetName);
-        govgrants.modal().clickModalContentSpecificButton(dataTableMap.get("Creation").get("Step 2"));
+        try {
+            govgrants.modal().clickModalContentSpecificButton(dataTableMap.get("Creation").get("Step 2"));
+        } catch(Exception ex) {
+            
+        }
         govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("Creation").get("Step 3"));
         govgrants.pageDetails().getRecordId(dataTableMap.get("ID").get("Step 1"));
     }

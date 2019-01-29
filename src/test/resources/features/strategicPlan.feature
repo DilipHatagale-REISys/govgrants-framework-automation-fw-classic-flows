@@ -1,31 +1,31 @@
 @strategicPlan
 Feature: Validate all scenarios in Strategic Plan
 
-	Background: To delete data
+	Background: To setup data
 	Given I delete the record "Automation Strategic Plan Regression" from the object "Strategic Plan"
 	Given I delete the record "Automation Strategic Goal Regression" from the object "Strategic Plan"
 	Given I delete the record "Automation Objective Regression" from the object "Strategic Plan"
-	Given I create a planning record as user "EXE" from sheet "StrategicPlanCreation" in excel "Planning_Field_Values.xlsx"
+	Given I create a planning record as user "EXE" from sheet "StrategicPlanCreation" in excel "StrategicPlan_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 | Step 3 				    |
 	| Navigation | As a Grantor		 | Planning  	 	 | Planning	    			|
 	| FlexTable  | Strategic Plans   | StrategicPlans	 | Draft Strategic Plans    |
 	| Creation   | New				 | Save And Close    | Save						|
 	| ID		 | EGMS ID			 |					 |							|
 
-	@creationOfStrategicPlan @strategicPlan 
+	@creationOfStrategicPlan @strategicPlan @all
 	Scenario: Creation of Strategic Plan
 	Then I see status in Progress-bar is "Created" and is "green"
 	
-	@editionOfStrategicPlan @strategicPlan 
+	@editionOfStrategicPlan @strategicPlan @all
 	Scenario: Edition of Strategic Plan
 	And I click on "Edit" in the page details
-	When I enter "StrategicPlanEdition" values from "Planning_Field_Values.xlsx"
+	When I enter "StrategicPlanEdition" values from "StrategicPlan_Field_Values.xlsx"
 	And I click on "Save" in the page details
 	Then I see status in Progress-bar is "Created" and is "green"
 	
-	@addAttachmentToStrategicPlan @strategicPlan 
+	@addAttachmentToStrategicPlan @strategicPlan @all
 	Scenario: Addition of Attachment to Strategic Plan
-	And I complete the fields from the sheet "StrategicPlanEdition" in excel "Planning_Field_Values.xlsx"
+	And I complete the fields from the sheet "StrategicPlanEdition" in excel "StrategicPlan_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     When I navigate to "Attachments" sub tab
@@ -34,41 +34,41 @@ Feature: Validate all scenarios in Strategic Plan
     And I close Modal
     Then I see that "Strategic Plan" has been added in flextable with Id "a150b000003ep3EAAQ"
 	
-	@creationOfStrategicGoal @strategicPlan 
+	@creationOfStrategicGoal @strategicPlan @all
 	Scenario: Creation of Strategic Goal inside a Strategic Plan
-	And I complete the fields from the sheet "StrategicPlanEdition" in excel "Planning_Field_Values.xlsx"
+	And I complete the fields from the sheet "StrategicPlanEdition" in excel "StrategicPlan_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
 	When I click on top right button "New" in flex table with id "flexGridGrantorStrategicGoalObjectives"
-	And I enter "StrategicGoalCreation" values from "Planning_Field_Values.xlsx"
+	And I enter "StrategicGoalCreation" values from "StrategicPlan_Field_Values.xlsx"
 	When I click on "Save and Continue" in the page details
 	And I click on "Save" in the page details
 	Then I see that "Strategic Goal" is in "Draft" status
 	
-	@editionOfStrategicGoal @strategicPlan 
+	@editionOfStrategicGoal @strategicPlan @all
 	Scenario: Edition of Strategic Goal inside a Strategic Plan
-	And I complete the fields from the sheet "StrategicPlanEdition" in excel "Planning_Field_Values.xlsx"
+	And I complete the fields from the sheet "StrategicPlanEdition" in excel "StrategicPlan_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
 	And I click on top right button "New" in flex table with id "flexGridGrantorStrategicGoalObjectives"
-	When I enter "StrategicGoalCreation" values from "Planning_Field_Values.xlsx"
+	When I enter "StrategicGoalCreation" values from "StrategicPlan_Field_Values.xlsx"
 	And I click on "Save and Continue" in the page details
 	When I click on "Save" in the page details
 	And I click on "Edit" in the page details
-	When I enter "StrategicGoalEdition" values from "Planning_Field_Values.xlsx"
+	When I enter "StrategicGoalEdition" values from "StrategicPlan_Field_Values.xlsx"
 	And I click on "Save" in the page details
 	Then I see that "Strategic Goal" is in "Draft" status
 	
-	@addAttachmentToStrategicGoal @strategicPlan 
+	@addAttachmentToStrategicGoal @strategicPlan @all
 	Scenario: Addition of Attachment to Strategic Goal inside a Strategic Plan
-	And I complete the fields from the sheet "StrategicPlanEdition" in excel "Planning_Field_Values.xlsx"
+	And I complete the fields from the sheet "StrategicPlanEdition" in excel "StrategicPlan_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
 	And I click on top right button "New" in flex table with id "flexGridGrantorStrategicGoalObjectives"
-	When I enter "StrategicGoalCreation" values from "Planning_Field_Values.xlsx"
+	When I enter "StrategicGoalCreation" values from "StrategicPlan_Field_Values.xlsx"
 	And I click on "Save and Continue" in the page details
 	When I click on "Save" in the page details
-	And I complete the fields from the sheet "StrategicGoalEdition" in excel "Planning_Field_Values.xlsx"
+	And I complete the fields from the sheet "StrategicGoalEdition" in excel "StrategicPlan_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
 	When I navigate to "Attachments" sub tab
@@ -77,51 +77,51 @@ Feature: Validate all scenarios in Strategic Plan
     And I close Modal
     Then I see that "Strategic Plan" has been added in flextable with Id "a150b000003epW2AAI"
 	
-	@creationOfObjective @strategicPlan 
+	@creationOfObjective @strategicPlan @all
 	Scenario: Creation of Objective inside a Strategic Goal
-	And I complete the fields from the sheet "StrategicPlanEdition" in excel "Planning_Field_Values.xlsx"
+	And I complete the fields from the sheet "StrategicPlanEdition" in excel "StrategicPlan_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
 	And I click on top right button "New" in flex table with id "flexGridGrantorStrategicGoalObjectives"
-	When I enter "StrategicGoalCreation" values from "Planning_Field_Values.xlsx"
+	When I enter "StrategicGoalCreation" values from "StrategicPlan_Field_Values.xlsx"
 	And I click on "Save and Continue" in the page details
 	When I click on "Save" in the page details
-	And I complete the fields from the sheet "StrategicGoalEdition" in excel "Planning_Field_Values.xlsx"
+	And I complete the fields from the sheet "StrategicGoalEdition" in excel "StrategicPlan_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
 	When I click on top right button "New" in flex table with id "RelatedObjectives"
-	And I enter "ObjectiveCreation" values from "Planning_Field_Values.xlsx"
+	And I enter "ObjectiveCreation" values from "StrategicPlan_Field_Values.xlsx"
 	When I click on "Save and Continue" in the page details
 	And I click on "Save" in the page details
 	
-	@editionOfObjective @strategicPlan 
+	@editionOfObjective @strategicPlan @all
 	Scenario: Edition of Objective inside a Strategic Goal
-	And I complete the fields from the sheet "StrategicPlanEdition" in excel "Planning_Field_Values.xlsx"
+	And I complete the fields from the sheet "StrategicPlanEdition" in excel "StrategicPlan_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
 	And I click on top right button "New" in flex table with id "flexGridGrantorStrategicGoalObjectives"
-	When I enter "StrategicGoalCreation" values from "Planning_Field_Values.xlsx"
+	When I enter "StrategicGoalCreation" values from "StrategicPlan_Field_Values.xlsx"
 	And I click on "Save and Continue" in the page details
 	When I click on "Save" in the page details
-	And I complete the fields from the sheet "StrategicGoalEdition" in excel "Planning_Field_Values.xlsx"
+	And I complete the fields from the sheet "StrategicGoalEdition" in excel "StrategicPlan_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
 	When I click on top right button "New" in flex table with id "RelatedObjectives"
-	And I enter "ObjectiveCreation" values from "Planning_Field_Values.xlsx"
+	And I enter "ObjectiveCreation" values from "StrategicPlan_Field_Values.xlsx"
 	When I click on "Save and Continue" in the page details
 	And I click on "Save" in the page details
 	When I click on "Edit" in the page details
-	And I enter "ObjectiveEdition" values from "Planning_Field_Values.xlsx"
+	And I enter "ObjectiveEdition" values from "StrategicPlan_Field_Values.xlsx"
 	When I click on "Save" in the page details
 	
-	@additionOfAttachmentToObjective @strategicPlan 
+	@additionOfAttachmentToObjective @strategicPlan @all
 	Scenario: Addition of Attachment to Objective inside a Strategic Goal
 	And I click on top right button "New" in flex table with id "flexGridGrantorStrategicGoalObjectives"
-	When I enter "StrategicGoalCreation" values from "Planning_Field_Values.xlsx"
+	When I enter "StrategicGoalCreation" values from "StrategicPlan_Field_Values.xlsx"
 	And I click on "Save and Continue" in the page details
 	When I click on "Save" in the page details
 	When I click on top right button "New" in flex table with id "RelatedObjectives"
-	And I enter "ObjectiveCreation" values from "Planning_Field_Values.xlsx"
+	And I enter "ObjectiveCreation" values from "StrategicPlan_Field_Values.xlsx"
 	When I click on "Save and Continue" in the page details
 	And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
@@ -130,14 +130,14 @@ Feature: Validate all scenarios in Strategic Plan
     And I close Modal
     Then I see that "Strategic Plan" has been added in flextable with Id "a150b000003epU7AAI"
     
-    @associatingKPIToObjective @strategicPlan 
+    @associatingKPIToObjective @strategicPlan @all
 	Scenario: Associating KPI to Objective inside a Strategic Goal
 	And I click on top right button "New" in flex table with id "flexGridGrantorStrategicGoalObjectives"
-	When I enter "StrategicGoalCreation" values from "Planning_Field_Values.xlsx"
+	When I enter "StrategicGoalCreation" values from "StrategicPlan_Field_Values.xlsx"
 	And I click on "Save and Continue" in the page details
 	When I click on "Save" in the page details
 	When I click on top right button "New" in flex table with id "RelatedObjectives"
-	And I enter "ObjectiveCreation" values from "Planning_Field_Values.xlsx"
+	And I enter "ObjectiveCreation" values from "StrategicPlan_Field_Values.xlsx"
 	When I click on "Save and Continue" in the page details
 	And I click on "Save" in the page details
 	When I navigate to "Related Logs" sub tab
@@ -146,31 +146,33 @@ Feature: Validate all scenarios in Strategic Plan
 	And I switch to Parent frame
 	Then I see that "Automation Program KPI" has been added in flextable with Id "KPIGoalsandObjectives"
 	
-	@strategicPlanHappyPath @strategicPlan 
+	@strategicPlanHappyPath @strategicPlan @all
 	Scenario: Associating KPI to Objective inside a Strategic Goal
-	And I complete the fields from the sheet "StrategicPlanEdition" in excel "Planning_Field_Values.xlsx"
+	And I complete the fields from the sheet "StrategicPlanEdition" in excel "StrategicPlan_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     Given I add an attachment "InternalOrganization_Field_Values.xlsx"
     | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
     | Attachment Navigation | Attachments | Add								 | a150b000003ep3EAAQ |
     | Attachment Details    | Attachment  | Strategic Plan					 |					  |
+    When I navigate to "Overview" sub tab
 	And I click on top right button "New" in flex table with id "flexGridGrantorStrategicGoalObjectives"
-	Given I enter "StrategicGoalCreation" values from "Planning_Field_Values.xlsx"
+	Given I enter "StrategicGoalCreation" values from "StrategicPlan_Field_Values.xlsx"
 	And I click on "Save and Continue" in the page details
 	Given I click on "Save" in the page details
-	And I complete the fields from the sheet "StrategicGoalEdition" in excel "Planning_Field_Values.xlsx"
+	And I complete the fields from the sheet "StrategicGoalEdition" in excel "StrategicPlan_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     Given I add an attachment "InternalOrganization_Field_Values.xlsx"
     | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
     | Attachment Navigation | Attachments | Add								 | a150b000003epW2AAI |
     | Attachment Details    | Attachment  | Strategic Plan					 |					  |
+    When I navigate to "Overview" sub tab
 	Given I click on top right button "New" in flex table with id "RelatedObjectives"
-	And I enter "ObjectiveCreation" values from "Planning_Field_Values.xlsx"
+	And I enter "ObjectiveCreation" values from "StrategicPlan_Field_Values.xlsx"
 	Given I click on "Save and Continue" in the page details
 	And I click on "Save" in the page details
-	Given I complete the fields from the sheet "ObjectiveEdition" in excel "Planning_Field_Values.xlsx"
+	Given I complete the fields from the sheet "ObjectiveEdition" in excel "StrategicPlan_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     Given I add an attachment "InternalOrganization_Field_Values.xlsx"
