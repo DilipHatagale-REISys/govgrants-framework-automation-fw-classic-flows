@@ -94,10 +94,10 @@ public class AwardPage extends ProjectManager {
     public void acceptanceOfAward(String subrecipientUser, String awardName, String comments, DataTable dataTable)
             throws IOException {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
-        govgrants.mainPage().reloginToggleToAppInNewURL(dataTableMap.get("Login").get("Step 1"), subrecipientUser, dataTableMap.get("Login").get("Step 2"));
+        govgrants.mainPage().reloginToggleToAppInNewPortal(dataTableMap.get("Login").get("Step 1"), subrecipientUser, dataTableMap.get("Login").get("Step 2"));
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 1"));
         govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 3"),
-                dataTableMap.get("Navigation").get("Step 2"));
+                dataTableMap.get("Navigation").get("Step 2")).click();
         govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("Navigation").get("Step 4"),
                 awardName);
         govgrants.flexTable().clickTableActionIcons(dataTableMap.get("Acceptance").get("Step 1"), awardName);
