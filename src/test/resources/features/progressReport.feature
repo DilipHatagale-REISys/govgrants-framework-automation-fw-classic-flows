@@ -2,9 +2,9 @@
 Feature: Validate all scenarios in Progress Report
 
 	Background: Navigate to Award
-	Given I login to "As a Grantor" app as "EXE" user
+	Given I delete the record "Automation Progress Report Regression" from the object "Progress Report"
 
-	@taskCreationForSubrecipientProgressReport @progressReport
+	@taskCreationForSubrecipientProgressReport @progressReport @all
     Scenario: To assert the task creation for Progress Report
     When User "SPI" receives the task for "Complete Progress Report"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
@@ -13,7 +13,7 @@ Feature: Validate all scenarios in Progress Report
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	Then I see status in Progress-bar is "Created" and is "green"
 	
-	@editProgressReport @progressReport
+	@editProgressReport @progressReport @all
     Scenario: To edit Progress Report
     Given User "SPI" receives the task for "Complete Progress Report"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
@@ -24,7 +24,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
     
-    @editKPIProgressReport @progressReport
+    @editKPIProgressReport @progressReport @all
     Scenario: To edit KPI in Progress Report
     Given User "SPI" receives the task for "Complete Progress Report"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
@@ -38,7 +38,7 @@ Feature: Validate all scenarios in Progress Report
 	| Automation Announcement KPI   | 7      | 01/03/2019    |
     Then I see that "7" has been added in flextable with Id "flexGridProgressReportKeyOutcomes"
     
-    @formFillingProgressReport @progressReport
+    @formFillingProgressReport @progressReport @all
     Scenario: To fill and complete the form in Progress Report
     Given User "SPI" receives the task for "Complete Progress Report"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
@@ -52,7 +52,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Back" in the page details
     Then I see that "100.00%" has been added in flextable with Id "FormComponent"
     
-    @submitProgressReportToGrantor @progressReport
+    @submitProgressReportToGrantor @progressReport @all
     Scenario: To submit Progress Report to Grantor
     Given User "SPI" receives the task for "Complete Progress Report"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
@@ -77,7 +77,7 @@ Feature: Validate all scenarios in Progress Report
 	When I click on "Submit to Grantor" in the page details
 	Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
 	
-	@assignApproversToProgressReport @progressReport
+	@assignApproversToProgressReport @progressReport @all
     Scenario: To assign or change th defualt approvers in Progress Report
     Given User "SPI" receives the task for "Complete Progress Report"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
@@ -112,7 +112,7 @@ Feature: Validate all scenarios in Progress Report
     | Approver 2 | ProgressReportsRolesandResponsibilities | Edit	| Fiscal Approver     |
     Then I see that "Automation PM" has been added in flextable with Id "ProgressReportsRolesandResponsibilities"
 	
-	@submitProgressReportForApproval @progressReport
+	@submitProgressReportForApproval @progressReport @all
     Scenario: To submit Progress Report for approval
     Given User "SPI" receives the task for "Complete Progress Report"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
@@ -143,7 +143,7 @@ Feature: Validate all scenarios in Progress Report
 	When I click on "Submit for Approval" in the page details
 	Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 	
-	@approvalOfProgressReport @progressReportHappyPath @progressReport
+	@approvalOfProgressReport @progressReportHappyPath @progressReport @all
     Scenario: To approve Progress Report
     Given User "SPI" receives the task for "Complete Progress Report"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
@@ -179,7 +179,7 @@ Feature: Validate all scenarios in Progress Report
 	| Approval 	 | Start 		 | Approve 		 | 					 |
 	Then I see status in Progress-bar is "Approved" and is "green"
 	
-	@approvalOfProgressReport @progressReportHappyPathWithoutDefaultApprovers @progressReport
+	@approvalOfProgressReport @progressReportHappyPathWithoutDefaultApprovers @progressReport @all
     Scenario: To approve Progress Report by changing the defualt approvers in Progress Report
     Given User "SPI" receives the task for "Complete Progress Report"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |

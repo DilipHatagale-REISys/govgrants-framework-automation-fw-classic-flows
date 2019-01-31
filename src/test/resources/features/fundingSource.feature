@@ -1,0 +1,82 @@
+@fundingSource
+Feature: Validate all scenarios in Funding Source
+
+	Background: To setup data
+	Given I delete the record "Automation Funding Source Regression" from the object "Funding Source"
+	And I create a planning record as user "EXE" from sheet "Creation" in excel "FundingSource_Field_Values.xlsx"
+	| Actions 	 | Step 1 	   		| Step 2    	 	    |  Step 3 				    	 |
+	| Navigation | As a Grantor		| Planning  	 	    | Planning	    				 |
+	| FlexTable  | Funding Sources	| InternalFundingSource | Draft Internal Funding Sources |
+	| Creation   | New				| Save and Continue     | Cancel						 |
+	| ID		 | EGMS ID			|					    |								 |
+	
+	@creationOfFundingSource @fundingSource @all
+	Scenario: Creation of Funding Source
+	Then I see status in Progress-bar is "Created" and is "green"
+	
+	@editionOfFundingSource @fundingSource @all
+	Scenario: Edition of Funding Source
+	And I click on "Edit" in the page details
+	When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
+	And I click on "Save" in the page details
+	Then I see status in Progress-bar is "Created" and is "green"
+	
+	@addAttachmentToFundingSource @fundingSource @all
+	Scenario: Addition of Attachment to KPI
+    When I navigate to "Attachments" sub tab
+    And I click on top right button "Add" in flex table with id "a150b000001rv7VAAQ"
+    When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Supporting Documents"
+    And I close Modal
+    Then I see that "Supporting Documents" has been added in flextable with Id "a150b000001rv7VAAQ"
+    
+    @creationOfFundingAccount @fundingSource @all
+    Scenario: Creation of Funding Source
+    When I click on top right button "New" in flex table with id "flexGridFundingAccountsEnhancedGrid"
+	And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+	When I click modal button "Save and Continue"
+	And I click on "Cancel" in the page details
+	Then I see status in Progress-bar is "Created" and is "green"
+	
+	@editionOfFundingAccount @fundingSource @all
+    Scenario: Creation of Funding Source
+    Given I click on top right button "New" in flex table with id "flexGridFundingAccountsEnhancedGrid"
+	And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+	Given I click modal button "Save and Continue"
+	And I click on "Cancel" in the page details
+	When I click on "Edit" in the page details
+	And I enter "Funding Account Edition" values from "FundingSource_Field_Values.xlsx"
+	When I click on "Save" in the page details
+	Then I see status in Progress-bar is "Created" and is "green"
+	
+	@activateFundingAccount @fundingSource @all
+    Scenario: Creation of Funding Source
+    Given I click on top right button "New" in flex table with id "flexGridFundingAccountsEnhancedGrid"
+	And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+	Given I click modal button "Save and Continue"
+	And I click on "Cancel" in the page details
+	Given I complete the fields from the sheet "Funding Account Edition" in excel "FundingSource_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+	When I click on "Activate" in the page details
+	Then I see status in Progress-bar is "Active" and is "green"
+	
+	@fundingSourceHappyPath @fundingSource @all
+    Scenario: Creation of Funding Source
+    Given I complete the fields from the sheet "Edition" in excel "FundingSource_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+    And I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
+    | Attachment Navigation | Attachments | Add								 | a150b000001rv7VAAQ |
+    | Attachment Details    | Attachment  | Supporting Documents			 |					  |
+    And I navigate to "Overview" sub tab
+    Given I click on top right button "New" in flex table with id "flexGridFundingAccountsEnhancedGrid"
+	And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+	Given I click modal button "Save and Continue"
+	And I click on "Cancel" in the page details
+	Given I complete the fields from the sheet "Funding Account Edition" in excel "FundingSource_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+	And I click on "Activate" in the page details
+	When I click "fundingsource__c" lookup link
+	Then I see status in Progress-bar is "Active" and is "green"

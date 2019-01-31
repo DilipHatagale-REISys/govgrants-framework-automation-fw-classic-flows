@@ -2,12 +2,13 @@
 Feature: Validate all scenarios in Closeout
 
 	Background: Navigate to award
-	Given I login and view the record "Automation Announcement to be deleted Application" as "EXE"
+	Given I delete the record "Automation Announcement to be deleted Application" from the object "Closeout"
+	And I login and view the record "Automation Announcement to be deleted Application" as "EXE"
 	| Actions 			  | Step 1 	  	  | Step 2	 	 | Step 3  	 		    | Step 4 		  			   |
 	| Owner Navigation 	  | As a Grantor  | Grants		 | Grants and Subawards | Grants, Awards & Amendments  |
 	| Complete Review 	  | Active Grants | ActiveGrants | View 		  		| 			   				   |
 	
-    @creationOfAdhocCloseout @adhocCloseout @closeout
+    @creationOfAdhocCloseout @adhocCloseout @closeout @all
 	Scenario: To create an Adhoc Closeout Request
 	When I navigate to "Requests" sub tab
 	And I click on top right button "New" in flex table with id "flexGridGrantorCloseOutRequest"
@@ -16,7 +17,7 @@ Feature: Validate all scenarios in Closeout
 	When I click on "Save" in the page details
 	Then I see status in Progress-bar is "Created" and is "green"
 	
-	@editionOfCloseout @closeout
+	@editionOfCloseout @closeout @all
 	Scenario: To edit a Closout Request
 	Given I create a closeout from sheet "Creation" in excel "Closeout_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 			  |
@@ -29,7 +30,7 @@ Feature: Validate all scenarios in Closeout
 	When I click on "Save" in the page details
 	Then I see status in Progress-bar is "Created" and is "green"
 	
-	@assigningApproversInCloseout @closeout
+	@assigningApproversInCloseout @closeout @all
 	Scenario: To assign approvers Closout Request
 	Given I create a closeout from sheet "Creation" in excel "Closeout_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 			  |
@@ -46,7 +47,7 @@ Feature: Validate all scenarios in Closeout
    	When I switch to Parent frame
     Then I see that "Automation PM" has been added in flextable with Id "flexGridGrantorCloseoutRequestRolesAndResponsibilities"
     
-    @sendClosoutToSubrecipient @closeout
+    @sendClosoutToSubrecipient @closeout @all
     Scenario: Send Closout Request to Subrecipient
     Given I create a closeout from sheet "Creation" in excel "Closeout_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 			  |
@@ -65,7 +66,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Send To Subrecipient" in the page details
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
     
-    @subrecipientEntersFielsInCloseout @closeout
+    @subrecipientEntersFielsInCloseout @closeout @all
     Scenario: Subrecipient enters closeout fields
     Given I create a closeout from sheet "Creation" in excel "Closeout_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 			  |
@@ -92,7 +93,7 @@ Feature: Validate all scenarios in Closeout
 	When I click on "Save" in the page details
 	Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
 	
-	@subrecipientAcknowledgesCloseout @closeout
+	@subrecipientAcknowledgesCloseout @closeout @all
     Scenario: Subrecipient acknowledges the closeout
     Given I create a closeout from sheet "Creation" in excel "Closeout_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 			  |
@@ -120,7 +121,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Acknowledge" in the page details
     Then I see that "Closeout View" is in "Acknowledged by Subrecipient" status 
     
-    @overrideCloseout @closeout
+    @overrideCloseout @closeout @all
     Scenario: Grant owner overrides the closeout
     Given I create a closeout from sheet "Creation" in excel "Closeout_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 			  |
@@ -157,7 +158,7 @@ Feature: Validate all scenarios in Closeout
 	When I click on "Override" in the page details
 	Then I see status in Progress-bar is "Overridden" and is "green"
 	
-	@submitCloseoutForApproval @closeout
+	@submitCloseoutForApproval @closeout @all
     Scenario: Closeout is submitted for approval
     Given I create a closeout from sheet "Creation" in excel "Closeout_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 			  |
@@ -195,7 +196,7 @@ Feature: Validate all scenarios in Closeout
 	When I click on "Submit for Approval" in the page details
 	Then I see status in Progress-bar is "Submitted for Approval" and is "green"
     
-    @approvalOfCloseout @adhocCloseoutHappyPath @closeout
+    @approvalOfCloseout @adhocCloseoutHappyPath @closeout @all
     Scenario: Approval of Closeout
     Given I create a closeout from sheet "Creation" in excel "Closeout_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 			  |
@@ -238,7 +239,7 @@ Feature: Validate all scenarios in Closeout
 	| Approval 	 | Start 		 | Approve 		 | 					 |
 	Then I see status in Progress-bar is "Completed" and is "green"
 	
-	@scheduledCloseoutHappyPath @closeout
+	@scheduledCloseoutHappyPath @closeout @all
     Scenario Outline: Happy path of Scheduled closeout
     Given User "EXE" receives the task for "<Grant Name>"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
