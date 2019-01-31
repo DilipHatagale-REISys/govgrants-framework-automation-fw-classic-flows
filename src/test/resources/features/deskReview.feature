@@ -2,29 +2,30 @@
 Feature: Validate all scenarios in Desk Review
 
 	Background: Create Desk Review
-	Given I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "EXE"
+	Given I delete the record "Automation Desk Review Regression" from the object "Desk Review"
+	And I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "EXE"
 	| Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
     | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
-	And I create a post award record from sheet "Creation" in excel "DeskReview_Field_Values.xlsx"
+	Given I create a post award record from sheet "Creation" in excel "DeskReview_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		    | Step 2    		 	 |
 	| Navigation | Management		    | 			 			 |	
 	| FlexTable  | Initiate Desk Review | GrantorDeskReviewAward |
 	| Creation   | Save And Close	    | Cancel		 		 | 	
 
-	@deskReviewCreation @deskReview
+	@deskReviewCreation @deskReview @all
 	Scenario: Creation of Desk Review
     Then I see status in Progress-bar is "Created" and is "green"
 	
-	@deskReviewEdition @deskReview
+	@deskReviewEdition @deskReview @all
 	Scenario: Edition of Desk Review
 	When I click on "Edit" in the page details
 	And I enter "Edition" values from "DeskReview_Field_Values.xlsx"
 	When I click on "Save" in the page details
 	Then I see status in Progress-bar is "Created" and is "green"
 	
-	@participantAssociationDeskReview @deskReview
+	@participantAssociationDeskReview @deskReview @all
 	Scenario Outline: Participant Association of Desk Review
 	When I navigate to "Overview" sub tab
 	And I click on top right button "Associate" in flex table with id "GrantorSiteVisitContacts"
@@ -35,7 +36,7 @@ Feature: Validate all scenarios in Desk Review
 	| Subrecipient   |
 	| Automation SPI |
 	
-	@approverSelectionDeskReview @deskReview
+	@approverSelectionDeskReview @deskReview @all
 	Scenario Outline: Approver selection of Desk Review
 	When I navigate to "Responsibilities" sub tab
     And I click on "Edit" icon for "Program Approver" inside flex table with id "GrantorSiteVisitRolesandResponsibilities"
@@ -49,7 +50,7 @@ Feature: Validate all scenarios in Desk Review
 	| Program Approver Name | Fiscal Approver Name |
 	| Automation PM         | Automation FO        |
 	
-	@notifySubrecipientDeskReview @deskReview
+	@notifySubrecipientDeskReview @deskReview @all
 	Scenario: Notify Subrecipient about the Desk Review
 	Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -65,7 +66,7 @@ Feature: Validate all scenarios in Desk Review
 	And I click on "Notify" in the page details
 	Then I see status in Progress-bar is "Notified" and is "green"
 	
-	@notifyPendingTaskForSubrecipientDeskReview @deskReview
+	@notifyPendingTaskForSubrecipientDeskReview @deskReview @all
 	Scenario Outline: Subrecipient pending task check for Desk Review
 	Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -89,7 +90,7 @@ Feature: Validate all scenarios in Desk Review
 	| Award Name 				     	    	    	| Award EGMS ID | Desk Review Name	     |
 	| Automation Announcement to be deleted Application | AD-AuGr--01   | Automation Desk Review |
 	
-	@conductDeskReview @deskReview
+	@conductDeskReview @deskReview @all
 	Scenario Outline: Conduct Desk Review
 	Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -120,7 +121,7 @@ Feature: Validate all scenarios in Desk Review
 	| Award Name 				     	    	    	| Award EGMS ID | Desk Review Name	     |
 	| Automation Announcement to be deleted Application | AD-AuGr--01   | Automation Desk Review |
 	
-	@addingOutcomeDeskReview @deskReview
+	@addingOutcomeDeskReview @deskReview @all
 	Scenario Outline: Adding outcomes to Desk Review
 	Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -157,7 +158,7 @@ Feature: Validate all scenarios in Desk Review
 	| Award Name 				     	    	    	| Award EGMS ID | Desk Review Name	     |
 	| Automation Announcement to be deleted Application | AD-AuGr--01   | Automation Desk Review |
 	
-	@formFillingDeskReview @deskReview
+	@formFillingDeskReview @deskReview @all
 	Scenario Outline: Filling up of form in Desk Review
 	Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -190,7 +191,7 @@ Feature: Validate all scenarios in Desk Review
     | Automation Concern 	 | Automation Description | Concern 	   |
     | Automation Observation | Automation Description | Observation    |
 	And I navigate to "Reports and Outcomes" sub tab
-	When I click on "Edit" icon for "General Review Form" inside flex table with id "FormComponent"
+	When I click on "Edit" icon for "Financial Review Form" inside flex table with id "FormComponent"
 	And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
 	And I click on "Save" in the page details
 	When I click on "Back" in the page details
@@ -200,7 +201,7 @@ Feature: Validate all scenarios in Desk Review
 	| Award Name 				     	    	    	| Award EGMS ID | Desk Review Name	     |
 	| Automation Announcement to be deleted Application | AD-AuGr--01   | Automation Desk Review |
 	
-	@submittingForApprovalDeskReview @deskReview
+	@submittingForApprovalDeskReview @deskReview @all
 	Scenario Outline: Submitting Desk Review for approval
 	Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -232,7 +233,7 @@ Feature: Validate all scenarios in Desk Review
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
     | Automation Observation | Automation Description | Observation    |
-	And I fill in the form "General Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
+	And I fill in the form "Financial Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
 	| Actions 	  | Step 1   		 	 | Step 2		 |
 	| Navigation  | Reports and Outcomes | 			 	 |
 	| FlexTable   | Edit				 | FormComponent |
@@ -244,7 +245,7 @@ Feature: Validate all scenarios in Desk Review
 	| Award Name 				     	    	    	| Award EGMS ID | Desk Review Name	     |
 	| Automation Announcement to be deleted Application | AD-AuGr--01   | Automation Desk Review |
 	
-	@approvalOfDeskReview @deskReview
+	@approvalOfDeskReview @deskReview @all
 	Scenario Outline: Approval of Desk Review
 	Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -276,7 +277,7 @@ Feature: Validate all scenarios in Desk Review
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
     | Automation Observation | Automation Description | Observation    |
-	And I fill in the form "General Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
+	And I fill in the form "Financial Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
 	| Actions 	  | Step 1   		 	 | Step 2		 |
 	| Navigation  | Reports and Outcomes | 			 	 |
 	| FlexTable   | Edit				 | FormComponent |
@@ -300,7 +301,7 @@ Feature: Validate all scenarios in Desk Review
 	| Award Name 				     	    	    	| Award EGMS ID | Desk Review Name	     |
 	| Automation Announcement to be deleted Application | AD-AuGr--01   | Automation Desk Review |
 	
-	@deskReviewSendToSubrecipient @deskReview
+	@deskReviewSendToSubrecipient @deskReview @all
 	Scenario Outline: Send Desk Review to Subrecipient
 	Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -332,7 +333,7 @@ Feature: Validate all scenarios in Desk Review
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
     | Automation Observation | Automation Description | Observation    |
-	And I fill in the form "General Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
+	And I fill in the form "Financial Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
 	| Actions 	  | Step 1   		 	 | Step 2		 |
 	| Navigation  | Reports and Outcomes | 			 	 |
 	| FlexTable   | Edit				 | FormComponent |
@@ -356,7 +357,7 @@ Feature: Validate all scenarios in Desk Review
 	| Award Name 				     	    	    	| Award EGMS ID | Desk Review Name	     |
 	| Automation Announcement to be deleted Application | AD-AuGr--01   | Automation Desk Review |
 	
-	@deskReviewCorrectiveActionsBySubrecipient @deskReview
+	@deskReviewCorrectiveActionsBySubrecipient @deskReview @all
 	Scenario Outline: Send Desk Review to Subrecipient
 	Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -382,7 +383,7 @@ Feature: Validate all scenarios in Desk Review
 	| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
 	| Button 	 | View								 | 						            |
 	Given I click on "Conduct" in the page details
-	And I fill in the form "General Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
+	And I fill in the form "Financial Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
 	| Actions 	  | Step 1   		 	 | Step 2		 |
 	| Navigation  | Reports and Outcomes | 			 	 |
 	| FlexTable   | Edit				 | FormComponent |
@@ -431,7 +432,7 @@ Feature: Validate all scenarios in Desk Review
 	| Award Name 				     	    	    	| Award EGMS ID | Desk Review Name	     |
 	| Automation Announcement to be deleted Application | AD-AuGr--01   | Automation Desk Review |
 	
-	@deskReviewSubmitToGrantorBySubrecipient @deskReview
+	@deskReviewSubmitToGrantorBySubrecipient @deskReview @all
 	Scenario Outline: Send Desk Review to Subrecipient
 	Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -457,7 +458,7 @@ Feature: Validate all scenarios in Desk Review
 	| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
 	| Button 	 | View								 | 						            |
 	Given I click on "Conduct" in the page details
-	And I fill in the form "General Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
+	And I fill in the form "Financial Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
 	| Actions 	  | Step 1   		 	 | Step 2		 |
 	| Navigation  | Reports and Outcomes | 			 	 |
 	| FlexTable   | Edit				 | FormComponent |
@@ -507,7 +508,7 @@ Feature: Validate all scenarios in Desk Review
 	| Award Name 				     	    	    	| Award EGMS ID | Desk Review Name	     |
 	| Automation Announcement to be deleted Application | AD-AuGr--01   | Automation Desk Review |
 	
-	@deskReviewAcceptAndClose @deskReview
+	@deskReviewAcceptAndClose @deskReview @all
 	Scenario Outline: Send Desk Review to Subrecipient
 	Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -533,7 +534,7 @@ Feature: Validate all scenarios in Desk Review
 	| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
 	| Button 	 | View								 | 						            |
 	Given I click on "Conduct" in the page details
-	And I fill in the form "General Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
+	And I fill in the form "Financial Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
 	| Actions 	  | Step 1   		 	 | Step 2		 |
 	| Navigation  | Reports and Outcomes | 			 	 |
 	| FlexTable   | Edit				 | FormComponent |

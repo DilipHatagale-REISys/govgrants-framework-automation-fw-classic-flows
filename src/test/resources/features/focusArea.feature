@@ -3,7 +3,7 @@ Feature: Validate all scenarios in Focus Area
 
 	Background: To setup data
 	Given I delete the record "Automation Focus Area Regression" from the object "Focus Area"
-	Given I create a planning record as user "EXE" from sheet "Creation" in excel "FocusArea_Field_Values.xlsx"
+	And I create a planning record as user "EXE" from sheet "Creation" in excel "FocusArea_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	   | Step 3 				    |
 	| Navigation | As a Grantor		 | Planning  	 	   | Planning	    			|
 	| FlexTable  | Focus Areas	     | GrantorServiceAreas | Draft Focus Area	        |
