@@ -49,7 +49,7 @@ Feature: Validate all scenarios for program which does not require baackground
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "green"
 	Examples:
-	| User     | Program Name     		    | focus  | goals    | pgkpi      | pgcontact | pm_approver | exe_approver | ProgramUser  |  ExeUser   |
-	| OSCAR PM | Youth Program              | 02106  | SPO-0087 | KPI-0538   | George PM | Cathy PM    | Tommy EXE    | CATHY PM     | TOMMY EXE |
+	| User     | Program Name      | focus  | goals    | pgkpi      | pgcontact | pm_approver | exe_approver | ProgramUser  |  ExeUser   |
+	| OSCAR PM | Youth Program     | 02106  | SPO-0087 | KPI-0538   | George PM | Cathy PM    | Tommy EXE    | CATHY PM     | TOMMY EXE |
 
 

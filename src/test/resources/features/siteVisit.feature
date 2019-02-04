@@ -1,30 +1,31 @@
 @siteVisit
 Feature: Validate all scenarios in the Site Visit
 
-	Background: Create Site Visit
-	Given I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "EXE"
+	Background: Data setup for Site Visit
+	Given I delete the record "Automation Site Visit Regression" from the object "Site Visit"
+	And I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "EXE"
 	| Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
     | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
-	And I create a post award record from sheet "Creation" in excel "SiteVisit_Field_Values.xlsx"
+	Given I create a post award record from sheet "Creation" in excel "SiteVisit_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		   | Step 2    			    |
 	| Navigation | Management		   | 			 		    |	
 	| FlexTable  | Initiate Site Visit | GrantorSiteVisitsAward |
 	| Creation   | Save And Close	   | Cancel				 	| 	
 
-	@siteVisitCreation @siteVisit
+	@siteVisitCreation @siteVisit @all
 	Scenario: Creation of Site Visit
     Then I see status in Progress-bar is "Created" and is "green"
 	
-	@siteVisitEdition @siteVisit
+	@siteVisitEdition @siteVisit @all
 	Scenario: Edition of Site Visit
 	When I click on "Edit" in the page details
 	And I enter "Edition" values from "SiteVisit_Field_Values.xlsx"
 	When I click on "Save" in the page details
 	Then I see status in Progress-bar is "Created" and is "green"
 	
-	@participantAssociationSiteVisit @siteVisit
+	@participantAssociationSiteVisit @siteVisit @all
 	Scenario Outline: Participant Association of Site Visit
 	When I navigate to "Overview" sub tab
 	And I click on top right button "Associate" in flex table with id "GrantorSiteVisitContacts"
@@ -35,7 +36,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Subrecipient   |
 	| Automation SPI |
 	
-	@approverSelectionSiteVisit @siteVisit
+	@approverSelectionSiteVisit @siteVisit @all
 	Scenario Outline: Approver selection of Site Visit
 	When I navigate to "Responsibilities" sub tab
     And I click on "Edit" icon for "Program Approver" inside flex table with id "GrantorSiteVisitRolesandResponsibilities"
@@ -49,7 +50,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Program Approver Name | Fiscal Approver Name |
 	| Automation PM         | Automation FO        |
 	
-	@notifySubrecipientSiteVisit @siteVisit
+	@notifySubrecipientSiteVisit @siteVisit @all
 	Scenario: Notify Subrecipient about the Site Visit
 	Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -65,7 +66,7 @@ Feature: Validate all scenarios in the Site Visit
 	And I click on "Notify" in the page details
 	Then I see status in Progress-bar is "Notified" and is "green"
 	
-	@notifyPendingTaskForSubrecipientSiteVisit @siteVisit
+	@notifyPendingTaskForSubrecipientSiteVisit @siteVisit @all
 	Scenario Outline: Subrecipient pending task check for Site Visit
 	Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -89,7 +90,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Site Visit Name	    |
 	| Automation Site Visit |
 	
-	@conductSiteVisit @siteVisit
+	@conductSiteVisit @siteVisit @all
 	Scenario Outline: Conduct Site Visit
 	Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -120,7 +121,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Award Name 				     	    	    	| Site Visit Name	    |
 	| Automation Announcement to be deleted Application | Automation Site Visit |
 	
-	@addingOutcomeSiteVisit @siteVisit
+	@addingOutcomeSiteVisit @siteVisit @all
 	Scenario Outline: Adding outcomes to Site Visit
 	Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -157,7 +158,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Award Name 				     	    	    	| Site Visit Name	    |
 	| Automation Announcement to be deleted Application | Automation Site Visit |
 	
-	@formFillingSiteVisit @siteVisit
+	@formFillingSiteVisit @siteVisit @all
 	Scenario: Filling up of form in Site Visit
 	Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -197,7 +198,7 @@ Feature: Validate all scenarios in the Site Visit
 	And I click on top right button "Validate" in flex table with id "FormComponent"
 	Then I see that "100.00%" has been added in flextable with Id "FormComponent"
 	
-	@submittingForApprovalSiteVisit @siteVisit
+	@submittingForApprovalSiteVisit @siteVisit @all
 	Scenario: Submitting Site Visit for approval
 	Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -238,7 +239,7 @@ Feature: Validate all scenarios in the Site Visit
 	When I click on "Submit for Approval" in the page details
 	Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 	
-	@approvalOfSiteVisit @siteVisit
+	@approvalOfSiteVisit @siteVisit @all
 	Scenario Outline: Approval of Site Visit
 	Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -294,7 +295,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Site Visit Name	    |
 	| Automation Site Visit |
 	
-	@siteVisitSendToSubrecipient @siteVisit
+	@siteVisitSendToSubrecipient @siteVisit @all
 	Scenario Outline: Send Site Visit to Subrecipient
 	Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -350,7 +351,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Award Name 				     	    	    	| Site Visit Name	    |
 	| Automation Announcement to be deleted Application | Automation Site Visit |
 	
-	@siteVisitCorrectiveActionsBySubrecipient @siteVisit
+	@siteVisitCorrectiveActionsBySubrecipient @siteVisit @all
 	Scenario Outline: Send Site Visit to Subrecipient
 	Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -425,7 +426,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Award Name 				     	    	    	| Award EGMS ID | Site Visit Name	    |
 	| Automation Announcement to be deleted Application | AD-AuGr--01   | Automation Site Visit |
 	
-	@siteVisitSubmitToGrantorBySubrecipient @siteVisit
+	@siteVisitSubmitToGrantorBySubrecipient @siteVisit @all
 	Scenario Outline: Send Site Visit to Subrecipient
 	Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -501,7 +502,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Award Name 				     	    	    	| Award EGMS ID | Site Visit Name	    |
 	| Automation Announcement to be deleted Application | AD-AuGr--01   | Automation Site Visit |
 	
-	@siteVisitAcceptAndClose @siteVisit
+	@siteVisitAcceptAndClose @siteVisit @all
 	Scenario Outline: Send Site Visit to Subrecipient
 	Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|

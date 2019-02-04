@@ -2,14 +2,15 @@
 Feature: Validate all scenarios in Payment Request
 
 	Background: Navigate to award
-	Given I am on "SUBPORTAL" portal
-	And I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "SPI"
+	Given I delete the record "Automation Payment Request Regression" from the object "Payment Request"
+	And I am on "SUBPORTAL" portal
+	Given I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "SPI"
 	| Actions 	 | Step 1 	  	 | Step 2		 		   | Step 3  	 		   | Step 4						 |
     | Navigation | Grants Portal | Grants		 		   | Grants and Subawards  | Grants, Awards, Amendments  |
     | FlexTable  | Grants		 | RecipientActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RecipientsRelatedAwards1| View				   |							 |
 	
-	@38840 @creationOfAdhocReimbursementPaymentRequest @reimbursementPaymentRequest @paymentRequest
+	@38840 @creationOfAdhocReimbursementPaymentRequest @reimbursementPaymentRequest @paymentRequest @all
 	Scenario: To create an Adhoc Reimbursement Payment Request
 	When I navigate to "Requests" sub tab
 	And I click on top right button "Reimbursement Request" in flex table with id "flexGridRecipientsAwardPaymentRequests"
@@ -18,7 +19,7 @@ Feature: Validate all scenarios in Payment Request
 	When I click on "Save" in the page details
 	Then I see status in Progress-bar is "Created" and is "green"
 	
-	@38661 @EditionOfPaymentRequest @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest
+	@38661 @EditionOfPaymentRequest @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest @all
 	Scenario: To edit an Adhoc Reimbursement Payment Request
 	Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
 	| Actions 	 | Step 1 	  							  | Step 2		 		    | Step 3  	 		   | 
@@ -29,7 +30,7 @@ Feature: Validate all scenarios in Payment Request
 	When I click on "Save" in the page details
 	Then I see field "Acknowledgement" as "I Agree"
 	
-	@38660 @budgetAdditionPaymentRequest @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest
+	@38660 @budgetAdditionPaymentRequest @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest @all
 	Scenario: To edit the budget an Adhoc Reimbursement Payment Request
 	Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
 	| Actions 	 | Step 1 	  							  | Step 2		 		    | Step 3  	 		   | 
@@ -44,7 +45,7 @@ Feature: Validate all scenarios in Payment Request
  	| Construction 	  | 1000              | 500					 | 200		  | 200			   |
 	Then I see that "1000" has been added in flextable with Id "flexGridReimbursementRequestEnhanced"
 	
-	@paymentRequestAddAttachment @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest
+	@paymentRequestAddAttachment @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest @all
   	Scenario: Validate the attachment for Payment Request
   	Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
 	| Actions 	 | Step 1 	  							  | Step 2		 		    | Step 3  	 		   | 
@@ -56,7 +57,7 @@ Feature: Validate all scenarios in Payment Request
     And I close Modal
     Then I see that "Invoice" has been added in flextable with Id "a150b000003epDJAAY"
     
-    @paymentRequestSendToGrantor @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest
+    @paymentRequestSendToGrantor @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest @all
     Scenario: Send Payment Request to Grantor
     Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
 	| Actions 	 | Step 1 	  							  | Step 2		 		    | Step 3  	 		   | 
@@ -75,7 +76,7 @@ Feature: Validate all scenarios in Payment Request
     | Attachment Details    | Attachment  | Invoice |					 |
     When I click on "Submit to Grantor" in the page details
     
-    @enterFundingAccountAmountPaymentRequest @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest
+    @enterFundingAccountAmountPaymentRequest @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest @all
     Scenario: Enter Funding Account amount in Payment Request
     Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
 	| Actions 	 | Step 1 	  							  | Step 2		 		    | Step 3  	 		   | 
@@ -106,7 +107,7 @@ Feature: Validate all scenarios in Payment Request
  	| FA--21 	  	  | 1000             	  |
  	Then I see that "1000" has been added in flextable with Id "flexGridPaymentFundingAccountsEnhanced"
     
-    @approverSelectionPaymentRequest @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest
+    @approverSelectionPaymentRequest @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest @all
     Scenario: Selection of approvers in Payment Request
     Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
 	| Actions 	 | Step 1 	  							  | Step 2		 		    | Step 3  	 		   | 
@@ -141,7 +142,7 @@ Feature: Validate all scenarios in Payment Request
     And I close Modal
     Then I see that "Automation FO" has been added in flextable with Id "flexGridPaymentRequestRolesandResponsibilities"
     
-    @submitPaymentRequestForApproval @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest
+    @submitPaymentRequestForApproval @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest @all
     Scenario: Submitting Payment Request for approval
     Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
 	| Actions 	 | Step 1 	  							  | Step 2		 		    | Step 3  	 		   | 
@@ -177,7 +178,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
     
-    @approversApprovePaymentRequest @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest
+    @approversApprovePaymentRequest @reimbursementPaymentRequest @advancePaymentRequest @paymentRequest @all
     Scenario: Approval of Payment Request
     Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
 	| Actions 	 | Step 1 	  							  | Step 2		 		    | Step 3  	 		   | 
@@ -219,7 +220,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Approved" and is "green"
     
-    @paidPaymentRequest @adhocReimbursementHappyPath @reimbursementPaymentRequest @paymentRequest
+    @paidPaymentRequest @adhocReimbursementHappyPath @reimbursementPaymentRequest @paymentRequest @all
     Scenario: Paid Payment Request
     Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
 	| Actions 	 | Step 1 	  							  | Step 2		 		    | Step 3  	 		   | 
@@ -271,7 +272,7 @@ Feature: Validate all scenarios in Payment Request
 	And I close Modal
 	Then I see status in Progress-bar is "Paid" and is "green"
     
-    @adhocAdvanceHappyPath @advancePaymentRequest @paymentRequest
+    @adhocAdvanceHappyPath @advancePaymentRequest @paymentRequest @all
     Scenario: Advance Payment Request happy path
     Given I create a adhoc "Advance" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
 	| Actions 	 | Step 1 	  							  | Step 2		 		    | Step 3  	 		   | 
@@ -323,7 +324,7 @@ Feature: Validate all scenarios in Payment Request
 	And I close Modal
 	Then I see status in Progress-bar is "Paid" and is "green"
 	
-	@scheduledReimbursementHappyPath @reimbursementPaymentRequest @paymentRequest
+	@scheduledReimbursementHappyPath @reimbursementPaymentRequest @paymentRequest @all
     Scenario Outline: Scheduled Payment Request happy path
     Given User "SPI" receives the task for "<Award Name>"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
