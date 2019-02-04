@@ -1,8 +1,8 @@
-@program-standalone
-Feature: Validate all scenarios for program which does not require baackground
+@happyPath
+Feature: Validate all scenarios Happy Path across all modules
 
     @programHappyPathStandAlone
-  	Scenario Outline: Validate the activation of Internal Program
+  	Scenario Outline: Validate the Happy Path of Internal Program
   	Given I create a program as user "<Owner_user>" from sheet "Creation" in excel "Surya_Program_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 | Step 3 				    |
 	| Navigation | As a Grantor		 | Planning  	 	 |	Programs				|
