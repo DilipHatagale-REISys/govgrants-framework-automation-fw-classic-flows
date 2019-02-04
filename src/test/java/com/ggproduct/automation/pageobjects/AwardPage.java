@@ -22,7 +22,7 @@ public class AwardPage extends ProjectManager {
      * @param sheetName
      * @param excelFileName
      */
-    public void creationOfStanAloneAward(String user, String sheetName, String excelFileName, DataTable dataTable) {
+    public void creationOfStanAloneGrant(String user, String sheetName, String excelFileName, DataTable dataTable) {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         govgrants.mainPage().loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
@@ -48,15 +48,14 @@ public class AwardPage extends ProjectManager {
         govgrants.mainPage().loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), User);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
         govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 3"),
-                dataTableMap.get("Navigation").get("Step 4"));
+                dataTableMap.get("Navigation").get("Step 4")).click();
+        govgrants.phasePannel().clickDoubleArrowDropDownAndSelectItem(dataTableMap.get("FlexTable").get("Step 3"));
         govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 1"),
                 announcementName);
         govgrants.flexTable().clickTableActionIcons(dataTableMap.get("FlexTable").get("Step 2"), announcementName);
-        govgrants.flexTable().clickTableActionIcon(dataTableMap.get("FlexTable").get("Step 3"), applicationName,
-                dataTableMap.get("FlexTable").get("Step 4"));
-        govgrants.modal().handleModalAlert(dataTableMap.get("Buttons").get("Step 1"));
+        govgrants.flexTable().clickTableActionIcon(dataTableMap.get("FlexTable").get("Step 4"),
+                dataTableMap.get("Buttons").get("Step 1"), applicationName);
         govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("Buttons").get("Step 2"));
-        govgrants.pageDetails().getRecordId(dataTableMap.get("ID").get("Step 1"));
     }
 
     /**

@@ -7,7 +7,8 @@ import com.jayway.restassured.response.Response;
 public class ProjectWebServices {
     private RestfulWebServices apiCall = new RestfulWebServices();
     private static String endPoint = EnvironmentFetcher.environment;
-    private String defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9ic.6IFhNpPq_k9vYkenIh973gbcI2GBHkEu4.ukW4PZidcRmrQ6ma0lg.fdcZRtLB4IL1HgKKB87Y5Ab&client_secret=6105591870206036129&username=manu.sa@ggp.test7&password=GoProduct@123";
+    //private String defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9ic.6IFhNpPq_k9vYkenIh973gbcI2GBHkEu4.ukW4PZidcRmrQ6ma0lg.fdcZRtLB4IL1HgKKB87Y5Ab&client_secret=6105591870206036129&username=manu.sa@ggp.test7&password=GoProduct@123";
+    private String defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9aFryxgomHTZBf2tPqyBm7WXqJ9m8riTprIlwrhhdt_k0t0p9D4_Og9JkfkN42omlsHd28b5ISEK0G60t&client_secret=4618471559443918669&username=manu.sa@ggp.demo7&password=GoProduct@123";
     private static String tokenString;
     
     /**
@@ -39,6 +40,4 @@ public class ProjectWebServices {
         response.prettyPrint();
         assertStatusCode(response);
     }
-    
-    
 }

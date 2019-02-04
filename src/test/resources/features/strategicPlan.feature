@@ -142,7 +142,7 @@ Feature: Validate all scenarios in Strategic Plan
 	And I click on "Save" in the page details
 	When I navigate to "Related Logs" sub tab
 	And I click on top right button "Associate" in flex table with id "KPIGoalsandObjectives"
-	When I click "Associate" after selection of "Automation Program KPI" in the table "SelectKPIs"
+	When I click "Associate" after selection of "Automation KPI Program" in the table "SelectKPIs"
 	And I switch to Parent frame
 	Then I see that "Automation Program KPI" has been added in flextable with Id "KPIGoalsandObjectives"
 	
@@ -179,7 +179,7 @@ Feature: Validate all scenarios in Strategic Plan
     | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
     | Attachment Navigation | Attachments | Add								 | a150b000003epU7AAI |
     | Attachment Details    | Attachment  | Strategic Plan					 |					  |
-	Given I associate "1" records "Automation Program KPI"
+	Given I associate "1" records "Automation KPI Program"
 	| Actions 	  | Step 1       | Step 2	 | Step 3  			     | Step 4    | Step 5  	  |
     | Associate 1 | Related Logs | Associate | KPIGoalsandObjectives | Associate | SelectKPIs |
     And I click on "Back To Strategic Goal" in the page details

@@ -1410,29 +1410,30 @@ Feature: Validate all scenarios in the Award
 	@awardHappyPathFromFDM @award
   	Scenario Outline: Validate award Approval by respective approvers	
   	Given I create a subaward from the Announcement "Automation Announcement Jan25" for the Application "Automation App Jan25" as user "EXE"
-	 | Actions    | Step 1       | Step 2		| Step 3		  | Step 4 						|
-	 | Navigation | As a Grantor | Applications | Applications    | Funding Decision Memo (FDM) |
-	 | FlexTable  | FDMList1	 | View			| Create Subaward | Recommended Applications	|
-	 | Buttons 	  | Yes			 | Save			|				  |								|
-  	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
+	| Actions    | Step 1           | Step 2		| Step 3		     					  | Step 4 									|
+	| Navigation | As a Grantor     | Applications  | Application Review 					  | Funding Decision Memo (FDM) 			|
+	| FlexTable  | FDMList1	        | View			| Approved Funding Decision Memos (FDM)   | flexGridFundingDecisionMemoApplications	|
+	| Buttons 	  | Create Subaward | Save			|                             			  |											|
+	And I get the "EGMS ID"
+  	Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    Given I associate "3" records "FA--77,Automation Grant Focus Area,Automation Grant Objective"
+    Given I associate "2" records "02534,Automation Grant Objective"
 	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
-    | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
-    | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
-    | Associate 3 | Performance | Associate | GrantorAwardGoalsObjectives					| Associate | SelectAwardGoals 		   		 |
+    | Associate 1 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
+    | Associate 2 | Performance | Associate | GrantorAwardGoalsObjectives					| Associate | SelectAwardGoals 		   		 |
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
 	| FA--77 		  | 100000 		|
     And I edit the following rows inline in flex table with id "flexGridAwardBudgetCategoryFlexGrid" by clicking "Edit" :
 	| Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
-	| Construction    | 5000			 | 2000 	  | 3000		   |
+	| Equipment       | 1000			 | 2000	      | 300		 	   |
 	Given I navigate to "Performance" sub tab
 	And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardKeyOutcomes" by clicking "Edit" :
 	| EGMS ID     | Target |
-	| KPI-0419    | 10     |
+	| KPI-0419    | 5      |
+	| KPI-0420    | 5      |
 	And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
 	| Actions  | Step 1     | Step 2	   		   | Step 3 | Step 4 |
@@ -1538,4 +1539,4 @@ Feature: Validate all scenarios in the Award
 	Then I see status in Progress-bar is "Activated" and is "green"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
+	| Automation App Jan25				|

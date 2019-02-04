@@ -19,7 +19,7 @@ public class AwardSteps {
     
     @Given("^I create a Grant as user \"([^\"]*)\" from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
     public void creationOfStanAloneAward(String user,String sheetName, String excelFileName, DataTable dataTable) {
-        awardPage.creationOfStanAloneAward(user, sheetName, excelFileName, dataTable);
+        awardPage.creationOfStanAloneGrant(user, sheetName, excelFileName, dataTable);
     }
     
     @Given("^I create a subaward from the Announcement \"([^\"]*)\" for the Application \"([^\"]*)\" as user \"([^\"]*)\"$")

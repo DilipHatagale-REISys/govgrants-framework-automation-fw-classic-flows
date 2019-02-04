@@ -2,7 +2,7 @@
 Feature: Validate all scenarios for program
 
 	Background: Create Program
-	Given I delete the record "Automation Program Regression" from the object "Program"
+	Given I delete the record "Automation Program Jan4" from the object "Program"
 	And I create a planning record as user "EXE" from sheet "Creation" in excel "Program_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 | Step 3 				    |
 	| Navigation | As a Grantor		 | Planning  	 	 |	Programs				|
@@ -60,12 +60,12 @@ Feature: Validate all scenarios for program
   	Scenario Outline: Validate the association of Focus Area for the Internal Program
     When I navigate to "Setup" sub tab
     And I click on top right button "Add" in flex table with id "flexGridGrantorServiceAreasProgram"
-    When I click "Associate" after selection of "02492" in the table "SelectProgramServiceArea"
+    When I click "Associate" after selection of "03065" in the table "SelectProgramServiceArea"
     And I close Modal
     Then I see that "<EGMS Id>" has been added in flextable with Id "flexGridGrantorServiceAreasProgram"
 	Examples:
 	| EGMS Id |
-	| 00005   |
+	| 03065   |
 	
   	@34737 @programObjectiveAssociation @program @all
   	Scenario Outline: Validate the Association of Objective to the Internal Program
@@ -76,7 +76,7 @@ Feature: Validate all scenarios for program
     Then I see that "<EGMS Id>" has been added in flextable with Id "RelatedProgramGoalsandObjectives"
 	Examples:
 	| EGMS Id  |
-	| SPO-0071 |
+	| SPO-0085 |
 	
   	@34738 @programKPIAssociation @program @all
   	Scenario Outline: Validate the assignment of Approvers for the Internal Program
@@ -113,7 +113,7 @@ Feature: Validate all scenarios for program
     Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate "3" records "Automation EXE,02492,SPO-0071"
+    And I associate "3" records "Automation EXE,03065,SPO-0085"
     | Actions 	  | Step 1   | Step 2	 | Step 3  			  				  | Step 4 	  | Step 5  				 |
     | Associate 1 | Overview | Associate | ProgramContacts 				      | Add	  	  | AssociateProgramContacts |
     | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Add		  | SelectProgramServiceArea |
@@ -142,7 +142,7 @@ Feature: Validate all scenarios for program
     Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate "3" records "Automation EXE,02492,SPO-0071"
+    And I associate "3" records "Automation EXE,03065,SPO-0085"
     | Actions 	  | Step 1   | Step 2	 | Step 3  			  				  | Step 4 	  | Step 5  				 |
     | Associate 1 | Overview | Associate | ProgramContacts 				      | Add	  	  | AssociateProgramContacts |
     | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Add		  | SelectProgramServiceArea |
@@ -179,19 +179,19 @@ Feature: Validate all scenarios for program
     Then I see status in Progress-bar is "Approved" and is "green"
 	Examples:
 	| Program Approver | Program Name		  			  | Executive Approver |
-	| PM               | Automation Program to be deleted | EXE			  	   |
+	| PM               | Automation Program Regression    | EXE			  	   |
 	
   	@34756 @programActivation @programHappyPath @program @all
   	Scenario Outline: Validate the activation of Internal Program
     Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate "3" records "Automation EXE,02492,SPO-0071"
+    And I associate "3" records "Automation EXE,03065,SPO-0085"
     | Actions 	  | Step 1   | Step 2	 | Step 3  			  				  | Step 4 	  | Step 5  				 |
     | Associate 1 | Overview | Associate | ProgramContacts 				      | Add	  	  | AssociateProgramContacts |
     | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Add		  | SelectProgramServiceArea |
 	| Associate 3 | Setup 	 | Associate | RelatedProgramGoalsandObjectives   | Add	  	  | SelectGoals 		     |
-    Given I select "2" approvers "Automation PM, Automation EXE"
+    Given I select "2" approvers "Automation EXE,Automation PM"
     | Actions 	 | Step 1   				       | Step 2	| Step 3 			  |
     | Subtab	 | Responsibilities 			   | 		|		    		  |
     | Approver 1 | ProgramRolesAndResponsibilities | Edit   | Program Approver    |
@@ -208,12 +208,12 @@ Feature: Validate all scenarios for program
     | Attachment Navigation | Attachments | Add				  | a150b000003epY5AAI |
     | Attachment Details    | Attachment  | Program Artifacts | 				   |
     And I click on "Submit For Approval" in the page details
-    Given "2" Approvers "PM,EXE" approve the record "Record Id"
+    Given "2" Approvers "EXE,PM" approve the record "Record Id"
 	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
 	| Navigation | As a Grantor  | Planning		 | 				  	 |
 	| FlexTable  | Pending Tasks | MyTasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-    And I re-login to "As a Grantor" app as "<User>" user on "QA" portal
+    And I re-login to "As a Grantor" app as "<User>" user on "DEMO" portal
 	When I navigate to "Planning" tab
 	And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
 	And I click toggle button to select "Draft Internal Programs"
@@ -223,5 +223,6 @@ Feature: Validate all scenarios for program
     Then I see status in Progress-bar is "Active" and is "green"
 	Examples:
 	| User | Program Name  			        |
-	| EXE  | Automation Program Jan25    	|	
+	| EXE  | Automation Program Jan4		|	
+	
 	

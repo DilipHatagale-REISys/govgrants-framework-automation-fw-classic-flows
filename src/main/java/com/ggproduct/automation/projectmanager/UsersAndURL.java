@@ -1,10 +1,7 @@
 package com.ggproduct.automation.projectmanager;
 
-import java.io.IOException;
-
 import com.automation.rei.controller.EnvironmentFetcher;
 import com.automation.rei.controller.UsersController;
-import com.automation.rei.corelib.Properties_Logs;
 
 public class UsersAndURL implements UsersController{
 
@@ -30,7 +27,9 @@ public class UsersAndURL implements UsersController{
         if ((EnvironmentFetcher.environmentName != null) && (EnvironmentFetcher.environmentName.contains("QA"))) {
             userName = getQAEnvironmentUser(userLevel);
         } else if ((EnvironmentFetcher.environmentName != null) && (EnvironmentFetcher.environmentName.contains("UAT"))) {
-            // To be implemented
+         // To be implemented
+        }else if ((EnvironmentFetcher.environmentName != null) && (EnvironmentFetcher.environmentName.contains("DEMO"))) {
+           userName = getDemoEnvironmentUser(userLevel);
         } else {
             userName = getQAEnvironmentUser(userLevel);
         } 
@@ -44,11 +43,25 @@ public class UsersAndURL implements UsersController{
             password = getQAEnvironmentPassword(userLevel);
         } else if (EnvironmentFetcher.environmentName.contains("uat")) {
             // To be implemented
+        } else if (EnvironmentFetcher.environmentName.contains("DEMO")) {
+            password = getDemoEnvironmentPassword(userLevel);
         }
         return password;
     }
     
     public String getQAEnvironmentPassword(String userLevel) {
+        String password;    
+        switch (userLevel.toUpperCase()) {
+            case "SARAH PO":
+                password = "test72018";
+                break;
+            default:
+                password = "SALESFORCE2018";
+        }
+        return password;
+    }
+    
+    public String getDemoEnvironmentPassword(String userLevel) {
         String password;    
         switch (userLevel.toUpperCase()) {
             case "SARAH PO":
@@ -102,6 +115,52 @@ public class UsersAndURL implements UsersController{
             break;
         default:
             username = "admin.automation@product.com";
+        }
+        return username;
+    }
+    
+    public String getDemoEnvironmentUser(String userLevel) {
+        String username;
+
+        switch (userLevel.toUpperCase()) {
+        case "ADMIN":
+            username = "manu.sa@ggp.demo7";
+            break;
+        case "EXE":
+            username = "test@gmaildemo.com.demo7";
+            break;
+        case "PM":
+            username = "donald_pm@ggp.test7.demo7";
+            break;
+        case "PO":
+            username = "sdgdg45435dj@gmail.com.demo7";
+            break;
+        case "FO":
+            username = "auto.fm@auto.com.demo7";
+            break;
+        case "SPI":
+            username = "kyle.farrell@reisystems.com21.demo7";
+            break;
+        case "SIMON PM":
+            username = "simon_pm@ggp.test7";
+            break;
+        case "SARAH PO":
+            username = "sarah_po@ggp.test7";
+            break;
+        case "ALEX FO":
+            username = "alex_fo@ggp.test7";
+            break;
+        case "TOMMY EXE":
+            username = "tommy_exe@ggp.test7";
+            break;
+        case "CATHY PM":
+            username = "cathy_pm@ggp.test7";
+            break;
+        case "OSCAR PM":
+            username = "oscar_pm@ggp.test7";
+            break;
+        default:
+            username = "manu.sa@ggp.demo7";
         }
         return username;
     }

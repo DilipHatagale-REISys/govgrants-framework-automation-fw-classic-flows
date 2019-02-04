@@ -14,12 +14,12 @@ public class GenericSteps {
         projectManager = new ProjectManager(controller, reiDriver, govgrants);
     }
     
-    @Given("I delete the record \"([^\"]*)\" from the object \"([^\"]*)\"$")
+    @Given("^I delete the record \"([^\"]*)\" from the object \"([^\"]*)\"$")
     public void deleteTestData(String recordName, String objectType) {
         projectManager.automationDeletionApi(recordName, objectType);
     }
     
-    @Given("I get the \"([^\"]*)\"$")
+    @Given("^I get the \"([^\"]*)\"$")
     public void getRecordId(String recordIdLabel) {
         projectManager.getRecordId(recordIdLabel);
     }
