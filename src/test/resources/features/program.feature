@@ -181,4 +181,47 @@ Feature: Validate all scenarios for program
 	| Program Approver | Program Name		  			  | Executive Approver |
 	| PM               | Automation Program to be deleted | EXE			  	   |
 	
-  	
+  	@34756 @programActivation @programHappyPath @program @all
+     Scenario Outline: Validate the activation of Internal Program
+    Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
+    | Actions         | Step 1 | Step 2 |
+    | Edition Buttons | Edit   | Save   |
+    And I associate "3" records "Automation EXE,02492,SPO-0071"
+    | Actions     | Step 1   | Step 2 | Step 3                              | Step 4        | Step 5                   |
+    | Associate 1 | Overview | Associate | ProgramContacts                  | Add           | AssociateProgramContacts |
+    | Associate 2 | Setup  | Associate | flexGridGrantorServiceAreasProgram | Add           | SelectProgramServiceArea |
+    | Associate 3 | Setup  | Associate | RelatedProgramGoalsandObjectives   | Add           | SelectGoals              |
+    Given I select "2" approvers "Automation PM,Automation EXE"
+    | Actions    | Step 1                          | Step 2 | Step 3              |
+    | Subtab     | Responsibilities                |        |                     |
+    | Approver 1 | ProgramRolesAndResponsibilities | Edit   | Program Approver    |
+    | Approver 2 | ProgramRolesAndResponsibilities | Edit   | Executive Approver  |
+    When I navigate to "Setup" sub tab
+    When I enter the following values into flex table with id "flexGridProgramChecklists" by clicking "Add" :
+    | Description                  | Required  | Applies To  | Status |
+    | Automation test description | Mandatory | Application | Active |    
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "flexGridProgramChecklists"
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close Modal 
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions               | Step 1      | Step 2            | Step 3                   | 
+    | Attachment Navigation | Attachments | Add               | a150b000003epY5AAI       |
+    | Attachment Details    | Attachment  | Program Artifacts |                          |
+    And I click on "Submit For Approval" in the page details
+    Given "2" Approvers "PM,EXE" approve the record "Record Id"
+     | Actions    | Step 1        | Step 2       | Step 3            |
+     | Navigation | As a Grantor  | Planning     |                   |
+     | FlexTable  | Pending Tasks | MyTasks      | PhasePendingTasks |
+     | Approval   | Start         | Approve      |                   |
+    And I re-login to "As a Grantor" app as "<User>" user on "QA" portal
+     When I navigate to "Planning" tab
+     And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+     And I click toggle button to select "Draft Internal Programs"
+    And I perform quick search for "Record Id" in "Programs" panel
+    When I click on "View" icon for "Approved" inside table
+    And I click on "Activate" in the page details
+    Then I see status in Progress-bar is "Active" and is "green"
+     Examples:
+     | User | Program Name                |
+     | EXE  | Automation Program Jan25    |    
+	

@@ -1,7 +1,7 @@
 @program-standalone
 Feature: Validate all scenarios for program which does not require baackground
 
-   @1111 @programActivation @programHappyPath @programABC @all @smoke @regression
+    @programActivationStandAlone @programHappyPath @all @smoke @regression
   	Scenario Outline: Validate the activation of Internal Program
   	Given I create a program as user "<User>" from sheet "Creation" in excel "Surya_Program_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 | Step 3 				    |
