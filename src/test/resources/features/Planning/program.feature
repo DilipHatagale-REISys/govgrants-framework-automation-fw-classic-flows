@@ -1,14 +1,14 @@
 @program
 Feature: Validate all scenarios for program
 
-	#Background: Create Program
-	#Given I delete the record "Automation Program Regression" from the object "Program"
-	#And I create a planning record as user "EXE" from sheet "Creation" in excel "Program_Field_Values.xlsx"
-	#| Actions 	 | Step 1 	   		 | Step 2    	 	 | Step 3 				    |
-	#| Navigation | As a Grantor		 | Planning  	 	 |	Programs				|
-	#| FlexTable  | Internal Programs | Programs 	 	 | Draft Internal Programs  |
-	#| Creation   | New				 | Save and Continue | Save						|
-	#| ID		 | EGMS ID			 |					 |							|
+	Background: Create Program
+	Given I delete the record "Automation Program Regression" from the object "Program"
+	And I create a planning record as user "EXE" from sheet "Creation" in excel "Program_Field_Values.xlsx"
+	| Actions 	 | Step 1 	   		 | Step 2    	 	 | Step 3 				    |
+	| Navigation | As a Grantor		 | Planning  	 	 |	Programs				|
+	| FlexTable  | Internal Programs | Programs 	 	 | Draft Internal Programs  |
+	| Creation   | New				 | Save and Continue | Save						|
+	| ID		 | EGMS ID			 |					 |							|
 	
   	@34730 @programListView @program @all
   	Scenario Outline: Verifying if the EXE,PM,PO has access to Internal Programs list view
@@ -63,26 +63,6 @@ Feature: Validate all scenarios for program
     When I click "Add" after selection of "<EGMS Id>" in the table "SelectProgramServiceArea"
     And I close Modal
     Then I see that "<EGMS Id>" has been added in flextable with Id "flexGridGrantorServiceAreasProgram"
-	Examples:
-	| EGMS Id |
-	| 03065   |
-	
-	@programDeleteFocusAreaAssociation @program @all
-  	Scenario Outline: Validate the association of Focus Area for the Internal Program
-  	
-  	And I login to "As a Grantor" app as "EXE" user
-	When I navigate to "Planning" tab
-	And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-	And I click toggle button to select "Draft Internal Programs"
-	When I perform quick search for "Automation Program Jan11" in "Programs" panel
-	And I click on "View" icon for "Automation Program Jan11" inside table
-  	
-    When I navigate to "Setup" sub tab
-    And I click on top right button "Associate" in flex table with id "flexGridGrantorServiceAreasProgram"
-    When I click "Add" after selection of "<EGMS Id>" in the table "SelectProgramServiceArea"
-    And I close Modal
-    And I click on "Remove" icon for "<EGMS Id>" inside flex table with id "flexGridGrantorServiceAreasProgram"
-    Then I do not see value "<EGMS Id>" for title "EGMS ID" inside table "flexGridGrantorServiceAreasProgram"
 	Examples:
 	| EGMS Id |
 	| 03065   |

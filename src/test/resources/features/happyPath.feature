@@ -3,7 +3,7 @@ Feature: Validate all scenarios Happy Path across all modules
 
     @programHappyPathStandAlone
   	Scenario Outline: Validate the Happy Path of Internal Program
-  	Given I create a program as user "<Owner_user>" from sheet "Creation" in excel "Surya_Program_Field_Values.xlsx"
+  	Given I create a planning record as user "<Owner_user>" from sheet "Creation" in excel "Surya_Program_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 | Step 3 				    |
 	| Navigation | As a Grantor		 | Planning  	 	 |	Programs				|
 	| FlexTable  | Internal Programs | Programs 	 	 | Draft Internal Programs  |

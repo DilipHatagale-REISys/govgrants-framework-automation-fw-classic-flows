@@ -55,6 +55,9 @@ public class UsersAndURL implements UsersController{
             case "SARAH PO":
                 password = "test72018";
                 break;
+            case "ADMIN":
+                password = "GoProduct@123";
+                break;
             default:
                 password = "SALESFORCE2018";
         }
@@ -67,6 +70,9 @@ public class UsersAndURL implements UsersController{
             case "SARAH PO":
                 password = "test72018";
                 break;
+            case "ADMIN":
+                password = "GoProduct@123";
+                break;
             default:
                 password = "SALESFORCE2018";
         }
@@ -78,7 +84,7 @@ public class UsersAndURL implements UsersController{
 
         switch (userLevel.toUpperCase()) {
         case "ADMIN":
-            username = "admin.automation@product.com";
+            username = "manu.sa@ggp.test7";
             break;
         case "EXE":
             username = "test@gmaildemo.com";
@@ -114,7 +120,7 @@ public class UsersAndURL implements UsersController{
             username = "oscar_pm@ggp.test7";
             break;
         default:
-            username = "admin.automation@product.com";
+            username = "manu.sa@ggp.test7";
         }
         return username;
     }

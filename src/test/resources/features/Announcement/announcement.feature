@@ -14,6 +14,47 @@ Feature: Validate all scenarios in the Announcement tab
 	@33936 @announcementCreation @announcement @all
 	Scenario: Creation of an Announcement
 	Then I see status in Progress-bar is "Created" and is "green"
+	
+	@announcementCreatedDeleteAccessToOwner @announcement @all
+	Scenario Outline: Validate that owner can able to delete created status announcement
+	When I navigate to "Announcements" tab
+	And I perform quick search for "<Announcement Name>" in "ActiveFundingOpportunitiesAll" panel  
+ 	When  I click on "Delete" icon for "<Announcement Name>" inside flex table with id "ActiveFundingOpportunitiesAll"   
+	And I perform quick search for "<Announcement Name>" in "ActiveFundingOpportunitiesAll" panel 
+	Then I do not see value "<Announcement Name>" for title "Announcement Name" inside table "ActiveFundingOpportunitiesAll"  
+	Examples:
+	| Announcement Name		  |
+	| Automation Announcement |	
+	
+	@createdAnnouncementDeletionByOtherUser @announcement @all
+	Scenario Outline: Validate that other users are not able to delete created announcement
+	When I re-login to "As a Grantor" app as "<User>" user on "QA" portal
+	And I navigate to "Announcements" tab
+	When I perform quick search for "<Announcement Name>" in "ActiveFundingOpportunitiesAll" panel
+    Then I cannot see row level action button "Delete" against "<Announcement Name>" in flex table with id "ActiveFundingOpportunitiesAll"
+	Examples:
+	| Announcement Name		  | User |
+	| Automation Announcement |	PM   |
+	
+	@announcementEditionByOtherUser @announcement @all
+	Scenario Outline: Validate that other users are not able to edit created announcement
+	When I re-login to "As a Grantor" app as "<User>" user on "QA" portal
+	When I navigate to "Announcements" tab
+	And I perform quick search for "<Announcement Name>" in "ActiveFundingOpportunitiesAll" panel
+ 	Then I cannot see row level action button "Edit" against "<Announcement Name>" in flex table with id "ActiveFundingOpportunitiesAll"
+	Examples:
+	| Announcement Name		  | User |
+	| Automation Announcement |	PM   |
+	
+	@createdAnnouncementEditionOnlyOwner @announcement @all
+	Scenario Outline: Validate that only owner can able to edit created status announcement
+	When I navigate to "Announcements" tab
+	And I perform quick search for "<Announcement Name>" in "ActiveFundingOpportunitiesAll" panel
+ 	When I click on "Edit" icon for "<Announcement Name>" inside flex table with id "ActiveFundingOpportunitiesAll"
+	Then I can see top right button "Save" in page detail
+	Examples:
+	| Announcement Name		  |
+	| Automation Announcement |	
 
 	@34221 @34222 @announcementEdition @announcement @all
   	Scenario: Edition of an Announcement
@@ -71,6 +112,18 @@ Feature: Validate all scenarios in the Announcement tab
 	| EGMS Id |
 	| FA--77  |
 	
+	@announcementFADissociation @announcement @all
+	Scenario Outline: Funding Account dissociation to an Announcement	
+	When I navigate to "Financials" sub tab
+    And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
+    When I click "Add" after selection of "<EGMS Id>" in the table "SelectAnnFundingAccounts"
+    And I close Modal
+    When I click on "Remove" icon for "<EGMS Id>" inside flex table with id "flexGridAnnouncementFundingAccountGrantor"  
+	Then I do not see value "<EGMS Id>" for title "EGMS ID" inside table "AnnouncementGranteeStrategicGoalsObjectives" 
+	Examples:
+	| EGMS Id |
+	| FA--77  |
+	
   	@34771 @announcementBudgetPeriodAddition @announcement @all
   	Scenario Outline: Budget Period Addition to an Announcement
 	When I navigate to "Financials" sub tab
@@ -102,6 +155,18 @@ Feature: Validate all scenarios in the Announcement tab
     When I click "Add" after selection of "<EGMS Id>" in the table "SelectAnnGoals"
     And I close Modal
     Then I see that "<EGMS Id>" has been added in flextable with Id "AnnouncementGranteeStrategicGoalsObjectives"
+	Examples:
+	| EGMS Id  |
+	| SPO-0073 |
+	
+	@announcementObjectiveDissociation @announcement @all   
+	Scenario Outline: Validate the dissociation of objective to the Announcement 
+	When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
+    When I click "Add" after selection of "<EGMS Id>" in the table "SelectAnnGoals"
+    And I close Modal                                                                                  
+    When I click on "Remove" icon for "<EGMS Id>" inside flex table with id "AnnouncementGranteeStrategicGoalsObjectives"        
+    Then I do not see value "<EGMS Id>" for title "EGMS ID" inside table "AnnouncementGranteeStrategicGoalsObjectives"      
 	Examples:
 	| EGMS Id  |
 	| SPO-0073 |
@@ -261,6 +326,138 @@ Feature: Validate all scenarios in the Announcement tab
     Examples:
 	| Announcement Name		  |
 	| Automation Announcement |
+	
+	@submittedAnnouncementDeletion @announcement @all
+	Scenario Outline: Validate that only record owner cannot delete Submitted for Approval status announcements             
+	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+	And I associate "1" records "FA--77"
+	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
+    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
+	| Funding Account | Announcement Pre-Encumbrance |
+	| FA--77 		  | 100000 				         |
+	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
+	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
+	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
+	| Flextable  | Edit 	    | Save					| 						           |
+	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
+    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
+    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
+    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
+    | Subtab	 | Responsibilities 						   | 		|		    		  |
+    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
+    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
+    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+    | Actions 			   | Step 1 	   		       			  | Step 2	       | Step 3 	|
+    | Inline Column Title  | Description       	  	  			  | Required  	   | Applies To |
+    | Inline values 	   | Automation Description    			  | Mandatory	   | Award		|
+	| Checklist Navigation | Setup		      		   			  |   		   	   |			|
+	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
+	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
+	| Upload file     	   | Checklist 				   			  | Announcement   |			|
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
+    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
+    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
+	When I click on "Submit For Approval" in the page details
+	And I navigate to "Announcements" tab
+	When I perform quick search for "<Announcement Name>" in "ActiveFundingOpportunitiesAll" panel
+	Then I cannot see row level action button "Delete" against "<Announcement Name>" in flex table with id "ActiveFundingOpportunitiesAll"
+ 	Examples:
+	| Announcement Name		  |
+	| Automation Announcement |	
+	
+	@announcementForPastApplicationDueDate @announcement @all
+	Scenario: 	Validate that user can not enter application due date as past date
+	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+	And I associate "1" records "FA--77"
+	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
+    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
+	| Funding Account | Announcement Pre-Encumbrance |
+	| FA--77 		  | 100000 				         |
+	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
+	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
+	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
+	| Flextable  | Edit 	    | Save					| 						           |
+	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
+    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
+    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
+    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
+    | Subtab	 | Responsibilities 						   | 		|		    		  |
+    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
+    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
+    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+    | Actions 			   | Step 1 	   		       			  | Step 2	       | Step 3 	|
+    | Inline Column Title  | Description       	  	  			  | Required  	   | Applies To |
+    | Inline values 	   | Automation Description    			  | Mandatory	   | Award		|
+	| Checklist Navigation | Setup		      		   			  |   		   	   |			|
+	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
+	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
+	| Upload file     	   | Checklist 				   			  | Announcement   |			|
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
+    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
+    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
+	When I click on "Edit" in the page details
+	And  I navigate to "Overview" sub tab
+    And I enter value "2/10/2019" into field "ApplicationDueDate__c"    
+    When I click on "Save" in the page details
+	And I click on "Submit For Approval" in the page details
+	Then I see the following messages in the page details : 
+	| Overview Tab - Application Due Date cannot be in the past.|
+	
+	@announcementWithBlankBudgetPeriod @announcement @all
+	Scenario: 	Validate that user should not submit announcement with blank budget period dates
+	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+	And I associate "1" records "FA--77"
+	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
+    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
+	| Funding Account | Announcement Pre-Encumbrance |
+	| FA--77 		  | 100000 				         |
+	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
+    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
+    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
+    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
+    | Subtab	 | Responsibilities 						   | 		|		    		  |
+    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
+    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
+    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+    | Actions 			   | Step 1 	   		       			  | Step 2	       | Step 3 	|
+    | Inline Column Title  | Description       	  	  			  | Required  	   | Applies To |
+    | Inline values 	   | Automation Description    			  | Mandatory	   | Award		|
+	| Checklist Navigation | Setup		      		   			  |   		   	   |			|
+	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
+	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
+	| Upload file     	   | Checklist 				   			  | Announcement   |			|
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
+    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
+    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
+	When I navigate to "Financials" sub tab
+    And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
+    When I click on "Submit For Approval" in the page details
+	Then I see the following messages in the page details :
+	| Financial Tab - Correct Budget Periods Start Date and End Dates. Budget Periods should be continuous and together should form a Project Period.|	
 
   	@34763 @34765 @34766 @announcementApproval @announcement @all
   	Scenario Outline: Validate the approval of an Announcement
@@ -338,6 +535,542 @@ Feature: Validate all scenarios in the Announcement tab
 	Examples:
 	| Announcement Name		  |
 	| Automation Announcement |
+	
+	@announcementPendingTaskPostApproval @announcement @all
+	Scenario: Validate that after approval of an Announcement task get deleted from pending task table.
+	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+	And I associate "1" records "FA--77"
+	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
+    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
+	| Funding Account | Announcement Pre-Encumbrance |
+	| FA--77 		  | 100000 				         |
+	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
+	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
+	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
+	| Flextable  | Edit 	    | Save					| 						           |
+	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
+    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
+    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
+    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
+    | Subtab	 | Responsibilities 						   | 		|		    		  |
+    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
+    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
+    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+    | Actions 			   | Step 1 	   		       			  | Step 2	       | Step 3 	|
+    | Inline Column Title  | Description       	  	  			  | Required  	   | Applies To |
+    | Inline values 	   | Automation Description    			  | Mandatory	   | Award		|
+	| Checklist Navigation | Setup		      		   			  |   		   	   |			|
+	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
+	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
+	| Upload file     	   | Checklist 				   			  | Announcement   |			|
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
+    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
+    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
+	And I click on "Submit For Approval" in the page details
+	Given "1" Approvers "PM" approve the record "Record Id" 
+	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
+	| Navigation | As a Grantor  | Announcements | 				  	 |
+	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
+	| Approval 	 | Start 		 | Approve		 | 					 |
+	When I navigate to "Announcements" tab
+	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+	Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
+	
+	@announcementCompletedTaskPostApproval @announcement @all
+	Scenario: Validate that after approval of an Announcement task get added to its completed task table.
+	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+	And I associate "1" records "FA--77"
+	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
+    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
+	| Funding Account | Announcement Pre-Encumbrance |
+	| FA--77 		  | 100000 				         |
+	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
+	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
+	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
+	| Flextable  | Edit 	    | Save					| 						           |
+	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
+    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
+    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
+    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
+    | Subtab	 | Responsibilities 						   | 		|		    		  |
+    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
+    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
+    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+    | Actions 			   | Step 1 	   		       			  | Step 2	       | Step 3 	|
+    | Inline Column Title  | Description       	  	  			  | Required  	   | Applies To |
+    | Inline values 	   | Automation Description    			  | Mandatory	   | Award		|
+	| Checklist Navigation | Setup		      		   			  |   		   	   |			|
+	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
+	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
+	| Upload file     	   | Checklist 				   			  | Announcement   |			|
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
+    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
+    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
+	And I click on "Submit For Approval" in the page details
+	Given "1" Approvers "PM" approve the record "Record Id" 
+	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
+	| Navigation | As a Grantor  | Announcements | 				  	 |
+	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
+	| Approval 	 | Start 		 | Approve		 | 					 |
+	When I navigate to "Announcements" tab
+	And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhaseCompletedTasks" panel
+	Then I see value "Record Id" for title "EGMS ID" inside table "PhaseCompletedTasks"
+	
+	@announcementSendBackToOwner @announcement @all
+	Scenario: Validate the send back functionality of an Announcement
+	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+	And I associate "1" records "FA--77"
+	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
+    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
+	| Funding Account | Announcement Pre-Encumbrance |
+	| FA--77 		  | 100000 				         |
+	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
+	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
+	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
+	| Flextable  | Edit 	    | Save					| 						           |
+	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
+    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
+    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
+    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
+    | Subtab	 | Responsibilities 						   | 		|		    		  |
+    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
+    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
+    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+    | Actions 			   | Step 1 	   		       			  | Step 2	       | Step 3 	|
+    | Inline Column Title  | Description       	  	  			  | Required  	   | Applies To |
+    | Inline values 	   | Automation Description    			  | Mandatory	   | Award		|
+	| Checklist Navigation | Setup		      		   			  |   		   	   |			|
+	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
+	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
+	| Upload file     	   | Checklist 				   			  | Announcement   |			|
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
+    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
+    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
+	And I click on "Submit For Approval" in the page details 
+	Given I re-login to "As a Grantor" app as "PM" user
+	When I navigate to "Announcements" tab
+	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel          
+    And I click on "Start" icon for "Record Id" inside table
+    When I click on "Send Back" on the approval decision box
+    Then I see status in Progress-bar is "Created" and is "green"
+    
+    @announcementSendBackPendingTaskToOwner @announcement @all
+	Scenario: Validate that after send back from approvers owner should not get pending task 
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+	And I associate "1" records "FA--77"
+	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
+    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
+	| Funding Account | Announcement Pre-Encumbrance |
+	| FA--77 		  | 100000 				         |
+	And I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
+	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
+	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
+	| Flextable  | Edit 	    | Save					| 						           |
+	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
+    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
+    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
+    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+	And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
+    | Subtab	 | Responsibilities 						   | 		|		    		  |
+    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
+    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
+    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+    | Actions 			   | Step 1 	   		       			  | Step 2	       | Step 3 	|
+    | Inline Column Title  | Description       	  	  			  | Required  	   | Applies To |
+    | Inline values 	   | Automation Description    			  | Mandatory	   | Award		|
+	| Checklist Navigation | Setup		      		   			  |   		   	   |			|
+	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
+	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
+	| Upload file     	   | Checklist 				   			  | Announcement   |			|
+    And I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
+    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
+    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
+	And I click on "Submit For Approval" in the page details
+	Given "1" Approvers "PM" approve the record "Record Id"
+	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
+	| Navigation | As a Grantor  | Announcements | 				  	 |
+	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
+	| Approval 	 | Start 		 | Send Back 	 | 					 |
+	And I re-login to "As a Grantor" app as "<User>" user on "QA" portal
+	When I navigate to "Announcements" tab
+	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel              
+	Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks" 
+	
+	@announcementPostSendBackCheckFieldHistory @announcement @all
+	Scenario: Validate the field history after send back of an announcement
+	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+	And I associate "1" records "FA--77"
+	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
+    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
+	| Funding Account | Announcement Pre-Encumbrance |
+	| FA--77 		  | 100000 				         |
+	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
+	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
+	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
+	| Flextable  | Edit 	    | Save					| 						           |
+	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
+    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
+    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
+    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
+    | Subtab	 | Responsibilities 						   | 		|		    		  |
+    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
+    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
+    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+    | Actions 			   | Step 1 	   		       			  | Step 2	       | Step 3 	|
+    | Inline Column Title  | Description       	  	  			  | Required  	   | Applies To |
+    | Inline values 	   | Automation Description    			  | Mandatory	   | Award		|
+	| Checklist Navigation | Setup		      		   			  |   		   	   |			|
+	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
+	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
+	| Upload file     	   | Checklist 				   			  | Announcement   |			|
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
+    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
+    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
+	And I click on "Submit For Approval" in the page details
+	Given "1" Approvers "PM" approve the record "Record Id" 
+	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
+	| Navigation | As a Grantor  | Announcements | 				  	 |
+	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
+	| Approval 	 | Start 		 | Send Back	 | 					 |	
+	When I navigate to "History" sub tab
+	Then I see value "Created" for title "New Value" inside table "History"  
+	
+	@announcementApprovalRejection @announcement @all
+	Scenario: Validate the reject functionality of an Announcement
+	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+	And I associate "1" records "FA--77"
+	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
+    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
+	| Funding Account | Announcement Pre-Encumbrance |
+	| FA--77 		  | 100000 				         |
+	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
+	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
+	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
+	| Flextable  | Edit 	    | Save					| 						           |
+	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
+    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
+    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
+    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
+    | Subtab	 | Responsibilities 						   | 		|		    		  |
+    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
+    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
+    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+    | Actions 			   | Step 1 	   		       			  | Step 2	       | Step 3 	|
+    | Inline Column Title  | Description       	  	  			  | Required  	   | Applies To |
+    | Inline values 	   | Automation Description    			  | Mandatory	   | Award		|
+	| Checklist Navigation | Setup		      		   			  |   		   	   |			|
+	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
+	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
+	| Upload file     	   | Checklist 				   			  | Announcement   |			|
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
+    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
+    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
+	And I click on "Submit For Approval" in the page details
+	Given I re-login to "As a Grantor" app as "PM" user
+	When I navigate to "Announcements" tab
+	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel                   
+    And I click on "Start" icon for "Record Id" inside table
+    When I click on "Reject" on the approval decision box
+    Then I see status in Progress-bar is "Rejected" and is "Red"
+    
+    @announcementRejectPendingTaskForNextApprover @announcement @all
+	Scenario Outline: Validate that after rejection from 1st approver, 2nd user should not get pending task 
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+	And I associate "1" records "FA--77"
+	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
+    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
+	| Funding Account | Announcement Pre-Encumbrance |
+	| FA--77 		  | 100000 				         |
+	And I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
+	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
+	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
+	| Flextable  | Edit 	    | Save					| 						           |
+	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
+    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
+    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
+    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+	And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
+    | Subtab	 | Responsibilities 						   | 		|		    		  |
+    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
+    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
+    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+    | Actions 			   | Step 1 	   		       			  | Step 2	       | Step 3 	|
+    | Inline Column Title  | Description       	  	  			  | Required  	   | Applies To |
+    | Inline values 	   | Automation Description    			  | Mandatory	   | Award		|
+	| Checklist Navigation | Setup		      		   			  |   		   	   |			|
+	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
+	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
+	| Upload file     	   | Checklist 				   			  | Announcement   |			|
+    And I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
+    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
+    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
+	And I click on "Submit For Approval" in the page details
+	Given "1" Approvers "PM" approve the record "Record Id" 
+	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
+	| Navigation | As a Grantor  | Announcements | 				  	 |
+	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
+	| Approval 	 | Start 		 | Reject		 | 					 |
+	When I re-login to "As a Grantor" app as "<User>" user on "QA" portal
+	And I navigate to "Announcements" tab
+	When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "PhasePendingTasks" panel              
+	Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"  
+	Examples:
+	| User |
+	| FO   | 
+	
+	@announcementPostRejectPendingTaskForUser @announcement @all
+	Scenario: Validate that after rejection of an Announcement task get deleted from pending task table.
+	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+	And I associate "1" records "FA--77"
+	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
+    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
+	| Funding Account | Announcement Pre-Encumbrance |
+	| FA--77 		  | 100000 				         |
+	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
+	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
+	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
+	| Flextable  | Edit 	    | Save					| 						           |
+	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
+    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
+    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
+    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
+    | Subtab	 | Responsibilities 						   | 		|		    		  |
+    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
+    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
+    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+    | Actions 			   | Step 1 	   		       			  | Step 2	       | Step 3 	|
+    | Inline Column Title  | Description       	  	  			  | Required  	   | Applies To |
+    | Inline values 	   | Automation Description    			  | Mandatory	   | Award		|
+	| Checklist Navigation | Setup		      		   			  |   		   	   |			|
+	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
+	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
+	| Upload file     	   | Checklist 				   			  | Announcement   |			|
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
+    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
+    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
+	And I click on "Submit For Approval" in the page details
+	Given "1" Approvers "PM" approve the record "Record Id" 
+	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
+	| Navigation | As a Grantor  | Announcements | 				  	 |
+	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
+	| Approval 	 | Start 		 | Reject		 | 					 |
+	When I navigate to "Announcements" tab
+	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+	Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
+	
+	@announcementPostRejectCompletedTaskForUser @announcement @all
+	Scenario: Validate that after rejection of an Announcement task get added to it's completed task table.
+	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+	And I associate "1" records "FA--77"
+	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
+    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
+	| Funding Account | Announcement Pre-Encumbrance |
+	| FA--77 		  | 100000 				         |
+	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
+	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
+	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
+	| Flextable  | Edit 	    | Save					| 						           |
+	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
+    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
+    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
+    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
+    | Subtab	 | Responsibilities 						   | 		|		    		  |
+    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
+    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
+    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+    | Actions 			   | Step 1 	   		       			  | Step 2	       | Step 3 	|
+    | Inline Column Title  | Description       	  	  			  | Required  	   | Applies To |
+    | Inline values 	   | Automation Description    			  | Mandatory	   | Award		|
+	| Checklist Navigation | Setup		      		   			  |   		   	   |			|
+	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
+	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
+	| Upload file     	   | Checklist 				   			  | Announcement   |			|
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
+    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
+    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
+	And I click on "Submit For Approval" in the page details
+	Given "1" Approvers "PM" approve the record "Record Id" 
+	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
+	| Navigation | As a Grantor  | Announcements | 				  	 |
+	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
+	| Approval 	 | Start 		 | Reject		 | 					 |
+	When I navigate to "Announcements" tab
+	And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhaseCompletedTasks" panel
+	Then I see value "Record Id" for title "EGMS ID" inside table "PhaseCompletedTasks"
+	
+	@announcementPostRejectCheckFieldHistory @announcement @all
+	Scenario: Validate the field history after rejection of an announcement
+	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+	And I associate "1" records "FA--77"
+	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
+    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
+	| Funding Account | Announcement Pre-Encumbrance |
+	| FA--77 		  | 100000 				         |
+	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
+	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
+	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
+	| Flextable  | Edit 	    | Save					| 						           |
+	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
+    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
+    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
+    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
+    | Subtab	 | Responsibilities 						   | 		|		    		  |
+    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
+    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
+    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+    | Actions 			   | Step 1 	   		       			  | Step 2	       | Step 3 	|
+    | Inline Column Title  | Description       	  	  			  | Required  	   | Applies To |
+    | Inline values 	   | Automation Description    			  | Mandatory	   | Award		|
+	| Checklist Navigation | Setup		      		   			  |   		   	   |			|
+	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
+	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
+	| Upload file     	   | Checklist 				   			  | Announcement   |			|
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
+    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
+    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
+	And I click on "Submit For Approval" in the page details
+	Given "1" Approvers "PM" approve the record "Record Id" 
+	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
+	| Navigation | As a Grantor  | Announcements | 				  	 |
+	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
+	| Approval 	 | Start 		 | Reject		 | 					 |	
+	When I navigate to "History" sub tab
+	Then I see value "Rejected" for title "New Value" inside table "History"  
+	
+	@announcementPostRejectionCheckInListView @announcement @all
+	Scenario: Validate the rejected announcement will reflect under "Rejected Announcements" list view
+	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+	And I associate "1" records "FA--77"
+	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
+    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
+	| Funding Account | Announcement Pre-Encumbrance |
+	| FA--77 		  | 100000 				         |
+	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
+	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
+	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
+	| Flextable  | Edit 	    | Save					| 						           |
+	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
+    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
+    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
+    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
+    | Subtab	 | Responsibilities 						   | 		|		    		  |
+    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
+    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
+    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+    | Actions 			   | Step 1 	   		       			  | Step 2	       | Step 3 	|
+    | Inline Column Title  | Description       	  	  			  | Required  	   | Applies To |
+    | Inline values 	   | Automation Description    			  | Mandatory	   | Award		|
+	| Checklist Navigation | Setup		      		   			  |   		   	   |			|
+	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
+	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
+	| Upload file     	   | Checklist 				   			  | Announcement   |			|
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
+    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
+    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
+	And I click on "Submit For Approval" in the page details
+	Given "1" Approvers "PM" approve the record "Record Id" 
+	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
+	| Navigation | As a Grantor  | Announcements | 				  	 |
+	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
+	| Approval 	 | Start 		 | Reject		 | 					 |
+	When I navigate to "Announcements" tab
+	And I click toggle button to select "Rejected Announcements" in "ActiveFundingOpportunitiesAll"
+	When I perform quick search for "Record Id" in "ActiveFundingOpportunitiesAll" panel  
+	Then I see value "Record Id" for title "EGMS ID" inside table "ActiveFundingOpportunitiesAll"
 
   	@34462 @publishingCompetitiveAnnouncement @announcementCompetitiveHappyPath @announcement @all
   	Scenario Outline: Validate the activation of Internal Program
