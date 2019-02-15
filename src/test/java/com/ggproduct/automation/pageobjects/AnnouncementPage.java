@@ -2,12 +2,12 @@ package com.ggproduct.automation.pageobjects;
 
 import java.util.Map;
 
-import com.automation.rei.controller.Controller;
-import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 
 import cucumber.api.DataTable;
+import eyethink.automation.bots.controller.Controller;
+import eyethink.automation.bots.controller.CoreHandlers;
 
 public class AnnouncementPage extends ProjectManager {
     public AnnouncementPage(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
