@@ -4,12 +4,13 @@ Feature: Validate all scenarios in the Announcement tab
 	Background: Create Announcement
 	Given I delete the record "Automation Announcement Regression" from the object "Announcement"
 	And I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-	| Actions 	  | Step 1 	   	  					    | Step 2    	   	   		 | Step 3 							 |
-	| Navigation  | As a Grantor  						| Announcements 	   		 |									 |
-	| FlexTable   | Announcements 						| Draft Announcements 		 |  								 |
-	| FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-	| Creation    | New			  						| Save and Continue 	   	 | Save								 |
-	| ID		  | EGMS ID								|							 |									 |
+	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
+	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
+	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
+	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
+	| ID		   | EGMS ID							 |							  |									  |
+	Given I click on "Save" in the page details
 
 	@33936 @announcementCreation @announcement @all
 	Scenario: Creation of an Announcement
