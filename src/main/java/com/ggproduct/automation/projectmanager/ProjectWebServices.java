@@ -39,6 +39,4 @@ public class ProjectWebServices {
         response.prettyPrint();
         assertStatusCode(response);
     }
-    
-    
 }
