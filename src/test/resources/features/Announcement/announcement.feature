@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in the Announcement tab
 
 	Background: Create Announcement
-	Given I delete the record "Automation Announcement Regression" from the object "Announcement"
+	Given I delete the record "Automation Announcement Feb15" from the object "Announcement"
 	And I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
 	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
 	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
@@ -106,8 +106,8 @@ Feature: Validate all scenarios in the Announcement tab
     When I click "Add" after selection of "<EGMS Id>" in the table "SelectAnnFundingAccounts"
     And I close Modal
     When I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--77 		  | 100000 				         |
+	| Funding Account | Pre-Encumbrance |
+	| FA--77 		  | 100000 			|
 	Then I see that "<EGMS Id>" has been added in flextable with Id "flexGridAnnouncementFundingAccountGrantor"
 	Examples:
 	| EGMS Id |
@@ -187,8 +187,8 @@ Feature: Validate all scenarios in the Announcement tab
   	Scenario: Validate the attachment checklist of the announcement
     When I navigate to "Setup" sub tab
    	When I enter the following values into flex table with id "inlineEditGridAnnouncementChecklists" by clicking "Add" :
-    | Description        		  | Required  | Applies To |
-    | Automation test description | Mandatory | Award  	   |
+    | Description        		  | Required  | Applies To | Status |
+    | Automation test description | Mandatory | Award  	   | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "inlineEditGridAnnouncementChecklists"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
@@ -278,7 +278,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Announcement Pre-Encumbrance |
+	| Funding Account | Pre-Encumbrance |
 	| FA--77 		  | 100000 				         |
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
@@ -337,8 +337,8 @@ Feature: Validate all scenarios in the Announcement tab
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--77 		  | 100000 				         |
+	| Funding Account | Pre-Encumbrance |
+	| FA--77 		  | 100000 			|
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
 	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
@@ -383,8 +383,8 @@ Feature: Validate all scenarios in the Announcement tab
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--77 		  | 100000 				         |
+	| Funding Account | Pre-Encumbrance |
+	| FA--77 		  | 100000 			|
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
 	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
@@ -429,8 +429,8 @@ Feature: Validate all scenarios in the Announcement tab
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--77 		  | 100000 				         |
+	| Funding Account | Pre-Encumbrance |
+	| FA--77 		  | 100000 			|
 	Given I associate "3" records "Automation EXE,02493,SPO-0073"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
@@ -469,8 +469,8 @@ Feature: Validate all scenarios in the Announcement tab
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--77 		  | 100000 				         |
+	| Funding Account | Pre-Encumbrance |
+	| FA--77 		  | 100000 			|
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
 	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
@@ -546,8 +546,8 @@ Feature: Validate all scenarios in the Announcement tab
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--77 		  | 100000 				         |
+	| Funding Account | Pre-Encumbrance |
+	| FA--77 		  | 100000 			|
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
 	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
@@ -595,8 +595,8 @@ Feature: Validate all scenarios in the Announcement tab
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--77 		  | 100000 				         |
+	| Funding Account | Pre-Encumbrance |
+	| FA--77 		  | 100000 			|
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
 	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
@@ -644,8 +644,8 @@ Feature: Validate all scenarios in the Announcement tab
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--77 		  | 100000 				         |
+	| Funding Account | Pre-Encumbrance |
+	| FA--77 		  | 100000 			|
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
 	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
@@ -691,8 +691,8 @@ Feature: Validate all scenarios in the Announcement tab
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--77 		  | 100000 				         |
+	| Funding Account | Pre-Encumbrance |
+	| FA--77 		  | 100000 			|
 	And I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
 	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
@@ -741,8 +741,8 @@ Feature: Validate all scenarios in the Announcement tab
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--77 		  | 100000 				         |
+	| Funding Account | Pre-Encumbrance |
+	| FA--77 		  | 100000 			|
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
 	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
@@ -788,8 +788,8 @@ Feature: Validate all scenarios in the Announcement tab
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--77 		  | 100000 				         |
+	| Funding Account | Pre-Encumbrance |
+	| FA--77 		  | 100000 			|
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
 	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
@@ -835,8 +835,8 @@ Feature: Validate all scenarios in the Announcement tab
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--77 		  | 100000 				         |
+	| Funding Account | Pre-Encumbrance |
+	| FA--77 		  | 100000 			|
 	And I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
 	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
@@ -888,8 +888,8 @@ Feature: Validate all scenarios in the Announcement tab
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--77 		  | 100000 				         |
+	| Funding Account | Pre-Encumbrance |
+	| FA--77 		  | 100000 			|
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
 	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
@@ -937,8 +937,8 @@ Feature: Validate all scenarios in the Announcement tab
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--77 		  | 100000 				         |
+	| Funding Account | Pre-Encumbrance |
+	| FA--77 		  | 100000 			|
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
 	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
@@ -986,8 +986,8 @@ Feature: Validate all scenarios in the Announcement tab
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--77 		  | 100000 				         |
+	| Funding Account | Pre-Encumbrance |
+	| FA--77 		  | 100000 			|
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
 	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
@@ -1033,8 +1033,8 @@ Feature: Validate all scenarios in the Announcement tab
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--77 		  | 100000 				         |
+	| Funding Account | Pre-Encumbrance |
+	| FA--77 		  | 100000 			|
 	Given I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
 	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
@@ -1082,8 +1082,8 @@ Feature: Validate all scenarios in the Announcement tab
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--77 		  | 100000 				         |
+	| Funding Account | Pre-Encumbrance  |
+	| FA--77 		  | 100000 			 |
 	And I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
 	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
@@ -1116,18 +1116,18 @@ Feature: Validate all scenarios in the Announcement tab
 	| Reviewer Navigation | Responsibilities      | 					  |			|
 	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
 	| Send Review		  | Send for Review       | Created 			  |			|
-	And Review is completed as user "FO" for the record "Review Grantor Announcement" on "QA" portal
+	And Review is completed as user "FO" for the record "Record Id" on "QA" portal
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
 	| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	 Save		  		  | Submit Review   |
-	Given I login and view the record "<Announcement Name>" as "EXE"
+	Given I login and view the record "Record Id" as "EXE"
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
 	| Owner Navigation 	  | As a Grantor 		| Announcements 					  | Competitive   		  | Announcements   |
 	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesCompitive | View 		  		  | 			    |
 	Given I click on "Complete Review" in the page details
 	And I click on "Submit For Approval" in the page details
-	Given "3" Approvers "PM,FO,EXE" approve the record "Record Id"
+	Given "3" Approvers "PM,FO,EXE" approve the record "<Announcement Name>"
 	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
 	| Navigation | As a Grantor  | Announcements | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
@@ -1142,7 +1142,7 @@ Feature: Validate all scenarios in the Announcement tab
     Then I see status in Progress-bar is "Published" and is "green"
 	Examples:
 	| User | Announcement Name 			   |
-	| EXE  | Automation Announcement Jan25 |
+	| EXE  | Automation Announcement Feb15 |
 	
 	@34462 @publishingDirectedAnnouncement @announcementDirectedHappyPath @announcement @all
   	Scenario Outline: Validate the activation of Internal Program
@@ -1156,8 +1156,8 @@ Feature: Validate all scenarios in the Announcement tab
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--77 		  | 100000 				         |
+	| Funding Account | Pre-Encumbrance |
+	| FA--77 		  | 100000 			|
 	And I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
 	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
@@ -1233,8 +1233,8 @@ Feature: Validate all scenarios in the Announcement tab
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Announcement Pre-Encumbrance |
-	| FA--77 		  | 100000 				         |
+	| Funding Account | Pre-Encumbrance |
+	| FA--77 		  | 100000 			|
 	And I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
 	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
