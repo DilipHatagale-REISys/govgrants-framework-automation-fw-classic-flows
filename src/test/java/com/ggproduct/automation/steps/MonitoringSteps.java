@@ -2,13 +2,13 @@ package com.ggproduct.automation.steps;
 
 import java.io.IOException;
 
-import com.automation.rei.controller.Controller;
-import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.pageobjects.MonitoringPage;
 
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
+import eyethink.automation.bots.controller.Controller;
+import eyethink.automation.bots.controller.CoreHandlers;
 
 public class MonitoringSteps {
     MonitoringPage monitoringPage;

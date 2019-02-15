@@ -1,12 +1,12 @@
 package com.ggproduct.automation.steps;
 
-import com.automation.rei.controller.Controller;
-import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.pageobjects.AmendmentRequestPage;
 
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
+import eyethink.automation.bots.controller.Controller;
+import eyethink.automation.bots.controller.CoreHandlers;
 
 public class AmendmentRequestSteps {
     AmendmentRequestPage amendmentRequestPage;
