@@ -7,7 +7,7 @@ Feature: Validate all scenarios in Focus Area
 	| Actions 	 | Step 1 	   		 | Step 2    	 	   | Step 3 				    |
 	| Navigation | As a Grantor		 | Planning  	 	   | Planning	    			|
 	| FlexTable  | Focus Areas	     | GrantorServiceAreas | Draft Focus Area	        |
-	| Creation   | New				 | Save And Close      | Save						|
+	| Creation   | New				 | Save and Continue   | Save						|
 	| ID		 | EGMS ID			 |					   |							|
 
 	@creationOfFocusArea @focusArea @all

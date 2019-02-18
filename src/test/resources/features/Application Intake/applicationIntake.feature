@@ -5,7 +5,7 @@ Feature: Validate all scenarios in the Application Intake
 	Given I delete the record "Automation Application Regression" from the object "Application"
 	And I delete the record "Automation Announcement Regression" from the object "Qualified Announcement"
 	Given I am on "SUBPORTAL" portal
-	And I qualify the announcement "Automation Announcement Jan25" as user "SPI"
+	And I qualify the announcement "Automation Announcement Regression" as user "SPI"
 	| Actions 	 | Step 1 	      | Step 2		  | Step 3  | Step 4 	    |
 	| Navigation | Grants Portal  | Opportunities | Active  | Opportunities |
 	| FlexTable  | popupflextable | View		  | Qualify | 				|
@@ -37,7 +37,9 @@ Feature: Validate all scenarios in the Application Intake
 
   	@addBudgetDetailsToApplication @applicationIntake @all
   	Scenario Outline: Addition of budget in the budget grid to an application
-  	Given I add focus area "00005" to the application
+  	Given I associate "1" records "02493"
+	| Actions 	  | Step 1 | Step 2	   	    | Step 3  	   | Step 4  | Step 5  		  |
+    | Associate 1 | Budget | Add Focus Area | FocusAreaApp | Add	 | AddAppProjects |
   	When I navigate to "Budget" sub tab
     And I expand nested table containing column value "Proposed Budget" inside nested table containing "BP01"
     When I edit the following rows inline in flex table with id "flexGridEnhanceAppBudCatGrantorFlexGrid" by clicking "Edit" :
@@ -87,10 +89,9 @@ Feature: Validate all scenarios in the Application Intake
 	Given I complete the fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
 	| Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
- 	And I add focus area "02492" to the application
-	| Actions 	 | Step 1 | Step 2		   | Step 3 	  |
-	| Navigation | Budget | Add Focus Area | FocusAreaApp |
-	| FlexTable	 | Add 	  | AddAppProjects | 			  |
+    And I associate "1" records "02493"
+	| Actions 	  | Step 1 | Step 2	   	    | Step 3  	   | Step 4  | Step 5  		  |
+    | Associate 1 | Budget | Add Focus Area | FocusAreaApp | Add	 | AddAppProjects |
 	Given I expand nested table containing column value "BP01"
 	And I edit the following rows inline in flex table with id "flexGridEnhanceAppBudCatGrantorFlexGrid" by clicking "Edit" :
 	| Category Name | Budget | Cash Match | Non-Cash Match |
@@ -122,10 +123,9 @@ Feature: Validate all scenarios in the Application Intake
   	Given I complete the fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
 	| Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-	And I add focus area "00005" to the application
-	| Actions 	 | Step 1 | Step 2		   | Step 3 	  |
-	| Navigation | Budget | Add Focus Area | FocusAreaApp |
-	| FlexTable	 | Add 	  | popupflextable | 			  |
+    And I associate "1" records "02493"
+	| Actions 	  | Step 1 | Step 2	   	    | Step 3  	   | Step 4  | Step 5  		  |
+    | Associate 1 | Budget | Add Focus Area | FocusAreaApp | Add	 | AddAppProjects |
 	Given I expand nested table containing column value "Proposed Budget" inside nested table containing "BP01"
 	And I edit the following rows inline in flex table with id "inlineEditGridApplicationBudgetCategoryGrantorFlexGrid" by clicking "Edit" :
 	| Category Name | Budget | Cash Match | Non-Cash Match |
@@ -158,4 +158,4 @@ Feature: Validate all scenarios in the Application Intake
 	When I click on "View" icon for "<Application Name>" inside table
 	Examples:
 	| User | Application Name                    |
-	| EXE  | Automation Announcement Application |
+	| EXE  | Automation Application Regression	 |
