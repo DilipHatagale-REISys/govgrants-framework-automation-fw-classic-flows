@@ -1,5 +1,5 @@
-@award
-Feature: Validate all scenarios in the Award
+@awardStandAlone
+Feature: Validate all scenarios in the Stand Alone Award and Grant
 
 	Background: Create Award from FDM
 	Given I delete the record "Automation Grant Regression" from the object "Grant"
@@ -14,19 +14,19 @@ Feature: Validate all scenarios in the Award
 	And I navigate to "Subawards" sub tab
 	Given I click on "View" icon for "Created" inside flex table with id "RelatedAwards1"
 	And I get the "EGMS ID"
-		
-	@38213 @awardCreation @award
+	
+	@38213 @awardStanAloneCreation @awardStanAlone
 	Scenario: Creation of an award
 	Then I see status in Progress-bar is "Created" and is "green"
 	
-	@38217 @awardStandAloneEdition @award
+	@38217 @awardStandAloneEdition @awardStanAlone
 	Scenario: Edition of an award
 	When I click on "Edit" in the page details
 	And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
 	When I click on "Save" in the page details
 	Then I see status in Progress-bar is "Created" and is "green"
 	
-	@awardStandAloneFundingAccount @award
+	@awardStandAloneFundingAccount @awardStanAlone
  	Scenario Outline: Funding Account budget addition to Award
 	When I navigate to "Budget" sub tab
 	And I click on top right button "Associate" in flex table with id "flexGridAwardFundingAccounts"
@@ -40,7 +40,7 @@ Feature: Validate all scenarios in the Award
 	| EGMS Id |
 	| FA--77  |
 	
-	@34775 @awardStanAloneFocusAreaAssociation @award
+	@34775 @awardStanAloneFocusAreaAssociation @awardStanAlone
   	Scenario Outline: Validate the association of Focus Area to Award
     When I navigate to "Budget" sub tab
     And I click on top right button "Associate" in flex table with id "inlineEditGridGrantorAwardServiceAreas"
@@ -51,7 +51,7 @@ Feature: Validate all scenarios in the Award
 	| EGMS Id |
 	| 02534   |
 	
-	@awardStandAloneBudgetEdition @award
+	@awardStandAloneBudgetEdition @awardStanAlone
   	Scenario: Budget addition to Award
 	When I navigate to "Budget" sub tab
     When I edit the following rows inline in flex table with id "inlineEditGridLineItem" by clicking "Edit" :
@@ -59,7 +59,7 @@ Feature: Validate all scenarios in the Award
 	| Construction    | 2000 	   | 
     Then I see that "Construction" has been added in flextable with Id "inlineEditGridAwardBudgetCategoryFlexGrid"
     
-    @34775 @awardStanAloneObjectiveAssociation @award
+    @34775 @awardStanAloneObjectiveAssociation @awardStanAlone
   	Scenario: Validate the association of Objective to Award
     When I navigate to "Performance" sub tab
     And I click on top right button "Associate" in flex table with id "GrantorAwardGoalsObjectives"
@@ -67,7 +67,7 @@ Feature: Validate all scenarios in the Award
     And I close Modal
     Then I see that "Automation Grant Objective" has been added in flextable with Id "GrantorAwardGoalsObjectives"
 	
-	@34775 @awardStanAloneKPIAssociation @award
+	@34775 @awardStanAloneKPIAssociation @awardStanAlone
   	Scenario Outline: Validate the association of KPI to Award
     When I navigate to "Performance" sub tab
     And I click on top right button "Associate" in flex table with id "inlineEditGridGrantorAwardServiceAreas"
@@ -81,60 +81,7 @@ Feature: Validate all scenarios in the Award
 	| EGMS Id  |
 	| KPI-0419 |
 	
-	@awardPaymentRequestSchedule @award
-  	Scenario: Payment Request Schedule in an award
-	When I navigate to "Management" sub tab
-   	And I click on top right button "New" in flex table with id "flexGridPaymentSchedules"
-    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
-    And I click modal button "Save"
-    When I close Modal
-    Then I see that "Payment Request" has been added in flextable with Id "flexGridPaymentSchedules"
-	
-	@awardProgressReportSchedule @award
-  	Scenario: Progress Report Schedule in an award
-	When I navigate to "Management" sub tab
-   	And I click on top right button "New" in flex table with id "flexGridTnCSchedules"
-    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
-    And I click modal button "Save"
-    When I close Modal
-    Then I see that "Progress Report" has been added in flextable with Id "flexGridTnCSchedules"
-	
-	@awardRiskAssessmentCreation @award
-  	Scenario: Risk Assessment creation in an award
-	When I navigate to "Management" sub tab
-   	And I click on top right button "New" in flex table with id "flexGridAwardRiskAssessmentView"
-    When I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    Then I see status in Progress-bar is "Created" and is "green"
-	
-	@awardRiskAssessmentApproverSelection @award
-  	Scenario: Risk Assessment approver selection in an award
-    Given I create a monitoring record from sheet "Risk Assessment" in excel "Award_Field_Values.xlsx"
-    | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4 |
-    | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save   |
-    When I navigate to "Responsibilities" sub tab
-    And I click on "Edit" icon for "Program Approver" inside flex table with id "GrantorRiskAssessmentRolesandResponsibilities"
-    When I fill in the "Automation PM" for the Approver details
-    And I close Modal
-    When I click on "Edit" icon for "Fiscal Approver" inside flex table with id "GrantorRiskAssessmentRolesandResponsibilities"
-    And I fill in the "Automation FO" for the Approver details
-    When I close Modal
-    Then I see that "Automation PM" has been added in flextable with Id "GrantorRiskAssessmentRolesandResponsibilities"
-	
-	@awardRiskAssessmentSubmitForApproval @award
-  	Scenario: Risk Assessment submission for approval in an award
-    Given I create a monitoring record from sheet "Risk Assessment" in excel "Award_Field_Values.xlsx"
-    | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4 |
-    | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save   |
-    Given I select "2" approvers "Automation PM,Automation FO"
-    | Actions 	 | Step 1   				      				 | Step 2 | Step 3 			   |
-    | Subtab	 | Responsibilities 			 				 | 		  |		    		   |
-    | Approver 1 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Program Approver   |
-    | Approver 2 | GrantorRiskAssessmentRolesandResponsibilities | Edit	  | Executive Approver |
-    When I click on "Submit for Approval" in the page details
-    Then I see status in Progress-bar is "Submitted for Approval" and is "green"
-	
-	@awardRiskAssessmentApprovalAndActivation @award
+	@awardStanAloneRiskAssessmentApprovalAndActivation @awardStanAlone
   	Scenario: Risk Assessment approval in an award
     Given I create a monitoring record from sheet "Risk Assessment" in excel "Award_Field_Values.xlsx"
     | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4 |
@@ -159,7 +106,7 @@ Feature: Validate all scenarios in the Award
     And I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Active" and is "green"
 	
-	@awardApproverSelection @award
+	@awardStanAloneApproverSelection @awardStanAlone
   	Scenario: Validate the assignment of Approvers for the award
     When I navigate to "Responsibilities" sub tab
     And I click on "Edit" icon for "Program Approver" inside flex table with id "GrantorAwardApprover"
@@ -173,7 +120,7 @@ Feature: Validate all scenarios in the Award
     And I close Modal
     Then I see that "Automation EXE" has been added in flextable with Id "GrantorAwardApprover"
 	
-	@awardSendToRecipientBeforeApproval @award
+	@awardStanAloneSendToRecipientBeforeApproval @awardStanAlone
   	Scenario Outline: Validate the assignment of Approvers for the award 
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -235,7 +182,7 @@ Feature: Validate all scenarios in the Award
 	| Award Name 				     	    	|
 	| Automation Grant Regression				|
 	
-	@awardAcceptanceByRecipientBeforeApproval @award
+	@awardStanAloneAcceptanceByRecipientBeforeApproval @awardStanAlone
   	Scenario Outline: Validate the assignment of Approvers for the award 
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -305,9 +252,9 @@ Feature: Validate all scenarios in the Award
 	| Award Name 				     	    	|
 	| Automation Grant Regression				|
 	
-	@awardReviewerAssignment @award
+	@awardStanAloneReviewerAssignment @awardStanAlone
   	Scenario Outline: Validate the assignment of Reviewer for the award
-  	Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
+  	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
   	And I navigate to "Budget" sub tab
@@ -374,7 +321,7 @@ Feature: Validate all scenarios in the Award
 	| Award Name 				     	    	|
 	| Automation Grant Regression				|
 	
-	@awardReviewerInitiation @award
+	@awardStanAloneReviewerInitiation @awardStanAlone
   	Scenario Outline: Validate initiation of review for the award 
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -456,7 +403,7 @@ Feature: Validate all scenarios in the Award
 	| Award Name 				     	    	|
 	| Automation Grant Regression				|
 	
-	@awardReviewComplete @award
+	@awardStanAloneReviewComplete @awardStanAlone
   	Scenario Outline: Validate completion of review for the award 
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -545,7 +492,7 @@ Feature: Validate all scenarios in the Award
 	| Award Name 				     	    	|
 	| Automation Grant Regression				|
 	
-	@awardSubmissionForApproval @award
+	@awardStanAloneSubmissionForApproval @awardStanAlone
   	Scenario Outline: Validate award submission for approval	
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -635,7 +582,7 @@ Feature: Validate all scenarios in the Award
 	| Award Name 				     	    	|
 	| Automation Grant Regression				|
 	
-	@awardApproval @award
+	@awardStanAloneApproval @awardStanAlone
   	Scenario Outline: Validate award Approval by respective approvers	
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -743,7 +690,7 @@ Feature: Validate all scenarios in the Award
 	| Award Name 				     	    	|
 	| Automation Grant Regression				|
 	
-	@awardSendToRecipientAfterApproval @award
+	@awardStanAloneSendToRecipientAfterApproval @awardStanAlone
   	Scenario Outline: Validate award Approval by respective approvers	
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -847,7 +794,7 @@ Feature: Validate all scenarios in the Award
 	| Award Name 				     	    	|
 	| Automation Grant Regression				|
 	
-	@awardAcceptanceByRecipientAfterApproval @award
+	@awardStanAloneAcceptanceByRecipientAfterApproval @awardStanAlone
   	Scenario Outline: Validate award Approval by respective approvers	
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -955,9 +902,9 @@ Feature: Validate all scenarios in the Award
 	| Award Name 				     	    	|
 	| Automation Grant Regression				|
 	
-	@awardActivation @award
+	@awardStanAloneActivation @awardStanAlone
   	Scenario Outline: Validate award Approval by respective approvers	
-  	Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
+  	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
   	And I navigate to "Budget" sub tab
@@ -1045,7 +992,7 @@ Feature: Validate all scenarios in the Award
 	| Award Name 				     	    	|
 	| Automation Grant Regression				|
 	
-	@awardSiteVisit @award
+	@awardStanAloneSiteVisit @awardStanAlone
   	Scenario Outline: Validate award Approval by respective approvers	
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -1162,7 +1109,7 @@ Feature: Validate all scenarios in the Award
 	| Award Name 				     	    	|
 	| Automation Grant Regression				|
 	
-	@awardDeskReview @award
+	@awardStandAloneDeskReview @awardStandAlone
   	Scenario Outline: Validate award Approval by respective approvers	
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -1277,9 +1224,9 @@ Feature: Validate all scenarios in the Award
     Then I see status in Progress-bar is "Created" and is "green"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
+	| Automation Grant Regression				|	
 	
-	@awardHappyPathStandAlone @award
+	@awardHappyPathStandAlone @awardFromFDM
   	Scenario Outline: Validate award Approval by respective approvers	
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -1406,137 +1353,3 @@ Feature: Validate all scenarios in the Award
 	Examples:
 	| Award Name 				     	    	|
 	| Automation Grant Regression				|
-	
-	@awardHappyPathFromFDM @award
-  	Scenario Outline: Validate award Approval by respective approvers	
-  	Given I create a subaward from the Announcement "Automation Announcement Jan25" for the Application "Automation App Jan25" as user "EXE"
-	| Actions    | Step 1           | Step 2		| Step 3		     					  | Step 4 									|
-	| Navigation | As a Grantor     | Applications  | Application Review 					  | Funding Decision Memo (FDM) 			|
-	| FlexTable  | FDMList1	        | View			| Approved Funding Decision Memos (FDM)   | flexGridFundingDecisionMemoApplications	|
-	| Buttons 	  | Create Subaward | Save			|                             			  |											|
-	And I get the "EGMS ID"
-  	Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
-    | Actions 		  | Step 1 | Step 2	|
-    | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "02534,Automation Grant Objective"
-	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
-    | Associate 1 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
-    | Associate 2 | Performance | Associate | GrantorAwardGoalsObjectives					| Associate | SelectAwardGoals 		   		 |
-  	And I navigate to "Budget" sub tab
-    Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
-  	| Funding Account | Encumbrance |
-	| FA--77 		  | 100000 		|
-    And I edit the following rows inline in flex table with id "flexGridAwardBudgetCategoryFlexGrid" by clicking "Edit" :
-	| Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
-	| Equipment       | 1000			 | 2000	      | 300		 	   |
-	Given I navigate to "Performance" sub tab
-	And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardKeyOutcomes" by clicking "Edit" :
-	| EGMS ID     | Target |
-	| KPI-0419    | 5      |
-	| KPI-0420    | 5      |
-	And I navigate to "Management" sub tab
-  	Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   | Step 3 | Step 4 |
-    | Creation | Management | flexGridTnCSchedules | New    | Save   |
-    And I close Modal
-  	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 |
-    | Creation | Management | flexGridPaymentSchedules | New    | Save   |
-    And I close Modal
-  	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
-    | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
-    | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
-    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
-	When I click on "Save" in the page details
-    Given I select "2" approvers "Automation PM,Automation FO"
-    | Actions 	 | Step 1   				      				 | Step 2 | Step 3 			   |
-    | Subtab	 | Responsibilities 			 				 | 		  |		    		   |
-    | Approver 1 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Program Approver   |
-    | Approver 2 | GrantorRiskAssessmentRolesandResponsibilities | Edit	  | Fiscal Approver    |
-    And I click on "Submit for Approval" in the page details
-    Given "2" Approvers "PM,FO" approve the record "Approve Subaward Risk Assessment"
-	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
-	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
-	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
-	| Approval 	 | Start 		 | Approve 		 | 					 |
-    And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
-    | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
-    | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
-    | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
-    Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-    | Actions 	 | Step 1   				    		| Step 2 | Step 3 			   |
-    | Subtab	 | Responsibilities 					| 		 |		    		   |
-    | Approver 1 | GrantorAwardRolesAndResponsibilities | Edit   | Program Approver    |
-    | Approver 2 | GrantorAwardRolesAndResponsibilities | Edit   | Fiscal Approver     |
-    | Approver 3 | GrantorAwardRolesAndResponsibilities | Edit	 | Executive Approver  |
-    And I click on "Send to Subrecipient" in the page details
-  	Given The subrecipient user "SPI" accepts the award "Record Id" with comments "Automation Award accepted"
-  	| Actions 	 | Step 1 		 | Step 2		  | Step 3 			      | Step 4			  |
-  	| Login		 | Grants Portal | SUBPORTAL	  |						  |					  |
-  	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
-  	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
-  	Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
-    | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
-    | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
-    | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
-  	And I assign, initiate a reviewer from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
-	| Actions 			  | Step 1 	  		      | Step 2	 		   	 		 | Step 3  |
-	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
-	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
-	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "Review Grantor Award" on "QA" portal
-	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
-	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
-	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
-	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
-  	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
-    | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
-    | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
-    | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
-  	Given I click on "Complete Review" in the page details
-  	And I click on "Submit for Approval" in the page details
-  	Given "3" Approvers "PM,FO,EXE" approve the record "Record Id"
-	| Actions 	 | Step 1 	  	 | Step 2	 | Step 3  	 		 |
-	| Navigation | As a Grantor  | Grants	 | 				  	 |
-	| FlexTable  | Pending Tasks | My Tasks  | PhasePendingTasks |
-	| Approval 	 | Start 		 | Approve 	 | 					 |
-  	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
-    | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
-    | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
-    | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
-  	Given I click on "Send to Subrecipient" in the page details
-  	And The subrecipient user "SPI" accepts the award "Record Id" with comments "Automation Award accepted"
-  	| Actions 	 | Step 1 		 | Step 2		  | Step 3 			      | Step 4			  |
-  	| Login		 | Grants Portal | SUBPORTAL	  |						  |					  |
-  	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
-  	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
-  	Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
-    | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
-    | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
-    | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
-	And I click on "Activate" in the page details
-	Given I create a monitoring record from sheet "Site Visit" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	 | Step 3 				  | Step 4			 |
-    | Creation | Management | GrantorSiteVisitsAward | Initiate Site Visit    | Save And Close   |
-    Given I login and view the "Active" award "Record Id" with name "<Award Name>" as User "Exe"
-    | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
-    | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
-    | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
-    Given I create a monitoring record from sheet "Desk Review" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	 | Step 3 				   | Step 4			  |
-    | Creation | Management | GrantorDeskReviewAward | Initiate Desk Review    | Save And Close   |
-    Given I login and view the "Active" award "Record Id" with name "<Award Name>" as User "Exe"
-    | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
-    | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
-    | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
-	Then I see status in Progress-bar is "Activated" and is "green"
-	Examples:
-	| Award Name 				     	    	|
-	| Automation App Jan25				|
