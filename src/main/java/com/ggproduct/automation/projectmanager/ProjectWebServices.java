@@ -1,8 +1,9 @@
 package com.ggproduct.automation.projectmanager;
 
-import com.automation.rei.controller.EnvironmentFetcher;
-import com.automation.rei.webservices.RestfulWebServices;
 import com.jayway.restassured.response.Response;
+
+import eyethink.automation.bots.controller.EnvironmentFetcher;
+import eyethink.automation.bots.webservices.RestfulWebServices;
 
 public class ProjectWebServices {
     private RestfulWebServices apiCall = new RestfulWebServices();

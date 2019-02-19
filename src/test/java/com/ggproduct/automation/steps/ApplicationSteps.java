@@ -1,14 +1,14 @@
 package com.ggproduct.automation.steps;
 
-import com.automation.rei.controller.Controller;
-
 import java.io.IOException;
-import com.automation.rei.handlers.CoreHandlers;
+
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.pageobjects.ApplicationPage;
 
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
+import eyethink.automation.bots.controller.Controller;
+import eyethink.automation.bots.controller.CoreHandlers;
 
 public class ApplicationSteps {
     ApplicationPage applicationPage;

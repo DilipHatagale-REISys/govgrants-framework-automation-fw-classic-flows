@@ -166,17 +166,26 @@
 			<groupId>com.pojosontheweb</groupId>
 			<artifactId>monte-repack</artifactId>
 			<version>1.0.1</version>
-		</dependency>	
-	    <dependency>
+		</dependency>
+		<dependency>
+			<groupId>eyethink</groupId>
+			<artifactId>automation.bots</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		<dependency>
 			<groupId>com.automation</groupId>
 			<artifactId>REI-AutomationFramework</artifactId>
 			<version>${rei.version}</version>
-		</dependency>									
+		</dependency>
 	</dependencies>
 	<repositories>
 		<repository>
 			<id>REI-Automation-Framework</id>
 			<url>http://nexus.reisys.com:8081/nexus/content/repositories/REI-Automation-Framework</url>
+		</repository>
+		<repository>
+			<id>eyethink.automation.bots</id>
+			<url>http://nexus.reisys.com:8081/nexus/content/repositories/eyethink.automation.bots</url>
 		</repository>
 	</repositories>
 	<build>
@@ -208,7 +217,6 @@
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>2.19.1</version>
 				<configuration>
-					<argLine>${surefireArgLine}</argLine>
 					<parallel>methods</parallel>
 					<threadCount>${threads}</threadCount>
 					<excludes>

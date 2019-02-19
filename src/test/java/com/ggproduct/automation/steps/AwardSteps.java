@@ -1,14 +1,14 @@
 package com.ggproduct.automation.steps;
 
+import java.io.IOException;
+
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.pageobjects.AwardPage;
-import eyethink.automation.bots.controller.Controller;
-import eyethink.automation.bots.controller.CoreHandlers;
-
-import java.io.IOException;
 
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
+import eyethink.automation.bots.controller.Controller;
+import eyethink.automation.bots.controller.CoreHandlers;
 
 public class AwardSteps {
     AwardPage awardPage;

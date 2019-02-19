@@ -1,14 +1,14 @@
 package com.ggproduct.automation.pageobjects;
 
-import com.automation.rei.controller.Controller;
 import java.util.Map;
 
-import com.automation.rei.handlers.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
+import eyethink.automation.bots.controller.Controller;
+import eyethink.automation.bots.controller.CoreHandlers;
 
 public class AmendmentRequestPage extends ProjectManager {
     public AmendmentRequestPage(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {

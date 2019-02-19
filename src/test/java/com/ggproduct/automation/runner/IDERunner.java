@@ -2,6 +2,7 @@ package com.ggproduct.automation.runner;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
+import eyethink.automation.bots.controller.CucumberRunnerManager;
 
 /**
  * IDE runner class. Place any tag name in tags and it will run the specific tag
@@ -10,12 +11,12 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
  * @author nauman.shahid
  *
  */
-@CucumberOptions(features = { "classpath:features" }, tags = { "@testName" }, glue = {
-        "com.ggproduct.automation.steps" }, plugin = { "com.cucumber.listener.ExtentCucumberFormatter:" })
+@CucumberOptions(features = { "classpath:features" }, tags = { "@creationOfFocusArea" }, glue = {
+        "com.ggproduct.automation.steps","com.automation.rei.govgrantsSteps"}, plugin = { "com.cucumber.listener.ExtentCucumberFormatter:" })
 
 public class IDERunner extends AbstractTestNGCucumberTests {
     static {
-       // new CucumberRunnerManager();
+        new CucumberRunnerManager();
     }
 
 }
