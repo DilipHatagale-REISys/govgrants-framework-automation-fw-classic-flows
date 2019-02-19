@@ -106,19 +106,6 @@ public class ApplicationPage extends ProjectManager {
     }
 
     /**
-     * Handles completing review form as a reviewer in SME review
-     * 
-     * @throws IOException
-     */
-    public void completeReviewForm(String noOfReviewers, DataTable dataTable, String... reviewers) throws IOException {
-        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
-        int numberOfReviewers = Integer.parseInt(noOfReviewers);
-        for (int i = 1; i <= numberOfReviewers; i++) {
-            singleReviewFormCompletion(reviewers[i - 1], dataTableMap);
-        }
-    }
-
-    /**
      * Handles entering the given value in Subaward Abbreviation in FDM
      * 
      * @param value
@@ -144,25 +131,15 @@ public class ApplicationPage extends ProjectManager {
 
     private void singleApplicationAssignmentToReviewer(int qNumber, String applicationName, String reviewer,
             Map<String, Map<String, String>> dataTableMap) {
-        govgrants.flexTable().expandOrCollapseNestedTable(dataTableMap.get("Review").get("Step " + qNumber), true);
+        govgrants.flexTable().expandOrCollapseNestedTable(applicationName, true);
         govgrants.flexTable().clickTableActionIcon(dataTableMap.get("FlexTable").get("Step 2"),
-                dataTableMap.get("FlexTable").get("Step 1"), reviewer);
+                dataTableMap.get("FlexTable").get("Step 1"), dataTableMap.get("Review").get("Step " + qNumber));
         chooseRecordForAssociation(dataTableMap.get("Application").get("Step 1"),
-                dataTableMap.get("Application").get("Step 2"), applicationName);
-        reiDriver.switchTo().switchToParentFrame();
-    }
-
-    private void singleReviewFormCompletion(String reviewer, Map<String, Map<String, String>> dataTableMap)
-            throws IOException {
-        govgrants.mainPage().reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), reviewer);
-        govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
-        govgrants.sideBar().getSideBarContent(dataTableMap.get("Navigation").get("Step 4"), dataTableMap.get("Navigation").get("Step 3"));
-        govgrants.quickSearch().performTableSpecificQuickSearch(dataTableMap.get("FlexTable").get("Step 2"),
-                dataTableMap.get("FlexTable").get("Step 1"));
-        govgrants.flexTable().clickTableActionIcons(dataTableMap.get("FlexTable").get("Step 3"),
-                dataTableMap.get("FlexTable").get("Step 1"));
-        govgrants.inputForms().completeFillingReviewForm();
-        govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("Button").get("Step 1"));
-        govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("Button").get("Step 2"));
+                dataTableMap.get("Application").get("Step 2"), reviewer);
+        try {
+            govgrants.modal().closeModalByClickingTopRightCloseButton();
+        } catch(Exception ex) {
+            reiDriver.switchTo().switchToParentFrame();
+        }
     }
 }
