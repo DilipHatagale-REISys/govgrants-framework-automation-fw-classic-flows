@@ -2,7 +2,7 @@
 Feature: Validate all scenarios for program
 
 	Background: Create Program
-	Given I delete the record "Automation Program Regression" from the object "Program"
+	Given I delete the record "Automation Program Feb15" from the object "Program"
 	And I create a planning record as user "EXE" from sheet "Creation" in excel "Program_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 | Step 3 				    |
 	| Navigation | As a Grantor		 | Planning  	 	 |	Programs				|
@@ -185,12 +185,12 @@ Feature: Validate all scenarios for program
     Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
     | Actions         | Step 1 | Step 2 |
     | Edition Buttons | Edit   | Save   |
-    And I associate "3" records "Automation EXE,03065,SPO-0085"
+    And I associate "3" records "Automation EXE,03065,SPO-0071"
     | Actions     | Step 1   | Step 2 | Step 3                                | Step 4        | Step 5                   |
     | Associate 1 | Overview | Associate | ProgramContacts                    | Add           | AssociateProgramContacts |
     | Associate 2 | Setup    | Associate | flexGridGrantorServiceAreasProgram | Add           | SelectProgramServiceArea |
     | Associate 3 | Setup    | Associate | RelatedProgramGoalsandObjectives   | Add           | SelectGoals              |
-    Given I select "2" approvers "Automation EXE,Automation EXE"
+    Given I select "2" approvers "Automation PM,Automation EXE"
     | Actions    | Step 1                          | Step 2 | Step 3              |
     | Subtab     | Responsibilities                |        |                     |
     | Approver 1 | ProgramRolesAndResponsibilities | Edit   | Program Approver    |
@@ -207,12 +207,12 @@ Feature: Validate all scenarios for program
     | Attachment Navigation | Attachments | Add               | a150b000003epY5AAI       |
     | Attachment Details    | Attachment  | Program Artifacts |                          |
     And I click on "Submit For Approval" in the page details
-    Given "2" Approvers "EXE,EXE" approve the record "Record Id"
+    Given "2" Approvers "PM,EXE" approve the record "Record Id"
      | Actions    | Step 1        | Step 2       | Step 3            |
      | Navigation | As a Grantor  | Planning     |                   |
      | FlexTable  | Pending Tasks | MyTasks      | PhasePendingTasks |
      | Approval   | Start         | Approve      |                   |
-    And I re-login to "As a Grantor" app as "<User>" user on "DEMO" portal
+    And I re-login to "As a Grantor" app as "<User>" user on "QA" portal
     When I navigate to "Planning" tab
     And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
     And I click toggle button to select "Draft Internal Programs"
@@ -222,7 +222,7 @@ Feature: Validate all scenarios for program
     Then I see status in Progress-bar is "Active" and is "green"
 	Examples:
      | User | Program Name               |
-     | EXE  | Automation Program Jan5    |    
+     | EXE  | Automation Program Feb15   |    
      
     
 	

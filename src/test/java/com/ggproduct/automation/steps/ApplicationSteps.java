@@ -27,11 +27,6 @@ public class ApplicationSteps {
         applicationPage.applicationCreation(sheetName, excelFileName, dataTable);
     }
 
-    @Given("^I add focus area \"([^\"]*)\" to the application$")
-    public void additionOfFocusAreaToApplication(String focusArea, DataTable dataTable) {
-        applicationPage.additionOfFocusAreaToApplication(dataTable, focusArea.split(","));
-    }
-
     @Given("^\"([^\"]*)\" is completed by clicking \"([^\"]*)\" for Application \"([^\"]*)\" as user \"([^\"]*)\" submitted for announcement \"([^\"]*)\"$")
     public void completeReviewStepForApplication(String reviewStep, String buttonName, String applicationName,
             String announcementOwner, String announcementName, DataTable dataTable) throws IOException {

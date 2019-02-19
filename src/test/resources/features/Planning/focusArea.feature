@@ -2,12 +2,12 @@
 Feature: Validate all scenarios in Focus Area
 
 	Background: To setup data
-	#Given I delete the record "Automation Focus Area Regression" from the object "Focus Area"
+	Given I delete the record "Automation Focus Area Regression" from the object "Focus Area"
 	And I create a planning record as user "EXE" from sheet "Creation" in excel "FocusArea_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	   | Step 3 				    |
 	| Navigation | As a Grantor		 | Planning  	 	   | Planning	    			|
 	| FlexTable  | Focus Areas	     | GrantorServiceAreas | Draft Focus Area	        |
-	| Creation   | New				 | Save And Close      | Save						|
+	| Creation   | New				 | Save and Continue   | Save						|
 	| ID		 | EGMS ID			 |					   |							|
 
 	@creationOfFocusArea @focusArea @all

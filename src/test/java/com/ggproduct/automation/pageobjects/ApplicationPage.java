@@ -46,22 +46,6 @@ public class ApplicationPage extends ProjectManager {
     }
 
     /**
-     * Handles addition of focus area for an application
-     * 
-     * @param focusArea
-     */
-    public void additionOfFocusAreaToApplication(DataTable dataTable, String... focusArea) {
-        Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
-        govgrants.pageDetails().clickSubTabsInsideTableView(dataTableMap.get("Navigation").get("Step 1"));
-        govgrants.flexTable().clickTableTopRightButton(dataTableMap.get("Navigation").get("Step 3"),
-                dataTableMap.get("Navigation").get("Step 2"));
-        chooseRecordForAssociation(dataTableMap.get("FlexTable").get("Step 1"),
-                dataTableMap.get("FlexTable").get("Step 2"), focusArea);
-        govgrants.mainPage().waitForNavigationLogoToDisappear();
-        reiDriver.switchTo().switchToParentFrame();
-    }
-
-    /**
      * Handles completion of one review process by clicking on Promote to Next step
      * button for the passed application
      * 
