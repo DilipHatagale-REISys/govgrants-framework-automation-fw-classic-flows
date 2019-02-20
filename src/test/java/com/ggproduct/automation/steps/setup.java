@@ -1,12 +1,9 @@
 package com.ggproduct.automation.steps;
 
-
 import java.awt.AWTException;
 import java.io.IOException;
-
 import com.automation.rei.controller.SetupController;
 import com.ggproduct.automation.projectmanager.UsersAndURL;
-
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;

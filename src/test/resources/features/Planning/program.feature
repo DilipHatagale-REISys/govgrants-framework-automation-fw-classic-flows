@@ -2,7 +2,7 @@
 Feature: Validate all scenarios for program
 
 	Background: Create Program
-	Given I delete the record "Automation Program Feb15" from the object "Program"
+	Given I delete the record "Automation Program Regression" from the object "Program"
 	And I create a planning record as user "EXE" from sheet "Creation" in excel "Program_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 | Step 3 				    |
 	| Navigation | As a Grantor		 | Planning  	 	 |	Programs				|
@@ -221,10 +221,6 @@ Feature: Validate all scenarios for program
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "green"
 	Examples:
-     | User | Program Name               |
-     | EXE  | Automation Program Feb15   |    
+     | User | Program Name                    |
+     | EXE  | Automation Program Regression   |    
      
-    
-	
-	
-	
