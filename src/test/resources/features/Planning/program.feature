@@ -210,7 +210,7 @@ Feature: Validate all scenarios for program
     Given "2" Approvers "PM,EXE" approve the record "Record Id"
      | Actions    | Step 1        | Step 2       | Step 3            |
      | Navigation | As a Grantor  | Planning     |                   |
-     | FlexTable  | Pending Tasks | MyTasks      | PhasePendingTasks |
+     | FlexTable  | Pending Tasks | My Tasks     | PhasePendingTasks |
      | Approval   | Start         | Approve      |                   |
     And I re-login to "As a Grantor" app as "<User>" user on "QA" portal
     When I navigate to "Planning" tab
@@ -222,5 +222,5 @@ Feature: Validate all scenarios for program
     Then I see status in Progress-bar is "Active" and is "green"
 	Examples:
      | User | Program Name                    |
-     | EXE  | Automation Program Regression   |    
+     | EXE  | Automation Program Feb21   |    
      

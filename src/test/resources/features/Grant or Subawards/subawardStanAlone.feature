@@ -1226,7 +1226,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Award Name 				     	    	|
 	| Automation Grant Regression				|	
 	
-	@awardHappyPathStandAlone @awardFromFDM
+	@awardHappyPathStandAlone @awardStandAlone
   	Scenario Outline: Validate award Approval by respective approvers	
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -1249,13 +1249,14 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| KPI-0419    | 10     |
 	And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   | Step 3 | Step 4 |
-    | Creation | Management | flexGridTnCSchedules | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
     And I close Modal
   	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 |
-    | Creation | Management | flexGridPaymentSchedules | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
     And I close Modal
+    And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
     | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
     | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
