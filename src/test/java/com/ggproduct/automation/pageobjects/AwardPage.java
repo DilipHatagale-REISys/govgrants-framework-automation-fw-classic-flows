@@ -55,7 +55,6 @@ public class AwardPage extends ProjectManager {
         govgrants.flexTable().clickTableActionIcons(dataTableMap.get("FlexTable").get("Step 2"), announcementName);
         govgrants.flexTable().clickTableActionIcon(dataTableMap.get("FlexTable").get("Step 4"),
                 dataTableMap.get("Buttons").get("Step 1"), applicationName);
-        govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("Buttons").get("Step 2"));
     }
 
     /**
@@ -80,8 +79,11 @@ public class AwardPage extends ProjectManager {
     public void creationOfMonitoringRecord(String sheetName, String excelName, DataTable dataTable) {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         govgrants.pageDetails().clickSubTabsInsideTableView(dataTableMap.get("Creation").get("Step 1"));
-        govgrants.flexTable().clickTableTopRightButton(dataTableMap.get("Creation").get("Step 2"),
-                dataTableMap.get("Creation").get("Step 3"));
+        try {
+            govgrants.flexTable().clickTableActionIcon(dataTableMap.get("Creation").get("Step 2"), dataTableMap.get("Creation").get("Step 3"), dataTableMap.get("Creation").get("Step 5"));
+        } catch(Exception ex) {
+            govgrants.flexTable().clickTableTopRightButton(dataTableMap.get("Creation").get("Step 2"), dataTableMap.get("Creation").get("Step 3"));
+        }
         govgrants.inputForms().enterInputFieldsFromExcelFile(excelName, sheetName);
         govgrants.modal().clickModalContentSpecificButton(dataTableMap.get("Creation").get("Step 4"));
     }

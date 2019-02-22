@@ -2,12 +2,18 @@
 Feature: Validate all scenarios in the Award from FDM
 
 	Background: Create Award from FDM
-	Given I create a subaward from the Announcement "Automation Announcement Jan25" for the Application "Automation App Jan25" as user "EXE"
+	Given I create a subaward from the Announcement "Automation Announcement Feb18" for the Application "Automation Application Feb18" as user "EXE"
 	| Actions    | Step 1           | Step 2		| Step 3		     					  | Step 4 									|
 	| Navigation | As a Grantor     | Applications  | Application Review 					  | Funding Decision Memo (FDM) 			|
 	| FlexTable  | FDMList1	        | View			| Approved Funding Decision Memos (FDM)   | flexGridFundingDecisionMemoApplications	|
-	| Buttons 	  | Create Subaward | Save			|                             			  |											|
-	And I get the "EGMS ID"
+	| Buttons 	 | Create Subaward  | 				|                             			  |											|
+	Given I login and view the record "Automation Announcement Feb18" as "EXE"
+	| Actions 			  | Step 1 	  	  | Step 2	     | Step 3  	 		    | Step 4 		   			  |
+	| Owner Navigation 	  | As a Grantor  | Grants		 | Grants and Subawards | Grants, Awards & Amendments |
+	| Complete Review 	  | Draft Grants  | ActiveGrants | View 		  		| 							  |
+	Given I navigate to "Subawards" sub tab
+	And I click on "View" icon for "Created" inside flex table with id "RelatedAwards1"
+	Given I get the "EGMS ID"
 	
 	@38213 @awardFromFDMCreation @awardFromFDM
 	Scenario: Creation of an award
@@ -683,7 +689,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Automation Grant Regression				|
 	
 	@awardSendToRecipientAfterApproval @awardFromFDM
-  	Scenario Outline: Validate award Approval by respective approvers	
+  	Scenario Outline: Validate award send to subrecipient after approval	
   	Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
@@ -787,7 +793,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Automation Grant Regression				|
 	
 	@awardAcceptanceByRecipientAfterApproval @awardFromFDM
-  	Scenario Outline: Validate award Approval by respective approvers	
+  	Scenario Outline: Validate award acceptance by subrecipient after approval	
   	Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
@@ -895,7 +901,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Automation Grant Regression				|
 	
 	@awardActivation @awardFromFDM
-  	Scenario Outline: Validate award Approval by respective approvers	
+  	Scenario Outline: Validate award Activation	
   	Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
@@ -985,7 +991,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Automation Grant Regression				|
 	
 	@awardSiteVisit @awardFromFDM
-  	Scenario Outline: Validate award Approval by respective approvers	
+  	Scenario Outline: Validate award site visit creation	
   	Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
@@ -1102,7 +1108,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Automation Grant Regression				|
 	
 	@awardDeskReview @awardFromFDM
-  	Scenario Outline: Validate award Approval by respective approvers	
+  	Scenario Outline: Validate award desk review creation	
   	Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
@@ -1218,14 +1224,9 @@ Feature: Validate all scenarios in the Award from FDM
 	| Award Name 				     	    	|
 	| Automation Grant Regression				|
 	
+	
 	@awardHappyPathFromFDM @awardFromFDM
-  	Scenario Outline: Validate award Approval by respective approvers	
-  	Given I create a subaward from the Announcement "Automation Announcement Jan25" for the Application "Automation App Jan25" as user "EXE"
-	| Actions    | Step 1           | Step 2		| Step 3		     					  | Step 4 									|
-	| Navigation | As a Grantor     | Applications  | Application Review 					  | Funding Decision Memo (FDM) 			|
-	| FlexTable  | FDMList1	        | View			| Approved Funding Decision Memos (FDM)   | flexGridFundingDecisionMemoApplications	|
-	| Buttons 	  | Create Subaward | Save			|                             			  |											|
-	And I get the "EGMS ID"
+  	Scenario Outline: Validate award happy path	
   	Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
@@ -1247,13 +1248,14 @@ Feature: Validate all scenarios in the Award from FDM
 	| KPI-0420    | 5      |
 	And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   | Step 3 | Step 4 |
-    | Creation | Management | flexGridTnCSchedules | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
     And I close Modal
   	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 |
-    | Creation | Management | flexGridPaymentSchedules | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
     And I close Modal
+    And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
     | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
     | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
@@ -1270,7 +1272,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-    And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
+    And I login and view the "Draft" award "AD-Gr19-06" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
     | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
@@ -1282,12 +1284,12 @@ Feature: Validate all scenarios in the Award from FDM
     | Approver 2 | GrantorAwardRolesAndResponsibilities | Edit   | Fiscal Approver     |
     | Approver 3 | GrantorAwardRolesAndResponsibilities | Edit	 | Executive Approver  |
     And I click on "Send to Subrecipient" in the page details
-  	Given The subrecipient user "SPI" accepts the award "Record Id" with comments "Automation Award accepted"
+  	Given The subrecipient user "SPI" accepts the award "AD-Gr19-06" with comments "Automation Award accepted"
   	| Actions 	 | Step 1 		 | Step 2		  | Step 3 			      | Step 4			  |
   	| Login		 | Grants Portal | SUBPORTAL	  |						  |					  |
   	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
-  	Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
+  	Given I login and view the "Draft" award "AD-Gr19-06" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
     | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
@@ -1302,30 +1304,30 @@ Feature: Validate all scenarios in the Award from FDM
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
-  	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
+  	And I login and view the "Draft" award "AD-Gr19-06" with name "<Award Name>" as User "Exe"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
     | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Complete Review" in the page details
   	And I click on "Submit for Approval" in the page details
-  	Given "3" Approvers "PM,FO,EXE" approve the record "Record Id"
+  	Given "3" Approvers "PM,FO,EXE" approve the record "AD-Gr19-06"
 	| Actions 	 | Step 1 	  	 | Step 2	 | Step 3  	 		 |
 	| Navigation | As a Grantor  | Grants	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 	 | 					 |
-  	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
+  	And I login and view the "Draft" award "AD-Gr19-06" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
     | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Send to Subrecipient" in the page details
-  	And The subrecipient user "SPI" accepts the award "Record Id" with comments "Automation Award accepted"
+  	And The subrecipient user "SPI" accepts the award "AD-Gr19-06" with comments "Automation Award accepted"
   	| Actions 	 | Step 1 		 | Step 2		  | Step 3 			      | Step 4			  |
   	| Login		 | Grants Portal | SUBPORTAL	  |						  |					  |
   	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
-  	Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
+  	Given I login and view the "Draft" award "AD-Gr19-06" with name "<Award Name>" as User "Exe"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
     | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
@@ -1334,7 +1336,7 @@ Feature: Validate all scenarios in the Award from FDM
 	Given I create a monitoring record from sheet "Site Visit" in excel "Award_Field_Values.xlsx"
 	| Actions  | Step 1     | Step 2	   		   	 | Step 3 				  | Step 4			 |
     | Creation | Management | GrantorSiteVisitsAward | Initiate Site Visit    | Save And Close   |
-    Given I login and view the "Active" award "Record Id" with name "<Award Name>" as User "Exe"
+    Given I login and view the "Active" award "AD-Gr19-06" with name "<Award Name>" as User "Exe"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
     | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
@@ -1342,7 +1344,7 @@ Feature: Validate all scenarios in the Award from FDM
     Given I create a monitoring record from sheet "Desk Review" in excel "Award_Field_Values.xlsx"
 	| Actions  | Step 1     | Step 2	   		   	 | Step 3 				   | Step 4			  |
     | Creation | Management | GrantorDeskReviewAward | Initiate Desk Review    | Save And Close   |
-    Given I login and view the "Active" award "Record Id" with name "<Award Name>" as User "Exe"
+    Given I login and view the "Active" award "AD-Gr19-06" with name "<Award Name>" as User "Exe"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
     | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
@@ -1350,4 +1352,4 @@ Feature: Validate all scenarios in the Award from FDM
 	Then I see status in Progress-bar is "Activated" and is "green"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation App Jan25				|
+	| Automation Application Feb18				|
