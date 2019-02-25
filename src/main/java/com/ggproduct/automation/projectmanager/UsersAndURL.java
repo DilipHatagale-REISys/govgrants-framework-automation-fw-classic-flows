@@ -120,6 +120,9 @@ public class UsersAndURL implements UsersController{
         case "OSCAR PM":
             username = "oscar_pm@ggp.test7";
             break;
+        case "Bill PM":
+            username = "bill_pm@ggp.test7";
+            break;
         default:
             username = "manu.sa@ggp.test7";
         }
