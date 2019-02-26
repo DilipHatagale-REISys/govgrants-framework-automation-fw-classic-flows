@@ -44,7 +44,7 @@ Feature: Validate all scenarios for program
     
   	@34740 @programApproverSelection @program @all
   	Scenario Outline: Validate the assignment of Approvers for the Internal Program
-    When I navigate to "Responsibilities" sub tab
+  	When I navigate to "Responsibilities" sub tab
     And I click on "Edit" icon for "Program Approver" inside flex table with id "ProgramRolesAndResponsibilities"
     When I fill in the "<Program Approver Name>" for the Approver details
     And I switch to Parent frame
