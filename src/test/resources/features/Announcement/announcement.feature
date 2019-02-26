@@ -37,6 +37,22 @@ Feature: Validate all scenarios in the Announcement tab
 	| Announcement Name		  | User |
 	| Automation Announcement |	PM   |
 	
+	@announcementCreateCompetitiveCheckUnderDraftFormulaListView @announcement @all   
+	Scenario: Validate that Created Competitive announcement will not reflect under Draft Formula announcement list view
+	When I navigate to "Announcements" tab
+	And I navigate to "Formula" content inside "Announcements" subheader on left panel
+	And I click toggle button to select "Draft Announcements" in "ActiveFundingOpportunitiesFormula"
+	When I perform quick search for "Record Id" in "ActiveFundingOpportunitiesFormula" panel  
+	Then I do not see value "Record Id" for title "EGMS ID" inside table "ActiveFundingOpportunitiesFormula"
+	
+	@announcementCreateCompetitiveCheckUnderDirectedDraftListView @announcement @all   
+	Scenario: Validate that Created Competitive announcement will not reflect under Draft Directed announcement list view
+	When I navigate to "Announcements" tab
+	And I navigate to "Formula" content inside "Announcements" subheader on left panel
+	And I click toggle button to select "Draft Announcements" in "ActiveFundingOpportunities"
+	When I perform quick search for "Record Id" in "ActiveFundingOpportunities" panel  
+	Then I do not see value "Record Id" for title "EGMS ID" inside table "ActiveFundingOpportunities"		
+	
 	@announcementEditionByOtherUser @announcement @all
 	Scenario Outline: Validate that other users are not able to edit created announcement
 	When I re-login to "As a Grantor" app as "<User>" user on "QA" portal
@@ -71,6 +87,18 @@ Feature: Validate all scenarios in the Announcement tab
     When I click "Add" after selection of "<Contact>" in the table "AssociateAnnouncementContacts"
     And I close Modal
     Then I see that "<Contact>" has been added in flextable with Id "AnnouncementContacts"
+	Examples:
+	| Contact		  |
+	| Automation EXE  |
+	
+	@announcementContactDissociation @announcement @all                       
+	Scenario Outline: Validate the dissociation of contact to the Announcement 
+	When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
+    When I click "Add" after selection of "<Contact>" in the table "AssociateAnnouncementContacts"
+    And I close Modal                                                                              
+    When I click on "Remove" icon for "<Contact>" inside flex table with id "AssociateAnnouncementContacts"       
+    Then I do not see value "<Contact>" for title "Name" inside table "AssociateAnnouncementContacts"     
 	Examples:
 	| Contact		  |
 	| Automation EXE  |
@@ -137,6 +165,16 @@ Feature: Validate all scenarios in the Announcement tab
 	Examples:
 	| Budget Period Id |
 	| BP01			   |
+	
+	@announcementBudgetPeriodDissociation @announcement @all                       
+	Scenario Outline: Validate the dissociation of Budget Period to the Announcement 
+	When I navigate to "Financials" sub tab
+    And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
+    When I click on "Remove" icon for "<Budget Period Id>" inside flex table with id "flexGridAnnouncementBudgetPeriod"       
+    Then I do not see value "<Budget Period Id>" for title "Budget Period Name" inside table "flexGridAnnouncementBudgetPeriod"      		
+	Examples:
+	| Budget Period Id |
+	| BP01	           |
 
   	@34775 @announcementFocusAreaAssociation @announcement @all
   	Scenario Outline: Validate the association of Focus Area to Announcement

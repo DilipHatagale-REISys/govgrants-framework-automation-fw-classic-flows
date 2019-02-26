@@ -29,7 +29,7 @@ Feature: Validate all scenarios in the Award from FDM
 	@awardPaymentRequestSchedule @awardFromFDM
   	Scenario: Payment Request Schedule in an award
 	When I navigate to "Management" sub tab
-   	And I click on top right button "New" in flex table with id "flexGridPaymentSchedules"
+	When I click on "Edit" icon for "Payment Request" inside flex table with id "flexGridPaymentSchedules"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close Modal
@@ -38,7 +38,7 @@ Feature: Validate all scenarios in the Award from FDM
 	@awardProgressReportSchedule @awardFromFDM
   	Scenario: Progress Report Schedule in an award
 	When I navigate to "Management" sub tab
-   	And I click on top right button "New" in flex table with id "flexGridTnCSchedules"
+	When I click on "Edit" icon for "Progress Report" inside flex table with id "flexGridTnCSchedules"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close Modal
@@ -141,13 +141,14 @@ Feature: Validate all scenarios in the Award from FDM
 	| KPI-0419    | 10     |
 	And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   | Step 3 | Step 4 |
-    | Creation | Management | flexGridTnCSchedules | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
     And I close Modal
   	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 |
-    | Creation | Management | flexGridPaymentSchedules | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
     And I close Modal
+    And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
     | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
     | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
@@ -201,15 +202,16 @@ Feature: Validate all scenarios in the Award from FDM
 	And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardKeyOutcomes" by clicking "Edit" :
 	| EGMS ID     | Target |
 	| KPI-0419    | 10     |
-	And I navigate to "Management" sub tab
+  	And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   | Step 3 | Step 4 |
-    | Creation | Management | flexGridTnCSchedules | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
     And I close Modal
   	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 |
-    | Creation | Management | flexGridPaymentSchedules | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
     And I close Modal
+    And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
     | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
     | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
@@ -262,17 +264,21 @@ Feature: Validate all scenarios in the Award from FDM
   	Given I edit the Budget details in award for line item "Construction"
   	| Budget Category | Cash Match |
 	| Construction    | 2000 	   |
-  	And I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   | Step 3 | Step 4 |
-    | Creation | Management | flexGridTnCSchedules | New    | Save   |
+  	And I navigate to "Management" sub tab
+  	Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
+    And I close Modal
   	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 |
-    | Creation | Management | flexGridPaymentSchedules | New    | Save   |
-  	And I create a monitoring record from sheet "Risk Assessment" in excel "Award_Field_Values.xlsx"
-    | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4 |
-    | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save   |
-    | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4 |
-    | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
+    And I close Modal
+    And I navigate to "Management" sub tab
+  	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
+    | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
+    | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
+	When I click on "Save" in the page details
     Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				      				 | Step 2 | Step 3 			   |
     | Subtab	 | Responsibilities 			 				 | 		  |		    		   |
@@ -342,13 +348,14 @@ Feature: Validate all scenarios in the Award from FDM
 	| KPI-0419    | 10     |
 	And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   | Step 3 | Step 4 |
-    | Creation | Management | flexGridTnCSchedules | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
     And I close Modal
   	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 |
-    | Creation | Management | flexGridPaymentSchedules | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
     And I close Modal
+    And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
     | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
     | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
@@ -424,13 +431,14 @@ Feature: Validate all scenarios in the Award from FDM
 	| KPI-0419    | 10     |
 	And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   | Step 3 | Step 4 |
-    | Creation | Management | flexGridTnCSchedules | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
     And I close Modal
   	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 |
-    | Creation | Management | flexGridPaymentSchedules | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
     And I close Modal
+    And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
     | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
     | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
@@ -513,13 +521,14 @@ Feature: Validate all scenarios in the Award from FDM
 	| KPI-0419    | 10     |
 	And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   | Step 3 | Step 4 |
-    | Creation | Management | flexGridTnCSchedules | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
     And I close Modal
   	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 |
-    | Creation | Management | flexGridPaymentSchedules | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
     And I close Modal
+    And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
     | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
     | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
@@ -603,13 +612,14 @@ Feature: Validate all scenarios in the Award from FDM
 	| KPI-0419    | 10     |
 	And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   | Step 3 | Step 4 |
-    | Creation | Management | flexGridTnCSchedules | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
     And I close Modal
   	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 |
-    | Creation | Management | flexGridPaymentSchedules | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
     And I close Modal
+    And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
     | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
     | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
@@ -711,13 +721,14 @@ Feature: Validate all scenarios in the Award from FDM
 	| KPI-0419    | 10     |
 	And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   | Step 3 | Step 4 |
-    | Creation | Management | flexGridTnCSchedules | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
     And I close Modal
   	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 |
-    | Creation | Management | flexGridPaymentSchedules | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
     And I close Modal
+    And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
     | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
     | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
@@ -815,13 +826,14 @@ Feature: Validate all scenarios in the Award from FDM
 	| KPI-0419    | 10     |
 	And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   | Step 3 | Step 4 |
-    | Creation | Management | flexGridTnCSchedules | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
     And I close Modal
   	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 |
-    | Creation | Management | flexGridPaymentSchedules | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
     And I close Modal
+    And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
     | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
     | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
@@ -912,15 +924,21 @@ Feature: Validate all scenarios in the Award from FDM
   	Given I edit the Budget details in award for line item "Construction"
   	| Budget Category | Cash Match |
 	| Construction    | 2000 	   | 
-  	And I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   | Step 3 | Step 4 |
-    | Creation | Management | flexGridTnCSchedules | New    | Save   |
+  	And I navigate to "Management" sub tab
+  	Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
+    And I close Modal
   	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 |
-    | Creation | Management | flexGridPaymentSchedules | New    | Save   |
-  	And I create a monitoring record from sheet "Risk Assessment" in excel "Award_Field_Values.xlsx"
-    | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4 |
-    | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
+    And I close Modal
+    And I navigate to "Management" sub tab
+  	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
+    | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
+    | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
+	When I click on "Save" in the page details
     Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				      				 | Step 2 | Step 3 			   |
     | Subtab	 | Responsibilities 			 				 | 		  |		    		   |
@@ -1013,13 +1031,14 @@ Feature: Validate all scenarios in the Award from FDM
 	| KPI-0419    | 10     |
 	And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   | Step 3 | Step 4 |
-    | Creation | Management | flexGridTnCSchedules | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
     And I close Modal
   	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 |
-    | Creation | Management | flexGridPaymentSchedules | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
     And I close Modal
+    And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
     | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
     | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
@@ -1130,13 +1149,14 @@ Feature: Validate all scenarios in the Award from FDM
 	| KPI-0419    | 10     |
 	And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   | Step 3 | Step 4 |
-    | Creation | Management | flexGridTnCSchedules | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
     And I close Modal
   	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 |
-    | Creation | Management | flexGridPaymentSchedules | New    | Save   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
     And I close Modal
+    And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
     | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
     | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
