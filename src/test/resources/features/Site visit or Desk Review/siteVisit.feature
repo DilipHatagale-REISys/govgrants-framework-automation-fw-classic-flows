@@ -2,8 +2,8 @@
 Feature: Validate all scenarios in the Site Visit
 
 	Background: Data setup for Site Visit
-	Given I delete the record "Automation Site Visit Regression" from the object "Site Visit"
-	And I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "EXE"
+	Given I delete the record "Automation Site Visit Feb22" from the object "Site Visit"
+	And I login and view the "Active" award "AD-Gr19-06" with name "Automation Application Feb18" as User "EXE"
 	| Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
     | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
@@ -13,6 +13,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Management		   | 			 		    |	
 	| FlexTable  | Initiate Site Visit | GrantorSiteVisitsAward |
 	| Creation   | Save And Close	   | Cancel				 	| 	
+	And I get the "EGMS ID"
 
 	@siteVisitCreation @siteVisit @all
 	Scenario: Creation of Site Visit
@@ -29,7 +30,7 @@ Feature: Validate all scenarios in the Site Visit
 	Scenario Outline: Participant Association of Site Visit
 	When I navigate to "Overview" sub tab
 	And I click on top right button "Associate" in flex table with id "GrantorSiteVisitContacts"
-    When I click "Associate" after selection of "<Subrecipient>" in the table "popupflextable"
+    When I click "Associate" after selection of "<Subrecipient>" in the table "SelectSiteDeskReviewContacts"
     And I close Modal
     Then I see that "<Subrecipient>" has been added in flextable with Id "GrantorSiteVisitContacts"
 	Examples:
@@ -56,8 +57,8 @@ Feature: Validate all scenarios in the Site Visit
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     And I associate "1" records "Automation SPI"
-	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		  |
-    | Associate 1 | Overview   | AAssociate | GrantorSiteVisitContacts | Associate	 | popupflextable |
+	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		                |
+    | Associate 1 | Overview   | Associate | GrantorSiteVisitContacts  | Associate	 | SelectSiteDeskReviewContacts |
     Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
     | Subtab	 | Responsibilities 			  			| 		 |		    		  |
@@ -67,13 +68,13 @@ Feature: Validate all scenarios in the Site Visit
 	Then I see status in Progress-bar is "Notified" and is "green"
 	
 	@notifyPendingTaskForSubrecipientSiteVisit @siteVisit @all
-	Scenario Outline: Subrecipient pending task check for Site Visit
+	Scenario: Subrecipient pending task check for Site Visit
 	Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     And I associate "1" records "Automation SPI"
-	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		  |
-    | Associate 1 | Overview   | AAssociate | GrantorSiteVisitContacts | Associate	 | popupflextable |
+	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		                |
+    | Associate 1 | Overview   | Associate | GrantorSiteVisitContacts  | Associate	 | SelectSiteDeskReviewContacts |
     Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
     | Subtab	 | Responsibilities 			  			| 		 |		    		  |
@@ -83,12 +84,9 @@ Feature: Validate all scenarios in the Site Visit
 	When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-	And I perform quick search for "<Site Visit Name>" in "PhasePendingTasks" panel
-	When I click on "Start" icon for "<Site Visit Name>" inside table
+	And I perform quick search for "Record Id" in "PhasePendingTasks" panel
+	When I click on "Start" icon for "Record Id" inside table
 	Then I see status in Progress-bar is "Notified" and is "green"
-	Examples:
-	| Site Visit Name	    |
-	| Automation Site Visit |
 	
 	@conductSiteVisit @siteVisit @all
 	Scenario Outline: Conduct Site Visit
@@ -96,30 +94,28 @@ Feature: Validate all scenarios in the Site Visit
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     And I associate "1" records "Automation SPI"
-	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		  |
-    | Associate 1 | Overview   | AAssociate | GrantorSiteVisitContacts | Associate	 | popupflextable |
+	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		                |
+    | Associate 1 | Overview   | Associate  | GrantorSiteVisitContacts | Associate	 | SelectSiteDeskReviewContacts |
     Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
     | Subtab	 | Responsibilities 			  			| 		 |		    		  |
     | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
-	Given User "SPI" receives the task for "<Site Visit Name>"
+	Given User "SPI" receives the task for "Record Id"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user
+	When I re-login to "As a Grantor" app as "EXE" user on "QA" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-	And I expand nested table containing column value "<Award Name>"
-	When I expand nested table containing column value "<Award Name>"
 	And I click on "View" icon for "<Site Visit Name>" inside table
 	When I click on "Conduct" in the page details
 	Then I see status in Progress-bar is "In Progress" and is "green"
 	Examples:
-	| Award Name 				     	    	    	| Site Visit Name	    |
-	| Automation Announcement to be deleted Application | Automation Site Visit |
+	| Site Visit Name	          		|
+	| Automation Site Visit Regression  |
 	
 	@addingOutcomeSiteVisit @siteVisit @all
 	Scenario Outline: Adding outcomes to Site Visit
@@ -127,76 +123,75 @@ Feature: Validate all scenarios in the Site Visit
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     And I associate "1" records "Automation SPI"
-	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		  |
-    | Associate 1 | Overview   | AAssociate | GrantorSiteVisitContacts | Associate	 | popupflextable |
+	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		                |
+    | Associate 1 | Overview   | Associate | GrantorSiteVisitContacts  | Associate	 | SelectSiteDeskReviewContacts |
    Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
     | Subtab	 | Responsibilities 			  			| 		 |		    		  |
     | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
-	Given User "SPI" receives the task for "<Site Visit Name>"
+	Given User "SPI" receives the task for "Record Id"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user
+	When I re-login to "As a Grantor" app as "EXE" user on "QA" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-	And I expand nested table containing column value "<Award Name>"
-	When I expand nested table containing column value "<Award Name>"
 	And I click on "View" icon for "<Site Visit Name>" inside table
 	When I click on "Conduct" in the page details
 	And I navigate to "Reports and Outcomes" sub tab
-	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
+	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
     | Title       		 	 | Description  	 	  | Type    	   |
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
     | Automation Observation | Automation Description | Observation    |
-	Then I see that "Automation Observation" has been added in flextable with Id "FormComponent"
+	Then I see that "Automation Observation" has been added in flextable with Id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance"
 	Examples:
-	| Award Name 				     	    	    	| Site Visit Name	    |
-	| Automation Announcement to be deleted Application | Automation Site Visit |
+	| Site Visit Name	           |
+	| Automation Site Visit Feb22  |
 	
 	@formFillingSiteVisit @siteVisit @all
-	Scenario: Filling up of form in Site Visit
+	Scenario Outline: Filling up of form in Site Visit
 	Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     And I associate "1" records "Automation SPI"
-	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		  |
-    | Associate 1 | Overview   | AAssociate | GrantorSiteVisitContacts | Associate	 | popupflextable |
-    Given I select "2" approvers "Automation PM,Automation FO"
+	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		                |
+    | Associate 1 | Overview   | Associate | GrantorSiteVisitContacts  | Associate	 | SelectSiteDeskReviewContacts |
+   Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
     | Subtab	 | Responsibilities 			  			| 		 |		    		  |
     | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
-	Given User "SPI" receives the task for "<Site Visit Name>"
+	Given User "SPI" receives the task for "Record Id"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Award Name>" with Id "<Award EGMS ID>"
-	| Actions 	 | Step 1   		 			     | Step 2		  		  			|
-	| Navigation | As a Grantor 	  				 | Monitoring 			 			|
-	| Left Panel | Manage Site Visits 				 | Monitoring Activities  			|
-	| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
-	| Button 	 | View								 | 						            |
+	When I re-login to "As a Grantor" app as "EXE" user on "QA" portal
+	And I navigate to "Monitoring" tab
+	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
+	And I click on "View" icon for "<Site Visit Name>" inside table
 	When I click on "Conduct" in the page details
 	And I navigate to "Reports and Outcomes" sub tab
-	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
+	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
     | Title       		 	 | Description  	 	  | Type    	   |
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
     | Automation Observation | Automation Description | Observation    |
 	And I navigate to "Reports and Outcomes" sub tab
-	When I click on "Edit" icon for "General Review Form" inside flex table with id "FormComponent"
+	When I click on "Edit" icon for "General Review Form" inside flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance"
 	And I enter "Form Fields" values from "SiteVisit_Field_Values.xlsx" 
 	And I click on "Save" in the page details
 	When I click on "Back" in the page details
 	And I click on top right button "Validate" in flex table with id "FormComponent"
 	Then I see that "100.00%" has been added in flextable with Id "FormComponent"
+	Examples:
+	| Site Visit Name	           |
+	| Automation Site Visit Feb22  |
 	
 	@submittingForApprovalSiteVisit @siteVisit @all
 	Scenario: Submitting Site Visit for approval
@@ -204,28 +199,26 @@ Feature: Validate all scenarios in the Site Visit
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     And I associate "1" records "Automation SPI"
-	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		  |
-    | Associate 1 | Overview   | AAssociate | GrantorSiteVisitContacts | Associate	 | popupflextable |
-    Given I select "2" approvers "Automation PM,Automation FO"
+	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		                |
+    | Associate 1 | Overview   | Associate | GrantorSiteVisitContacts  | Associate	 | SelectSiteDeskReviewContacts |
+   Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
     | Subtab	 | Responsibilities 			  			| 		 |		    		  |
     | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
-	Given User "SPI" receives the task for "<Site Visit Name>"
+	Given User "SPI" receives the task for "Record Id"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Award Name>" with Id "<Award EGMS ID>"
-	| Actions 	 | Step 1   		 			     | Step 2		  		  			|
-	| Navigation | As a Grantor 	  				 | Monitoring 			 			|
-	| Left Panel | Manage Site Visits 				 | Monitoring Activities  			|
-	| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
-	| Button 	 | View								 | 						            |
-	Given I click on "Conduct" in the page details
+	When I re-login to "As a Grantor" app as "EXE" user on "QA" portal
+	And I navigate to "Monitoring" tab
+	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
+	And I click on "View" icon for "<Site Visit Name>" inside table
+	When I click on "Conduct" in the page details
 	And I navigate to "Reports and Outcomes" sub tab
-	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
+	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
     | Title       		 	 | Description  	 	  | Type    	   |
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
@@ -245,28 +238,26 @@ Feature: Validate all scenarios in the Site Visit
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     And I associate "1" records "Automation SPI"
-	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		  |
-    | Associate 1 | Overview   | AAssociate | GrantorSiteVisitContacts | Associate	 | popupflextable |
-    Given I select "2" approvers "Automation PM,Automation FO"
+	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		                |
+    | Associate 1 | Overview   | Associate | GrantorSiteVisitContacts  | Associate	 | SelectSiteDeskReviewContacts |
+   Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
     | Subtab	 | Responsibilities 			  			| 		 |		    		  |
     | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
-	Given User "SPI" receives the task for "<Site Visit Name>"
+	Given User "SPI" receives the task for "Record Id"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Award Name>" with Id "<Award EGMS ID>"
-	| Actions 	 | Step 1   		 			     | Step 2		  		  			|
-	| Navigation | As a Grantor 	  				 | Monitoring 			 			|
-	| Left Panel | Manage Site Visits 				 | Monitoring Activities  			|
-	| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
-	| Button 	 | View								 | 						            |
-	Given I click on "Conduct" in the page details
+	When I re-login to "As a Grantor" app as "EXE" user on "QA" portal
+	And I navigate to "Monitoring" tab
+	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
+	And I click on "View" icon for "<Site Visit Name>" inside table
+	When I click on "Conduct" in the page details
 	And I navigate to "Reports and Outcomes" sub tab
-	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
+	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
     | Title       		 	 | Description  	 	  | Type    	   |
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
@@ -301,28 +292,26 @@ Feature: Validate all scenarios in the Site Visit
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     And I associate "1" records "Automation SPI"
-	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		  |
-    | Associate 1 | Overview   | AAssociate | GrantorSiteVisitContacts | Associate	 | popupflextable |
-    Given I select "2" approvers "Automation PM,Automation FO"
+	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		                |
+    | Associate 1 | Overview   | Associate | GrantorSiteVisitContacts  | Associate	 | SelectSiteDeskReviewContacts |
+   Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
     | Subtab	 | Responsibilities 			  			| 		 |		    		  |
     | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
-	Given User "SPI" receives the task for "<Site Visit Name>"
+	Given User "SPI" receives the task for "Record Id"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Award Name>" with Id "<Award EGMS ID>"
-	| Actions 	 | Step 1   		 			     | Step 2		  		  			|
-	| Navigation | As a Grantor 	  				 | Monitoring 			 			|
-	| Left Panel | Manage Site Visits 				 | Monitoring Activities  			|
-	| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
-	| Button 	 | View								 | 						            |
-	Given I click on "Conduct" in the page details
+	When I re-login to "As a Grantor" app as "EXE" user on "QA" portal
+	And I navigate to "Monitoring" tab
+	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
+	And I click on "View" icon for "<Site Visit Name>" inside table
+	When I click on "Conduct" in the page details
 	And I navigate to "Reports and Outcomes" sub tab
-	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
+	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
     | Title       		 	 | Description  	 	  | Type    	   |
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
@@ -357,26 +346,30 @@ Feature: Validate all scenarios in the Site Visit
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     And I associate "1" records "Automation SPI"
-	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		  |
-    | Associate 1 | Overview   | AAssociate | GrantorSiteVisitContacts | Associate	 | popupflextable |
-    Given I select "2" approvers "Automation PM,Automation FO"
+	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		                |
+    | Associate 1 | Overview   | Associate | GrantorSiteVisitContacts  | Associate	 | SelectSiteDeskReviewContacts |
+   Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
     | Subtab	 | Responsibilities 			  			| 		 |		    		  |
     | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
-	Given User "SPI" receives the task for "<Site Visit Name>"
+	Given User "SPI" receives the task for "Record Id"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Award Name>" with Id "<Award EGMS ID>"
-	| Actions 	 | Step 1   		 			     | Step 2		  		  			|
-	| Navigation | As a Grantor 	  				 | Monitoring 			 			|
-	| Left Panel | Manage Site Visits 				 | Monitoring Activities  			|
-	| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
-	| Button 	 | View								 | 						            |
-	Given I click on "Conduct" in the page details
+	When I re-login to "As a Grantor" app as "EXE" user on "QA" portal
+	And I navigate to "Monitoring" tab
+	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
+	And I click on "View" icon for "<Site Visit Name>" inside table
+	When I click on "Conduct" in the page details
+	And I navigate to "Reports and Outcomes" sub tab
+	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+    | Title       		 	 | Description  	 	  | Type    	   |
+    | Automation Finding 	 | Automation Description | Finding		   |
+    | Automation Concern 	 | Automation Description | Concern 	   |
+    | Automation Observation | Automation Description | Observation    |
 	And I fill in the form "General Review Form" from sheet "Form Fields" in excel "SiteVisit_Field_Values.xlsx"
 	| Actions 	  | Step 1   		 	 | Step 2		 |
 	| Navigation  | Reports and Outcomes | 			 	 |
@@ -432,26 +425,30 @@ Feature: Validate all scenarios in the Site Visit
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     And I associate "1" records "Automation SPI"
-	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		  |
-    | Associate 1 | Overview   | AAssociate | GrantorSiteVisitContacts | Associate	 | popupflextable |
-    Given I select "2" approvers "Automation PM,Automation FO"
+	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		                |
+    | Associate 1 | Overview   | Associate | GrantorSiteVisitContacts  | Associate	 | SelectSiteDeskReviewContacts |
+   Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
     | Subtab	 | Responsibilities 			  			| 		 |		    		  |
     | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
-	Given User "SPI" receives the task for "<Site Visit Name>"
+	Given User "SPI" receives the task for "Record Id"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Award Name>" with Id "<Award EGMS ID>"
-	| Actions 	 | Step 1   		 			     | Step 2		  		  			|
-	| Navigation | As a Grantor 	  				 | Monitoring 			 			|
-	| Left Panel | Manage Site Visits 				 | Monitoring Activities  			|
-	| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
-	| Button 	 | View								 | 						            |
-	Given I click on "Conduct" in the page details
+	When I re-login to "As a Grantor" app as "EXE" user on "QA" portal
+	And I navigate to "Monitoring" tab
+	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
+	And I click on "View" icon for "<Site Visit Name>" inside table
+	When I click on "Conduct" in the page details
+	And I navigate to "Reports and Outcomes" sub tab
+	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+    | Title       		 	 | Description  	 	  | Type    	   |
+    | Automation Finding 	 | Automation Description | Finding		   |
+    | Automation Concern 	 | Automation Description | Concern 	   |
+    | Automation Observation | Automation Description | Observation    |
 	And I fill in the form "General Review Form" from sheet "Form Fields" in excel "SiteVisit_Field_Values.xlsx"
 	| Actions 	  | Step 1   		 	 | Step 2		 |
 	| Navigation  | Reports and Outcomes | 			 	 |
@@ -508,26 +505,30 @@ Feature: Validate all scenarios in the Site Visit
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     And I associate "1" records "Automation SPI"
-	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		  |
-    | Associate 1 | Overview   | AAssociate | GrantorSiteVisitContacts | Associate	 | popupflextable |
-    Given I select "2" approvers "Automation PM,Automation FO"
+	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		                |
+    | Associate 1 | Overview   | Associate | GrantorSiteVisitContacts  | Associate	 | SelectSiteDeskReviewContacts |
+   Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
     | Subtab	 | Responsibilities 			  			| 		 |		    		  |
     | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
     | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
 	And I click on "Notify" in the page details
-	Given User "SPI" receives the task for "<Site Visit Name>"
+	Given User "SPI" receives the task for "Record Id"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Award Name>" with Id "<Award EGMS ID>"
-	| Actions 	 | Step 1   		 			     | Step 2		  		  			|
-	| Navigation | As a Grantor 	  				 | Monitoring 			 			|
-	| Left Panel | Manage Site Visits 				 | Monitoring Activities  			|
-	| FlexTable  | Site Visits for Active Grants	 | inlineEditGridSiteVisitsGridView	|
-	| Button 	 | View								 | 						            |
-	Given I click on "Conduct" in the page details
+	When I re-login to "As a Grantor" app as "EXE" user on "QA" portal
+	And I navigate to "Monitoring" tab
+	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
+	And I click on "View" icon for "<Site Visit Name>" inside table
+	When I click on "Conduct" in the page details
+	And I navigate to "Reports and Outcomes" sub tab
+	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+    | Title       		 	 | Description  	 	  | Type    	   |
+    | Automation Finding 	 | Automation Description | Finding		   |
+    | Automation Concern 	 | Automation Description | Concern 	   |
+    | Automation Observation | Automation Description | Observation    |
 	And I fill in the form "General Review Form" from sheet "Form Fields" in excel "SiteVisit_Field_Values.xlsx"
 	| Actions 	  | Step 1   		 	 | Step 2		 |
 	| Navigation  | Reports and Outcomes | 			 	 |
