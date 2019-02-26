@@ -147,7 +147,7 @@ Feature: Validate all scenarios in Strategic Plan
 	Then I see that "Automation Program KPI" has been added in flextable with Id "KPIGoalsandObjectives"
 	
 	@strategicPlanHappyPath @strategicPlan @all
-	Scenario: Associating KPI to Objective inside a Strategic Goal
+	Scenario: strategic plan Happy Path
 	And I complete the fields from the sheet "StrategicPlanEdition" in excel "StrategicPlan_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
@@ -179,7 +179,7 @@ Feature: Validate all scenarios in Strategic Plan
     | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
     | Attachment Navigation | Attachments | Add								 | a150b000003epU7AAI |
     | Attachment Details    | Attachment  | Strategic Plan					 |					  |
-	Given I associate "1" records "Automation KPI Program"
+	Given I associate "1" records "Automation Program KPI"
 	| Actions 	  | Step 1       | Step 2	 | Step 3  			     | Step 4    | Step 5  	  |
     | Associate 1 | Related Logs | Associate | KPIGoalsandObjectives | Associate | SelectKPIs |
     And I click on "Back To Strategic Goal" in the page details

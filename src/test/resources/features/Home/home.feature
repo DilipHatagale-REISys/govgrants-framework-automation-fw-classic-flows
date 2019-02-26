@@ -302,6 +302,7 @@ Feature: Validate all scenarios in the home tab
 	| SPI   |
 	| SPA   |
 	
+
 	@internalOrganizationEdition @internalOrganization @organization @home
 	Scenario Outline: Validate whether ADMIN and DA users can Edit the Internal Organization
 	Given I login to "As a Grantor" app as "<User>" user 
@@ -316,7 +317,7 @@ Feature: Validate all scenarios in the home tab
 	|User |
 	|ADMIN|
 	
-    @subrecipientOrganizationEdition @subrecipients @organization @home
+	@subrecipientOrganizationEdition @subrecipients @organization @home
 	Scenario Outline: Validate whether ADMIN and DA users can Edit the Subrecipient Organization
 	Given I login to "As a Grantor" app as "<User>" user 
 	When I navigate to "Home" tab
@@ -362,7 +363,6 @@ Feature: Validate all scenarios in the home tab
 	Examples:
 	| User   |
 	| ADMIN  |	
-	
 		
 	@smeReviewersContactEdition @smeReviewers @contacts @home
 	Scenario Outline: Verifying all Internal Users has Edit access to SME Reviewers Contact
@@ -535,9 +535,4 @@ Feature: Validate all scenarios in the home tab
 	Examples:
 	|User |
 	|ADMIN|
-	
-	
-	
-	
-	
 	

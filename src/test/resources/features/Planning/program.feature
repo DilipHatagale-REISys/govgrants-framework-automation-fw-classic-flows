@@ -44,7 +44,7 @@ Feature: Validate all scenarios for program
     
   	@34740 @programApproverSelection @program @all
   	Scenario Outline: Validate the assignment of Approvers for the Internal Program
-    When I navigate to "Responsibilities" sub tab
+  	When I navigate to "Responsibilities" sub tab
     And I click on "Edit" icon for "Program Approver" inside flex table with id "ProgramRolesAndResponsibilities"
     When I fill in the "<Program Approver Name>" for the Approver details
     And I switch to Parent frame
@@ -210,7 +210,7 @@ Feature: Validate all scenarios for program
     Given "2" Approvers "PM,EXE" approve the record "Record Id"
      | Actions    | Step 1        | Step 2       | Step 3            |
      | Navigation | As a Grantor  | Planning     |                   |
-     | FlexTable  | Pending Tasks | MyTasks      | PhasePendingTasks |
+     | FlexTable  | Pending Tasks | My Tasks     | PhasePendingTasks |
      | Approval   | Start         | Approve      |                   |
     And I re-login to "As a Grantor" app as "<User>" user on "QA" portal
     When I navigate to "Planning" tab
@@ -222,5 +222,5 @@ Feature: Validate all scenarios for program
     Then I see status in Progress-bar is "Active" and is "green"
 	Examples:
      | User | Program Name                    |
-     | EXE  | Automation Program Regression   |    
+     | EXE  | Automation Program Feb21   |    
      
