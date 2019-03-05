@@ -1031,3 +1031,29 @@ Feature: Validate all scenarios in Progress Report
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
 	Then I see status in Progress-bar is "Approved" and is "green"
+	
+	@progressReportsNotEditablePostSubmission @progressReport @all	                                                                    #scn1 - Reviewed
+	Scenario: To validate progress report are not editable post submission of progress report to grantor.
+	Given User "SPI" receives the task for "Complete Progress Report"
+	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
+	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
+	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
+	| FlexTable  | PhasePendingTasks | Start 		 |			 |
+	And I click on "Cancel" in the page details				
+    When I get the "EGMS ID"
+	Given I complete the fields from the sheet "Edition" in excel "ProgressReport_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+    And I navigate to "Performance" sub tab
+    Given I edit the following rows inline in flex table with id "flexGridProgressReportKeyOutcomes" by clicking "Edit" :
+	| Title					  		| Actual | Reported Date |
+	| Automation Program KPI   		| 7      | 01/03/2019    |
+	| Automation Announcement KPI   | 7      | 01/03/2019    |
+	And I fill in the form "Medicaid Community Initiative Progress Report" from sheet "Form Fields" in excel "ProgressReport_Field_Values.xlsx"
+	| Actions 	  | Step 1   		 	  | Step 2		  |
+	| Navigation  | Forms and Attachments | 			  |
+	| FlexTable   | Edit				  | FormComponent |
+	| Form Button | Save				  | Back 		  |
+	| Validation  | Validate			  | FormComponent |
+	Given I click on "Submit to Grantor" in the page details
+	Then I cannot see top right button "Edit" in page detail
