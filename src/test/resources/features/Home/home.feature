@@ -302,12 +302,13 @@ Feature: Validate all scenarios in the home tab
 	| SPI   |
 	| SPA   |
 	
-		@internalOrganizationEdition @internalOrganization @organization @home
+
+	@internalOrganizationEdition @internalOrganization @organization @home
 	Scenario Outline: Validate whether ADMIN and DA users can Edit the Internal Organization
 	Given I login to "As a Grantor" app as "<User>" user 
 	When I navigate to "Home" tab
 	And I navigate to "Internal" content inside "Organization" subheader on left panel
-        And I perform quick search for "Behavioral Healthcare, Developmental Disabilities and Hospitals" in "inlineEditGridInternalOrganizationHierarchy" panel
+    And I perform quick search for "Behavioral Healthcare, Developmental Disabilities and Hospitals" in "inlineEditGridInternalOrganizationHierarchy" panel
 	When I click on "Edit" icon for "Behavioral Healthcare, Developmental Disabilities and Hospitals" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
 	And I enter "Edition" values from "InternalOrganization_Field_Values.xlsx"
 	When I click on "Save" in the page details
@@ -316,7 +317,7 @@ Feature: Validate all scenarios in the home tab
 	|User |
 	|ADMIN|
 	
-       @subrecipientOrganizationEdition @subrecipients @organization @home
+	@subrecipientOrganizationEdition @subrecipients @organization @home
 	Scenario Outline: Validate whether ADMIN and DA users can Edit the Subrecipient Organization
 	Given I login to "As a Grantor" app as "<User>" user 
 	When I navigate to "Home" tab
@@ -339,8 +340,8 @@ Feature: Validate all scenarios in the home tab
 	When I click on "Edit" icon for "Jane Doe" inside flex table with id "flexTableRandomID"
 	And I enter "Edition1" values from "InternalContact_Field_Values.xlsx"
 	And I click modal button "Save"
-        When I close Modal
-        And I perform quick search for "Jane Doe" in "flexTableRandomID" panel
+    When I close Modal
+    And I perform quick search for "Jane Doe" in "flexTableRandomID" panel
 	Then I see value "Active" for title "Status" inside table "flexTableRandomID"
 	Examples:
 	| User   |
@@ -357,7 +358,7 @@ Feature: Validate all scenarios in the home tab
 	When I click on "Edit" icon for "Bet Time" inside flex table with id "flexTableRandomID"			
 	And I enter "Edition" values from "SubrecipientContact_Field_Values.xlsx"
 	And I click modal button "Save"
-        And I perform quick search for "Bet Time" in "flexTableRandomID" panel
+    And I perform quick search for "Bet Time" in "flexTableRandomID" panel
 	Then I see value "Active" for title "Status" against the value "Bet Time" inside table "flexTableRandomID"
 	Examples:
 	| User   |

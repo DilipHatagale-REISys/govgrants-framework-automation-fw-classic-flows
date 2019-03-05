@@ -25,7 +25,7 @@ Feature: Validate all scenarios in the Announcement tab
 	Then I do not see value "<Announcement Name>" for title "Announcement Name" inside table "ActiveFundingOpportunitiesAll"  
 	Examples:
 	| Announcement Name		  |
-	| Automation Announcement |	
+	| Automation Announcement  |	
 	
 	@createdAnnouncementDeletionByOtherUser @announcement @all
 	Scenario Outline: Validate that other users are not able to delete created announcement
@@ -1262,8 +1262,8 @@ Feature: Validate all scenarios in the Announcement tab
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     Given I associate "1" records "RG-000010"
-	| Actions 	  | Step 1     | Step 2	   		   | Step 3  			  					    | Step 4  | Step 5  		 			  |
-    | Associate 1 | Overview   | Add Organizations | inlineEditGridSoleSourceAwardOrganizations | Add	 | SoleSourceAwardRecipientsTable |
+	| Actions 	   | Step 1     | Step 2	   		   | Step 3  			  					 | Step 4  | Step 5  		 			    |
+    | Associate 1 | Overview   | Add Organizations | inlineEditGridSoleSourceAwardOrganizations | Add	   | SoleSourceAwardRecipientsTable |
     And I edit the following rows inline in flex table with id "inlineEditGridSoleSourceAwardOrganizations" by clicking "Edit" :
 	| Agency Code | Allocated Amount |
 	| RG-000010   | 100000 			 | 
@@ -1276,7 +1276,7 @@ Feature: Validate all scenarios in the Announcement tab
 	And I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
 	| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
 	| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
-	| Flextable  | Edit 	    | Save					| 						           |
+	| Flextable  | Save			| 						|                                  |
 	Given I associate "3" records "Automation EXE,02493,SPO-0073"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |

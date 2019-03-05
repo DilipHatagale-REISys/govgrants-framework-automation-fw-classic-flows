@@ -221,6 +221,6 @@ Feature: Validate all scenarios for program
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "green"
 	Examples:
-     | User | Program Name                    |
+     | User | Program Name               |
      | EXE  | Automation Program Feb21   |    
      
