@@ -2,8 +2,8 @@
 Feature: Validate all scenarios in the Site Visit
 
 	Background: Data setup for Site Visit
-	Given I delete the record "Automation Site Visit Feb22" from the object "Site Visit"
-	And I login and view the "Active" award "AD-Gr19-06" with name "Automation Application Feb18" as User "EXE"
+	Given I delete the record "Automation Site Visit" from the object "Site Visit"
+	And I login and view the "Active" award "AD-Gr19-06" with name "Automation Application" as User "EXE"
 	| Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
     | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
@@ -114,8 +114,8 @@ Feature: Validate all scenarios in the Site Visit
 	When I click on "Conduct" in the page details
 	Then I see status in Progress-bar is "In Progress" and is "green"
 	Examples:
-	| Site Visit Name	          		|
-	| Automation Site Visit Regression  |
+	| Site Visit Name	    |
+	| Automation Site Visit |
 	
 	@addingOutcomeSiteVisit @siteVisit @all
 	Scenario Outline: Adding outcomes to Site Visit
@@ -149,8 +149,8 @@ Feature: Validate all scenarios in the Site Visit
     | Automation Observation | Automation Description | Observation    |
 	Then I see that "Automation Observation" has been added in flextable with Id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance"
 	Examples:
-	| Site Visit Name	           |
-	| Automation Site Visit Feb22  |
+	| Site Visit Name	      |
+	| Automation Site Visit   |
 	
 	@formFillingSiteVisit @siteVisit @all
 	Scenario Outline: Filling up of form in Site Visit
@@ -190,8 +190,8 @@ Feature: Validate all scenarios in the Site Visit
 	And I click on top right button "Validate" in flex table with id "FormComponent"
 	Then I see that "100.00%" has been added in flextable with Id "FormComponent"
 	Examples:
-	| Site Visit Name	           |
-	| Automation Site Visit Feb22  |
+	| Site Visit Name	     |
+	| Automation Site Visit  |
 	
 	@submittingForApprovalSiteVisit @siteVisit @all
 	Scenario: Submitting Site Visit for approval
