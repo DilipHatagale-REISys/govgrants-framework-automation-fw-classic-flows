@@ -107,7 +107,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user on "QA" portal
+	When I re-login to "As a Grantor" app as "EXE" user
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
@@ -136,7 +136,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user on "QA" portal
+	When I re-login to "As a Grantor" app as "EXE" user 
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
@@ -171,7 +171,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user on "QA" portal
+	When I re-login to "As a Grantor" app as "EXE" user
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
@@ -212,7 +212,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user on "QA" portal
+	When I re-login to "As a Grantor" app as "EXE" user 
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
@@ -251,7 +251,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user on "QA" portal
+	When I re-login to "As a Grantor" app as "EXE" user
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
@@ -305,7 +305,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user on "QA" portal
+	When I re-login to "As a Grantor" app as "EXE" user 
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
@@ -359,7 +359,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user on "QA" portal
+	When I re-login to "As a Grantor" app as "EXE" user 
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
@@ -438,7 +438,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user on "QA" portal
+	When I re-login to "As a Grantor" app as "EXE" user 
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
@@ -518,7 +518,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user on "QA" portal
+	When I re-login to "As a Grantor" app as "EXE" user
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table

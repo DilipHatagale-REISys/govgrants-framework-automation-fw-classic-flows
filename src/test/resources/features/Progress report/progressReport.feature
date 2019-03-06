@@ -196,7 +196,7 @@ Feature: Validate all scenarios in Progress Report
 	Given I click on "Submit to Grantor" in the page details
 	And User "EXE" receives the task for "Review Progress Report"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Monitoring 		 | As a Grantor  | QA		 |
+	| Navigation | Monitoring 		 | As a Grantor  | DEMO		 |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	Given I click on "Send Back to Subrecipient" in the page details
@@ -227,7 +227,7 @@ Feature: Validate all scenarios in Progress Report
 	Given I click on "Submit to Grantor" in the page details
 	And User "EXE" receives the task for "Review Progress Report"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Monitoring 		 | As a Grantor  | QA		 |
+	| Navigation | Monitoring 		 | As a Grantor  | DEMO		 |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	Given I click on "Send Back to Subrecipient" in the page details
@@ -259,7 +259,7 @@ Feature: Validate all scenarios in Progress Report
 	Given I click on "Submit to Grantor" in the page details
 	And User "EXE" receives the task for "Review Progress Report"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Monitoring 		 | As a Grantor  | QA		 |
+	| Navigation | Monitoring 		 | As a Grantor  | DEMO		 |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	Given I click on "Send Back to Subrecipient" in the page details
@@ -292,7 +292,7 @@ Feature: Validate all scenarios in Progress Report
 	Given I click on "Submit to Grantor" in the page details
 	And User "EXE" receives the task for "Review Progress Report"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Monitoring 		 | As a Grantor  | QA		 |
+	| Navigation | Monitoring 		 | As a Grantor  | DEMO  	 |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	Given I click on "Send Back to Subrecipient" in the page details
@@ -338,7 +338,7 @@ Feature: Validate all scenarios in Progress Report
 	Given I click on "Submit to Grantor" in the page details
 	When User "EXE" receives the task for "Review Progress Report"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Monitoring 		 | As a Grantor  | QA		 |
+	| Navigation | Monitoring 		 | As a Grantor  | DEMO		 |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	When I select "2" approvers "Automation PM,Automation FO"
@@ -373,7 +373,7 @@ Feature: Validate all scenarios in Progress Report
 	Given I click on "Submit to Grantor" in the page details
 	When User "EXE" receives the task for "Review Progress Report"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Monitoring 		 | As a Grantor  | QA		 |
+	| Navigation | Monitoring 		 | As a Grantor  | DEMO  	 |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	When I click on "Submit for Approval" in the page details
@@ -404,7 +404,7 @@ Feature: Validate all scenarios in Progress Report
 	Given I click on "Submit to Grantor" in the page details
 	And User "EXE" receives the task for "Review Progress Report"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Monitoring 		 | As a Grantor  | QA		 |
+	| Navigation | Monitoring 		 | As a Grantor  | DEMO		 |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	Given I click on "Submit for Approval" in the page details
@@ -440,7 +440,7 @@ Feature: Validate all scenarios in Progress Report
 	Given I click on "Submit to Grantor" in the page details
 	And User "EXE" receives the task for "Review Progress Report"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Monitoring 		 | As a Grantor  | QA		 |
+	| Navigation | Monitoring 		 | As a Grantor  | DEMO 	 |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	Given I click on "Send Back to Subrecipient" in the page details
@@ -461,7 +461,7 @@ Feature: Validate all scenarios in Progress Report
 	And I click on "Submit to Grantor" in the page details	
 	And User "EXE" receives the task for "Review Progress Report"				
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Monitoring 		 | As a Grantor  | QA		 |
+	| Navigation | Monitoring 		 | As a Grantor  | DEMO		 |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	Given I click on "Submit for Approval" in the page details
@@ -498,7 +498,7 @@ Feature: Validate all scenarios in Progress Report
 	Given I click on "Submit to Grantor" in the page details
 	And User "EXE" receives the task for "Review Progress Report"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Monitoring 		 | As a Grantor  | QA		 |
+	| Navigation | Monitoring 		 | As a Grantor  | DEMO  	 |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	When I select "2" approvers "Automation PM,Automation FO"
@@ -542,7 +542,7 @@ Feature: Validate all scenarios in Progress Report
 	Given I click on "Submit to Grantor" in the page details
 	And User "EXE" receives the task for "Review Progress Report"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Monitoring 		 | As a Grantor  | QA		 |
+	| Navigation | Monitoring 		 | As a Grantor  | DEMO	     |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	When I select "2" approvers "Automation PM,Automation FO"
@@ -587,7 +587,7 @@ Feature: Validate all scenarios in Progress Report
 	Given I click on "Submit to Grantor" in the page details
 	And User "EXE" receives the task for "Review Progress Report"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Monitoring 		 | As a Grantor  | QA		 |
+	| Navigation | Monitoring 		 | As a Grantor  | DEMO		 |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	When I select "2" approvers "Automation PM,Automation FO"
@@ -635,7 +635,7 @@ Feature: Validate all scenarios in Progress Report
 	Given I click on "Submit to Grantor" in the page details
 	And User "EXE" receives the task for "Record Id"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Monitoring 		 | As a Grantor  | QA		 |
+	| Navigation | Monitoring 		 | As a Grantor  | DEMO		 |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	When I select "2" approvers "Automation PM,Automation FO"
@@ -715,7 +715,7 @@ Feature: Validate all scenarios in Progress Report
 	Given I click on "Submit to Grantor" in the page details
 	And User "EXE" receives the task for "Record Id"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Monitoring 		 | As a Grantor  | QA		 |
+	| Navigation | Monitoring 		 | As a Grantor  | DEMO  	 |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	When I select "2" approvers "Automation PM,Automation FO"
@@ -764,7 +764,7 @@ Feature: Validate all scenarios in Progress Report
 	Given I click on "Submit to Grantor" in the page details
 	And User "EXE" receives the task for "Record Id"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Monitoring 		 | As a Grantor  | QA		 |
+	| Navigation | Monitoring 		 | As a Grantor  | DEMO		 |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	When I select "2" approvers "Automation PM,Automation FO"
@@ -808,7 +808,7 @@ Feature: Validate all scenarios in Progress Report
 	Given I click on "Submit to Grantor" in the page details
 	And User "EXE" receives the task for "Record Id"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Monitoring 		 | As a Grantor  | QA		 |
+	| Navigation | Monitoring 		 | As a Grantor  | DEMO 	 |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	When I select "2" approvers "Automation PM,Automation FO"
@@ -858,7 +858,7 @@ Feature: Validate all scenarios in Progress Report
 	Given I click on "Submit to Grantor" in the page details
 	And User "EXE" receives the task for "Record Id"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Monitoring 		 | As a Grantor  | QA		 |
+	| Navigation | Monitoring 		 | As a Grantor  | DEMO 	 |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	When I select "2" approvers "Automation PM,Automation FO"
@@ -911,7 +911,7 @@ Feature: Validate all scenarios in Progress Report
 	Given I click on "Submit to Grantor" in the page details
 	And User "EXE" receives the task for "Record Id"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Monitoring 		 | As a Grantor  | QA		 |
+	| Navigation | Monitoring 		 | As a Grantor  | DEMO 	 |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	When I select "2" approvers "Automation PM,Automation FO"
@@ -971,7 +971,7 @@ Feature: Validate all scenarios in Progress Report
 	Given I click on "Submit to Grantor" in the page details
 	And User "EXE" receives the task for "Review Progress Report"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Monitoring 		 | As a Grantor  | QA		 |
+	| Navigation | Monitoring 		 | As a Grantor  | DEMO 	 |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	When I select "2" approvers "Automation PM,Automation FO"
@@ -1016,7 +1016,7 @@ Feature: Validate all scenarios in Progress Report
 	Given I click on "Submit to Grantor" in the page details
 	And User "EXE" receives the task for "Review Progress Report"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Monitoring 		 | As a Grantor  | QA		 |
+	| Navigation | Monitoring 		 | As a Grantor  | DEMO      |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	When I select "2" approvers "Automation PM,Automation FO"

@@ -29,7 +29,7 @@ Feature: Validate all scenarios in the Announcement tab
 	
 	@createdAnnouncementDeletionByOtherUser @announcement @all
 	Scenario Outline: Validate that other users are not able to delete created announcement
-	When I re-login to "As a Grantor" app as "<User>" user on "QA" portal
+	When I re-login to "As a Grantor" app as "<User>" user 
 	And I navigate to "Announcements" tab
 	When I perform quick search for "<Announcement Name>" in "ActiveFundingOpportunitiesAll" panel
     Then I cannot see row level action button "Delete" against "<Announcement Name>" in flex table with id "ActiveFundingOpportunitiesAll"
@@ -55,7 +55,7 @@ Feature: Validate all scenarios in the Announcement tab
 	
 	@announcementEditionByOtherUser @announcement @all
 	Scenario Outline: Validate that other users are not able to edit created announcement
-	When I re-login to "As a Grantor" app as "<User>" user on "QA" portal
+	When I re-login to "As a Grantor" app as "<User>" user 
 	When I navigate to "Announcements" tab
 	And I perform quick search for "<Announcement Name>" in "ActiveFundingOpportunitiesAll" panel
  	Then I cannot see row level action button "Edit" against "<Announcement Name>" in flex table with id "ActiveFundingOpportunitiesAll"
@@ -350,7 +350,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Reviewer Navigation | Responsibilities      | 					  |			|
 	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
 	| Send Review		  | Send for Review       | Created 			  |			|
-	Given Review is completed as user "FO" for the record "<Announcement Name>" on "QA" portal
+	Given Review is completed as user "FO" for the record "<Announcement Name>" on "DEMO" portal
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
 	| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
@@ -541,7 +541,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Reviewer Navigation | Responsibilities      | 					  |			|
 	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
 	| Send Review		  | Send for Review       | Created 			  |			|
-	And Review is completed as user "FO" for the record "<Announcement Name>" on "QA" portal
+	And Review is completed as user "FO" for the record "<Announcement Name>" on "DEMO" portal
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
 	| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
@@ -764,7 +764,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Navigation | As a Grantor  | Announcements | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Send Back 	 | 					 |
-	And I re-login to "As a Grantor" app as "<User>" user on "QA" portal
+	And I re-login to "As a Grantor" app as "<User>" user 
 	When I navigate to "Announcements" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel              
@@ -908,7 +908,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Navigation | As a Grantor  | Announcements | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Reject		 | 					 |
-	When I re-login to "As a Grantor" app as "<User>" user on "QA" portal
+	When I re-login to "As a Grantor" app as "<User>" user 
 	And I navigate to "Announcements" tab
 	When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "PhasePendingTasks" panel              
@@ -1154,7 +1154,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Reviewer Navigation | Responsibilities      | 					  |			|
 	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
 	| Send Review		  | Send for Review       | Created 			  |			|
-	And Review is completed as user "FO" for the record "<Announcement Name>" on "QA" portal
+	And Review is completed as user "FO" for the record "<Announcement Name>" on "DEMO" portal
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
 	| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
@@ -1170,7 +1170,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Navigation | As a Grantor  | Announcements | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-	And I re-login to "As a Grantor" app as "<User>" user on "QA" portal
+	And I re-login to "As a Grantor" app as "<User>" user 
 	When I navigate to "Announcements" tab
 	And I navigate to "Competitive" content inside "Announcements" subheader on left panel
 	When I click toggle button to select "Draft Announcements"
@@ -1228,7 +1228,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Reviewer Navigation | Responsibilities      | 					  |			|
 	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
 	| Send Review		  | Send for Review       | Created 			  |			|
-	And Review is completed as user "FO" for the record "Record Id" on "QA" portal
+	And Review is completed as user "FO" for the record "Record Id" on "DEMO" portal
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
 	| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
@@ -1244,7 +1244,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Navigation | As a Grantor  | Announcements | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-	And I re-login to "As a Grantor" app as "<User>" user on "QA" portal
+	And I re-login to "As a Grantor" app as "<User>" user 
 	When I navigate to "Announcements" tab
 	And I navigate to "Directed" content inside "Announcements" subheader on left panel
 	When I click toggle button to select "Draft Announcements"
@@ -1305,7 +1305,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Reviewer Navigation | Responsibilities      | 					  |			|
 	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
 	| Send Review		  | Send for Review       | Created 			  |			|
-	And Review is completed as user "FO" for the record "Record Id" on "QA" portal
+	And Review is completed as user "FO" for the record "Record Id" on "DEMO" portal
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
 	| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
@@ -1321,7 +1321,7 @@ Feature: Validate all scenarios in the Announcement tab
 	| Navigation | As a Grantor  | Announcements | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-	When I re-login to "As a Grantor" app as "<User>" user on "QA" portal
+	When I re-login to "As a Grantor" app as "<User>" user 
 	And I navigate to "Announcements" tab
 	When I navigate to "Formula" content inside "Announcements" subheader on left panel
 	And I click toggle button to select "Draft Announcements"

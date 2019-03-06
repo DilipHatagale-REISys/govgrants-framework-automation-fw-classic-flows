@@ -134,7 +134,7 @@ public class UsersAndURL implements UsersController{
 
         switch (userLevel.toUpperCase()) {
         case "ADMIN":
-            username = "manu.sa@ggp.demo7";
+            username = "manu.sa@ggp.test7.demo7";
             break;
         case "EXE":
             username = "test@gmaildemo.com.demo7";
@@ -152,25 +152,25 @@ public class UsersAndURL implements UsersController{
             username = "kyle.farrell@reisystems.com21.demo7";
             break;
         case "SIMON PM":
-            username = "simon_pm@ggp.test7";
+            username = "simon_pm@ggp.test7.demo7";
             break;
         case "SARAH PO":
-            username = "sarah_po@ggp.test7";
+            username = "sarah_po@ggp.test7.demo7";
             break;
         case "ALEX FO":
-            username = "alex_fo@ggp.test7";
+            username = "alex_fo@ggp.test7.demo7";
             break;
         case "TOMMY EXE":
-            username = "tommy_exe@ggp.test7";
+            username = "tommy_exe@ggp.test7.demo7";
             break;
         case "CATHY PM":
-            username = "cathy_pm@ggp.test7";
+            username = "cathy_pm@ggp.test7.demo7";
             break;
         case "OSCAR PM":
-            username = "oscar_pm@ggp.test7";
+            username = "oscar_pm@ggp.test7.demo7";
             break;
         default:
-            username = "manu.sa@ggp.demo7";
+            username = "manu.sa@ggp.test7.demo7";
         }
         return username;
     }

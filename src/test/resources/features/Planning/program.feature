@@ -1,9 +1,6 @@
 Feature: Validate all scenarios for program
 
 	Background: Create Program
-<<<<<<< HEAD
-	#Given I delete the record "Automation Program" from the object "Program"
-=======
 	Given I delete the record "Automation Program" from the object "Program"
 	And I create a planning record as user "EXE" from sheet "Creation" in excel "Program_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 | Step 3 				    |
@@ -173,7 +170,7 @@ Feature: Validate all scenarios for program
     When I perform quick search for "<Program Name>" in "PhasePendingTasks" panel
     And I click on "Start" icon for "<Program Name>" inside table
     When I click on "Approve" on the approval decision box
-    And I re-login to "As a Grantor" app as "<Executive Approver>" user on "DEMO" portal
+    And I re-login to "As a Grantor" app as "<Executive Approver>" user 
 	When I navigate to "Planning" tab
 	And I navigate to "Pending Tasks" content inside "MyTasks" subheader on left panel
     When I perform quick search for "<Program Name>" in "PhasePendingTasks" panel
@@ -209,14 +206,14 @@ Feature: Validate all scenarios for program
     Given I add an attachment "InternalOrganization_Field_Values.xlsx"
     | Actions               | Step 1      | Step 2            | Step 3                   | 
     | Attachment Navigation | Attachments | Add               | a150b000003epY5AAI       |
-    | Attachment Details    | Attachment  | Program Artifacts |                          |
+    | Attachment Details    | Attach1ment  | Program Artifacts |                          |
     And I click on "Submit For Approval" in the page details
     Given "2" Approvers "PM,EXE" approve the record "Record Id"
      | Actions    | Step 1        | Step 2       | Step 3            |
      | Navigation | As a Grantor  | Planning     |                   |
      | FlexTable  | Pending Tasks | My Tasks     | PhasePendingTasks |
      | Approval   | Start         | Approve      |                   |
-    And I re-login to "As a Grantor" app as "<User>" user on "QA" portal
+    And I re-login to "As a Grantor" app as "<User>" user 
     When I navigate to "Planning" tab
     And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
     And I click toggle button to select "Draft Internal Programs"

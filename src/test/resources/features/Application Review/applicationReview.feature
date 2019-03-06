@@ -957,7 +957,7 @@ Feature: Validate all scenarios in the Application Review
     | Subtab	 | Responsibilities 						   | 		|		    		  |
     | Approver 1 | GrantorReviewStepRolesandResponsibilities   | Edit   | Executive Approver  |
 	Given I click on "Submit for Approval" in the page details
-	And I re-login to "As a Grantor" app as "EXE" user on "QA" portal
+	And I re-login to "As a Grantor" app as "EXE" user 
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "Application Tasks" subheader on left panel
     When I perform quick search for "Approve FDM" in "PhasePendingTasks" panel
