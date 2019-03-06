@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in Progress Report
 
 	Background: Navigate to Award
-	Given I delete the record "Automation Progress Report Regression" from the object "Progress Report"
+	Given I delete the record "Automation Progress Report" from the object "Progress Report"
 
 	@taskCreationForSubrecipientProgressReport @progressReport @all
     Scenario: To assert the task creation for Progress Report

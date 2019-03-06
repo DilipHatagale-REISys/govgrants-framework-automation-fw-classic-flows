@@ -1180,7 +1180,7 @@ Feature: Validate all scenarios in the Announcement tab
     Then I see status in Progress-bar is "Published" and is "green"
 	Examples:
 	| User | Announcement Name 			   |
-	| EXE  | Automation Announcement Feb21 |
+	| EXE  | Automation Announcement       |
 	
 	@34462 @publishingDirectedAnnouncement @announcementDirectedHappyPath @announcement @all
   	Scenario Outline: Validate the activation of Internal Program
@@ -1331,5 +1331,5 @@ Feature: Validate all scenarios in the Announcement tab
     Then I see status in Progress-bar is "Published" and is "green"
 	Examples:
 	| User | Announcement Name 		 		    |
-	| EXE  | Automation Announcement FOR Jan16  |
+	| EXE  | Automation Announcement            |
  	

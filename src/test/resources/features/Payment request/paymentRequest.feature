@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in Payment Request
 
 	Background: Navigate to award
-	Given I delete the record "Automation Payment Request Regression" from the object "Payment Request"
+	Given I delete the record "Automation Payment Request" from the object "Payment Request"
 	And I am on "SUBPORTAL" portal
 	Given I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "SPI"
 	| Actions 	 | Step 1 	  	 | Step 2		 		   | Step 3  	 		   | Step 4						 |

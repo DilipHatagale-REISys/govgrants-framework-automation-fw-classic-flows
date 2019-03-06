@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in the Stand Alone Award and Grant
 
 	Background: Create Award from FDM
-	Given I delete the record "Automation Grant Regression" from the object "Grant"
+	Given I delete the record "Automation Grant" from the object "Grant"
 	And I create a Grant as user "EXE" from sheet "Grant_Creation" in excel "Award_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		    | Step 2    	 	 | Step 3 				       |
 	| Navigation | As a Grantor		    | Grants    	 	 | Grants, Awards & Amendments |
@@ -181,7 +181,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I click on "Send to Subrecipient" in the page details
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
+	| Automation Grant              			|
 	
 	@awardStanAloneAcceptanceByRecipientBeforeApproval @awardStanAlone
   	Scenario Outline: Validate the assignment of Approvers for the award 
@@ -252,7 +252,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see that "Subaward" is in "Created" status
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
+	| Automation Grant          				|
 	
 	@awardStanAloneReviewerAssignment @awardStanAlone
   	Scenario Outline: Validate the assignment of Reviewer for the award
@@ -325,7 +325,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	Then I see that "Automation FO" has been added in flextable with Id "flexGridGrantorAwardReviewer"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
+	| Automation Grant              			|
 	
 	@awardStanAloneReviewerInitiation @awardStanAlone
   	Scenario Outline: Validate initiation of review for the award 
@@ -408,7 +408,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	Then I see that "Sent for Review" has been added in flextable with Id "flexGridGrantorAwardReviewer"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
+	| Automation Grant               			|
 	
 	@awardStanAloneReviewComplete @awardStanAlone
   	Scenario Outline: Validate completion of review for the award 
@@ -498,7 +498,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see that "Submitted" has been added in flextable with Id "flexGridGrantorAwardReviewer"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
+	| Automation Grant               			|
 	
 	@awardStanAloneSubmissionForApproval @awardStanAlone
   	Scenario Outline: Validate award submission for approval	
@@ -589,7 +589,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
+	| Automation Grant           				|
 	
 	@awardStanAloneApproval @awardStanAlone
   	Scenario Outline: Validate award Approval by respective approvers	
@@ -698,7 +698,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see status in Progress-bar is "Approved" and is "green"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
+	| Automation Grant              			|
 	
 	@awardStanAloneSendToRecipientAfterApproval @awardStanAlone
   	Scenario Outline: Validate award Approval by respective approvers	
@@ -803,7 +803,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
+	| Automation Grant              			|
 	
 	@awardStanAloneAcceptanceByRecipientAfterApproval @awardStanAlone
   	Scenario Outline: Validate award Approval by respective approvers	
@@ -912,7 +912,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see that "Subaward" is in "Accepted" status
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
+	| Automation Grant              			|
 	
 	@awardStanAloneActivation @awardStanAlone
   	Scenario Outline: Validate award Approval by respective approvers	
@@ -1008,7 +1008,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	Then I see that "Subaward" is in "Activated" status  	
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
+	| Automation Grant                			|
 	
 	@awardStanAloneSiteVisit @awardStanAlone
   	Scenario Outline: Validate award Approval by respective approvers	
@@ -1126,7 +1126,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see status in Progress-bar is "Created" and is "green"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
+	| Automation Grant                 			|
 	
 	@awardStandAloneDeskReview @awardStandAlone
   	Scenario Outline: Validate award Approval by respective approvers	
@@ -1244,7 +1244,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see status in Progress-bar is "Created" and is "green"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|	
+	| Automation Grant          				|	
 	
 	@awardHappyPathStandAlone @awardStandAlone
   	Scenario Outline: Validate award Approval by respective approvers	
@@ -1373,4 +1373,4 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	Then I see status in Progress-bar is "Activated" and is "green"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
+	| Automation Grant          				|

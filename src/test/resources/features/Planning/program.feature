@@ -2,10 +2,9 @@ Feature: Validate all scenarios for program
 
 	Background: Create Program
 <<<<<<< HEAD
-	#Given I delete the record "Automation Program Regression" from the object "Program"
+	#Given I delete the record "Automation Program" from the object "Program"
 =======
 	Given I delete the record "Automation Program" from the object "Program"
->>>>>>> c9be1a592ef2849238f8ed0979b58ce4a9949e59
 	And I create a planning record as user "EXE" from sheet "Creation" in excel "Program_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 | Step 3 				    |
 	| Navigation | As a Grantor		 | Planning  	 	 |	Programs				|
@@ -183,7 +182,7 @@ Feature: Validate all scenarios for program
     Then I see status in Progress-bar is "Approved" and is "green"
 	Examples:
 	| Program Approver | Program Name		  			  | Executive Approver |
-	| PM               | Automation Program Regression    | EXE			  	   |
+	| PM               | Automation Program               | EXE			  	   |
 	
   	@34756 @programActivation @programHappyPath @program @all
   	Scenario Outline: Validate the activation of Internal Program
@@ -227,5 +226,5 @@ Feature: Validate all scenarios for program
     Then I see status in Progress-bar is "Active" and is "green"
 	Examples:
      | User | Program Name               |
-     | EXE  | Automation Program Feb21   |    
+     | EXE  | Automation Program         |    
      

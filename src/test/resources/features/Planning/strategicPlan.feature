@@ -2,9 +2,9 @@
 Feature: Validate all scenarios in Strategic Plan
 
 	Background: To setup data
-	Given I delete the record "Automation Strategic Plan Regression" from the object "Strategic Plan"
-	Given I delete the record "Automation Strategic Goal Regression" from the object "Strategic Plan"
-	Given I delete the record "Automation Objective Regression" from the object "Strategic Plan"
+	Given I delete the record "Automation Strategic Plan" from the object "Strategic Plan"
+	Given I delete the record "Automation Strategic Goal" from the object "Strategic Plan"
+	Given I delete the record "Automation Objective" from the object "Strategic Plan"
 	Given I create a planning record as user "EXE" from sheet "StrategicPlanCreation" in excel "StrategicPlan_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 | Step 3 				    |
 	| Navigation | As a Grantor		 | Planning  	 	 | Planning	    			|

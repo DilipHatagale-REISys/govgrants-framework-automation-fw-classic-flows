@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in Funding Source
 
 	Background: To setup data
-	Given I delete the record "Automation Funding Source Regression" from the object "Funding Source"
+	Given I delete the record "Automation Funding Source" from the object "Funding Source"
 	And I create a planning record as user "EXE" from sheet "Creation" in excel "FundingSource_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		| Step 2    	 	    |  Step 3 				    	 |
 	| Navigation | As a Grantor		| Planning  	 	    | Planning	    				 |

@@ -2,12 +2,12 @@
 Feature: Validate all scenarios in the Award from FDM
 
 	Background: Create Award from FDM
-	Given I create a subaward from the Announcement "Automation Announcement Feb18" for the Application "Automation Application Feb18" as user "EXE"
+	Given I create a subaward from the Announcement "Automation Announcement" for the Application "Automation Application" as user "EXE"
 	| Actions    | Step 1           | Step 2		| Step 3		     					  | Step 4 									|
 	| Navigation | As a Grantor     | Applications  | Application Review 					  | Funding Decision Memo (FDM) 			|
 	| FlexTable  | FDMList1	        | View			| Approved Funding Decision Memos (FDM)   | flexGridFundingDecisionMemoApplications	|
 	| Buttons 	 | Create Subaward  | 				|                             			  |											|
-	Given I login and view the record "Automation Announcement Feb18" as "EXE"
+	Given I login and view the record "Automation Announcement" as "EXE"
 	| Actions 			  | Step 1 	  	  | Step 2	     | Step 3  	 		    | Step 4 		   			  |
 	| Owner Navigation 	  | As a Grantor  | Grants		 | Grants and Subawards | Grants, Awards & Amendments |
 	| Complete Review 	  | Draft Grants  | ActiveGrants | View 		  		| 							  |
@@ -179,7 +179,7 @@ Feature: Validate all scenarios in the Award from FDM
     Then I click on "Send to Subrecipient" in the page details
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
+	| Automation Grant                  		|
 	
 	@awardAcceptanceByRecipientBeforeApproval @awardFromFDM
   	Scenario Outline: Validate the assignment of Approvers for the award 
@@ -250,7 +250,7 @@ Feature: Validate all scenarios in the Award from FDM
     Then I see that "Subaward" is in "Created" status
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
+	| Automation Grant                   		|
 	
 	@awardReviewerAssignment @awardFromFDM
   	Scenario Outline: Validate the assignment of Reviewer for the award
@@ -323,7 +323,7 @@ Feature: Validate all scenarios in the Award from FDM
 	Then I see that "Automation FO" has been added in flextable with Id "flexGridGrantorAwardReviewer"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
+	| Automation Grant              			|
 	
 	@awardReviewerInitiation @awardFromFDM
   	Scenario Outline: Validate initiation of review for the award 
@@ -406,7 +406,7 @@ Feature: Validate all scenarios in the Award from FDM
 	Then I see that "Sent for Review" has been added in flextable with Id "flexGridGrantorAwardReviewer"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
+	| Automation Grant                   		|
 	
 	@awardReviewComplete @awardFromFDM
   	Scenario Outline: Validate completion of review for the award 
@@ -496,7 +496,7 @@ Feature: Validate all scenarios in the Award from FDM
     Then I see that "Submitted" has been added in flextable with Id "flexGridGrantorAwardReviewer"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
+	| Automation Grant            				|
 	
 	@awardSubmissionForApproval @awardFromFDM
   	Scenario Outline: Validate award submission for approval	
@@ -587,7 +587,7 @@ Feature: Validate all scenarios in the Award from FDM
 	Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
+	| Automation Grant              			|
 	
 	@awardApproval @awardFromFDM
   	Scenario Outline: Validate award Approval by respective approvers	
@@ -696,7 +696,7 @@ Feature: Validate all scenarios in the Award from FDM
     Then I see status in Progress-bar is "Approved" and is "green"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
+	| Automation Grant           				|
 	
 	@awardSendToRecipientAfterApproval @awardFromFDM
   	Scenario Outline: Validate award send to subrecipient after approval	
@@ -801,8 +801,7 @@ Feature: Validate all scenarios in the Award from FDM
 	Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
-	
+	| Automation Grant                          |
 	@awardAcceptanceByRecipientAfterApproval @awardFromFDM
   	Scenario Outline: Validate award acceptance by subrecipient after approval	
   	Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
@@ -910,7 +909,7 @@ Feature: Validate all scenarios in the Award from FDM
     Then I see that "Subaward" is in "Accepted" status
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
+	| Automation Grant           				|
 	
 	@awardActivation @awardFromFDM
   	Scenario Outline: Validate award Activation	
@@ -1006,7 +1005,7 @@ Feature: Validate all scenarios in the Award from FDM
 	Then I see that "Subaward" is in "Activated" status  	
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
+	| Automation Grant          				|
 	
 	@awardSiteVisit @awardFromFDM
   	Scenario Outline: Validate award site visit creation	
@@ -1124,7 +1123,7 @@ Feature: Validate all scenarios in the Award from FDM
     Then I see status in Progress-bar is "Created" and is "green"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
+	| Automation Grant          				|
 	
 	@awardDeskReview @awardFromFDM
   	Scenario Outline: Validate award desk review creation	
@@ -1242,7 +1241,7 @@ Feature: Validate all scenarios in the Award from FDM
     Then I see status in Progress-bar is "Created" and is "green"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant Regression				|
+	| Automation Grant          				|
 	
 	
 	@awardHappyPathFromFDM @awardFromFDM
@@ -1372,4 +1371,4 @@ Feature: Validate all scenarios in the Award from FDM
 	Then I see status in Progress-bar is "Activated" and is "green"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Application Feb18				|
+	| Automation Application          			|

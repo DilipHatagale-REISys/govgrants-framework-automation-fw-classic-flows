@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in Key Performance Indicator(KPI)
 
 	Background: To setup data
-	Given I delete the record "Automation KPI Regression" from the object "KPI"
+	Given I delete the record "Automation KPI" from the object "KPI"
 	And I create a planning record as user "EXE" from sheet "Creation" in excel "KPI_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 				| Step 2    	 	   | Step 3 				    			  |
 	| Navigation | As a Grantor		 				| Planning  	 	   | Planning	    						  |
