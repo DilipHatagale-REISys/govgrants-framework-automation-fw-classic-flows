@@ -2,10 +2,10 @@
 Feature: Validate all scenarios in the Application Intake
 
 	Background: Qualify Announcement and Create Application
-	Given I delete the record "Automation Application Regression" from the object "Application"
-	And I delete the record "Automation Announcement Regression" from the object "Qualified Announcement"
+	Given I delete the record "Automation Application" from the object "Application"
+	And I delete the record "Automation Announcement" from the object "Qualified Announcement"
 	Given I am on "SUBPORTAL" portal
-	And I qualify the announcement "Automation Announcement Regression" as user "SPI"
+	And I qualify the announcement "Automation Announcement" as user "SPI"
 	| Actions 	 | Step 1 	      | Step 2		  | Step 3  | Step 4 	    |
 	| Navigation | Grants Portal  | Opportunities | Active  | Opportunities |
 	| FlexTable  | popupflextable | View		  | Qualify | 				|
@@ -157,5 +157,5 @@ Feature: Validate all scenarios in the Application Intake
 	And I perform quick search for "<Application Name>" in "ApplicantGrantorApplications" panel
 	When I click on "View" icon for "<Application Name>" inside table
 	Examples:
-	| User | Application Name                    |
-	| EXE  | Automation Application Regression	 |
+	| User | Application Name       |
+	| EXE  | Automation Application |

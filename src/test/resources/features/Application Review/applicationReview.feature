@@ -714,7 +714,7 @@ Feature: Validate all scenarios in the Application Review
 	| Field   | Edit   | GrantCode__c | Save   |
 	And I enter the recommendation in FDM in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit"
 	| Application Title 				  | Recommended Budget | Recommend for Funding | Comments 	 |
-	| Automation Application Feb18		  | 10000 		       | Yes				   | Recommended |
+	| Automation Application      		  | 10000 		       | Yes				   | Recommended |
 	Then I see that "Funding Decision Memo" is in "Created" status
 	Examples: 
 	| User | Announcement Name  	 | Review Step Name	      | Application Name 	           	    |
@@ -790,7 +790,7 @@ Feature: Validate all scenarios in the Application Review
 	| Field   | Edit   | GrantCode__c | Save   |
 	And I enter the recommendation in FDM in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit"
 	| Application Title 				  | Recommended Budget | Recommend for Funding | Comments 	 |
-	| Automation Application Feb18		  | 10000 		       | Yes				   | Recommended |
+	| Automation Application         	  | 10000 		       | Yes				   | Recommended |
 	Given I select "1" approvers "Automation EXE"
     | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
     | Subtab	 | Responsibilities 						   | 		|		    		  |
@@ -870,7 +870,7 @@ Feature: Validate all scenarios in the Application Review
 	| Field   | Edit   | GrantCode__c | Save   |
 	And I enter the recommendation in FDM in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit"
 	| Application Title 				  | Recommended Budget | Recommend for Funding | Comments 	 |
-	| Automation Application Feb18		  | 10000 		       | Yes				   | Recommended |
+	| Automation Application     		  | 10000 		       | Yes				   | Recommended |
 	Given I select "1" approvers "Automation EXE"
     | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
     | Subtab	 | Responsibilities 						   | 		|		    		  |
@@ -951,7 +951,7 @@ Feature: Validate all scenarios in the Application Review
 	| Field   | Edit   | GrantCode__c | Save   |
 	And I enter the recommendation in FDM in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit"
 	| Application Title 				  | Recommended Budget | Recommend for Funding | Comments 	 |
-	| Automation Application Feb18		  | 10000 		       | Yes				   | Recommended |
+	| Automation Application              | 10000 		       | Yes				   | Recommended |
 	Given I select "1" approvers "Automation EXE"
     | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
     | Subtab	 | Responsibilities 						   | 		|		    		  |
@@ -966,4 +966,4 @@ Feature: Validate all scenarios in the Application Review
 	Then I see status in Progress-bar is "Approved" and is "green"
 	Examples: 
 	| User | Announcement Name  			   | Review Step Name	    | Application Name 	  		   |
-	| EXE  | Automation Announcement Feb18	   | Funding Decision Memo  | Automation Application Feb18 |
+	| EXE  | Automation Announcement           | Funding Decision Memo  | Automation Application       |

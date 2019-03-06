@@ -1,7 +1,9 @@
-@program
 Feature: Validate all scenarios for program
 
 	Background: Create Program
+<<<<<<< HEAD
+	#Given I delete the record "Automation Program" from the object "Program"
+=======
 	Given I delete the record "Automation Program" from the object "Program"
 	And I create a planning record as user "EXE" from sheet "Creation" in excel "Program_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 | Step 3 				    |
@@ -138,6 +140,8 @@ Feature: Validate all scenarios for program
 	
   	@34752 @34754 @programApproval @program @all
   	Scenario Outline: Validate the approval of Internal Program
+  	Given I re-login to "As a Grantor" app as "<Program Approver>" user
+  	And I pause execution
     Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
@@ -163,7 +167,7 @@ Feature: Validate all scenarios for program
     | Attachment Navigation | Attachments | Add				  | a150b000003epY5AAI |
     | Attachment Details    | Attachment  | Program Artifacts | 				   |
     And I click on "Submit For Approval" in the page details
-	Given I re-login to "As a Grantor" app as "<Program Approver>" user on "DEMO" portal
+	Given I re-login to "As a Grantor" app as "<Program Approver>" user
 	When I navigate to "Planning" tab
 	And I navigate to "Pending Tasks" content inside "MyTasks" subheader on left panel
     When I perform quick search for "<Program Name>" in "PhasePendingTasks" panel
@@ -178,7 +182,7 @@ Feature: Validate all scenarios for program
     Then I see status in Progress-bar is "Approved" and is "green"
 	Examples:
 	| Program Approver | Program Name		  			  | Executive Approver |
-	| PM               | Automation Program Regression    | EXE			  	   |
+	| PM               | Automation Program               | EXE			  	   |
 	
   	@34756 @programActivation @programHappyPath @program @all
   	Scenario Outline: Validate the activation of Internal Program
@@ -222,5 +226,5 @@ Feature: Validate all scenarios for program
     Then I see status in Progress-bar is "Active" and is "green"
 	Examples:
      | User | Program Name               |
-     | EXE  | Automation Program Feb21   |    
+     | EXE  | Automation Program         |    
      

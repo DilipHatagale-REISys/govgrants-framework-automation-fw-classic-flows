@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in Desk Review
 
 	Background: Create Desk Review
-	Given I delete the record "Automation Desk Review Regression" from the object "Desk Review"
+	Given I delete the record "Automation Desk Review" from the object "Desk Review"
 	And I login and view the "Active" award "AD-AuGr--01" with name "Automation Announcement to be deleted Application" as User "EXE"
 	| Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
     | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |

@@ -2,8 +2,8 @@
 Feature: Validate all scenarios in the Amendment Request
 
 	Background: Setup data
-	Given I delete the record "Automation App Jan25" from the object "Amendment Request"
-	Given I login and view the "Active" award "Activated" with name "Automation App Jan25" as User "EXE"
+	Given I delete the record "Automation App" from the object "Amendment Request"
+	Given I login and view the "Active" award "Activated" with name "Automation App" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
     | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
