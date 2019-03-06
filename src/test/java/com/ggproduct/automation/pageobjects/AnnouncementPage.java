@@ -2,6 +2,8 @@ package com.ggproduct.automation.pageobjects;
 
 import java.util.Map;
 
+import org.openqa.selenium.By;
+
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 
@@ -62,6 +64,7 @@ public class AnnouncementPage extends ProjectManager {
                 dataTableMap.get("Navigation").get("Step 2"));
         govgrants.flexTable().clickTableActionIcon(dataTableMap.get("Navigation").get("Step 3"),
                 dataTableMap.get("Flextable").get("Step 1"), budgetPeriod);
+        reiDriver.switchTo().switchToFrame(By.id("AnnouncementBudgetPeriodiframeContentId"));
         govgrants.inputForms().enterInputFieldsFromExcelFile(excelFileName, sheetName);
         govgrants.modal().clickModalContentSpecificButton(dataTableMap.get("Flextable").get("Step 2"));
         govgrants.modal().closeModalByClickingTopRightCloseButton();
