@@ -217,7 +217,7 @@ Feature: Validate all scenarios in the Amendment Request
 	And I click on "Acknowledge" in the page details
 	When User "EXE" receives the task for "Record Id"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Grants	 		 | As a Grantor  | QA		 |
+	| Navigation | Grants	 		 | As a Grantor  | DEMO		 |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
     And I click on "Submit for Approval" in the page details
@@ -264,7 +264,7 @@ Feature: Validate all scenarios in the Amendment Request
 	And I click on "Acknowledge" in the page details
 	When User "EXE" receives the task for "Record Id"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Grants	 		 | As a Grantor  | QA		 |
+	| Navigation | Grants	 		 | As a Grantor  | DEMO		 |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
     And I click on "Submit for Approval" in the page details
@@ -316,7 +316,7 @@ Feature: Validate all scenarios in the Amendment Request
 	And I click on "Acknowledge" in the page details
 	When User "EXE" receives the task for "Record Id"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Grants	 		 | As a Grantor  | QA		 |
+	| Navigation | Grants	 		 | As a Grantor  | DEMO	     |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
     And I click on "Submit for Approval" in the page details
@@ -369,7 +369,7 @@ Feature: Validate all scenarios in the Amendment Request
 	And I click on "Acknowledge" in the page details
 	Given User "EXE" receives the task for "Record Id"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Grants	 		 | As a Grantor  | QA		 |
+	| Navigation | Grants	 		 | As a Grantor  | DEMO		 |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
     And I click on "Submit for Approval" in the page details

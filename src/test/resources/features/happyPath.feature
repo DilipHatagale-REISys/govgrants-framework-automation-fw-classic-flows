@@ -40,7 +40,7 @@ Feature: Validate all scenarios Happy Path across all modules
 	| Navigation | As a Grantor  | Planning		 | 				  	 |
 	| FlexTable  | Pending Tasks | MyTasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-    And I re-login to "As a Grantor" app as "<Owner_user>" user on "QA" portal
+    And I re-login to "As a Grantor" app as "<Owner_user>" user 
 	When I navigate to "Planning" tab
 	And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
 	And I click toggle button to select "Draft Internal Programs"
