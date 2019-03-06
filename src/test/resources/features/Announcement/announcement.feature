@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in the Announcement tab
 
 	Background: Create Announcement
-	#Given I delete the record "Automation Announcement" from the object "Announcement"
+	Given I delete the record "Automation Announcement" from the object "Announcement"
 	And I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
 	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
 	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
