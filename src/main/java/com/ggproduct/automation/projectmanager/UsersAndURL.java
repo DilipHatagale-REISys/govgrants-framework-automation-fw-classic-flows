@@ -183,7 +183,7 @@ public class UsersAndURL implements UsersController{
             username = "gcooper@yopmail.com20";
             break;
         case "FO":
-            username = "auto.fm@auto.com";
+            username = "auto.fm@auto.com.demo7";
             break;
         default:
             username = "admin.automation@subportal.com";
