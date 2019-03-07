@@ -16,7 +16,6 @@ public class ProjectWebServices {
      */
     private void getAuthToken() {
         setDefaultEndPointGetToken(defaultEndPointGetToken);
-        System.out.println("----- "+getDefaultEndPointGetToken());
         Response response = apiCall.postCall(null, null, endPoint + getDefaultEndPointGetToken(), null, null, null);
         tokenString = response.body().jsonPath().getString("access_token");
     }

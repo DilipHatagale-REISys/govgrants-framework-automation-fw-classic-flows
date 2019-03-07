@@ -49,7 +49,6 @@ Feature: Validate all scenarios in the home tab
 	Examples:
 	| User  |
 	| ADMIN |
-	| DA	|
 	
 	@internalOrganizationPMEdit @internalOrganization @home @all
 	Scenario: Verify whether the PM profiles can Edit their own Organizations
@@ -106,7 +105,6 @@ Feature: Validate all scenarios in the home tab
 	Examples:
 	| User  |
 	| ADMIN |
-	| DA    |
 	
 	@internalContactsView @internal @contacts @home @all
 	Scenario Outline: Validate whether all users have view access to Contacts
@@ -242,7 +240,6 @@ Feature: Validate all scenarios in the home tab
 	Examples:
 	| User  |
 	| ADMIN |
-	| DA	|
 	
 	@termsAndConditionsADMINedit @termsandConditions @manageTermsandConditions @home @all
 	Scenario Outline: Verifying if the ADMIN has Edit access to Terms and Conditions
@@ -254,7 +251,6 @@ Feature: Validate all scenarios in the home tab
 	 Examples:
 	| User  |
 	| ADMIN |
-	| DA	|
 	
 	@einRegistrationView @einRegistration @usefulLinks @home @all
 	Scenario Outline: Validate whether all users have view access to EIN Registration
