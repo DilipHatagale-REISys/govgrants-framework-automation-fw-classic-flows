@@ -3,21 +3,30 @@ Feature: Validate all scenarios in the Announcement tab
 
 	Background: Create Announcement
 	Given I delete the record "Automation Announcement" from the object "Announcement"
-	And I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	
+
+	@33936 @announcementCreation @announcement @all
+	Scenario: Creation of an Announcement
+	Given I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
 	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
 	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
 	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
 	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
 	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
 	| ID		   | EGMS ID							 |							  |									  |
-	Given I click on "Save" in the page details
-
-	@33936 @announcementCreation @announcement @all
-	Scenario: Creation of an Announcement
+	And I click on "Save" in the page details
 	Then I see status in Progress-bar is "Created" and is "green"
 	
 	@announcementCreatedDeleteAccessToOwner @announcement @all
 	Scenario Outline: Validate that owner can able to delete created status announcement
+	Given I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
+	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
+	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
+	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
+	| ID		   | EGMS ID							 |							  |									  |
+	And I click on "Save" in the page details
 	When I navigate to "Announcements" tab
 	And I perform quick search for "<Announcement Name>" in "ActiveFundingOpportunitiesAll" panel  
  	When  I click on "Delete" icon for "<Announcement Name>" inside flex table with id "ActiveFundingOpportunitiesAll"   
@@ -29,6 +38,14 @@ Feature: Validate all scenarios in the Announcement tab
 	
 	@createdAnnouncementDeletionByOtherUser @announcement @all
 	Scenario Outline: Validate that other users are not able to delete created announcement
+	Given I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
+	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
+	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
+	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
+	| ID		   | EGMS ID							 |							  |									  |
+	And I click on "Save" in the page details
 	When I re-login to "As a Grantor" app as "<User>" user 
 	And I navigate to "Announcements" tab
 	When I perform quick search for "<Announcement Name>" in "ActiveFundingOpportunitiesAll" panel
@@ -39,6 +56,14 @@ Feature: Validate all scenarios in the Announcement tab
 	
 	@announcementCreateCompetitiveCheckUnderDraftFormulaListView @announcement @all   
 	Scenario: Validate that Created Competitive announcement will not reflect under Draft Formula announcement list view
+	Given I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
+	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
+	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
+	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
+	| ID		   | EGMS ID							 |							  |									  |
+	And I click on "Save" in the page details
 	When I navigate to "Announcements" tab
 	And I navigate to "Formula" content inside "Announcements" subheader on left panel
 	And I click toggle button to select "Draft Announcements" in "ActiveFundingOpportunitiesFormula"
@@ -47,6 +72,14 @@ Feature: Validate all scenarios in the Announcement tab
 	
 	@announcementCreateCompetitiveCheckUnderDirectedDraftListView @announcement @all   
 	Scenario: Validate that Created Competitive announcement will not reflect under Draft Directed announcement list view
+	Given I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
+	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
+	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
+	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
+	| ID		   | EGMS ID							 |							  |									  |
+	And I click on "Save" in the page details
 	When I navigate to "Announcements" tab
 	And I navigate to "Formula" content inside "Announcements" subheader on left panel
 	And I click toggle button to select "Draft Announcements" in "ActiveFundingOpportunities"
@@ -55,6 +88,14 @@ Feature: Validate all scenarios in the Announcement tab
 	
 	@announcementEditionByOtherUser @announcement @all
 	Scenario Outline: Validate that other users are not able to edit created announcement
+	Given I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
+	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
+	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
+	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
+	| ID		   | EGMS ID							 |							  |									  |
+	And I click on "Save" in the page details
 	When I re-login to "As a Grantor" app as "<User>" user 
 	When I navigate to "Announcements" tab
 	And I perform quick search for "<Announcement Name>" in "ActiveFundingOpportunitiesAll" panel
@@ -65,6 +106,14 @@ Feature: Validate all scenarios in the Announcement tab
 	
 	@createdAnnouncementEditionOnlyOwner @announcement @all
 	Scenario Outline: Validate that only owner can able to edit created status announcement
+	Given I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
+	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
+	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
+	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
+	| ID		   | EGMS ID							 |							  |									  |
+	And I click on "Save" in the page details
 	When I navigate to "Announcements" tab
 	And I perform quick search for "<Announcement Name>" in "ActiveFundingOpportunitiesAll" panel
  	When I click on "Edit" icon for "<Announcement Name>" inside flex table with id "ActiveFundingOpportunitiesAll"
@@ -75,6 +124,14 @@ Feature: Validate all scenarios in the Announcement tab
 
 	@34221 @34222 @announcementEdition @announcement @all
   	Scenario: Edition of an Announcement
+  	Given I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
+	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
+	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
+	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
+	| ID		   | EGMS ID							 |							  |									  |
+	And I click on "Save" in the page details
  	When I click on "Edit" in the page details
 	And I enter "Edition" values from "Announcement_Field_Values.xlsx"
 	When I click on "Save" in the page details
@@ -82,6 +139,14 @@ Feature: Validate all scenarios in the Announcement tab
 
   	@37029 @announcementContactAssociation @announcement @all
   	Scenario Outline: Contact association to an Announcement
+  	Given I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
+	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
+	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
+	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
+	| ID		   | EGMS ID							 |							  |									  |
+	And I click on "Save" in the page details
 	When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
     When I click "Add" after selection of "<Contact>" in the table "AssociateAnnouncementContacts"
@@ -93,65 +158,107 @@ Feature: Validate all scenarios in the Announcement tab
 	
 	@announcementContactDissociation @announcement @all                       
 	Scenario Outline: Validate the dissociation of contact to the Announcement 
+	Given I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
+	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
+	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
+	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
+	| ID		   | EGMS ID							 |							  |									  |
+	And I click on "Save" in the page details
 	When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
-    When I click "Add" after selection of "<Contact>" in the table "AssociateAnnouncementContacts"
-    And I close Modal                                                                              
-    When I click on "Remove" icon for "<Contact>" inside flex table with id "AssociateAnnouncementContacts"       
-    Then I do not see value "<Contact>" for title "Name" inside table "AssociateAnnouncementContacts"     
+    When I click "Add" after selection of "<Contact>" in the table "AssociateAnnouncementContacts"                                                                            
+    When I click on "Remove" icon for "<Contact>" inside flex table with id "announcement::contactTableId"       
+    Then I do not see value "<Contact>" for title "Name" inside table "announcement::contactTableId"     
 	Examples:
 	| Contact		  |
 	| Automation EXE  |
 
   	@34759 @announcementDirectedInviteApplicant @announcementDirected @all
   	Scenario Outline: Organization association to an Announcement
+  	Given I create a "Directed" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
+	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
+	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
+	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
+	| ID		   | EGMS ID							 |							  |									  |
+	And I click on "Save" in the page details
 	When I navigate to "Overview" sub tab
-    And I click on top right button "Add Organizations" in flex table with id "inlineEditGridSoleSourceAwardOrganizations"
-    When I click "Add" after selection of "<Agency Code>" in the table "SoleSourceAwardRecipientsTable"
+    And I click on top right button "Add Organizations" in flex table with id "announcement::directedInvitedApplicatsTableId"
+    When I click "Add" after selection of "<Agency Name>" in the table "announcement::directedAddInviteApplicantTableId"
     And I close Modal
-    Then I see that "<Agency Code>" has been added in flextable with Id "inlineEditGridSoleSourceAwardOrganizations"
+    Then I see that "<Agency Name>" has been added in flextable with Id "announcement::directedInvitedApplicatsTableId"
 	Examples:
-	| Agency Code |
-	| RG-000010   |
+	| Agency Name               |
+	| New Americans Museum Inc  |
 	
   	@34760 @announcementFormulaInviteApplicant @announcementFormula @all
   	Scenario Outline: Amount addition to Invited applicant association to an Announcement
-  	Given I associate "1" records "RG-000010"
-	| Actions 	  | Step 1     | Step 2	   		   | Step 3  			  					    | Step 4 | Step 5  		 			  	  |
-    | Associate 1 | Overview   | Add Organizations | inlineEditGridSoleSourceAwardOrganizations | Add	 | SoleSourceAwardRecipientsTable |
-    When I edit the following rows inline in flex table with id "inlineEditGridSoleSourceAwardOrganizations" by clicking "Edit" :
-	| Agency Code | Allocated Amount |
-	| RG-000010   | 100000 			 | 
-   Then I see that "<Agency Code>" has been added in flextable with Id "inlineEditGridSoleSourceAwardOrganizations"
+  	Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
+	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
+	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
+	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
+	| ID		   | EGMS ID							 |							  |									  |
+	And I click on "Save" in the page details
+  	Given I associate "1" records "New Americans Museum Inc"
+	| Actions 	  | Step 1     | Step 2	   		   | Step 3  			  					    | Step 4 | Step 5  		 			  	           |
+    | Associate 1 | Overview   | Add Organizations | announcement::formulaInvitedApplicatsTableId      | Add	 | announcement::directedAddInviteApplicantTableId |
+    When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
+	| Agency                      | Allocated Amount |
+	| New Americans Museum Inc    | 100000 			 | 
+   Then I see that "<Agency Name>" has been added in flextable with Id "announcement::formulaInvitedApplicatsTableId"
 	Examples:
-	| Agency Code |
-	| RG-000010   |
+	| Agency Name                 |
+	| New Americans Museum Inc    |
 
   	@34769 @announcementFundingAccountAssociation @announcement @all
  	Scenario Outline: Funding Account association to an Announcement
+ 	Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
+	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
+	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
+	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
+	| ID		   | EGMS ID							 |							  |									  |
+	And I click on "Save" in the page details
 	When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "<EGMS Id>" in the table "SelectAnnFundingAccounts"
     And I close Modal
     When I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Pre-Encumbrance |
-	| FA--77 		  | 100000 			|
+	| FA--116 		  | 100000 			|
 	Then I see that "<EGMS Id>" has been added in flextable with Id "flexGridAnnouncementFundingAccountGrantor"
 	Examples:
-	| EGMS Id |
-	| FA--77  |
+	|Announcement Type|EGMS Id |
+	|Competitive      |FA--116 |
+	|Directed         |FA--116 |
+	|Formula          |FA--116 |
 	
 	@announcementFADissociation @announcement @all
-	Scenario Outline: Funding Account dissociation to an Announcement	
+	Scenario Outline: Funding Account dissociation to an Announcement
+	Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
+	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
+	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
+	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
+	| ID		   | EGMS ID							 |							  |									  |
+	And I click on "Save" in the page details	
 	When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "<EGMS Id>" in the table "SelectAnnFundingAccounts"
-    And I close Modal
     When I click on "Remove" icon for "<EGMS Id>" inside flex table with id "flexGridAnnouncementFundingAccountGrantor"  
 	Then I do not see value "<EGMS Id>" for title "EGMS ID" inside table "AnnouncementGranteeStrategicGoalsObjectives" 
 	Examples:
-	| EGMS Id |
-	| FA--77  |
+	|Announcement Type|EGMS Id |
+	|Competitive      |FA--116 |
+	|Directed         |FA--116 |
+	|Formula          |FA--116 |
 	
   	@34771 @announcementBudgetPeriodAddition @announcement @all
   	Scenario Outline: Budget Period Addition to an Announcement

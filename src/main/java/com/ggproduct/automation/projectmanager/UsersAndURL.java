@@ -77,7 +77,6 @@ public class UsersAndURL implements UsersController{
             default:
                 password = "SALESFORCE2018";
         }
-        System.out.println("password is "+password);
         return password;
     }
 
