@@ -6,8 +6,8 @@ Feature: Validate all scenarios in the Announcement tab
 	
 
 	@33936 @announcementCreation @announcement @all
-	Scenario: Creation of an Announcement
-	Given I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	Scenario Outline: Creation of an Announcement
+	Given I create a "<Automation Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
 	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
 	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
 	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
@@ -16,10 +16,15 @@ Feature: Validate all scenarios in the Announcement tab
 	| ID		   | EGMS ID							 |							  |									  |
 	And I click on "Save" in the page details
 	Then I see status in Progress-bar is "Created" and is "green"
+	Examples:
+	|Announcement Type|	
+	|Directed         |
+	|Competitive      |
+	|Formula          |	
 	
 	@announcementCreatedDeleteAccessToOwner @announcement @all
 	Scenario Outline: Validate that owner can able to delete created status announcement
-	Given I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	Given I create a "<Automation Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
 	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
 	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
 	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
@@ -28,17 +33,19 @@ Feature: Validate all scenarios in the Announcement tab
 	| ID		   | EGMS ID							 |							  |									  |
 	And I click on "Save" in the page details
 	When I navigate to "Announcements" tab
-	And I perform quick search for "<Announcement Name>" in "ActiveFundingOpportunitiesAll" panel  
- 	When  I click on "Delete" icon for "<Announcement Name>" inside flex table with id "ActiveFundingOpportunitiesAll"   
-	And I perform quick search for "<Announcement Name>" in "ActiveFundingOpportunitiesAll" panel 
-	Then I do not see value "<Announcement Name>" for title "Announcement Name" inside table "ActiveFundingOpportunitiesAll"  
+	And I perform quick search for "Record id" in "ActiveFundingOpportunitiesAll" panel  
+ 	When  I click on "Delete" icon for "Record id" inside flex table with id "ActiveFundingOpportunitiesAll"   
+	And I perform quick search for "Record id" in "ActiveFundingOpportunitiesAll" panel 
+	Then I do not see value "Record id" for title "Announcement Name" inside table "ActiveFundingOpportunitiesAll"  
 	Examples:
-	| Announcement Name		  |
-	| Automation Announcement  |	
+	|Announcement Type|	
+	|Directed         |
+	|Competitive      |
+	|Formula          |		
 	
 	@createdAnnouncementDeletionByOtherUser @announcement @all
 	Scenario Outline: Validate that other users are not able to delete created announcement
-	Given I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	Given I create a "<Automation Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
 	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
 	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
 	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
@@ -48,15 +55,17 @@ Feature: Validate all scenarios in the Announcement tab
 	And I click on "Save" in the page details
 	When I re-login to "As a Grantor" app as "<User>" user 
 	And I navigate to "Announcements" tab
-	When I perform quick search for "<Announcement Name>" in "ActiveFundingOpportunitiesAll" panel
-    Then I cannot see row level action button "Delete" against "<Announcement Name>" in flex table with id "ActiveFundingOpportunitiesAll"
+	When I perform quick search for "Record id" in "ActiveFundingOpportunitiesAll" panel
+    Then I cannot see row level action button "Delete" against "Record id" in flex table with id "ActiveFundingOpportunitiesAll"
 	Examples:
-	| Announcement Name		  | User |
-	| Automation Announcement |	PM   |
+	|Announcement Type|	User|
+	|Directed         | PM  |
+	|Competitive      | PM  |
+	|Formula          |	PM  |
 	
 	@announcementCreateCompetitiveCheckUnderDraftFormulaListView @announcement @all   
-	Scenario: Validate that Created Competitive announcement will not reflect under Draft Formula announcement list view
-	Given I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	Scenario Outline: Validate that Created Competitive announcement will not reflect under Draft Formula announcement list view
+	Given I create a "<Automation type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
 	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
 	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
 	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
@@ -69,10 +78,15 @@ Feature: Validate all scenarios in the Announcement tab
 	And I click toggle button to select "Draft Announcements" in "ActiveFundingOpportunitiesFormula"
 	When I perform quick search for "Record Id" in "ActiveFundingOpportunitiesFormula" panel  
 	Then I do not see value "Record Id" for title "EGMS ID" inside table "ActiveFundingOpportunitiesFormula"
+	Examples:
+	|Announcement Type|	
+	|Directed         |
+	|Competitive      |
+	|Formula          |	
 	
 	@announcementCreateCompetitiveCheckUnderDirectedDraftListView @announcement @all   
-	Scenario: Validate that Created Competitive announcement will not reflect under Draft Directed announcement list view
-	Given I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	Scenario Outline: Validate that Created Competitive announcement will not reflect under Draft Directed announcement list view
+	Given I create a "<Automation type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
 	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
 	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
 	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
@@ -84,11 +98,16 @@ Feature: Validate all scenarios in the Announcement tab
 	And I navigate to "Formula" content inside "Announcements" subheader on left panel
 	And I click toggle button to select "Draft Announcements" in "ActiveFundingOpportunities"
 	When I perform quick search for "Record Id" in "ActiveFundingOpportunitiesFormula" panel  
-	Then I do not see value "Record Id" for title "EGMS ID" inside table "ActiveFundingOpportunitiesFormula"		
+	Then I do not see value "Record Id" for title "EGMS ID" inside table "ActiveFundingOpportunitiesFormula"
+	Examples:
+	|Announcement Type|	
+	|Directed         |
+	|Competitive      |
+	|Formula          |			
 	
 	@announcementEditionByOtherUser @announcement @all
 	Scenario Outline: Validate that other users are not able to edit created announcement
-	Given I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	Given I create a "<Automation Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
 	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
 	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
 	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
@@ -98,15 +117,17 @@ Feature: Validate all scenarios in the Announcement tab
 	And I click on "Save" in the page details
 	When I re-login to "As a Grantor" app as "<User>" user 
 	When I navigate to "Announcements" tab
-	And I perform quick search for "<Announcement Name>" in "ActiveFundingOpportunitiesAll" panel
- 	Then I cannot see row level action button "Edit" against "<Announcement Name>" in flex table with id "ActiveFundingOpportunitiesAll"
+	And I perform quick search for "Record id" in "ActiveFundingOpportunitiesAll" panel
+ 	Then I cannot see row level action button "Edit" against "Record id" in flex table with id "ActiveFundingOpportunitiesAll"
 	Examples:
-	| Announcement Name		  | User |
-	| Automation Announcement |	PM   |
+	|Announcement Type|	User|
+	|Directed         | PM  |
+	|Competitive      | PM  |
+	|Formula          |	PM  |
 	
 	@createdAnnouncementEditionOnlyOwner @announcement @all
 	Scenario Outline: Validate that only owner can able to edit created status announcement
-	Given I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
 	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
 	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
 	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
@@ -115,16 +136,18 @@ Feature: Validate all scenarios in the Announcement tab
 	| ID		   | EGMS ID							 |							  |									  |
 	And I click on "Save" in the page details
 	When I navigate to "Announcements" tab
-	And I perform quick search for "<Announcement Name>" in "ActiveFundingOpportunitiesAll" panel
- 	When I click on "Edit" icon for "<Announcement Name>" inside flex table with id "ActiveFundingOpportunitiesAll"
+	And I perform quick search for "Record id" in "ActiveFundingOpportunitiesAll" panel
+ 	When I click on "Edit" icon for "Record id" inside flex table with id "ActiveFundingOpportunitiesAll"
 	Then I can see top right button "Save" in page detail
 	Examples:
-	| Announcement Name		  |
-	| Automation Announcement |	
+	|Announcement Type|	
+	|Directed         |
+	|Competitive      |
+	|Formula          |	
 
 	@34221 @34222 @announcementEdition @announcement @all
-  	Scenario: Edition of an Announcement
-  	Given I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+  	Scenario Outline: Edition of an Announcement
+  	Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
 	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
 	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
 	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
@@ -136,10 +159,15 @@ Feature: Validate all scenarios in the Announcement tab
 	And I enter "Edition" values from "Announcement_Field_Values.xlsx"
 	When I click on "Save" in the page details
 	Then I see status in Progress-bar is "Created" and is "green"
+	Examples:
+	|Announcement Type|
+	|Competitive      |
+	|Directed         |
+	|Formula          |
 
   	@37029 @announcementContactAssociation @announcement @all
   	Scenario Outline: Contact association to an Announcement
-  	Given I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+  	Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
 	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
 	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
 	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
@@ -153,12 +181,14 @@ Feature: Validate all scenarios in the Announcement tab
     And I close Modal
     Then I see that "<Contact>" has been added in flextable with Id "AnnouncementContacts"
 	Examples:
-	| Contact		  |
-	| Automation EXE  |
+	|Announcement Type| Contact		   |
+	|Competitive      |Automation EXE  |
+	|Directed         |Automation EXE  |
+	|Formula          |Automation EXE  |
 	
 	@announcementContactDissociation @announcement @all                       
 	Scenario Outline: Validate the dissociation of contact to the Announcement 
-	Given I create a "Competitive" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
 	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
 	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
 	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
@@ -172,8 +202,10 @@ Feature: Validate all scenarios in the Announcement tab
     When I click on "Remove" icon for "<Contact>" inside flex table with id "announcement::contactTableId"       
     Then I do not see value "<Contact>" for title "Name" inside table "announcement::contactTableId"     
 	Examples:
-	| Contact		  |
-	| Automation EXE  |
+	|Announcement Type| Contact		   |
+	|Competitive      |Automation EXE  |
+	|Directed         |Automation EXE  |
+	|Formula          |Automation EXE  |
 
   	@34759 @announcementDirectedInviteApplicant @announcementDirected @all
   	Scenario Outline: Organization association to an Announcement
