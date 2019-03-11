@@ -1,6 +1,7 @@
 package com.ggproduct.automation.projectmanager;
 
 import org.openqa.selenium.By;
+
 import com.automation.rei.handlers.GovGrantsHandler;
 import eyethink.automation.bots.controller.Controller;
 import eyethink.automation.bots.controller.CoreHandlers;
@@ -17,6 +18,7 @@ public class ProjectManager extends ProjectWebServices {
     public Controller controller;
     public GovGrantsHandler govgrants;
     public final String defaultLongText = "Automation test description";
+    public String egmsId;   
 
     /**
      * Super Constructor

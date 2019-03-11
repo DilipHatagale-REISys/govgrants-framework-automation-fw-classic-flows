@@ -15,11 +15,6 @@ public class AnnouncementSteps {
         announcementPage = new AnnouncementPage(controller, handler, govgrants);
     }
     
-    @Given("^I create a \"([^\"]*)\" Announcement as user \"([^\"]*)\" from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
-    public void creationOfAnnouncement(String AnnouncementType, String user,String sheetName, String excelFileName, DataTable dataTable) {
-        announcementPage.creationOfAnnouncement(AnnouncementType, user, sheetName, excelFileName, dataTable);
-    }
-    
     @Given("^I add Budget Period Details \"([^\"]*)\" from sheet \"([^\"]*)\" in excel \"([^\"]*)\" to an announcement$")
     public void addBudgetPeriodToAnnouncement(String budgetPeriod, String sheetName, String excelFileName, DataTable dataTable) {
         announcementPage.addBudgetPeriodToAnnouncement(budgetPeriod, sheetName, excelFileName, dataTable);
