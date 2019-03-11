@@ -80,6 +80,21 @@ public class UsersAndURL implements UsersController{
         return password;
     }
 
+    public String getAutoEnvironmentPassword(String userLevel) {
+        String password;
+        switch (userLevel.toUpperCase()) {
+            case "SARAH PO":
+                password = "test72018";
+                break;
+            case "ADMIN":
+                password = "GoProduct@123";
+                break;
+            default:
+                password = "SALESFORCE2018";
+        }
+        return password;
+    }
+
     public String getQAEnvironmentUser(String userLevel) {
         String username;
 
@@ -174,7 +189,57 @@ public class UsersAndURL implements UsersController{
         }
         return username;
     }
-    
+
+
+    public String getAutoEnvironmentUser(String userLevel) {
+        String username;
+
+        switch (userLevel.toUpperCase()) {
+            case "ADMIN":
+                username = "manu.sa@ggp.test7.automation";
+                break;
+            case "EXE":
+                username = "test@gmaildemo.com.automation";
+                break;
+            case "PM":
+                username = "donald_pm@ggp.test7.automation";
+                break;
+            case "PO":
+                username = "sdgdg45435dj@gmail.com";
+                break;
+            case "FO":
+                username = "auto.fm@auto.com.automation";
+                break;
+            case "SPI":
+                username = "kyle.farrell@reisystems.com21.automation";
+                break;
+            case "SIMON PM":
+                username = "simon_pm@ggp.test7.automation";
+                break;
+            case "SARAH PO":
+                username = "sarah_pm@ggp.test7.automation";
+                break;
+            case "ALEX FO":
+                username = "alex_fo@ggp.test7.automation";
+                break;
+            case "TOMMY EXE":
+                username = "tommy_exe@ggp.test7.automation";
+                break;
+            case "CATHY PM":
+                username = "cathy_pm@ggp.test7.automation";
+                break;
+            case "OSCAR PM":
+                username = "oscar_pm@ggp.test7.automation";
+                break;
+            case "Bill PM":
+                username = "bill_pm@ggp.test7.automation";
+                break;
+            default:
+                username = "manu.sa@ggp.test7.automation";
+        }
+        return username;
+    }
+
     public String performLoginSubPortalEnvironment(String userLevel) {
         String username;
 
