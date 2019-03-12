@@ -9,7 +9,7 @@ Feature: Validate all scenarios in Strategic Plan
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 | Step 3 				    |
 	| Navigation | As a Grantor		 | Planning  	 	 | Planning	    			|
 	| FlexTable  | Strategic Plans   | StrategicPlans	 | Draft Strategic Plans    |
-	| Creation   | New				 | Save And Close    | Save						|
+	| Creation   | New				 | Save and Continue  | Save						|
 	| ID		 | EGMS ID			 |					 |							|
 
 	@creationOfStrategicPlan @strategicPlan @all
