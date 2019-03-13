@@ -1,7 +1,8 @@
+@program
 Feature: Validate all scenarios for program
 
 	Background: Create Program
-	Given I delete the record "Automation Program" from the object "Program"
+	Given I delete the record "Execution Internal Program for Automation" from the object "Program"
 	And I create a planning record as user "EXE" from sheet "Creation" in excel "Program_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		 | Step 2    	 	 | Step 3 				    |
 	| Navigation | As a Grantor		 | Planning  	 	 |	Programs				|
@@ -14,7 +15,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Planning" tab
     And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
     And I click toggle button to select "<Program flextable Header>"
-    Then I see that "Automation Program" has been added in flextable with Id "Programs"
+    Then I see that "Execution Internal Program for Automation" has been added in flextable with Id "Programs"
     Examples:
     | Program flextable Header | Program Status |
     | Draft Internal Programs  | Created  	    |
@@ -64,7 +65,7 @@ Feature: Validate all scenarios for program
     Then I see that "<EGMS Id>" has been added in flextable with Id "flexGridGrantorServiceAreasProgram"
 	Examples:
 	| EGMS Id |
-	| 03065   |
+	| 03677   |
 	
   	@34737 @programObjectiveAssociation @program @all
   	Scenario Outline: Validate the Association of Objective to the Internal Program
@@ -74,7 +75,7 @@ Feature: Validate all scenarios for program
     Then I see that "<EGMS Id>" has been added in flextable with Id "RelatedProgramGoalsandObjectives"
 	Examples:
 	| EGMS Id  |
-	| SPO-0085 |
+	| SPO-0121 |
 	
   	@34738 @programKPIAssociation @program @all
   	Scenario Outline: Validate the assignment of Approvers for the Internal Program
@@ -85,18 +86,18 @@ Feature: Validate all scenarios for program
     Then I see that "<EGMS Id>" has been added in flextable with Id "ProgramKeyOutcomes"
 	Examples:
 	| EGMS Id  |
-	| KPI-0522 |
+	|KPI-0638  |
 	
-  	@34745 @programAttachmentChecklist @program @all
-  	Scenario: Validate the attachment checklist for the Internal Program
-  	When I navigate to "Setup" sub tab
-    When I enter the following values into flex table with id "flexGridProgramChecklists" by clicking "Add" :
-    | Description        		  | Required  | Applies To  | Status |
-    | Automation test description | Mandatory | Application | Active |    
-    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "flexGridProgramChecklists"
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close Modal 
-    Then I see that "Active" has been added in flextable with Id "flexGridProgramChecklists"
+  	#@34745 @programAttachmentChecklist @program @all  @notFunctional
+  	#Scenario: Validate the attachment checklist for the Internal Program
+  	#When I navigate to "Setup" sub tab
+    #When I enter the following values into flex table with id "flexGridProgramChecklists" by clicking "Add" :
+    #| Description        		  | Required  | Applies To  | Status |
+    #| Automation test description | Mandatory | Application | Active |    
+    #When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "flexGridProgramChecklists"
+    #And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    #When I close Modal 
+    #Then I see that "Active" has been added in flextable with Id "flexGridProgramChecklists"
     
   	@34746 @programAddAttachment @program @all
   	Scenario: Validate the attachment for the Internal Program
@@ -111,23 +112,24 @@ Feature: Validate all scenarios for program
     Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate "3" records "Automation EXE,03065,SPO-0085"
+    And I associate "4" records "Automation EXE,03677,SPO-0121,KPI-0638"
     | Actions 	  | Step 1   | Step 2	 | Step 3  			  				  | Step 4 	  | Step 5  				 |
     | Associate 1 | Overview | Associate | ProgramContacts 				      | Add	  	  | AssociateProgramContacts |
     | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Add		  | SelectProgramServiceArea |
     | Associate 3 | Setup 	 | Associate | RelatedProgramGoalsandObjectives   | Add	  	  | SelectGoals 		     |
+    | Associate 4 | Setup 	 | Associate | ProgramKeyOutcomes                 | Add	  	  | SelectProgramKPIs 		 |
     Given I select "2" approvers "Automation PM,Automation EXE"
     | Actions 	 | Step 1   				       | Step 2	| Step 3 			  |
     | Subtab	 | Responsibilities 			   | 		|		    		  |
     | Approver 1 | ProgramRolesAndResponsibilities | Edit   | Program Approver    |
     | Approver 2 | ProgramRolesAndResponsibilities | Edit	| Executive Approver  |
-    When I navigate to "Setup" sub tab
-    When I enter the following values into flex table with id "flexGridProgramChecklists" by clicking "Add" :
-    | Description        		  | Required  | Applies To  | Status |
-    | Automation test description | Mandatory | Application | Active |    
-    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "flexGridProgramChecklists"
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close Modal 
+   # When I navigate to "Setup" sub tab
+   # When I enter the following values into flex table with id "flexGridProgramChecklists" by clicking "Add" :
+   # | Description        		  | Required  | Applies To  | Status |
+   # | Automation test description | Mandatory | Application | Active |    
+   # When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "flexGridProgramChecklists"
+   # And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+   # When I close Modal 
     Given I add an attachment "InternalOrganization_Field_Values.xlsx"
     | Actions 			    | Step 1 	  | Step 2	 		  | Step 3 			   |	
     | Attachment Navigation | Attachments | Add				  | a150b000003epY5AAI |
@@ -137,28 +139,28 @@ Feature: Validate all scenarios for program
 	
   	@34752 @34754 @programApproval @program @all
   	Scenario Outline: Validate the approval of Internal Program
-  	Given I re-login to "As a Grantor" app as "<Program Approver>" user
-  	And I pause execution
+  	#Given I re-login to "As a Grantor" app as "<Program Approver>" user
     Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate "3" records "Automation EXE,03065,SPO-0085"
+   And I associate "4" records "Automation EXE,03677,SPO-0121,KPI-0638"
     | Actions 	  | Step 1   | Step 2	 | Step 3  			  				  | Step 4 	  | Step 5  				 |
     | Associate 1 | Overview | Associate | ProgramContacts 				      | Add	  	  | AssociateProgramContacts |
     | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Add		  | SelectProgramServiceArea |
     | Associate 3 | Setup 	 | Associate | RelatedProgramGoalsandObjectives   | Add	  	  | SelectGoals 		     |
+    | Associate 4 | Setup 	 | Associate | ProgramKeyOutcomes                 | Add	  	  | SelectProgramKPIs 		 |
     Given I select "2" approvers "Automation PM,Automation EXE"
     | Actions 	 | Step 1   				       | Step 2	| Step 3 			  |
     | Subtab	 | Responsibilities 			   | 		|		    		  |
     | Approver 1 | ProgramRolesAndResponsibilities | Edit   | Program Approver    |
     | Approver 2 | ProgramRolesAndResponsibilities | Edit	| Executive Approver  |
-    When I navigate to "Setup" sub tab
-    When I enter the following values into flex table with id "flexGridProgramChecklists" by clicking "Add" :
-    | Description        		  | Required  | Applies To  | Status |
-    | Automation test description | Mandatory | Application | Active |    
-    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "flexGridProgramChecklists"
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close Modal 
+    #When I navigate to "Setup" sub tab
+    #When I enter the following values into flex table with id "flexGridProgramChecklists" by clicking "Add" :
+    #| Description        		  | Required  | Applies To  | Status |
+    #| Automation test description | Mandatory | Application | Active |    
+    #When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "flexGridProgramChecklists"
+    #And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    #When I close Modal 
     Given I add an attachment "InternalOrganization_Field_Values.xlsx"
     | Actions 			    | Step 1 	  | Step 2	 		  | Step 3 			   |	
     | Attachment Navigation | Attachments | Add				  | a150b000003epY5AAI |
@@ -178,31 +180,32 @@ Feature: Validate all scenarios for program
     When I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Approved" and is "green"
 	Examples:
-	| Program Approver | Program Name		  			  | Executive Approver |
-	| PM               | Automation Program               | EXE			  	   |
+	| Program Approver | Program Name		  			                         | Executive Approver |
+	| PM               | Execution Internal Program for Automation               | EXE			  	   |
 	
   	@34756 @programActivation @programHappyPath @program @all
   	Scenario Outline: Validate the activation of Internal Program
     Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
     | Actions         | Step 1 | Step 2 |
     | Edition Buttons | Edit   | Save   |
-    And I associate "3" records "Automation EXE,03065,SPO-0071"
-    | Actions     | Step 1   | Step 2 | Step 3                                | Step 4        | Step 5                   |
-    | Associate 1 | Overview | Associate | ProgramContacts                    | Add           | AssociateProgramContacts |
-    | Associate 2 | Setup    | Associate | flexGridGrantorServiceAreasProgram | Add           | SelectProgramServiceArea |
-    | Associate 3 | Setup    | Associate | RelatedProgramGoalsandObjectives   | Add           | SelectGoals              |
+   And I associate "4" records "Automation EXE,03677,SPO-0121,KPI-0638"
+    | Actions 	  | Step 1   | Step 2	 | Step 3  			  				  | Step 4 	  | Step 5  				 |
+    | Associate 1 | Overview | Associate | ProgramContacts 				      | Add	  	  | AssociateProgramContacts |
+    | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Add		  | SelectProgramServiceArea |
+    | Associate 3 | Setup 	 | Associate | RelatedProgramGoalsandObjectives   | Add	  	  | SelectGoals 		     |
+    | Associate 4 | Setup 	 | Associate | ProgramKeyOutcomes                 | Add	  	  | SelectProgramKPIs 		 |
     Given I select "2" approvers "Automation PM,Automation EXE"
     | Actions    | Step 1                          | Step 2 | Step 3              |
     | Subtab     | Responsibilities                |        |                     |
     | Approver 1 | ProgramRolesAndResponsibilities | Edit   | Program Approver    |
     | Approver 2 | ProgramRolesAndResponsibilities | Edit   | Executive Approver  |
-    When I navigate to "Setup" sub tab
-    When I enter the following values into flex table with id "flexGridProgramChecklists" by clicking "Add" :
-    | Description                 | Required  | Applies To  | Status |
-    | Automation test description | Mandatory | Application | Active |    
-    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "flexGridProgramChecklists"
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close Modal 
+    #When I navigate to "Setup" sub tab
+    #When I enter the following values into flex table with id "flexGridProgramChecklists" by clicking "Add" :
+    #| Description        		   | Required  | Applies To    | Status |
+    #| Automation test description | Mandatory | Award  	   | Active |
+    #When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "flexGridProgramChecklists"
+    #And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    #When I close Modal 
     Given I add an attachment "InternalOrganization_Field_Values.xlsx"
     | Actions               | Step 1      | Step 2            | Step 3                   | 
     | Attachment Navigation | Attachments | Add               | a150b000003epY5AAI       |
@@ -222,6 +225,6 @@ Feature: Validate all scenarios for program
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "green"
 	Examples:
-     | User | Program Name               |
-     | EXE  | Automation Program         |    
+     | User | Program Name                                   |
+     | EXE  | Execution Internal Program for Automation      |    
      

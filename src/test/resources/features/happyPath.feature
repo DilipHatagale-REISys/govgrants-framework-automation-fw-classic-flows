@@ -12,12 +12,13 @@ Feature: Validate all scenarios Happy Path across all modules
     And I complete the fields from the sheet "Edition" in excel "Surya_Program_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate "2" records "<Contact>,<Focusarea>"
+    #And I associate "2" records "<Contact>,<Focusarea>"
+    And I associate "1" records "<Focusarea>"
     | Actions 	  | Step 1   | Step 2	 | Step 3  			  				  | Step 4 	  | Step 5  				 |
-    | Associate 1 | Overview | Associate | ProgramContacts 				      | Add	  	  | AssociateProgramContacts |
-    | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Add		  | SelectProgramServiceArea |
-#    | Associate 3 | Setup 	 | Associate | RelatedProgramGoalsandObjectives   | Add	  	  | SelectGoals 		     |
-#    | Associate 3 | Setup 	 | Associate | ProgramKeyOutcomes                 | Add	      | SelectProgramKPIs 	     |
+    #| Associate 1 | Overview | Associate | ProgramContacts 				  | Add	  	  | AssociateProgramContacts |
+     | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Add		  | SelectProgramServiceArea |
+     | Associate 3 | Setup 	 | Associate | RelatedProgramGoalsandObjectives   | Add	  	  | SelectGoals 		     |
+     | Associate 3 | Setup 	 | Associate | ProgramKeyOutcomes                 | Add	      | SelectProgramKPIs 	     |
     Given I select "2" approvers "<Program_approver>,<Executive_approver>"
     | Actions 	 | Step 1   				       | Step 2	| Step 3 			  |
     | Subtab	 | Responsibilities 			   | 		|		    		  |
@@ -25,8 +26,10 @@ Feature: Validate all scenarios Happy Path across all modules
     | Approver 2 | ProgramRolesAndResponsibilities | Edit	| Executive Approver  |
     When I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "flexGridProgramChecklists" by clicking "Add" :
-    | Description        		  | Required  | Applies To  | Status |
-    | Automation test description | Mandatory | Application | Active |        
+    | Description        		   | Required  | Applies To  | Status |
+    | Test Automation Description  | Mandatory | Application | Active |   
+    And I click on top right buttons in flex tables
+      | Save  | 
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "flexGridProgramChecklists"
     And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
     When I close Modal 
@@ -50,7 +53,7 @@ Feature: Validate all scenarios Happy Path across all modules
     Then I see status in Progress-bar is "Active" and is "green"
 	Examples:
 	| Owner_user | Program_name  | Focusarea | Goals    | Kpi      | Contact   | Program_approver | Executive_approver | Program_user |  Executive_user |
-	| OSCAR PM   | Youth Program | 02106     | SPO-0087 | KPI-0538 | George PM | Cathy PM         | Tommy EXE          | CATHY PM     | TOMMY EXE       |
+	| OSCAR PM   | Youth Program | 02106     | SPO-0087 | KPI-0538 | Bill PM   | Cathy PM         | Tommy EXE          | CATHY PM     | TOMMY EXE       |
 
 
 
