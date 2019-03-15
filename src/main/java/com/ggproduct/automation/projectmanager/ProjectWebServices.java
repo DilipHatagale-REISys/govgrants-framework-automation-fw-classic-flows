@@ -21,7 +21,7 @@ public class ProjectWebServices {
     }
 
     private void assertStatusCode(Response response) {
-        response.then().statusCode(200); 
+        response.then().statusCode(200);
         System.out.println("response code is " + response.getStatusCode());
         response.then().statusCode(200);
     }
@@ -53,7 +53,7 @@ public class ProjectWebServices {
         if (System.getProperty("env") != null && System.getProperty("env").equalsIgnoreCase("demo")) {
             this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9AzPSkglhtpvenc1ubvIHNq.47G6r14CrPJYDMHpiIQqmNt84jq0.7dv3pQHq6Q5ijx1LbVhtm326_pxc&client_secret=2A8D181502C168F519E5A93B1AF611FE65FAB1862CBF37A7D7CC8857F3C55871&username=manu.sa@ggp.test7.demo7&password=GoProduct@123";
         } else if (System.getProperty("env") != null && System.getProperty("env").equalsIgnoreCase("auto")) {
-            this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9Yb5IgqnkB4qIBUG7lt8Fqwm1Vd3yvrXAaB7eSGdwMzzI2iyeK9P7g_KQu3S84SVaYQ3wRDazC6Ke2Pfi&client_secret=305051B63719A3C516AB87DD8103D6484C2D3216430B0D72C57E7FD0272EC584&username=manu.sa@ggp.test7.automation&password=GoProduct@123";        }
+            this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9Yb5IgqnkB4qIBUG7lt8Fqwm1Vd3yvrXAaB7eSGdwMzzI2iyeK9P7g_KQu3S84SVaYQ3wRDazC6Ke2Pfi&client_secret=305051B63719A3C516AB87DD8103D6484C2D3216430B0D72C57E7FD0272EC584&username=manu.sa@ggp.test7.automation&password=GoProduct@123";
+        }
     }
-
 }
