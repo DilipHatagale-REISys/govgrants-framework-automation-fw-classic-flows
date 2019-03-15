@@ -65,7 +65,7 @@ Feature: Validate all scenarios for program
     Then I see that "<EGMS Id>" has been added in flextable with Id "flexGridGrantorServiceAreasProgram"
 	Examples:
 	| EGMS Id |
-	| 03677   |
+	| 02492   |
 	
   	@34737 @programObjectiveAssociation @program @all
   	Scenario Outline: Validate the Association of Objective to the Internal Program
@@ -75,7 +75,7 @@ Feature: Validate all scenarios for program
     Then I see that "<EGMS Id>" has been added in flextable with Id "RelatedProgramGoalsandObjectives"
 	Examples:
 	| EGMS Id  |
-	| SPO-0121 |
+	| SPO-0127 |
 	
   	@34738 @programKPIAssociation @program @all
   	Scenario Outline: Validate the assignment of Approvers for the Internal Program
@@ -86,7 +86,7 @@ Feature: Validate all scenarios for program
     Then I see that "<EGMS Id>" has been added in flextable with Id "ProgramKeyOutcomes"
 	Examples:
 	| EGMS Id  |
-	|KPI-0638  |
+	|KPI-0640  |
 	
   	#@34745 @programAttachmentChecklist @program @all  @notFunctional
   	#Scenario: Validate the attachment checklist for the Internal Program
@@ -112,7 +112,7 @@ Feature: Validate all scenarios for program
     Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate "4" records "Automation EXE,03677,SPO-0121,KPI-0638"
+    And I associate "4" records "Automation EXE,02492,SPO-0127,KPI-0640"
     | Actions 	  | Step 1   | Step 2	 | Step 3  			  				  | Step 4 	  | Step 5  				 |
     | Associate 1 | Overview | Associate | ProgramContacts 				      | Add	  	  | AssociateProgramContacts |
     | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Add		  | SelectProgramServiceArea |
@@ -143,7 +143,7 @@ Feature: Validate all scenarios for program
     Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-   And I associate "4" records "Automation EXE,03677,SPO-0121,KPI-0638"
+   And I associate "4" records "Automation EXE,02492,SPO-0127,KPI-0640"
     | Actions 	  | Step 1   | Step 2	 | Step 3  			  				  | Step 4 	  | Step 5  				 |
     | Associate 1 | Overview | Associate | ProgramContacts 				      | Add	  	  | AssociateProgramContacts |
     | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Add		  | SelectProgramServiceArea |
@@ -188,12 +188,13 @@ Feature: Validate all scenarios for program
     Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
     | Actions         | Step 1 | Step 2 |
     | Edition Buttons | Edit   | Save   |
-   And I associate "4" records "Automation EXE,03677,SPO-0121,KPI-0638"
+   And I associate "4" records "Automation EXE,02492,SPO-0127,KPI-0640"
     | Actions 	  | Step 1   | Step 2	 | Step 3  			  				  | Step 4 	  | Step 5  				 |
     | Associate 1 | Overview | Associate | ProgramContacts 				      | Add	  	  | AssociateProgramContacts |
     | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Add		  | SelectProgramServiceArea |
     | Associate 3 | Setup 	 | Associate | RelatedProgramGoalsandObjectives   | Add	  	  | SelectGoals 		     |
-    | Associate 4 | Setup 	 | Associate | ProgramKeyOutcomes                 | Add	  	  | SelectProgramKPIs 		 |
+    | Associate 4 | Setup 	 | Associate | ProgramKeyOutcomes                 | Add	  	  | SelectProgramKPIs		 |
+    When I pause execution
     Given I select "2" approvers "Automation PM,Automation EXE"
     | Actions    | Step 1                          | Step 2 | Step 3              |
     | Subtab     | Responsibilities                |        |                     |
@@ -209,7 +210,7 @@ Feature: Validate all scenarios for program
     Given I add an attachment "InternalOrganization_Field_Values.xlsx"
     | Actions               | Step 1      | Step 2            | Step 3                   | 
     | Attachment Navigation | Attachments | Add               | a150b000003epY5AAI       |
-    | Attachment Details    | Attach1ment  | Program Artifacts |                          |
+    | Attachment Details    | Attach1ment  | Program Artifacts |                         |
     And I click on "Submit For Approval" in the page details
     Given "2" Approvers "PM,EXE" approve the record "Record Id"
      | Actions    | Step 1        | Step 2       | Step 3            |

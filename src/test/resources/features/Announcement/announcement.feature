@@ -289,9 +289,9 @@ Feature: Validate all scenarios in the Announcement tab
 	Then I do not see value "<EGMS Id>" for title "EGMS ID" inside table "announcement::fundingAccountsTableId" 
 	Examples:
 	|Announcement Type|EGMS Id |
-	|Competitive      |FA--116 |
-	|Directed         |FA--116 |
-	|Formula          |FA--116 |
+	|Competitive      |FA--125 |
+	|Directed         |FA--125 |
+	|Formula          |FA--125 |
 	
   	@34771 @announcementBudgetPeriodAddition @announcement @all
   	Scenario Outline: Budget Period Addition to an Announcement

@@ -107,7 +107,7 @@ Feature: Validate all scenarios in Desk Review
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal 
+	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal 
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Desk Review Name>" inside table
@@ -136,7 +136,7 @@ Feature: Validate all scenarios in Desk Review
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
+	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Desk Review Name>" inside table
@@ -171,7 +171,7 @@ Feature: Validate all scenarios in Desk Review
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
+	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Desk Review Name>" inside table
@@ -212,7 +212,7 @@ Feature: Validate all scenarios in Desk Review
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-    When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Desk Review Name>" inside table
@@ -254,7 +254,7 @@ Feature: Validate all scenarios in Desk Review
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-   When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
+   When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Desk Review Name>" inside table
@@ -308,7 +308,7 @@ Feature: Validate all scenarios in Desk Review
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
+	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Desk Review Name>" inside table
@@ -330,7 +330,7 @@ Feature: Validate all scenarios in Desk Review
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | MyTasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-    When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I expand nested table containing column value "<Award Name>"
@@ -362,7 +362,7 @@ Feature: Validate all scenarios in Desk Review
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal 
+	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal 
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Desk Review Name>" inside table
@@ -435,7 +435,7 @@ Feature: Validate all scenarios in Desk Review
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
+	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Desk Review Name>" inside table
@@ -509,7 +509,7 @@ Feature: Validate all scenarios in Desk Review
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
+	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Desk Review Name>" inside table

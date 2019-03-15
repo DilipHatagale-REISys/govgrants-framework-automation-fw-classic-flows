@@ -4,10 +4,10 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	Background: Create Award from FDM
 	Given I delete the record "Permanent Grant for Automation" from the object "Grant"
 	And I create a Grant as user "EXE" from sheet "Grant_Creation" in excel "Award_Field_Values.xlsx"
-	| Actions 	 | Step 1 	   		    | Step 2    	 	 | Step 3 				       |
-	| Navigation | As a Grantor		    | Grants    	 	 | Grants, Awards & Amendments |
-	| FlexTable  | Grants and Subawards | ActiveGrants 	     | Draft Grants                |
-	| Creation   | New				    | Save and Continue  | Cancel					   |
+	| Actions 	 | Step 1 	   		    | Step 2    	 	 | Step 3 				         |
+	| Navigation | As a Grantor		    | Grants    	 	 | Grants, Subaward & Amendments |
+	| FlexTable  | Grants and Subawards | ActiveGrants 	     | Draft Grants                  |
+	| Creation   | New				    | Save and Continue  | Cancel					     |
 	Given I complete the fields from the sheet "Grant_Edition" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
@@ -574,7 +574,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "Review Grantor Award" on "DEMO" portal
+  	Given Review is completed as user "FO" for the record "Review Grantor Award" 
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
@@ -665,7 +665,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "Review Grantor Award" on "DEMO" portal
+  	Given Review is completed as user "FO" for the record "Review Grantor Award" 
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
@@ -774,7 +774,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "Review Grantor Award" on "DEMO" portal
+  	Given Review is completed as user "FO" for the record "Review Grantor Award" 
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
@@ -879,7 +879,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "Review Grantor Award" on "DEMO" portal
+  	Given Review is completed as user "FO" for the record "Review Grantor Award" 
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
@@ -973,7 +973,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "<Award Name>" on "DEMO" portal
+  	Given Review is completed as user "FO" for the record "<Award Name>" 
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
@@ -1084,7 +1084,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "Review Grantor Award" on "DEMO" portal
+  	Given Review is completed as user "FO" for the record "Review Grantor Award" 
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
@@ -1202,7 +1202,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "Review Grantor Award" on "DEMO" portal
+  	Given Review is completed as user "FO" for the record "Review Grantor Award" 
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
@@ -1320,12 +1320,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "Review Grantor Award" on "DEMO" portal
+  	Given Review is completed as user "FO" for the record "Review Grantor Award" 
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
-  	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
+  	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
     | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |

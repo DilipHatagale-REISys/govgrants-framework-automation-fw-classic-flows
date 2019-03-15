@@ -107,7 +107,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
+	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
@@ -136,18 +136,18 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
+	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
 	When I click on "Conduct" in the page details
-	And I pause execution
 	And I navigate to "Reports and Outcomes" sub tab
+	And I pause execution
 	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
     | Title       		 	 | Description  	 	  | Type    	   |Status| Closed Date|
     | Automation Finding 	 | Automation Description | Finding		   |Open  |            |
-   #| Automation Concern 	 | Automation Description | Concern 	   |Open  |            |
-   #| Automation Observation | Automation Description | Observation    |Open  |            |
+    | Automation Concern 	 | Automation Description | Concern 	   |Open  |            |
+    | Automation Observation | Automation Description | Observation    |Open  |            |
 	Then I see that "Automation Finding" has been added in flextable with Id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance"
 	Examples:
 	| Site Visit Name	      |
@@ -172,7 +172,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
+	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
@@ -213,7 +213,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
+	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
@@ -255,7 +255,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
+	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
@@ -309,7 +309,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
+	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
@@ -331,7 +331,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | MyTasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-    When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I expand nested table containing column value "<Award Name>"
@@ -363,7 +363,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal 
+	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal 
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
@@ -442,7 +442,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
+	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
@@ -522,7 +522,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
+	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
