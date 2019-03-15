@@ -262,14 +262,14 @@ Feature: Validate all scenarios in the Announcement tab
     When I click "Add" after selection of "<EGMS Id>" in the table "SelectAnnFundingAccounts"
     And I close Modal
     When I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Pre-Encumbrance |
-	| FA--116 		  | 100 			|
+	| Funding Account                                 | Pre-Encumbrance |
+	| Execution Funding Source for Automation 		  | 100 			|
 	Then I see that "<EGMS Id>" has been added in flextable with Id "flexGridAnnouncementFundingAccountGrantor"
 	Examples:
-	|Announcement Type|EGMS Id |
-	|Competitive      |FA--116 |
-	|Directed         |FA--116 |
-	|Formula          |FA--116 |
+	|Announcement Type|EGMS Id								   |
+	|Competitive      |Execution Funding Source for Automation |
+	|Directed         |Execution Funding Source for Automation |
+	|Formula          |Execution Funding Source for Automation |
 	
 	@announcementFADissociation @announcement @all
 	Scenario Outline: Funding Account dissociation to an Announcement
@@ -348,9 +348,9 @@ Feature: Validate all scenarios in the Announcement tab
 	And I click on "Save" in the page details 
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementServiceArea1"
-    When I click "Add" after selection of "Pediatric Asthma" in the table "SelectAnnouncementServiceArea1"
+    When I click "Add" after selection of "Execution Focus Area for Automation1" in the table "SelectAnnouncementServiceArea1"
     And I close Modal
-    Then I see that "Pediatric Asthma" has been added in flextable with Id "AnnouncementServiceArea1"
+    Then I see that "Execution Focus Area for Automation1" has been added in flextable with Id "AnnouncementServiceArea1"
 	Examples:
 	|Announcement Type|
 	|Competitive      |
