@@ -168,13 +168,13 @@ Feature: Validate all scenarios for program
     And I click on "Submit For Approval" in the page details
 	Given I re-login to "As a Grantor" app as "<Program Approver>" user
 	When I navigate to "Planning" tab
-	And I navigate to "Pending Tasks" content inside "MyTasks" subheader on left panel
+	When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "<Program Name>" in "PhasePendingTasks" panel
     And I click on "Start" icon for "<Program Name>" inside table
     When I click on "Approve" on the approval decision box
     And I re-login to "As a Grantor" app as "<Executive Approver>" user 
 	When I navigate to "Planning" tab
-	And I navigate to "Pending Tasks" content inside "MyTasks" subheader on left panel
+	When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "<Program Name>" in "PhasePendingTasks" panel
     And I click on "Start" icon for "<Program Name>" inside table 
     When I click on "Approve" on the approval decision box

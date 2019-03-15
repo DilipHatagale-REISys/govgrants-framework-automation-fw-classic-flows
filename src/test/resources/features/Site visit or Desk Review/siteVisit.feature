@@ -3,11 +3,11 @@ Feature: Validate all scenarios in the Site Visit
 
 	Background: Data setup for Site Visit
 	Given I delete the record "Automation Site Visit" from the object "Site Visit"
-	And I login and view the "Active" award "AD-Gr19-06" with name "Automation Application" as User "EXE"
-	| Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
-    | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
-    | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
+	And I login and view the "Active" award "AD-PGA-01" with name "Permanent Grant for Automation" as User "EXE"
+	| Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						    |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments  |
+    | FlexTable  | Grants		 | ActiveGrants   | View				   |							    |
+    | Subaward   | Subawards	 | RelatedAwards1 | View				   |							    |
 	Given I create a post award record from sheet "Creation" in excel "SiteVisit_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		   | Step 2    			    |
 	| Navigation | Management		   | 			 		    |	
@@ -107,7 +107,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user
+	When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
@@ -122,7 +122,7 @@ Feature: Validate all scenarios in the Site Visit
 	Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "Automation SPI"
+     And I associate "1" records "Automation SPI"
 	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		                |
     | Associate 1 | Overview   | Associate | GrantorSiteVisitContacts  | Associate	 | SelectSiteDeskReviewContacts |
    Given I select "2" approvers "Automation PM,Automation FO"
@@ -136,18 +136,19 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user 
+	When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
 	When I click on "Conduct" in the page details
+	And I pause execution
 	And I navigate to "Reports and Outcomes" sub tab
 	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
-    | Title       		 	 | Description  	 	  | Type    	   |
-    | Automation Finding 	 | Automation Description | Finding		   |
-    | Automation Concern 	 | Automation Description | Concern 	   |
-    | Automation Observation | Automation Description | Observation    |
-	Then I see that "Automation Observation" has been added in flextable with Id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance"
+    | Title       		 	 | Description  	 	  | Type    	   |Status| Closed Date|
+    | Automation Finding 	 | Automation Description | Finding		   |Open  |            |
+   #| Automation Concern 	 | Automation Description | Concern 	   |Open  |            |
+   #| Automation Observation | Automation Description | Observation    |Open  |            |
+	Then I see that "Automation Finding" has been added in flextable with Id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance"
 	Examples:
 	| Site Visit Name	      |
 	| Automation Site Visit   |
@@ -171,7 +172,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user
+	When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
@@ -194,7 +195,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Automation Site Visit  |
 	
 	@submittingForApprovalSiteVisit @siteVisit @all
-	Scenario: Submitting Site Visit for approval
+	Scenario Outline:  Submitting Site Visit for approval
 	Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
@@ -212,7 +213,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user 
+	When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
@@ -231,6 +232,9 @@ Feature: Validate all scenarios in the Site Visit
 	| Validation  | Validate			 | FormComponent |
 	When I click on "Submit for Approval" in the page details
 	Then I see status in Progress-bar is "Submitted for Approval" and is "green"
+    Examples:
+	| Site Visit Name	     |
+	| Automation Site Visit  |
 	
 	@approvalOfSiteVisit @siteVisit @all
 	Scenario Outline: Approval of Site Visit
@@ -251,7 +255,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user
+	When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
@@ -294,7 +298,7 @@ Feature: Validate all scenarios in the Site Visit
     And I associate "1" records "Automation SPI"
 	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		                |
     | Associate 1 | Overview   | Associate | GrantorSiteVisitContacts  | Associate	 | SelectSiteDeskReviewContacts |
-   Given I select "2" approvers "Automation PM,Automation FO"
+    Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
     | Subtab	 | Responsibilities 			  			| 		 |		    		  |
     | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
@@ -305,7 +309,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user 
+	When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
@@ -327,7 +331,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | MyTasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-    When I re-login to "As a Grantor" app as "EXE" user
+    When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I expand nested table containing column value "<Award Name>"
@@ -338,7 +342,7 @@ Feature: Validate all scenarios in the Site Visit
 	Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
 	Examples:
 	| Award Name 				     	    	    	| Site Visit Name	    |
-	| Automation Announcement to be deleted Application | Automation Site Visit |
+	| Permanent Grant for Automation                    | Automation Site Visit |
 	
 	@siteVisitCorrectiveActionsBySubrecipient @siteVisit @all
 	Scenario Outline: Send Site Visit to Subrecipient
@@ -359,7 +363,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user 
+	When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal 
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
@@ -417,7 +421,7 @@ Feature: Validate all scenarios in the Site Visit
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
 	Examples:
 	| Award Name 				     	    	    	| Award EGMS ID | Site Visit Name	    |
-	| Automation Announcement to be deleted Application | AD-AuGr--01   | Automation Site Visit |
+	| Permanent Grant for Automation                    | AD-PGA-01     | Automation Site Visit |
 	
 	@siteVisitSubmitToGrantorBySubrecipient @siteVisit @all
 	Scenario Outline: Send Site Visit to Subrecipient
@@ -438,7 +442,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user 
+	When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
@@ -497,7 +501,7 @@ Feature: Validate all scenarios in the Site Visit
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
 	Examples:
 	| Award Name 				     	    	    	| Award EGMS ID | Site Visit Name	    |
-	| Automation Announcement to be deleted Application | AD-AuGr--01   | Automation Site Visit |
+	| Permanent Grant for Automation                    | AD-PGA-01     | Automation Site Visit |
 	
 	@siteVisitAcceptAndClose @siteVisit @all
 	Scenario Outline: Send Site Visit to Subrecipient
@@ -518,7 +522,7 @@ Feature: Validate all scenarios in the Site Visit
 	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	When I re-login to "As a Grantor" app as "EXE" user
+	When I re-login to "As a Grantor" app as "EXE" user on "AUTO" portal
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
@@ -578,5 +582,5 @@ Feature: Validate all scenarios in the Site Visit
     Then I see status in Progress-bar is "Closed" and is "green"
 	Examples:
 	| Award Name 				     	    	    	| Award EGMS ID | Site Visit Name	    |
-	| Automation Announcement to be deleted Application | AD-AuGr--01   | Automation Site Visit |
+	| Permanent Grant for Automation                    | AD-PGA-01     | Automation Site Visit |
 	

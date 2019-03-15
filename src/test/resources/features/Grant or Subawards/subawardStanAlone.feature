@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in the Stand Alone Award and Grant
 
 	Background: Create Award from FDM
-	Given I delete the record "Automation Grant" from the object "Grant"
+	Given I delete the record "Permanent Grant for Automation" from the object "Grant"
 	And I create a Grant as user "EXE" from sheet "Grant_Creation" in excel "Award_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		    | Step 2    	 	 | Step 3 				       |
 	| Navigation | As a Grantor		    | Grants    	 	 | Grants, Awards & Amendments |
@@ -30,15 +30,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
  	Scenario Outline: Funding Account budget addition to Award
 	When I navigate to "Budget" sub tab
 	And I click on top right button "Associate" in flex table with id "flexGridAwardFundingAccounts"
-    When I click "Add" after selection of "FA--77" in the table "SelectAwardFundingAccounts"
+    When I click "Add" after selection of "FA--125" in the table "SelectAwardFundingAccounts"
     And I close Modal
 	And I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
 	| Funding Account | Award Encumbrance |
-	| FA--77 		  | 100000 			  | 
+	| FA--125		  | 100000 			  | 
     Then I see that "<EGMS Id>" has been added in flextable with Id "flexGridAwardFundingAccounts"
 	Examples:
 	| EGMS Id |
-	| FA--77  |
+	| FA--125  |
 	
 	@34775 @awardStanAloneFocusAreaAssociation @awardStanAlone
   	Scenario Outline: Validate the association of Focus Area to Award
@@ -63,9 +63,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	Scenario: Validate the association of Objective to Award
     When I navigate to "Performance" sub tab
     And I click on top right button "Associate" in flex table with id "GrantorAwardGoalsObjectives"
-    When I click "Associate" after selection of "Automation Grant Objective" in the table "SelectAwardGoals"
+    When I click "Associate" after selection of "Automation Objective" in the table "SelectAwardGoals"
     And I close Modal
-    Then I see that "Automation Grant Objective" has been added in flextable with Id "GrantorAwardGoalsObjectives"
+    Then I see that "Automation Objective" has been added in flextable with Id "GrantorAwardGoalsObjectivess"
 	
 	@34775 @awardStanAloneKPIAssociation @awardStanAlone
   	Scenario Outline: Validate the association of KPI to Award
@@ -125,7 +125,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    Given I associate "3" records "FA--77,Automation Grant Focus Area,Automation Grant Objective"
+    Given I associate "3" records "FA--125,Automation Grant Focus Area,Automation Grant Objective"
 	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
@@ -133,7 +133,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
-	| FA--77 		  | 100000 		|
+	| FA--125 		  | 100000 		|
     And I edit the following rows inline in flex table with id "flexGridAwardBudgetCategoryFlexGrid" by clicking "Edit" :
 	| Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
 	| Construction    | 5000			 | 2000 	  | 3000		   |
@@ -188,7 +188,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    Given I associate "3" records "FA--77,Automation Grant Focus Area,Automation Grant Objective"
+    Given I associate "3" records "FA--125,Automation Grant Focus Area,Automation Grant Objective"
 	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
@@ -196,7 +196,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
-	| FA--77 		  | 100000 		|
+	| FA--125 		  | 100000 		|
     And I edit the following rows inline in flex table with id "flexGridAwardBudgetCategoryFlexGrid" by clicking "Edit" :
 	| Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
 	| Construction    | 5000			 | 2000 	  | 3000		   |
@@ -332,7 +332,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    Given I associate "3" records "FA--77,Automation Grant Focus Area,Automation Grant Objective"
+    Given I associate "3" records "FA--125,Automation Grant Focus Area,Automation Grant Objective"
 	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
@@ -340,7 +340,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
-	| FA--77 		  | 100000 		|
+	| FA--125 		  | 100000 		|
     And I edit the following rows inline in flex table with id "flexGridAwardBudgetCategoryFlexGrid" by clicking "Edit" :
 	| Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
 	| Construction    | 5000			 | 2000 	  | 3000		   |
@@ -415,7 +415,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    Given I associate "3" records "FA--77,Automation Grant Focus Area,Automation Grant Objective"
+    Given I associate "3" records "FA--125,Automation Grant Focus Area,Automation Grant Objective"
 	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
@@ -423,7 +423,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
-	| FA--77 		  | 100000 		|
+	| FA--125 		  | 100000 		|
     And I edit the following rows inline in flex table with id "flexGridAwardBudgetCategoryFlexGrid" by clicking "Edit" :
 	| Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
 	| Construction    | 5000			 | 2000 	  | 3000		   |
@@ -505,7 +505,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    Given I associate "3" records "FA--77,Automation Grant Focus Area,Automation Grant Objective"
+    Given I associate "3" records "FA--125,Automation Grant Focus Area,Automation Grant Objective"
 	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
@@ -513,7 +513,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
-	| FA--77 		  | 100000 		|
+	| FA--125 		  | 100000 		|
     And I edit the following rows inline in flex table with id "flexGridAwardBudgetCategoryFlexGrid" by clicking "Edit" :
 	| Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
 	| Construction    | 5000			 | 2000 	  | 3000		   |
@@ -596,7 +596,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    Given I associate "3" records "FA--77,Automation Grant Focus Area,Automation Grant Objective"
+    Given I associate "3" records "FA--125,Automation Grant Focus Area,Automation Grant Objective"
 	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
@@ -604,7 +604,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
-	| FA--77 		  | 100000 		|
+	| FA--125 		  | 100000 		|
     And I edit the following rows inline in flex table with id "flexGridAwardBudgetCategoryFlexGrid" by clicking "Edit" :
 	| Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
 	| Construction    | 5000			 | 2000 	  | 3000		   |
@@ -705,7 +705,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    Given I associate "3" records "FA--77,Automation Grant Focus Area,Automation Grant Objective"
+    Given I associate "3" records "FA--125,Automation Grant Focus Area,Automation Grant Objective"
 	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
@@ -713,7 +713,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
-	| FA--77 		  | 100000 		|
+	| FA--125 		  | 100000 		|
     And I edit the following rows inline in flex table with id "flexGridAwardBudgetCategoryFlexGrid" by clicking "Edit" :
 	| Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
 	| Construction    | 5000			 | 2000 	  | 3000		   |
@@ -810,7 +810,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    Given I associate "3" records "FA--77,Automation Grant Focus Area,Automation Grant Objective"
+    Given I associate "3" records "FA--125,Automation Grant Focus Area,Automation Grant Objective"
 	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
@@ -818,7 +818,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
-	| FA--77 		  | 100000 		|
+	| FA--125 		  | 100000 		|
     And I edit the following rows inline in flex table with id "flexGridAwardBudgetCategoryFlexGrid" by clicking "Edit" :
 	| Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
 	| Construction    | 5000			 | 2000 	  | 3000		   |
@@ -1015,7 +1015,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    Given I associate "3" records "FA--77,Automation Grant Focus Area,Automation Grant Objective"
+    Given I associate "3" records "FA--125,Automation Grant Focus Area,Automation Grant Objective"
 	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
@@ -1023,7 +1023,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
-	| FA--77 		  | 100000 		|
+	| FA--125 		  | 100000 		|
     And I edit the following rows inline in flex table with id "flexGridAwardBudgetCategoryFlexGrid" by clicking "Edit" :
 	| Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
 	| Construction    | 5000			 | 2000 	  | 3000		   |
@@ -1133,7 +1133,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    Given I associate "3" records "FA--77,Automation Grant Focus Area,Automation Grant Objective"
+    Given I associate "3" records "FA--125,Automation Grant Focus Area,Automation Grant Objective"
 	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
@@ -1141,7 +1141,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
-	| FA--77 		  | 100000 		|
+	| FA--125 		  | 100000 		|
     And I edit the following rows inline in flex table with id "flexGridAwardBudgetCategoryFlexGrid" by clicking "Edit" :
 	| Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
 	| Construction    | 5000			 | 2000 	  | 3000		   |
@@ -1251,7 +1251,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    Given I associate "3" records "FA--77,Automation Grant Focus Area,Automation Grant Objective"
+    Given I associate "3" records "FA--125,Automation Grant Focus Area,Automation Grant Objective"
 	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
@@ -1259,7 +1259,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
-	| FA--77 		  | 100000 		|
+	| FA--125 		  | 100000 		|
     And I edit the following rows inline in flex table with id "flexGridAwardBudgetCategoryFlexGrid" by clicking "Edit" :
 	| Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
 	| Construction    | 5000			 | 2000 	  | 3000		   |
