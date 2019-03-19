@@ -1318,7 +1318,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Reviewer Navigation | Responsibilities      | 					 		 |		   |
 	| FlexTable 		  | New				      | flexGridGrantorAwardReviewer | Save    |
 	| Send Review		  | Send for Review       | Created 			 		 |		   |
-  	Given Review is completed as user "FO" for the record "Review Grantor Award" on "DEMO" portal
+  	Given Review is completed as user "FO" for the record "Review Grantor Award" on "INTERNAL" portal
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		 		 | Step 4 		   |
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 

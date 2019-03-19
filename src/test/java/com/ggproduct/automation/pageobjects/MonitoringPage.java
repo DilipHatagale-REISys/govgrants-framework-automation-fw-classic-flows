@@ -21,7 +21,7 @@ public class MonitoringPage extends ProjectManager {
         govgrants.mainPage().reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
         govgrants.sideBar().getSideBarContent(dataTableMap.get("Left Panel").get("Step 2"),
-                dataTableMap.get("Left Panel").get("Step 1"));
+                dataTableMap.get("Left Panel").get("Step 1")).click();
         govgrants.flexTable().expandOrCollapseNestedTable(awardName, true);
         govgrants.flexTable().expandOrCollapseNestedTable(awardName, true);
         govgrants.quickSearch().performEnhancedGridSearch(dataTableMap.get("FlexTable").get("Step 2"), awardId,

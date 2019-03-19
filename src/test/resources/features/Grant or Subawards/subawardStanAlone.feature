@@ -2,15 +2,14 @@
 Feature: Validate all scenarios in the Stand Alone Award and Grant
 
 	Background: Create Award from FDM
-	Given I delete the record "Permanent Grant for Automation" from the object "Grant"
+	#Given I delete the record "Permanent Grant for Automation" from the object "Grant"
 	And I create a Grant as user "EXE" from sheet "Grant_Creation" in excel "Award_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		    | Step 2    	 	 | Step 3 				         |
 	| Navigation | As a Grantor		    | Grants    	 	 | Grants, Subaward & Amendments |
 	| FlexTable  | Grants and Subawards | ActiveGrants 	     | Draft Grants                  |
-	| Creation   | New				    | Save and Continue  | Cancel					     |
-	Given I complete the fields from the sheet "Grant_Edition" in excel "Award_Field_Values.xlsx"
-    | Actions 		  | Step 1 | Step 2	|
-    | Edition Buttons | Edit   | Save   |
+	| Creation   | New				    | Continue           |                               |
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue" 
 	And I navigate to "Subawards" sub tab
 	Given I click on "View" icon for "Created" inside flex table with id "RelatedAwards1"
 	And I get the "EGMS ID"
@@ -25,6 +24,18 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
 	When I click on "Save" in the page details
 	Then I see status in Progress-bar is "Created" and is "green"
+	
+	@awardStandAloneAddContactsKeyPersonnel @awardStanAlone
+	Scenario: Associate a Key Contact
+	When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "flexGridSubawardContact"
+    When I check "Automation SPI" boxes in flex table with id "AssociateSubawardContacts"
+    When I click on top right button "Add" in flex table with id "AssociateSubawardContacts"
+    And I close Modal
+   	And I edit the following rows inline in flex table with id "flexGridSubawardContact" by clicking "Edit" :
+    | Title          | Project Role                    | 
+	| Automation SPI | Project Director/Manager		   |  
+    Then I see that "Automation SPI" has been added in flextable with Id "flexGridSubawardContact"
 	
 	@awardStandAloneFundingAccount @awardStanAlone
  	Scenario Outline: Funding Account budget addition to Award
@@ -41,15 +52,16 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| FA--125  |
 	
 	@34775 @awardStanAloneFocusAreaAssociation @awardStanAlone
-  	Scenario Outline: Validate the association of Focus Area to Award
+  	Scenario: Validate the association of Focus Area to Award
     When I navigate to "Budget" sub tab
     And I click on top right button "Associate" in flex table with id "inlineEditGridGrantorAwardServiceAreas"
-    When I click "Associate" after selection of "<EGMS Id>" in the table "popupflextableGAT"
+    When I click "Associate" after selection of "Automation Grant Focus Area" in the table "popupflextableGAT"
     And I close Modal
-    Then I see that "<EGMS Id>" has been added in flextable with Id "inlineEditGridGrantorAwardServiceAreas"
-	Examples:
-	| EGMS Id |
-	| 02534   |
+   	And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
+	| Title                       | Start Date | End Date  |
+	| Automation Grant Focus Area | 0		   |  500      |
+    Then I see that "Automation Grant Focus Area" has been added in flextable with Id "inlineEditGridGrantorAwardServiceAreas"
+
 	
 	@awardStandAloneBudgetEdition @awardStanAlone
   	Scenario: Budget addition to Award
@@ -125,11 +137,14 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    Given I associate "3" records "FA--125,Automation Grant Focus Area,Automation Grant Objective"
+    Given I associate "3" records "FA--125,Automation Grant Focus Area,Permanent Objective Automation"
 	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
     | Associate 3 | Performance | Associate | GrantorAwardGoalsObjectives					| Associate | SelectAwardGoals 		   		 |
+   And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
+	| Title                       | Start Date | End Date  |
+	| Automation Grant Focus Area | 0		   |  500      |
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
@@ -167,9 +182,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-    And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
+    And I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
@@ -180,19 +195,22 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     | Approver 3 | GrantorAwardRolesAndResponsibilities | Edit	 | Executive Approver  |
     Then I click on "Send to Subrecipient" in the page details
 	Examples:
-	| Award Name 				     	    	|
-	| Automation Grant              			|
+	| Award Name 				     	                   	|
+	| Execution Grant for Automation             			|
 	
 	@awardStanAloneAcceptanceByRecipientBeforeApproval @awardStanAlone
   	Scenario Outline: Validate the assignment of Approvers for the award 
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    Given I associate "3" records "FA--125,Automation Grant Focus Area,Automation Grant Objective"
+    Given I associate "3" records "FA--125,Automation Grant Focus Area,Permanent Objective Automation"
 	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
     | Associate 3 | Performance | Associate | GrantorAwardGoalsObjectives					| Associate | SelectAwardGoals 		   		 |
+   	And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
+	| Title                       | Start Date | End Date  |
+	| Automation Grant Focus Area | 0		   |  500      |
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
@@ -230,9 +248,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-    And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
+    And I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
@@ -252,7 +270,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see that "Subaward" is in "Created" status
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant          				|
+	| Execution Grant for Automation         				|
 	
 	@awardStanAloneReviewerAssignment @awardStanAlone
   	Scenario Outline: Validate the assignment of Reviewer for the award
@@ -292,9 +310,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-    And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
+    And I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
@@ -311,7 +329,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	| Acceptance | Start 		 | Accept		  | Accept after Approval | OK				  |
   	When I re-login to "As a Grantor" app as "EXE" user
   	And I navigate to "Grants" tab
-  	When I navigate to "Grants and Subawards" content inside "Grants, Awards & Amendments" subheader on left panel
+  	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
   	And I click toggle button to select "Draft Grants"
 	When I perform quick search for "<Award Name>" in "ActiveGrants" panel
 	And I click on "View" icon for "<Award Name>" inside table 
@@ -324,19 +342,22 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	When I close Modal
 	Then I see that "Automation FO" has been added in flextable with Id "flexGridGrantorAwardReviewer"
 	Examples:
-	| Award Name 				     	    	|
-	| Automation Grant              			|
+	| Award Name 				     	    	    |
+	| Execution Grant for Automation      			|
 	
 	@awardStanAloneReviewerInitiation @awardStanAlone
   	Scenario Outline: Validate initiation of review for the award 
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    Given I associate "3" records "FA--125,Automation Grant Focus Area,Automation Grant Objective"
+    Given I associate "3" records "FA--125,Automation Grant Focus Area,Permanent Objective Automation"
 	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
     | Associate 3 | Performance | Associate | GrantorAwardGoalsObjectives					| Associate | SelectAwardGoals 		   		 |
+    And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
+	| Title                       | Start Date | End Date  |
+	| Automation Grant Focus Area | 0		   |  500      |
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
@@ -374,9 +395,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-    And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
+    And I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
@@ -393,7 +414,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
   	When I re-login to "As a Grantor" app as "EXE" user
   	And I navigate to "Grants" tab
-	When I navigate to "Grants and Subawards" content inside "Grants, Awards & Amendments" subheader on left panel
+	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
 	When I perform quick search for "<Award Name>" in "ActiveGrants" panel
 	And I click on "View" icon for "<Award Name>" inside table 
@@ -408,18 +429,21 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	Then I see that "Sent for Review" has been added in flextable with Id "flexGridGrantorAwardReviewer"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant               			|
+	| Execution Grant for Automation           			|
 	
 	@awardStanAloneReviewComplete @awardStanAlone
   	Scenario Outline: Validate completion of review for the award 
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    Given I associate "3" records "FA--125,Automation Grant Focus Area,Automation Grant Objective"
+    Given I associate "3" records "FA--125,Automation Grant Focus Area,Permanent Objective Automation"
 	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
     | Associate 3 | Performance | Associate | GrantorAwardGoalsObjectives					| Associate | SelectAwardGoals 		   		 |
+    And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
+	| Title                       | Start Date | End Date  |
+	| Automation Grant Focus Area | 0		   |  500      |
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
@@ -457,9 +481,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-    And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
+    And I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
@@ -474,9 +498,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	| Login		 | Grants Portal | SUBPORTAL	  |						  |					  |
   	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
-  	Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
+  	Given I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	And I assign, initiate a reviewer from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
@@ -498,18 +522,21 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see that "Submitted" has been added in flextable with Id "flexGridGrantorAwardReviewer"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant               			|
+	| Execution Grant for Automation            			|
 	
 	@awardStanAloneSubmissionForApproval @awardStanAlone
   	Scenario Outline: Validate award submission for approval	
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    Given I associate "3" records "FA--125,Automation Grant Focus Area,Automation Grant Objective"
+    Given I associate "3" records "FA--125,Automation Grant Focus Area,Permanent Objective Automation"
 	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
     | Associate 3 | Performance | Associate | GrantorAwardGoalsObjectives					| Associate | SelectAwardGoals 		   		 |
+    And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
+	| Title                       | Start Date | End Date  |
+	| Automation Grant Focus Area | 0		   |  500      |
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
@@ -547,9 +574,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-    And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
+    And I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
@@ -564,9 +591,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	| Login		 | Grants Portal | SUBPORTAL	  |						  |					  |
   	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
-  	Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
+  	Given I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	And I assign, initiate a reviewer from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
@@ -579,9 +606,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
-  	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
+  	And I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Complete Review" in the page details
@@ -589,18 +616,21 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant           				|
+	|Execution Grant for Automation    				|
 	
 	@awardStanAloneApproval @awardStanAlone
   	Scenario Outline: Validate award Approval by respective approvers	
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    Given I associate "3" records "FA--125,Automation Grant Focus Area,Automation Grant Objective"
+    Given I associate "3" records "FA--125,Automation Grant Focus Area,Permanent Objective Automation"
 	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
     | Associate 3 | Performance | Associate | GrantorAwardGoalsObjectives					| Associate | SelectAwardGoals 		   		 |
+    And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
+	| Title                       | Start Date | End Date  |
+	| Automation Grant Focus Area | 0		   |  500      |
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
@@ -638,9 +668,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-    And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
+    And I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
@@ -655,9 +685,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	| Login		 | Grants Portal | SUBPORTAL	  |						  |					  |
   	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
-  	Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
+  	Given I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	And I assign, initiate a reviewer from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
@@ -670,9 +700,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
-  	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
+  	And I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Complete Review" in the page details
@@ -698,18 +728,21 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see status in Progress-bar is "Approved" and is "green"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant              			|
+	| Execution Grant for Automation        			|
 	
 	@awardStanAloneSendToRecipientAfterApproval @awardStanAlone
   	Scenario Outline: Validate award Approval by respective approvers	
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    Given I associate "3" records "FA--125,Automation Grant Focus Area,Automation Grant Objective"
+    Given I associate "3" records "FA--125,Automation Grant Focus Area,Permanent Objective Automation"
 	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
     | Associate 3 | Performance | Associate | GrantorAwardGoalsObjectives					| Associate | SelectAwardGoals 		   		 |
+    And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
+	| Title                       | Start Date | End Date  |
+	| Automation Grant Focus Area | 0		   |  500      |
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
@@ -747,9 +780,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-    And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
+    And I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
@@ -764,9 +797,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	| Login		 | Grants Portal | SUBPORTAL	  |						  |					  |
   	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
-  	Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
+  	Given I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	And I assign, initiate a reviewer from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
@@ -779,9 +812,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
-  	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
+  	And I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Complete Review" in the page details
@@ -793,7 +826,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Approval 	 | Start 		 | Approve 	 | 					 |
   	When I re-login to "As a Grantor" app as "EXE" user
 	And I navigate to "Grants" tab
-	When I navigate to "Grants and Subawards" content inside "Grants, Awards & Amendments" subheader on left panel
+	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
 	When I perform quick search for "<Award Name>" in "ActiveGrants" panel
 	And I click on "View" icon for "<Award Name>" inside table
@@ -803,18 +836,21 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant              			|
+	| Execution Grant for Automation        			|
 	
 	@awardStanAloneAcceptanceByRecipientAfterApproval @awardStanAlone
   	Scenario Outline: Validate award Approval by respective approvers	
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    Given I associate "3" records "FA--125,Automation Grant Focus Area,Automation Grant Objective"
+    Given I associate "3" records "FA--125,Automation Grant Focus Area,Permanent Objective Automation"
 	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
     | Associate 3 | Performance | Associate | GrantorAwardGoalsObjectives					| Associate | SelectAwardGoals 		   		 |
+    And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
+	| Title                       | Start Date | End Date  |
+	| Automation Grant Focus Area | 0		   |  500      |
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
@@ -852,9 +888,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-    And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
+    And I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
@@ -869,9 +905,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	| Login		 | Grants Portal | SUBPORTAL	  |						  |					  |
   	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
-  	Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
+  	Given I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	And I assign, initiate a reviewer from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
@@ -884,9 +920,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
-  	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
+  	And I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Complete Review" in the page details
@@ -896,9 +932,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Navigation | As a Grantor  | Grants	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 	 | 					 |
-  	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
+  	And I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Send to Subrecipient" in the page details
@@ -912,7 +948,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see that "Subaward" is in "Accepted" status
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant              			|
+	| Execution Grant for Automation        			|
 	
 	@awardStanAloneActivation @awardStanAlone
   	Scenario Outline: Validate award Approval by respective approvers	
@@ -952,9 +988,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-    And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
+    And I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
@@ -978,9 +1014,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
-  	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
+  	And I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	And I click on "Submit for Approval" in the page details
@@ -989,9 +1025,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Navigation | As a Grantor  | Grants	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 	 | 					 |
-  	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
+  	And I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Send to Subrecipient" in the page details
@@ -999,23 +1035,23 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	| Actions 	 | Step 1 | Step 2		  | Step 3 			      | Step 4			  |
   	| Navigation | Grants | Pending Tasks | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start  | Accept		  | Accept after Approval | OK				  |
-  	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
+  	And I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
 	When I click on "Activate" in the page details
 	Then I see that "Subaward" is in "Activated" status  	
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant                			|
+	| Execution Grant for Automation              			|
 	
 	@awardStanAloneSiteVisit @awardStanAlone
   	Scenario Outline: Validate award Approval by respective approvers	
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    Given I associate "3" records "FA--125,Automation Grant Focus Area,Automation Grant Objective"
+    Given I associate "3" records "FA--125,Automation Grant Focus Area,Permanent Objective Automation"
 	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
@@ -1057,9 +1093,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-    And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
+    And I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
@@ -1074,9 +1110,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	| Login		 | Grants Portal | SUBPORTAL	  |						  |					  |
   	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
-  	Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
+  	Given I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	And I assign, initiate a reviewer from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
@@ -1089,9 +1125,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
-  	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
+  	And I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Complete Review" in the page details
@@ -1101,9 +1137,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Navigation | As a Grantor  | Grants	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 	 | 					 |
-  	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
+  	And I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Send to Subrecipient" in the page details
@@ -1112,9 +1148,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	| Login		 | Grants Portal | SUBPORTAL	  |						  |					  |
   	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
-  	Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
+  	Given I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
 	And I click on "Activate" in the page details
@@ -1126,18 +1162,21 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see status in Progress-bar is "Created" and is "green"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant                 			|
+	| Execution Grant for Automation               			|
 	
 	@awardStandAloneDeskReview @awardStandAlone
   	Scenario Outline: Validate award Approval by respective approvers	
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    Given I associate "3" records "FA--125,Automation Grant Focus Area,Automation Grant Objective"
+    Given I associate "3" records "FA--125,Automation Grant Focus Area,Permanent Objective Automation"
 	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
     | Associate 3 | Performance | Associate | GrantorAwardGoalsObjectives					| Associate | SelectAwardGoals 		   		 |
+  	And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
+	| Title                       | Start Date | End Date  |
+	| Automation Grant Focus Area | 0		   |  500      |
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
@@ -1175,9 +1214,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-    And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
+    And I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
@@ -1192,9 +1231,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	| Login		 | Grants Portal | SUBPORTAL	  |						  |					  |
   	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
-  	Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
+  	Given I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	And I assign, initiate a reviewer from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
@@ -1207,9 +1246,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
-  	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
+  	And I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Complete Review" in the page details
@@ -1219,9 +1258,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Navigation | As a Grantor  | Grants	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 	 | 					 |
-  	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
+  	And I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Send to Subrecipient" in the page details
@@ -1230,9 +1269,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   	| Login		 | Grants Portal | SUBPORTAL	  |						  |					  |
   	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
-  	Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
+  	Given I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
 	And I click on "Activate" in the page details
@@ -1244,18 +1283,21 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see status in Progress-bar is "Created" and is "green"
 	Examples:
 	| Award Name 				     	    	|
-	| Automation Grant          				|	
+	|Execution Grant for Automation       |	
 	
 	@awardHappyPathStandAlone @awardStandAlone
   	Scenario Outline: Validate award Approval by respective approvers	
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    Given I associate "3" records "FA--125,Automation Grant Focus Area,Automation Grant Objective"
+    Given I associate "3" records "FA--125,Automation Grant Focus Area,Permanent Objective Automation"
 	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
     | Associate 3 | Performance | Associate | GrantorAwardGoalsObjectives					| Associate | SelectAwardGoals 		   		 |
+    And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
+	| Title                       | Start Date | End Date  |
+	| Automation Grant Focus Area | 0		   |  500      |
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
@@ -1276,13 +1318,21 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4  | Step 5 |
     | Creation | Management | flexGridTnCSchedules	   | Edit   | Save    | Progress Report   |
     And I close Modal
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "flexGridSubawardContact"
+    When I check "Automation SPI" boxes in flex table with id "AssociateSubawardContacts"
+    When I click on top right button "Add" in flex table with id "AssociateSubawardContacts"
+    And I close Modal
+   	And I edit the following rows inline in flex table with id "flexGridSubawardContact" by clicking "Edit" :
+    | Title          | Project Role                    | 
+	| Automation SPI | Project Director/Manager		   |  
     And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
     | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
     | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
 	When I click on "Save" in the page details
-    Given I select "2" approvers "Automation PM,Automation FO"
+	Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				      				 | Step 2 | Step 3 			   |
     | Subtab	 | Responsibilities 			 				 | 		  |		    		   |
     | Approver 1 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Program Approver   |
@@ -1293,11 +1343,20 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-    And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
-    | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
-    | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
-    | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
+	#And I pause execution 
+    #And I login and view the "Draft Grants" award "Record Id" with name "<Grant Name>" as User "EXE"
+    #| Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
+    #| Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
+    #| FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
+    #| Subaward   | Subawards	 | RelatedAwards1 | View	
+    When I re-login to "As a Grantor" app as "EXE" user
+	And I navigate to "Grants" tab
+	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+	And I click toggle button to select "Draft Grants"
+	When I perform quick search for "<Grant Name>" in "ActiveGrants" panel
+	And I click on "View" icon for "<Grant Name>" inside table
+	When I navigate to "Subawards" sub tab
+	And I click on "View" icon for "<Award Name>" inside flex table with id "RelatedAwards1"
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
     | Actions 	 | Step 1   				    		| Step 2 | Step 3 			   |
     | Subtab	 | Responsibilities 					| 		 |		    		   |
@@ -1305,14 +1364,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     | Approver 2 | GrantorAwardRolesAndResponsibilities | Edit   | Fiscal Approver     |
     | Approver 3 | GrantorAwardRolesAndResponsibilities | Edit	 | Executive Approver  |
     And I click on "Send to Subrecipient" in the page details
-  	Given The subrecipient user "SPI" accepts the award "Record Id" with comments "Automation Award accepted"
+    When I pause execution
+  	Given The subrecipient user "SPI" accepts the award "<Award Name>" with comments "Automation Award accepted"
   	| Actions 	 | Step 1 		 | Step 2		  | Step 3 			      | Step 4			  |
   	| Login		 | Grants Portal | SUBPORTAL	  |						  |					  |
   	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
-  	Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
+  	Given I login and view the "Draft Grants" award "Record Id" with name "<Grant Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	And I assign, initiate a reviewer from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
@@ -1325,52 +1385,60 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
-  	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
+  	And I login and view the "Draft Grants" award "Record Id" with name "<Grant Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Complete Review" in the page details
   	And I click on "Submit for Approval" in the page details
-  	Given "3" Approvers "PM,FO,EXE" approve the record "Record Id"
+  	Given "3" Approvers "PM,FO,EXE" approve the record "<Award Name>"
 	| Actions 	 | Step 1 	  	 | Step 2	 | Step 3  	 		 |
 	| Navigation | As a Grantor  | Grants	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 	 | 					 |
-  	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
-    | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
-    | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
-    | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
+	When I re-login to "As a Grantor" app as "EXE" user
+  	And I navigate to "Grants" tab
+	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+	And I click toggle button to select "Draft Grants"
+	When I perform quick search for "<Grant Name>" in "ActiveGrants" panel
+	And I click on "View" icon for "<Grant Name>" inside table 
+	When I navigate to "Subawards" sub tab
+	And I click on "View" icon for "Record Id" inside flex table with id "RelatedAwards1"
+  	#And I login and view the "Draft Grants" award "Record Id" with name "<Grant Name>" as User "EXE"
+    #| Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
+    #| Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
+    #| FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
+    #| Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Send to Subrecipient" in the page details
   	And The subrecipient user "SPI" accepts the award "Record Id" with comments "Automation Award accepted"
   	| Actions 	 | Step 1 		 | Step 2		  | Step 3 			      | Step 4			  |
   	| Login		 | Grants Portal | SUBPORTAL	  |						  |					  |
   	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
-  	Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
+  	Given I login and view the "Draft Grants" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
 	And I click on "Activate" in the page details
 	Given I create a monitoring record from sheet "Site Visit" in excel "Award_Field_Values.xlsx"
 	| Actions  | Step 1     | Step 2	   		   	 | Step 3 				  | Step 4			 |
     | Creation | Management | GrantorSiteVisitsAward | Initiate Site Visit    | Save And Close   |
-    Given I login and view the "Active" award "Record Id" with name "<Award Name>" as User "Exe"
+    Given I login and view the "Active" award "Record Id" with name "<Grant Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I create a monitoring record from sheet "Desk Review" in excel "Award_Field_Values.xlsx"
 	| Actions  | Step 1     | Step 2	   		   	 | Step 3 				   | Step 4			  |
     | Creation | Management | GrantorDeskReviewAward | Initiate Desk Review    | Save And Close   |
-    Given I login and view the "Active" award "Record Id" with name "<Award Name>" as User "Exe"
+    Given I login and view the "Active" award "Record Id" with name "<Grant Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
 	Then I see status in Progress-bar is "Activated" and is "green"
 	Examples:
-	| Award Name 				     	    	|
-	| Automation Grant          				|
+	| Award Name 				     	    	|Grant Name                    |
+	| Permanent Award for Automation            |Permanent Award For Automation|
