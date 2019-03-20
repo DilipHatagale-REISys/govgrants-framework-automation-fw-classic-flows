@@ -182,12 +182,12 @@ Feature: Validate all scenarios in the Site Visit
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
     | Automation Observation | Automation Description | Observation    |
-	And I fill in the form "General Review Form" from sheet "Form Fields" in excel "SiteVisit_Field_Values.xlsx"
-	| Actions 	  | Step 1   		 	 | Step 2		 |
-	| Navigation  | Reports and Outcomes | 			 	 |
-	| FlexTable   | Edit				 | FormComponent |
-	| Form Button | Save				 | Back 		 |
-	| Validation  | Validate			 | FormComponent |
+	And I navigate to "Reports and Outcomes" sub tab
+	When I click on "Edit" icon for "General Review Form" inside flex table with id "FormComponent"
+	And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+	And I click on "Save" in the page details
+	When I click on "Back" in the page details
+	And I click on top right button "Validate" in flex table with id "FormComponent"
 	Then I see that "100.00%" has been added in flextable with Id "FormComponent"
 	Examples:
 	| Site Visit Name	     |
@@ -286,8 +286,8 @@ Feature: Validate all scenarios in the Site Visit
     When I click on "Approve" on the approval decision box
 	Then I see status in Progress-bar is "Approved" and is "green"
 	Examples:
-	| Site Visit Approval Task     |
-	| Approval Site Visit |
+	| Site Visit Approval Task     |Type                     |Site Visit Name      |
+	| Approval Site Visit          | Review Site visit report|Automation Site Visit|
 	
 	@siteVisitSendToSubrecipient @siteVisit @all
 	Scenario Outline: Send Site Visit to Subrecipient
@@ -390,18 +390,7 @@ Feature: Validate all scenarios in the Site Visit
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
-    #And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Subrecipient Organization>" with Id "<EGMS ID>"
-	#| Actions 	 | Step 1   		 			     | Step 2		  		  			|
-	#| Navigation | As a Grantor 	  				 | Monitoring 			 			|
-	#| Left Panel | Manage Site Visits                | Monitoring Activities	        |
-	#| FlexTable  | Award Site Visit                  | inlineEditGridSiteVisitsGridView |
-	#| Button 	 | View								 | 						            |
 	Given I click on "Send to Subrecipient" in the page details
-	#Given User "SPI" receives the task for "<Site Visit Name>"
-	#| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	#| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
-	#| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
-	#| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
 	When I navigate to "Monitoring" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -425,8 +414,8 @@ Feature: Validate all scenarios in the Site Visit
     And I collapse nested table containing column value "Automation Finding"
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
 	Examples:
-	| Award Name 				     	    	    	| Award EGMS ID | Site Visit Name	    |Site Visit Approval Task |
-	| Execution Grant for Automation                    | AD-EGA-01     | Automation Site Visit | Approve Site Visit      |
+	| Award Name 				     	    	    	| Award EGMS ID | Site Visit Name	    |Site Visit Approval Task |Type                    |
+	| Execution Grant for Automation                    | AD-EGA-01     | Automation Site Visit | Approve Site Visit      |Review Site visit report|
 	
 	@siteVisitSubmitToGrantorBySubrecipient @siteVisit @all
 	Scenario Outline: Send Site Visit to Subrecipient
@@ -474,18 +463,7 @@ Feature: Validate all scenarios in the Site Visit
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
-    #And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Subrecipient Organization>" with Id "<EGMS ID>"
-	#| Actions 	 | Step 1   		 			     | Step 2		  		  			|
-	#| Navigation | As a Grantor 	  				 | Monitoring 			 			|
-	#| Left Panel | Manage Site Visits                | Monitoring Activities	        |
-	#| FlexTable  | Award Site Visit                  | inlineEditGridSiteVisitsGridView |
-	#| Button 	 | View								 | 						            |
 	Given I click on "Send to Subrecipient" in the page details
-	#Given User "SPI" receives the task for "<Site Visit Name>"
-	#| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	#| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
-	#| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
-	#| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
 	When I navigate to "Monitoring" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -510,8 +488,8 @@ Feature: Validate all scenarios in the Site Visit
     When I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
 	Examples:
-	| Award Name 				     	    	    	| Award EGMS ID | Site Visit Name	    | Site Visit Approval Task |
-	| Execution Grant for Automation                    | AD-EGA-01     | Automation Site Visit | Approve Site Visit       |
+	| Award Name 				     	    	    	| Award EGMS ID | Site Visit Name	    | Site Visit Approval Task |Type                   |
+	| Execution Grant for Automation                    | AD-EGA-01     | Automation Site Visit | Approve Site Visit       |Review Site visit report|
 	
 	@siteVisitAcceptAndClose @siteVisit @all
 	Scenario Outline: Send Site Visit to Subrecipient
@@ -559,18 +537,7 @@ Feature: Validate all scenarios in the Site Visit
 	And I navigate to "Monitoring" tab
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
 	And I click on "View" icon for "<Site Visit Name>" inside table
-    #And I re-login as "EXE" to view the monitoring record "<Site Visit Name>" for the award "<Subrecipient Organization>" with Id "<EGMS ID>"
-	#| Actions 	 | Step 1   		 			     | Step 2		  		  			|
-	#| Navigation | As a Grantor 	  				 | Monitoring 			 			|
-	#| Left Panel | Manage Site Visits                | Monitoring Activities	        |
-	#| FlexTable  | Award Site Visit                  | inlineEditGridSiteVisitsGridView |
-	#| Button 	 | View								 | 						            |
 	Given I click on "Send to Subrecipient" in the page details
-	#Given User "SPI" receives the task for "<Site Visit Name>"
-	#| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	#| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
-	#| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
-	#| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
 	When I navigate to "Monitoring" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -599,6 +566,7 @@ Feature: Validate all scenarios in the Site Visit
 	And I click on "View" icon for "<Site Visit Name>" inside table
     And I click on "Accept And Close" in the page details
     Then I see status in Progress-bar is "Closed" and is "green"
+  
 	Examples:
 	| Award Name 				    | Type                    |Award EGMS ID| Site Visit Name	   | Site Visit Approval Task |
 	| Execution Grant for Automation| Review Site visit report|AD-EGA-01    | Automation Site Visit| Approve Site Visit       |

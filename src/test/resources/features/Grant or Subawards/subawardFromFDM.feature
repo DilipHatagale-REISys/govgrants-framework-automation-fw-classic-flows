@@ -2,15 +2,15 @@
 Feature: Validate all scenarios in the Award from FDM
 
 	Background: Create Award from FDM
-	Given I create a subaward from the Announcement "Execution Announcement(Dr) for Automation" for the Application "Automation Application" as user "EXE"
+	Given I create a subaward from the Announcement "Permanent Automation Announcement" for the Application "Automation Application Feb18" as user "EXE"
 	| Actions    | Step 1           | Step 2		| Step 3		     					  | Step 4 									|
 	| Navigation | As a Grantor     | Applications  | Application Review 					  | Funding Decision Memo (FDM) 			|
-	| FlexTable  | FDMList1	        | View			| Approved Funding Decision Memos (FDM)   | flexGridFundingDecisionMemoApplications	|
+	| FlexTable  | FDMList1	        | View			| Approved Funding Decision Memos (FDM)   | flexGridEnhancedDivIdAnnouncementList	|
 	| Buttons 	 | Create Subaward  | 				|                             			  |											|
-	Given I login and view the record "Automation Announcement" as "EXE"
-	| Actions 			  | Step 1 	  	  | Step 2	     | Step 3  	 		    | Step 4 		   			  |
-	| Owner Navigation 	  | As a Grantor  | Grants		 | Grants and Subawards | Grants, Awards & Amendments |
-	| Complete Review 	  | Draft Grants  | ActiveGrants | View 		  		| 							  |
+	Given I login and view the record "	Permanent Automation Announcement" as "EXE"
+	| Actions 			  | Step 1 	  	  | Step 2	     | Step 3  	 		    | Step 4 		   			    |
+	| Owner Navigation 	  | As a Grantor  | Grants		 | Grants and Subawards | Grants, Subaward & Amendments |
+	| Complete Review 	  | Draft Grants  | ActiveGrants | View 		  		| 							    |
 	Given I navigate to "Subawards" sub tab
 	And I click on "View" icon for "Created" inside flex table with id "RelatedAwards1"
 	Given I get the "EGMS ID"
@@ -167,7 +167,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Approval 	 | Start 		 | Approve 		 | 					 |
     And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
@@ -230,7 +230,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Approval 	 | Start 		 | Approve 		 | 					 |
     And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
@@ -292,7 +292,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Approval 	 | Start 		 | Approve 		 | 					 |
     And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
@@ -309,7 +309,7 @@ Feature: Validate all scenarios in the Award from FDM
   	| Acceptance | Start 		 | Accept		  | Accept after Approval | OK				  |
   	When I re-login to "As a Grantor" app as "EXE" user
   	And I navigate to "Grants" tab
-  	When I navigate to "Grants and Subawards" content inside "Grants, Awards & Amendments" subheader on left panel
+  	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
   	And I click toggle button to select "Draft Grants"
 	When I perform quick search for "<Award Name>" in "ActiveGrants" panel
 	And I click on "View" icon for "<Award Name>" inside table 
@@ -374,7 +374,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Approval 	 | Start 		 | Approve 		 | 					 |
     And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
@@ -391,7 +391,7 @@ Feature: Validate all scenarios in the Award from FDM
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
   	When I re-login to "As a Grantor" app as "EXE" user
   	And I navigate to "Grants" tab
-	When I navigate to "Grants and Subawards" content inside "Grants, Awards & Amendments" subheader on left panel
+	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
 	When I perform quick search for "<Award Name>" in "ActiveGrants" panel
 	And I click on "View" icon for "<Award Name>" inside table 
@@ -457,7 +457,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Approval 	 | Start 		 | Approve 		 | 					 |
     And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
@@ -474,7 +474,7 @@ Feature: Validate all scenarios in the Award from FDM
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
   	Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	And I assign, initiate a reviewer from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
@@ -547,7 +547,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Approval 	 | Start 		 | Approve 		 | 					 |
     And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
@@ -564,7 +564,7 @@ Feature: Validate all scenarios in the Award from FDM
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
   	Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	And I assign, initiate a reviewer from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
@@ -579,7 +579,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
   	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Complete Review" in the page details
@@ -638,7 +638,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Approval 	 | Start 		 | Approve 		 | 					 |
     And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
@@ -655,7 +655,7 @@ Feature: Validate all scenarios in the Award from FDM
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
   	Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	And I assign, initiate a reviewer from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
@@ -670,7 +670,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
   	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Complete Review" in the page details
@@ -747,7 +747,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Approval 	 | Start 		 | Approve 		 | 					 |
     And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
@@ -764,7 +764,7 @@ Feature: Validate all scenarios in the Award from FDM
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
   	Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	And I assign, initiate a reviewer from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
@@ -779,7 +779,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
   	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Complete Review" in the page details
@@ -791,7 +791,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Approval 	 | Start 		 | Approve 	 | 					 |
   	When I re-login to "As a Grantor" app as "EXE" user
 	And I navigate to "Grants" tab
-	When I navigate to "Grants and Subawards" content inside "Grants, Awards & Amendments" subheader on left panel
+	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
 	When I perform quick search for "<Award Name>" in "ActiveGrants" panel
 	And I click on "View" icon for "<Award Name>" inside table
@@ -851,7 +851,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Approval 	 | Start 		 | Approve 		 | 					 |
     And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
@@ -868,7 +868,7 @@ Feature: Validate all scenarios in the Award from FDM
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
   	Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	And I assign, initiate a reviewer from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
@@ -883,7 +883,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
   	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Complete Review" in the page details
@@ -895,7 +895,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Approval 	 | Start 		 | Approve 	 | 					 |
   	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Send to Subrecipient" in the page details
@@ -951,7 +951,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Approval 	 | Start 		 | Approve 		 | 					 |
     And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
@@ -977,7 +977,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
   	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	And I click on "Submit for Approval" in the page details
@@ -988,7 +988,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Approval 	 | Start 		 | Approve 	 | 					 |
   	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Send to Subrecipient" in the page details
@@ -998,7 +998,7 @@ Feature: Validate all scenarios in the Award from FDM
   	| Acceptance | Start  | Accept		  | Accept after Approval | OK				  |
   	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
 	When I click on "Activate" in the page details
@@ -1056,7 +1056,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Approval 	 | Start 		 | Approve 		 | 					 |
     And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
@@ -1073,7 +1073,7 @@ Feature: Validate all scenarios in the Award from FDM
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
   	Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	And I assign, initiate a reviewer from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
@@ -1088,7 +1088,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
   	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Complete Review" in the page details
@@ -1100,7 +1100,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Approval 	 | Start 		 | Approve 	 | 					 |
   	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Send to Subrecipient" in the page details
@@ -1111,7 +1111,7 @@ Feature: Validate all scenarios in the Award from FDM
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
   	Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
 	And I click on "Activate" in the page details
@@ -1174,7 +1174,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Approval 	 | Start 		 | Approve 		 | 					 |
     And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
@@ -1191,7 +1191,7 @@ Feature: Validate all scenarios in the Award from FDM
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
   	Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	And I assign, initiate a reviewer from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
@@ -1206,7 +1206,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
   	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Complete Review" in the page details
@@ -1218,7 +1218,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Approval 	 | Start 		 | Approve 	 | 					 |
   	And I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Send to Subrecipient" in the page details
@@ -1229,7 +1229,7 @@ Feature: Validate all scenarios in the Award from FDM
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
   	Given I login and view the "Draft" award "Record Id" with name "<Award Name>" as User "Exe"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
 	And I click on "Activate" in the page details
@@ -1293,7 +1293,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Approval 	 | Start 		 | Approve 		 | 					 |
     And I login and view the "Draft" award "AD-Gr19-06" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
@@ -1310,7 +1310,7 @@ Feature: Validate all scenarios in the Award from FDM
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
   	Given I login and view the "Draft" award "AD-Gr19-06" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	And I assign, initiate a reviewer from sheet "Reviewer" in excel "Award_Field_Values.xlsx"
@@ -1325,7 +1325,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
   	And I login and view the "Draft" award "AD-Gr19-06" with name "<Award Name>" as User "Exe"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Complete Review" in the page details
@@ -1337,7 +1337,7 @@ Feature: Validate all scenarios in the Award from FDM
 	| Approval 	 | Start 		 | Approve 	 | 					 |
   	And I login and view the "Draft" award "AD-Gr19-06" with name "<Award Name>" as User "EXE"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
   	Given I click on "Send to Subrecipient" in the page details
@@ -1347,27 +1347,27 @@ Feature: Validate all scenarios in the Award from FDM
   	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
   	Given I login and view the "Draft" award "AD-Gr19-06" with name "<Award Name>" as User "Exe"
-    | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
-    | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
-    | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
+    | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						   |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
+    | FlexTable  | Grants		 | ActiveGrants   | View				   |							   |
+    | Subaward   | Subawards	 | RelatedAwards1 | View				   |							   |
 	And I click on "Activate" in the page details
 	Given I create a monitoring record from sheet "Site Visit" in excel "Award_Field_Values.xlsx"
 	| Actions  | Step 1     | Step 2	   		   	 | Step 3 				  | Step 4			 |
     | Creation | Management | GrantorSiteVisitsAward | Initiate Site Visit    | Save And Close   |
     Given I login and view the "Active" award "AD-Gr19-06" with name "<Award Name>" as User "Exe"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
     | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
     Given I create a monitoring record from sheet "Desk Review" in excel "Award_Field_Values.xlsx"
 	| Actions  | Step 1     | Step 2	   		   	 | Step 3 				   | Step 4			  |
     | Creation | Management | GrantorDeskReviewAward | Initiate Desk Review    | Save And Close   |
     Given I login and view the "Active" award "AD-Gr19-06" with name "<Award Name>" as User "Exe"
-    | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
-    | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
-    | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
+    | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						   |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
+    | FlexTable  | Grants		 | ActiveGrants   | View				   |							   |
+    | Subaward   | Subawards	 | RelatedAwards1 | View				   |							   |
 	Then I see status in Progress-bar is "Activated" and is "green"
 	Examples:
 	| Award Name 				     	    	|

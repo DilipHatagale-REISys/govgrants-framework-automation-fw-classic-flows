@@ -36,18 +36,11 @@ Feature: Validate all scenarios in the Application Intake
 
   	@addBudgetDetailsToApplication @applicationIntake @all
   	Scenario: Addition of budget in the budget grid to an application
-  	#Given I associate "1" records "03261"
-	#| Actions 	   | Step 1 | Step 2	   	    | Step 3  	   | Step 4  | Step 5  		  |
-    #| Associate 1  | Budget | Add Focus Area     | FocusAreaApp | Add	 | AddAppProjects |
   	When I navigate to "Budget" sub tab
-    #And I expand nested table containing column value "Contingencies" inside nested table containing "BP01"
     And I expand nested table containing column value "BP01"
     When I edit the following rows inline in flex table with id "flexGridEnhanceAppBudCatGrantorFlexGrid" by clicking "Edit" :
 	| Category Name | Budget | Cash Match | Non-Cash Match |Other Leverage|
 	| Construction	| 5000 	 | 1000   	  | 3000 		   | 100          |
-	#Examples:
-	#| Application Name 											 | 
-	#| Execution Announcement(Dr) for Automation                     | 
 	
   	@addTargetToKPIInApplication @applicationIntake @all
   	Scenario Outline: Addition of KPI target to an application 
