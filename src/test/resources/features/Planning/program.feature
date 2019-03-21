@@ -169,8 +169,8 @@ Feature: Validate all scenarios for program
 	Given I re-login to "As a Grantor" app as "<Program Approver>" user
 	When I navigate to "Planning" tab
 	When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "<Program Name>" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "<Program Name>" inside table
+    When I perform quick search for "<Type>" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "<Type>" inside table
     When I click on "Approve" on the approval decision box
     And I re-login to "As a Grantor" app as "<Executive Approver>" user 
 	When I navigate to "Planning" tab
@@ -180,8 +180,8 @@ Feature: Validate all scenarios for program
     When I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Approved" and is "green"
 	Examples:
-	| Program Approver | Program Name		  			                         | Executive Approver |
-	| PM               | Execution Internal Program for Automation               | EXE			  	   |
+	| Program Approver | Program Name		  			                         | Executive Approver  |Type           |
+	| PM               | Execution Internal Program for Automation               | EXE			  	   |Approve Program|
 	
   	@34756 @programActivation @programHappyPath @program @all
   	Scenario Outline: Validate the activation of Internal Program
@@ -194,7 +194,6 @@ Feature: Validate all scenarios for program
     | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Add		  | SelectProgramServiceArea |
     | Associate 3 | Setup 	 | Associate | RelatedProgramGoalsandObjectives   | Add	  	  | SelectGoals 		     |
     | Associate 4 | Setup 	 | Associate | ProgramKeyOutcomes                 | Add	  	  | SelectProgramKPIs		 |
-    When I pause execution
     Given I select "2" approvers "Automation PM,Automation EXE"
     | Actions    | Step 1                          | Step 2 | Step 3              |
     | Subtab     | Responsibilities                |        |                     |
@@ -212,7 +211,7 @@ Feature: Validate all scenarios for program
     | Attachment Navigation | Attachments | Add               | a150b000003epY5AAI       |
     | Attachment Details    | Attach1ment  | Program Artifacts |                         |
     And I click on "Submit For Approval" in the page details
-    Given "2" Approvers "PM,EXE" approve the record "Record Id"
+    Given "2" Approvers "PM,EXE" approve the record "<Type>"
      | Actions    | Step 1        | Step 2       | Step 3            |
      | Navigation | As a Grantor  | Planning     |                   |
      | FlexTable  | Pending Tasks | My Tasks     | PhasePendingTasks |
@@ -226,6 +225,6 @@ Feature: Validate all scenarios for program
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "green"
 	Examples:
-     | User | Program Name                                   |
-     | EXE  | Execution Internal Program for Automation      |    
+     | User | Program Name                                   |Type           |
+     | EXE  | Execution Internal Program for Automation      |Approve Program|    
      

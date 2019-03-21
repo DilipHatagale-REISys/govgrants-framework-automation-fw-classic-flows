@@ -2,29 +2,35 @@
 Feature: Validate all scenarios in the Amendment Request
 
 	Background: Setup data
-	Given I delete the record "Automation App" from the object "Amendment Request"
-	Given I login and view the "Active" award "Activated" with name "Automation App" as User "EXE"
-    | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						 |
-    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Awards & Amendments |
-    | FlexTable  | Grants		 | ActiveGrants   | View				   |							 |
-    | Subaward   | Subawards	 | RelatedAwards1 | View				   |							 |
+	Given I login and view the "Active" award "Activated" with name "Permanent Award For Automation" as User "PM"
+    | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						   |
+    | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
+    | FlexTable  | Grants		 | ActiveGrants   | View				   |							   |
+    | Subaward   | Subawards	 | RelatedAwards1 | View				   |							   |
 
 	@creationOfSOWAmendmentRequest @scopeOfWork @amendmentRequest
 	Scenario: Creation of Amendment Request
-	When I navigate to "Requests" sub tab
+	Given I navigate to "Requests" sub tab
 	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
 	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
-	And I click on "Save and Continue" in the page details
+	And I click modal button "Save and Continue"
 	And I click on "Save" in the page details
 	Then I see status in Progress-bar is "Created" and is "green"
 	
 	@editionOfSOWAmendmentRequest @scopeOfWork @amendmentRequest
 	Scenario: Creation of Amendment Request
-	Given I create Amendment Request from sheet "ScopeOfWork_Creation" in excel "AmendmentRequest_Field_Values.xlsx"
-	 | Actions 		  | Step 1 			  | Step 2					     |
-	 | Sub tab		  | Requests 		  | 							 |
-	 | Flextable	  | New		  		  | GrantorAwardAmendmentRequest |
-	 | Buttons		  | Save and Continue | Save						 |
+	Given I navigate to "Requests" sub tab
+	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
+	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
+	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+	And I click modal button "Save and Continue"
+	And I click on "Save" in the page details
+	#Given I create Amendment Request from sheet "ScopeOfWork_Creation" in excel "AmendmentRequest_Field_Values.xlsx"
+	# | Actions 		  | Step 1 			  | Step 2					     |
+	 #| Sub tab		  | Requests 		  | 							 |
+	# | Flextable	  | New		  		  | GrantorAwardAmendmentRequest |
+	# | Buttons		  | Save and Continue | Save						 |
+	#When I navigate to "Requests" sub tab
 	When I click on "Edit" in the page details
 	And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
 	When I click on "Save" in the page details
@@ -32,11 +38,12 @@ Feature: Validate all scenarios in the Amendment Request
 	
 	@associationOfKPIToSOWAmendmentRequest @scopeOfWork @amendmentRequest
 	Scenario: Association of KPI to Amendment Request
-	Given I create Amendment Request from sheet "ScopeOfWork_Creation" in excel "AmendmentRequest_Field_Values.xlsx"
-	 | Actions 		  | Step 1 			  | Step 2					     |
-	 | Sub tab		  | Requests 		  | 							 |
-	 | Flextable	  | New		  		  | GrantorAwardAmendmentRequest |
-	 | Buttons		  | Save and Continue | Save						 |
+	Given I navigate to "Requests" sub tab
+	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
+	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
+	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+	And I click modal button "Save and Continue"
+	And I click on "Save" in the page details
 	When I click on top right button "Associate" in flex table with id "flexGridGrantorAmendmentKeyOutcomes"
 	And I enter values into fields 
 		| Value 						| Field 		| 
@@ -48,33 +55,39 @@ Feature: Validate all scenarios in the Amendment Request
 	
 	@associationOfObjectiveToSOWAmendmentRequest @scopeOfWork @amendmentRequest
 	Scenario: Association of Objective to Amendment Request
-	Given I create Amendment Request from sheet "ScopeOfWork_Creation" in excel "AmendmentRequest_Field_Values.xlsx"
-	 | Actions 		  | Step 1 			  | Step 2					     |
-	 | Sub tab		  | Requests 		  | 							 |
-	 | Flextable	  | New		  		  | GrantorAwardAmendmentRequest |
-	 | Buttons		  | Save and Continue | Save						 |
+	Given I navigate to "Requests" sub tab
+	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
+	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
+	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+	And I click modal button "Save and Continue"
+	And I click on "Save" in the page details
 	When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
-	And I click "Associate" after selection of "Automation Announcement Objective" in the table "SelectAmendmentGoals"
+	And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
 	When I switch to Parent frame
-	Then I see that "Automation Announcement Objective" has been added in flextable with Id "GrantorAmendmentGoalsObjectives"
+	Then I see that "Permanent Objective Automation" has been added in flextable with Id "GrantorAmendmentGoalsObjectives"
 	
 	@deletionOfObjectiveInSOWAmendmentRequest @scopeOfWork @amendmentRequest
 	Scenario: Deletion of Objective in Amendment Request
-	Given I create Amendment Request from sheet "ScopeOfWork_Creation" in excel "AmendmentRequest_Field_Values.xlsx"
-	 | Actions 		  | Step 1 			  | Step 2					     |
-	 | Sub tab		  | Requests 		  | 							 |
-	 | Flextable	  | New		  		  | GrantorAwardAmendmentRequest |
-	 | Buttons		  | Save and Continue | Save						 |
-	When I click on "Delete" icon for "Automation Announcement Objective" inside flex table with id "GrantorAmendmentGoalsObjectives"
-	Then I do not see values "SPG-0083" and "Automation Announcement Objective" inside table 
+	Given I navigate to "Requests" sub tab
+	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
+	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
+	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+	And I click modal button "Save and Continue"
+	And I click on "Save" in the page details
+	When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
+	And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
+	When I switch to Parent frame
+	When I click on "Remove" icon for "Permanent Objective Automation" inside flex table with id "GrantorAmendmentGoalsObjectives"
+	Then I do not see values "SPO-0130" and "Permanent Objective Automation" inside table 
 	
 	@assignApproversToSOWAmendmentRequest @scopeOfWork @amendmentRequest
 	Scenario: Assign approvers to Amendment Request
-	Given I create Amendment Request from sheet "ScopeOfWork_Creation" in excel "AmendmentRequest_Field_Values.xlsx"
-	 | Actions 		  | Step 1 			  | Step 2					     |
-	 | Sub tab		  | Requests 		  | 							 |
-	 | Flextable	  | New		  		  | GrantorAwardAmendmentRequest |
-	 | Buttons		  | Save and Continue | Save						 |
+	Given I navigate to "Requests" sub tab
+	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
+	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
+	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+	And I click modal button "Save and Continue"
+	And I click on "Save" in the page details
 	When I navigate to "Roles" sub tab
     And I click on "Edit" icon for "Program Approver" inside flex table with id "AmendmentreqRolesAndResponsibilities"
     When I fill in the "Automation PM" for the Approver details
@@ -89,11 +102,12 @@ Feature: Validate all scenarios in the Amendment Request
     
     @addAttachmentToSOWAmendmentRequest @scopeOfWork @amendmentRequest
 	Scenario: Add attachment to Amendment Request
-	Given I create Amendment Request from sheet "ScopeOfWork_Creation" in excel "AmendmentRequest_Field_Values.xlsx"
-	 | Actions 		  | Step 1 			  | Step 2					     |
-	 | Sub tab		  | Requests 		  | 							 |
-	 | Flextable	  | New		  		  | GrantorAwardAmendmentRequest |
-	 | Buttons		  | Save and Continue | Save						 |
+	Given I navigate to "Requests" sub tab
+	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
+	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
+	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+	And I click modal button "Save and Continue"
+	And I click on "Save" in the page details
 	When I navigate to "Attachments" sub tab
     And I click on top right button "Add" in flex table with id "a150b000003epeQAAQ"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Terms and Conditions"
@@ -102,11 +116,12 @@ Feature: Validate all scenarios in the Amendment Request
     
     @sendToSubrecipientToSOWAmendmentRequest @scopeOfWork @amendmentRequest
 	Scenario: Send Amendment Request to subrecipient
-	Given I create Amendment Request from sheet "ScopeOfWork_Creation" in excel "AmendmentRequest_Field_Values.xlsx"
-	 | Actions 		  | Step 1 			  | Step 2					     |
-	 | Sub tab		  | Requests 		  | 							 |
-	 | Flextable	  | New		  		  | GrantorAwardAmendmentRequest |
-	 | Buttons		  | Save and Continue | Save						 |
+	Given I navigate to "Requests" sub tab
+	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
+	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
+	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+	And I click modal button "Save and Continue"
+	And I click on "Save" in the page details
 	And I get the "EGMS ID"
 	Given I complete the fields from the sheet "ScopeOfWork_Edition" in excel "AmendmentRequest_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -118,10 +133,9 @@ Feature: Validate all scenarios in the Amendment Request
 	| 10    						| Target__c     |
 	Given I click modal button "Save"
 	And I close Modal
-	Given I click on "Delete" icon for "Automation Announcement Objective" inside flex table with id "GrantorAmendmentGoalsObjectives"
-	And I associate "1" records "Automation Announcement Objective"
-	| Actions 	  | Step 1   	| Step 2	| Step 3  			  			  | Step 4     | Step 5  				|
-    | Associate 1 | Overview   	| Associate | GrantorAmendmentGoalsObjectives | Associate| SelectAmendmentGoals     |
+	When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
+	And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
+	When I switch to Parent frame
 	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
     | Actions 	 | Step 1   				      		| Step 2  | Step 3 			   |
     | Subtab	 | Roles			 			 		| 		  |		    		   |
@@ -137,11 +151,12 @@ Feature: Validate all scenarios in the Amendment Request
     
     @subrecipientAcknowledgesSOWAmendmentRequest @scopeOfWork @amendmentRequest
 	Scenario: Subrecipient acknowledges Amendment Request
-	Given I create Amendment Request from sheet "ScopeOfWork_Creation" in excel "AmendmentRequest_Field_Values.xlsx"
-	 | Actions 		  | Step 1 			  | Step 2					     |
-	 | Sub tab		  | Requests 		  | 							 |
-	 | Flextable	  | New		  		  | GrantorAwardAmendmentRequest |
-	 | Buttons		  | Save and Continue | Save						 |
+	Given I navigate to "Requests" sub tab
+	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
+	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
+	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+	And I click modal button "Save and Continue"
+	And I click on "Save" in the page details
 	And I get the "EGMS ID"
 	Given I complete the fields from the sheet "ScopeOfWork_Edition" in excel "AmendmentRequest_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -153,10 +168,9 @@ Feature: Validate all scenarios in the Amendment Request
 	| 10    						| Target__c     |
 	Given I click modal button "Save"
 	And I close Modal
-	Given I click on "Delete" icon for "Automation Announcement Objective" inside flex table with id "GrantorAmendmentGoalsObjectives"
-	And I associate "1" records "Automation Announcement Objective"
-	| Actions 	  | Step 1   	| Step 2	| Step 3  			  			  | Step 4     | Step 5  				|
-    | Associate 1 | Overview   	| Associate | GrantorAmendmentGoalsObjectives | Associate| SelectAmendmentGoals     |
+	When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
+	And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
+	When I switch to Parent frame
 	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
     | Actions 	 | Step 1   				      		| Step 2  | Step 3 			   |
     | Subtab	 | Roles			 			 		| 		  |		    		   |
@@ -178,11 +192,12 @@ Feature: Validate all scenarios in the Amendment Request
     
     @submitForApprovalSOWAmendmentRequest @scopeOfWork @amendmentRequest
 	Scenario: Submit Amendment Request for Approval
-	Given I create Amendment Request from sheet "ScopeOfWork_Creation" in excel "AmendmentRequest_Field_Values.xlsx"
-	 | Actions 		  | Step 1 			  | Step 2					     |
-	 | Sub tab		  | Requests 		  | 							 |
-	 | Flextable	  | New		  		  | GrantorAwardAmendmentRequest |
-	 | Buttons		  | Save and Continue | Save						 |
+	Given I navigate to "Requests" sub tab
+	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
+	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
+	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+	And I click modal button "Save and Continue"
+	And I click on "Save" in the page details
 	And I get the "EGMS ID"
 	Given I complete the fields from the sheet "ScopeOfWork_Edition" in excel "AmendmentRequest_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -194,10 +209,9 @@ Feature: Validate all scenarios in the Amendment Request
 	| 10    						| Target__c     |
 	Given I click modal button "Save"
 	And I close Modal
-	Given I click on "Delete" icon for "Automation Announcement Objective" inside flex table with id "GrantorAmendmentGoalsObjectives"
-	And I associate "1" records "Automation Announcement Objective"
-	| Actions 	  | Step 1   	| Step 2	| Step 3  			  			  | Step 4     | Step 5  				|
-    | Associate 1 | Overview   	| Associate | GrantorAmendmentGoalsObjectives | Associate| SelectAmendmentGoals     |
+	When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
+	And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
+	When I switch to Parent frame
 	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
     | Actions 	 | Step 1   				      		| Step 2  | Step 3 			   |
     | Subtab	 | Roles			 			 		| 		  |		    		   |
@@ -225,11 +239,12 @@ Feature: Validate all scenarios in the Amendment Request
     
     @approvalOfSOWAmendmentRequest @scopeOfWork @amendmentRequest
 	Scenario: Approval of Amendment Request
-	Given I create Amendment Request from sheet "ScopeOfWork_Creation" in excel "AmendmentRequest_Field_Values.xlsx"
-	 | Actions 		  | Step 1 			  | Step 2					     |
-	 | Sub tab		  | Requests 		  | 							 |
-	 | Flextable	  | New		  		  | GrantorAwardAmendmentRequest |
-	 | Buttons		  | Save and Continue | Save						 |
+	Given I navigate to "Requests" sub tab
+	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
+	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
+	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+	And I click modal button "Save and Continue"
+	And I click on "Save" in the page details
 	And I get the "EGMS ID"
 	Given I complete the fields from the sheet "ScopeOfWork_Edition" in excel "AmendmentRequest_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -241,10 +256,9 @@ Feature: Validate all scenarios in the Amendment Request
 	| 10    						| Target__c     |
 	Given I click modal button "Save"
 	And I close Modal
-	Given I click on "Delete" icon for "Automation Announcement Objective" inside flex table with id "GrantorAmendmentGoalsObjectives"
-	And I associate "1" records "Automation Announcement Objective"
-	| Actions 	  | Step 1   	| Step 2	| Step 3  			  			  | Step 4     | Step 5  				|
-    | Associate 1 | Overview   	| Associate | GrantorAmendmentGoalsObjectives | Associate| SelectAmendmentGoals     |
+	When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
+	And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
+	When I switch to Parent frame
 	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
     | Actions 	 | Step 1   				      		| Step 2  | Step 3 			   |
     | Subtab	 | Roles			 			 		| 		  |		    		   |
@@ -277,11 +291,12 @@ Feature: Validate all scenarios in the Amendment Request
     
     @amendSubawardSOWAmendmentRequest @scopeOfWork @amendmentRequest
 	Scenario: Click on Amend of Amendment Request
-	Given I create Amendment Request from sheet "ScopeOfWork_Creation" in excel "AmendmentRequest_Field_Values.xlsx"
-	 | Actions 		  | Step 1 			  | Step 2					     |
-	 | Sub tab		  | Requests 		  | 							 |
-	 | Flextable	  | New		  		  | GrantorAwardAmendmentRequest |
-	 | Buttons		  | Save and Continue | Save						 |
+	Given I navigate to "Requests" sub tab
+	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
+	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
+	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+	And I click modal button "Save and Continue"
+	And I click on "Save" in the page details
 	And I get the "EGMS ID"
 	Given I complete the fields from the sheet "ScopeOfWork_Edition" in excel "AmendmentRequest_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -293,10 +308,9 @@ Feature: Validate all scenarios in the Amendment Request
 	| 10    						| Target__c     |
 	Given I click modal button "Save"
 	And I close Modal
-	Given I click on "Delete" icon for "Automation Announcement Objective" inside flex table with id "GrantorAmendmentGoalsObjectives"
-	And I associate "1" records "Automation Announcement Objective"
-	| Actions 	  | Step 1   	| Step 2	| Step 3  			  			  | Step 4     | Step 5  				|
-    | Associate 1 | Overview   	| Associate | GrantorAmendmentGoalsObjectives | Associate| SelectAmendmentGoals     |
+	When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
+	And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
+	When I switch to Parent frame
 	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
     | Actions 	 | Step 1   				      		| Step 2  | Step 3 			   |
     | Subtab	 | Roles			 			 		| 		  |		    		   |
@@ -330,11 +344,12 @@ Feature: Validate all scenarios in the Amendment Request
     
     @activateSubawardSOWAmendmentRequest @scopeOfWorkHappyPath @scopeOfWork @amendmentRequest
 	Scenario: Click on Amend of Amendment Request
-	Given I create Amendment Request from sheet "ScopeOfWork_Creation" in excel "AmendmentRequest_Field_Values.xlsx"
-	 | Actions 		  | Step 1 			  | Step 2					     |
-	 | Sub tab		  | Requests 		  | 							 |
-	 | Flextable	  | New		  		  | GrantorAwardAmendmentRequest |
-	 | Buttons		  | Save and Continue | Save						 |
+	Given I navigate to "Requests" sub tab
+	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
+	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
+	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+	And I click modal button "Save and Continue"
+	And I click on "Save" in the page details
 	And I get the "EGMS ID"
 	Given I complete the fields from the sheet "ScopeOfWork_Edition" in excel "AmendmentRequest_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
@@ -346,10 +361,9 @@ Feature: Validate all scenarios in the Amendment Request
 	| 10    						| Target__c     |
 	Given I click modal button "Save"
 	And I close Modal
-	Given I click on "Delete" icon for "Automation Announcement Objective" inside flex table with id "GrantorAmendmentGoalsObjectives"
-	And I associate "1" records "Automation Announcement Objective"
-	| Actions 	  | Step 1   	| Step 2	| Step 3  			  			  | Step 4     | Step 5  				|
-    | Associate 1 | Overview   	| Associate | GrantorAmendmentGoalsObjectives | Associate| SelectAmendmentGoals     |
+	When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
+	And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
+	When I switch to Parent frame
 	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
     | Actions 	 | Step 1   				      		| Step 2  | Step 3 			   |
     | Subtab	 | Roles			 			 		| 		  |		    		   |
@@ -384,20 +398,27 @@ Feature: Validate all scenarios in the Amendment Request
     
     @creationOfBPCAmendmentRequest @budgetPeriodChange @amendmentRequest
 	Scenario: Creation of Amendment Request
-	When I navigate to "Requests" sub tab
+	Given I navigate to "Requests" sub tab
+	When I attempt to delete record "Budget Period Change" inside table with id "GrantorAwardAmendmentRequest"
 	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
 	When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
-	And I click on "Save and Continue" in the page details
+	And I click modal button "Save and Continue"
 	And I click on "Save" in the page details
 	Then I see status in Progress-bar is "Created" and is "green"
 	
 	@editionOfBPCAmendmentRequest @budgetPeriodChange @amendmentRequest
 	Scenario: Creation of Amendment Request
-	Given I create Amendment Request from sheet "BudgetPeriodChange_Creation" in excel "AmendmentRequest_Field_Values.xlsx"
-	 | Actions 		  | Step 1 			  | Step 2					     |
-	 | Sub tab		  | Requests 		  | 							 |
-	 | Flextable	  | New		  		  | GrantorAwardAmendmentRequest |
-	 | Buttons		  | Save and Continue | Save						 |
+	Given I navigate to "Requests" sub tab
+	When I attempt to delete record "Budget Period Change" inside table with id "GrantorAwardAmendmentRequest"
+	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
+	When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+	And I click modal button "Save and Continue"
+	And I click on "Save" in the page details
+	 #Given I create Amendment Request from sheet "BudgetPeriodChange_Creation" in excel "AmendmentRequest_Field_Values.xlsx"
+	 #| Actions 		  | Step 1 			  | Step 2					     |
+	 #| Sub tab		  | Requests 		  | 							 |
+	 #| Flextable	  | New		  		  | GrantorAwardAmendmentRequest |
+	 #| Buttons		  | Save and Continue | Save						 |
 	When I click on "Edit" in the page details
 	And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
 	When I click on "Save" in the page details
@@ -405,23 +426,25 @@ Feature: Validate all scenarios in the Amendment Request
 	
 	@editionOfFocusAreaDatesBPCAmendmentRequest @budgetPeriodChange @amendmentRequest
 	Scenario: Creation of Amendment Request
-	Given I create Amendment Request from sheet "BudgetPeriodChange_Creation" in excel "AmendmentRequest_Field_Values.xlsx"
-	 | Actions 		  | Step 1 			  | Step 2					     |
-	 | Sub tab		  | Requests 		  | 							 |
-	 | Flextable	  | New		  		  | GrantorAwardAmendmentRequest |
-	 | Buttons		  | Save and Continue | Save						 |
+		Given I navigate to "Requests" sub tab
+	When I attempt to delete record "Budget Period Change" inside table with id "GrantorAwardAmendmentRequest"
+	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
+	When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+	And I click modal button "Save and Continue"
+	And I click on "Save" in the page details
 	And I edit the following rows inline in flex table with id "flexGridAmendmentProjectAreasGrantor" by clicking "Edit" : 
 	| Title 						 | End Date    | 
-	| Automation Program Focus Area  | 02/08/2020  |
-	Then I see that "02/08/2020" has been added in flextable with Id "flexGridAmendmentProjectAreasGrantor"
+	| Automation Program Focus Area  | 03/21/2020  |
+	Then I see that "03/21/2020" has been added in flextable with Id "flexGridAmendmentProjectAreasGrantor"
 	
 	@associateFocusAreaToBPCAmendmentRequest @budgetPeriodChange @amendmentRequest
 	Scenario: Creation of Amendment Request
-	Given I create Amendment Request from sheet "BudgetPeriodChange_Creation" in excel "AmendmentRequest_Field_Values.xlsx"
-	 | Actions 		  | Step 1 			  | Step 2					     |
-	 | Sub tab		  | Requests 		  | 							 |
-	 | Flextable	  | New		  		  | GrantorAwardAmendmentRequest |
-	 | Buttons		  | Save and Continue | Save						 |
+		Given I navigate to "Requests" sub tab
+	When I attempt to delete record "Budget Period Change" inside table with id "GrantorAwardAmendmentRequest"
+	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
+	When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+	And I click modal button "Save and Continue"
+	And I click on "Save" in the page details
 	And I click on top right button "Associate" in flex table with id "flexGridAmendmentProjectAreasGrantor"
     When I click "Associate" after selection of "Automation Announcement Focus Area" in the table "SelectAmendmentGAT"
     And I switch to Parent frame

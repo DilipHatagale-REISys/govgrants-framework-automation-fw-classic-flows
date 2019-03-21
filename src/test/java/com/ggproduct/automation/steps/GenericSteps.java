@@ -4,6 +4,7 @@ import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.When;
 import eyethink.automation.bots.controller.Controller;
 import eyethink.automation.bots.controller.CoreHandlers;
 
@@ -22,5 +23,10 @@ public class GenericSteps {
     @Given("^I get the \"([^\"]*)\"$")
     public void getRecordId(String recordIdLabel) {
         projectManager.getRecordId(recordIdLabel);
+    }
+    
+    @When("I attempt to delete record \"([^\"]*)\" inside table with id \"([^\"]*)\"")
+    public void attemptDeletion(String columnValues, String tableId) {
+    	projectManager.attemptDeletion(columnValues, tableId);
     }
 }   

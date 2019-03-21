@@ -115,7 +115,6 @@ Feature: Validate all scenarios in the Application Intake
     #And I associate "1" records "03261"
 	#| Actions 	  | Step 1 | Step 2	   	    | Step 3  	   | Step 4  | Step 5  		  |
     #| Associate 1 | Budget | Add Focus Area| FocusAreaApp | Add	 | AddAppProjects |
-    And I pause execution
 	#Given I expand nested table containing column value "Proposed Budget" inside nested table containing "BP01"
 	Given I expand nested table containing column value "BP01" inside nested table containing "Proposed Budget"  
 	And I edit the following rows inline in flex table with id "flexGridEnhanceAppBudCatGrantorFlexGrid" by clicking "Edit" :

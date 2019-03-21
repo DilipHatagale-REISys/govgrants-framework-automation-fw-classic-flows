@@ -66,6 +66,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	@awardStandAloneBudgetEdition @awardStanAlone
   	Scenario: Budget addition to Award
 	When I navigate to "Budget" sub tab
+	When I pause execution
     When I edit the following rows inline in flex table with id "inlineEditGridLineItem" by clicking "Edit" :
 	| Budget Category | Cash Match |
 	| Construction    | 2000 	   | 

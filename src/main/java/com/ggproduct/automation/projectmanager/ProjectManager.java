@@ -71,6 +71,12 @@ public class ProjectManager extends ProjectWebServices {
         govgrants.modal().handleModalAlert(confirmation);
     }
     
+    public void attemptDeletion(String columnValues, String tableId) {
+    	try {
+    		govgrants.flexTable().clickTableActionIcon(tableId, "Delete", columnValues);
+    	} catch (Exception e) {	
+    	}
+    }
 
     
 }

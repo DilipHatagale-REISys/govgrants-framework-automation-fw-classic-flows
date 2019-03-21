@@ -142,12 +142,12 @@ Feature: Validate all scenarios in Desk Review
 	And I click on "View" icon for "<Desk Review Name>" inside table
 	When I click on "Conduct" in the page details
 	And I navigate to "Reports and Outcomes" sub tab
-	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
     | Title       		 	 | Description  	 	  | Type    	   |
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
     | Automation Observation | Automation Description | Observation    |
-	Then I see that "Automation Observation" has been added in flextable with Id "FormComponent"
+	Then I see that "Automation Finding" has been added in flextable with Id "inlineEditGridGrantorSiteVisitFindingsGrid"
 	Examples:
 	 | Desk Review Name	      |
 	 | Automation Desk Review |
@@ -177,7 +177,7 @@ Feature: Validate all scenarios in Desk Review
 	And I click on "View" icon for "<Desk Review Name>" inside table
 	When I click on "Conduct" in the page details
 	And I navigate to "Reports and Outcomes" sub tab
-	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
     | Title       		 	 | Description  	 	  | Type    	   |
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
@@ -218,12 +218,12 @@ Feature: Validate all scenarios in Desk Review
 	And I click on "View" icon for "<Desk Review Name>" inside table
 	When I click on "Conduct" in the page details
 	And I navigate to "Reports and Outcomes" sub tab
-	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
     | Title       		 	 | Description  	 	  | Type    	   |
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
     | Automation Observation | Automation Description | Observation    |
-	And I fill in the form "General Review Form" from sheet "Form Fields" in excel "SiteVisit_Field_Values.xlsx"
+	And I fill in the form "General Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
 	| Actions 	  | Step 1   		 	 | Step 2		 |
 	| Navigation  | Reports and Outcomes | 			 	 |
 	| FlexTable   | Edit				 | FormComponent |
@@ -260,7 +260,7 @@ Feature: Validate all scenarios in Desk Review
 	And I click on "View" icon for "<Desk Review Name>" inside table
 	When I click on "Conduct" in the page details
 	And I navigate to "Reports and Outcomes" sub tab
-	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
     | Title       		 	 | Description  	 	  | Type    	   |
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
@@ -314,7 +314,7 @@ Feature: Validate all scenarios in Desk Review
 	And I click on "View" icon for "<Desk Review Name>" inside table
 	When I click on "Conduct" in the page details
 	And I navigate to "Reports and Outcomes" sub tab
-	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
     | Title       		 	 | Description  	 	  | Type    	   |
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
@@ -369,7 +369,7 @@ Feature: Validate all scenarios in Desk Review
 	And I click on "View" icon for "<Desk Review Name>" inside table
 	Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
     | Title       		 	 | Description  	 	  | Type    	   |
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
@@ -398,17 +398,17 @@ Feature: Validate all scenarios in Desk Review
 	And I click on "Start" icon for "<Type>" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
-   When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+   When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
     | Title            				 	  | Description  		   | Status  	 | Due Date   | Assigned To    |
     | Automation Observation Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
-   When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+   When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
     | Title            				  | Description  		   | Status  	 | Due Date   | Assigned To    |
     | Automation Concern Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
-   When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+   When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
     | Title            				  | Description  		   | Status  	 | Due Date   | Assigned To    |
     | Automation Finding Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
     And I collapse nested table containing column value "Automation Finding"
@@ -442,7 +442,7 @@ Feature: Validate all scenarios in Desk Review
 	And I click on "View" icon for "<Desk Review Name>" inside table
 	Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
     | Title       		 	 | Description  	 	  | Type    	   |
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
@@ -471,17 +471,17 @@ Feature: Validate all scenarios in Desk Review
 	And I click on "Start" icon for "<Type>" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
-   When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+   When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
     | Title            				 	  | Description  		   | Status  	 | Due Date   | Assigned To    |
     | Automation Observation Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
-   When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+   When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
     | Title            				  | Description  		   | Status  	 | Due Date   | Assigned To    |
     | Automation Concern Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
-   When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+   When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
     | Title            				  | Description  		   | Status  	 | Due Date   | Assigned To    |
     | Automation Finding Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
     And I collapse nested table containing column value "Automation Finding"
@@ -516,7 +516,7 @@ Feature: Validate all scenarios in Desk Review
 	And I click on "View" icon for "<Desk Review Name>" inside table
 	Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
     | Title       		 	 | Description  	 	  | Type    	   |
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
@@ -545,17 +545,17 @@ Feature: Validate all scenarios in Desk Review
 	And I click on "Start" icon for "<Type>" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
-   When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+   When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
     | Title            				 	  | Description  		   | Status  	 | Due Date   | Assigned To    |
     | Automation Observation Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
-   When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+   When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
     | Title            				  | Description  		   | Status  	 | Due Date   | Assigned To    |
     | Automation Concern Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
-   When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+   When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
     | Title            				  | Description  		   | Status  	 | Due Date   | Assigned To    |
     | Automation Finding Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
     And I collapse nested table containing column value "Automation Finding"
