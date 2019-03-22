@@ -19,13 +19,13 @@ public class AnnouncementPage extends ProjectManager {
 
     /**
      * Handles addition of budget details to an announcement
-     * 
+     *
      * @param budgetPeriod
      * @param sheetName
      * @param excelFileName
      */
     public void addBudgetPeriodToAnnouncement(String budgetPeriod, String sheetName, String excelFileName,
-            DataTable dataTable) {
+                                              DataTable dataTable) {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         govgrants.mainPage().waitForNavigationLogoToDisappear();
         govgrants.pageDetails().clickSubTabsInsideTableView(dataTableMap.get("Navigation").get("Step 1"));

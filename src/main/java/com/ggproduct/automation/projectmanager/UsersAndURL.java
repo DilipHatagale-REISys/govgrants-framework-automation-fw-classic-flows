@@ -51,7 +51,7 @@ public class UsersAndURL implements UsersController {
             // To be implemented
         } else if (EnvironmentFetcher.environmentName.contains("DEMO")) {
             password = getDemoEnvironmentPassword(userLevel);
-        }else if (EnvironmentFetcher.environmentName.contains("AUTO")) {
+        } else if (EnvironmentFetcher.environmentName.contains("AUTO")) {
             password = getAutoEnvironmentPassword(userLevel);
         }
         return password;
@@ -59,7 +59,7 @@ public class UsersAndURL implements UsersController {
 
     private String getAutoEnvironmentPassword(String userLevel) {
         String password;
-        switch (userLevel.toUpperCase()) {
+        switch(userLevel.toUpperCase()) {
         case "SARAH PO":
             password = "test72018";
             break;
@@ -74,7 +74,7 @@ public class UsersAndURL implements UsersController {
 
     private String getQAEnvironmentPassword(String userLevel) {
         String password;
-        switch (userLevel.toUpperCase()) {
+        switch(userLevel.toUpperCase()) {
         case "SARAH PO":
             password = "test72018";
             break;
@@ -89,7 +89,7 @@ public class UsersAndURL implements UsersController {
 
     public String getDemoEnvironmentPassword(String userLevel) {
         String password;
-        switch (userLevel.toUpperCase()) {
+        switch(userLevel.toUpperCase()) {
         case "SARAH PO":
             password = "SALESFORCE2018";
             break;
@@ -105,7 +105,7 @@ public class UsersAndURL implements UsersController {
     private String getQAEnvironmentUser(String userLevel) {
         String username;
 
-        switch (userLevel.toUpperCase()) {
+        switch(userLevel.toUpperCase()) {
         case "ADMIN":
             username = "manu.sa@ggp.test7";
             break;
@@ -154,7 +154,7 @@ public class UsersAndURL implements UsersController {
     private String getDemoEnvironmentUser(String userLevel) {
         String username;
 
-        switch (userLevel.toUpperCase()) {
+        switch(userLevel.toUpperCase()) {
         case "ADMIN":
             username = "manu.sa@ggp.test7.demo7";
             break;
@@ -200,7 +200,7 @@ public class UsersAndURL implements UsersController {
     private String getAutoEnvironmentUser(String userLevel) {
         String username;
 
-        switch (userLevel.toUpperCase()) {
+        switch(userLevel.toUpperCase()) {
         case "ADMIN":
             username = "manu.sa@ggp.test7.automation";
             break;
@@ -249,7 +249,7 @@ public class UsersAndURL implements UsersController {
     public String performLoginSubPortalEnvironment(String userLevel) {
         String username;
 
-        switch (userLevel.toUpperCase()) {
+        switch(userLevel.toUpperCase()) {
         case "SPI":
             username = "gcooper@yopmail.com20";
             break;

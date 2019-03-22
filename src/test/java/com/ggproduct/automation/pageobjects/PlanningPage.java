@@ -13,10 +13,10 @@ public class PlanningPage extends ProjectManager {
     public PlanningPage(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
         super(controller, handler, govgrants);
     }
-    
+
     /**
      * Handles creation of a program record from the sheet in an excel
-     * 
+     *
      * @param user
      * @param sheetName
      * @param excelFileName
@@ -32,8 +32,8 @@ public class PlanningPage extends ProjectManager {
         govgrants.inputForms().enterInputFieldsFromExcelFile(excelFileName, sheetName);
         try {
             govgrants.modal().clickModalContentSpecificButton(dataTableMap.get("Creation").get("Step 2"));
-        } catch(Exception ex) {
-            
+        } catch (Exception ex) {
+
         }
         govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("Creation").get("Step 3"));
         govgrants.pageDetails().getRecordId(dataTableMap.get("ID").get("Step 1"));
