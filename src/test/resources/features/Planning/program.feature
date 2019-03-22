@@ -1,3 +1,4 @@
+@program
 Feature: Validate all scenarios for program
 
   Background: Create Program
@@ -9,7 +10,7 @@ Feature: Validate all scenarios for program
       | Creation   | New               | Save and Continue | Save                    |
       | ID         | EGMS ID           |                   |                         |
 
-  @34730 @programListView @program @all
+  @34730 @programListView @all
   Scenario Outline: Verifying if the EXE,PM,PO has access to Internal Programs list view
     When I navigate to "Planning" tab
     And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
@@ -19,18 +20,18 @@ Feature: Validate all scenarios for program
       | Program flextable Header | Program Status |
       | Draft Internal Programs  | Created        |
 
-  @34503 @programCreation @program @all
+  @34503 @programCreation @all
   Scenario: Verifying if the EXE, PM, PO has create access to Internal Program
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @34731 @programEdition @program @all
+  @34731 @programEdition @all
   Scenario: Verifying if the EXE, PM, PO has create access to Internal Program
     When I click on "Edit" in the page details
     And I enter "RequiredForSubmit" values from "Program_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @34732 @programContactsAssociation @program @all
+  @34732 @programContactsAssociation @all
   Scenario Outline: Verifying if the EXE, PM, PO can associate contact with Internal Program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "program::contactsTableId"
@@ -41,7 +42,7 @@ Feature: Validate all scenarios for program
       | Contact        |
       | Automation EXE |
 
-  @34740 @programApproverSelection @program @all
+  @34740 @programApproverSelection @all
   Scenario Outline: Validate the assignment of Approvers for the Internal Program
     When I navigate to "Responsibilities" sub tab
     And I click on "Edit" icon for "Program Approver" inside flex table with id "program::approverTableId"
@@ -55,7 +56,7 @@ Feature: Validate all scenarios for program
       | Program Approver Name | Executive Approver Name |
       | Automation PM         | Automation EXE          |
 
-  @34616 @programFocusAreaAssociation @program @all
+  @34616 @programFocusAreaAssociation @all
   Scenario Outline: Validate the association of Focus Area for the Internal Program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "program::focusAreaTableId"
@@ -66,7 +67,7 @@ Feature: Validate all scenarios for program
       | EGMS Id |
       | 03065   |
 
-  @34737 @programObjectiveAssociation @program @all
+  @34737 @programObjectiveAssociation @all
   Scenario Outline: Validate the Association of Objective to the Internal Program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "program::objectivesTableId"
@@ -76,7 +77,7 @@ Feature: Validate all scenarios for program
       | EGMS Id  |
       | SPO-0085 |
 
-  @34738 @programKPIAssociation @program @all
+  @34738 @programKPIAssociation @all
   Scenario Outline: Validate the assignment of Approvers for the Internal Program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "program::kpiTableId"
@@ -87,7 +88,7 @@ Feature: Validate all scenarios for program
       | EGMS Id  |
       | KPI-0522 |
 
-  @34745 @programAttachmentChecklist @program @all
+  @34745 @programAttachmentChecklist @all
   Scenario: Validate the attachment checklist for the Internal Program
     When I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "flexGridProgramChecklists" by clicking "Add" :
@@ -98,7 +99,7 @@ Feature: Validate all scenarios for program
     When I close Modal
     Then I see that "Active" has been added in flextable with Id "program::checklistTableId"
 
-  @34746 @programAddAttachment @program @all
+  @34746 @programAddAttachment @all
   Scenario: Validate the attachment for the Internal Program
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add" in flex table with id "program::attachmentTableId"
@@ -106,7 +107,7 @@ Feature: Validate all scenarios for program
     And I close Modal
     Then I see that "Program Artifacts" has been added in flextable with Id "program::attachmentTableId"
 
-  @34750 @submittingProgramForApproval @program @all
+  @34750 @submittingProgramForApproval @all
   Scenario: Validate the submission of Program for Approval
     Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -135,7 +136,7 @@ Feature: Validate all scenarios for program
     When I click on "Submit For Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
-  @34752 @34754 @programApproval @program @all
+  @34752 @34754 @programApproval @all
   Scenario Outline: Validate the approval of Internal Program
     Given I re-login to "As a Grantor" app as "<Program Approver>" user
     And I pause execution
@@ -181,7 +182,7 @@ Feature: Validate all scenarios for program
       | Program Approver | Program Name       | Executive Approver |
       | PM               | Automation Program | EXE                |
 
-  @34756 @programActivation @programHappyPath @program @all
+  @34756 @programActivation @programHappyPath @all
   Scenario Outline: Validate the activation of Internal Program
     Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
