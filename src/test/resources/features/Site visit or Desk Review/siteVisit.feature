@@ -142,12 +142,12 @@ Feature: Validate all scenarios in the Site Visit
 	And I click on "View" icon for "<Site Visit Name>" inside table
 	When I click on "Conduct" in the page details
 	And I navigate to "Reports and Outcomes" sub tab
-	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
     | Title       		 	 | Description  	 	  | Type    	   |Status| Closed Date|
     | Automation Finding 	 | Automation Description | Finding		   |Open  |            |
     | Automation Concern 	 | Automation Description | Concern 	   |Open  |            |
     | Automation Observation | Automation Description | Observation    |Open  |            |
-	Then I see that "Automation Finding" has been added in flextable with Id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance"
+	Then I see that "Automation Finding" has been added in flextable with Id "inlineEditGridGrantorSiteVisitFindingsGrid"
 	Examples:
 	| Site Visit Name	      |
 	| Automation Site Visit   |
@@ -177,7 +177,7 @@ Feature: Validate all scenarios in the Site Visit
 	And I click on "View" icon for "<Site Visit Name>" inside table
 	When I click on "Conduct" in the page details
 	And I navigate to "Reports and Outcomes" sub tab
-	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
     | Title       		 	 | Description  	 	  | Type    	   |
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
@@ -218,7 +218,7 @@ Feature: Validate all scenarios in the Site Visit
 	And I click on "View" icon for "<Site Visit Name>" inside table
 	When I click on "Conduct" in the page details
 	And I navigate to "Reports and Outcomes" sub tab
-	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
     | Title       		 	 | Description  	 	  | Type    	   |
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
@@ -260,7 +260,7 @@ Feature: Validate all scenarios in the Site Visit
 	And I click on "View" icon for "<Site Visit Name>" inside table
 	When I click on "Conduct" in the page details
 	And I navigate to "Reports and Outcomes" sub tab
-	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
     | Title       		 	 | Description  	 	  | Type    	   |
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
@@ -314,7 +314,7 @@ Feature: Validate all scenarios in the Site Visit
 	And I click on "View" icon for "<Site Visit Name>" inside table
 	When I click on "Conduct" in the page details
 	And I navigate to "Reports and Outcomes" sub tab
-	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
     | Title       		 	 | Description  	 	  | Type    	   |
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
@@ -369,7 +369,7 @@ Feature: Validate all scenarios in the Site Visit
 	And I click on "View" icon for "<Site Visit Name>" inside table
 	When I click on "Conduct" in the page details
 	And I navigate to "Reports and Outcomes" sub tab
-	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
     | Title       		 	 | Description  	 	  | Type    	   |
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
@@ -442,7 +442,7 @@ Feature: Validate all scenarios in the Site Visit
 	And I click on "View" icon for "<Site Visit Name>" inside table
 	When I click on "Conduct" in the page details
 	And I navigate to "Reports and Outcomes" sub tab
-	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
     | Title       		 	 | Description  	 	  | Type    	   |
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |
@@ -516,7 +516,7 @@ Feature: Validate all scenarios in the Site Visit
 	And I click on "View" icon for "<Site Visit Name>" inside table
 	When I click on "Conduct" in the page details
 	And I navigate to "Reports and Outcomes" sub tab
-	When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
     | Title       		 	 | Description  	 	  | Type    	   |
     | Automation Finding 	 | Automation Description | Finding		   |
     | Automation Concern 	 | Automation Description | Concern 	   |

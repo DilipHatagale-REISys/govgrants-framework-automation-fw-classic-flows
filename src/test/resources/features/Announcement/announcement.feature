@@ -1708,9 +1708,6 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-	#Given I associate "1" records "RG-000103"
-	#| Actions 	  | Step 1     | Step 2	   		   | Step 3  			  	| Step 4 | Step 5  		 				  |
-    #| Associate 1 | Overview   | Add Organizations | <Add Organization id> 	| Add	 | SoleSourceAwardRecipientsTable |
     And I associate "1" records "FA--78"
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
@@ -1809,11 +1806,7 @@ Feature: Validate all scenarios in the Announcement tab
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
 	| Budget Period Name     | Start Date         | End Date        |
-	| BP01                   | 03/20/2019         | 03/21/2020      |
-	#And I add Budget Period Details "BP01" from sheet "BudgetPeriod" in excel "Announcement_Field_Values.xlsx" to an announcement
-	#| Actions 	 | Step 1 		| Step 2				| Step 3 				  		   |
-	#| Navigation | Financials 	| Add Budget Period 	| flexGridAnnouncementBudgetPeriod |
-	#| Flextable  | Save			| 						|                                  |
+	| BP01                   | 03/20/2019         | 03/21/2020      |		
 	Given I associate "3" records "Automation EXE,02493,SPO-0073"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
@@ -1870,6 +1863,6 @@ Feature: Validate all scenarios in the Announcement tab
 	Examples:
 	|Announcement Type|User|Add Organization id							 |Announcement Name       |
     |Formula          |EXE |inlineEditGridSoleSourceAwardOrganizations	 |Automation Announcement |
-	#|Directed         |EXE |inlineEditGridFormulaGrantsAwardOrganizations|Automation Announcement |
-	#|Competitive      |EXE |inlineEditGridSoleSourceAwardOrganizations	 | Automation Announcement|
+	|Directed         |EXE |inlineEditGridFormulaGrantsAwardOrganizations|Automation Announcement |
+	|Competitive      |EXE |inlineEditGridSoleSourceAwardOrganizations	 | Automation Announcement|
  	

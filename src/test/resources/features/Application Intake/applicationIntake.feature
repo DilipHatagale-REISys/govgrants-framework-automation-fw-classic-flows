@@ -38,6 +38,7 @@ Feature: Validate all scenarios in the Application Intake
   	Scenario: Addition of budget in the budget grid to an application
   	When I navigate to "Budget" sub tab
     And I expand nested table containing column value "BP01"
+    When I pause execution
     When I edit the following rows inline in flex table with id "flexGridEnhanceAppBudCatGrantorFlexGrid" by clicking "Edit" :
 	| Category Name | Budget | Cash Match | Non-Cash Match |Other Leverage|
 	| Construction	| 5000 	 | 1000   	  | 3000 		   | 100          |
@@ -71,17 +72,12 @@ Feature: Validate all scenarios in the Application Intake
     And I click on "Attach" icon for "Not Applicable" inside flex table with id "inlineEditGridApplicationChecklists"
     When I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Application"
     And I close Modal
-    #When I click on "Attach" icon for "Not Applicable" inside flex table with id "inlineEditGridApplicationChecklists"
-    #And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Application"
-    #When I close Modal
 	
   	@34156 @submitApplication @applicationIntakeHappyPath @applicationIntake @all
   	Scenario: Submitting an application to Grantor
 	Given I complete the fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
 	| Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    #And I associate "1" records "03261"
-	#    | Associate 1 | Budget | Add Focus Area | FocusAreaApp | Add	  | AddAppProjects    |
 	Given I expand nested table containing column value "BP01"
 	And I edit the following rows inline in flex table with id "flexGridEnhanceAppBudCatGrantorFlexGrid" by clicking "Edit" :
 	| Category Name | Budget | Cash Match | Non-Cash Match |Other Leverage|
@@ -112,10 +108,6 @@ Feature: Validate all scenarios in the Application Intake
   	Given I complete the fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
 	| Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    #And I associate "1" records "03261"
-	#| Actions 	  | Step 1 | Step 2	   	    | Step 3  	   | Step 4  | Step 5  		  |
-    #| Associate 1 | Budget | Add Focus Area| FocusAreaApp | Add	 | AddAppProjects |
-	#Given I expand nested table containing column value "Proposed Budget" inside nested table containing "BP01"
 	Given I expand nested table containing column value "BP01" inside nested table containing "Proposed Budget"  
 	And I edit the following rows inline in flex table with id "flexGridEnhanceAppBudCatGrantorFlexGrid" by clicking "Edit" :
 	| Category Name | Budget | Cash Match | Non-Cash Match |

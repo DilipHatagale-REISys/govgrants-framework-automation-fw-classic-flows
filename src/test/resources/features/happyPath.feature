@@ -12,10 +12,8 @@ Feature: Validate all scenarios Happy Path across all modules
     And I complete the fields from the sheet "Edition" in excel "Surya_Program_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    #And I associate "2" records "<Contact>,<Focusarea>"
     And I associate "1" records "<Focusarea>"
     | Actions 	  | Step 1   | Step 2	 | Step 3  			  				  | Step 4 	  | Step 5  				 |
-    #| Associate 1 | Overview | Associate | ProgramContacts 				  | Add	  	  | AssociateProgramContacts |
      | Associate 2 | Setup	 | Associate | flexGridGrantorServiceAreasProgram | Add		  | SelectProgramServiceArea |
      | Associate 3 | Setup 	 | Associate | RelatedProgramGoalsandObjectives   | Add	  	  | SelectGoals 		     |
      | Associate 3 | Setup 	 | Associate | ProgramKeyOutcomes                 | Add	      | SelectProgramKPIs 	     |

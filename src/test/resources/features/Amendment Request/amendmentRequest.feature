@@ -25,12 +25,6 @@ Feature: Validate all scenarios in the Amendment Request
 	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
 	And I click modal button "Save and Continue"
 	And I click on "Save" in the page details
-	#Given I create Amendment Request from sheet "ScopeOfWork_Creation" in excel "AmendmentRequest_Field_Values.xlsx"
-	# | Actions 		  | Step 1 			  | Step 2					     |
-	 #| Sub tab		  | Requests 		  | 							 |
-	# | Flextable	  | New		  		  | GrantorAwardAmendmentRequest |
-	# | Buttons		  | Save and Continue | Save						 |
-	#When I navigate to "Requests" sub tab
 	When I click on "Edit" in the page details
 	And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
 	When I click on "Save" in the page details
@@ -149,7 +143,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Send to Subrecipient" in the page details
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
     
-    @subrecipientAcknowledgesSOWAmendmentRequest @scopeOfWork @amendmentRequest
+    @subrecipientAcknowledgesSOWAmendmentRequest @scopeOfWork @amendmentRequest @nonfunctional
 	Scenario: Subrecipient acknowledges Amendment Request
 	Given I navigate to "Requests" sub tab
 	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
@@ -190,7 +184,7 @@ Feature: Validate all scenarios in the Amendment Request
 	And I click on "Acknowledge" in the page details
     Then I see that "Amendment Request" is in "Acknowledged" status
     
-    @submitForApprovalSOWAmendmentRequest @scopeOfWork @amendmentRequest
+    @submitForApprovalSOWAmendmentRequest @scopeOfWork @amendmentRequest @nonfunctional
 	Scenario: Submit Amendment Request for Approval
 	Given I navigate to "Requests" sub tab
 	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
@@ -237,7 +231,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
     
-    @approvalOfSOWAmendmentRequest @scopeOfWork @amendmentRequest
+    @approvalOfSOWAmendmentRequest @scopeOfWork @amendmentRequest @nonfunctional
 	Scenario: Approval of Amendment Request
 	Given I navigate to "Requests" sub tab
 	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
@@ -276,7 +270,7 @@ Feature: Validate all scenarios in the Amendment Request
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	And I click on "Acknowledge" in the page details
-	When User "EXE" receives the task for "Record Id"
+	When User "PM" receives the task for "Record Id"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Grants	 		 | As a Grantor  | DEMO		 |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
@@ -289,7 +283,7 @@ Feature: Validate all scenarios in the Amendment Request
 	| Approval 	 | Start 		 | Approve 		 | 					 |
     Then I see status in Progress-bar is "Approved" and is "green"
     
-    @amendSubawardSOWAmendmentRequest @scopeOfWork @amendmentRequest
+    @amendSubawardSOWAmendmentRequest @scopeOfWork @amendmentRequest @nonfunctional
 	Scenario: Click on Amend of Amendment Request
 	Given I navigate to "Requests" sub tab
 	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
@@ -328,7 +322,7 @@ Feature: Validate all scenarios in the Amendment Request
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	And I click on "Acknowledge" in the page details
-	When User "EXE" receives the task for "Record Id"
+	When User "PM" receives the task for "Record Id"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Grants	 		 | As a Grantor  | DEMO	     |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
@@ -343,7 +337,7 @@ Feature: Validate all scenarios in the Amendment Request
     Then I see that "Subaward" is in "Pending Activation" status
     
     @activateSubawardSOWAmendmentRequest @scopeOfWorkHappyPath @scopeOfWork @amendmentRequest
-	Scenario: Click on Amend of Amendment Request
+	Scenario Outline: Click on Amend of Amendment Request
 	Given I navigate to "Requests" sub tab
 	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
 	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
@@ -374,14 +368,31 @@ Feature: Validate all scenarios in the Amendment Request
     | Actions 			    | Step 1 	  | Step 2	 		  	  | Step 3			   |
     | Attachment Navigation | Attachments | Add					  | a150b000003epeQAAQ |
     | Attachment Details    | Attachment  | Terms and Conditions  |					   |
+    And I navigate to "Management" sub tab
+  	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
+    | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
+    | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
+	When I click on "Save" in the page details
+    Given I select "2" approvers "Automation PM,Automation FO"
+    | Actions 	 | Step 1   				      				 | Step 2 | Step 3 			   |
+    | Subtab	 | Responsibilities 			 				 | 		  |		    		   |
+    | Approver 1 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Program Approver   |
+    | Approver 2 | GrantorRiskAssessmentRolesandResponsibilities | Edit	  | Fiscal Approver    |
+    And I click on "Submit for Approval" in the page details
+    Given "2" Approvers "PM,FO" approve the record "Approve Subaward Risk Assessment"
+	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
+	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
+	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
+	| Approval 	 | Start 		 | Approve 		 | 					 |
     And I click on "Send to Subrecipient" in the page details
-    Given User "SPI" receives the task for "Record Id"
+    Given User "SPI" receives the task for "<Type>"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Grants	 		 | Grants Portal | SUBPORTAL |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
 	| FlexTable  | PhasePendingTasks | Start 		 |			 |
 	And I click on "Acknowledge" in the page details
-	Given User "EXE" receives the task for "Record Id"
+	Given User "PM" receives the task for "Record Id"
 	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
 	| Navigation | Grants	 		 | As a Grantor  | DEMO		 |
 	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
@@ -395,6 +406,9 @@ Feature: Validate all scenarios in the Amendment Request
 	And I click on "Amend Subaward" in the page details
 	Given I click on "Activate" in the page details
     Then I see status in Progress-bar is "Activated" and is "green"
+    Examples:
+    |Type                    |
+    |Submit Amendment Request|
     
     @creationOfBPCAmendmentRequest @budgetPeriodChange @amendmentRequest
 	Scenario: Creation of Amendment Request
@@ -414,11 +428,6 @@ Feature: Validate all scenarios in the Amendment Request
 	When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
 	And I click modal button "Save and Continue"
 	And I click on "Save" in the page details
-	 #Given I create Amendment Request from sheet "BudgetPeriodChange_Creation" in excel "AmendmentRequest_Field_Values.xlsx"
-	 #| Actions 		  | Step 1 			  | Step 2					     |
-	 #| Sub tab		  | Requests 		  | 							 |
-	 #| Flextable	  | New		  		  | GrantorAwardAmendmentRequest |
-	 #| Buttons		  | Save and Continue | Save						 |
 	When I click on "Edit" in the page details
 	And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
 	When I click on "Save" in the page details

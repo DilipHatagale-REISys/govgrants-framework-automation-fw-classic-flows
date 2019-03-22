@@ -66,72 +66,63 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	@awardStandAloneBudgetEdition @awardStanAlone
   	Scenario: Budget addition to Award
 	When I navigate to "Budget" sub tab
-	When I pause execution
-    When I edit the following rows inline in flex table with id "inlineEditGridLineItem" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "flexGridAwardBudgetCategoryFlexGrid" by clicking "Edit" :
 	| Budget Category | Cash Match |
 	| Construction    | 2000 	   | 
-    Then I see that "Construction" has been added in flextable with Id "inlineEditGridAwardBudgetCategoryFlexGrid"
+    Then I see that "Construction" has been added in flextable with Id "flexGridAwardBudgetCategoryFlexGrid"
     
     @34775 @awardStanAloneObjectiveAssociation @awardStanAlone
   	Scenario: Validate the association of Objective to Award
     When I navigate to "Performance" sub tab
     And I click on top right button "Associate" in flex table with id "GrantorAwardGoalsObjectives"
-    When I click "Associate" after selection of "Automation Objective" in the table "SelectAwardGoals"
+    When I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAwardGoals"
     And I close Modal
-    Then I see that "Automation Objective" has been added in flextable with Id "GrantorAwardGoalsObjectivess"
+    Then I see that "Permanent Objective Automation" has been added in flextable with Id "GrantorAwardGoalsObjectives"
 	
 	@34775 @awardStanAloneKPIAssociation @awardStanAlone
   	Scenario Outline: Validate the association of KPI to Award
     When I navigate to "Performance" sub tab
-    And I click on top right button "Associate" in flex table with id "inlineEditGridGrantorAwardServiceAreas"
-    When I click "Associate" after selection of "<EGMS Id>" in the table "popupflextableGAT"
-    And I close Modal
     When I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardKeyOutcomes" by clicking "Edit" :
 	| EGMS ID     | Target |
 	| KPI-0419    | 10     |
-    Then I see that "<EGMS Id>" has been added in flextable with Id "inlineEditGridGrantorAwardServiceAreas"
+    Then I see that "<EGMS Id>" has been added in flextable with Id "inlineEditGridGrantorAwardKeyOutcomes"
 	Examples:
 	| EGMS Id  |
 	| KPI-0419 |
 	
 	@awardStanAloneRiskAssessmentApprovalAndActivation @awardStanAlone
   	Scenario: Risk Assessment approval in an award
-    Given I create a monitoring record from sheet "Risk Assessment" in excel "Award_Field_Values.xlsx"
-    | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4 |
-    | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save   |
-    Given I select "2" approvers "Automation PM,Automation FO"
+    Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
+    | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
+    | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
+	When I click on "Save" in the page details
+	Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				      				 | Step 2 | Step 3 			   |
     | Subtab	 | Responsibilities 			 				 | 		  |		    		   |
     | Approver 1 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Program Approver   |
-    | Approver 2 | GrantorRiskAssessmentRolesandResponsibilities | Edit	  | Executive Approver |
-    Given I click on "Submit for Approval" in the page details
-    When I re-login to "As a Grantor" app as "PM" user
-    And I navigate to "Monitoring" tab
-	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Approve Risk Assessment" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Approve Risk Assessment" inside table
-    And I click on "Approve" on the approval decision box
-    When I re-login to "As a Grantor" app as "FO" user
-    And I navigate to "Monitoring" tab
-	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Approve Risk Assessment" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Approve Risk Assessment" inside table 
-    And I click on "Approve" on the approval decision box
+    | Approver 2 | GrantorRiskAssessmentRolesandResponsibilities | Edit	  | Fiscal Approver    |
+    And I click on "Submit for Approval" in the page details
+    Given "2" Approvers "PM,FO" approve the record "Approve Subaward Risk Assessment"
+	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
+	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
+	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
+	| Approval 	 | Start 		 | Approve 		 | 					 |
     Then I see status in Progress-bar is "Active" and is "green"
 	
 	@awardStanAloneApproverSelection @awardStanAlone
   	Scenario: Validate the assignment of Approvers for the award
     When I navigate to "Responsibilities" sub tab
-    And I click on "Edit" icon for "Program Approver" inside flex table with id "GrantorAwardApprover"
+    And I click on "Edit" icon for "Program Approver" inside flex table with id "GrantorAwardRolesAndResponsibilities"
     When I fill in the "Automation PM" for the Approver details
     And I close Modal
-    When I click on "Edit" icon for "Fiscal Approver" inside flex table with id "GrantorAwardApprover"
+    When I click on "Edit" icon for "Fiscal Approver" inside flex table with id "GrantorAwardRolesAndResponsibilities"
     And I fill in the "Automation FO" for the Approver details
     And I close Modal
-    And I click on "Edit" icon for "Executive Approver" inside flex table with id "GrantorAwardApprover"
+    And I click on "Edit" icon for "Executive Approver" inside flex table with id "GrantorAwardRolesAndResponsibilities"
     When I fill in the "Automation EXE" for the Approver details
     And I close Modal
-    Then I see that "Automation EXE" has been added in flextable with Id "GrantorAwardApprover"
+    Then I see that "Automation EXE" has been added in flextable with Id "GrantorAwardRolesAndResponsibilities"
 	
 	@awardStanAloneSendToRecipientBeforeApproval @awardStanAlone
   	Scenario Outline: Validate the assignment of Approvers for the award 
@@ -143,9 +134,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
     | Associate 3 | Performance | Associate | GrantorAwardGoalsObjectives					| Associate | SelectAwardGoals 		   		 |
-   And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
-	| Title                       | Start Date | End Date  |
-	| Automation Grant Focus Area | 0		   |  500      |
+    When I navigate to "Budget" sub tab
+    And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
+	| Title                             | Start Date | End Date  |
+	| Automation Grant Focus Area       | 0		     |  500      |
+	|Permanent Focus Area for Automation| 0          | 500       |
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
@@ -163,16 +156,24 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
     And I close Modal
   	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
-    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save    | Progress Report   |
     And I close Modal
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "flexGridSubawardContact"
+    When I check "Automation SPI" boxes in flex table with id "AssociateSubawardContacts"
+    When I click on top right button "Add" in flex table with id "AssociateSubawardContacts"
+    And I close Modal
+   	And I edit the following rows inline in flex table with id "flexGridSubawardContact" by clicking "Edit" :
+    | Title          | Project Role                    | 
+	| Automation SPI | Project Director/Manager		   |  
     And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
     | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
     | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
 	When I click on "Save" in the page details
-    Given I select "2" approvers "Automation PM,Automation FO"
+	Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				      				 | Step 2 | Step 3 			   |
     | Subtab	 | Responsibilities 			 				 | 		  |		    		   |
     | Approver 1 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Program Approver   |
@@ -183,7 +184,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -200,7 +201,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     Then I click on "Send to Subrecipient" in the page details
 	Examples:
 	| Award Name 				     	                   	|Grant Name                    |Type                    |
-	| Execution Grant for Automation             			|Execution Grant for Automation|	Subaward Review     |
+	| Permanent Award For Automation             			|Permanent Award For Automation|	Subaward Review     |
 	
 	@awardStanAloneAcceptanceByRecipientBeforeApproval @awardStanAlone
   	Scenario Outline: Validate the assignment of Approvers for the award 
@@ -212,9 +213,11 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
     | Associate 3 | Performance | Associate | GrantorAwardGoalsObjectives					| Associate | SelectAwardGoals 		   		 |
-   	And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
-	| Title                       | Start Date | End Date  |
-	| Automation Grant Focus Area | 0		   |  500      |
+    When I navigate to "Budget" sub tab
+    And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
+	| Title                             | Start Date | End Date  |
+	| Automation Grant Focus Area       | 0		     |  500      |
+	|Permanent Focus Area for Automation| 0          | 500       |
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
@@ -232,16 +235,24 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
     And I close Modal
   	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
-    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save    | Progress Report   |
     And I close Modal
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "flexGridSubawardContact"
+    When I check "Automation SPI" boxes in flex table with id "AssociateSubawardContacts"
+    When I click on top right button "Add" in flex table with id "AssociateSubawardContacts"
+    And I close Modal
+   	And I edit the following rows inline in flex table with id "flexGridSubawardContact" by clicking "Edit" :
+    | Title          | Project Role                    | 
+	| Automation SPI | Project Director/Manager		   |  
     And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
     | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
     | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
 	When I click on "Save" in the page details
-    Given I select "2" approvers "Automation PM,Automation FO"
+	Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				      				 | Step 2 | Step 3 			   |
     | Subtab	 | Responsibilities 			 				 | 		  |		    		   |
     | Approver 1 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Program Approver   |
@@ -252,7 +263,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+   When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -270,93 +281,17 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
 	And I navigate to "Grants" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "<Type> in "PhasePendingTasks" panel
+    And I perform quick search for "<Type>" in "PhasePendingTasks" panel
     When I click on "Start" icon for "<Type>" inside table 
     And I click on "Accept" in the page details
     When I enter "Automation Award accepted" for comments and click "OK"
     Then I see that "Subaward" is in "Created" status
 	Examples:
 	| Award Name 				     	    	|Grant Name                     | Type                  |
-	| Execution Grant for Automation            |Execution Grant for Automation | 	Subaward Review     |
+	| Permanent Award For Automation            |Permanent Award For Automation | 	Subaward Review     |
 	
 	@awardStanAloneReviewerAssignment @awardStanAlone
   	Scenario Outline: Validate the assignment of Reviewer for the award
-  	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
-    | Actions 		  | Step 1 | Step 2	|
-    | Edition Buttons | Edit   | Save   |
-  	And I navigate to "Budget" sub tab
-    Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
-  	| Funding Account | Award Encumbrance |
-	| FA--21 		  | 5000			  |
-  	Given I edit the Budget details in award for line item "Construction"
-  	| Budget Category | Cash Match |
-	| Construction    | 2000 	   |
-  	And I navigate to "Management" sub tab
-  	Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
-    | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
-    And I close Modal
-  	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
-    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
-    And I close Modal
-    And I navigate to "Management" sub tab
-  	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
-    | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
-    | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
-    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
-	When I click on "Save" in the page details
-    Given I select "2" approvers "Automation PM,Automation FO"
-    | Actions 	 | Step 1   				      				 | Step 2 | Step 3 			   |
-    | Subtab	 | Responsibilities 			 				 | 		  |		    		   |
-    | Approver 1 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Program Approver   |
-    | Approver 2 | GrantorRiskAssessmentRolesandResponsibilities | Edit	  | Executive Approver |
-    And I click on "Submit for Approval" in the page details
-    Given "2" Approvers "PM,FO" approve the record "Approve Risk Assessment"
-	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
-	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
-	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
-	| Approval 	 | Start 		 | Approve 		 | 					 |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-	And I navigate to "Grants" tab
-	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
-	And I click toggle button to select "Draft Grants"
-	When I perform quick search for "<Grant Name>" in "ActiveGrants" panel
-	And I click on "View" icon for "<Grant Name>" inside table
-	When I navigate to "Subawards" sub tab
-	And I click on "View" icon for "<Award Name>" inside flex table with id "RelatedAwards1"
-    Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-    | Actions 	 | Step 1   				    		| Step 2 | Step 3 			   |
-    | Subtab	 | Responsibilities 					| 		 |		    		   |
-    | Approver 1 | GrantorAwardRolesAndResponsibilities | Edit   | Program Approver    |
-    | Approver 2 | GrantorAwardRolesAndResponsibilities | Edit   | Fiscal Approver     |
-    | Approver 3 | GrantorAwardRolesAndResponsibilities | Edit	 | Executive Approver  |
-    And I click on "Send to Subrecipient" in the page details
-  	Given The subrecipient user "SPI" accepts the award "<Type>" with comments "Automation Award accepted"
-  	| Actions 	 | Step 1		 | Step 2		  | Step 3 			      | Step 4			  |
-  	| Login		 | Grants Portal | SUBPORTAL	  |						  |					  |
-  	| Navigation | Grants		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
-  	| Acceptance | Start 		 | Accept		  | Accept after Approval | OK				  |
-  	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-  	And I navigate to "Grants" tab
-  	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
-  	And I click toggle button to select "Draft Grants"
-	When I perform quick search for "<Award Name>" in "ActiveGrants" panel
-	And I click on "View" icon for "<Award Name>" inside table 
-	When I navigate to "Subawards" sub tab
-	And I click on "View" icon for "Record Id" inside flex table with id "RelatedAwards1"
-	When I navigate to "Responsibilities" sub tab
-	And I click on top right button "New" in flex table with id "flexGridGrantorAwardReviewer"
-	When I enter "Reviewer" values from "Award_Field_Values.xlsx"
-	And I click modal button "Save"
-	When I close Modal
-	Then I see that "Automation FO" has been added in flextable with Id "flexGridGrantorAwardReviewer"
-	Examples:
-	| Award Name 				     	    	    |Grant Name                       |Type                 |
-	| Execution Grant for Automation      			|Execution Grant for Automation   |	Subaward Review     |
-	
-	@awardStanAloneReviewerInitiation @awardStanAlone
-  	Scenario Outline: Validate initiation of review for the award 
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
@@ -365,9 +300,11 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
     | Associate 3 | Performance | Associate | GrantorAwardGoalsObjectives					| Associate | SelectAwardGoals 		   		 |
+    When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
-	| Title                       | Start Date | End Date  |
-	| Automation Grant Focus Area | 0		   |  500      |
+	| Title                             | Start Date | End Date  |
+	| Automation Grant Focus Area       | 0		     |  500      |
+	|Permanent Focus Area for Automation| 0          | 500       |
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
@@ -385,16 +322,24 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
     And I close Modal
   	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
-    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save    | Progress Report   |
     And I close Modal
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "flexGridSubawardContact"
+    When I check "Automation SPI" boxes in flex table with id "AssociateSubawardContacts"
+    When I click on top right button "Add" in flex table with id "AssociateSubawardContacts"
+    And I close Modal
+   	And I edit the following rows inline in flex table with id "flexGridSubawardContact" by clicking "Edit" :
+    | Title          | Project Role                    | 
+	| Automation SPI | Project Director/Manager		   |  
     And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
     | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
     | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
 	When I click on "Save" in the page details
-    Given I select "2" approvers "Automation PM,Automation FO"
+	Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				      				 | Step 2 | Step 3 			   |
     | Subtab	 | Responsibilities 			 				 | 		  |		    		   |
     | Approver 1 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Program Approver   |
@@ -405,7 +350,107 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+   When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+	And I navigate to "Grants" tab
+	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+	And I click toggle button to select "Draft Grants"
+	When I perform quick search for "<Grant Name>" in "ActiveGrants" panel
+	And I click on "View" icon for "<Grant Name>" inside table
+	When I navigate to "Subawards" sub tab
+	And I click on "View" icon for "<Award Name>" inside flex table with id "RelatedAwards1"
+    Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+    | Actions 	 | Step 1   				    		| Step 2 | Step 3 			   |
+    | Subtab	 | Responsibilities 					| 		 |		    		   |
+    | Approver 1 | GrantorAwardRolesAndResponsibilities | Edit   | Program Approver    |
+    | Approver 2 | GrantorAwardRolesAndResponsibilities | Edit   | Fiscal Approver     |
+    | Approver 3 | GrantorAwardRolesAndResponsibilities | Edit	 | Executive Approver  |
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+	And I navigate to "Grants" tab
+	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "<Type>" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "<Type>" inside table 
+    And I click on "Accept" in the page details
+    When I enter "Automation Award accepted" for comments and click "OK"
+  	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+  	And I navigate to "Grants" tab
+  	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+  	And I click toggle button to select "Draft Grants"
+	When I perform quick search for "<Award Name>" in "ActiveGrants" panel
+	And I click on "View" icon for "<Award Name>" inside table 
+	When I navigate to "Subawards" sub tab
+	And I click on "View" icon for "Record Id" inside flex table with id "RelatedAwards1"
+	When I navigate to "Responsibilities" sub tab
+	And I click on top right button "New" in flex table with id "flexGridGrantorAwardReviewer"
+	When I enter "Reviewer" values from "Award_Field_Values.xlsx"
+	And I click modal button "Save"
+	When I close Modal
+	Then I see that "Automation FO" has been added in flextable with Id "flexGridGrantorAwardReviewer"
+	Examples:
+	| Award Name 				     	    	        |Grant Name                         |Type                   |
+	| Permanent Award for Automation        			|Permanent Award for Automation     |	Subaward Review     |
+	
+	@awardStanAloneReviewerInitiation @awardStanAlone
+  	Scenario Outline: Validate initiation of review for the award 
+  	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+    Given I associate "3" records "FA--125,Automation Grant Focus Area,Permanent Objective Automation"
+	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
+    | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
+    | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
+    | Associate 3 | Performance | Associate | GrantorAwardGoalsObjectives					| Associate | SelectAwardGoals 		   		 |
+    When I navigate to "Budget" sub tab
+    And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
+	| Title                             | Start Date | End Date  |
+	| Automation Grant Focus Area       | 0		     |  500      |
+	|Permanent Focus Area for Automation| 0          | 500       |
+  	And I navigate to "Budget" sub tab
+    Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
+  	| Funding Account | Encumbrance |
+	| FA--125 		  | 5000		|
+    And I edit the following rows inline in flex table with id "flexGridAwardBudgetCategoryFlexGrid" by clicking "Edit" :
+	| Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
+	| Construction    | 5000			 | 2000 	  | 3000		   |
+	Given I navigate to "Performance" sub tab
+	And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardKeyOutcomes" by clicking "Edit" :
+	| EGMS ID     | Target |
+	| KPI-0419    | 10     |
+	And I navigate to "Management" sub tab
+  	Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
+    | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
+    And I close Modal
+  	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save    | Progress Report   |
+    And I close Modal
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "flexGridSubawardContact"
+    When I check "Automation SPI" boxes in flex table with id "AssociateSubawardContacts"
+    When I click on top right button "Add" in flex table with id "AssociateSubawardContacts"
+    And I close Modal
+   	And I edit the following rows inline in flex table with id "flexGridSubawardContact" by clicking "Edit" :
+    | Title          | Project Role                    | 
+	| Automation SPI | Project Director/Manager		   |  
+    And I navigate to "Management" sub tab
+  	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
+    | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
+    | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
+	When I click on "Save" in the page details
+	Given I select "2" approvers "Automation PM,Automation FO"
+    | Actions 	 | Step 1   				      				 | Step 2 | Step 3 			   |
+    | Subtab	 | Responsibilities 			 				 | 		  |		    		   |
+    | Approver 1 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Program Approver   |
+    | Approver 2 | GrantorRiskAssessmentRolesandResponsibilities | Edit	  | Fiscal Approver    |
+    And I click on "Submit for Approval" in the page details
+    Given "2" Approvers "PM,FO" approve the record "Approve Subaward Risk Assessment"
+	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
+	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
+	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
+	| Approval 	 | Start 		 | Approve 		 | 					 |
+   When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -442,7 +487,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	Then I see that "Sent for Review" has been added in flextable with Id "flexGridGrantorAwardReviewer"
 	Examples:
 	| Award Name 				     	    	|Grant Name                     |   Type                |
-	| Execution Grant for Automation           	|Execution Grant for Automation |	Subaward Review     |
+	| Permanent Award For Automation           	|Permanent Award For Automation |	Subaward Review     |
 	
 	@awardStanAloneReviewComplete @awardStanAlone
   	Scenario Outline: Validate completion of review for the award 
@@ -454,9 +499,11 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
     | Associate 3 | Performance | Associate | GrantorAwardGoalsObjectives					| Associate | SelectAwardGoals 		   		 |
+    When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
-	| Title                       | Start Date | End Date  |
-	| Automation Grant Focus Area | 0		   |  500      |
+	| Title                             | Start Date | End Date  |
+	| Automation Grant Focus Area       | 0		     |  500      |
+	|Permanent Focus Area for Automation| 0          | 500       |
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
@@ -474,16 +521,24 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
     And I close Modal
   	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
-    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save    | Progress Report   |
     And I close Modal
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "flexGridSubawardContact"
+    When I check "Automation SPI" boxes in flex table with id "AssociateSubawardContacts"
+    When I click on top right button "Add" in flex table with id "AssociateSubawardContacts"
+    And I close Modal
+   	And I edit the following rows inline in flex table with id "flexGridSubawardContact" by clicking "Edit" :
+    | Title          | Project Role                    | 
+	| Automation SPI | Project Director/Manager		   |  
     And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
     | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
     | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
 	When I click on "Save" in the page details
-    Given I select "2" approvers "Automation PM,Automation FO"
+	Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				      				 | Step 2 | Step 3 			   |
     | Subtab	 | Responsibilities 			 				 | 		  |		    		   |
     | Approver 1 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Program Approver   |
@@ -494,7 +549,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
- When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -514,7 +569,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
   	| Login		 | Grants Portal | SUBPORTAL	  |						  |					  |
   	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+   When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -530,8 +585,8 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
   	When I re-login to "As a Grantor" app as "FO" user
     And I navigate to "Grants" tab
 	When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "<Award Name>" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "<Award Name>" inside table  
+    And I perform quick search for "<Type1>" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "<Type1>" inside table  
     And I navigate to "Responsibilities" sub tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridGrantorAwardReviewer"
     And I enter a review as "Passed"
@@ -540,8 +595,8 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I close Modal
     Then I see that "Submitted" has been added in flextable with Id "flexGridGrantorAwardReviewer"
 	Examples:
-	| Award Name 				     	    	| Grant Name                       |    Type                |
-	| Execution Grant for Automation            |Execution Grant for Automation    |	Subaward Review     |
+	| Award Name 				     	    	| Grant Name                       |    Type                |Type1                |
+	| Permanent Award For Automation            |Permanent Award For Automation    |	Subaward Review     |Review Grantor Award |
 	
 	@awardStanAloneSubmissionForApproval @awardStanAlone
   	Scenario Outline: Validate award submission for approval	
@@ -553,10 +608,11 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
     | Associate 3 | Performance | Associate | GrantorAwardGoalsObjectives					| Associate | SelectAwardGoals 		   		 |
+    When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
 	| Title                             | Start Date | End Date  |
 	| Automation Grant Focus Area       | 0		     |  500      |
-    |Permanent Focus Area for Automation|0           | 500       |
+	|Permanent Focus Area for Automation| 0          | 500       |
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
@@ -574,16 +630,24 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
     And I close Modal
   	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
-    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save    | Progress Report   |
     And I close Modal
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "flexGridSubawardContact"
+    When I check "Automation SPI" boxes in flex table with id "AssociateSubawardContacts"
+    When I click on top right button "Add" in flex table with id "AssociateSubawardContacts"
+    And I close Modal
+   	And I edit the following rows inline in flex table with id "flexGridSubawardContact" by clicking "Edit" :
+    | Title          | Project Role                    | 
+	| Automation SPI | Project Director/Manager		   |  
     And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
     | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
     | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
 	When I click on "Save" in the page details
-    Given I select "2" approvers "Automation PM,Automation FO"
+	Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				      				 | Step 2 | Step 3 			   |
     | Subtab	 | Responsibilities 			 				 | 		  |		    		   |
     | Approver 1 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Program Approver   |
@@ -594,7 +658,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
- When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -614,7 +678,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
   	| Login		 | Grants Portal | SUBPORTAL	  |						  |					  |
   	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+   When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -645,7 +709,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 	Examples:
 	| Award Name 				     	    	|Grant Name                      |Type                  |
-	|Execution Grant for Automation    		    |Execution Grant for Automation  |	Subaward Review     |
+	|Permanent Award For Automation    		    |Permanent Award For Automation  |	Subaward Review     |
 	
 	@awardStanAloneApproval @awardStanAlone
   	Scenario Outline: Validate award Approval by respective approvers	
@@ -657,10 +721,11 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
     | Associate 3 | Performance | Associate | GrantorAwardGoalsObjectives					| Associate | SelectAwardGoals 		   		 |
+    When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
 	| Title                             | Start Date | End Date  |
 	| Automation Grant Focus Area       | 0		     |  500      |
-	|Permanent Focus Area for Automation|0           | 500       |
+	|Permanent Focus Area for Automation| 0          | 500       |
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
@@ -678,16 +743,24 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
     And I close Modal
   	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
-    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save    | Progress Report   |
     And I close Modal
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "flexGridSubawardContact"
+    When I check "Automation SPI" boxes in flex table with id "AssociateSubawardContacts"
+    When I click on top right button "Add" in flex table with id "AssociateSubawardContacts"
+    And I close Modal
+   	And I edit the following rows inline in flex table with id "flexGridSubawardContact" by clicking "Edit" :
+    | Title          | Project Role                    | 
+	| Automation SPI | Project Director/Manager		   |  
     And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
     | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
     | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
 	When I click on "Save" in the page details
-    Given I select "2" approvers "Automation PM,Automation FO"
+	Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				      				 | Step 2 | Step 3 			   |
     | Subtab	 | Responsibilities 			 				 | 		  |		    		   |
     | Approver 1 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Program Approver   |
@@ -698,7 +771,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+   When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -718,7 +791,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
   	| Login		 | Grants Portal | SUBPORTAL	  |						  |					  |
   	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -736,7 +809,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -767,7 +840,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     Then I see status in Progress-bar is "Approved" and is "green"
 	Examples:
 	| Award Name 				     	    	|Grant Name                      |Type                  |
-	| Execution Grant for Automation            |Execution Grant for Automation  |	Subaward Review     |
+	| Permanent Award For Automation            |Permanent Award For Automation  |	Subaward Review     |
 	
 	@awardStanAloneSendToRecipientAfterApproval @awardStanAlone
   	Scenario Outline: Validate award Approval by respective approvers	
@@ -779,10 +852,11 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
     | Associate 3 | Performance | Associate | GrantorAwardGoalsObjectives					| Associate | SelectAwardGoals 		   		 |
+    When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
-	| Title                             | Start Date | End Date    |
-	| Automation Grant Focus Area       | 0		     |  500        |
-	|Permanent Focus Area for Automation|0           | 500         |
+	| Title                             | Start Date | End Date  |
+	| Automation Grant Focus Area       | 0		     |  500      |
+	|Permanent Focus Area for Automation| 0          | 500       |
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
@@ -800,21 +874,24 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
     And I close Modal
   	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
-    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save    | Progress Report   |
     And I close Modal
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridSubawardContact"
     When I check "Automation SPI" boxes in flex table with id "AssociateSubawardContacts"
     When I click on top right button "Add" in flex table with id "AssociateSubawardContacts"
     And I close Modal
+   	And I edit the following rows inline in flex table with id "flexGridSubawardContact" by clicking "Edit" :
+    | Title          | Project Role                    | 
+	| Automation SPI | Project Director/Manager		   |  
     And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
     | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
     | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
 	When I click on "Save" in the page details
-    Given I select "2" approvers "Automation PM,Automation FO"
+	Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				      				 | Step 2 | Step 3 			   |
     | Subtab	 | Responsibilities 			 				 | 		  |		    		   |
     | Approver 1 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Program Approver   |
@@ -825,7 +902,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+   When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -840,12 +917,12 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     | Approver 2 | GrantorAwardRolesAndResponsibilities | Edit   | Fiscal Approver     |
     | Approver 3 | GrantorAwardRolesAndResponsibilities | Edit	 | Executive Approver  |
     And I click on "Send to Subrecipient" in the page details
-  	Given The subrecipient user "SPI" accepts the award "<Type2>" with comments "Automation Award accepted"
+  	Given The subrecipient user "SPI" accepts the award "<Type>" with comments "Automation Award accepted"
   	| Actions 	 | Step 1 		 | Step 2		  | Step 3 			      | Step 4			  |
   	| Login		 | Grants Portal | SUBPORTAL	  |						  |					  |
   	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+   When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -863,7 +940,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -902,10 +979,11 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
     | Associate 3 | Performance | Associate | GrantorAwardGoalsObjectives					| Associate | SelectAwardGoals 		   		 |
+    When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
-	| Title                                 | Start Date | End Date  |
-	| Automation Grant Focus Area           | 0		     |  500      |
-	|Permanent Focus Area for Automation    |0           | 500       |
+	| Title                             | Start Date | End Date  |
+	| Automation Grant Focus Area       | 0		     |  500      |
+	|Permanent Focus Area for Automation| 0          | 500       |
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
@@ -923,21 +1001,24 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
     And I close Modal
   	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
-    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save    | Progress Report   |
     And I close Modal
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridSubawardContact"
     When I check "Automation SPI" boxes in flex table with id "AssociateSubawardContacts"
     When I click on top right button "Add" in flex table with id "AssociateSubawardContacts"
     And I close Modal
+   	And I edit the following rows inline in flex table with id "flexGridSubawardContact" by clicking "Edit" :
+    | Title          | Project Role                    | 
+	| Automation SPI | Project Director/Manager		   |  
     And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
     | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
     | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
 	When I click on "Save" in the page details
-    Given I select "2" approvers "Automation PM,Automation FO"
+	Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				      				 | Step 2 | Step 3 			   |
     | Subtab	 | Responsibilities 			 				 | 		  |		    		   |
     | Approver 1 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Program Approver   |
@@ -986,7 +1067,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+   When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -1001,7 +1082,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	| Navigation | As a Grantor  | Grants	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 	 | 					 |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+   When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -1027,40 +1108,62 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
   	Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
+    Given I associate "3" records "FA--125,Automation Grant Focus Area,Permanent Objective Automation"
+	| Actions 	  | Step 1   	| Step 2	| Step 3  			  							| Step 4    | Step 5  				    	 |
+    | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
+    | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
+    | Associate 3 | Performance | Associate | GrantorAwardGoalsObjectives					| Associate | SelectAwardGoals 		   		 |
+    When I navigate to "Budget" sub tab
+    And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
+	| Title                             | Start Date | End Date  |
+	| Automation Grant Focus Area       | 0		     |  500      |
+	|Permanent Focus Area for Automation| 0          | 500       |
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
-  	| Funding Account | Award Encumbrance |
-	| FA--21 		  | 5000			  |
-  	Given I edit the Budget details in award for line item "Construction"
-  	| Budget Category | Cash Match |
-	| Construction    | 2000 	   | 
-  	And I navigate to "Management" sub tab
+  	| Funding Account | Encumbrance |
+	| FA--125 		  | 5000		|
+    And I edit the following rows inline in flex table with id "flexGridAwardBudgetCategoryFlexGrid" by clicking "Edit" :
+	| Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
+	| Construction    | 5000			 | 2000 	  | 3000		   |
+	Given I navigate to "Performance" sub tab
+	And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardKeyOutcomes" by clicking "Edit" :
+	| EGMS ID     | Target |
+	| KPI-0419    | 10     |
+	And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
 	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
     | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
     And I close Modal
   	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
-    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save    | Progress Report   |
     And I close Modal
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "flexGridSubawardContact"
+    When I check "Automation SPI" boxes in flex table with id "AssociateSubawardContacts"
+    When I click on top right button "Add" in flex table with id "AssociateSubawardContacts"
+    And I close Modal
+   	And I edit the following rows inline in flex table with id "flexGridSubawardContact" by clicking "Edit" :
+    | Title          | Project Role                    | 
+	| Automation SPI | Project Director/Manager		   |  
     And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
     | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
     | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
 	When I click on "Save" in the page details
-    Given I select "2" approvers "Automation PM,Automation FO"
+	Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				      				 | Step 2 | Step 3 			   |
     | Subtab	 | Responsibilities 			 				 | 		  |		    		   |
     | Approver 1 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Program Approver   |
-    | Approver 2 | GrantorRiskAssessmentRolesandResponsibilities | Edit	  | Executive Approver |
+    | Approver 2 | GrantorRiskAssessmentRolesandResponsibilities | Edit	  | Fiscal Approver    |
     And I click on "Submit for Approval" in the page details
-    Given "2" Approvers "PM,FO" approve the record "Approve Risk Assessment"
+    Given "2" Approvers "PM,FO" approve the record "Approve Subaward Risk Assessment"
 	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+   When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -1089,7 +1192,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+   When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -1103,7 +1206,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	| Navigation | As a Grantor  | Grants	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 	 | 					 |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+   When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -1116,7 +1219,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
   	| Actions 	 | Step 1 | Step 2		  | Step 3 			      | Step 4			  |
   	| Navigation | Grants | Pending Tasks | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start  | Accept		  | Accept after Approval | OK				  |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+   When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -1127,8 +1230,8 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	When I click on "Activate" in the page details
 	Then I see that "Subaward" is in "Activated" status  	
 	Examples:
-	| Award Name 				     	    	|Grant Name                    |     Type2           |
-	| Execution Grant for Automation            |Permanent Award For Automation|	Subaward Review     |
+	| Award Name 				     	    	|Grant Name                    |     Type               |
+	| Permanent Award For Automation            |Permanent Award For Automation|	Subaward Review     |
 	
 	@awardStanAloneSiteVisit @awardStanAlone
   	Scenario Outline: Validate award Approval by respective approvers	
@@ -1140,6 +1243,11 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
     | Associate 3 | Performance | Associate | GrantorAwardGoalsObjectives					| Associate | SelectAwardGoals 		   		 |
+    When I navigate to "Budget" sub tab
+    And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
+	| Title                             | Start Date | End Date  |
+	| Automation Grant Focus Area       | 0		     |  500      |
+	|Permanent Focus Area for Automation| 0          | 500       |
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
@@ -1157,21 +1265,24 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
     And I close Modal
   	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
-    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save    | Progress Report   |
     And I close Modal
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridSubawardContact"
     When I check "Automation SPI" boxes in flex table with id "AssociateSubawardContacts"
     When I click on top right button "Add" in flex table with id "AssociateSubawardContacts"
     And I close Modal
+   	And I edit the following rows inline in flex table with id "flexGridSubawardContact" by clicking "Edit" :
+    | Title          | Project Role                    | 
+	| Automation SPI | Project Director/Manager		   |  
     And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
     | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
     | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
 	When I click on "Save" in the page details
-    Given I select "2" approvers "Automation PM,Automation FO"
+	Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				      				 | Step 2 | Step 3 			   |
     | Subtab	 | Responsibilities 			 				 | 		  |		    		   |
     | Approver 1 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Program Approver   |
@@ -1182,7 +1293,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
- When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -1202,7 +1313,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
   	| Login		 | Grants Portal | SUBPORTAL	  |						  |					  |
   	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -1220,7 +1331,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+   When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -1230,12 +1341,12 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I click on "View" icon for "<Award Name>" inside flex table with id "RelatedAwards1"
   	Given I click on "Complete Review" in the page details
   	And I click on "Submit for Approval" in the page details
-  	Given "3" Approvers "PM,FO,EXE" approve the record "<Type1>
+  	Given "3" Approvers "PM,FO,EXE" approve the record "<Type1>"
 	| Actions 	 | Step 1 	  	 | Step 2	 | Step 3  	 		 |
 	| Navigation | As a Grantor  | Grants	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 	 | 					 |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+   When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -1249,7 +1360,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
   	| Login		 | Grants Portal | SUBPORTAL	  |						  |					  |
   	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -1266,7 +1377,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     Then I see status in Progress-bar is "Created" and is "green"
 	Examples:
 	| Award Name 				     	    	|Grant Name                    |     Type               |Type1                   |Type2            |
-	| Execution Grant for Automation            |Permanent Award For Automation|	Subaward Review     |Approve Grantor Subaward|	Subaward Review|
+	| Permanent Award For Automation            |Permanent Award For Automation|	Subaward Review     |Approve Grantor Subaward|	Subaward Review|
 	
 	@awardStandAloneDeskReview @awardStandAlone
   	Scenario Outline: Validate award Approval by respective approvers	
@@ -1278,10 +1389,11 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     | Associate 1 | Budget   	| Associate | flexGridAwardFundingAccounts	   			    | Add	    | SelectAwardFundingAccounts     |
     | Associate 2 | Budget	 	| Associate | inlineEditGridGrantorAwardServiceAreas		| Associate | popupflextableGAT				 |
     | Associate 3 | Performance | Associate | GrantorAwardGoalsObjectives					| Associate | SelectAwardGoals 		   		 |
-  	And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
+    When I navigate to "Budget" sub tab
+    And I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
 	| Title                             | Start Date | End Date  |
-	| Automation Grant Focus Area       |  0		 |  500      |
-    |Permanent Focus Area for Automation|  0         | 500       |
+	| Automation Grant Focus Area       | 0		     |  500      |
+	|Permanent Focus Area for Automation| 0          | 500       |
   	And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "flexGridAwardFundingAccounts" by clicking "Edit" :
   	| Funding Account | Encumbrance |
@@ -1299,21 +1411,24 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     | Creation | Management | flexGridPaymentSchedules | Edit   | Save | Payment Request    |
     And I close Modal
   	Given I create a monitoring record from sheet "Progress Report Schedule" in excel "Award_Field_Values.xlsx"
-	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4 		  | Step 5 |
-    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save | Progress Report   |
+	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4  | Step 5 |
+    | Creation | Management | flexGridTnCSchedules	   | Edit   | Save    | Progress Report   |
     And I close Modal
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridSubawardContact"
     When I check "Automation SPI" boxes in flex table with id "AssociateSubawardContacts"
     When I click on top right button "Add" in flex table with id "AssociateSubawardContacts"
     And I close Modal
+   	And I edit the following rows inline in flex table with id "flexGridSubawardContact" by clicking "Edit" :
+    | Title          | Project Role                    | 
+	| Automation SPI | Project Director/Manager		   |  
     And I navigate to "Management" sub tab
   	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
     | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
     | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
 	When I click on "Save" in the page details
-    Given I select "2" approvers "Automation PM,Automation FO"
+	Given I select "2" approvers "Automation PM,Automation FO"
     | Actions 	 | Step 1   				      				 | Step 2 | Step 3 			   |
     | Subtab	 | Responsibilities 			 				 | 		  |		    		   |
     | Approver 1 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Program Approver   |
@@ -1324,7 +1439,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 		 | 					 |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -1339,12 +1454,12 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     | Approver 2 | GrantorAwardRolesAndResponsibilities | Edit   | Fiscal Approver     |
     | Approver 3 | GrantorAwardRolesAndResponsibilities | Edit	 | Executive Approver  |
     And I click on "Send to Subrecipient" in the page details
-  	Given The subrecipient user "SPI" accepts the award "<Type> with comments "Automation Award accepted"
+  	Given The subrecipient user "SPI" accepts the award "<Type>" with comments "Automation Award accepted"
   	| Actions 	 | Step 1 		 | Step 2		  | Step 3 			      | Step 4			  |
   	| Login		 | Grants Portal | SUBPORTAL	  |						  |					  |
   	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -1362,7 +1477,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	| Reviewer Navigation | As a Grantor        | Grants		 					  | Pending Tasks 		  		 | My Tasks 	   |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridGrantorAwardReviewer | Enter Review    | 
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	Save		  		  		 | Submit Review   |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -1377,7 +1492,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	| Navigation | As a Grantor  | Grants	 | 				  	 |
 	| FlexTable  | Pending Tasks | My Tasks  | PhasePendingTasks |
 	| Approval 	 | Start 		 | Approve 	 | 					 |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+   When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -1391,7 +1506,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
   	| Login		 | Grants Portal | SUBPORTAL	  |						  |					  |
   	| Navigation | Grants 		 | Pending Tasks  | My Tasks			  | PhasePendingTasks |
   	| Acceptance | Start  		 | Accept		  | Accept after Approval | OK				  |
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I navigate to "Grants" tab
 	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
 	And I click toggle button to select "Draft Grants"
@@ -1408,7 +1523,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     Then I see status in Progress-bar is "Created" and is "green"
 	Examples:
 	| Award Name 				     	  |Grant Name                     |     Type               |Type1                   |Type2             |
-	|Execution Grant for Automation       |	Permanent Award For Automation|	Subaward Review        |Approve Grantor Subaward|	Subaward Review|
+	|Permanent Award For Automation       |	Permanent Award For Automation|	Subaward Review        |Approve Grantor Subaward|	Subaward Review|
 	
 	@awardHappyPathStandAlone @awardStandAlone
   	Scenario Outline: Validate award Approval by respective approvers	

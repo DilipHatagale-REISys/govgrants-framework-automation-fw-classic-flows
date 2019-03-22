@@ -123,13 +123,6 @@ Feature: Validate all scenarios for program
     | Subtab	 | Responsibilities 			   | 		|		    		  |
     | Approver 1 | ProgramRolesAndResponsibilities | Edit   | Program Approver    |
     | Approver 2 | ProgramRolesAndResponsibilities | Edit	| Executive Approver  |
-   # When I navigate to "Setup" sub tab
-   # When I enter the following values into flex table with id "flexGridProgramChecklists" by clicking "Add" :
-   # | Description        		  | Required  | Applies To  | Status |
-   # | Automation test description | Mandatory | Application | Active |    
-   # When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "flexGridProgramChecklists"
-   # And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-   # When I close Modal 
     Given I add an attachment "InternalOrganization_Field_Values.xlsx"
     | Actions 			    | Step 1 	  | Step 2	 		  | Step 3 			   |	
     | Attachment Navigation | Attachments | Add				  | a150b000003epY5AAI |
@@ -154,13 +147,6 @@ Feature: Validate all scenarios for program
     | Subtab	 | Responsibilities 			   | 		|		    		  |
     | Approver 1 | ProgramRolesAndResponsibilities | Edit   | Program Approver    |
     | Approver 2 | ProgramRolesAndResponsibilities | Edit	| Executive Approver  |
-    #When I navigate to "Setup" sub tab
-    #When I enter the following values into flex table with id "flexGridProgramChecklists" by clicking "Add" :
-    #| Description        		  | Required  | Applies To  | Status |
-    #| Automation test description | Mandatory | Application | Active |    
-    #When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "flexGridProgramChecklists"
-    #And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    #When I close Modal 
     Given I add an attachment "InternalOrganization_Field_Values.xlsx"
     | Actions 			    | Step 1 	  | Step 2	 		  | Step 3 			   |	
     | Attachment Navigation | Attachments | Add				  | a150b000003epY5AAI |
@@ -199,13 +185,6 @@ Feature: Validate all scenarios for program
     | Subtab     | Responsibilities                |        |                     |
     | Approver 1 | ProgramRolesAndResponsibilities | Edit   | Program Approver    |
     | Approver 2 | ProgramRolesAndResponsibilities | Edit   | Executive Approver  |
-    #When I navigate to "Setup" sub tab
-    #When I enter the following values into flex table with id "flexGridProgramChecklists" by clicking "Add" :
-    #| Description        		   | Required  | Applies To    | Status |
-    #| Automation test description | Mandatory | Award  	   | Active |
-    #When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "flexGridProgramChecklists"
-    #And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    #When I close Modal 
     Given I add an attachment "InternalOrganization_Field_Values.xlsx"
     | Actions               | Step 1      | Step 2            | Step 3                   | 
     | Attachment Navigation | Attachments | Add               | a150b000003epY5AAI       |
