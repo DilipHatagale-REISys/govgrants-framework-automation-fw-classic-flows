@@ -14,7 +14,7 @@ public class AmendmentRequestSteps {
     public AmendmentRequestSteps(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
         amendmentRequestPage = new AmendmentRequestPage(controller, handler, govgrants);
     }
-    
+
     @Given("^I create Amendment Request from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
     public void creationOfAmendmentRequest(String sheetName, String excelFileName, DataTable dataTable) {
         amendmentRequestPage.creationOfAmendmentRequest(sheetName, excelFileName, dataTable);

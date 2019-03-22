@@ -16,7 +16,7 @@ public class MonitoringPage extends ProjectManager {
     }
 
     public void navigateToMonitoringRecord(String user, String recordName, String awardName, String awardId,
-            DataTable dataTable) throws IOException {
+                                           DataTable dataTable) throws IOException {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         govgrants.mainPage().reloginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
@@ -30,13 +30,13 @@ public class MonitoringPage extends ProjectManager {
     }
 
     public void creationOfAdhocPaymentRequest(String paymentRequestType, String sheetName, String excelName,
-            DataTable dataTable) {
+                                              DataTable dataTable) {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         govgrants.pageDetails().clickSubTabsInsideTableView(dataTableMap.get("Navigation").get("Step 1"));
-        if(paymentRequestType.equals("Reimbursement")) {
+        if (paymentRequestType.equals("Reimbursement")) {
             govgrants.flexTable().clickTableTopRightButton(dataTableMap.get("FlexTable").get("Step 1"),
-                dataTableMap.get("Navigation").get("Step 2"));
-        } else if(paymentRequestType.equals("Advance")) {
+                    dataTableMap.get("Navigation").get("Step 2"));
+        } else if (paymentRequestType.equals("Advance")) {
             govgrants.flexTable().clickTableTopRightButton(dataTableMap.get("FlexTable").get("Step 1"),
                     dataTableMap.get("Navigation").get("Step 3"));
         }
@@ -44,8 +44,8 @@ public class MonitoringPage extends ProjectManager {
         govgrants.modal().clickModalContentSpecificButton(dataTableMap.get("FlexTable").get("Step 2"));
         govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("FlexTable").get("Step 3"));
     }
-    
-    public void creationOfCloseoutRequest(String sheetName, String excelName,  DataTable dataTable) {
+
+    public void creationOfCloseoutRequest(String sheetName, String excelName, DataTable dataTable) {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         govgrants.pageDetails().clickSubTabsInsideTableView(dataTableMap.get("Sub tab").get("Step 1"));
         govgrants.flexTable().clickTableTopRightButton(dataTableMap.get("FlexTable").get("Step 2"),

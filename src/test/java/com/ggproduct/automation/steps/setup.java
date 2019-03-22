@@ -2,6 +2,7 @@ package com.ggproduct.automation.steps;
 
 import java.awt.AWTException;
 import java.io.IOException;
+
 import com.automation.rei.controller.SetupController;
 import com.ggproduct.automation.projectmanager.UsersAndURL;
 import cucumber.api.Scenario;
@@ -10,12 +11,12 @@ import cucumber.api.java.Before;
 import eyethink.automation.bots.controller.Controller;
 
 /**
- * @for REI-Systems
  * @author nauman.shahid
+ * @for REI-Systems
  * @category Handle browser initialization , appium , hooks and environments
  */
 
-public class setup { 
+public class setup {
     private SetupController setupController;
 
     public setup(Controller controller) {

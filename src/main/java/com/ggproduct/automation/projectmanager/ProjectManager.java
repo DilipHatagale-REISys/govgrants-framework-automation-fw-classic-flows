@@ -9,20 +9,19 @@ import eyethink.automation.bots.controller.CoreHandlers;
 
 /**
  * for Rei Systems
- * 
+ *
  * @author Handles generic/common methods and WebElements of the project.
- * 
  */
 public class ProjectManager extends ProjectWebServices {
     public CoreHandlers reiDriver;
     public Controller controller;
     public GovGrantsHandler govgrants;
     public final String defaultLongText = "Automation test description";
-    public String egmsId;   
+    public String egmsId;
 
     /**
      * Super Constructor
-     * 
+     *
      * @param controller
      * @param reiDriver
      */
@@ -38,14 +37,14 @@ public class ProjectManager extends ProjectWebServices {
      ***/
 
     /******* "Key Methods with complete functionality" *****************/
-    
+
     public void getRecordId(String recordIdLabel) {
         govgrants.pageDetails().getRecordId(recordIdLabel);
     }
-    
+
     /**
      * Handles association of various related records
-     * 
+     *
      * @param recordName
      * @param recordUniqueName
      * @param buttonName
@@ -62,7 +61,7 @@ public class ProjectManager extends ProjectWebServices {
 
     /**
      * Handles entering the comments in a confirmation box and click OK
-     * 
+     *
      * @param comments
      * @param confirmation
      */
@@ -70,13 +69,13 @@ public class ProjectManager extends ProjectWebServices {
         reiDriver.findMyElement().getElement(By.xpath("//form[@class='bootbox-form']//textarea")).sendKeys(comments);
         govgrants.modal().handleModalAlert(confirmation);
     }
-    
+
     public void attemptDeletion(String columnValues, String tableId) {
-    	try {
-    		govgrants.flexTable().clickTableActionIcon(tableId, "Delete", columnValues);
-    	} catch (Exception e) {	
-    	}
+        try {
+            govgrants.flexTable().clickTableActionIcon(tableId, "Delete", columnValues);
+        } catch (Exception e) {
+        }
     }
 
-    
+
 }

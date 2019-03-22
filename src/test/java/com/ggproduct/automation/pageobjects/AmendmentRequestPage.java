@@ -14,7 +14,7 @@ public class AmendmentRequestPage extends ProjectManager {
     public AmendmentRequestPage(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
         super(controller, handler, govgrants);
     }
-    
+
     @Given("^I create Amendment Request \"([^\"]*)\" from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
     public void creationOfAmendmentRequest(String sheetName, String excelFileName, DataTable dataTable) {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);

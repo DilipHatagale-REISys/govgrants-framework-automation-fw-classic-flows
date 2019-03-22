@@ -14,10 +14,10 @@ public class AnnouncementSteps {
     public AnnouncementSteps(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
         announcementPage = new AnnouncementPage(controller, handler, govgrants);
     }
-    
+
     @Given("^I add Budget Period Details \"([^\"]*)\" from sheet \"([^\"]*)\" in excel \"([^\"]*)\" to an announcement$")
     public void addBudgetPeriodToAnnouncement(String budgetPeriod, String sheetName, String excelFileName, DataTable dataTable) {
         announcementPage.addBudgetPeriodToAnnouncement(budgetPeriod, sheetName, excelFileName, dataTable);
     }
-    
+
 }
