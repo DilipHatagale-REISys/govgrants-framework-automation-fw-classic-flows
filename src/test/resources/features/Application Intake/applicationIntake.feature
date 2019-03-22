@@ -2,16 +2,18 @@
 Feature: Validate all scenarios in the Application Intake
 
 	Background: Qualify Announcement and Create Application
-	Given I delete the record "Automation Application" from the object "Application"
-	And I delete the record "Automation Announcement" from the object "Qualified Announcement"
+	Given I delete the record "Execution Announcement(Dr) for Automation" from the object "Application"
+	And I delete the record "Execution Announcement(Dr) for Automation" from the object "Qualified Announcement"
 	Given I am on "SUBPORTAL" portal
-	And I qualify the announcement "Automation Announcement" as user "SPI"
+	And I qualify the announcement "Execution Announcement(Dr) for Automation" as user "SPI"
 	| Actions 	 | Step 1 	      | Step 2		  | Step 3  | Step 4 	    |
 	| Navigation | Grants Portal  | Opportunities | Active  | Opportunities |
 	| FlexTable  | popupflextable | View		  | Qualify | 				|
-	Given I create an Application from sheet "Creation" in excel "Application_Field_Values.xlsx"
-	| Actions | Step 1 	       | Step 2		    	    | Step 3 |
-	|Creation | Create Application | Save and Continue  | Save   |
+	When I click on "Create Application" in the page details
+	And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    Then I see that "Execution Announcement(Dr) for Automation" is in "Created" status
+
 
   	@34044 @applicationCreation @applicationIntake @all
   	Scenario: Creating an Application
@@ -24,30 +26,22 @@ Feature: Validate all scenarios in the Application Intake
 	When I click on "Save" in the page details
 	Then I see status in Progress-bar is "Created" and is "green"
 	
-  	@34303 @addFocusAreaToApplication @applicationIntake @all
+  	@34303 @addFocusAreaToApplication @applicationIntake @all @notFunctional
   	Scenario Outline: Addition of Focus area to an application
     When I navigate to "Budget" sub tab
-    And I click on top right button "Add Focus Area" in flex table with id "FocusAreaApp"
-    When I click "Add" after selection of "<EGMS Id>" in the table "AddAppProjects"
-    And I switch to Parent frame
     Then I see that "<EGMS Id>" has been added in flextable with Id "FocusAreaApp"
 	Examples:
 	| EGMS Id |
-	| 00005   |
+	| 03677 |
 
   	@addBudgetDetailsToApplication @applicationIntake @all
-  	Scenario Outline: Addition of budget in the budget grid to an application
-  	Given I associate "1" records "02493"
-	| Actions 	  | Step 1 | Step 2	   	    | Step 3  	   | Step 4  | Step 5  		  |
-    | Associate 1 | Budget | Add Focus Area | FocusAreaApp | Add	 | AddAppProjects |
+  	Scenario: Addition of budget in the budget grid to an application
   	When I navigate to "Budget" sub tab
-    And I expand nested table containing column value "Proposed Budget" inside nested table containing "BP01"
+    And I expand nested table containing column value "BP01"
+    When I pause execution
     When I edit the following rows inline in flex table with id "flexGridEnhanceAppBudCatGrantorFlexGrid" by clicking "Edit" :
-	| Category Name | Budget | Cash Match | Non-Cash Match |
-	| Construction	| 5000 	 | 1000   	  | 3000 		   | 
-	Examples:
-	| Application Name 											 | Flextable Name |
-	| Automation Announcement for Application Intake Application | Budget Details |
+	| Category Name | Budget | Cash Match | Non-Cash Match |Other Leverage|
+	| Construction	| 5000 	 | 1000   	  | 3000 		   | 100          |
 	
   	@addTargetToKPIInApplication @applicationIntake @all
   	Scenario Outline: Addition of KPI target to an application 
@@ -55,11 +49,10 @@ Feature: Validate all scenarios in the Application Intake
     When I edit the following rows inline in flex table with id "flexGridRecipientApplicationRelatedKPIs" by clicking "Edit" :
 	| EGMS ID  | Target |
 	| KPI-0419 | 10		|
-	| KPI-0420 | 10		|
 	Then I see that "10" has been added in flextable with Id "flexGridRecipientApplicationRelatedKPIs"
 	Examples:
-	| Application Name 	   | Flextable Name |
-	| Automation App Dec10 | Budget Details |
+	| Application Name 	                         | Flextable Name |
+	| Execution Announcement(Dr) for Automation  | Budget Details |
 	
 	@formFillingApplication @applicationIntake @all
     Scenario: To fill and complete the form in Progress Report
@@ -72,7 +65,6 @@ Feature: Validate all scenarios in the Application Intake
     When I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    Then I see that "100.00%" has been added in flextable with Id "FormComponent"
 	
   	@uploadAttachmentForChecklistInApplication @applicationIntake @all
   	Scenario: Attaching a document for attachment checklist in an application
@@ -80,27 +72,20 @@ Feature: Validate all scenarios in the Application Intake
     And I click on "Attach" icon for "Not Applicable" inside flex table with id "inlineEditGridApplicationChecklists"
     When I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Application"
     And I close Modal
-    When I click on "Attach" icon for "Not Applicable" inside flex table with id "inlineEditGridApplicationChecklists"
-    And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Application"
-    When I close Modal
 	
   	@34156 @submitApplication @applicationIntakeHappyPath @applicationIntake @all
   	Scenario: Submitting an application to Grantor
 	Given I complete the fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
 	| Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "02493"
-	| Actions 	  | Step 1 | Step 2	   	    | Step 3  	   | Step 4  | Step 5  		  |
-    | Associate 1 | Budget | Add Focus Area | FocusAreaApp | Add	 | AddAppProjects |
 	Given I expand nested table containing column value "BP01"
 	And I edit the following rows inline in flex table with id "flexGridEnhanceAppBudCatGrantorFlexGrid" by clicking "Edit" :
-	| Category Name | Budget | Cash Match | Non-Cash Match |
-	| Construction	| 5000 	 | 1000   	  | 3000 		   |
+	| Category Name | Budget | Cash Match | Non-Cash Match |Other Leverage|
+	| Construction	| 5000 	 | 1000   	  | 3000 		   |  100           | 
 	When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "flexGridRecipientApplicationRelatedKPIs" by clicking "Edit" :
 	| EGMS ID  | Target |
 	| KPI-0419 | 10		|
-	| KPI-0420 | 10		|
 	Given I upload "1" checklist document "Announcement_Field_Values.xlsx"
 	| Actions 	 | Step 1 							   | Step 2		 | Step 3 	      |
 	| Navigation | Attachments 						   | 			 |				  |
@@ -123,18 +108,14 @@ Feature: Validate all scenarios in the Application Intake
   	Given I complete the fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
 	| Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "02493"
-	| Actions 	  | Step 1 | Step 2	   	    | Step 3  	   | Step 4  | Step 5  		  |
-    | Associate 1 | Budget | Add Focus Area | FocusAreaApp | Add	 | AddAppProjects |
-	Given I expand nested table containing column value "Proposed Budget" inside nested table containing "BP01"
-	And I edit the following rows inline in flex table with id "inlineEditGridApplicationBudgetCategoryGrantorFlexGrid" by clicking "Edit" :
+	Given I expand nested table containing column value "BP01" inside nested table containing "Proposed Budget"  
+	And I edit the following rows inline in flex table with id "flexGridEnhanceAppBudCatGrantorFlexGrid" by clicking "Edit" :
 	| Category Name | Budget | Cash Match | Non-Cash Match |
 	| Construction	| 5000 	 | 1000   	  | 3000 		   |
 	When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "flexGridRecipientApplicationRelatedKPIs" by clicking "Edit" :
 	| EGMS ID  | Target |
 	| KPI-0419 | 10		|
-	| KPI-0420 | 10		|
 	Given I upload "1" checklist document "Announcement_Field_Values.xlsx"
 	| Actions 	 | Step 1 							   | Step 2		 | Step 3 	      |
 	| Navigation | Attachments 						   | 			 |				  |
@@ -157,5 +138,5 @@ Feature: Validate all scenarios in the Application Intake
 	And I perform quick search for "<Application Name>" in "ApplicantGrantorApplications" panel
 	When I click on "View" icon for "<Application Name>" inside table
 	Examples:
-	| User | Application Name       |
-	| EXE  | Automation Application |
+	| User | Application Name                          |
+	| EXE  | Execution Announcement(Dr) for Automation |

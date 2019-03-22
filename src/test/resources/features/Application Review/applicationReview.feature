@@ -1,23 +1,20 @@
 @applicationReview
 Feature: Validate all scenarios in the Application Review
 
-	@preScreenApplicationReview @applicationReview
+    @preScreenApplicationReview @applicationReview
   	Scenario Outline: Pre-Screen review for an application
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Applications" tab
 	And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-	When I click toggle button to select "Applications Under Review"
-    And I perform quick search for "<Announcement Name>" in "flexTableRandomID1" panel
+    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
     When I click on "View" icon for "<Announcement Name>" inside table
     And I navigate to "Related Logs" sub tab
-    And I click on "View" icon for "<Review Step Name>" inside flex table with id "AnnouncementReviewStepsFlexToggle"
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    When I click "Yes" on the confirmation dialog box
+    And I click on "View" icon for "<Review Step Name>" inside flex table with id "flexGridAnnouncementReviewSteps"
+    When I check "<Application Name>" boxes in flex table with id "RelatedFOApplications"
     Then I see that "Review Step" is in "Completed" status
 	Examples:
-	| User | Announcement Name  	 | Review Step Name  | Application Name 				   |
-	| EXE  | Automation Announcement | Pre-Screen Review | Automation Announcement Application |
+	| User | Announcement Name  	                  | Review Step Name  | Application Name 				         |
+	| EXE  |Permanent Announcement(Dr) for Automation | Pre-Screen Review | Execution Application for Automation     |
 	
 	@smeReviewEnterDueInDays @applicationReview
 	Scenario Outline: Enter Due in Days for all review forms in SME-review
@@ -35,8 +32,8 @@ Feature: Validate all scenarios in the Application Review
 	| Compliance Review | 10   		  |
 	Then I see that "SME Review" is in "In Progress" status
 	Examples: 
-	| User | Announcement Name  				   | Application Name 	            	    			|
-	| EXE  | Automation Announcement to be deleted | Automation Announcement to be deleted Application  |
+	| User | Announcement Name  				       | Application Name 	                   |
+	| EXE  | Permanent Announcement(Dr) for Automation | Execution Application for Automation  |
 	    
 	@38463 @smeReviewAddReviewer @applicationReview
 	Scenario Outline: Add a reviewer to each review step in SME Review
@@ -60,7 +57,7 @@ Feature: Validate all scenarios in the Application Review
     Then I see that "SME Review" is in "In Progress" status
     Examples: 
 	| User | Announcement Name  				   | Application Name 	            	    			|
-	| EXE  | Automation Announcement to be deleted | Automation Announcement to be deleted Application  |
+	| EXE  | Permanent Announcement(Dr) for Automation | Execution Application for Automation  |
 	
 	@38462 @smeReviewAssignApplicationToReviewer @applicationReview
 	Scenario Outline: Add a reviewer to each review step in SME Review
@@ -89,7 +86,7 @@ Feature: Validate all scenarios in the Application Review
 	Then I see that "SME Review" is in "In Progress" status
 	Examples: 
 	| User | Announcement Name  				   | Application Name 	            	    			|
-	| EXE  | Automation Announcement to be deleted | Automation Announcement to be deleted Application  |
+	| EXE  | Permanent Announcement(Dr) for Automation | Execution Application for Automation  |
 	
 	@38464 @smeReviewSendForReview @applicationReview
 	Scenario Outline: Choose the reviews and send for review in SME Review
@@ -120,7 +117,7 @@ Feature: Validate all scenarios in the Application Review
 	Then I see that "SME Review" is in "In Progress" status
 	Examples: 
 	| User | Announcement Name  				   | Application Name 	            	    			|
-	| EXE  | Automation Announcement to be deleted | Automation Announcement to be deleted Application  |
+	| EXE  | Permanent Announcement(Dr) for Automation | Execution Application for Automation  |
 	
 	@smeReviewCompleteReviewForm @applicationReview
 	Scenario Outline: Complete Review form as Various reviewers in SME Review
@@ -176,7 +173,7 @@ Feature: Validate all scenarios in the Application Review
 	Then I see that "SME Review" is in "In Progress" status
 	Examples: 
 	| User | Announcement Name  				   | Application Name 	            	    			|
-	| EXE  | Automation Announcement to be deleted | Automation Announcement to be deleted Application  |
+	| EXE  | Permanent Announcement(Dr) for Automation | Execution Application for Automation  |
 	    
 	@promoteToNextFromSMEReview @applicationReview
   	Scenario Outline:Promoting from Pre-Screen review to the next review step for an application
@@ -271,7 +268,7 @@ Feature: Validate all scenarios in the Application Review
 	Then I see that "Management Review" is in "In Progress" status
 	Examples: 
 	| User | Announcement Name  				   | Application Name 	            	    			|
-	| EXE  | Automation Announcement to be deleted | Automation Announcement to be deleted Application  |
+	| EXE  | Permanent Announcement(Dr) for Automation | Execution Application for Automation  |
 		
 	@managementReviewAddReviewer @applicationReview
 	Scenario Outline: Add a reviewer to each review step in Management Review
@@ -320,7 +317,7 @@ Feature: Validate all scenarios in the Application Review
     | Automation EXE  |
 	Examples: 
 	| User | Announcement Name  				   | Application Name 	            	    			|
-	| EXE  | Automation Announcement to be deleted | Automation Announcement to be deleted Application  |
+	| EXE  | Permanent Announcement(Dr) for Automation | Execution Application for Automation  |
 		
 	@managementReviewAssignApplicationToReviewer @applicationReview
 	Scenario Outline: Add a reviewer to each review step in management Review
@@ -374,7 +371,7 @@ Feature: Validate all scenarios in the Application Review
     | Application | Assign 		      | flexGridAssignPanelApplications		          |	
 	Examples: 
 	| User | Announcement Name  				   | Application Name 	            	    			|
-	| EXE  | Automation Announcement to be deleted | Automation Announcement to be deleted Application  |
+	| EXE  | Permanent Announcement(Dr) for Automation | Execution Application for Automation  |
 		
 	@managementReviewSendForReview @applicationReview
 	Scenario Outline: Choose the reviews and send for review in Management Review
@@ -430,7 +427,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
 	Examples: 
 	| User | Announcement Name  				   | Application Name 	            	    			|
-	| EXE  | Automation Announcement to be deleted | Automation Announcement to be deleted Application  |
+	| EXE  | Permanent Announcement(Dr) for Automation | Execution Application for Automation  |
 	
 	@managementReviewCompleteReviewForm @applicationReview
 	Scenario Outline: Complete Review form as Various reviewers in Management Review
@@ -494,8 +491,8 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Save" in the page details
     When I click on "Submit" in the page details
 	Examples: 
-	| User | Announcement Name  				   | Application Name 	            	    			|
-	| EXE  | Automation Announcement to be deleted | Automation Announcement to be deleted Application  |
+	| User | Announcement Name  				       | Application Name 	               |
+	| EXE  | Permanent Announcement(Dr) for Automation         | Execution Application for Automation      |
 	    
 	@promoteToFDMFromManagementReview @applicationReview
   	Scenario Outline:Promoting from Last review step review to the FDM step for an application
