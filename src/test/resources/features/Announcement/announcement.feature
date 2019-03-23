@@ -611,19 +611,19 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--78"
+    And I associate "1" records "FA--125"
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Pre-Encumbrance |
-	| FA--78		  | 100 			|
+	| FA--125		  | 100 			|
 	When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
 	| Budget Period Name     | Start Date         | End Date        |
 	| BP01                   | 03/20/2019         | 03/21/2020      |
-	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	Given I associate "3" records "Automation EXE,03709,SPO-0130"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
     | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
@@ -682,19 +682,19 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--78"
+	And I associate "1" records "FA--125"
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Pre-Encumbrance |
-	| FA--78 		  | 100 			|
+	| FA--125 		  | 100 			|
 	When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
 	| Budget Period Name     | Start Date         | End Date        |
 	| BP01                   | 03/20/2019         | 03/21/2020      |
-	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	Given I associate "3" records "Automation EXE,03709,SPO-0130"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
     | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
@@ -740,19 +740,19 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--78"
+	And I associate "1" records "FA--125"
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Pre-Encumbrance |
-	| FA--78 		  | 100 			|
+	| FA--125 		  | 100 			|
 	When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
 	| Budget Period Name     | Start Date         | End Date        |
 	| BP01                   | 03/20/2019         | 03/21/2020      |
-	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	Given I associate "3" records "Automation EXE,03709,SPO-0130"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
     | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
@@ -801,13 +801,13 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--78"
+	And I associate "1" records "FA--125"
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Pre-Encumbrance |
-	| FA--78 		  | 100 			|
-	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	| FA--125 		  | 100 			|
+	Given I associate "3" records "Automation EXE,03709,SPO-0130"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
     | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
@@ -854,19 +854,19 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--78"
+	And I associate "1" records "FA--125"
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Pre-Encumbrance |
-	| FA--78 		  | 100 			|
+	| FA--125 		  | 100 			|
 	When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
 	| Budget Period Name     | Start Date         | End Date        |
 	| BP01                   | 03/20/2019         | 03/21/2020      |
-	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	Given I associate "3" records "Automation EXE,03709,SPO-0130"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
     | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
@@ -901,23 +901,23 @@ Feature: Validate all scenarios in the Announcement tab
 	| Enter Review		  | Sent for Review	    | Passed	  					      | Save	              | Submit Review   |
 	Given I login and view the record "Record id" as "EXE"
 	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  			  | Step 4 		    |
-	| Owner Navigation 	  | As a Grantor 		| Announcements 					  | <Announcement Type> | Announcements   |
+	| Owner Navigation 	  | As a Grantor 		| Announcements 					  | <Announcement Type>               | Announcements   |
 	| Complete Review 	  | Draft Announcements | <Active Funding Opportunities id>   | View 		  		              | 				|
 	Given I click on "Complete Review" in the page details
 	And I click on "Submit For Approval" in the page details
-	Given I re-login to "As a Grantor" app as "PM" user
+	Given I re-login to "As a Grantor" app as "Automation PM" user
 	When I navigate to "Announcements" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
     And I click on "Start" icon for "Record id" inside table
     When I click on "Approve" on the approval decision box
-    And I re-login to "As a Grantor" app as "FO" user
+    And I re-login to "As a Grantor" app as "Automation FO" user
 	When I navigate to "Announcements" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
     And I click on "Start" icon for "Record id" inside table 
     When I click on "Approve" on the approval decision box
-    And I re-login to "As a Grantor" app as "EXE" user
+    And I re-login to "As a Grantor" app as "Automation EXE" user
 	When I navigate to "Announcements" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
@@ -927,8 +927,8 @@ Feature: Validate all scenarios in the Announcement tab
 	Examples:
     |Announcement Type|Active Funding Opportunities id    |
     |Formula          |ActiveFundingOpportunitiesFormula  |
-	|Directed         |ActiveFundingOpportunities         |
-	|Competitive      |ActiveFundingOpportunitiesCompitive|
+	#|Directed         |ActiveFundingOpportunities         |
+	#|Competitive      |ActiveFundingOpportunitiesCompitive|
 	
 	@announcementPendingTaskPostApproval @announcement @all
 	Scenario Outline: Validate that after approval of an Announcement task get deleted from pending task table.
@@ -943,19 +943,19 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--78"
+	And I associate "1" records "FA--125"
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Pre-Encumbrance |
-	| FA--78 		  | 100 			|
+	| FA--125 		  | 100 			|
 	When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
 	| Budget Period Name     | Start Date         | End Date        |
 	| BP01                   | 03/20/2019         | 03/21/2020      |
-	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	Given I associate "3" records "Automation EXE,03709,SPO-0130"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
     | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
@@ -1007,19 +1007,19 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--78"
+	And I associate "1" records "FA--125"
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Pre-Encumbrance |
-	| FA--78 		  | 1000			|
+	| FA--125 		  | 1000			|
 	When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
 	| Budget Period Name     | Start Date         | End Date        |
 	| BP01                   | 03/20/2019         | 03/21/2020      |
-	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	Given I associate "3" records "Automation EXE,03709,SPO-0130"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
     | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
@@ -1071,19 +1071,19 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--78"
+	And I associate "1" records "FA--125"
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Pre-Encumbrance |
-	| FA--78 		  | 100 			|
+	| FA--125 		  | 100 			|
 	When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
 	| Budget Period Name     | Start Date         | End Date        |
 	| BP01                   | 03/20/2019         | 03/21/2020      |
-	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	Given I associate "3" records "Automation EXE,03709,SPO-0130"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
     | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
@@ -1133,19 +1133,19 @@ Feature: Validate all scenarios in the Announcement tab
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--78"
+	And I associate "1" records "FA--125"
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Pre-Encumbrance |
-	| FA--78 		  | 100 			|
+	| FA--125 		  | 100 			|
 	When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
 	| Budget Period Name     | Start Date         | End Date        |
 	| BP01                   | 03/20/2019         | 03/21/2020      |
-	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	Given I associate "3" records "Automation EXE,03709,SPO-0130"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
     | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
@@ -1198,19 +1198,19 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--78"
+	And I associate "1" records "FA--125"
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Pre-Encumbrance |
-	| FA--78 		  | 100 			|
+	| FA--125 		  | 100 			|
 	When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
 	| Budget Period Name     | Start Date         | End Date        |
 	| BP01                   | 03/20/2019         | 03/21/2020      |
-	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	Given I associate "3" records "Automation EXE,03709,SPO-0130"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
     | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
@@ -1260,19 +1260,19 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--78"
+	And I associate "1" records "FA--125"
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Pre-Encumbrance |
-	| FA--78 		  | 100 			|
+	| FA--125 		  | 100 			|
 	When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
 	| Budget Period Name     | Start Date         | End Date        |
 	| BP01                   | 03/20/2019         | 03/21/2020      |
-	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	Given I associate "3" records "Automation EXE,03709,SPO-0130"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
     | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
@@ -1322,19 +1322,19 @@ Feature: Validate all scenarios in the Announcement tab
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--78"
+	And I associate "1" records "FA--125"
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Pre-Encumbrance |
-	| FA--78 		  | 100 			|
+	| FA--125 		  | 100 			|
 	When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
 	| Budget Period Name     | Start Date         | End Date        |
 	| BP01                   | 03/20/2019         | 03/21/2020      |
-	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	Given I associate "3" records "Automation EXE,03709,SPO-0130"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
     | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
@@ -1387,19 +1387,19 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--78"
+	And I associate "1" records "FA--125"
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Pre-Encumbrance |
-	| FA--78 		  | 100 			|
+	| FA--125 		  | 100 			|
 	When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
 	| Budget Period Name     | Start Date         | End Date        |
 	| BP01                   | 03/20/2019         | 03/21/2020      |
-	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	Given I associate "3" records "Automation EXE,03709,SPO-0130"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
     | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
@@ -1451,19 +1451,19 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--78"
+	And I associate "1" records "FA--125"
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Pre-Encumbrance |
-	| FA--78 		  | 100 			|
+	| FA--125 		  | 100 			|
 	When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
 	| Budget Period Name     | Start Date         | End Date        |
 	| BP01                   | 03/20/2019         | 03/21/2020      |
-	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	Given I associate "3" records "Automation EXE,03709,SPO-0130"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
     | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
@@ -1515,19 +1515,19 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--78"
+	And I associate "1" records "FA--125"
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Pre-Encumbrance |
-	| FA--78 		  | 100 			|
+	| FA--125 		  | 100 			|
 	When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
 	| Budget Period Name     | Start Date         | End Date        |
 	| BP01                   | 03/20/2019         | 03/21/2020      |
-	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	Given I associate "3" records "Automation EXE,03709,SPO-0130"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
     | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
@@ -1569,19 +1569,19 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--78"
+	And I associate "1" records "FA--125"
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Pre-Encumbrance |
-	| FA--78 		  | 100 			|
+	| FA--125 		  | 100 			|
 	When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
 	| Budget Period Name     | Start Date         | End Date        |
 	| BP01                   | 03/20/2019         | 03/21/2020      |
-	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	Given I associate "3" records "Automation EXE,03709,SPO-0130"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
     | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
@@ -1625,19 +1625,19 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--78"
+	And I associate "1" records "FA--125"
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Pre-Encumbrance  |
-	| FA--78 		  | 100 			 |
+	| FA--125 		  | 100 			 |
 	When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
 	| Budget Period Name     | Start Date         | End Date        |
 	| BP01                   | 03/20/2019         | 03/21/2020      |
-	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	Given I associate "3" records "Automation EXE,03709,SPO-0130"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
     | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
@@ -1708,12 +1708,12 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--78"
+    And I associate "1" records "FA--125"
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Pre-Encumbrance |
-	| FA--78 		  | 100 			|
+	| FA--125 		  | 100 			|
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -1723,7 +1723,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
 	| Budget Period Name     | Start Date         | End Date        |
 	| BP01                   | 03/20/2019         | 03/21/2020      |
-	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	Given I associate "3" records "Automation EXE,03709,SPO-0130"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
     | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
@@ -1795,19 +1795,19 @@ Feature: Validate all scenarios in the Announcement tab
 	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--78"
+	And I associate "1" records "FA--125"
 	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
     | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
 	| Funding Account | Pre-Encumbrance |
-	| FA--78 		  | 100 			|
+	| FA--125 		  | 100 			|
 	When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
 	| Budget Period Name     | Start Date         | End Date        |
 	| BP01                   | 03/20/2019         | 03/21/2020      |		
-	Given I associate "3" records "Automation EXE,02493,SPO-0073"
+	Given I associate "3" records "Automation EXE,03709,SPO-0130"
 	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
     | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
     | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
@@ -1840,11 +1840,12 @@ Feature: Validate all scenarios in the Announcement tab
 	| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
 	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
 	| Enter Review		  | Sent for Review	    | Passed	  						  |	 Save		  		  | Submit Review   |
-	And I pause execution
-	Given I login and view the record "<Announcement Name>" as "EXE"
-	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
-	| Owner Navigation 	  | As a Grantor 		| Announcements 					  | Announcement Type     | Announcements   |
-	| Complete Review 	  | Draft Announcements | ActiveFundingOpportunitiesAll       | View 		  		  | 				|
+	When I re-login to "As a Grantor" app as "<User>" user 
+	And I navigate to "Announcements" tab
+	When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
+	And I click toggle button to select "Draft Announcements"
+    When I perform quick search for "Record id" in "ActiveFundingOpportunitiesCompitive" panel
+    And I click on "View" icon for "Record id" inside table 
 	Given I click on "Complete Review" in the page details
 	And I click on "Submit For Approval" in the page details
 	Given "3" Approvers "PM,FO,EXE" approve the record "Record Id"
