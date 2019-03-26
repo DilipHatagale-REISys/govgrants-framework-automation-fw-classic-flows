@@ -98,10 +98,10 @@ Feature: Validate all scenarios for program
 
    @34750 @submittingProgramForApproval @all
    Scenario: Validate the submission of Program for Approval
-    Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
+        Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "3" records "Automation EXE,03065,SPO-0130"
+    And I associate "3" records "Automation EXE,Execution Focus Area for Automation,Permanent Objective Automation"
       | Actions     | Step 1   | Step 2    | Step 3                             | Step 4 | Step 5                   |
       | Associate 1 | Overview | Associate | ProgramContacts                    | Add    | AssociateProgramContacts |
       | Associate 2 | Setup    | Associate | flexGridGrantorServiceAreasProgram | Add    | SelectProgramServiceArea |
@@ -121,16 +121,16 @@ Feature: Validate all scenarios for program
     Given I add an attachment "InternalOrganization_Field_Values.xlsx"
       | Actions               | Step 1      | Step 2            | Step 3             |
       | Attachment Navigation | Attachments | Add               | a150b000003epY5AAI |
-      | Attachment Details    | Attachment  | Program Artifacts |                    |
-    When I click on "Submit For Approval" in the page details
-    Then I see status in Progress-bar is "Submitted for Approval" and is "green"
+      | Attachment Details    | Attach1ment | Program Artifacts |                    |
+     And I click on "Submit For Approval" in the page details
+     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
     @34754 @programApproval @all
     Scenario Outline: Validate the approval of Internal Program
-    Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
+        Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "3" records "Automation EXE,03065,SPO-0130"
+    And I associate "3" records "Automation EXE,Execution Focus Area for Automation,Permanent Objective Automation"
       | Actions     | Step 1   | Step 2    | Step 3                             | Step 4 | Step 5                   |
       | Associate 1 | Overview | Associate | ProgramContacts                    | Add    | AssociateProgramContacts |
       | Associate 2 | Setup    | Associate | flexGridGrantorServiceAreasProgram | Add    | SelectProgramServiceArea |
@@ -150,20 +150,13 @@ Feature: Validate all scenarios for program
     Given I add an attachment "InternalOrganization_Field_Values.xlsx"
       | Actions               | Step 1      | Step 2            | Step 3             |
       | Attachment Navigation | Attachments | Add               | a150b000003epY5AAI |
-      | Attachment Details    | Attachment  | Program Artifacts |                    |
+      | Attachment Details    | Attach1ment | Program Artifacts |                    |
     And I click on "Submit For Approval" in the page details
-    Given I re-login to "As a Grantor" app as "<Program Approver>" user
-    When I navigate to "Planning" tab
-    And I navigate to "Pending Tasks" content inside "MyTasks" subheader on left panel
-    When I perform quick search for "<Program Name>" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "<Program Name>" inside table
-    When I click on "Approve" on the approval decision box
-    And I re-login to "As a Grantor" app as "<Executive Approver>" user
-    When I navigate to "Planning" tab
-    And I navigate to "Pending Tasks" content inside "MyTasks" subheader on left panel
-    When I perform quick search for "<Program Name>" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "<Program Name>" inside table
-    When I click on "Approve" on the approval decision box
+    Given "2" Approvers "PM,EXE" approve the record "Record Id"
+      | Actions    | Step 1        | Step 2   | Step 3            |
+      | Navigation | As a Grantor  | Planning |                   |
+      | FlexTable  | Pending Tasks | My Tasks | PhasePendingTasks |
+      | Approval   | Start         | Approve  |                   |
     Then I see status in Progress-bar is "Approved" and is "green"
 	 Examples:
 	| Program Approver | Program Name		  			                         | Executive Approver  |Type           |

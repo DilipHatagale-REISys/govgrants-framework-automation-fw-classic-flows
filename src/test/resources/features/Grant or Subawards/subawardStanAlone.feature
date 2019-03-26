@@ -1,7 +1,7 @@
 @awardStandAlone
 Feature: Validate all scenarios in the Stand Alone Award and Grant
 
-	Background: Create Award from FDM
+	Background: Create Award 
 	And I create a Grant as user "EXE" from sheet "Grant_Creation" in excel "Award_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		    | Step 2    	 	 | Step 3 				         |
 	| Navigation | As a Grantor		    | Grants    	 	 | Grants, Subaward & Amendments |
@@ -819,19 +819,19 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	And I click on "View" icon for "<Award Name>" inside flex table with id "RelatedAwards1"
   	Given I click on "Complete Review" in the page details
   	And I click on "Submit for Approval" in the page details
-  	Given I re-login to "As a Grantor" app as "PM" user
+  	Given I re-login to "As a Grantor" app as "Automation PM" user
 	When I navigate to "Grants" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "<Award Name>" in "PhasePendingTasks" panel
     And I click on "Start" icon for "<Award Name>" inside table  
     When I click on "Approve" on the approval decision box
-    And I re-login to "As a Grantor" app as "FO" user
+    And I re-login to "As a Grantor" app as "Automation FO" user
 	When I navigate to "Grants" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "<Award Name>" in "PhasePendingTasks" panel
     And I click on "Start" icon for "<Award Name>" inside table 
     When I click on "Approve" on the approval decision box
-    And I re-login to "As a Grantor" app as "EXE" user
+    And I re-login to "As a Grantor" app as "Automation EXE" user
 	When I navigate to "Grants" tab
 	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "<Award Name>" in "PhasePendingTasks" panel
@@ -1414,6 +1414,7 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
 	| Actions  | Step 1     | Step 2	   		   	   | Step 3 | Step 4  | Step 5 |
     | Creation | Management | flexGridTnCSchedules	   | Edit   | Save    | Progress Report   |
     And I close Modal
+    And I pause execution
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridSubawardContact"
     When I check "Automation SPI" boxes in flex table with id "AssociateSubawardContacts"

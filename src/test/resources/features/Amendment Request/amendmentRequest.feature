@@ -2,6 +2,7 @@
 Feature: Validate all scenarios in the Amendment Request
 
 	Background: Setup data
+	Given I delete the record "Permanent Award For Automation" from the object "Amendment Request"
 	Given I login and view the "Active" award "Activated" with name "Permanent Award For Automation" as User "PM"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						   |
     | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
@@ -20,7 +21,6 @@ Feature: Validate all scenarios in the Amendment Request
 	@editionOfSOWAmendmentRequest @scopeOfWork @amendmentRequest
 	Scenario: Creation of Amendment Request
 	Given I navigate to "Requests" sub tab
-	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
 	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
 	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
 	And I click modal button "Save and Continue"
@@ -33,7 +33,6 @@ Feature: Validate all scenarios in the Amendment Request
 	@associationOfKPIToSOWAmendmentRequest @scopeOfWork @amendmentRequest
 	Scenario: Association of KPI to Amendment Request
 	Given I navigate to "Requests" sub tab
-	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
 	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
 	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
 	And I click modal button "Save and Continue"
@@ -50,7 +49,6 @@ Feature: Validate all scenarios in the Amendment Request
 	@associationOfObjectiveToSOWAmendmentRequest @scopeOfWork @amendmentRequest
 	Scenario: Association of Objective to Amendment Request
 	Given I navigate to "Requests" sub tab
-	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
 	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
 	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
 	And I click modal button "Save and Continue"
@@ -63,7 +61,6 @@ Feature: Validate all scenarios in the Amendment Request
 	@deletionOfObjectiveInSOWAmendmentRequest @scopeOfWork @amendmentRequest
 	Scenario: Deletion of Objective in Amendment Request
 	Given I navigate to "Requests" sub tab
-	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
 	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
 	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
 	And I click modal button "Save and Continue"
@@ -77,7 +74,6 @@ Feature: Validate all scenarios in the Amendment Request
 	@assignApproversToSOWAmendmentRequest @scopeOfWork @amendmentRequest
 	Scenario: Assign approvers to Amendment Request
 	Given I navigate to "Requests" sub tab
-	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
 	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
 	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
 	And I click modal button "Save and Continue"
@@ -97,7 +93,6 @@ Feature: Validate all scenarios in the Amendment Request
     @addAttachmentToSOWAmendmentRequest @scopeOfWork @amendmentRequest
 	Scenario: Add attachment to Amendment Request
 	Given I navigate to "Requests" sub tab
-	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
 	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
 	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
 	And I click modal button "Save and Continue"
@@ -111,7 +106,6 @@ Feature: Validate all scenarios in the Amendment Request
     @sendToSubrecipientToSOWAmendmentRequest @scopeOfWork @amendmentRequest
 	Scenario: Send Amendment Request to subrecipient
 	Given I navigate to "Requests" sub tab
-	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
 	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
 	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
 	And I click modal button "Save and Continue"
@@ -146,7 +140,6 @@ Feature: Validate all scenarios in the Amendment Request
     @subrecipientAcknowledgesSOWAmendmentRequest @scopeOfWork @amendmentRequest @nonfunctional
 	Scenario: Subrecipient acknowledges Amendment Request
 	Given I navigate to "Requests" sub tab
-	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
 	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
 	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
 	And I click modal button "Save and Continue"
@@ -187,7 +180,6 @@ Feature: Validate all scenarios in the Amendment Request
     @submitForApprovalSOWAmendmentRequest @scopeOfWork @amendmentRequest @nonfunctional
 	Scenario: Submit Amendment Request for Approval
 	Given I navigate to "Requests" sub tab
-	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
 	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
 	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
 	And I click modal button "Save and Continue"
@@ -234,7 +226,6 @@ Feature: Validate all scenarios in the Amendment Request
     @approvalOfSOWAmendmentRequest @scopeOfWork @amendmentRequest @nonfunctional
 	Scenario: Approval of Amendment Request
 	Given I navigate to "Requests" sub tab
-	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
 	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
 	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
 	And I click modal button "Save and Continue"
@@ -286,7 +277,6 @@ Feature: Validate all scenarios in the Amendment Request
     @amendSubawardSOWAmendmentRequest @scopeOfWork @amendmentRequest @nonfunctional
 	Scenario: Click on Amend of Amendment Request
 	Given I navigate to "Requests" sub tab
-	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
 	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
 	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
 	And I click modal button "Save and Continue"
@@ -339,7 +329,6 @@ Feature: Validate all scenarios in the Amendment Request
     @activateSubawardSOWAmendmentRequest @scopeOfWorkHappyPath @scopeOfWork @amendmentRequest
 	Scenario Outline: Click on Amend of Amendment Request
 	Given I navigate to "Requests" sub tab
-	When I attempt to delete record "Scope of Work Change" inside table with id "GrantorAwardAmendmentRequest"
 	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
 	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
 	And I click modal button "Save and Continue"
@@ -413,7 +402,6 @@ Feature: Validate all scenarios in the Amendment Request
     @creationOfBPCAmendmentRequest @budgetPeriodChange @amendmentRequest
 	Scenario: Creation of Amendment Request
 	Given I navigate to "Requests" sub tab
-	When I attempt to delete record "Budget Period Change" inside table with id "GrantorAwardAmendmentRequest"
 	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
 	When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
 	And I click modal button "Save and Continue"
@@ -423,7 +411,6 @@ Feature: Validate all scenarios in the Amendment Request
 	@editionOfBPCAmendmentRequest @budgetPeriodChange @amendmentRequest
 	Scenario: Creation of Amendment Request
 	Given I navigate to "Requests" sub tab
-	When I attempt to delete record "Budget Period Change" inside table with id "GrantorAwardAmendmentRequest"
 	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
 	When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
 	And I click modal button "Save and Continue"
@@ -436,7 +423,6 @@ Feature: Validate all scenarios in the Amendment Request
 	@editionOfFocusAreaDatesBPCAmendmentRequest @budgetPeriodChange @amendmentRequest
 	Scenario: Creation of Amendment Request
 		Given I navigate to "Requests" sub tab
-	When I attempt to delete record "Budget Period Change" inside table with id "GrantorAwardAmendmentRequest"
 	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
 	When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
 	And I click modal button "Save and Continue"
@@ -449,7 +435,6 @@ Feature: Validate all scenarios in the Amendment Request
 	@associateFocusAreaToBPCAmendmentRequest @budgetPeriodChange @amendmentRequest
 	Scenario: Creation of Amendment Request
 		Given I navigate to "Requests" sub tab
-	When I attempt to delete record "Budget Period Change" inside table with id "GrantorAwardAmendmentRequest"
 	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
 	When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
 	And I click modal button "Save and Continue"

@@ -598,6 +598,40 @@ Feature: Validate all scenarios in the Announcement tab
     |Competitive      |
 	|Formula          |
 
+    @reviewStepsBeforeSubmitForApproval @announcement
+    Scenario Outline: Validate the Review steps of Announcement before submit for Approval
+  	Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
+	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
+	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
+	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
+	| ID		   | EGMS ID							 |							  |									  |
+	And I click on "Save" in the page details
+	And I navigate to "Setup" sub tab
+	And I expand nested table containing column value "Pre-Screen Review"
+	When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
+	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+	| Section Header            | Section Weight (%)    |
+	|Eligibility                | 100                   |
+	|Completeness               | 100                   |
+	And I expand nested table containing column value "Eligibility"
+    When I enter the following values into flex table with id "flexGridReviewPanelCategories" by clicking "New" :
+    | Question Order | Question  		   | Type  	 | Max Score   | 
+    | 1              | Question1           | written | 100         | 
+    And I expand nested table containing column value "Completeness"
+       When I enter the following values into flex table with id "flexGridReviewPanelCategories" by clicking "New" :
+    | Question Order | Question  		   | Type  	 | Max Score   | 
+    | 1              | Question1           | written | 100         | 
+    And I click modal button "Save"
+    When I collapse nested table containing column value "Automation Observation"
+	 When I click on "Submit For Approval" in the page details
+	Examples:
+    |Announcement Type |Active Funding Opportunities id    |
+    |Formula           |ActiveFundingOpportunitiesFormula  |
+	#|Directed         |ActiveFundingOpportunities         |
+	#|Competitive      |ActiveFundingOpportunitiesCompitive|
+	     
   	@34461 @submittingAnnouncementForApproval @announcement @CHECKThenStepFailure
   	Scenario Outline: Validate the submission of Announcement for Approval
   	Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
@@ -1435,8 +1469,8 @@ Feature: Validate all scenarios in the Announcement tab
  	Examples:
     |Announcement Type|
     |Directed         |
-    |Competitive      |
-	|Formula          |	
+    #|Competitive      |
+	#|Formula          |	
 	
 	@announcementPostRejectCompletedTaskForUser @announcement @all
 	Scenario Outline: Validate that after rejection of an Announcement task get added to it's completed task table.
@@ -1462,13 +1496,14 @@ Feature: Validate all scenarios in the Announcement tab
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
 	| Budget Period Name     | Start Date         | End Date        |
-	| BP01                   | 03/20/2019         | 03/21/2020      |
-	Given I associate "3" records "Automation EXE,03709,SPO-0130"
-	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
-    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
-    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
-    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
-	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+	| BP01                   | 04/20/2019         | 12/31/2020      |
+	Given I associate "4" records "Automation EXE,03709,SPO-0130,RG-002731"
+	| Actions 	  | Step 1   | Step 2	       | Step 3  			  							| Step 4 | Step 5  				    	  |
+    | Associate 1 | Overview | Associate       | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts  |
+    |Associate  2 | Overview |Add Organizations| inlineEditGridSoleSourceAwardOrganizations     | Add    | SoleSourceAwardRecipientsTable | 
+    | Associate 3 | Setup	 | Associate       | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1 |
+    | Associate 4 | Setup 	 | Associate       | AnnouncementGranteeStrategicGoalsObjectives    | Add	 | SelectAnnGoals 		   		  |
+    Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
     | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
     | Subtab	 | Responsibilities 						   | 		|		    		  |
     | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
@@ -1486,6 +1521,9 @@ Feature: Validate all scenarios in the Announcement tab
     | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
     | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
     | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
+    And I enter value "Justified" into field "Justification__c"  
 	And I click on "Submit For Approval" in the page details
 	Given "1" Approvers "PM" approve the record "Record Id" 
 	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
@@ -1499,8 +1537,8 @@ Feature: Validate all scenarios in the Announcement tab
  	Examples:
     |Announcement Type|
     |Directed         |
-    |Competitive      |
-	|Formula          |	
+    #|Competitive      |
+	#|Formula          |	
 	
 	@announcementPostRejectCheckFieldHistory @announcement @all
 	Scenario Outline: Validate the field history after rejection of an announcement
