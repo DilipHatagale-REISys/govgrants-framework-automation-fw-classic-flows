@@ -115,25 +115,25 @@ Feature: Validate all scenarios in the Amendment Request
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     Given I click on top right button "Associate" in flex table with id "flexGridGrantorAmendmentKeyOutcomes"
-	And I enter values into fields 
-	| Value 						| Field 		| 
-	| Automation Grant KPI          | MasterKPI__c  | 
-	| 10    						| Target__c     |
-	Given I click modal button "Save"
-	And I close Modal
-	When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
-	And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
-	When I switch to Parent frame
-	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-    | Actions 	 | Step 1   				      		| Step 2  | Step 3 			   |
-    | Subtab	 | Roles			 			 		| 		  |		    		   |
-    | Approver 1 | AmendmentreqRolesAndResponsibilities | Edit    | Program Approver   |
-    | Approver 2 | AmendmentreqRolesAndResponsibilities | Edit	  | Fiscal Approver    |
-    | Approver 3 | AmendmentreqRolesAndResponsibilities | Edit	  | Executive Approver |
+    And I enter values into fields
+      | Value                | Field        |
+      | Automation Grant KPI | MasterKPI__c |
+      | 10                   | Target__c    |
+    Given I click modal button "Save"
+    And I close Modal
+    When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
+    And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
+    When I switch to Parent frame
+    Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+      | Actions    | Step 1                               | Step 2 | Step 3             |
+      | Subtab     | Roles                                |        |                    |
+      | Approver 1 | AmendmentreqRolesAndResponsibilities | Edit   | Program Approver   |
+      | Approver 2 | AmendmentreqRolesAndResponsibilities | Edit   | Fiscal Approver    |
+      | Approver 3 | AmendmentreqRolesAndResponsibilities | Edit   | Executive Approver |
     And I add an attachment "InternalOrganization_Field_Values.xlsx"
-    | Actions 			    | Step 1 	  | Step 2	 		  	  | Step 3			   |
-    | Attachment Navigation | Attachments | Add					  | a150b000003epeQAAQ |
-    | Attachment Details    | Attachment  | Terms and Conditions  |					   |
+      | Actions               | Step 1      | Step 2               | Step 3             |
+      | Attachment Navigation | Attachments | Add                  | a150b000003epeQAAQ |
+      | Attachment Details    | Attachment  | Terms and Conditions |                    |
     When I click on "Send to Subrecipient" in the page details
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
     
@@ -149,34 +149,34 @@ Feature: Validate all scenarios in the Amendment Request
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     Given I click on top right button "Associate" in flex table with id "flexGridGrantorAmendmentKeyOutcomes"
-	And I enter values into fields 
-	| Value 						| Field 		| 
-	| Automation Grant KPI          | MasterKPI__c  | 
-	| 10    						| Target__c     |
-	Given I click modal button "Save"
-	And I close Modal
-	When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
-	And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
-	When I switch to Parent frame
-	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-    | Actions 	 | Step 1   				      		| Step 2  | Step 3 			   |
-    | Subtab	 | Roles			 			 		| 		  |		    		   |
-    | Approver 1 | AmendmentreqRolesAndResponsibilities | Edit    | Program Approver   |
-    | Approver 2 | AmendmentreqRolesAndResponsibilities | Edit	  | Fiscal Approver    |
-    | Approver 3 | AmendmentreqRolesAndResponsibilities | Edit	  | Executive Approver |
+    And I enter values into fields
+      | Value                | Field        |
+      | Automation Grant KPI | MasterKPI__c |
+      | 10                   | Target__c    |
+    Given I click modal button "Save"
+    And I close Modal
+    When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
+    And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
+    When I switch to Parent frame
+    Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+      | Actions    | Step 1                               | Step 2 | Step 3             |
+      | Subtab     | Roles                                |        |                    |
+      | Approver 1 | AmendmentreqRolesAndResponsibilities | Edit   | Program Approver   |
+      | Approver 2 | AmendmentreqRolesAndResponsibilities | Edit   | Fiscal Approver    |
+      | Approver 3 | AmendmentreqRolesAndResponsibilities | Edit   | Executive Approver |
     And I add an attachment "InternalOrganization_Field_Values.xlsx"
-    | Actions 			    | Step 1 	  | Step 2	 		  	  | Step 3			   |
-    | Attachment Navigation | Attachments | Add					  | a150b000003epeQAAQ |
-    | Attachment Details    | Attachment  | Terms and Conditions  |					   |
+      | Actions               | Step 1      | Step 2               | Step 3             |
+      | Attachment Navigation | Attachments | Add                  | a150b000003epeQAAQ |
+      | Attachment Details    | Attachment  | Terms and Conditions |                    |
     And I click on "Send to Subrecipient" in the page details
     When User "SPI" receives the task for "Record Id"
-	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Grants	 		 | Grants Portal | SUBPORTAL |
-	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
-	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	And I click on "Acknowledge" in the page details
+      | Actions    | Step 1            | Step 2        | Step 3    |
+      | Navigation | Grants            | Grants Portal | SUBPORTAL |
+      | Left Panel | Pending Tasks     | My Tasks      |           |
+      | FlexTable  | PhasePendingTasks | Start         |           |
+    And I click on "Acknowledge" in the page details
     Then I see that "Amendment Request" is in "Acknowledged" status
-    
+
     @submitForApprovalSOWAmendmentRequest @scopeOfWork @amendmentRequest @nonfunctional
 	Scenario: Submit Amendment Request for Approval
 	Given I navigate to "Requests" sub tab
@@ -189,37 +189,37 @@ Feature: Validate all scenarios in the Amendment Request
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     Given I click on top right button "Associate" in flex table with id "flexGridGrantorAmendmentKeyOutcomes"
-	And I enter values into fields 
-	| Value 						| Field 		| 
-	| Automation Grant KPI          | MasterKPI__c  | 
-	| 10    						| Target__c     |
-	Given I click modal button "Save"
-	And I close Modal
-	When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
-	And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
-	When I switch to Parent frame
-	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-    | Actions 	 | Step 1   				      		| Step 2  | Step 3 			   |
-    | Subtab	 | Roles			 			 		| 		  |		    		   |
-    | Approver 1 | AmendmentreqRolesAndResponsibilities | Edit    | Program Approver   |
-    | Approver 2 | AmendmentreqRolesAndResponsibilities | Edit	  | Fiscal Approver    |
-    | Approver 3 | AmendmentreqRolesAndResponsibilities | Edit	  | Executive Approver |
+    And I enter values into fields
+      | Value                | Field        |
+      | Automation Grant KPI | MasterKPI__c |
+      | 10                   | Target__c    |
+    Given I click modal button "Save"
+    And I close Modal
+    When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
+    And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
+    When I switch to Parent frame
+    Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+      | Actions    | Step 1                               | Step 2 | Step 3             |
+      | Subtab     | Roles                                |        |                    |
+      | Approver 1 | AmendmentreqRolesAndResponsibilities | Edit   | Program Approver   |
+      | Approver 2 | AmendmentreqRolesAndResponsibilities | Edit   | Fiscal Approver    |
+      | Approver 3 | AmendmentreqRolesAndResponsibilities | Edit   | Executive Approver |
     And I add an attachment "InternalOrganization_Field_Values.xlsx"
-    | Actions 			    | Step 1 	  | Step 2	 		  	  | Step 3			   |
-    | Attachment Navigation | Attachments | Add					  | a150b000003epeQAAQ |
-    | Attachment Details    | Attachment  | Terms and Conditions  |					   |
+      | Actions               | Step 1      | Step 2               | Step 3             |
+      | Attachment Navigation | Attachments | Add                  | a150b000003epeQAAQ |
+      | Attachment Details    | Attachment  | Terms and Conditions |                    |
     And I click on "Send to Subrecipient" in the page details
     Given User "SPI" receives the task for "Record Id"
-	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Grants	 		 | Grants Portal | SUBPORTAL |
-	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
-	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	And I click on "Acknowledge" in the page details
-	When User "EXE" receives the task for "Record Id"
-	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Grants	 		 | As a Grantor  | DEMO		 |
-	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
-	| FlexTable  | PhasePendingTasks | Start 		 |			 |
+      | Actions    | Step 1            | Step 2        | Step 3    |
+      | Navigation | Grants            | Grants Portal | SUBPORTAL |
+      | Left Panel | Pending Tasks     | My Tasks      |           |
+      | FlexTable  | PhasePendingTasks | Start         |           |
+    And I click on "Acknowledge" in the page details
+    When User "EXE" receives the task for "Record Id"
+      | Actions    | Step 1            | Step 2       | Step 3 |
+      | Navigation | Grants            | As a Grantor | DEMO   |
+      | Left Panel | Pending Tasks     | My Tasks     |        |
+      | FlexTable  | PhasePendingTasks | Start        |        |
     And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
     
@@ -235,43 +235,43 @@ Feature: Validate all scenarios in the Amendment Request
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     Given I click on top right button "Associate" in flex table with id "flexGridGrantorAmendmentKeyOutcomes"
-	And I enter values into fields 
-	| Value 						| Field 		| 
-	| Automation Grant KPI          | MasterKPI__c  | 
-	| 10    						| Target__c     |
-	Given I click modal button "Save"
-	And I close Modal
-	When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
-	And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
-	When I switch to Parent frame
-	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-    | Actions 	 | Step 1   				      		| Step 2  | Step 3 			   |
-    | Subtab	 | Roles			 			 		| 		  |		    		   |
-    | Approver 1 | AmendmentreqRolesAndResponsibilities | Edit    | Program Approver   |
-    | Approver 2 | AmendmentreqRolesAndResponsibilities | Edit	  | Fiscal Approver    |
-    | Approver 3 | AmendmentreqRolesAndResponsibilities | Edit	  | Executive Approver |
+    And I enter values into fields
+      | Value                | Field        |
+      | Automation Grant KPI | MasterKPI__c |
+      | 10                   | Target__c    |
+    Given I click modal button "Save"
+    And I close Modal
+    When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
+    And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
+    When I switch to Parent frame
+    Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+      | Actions    | Step 1                               | Step 2 | Step 3             |
+      | Subtab     | Roles                                |        |                    |
+      | Approver 1 | AmendmentreqRolesAndResponsibilities | Edit   | Program Approver   |
+      | Approver 2 | AmendmentreqRolesAndResponsibilities | Edit   | Fiscal Approver    |
+      | Approver 3 | AmendmentreqRolesAndResponsibilities | Edit   | Executive Approver |
     And I add an attachment "InternalOrganization_Field_Values.xlsx"
-    | Actions 			    | Step 1 	  | Step 2	 		  	  | Step 3			   |
-    | Attachment Navigation | Attachments | Add					  | a150b000003epeQAAQ |
-    | Attachment Details    | Attachment  | Terms and Conditions  |					   |
+      | Actions               | Step 1      | Step 2               | Step 3             |
+      | Attachment Navigation | Attachments | Add                  | a150b000003epeQAAQ |
+      | Attachment Details    | Attachment  | Terms and Conditions |                    |
     And I click on "Send to Subrecipient" in the page details
     Given User "SPI" receives the task for "Record Id"
-	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Grants	 		 | Grants Portal | SUBPORTAL |
-	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
-	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	And I click on "Acknowledge" in the page details
-	When User "PM" receives the task for "Record Id"
-	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Grants	 		 | As a Grantor  | DEMO		 |
-	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
-	| FlexTable  | PhasePendingTasks | Start 		 |			 |
+      | Actions    | Step 1            | Step 2        | Step 3    |
+      | Navigation | Grants            | Grants Portal | SUBPORTAL |
+      | Left Panel | Pending Tasks     | My Tasks      |           |
+      | FlexTable  | PhasePendingTasks | Start         |           |
+    And I click on "Acknowledge" in the page details
+    When User "PM" receives the task for "Record Id"
+      | Actions    | Step 1            | Step 2       | Step 3 |
+      | Navigation | Grants            | As a Grantor | DEMO   |
+      | Left Panel | Pending Tasks     | My Tasks     |        |
+      | FlexTable  | PhasePendingTasks | Start        |        |
     And I click on "Submit for Approval" in the page details
     When "3" Approvers "PM,FO,EXE" approve the record "Record Id"
-	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
-	| Navigation | As a Grantor  | Grants		 | 				  	 |
-	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
-	| Approval 	 | Start 		 | Approve 		 | 					 |
+      | Actions    | Step 1        | Step 2   | Step 3            |
+      | Navigation | As a Grantor  | Grants   |                   |
+      | FlexTable  | Pending Tasks | My Tasks | PhasePendingTasks |
+      | Approval   | Start         | Approve  |                   |
     Then I see status in Progress-bar is "Approved" and is "green"
     
     @amendSubawardSOWAmendmentRequest @scopeOfWork @amendmentRequest @nonfunctional
@@ -286,44 +286,44 @@ Feature: Validate all scenarios in the Amendment Request
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     Given I click on top right button "Associate" in flex table with id "flexGridGrantorAmendmentKeyOutcomes"
-	And I enter values into fields 
-	| Value 						| Field 		| 
-	| Automation Grant KPI          | MasterKPI__c  | 
-	| 10    						| Target__c     |
-	Given I click modal button "Save"
-	And I close Modal
-	When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
-	And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
-	When I switch to Parent frame
-	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-    | Actions 	 | Step 1   				      		| Step 2  | Step 3 			   |
-    | Subtab	 | Roles			 			 		| 		  |		    		   |
-    | Approver 1 | AmendmentreqRolesAndResponsibilities | Edit    | Program Approver   |
-    | Approver 2 | AmendmentreqRolesAndResponsibilities | Edit	  | Fiscal Approver    |
-    | Approver 3 | AmendmentreqRolesAndResponsibilities | Edit	  | Executive Approver |
+    And I enter values into fields
+      | Value                | Field        |
+      | Automation Grant KPI | MasterKPI__c |
+      | 10                   | Target__c    |
+    Given I click modal button "Save"
+    And I close Modal
+    When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
+    And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
+    When I switch to Parent frame
+    Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+      | Actions    | Step 1                               | Step 2 | Step 3             |
+      | Subtab     | Roles                                |        |                    |
+      | Approver 1 | AmendmentreqRolesAndResponsibilities | Edit   | Program Approver   |
+      | Approver 2 | AmendmentreqRolesAndResponsibilities | Edit   | Fiscal Approver    |
+      | Approver 3 | AmendmentreqRolesAndResponsibilities | Edit   | Executive Approver |
     And I add an attachment "InternalOrganization_Field_Values.xlsx"
-    | Actions 			    | Step 1 	  | Step 2	 		  	  | Step 3			   |
-    | Attachment Navigation | Attachments | Add					  | a150b000003epeQAAQ |
-    | Attachment Details    | Attachment  | Terms and Conditions  |					   |
+      | Actions               | Step 1      | Step 2               | Step 3             |
+      | Attachment Navigation | Attachments | Add                  | a150b000003epeQAAQ |
+      | Attachment Details    | Attachment  | Terms and Conditions |                    |
     And I click on "Send to Subrecipient" in the page details
     Given User "SPI" receives the task for "Record Id"
-	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Grants	 		 | Grants Portal | SUBPORTAL |
-	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
-	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	And I click on "Acknowledge" in the page details
-	When User "PM" receives the task for "Record Id"
-	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Grants	 		 | As a Grantor  | DEMO	     |
-	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
-	| FlexTable  | PhasePendingTasks | Start 		 |			 |
+      | Actions    | Step 1            | Step 2        | Step 3    |
+      | Navigation | Grants            | Grants Portal | SUBPORTAL |
+      | Left Panel | Pending Tasks     | My Tasks      |           |
+      | FlexTable  | PhasePendingTasks | Start         |           |
+    And I click on "Acknowledge" in the page details
+    When User "PM" receives the task for "Record Id"
+      | Actions    | Step 1            | Step 2       | Step 3 |
+      | Navigation | Grants            | As a Grantor | DEMO   |
+      | Left Panel | Pending Tasks     | My Tasks     |        |
+      | FlexTable  | PhasePendingTasks | Start        |        |
     And I click on "Submit for Approval" in the page details
     When "3" Approvers "PM,FO,EXE" approve the record "Record Id"
-	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
-	| Navigation | As a Grantor  | Grants		 | 				  	 |
-	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
-	| Approval 	 | Start 		 | Approve 		 | 					 |
-	And I click on "Amend Subaward" in the page details
+      | Actions    | Step 1        | Step 2   | Step 3            |
+      | Navigation | As a Grantor  | Grants   |                   |
+      | FlexTable  | Pending Tasks | My Tasks | PhasePendingTasks |
+      | Approval   | Start         | Approve  |                   |
+    And I click on "Amend Subaward" in the page details
     Then I see that "Subaward" is in "Pending Activation" status
     
     @activateSubawardSOWAmendmentRequest @scopeOfWorkHappyPath @scopeOfWork @amendmentRequest
@@ -338,62 +338,62 @@ Feature: Validate all scenarios in the Amendment Request
     | Actions 		  | Step 1 | Step 2	|
     | Edition Buttons | Edit   | Save   |
     Given I click on top right button "Associate" in flex table with id "flexGridGrantorAmendmentKeyOutcomes"
-	And I enter values into fields 
-	| Value 						| Field 		| 
-	| Automation Grant KPI          | MasterKPI__c  | 
-	| 10    						| Target__c     |
-	Given I click modal button "Save"
-	And I close Modal
-	When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
-	And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
-	When I switch to Parent frame
-	Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-    | Actions 	 | Step 1   				      		| Step 2  | Step 3 			   |
-    | Subtab	 | Roles			 			 		| 		  |		    		   |
-    | Approver 1 | AmendmentreqRolesAndResponsibilities | Edit    | Program Approver   |
-    | Approver 2 | AmendmentreqRolesAndResponsibilities | Edit	  | Fiscal Approver    |
-    | Approver 3 | AmendmentreqRolesAndResponsibilities | Edit	  | Executive Approver |
+    And I enter values into fields
+      | Value                | Field        |
+      | Automation Grant KPI | MasterKPI__c |
+      | 10                   | Target__c    |
+    Given I click modal button "Save"
+    And I close Modal
+    When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
+    And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
+    When I switch to Parent frame
+    Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+      | Actions    | Step 1                               | Step 2 | Step 3             |
+      | Subtab     | Roles                                |        |                    |
+      | Approver 1 | AmendmentreqRolesAndResponsibilities | Edit   | Program Approver   |
+      | Approver 2 | AmendmentreqRolesAndResponsibilities | Edit   | Fiscal Approver    |
+      | Approver 3 | AmendmentreqRolesAndResponsibilities | Edit   | Executive Approver |
     And I add an attachment "InternalOrganization_Field_Values.xlsx"
-    | Actions 			    | Step 1 	  | Step 2	 		  	  | Step 3			   |
-    | Attachment Navigation | Attachments | Add					  | a150b000003epeQAAQ |
-    | Attachment Details    | Attachment  | Terms and Conditions  |					   |
+      | Actions               | Step 1      | Step 2               | Step 3             |
+      | Attachment Navigation | Attachments | Add                  | a150b000003epeQAAQ |
+      | Attachment Details    | Attachment  | Terms and Conditions |                    |
     And I navigate to "Management" sub tab
-  	Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
-    | Actions  | Step 1     | Step 2	   		   			  | Step 3 | Step 4				 |
-    | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue   |
+    Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
+      | Actions  | Step 1     | Step 2                          | Step 3 | Step 4            |
+      | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue |
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
-	When I click on "Save" in the page details
+    When I click on "Save" in the page details
     Given I select "2" approvers "Automation PM,Automation FO"
-    | Actions 	 | Step 1   				      				 | Step 2 | Step 3 			   |
-    | Subtab	 | Responsibilities 			 				 | 		  |		    		   |
-    | Approver 1 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Program Approver   |
-    | Approver 2 | GrantorRiskAssessmentRolesandResponsibilities | Edit	  | Fiscal Approver    |
+      | Actions    | Step 1                                        | Step 2 | Step 3           |
+      | Subtab     | Responsibilities                              |        |                  |
+      | Approver 1 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Program Approver |
+      | Approver 2 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Fiscal Approver  |
     And I click on "Submit for Approval" in the page details
     Given "2" Approvers "PM,FO" approve the record "Approve Subaward Risk Assessment"
-	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
-	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
-	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
-	| Approval 	 | Start 		 | Approve 		 | 					 |
+      | Actions    | Step 1        | Step 2     | Step 3            |
+      | Navigation | As a Grantor  | Monitoring |                   |
+      | FlexTable  | Pending Tasks | My Tasks   | PhasePendingTasks |
+      | Approval   | Start         | Approve    |                   |
     And I click on "Send to Subrecipient" in the page details
     Given User "SPI" receives the task for "<Type>"
-	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Grants	 		 | Grants Portal | SUBPORTAL |
-	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
-	| FlexTable  | PhasePendingTasks | Start 		 |			 |
-	And I click on "Acknowledge" in the page details
-	Given User "PM" receives the task for "Record Id"
-	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
-	| Navigation | Grants	 		 | As a Grantor  | DEMO		 |
-	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
-	| FlexTable  | PhasePendingTasks | Start 		 |			 |
+      | Actions    | Step 1            | Step 2        | Step 3    |
+      | Navigation | Grants            | Grants Portal | SUBPORTAL |
+      | Left Panel | Pending Tasks     | My Tasks      |           |
+      | FlexTable  | PhasePendingTasks | Start         |           |
+    And I click on "Acknowledge" in the page details
+    Given User "PM" receives the task for "Record Id"
+      | Actions    | Step 1            | Step 2       | Step 3 |
+      | Navigation | Grants            | As a Grantor | DEMO   |
+      | Left Panel | Pending Tasks     | My Tasks     |        |
+      | FlexTable  | PhasePendingTasks | Start        |        |
     And I click on "Submit for Approval" in the page details
     Given "3" Approvers "PM,FO,EXE" approve the record "Record Id"
-	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
-	| Navigation | As a Grantor  | Grants		 | 				  	 |
-	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
-	| Approval 	 | Start 		 | Approve 		 | 					 |
-	And I click on "Amend Subaward" in the page details
-	Given I click on "Activate" in the page details
+      | Actions    | Step 1        | Step 2   | Step 3            |
+      | Navigation | As a Grantor  | Grants   |                   |
+      | FlexTable  | Pending Tasks | My Tasks | PhasePendingTasks |
+      | Approval   | Start         | Approve  |                   |
+    And I click on "Amend Subaward" in the page details
+    Given I click on "Activate" in the page details
     Then I see status in Progress-bar is "Activated" and is "green"
     Examples:
     |Type                    |

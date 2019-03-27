@@ -17,7 +17,7 @@ public class ApplicationPage extends ProjectManager {
 
     /**
      * Handles qualifying an announcement
-     * 
+     *
      * @param announcementName
      * @param user
      */
@@ -33,7 +33,7 @@ public class ApplicationPage extends ProjectManager {
 
     /**
      * Handles creation of an application
-     * 
+     *
      * @param sheetName
      * @param excelFileName
      */
@@ -48,7 +48,7 @@ public class ApplicationPage extends ProjectManager {
     /**
      * Handles completion of one review process by clicking on Promote to Next step
      * button for the passed application
-     * 
+     *
      * @param reviewStep
      * @param applicationName
      * @param announcementOwner
@@ -56,7 +56,7 @@ public class ApplicationPage extends ProjectManager {
      * @throws IOException
      */
     public void completeReviewStepForApplication(String reviewStep, String buttonName, String applicationName,
-            String announcementOwner, String announcementName, DataTable dataTable) throws IOException {
+                                                 String announcementOwner, String announcementName, DataTable dataTable) throws IOException {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         try {
             govgrants.mainPage().loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), announcementOwner);
@@ -83,11 +83,11 @@ public class ApplicationPage extends ProjectManager {
 
     /**
      * Handles assigning of given application to the reviewer
-     * 
+     *
      * @param applicationName
      */
     public void assignApplicationToReviewer(String applicationName, String noOfReviewers, DataTable dataTable,
-            String... reviewer) {
+                                            String... reviewer) {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         int numberOfReviewers = Integer.parseInt(noOfReviewers);
         for (int i = 1; i <= numberOfReviewers; i++) {
@@ -107,7 +107,7 @@ public class ApplicationPage extends ProjectManager {
 
     /**
      * Handles entering the given value in Subaward Abbreviation in FDM
-     * 
+     *
      * @param value
      */
     public void enterSubAwardAbbreviationFDM(String value, DataTable dataTable) {
@@ -119,7 +119,7 @@ public class ApplicationPage extends ProjectManager {
 
     /**
      * Handles entering of recommendation for the given application in FDM
-     * 
+     *
      * @param recommendation
      * @param budget
      * @param applicationName
@@ -130,7 +130,7 @@ public class ApplicationPage extends ProjectManager {
     }
 
     private void singleApplicationAssignmentToReviewer(int qNumber, String applicationName, String reviewer,
-            Map<String, Map<String, String>> dataTableMap) {
+                                                       Map<String, Map<String, String>> dataTableMap) {
         govgrants.flexTable().expandOrCollapseNestedTable(applicationName, true);
         govgrants.flexTable().clickTableActionIcon(dataTableMap.get("FlexTable").get("Step 2"),
                 dataTableMap.get("FlexTable").get("Step 1"), dataTableMap.get("Review").get("Step " + qNumber));
@@ -138,7 +138,7 @@ public class ApplicationPage extends ProjectManager {
                 dataTableMap.get("Application").get("Step 2"), reviewer);
         try {
             govgrants.modal().closeModalByClickingTopRightCloseButton();
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             reiDriver.switchTo().switchToParentFrame();
         }
     }

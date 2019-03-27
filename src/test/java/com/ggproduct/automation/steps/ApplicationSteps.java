@@ -29,7 +29,7 @@ public class ApplicationSteps {
 
     @Given("^\"([^\"]*)\" is completed by clicking \"([^\"]*)\" for Application \"([^\"]*)\" as user \"([^\"]*)\" submitted for announcement \"([^\"]*)\"$")
     public void completeReviewStepForApplication(String reviewStep, String buttonName, String applicationName,
-            String announcementOwner, String announcementName, DataTable dataTable) throws IOException {
+                                                 String announcementOwner, String announcementName, DataTable dataTable) throws IOException {
         applicationPage.completeReviewStepForApplication(reviewStep, buttonName, applicationName, announcementOwner,
                 announcementName, dataTable);
     }

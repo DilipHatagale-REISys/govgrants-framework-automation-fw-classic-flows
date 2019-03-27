@@ -10,14 +10,14 @@ import eyethink.automation.bots.controller.CoreHandlers;
 
 public class PlanningSteps {
     PlanningPage planningPage;
-    
-    
+
+
     public PlanningSteps(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
         planningPage = new PlanningPage(controller, handler, govgrants);
     }
-    
+
     @Given("^I create a planning record as user \"([^\"]*)\" from sheet \"([^\"]*)\" in excel \"([^\"]*)\"$")
-    public void creationOfPlanningRecord(String user,String sheetName, String excelFileName, DataTable dataTable) {
+    public void creationOfPlanningRecord(String user, String sheetName, String excelFileName, DataTable dataTable) {
         planningPage.creationOfPlanningRecord(user, sheetName, excelFileName, dataTable);
     }
 }

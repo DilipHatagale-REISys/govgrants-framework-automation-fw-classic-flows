@@ -17,7 +17,7 @@ public class AwardPage extends ProjectManager {
 
     /**
      * Handles creation of a Grant record from the sheet in an excel
-     * 
+     *
      * @param user
      * @param sheetName
      * @param excelFileName
@@ -38,12 +38,12 @@ public class AwardPage extends ProjectManager {
 
     /**
      * Handles creation of Award from FDM
-     * 
+     *
      * @param announcementName
      * @param applicationName
      */
     public void creationOfAwardFromFDM(String announcementName, String applicationName, String User,
-            DataTable dataTable) {
+                                       DataTable dataTable) {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         govgrants.mainPage().loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), User);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
@@ -59,7 +59,7 @@ public class AwardPage extends ProjectManager {
 
     /**
      * Handles edition of budget grid in an award
-     * 
+     *
      * @param lineItem
      * @param rowValues
      */
@@ -72,7 +72,7 @@ public class AwardPage extends ProjectManager {
 
     /**
      * Handles creation of Risk Assessment to an award
-     * 
+     *
      * @param sheetName
      * @param excelName
      */
@@ -81,7 +81,7 @@ public class AwardPage extends ProjectManager {
         govgrants.pageDetails().clickSubTabsInsideTableView(dataTableMap.get("Creation").get("Step 1"));
         try {
             govgrants.flexTable().clickTableActionIcon(dataTableMap.get("Creation").get("Step 2"), dataTableMap.get("Creation").get("Step 3"), dataTableMap.get("Creation").get("Step 5"));
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             govgrants.flexTable().clickTableTopRightButton(dataTableMap.get("Creation").get("Step 2"), dataTableMap.get("Creation").get("Step 3"));
         }
         govgrants.inputForms().enterInputFieldsFromExcelFile(excelName, sheetName);
@@ -90,7 +90,7 @@ public class AwardPage extends ProjectManager {
 
     /**
      * Handles acceptance of Award by subrecipient before award approval
-     * 
+     *
      * @param subrecipientUser
      * @param awardName
      * @param comments

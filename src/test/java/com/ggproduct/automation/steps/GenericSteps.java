@@ -14,19 +14,19 @@ public class GenericSteps {
     public GenericSteps(Controller controller, CoreHandlers reiDriver, GovGrantsHandler govgrants) {
         projectManager = new ProjectManager(controller, reiDriver, govgrants);
     }
-    
+
     @Given("^I delete the record \"([^\"]*)\" from the object \"([^\"]*)\"$")
     public void deleteTestData(String recordName, String objectType) {
         projectManager.automationDeletionApi(recordName, objectType);
     }
-    
+
     @Given("^I get the \"([^\"]*)\"$")
     public void getRecordId(String recordIdLabel) {
         projectManager.getRecordId(recordIdLabel);
     }
-    
+
     @When("I attempt to delete record \"([^\"]*)\" inside table with id \"([^\"]*)\"")
     public void attemptDeletion(String columnValues, String tableId) {
-    	projectManager.attemptDeletion(columnValues, tableId);
+        projectManager.attemptDeletion(columnValues, tableId);
     }
 }   
