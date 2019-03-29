@@ -3,7 +3,7 @@ Feature: Validate all scenarios in the Application Review
 
 	#Background: Setup data
 	#Given I delete the record "Execution Announcement(Dr) for Automation" from the object "Reviews"
-	
+
   @preScreenApplicationReview @applicationReview
   Scenario Outline: Pre-Screen review for an application
     Given I login to "As a Grantor" app as "<User>" user
@@ -17,8 +17,8 @@ Feature: Validate all scenarios in the Application Review
     And I pause execution
     Then I see that "Review Step" is in "In Progress" status
     Examples:
-      | User | Announcement Name                         | Review Step Name  | Application Name                           |
-      | EXE  | Execution Announcement(Dr) for Automation | Pre-Screen Review |  Execution Announcement(Dr) for Automation |
+      | User | Announcement Name                         | Review Step Name  | Application Name                          |
+      | EXE  | Execution Announcement(Dr) for Automation | Pre-Screen Review | Execution Announcement(Dr) for Automation |
 
   @smeReviewEnterDueInDays @applicationReview
   Scenario Outline: Enter Due in Days for all review forms in SME-review
@@ -38,7 +38,7 @@ Feature: Validate all scenarios in the Application Review
       | Compliance Review | 10          |
     Then I see that "SME Review" is in "Not Started" status
     Examples:
-      | User | Announcement Name                         | Review Step Name  | Application Name                     |
+      | User | Announcement Name                         | Review Step Name  | Application Name                         |
       | EXE  | Execution Announcement(Dr) for Automation | Pre-Screen Review | Execution Announcement(Dr) for Automatio |
 
   @38463 @smeReviewAddReviewer @applicationReview
@@ -62,7 +62,7 @@ Feature: Validate all scenarios in the Application Review
       | Automation EXE |
     Then I see that "SME Review" is in "In Progress" status
     Examples:
-      | User | Announcement Name                         | Application Name                     |
+      | User | Announcement Name                         | Application Name                         |
       | EXE  | Execution Announcement(Dr) for Automation | Execution Announcement(Dr) for Automatio |
 
   @38462 @smeReviewAssignApplicationToReviewer @applicationReview
@@ -91,8 +91,8 @@ Feature: Validate all scenarios in the Application Review
       | Application | Assign         | flexGridAssignPanelApplications               |                   |
     Then I see that "SME Review" is in "In Progress" status
     Examples:
-       | User | Announcement Name                         | Application Name                     |
-       | EXE  | Execution Announcement(Dr) for Automation | Execution Announcement(Dr) for Automatio |
+      | User | Announcement Name                         | Application Name                         |
+      | EXE  | Execution Announcement(Dr) for Automation | Execution Announcement(Dr) for Automatio |
 
   @38464 @smeReviewSendForReview @applicationReview
   Scenario Outline: Choose the reviews and send for review in SME Review
@@ -122,7 +122,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
     Then I see that "SME Review" is in "In Progress" status
     Examples:
-      | User | Announcement Name                         | Application Name                     |
+      | User | Announcement Name                         | Application Name                         |
       | EXE  | Execution Announcement(Dr) for Automation | Execution Announcement(Dr) for Automatio |
 
   @smeReviewCompleteReviewForm @applicationReview
@@ -178,9 +178,9 @@ Feature: Validate all scenarios in the Application Review
     When I click on "Submit" in the page details
     Then I see that "SME Review" is in "In Progress" status
     Examples:
-      | User | Announcement Name                         | Application Name                     |
+      | User | Announcement Name                         | Application Name                         |
       | EXE  | Execution Announcement(Dr) for Automation | Execution Announcement(Dr) for Automatio |
-      
+
   @promoteToNextFromSMEReview @applicationReview
   Scenario Outline:Promoting from Pre-Screen review to the next review step for an application
     Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
@@ -226,7 +226,7 @@ Feature: Validate all scenarios in the Application Review
     When I click "Yes" on the confirmation dialog box
     Then I see that "Review Step" is in "Completed" status
     Examples:
-      | User | Announcement Name                         | Application Name                     |
+      | User | Announcement Name                         | Application Name                         |
       | EXE  | Execution Announcement(Dr) for Automation | Execution Announcement(Dr) for Automatio |
 
   @managementReviewEnterDueInDays @applicationReview
@@ -273,7 +273,7 @@ Feature: Validate all scenarios in the Application Review
       | Management Review | 10          |
     Then I see that "Management Review" is in "In Progress" status
     Examples:
-      | User | Announcement Name                         | Application Name                     |
+      | User | Announcement Name                         | Application Name                         |
       | EXE  | Execution Announcement(Dr) for Automation | Execution Announcement(Dr) for Automatio |
 
   @managementReviewAddReviewer @applicationReview
@@ -322,7 +322,7 @@ Feature: Validate all scenarios in the Application Review
       | Reviewer       |
       | Automation EXE |
     Examples:
-      | User | Announcement Name                         | Application Name                     |
+      | User | Announcement Name                         | Application Name                         |
       | EXE  | Execution Announcement(Dr) for Automation | Execution Announcement(Dr) for Automatio |
 
   @managementReviewAssignApplicationToReviewer @applicationReview
@@ -376,7 +376,7 @@ Feature: Validate all scenarios in the Application Review
       | FlexTable   | Assign            | flexGridPreScreenRelatedStepApplicationsFinal |
       | Application | Assign            | flexGridAssignPanelApplications               |
     Examples:
-      | User | Announcement Name                         | Application Name                     |
+      | User | Announcement Name                         | Application Name                         |
       | EXE  | Execution Announcement(Dr) for Automation | Execution Announcement(Dr) for Automatio |
 
   @managementReviewSendForReview @applicationReview
@@ -432,9 +432,9 @@ Feature: Validate all scenarios in the Application Review
     When I check "Management Review" boxes in flex table with id "flexGridStepReviews"
     And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
     Examples:
-     | User | Announcement Name                          | Application Name                     |
+      | User | Announcement Name                         | Application Name                         |
       | EXE  | Execution Announcement(Dr) for Automation | Execution Announcement(Dr) for Automatio |
-      
+
   @managementReviewCompleteReviewForm @applicationReview
   Scenario Outline: Complete Review form as Various reviewers in Management Review
     Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
@@ -497,7 +497,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Save" in the page details
     When I click on "Submit" in the page details
     Examples:
-      | User | Announcement Name                         | Application Name                     |
+      | User | Announcement Name                         | Application Name                         |
       | EXE  | Execution Announcement(Dr) for Automation | Execution Announcement(Dr) for Automatio |
 
   @promoteToFDMFromManagementReview @applicationReview
@@ -571,7 +571,7 @@ Feature: Validate all scenarios in the Application Review
     When I click "Yes" on the confirmation dialog box
     Then I see that "Review Step" is in "Completed" status
     Examples:
-      | User | Announcement Name                         | Review Step Name  | Application Name                     |
+      | User | Announcement Name                         | Review Step Name  | Application Name                         |
       | EXE  | Execution Announcement(Dr) for Automation | Pre-Screen Review | Execution Announcement(Dr) for Automatio |
 
   @subAwardAbbreviationInFDM @applicationReview
@@ -644,7 +644,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Save" in the page details
     Then I see that "Funding Decision Memo" is in "Created" status
     Examples:
-       | User | Announcement Name                         | Review Step Name  | Application Name                     |
+      | User | Announcement Name                         | Review Step Name  | Application Name                         |
       | EXE  | Execution Announcement(Dr) for Automation | Pre-Screen Review | Execution Announcement(Dr) for Automatio |
 
   @recommendationForApplicationInFDM @applicationReview
@@ -720,7 +720,7 @@ Feature: Validate all scenarios in the Application Review
       | Automation Application | 10000              | Yes                   | Recommended |
     Then I see that "Funding Decision Memo" is in "Created" status
     Examples:
-      | User | Announcement Name                         | Review Step Name  | Application Name                     |
+      | User | Announcement Name                         | Review Step Name  | Application Name                         |
       | EXE  | Execution Announcement(Dr) for Automation | Pre-Screen Review | Execution Announcement(Dr) for Automatio |
 
   @approverAssignmentForApplicationInFDM @applicationReview
@@ -800,7 +800,7 @@ Feature: Validate all scenarios in the Application Review
       | Approver 1 | GrantorReviewStepRolesandResponsibilities | Edit   | Executive Approver |
     Then I see that "Funding Decision Memo" is in "Created" status
     Examples:
-      | User | Announcement Name                         | Review Step Name  | Application Name                     |
+      | User | Announcement Name                         | Review Step Name  | Application Name                         |
       | EXE  | Execution Announcement(Dr) for Automation | Pre-Screen Review | Execution Announcement(Dr) for Automatio |
 
   @submitForApprovalFDM @applicationReview
@@ -881,11 +881,11 @@ Feature: Validate all scenarios in the Application Review
     Given I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
     Examples:
-      | User | Announcement Name                         | Review Step Name  | Application Name                     |
+      | User | Announcement Name                         | Review Step Name  | Application Name                         |
       | EXE  | Execution Announcement(Dr) for Automation | Pre-Screen Review | Execution Announcement(Dr) for Automatio |
 
-    @approveFDM @applicationReviewAndFDMHappyPath @applicationReview
-    Scenario Outline: Approving FDM as the assigned user
+  @approveFDM @applicationReviewAndFDMHappyPath @applicationReview
+  Scenario Outline: Approving FDM as the assigned user
     Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
       | Actions    | Step 1                                        | Step 2             | Step 3  | Step 4             |
       | Navigation | As a Grantor                                  | Applications       | Reviews | Application Review |
@@ -968,5 +968,5 @@ Feature: Validate all scenarios in the Application Review
     When I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Approved" and is "green"
     Examples:
-      | User | Announcement Name                         | Review Step Name  | Application Name                     |
+      | User | Announcement Name                         | Review Step Name  | Application Name                         |
       | EXE  | Execution Announcement(Dr) for Automation | Pre-Screen Review | Execution Announcement(Dr) for Automatio |

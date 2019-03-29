@@ -7,7 +7,7 @@ Feature: Validate all scenarios in the Site Visit
       | Actions    | Step 1       | Step 2         | Step 3               | Step 4                        |
       | Navigation | As a Grantor | Grants         | Grants and Subawards | Grants, Subaward & Amendments |
       | FlexTable  | Grants       | ActiveGrants   | View                 |                               |
-      | Subaward   | Subawards    | RelatedAwards1 | View                 |    Active                     |
+      | Subaward   | Subawards    | RelatedAwards1 | View                 | Active                        |
     Given I create a post award record from sheet "Creation" in excel "SiteVisit_Field_Values.xlsx"
       | Actions    | Step 1              | Step 2                 |
       | Navigation | Management          |                        |
@@ -331,12 +331,12 @@ Feature: Validate all scenarios in the Site Visit
       | Navigation | As a Grantor  | Monitoring |                   |
       | FlexTable  | Pending Tasks | MyTasks    | PhasePendingTasks |
       | Approval   | Start         | Approve    |                   |
-	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-	And I navigate to "Monitoring" tab
-	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-	And I click on "View" icon for "<Site Visit Name>" inside table
-	And I click on "Send to Subrecipient" in the page details
-	Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
+    And I click on "View" icon for "<Site Visit Name>" inside table
+    And I click on "Send to Subrecipient" in the page details
+    Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
     Examples:
       | Award Name                     | Site Visit Name       | Site Visit Approval Task |
       | Execution Grant for Automation | Automation Site Visit | Approve Site Visit       |
