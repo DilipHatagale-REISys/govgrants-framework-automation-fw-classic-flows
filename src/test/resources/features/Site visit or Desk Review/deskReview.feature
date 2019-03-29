@@ -158,8 +158,8 @@ Feature: Validate all scenarios in Desk Review
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "Automation SPI"
-      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
-      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
+	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		                |
+    | Associate 1 | Overview   | Associate | GrantorSiteVisitContacts | Associate	 | SelectSiteDeskReviewContacts |
     Given I select "2" approvers "Automation PM,Automation FO"
       | Actions    | Step 1                                   | Step 2 | Step 3           |
       | Subtab     | Responsibilities                         |        |                  |
@@ -202,154 +202,142 @@ Feature: Validate all scenarios in Desk Review
       | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
       | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     Given I select "2" approvers "Automation PM,Automation FO"
-      | Actions    | Step 1                                   | Step 2 | Step 3           |
-      | Subtab     | Responsibilities                         |        |                  |
-      | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver |
-      | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit   | Fiscal Approver  |
-    And I click on "Notify" in the page details
-    Given User "SPI" receives the task for "Record Id"
-      | Actions    | Step 1            | Step 2        | Step 3    |
-      | Navigation | Monitoring        | Grants Portal | SUBPORTAL |
-      | Left Panel | Pending Tasks     | My Tasks      |           |
-      | FlexTable  | PhasePendingTasks | Start         |           |
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "<Desk Review Name>" inside table
-    When I click on "Conduct" in the page details
-    And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
-      | Title                  | Description            | Type        |
-      | Automation Finding     | Automation Description | Finding     |
-      | Automation Concern     | Automation Description | Concern     |
-      | Automation Observation | Automation Description | Observation |
-    And I fill in the form "General Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
-      | Actions     | Step 1               | Step 2        |
-      | Navigation  | Reports and Outcomes |               |
-      | FlexTable   | Edit                 | FormComponent |
-      | Form Button | Save                 | Back          |
-      | Validation  | Validate             | FormComponent |
-    When I click on "Submit for Approval" in the page details
-    Then I see status in Progress-bar is "Submitted for Approval" and is "green"
-    Examples:
-      | Desk Review Name       |
-      | Automation Desk Review |
-
-  @approvalOfDeskReview @deskReview @all
-  Scenario Outline: Approval of Desk Review
-    Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
+    | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
+    | Subtab	 | Responsibilities 			  			| 		 |		    		  |
+    | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
+    | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
+	And I click on "Notify" in the page details
+	Given User "SPI" receives the task for "Record Id"
+	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
+	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
+	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
+	| FlexTable  | PhasePendingTasks | Start 		 |			 |
+	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+	And I navigate to "Monitoring" tab
+	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
+	And I click on "View" icon for "<Desk Review Name>" inside table
+	When I click on "Conduct" in the page details
+	And I navigate to "Reports and Outcomes" sub tab
+	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
+    | Title       		 	 | Description  	 	  | Type    	   |
+    | Automation Finding 	 | Automation Description | Finding		   |
+    | Automation Concern 	 | Automation Description | Concern 	   |
+    | Automation Observation | Automation Description | Observation    |
+	And I fill in the form "General Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
+	| Actions 	  | Step 1   		 	 | Step 2		 |
+	| Navigation  | Reports and Outcomes | 			 	 |
+	| FlexTable   | Edit				 | FormComponent |
+	| Form Button | Save				 | Back 		 |
+	| Validation  | Validate			 | FormComponent |
+	Then I see status in Progress-bar is "Submitted for Approval" and is "green"
+	Examples:
+	| Desk Review Name	     |
+	| Automation Desk Review |
+	
+	@approvalOfDeskReview @deskReview @all
+	Scenario Outline: Approval of Desk Review
+	Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
+    And I associate "1" records "Automation SPI"
+	| Actions 	  | Step 1     | Step 2	   	| Step 3  			  	   | Step 4  	 | Step 5  		  |
+    | Associate 1 | Overview   | Associate | GrantorSiteVisitContacts | Associate	 | SelectSiteDeskReviewContacts |
+    Given I select "2" approvers "Automation PM,Automation FO"
+    | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
+    | Subtab	 | Responsibilities 			  			| 		 |		    		  |
+    | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
+    | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
+	And I click on "Notify" in the page details
+	Given User "SPI" receives the task for "Record Id"
+	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
+	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
+	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
+	| FlexTable  | PhasePendingTasks | Start 		 |			 |
+	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+	And I navigate to "Monitoring" tab
+	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
+	And I click on "View" icon for "<Desk Review Name>" inside table
+	When I click on "Conduct" in the page details
+	And I navigate to "Reports and Outcomes" sub tab
+	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
+    | Title       		 	 | Description  	 	  | Type    	   |
+    | Automation Finding 	 | Automation Description | Finding		   |
+    | Automation Concern 	 | Automation Description | Concern 	   |
+    | Automation Observation | Automation Description | Observation    |
+	And I fill in the form "General Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
+	| Actions 	  | Step 1   		 	 | Step 2		 |
+	| Navigation  | Reports and Outcomes | 			 	 |
+	| FlexTable   | Edit				 | FormComponent |
+	| Form Button | Save				 | Back 		 |
+	| Validation  | Validate			 | FormComponent |
+	When I click on "Submit for Approval" in the page details
+	Given "2" Approvers "PM,FO" approve the record "<Desk Review Approval Task>"
+	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
+	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
+	| FlexTable  | Pending Tasks | My Tasks	     | PhasePendingTasks |
+	| Approval 	 | Start 		 | Approve 		 | 					 |
+	Then I see status in Progress-bar is "Approved" and is "green"
+	Examples:
+	| Award Name 				    | Award EGMS ID | Desk Review Name	      | Desk Review Approval Task           |Type                       |
+	| Execution Grant for Automation| AD-EGA-01     | Automation Desk Review  | Approval Desk Review                | Review Desk review report |
+	
+	@deskReviewSendToSubrecipient @deskReview @all
+	Scenario Outline: Send Desk Review to Subrecipient
+	Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
     And I associate "1" records "Automation SPI"
       | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
       | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     Given I select "2" approvers "Automation PM,Automation FO"
-      | Actions    | Step 1                                   | Step 2 | Step 3           |
-      | Subtab     | Responsibilities                         |        |                  |
-      | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver |
-      | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit   | Fiscal Approver  |
-    And I click on "Notify" in the page details
-    Given User "SPI" receives the task for "Record Id"
-      | Actions    | Step 1            | Step 2        | Step 3    |
-      | Navigation | Monitoring        | Grants Portal | SUBPORTAL |
-      | Left Panel | Pending Tasks     | My Tasks      |           |
-      | FlexTable  | PhasePendingTasks | Start         |           |
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "<Desk Review Name>" inside table
-    When I click on "Conduct" in the page details
-    And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
-      | Title                  | Description            | Type        |
-      | Automation Finding     | Automation Description | Finding     |
-      | Automation Concern     | Automation Description | Concern     |
-      | Automation Observation | Automation Description | Observation |
-    And I fill in the form "General Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
-      | Actions     | Step 1               | Step 2        |
-      | Navigation  | Reports and Outcomes |               |
-      | FlexTable   | Edit                 | FormComponent |
-      | Form Button | Save                 | Back          |
-      | Validation  | Validate             | FormComponent |
-    When I click on "Submit for Approval" in the page details
-    Given I re-login to "As a Grantor" app as "PM" user
-    When I navigate to "Monitoring" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "<Desk Review Approval Task>" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "<Desk Review Approval Task>" inside table
-    When I click on "Approve" on the approval decision box
-    And I re-login to "As a Grantor" app as "FO" user
-    When I navigate to "Monitoring" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "<Desk Review Approval Task>" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "<Desk Review Approval Task>" inside table
-    When I click on "Approve" on the approval decision box
-    Then I see status in Progress-bar is "Approved" and is "green"
-    Examples:
-      | Award Name                     | Award EGMS ID | Desk Review Name       | Desk Review Approval Task | Type                      |
-      | Execution Grant for Automation | AD-EGA-01     | Automation Desk Review | Approval Desk Review      | Review Desk review report |
-
-  @deskReviewSendToSubrecipient @deskReview @all
-  Scenario Outline: Send Desk Review to Subrecipient
-    Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "Automation SPI"
-      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
-      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
-    Given I select "2" approvers "Automation PM,Automation FO"
-      | Actions    | Step 1                                   | Step 2 | Step 3           |
-      | Subtab     | Responsibilities                         |        |                  |
-      | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver |
-      | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit   | Fiscal Approver  |
-    And I click on "Notify" in the page details
-    Given User "SPI" receives the task for "Record Id"
-      | Actions    | Step 1            | Step 2        | Step 3    |
-      | Navigation | Monitoring        | Grants Portal | SUBPORTAL |
-      | Left Panel | Pending Tasks     | My Tasks      |           |
-      | FlexTable  | PhasePendingTasks | Start         |           |
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "<Desk Review Name>" inside table
-    When I click on "Conduct" in the page details
-    And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
-      | Title                  | Description            | Type        |
-      | Automation Finding     | Automation Description | Finding     |
-      | Automation Concern     | Automation Description | Concern     |
-      | Automation Observation | Automation Description | Observation |
-    And I fill in the form "General Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
-      | Actions     | Step 1               | Step 2        |
-      | Navigation  | Reports and Outcomes |               |
-      | FlexTable   | Edit                 | FormComponent |
-      | Form Button | Save                 | Back          |
-      | Validation  | Validate             | FormComponent |
-    When I click on "Submit for Approval" in the page details
-    Given "2" Approvers "PM,FO" approve the record "<Desk Review Approval Task>"
-      | Actions    | Step 1        | Step 2     | Step 3            |
-      | Navigation | As a Grantor  | Monitoring |                   |
-      | FlexTable  | Pending Tasks | My Tasks   | PhasePendingTasks |
-      | Approval   | Start         | Approve    |                   |
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I expand nested table containing column value "<Award Name>"
-    When I expand nested table containing column value "<Award Name>"
-    And I perform quick search for "<Desk Review Name>" for the parent value "AD-EGA-01" on grid "inlineEditGridSiteVisitsGridView"
-    When I click on "Start" icon for "<Desk Review Name>" inside table
-    And I click on "Send to Subrecipient" in the page details
-    Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
-    Examples:
-      | Desk Review Name       | Award Name                     | Desk Review Approval Task |
-      | Automation Desk Review | Execution Grant for Automation | Approve Desk Review       |
-
-  @deskReviewCorrectiveActionsBySubrecipient @deskReview @all
-  Scenario Outline: Send Desk Review to Subrecipient
-    Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
-    When I pause execution
+    | Actions 	 | Step 1   				       		 	| Step 2 | Step 3 			  |
+    | Subtab	 | Responsibilities 			  			| 		 |		    		  |
+    | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver   |
+    | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit	 | Fiscal Approver    |
+	And I click on "Notify" in the page details
+	Given User "SPI" receives the task for "Record Id"
+	| Actions 	 | Step 1   		 | Step 2		 | Step 3    |
+	| Navigation | Monitoring 		 | Grants Portal | SUBPORTAL |
+	| Left Panel | Pending Tasks 	 | My Tasks 	 |			 |
+	| FlexTable  | PhasePendingTasks | Start 		 |			 |
+	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+	And I navigate to "Monitoring" tab
+	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
+	And I click on "View" icon for "<Desk Review Name>" inside table
+	When I click on "Conduct" in the page details
+	And I navigate to "Reports and Outcomes" sub tab
+	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
+    | Title       		 	 | Description  	 	  | Type    	   |
+    | Automation Finding 	 | Automation Description | Finding		   |
+    | Automation Concern 	 | Automation Description | Concern 	   |
+    | Automation Observation | Automation Description | Observation    |
+	And I fill in the form "General Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
+	| Actions 	  | Step 1   		 	 | Step 2		 |
+	| Navigation  | Reports and Outcomes | 			 	 |
+	| FlexTable   | Edit				 | FormComponent |
+	| Form Button | Save				 | Back 		 |
+	| Validation  | Validate			 | FormComponent |
+	When I click on "Submit for Approval" in the page details
+	Given "2" Approvers "PM,FO" approve the record "<Desk Review Approval Task>"
+	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
+	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
+	| FlexTable  | Pending Tasks | My Tasks	     | PhasePendingTasks |
+	| Approval 	 | Start 		 | Approve 		 | 					 |
+	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+	And I navigate to "Monitoring" tab
+	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
+	And I click on "View" icon for "<Desk Review Name>" inside table
+	And I click on "Send to Subrecipient" in the page details
+	Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
+	Examples:
+	| Desk Review Name	     | Award Name                     |Desk Review Approval Task |
+	| Automation Desk Review | Execution Grant for Automation |Approve Desk Review        |
+	
+	@deskReviewCorrectiveActionsBySubrecipient @deskReview @all
+	Scenario Outline: Send Desk Review to Subrecipient
+	Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
+    | Actions 		  | Step 1 | Step 2	|
+    | Edition Buttons | Edit   | Save   |
     And I associate "1" records "Automation SPI"
       | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
       | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
@@ -370,33 +358,33 @@ Feature: Validate all scenarios in Desk Review
     And I click on "View" icon for "<Desk Review Name>" inside table
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
-      | Title                  | Description            | Type        |
-      | Automation Finding     | Automation Description | Finding     |
-      | Automation Concern     | Automation Description | Concern     |
-      | Automation Observation | Automation Description | Observation |
+	When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
+    | Title       		 	 | Description  	 	  | Type    	   |
+    | Automation Finding 	 | Automation Description | Finding		   |
+    | Automation Concern 	 | Automation Description | Concern 	   |
+    | Automation Observation | Automation Description | Observation    |
     And I fill in the form "General Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
-      | Actions     | Step 1               | Step 2        |
-      | Navigation  | Reports and Outcomes |               |
-      | FlexTable   | Edit                 | FormComponent |
-      | Form Button | Save                 | Back          |
-      | Validation  | Validate             | FormComponent |
-    When I click on "Submit for Approval" in the page details
-    Given "2" Approvers "PM,FO" approve the record "<Desk Review Approval Task>"
-      | Actions    | Step 1        | Step 2     | Step 3            |
-      | Navigation | As a Grantor  | Monitoring |                   |
-      | FlexTable  | Pending Tasks | My Tasks   | PhasePendingTasks |
-      | Approval   | Start         | Approve    |                   |
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "<Desk Review Name>" inside table
-    Given I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-    When I navigate to "Monitoring" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "<Type>" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "<Type>" inside table
+	| Actions 	  | Step 1   		 	 | Step 2		 |
+	| Navigation  | Reports and Outcomes | 			 	 |
+	| FlexTable   | Edit				 | FormComponent |
+	| Form Button | Save				 | Back 		 |
+	| Validation  | Validate			 | FormComponent |
+	When I click on "Submit for Approval" in the page details
+	Given "2" Approvers "PM,FO" approve the record "<Desk Review Approval Task>"
+	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
+	| Navigation | As a Grantor  | Monitoring	 | 				  	 |
+	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
+	| Approval 	 | Start 		 | Approve 		 | 					 |
+	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+	And I navigate to "Monitoring" tab
+	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
+	And I click on "View" icon for "<Desk Review Name>" inside table				 
+	Given I click on "Send to Subrecipient" in the page details
+	When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+	When I navigate to "Monitoring" tab
+	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+	When I perform quick search for "<Type>" in "PhasePendingTasks" panel
+	And I click on "Start" icon for "<Type>" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
@@ -472,19 +460,19 @@ Feature: Validate all scenarios in Desk Review
     And I click on "Start" icon for "<Type>" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
-    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
-      | Title                               | Description            | Status      | Due Date   | Assigned To    |
-      | Automation Observation Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
+   When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+    | Title            				 	  | Description  		   | Status  	 | Due Date   | Assigned To    |
+    | Automation Observation Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
-    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
-      | Title                           | Description            | Status      | Due Date   | Assigned To    |
-      | Automation Concern Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
+   When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+    | Title            				  | Description  		   | Status  	 | Due Date   | Assigned To    |
+    | Automation Concern Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
-    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
-      | Title                           | Description            | Status      | Due Date   | Assigned To    |
-      | Automation Finding Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
+   When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+    | Title            				  | Description  		   | Status  	 | Due Date   | Assigned To    |
+    | Automation Finding Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
     And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
@@ -546,19 +534,19 @@ Feature: Validate all scenarios in Desk Review
     And I click on "Start" icon for "<Type>" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
-    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
-      | Title                               | Description            | Status      | Due Date   | Assigned To    |
-      | Automation Observation Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
+   When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+    | Title            				 	  | Description  		   | Status  	 | Due Date   | Assigned To    |
+    | Automation Observation Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
-    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
-      | Title                           | Description            | Status      | Due Date   | Assigned To    |
-      | Automation Concern Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
+   When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+    | Title            				  | Description  		   | Status  	 | Due Date   | Assigned To    |
+    | Automation Concern Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
-    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
-      | Title                           | Description            | Status      | Due Date   | Assigned To    |
-      | Automation Finding Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
+   When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+    | Title            				  | Description  		   | Status  	 | Due Date   | Assigned To    |
+    | Automation Finding Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
     And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal

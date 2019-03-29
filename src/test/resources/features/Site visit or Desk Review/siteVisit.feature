@@ -3,11 +3,11 @@ Feature: Validate all scenarios in the Site Visit
 
   Background: Data setup for Site Visit
     Given I delete the record "Automation Site Visit" from the object "Site Visit"
-    And I login and view the "Active" award "AD-EGA-01" with name "Execution Grant for Automation" as User "EXE"
+    And I login and view the "Active" award "Record Id" with name "Execution Grant for Automation" as User "EXE"
       | Actions    | Step 1       | Step 2         | Step 3               | Step 4                        |
       | Navigation | As a Grantor | Grants         | Grants and Subawards | Grants, Subaward & Amendments |
       | FlexTable  | Grants       | ActiveGrants   | View                 |                               |
-      | Subaward   | Subawards    | RelatedAwards1 | View                 |                               |
+      | Subaward   | Subawards    | RelatedAwards1 | View                 |    Active                     |
     Given I create a post award record from sheet "Creation" in excel "SiteVisit_Field_Values.xlsx"
       | Actions    | Step 1              | Step 2                 |
       | Navigation | Management          |                        |
@@ -142,7 +142,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "View" icon for "<Site Visit Name>" inside table
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
+    When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
       | Title                  | Description            | Type        | Status | Closed Date |
       | Automation Finding     | Automation Description | Finding     | Open   |             |
       | Automation Concern     | Automation Description | Concern     | Open   |             |
@@ -177,7 +177,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "View" icon for "<Site Visit Name>" inside table
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
+    When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
@@ -218,7 +218,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "View" icon for "<Site Visit Name>" inside table
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
+    When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
@@ -260,7 +260,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "View" icon for "<Site Visit Name>" inside table
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
+    When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
@@ -314,7 +314,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "View" icon for "<Site Visit Name>" inside table
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
+    When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
@@ -331,15 +331,12 @@ Feature: Validate all scenarios in the Site Visit
       | Navigation | As a Grantor  | Monitoring |                   |
       | FlexTable  | Pending Tasks | MyTasks    | PhasePendingTasks |
       | Approval   | Start         | Approve    |                   |
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I expand nested table containing column value "<Award Name>"
-    When I expand nested table containing column value "<Award Name>"
-    And I perform quick search for "<Site Visit Name>" for the parent value "AD-AuGr--01" on grid "inlineEditGridSiteVisitsGridView"
-    When I click on "Start" icon for "<Site Visit Name>" inside table
-    And I click on "Send to Subrecipient" in the page details
-    Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
+	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+	And I navigate to "Monitoring" tab
+	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
+	And I click on "View" icon for "<Site Visit Name>" inside table
+	And I click on "Send to Subrecipient" in the page details
+	Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
     Examples:
       | Award Name                     | Site Visit Name       | Site Visit Approval Task |
       | Execution Grant for Automation | Automation Site Visit | Approve Site Visit       |
@@ -369,7 +366,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "View" icon for "<Site Visit Name>" inside table
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
+    When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |

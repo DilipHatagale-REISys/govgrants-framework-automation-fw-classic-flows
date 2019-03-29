@@ -38,7 +38,6 @@ Feature: Validate all scenarios in the Application Intake
   Scenario: Addition of budget in the budget grid to an application
     When I navigate to "Budget" sub tab
     And I expand nested table containing column value "BP01"
-    When I pause execution
     When I edit the following rows inline in flex table with id "flexGridEnhanceAppBudCatGrantorFlexGrid" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 1000       | 3000           | 100            |
@@ -48,7 +47,7 @@ Feature: Validate all scenarios in the Application Intake
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "flexGridRecipientApplicationRelatedKPIs" by clicking "Edit" :
       | EGMS ID  | Target |
-      | KPI-0419 | 10     |
+      | KPI-0638 | 10     |
     Then I see that "10" has been added in flextable with Id "flexGridRecipientApplicationRelatedKPIs"
     Examples:
       | Application Name                          | Flextable Name |
@@ -80,17 +79,12 @@ Feature: Validate all scenarios in the Application Intake
       | Edition Buttons | Edit   | Save   |
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "flexGridEnhanceAppBudCatGrantorFlexGrid" by clicking "Edit" :
-      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
-      | Construction  | 5000   | 1000       | 3000           | 100            |
+      | Category Name | Budget | Cash Match | Non-Cash Match |Other Leverage |
+      | Construction  | 5000   | 1000       | 3000           | 1000          |
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "flexGridRecipientApplicationRelatedKPIs" by clicking "Edit" :
       | EGMS ID  | Target |
-      | KPI-0419 | 10     |
-    Given I upload "1" checklist document "Announcement_Field_Values.xlsx"
-      | Actions    | Step 1                              | Step 2      | Step 3         |
-      | Navigation | Attachments                         |             |                |
-      | FlexTable  | inlineEditGridApplicationChecklists | Attach      | Not Applicable |
-      | Upload     | Checklist                           | Application |                |
+      | KPI-0638 | 10     |
     And I navigate to "Attachments" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "FormEnhancedTable"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
@@ -108,19 +102,14 @@ Feature: Validate all scenarios in the Application Intake
     Given I complete the fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I expand nested table containing column value "BP01" inside nested table containing "Proposed Budget"
+    Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "flexGridEnhanceAppBudCatGrantorFlexGrid" by clicking "Edit" :
-      | Category Name | Budget | Cash Match | Non-Cash Match |
-      | Construction  | 5000   | 1000       | 3000           |
+      | Category Name | Budget | Cash Match | Non-Cash Match |Other Leverage |
+      | Construction  | 5000   | 1000       | 3000           | 1000          |
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "flexGridRecipientApplicationRelatedKPIs" by clicking "Edit" :
       | EGMS ID  | Target |
-      | KPI-0419 | 10     |
-    Given I upload "1" checklist document "Announcement_Field_Values.xlsx"
-      | Actions    | Step 1                              | Step 2      | Step 3         |
-      | Navigation | Attachments                         |             |                |
-      | FlexTable  | inlineEditGridApplicationChecklists | Attach      | Not Applicable |
-      | Upload     | Checklist                           | Application |                |
+      | KPI-0638 | 10     |
     And I navigate to "Attachments" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "FormEnhancedTable"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
@@ -131,7 +120,7 @@ Feature: Validate all scenarios in the Application Intake
     And I click on "Save" in the page details
     Given I click on "Back" in the page details
     When I click on "Submit Application" in the page details
-    Given I login to "As a Grantor" app as "<User>" user
+    Given I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Submitted Applications"
