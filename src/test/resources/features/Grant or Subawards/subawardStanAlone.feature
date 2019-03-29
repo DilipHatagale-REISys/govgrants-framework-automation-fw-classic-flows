@@ -2,6 +2,7 @@
 Feature: Validate all scenarios in the Stand Alone Award and Grant
 
 	Background: Create Award 
+	Given I delete the record "Permanent Announcement(Dr) for Automation" from the object "Grant"
 	And I create a Grant as user "EXE" from sheet "Grant_Creation" in excel "Award_Field_Values.xlsx"
 	| Actions 	 | Step 1 	   		    | Step 2    	 	 | Step 3 				         |
 	| Navigation | As a Grantor		    | Grants    	 	 | Grants, Subaward & Amendments |

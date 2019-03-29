@@ -2,8 +2,8 @@
 Feature: Validate all scenarios in the Amendment Request
 
 	Background: Setup data
-	Given I delete the record "Permanent Award For Automation" from the object "Amendment Request"
-	Given I login and view the "Active" award "Activated" with name "Permanent Award For Automation" as User "PM"
+	Given I delete the record "Execution Grant for Automation" from the object "Amendment Request"
+	Given I login and view the "Active" award "Activated" with name "Execution Grant for Automation" as User "PM"
     | Actions 	 | Step 1 	  	 | Step 2		  | Step 3  	 		   | Step 4						   |
     | Navigation | As a Grantor  | Grants		  | Grants and Subawards   | Grants, Subaward & Amendments |
     | FlexTable  | Grants		 | ActiveGrants   | View				   |							   |
@@ -121,9 +121,6 @@ Feature: Validate all scenarios in the Amendment Request
       | 10                   | Target__c    |
     Given I click modal button "Save"
     And I close Modal
-    When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
-    And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
-    When I switch to Parent frame
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
       | Actions    | Step 1                               | Step 2 | Step 3             |
       | Subtab     | Roles                                |        |                    |
@@ -155,9 +152,6 @@ Feature: Validate all scenarios in the Amendment Request
       | 10                   | Target__c    |
     Given I click modal button "Save"
     And I close Modal
-    When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
-    And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
-    When I switch to Parent frame
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
       | Actions    | Step 1                               | Step 2 | Step 3             |
       | Subtab     | Roles                                |        |                    |
@@ -195,9 +189,6 @@ Feature: Validate all scenarios in the Amendment Request
       | 10                   | Target__c    |
     Given I click modal button "Save"
     And I close Modal
-    When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
-    And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
-    When I switch to Parent frame
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
       | Actions    | Step 1                               | Step 2 | Step 3             |
       | Subtab     | Roles                                |        |                    |
@@ -215,11 +206,11 @@ Feature: Validate all scenarios in the Amendment Request
       | Left Panel | Pending Tasks     | My Tasks      |           |
       | FlexTable  | PhasePendingTasks | Start         |           |
     And I click on "Acknowledge" in the page details
-    When User "EXE" receives the task for "Record Id"
-      | Actions    | Step 1            | Step 2       | Step 3 |
-      | Navigation | Grants            | As a Grantor | DEMO   |
-      | Left Panel | Pending Tasks     | My Tasks     |        |
-      | FlexTable  | PhasePendingTasks | Start        |        |
+    When User "PM" receives the task for "Record Id"
+      | Actions    | Step 1            | Step 2                           | Step 3    |
+      | Navigation | Grants            | As a Grantor                     | INTERNAL  |
+      | Left Panel | Pending Tasks     | My Tasks                         |           |
+      | FlexTable  | PhasePendingTasks | Review Amendment Request         |  Start    |
     And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
     
@@ -241,9 +232,6 @@ Feature: Validate all scenarios in the Amendment Request
       | 10                   | Target__c    |
     Given I click modal button "Save"
     And I close Modal
-    When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
-    And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
-    When I switch to Parent frame
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
       | Actions    | Step 1                               | Step 2 | Step 3             |
       | Subtab     | Roles                                |        |                    |
@@ -263,7 +251,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Acknowledge" in the page details
     When User "PM" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2       | Step 3 |
-      | Navigation | Grants            | As a Grantor | DEMO   |
+      | Navigation | Grants            | As a Grantor | INTERNAL  |
       | Left Panel | Pending Tasks     | My Tasks     |        |
       | FlexTable  | PhasePendingTasks | Start        |        |
     And I click on "Submit for Approval" in the page details
@@ -292,9 +280,6 @@ Feature: Validate all scenarios in the Amendment Request
       | 10                   | Target__c    |
     Given I click modal button "Save"
     And I close Modal
-    When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
-    And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
-    When I switch to Parent frame
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
       | Actions    | Step 1                               | Step 2 | Step 3             |
       | Subtab     | Roles                                |        |                    |
@@ -314,7 +299,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Acknowledge" in the page details
     When User "PM" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2       | Step 3 |
-      | Navigation | Grants            | As a Grantor | DEMO   |
+      | Navigation | Grants            | As a Grantor | INTERNAL  |
       | Left Panel | Pending Tasks     | My Tasks     |        |
       | FlexTable  | PhasePendingTasks | Start        |        |
     And I click on "Submit for Approval" in the page details
@@ -327,7 +312,7 @@ Feature: Validate all scenarios in the Amendment Request
     Then I see that "Subaward" is in "Pending Activation" status
     
     @activateSubawardSOWAmendmentRequest @scopeOfWorkHappyPath @scopeOfWork @amendmentRequest
-	Scenario Outline: Click on Amend of Amendment Request
+	Scenario: Click on Amend of Amendment Request
 	Given I navigate to "Requests" sub tab
 	And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
 	When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
@@ -344,9 +329,6 @@ Feature: Validate all scenarios in the Amendment Request
       | 10                   | Target__c    |
     Given I click modal button "Save"
     And I close Modal
-    When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
-    And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
-    When I switch to Parent frame
     Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
       | Actions    | Step 1                               | Step 2 | Step 3             |
       | Subtab     | Roles                                |        |                    |
@@ -357,47 +339,27 @@ Feature: Validate all scenarios in the Amendment Request
       | Actions               | Step 1      | Step 2               | Step 3             |
       | Attachment Navigation | Attachments | Add                  | a150b000003epeQAAQ |
       | Attachment Details    | Attachment  | Terms and Conditions |                    |
-    And I navigate to "Management" sub tab
-    Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
-      | Actions  | Step 1     | Step 2                          | Step 3 | Step 4            |
-      | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue |
-    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    Given I select "2" approvers "Automation PM,Automation FO"
-      | Actions    | Step 1                                        | Step 2 | Step 3           |
-      | Subtab     | Responsibilities                              |        |                  |
-      | Approver 1 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Program Approver |
-      | Approver 2 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Fiscal Approver  |
-    And I click on "Submit for Approval" in the page details
-    Given "2" Approvers "PM,FO" approve the record "Approve Subaward Risk Assessment"
-      | Actions    | Step 1        | Step 2     | Step 3            |
-      | Navigation | As a Grantor  | Monitoring |                   |
-      | FlexTable  | Pending Tasks | My Tasks   | PhasePendingTasks |
-      | Approval   | Start         | Approve    |                   |
     And I click on "Send to Subrecipient" in the page details
-    Given User "SPI" receives the task for "<Type>"
+    Given User "SPI" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2        | Step 3    |
       | Navigation | Grants            | Grants Portal | SUBPORTAL |
       | Left Panel | Pending Tasks     | My Tasks      |           |
       | FlexTable  | PhasePendingTasks | Start         |           |
     And I click on "Acknowledge" in the page details
-    Given User "PM" receives the task for "Record Id"
+    When User "PM" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2       | Step 3 |
-      | Navigation | Grants            | As a Grantor | DEMO   |
+      | Navigation | Grants            | As a Grantor | INTERNAL  |
       | Left Panel | Pending Tasks     | My Tasks     |        |
       | FlexTable  | PhasePendingTasks | Start        |        |
     And I click on "Submit for Approval" in the page details
-    Given "3" Approvers "PM,FO,EXE" approve the record "Record Id"
+    When "3" Approvers "PM,FO,EXE" approve the record "Record Id"
       | Actions    | Step 1        | Step 2   | Step 3            |
       | Navigation | As a Grantor  | Grants   |                   |
       | FlexTable  | Pending Tasks | My Tasks | PhasePendingTasks |
       | Approval   | Start         | Approve  |                   |
     And I click on "Amend Subaward" in the page details
-    Given I click on "Activate" in the page details
+    When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Activated" and is "green"
-    Examples:
-    |Type                    |
-    |Submit Amendment Request|
     
     @creationOfBPCAmendmentRequest @budgetPeriodChange @amendmentRequest
 	Scenario: Creation of Amendment Request
@@ -429,8 +391,8 @@ Feature: Validate all scenarios in the Amendment Request
 	And I click on "Save" in the page details
 	And I edit the following rows inline in flex table with id "flexGridAmendmentProjectAreasGrantor" by clicking "Edit" : 
 	| Title 						 | End Date    | 
-	| Automation Program Focus Area  | 03/21/2020  |
-	Then I see that "03/21/2020" has been added in flextable with Id "flexGridAmendmentProjectAreasGrantor"
+	| Automation Program Focus Area  | 365         |
+	Then I see that "End Date" has been added in flextable with Id "flexGridAmendmentProjectAreasGrantor"
 	
 	@associateFocusAreaToBPCAmendmentRequest @budgetPeriodChange @amendmentRequest
 	Scenario: Creation of Amendment Request
