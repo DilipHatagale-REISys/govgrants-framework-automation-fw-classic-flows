@@ -83,7 +83,7 @@ Feature: Validate all scenarios for program
     Then I see that "<EGMS Id>" has been added in flextable with Id "program::kpiTableId"
     Examples:
       | EGMS Id  |
-      | KPI-0652|
+      | KPI-0652 |
 
   @34745 @programAttachmentChecklist @all
   Scenario: Validate the attachment checklist for the Internal Program
@@ -96,9 +96,9 @@ Feature: Validate all scenarios for program
     When I close Modal
     Then I see that "Active" has been added in flextable with Id "program::checklistTableId"
 
-   @34750 @submittingProgramForApproval @all
-   Scenario: Validate the submission of Program for Approval
-        Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
+  @34750 @submittingProgramForApproval @all
+  Scenario: Validate the submission of Program for Approval
+    Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "3" records "Automation EXE,Execution Focus Area for Automation,Permanent Objective Automation"
@@ -122,12 +122,12 @@ Feature: Validate all scenarios for program
       | Actions               | Step 1      | Step 2            | Step 3             |
       | Attachment Navigation | Attachments | Add               | a150b000003epY5AAI |
       | Attachment Details    | Attach1ment | Program Artifacts |                    |
-     And I click on "Submit For Approval" in the page details
-     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
+    And I click on "Submit For Approval" in the page details
+    Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
-    @34754 @programApproval @all
-    Scenario Outline: Validate the approval of Internal Program
-        Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
+  @34754 @programApproval @all
+  Scenario Outline: Validate the approval of Internal Program
+    Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "3" records "Automation EXE,Execution Focus Area for Automation,Permanent Objective Automation"
@@ -158,9 +158,9 @@ Feature: Validate all scenarios for program
       | FlexTable  | Pending Tasks | My Tasks | PhasePendingTasks |
       | Approval   | Start         | Approve  |                   |
     Then I see status in Progress-bar is "Approved" and is "green"
-	 Examples:
-	| Program Approver | Program Name		  			                         | Executive Approver  |Type           |
-	| PM               | Execution Internal Program for Automation               | EXE			  	   |Approve Program|
+    Examples:
+      | Program Approver | Program Name                              | Executive Approver | Type            |
+      | PM               | Execution Internal Program for Automation | EXE                | Approve Program |
 
   @34756 @programActivation @programHappyPath @all
   Scenario Outline: Validate the activation of Internal Program

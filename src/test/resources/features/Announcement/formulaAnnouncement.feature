@@ -32,9 +32,9 @@ Feature: Validate all scenarios in the Announcement tab
     And I perform quick search for "Record id" in "ActiveFundingOpportunitiesAll" panel
     Then I do not see value "Record id" for title "Announcement Name" inside table "ActiveFundingOpportunitiesAll"
 
-   @createdAnnouncementDeletionByOtherUserFA @announcement @all 
-   Scenario Outline: Validate that other users are not able to delete created announcement
-   Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+  @createdAnnouncementDeletionByOtherUserFA @announcement @all
+  Scenario Outline: Validate that other users are not able to delete created announcement
+    Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
       | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
       | FlexTable   | Announcements                       | Draft Announcements        |                                   |
@@ -50,7 +50,7 @@ Feature: Validate all scenarios in the Announcement tab
       | Announcement Type | User |
       | Formula           | PM   |
 
-  @announcementCreateCompetitiveCheckUnderDraftFormulaListViewFA @announcement @all 
+  @announcementCreateCompetitiveCheckUnderDraftFormulaListViewFA @announcement @all
   Scenario Outline: Validate that Created Competitive announcement will not reflect under Draft Formula announcement list view
     Given I create a "<Automation type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
@@ -69,7 +69,7 @@ Feature: Validate all scenarios in the Announcement tab
       | Announcement Type |
       | Formula           |
 
-  @announcementCreateCompetitiveCheckUnderDirectedDraftListViewFA @announcement @all 
+  @announcementCreateCompetitiveCheckUnderDirectedDraftListViewFA @announcement @all
   Scenario Outline: Validate that Created Competitive announcement will not reflect under Draft Directed announcement list view
     Given I create a "<Automation type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
@@ -88,9 +88,9 @@ Feature: Validate all scenarios in the Announcement tab
       | Announcement Type |
       | Formula           |
 
-  @announcementEditionByOtherUserFA @announcement @all 
+  @announcementEditionByOtherUserFA @announcement @all
   Scenario Outline: Validate that other users are not able to edit created announcement
-Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+    Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
       | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
       | FlexTable   | Announcements                       | Draft Announcements        |                                   |
@@ -124,7 +124,7 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
       | Announcement Type |
       | Formula           |
 
-  @34221 @34222 @announcementEditionFA @announcement @all 
+  @34221 @34222 @announcementEditionFA @announcement @all
   Scenario Outline: Edition of an Announcement
     Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
@@ -142,10 +142,10 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
       | Announcement Type |
       | Formula           |
 
-  @37029 @announcementContactAssociationFA @announcement @all 
+  @37029 @announcementContactAssociationFA @announcement @all
   Scenario Outline: Contact association to an Announcement
     Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                    | Step 3                            |
+      | Actions     | Step 1                              | Step 2                     | Step 3                            |
       | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
       | FlexTable   | Announcements                       | Draft Announcements        |                                   |
       | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
@@ -161,7 +161,7 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
       | Announcement Type | Contact        |
       | Formula           | Automation EXE |
 
-  @announcementContactDissociationFA @announcement @all 
+  @announcementContactDissociationFA @announcement @all
   Scenario Outline: Validate the dissociation of contact to the Announcement
     Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
@@ -178,7 +178,7 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
     Then I do not see value "<Contact>" for title "Name" inside table "announcement::contactTableId"
     Examples:
       | Announcement Type | Contact        |
-      |Formula           | Automation EXE |
+      | Formula           | Automation EXE |
 
   @34760 @announcementFormulaInviteApplicantFA @announcementFormula @all
   Scenario: Amount addition to Invited applicant association to an Announcement
@@ -194,11 +194,11 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
-      | Agency                               | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST  | 1000             |
+      | Agency                              | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
     Then I see that "SAN DIEGO ELECTRICAL TRAINING TRUST" has been added in flextable with Id "announcement::formulaInvitedApplicatsTableId"
 
-  @34769 @announcementFundingAccountAssociationFA @announcement @all 
+  @34769 @announcementFundingAccountAssociationFA @announcement @all
   Scenario Outline: Funding Account association to an Announcement
     Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
@@ -220,7 +220,7 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
       | Announcement Type | EGMS Id                                 |
       | Formula           | Execution Funding Source for Automation |
 
-  @announcementFADissociationFA @announcement @all 
+  @announcementFADissociationFA @announcement @all
   Scenario Outline: Funding Account dissociation to an Announcement
     Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
@@ -238,9 +238,9 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
     Then I do not see value "<EGMS Id>" for title "EGMS ID" inside table "announcement::fundingAccountsTableId"
     Examples:
       | Announcement Type | EGMS Id |
-     | Formula            | FA--125 |
- 
-  @34771 @announcementBudgetPeriodAdditionFA @announcement @all 
+      | Formula           | FA--125 |
+
+  @34771 @announcementBudgetPeriodAdditionFA @announcement @all
   Scenario Outline: Budget Period Addition to an Announcement
     Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
@@ -254,14 +254,14 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-      | Budget Period Name | Start Date | End Date   |
-      | BP01               | 0          | 500        |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 0          | 500      |
     Then I see that "BP01" has been added in flextable with Id "flexGridAnnouncementBudgetPeriod"
     Examples:
       | Announcement Type |
       | Formula           |
 
-  @announcementBudgetPeriodDissociationFA @announcement @all 
+  @announcementBudgetPeriodDissociationFA @announcement @all
   Scenario Outline: Validate the dissociation of Budget Period to the Announcement
     Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
@@ -279,7 +279,7 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
       | Announcement Type |
       | Formula           |
 
-  @34775 @announcementFocusAreaAssociationFA @announcement @all 
+  @34775 @announcementFocusAreaAssociationFA @announcement @all
   Scenario Outline: Validate the association of Focus Area to Announcement
     Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
@@ -315,9 +315,9 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
     Then I see that "Automation Announcement Objective" has been added in flextable with Id "AnnouncementGranteeStrategicGoalsObjectives"
     Examples:
       | Announcement Type |
-     | Formula           |
+      | Formula           |
 
-  @announcementObjectiveDissociationFA @announcement @all 
+  @announcementObjectiveDissociationFA @announcement @all
   Scenario Outline: Validate the dissociation of objective to the Announcement
     Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
@@ -337,7 +337,7 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
       | Announcement Type |
       | Formula           |
 
-  @34773 @announcementKPIAssociationFA @announcement @all 
+  @34773 @announcementKPIAssociationFA @announcement @all
   Scenario Outline: Validate the association of KPI for the announcement
     Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
@@ -356,7 +356,7 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
       | Announcement Type |
       | Competitive       |
 
-  @35002 @announcementAttachmentChecklistFA @announcement @all 
+  @35002 @announcementAttachmentChecklistFA @announcement @all
   Scenario Outline: Validate the attachment checklist of the announcement
     Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
@@ -378,7 +378,7 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
       | Announcement Type |
       | Competitive       |
 
-  @announcementReviewStepsValidateFA @announcement @all @redTag 
+  @announcementReviewStepsValidateFA @announcement @all @redTag
   Scenario Outline: Validate the review steps for the announcement
     Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
@@ -394,7 +394,7 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
       | Announcement Type |
       | Formula           |
 
-  @34780 @announcementApproverSelectionFA @announcement @all 
+  @34780 @announcementApproverSelectionFA @announcement @all
   Scenario Outline: Validate the assignment of Approvers for the Announcement
     Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
@@ -419,9 +419,9 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
     Then I see that "Automation EXE" has been added in flextable with Id "GrantorAnnouncementRolesandResponsibilities"
     Examples:
       | Announcement Type |
-     | Formula           |
+      | Formula           |
 
-  @34232 @announcementReviewerAssignmentFA @announcement @all 
+  @34232 @announcementReviewerAssignmentFA @announcement @all
   Scenario Outline: Validate the assignment of Reviewer for the Announcement
     Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
@@ -439,10 +439,10 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
     Then I see that "Automation FO" has been added in flextable with Id "flexGridApproverRoles"
     Examples:
       | Announcement Type |
-     | Formula           |
+      | Formula           |
 
 
-  @34778 @announcementReviewerInitiationFA @announcement @all 
+  @34778 @announcementReviewerInitiationFA @announcement @all
   Scenario Outline: Validate the Reviewer initiation for the Announcement
     Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
@@ -462,9 +462,9 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
     Examples:
       | Announcement Type |
       | Formula           |
-    
-    @34779 @announcementReviewCompleteFA @announcement @all 
-    Scenario Outline: Validate the review for the Announcement
+
+  @34779 @announcementReviewCompleteFA @announcement @all
+  Scenario Outline: Validate the review for the Announcement
     Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
       | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
@@ -497,10 +497,10 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
     When I click on "Complete Review" in the page details
     Then I see status in Progress-bar is "Reviewed" and is "green"
     Examples:
-      | User | Flextable Name | Announcement Type | Active Funding Opportunities id     |
-      | FO   | Peer Reviewers | Formula           | ActiveFundingOpportunitiesFormula   |
+      | User | Flextable Name | Announcement Type | Active Funding Opportunities id   |
+      | FO   | Peer Reviewers | Formula           | ActiveFundingOpportunitiesFormula |
 
-  @35003 @announcementAddAttachmentFA @announcement @all 
+  @35003 @announcementAddAttachmentFA @announcement @all
   Scenario Outline: Validate the attachment for an Announcement
     Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
@@ -519,168 +519,168 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
       | Announcement Type |
       | Formula           |
 
-    @reviewStepsBeforeSubmitForApprovalFA @announcement 
-    Scenario Outline: Validate the Review steps of Announcement before submit for Approval
-  	Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
-	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
-	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
-	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
-	| ID		   | EGMS ID							 |							  |									  |
-	And I click on "Save" in the page details
-	And I navigate to "Setup" sub tab
-	And I expand nested table containing column value "Pre-Screen Review"
-	When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header            | Section Weight (%)    |
-	|Eligibility                | 50                  |
-	|Completeness               | 50                  |
-	And I expand nested table containing column value "Eligibility"
+  @reviewStepsBeforeSubmitForApprovalFA @announcement
+  Scenario Outline: Validate the Review steps of Announcement before submit for Approval
+    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+      | Actions     | Step 1                              | Step 2                     | Step 3                            |
+      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
+      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
+      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+      | Creation    | New                                 | Continue                   | Save and Continue                 |
+      | ID          | EGMS ID                             |                            |                                   |
+    And I click on "Save" in the page details
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Eligibility    | 50                 |
+      | Completeness   | 50                 |
+    And I expand nested table containing column value "Eligibility"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Eligibility"
     And I expand nested table containing column value "Completeness"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I close modal by clicking the top right x button 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
-	When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header           | Section Weight (%)   |
-	|	Schedule               | 30                 |
-	|	Environment            | 30                  |
-	|   Permits                |  40                 |
-	And I expand nested table containing column value "Schedule"
+    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Schedule       | 30                 |
+      | Environment    | 30                 |
+      | Permits        | 40                 |
+    And I expand nested table containing column value "Schedule"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Environment"
     And I expand nested table containing column value "Permits"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-   And I close modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header    | Section Weight (%)  |
-	|	Budget          | 30                  |
-	|	Match           | 40                  |
-	|   Program Income  |  30                 |
-	And I expand nested table containing column value "Budget"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Budget         | 30                 |
+      | Match          | 40                 |
+      | Program Income | 30                 |
+    And I expand nested table containing column value "Budget"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Budget"
     And I expand nested table containing column value "Match"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Match"
     And I expand nested table containing column value "Program Income"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
     And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header       | Section Weight (%)  |
-	|	Capability         |  30                 |
-	|	Approach           | 30                  |
-	|   Impact             |  40                 |
-	And I expand nested table containing column value "Capability"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Capability     | 30                 |
+      | Approach       | 30                 |
+      | Impact         | 40                 |
+    And I expand nested table containing column value "Capability"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Capability"
     And I expand nested table containing column value "Approach"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Approach"
     And I expand nested table containing column value "Impact"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
-	When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header                          | Section Weight (%)    |
-	|Return on Investment (ROI)               | 50                   |
-	|Strategic Alignment                      | 50                   |
-	And I expand nested table containing column value "Return on Investment (ROI)"
+    When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 50                 |
+      | Strategic Alignment        | 50                 |
+    And I expand nested table containing column value "Return on Investment (ROI)"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Return on Investment (ROI)"
     And I expand nested table containing column value "Strategic Alignment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-    Then I see the following messages in the page details :  
-    | There are no errors with the review step templates. |
-	Examples:
-    |Announcement Type |Active Funding Opportunities id    |
-    |Formula           |ActiveFundingOpportunitiesFormula  |
-	     
-  	@34461 @submittingAnnouncementForApprovalFA @announcement @CHECKThenStepFailure 
-  	Scenario Outline: Validate the submission of Announcement for Approval
-  		Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
-	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
-	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
-	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
-	| ID		   | EGMS ID					         |                            |                                   |
-	And I click on "Save" in the page details
-	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-    | Actions 		  | Step 1 | Step 2	|
-    | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--125"
-	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
-    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+    Then I see the following messages in the page details :
+      | There are no errors with the review step templates. |
+    Examples:
+      | Announcement Type | Active Funding Opportunities id   |
+      | Formula           | ActiveFundingOpportunitiesFormula |
+
+  @34461 @submittingAnnouncementForApprovalFA @announcement @CHECKThenStepFailure
+  Scenario Outline: Validate the submission of Announcement for Approval
+    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+      | Actions     | Step 1                              | Step 2                     | Step 3                            |
+      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
+      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
+      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+      | Creation    | New                                 | Continue                   | Save and Continue                 |
+      | ID          | EGMS ID                             |                            |                                   |
+    And I click on "Save" in the page details
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+      | Actions         | Step 1 | Step 2 |
+      | Edition Buttons | Edit   | Save   |
+    And I associate "1" records "FA--125"
+      | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
+      | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Pre-Encumbrance |
-	| FA--125 		  | 100 			|
-	When I navigate to "Financials" sub tab
+      | Funding Account | Pre-Encumbrance |
+      | FA--125         | 100             |
+    When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-	| Budget Period Name     | Start Date         | End Date        |
-	| BP01                   | 30                  | 365             |		
-	Given I associate "3" records "Automation EXE,03689,SPO-0072"
-	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
-    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
-    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
-    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 30         | 365      |
+    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
+      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
-      | Agency                               | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST  | 1000             |
-	And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
-    | Subtab	 | Responsibilities 						   | 		|		    		  |
-    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
-    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
-    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+      | Agency                              | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
+    And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+      | Actions    | Step 1                                      | Step 2 | Step 3             |
+      | Subtab     | Responsibilities                            |        |                    |
+      | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver   |
+      | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver    |
+      | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit   | Executive Approver |
     And I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
       | Actions              | Step 1                               | Step 2         | Step 3     |
       | Inline Column Title  | Description                          | Required       | Applies To |
@@ -713,157 +713,157 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
     And I enter value "Justified" into field "Justification__c"
     And I click on "Save" in the page details
     And I navigate to "Setup" sub tab
-	And I expand nested table containing column value "Pre-Screen Review"
-	When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header            | Section Weight (%)    |
-	|Eligibility                | 50                  |
-	|Completeness               | 50                 |
-	And I expand nested table containing column value "Eligibility"
+    And I expand nested table containing column value "Pre-Screen Review"
+    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Eligibility    | 50                 |
+      | Completeness   | 50                 |
+    And I expand nested table containing column value "Eligibility"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Eligibility"
     And I expand nested table containing column value "Completeness"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I close modal by clicking the top right x button 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
-	When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header           | Section Weight (%)   |
-	|	Schedule               | 30                 |
-	|	Environment            | 30                  |
-	|   Permits                |  40                 |
-	And I expand nested table containing column value "Schedule"
+    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Schedule       | 30                 |
+      | Environment    | 30                 |
+      | Permits        | 40                 |
+    And I expand nested table containing column value "Schedule"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Environment"
     And I expand nested table containing column value "Permits"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-   And I close modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header    | Section Weight (%)  |
-	|	Budget          | 30                  |
-	|	Match           | 40                  |
-	|   Program Income  |  30                 |
-	And I expand nested table containing column value "Budget"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Budget         | 30                 |
+      | Match          | 40                 |
+      | Program Income | 30                 |
+    And I expand nested table containing column value "Budget"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Budget"
     And I expand nested table containing column value "Match"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Match"
     And I expand nested table containing column value "Program Income"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
     And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header       | Section Weight (%)  |
-	|	Capability         |  30                 |
-	|	Approach           | 30                  |
-	|   Impact             |  40                 |
-	And I expand nested table containing column value "Capability"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Capability     | 30                 |
+      | Approach       | 30                 |
+      | Impact         | 40                 |
+    And I expand nested table containing column value "Capability"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Capability"
     And I expand nested table containing column value "Approach"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Approach"
     And I expand nested table containing column value "Impact"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
-	When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header                          | Section Weight (%)    |
-	|Return on Investment (ROI)               | 50                   |
-	|Strategic Alignment                      | 50                   |
-	And I expand nested table containing column value "Return on Investment (ROI)"
+    When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 50                 |
+      | Strategic Alignment        | 50                 |
+    And I expand nested table containing column value "Return on Investment (ROI)"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Return on Investment (ROI)"
     And I expand nested table containing column value "Strategic Alignment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"  
+    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     When I click on "Submit For Approval" in the page details
     Then I see status in Progress-bar is "Submit For Approval" and is "green"
     Examples:
-      | Announcement Type | Active Funding Opportunities id     |
-      | Formula           | ActiveFundingOpportunitiesFormula   |
+      | Announcement Type | Active Funding Opportunities id   |
+      | Formula           | ActiveFundingOpportunitiesFormula |
 
-	@submittedAnnouncementDeletionFA @announcement @all @checkBugetIssue 
-	Scenario Outline: Validate that only record owner cannot delete Submitted for Approval status announcements
-		Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
-	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
-	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
-	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
-	| ID		   | EGMS ID					         |                            |                                   |
-	And I click on "Save" in the page details
-	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-    | Actions 		  | Step 1 | Step 2	|
-    | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--125"
-	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
-    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+  @submittedAnnouncementDeletionFA @announcement @all @checkBugetIssue
+  Scenario Outline: Validate that only record owner cannot delete Submitted for Approval status announcements
+    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+      | Actions     | Step 1                              | Step 2                     | Step 3                            |
+      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
+      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
+      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+      | Creation    | New                                 | Continue                   | Save and Continue                 |
+      | ID          | EGMS ID                             |                            |                                   |
+    And I click on "Save" in the page details
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+      | Actions         | Step 1 | Step 2 |
+      | Edition Buttons | Edit   | Save   |
+    And I associate "1" records "FA--125"
+      | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
+      | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Pre-Encumbrance |
-	| FA--125 		  | 100 			|
-	When I navigate to "Financials" sub tab
+      | Funding Account | Pre-Encumbrance |
+      | FA--125         | 100             |
+    When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-	| Budget Period Name     | Start Date         | End Date        |
-	| BP01                   | 30                  | 365             |		
-	Given I associate "3" records "Automation EXE,03689,SPO-0072"
-	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
-    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
-    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
-    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 30         | 365      |
+    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
+      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
-      | Agency                               | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST  | 1000             |
-	And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
-    | Subtab	 | Responsibilities 						   | 		|		    		  |
-    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
-    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
-    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+      | Agency                              | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
+    And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+      | Actions    | Step 1                                      | Step 2 | Step 3             |
+      | Subtab     | Responsibilities                            |        |                    |
+      | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver   |
+      | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver    |
+      | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit   | Executive Approver |
     Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
       | Actions              | Step 1                               | Step 2         | Step 3     |
       | Inline Column Title  | Description                          | Required       | Applies To |
@@ -878,109 +878,109 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
       | Attachment Details    | Attachment  | Funding Opportunity Announcement |                    |
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
-    And I enter value "Justified" into field "Justification__c"  
+    And I enter value "Justified" into field "Justification__c"
     And I click on "Save" in the page details
-    	And I navigate to "Setup" sub tab
-	And I expand nested table containing column value "Pre-Screen Review"
-	When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header            | Section Weight (%)    |
-	|Eligibility                | 50                  |
-	|Completeness               | 50                   |
-	And I expand nested table containing column value "Eligibility"
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Eligibility    | 50                 |
+      | Completeness   | 50                 |
+    And I expand nested table containing column value "Eligibility"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Eligibility"
     And I expand nested table containing column value "Completeness"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I close modal by clicking the top right x button 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
-	When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header           | Section Weight (%)   |
-	|	Schedule               | 30                 |
-	|	Environment            | 30                  |
-	|   Permits                |  40                 |
-	And I expand nested table containing column value "Schedule"
+    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Schedule       | 30                 |
+      | Environment    | 30                 |
+      | Permits        | 40                 |
+    And I expand nested table containing column value "Schedule"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Environment"
     And I expand nested table containing column value "Permits"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-   And I close modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header    | Section Weight (%)  |
-	|	Budget          | 30                  |
-	|	Match           | 40                  |
-	|   Program Income  |  30                 |
-	And I expand nested table containing column value "Budget"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Budget         | 30                 |
+      | Match          | 40                 |
+      | Program Income | 30                 |
+    And I expand nested table containing column value "Budget"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Budget"
     And I expand nested table containing column value "Match"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Match"
     And I expand nested table containing column value "Program Income"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
     And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header       | Section Weight (%)  |
-	|	Capability         |  30                 |
-	|	Approach           | 30                  |
-	|   Impact             |  40                 |
-	And I expand nested table containing column value "Capability"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Capability     | 30                 |
+      | Approach       | 30                 |
+      | Impact         | 40                 |
+    And I expand nested table containing column value "Capability"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Capability"
     And I expand nested table containing column value "Approach"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Approach"
     And I expand nested table containing column value "Impact"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
-	When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header                          | Section Weight (%)    |
-	|Return on Investment (ROI)               | 50                   |
-	|Strategic Alignment                      | 50                   |
-	And I expand nested table containing column value "Return on Investment (ROI)"
+    When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 50                 |
+      | Strategic Alignment        | 50                 |
+    And I expand nested table containing column value "Return on Investment (ROI)"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Return on Investment (ROI)"
     And I expand nested table containing column value "Strategic Alignment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
@@ -989,51 +989,51 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
     When I perform quick search for "Record id" in "ActiveFundingOpportunitiesAll" panel
     Then I cannot see row level action button "Delete" against "Record id" in flex table with id "ActiveFundingOpportunitiesAll"
     Examples:
-    |Announcement Type|
-	|Formula          |
-	
-	@announcementForPastApplicationDueDateFA @announcement @all
-	Scenario Outline: 	Validate that user can not enter application due date as past date
-	Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
-	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
-	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
-	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
-	| ID		   | EGMS ID					         |                            |                                   |
-	And I click on "Save" in the page details
-	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-    | Actions 		  | Step 1 | Step 2	|
-    | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--125"
-	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
-    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+      | Announcement Type |
+      | Formula           |
+
+  @announcementForPastApplicationDueDateFA @announcement @all
+  Scenario Outline:    Validate that user can not enter application due date as past date
+    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+      | Actions     | Step 1                              | Step 2                     | Step 3                            |
+      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
+      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
+      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+      | Creation    | New                                 | Continue                   | Save and Continue                 |
+      | ID          | EGMS ID                             |                            |                                   |
+    And I click on "Save" in the page details
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+      | Actions         | Step 1 | Step 2 |
+      | Edition Buttons | Edit   | Save   |
+    And I associate "1" records "FA--125"
+      | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
+      | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Pre-Encumbrance |
-	| FA--125 		  | 100 			|
-	When I navigate to "Financials" sub tab
+      | Funding Account | Pre-Encumbrance |
+      | FA--125         | 100             |
+    When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-	| Budget Period Name     | Start Date         | End Date        |
-	| BP01                   | 30                  | 365             |		
-	Given I associate "3" records "Automation EXE,03689,SPO-0072"
-	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
-    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
-    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
-    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 30         | 365      |
+    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
+      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
-      | Agency                               | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST  | 1000             |
-	And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
-    | Subtab	 | Responsibilities 						   | 		|		    		  |
-    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
-    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
-    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+      | Agency                              | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
+    And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+      | Actions    | Step 1                                      | Step 2 | Step 3             |
+      | Subtab     | Responsibilities                            |        |                    |
+      | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver   |
+      | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver    |
+      | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit   | Executive Approver |
     Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
       | Actions              | Step 1                               | Step 2         | Step 3     |
       | Inline Column Title  | Description                          | Required       | Applies To |
@@ -1053,159 +1053,159 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
-    	And I navigate to "Setup" sub tab
-	And I expand nested table containing column value "Pre-Screen Review"
-	When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header            | Section Weight (%)    |
-	|Eligibility                | 50                  |
-	|Completeness               | 50                   |
-	And I expand nested table containing column value "Eligibility"
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Eligibility    | 50                 |
+      | Completeness   | 50                 |
+    And I expand nested table containing column value "Eligibility"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Eligibility"
     And I expand nested table containing column value "Completeness"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I close modal by clicking the top right x button 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
-	When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header           | Section Weight (%)   |
-	|	Schedule               | 30                 |
-	|	Environment            | 30                  |
-	|   Permits                |  40                 |
-	And I expand nested table containing column value "Schedule"
+    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Schedule       | 30                 |
+      | Environment    | 30                 |
+      | Permits        | 40                 |
+    And I expand nested table containing column value "Schedule"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Environment"
     And I expand nested table containing column value "Permits"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-   And I close modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header    | Section Weight (%)  |
-	|	Budget          | 30                  |
-	|	Match           | 40                  |
-	|   Program Income  |  30                 |
-	And I expand nested table containing column value "Budget"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Budget         | 30                 |
+      | Match          | 40                 |
+      | Program Income | 30                 |
+    And I expand nested table containing column value "Budget"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Budget"
     And I expand nested table containing column value "Match"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Match"
     And I expand nested table containing column value "Program Income"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
     And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header       | Section Weight (%)  |
-	|	Capability         |  30                 |
-	|	Approach           | 30                  |
-	|   Impact             |  40                 |
-	And I expand nested table containing column value "Capability"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Capability     | 30                 |
+      | Approach       | 30                 |
+      | Impact         | 40                 |
+    And I expand nested table containing column value "Capability"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Capability"
     And I expand nested table containing column value "Approach"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Approach"
     And I expand nested table containing column value "Impact"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
-	When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header                          | Section Weight (%)    |
-	|Return on Investment (ROI)               | 50                   |
-	|Strategic Alignment                      | 50                   |
-	And I expand nested table containing column value "Return on Investment (ROI)"
+    When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 50                 |
+      | Strategic Alignment        | 50                 |
+    And I expand nested table containing column value "Return on Investment (ROI)"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Return on Investment (ROI)"
     And I expand nested table containing column value "Strategic Alignment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"  
-	And I click on "Submit For Approval" in the page details
-	Then I see the following messages in the page details : 
-	| Overview Tab - Application Due Date cannot be in the past.|
-	Examples:
-    |Announcement Type|
-	|Formula          |
-	
-	@announcementWithBlankBudgetPeriodFA @announcement @all
-	Scenario Outline: 	Validate that user should not submit announcement with blank budget period dates
-	Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
-	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
-	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
-	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
-	| ID		   | EGMS ID					         |                            |                                   |
-	And I click on "Save" in the page details
-	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-    | Actions 		  | Step 1 | Step 2	|
-    | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--125"
-	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
-    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
+    And I click on "Submit For Approval" in the page details
+    Then I see the following messages in the page details :
+      | Overview Tab - Application Due Date cannot be in the past. |
+    Examples:
+      | Announcement Type |
+      | Formula           |
+
+  @announcementWithBlankBudgetPeriodFA @announcement @all
+  Scenario Outline:    Validate that user should not submit announcement with blank budget period dates
+    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+      | Actions     | Step 1                              | Step 2                     | Step 3                            |
+      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
+      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
+      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+      | Creation    | New                                 | Continue                   | Save and Continue                 |
+      | ID          | EGMS ID                             |                            |                                   |
+    And I click on "Save" in the page details
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+      | Actions         | Step 1 | Step 2 |
+      | Edition Buttons | Edit   | Save   |
+    And I associate "1" records "FA--125"
+      | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
+      | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Pre-Encumbrance |
-	| FA--125 		  | 100 			|
-	When I navigate to "Financials" sub tab
+      | Funding Account | Pre-Encumbrance |
+      | FA--125         | 100             |
+    When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-	| Budget Period Name     | Start Date         | End Date        |
-	| BP01                   | 30                  | 365             |		
-	Given I associate "3" records "Automation EXE,03689,SPO-0072"
-	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
-    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
-    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
-    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 30         | 365      |
+    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
+      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
-      | Agency                               | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST  | 1000             |
-	And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
-    | Subtab	 | Responsibilities 						   | 		|		    		  |
-    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
-    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
-    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+      | Agency                              | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
+    And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+      | Actions    | Step 1                                      | Step 2 | Step 3             |
+      | Subtab     | Responsibilities                            |        |                    |
+      | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver   |
+      | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver    |
+      | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit   | Executive Approver |
     Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
       | Actions              | Step 1                               | Step 2         | Step 3     |
       | Inline Column Title  | Description                          | Required       | Applies To |
@@ -1220,109 +1220,109 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
       | Attachment Details    | Attachment  | Funding Opportunity Announcement |                    |
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
-    And I enter value "Justified" into field "Justification__c" 
-    And I click on "Save" in the page details 
-    	And I navigate to "Setup" sub tab
-	And I expand nested table containing column value "Pre-Screen Review"
-	When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header            | Section Weight (%)    |
-	|Eligibility                | 50                  |
-	|Completeness               | 50                   |
-	And I expand nested table containing column value "Eligibility"
+    And I enter value "Justified" into field "Justification__c"
+    And I click on "Save" in the page details
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Eligibility    | 50                 |
+      | Completeness   | 50                 |
+    And I expand nested table containing column value "Eligibility"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Eligibility"
     And I expand nested table containing column value "Completeness"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I close modal by clicking the top right x button 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
-	When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header           | Section Weight (%)   |
-	|	Schedule               | 30                 |
-	|	Environment            | 30                  |
-	|   Permits                |  40                 |
-	And I expand nested table containing column value "Schedule"
+    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Schedule       | 30                 |
+      | Environment    | 30                 |
+      | Permits        | 40                 |
+    And I expand nested table containing column value "Schedule"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Environment"
     And I expand nested table containing column value "Permits"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-   And I close modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header    | Section Weight (%)  |
-	|	Budget          | 30                  |
-	|	Match           | 40                  |
-	|   Program Income  |  30                 |
-	And I expand nested table containing column value "Budget"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Budget         | 30                 |
+      | Match          | 40                 |
+      | Program Income | 30                 |
+    And I expand nested table containing column value "Budget"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Budget"
     And I expand nested table containing column value "Match"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Match"
     And I expand nested table containing column value "Program Income"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
     And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header       | Section Weight (%)  |
-	|	Capability         |  30                 |
-	|	Approach           | 30                  |
-	|   Impact             |  40                 |
-	And I expand nested table containing column value "Capability"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Capability     | 30                 |
+      | Approach       | 30                 |
+      | Impact         | 40                 |
+    And I expand nested table containing column value "Capability"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Capability"
     And I expand nested table containing column value "Approach"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Approach"
     And I expand nested table containing column value "Impact"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
-	When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header                          | Section Weight (%)    |
-	|Return on Investment (ROI)               | 50                   |
-	|Strategic Alignment                      | 50                   |
-	And I expand nested table containing column value "Return on Investment (ROI)"
+    When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 50                 |
+      | Strategic Alignment        | 50                 |
+    And I expand nested table containing column value "Return on Investment (ROI)"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Return on Investment (ROI)"
     And I expand nested table containing column value "Strategic Alignment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
@@ -1333,48 +1333,48 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
       | Announcement Type |
       | Formula           |
 
-  	@34763 @34765 @34766 @announcementApprovalFA @announcement @all
-  	Scenario Outline: Validate the approval of an Announcement
-  		Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
-	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
-	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
-	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
-	| ID		   | EGMS ID					         |                            |                                   |
-	And I click on "Save" in the page details
-	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-    | Actions 		  | Step 1 | Step 2	|
-    | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--125"
-	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
-    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+  @34763 @34765 @34766 @announcementApprovalFA @announcement @all
+  Scenario Outline: Validate the approval of an Announcement
+    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+      | Actions     | Step 1                              | Step 2                     | Step 3                            |
+      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
+      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
+      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+      | Creation    | New                                 | Continue                   | Save and Continue                 |
+      | ID          | EGMS ID                             |                            |                                   |
+    And I click on "Save" in the page details
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+      | Actions         | Step 1 | Step 2 |
+      | Edition Buttons | Edit   | Save   |
+    And I associate "1" records "FA--125"
+      | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
+      | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Pre-Encumbrance |
-	| FA--125 		  | 100 			|
-	When I navigate to "Financials" sub tab
+      | Funding Account | Pre-Encumbrance |
+      | FA--125         | 100             |
+    When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-	| Budget Period Name     | Start Date         | End Date        |
-	| BP01                   | 30                  | 365             |		
-	Given I associate "3" records "Automation EXE,03689,SPO-0072"
-	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
-    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
-    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
-    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 30         | 365      |
+    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
+      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
-      | Agency                               | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST  | 1000             |
-	And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
-    | Subtab	 | Responsibilities 						   | 		|		    		  |
-    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
-    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
-    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+      | Agency                              | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
+    And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+      | Actions    | Step 1                                      | Step 2 | Step 3             |
+      | Subtab     | Responsibilities                            |        |                    |
+      | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver   |
+      | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver    |
+      | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit   | Executive Approver |
     Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
       | Actions              | Step 1                               | Step 2         | Step 3     |
       | Inline Column Title  | Description                          | Required       | Applies To |
@@ -1384,198 +1384,198 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
       | Upload Modal         | Upload Template                      | Not Applicable |            |
       | Upload file          | Checklist                            | Announcement   |            |
     Given I add an attachment "InternalOrganization_Field_Values.xlsx"
-    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
-    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
-    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
-	Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
-	| Actions 			  | Step 1 	  		      | Step 2	 		   	  | Step 3  |
-	| Reviewer Navigation | Responsibilities      | 					  |			|
-	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
-	| Send Review		  | Send for Review       | Created 			  |			|
-	And Review is completed as user "FO" for the record "Record id"
-	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  | Step 4 		    |
-	| Reviewer Navigation | As a Grantor        | Announcements 					  | Pending Tasks 		  | My Tasks 	    |
-	| FlexTable 		  | PhasePendingTasks   | Start								  | flexGridApproverRoles | Enter Review    | 
-	| Enter Review		  | Sent for Review	    | Passed	  					      | Save	              | Submit Review   |
-	Given I login and view the record "Record id" as "EXE"
-	| Actions 			  | Step 1 	  		    | Step 2	 		   	  			  | Step 3  	 		  			  | Step 4 		    |
-	| Owner Navigation 	  | As a Grantor 		| Announcements 					  | <Announcement Type>               | Announcements   |
-	| Complete Review 	  | Draft Announcements | <Active Funding Opportunities id>   | View 		  		              | 				|
-	Given I click on "Complete Review" in the page details
+      | Actions               | Step 1      | Step 2                           | Step 3             |
+      | Attachment Navigation | Attachments | Add                              | a150b000003epC4AAI |
+      | Attachment Details    | Attachment  | Funding Opportunity Announcement |                    |
+    Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
+      | Actions             | Step 1           | Step 2                | Step 3 |
+      | Reviewer Navigation | Responsibilities |                       |        |
+      | FlexTable           | New              | flexGridApproverRoles | Save   |
+      | Send Review         | Send for Review  | Created               |        |
+    And Review is completed as user "FO" for the record "Record id"
+      | Actions             | Step 1            | Step 2        | Step 3                | Step 4        |
+      | Reviewer Navigation | As a Grantor      | Announcements | Pending Tasks         | My Tasks      |
+      | FlexTable           | PhasePendingTasks | Start         | flexGridApproverRoles | Enter Review  |
+      | Enter Review        | Sent for Review   | Passed        | Save                  | Submit Review |
+    Given I login and view the record "Record id" as "EXE"
+      | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
+      | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
+      | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
+    Given I click on "Complete Review" in the page details
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
-    And I enter value "Justified" into field "Justification__c"  
+    And I enter value "Justified" into field "Justification__c"
     And I click on "Save" in the page details
-    	And I navigate to "Setup" sub tab
-	And I expand nested table containing column value "Pre-Screen Review"
-	When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header            | Section Weight (%)    |
-	|Eligibility                | 50                  |
-	|Completeness               | 50                   |
-	And I expand nested table containing column value "Eligibility"
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Eligibility    | 50                 |
+      | Completeness   | 50                 |
+    And I expand nested table containing column value "Eligibility"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Eligibility"
     And I expand nested table containing column value "Completeness"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I close modal by clicking the top right x button 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
-	When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header           | Section Weight (%)   |
-	|	Schedule               | 30                 |
-	|	Environment            | 30                  |
-	|   Permits                |  40                 |
-	And I expand nested table containing column value "Schedule"
+    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Schedule       | 30                 |
+      | Environment    | 30                 |
+      | Permits        | 40                 |
+    And I expand nested table containing column value "Schedule"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Environment"
     And I expand nested table containing column value "Permits"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-   And I close modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header    | Section Weight (%)  |
-	|	Budget          | 30                  |
-	|	Match           | 40                  |
-	|   Program Income  |  30                 |
-	And I expand nested table containing column value "Budget"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Budget         | 30                 |
+      | Match          | 40                 |
+      | Program Income | 30                 |
+    And I expand nested table containing column value "Budget"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Budget"
     And I expand nested table containing column value "Match"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Match"
     And I expand nested table containing column value "Program Income"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
     And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header       | Section Weight (%)  |
-	|	Capability         |  30                 |
-	|	Approach           | 30                  |
-	|   Impact             |  40                 |
-	And I expand nested table containing column value "Capability"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Capability     | 30                 |
+      | Approach       | 30                 |
+      | Impact         | 40                 |
+    And I expand nested table containing column value "Capability"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Capability"
     And I expand nested table containing column value "Approach"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Approach"
     And I expand nested table containing column value "Impact"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
-	When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header                          | Section Weight (%)    |
-	|Return on Investment (ROI)               | 50                   |
-	|Strategic Alignment                      | 50                   |
-	And I expand nested table containing column value "Return on Investment (ROI)"
+    When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 50                 |
+      | Strategic Alignment        | 50                 |
+    And I expand nested table containing column value "Return on Investment (ROI)"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Return on Investment (ROI)"
     And I expand nested table containing column value "Strategic Alignment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-	And I click on "Submit For Approval" in the page details
-	Given I re-login to "As a Grantor" app as "Automation PM" user
-	When I navigate to "Announcements" tab
-	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I click on "Submit For Approval" in the page details
+    Given I re-login to "As a Grantor" app as "Automation PM" user
+    When I navigate to "Announcements" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
     And I click on "Start" icon for "Record id" inside table
     When I click on "Approve" on the approval decision box
     And I re-login to "As a Grantor" app as "Automation FO" user
-	When I navigate to "Announcements" tab
-	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I navigate to "Announcements" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
     And I click on "Start" icon for "Record id" inside table
     When I click on "Approve" on the approval decision box
     And I re-login to "As a Grantor" app as "Automation EXE" user
-	When I navigate to "Announcements" tab
-	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I navigate to "Announcements" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
     And I click on "Start" icon for "Record id" inside table
     When I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Approved" and is "green"
-	Examples:
-    |Announcement Type|Active Funding Opportunities id    |
-    |Formula          |ActiveFundingOpportunitiesFormula  |
-	
-	@announcementPendingTaskPostApprovalFA @announcement @all
-	Scenario Outline: Validate that after approval of an Announcement task get deleted from pending task table.
-	Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
-	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
-	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
-	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
-	| ID		   | EGMS ID					         |                            |                                   |
-	And I click on "Save" in the page details
-	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-    | Actions 		  | Step 1 | Step 2	|
-    | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--125"
-	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
-    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+    Examples:
+      | Announcement Type | Active Funding Opportunities id   |
+      | Formula           | ActiveFundingOpportunitiesFormula |
+
+  @announcementPendingTaskPostApprovalFA @announcement @all
+  Scenario Outline: Validate that after approval of an Announcement task get deleted from pending task table.
+    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+      | Actions     | Step 1                              | Step 2                     | Step 3                            |
+      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
+      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
+      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+      | Creation    | New                                 | Continue                   | Save and Continue                 |
+      | ID          | EGMS ID                             |                            |                                   |
+    And I click on "Save" in the page details
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+      | Actions         | Step 1 | Step 2 |
+      | Edition Buttons | Edit   | Save   |
+    And I associate "1" records "FA--125"
+      | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
+      | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Pre-Encumbrance |
-	| FA--125 		  | 100 			|
-	When I navigate to "Financials" sub tab
+      | Funding Account | Pre-Encumbrance |
+      | FA--125         | 100             |
+    When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-	| Budget Period Name     | Start Date         | End Date        |
-	| BP01                   | 30                  | 365             |		
-	Given I associate "3" records "Automation EXE,03689,SPO-0072"
-	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
-    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
-    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
-    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 30         | 365      |
+    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
+      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
-      | Agency                               | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST  | 1000             |
-	And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
-    | Subtab	 | Responsibilities 						   | 		|		    		  |
-    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
-    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
-    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+      | Agency                              | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
+    And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+      | Actions    | Step 1                                      | Step 2 | Step 3             |
+      | Subtab     | Responsibilities                            |        |                    |
+      | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver   |
+      | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver    |
+      | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit   | Executive Approver |
     Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
       | Actions              | Step 1                               | Step 2         | Step 3     |
       | Inline Column Title  | Description                          | Required       | Applies To |
@@ -1590,109 +1590,109 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
       | Attachment Details    | Attachment  | Funding Opportunity Announcement |                    |
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
-    And I enter value "Justified" into field "Justification__c"  
+    And I enter value "Justified" into field "Justification__c"
     And I click on "Save" in the page details
-    	And I navigate to "Setup" sub tab
-	And I expand nested table containing column value "Pre-Screen Review"
-	When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header            | Section Weight (%)    |
-	|Eligibility                | 50                  |
-	|Completeness               | 50                   |
-	And I expand nested table containing column value "Eligibility"
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Eligibility    | 50                 |
+      | Completeness   | 50                 |
+    And I expand nested table containing column value "Eligibility"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Eligibility"
     And I expand nested table containing column value "Completeness"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I close modal by clicking the top right x button 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
-	When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header           | Section Weight (%)   |
-	|	Schedule               | 30                 |
-	|	Environment            | 30                  |
-	|   Permits                |  40                 |
-	And I expand nested table containing column value "Schedule"
+    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Schedule       | 30                 |
+      | Environment    | 30                 |
+      | Permits        | 40                 |
+    And I expand nested table containing column value "Schedule"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Environment"
     And I expand nested table containing column value "Permits"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-   And I close modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header    | Section Weight (%)  |
-	|	Budget          | 30                  |
-	|	Match           | 40                  |
-	|   Program Income  |  30                 |
-	And I expand nested table containing column value "Budget"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Budget         | 30                 |
+      | Match          | 40                 |
+      | Program Income | 30                 |
+    And I expand nested table containing column value "Budget"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Budget"
     And I expand nested table containing column value "Match"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Match"
     And I expand nested table containing column value "Program Income"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
     And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header       | Section Weight (%)  |
-	|	Capability         |  30                 |
-	|	Approach           | 30                  |
-	|   Impact             |  40                 |
-	And I expand nested table containing column value "Capability"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Capability     | 30                 |
+      | Approach       | 30                 |
+      | Impact         | 40                 |
+    And I expand nested table containing column value "Capability"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Capability"
     And I expand nested table containing column value "Approach"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Approach"
     And I expand nested table containing column value "Impact"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
-	When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header                          | Section Weight (%)    |
-	|Return on Investment (ROI)               | 50                   |
-	|Strategic Alignment                      | 50                   |
-	And I expand nested table containing column value "Return on Investment (ROI)"
+    When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 50                 |
+      | Strategic Alignment        | 50                 |
+    And I expand nested table containing column value "Return on Investment (ROI)"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Return on Investment (ROI)"
     And I expand nested table containing column value "Strategic Alignment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
@@ -1705,53 +1705,53 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-	Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
-	Examples:
-    |Announcement Type|
-	|Formula          |
-	
-	@announcementCompletedTaskPostApprovalFA @announcement @all
-	Scenario Outline: Validate that after approval of an Announcement task get added to its completed task table.
-		Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
-	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
-	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
-	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
-	| ID		   | EGMS ID					         |                            |                                   |
-	And I click on "Save" in the page details
-	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-    | Actions 		  | Step 1 | Step 2	|
-    | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--125"
-	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
-    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+    Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
+    Examples:
+      | Announcement Type |
+      | Formula           |
+
+  @announcementCompletedTaskPostApprovalFA @announcement @all
+  Scenario Outline: Validate that after approval of an Announcement task get added to its completed task table.
+    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+      | Actions     | Step 1                              | Step 2                     | Step 3                            |
+      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
+      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
+      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+      | Creation    | New                                 | Continue                   | Save and Continue                 |
+      | ID          | EGMS ID                             |                            |                                   |
+    And I click on "Save" in the page details
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+      | Actions         | Step 1 | Step 2 |
+      | Edition Buttons | Edit   | Save   |
+    And I associate "1" records "FA--125"
+      | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
+      | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Pre-Encumbrance |
-	| FA--125 		  | 100 			|
-	When I navigate to "Financials" sub tab
+      | Funding Account | Pre-Encumbrance |
+      | FA--125         | 100             |
+    When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-	| Budget Period Name     | Start Date         | End Date        |
-	| BP01                   | 30                  | 365             |		
-	Given I associate "3" records "Automation EXE,03689,SPO-0072"
-	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
-    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
-    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
-    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 30         | 365      |
+    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
+      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
-      | Agency                               | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST  | 1000             |
-	And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
-    | Subtab	 | Responsibilities 						   | 		|		    		  |
-    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
-    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
-    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+      | Agency                              | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
+    And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+      | Actions    | Step 1                                      | Step 2 | Step 3             |
+      | Subtab     | Responsibilities                            |        |                    |
+      | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver   |
+      | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver    |
+      | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit   | Executive Approver |
     Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
       | Actions              | Step 1                               | Step 2         | Step 3     |
       | Inline Column Title  | Description                          | Required       | Applies To |
@@ -1767,110 +1767,110 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
-    	And I navigate to "Setup" sub tab
-	And I expand nested table containing column value "Pre-Screen Review"
-	When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header            | Section Weight (%)    |
-	|Eligibility                | 50                  |
-	|Completeness               | 50                   |
-	And I expand nested table containing column value "Eligibility"
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Eligibility    | 50                 |
+      | Completeness   | 50                 |
+    And I expand nested table containing column value "Eligibility"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Eligibility"
     And I expand nested table containing column value "Completeness"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I close modal by clicking the top right x button 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
-	When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header           | Section Weight (%)   |
-	|	Schedule               | 30                 |
-	|	Environment            | 30                  |
-	|   Permits                |  40                 |
-	And I expand nested table containing column value "Schedule"
+    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Schedule       | 30                 |
+      | Environment    | 30                 |
+      | Permits        | 40                 |
+    And I expand nested table containing column value "Schedule"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Environment"
     And I expand nested table containing column value "Permits"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-   And I close modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header    | Section Weight (%)  |
-	|	Budget          | 30                  |
-	|	Match           | 40                  |
-	|   Program Income  |  30                 |
-	And I expand nested table containing column value "Budget"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Budget         | 30                 |
+      | Match          | 40                 |
+      | Program Income | 30                 |
+    And I expand nested table containing column value "Budget"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Budget"
     And I expand nested table containing column value "Match"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Match"
     And I expand nested table containing column value "Program Income"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
     And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header       | Section Weight (%)  |
-	|	Capability         |  30                 |
-	|	Approach           | 30                  |
-	|   Impact             |  40                 |
-	And I expand nested table containing column value "Capability"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Capability     | 30                 |
+      | Approach       | 30                 |
+      | Impact         | 40                 |
+    And I expand nested table containing column value "Capability"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Capability"
     And I expand nested table containing column value "Approach"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Approach"
     And I expand nested table containing column value "Impact"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
-	When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header                          | Section Weight (%)    |
-	|Return on Investment (ROI)               | 50                   |
-	|Strategic Alignment                      | 50                   |
-	And I expand nested table containing column value "Return on Investment (ROI)"
+    When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 50                 |
+      | Strategic Alignment        | 50                 |
+    And I expand nested table containing column value "Return on Investment (ROI)"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Return on Investment (ROI)"
     And I expand nested table containing column value "Strategic Alignment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"  
+    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
@@ -1880,53 +1880,53 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
     When I navigate to "Announcements" tab
     And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhaseCompletedTasks" panel
-	Then I see value "Record Id" for title "EGMS ID" inside table "PhaseCompletedTasks"
-	Examples:
-    |Announcement Type|
-	|Formula          |
-	
-	@announcementSendBackToOwnerFA  @announcement @all
-	Scenario Outline: Validate the send back functionality of an Announcement
-		Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
-	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
-	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
-	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
-	| ID		   | EGMS ID					         |                            |                                   |
-	And I click on "Save" in the page details
-	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-    | Actions 		  | Step 1 | Step 2	|
-    | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--125"
-	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
-    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+    Then I see value "Record Id" for title "EGMS ID" inside table "PhaseCompletedTasks"
+    Examples:
+      | Announcement Type |
+      | Formula           |
+
+  @announcementSendBackToOwnerFA  @announcement @all
+  Scenario Outline: Validate the send back functionality of an Announcement
+    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+      | Actions     | Step 1                              | Step 2                     | Step 3                            |
+      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
+      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
+      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+      | Creation    | New                                 | Continue                   | Save and Continue                 |
+      | ID          | EGMS ID                             |                            |                                   |
+    And I click on "Save" in the page details
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+      | Actions         | Step 1 | Step 2 |
+      | Edition Buttons | Edit   | Save   |
+    And I associate "1" records "FA--125"
+      | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
+      | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Pre-Encumbrance |
-	| FA--125 		  | 100 			|
-	When I navigate to "Financials" sub tab
+      | Funding Account | Pre-Encumbrance |
+      | FA--125         | 100             |
+    When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-	| Budget Period Name     | Start Date         | End Date        |
-	| BP01                   | 30                  | 365             |		
-	Given I associate "3" records "Automation EXE,03689,SPO-0072"
-	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
-    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
-    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
-    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 30         | 365      |
+    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
+      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
-      | Agency                               | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST  | 1000             |
-	And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
-    | Subtab	 | Responsibilities 						   | 		|		    		  |
-    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
-    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
-    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+      | Agency                              | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
+    And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+      | Actions    | Step 1                                      | Step 2 | Step 3             |
+      | Subtab     | Responsibilities                            |        |                    |
+      | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver   |
+      | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver    |
+      | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit   | Executive Approver |
     Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
       | Actions              | Step 1                               | Step 2         | Step 3     |
       | Inline Column Title  | Description                          | Required       | Applies To |
@@ -1942,111 +1942,111 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
-    And I click on "Save" in the page details 
-    	And I navigate to "Setup" sub tab
-	And I expand nested table containing column value "Pre-Screen Review"
-	When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header            | Section Weight (%)    |
-	|Eligibility                | 50                  |
-	|Completeness               | 50                   |
-	And I expand nested table containing column value "Eligibility"
+    And I click on "Save" in the page details
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Eligibility    | 50                 |
+      | Completeness   | 50                 |
+    And I expand nested table containing column value "Eligibility"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Eligibility"
     And I expand nested table containing column value "Completeness"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I close modal by clicking the top right x button 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
-	When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header           | Section Weight (%)   |
-	|	Schedule               | 30                 |
-	|	Environment            | 30                  |
-	|   Permits                |  40                 |
-	And I expand nested table containing column value "Schedule"
+    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Schedule       | 30                 |
+      | Environment    | 30                 |
+      | Permits        | 40                 |
+    And I expand nested table containing column value "Schedule"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Environment"
     And I expand nested table containing column value "Permits"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-   And I close modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header    | Section Weight (%)  |
-	|	Budget          | 30                  |
-	|	Match           | 40                  |
-	|   Program Income  |  30                 |
-	And I expand nested table containing column value "Budget"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Budget         | 30                 |
+      | Match          | 40                 |
+      | Program Income | 30                 |
+    And I expand nested table containing column value "Budget"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Budget"
     And I expand nested table containing column value "Match"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Match"
     And I expand nested table containing column value "Program Income"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
     And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header       | Section Weight (%)  |
-	|	Capability         |  30                 |
-	|	Approach           | 30                  |
-	|   Impact             |  40                 |
-	And I expand nested table containing column value "Capability"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Capability     | 30                 |
+      | Approach       | 30                 |
+      | Impact         | 40                 |
+    And I expand nested table containing column value "Capability"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Capability"
     And I expand nested table containing column value "Approach"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Approach"
     And I expand nested table containing column value "Impact"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
-	When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header                          | Section Weight (%)    |
-	|Return on Investment (ROI)               | 50                   |
-	|Strategic Alignment                      | 50                   |
-	And I expand nested table containing column value "Return on Investment (ROI)"
+    When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 50                 |
+      | Strategic Alignment        | 50                 |
+    And I expand nested table containing column value "Return on Investment (ROI)"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Return on Investment (ROI)"
     And I expand nested table containing column value "Strategic Alignment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates" 
+    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Submit For Approval" in the page details
     Given I re-login to "As a Grantor" app as "PM" user
     When I navigate to "Announcements" tab
@@ -2061,46 +2061,46 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
 
   @announcementSendBackPendingTaskToOwnerFA @announcement @all
   Scenario Outline: Validate that after send back from approvers owner should not get pending task
-    	Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
-	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
-	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
-	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
-	| ID		   | EGMS ID					         |                            |                                   |
-	And I click on "Save" in the page details
-	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-    | Actions 		  | Step 1 | Step 2	|
-    | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--125"
-	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
-    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+      | Actions     | Step 1                              | Step 2                     | Step 3                            |
+      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
+      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
+      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+      | Creation    | New                                 | Continue                   | Save and Continue                 |
+      | ID          | EGMS ID                             |                            |                                   |
+    And I click on "Save" in the page details
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+      | Actions         | Step 1 | Step 2 |
+      | Edition Buttons | Edit   | Save   |
+    And I associate "1" records "FA--125"
+      | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
+      | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Pre-Encumbrance |
-	| FA--125 		  | 100 			|
-	When I navigate to "Financials" sub tab
+      | Funding Account | Pre-Encumbrance |
+      | FA--125         | 100             |
+    When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-	| Budget Period Name     | Start Date         | End Date        |
-	| BP01                   | 30                  | 365             |		
-	Given I associate "3" records "Automation EXE,03689,SPO-0072"
-	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
-    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
-    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
-    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 30         | 365      |
+    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
+      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
-      | Agency                               | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST  | 1000             |
-	And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
-    | Subtab	 | Responsibilities 						   | 		|		    		  |
-    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
-    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
-    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+      | Agency                              | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
+    And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+      | Actions    | Step 1                                      | Step 2 | Step 3             |
+      | Subtab     | Responsibilities                            |        |                    |
+      | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver   |
+      | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver    |
+      | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit   | Executive Approver |
     Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
       | Actions              | Step 1                               | Step 2         | Step 3     |
       | Inline Column Title  | Description                          | Required       | Applies To |
@@ -2110,348 +2110,174 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
       | Upload Modal         | Upload Template                      | Not Applicable |            |
       | Upload file          | Checklist                            | Announcement   |            |
     And I add an attachment "InternalOrganization_Field_Values.xlsx"
-    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
-    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
-    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
+      | Actions               | Step 1      | Step 2                           | Step 3             |
+      | Attachment Navigation | Attachments | Add                              | a150b000003epC4AAI |
+      | Attachment Details    | Attachment  | Funding Opportunity Announcement |                    |
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
-    And I enter value "Justified" into field "Justification__c" 
+    And I enter value "Justified" into field "Justification__c"
     And I click on "Save" in the page details
-    	And I navigate to "Setup" sub tab
-	And I expand nested table containing column value "Pre-Screen Review"
-	When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header            | Section Weight (%)    |
-	|Eligibility                | 50                  |
-	|Completeness               | 50                   |
-	And I expand nested table containing column value "Eligibility"
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Eligibility    | 50                 |
+      | Completeness   | 50                 |
+    And I expand nested table containing column value "Eligibility"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Eligibility"
     And I expand nested table containing column value "Completeness"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I close modal by clicking the top right x button 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
-	When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header           | Section Weight (%)   |
-	|	Schedule               | 30                 |
-	|	Environment            | 30                  |
-	|   Permits                |  40                 |
-	And I expand nested table containing column value "Schedule"
+    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Schedule       | 30                 |
+      | Environment    | 30                 |
+      | Permits        | 40                 |
+    And I expand nested table containing column value "Schedule"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Environment"
     And I expand nested table containing column value "Permits"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-   And I close modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header    | Section Weight (%)  |
-	|	Budget          | 30                  |
-	|	Match           | 40                  |
-	|   Program Income  |  30                 |
-	And I expand nested table containing column value "Budget"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Budget         | 30                 |
+      | Match          | 40                 |
+      | Program Income | 30                 |
+    And I expand nested table containing column value "Budget"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Budget"
     And I expand nested table containing column value "Match"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Match"
     And I expand nested table containing column value "Program Income"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
     And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header       | Section Weight (%)  |
-	|	Capability         |  30                 |
-	|	Approach           | 30                  |
-	|   Impact             |  40                 |
-	And I expand nested table containing column value "Capability"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Capability     | 30                 |
+      | Approach       | 30                 |
+      | Impact         | 40                 |
+    And I expand nested table containing column value "Capability"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Capability"
     And I expand nested table containing column value "Approach"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Approach"
     And I expand nested table containing column value "Impact"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
-	When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header                          | Section Weight (%)    |
-	|Return on Investment (ROI)               | 50                   |
-	|Strategic Alignment                      | 50                   |
-	And I expand nested table containing column value "Return on Investment (ROI)"
+    When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 50                 |
+      | Strategic Alignment        | 50                 |
+    And I expand nested table containing column value "Return on Investment (ROI)"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Return on Investment (ROI)"
     And I expand nested table containing column value "Strategic Alignment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I close modal by clicking the top right x button
-    When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates" 
-	And I click on "Submit For Approval" in the page details
-	Given "1" Approvers "PM" approve the record "Record Id"
-	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
-	| Navigation | As a Grantor  | Announcements | 				  	 |
-	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
-	| Approval 	 | Start 		 | Send Back 	 | 					 |
-	And I re-login to "As a Grantor" app as "<User>" user 
-	When I navigate to "Announcements" tab
-	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel              
-	Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks" 
-	Examples:
-    |Announcement Type|
-	|Formula          |
-	
-	@announcementPostSendBackCheckFieldHistoryFA  @announcement @all
-	Scenario Outline: Validate the field history after send back of an announcement
-		Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
-	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
-	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
-	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
-	| ID		   | EGMS ID					         |                            |                                   |
-	And I click on "Save" in the page details
-	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-    | Actions 		  | Step 1 | Step 2	|
-    | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--125"
-	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
-    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
-    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Pre-Encumbrance |
-	| FA--125 		  | 100 			|
-	When I navigate to "Financials" sub tab
-    And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
-    When I refresh the page
-    And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-	| Budget Period Name     | Start Date         | End Date        |
-	| BP01                   | 30                  | 365             |		
-	Given I associate "3" records "Automation EXE,03689,SPO-0072"
-	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
-    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
-    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
-    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
-    Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
-      | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
-      | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
-    When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
-      | Agency                               | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST  | 1000             |
-	And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
-    | Subtab	 | Responsibilities 						   | 		|		    		  |
-    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
-    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
-    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
-    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
-      | Actions              | Step 1                               | Step 2         | Step 3     |
-      | Inline Column Title  | Description                          | Required       | Applies To |
-      | Inline values        | Automation Description               | Mandatory      | Award      |
-      | Checklist Navigation | Setup                                |                |            |
-      | Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add            |            |
-      | Upload Modal         | Upload Template                      | Not Applicable |            |
-      | Upload file          | Checklist                            | Announcement   |            |
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
-    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
-    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
-    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
-    And I click on "Edit" in the page details
-    When I navigate to "Financials" sub tab
-    And I enter value "Justified" into field "Justification__c" 
-    And I click on "Save" in the page details 
-    	And I navigate to "Setup" sub tab
-	And I expand nested table containing column value "Pre-Screen Review"
-	When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header            | Section Weight (%)    |
-	|Eligibility                | 50                  |
-	|Completeness               | 50                   |
-	And I expand nested table containing column value "Eligibility"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Eligibility"
-    And I expand nested table containing column value "Completeness"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I close modal by clicking the top right x button 
-    When I collapse nested table containing column value "Pre-Screen Review"
-    And I expand nested table containing column value "SME Review"
-	When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header           | Section Weight (%)   |
-	|	Schedule               | 30                 |
-	|	Environment            | 30                  |
-	|   Permits                |  40                 |
-	And I expand nested table containing column value "Schedule"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Schedule"
-    And I expand nested table containing column value "Environment"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Environment"
-    And I expand nested table containing column value "Permits"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Permits"
-   And I close modal by clicking the top right x button
-    When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header    | Section Weight (%)  |
-	|	Budget          | 30                  |
-	|	Match           | 40                  |
-	|   Program Income  |  30                 |
-	And I expand nested table containing column value "Budget"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Budget"
-    And I expand nested table containing column value "Match"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Match"
-    And I expand nested table containing column value "Program Income"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
-    When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header       | Section Weight (%)  |
-	|	Capability         |  30                 |
-	|	Approach           | 30                  |
-	|   Impact             |  40                 |
-	And I expand nested table containing column value "Capability"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Capability"
-    And I expand nested table containing column value "Approach"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Approach"
-    And I expand nested table containing column value "Impact"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
-    When I collapse nested table containing column value "SME Review"
-    And I expand nested table containing column value "Management Review"
-	When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header                          | Section Weight (%)    |
-	|Return on Investment (ROI)               | 50                   |
-	|Strategic Alignment                      | 50                   |
-	And I expand nested table containing column value "Return on Investment (ROI)"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Return on Investment (ROI)"
-    And I expand nested table containing column value "Strategic Alignment"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-	And I click on "Submit For Approval" in the page details
-	Given "1" Approvers "PM" approve the record "Record Id" 
-	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
-	| Navigation | As a Grantor  | Announcements | 				  	 |
-	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
-	| Approval 	 | Start 		 | Send Back	 | 					 |	
-	When I navigate to "History" sub tab
-	Then I see value "Created" for title "New Value" inside table "History"  
-	Examples:
-    |Announcement Type|
-	|Formula          |
-		
-	@announcementApprovalRejectionFA @announcement @all
-	Scenario Outline: Validate the reject functionality of an Announcement
-		Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
-	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
-	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
-	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
-	| ID		   | EGMS ID					         |                            |                                   |
-	And I click on "Save" in the page details
-	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-    | Actions 		  | Step 1 | Step 2	|
-    | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--125"
-	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
-    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+    And I click on "Submit For Approval" in the page details
+    Given "1" Approvers "PM" approve the record "Record Id"
+      | Actions    | Step 1        | Step 2        | Step 3            |
+      | Navigation | As a Grantor  | Announcements |                   |
+      | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
+      | Approval   | Start         | Send Back     |                   |
+    And I re-login to "As a Grantor" app as "<User>" user
+    When I navigate to "Announcements" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
+    Examples:
+      | Announcement Type |
+      | Formula           |
+
+  @announcementPostSendBackCheckFieldHistoryFA  @announcement @all
+  Scenario Outline: Validate the field history after send back of an announcement
+    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+      | Actions     | Step 1                              | Step 2                     | Step 3                            |
+      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
+      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
+      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+      | Creation    | New                                 | Continue                   | Save and Continue                 |
+      | ID          | EGMS ID                             |                            |                                   |
+    And I click on "Save" in the page details
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+      | Actions         | Step 1 | Step 2 |
+      | Edition Buttons | Edit   | Save   |
+    And I associate "1" records "FA--125"
+      | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
+      | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Pre-Encumbrance |
-	| FA--125 		  | 100 			|
-	When I navigate to "Financials" sub tab
+      | Funding Account | Pre-Encumbrance |
+      | FA--125         | 100             |
+    When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-	| Budget Period Name     | Start Date         | End Date        |
-	| BP01                   | 30                  | 365             |		
-	Given I associate "3" records "Automation EXE,03689,SPO-0072"
-	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
-    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
-    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
-    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 30         | 365      |
+    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
+      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
-      | Agency                               | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST  | 1000             |
-	And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
-    | Subtab	 | Responsibilities 						   | 		|		    		  |
-    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
-    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
-    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+      | Agency                              | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
+    And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+      | Actions    | Step 1                                      | Step 2 | Step 3             |
+      | Subtab     | Responsibilities                            |        |                    |
+      | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver   |
+      | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver    |
+      | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit   | Executive Approver |
     Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
       | Actions              | Step 1                               | Step 2         | Step 3     |
       | Inline Column Title  | Description                          | Required       | Applies To |
@@ -2466,109 +2292,283 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
       | Attachment Details    | Attachment  | Funding Opportunity Announcement |                    |
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
-    And I enter value "Justified" into field "Justification__c" 
-    And I click on "Save" in the page details 
-    	And I navigate to "Setup" sub tab
-	And I expand nested table containing column value "Pre-Screen Review"
-	When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header            | Section Weight (%)    |
-	|Eligibility                | 50                  |
-	|Completeness               | 50                   |
-	And I expand nested table containing column value "Eligibility"
+    And I enter value "Justified" into field "Justification__c"
+    And I click on "Save" in the page details
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Eligibility    | 50                 |
+      | Completeness   | 50                 |
+    And I expand nested table containing column value "Eligibility"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Eligibility"
     And I expand nested table containing column value "Completeness"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I close modal by clicking the top right x button 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
-	When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header           | Section Weight (%)   |
-	|	Schedule               | 30                 |
-	|	Environment            | 30                  |
-	|   Permits                |  40                 |
-	And I expand nested table containing column value "Schedule"
+    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Schedule       | 30                 |
+      | Environment    | 30                 |
+      | Permits        | 40                 |
+    And I expand nested table containing column value "Schedule"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Environment"
     And I expand nested table containing column value "Permits"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-   And I close modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header    | Section Weight (%)  |
-	|	Budget          | 30                  |
-	|	Match           | 40                  |
-	|   Program Income  |  30                 |
-	And I expand nested table containing column value "Budget"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Budget         | 30                 |
+      | Match          | 40                 |
+      | Program Income | 30                 |
+    And I expand nested table containing column value "Budget"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Budget"
     And I expand nested table containing column value "Match"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Match"
     And I expand nested table containing column value "Program Income"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
     And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header       | Section Weight (%)  |
-	|	Capability         |  30                 |
-	|	Approach           | 30                  |
-	|   Impact             |  40                 |
-	And I expand nested table containing column value "Capability"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Capability     | 30                 |
+      | Approach       | 30                 |
+      | Impact         | 40                 |
+    And I expand nested table containing column value "Capability"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Capability"
     And I expand nested table containing column value "Approach"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Approach"
     And I expand nested table containing column value "Impact"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
-	When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header                          | Section Weight (%)    |
-	|Return on Investment (ROI)               | 50                   |
-	|Strategic Alignment                      | 50                   |
-	And I expand nested table containing column value "Return on Investment (ROI)"
+    When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 50                 |
+      | Strategic Alignment        | 50                 |
+    And I expand nested table containing column value "Return on Investment (ROI)"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Return on Investment (ROI)"
     And I expand nested table containing column value "Strategic Alignment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
+    When I collapse nested table containing column value "Management Review"
+    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
+    And I click on "Submit For Approval" in the page details
+    Given "1" Approvers "PM" approve the record "Record Id"
+      | Actions    | Step 1        | Step 2        | Step 3            |
+      | Navigation | As a Grantor  | Announcements |                   |
+      | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
+      | Approval   | Start         | Send Back     |                   |
+    When I navigate to "History" sub tab
+    Then I see value "Created" for title "New Value" inside table "History"
+    Examples:
+      | Announcement Type |
+      | Formula           |
+
+  @announcementApprovalRejectionFA @announcement @all
+  Scenario Outline: Validate the reject functionality of an Announcement
+    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+      | Actions     | Step 1                              | Step 2                     | Step 3                            |
+      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
+      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
+      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+      | Creation    | New                                 | Continue                   | Save and Continue                 |
+      | ID          | EGMS ID                             |                            |                                   |
+    And I click on "Save" in the page details
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+      | Actions         | Step 1 | Step 2 |
+      | Edition Buttons | Edit   | Save   |
+    And I associate "1" records "FA--125"
+      | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
+      | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
+    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
+      | Funding Account | Pre-Encumbrance |
+      | FA--125         | 100             |
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
+    When I refresh the page
+    And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 30         | 365      |
+    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
+      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+    Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
+      | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
+      | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
+    When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
+      | Agency                              | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
+    And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+      | Actions    | Step 1                                      | Step 2 | Step 3             |
+      | Subtab     | Responsibilities                            |        |                    |
+      | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver   |
+      | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver    |
+      | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit   | Executive Approver |
+    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+      | Actions              | Step 1                               | Step 2         | Step 3     |
+      | Inline Column Title  | Description                          | Required       | Applies To |
+      | Inline values        | Automation Description               | Mandatory      | Award      |
+      | Checklist Navigation | Setup                                |                |            |
+      | Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add            |            |
+      | Upload Modal         | Upload Template                      | Not Applicable |            |
+      | Upload file          | Checklist                            | Announcement   |            |
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+      | Actions               | Step 1      | Step 2                           | Step 3             |
+      | Attachment Navigation | Attachments | Add                              | a150b000003epC4AAI |
+      | Attachment Details    | Attachment  | Funding Opportunity Announcement |                    |
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
+    And I enter value "Justified" into field "Justification__c"
+    And I click on "Save" in the page details
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Eligibility    | 50                 |
+      | Completeness   | 50                 |
+    And I expand nested table containing column value "Eligibility"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Eligibility"
+    And I expand nested table containing column value "Completeness"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
+    When I collapse nested table containing column value "Pre-Screen Review"
+    And I expand nested table containing column value "SME Review"
+    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Schedule       | 30                 |
+      | Environment    | 30                 |
+      | Permits        | 40                 |
+    And I expand nested table containing column value "Schedule"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Schedule"
+    And I expand nested table containing column value "Environment"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Environment"
+    And I expand nested table containing column value "Permits"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Permits"
+    And I close modal by clicking the top right x button
+    When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Budget         | 30                 |
+      | Match          | 40                 |
+      | Program Income | 30                 |
+    And I expand nested table containing column value "Budget"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Budget"
+    And I expand nested table containing column value "Match"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Match"
+    And I expand nested table containing column value "Program Income"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Program Income"
+    And I close modal by clicking the top right x button
+    When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Capability     | 30                 |
+      | Approach       | 30                 |
+      | Impact         | 40                 |
+    And I expand nested table containing column value "Capability"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Capability"
+    And I expand nested table containing column value "Approach"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Approach"
+    And I expand nested table containing column value "Impact"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Impact"
+    And I close modal by clicking the top right x button
+    When I collapse nested table containing column value "SME Review"
+    And I expand nested table containing column value "Management Review"
+    When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 50                 |
+      | Strategic Alignment        | 50                 |
+    And I expand nested table containing column value "Return on Investment (ROI)"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Return on Investment (ROI)"
+    And I expand nested table containing column value "Strategic Alignment"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
@@ -2586,46 +2586,46 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
 
   @announcementRejectPendingTaskForNextApproverFA @announcement @all
   Scenario Outline: Validate that after rejection from 1st approver, 2nd user should not get pending task
-  		Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
-	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
-	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
-	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
-	| ID		   | EGMS ID					         |                            |                                   |
-	And I click on "Save" in the page details
-	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-    | Actions 		  | Step 1 | Step 2	|
-    | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--125"
-	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
-    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+      | Actions     | Step 1                              | Step 2                     | Step 3                            |
+      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
+      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
+      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+      | Creation    | New                                 | Continue                   | Save and Continue                 |
+      | ID          | EGMS ID                             |                            |                                   |
+    And I click on "Save" in the page details
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+      | Actions         | Step 1 | Step 2 |
+      | Edition Buttons | Edit   | Save   |
+    And I associate "1" records "FA--125"
+      | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
+      | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Pre-Encumbrance |
-	| FA--125 		  | 100 			|
-	When I navigate to "Financials" sub tab
+      | Funding Account | Pre-Encumbrance |
+      | FA--125         | 100             |
+    When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-	| Budget Period Name     | Start Date         | End Date        |
-	| BP01                   | 30                  | 365             |		
-	Given I associate "3" records "Automation EXE,03689,SPO-0072"
-	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
-    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
-    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
-    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 30         | 365      |
+    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
+      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
-      | Agency                               | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST  | 1000             |
-	And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
-    | Subtab	 | Responsibilities 						   | 		|		    		  |
-    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
-    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
-    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+      | Agency                              | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
+    And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+      | Actions    | Step 1                                      | Step 2 | Step 3             |
+      | Subtab     | Responsibilities                            |        |                    |
+      | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver   |
+      | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver    |
+      | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit   | Executive Approver |
     Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
       | Actions              | Step 1                               | Step 2         | Step 3     |
       | Inline Column Title  | Description                          | Required       | Applies To |
@@ -2635,291 +2635,114 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
       | Upload Modal         | Upload Template                      | Not Applicable |            |
       | Upload file          | Checklist                            | Announcement   |            |
     And I add an attachment "InternalOrganization_Field_Values.xlsx"
-    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
-    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
-    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
-    And I click on "Edit" in the page details
-    When I navigate to "Financials" sub tab
-    And I enter value "Justified" into field "Justification__c" 
-    And I click on "Save" in the page details 
-    	And I navigate to "Setup" sub tab
-	And I expand nested table containing column value "Pre-Screen Review"
-	When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header            | Section Weight (%)    |
-	|Eligibility                | 50                  |
-	|Completeness               | 50                   |
-	And I expand nested table containing column value "Eligibility"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Eligibility"
-    And I expand nested table containing column value "Completeness"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I close modal by clicking the top right x button 
-    When I collapse nested table containing column value "Pre-Screen Review"
-    And I expand nested table containing column value "SME Review"
-	When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header           | Section Weight (%)   |
-	|	Schedule               | 30                 |
-	|	Environment            | 30                  |
-	|   Permits                |  40                 |
-	And I expand nested table containing column value "Schedule"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Schedule"
-    And I expand nested table containing column value "Environment"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Environment"
-    And I expand nested table containing column value "Permits"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Permits"
-   And I close modal by clicking the top right x button
-    When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header    | Section Weight (%)  |
-	|	Budget          | 30                  |
-	|	Match           | 40                  |
-	|   Program Income  |  30                 |
-	And I expand nested table containing column value "Budget"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Budget"
-    And I expand nested table containing column value "Match"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Match"
-    And I expand nested table containing column value "Program Income"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
-    When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header       | Section Weight (%)  |
-	|	Capability         |  30                 |
-	|	Approach           | 30                  |
-	|   Impact             |  40                 |
-	And I expand nested table containing column value "Capability"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Capability"
-    And I expand nested table containing column value "Approach"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Approach"
-    And I expand nested table containing column value "Impact"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
-    When I collapse nested table containing column value "SME Review"
-    And I expand nested table containing column value "Management Review"
-	When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header                          | Section Weight (%)    |
-	|Return on Investment (ROI)               | 50                   |
-	|Strategic Alignment                      | 50                   |
-	And I expand nested table containing column value "Return on Investment (ROI)"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Return on Investment (ROI)"
-    And I expand nested table containing column value "Strategic Alignment"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I close modal by clicking the top right x button
-    When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-	And I click on "Submit For Approval" in the page details
-	Given "1" Approvers "PM" approve the record "Record Id" 
-	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
-	| Navigation | As a Grantor  | Announcements | 				  	 |
-	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
-	| Approval 	 | Start 		 | Reject		 | 					 |
-	When I re-login to "As a Grantor" app as "<User>" user 
-	And I navigate to "Announcements" tab
-	When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel              
-	Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"  
-	Examples:
-    |Announcement Type|User |
-	|Formula          |FO   | 
-	
-	@announcementPostRejectPendingTaskForUserFA @announcement @all
-	Scenario Outline: Validate that after rejection of an Announcement task get deleted from pending task table.
-  		Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
-	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
-	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
-	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
-	| ID		   | EGMS ID					         |                            |                                   |
-	And I click on "Save" in the page details
-	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-    | Actions 		  | Step 1 | Step 2	|
-    | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--125"
-	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
-    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
-    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Pre-Encumbrance |
-	| FA--125 		  | 100 			|
-	When I navigate to "Financials" sub tab
-    And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
-    When I refresh the page
-    And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-	| Budget Period Name     | Start Date         | End Date        |
-	| BP01                   | 30                  | 365             |		
-	Given I associate "3" records "Automation EXE,03689,SPO-0072"
-	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
-    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
-    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
-    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
-    Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
-      | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
-      | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
-    When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
-      | Agency                               | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST  | 1000             |
-	And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
-    | Subtab	 | Responsibilities 						   | 		|		    		  |
-    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
-    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
-    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
-    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
-      | Actions              | Step 1                               | Step 2         | Step 3     |
-      | Inline Column Title  | Description                          | Required       | Applies To |
-      | Inline values        | Automation Description               | Mandatory      | Award      |
-      | Checklist Navigation | Setup                                |                |            |
-      | Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add            |            |
-      | Upload Modal         | Upload Template                      | Not Applicable |            |
-      | Upload file          | Checklist                            | Announcement   |            |
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
       | Actions               | Step 1      | Step 2                           | Step 3             |
       | Attachment Navigation | Attachments | Add                              | a150b000003epC4AAI |
       | Attachment Details    | Attachment  | Funding Opportunity Announcement |                    |
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
-    And I enter value "Justified" into field "Justification__c"  
+    And I enter value "Justified" into field "Justification__c"
     And I click on "Save" in the page details
-    	And I navigate to "Setup" sub tab
-	And I expand nested table containing column value "Pre-Screen Review"
-	When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header            | Section Weight (%)    |
-	|Eligibility                | 50                  |
-	|Completeness               | 50                   |
-	And I expand nested table containing column value "Eligibility"
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Eligibility    | 50                 |
+      | Completeness   | 50                 |
+    And I expand nested table containing column value "Eligibility"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Eligibility"
     And I expand nested table containing column value "Completeness"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I close modal by clicking the top right x button 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
-	When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header           | Section Weight (%)   |
-	|	Schedule               | 30                 |
-	|	Environment            | 30                  |
-	|   Permits                |  40                 |
-	And I expand nested table containing column value "Schedule"
+    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Schedule       | 30                 |
+      | Environment    | 30                 |
+      | Permits        | 40                 |
+    And I expand nested table containing column value "Schedule"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Environment"
     And I expand nested table containing column value "Permits"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-   And I close modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header    | Section Weight (%)  |
-	|	Budget          | 30                  |
-	|	Match           | 40                  |
-	|   Program Income  |  30                 |
-	And I expand nested table containing column value "Budget"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Budget         | 30                 |
+      | Match          | 40                 |
+      | Program Income | 30                 |
+    And I expand nested table containing column value "Budget"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Budget"
     And I expand nested table containing column value "Match"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Match"
     And I expand nested table containing column value "Program Income"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
     And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header       | Section Weight (%)  |
-	|	Capability         |  30                 |
-	|	Approach           | 30                  |
-	|   Impact             |  40                 |
-	And I expand nested table containing column value "Capability"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Capability     | 30                 |
+      | Approach       | 30                 |
+      | Impact         | 40                 |
+    And I expand nested table containing column value "Capability"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Capability"
     And I expand nested table containing column value "Approach"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Approach"
     And I expand nested table containing column value "Impact"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
-	When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header                          | Section Weight (%)    |
-	|Return on Investment (ROI)               | 50                   |
-	|Strategic Alignment                      | 50                   |
-	And I expand nested table containing column value "Return on Investment (ROI)"
+    When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 50                 |
+      | Strategic Alignment        | 50                 |
+    And I expand nested table containing column value "Return on Investment (ROI)"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Return on Investment (ROI)"
     And I expand nested table containing column value "Strategic Alignment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
@@ -2929,406 +2752,57 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
       | Navigation | As a Grantor  | Announcements |                   |
       | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
       | Approval   | Start         | Reject        |                   |
-    When I navigate to "Announcements" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-	Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
- 	Examples:
-    |Announcement Type|
-	|Formula          |	
-	
-	@announcementPostRejectCompletedTaskForUserFA @announcement @all
-	Scenario Outline: Validate that after rejection of an Announcement task get added to it's completed task table.
-  	Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
-	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
-	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
-	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
-	| ID		   | EGMS ID					         |                            |                                   |
-	And I click on "Save" in the page details
-	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-    | Actions 		  | Step 1 | Step 2	|
-    | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--125"
-	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
-    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
-    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Pre-Encumbrance |
-	| FA--125 		  | 100 			|
-	When I navigate to "Financials" sub tab
-    And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
-    When I refresh the page
-    And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-	| Budget Period Name     | Start Date         | End Date        |
-	| BP01                   | 30                  | 365             |		
-	Given I associate "3" records "Automation EXE,03689,SPO-0072"
-	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
-    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
-    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
-    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
-    Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
-      | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
-      | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
-    When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
-      | Agency                               | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST  | 1000             |
-	And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
-    | Subtab	 | Responsibilities 						   | 		|		    		  |
-    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
-    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
-    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
-    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
-      | Actions              | Step 1                               | Step 2         | Step 3     |
-      | Inline Column Title  | Description                          | Required       | Applies To |
-      | Inline values        | Automation Description               | Mandatory      | Award      |
-      | Checklist Navigation | Setup                                |                |            |
-      | Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add            |            |
-      | Upload Modal         | Upload Template                      | Not Applicable |            |
-      | Upload file          | Checklist                            | Announcement   |            |
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
-    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
-    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
-    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
-    And I click on "Edit" in the page details
-    When I navigate to "Financials" sub tab
-    And I enter value "Justified" into field "Justification__c"  
+    When I re-login to "As a Grantor" app as "<User>" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
+    Examples:
+      | Announcement Type | User |
+      | Formula           | FO   |
+
+  @announcementPostRejectPendingTaskForUserFA @announcement @all
+  Scenario Outline: Validate that after rejection of an Announcement task get deleted from pending task table.
+    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+      | Actions     | Step 1                              | Step 2                     | Step 3                            |
+      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
+      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
+      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+      | Creation    | New                                 | Continue                   | Save and Continue                 |
+      | ID          | EGMS ID                             |                            |                                   |
     And I click on "Save" in the page details
-    	And I navigate to "Setup" sub tab
-	And I expand nested table containing column value "Pre-Screen Review"
-	When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header            | Section Weight (%)    |
-	|Eligibility                | 50                  |
-	|Completeness               | 50                   |
-	And I expand nested table containing column value "Eligibility"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Eligibility"
-    And I expand nested table containing column value "Completeness"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I close modal by clicking the top right x button 
-    When I collapse nested table containing column value "Pre-Screen Review"
-    And I expand nested table containing column value "SME Review"
-	When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header           | Section Weight (%)   |
-	|	Schedule               | 30                 |
-	|	Environment            | 30                  |
-	|   Permits                |  40                 |
-	And I expand nested table containing column value "Schedule"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Schedule"
-    And I expand nested table containing column value "Environment"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Environment"
-    And I expand nested table containing column value "Permits"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Permits"
-   And I close modal by clicking the top right x button
-    When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header    | Section Weight (%)  |
-	|	Budget          | 30                  |
-	|	Match           | 40                  |
-	|   Program Income  |  30                 |
-	And I expand nested table containing column value "Budget"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Budget"
-    And I expand nested table containing column value "Match"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Match"
-    And I expand nested table containing column value "Program Income"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
-    When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header       | Section Weight (%)  |
-	|	Capability         |  30                 |
-	|	Approach           | 30                  |
-	|   Impact             |  40                 |
-	And I expand nested table containing column value "Capability"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Capability"
-    And I expand nested table containing column value "Approach"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Approach"
-    And I expand nested table containing column value "Impact"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
-    When I collapse nested table containing column value "SME Review"
-    And I expand nested table containing column value "Management Review"
-	When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header                          | Section Weight (%)    |
-	|Return on Investment (ROI)               | 50                   |
-	|Strategic Alignment                      | 50                   |
-	And I expand nested table containing column value "Return on Investment (ROI)"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Return on Investment (ROI)"
-    And I expand nested table containing column value "Strategic Alignment"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I close modal by clicking the top right x button
-    When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-	And I click on "Submit For Approval" in the page details
-	Given "1" Approvers "PM" approve the record "Record Id" 
-	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
-	| Navigation | As a Grantor  | Announcements | 				  	 |
-	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
-	| Approval 	 | Start 		 | Reject		 | 					 |
-	When I navigate to "Announcements" tab
-	And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhaseCompletedTasks" panel
-	Then I see value "Record Id" for title "EGMS ID" inside table "PhaseCompletedTasks"
- 	Examples:
-    |Announcement Type|
-	|Formula          |	
-	
-	@announcementPostRejectCheckFieldHistoryFA @announcement @all
-	Scenario Outline: Validate the field history after rejection of an announcement
-  	Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
-	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
-	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
-	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
-	| ID		   | EGMS ID					         |                            |                                   |
-	And I click on "Save" in the page details
-	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-    | Actions 		  | Step 1 | Step 2	|
-    | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--125"
-	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
-    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+      | Actions         | Step 1 | Step 2 |
+      | Edition Buttons | Edit   | Save   |
+    And I associate "1" records "FA--125"
+      | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
+      | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Pre-Encumbrance |
-	| FA--125 		  | 100 			|
-	When I navigate to "Financials" sub tab
-    And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
-    When I refresh the page
-    And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-	| Budget Period Name     | Start Date         | End Date        |
-	| BP01                   | 30                  | 365             |		
-	Given I associate "3" records "Automation EXE,03689,SPO-0072"
-	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
-    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
-    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
-    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
-    Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
-      | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
-      | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
-    When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
-      | Agency                               | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST  | 1000             |
-	And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
-    | Subtab	 | Responsibilities 						   | 		|		    		  |
-    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
-    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
-    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
-    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
-      | Actions              | Step 1                               | Step 2         | Step 3     |
-      | Inline Column Title  | Description                          | Required       | Applies To |
-      | Inline values        | Automation Description               | Mandatory      | Award      |
-      | Checklist Navigation | Setup                                |                |            |
-      | Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add            |            |
-      | Upload Modal         | Upload Template                      | Not Applicable |            |
-      | Upload file          | Checklist                            | Announcement   |            |
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
-    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
-    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
-    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
-    And I click on "Edit" in the page details
+      | Funding Account | Pre-Encumbrance |
+      | FA--125         | 100             |
     When I navigate to "Financials" sub tab
-    And I enter value "Justified" into field "Justification__c" 
-    And I click on "Save" in the page details 
-    	And I navigate to "Setup" sub tab
-	And I expand nested table containing column value "Pre-Screen Review"
-	When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header            | Section Weight (%)    |
-	|Eligibility                | 50                  |
-	|Completeness               | 50                   |
-	And I expand nested table containing column value "Eligibility"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Eligibility"
-    And I expand nested table containing column value "Completeness"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I close modal by clicking the top right x button 
-    When I collapse nested table containing column value "Pre-Screen Review"
-    And I expand nested table containing column value "SME Review"
-	When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header           | Section Weight (%)   |
-	|	Schedule               | 30                 |
-	|	Environment            | 30                  |
-	|   Permits                |  40                 |
-	And I expand nested table containing column value "Schedule"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Schedule"
-    And I expand nested table containing column value "Environment"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Environment"
-    And I expand nested table containing column value "Permits"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Permits"
-   And I close modal by clicking the top right x button
-    When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header    | Section Weight (%)  |
-	|	Budget          | 30                  |
-	|	Match           | 40                  |
-	|   Program Income  |  30                 |
-	And I expand nested table containing column value "Budget"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Budget"
-    And I expand nested table containing column value "Match"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Match"
-    And I expand nested table containing column value "Program Income"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
-    When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header       | Section Weight (%)  |
-	|	Capability         |  30                 |
-	|	Approach           | 30                  |
-	|   Impact             |  40                 |
-	And I expand nested table containing column value "Capability"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Capability"
-    And I expand nested table containing column value "Approach"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Approach"
-    And I expand nested table containing column value "Impact"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
-    When I collapse nested table containing column value "SME Review"
-    And I expand nested table containing column value "Management Review"
-	When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header                          | Section Weight (%)    |
-	|Return on Investment (ROI)               | 50                   |
-	|Strategic Alignment                      | 50                   |
-	And I expand nested table containing column value "Return on Investment (ROI)"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I collapse nested table containing column value "Return on Investment (ROI)"
-    And I expand nested table containing column value "Strategic Alignment"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I close modal by clicking the top right x button
-    When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-	And I click on "Submit For Approval" in the page details
-	Given "1" Approvers "PM" approve the record "Record Id" 
-	| Actions 	 | Step 1 	  	 | Step 2	 	 | Step 3  	 		 |
-	| Navigation | As a Grantor  | Announcements | 				  	 |
-	| FlexTable  | Pending Tasks | My Tasks  	 | PhasePendingTasks |
-	| Approval 	 | Start 		 | Reject		 | 					 |	
-	When I navigate to "History" sub tab
-	Then I see value "Rejected" for title "New Value" inside table "History" 
- 	Examples:
-    |Announcement Type|
-	|Formula          |	 
-	
-	@announcementPostRejectionCheckInListViewFA @announcement @all
-	Scenario Outline: Validate the rejected announcement will reflect under "Rejected Announcements" list view
-  	Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
-	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
-	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
-	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
-	| ID		   | EGMS ID					         |                            |                                   |
-	And I click on "Save" in the page details
-	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-    | Actions 		  | Step 1 | Step 2	|
-    | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--125"
-	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
-    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
-    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Pre-Encumbrance |
-	| FA--125 		  | 100 			|
-	When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-	| Budget Period Name     | Start Date         | End Date        |
-	| BP01                   | 30                  | 365             |		
-	Given I associate "3" records "Automation EXE,03689,SPO-0072"
-	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
-    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
-    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
-    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 30         | 365      |
+    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
+      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
-      | Agency                               | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST  | 1000             |
-	And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
-    | Subtab	 | Responsibilities 						   | 		|		    		  |
-    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
-    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
-    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
+      | Agency                              | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
+    And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+      | Actions    | Step 1                                      | Step 2 | Step 3             |
+      | Subtab     | Responsibilities                            |        |                    |
+      | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver   |
+      | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver    |
+      | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit   | Executive Approver |
     Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
       | Actions              | Step 1                               | Step 2         | Step 3     |
       | Inline Column Title  | Description                          | Required       | Applies To |
@@ -3344,110 +2818,636 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
-    	And I navigate to "Setup" sub tab
-	And I expand nested table containing column value "Pre-Screen Review"
-	When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header            | Section Weight (%)    |
-	|Eligibility                | 50                  |
-	|Completeness               | 50                   |
-	And I expand nested table containing column value "Eligibility"
+    And I click on "Save" in the page details
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Eligibility    | 50                 |
+      | Completeness   | 50                 |
+    And I expand nested table containing column value "Eligibility"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Eligibility"
     And I expand nested table containing column value "Completeness"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I close modal by clicking the top right x button 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
-	When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header           | Section Weight (%)   |
-	|	Schedule               | 30                 |
-	|	Environment            | 30                  |
-	|   Permits                |  40                 |
-	And I expand nested table containing column value "Schedule"
+    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Schedule       | 30                 |
+      | Environment    | 30                 |
+      | Permits        | 40                 |
+    And I expand nested table containing column value "Schedule"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Environment"
     And I expand nested table containing column value "Permits"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-   And I close modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header    | Section Weight (%)  |
-	|	Budget          | 30                  |
-	|	Match           | 40                  |
-	|   Program Income  |  30                 |
-	And I expand nested table containing column value "Budget"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Budget         | 30                 |
+      | Match          | 40                 |
+      | Program Income | 30                 |
+    And I expand nested table containing column value "Budget"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Budget"
     And I expand nested table containing column value "Match"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Match"
     And I expand nested table containing column value "Program Income"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
     And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header       | Section Weight (%)  |
-	|	Capability         |  30                 |
-	|	Approach           | 30                  |
-	|   Impact             |  40                 |
-	And I expand nested table containing column value "Capability"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Capability     | 30                 |
+      | Approach       | 30                 |
+      | Impact         | 40                 |
+    And I expand nested table containing column value "Capability"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Capability"
     And I expand nested table containing column value "Approach"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Approach"
     And I expand nested table containing column value "Impact"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
-	When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header                          | Section Weight (%)    |
-	|Return on Investment (ROI)               | 50                   |
-	|Strategic Alignment                      | 50                   |
-	And I expand nested table containing column value "Return on Investment (ROI)"
+    When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 50                 |
+      | Strategic Alignment        | 50                 |
+    And I expand nested table containing column value "Return on Investment (ROI)"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Return on Investment (ROI)"
     And I expand nested table containing column value "Strategic Alignment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"  
+    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
+    And I click on "Submit For Approval" in the page details
+    Given "1" Approvers "PM" approve the record "Record Id"
+      | Actions    | Step 1        | Step 2        | Step 3            |
+      | Navigation | As a Grantor  | Announcements |                   |
+      | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
+      | Approval   | Start         | Reject        |                   |
+    When I navigate to "Announcements" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
+    Examples:
+      | Announcement Type |
+      | Formula           |
+
+  @announcementPostRejectCompletedTaskForUserFA @announcement @all
+  Scenario Outline: Validate that after rejection of an Announcement task get added to it's completed task table.
+    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+      | Actions     | Step 1                              | Step 2                     | Step 3                            |
+      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
+      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
+      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+      | Creation    | New                                 | Continue                   | Save and Continue                 |
+      | ID          | EGMS ID                             |                            |                                   |
+    And I click on "Save" in the page details
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+      | Actions         | Step 1 | Step 2 |
+      | Edition Buttons | Edit   | Save   |
+    And I associate "1" records "FA--125"
+      | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
+      | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
+    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
+      | Funding Account | Pre-Encumbrance |
+      | FA--125         | 100             |
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
+    When I refresh the page
+    And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 30         | 365      |
+    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
+      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+    Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
+      | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
+      | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
+    When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
+      | Agency                              | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
+    And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+      | Actions    | Step 1                                      | Step 2 | Step 3             |
+      | Subtab     | Responsibilities                            |        |                    |
+      | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver   |
+      | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver    |
+      | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit   | Executive Approver |
+    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+      | Actions              | Step 1                               | Step 2         | Step 3     |
+      | Inline Column Title  | Description                          | Required       | Applies To |
+      | Inline values        | Automation Description               | Mandatory      | Award      |
+      | Checklist Navigation | Setup                                |                |            |
+      | Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add            |            |
+      | Upload Modal         | Upload Template                      | Not Applicable |            |
+      | Upload file          | Checklist                            | Announcement   |            |
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+      | Actions               | Step 1      | Step 2                           | Step 3             |
+      | Attachment Navigation | Attachments | Add                              | a150b000003epC4AAI |
+      | Attachment Details    | Attachment  | Funding Opportunity Announcement |                    |
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
+    And I enter value "Justified" into field "Justification__c"
+    And I click on "Save" in the page details
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Eligibility    | 50                 |
+      | Completeness   | 50                 |
+    And I expand nested table containing column value "Eligibility"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Eligibility"
+    And I expand nested table containing column value "Completeness"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
+    When I collapse nested table containing column value "Pre-Screen Review"
+    And I expand nested table containing column value "SME Review"
+    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Schedule       | 30                 |
+      | Environment    | 30                 |
+      | Permits        | 40                 |
+    And I expand nested table containing column value "Schedule"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Schedule"
+    And I expand nested table containing column value "Environment"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Environment"
+    And I expand nested table containing column value "Permits"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Permits"
+    And I close modal by clicking the top right x button
+    When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Budget         | 30                 |
+      | Match          | 40                 |
+      | Program Income | 30                 |
+    And I expand nested table containing column value "Budget"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Budget"
+    And I expand nested table containing column value "Match"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Match"
+    And I expand nested table containing column value "Program Income"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Program Income"
+    And I close modal by clicking the top right x button
+    When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Capability     | 30                 |
+      | Approach       | 30                 |
+      | Impact         | 40                 |
+    And I expand nested table containing column value "Capability"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Capability"
+    And I expand nested table containing column value "Approach"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Approach"
+    And I expand nested table containing column value "Impact"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Impact"
+    And I close modal by clicking the top right x button
+    When I collapse nested table containing column value "SME Review"
+    And I expand nested table containing column value "Management Review"
+    When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 50                 |
+      | Strategic Alignment        | 50                 |
+    And I expand nested table containing column value "Return on Investment (ROI)"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Return on Investment (ROI)"
+    And I expand nested table containing column value "Strategic Alignment"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
+    When I collapse nested table containing column value "Management Review"
+    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
+    And I click on "Submit For Approval" in the page details
+    Given "1" Approvers "PM" approve the record "Record Id"
+      | Actions    | Step 1        | Step 2        | Step 3            |
+      | Navigation | As a Grantor  | Announcements |                   |
+      | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
+      | Approval   | Start         | Reject        |                   |
+    When I navigate to "Announcements" tab
+    And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhaseCompletedTasks" panel
+    Then I see value "Record Id" for title "EGMS ID" inside table "PhaseCompletedTasks"
+    Examples:
+      | Announcement Type |
+      | Formula           |
+
+  @announcementPostRejectCheckFieldHistoryFA @announcement @all
+  Scenario Outline: Validate the field history after rejection of an announcement
+    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+      | Actions     | Step 1                              | Step 2                     | Step 3                            |
+      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
+      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
+      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+      | Creation    | New                                 | Continue                   | Save and Continue                 |
+      | ID          | EGMS ID                             |                            |                                   |
+    And I click on "Save" in the page details
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+      | Actions         | Step 1 | Step 2 |
+      | Edition Buttons | Edit   | Save   |
+    And I associate "1" records "FA--125"
+      | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
+      | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
+    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
+      | Funding Account | Pre-Encumbrance |
+      | FA--125         | 100             |
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
+    When I refresh the page
+    And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 30         | 365      |
+    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
+      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+    Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
+      | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
+      | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
+    When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
+      | Agency                              | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
+    And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+      | Actions    | Step 1                                      | Step 2 | Step 3             |
+      | Subtab     | Responsibilities                            |        |                    |
+      | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver   |
+      | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver    |
+      | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit   | Executive Approver |
+    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+      | Actions              | Step 1                               | Step 2         | Step 3     |
+      | Inline Column Title  | Description                          | Required       | Applies To |
+      | Inline values        | Automation Description               | Mandatory      | Award      |
+      | Checklist Navigation | Setup                                |                |            |
+      | Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add            |            |
+      | Upload Modal         | Upload Template                      | Not Applicable |            |
+      | Upload file          | Checklist                            | Announcement   |            |
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+      | Actions               | Step 1      | Step 2                           | Step 3             |
+      | Attachment Navigation | Attachments | Add                              | a150b000003epC4AAI |
+      | Attachment Details    | Attachment  | Funding Opportunity Announcement |                    |
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
+    And I enter value "Justified" into field "Justification__c"
+    And I click on "Save" in the page details
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Eligibility    | 50                 |
+      | Completeness   | 50                 |
+    And I expand nested table containing column value "Eligibility"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Eligibility"
+    And I expand nested table containing column value "Completeness"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
+    When I collapse nested table containing column value "Pre-Screen Review"
+    And I expand nested table containing column value "SME Review"
+    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Schedule       | 30                 |
+      | Environment    | 30                 |
+      | Permits        | 40                 |
+    And I expand nested table containing column value "Schedule"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Schedule"
+    And I expand nested table containing column value "Environment"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Environment"
+    And I expand nested table containing column value "Permits"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Permits"
+    And I close modal by clicking the top right x button
+    When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Budget         | 30                 |
+      | Match          | 40                 |
+      | Program Income | 30                 |
+    And I expand nested table containing column value "Budget"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Budget"
+    And I expand nested table containing column value "Match"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Match"
+    And I expand nested table containing column value "Program Income"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Program Income"
+    And I close modal by clicking the top right x button
+    When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Capability     | 30                 |
+      | Approach       | 30                 |
+      | Impact         | 40                 |
+    And I expand nested table containing column value "Capability"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Capability"
+    And I expand nested table containing column value "Approach"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Approach"
+    And I expand nested table containing column value "Impact"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Impact"
+    And I close modal by clicking the top right x button
+    When I collapse nested table containing column value "SME Review"
+    And I expand nested table containing column value "Management Review"
+    When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 50                 |
+      | Strategic Alignment        | 50                 |
+    And I expand nested table containing column value "Return on Investment (ROI)"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Return on Investment (ROI)"
+    And I expand nested table containing column value "Strategic Alignment"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
+    When I collapse nested table containing column value "Management Review"
+    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
+    And I click on "Submit For Approval" in the page details
+    Given "1" Approvers "PM" approve the record "Record Id"
+      | Actions    | Step 1        | Step 2        | Step 3            |
+      | Navigation | As a Grantor  | Announcements |                   |
+      | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
+      | Approval   | Start         | Reject        |                   |
+    When I navigate to "History" sub tab
+    Then I see value "Rejected" for title "New Value" inside table "History"
+    Examples:
+      | Announcement Type |
+      | Formula           |
+
+  @announcementPostRejectionCheckInListViewFA @announcement @all
+  Scenario Outline: Validate the rejected announcement will reflect under "Rejected Announcements" list view
+    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+      | Actions     | Step 1                              | Step 2                     | Step 3                            |
+      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
+      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
+      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+      | Creation    | New                                 | Continue                   | Save and Continue                 |
+      | ID          | EGMS ID                             |                            |                                   |
+    And I click on "Save" in the page details
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+      | Actions         | Step 1 | Step 2 |
+      | Edition Buttons | Edit   | Save   |
+    And I associate "1" records "FA--125"
+      | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
+      | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
+    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
+      | Funding Account | Pre-Encumbrance |
+      | FA--125         | 100             |
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
+    When I refresh the page
+    And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 30         | 365      |
+    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
+      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+    Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
+      | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
+      | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
+    When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
+      | Agency                              | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
+    And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+      | Actions    | Step 1                                      | Step 2 | Step 3             |
+      | Subtab     | Responsibilities                            |        |                    |
+      | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver   |
+      | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver    |
+      | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit   | Executive Approver |
+    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+      | Actions              | Step 1                               | Step 2         | Step 3     |
+      | Inline Column Title  | Description                          | Required       | Applies To |
+      | Inline values        | Automation Description               | Mandatory      | Award      |
+      | Checklist Navigation | Setup                                |                |            |
+      | Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add            |            |
+      | Upload Modal         | Upload Template                      | Not Applicable |            |
+      | Upload file          | Checklist                            | Announcement   |            |
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+      | Actions               | Step 1      | Step 2                           | Step 3             |
+      | Attachment Navigation | Attachments | Add                              | a150b000003epC4AAI |
+      | Attachment Details    | Attachment  | Funding Opportunity Announcement |                    |
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
+    And I enter value "Justified" into field "Justification__c"
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Eligibility    | 50                 |
+      | Completeness   | 50                 |
+    And I expand nested table containing column value "Eligibility"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Eligibility"
+    And I expand nested table containing column value "Completeness"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
+    When I collapse nested table containing column value "Pre-Screen Review"
+    And I expand nested table containing column value "SME Review"
+    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Schedule       | 30                 |
+      | Environment    | 30                 |
+      | Permits        | 40                 |
+    And I expand nested table containing column value "Schedule"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Schedule"
+    And I expand nested table containing column value "Environment"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Environment"
+    And I expand nested table containing column value "Permits"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Permits"
+    And I close modal by clicking the top right x button
+    When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Budget         | 30                 |
+      | Match          | 40                 |
+      | Program Income | 30                 |
+    And I expand nested table containing column value "Budget"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Budget"
+    And I expand nested table containing column value "Match"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Match"
+    And I expand nested table containing column value "Program Income"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Program Income"
+    And I close modal by clicking the top right x button
+    When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Capability     | 30                 |
+      | Approach       | 30                 |
+      | Impact         | 40                 |
+    And I expand nested table containing column value "Capability"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Capability"
+    And I expand nested table containing column value "Approach"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Approach"
+    And I expand nested table containing column value "Impact"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Impact"
+    And I close modal by clicking the top right x button
+    When I collapse nested table containing column value "SME Review"
+    And I expand nested table containing column value "Management Review"
+    When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 50                 |
+      | Strategic Alignment        | 50                 |
+    And I expand nested table containing column value "Return on Investment (ROI)"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Return on Investment (ROI)"
+    And I expand nested table containing column value "Strategic Alignment"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
+    When I collapse nested table containing column value "Management Review"
+    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
@@ -3461,67 +3461,67 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
     Examples:
       | Announcement Type |
       | Formula           |
-	
-	@34462 @publishingFormulaAnnouncementFA  @announcementFormulaHappyPath @announcement @all
-  	Scenario Outline: Validate the activation of Internal Program
-  	Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-	| Actions 	   | Step 1 	   	  					 | Step 2    	   	   		  | Step 3 							  |
-	| Navigation   | As a Grantor  						 | Announcements 	   		  |	Creation Second Modal 			  |
-	| FlexTable    | Announcements 						 | Draft Announcements 		  |  								  |
-	| FlexTableId  | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-	| Creation     | New			  					 | Continue 	   	 		  | Save and Continue				  |
-	| ID		   | EGMS ID					         |                            |                                   |
-	And I click on "Save" in the page details
-	Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-    | Actions 		  | Step 1 | Step 2	|
-    | Edition Buttons | Edit   | Save   |
-	And I associate "1" records "FA--125"
-	| Actions 	  | Step 1     | Step 2	   | Step 3  			  					   | Step 4  | Step 5  		  			|
-    | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add	 | SelectAnnFundingAccounts |
+
+  @34462 @publishingFormulaAnnouncementFA  @announcementFormulaHappyPath @announcement @all
+  Scenario Outline: Validate the activation of Internal Program
+    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+      | Actions     | Step 1                              | Step 2                     | Step 3                            |
+      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
+      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
+      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
+      | Creation    | New                                 | Continue                   | Save and Continue                 |
+      | ID          | EGMS ID                             |                            |                                   |
+    And I click on "Save" in the page details
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+      | Actions         | Step 1 | Step 2 |
+      | Edition Buttons | Edit   | Save   |
+    And I associate "1" records "FA--125"
+      | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
+      | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-	| Funding Account | Pre-Encumbrance |
-	| FA--125 		  | 100 			|
-	When I navigate to "Financials" sub tab
+      | Funding Account | Pre-Encumbrance |
+      | FA--125         | 100             |
+    When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-	| Budget Period Name     | Start Date         | End Date        |
-	| BP01                   | 30                  | 365             |		
-	Given I associate "3" records "Automation EXE,03689,SPO-0072"
-	| Actions 	  | Step 1   | Step 2	 | Step 3  			  							| Step 4 | Step 5  				    	 |
-    | Associate 1 | Overview | Associate | AnnouncementContacts			   			    | Add	 | AssociateAnnouncementContacts |
-    | Associate 2 | Setup	 | Associate | AnnouncementServiceArea1			 			| Add    | SelectAnnouncementServiceArea1|
-    | Associate 3 | Setup 	 | Associate | AnnouncementGranteeStrategicGoalsObjectives  | Add	 | SelectAnnGoals 		   		 |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 30         | 365      |
+    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
+      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
-      | Agency                               | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST  | 1000             |
-	And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-    | Actions 	 | Step 1   				    			   | Step 2	| Step 3 			  |
-    | Subtab	 | Responsibilities 						   | 		|		    		  |
-    | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver    |
-    | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver     |
-    | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit	| Executive Approver  |
-	Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
-    | Actions 			   | Step 1 	   		       			  | Step 2	       | Step 3 	|
-    | Inline Column Title  | Description       	  	  			  | Required  	   | Applies To |
-    | Inline values 	   | Automation Description    			  | Mandatory	   | Award		|
-	| Checklist Navigation | Setup		      		   			  |   		   	   |			|
-	| Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add	   		   |   			|
-	| Upload Modal  	   | Upload Template 		   			  | Not Applicable | 			|
-	| Upload file     	   | Checklist 				   			  | Announcement   |			|
-	And I add an attachment "InternalOrganization_Field_Values.xlsx"
-    | Actions 			    | Step 1 	  | Step 2	 		  				 | Step 3			  |
-    | Attachment Navigation | Attachments | Add								 | a150b000003epC4AAI |
-    | Attachment Details    | Attachment  | Funding Opportunity Announcement |					  |
-	Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
-	| Actions 			  | Step 1 	  		      | Step 2	 		   	  | Step 3  |
-	| Reviewer Navigation | Responsibilities      | 					  |			|
-	| FlexTable 		  | New				      | flexGridApproverRoles | Save    |
-	| Send Review		  | Send for Review       | Created 			  |			|
-	And Review is completed as user "FO" for the record "Record id"
+      | Agency                              | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
+    And I select "3" approvers "Automation PM,Automation FO,Automation EXE"
+      | Actions    | Step 1                                      | Step 2 | Step 3             |
+      | Subtab     | Responsibilities                            |        |                    |
+      | Approver 1 | GrantorAnnouncementRolesandResponsibilities | Edit   | Program Approver   |
+      | Approver 2 | GrantorAnnouncementRolesandResponsibilities | Edit   | Fiscal Approver    |
+      | Approver 3 | GrantorAnnouncementRolesandResponsibilities | Edit   | Executive Approver |
+    Given I add an attachment checklist to upload the file "Program_Field_Values.xlsx"
+      | Actions              | Step 1                               | Step 2         | Step 3     |
+      | Inline Column Title  | Description                          | Required       | Applies To |
+      | Inline values        | Automation Description               | Mandatory      | Award      |
+      | Checklist Navigation | Setup                                |                |            |
+      | Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add            |            |
+      | Upload Modal         | Upload Template                      | Not Applicable |            |
+      | Upload file          | Checklist                            | Announcement   |            |
+    And I add an attachment "InternalOrganization_Field_Values.xlsx"
+      | Actions               | Step 1      | Step 2                           | Step 3             |
+      | Attachment Navigation | Attachments | Add                              | a150b000003epC4AAI |
+      | Attachment Details    | Attachment  | Funding Opportunity Announcement |                    |
+    Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
+      | Actions             | Step 1           | Step 2                | Step 3 |
+      | Reviewer Navigation | Responsibilities |                       |        |
+      | FlexTable           | New              | flexGridApproverRoles | Save   |
+      | Send Review         | Send for Review  | Created               |        |
+    And Review is completed as user "FO" for the record "Record id"
       | Actions             | Step 1            | Step 2        | Step 3                | Step 4        |
       | Reviewer Navigation | As a Grantor      | Announcements | Pending Tasks         | My Tasks      |
       | FlexTable           | PhasePendingTasks | Start         | flexGridApproverRoles | Enter Review  |
@@ -3533,113 +3533,113 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
     Given I click on "Complete Review" in the page details
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
-    And I enter value "Justified" into field "Justification__c" 
-     And I click on "Save" in the page details
-   	And I navigate to "Setup" sub tab
-	And I expand nested table containing column value "Pre-Screen Review"
-	When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header            | Section Weight (%)    |
-	|Eligibility                | 50                  |
-	|Completeness               | 50                   |
-	And I expand nested table containing column value "Eligibility"
+    And I enter value "Justified" into field "Justification__c"
+    And I click on "Save" in the page details
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Eligibility    | 50                 |
+      | Completeness   | 50                 |
+    And I expand nested table containing column value "Eligibility"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Eligibility"
     And I expand nested table containing column value "Completeness"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
-    And I close modal by clicking the top right x button 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
-	When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header           | Section Weight (%)   |
-	|	Schedule               | 30                 |
-	|	Environment            | 30                  |
-	|   Permits                |  40                 |
-	And I expand nested table containing column value "Schedule"
+    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Schedule       | 30                 |
+      | Environment    | 30                 |
+      | Permits        | 40                 |
+    And I expand nested table containing column value "Schedule"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Environment"
     And I expand nested table containing column value "Permits"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-   And I close modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header    | Section Weight (%)  |
-	|	Budget          | 30                  |
-	|	Match           | 40                  |
-	|   Program Income  |  30                 |
-	And I expand nested table containing column value "Budget"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Budget         | 30                 |
+      | Match          | 40                 |
+      | Program Income | 30                 |
+    And I expand nested table containing column value "Budget"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Budget"
     And I expand nested table containing column value "Match"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Match"
     And I expand nested table containing column value "Program Income"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
     And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header       | Section Weight (%)  |
-	|	Capability         |  30                 |
-	|	Approach           | 30                  |
-	|   Impact             |  40                 |
-	And I expand nested table containing column value "Capability"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Capability     | 30                 |
+      | Approach       | 30                 |
+      | Impact         | 40                 |
+    And I expand nested table containing column value "Capability"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Capability"
     And I expand nested table containing column value "Approach"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Approach"
     And I expand nested table containing column value "Impact"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
-	When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-	| Section Header                          | Section Weight (%)    |
-	|Return on Investment (ROI)               | 50                   |
-	|Strategic Alignment                      | 50                   |
-	And I expand nested table containing column value "Return on Investment (ROI)"
+    When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 50                 |
+      | Strategic Alignment        | 50                 |
+    And I expand nested table containing column value "Return on Investment (ROI)"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Return on Investment (ROI)"
     And I expand nested table containing column value "Strategic Alignment"
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-    | Question Order | Question  		   | Type  	 | Max Score   | 
-    | 1              | Question1           | Written | 100         | 
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"  
-	And I click on "Submit For Approval" in the page details
+    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
+    And I click on "Submit For Approval" in the page details
     Given "3" Approvers "PM,FO,EXE" approve the record "Approve Funding Announcement"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
@@ -3654,6 +3654,6 @@ Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in e
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
     Examples:
-      | Announcement Type | User | Add Organization id                           | Announcement Name       |Active Funding Opportunities id  |
-      | Formula           | EXE  | inlineEditGridSoleSourceAwardOrganizations    | Automation Announcement |ActiveFundingOpportunitiesFormula |
+      | Announcement Type | User | Add Organization id                        | Announcement Name       | Active Funding Opportunities id   |
+      | Formula           | EXE  | inlineEditGridSoleSourceAwardOrganizations | Automation Announcement | ActiveFundingOpportunitiesFormula |
  	

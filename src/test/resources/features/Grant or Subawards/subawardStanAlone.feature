@@ -1,33 +1,33 @@
 @awardStandAlone
 Feature: Validate all scenarios in the Stand Alone Award and Grant
 
-	Background: Create Award 
-	Given I delete the record "Permanent Announcement(Dr) for Automation" from the object "Grant"
-	And I create a Grant as user "EXE" from sheet "Grant_Creation" in excel "Award_Field_Values.xlsx"
-	| Actions 	 | Step 1 	   		    | Step 2    	 	 | Step 3 				         |
-	| Navigation | As a Grantor		    | Grants    	 	 | Grants, Subaward & Amendments |
-	| FlexTable  | Grants and Subawards | ActiveGrants 	     | Draft Grants                  |
-	| Creation   | New				    | Continue           |                               |
-   And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
-    When I click modal button "Save and Continue" 
-	And I navigate to "Subawards" sub tab
-	Given I click on "View" icon for "Created" inside flex table with id "RelatedAwards1"
-	And I get the "EGMS ID"
-	
-	@38213 @awardStanAloneCreation @awardStanAlone
-	Scenario: Creation of an award
-	Then I see status in Progress-bar is "Created" and is "green"
-	
-	@38217 @awardStandAloneEdition @awardStanAlone
-	Scenario: Edition of an award
-	When I click on "Edit" in the page details
-	And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
-	When I click on "Save" in the page details
-	Then I see status in Progress-bar is "Created" and is "green"
-	
-	@awardStandAloneAddContactsKeyPersonnel @awardStanAlone
-	Scenario: Associate a Key Contact
-	When I navigate to "Overview" sub tab
+  Background: Create Award
+    Given I delete the record "Permanent Announcement(Dr) for Automation" from the object "Grant"
+    And I create a Grant as user "EXE" from sheet "Grant_Creation" in excel "Award_Field_Values.xlsx"
+      | Actions    | Step 1               | Step 2       | Step 3                        |
+      | Navigation | As a Grantor         | Grants       | Grants, Subaward & Amendments |
+      | FlexTable  | Grants and Subawards | ActiveGrants | Draft Grants                  |
+      | Creation   | New                  | Continue     |                               |
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Subawards" sub tab
+    Given I click on "View" icon for "Created" inside flex table with id "RelatedAwards1"
+    And I get the "EGMS ID"
+
+  @38213 @awardStanAloneCreation @awardStanAlone
+  Scenario: Creation of an award
+    Then I see status in Progress-bar is "Created" and is "green"
+
+  @38217 @awardStandAloneEdition @awardStanAlone
+  Scenario: Edition of an award
+    When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I see status in Progress-bar is "Created" and is "green"
+
+  @awardStandAloneAddContactsKeyPersonnel @awardStanAlone
+  Scenario: Associate a Key Contact
+    When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridSubawardContact"
     When I check "Automation SPI" boxes in flex table with id "AssociateSubawardContacts"
     When I click on top right button "Add" in flex table with id "AssociateSubawardContacts"
@@ -811,30 +811,30 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | FlexTable           | PhasePendingTasks | Start  | flexGridGrantorAwardReviewer | Enter Review  |
       | Enter Review        | Sent for Review   | Passed | Save                         | Submit Review |
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-	And I navigate to "Grants" tab
-	When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
-	And I click toggle button to select "Draft Grants"
-	When I perform quick search for "<Grant Name>" in "ActiveGrants" panel
-	And I click on "View" icon for "<Grant Name>" inside table
-	When I navigate to "Subawards" sub tab
-	And I click on "View" icon for "<Award Name>" inside flex table with id "RelatedAwards1"
-  	Given I click on "Complete Review" in the page details
-  	And I click on "Submit for Approval" in the page details
-  	Given I re-login to "As a Grantor" app as "Automation PM" user
-	When I navigate to "Grants" tab
-	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click toggle button to select "Draft Grants"
+    When I perform quick search for "<Grant Name>" in "ActiveGrants" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "RelatedAwards1"
+    Given I click on "Complete Review" in the page details
+    And I click on "Submit for Approval" in the page details
+    Given I re-login to "As a Grantor" app as "Automation PM" user
+    When I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "<Award Name>" in "PhasePendingTasks" panel
     And I click on "Start" icon for "<Award Name>" inside table
     When I click on "Approve" on the approval decision box
     And I re-login to "As a Grantor" app as "Automation FO" user
-	When I navigate to "Grants" tab
-	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "<Award Name>" in "PhasePendingTasks" panel
     And I click on "Start" icon for "<Award Name>" inside table
     When I click on "Approve" on the approval decision box
     And I re-login to "As a Grantor" app as "Automation EXE" user
-	When I navigate to "Grants" tab
-	And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "<Award Name>" in "PhasePendingTasks" panel
     And I click on "Start" icon for "<Award Name>" inside table
     When I click on "Approve" on the approval decision box
