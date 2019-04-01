@@ -3,11 +3,11 @@ Feature: Validate all scenarios in the Site Visit
 
   Background: Data setup for Site Visit
     Given I delete the record "Automation Site Visit" from the object "Site Visit"
-    And I login and view the "Active" award "Record Id" with name "Execution Grant for Automation" as User "EXE"
+    And I login and view the "Active" award "AD-EGA-01" with name "Execution Grant for Automation" as User "EXE"
       | Actions    | Step 1       | Step 2         | Step 3               | Step 4                        |
       | Navigation | As a Grantor | Grants         | Grants and Subawards | Grants, Subaward & Amendments |
       | FlexTable  | Grants       | ActiveGrants   | View                 |                               |
-      | Subaward   | Subawards    | RelatedAwards1 | View                 | Active                        |
+      | Subaward   | Subawards    | RelatedAwards1 | View                 |                               |
     Given I create a post award record from sheet "Creation" in excel "SiteVisit_Field_Values.xlsx"
       | Actions    | Step 1              | Step 2                 |
       | Navigation | Management          |                        |
@@ -29,10 +29,10 @@ Feature: Validate all scenarios in the Site Visit
   @participantAssociationSiteVisit @siteVisit @all
   Scenario Outline: Participant Association of Site Visit
     When I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "GrantorSiteVisitContacts"
-    When I click "Associate" after selection of "<Subrecipient>" in the table "SelectSiteDeskReviewContacts"
+    And I click on top right button "Associate" in flex table with id "siteVisits::participantsTableId"
+    When I click "Associate" after selection of "<Subrecipient>" in the table "siteVisits::siteVisitContactsTableId"
     And I close Modal
-    Then I see that "<Subrecipient>" has been added in flextable with Id "GrantorSiteVisitContacts"
+    Then I see that "<Subrecipient>" has been added in flextable with Id "siteVisits::participantsTableId"
     Examples:
       | Subrecipient   |
       | Automation SPI |
@@ -40,13 +40,13 @@ Feature: Validate all scenarios in the Site Visit
   @approverSelectionSiteVisit @siteVisit @all
   Scenario Outline: Approver selection of Site Visit
     When I navigate to "Responsibilities" sub tab
-    And I click on "Edit" icon for "Program Approver" inside flex table with id "GrantorSiteVisitRolesandResponsibilities"
+    And I click on "Edit" icon for "Program Approver" inside flex table with id "siteVisits::approverSiteVisitTableId"
     When I fill in the "<Program Approver Name>" for the Approver details
     And I close Modal
-    When I click on "Edit" icon for "Fiscal Approver" inside flex table with id "GrantorSiteVisitRolesandResponsibilities"
+    When I click on "Edit" icon for "Fiscal Approver" inside flex table with id "siteVisits::approverSiteVisitTableId"
     And I fill in the "<Fiscal Approver Name>" for the Approver details
     When I close Modal
-    Then I see that "<Program Approver Name>" has been added in flextable with Id "GrantorSiteVisitRolesandResponsibilities"
+    Then I see that "<Program Approver Name>" has been added in flextable with Id "siteVisits::approverSiteVisitTableId"
     Examples:
       | Program Approver Name | Fiscal Approver Name |
       | Automation PM         | Automation FO        |
@@ -142,12 +142,12 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "View" icon for "<Site Visit Name>" inside table
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+    When I enter the following values into flex table with id "siteVisits::correctiveTableId" by clicking "New" :
       | Title                  | Description            | Type        | Status | Closed Date |
       | Automation Finding     | Automation Description | Finding     | Open   |             |
       | Automation Concern     | Automation Description | Concern     | Open   |             |
       | Automation Observation | Automation Description | Observation | Open   |             |
-    Then I see that "Automation Finding" has been added in flextable with Id "inlineEditGridGrantorSiteVisitFindingsGrid"
+    Then I see that "Automation Finding" has been added in flextable with Id "siteVisits::correctiveTableId"
     Examples:
       | Site Visit Name       |
       | Automation Site Visit |
@@ -177,18 +177,18 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "View" icon for "<Site Visit Name>" inside table
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+    When I enter the following values into flex table with id "siteVisits::correctiveTableId" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
     And I navigate to "Reports and Outcomes" sub tab
-    When I click on "Edit" icon for "General Review Form" inside flex table with id "FormComponent"
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "siteVisits::reportsTableId"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I click on top right button "Validate" in flex table with id "FormComponent"
-    Then I see that "100.00%" has been added in flextable with Id "FormComponent"
+    And I click on top right button "Validate" in flex table with id "siteVisits::reportsTableId"
+    Then I see that "100.00%" has been added in flextable with Id "siteVisits::reportsTableId"
     Examples:
       | Site Visit Name       |
       | Automation Site Visit |
@@ -218,7 +218,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "View" icon for "<Site Visit Name>" inside table
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+    When I enter the following values into flex table with id "siteVisits::correctiveTableId" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
@@ -260,7 +260,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "View" icon for "<Site Visit Name>" inside table
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+    When I enter the following values into flex table with id "siteVisits::correctiveTableId" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
@@ -314,7 +314,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "View" icon for "<Site Visit Name>" inside table
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+    When I enter the following values into flex table with id "siteVisits::correctiveTableId" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
@@ -334,7 +334,10 @@ Feature: Validate all scenarios in the Site Visit
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "<Site Visit Name>" inside table
+    And I expand nested table containing column value "<Award Name>"
+    When I expand nested table containing column value "<Award Name>"
+    And I perform quick search for "<Site Visit Name>" for the parent value "AD-AuGr--01" on grid "inlineEditGridSiteVisitsGridView"
+    When I click on "Start" icon for "<Site Visit Name>" inside table
     And I click on "Send to Subrecipient" in the page details
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
     Examples:
@@ -366,7 +369,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "View" icon for "<Site Visit Name>" inside table
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+    When I enter the following values into flex table with id "siteVisits::correctiveTableId" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
