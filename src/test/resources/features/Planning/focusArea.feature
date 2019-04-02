@@ -2,6 +2,7 @@
 Feature: Validate all scenarios in Focus Area
 
   Background: To setup data
+    Given I delete the record "Execution Internal Program for Automation" from the object "Program"
     Given I delete the record "Execution Focus Area for Automation" from the object "Focus Area"
     And I create a planning record as user "EXE" from sheet "Creation" in excel "FocusArea_Field_Values.xlsx"
       | Actions    | Step 1       | Step 2              | Step 3           |
@@ -34,7 +35,7 @@ Feature: Validate all scenarios in Focus Area
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "green"
 
-  @focusAreaHappyPath @focusArea @all @abc
+  @focusAreaHappyPath @focusArea @all
   Scenario: Happy Path of Focus Area
     Given I complete the fields from the sheet "Edition" in excel "FocusArea_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |

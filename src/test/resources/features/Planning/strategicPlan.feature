@@ -14,14 +14,14 @@ Feature: Validate all scenarios in Strategic Plan
 
   @creationOfStrategicPlan @strategicPlan @all
   Scenario: Creation of Strategic Plan
-    Then I see status in Progress-bar is "Created" and is "green"
+    Then I see that "Status" is in "Draft" status
 
   @editionOfStrategicPlan @strategicPlan @all
   Scenario: Edition of Strategic Plan
     And I click on "Edit" in the page details
     When I enter "StrategicPlanEdition" values from "StrategicPlan_Field_Values.xlsx"
     And I click on "Save" in the page details
-    Then I see status in Progress-bar is "Created" and is "green"
+    Then I see that "Status" is in "Draft" status
 
   @addAttachmentToStrategicPlan @strategicPlan @all
   Scenario: Addition of Attachment to Strategic Plan
@@ -43,7 +43,6 @@ Feature: Validate all scenarios in Strategic Plan
     And I enter "StrategicGoalCreation" values from "StrategicPlan_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
-    Then I see that "Strategic Goal" is in "Draft" status
 
   @editionOfStrategicGoal @strategicPlan @all
   Scenario: Edition of Strategic Goal inside a Strategic Plan
@@ -57,7 +56,6 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Edit" in the page details
     When I enter "StrategicGoalEdition" values from "StrategicPlan_Field_Values.xlsx"
     And I click on "Save" in the page details
-    Then I see that "Strategic Goal" is in "Draft" status
 
   @addAttachmentToStrategicGoal @strategicPlan @all
   Scenario: Addition of Attachment to Strategic Goal inside a Strategic Plan
@@ -142,7 +140,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Save" in the page details
     When I navigate to "Related Logs" sub tab
     And I click on top right button "Associate" in flex table with id "strategicPlan::ObjectivesKPITableId"
-    When I click "Associate" after selection of "Automation KPI Program" in the table "strategicPlan::ListOfActiveKPITableId"
+    When I click "Associate" after selection of "Automation Program KPI" in the table "strategicPlan::ListOfActiveKPITableId"
     And I switch to Parent frame
     Then I see that "Automation Program KPI" has been added in flextable with Id "strategicPlan::ObjectivesKPITableId"
 

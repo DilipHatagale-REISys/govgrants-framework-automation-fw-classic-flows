@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in Closeout
 
   Background: Navigate to award
-    Given I delete the record "Permanent Award For Automation" from the object "Closeout"
+    #Given I delete the record "Permanent Award For Automation" from the object "Closeout"
     And I login and view the record "Permanent Award For Automation" as "EXE"
       | Actions          | Step 1        | Step 2       | Step 3               | Step 4                        |
       | Owner Navigation | As a Grantor  | Grants       | Grants and Subawards | Grants, Subaward & Amendments |
@@ -241,12 +241,14 @@ Feature: Validate all scenarios in Closeout
 
   @scheduledCloseoutHappyPath @closeout @all
   Scenario: Happy path of Scheduled closeout
-    Given User "EXE" receives the task for "Complete Closeout"
+    Given I navigate to "Requests" sub tab
+    And I click on "View" icon for "Scheduled" inside flex table with id "GrantorCloseOutRequestFlexToggle" with wait for record
+    When I get the "EGMS ID"
+    Given User "EXE" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2       | Step 3 |
       | Navigation | Closeout          | As a Grantor | AUTO   |
       | Left Panel | Pending Tasks     | My Tasks     |        |
       | FlexTable  | PhasePendingTasks | Start        |        |
-    When I get the "EGMS ID"
     And I complete the fields from the sheet "Edition" in excel "Closeout_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
