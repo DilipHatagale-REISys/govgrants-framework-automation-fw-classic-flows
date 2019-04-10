@@ -1,21 +1,20 @@
-@applicationIntake
+@applicationIntake @regression
 Feature: Validate all scenarios in the Application Intake
 
   Background: Qualify Announcement and Create Application
-    Given I delete the record "Execution Announcement(Dr) for Automation" from the object "Application"
-    And I delete the record "Execution Announcement(Dr) for Automation" from the object "Qualified Announcement"
+    Given I delete the record "Competitive Announcement for Automation" from the object "Application"
+    And I delete the record "Competitive Announcement for Automation" from the object "Qualified Announcement"
     Given I am on "SUBPORTAL" portal
-    And I qualify the announcement "Execution Announcement(Dr) for Automation" as user "SPI"
+    And I qualify the announcement "Competitive Announcement for Automation" as user "SPI"
       | Actions    | Step 1         | Step 2        | Step 3  | Step 4        |
       | Navigation | Grants Portal  | Opportunities | Active  | Opportunities |
       | FlexTable  | popupflextable | View          | Qualify |               |
     When I click on "Create Application" in the page details
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
-    Then I see that "Execution Announcement(Dr) for Automation" is in "Created" status
+    Then I see that "Competitive Announcement for Automation" is in "Created" status
 
-
-  @34044 @applicationCreation @applicationIntake @all
+  @34044 @applicationCreation @applicationIntake @all @smokeTest
   Scenario: Creating an Application
     Then I see that "Application Title" is in "Created" status
 
@@ -26,15 +25,15 @@ Feature: Validate all scenarios in the Application Intake
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @34303 @addFocusAreaToApplication @applicationIntake @all @notFunctional
+  @34303 @addFocusAreaToApplication @applicationIntake @all 
   Scenario Outline: Addition of Focus area to an application
     When I navigate to "Budget" sub tab
     Then I see that "<EGMS Id>" has been added in flextable with Id "applicationIntake::focusAreaTableId"
     Examples:
       | EGMS Id |
-      | 03677   |
+      | 03709   |
 
-  @addBudgetDetailsToApplication @applicationIntake @all
+  @addBudgetDetailsToApplication @applicationIntake @all @smoke
   Scenario: Addition of budget in the budget grid to an application
     When I navigate to "Budget" sub tab
     And I expand nested table containing column value "BP01"
@@ -42,7 +41,7 @@ Feature: Validate all scenarios in the Application Intake
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 1000       | 3000           | 100            |
 
-  @addTargetToKPIInApplication @applicationIntake @all
+  @addTargetToKPIInApplication @applicationIntake @all @smoke
   Scenario Outline: Addition of KPI target to an application
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "applicationIntake::kpiTableId" by clicking "Edit" :
@@ -51,9 +50,9 @@ Feature: Validate all scenarios in the Application Intake
     Then I see that "10" has been added in flextable with Id "applicationIntake::kpiTableId"
     Examples:
       | Application Name                          | Flextable Name |
-      | Execution Announcement(Dr) for Automation | Budget Details |
+      | Competitive Announcement for Automation | Budget Details |
 
-  @formFillingApplication @applicationIntake @all
+  @formFillingApplication @applicationIntake @all @smoke
   Scenario: To fill and complete the form in Progress Report
     When I navigate to "Attachments" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "applicationIntake::allFormsTableId"
@@ -72,7 +71,7 @@ Feature: Validate all scenarios in the Application Intake
     When I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Application"
     And I close Modal
 
-  @34156 @submitApplication @applicationIntakeHappyPath @applicationIntake @all
+  @34156 @submitApplication @applicationIntakeHappyPath @applicationIntake @all @smoke
   Scenario: Submitting an application to Grantor
     Given I complete the fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -84,7 +83,7 @@ Feature: Validate all scenarios in the Application Intake
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "applicationIntake::kpiTableId" by clicking "Edit" :
       | EGMS ID  | Target |
-      | KPI-0638 | 10     |
+      | KPI-0419| 10     |
     And I navigate to "Attachments" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "applicationIntake::allFormsTableId"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
@@ -94,10 +93,14 @@ Feature: Validate all scenarios in the Application Intake
     Given I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
     Given I click on "Back" in the page details
+     When I navigate to "Attachments" sub tab
+    And I click on "Attach" icon for "Not Applicable" inside flex table with id "inlineEditGridApplicationChecklists"
+    When I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Application"
+    And I close Modal
     When I click on "Submit Application" in the page details
     Then I see status in Progress-bar is "Submitted" and is "green"
 
-  @34346 @viewSubmitedApplication @applicationIntake @all
+  @34346 @viewSubmitedApplication @applicationIntake @all @smoke
   Scenario Outline: Viewing the application submitted by subrecipient as Internal user
     Given I complete the fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -109,7 +112,7 @@ Feature: Validate all scenarios in the Application Intake
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "applicationIntake::kpiTableId" by clicking "Edit" :
       | EGMS ID  | Target |
-      | KPI-0638 | 10     |
+      | KPI-0419| 10     |
     And I navigate to "Attachments" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "applicationIntake::allFormsTableId"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
@@ -119,13 +122,18 @@ Feature: Validate all scenarios in the Application Intake
     Given I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
     Given I click on "Back" in the page details
+     When I navigate to "Attachments" sub tab
+    And I click on "Attach" icon for "Not Applicable" inside flex table with id "inlineEditGridApplicationChecklists"
+    When I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Application"
+    And I close Modal
     When I click on "Submit Application" in the page details
     Given I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
-    When I click toggle button to select "Submitted Applications"
-    And I perform quick search for "<Application Name>" in "ApplicantGrantorApplications" panel
+    When I click toggle button to select "All Applications"
+    #And I perform quick search for "<Application Name>" in "ApplicantGrantorApplications" panel
     When I click on "View" icon for "<Application Name>" inside table
+    Then I see status in Progress-bar is "Review Initiated" and is "green"
     Examples:
       | User | Application Name                          |
-      | EXE  | Execution Announcement(Dr) for Automation |
+      | EXE  | Competitive Announcement for Automation |

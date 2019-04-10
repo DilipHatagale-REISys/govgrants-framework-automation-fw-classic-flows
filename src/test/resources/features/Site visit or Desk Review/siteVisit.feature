@@ -3,7 +3,7 @@ Feature: Validate all scenarios in the Site Visit
 
   Background: Data setup for Site Visit
     Given I delete the record "Automation Site Visit" from the object "Site Visit"
-    And I login and view the "Active" award "AD-EGA-01" with name "Execution Grant for Automation" as User "EXE"
+    And I login and view the "Active" award "AD-GREG-35" with name "Automation Grant Award for Post Award" as User "EXE"
       | Actions    | Step 1       | Step 2         | Step 3               | Step 4                        |
       | Navigation | As a Grantor | Grants         | Grants and Subawards | Grants, Subaward & Amendments |
       | FlexTable  | Grants       | ActiveGrants   | View                 |                               |
@@ -342,7 +342,7 @@ Feature: Validate all scenarios in the Site Visit
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
     Examples:
       | Award Name                     | Site Visit Name       | Site Visit Approval Task |
-      | Execution Grant for Automation | Automation Site Visit | Approve Site Visit       |
+      | Automation Grant Award for Post Award | Automation Site Visit | Approve Site Visit       |
 
   @siteVisitCorrectiveActionsBySubrecipient @siteVisit @all
   Scenario Outline: Send Site Visit to Subrecipient
@@ -415,7 +415,7 @@ Feature: Validate all scenarios in the Site Visit
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
     Examples:
       | Award Name                     | Award EGMS ID | Site Visit Name       | Site Visit Approval Task | Type                     |
-      | Execution Grant for Automation | AD-EGA-01     | Automation Site Visit | Approve Site Visit       | Review Site visit report |
+      | Automation Grant Award for Post Award | AD-GREG-35     | Automation Site Visit | Approve Site Visit       | Review Site visit report |
 
   @siteVisitSubmitToGrantorBySubrecipient @siteVisit @all
   Scenario Outline: Send Site Visit to Subrecipient
@@ -489,44 +489,41 @@ Feature: Validate all scenarios in the Site Visit
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
     Examples:
       | Award Name                     | Award EGMS ID | Site Visit Name       | Site Visit Approval Task | Type                     |
-      | Execution Grant for Automation | AD-EGA-01     | Automation Site Visit | Approve Site Visit       | Review Site visit report |
+      | Automation Grant Award for Post Award | AD-GREG-35     | Automation Site Visit | Approve Site Visit       | Review Site visit report |
 
   @siteVisitAcceptAndClose @siteVisit @all
   Scenario Outline: Send Site Visit to Subrecipient
     Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
+     | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "Automation SPI"
-      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
-      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     Given I select "2" approvers "Automation PM,Automation FO"
       | Actions    | Step 1                                   | Step 2 | Step 3           |
       | Subtab     | Responsibilities                         |        |                  |
       | Approver 1 | GrantorSiteVisitRolesandResponsibilities | Edit   | Program Approver |
       | Approver 2 | GrantorSiteVisitRolesandResponsibilities | Edit   | Fiscal Approver  |
     And I click on "Notify" in the page details
-    Given User "SPI" receives the task for "Record Id"
+    When I click on "Conduct" in the page details
+       Given User "SPI" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2        | Step 3    |
       | Navigation | Monitoring        | Grants Portal | SUBPORTAL |
       | Left Panel | Pending Tasks     | My Tasks      |           |
       | FlexTable  | PhasePendingTasks | Start         |           |
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "<Site Visit Name>" inside table
-    When I click on "Conduct" in the page details
-    And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
+     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+     And I navigate to "Monitoring" tab
+     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
+     And I click on "View" icon for "<Site Visit Name>" inside table
+     And I navigate to "Reports and Outcomes" sub tab
+     And I fill in the form "General Review Form" from sheet "Form Fields" in excel "SiteVisit_Field_Values.xlsx"
+       | Actions     | Step 1               | Step 2        |
+       | Navigation  | Reports and Outcomes |               |
+       | FlexTable   | Edit                 | FormComponent |
+       | Form Button | Save                 | Back          |
+       | Validation  | Validate             | FormComponent |
+     When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    And I fill in the form "General Review Form" from sheet "Form Fields" in excel "SiteVisit_Field_Values.xlsx"
-      | Actions     | Step 1               | Step 2        |
-      | Navigation  | Reports and Outcomes |               |
-      | FlexTable   | Edit                 | FormComponent |
-      | Form Button | Save                 | Back          |
-      | Validation  | Validate             | FormComponent |
     When I click on "Submit for Approval" in the page details
     Given "2" Approvers "PM,FO" approve the record "<Site Visit Approval Task>"
       | Actions    | Step 1        | Step 2     | Step 3            |
@@ -544,6 +541,7 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "<Type>" in "PhasePendingTasks" panel
     And I click on "Start" icon for "<Type>" inside table
     When I navigate to "Reports and Outcomes" sub tab
+    And I pause execution
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
       | Title                               | Description            | Status      | Due Date   | Assigned To    |
@@ -569,6 +567,6 @@ Feature: Validate all scenarios in the Site Visit
 
     Examples:
       | Award Name                     | Type                     | Award EGMS ID | Site Visit Name       | Site Visit Approval Task |
-      | Execution Grant for Automation | Review Site visit report | AD-EGA-01     | Automation Site Visit | Approve Site Visit       |
+      | Automation Grant Award for Post Award | Review Site visit report | AD-GREG-35     | Automation Site Visit | Approve Site Visit       |
 	
 	

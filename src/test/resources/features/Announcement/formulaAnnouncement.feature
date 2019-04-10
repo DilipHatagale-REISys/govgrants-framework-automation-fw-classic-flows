@@ -1,4 +1,4 @@
-@announcement @formula
+@formula @regression
 Feature: Validate all scenarios in the Announcement tab
 
   Background: Create Announcement
@@ -6,7 +6,7 @@ Feature: Validate all scenarios in the Announcement tab
 
   @33936 @announcementCreationFA @announcement @all
   Scenario: Creation of an Announcement
-    Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+    Given I create a "Formula" Announcement as user "EXE" from sheet "FormulaAnnouncement" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
       | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
       | FlexTable   | Announcements                       | Draft Announcements        |                                   |
@@ -42,7 +42,7 @@ Feature: Validate all scenarios in the Announcement tab
       | Creation    | New                                 | Continue                   | Save and Continue                 |
       | ID          | EGMS ID                             |                            |                                   |
     And I click on "Save" in the page details
-    When I re-login to "As a Grantor" app as "<User>" user
+    When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I perform quick search for "Record id" in "ActiveFundingOpportunitiesAll" panel
     Then I cannot see row level action button "Delete" against "Record id" in flex table with id "ActiveFundingOpportunitiesAll"
@@ -98,7 +98,7 @@ Feature: Validate all scenarios in the Announcement tab
       | Creation    | New                                 | Continue                   | Save and Continue                 |
       | ID          | EGMS ID                             |                            |                                   |
     And I click on "Save" in the page details
-    When I re-login to "As a Grantor" app as "<User>" user
+    When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I perform quick search for "Record id" in "ActiveFundingOpportunitiesAll" panel
     Then I cannot see row level action button "Edit" against "Record id" in flex table with id "ActiveFundingOpportunitiesAll"
@@ -376,7 +376,7 @@ Feature: Validate all scenarios in the Announcement tab
     Then I see that "Active" has been added in flextable with Id "inlineEditGridAnnouncementChecklists"
     Examples:
       | Announcement Type |
-      | Competitive       |
+      | Formula      |
 
   @announcementReviewStepsValidateFA @announcement @all @redTag
   Scenario Outline: Validate the review steps for the announcement
@@ -478,17 +478,21 @@ Feature: Validate all scenarios in the Announcement tab
       | Reviewer Navigation | Responsibilities |                       |        |
       | FlexTable           | New              | flexGridApproverRoles | Save   |
       | Send Review         | Send for Review  | Created               |        |
-    And I re-login to "As a Grantor" app as "<User>" user
+    And I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
     And I click on "Start" icon for "Record id" inside table
+    When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
-    And I enter a review as "Passed"
+    And I enter values into fields
+      | Value            | Field            |
+      | Passed           | Rating__c        |
+      | Passed           | ReviewComments__c|
     When I click modal button "Save"
     And I click modal button "Submit Review"
     And I close Modal
-    When I re-login to "As a Grantor" app as "EXE" user
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Announcements"
@@ -664,7 +668,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+    Given I associate "3" records "Automation EXE,02534,SPO-0072"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
       | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
@@ -689,16 +693,16 @@ Feature: Validate all scenarios in the Announcement tab
       | Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add            |            |
       | Upload Modal         | Upload Template                      | Not Applicable |            |
       | Upload file          | Checklist                            | Announcement   |            |
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    And I add an attachment "InternalOrganization_Field_Values.xlsx"
       | Actions               | Step 1      | Step 2                           | Step 3             |
       | Attachment Navigation | Attachments | Add                              | a150b000003epC4AAI |
       | Attachment Details    | Attachment  | Funding Opportunity Announcement |                    |
-    And I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
+    Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
       | Actions             | Step 1           | Step 2                | Step 3 |
       | Reviewer Navigation | Responsibilities |                       |        |
       | FlexTable           | New              | flexGridApproverRoles | Save   |
       | Send Review         | Send for Review  | Created               |        |
-    Given Review is completed as user "FO" for the record "Record id"
+    And Review is completed as user "FO" for the record "Record id"
       | Actions             | Step 1            | Step 2        | Step 3                | Step 4        |
       | Reviewer Navigation | As a Grantor      | Announcements | Pending Tasks         | My Tasks      |
       | FlexTable           | PhasePendingTasks | Start         | flexGridApproverRoles | Enter Review  |
@@ -707,7 +711,7 @@ Feature: Validate all scenarios in the Announcement tab
       | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
       | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
       | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
-    And I click on "Complete Review" in the page details
+    Given I click on "Complete Review" in the page details
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
@@ -847,7 +851,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+    Given I associate "3" records "Automation EXE,02534,SPO-0072"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
       | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
@@ -872,10 +876,25 @@ Feature: Validate all scenarios in the Announcement tab
       | Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add            |            |
       | Upload Modal         | Upload Template                      | Not Applicable |            |
       | Upload file          | Checklist                            | Announcement   |            |
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    And I add an attachment "InternalOrganization_Field_Values.xlsx"
       | Actions               | Step 1      | Step 2                           | Step 3             |
       | Attachment Navigation | Attachments | Add                              | a150b000003epC4AAI |
       | Attachment Details    | Attachment  | Funding Opportunity Announcement |                    |
+    Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
+      | Actions             | Step 1           | Step 2                | Step 3 |
+      | Reviewer Navigation | Responsibilities |                       |        |
+      | FlexTable           | New              | flexGridApproverRoles | Save   |
+      | Send Review         | Send for Review  | Created               |        |
+    And Review is completed as user "FO" for the record "Record id"
+      | Actions             | Step 1            | Step 2        | Step 3                | Step 4        |
+      | Reviewer Navigation | As a Grantor      | Announcements | Pending Tasks         | My Tasks      |
+      | FlexTable           | PhasePendingTasks | Start         | flexGridApproverRoles | Enter Review  |
+      | Enter Review        | Sent for Review   | Passed        | Save                  | Submit Review |
+    Given I login and view the record "Record id" as "EXE"
+      | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
+      | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
+      | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
+    Given I click on "Complete Review" in the page details
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
@@ -983,8 +1002,8 @@ Feature: Validate all scenarios in the Announcement tab
       | 1              | Question1 | Written | 100       |
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-    When I click on "Submit For Approval" in the page details
+    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates" 
+    And I click on "Submit For Approval" in the page details
     And I navigate to "Announcements" tab
     When I perform quick search for "Record id" in "ActiveFundingOpportunitiesAll" panel
     Then I cannot see row level action button "Delete" against "Record id" in flex table with id "ActiveFundingOpportunitiesAll"
@@ -1017,7 +1036,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+    Given I associate "3" records "Automation EXE,02534,SPO-0072"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
       | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
@@ -1042,14 +1061,25 @@ Feature: Validate all scenarios in the Announcement tab
       | Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add            |            |
       | Upload Modal         | Upload Template                      | Not Applicable |            |
       | Upload file          | Checklist                            | Announcement   |            |
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    And I add an attachment "InternalOrganization_Field_Values.xlsx"
       | Actions               | Step 1      | Step 2                           | Step 3             |
       | Attachment Navigation | Attachments | Add                              | a150b000003epC4AAI |
       | Attachment Details    | Attachment  | Funding Opportunity Announcement |                    |
-    When I click on "Edit" in the page details
-    And  I navigate to "Overview" sub tab
-    And I enter value "10" into field "ApplicationDueDate__c"
-    When I click on "Save" in the page details
+    Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
+      | Actions             | Step 1           | Step 2                | Step 3 |
+      | Reviewer Navigation | Responsibilities |                       |        |
+      | FlexTable           | New              | flexGridApproverRoles | Save   |
+      | Send Review         | Send for Review  | Created               |        |
+    And Review is completed as user "FO" for the record "Record id"
+      | Actions             | Step 1            | Step 2        | Step 3                | Step 4        |
+      | Reviewer Navigation | As a Grantor      | Announcements | Pending Tasks         | My Tasks      |
+      | FlexTable           | PhasePendingTasks | Start         | flexGridApproverRoles | Enter Review  |
+      | Enter Review        | Sent for Review   | Passed        | Save                  | Submit Review |
+    Given I login and view the record "Record id" as "EXE"
+      | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
+      | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
+      | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
+    Given I click on "Complete Review" in the page details
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
@@ -1189,7 +1219,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+    Given I associate "3" records "Automation EXE,02534,SPO-0072"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
       | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
@@ -1214,10 +1244,25 @@ Feature: Validate all scenarios in the Announcement tab
       | Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add            |            |
       | Upload Modal         | Upload Template                      | Not Applicable |            |
       | Upload file          | Checklist                            | Announcement   |            |
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    And I add an attachment "InternalOrganization_Field_Values.xlsx"
       | Actions               | Step 1      | Step 2                           | Step 3             |
       | Attachment Navigation | Attachments | Add                              | a150b000003epC4AAI |
       | Attachment Details    | Attachment  | Funding Opportunity Announcement |                    |
+    Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
+      | Actions             | Step 1           | Step 2                | Step 3 |
+      | Reviewer Navigation | Responsibilities |                       |        |
+      | FlexTable           | New              | flexGridApproverRoles | Save   |
+      | Send Review         | Send for Review  | Created               |        |
+    And Review is completed as user "FO" for the record "Record id"
+      | Actions             | Step 1            | Step 2        | Step 3                | Step 4        |
+      | Reviewer Navigation | As a Grantor      | Announcements | Pending Tasks         | My Tasks      |
+      | FlexTable           | PhasePendingTasks | Start         | flexGridApproverRoles | Enter Review  |
+      | Enter Review        | Sent for Review   | Passed        | Save                  | Submit Review |
+    Given I login and view the record "Record id" as "EXE"
+      | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
+      | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
+      | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
+    Given I click on "Complete Review" in the page details
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
@@ -1325,8 +1370,8 @@ Feature: Validate all scenarios in the Announcement tab
       | 1              | Question1 | Written | 100       |
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-    When I click on "Submit For Approval" in the page details
+    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates" 
+    And I click on "Submit For Approval" in the page details
     Then I see the following messages in the page details :
       | Financial Tab - Correct Budget Periods Start Date and End Dates. Budget Periods should be continuous and together should form a Project Period. |
     Examples:
@@ -1358,7 +1403,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+    Given I associate "3" records "Automation EXE,02534,SPO-0072"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
       | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
@@ -1559,7 +1604,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+    Given I associate "3" records "Automation EXE,02534,SPO-0072"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
       | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
@@ -1584,10 +1629,25 @@ Feature: Validate all scenarios in the Announcement tab
       | Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add            |            |
       | Upload Modal         | Upload Template                      | Not Applicable |            |
       | Upload file          | Checklist                            | Announcement   |            |
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    And I add an attachment "InternalOrganization_Field_Values.xlsx"
       | Actions               | Step 1      | Step 2                           | Step 3             |
       | Attachment Navigation | Attachments | Add                              | a150b000003epC4AAI |
       | Attachment Details    | Attachment  | Funding Opportunity Announcement |                    |
+    Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
+      | Actions             | Step 1           | Step 2                | Step 3 |
+      | Reviewer Navigation | Responsibilities |                       |        |
+      | FlexTable           | New              | flexGridApproverRoles | Save   |
+      | Send Review         | Send for Review  | Created               |        |
+    And Review is completed as user "FO" for the record "Record id"
+      | Actions             | Step 1            | Step 2        | Step 3                | Step 4        |
+      | Reviewer Navigation | As a Grantor      | Announcements | Pending Tasks         | My Tasks      |
+      | FlexTable           | PhasePendingTasks | Start         | flexGridApproverRoles | Enter Review  |
+      | Enter Review        | Sent for Review   | Passed        | Save                  | Submit Review |
+    Given I login and view the record "Record id" as "EXE"
+      | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
+      | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
+      | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
+    Given I click on "Complete Review" in the page details
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
@@ -1695,7 +1755,7 @@ Feature: Validate all scenarios in the Announcement tab
       | 1              | Question1 | Written | 100       |
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
+    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates" 
     And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
@@ -1735,7 +1795,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+    Given I associate "3" records "Automation EXE,02534,SPO-0072"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
       | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
@@ -1760,12 +1820,40 @@ Feature: Validate all scenarios in the Announcement tab
       | Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add            |            |
       | Upload Modal         | Upload Template                      | Not Applicable |            |
       | Upload file          | Checklist                            | Announcement   |            |
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    And I add an attachment "InternalOrganization_Field_Values.xlsx"
       | Actions               | Step 1      | Step 2                           | Step 3             |
       | Attachment Navigation | Attachments | Add                              | a150b000003epC4AAI |
       | Attachment Details    | Attachment  | Funding Opportunity Announcement |                    |
+    Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
+      | Actions             | Step 1           | Step 2                | Step 3 |
+      | Reviewer Navigation | Responsibilities |                       |        |
+      | FlexTable           | New              | flexGridApproverRoles | Save   |
+      | Send Review         | Send for Review  | Created               |        |
+    And Review is completed as user "FO" for the record "Record id"
+      | Actions             | Step 1            | Step 2        | Step 3                | Step 4        |
+      | Reviewer Navigation | As a Grantor      | Announcements | Pending Tasks         | My Tasks      |
+      | FlexTable           | PhasePendingTasks | Start         | flexGridApproverRoles | Enter Review  |
+      | Enter Review        | Sent for Review   | Passed        | Save                  | Submit Review |
+    Given I login and view the record "Record id" as "EXE"
+      | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
+      | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
+      | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
+    Given I click on "Complete Review" in the page details
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
+    And I enter value "Justified" into field "Justification__c" 
+     And I click on "Save" in the page details
+    	And I navigate to "Setup" sub tab
+	And I expand nested table containing column value "Pre-Screen Review"
+	When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
+	And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+	| Section Header            | Section Weight (%)    |
+	|Eligibility                | 50                  |
+	|Completeness               | 50                   |
+	And I expand nested table containing column value "Eligibility"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+    | Question Order | Question  		   | Type  	 | Max Score   | 
+    | 1              | Question1           | Written | 100         | 
     And I enter value "Justified" into field "Justification__c"
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
@@ -1910,7 +1998,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+    Given I associate "3" records "Automation EXE,02534,SPO-0072"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
       | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
@@ -1935,10 +2023,25 @@ Feature: Validate all scenarios in the Announcement tab
       | Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add            |            |
       | Upload Modal         | Upload Template                      | Not Applicable |            |
       | Upload file          | Checklist                            | Announcement   |            |
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    And I add an attachment "InternalOrganization_Field_Values.xlsx"
       | Actions               | Step 1      | Step 2                           | Step 3             |
       | Attachment Navigation | Attachments | Add                              | a150b000003epC4AAI |
       | Attachment Details    | Attachment  | Funding Opportunity Announcement |                    |
+    Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
+      | Actions             | Step 1           | Step 2                | Step 3 |
+      | Reviewer Navigation | Responsibilities |                       |        |
+      | FlexTable           | New              | flexGridApproverRoles | Save   |
+      | Send Review         | Send for Review  | Created               |        |
+    And Review is completed as user "FO" for the record "Record id"
+      | Actions             | Step 1            | Step 2        | Step 3                | Step 4        |
+      | Reviewer Navigation | As a Grantor      | Announcements | Pending Tasks         | My Tasks      |
+      | FlexTable           | PhasePendingTasks | Start         | flexGridApproverRoles | Enter Review  |
+      | Enter Review        | Sent for Review   | Passed        | Save                  | Submit Review |
+    Given I login and view the record "Record id" as "EXE"
+      | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
+      | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
+      | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
+    Given I click on "Complete Review" in the page details
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
@@ -2084,7 +2187,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+    Given I associate "3" records "Automation EXE,02534,SPO-0072"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
       | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
@@ -2261,7 +2364,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+    Given I associate "3" records "Automation EXE,02534,SPO-0072"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
       | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
@@ -2435,7 +2538,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+    Given I associate "3" records "Automation EXE,02534,SPO-0072"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
       | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
@@ -2460,10 +2563,25 @@ Feature: Validate all scenarios in the Announcement tab
       | Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add            |            |
       | Upload Modal         | Upload Template                      | Not Applicable |            |
       | Upload file          | Checklist                            | Announcement   |            |
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    And I add an attachment "InternalOrganization_Field_Values.xlsx"
       | Actions               | Step 1      | Step 2                           | Step 3             |
       | Attachment Navigation | Attachments | Add                              | a150b000003epC4AAI |
       | Attachment Details    | Attachment  | Funding Opportunity Announcement |                    |
+    Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
+      | Actions             | Step 1           | Step 2                | Step 3 |
+      | Reviewer Navigation | Responsibilities |                       |        |
+      | FlexTable           | New              | flexGridApproverRoles | Save   |
+      | Send Review         | Send for Review  | Created               |        |
+    And Review is completed as user "FO" for the record "Record id"
+      | Actions             | Step 1            | Step 2        | Step 3                | Step 4        |
+      | Reviewer Navigation | As a Grantor      | Announcements | Pending Tasks         | My Tasks      |
+      | FlexTable           | PhasePendingTasks | Start         | flexGridApproverRoles | Enter Review  |
+      | Enter Review        | Sent for Review   | Passed        | Save                  | Submit Review |
+    Given I login and view the record "Record id" as "EXE"
+      | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
+      | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
+      | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
+    Given I click on "Complete Review" in the page details
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
@@ -2571,7 +2689,7 @@ Feature: Validate all scenarios in the Announcement tab
       | 1              | Question1 | Written | 100       |
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
+    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates" 
     And I click on "Submit For Approval" in the page details
     Given I re-login to "As a Grantor" app as "PM" user
     When I navigate to "Announcements" tab
@@ -2609,7 +2727,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+    Given I associate "3" records "Automation EXE,02534,SPO-0072"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
       | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
@@ -2752,7 +2870,7 @@ Feature: Validate all scenarios in the Announcement tab
       | Navigation | As a Grantor  | Announcements |                   |
       | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
       | Approval   | Start         | Reject        |                   |
-    When I re-login to "As a Grantor" app as "<User>" user
+    When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "PhasePendingTasks" panel
@@ -2771,22 +2889,23 @@ Feature: Validate all scenarios in the Announcement tab
       | Creation    | New                                 | Continue                   | Save and Continue                 |
       | ID          | EGMS ID                             |                            |                                   |
     And I click on "Save" in the page details
+    And I get the "EGMS ID"
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--125"
+    And I associate "1" records "FA--77"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--125         | 100             |
+      | FA--77          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-      | Budget Period Name | Start Date | End Date |
-      | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+      | Budget Period Name | Start Date  | End Date |
+      | BP01               | 50          | 500      |
+    Given I associate "3" records "Automation EXE,02534,SPO-0072"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
       | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
@@ -2811,10 +2930,25 @@ Feature: Validate all scenarios in the Announcement tab
       | Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add            |            |
       | Upload Modal         | Upload Template                      | Not Applicable |            |
       | Upload file          | Checklist                            | Announcement   |            |
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    And I add an attachment "InternalOrganization_Field_Values.xlsx"
       | Actions               | Step 1      | Step 2                           | Step 3             |
       | Attachment Navigation | Attachments | Add                              | a150b000003epC4AAI |
       | Attachment Details    | Attachment  | Funding Opportunity Announcement |                    |
+    Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
+      | Actions             | Step 1           | Step 2                | Step 3 |
+      | Reviewer Navigation | Responsibilities |                       |        |
+      | FlexTable           | New              | flexGridApproverRoles | Save   |
+      | Send Review         | Send for Review  | Created               |        |
+    And Review is completed as user "FO" for the record "Record id"
+      | Actions             | Step 1            | Step 2        | Step 3                | Step 4        |
+      | Reviewer Navigation | As a Grantor      | Announcements | Pending Tasks         | My Tasks      |
+      | FlexTable           | PhasePendingTasks | Start         | flexGridApproverRoles | Enter Review  |
+      | Enter Review        | Sent for Review   | Passed        | Save                  | Submit Review |
+    Given I login and view the record "Record id" as "EXE"
+      | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
+      | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
+      | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
+    Given I click on "Complete Review" in the page details
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
@@ -2922,7 +3056,7 @@ Feature: Validate all scenarios in the Announcement tab
       | 1              | Question1 | Written | 100       |
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
+    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates" 
     And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
@@ -2962,7 +3096,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+    Given I associate "3" records "Automation EXE,02534,SPO-0072"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
       | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
@@ -3138,7 +3272,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+    Given I associate "3" records "Automation EXE,02534,SPO-0072"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
       | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
@@ -3312,7 +3446,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+    Given I associate "3" records "Automation EXE,02534,SPO-0072"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
       | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
@@ -3337,10 +3471,25 @@ Feature: Validate all scenarios in the Announcement tab
       | Checklist FlexTable  | inlineEditGridAnnouncementChecklists | Add            |            |
       | Upload Modal         | Upload Template                      | Not Applicable |            |
       | Upload file          | Checklist                            | Announcement   |            |
-    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+    And I add an attachment "InternalOrganization_Field_Values.xlsx"
       | Actions               | Step 1      | Step 2                           | Step 3             |
       | Attachment Navigation | Attachments | Add                              | a150b000003epC4AAI |
       | Attachment Details    | Attachment  | Funding Opportunity Announcement |                    |
+    Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
+      | Actions             | Step 1           | Step 2                | Step 3 |
+      | Reviewer Navigation | Responsibilities |                       |        |
+      | FlexTable           | New              | flexGridApproverRoles | Save   |
+      | Send Review         | Send for Review  | Created               |        |
+    And Review is completed as user "FO" for the record "Record id"
+      | Actions             | Step 1            | Step 2        | Step 3                | Step 4        |
+      | Reviewer Navigation | As a Grantor      | Announcements | Pending Tasks         | My Tasks      |
+      | FlexTable           | PhasePendingTasks | Start         | flexGridApproverRoles | Enter Review  |
+      | Enter Review        | Sent for Review   | Passed        | Save                  | Submit Review |
+    Given I login and view the record "Record id" as "EXE"
+      | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
+      | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
+      | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
+    Given I click on "Complete Review" in the page details
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
@@ -3464,7 +3613,7 @@ Feature: Validate all scenarios in the Announcement tab
 
   @34462 @publishingFormulaAnnouncementFA  @announcementFormulaHappyPath @announcement @all
   Scenario Outline: Validate the activation of Internal Program
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
+    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "FormulaAnnouncement" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
       | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
       | FlexTable   | Announcements                       | Draft Announcements        |                                   |
@@ -3481,13 +3630,13 @@ Feature: Validate all scenarios in the Announcement tab
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
       | FA--125         | 100             |
-    When I navigate to "Financials" sub tab
+     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-      | Budget Period Name | Start Date | End Date |
-      | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,03689,SPO-0072"
+      | Budget Period Name | Start Date  | End Date |
+      | BP01               | 50          | 500      |
+    Given I associate "3" records "Automation EXE,02534,SPO-0072"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
       | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
@@ -3516,25 +3665,30 @@ Feature: Validate all scenarios in the Announcement tab
       | Actions               | Step 1      | Step 2                           | Step 3             |
       | Attachment Navigation | Attachments | Add                              | a150b000003epC4AAI |
       | Attachment Details    | Attachment  | Funding Opportunity Announcement |                    |
-    Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
+ Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
       | Actions             | Step 1           | Step 2                | Step 3 |
       | Reviewer Navigation | Responsibilities |                       |        |
       | FlexTable           | New              | flexGridApproverRoles | Save   |
       | Send Review         | Send for Review  | Created               |        |
-    And Review is completed as user "FO" for the record "Record id"
-      | Actions             | Step 1            | Step 2        | Step 3                | Step 4        |
-      | Reviewer Navigation | As a Grantor      | Announcements | Pending Tasks         | My Tasks      |
-      | FlexTable           | PhasePendingTasks | Start         | flexGridApproverRoles | Enter Review  |
-      | Enter Review        | Sent for Review   | Passed        | Save                  | Submit Review |
+    And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I navigate to "Announcements" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record id" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "Record id" inside table
+    When I navigate to "Responsibilities" tab
+    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
+    And I enter values into fields
+      | Value            | Field            |
+      | Passed           | Rating__c        |
+      | Passed           | ReviewComments__c|
+    When I click modal button "Save"
+    And I click modal button "Submit Review"
+    And I close Modal
     Given I login and view the record "Record id" as "EXE"
       | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
       | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
       | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
     Given I click on "Complete Review" in the page details
-    And I click on "Edit" in the page details
-    When I navigate to "Financials" sub tab
-    And I enter value "Justified" into field "Justification__c"
-    And I click on "Save" in the page details
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
     When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -3639,13 +3793,17 @@ Feature: Validate all scenarios in the Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
+    And I enter value "Justified" into field "Justification__c"
+    And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
-    Given "3" Approvers "PM,FO,EXE" approve the record "Approve Funding Announcement"
+    Given "3" Approvers "PM,FO,EXE" approve the record "Record id"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
       | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
       | Approval   | Start         | Approve       |                   |
-    And I re-login to "As a Grantor" app as "<User>" user
+    And I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
     When I click toggle button to select "Draft Announcements"
@@ -3654,6 +3812,6 @@ Feature: Validate all scenarios in the Announcement tab
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
     Examples:
-      | Announcement Type | User | Add Organization id                        | Announcement Name       | Active Funding Opportunities id   |
-      | Formula           | EXE  | inlineEditGridSoleSourceAwardOrganizations | Automation Announcement | ActiveFundingOpportunitiesFormula |
+      | Announcement Type | User | Active Funding Opportunities id   |
+      | Formula           | EXE  | ActiveFundingOpportunitiesFormula |
  	

@@ -12,7 +12,7 @@ Feature: Validate all scenarios in the Site Visit
       | FlexTable  | Initiate Site Visit | SiteVisit |
       | Creation   | Save and Continue   | Cancel    |
 
-  @organizationalSiteVisitCreation @organizationalSiteVisit
+  @organizationalSiteVisitCreation @organizationalSiteVisit @all
   Scenario: Validate the Site Visit is in created status.
     Then I see status in Progress-bar is "Created" and is "green"
 
@@ -26,10 +26,10 @@ Feature: Validate all scenarios in the Site Visit
   @participantAssociationOrganizationalSiteVisit @organizationalSiteVisit @all
   Scenario Outline: Participant Association of Organizational Site Visit
     When I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "GrantorSiteVisitContacts"
-    When I click "Associate" after selection of "<Subrecipient>" in the table "popupflextable"
+    And I click on top right button "Associate" in flex table with id "GrantorSiteVisitOrganizationContacts"
+    When I click "Associate" after selection of "<Subrecipient>" in the table "SelectSiteDeskReviewContacts"
     And I close Modal
-    Then I see that "<Subrecipient>" has been added in flextable with Id "GrantorSiteVisitContacts"
+    Then I see that "<Subrecipient>" has been added in flextable with Id "GrantorSiteVisitOrganizationContacts"
     Examples:
       | Subrecipient   |
       | Automation SPI |

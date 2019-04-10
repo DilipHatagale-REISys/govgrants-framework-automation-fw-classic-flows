@@ -1,7 +1,7 @@
-@home
+@home @nonFunctional
 Feature: Validate all scenarios in the home tab
 
-  @35024 @internalOrganizationCreate @InternalOrganization @home @all
+  @35024 @internalOrganizationCreate @InternalOrganization @home @nonFunctional
   Scenario: Verifying if the Admin has create access to Internal Organization
     Given I login to "As Administrator" app as "Admin" user
     When I navigate to "Setup" tab
@@ -12,7 +12,7 @@ Feature: Validate all scenarios in the home tab
     And I click on "Save" in the page details
     Then I see that "State Organization" is in "Created" status
 
-  @35637 @internalOrganizationEdit @InternalOrganization @home @all
+  @35637 @internalOrganizationEdit @InternalOrganization @home @nonFunctional
   Scenario Outline: Verifying if the Admin has edit access to Internal Organization
     Given I login to "As Administrator" app as "Admin" user
     When I navigate to "Setup" tab
@@ -26,7 +26,7 @@ Feature: Validate all scenarios in the home tab
       | Organization name                     |
       | Internal Automation Organization Test |
 
-  @35024 @internalOrganizationView @internalOrganization @home @all
+  @35024 @internalOrganizationView @internalOrganization @home @nonFunctional
   Scenario Outline: Validate whether all users have view access to Internal Organization
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -39,7 +39,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @internalOrganizationADMINEdit @internalOrganization @home @all
+  @internalOrganizationADMINEdit @internalOrganization @home @nonFunctional
   Scenario Outline: Validate system allows Edit access to Internal Organizations to the ADMIN/DA
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -50,7 +50,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @internalOrganizationPMEdit @internalOrganization @home @all
+  @internalOrganizationPMEdit @internalOrganization @home @nonFunctional
   Scenario: Verify whether the PM profiles can Edit their own Organizations
     Given I login to "As a Grantor" app as "SIMON PM" user
     When I navigate to "Home" tab
@@ -58,7 +58,7 @@ Feature: Validate all scenarios in the home tab
     When I pause execution for "5" seconds
     Then I can see row level action button "Edit" against "Department of Health" in flex table with id "inlineEditGridInternalOrganizationHierarchy"
 
-  @subrecipientOrganizationView @subrecipients @organization @home @all
+  @subrecipientOrganizationView @subrecipients @organization @home @nonFunctional
   Scenario Outline: Validate whether all users have view access to Subrecipient Organization
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -71,7 +71,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @activeSubrecipientOrganizationsView @subrecipients @organization @home @all
+  @activeSubrecipientOrganizationsView @subrecipients @organization @home @nonFunctional
   Scenario Outline: Validate whether all users have view access to Active Individual Subrecipients
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -84,7 +84,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @activeIndividualSubrecipientsEdit @subrecipients @organization @home @all
+  @activeIndividualSubrecipientsEdit @subrecipients @organization @home @nonFunctional
   Scenario Outline: Validate whether ADMIN/DA have Edit access to Active Individual Subrecipients
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -95,7 +95,7 @@ Feature: Validate all scenarios in the home tab
       | ADMIN |
       | DA    |
 
-  @activeSubrecipientOrganizationsEdit @subrecipients @organization @home @all
+  @activeSubrecipientOrganizationsEdit @subrecipients @organization @home @nonFunctional
   Scenario Outline: Validate whether ADMIN/DA have Edit access to Active Subrecipient Organizations
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -106,7 +106,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @internalContactsView @internal @contacts @home @all
+  @internalContactsView @internal @contacts @home @nonFunctional
   Scenario Outline: Validate whether all users have view access to Contacts
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -120,7 +120,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @internalContactsCreate @internal @contacts @home @all
+  @internalContactsCreate @internal @contacts @home @nonFunctional
   Scenario Outline: Verify that Internal contacts are accessible across agencies and can be created by any Internal user
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -135,7 +135,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @internalContactsEdit @internal @contacts @home @all
+  @internalContactsEdit @internal @contacts @home @nonFunctional
   Scenario Outline: Validate system allows edit access to Contacts to all Internal Users
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -147,7 +147,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @subrecipientContactsCreate @subrecipients @contacts @home @all
+  @subrecipientContactsCreate @subrecipients @contacts @home @nonFunctional
   Scenario Outline: Verifying if the Internal Users has create access to Subrecipient Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -163,7 +163,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @smeReviewersContactView @smeReviewers @contacts @home @all
+  @smeReviewersContactView @smeReviewers @contacts @home @nonFunctional
   Scenario Outline: Verifying all Internal Users has View access to SME Reviewers Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -175,7 +175,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @smeReviewersContactCreate @smeReviewers @contacts @home @all
+  @smeReviewersContactCreate @smeReviewers @contacts @home @nonFunctional
   Scenario Outline: Verifying all Internal Users has Create access to SME Reviewers Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -189,7 +189,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @smeReviewersContactSendInviatation @smeReviewers @contacts @home @all
+  @smeReviewersContactSendInviatation @smeReviewers @contacts @home @nonFunctional
   Scenario Outline: Verify the system allows all Internal users to Send Invitation to SME Reviewer
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -201,7 +201,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @activeSMEReviewersContactDetailPageView @smeReviewers @contacts @home @all
+  @activeSMEReviewersContactDetailPageView @smeReviewers @contacts @home @nonFunctional
   Scenario Outline: Verify that system allows user to see the detail page of Active SME Reviewer contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -213,7 +213,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @termsandConditionsView @termsandConditions @manageTermsandConditions @home @all
+  @termsandConditionsView @termsandConditions @manageTermsandConditions @home @nonFunctional
   Scenario Outline: Verifying all Internal Users has View access to Terms and Conditions
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -226,7 +226,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @termsAndConditionsCreate @termsandConditions @manageTermsandConditions @home @all
+  @termsAndConditionsCreate @termsandConditions @manageTermsandConditions @home @nonFunctional
   Scenario Outline: Verifying if the ADMIN/DA has create access to Terms and Conditions
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -241,7 +241,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @termsAndConditionsADMINedit @termsandConditions @manageTermsandConditions @home @all
+  @termsAndConditionsADMINedit @termsandConditions @manageTermsandConditions @home @nonFunctional
   Scenario Outline: Verifying if the ADMIN has Edit access to Terms and Conditions
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -252,7 +252,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @einRegistrationView @einRegistration @usefulLinks @home @all
+  @einRegistrationView @einRegistration @usefulLinks @home @nonFunctional
   Scenario Outline: Validate whether all users have view access to EIN Registration
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -263,7 +263,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @dunsRegistrationView @dunsRegistration @usefulLinks @home @all
+  @dunsRegistrationView @dunsRegistration @usefulLinks @home @nonFunctional
   Scenario Outline: Validate whether all users have view access to DUNS Registration
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -274,7 +274,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @samgovRegistrationView @samgovRegistration @usefulLinks @home @all
+  @samgovRegistrationView @samgovRegistration @usefulLinks @home @nonFunctional
   Scenario Outline: Validate whether all users have view access to SAM.gov Registration
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -285,7 +285,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @contactUsView @contactUs @technicalSupport @home @all
+  @contactUsView @contactUs @technicalSupport @home @nonFunctional
   Scenario Outline: Validate whether all users have view access to Contact Us
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -299,7 +299,7 @@ Feature: Validate all scenarios in the home tab
       | SPA   |
 
 
-  @internalOrganizationEdition @internalOrganization @organization @home @all
+  @internalOrganizationEdition @internalOrganization @organization @home @nonFunctional
   Scenario Outline: Validate whether ADMIN and DA users can Edit the Internal Organization
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -313,7 +313,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @subrecipientOrganizationEdition @subrecipients @organization @home @all
+  @subrecipientOrganizationEdition @subrecipients @organization @home @nonFunctional
   Scenario Outline: Validate whether ADMIN and DA users can Edit the Subrecipient Organization
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -327,7 +327,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @internalContactsEdition @internal @contacts @home @all
+  @internalContactsEdition @internal @contacts @home @nonFunctional
   Scenario Outline: Validate whether all Internal Users can edit the Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -345,7 +345,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @subrecipientContactsEdition @subrecipients @contacts @home @all
+  @subrecipientContactsEdition @subrecipients @contacts @home @nonFunctional
   Scenario Outline: Verifying if the Internal Users has Edit access to Subrecipient Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -360,7 +360,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @smeReviewersContactEdition @smeReviewers @contacts @home @all
+  @smeReviewersContactEdition @smeReviewers @contacts @home @nonFunctional
   Scenario Outline: Verifying all Internal Users has Edit access to SME Reviewers Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -376,7 +376,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @additionalAddressesCreation @internalOrganizationEdit @internalOrganization @organization @home @all
+  @additionalAddressesCreation @internalOrganizationEdit @internalOrganization @organization @home @nonFunctional
   Scenario Outline: Validate whether ADMIN and DA users can Create the Additional Addresses
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -393,7 +393,7 @@ Feature: Validate all scenarios in the home tab
       | ADMIN |
 
 
-  @additionalAddressesEdition @internalOrganizationEdit @internalOrganization @organization @home @all
+  @additionalAddressesEdition @internalOrganizationEdit @internalOrganization @organization @home @nonFunctional
   Scenario Outline: Validate whether ADMIN and DA users can Edit the Additional Addresses
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -411,7 +411,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @relatedContactsCreation @internalOrganizationEdit @internalOrganization @organization @home @all
+  @relatedContactsCreation @internalOrganizationEdit @internalOrganization @organization @home @nonFunctional
   Scenario Outline: Validate whether ADMIN and DA users can Create the Related Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -428,7 +428,7 @@ Feature: Validate all scenarios in the home tab
       | ADMIN |
 
 
-  @relatedContactsEdition @internalOrganizationEdit @internalOrganization @organization @home @all
+  @relatedContactsEdition @internalOrganizationEdit @internalOrganization @organization @home @nonFunctional
   Scenario Outline: Validate whether ADMIN and DA users can Edit the Related Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -445,7 +445,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @deleteRelatedContacts @internalOrganizationEdit @internalOrganization @organization @home @all
+  @deleteRelatedContacts @internalOrganizationEdit @internalOrganization @organization @home @nonFunctional
   Scenario Outline: Validate whether ADMIN and DA users can Delete the Related Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -459,7 +459,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @dunsNumberCreation @internalOrganizationEdit @internalOrganization @organization @home @all
+  @dunsNumberCreation @internalOrganizationEdit @internalOrganization @organization @home @nonFunctional
   Scenario Outline: Validate whether ADMIN and DA users can create the DUNS Number
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -475,7 +475,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @dunsNumberEdition @internalOrganizationEdit @internalOrganization @organization @home @all
+  @dunsNumberEdition @internalOrganizationEdit @internalOrganization @organization @home @nonFunctional
   Scenario Outline: Validate whether ADMIN and DA users can Edit the DUNS NUmber
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -489,7 +489,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @deleteDUNSNumber @internalOrganizationEdit @internalOrganization @organization @home @all
+  @deleteDUNSNumber @internalOrganizationEdit @internalOrganization @organization @home @nonFunctional
   Scenario Outline: Validate whether ADMIN and DA users can delete the DUNS Number
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -503,7 +503,7 @@ Feature: Validate all scenarios in the home tab
       | ADMIN |
 
 
-  @childOrganizations @internalOrganizationEdit @internalOrganization @organization @home @all
+  @childOrganizations @internalOrganizationEdit @internalOrganization @organization @home @nonFunctional
   Scenario Outline: Validate whether all users have view access to Child Organizations
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -518,7 +518,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @deleteIndirectCostRate @internalOrganizationEdit @internalOrganization @organization @home @all
+  @deleteIndirectCostRate @internalOrganizationEdit @internalOrganization @organization @home @nonFunctional
   Scenario Outline: Validate whether ADMIN and DA users can delete the Indirect Cost Rates
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab

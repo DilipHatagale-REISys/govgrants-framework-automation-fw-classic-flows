@@ -1,8 +1,8 @@
-@kpi
+@kpi @regression
 Feature: Validate all scenarios in Key Performance Indicator(KPI)
 
   Background: To setup data
-    Given I delete the record "Execution KPI for Automation" from the object "KPI"
+    Given I delete the record "KPI for Automation Testing" from the object "KPI"
     And I create a planning record as user "EXE" from sheet "Creation" in excel "KPI_Field_Values.xlsx"
       | Actions    | Step 1                           | Step 2            | Step 3                                 |
       | Navigation | As a Grantor                     | Planning          | Planning                               |
@@ -10,7 +10,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
       | Creation   | New                              | Save and Continue | Save                                   |
       | ID         | EGMS ID                          |                   |                                        |
 
-  @creationOfKPI @kpi @all
+  @creationOfKPI @kpi @all @smoke
   Scenario: Creation of KPI
     Then I see status in Progress-bar is "Created" and is "green"
 
@@ -29,12 +29,12 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     And I close Modal
     Then I see that "Supporting Documents" has been added in flextable with Id "keyPerformanceIndicator::kpiAttachmentTableId"
 
-  @activateKPI @kpi @all
+  @activateKPI @kpi @all @smoke
   Scenario: Activate KPI
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "green"
 
-  @kpiHappyPath @kpi @all
+  @kpiHappyPath @kpi @all @smoke
   Scenario: Happy Path of KPI
     Given I complete the fields from the sheet "Edition" in excel "KPI_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |

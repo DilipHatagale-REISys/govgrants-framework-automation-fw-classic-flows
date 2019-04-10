@@ -2,13 +2,13 @@
 Feature: Validate all scenarios in the Award from FDM
 
   Background: Create Award from FDM
-    Given I delete the record "Permanent Announcement(Dr) for Automation" from the object "FDM"
-    Given I create a subaward from the Announcement "Permanent Announcement(Dr) for Automation" for the Application "Permanent Application(Dr) for Automation" as user "EXE"
+    Given I delete the record "Execution Announcement for Automation" from the object "FDM"
+    Given I create a subaward from the Announcement "Execution Announcement for Automation" for the Application "Permanent Application(Dr) for Automation" as user "EXE"
       | Actions    | Step 1          | Step 2       | Step 3                                | Step 4                                  |
       | Navigation | As a Grantor    | Applications | Application Review                    | Funding Decision Memo (FDM)             |
       | FlexTable  | FDMList1        | View         | Approved Funding Decision Memos (FDM) | flexGridFundingDecisionMemoApplications |
       | Buttons    | Create Subaward |              |                                       |                                         |
-    Given I login and view the "Draft" award "Created" with name "Permanent Application(Dr) for Automation" as User "EXE"
+    Given I login and view the "Draft" award "Created" with name "Execution Announcement for Automation" as User "EXE"
       | Actions    | Step 1       | Step 2         | Step 3               | Step 4                        |
       | Navigation | As a Grantor | Grants         | Grants and Subawards | Grants, Subaward & Amendments |
       | FlexTable  | Grants       | ActiveGrants   | View                 |                               |
@@ -44,7 +44,7 @@ Feature: Validate all scenarios in the Award from FDM
     When I close Modal
     Then I see that "Progress Report" has been added in flextable with Id "subAwardFromFDM::progressReportSchedulesTableId"
 
-  @awardFromFDM @allRiskAssessmentApprovalAndActivation @awardFromFDM @all
+  @awardFromFDM @allfdmRiskAssessmentApprovalAndActivation @awardFromFDM @all
   Scenario: Risk Assessment approval in an award
     Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
       | Actions  | Step 1     | Step 2                          | Step 3 | Step 4            |
@@ -63,7 +63,6 @@ Feature: Validate all scenarios in the Award from FDM
       | FlexTable  | Pending Tasks | My Tasks   | PhasePendingTasks |
       | Approval   | Start         | Approve    |                   |
     Then I see status in Progress-bar is "Active" and is "green"
-
 
   @awardApproverSelection @awardFromFDM @all
   Scenario: Validate the assignment of Approvers for the award
@@ -146,6 +145,7 @@ Feature: Validate all scenarios in the Award from FDM
       | Approver 2 | GrantorAwardRolesAndResponsibilities | Edit   | Fiscal Approver    |
       | Approver 3 | GrantorAwardRolesAndResponsibilities | Edit   | Executive Approver |
     Then I click on "Send to Subrecipient" in the page details
+
     Examples:
       | Award Name       | Grant Name                               |
       | Automation Grant | Permanent Application(Dr) for Automation |
@@ -221,6 +221,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I click on "Accept" in the page details
     When I enter "Automation Award accepted" for comments and click "OK"
     Then I see that "Subaward" is in "Created" status
+
     Examples:
       | Award Name       | Grant Name                               |
       | Automation Grant | Permanent Application(Dr) for Automation |

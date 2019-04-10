@@ -1,8 +1,9 @@
-@focusArea
+@focusArea @regression
 Feature: Validate all scenarios in Focus Area
 
   Background: To setup data
-    Given I delete the record "Execution Internal Program for Automation" from the object "Program"
+
+   # Given I delete the record "Execution Internal Program for Automation" from the object "Program"
     Given I delete the record "Execution Focus Area for Automation" from the object "Focus Area"
     And I create a planning record as user "EXE" from sheet "Creation" in excel "FocusArea_Field_Values.xlsx"
       | Actions    | Step 1       | Step 2              | Step 3           |
@@ -11,7 +12,7 @@ Feature: Validate all scenarios in Focus Area
       | Creation   | New          | Save and Continue   | Save             |
       | ID         | EGMS ID      |                     |                  |
 
-  @creationOfFocusArea @focusArea @all
+  @creationOfFocusArea @focusArea @all @smoke
   Scenario: Creation of Focus Area
     Then I see status in Progress-bar is "Created" and is "green"
 
@@ -30,12 +31,12 @@ Feature: Validate all scenarios in Focus Area
     And I close Modal
     Then I see that "Supporting Documents" has been added in flextable with Id "focusArea::focusAreaAttachmentTableId"
 
-  @activateFocusArea @focusArea @all
+  @activateFocusArea @focusArea @all @smoke
   Scenario: Activate Focus Area
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "green"
 
-  @focusAreaHappyPath @focusArea @all
+  @focusAreaHappyPath @focusArea @all @smoke
   Scenario: Happy Path of Focus Area
     Given I complete the fields from the sheet "Edition" in excel "FocusArea_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |

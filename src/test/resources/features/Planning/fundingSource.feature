@@ -1,4 +1,4 @@
-@fundingSource
+@fundingSource @regression
 Feature: Validate all scenarios in Funding Source
 
   Background: To setup data
@@ -10,7 +10,7 @@ Feature: Validate all scenarios in Funding Source
       | Creation   | New             | Save and Continue     | Cancel                         |
       | ID         | EGMS ID         |                       |                                |
 
-  @creationOfFundingSource @fundingSource @all
+  @creationOfFundingSource @fundingSource @all @smoke
   Scenario: Creation of Funding Source
     Then I see status in Progress-bar is "Created" and is "green"
 
@@ -29,7 +29,7 @@ Feature: Validate all scenarios in Funding Source
     And I close Modal
     Then I see that "Supporting Documents" has been added in flextable with Id "fundingSource::fundingSourceAttachmentTableId"
 
-  @creationOfFundingAccount @fundingSource @all
+  @creationOfFundingAccount @fundingSource @all @smoke
   Scenario: Creation of Funding Source
     When I click on top right button "New" in flex table with id "fundingSource::fundingAccountTableId"
     And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
@@ -48,7 +48,7 @@ Feature: Validate all scenarios in Funding Source
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @activateFundingAccount @fundingSource @all
+  @activateFundingAccount @fundingSource @all @smoke
   Scenario: Activation of Funding Source
     Given I click on top right button "New" in flex table with id "fundingSource::fundingAccountTableId"
     And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
@@ -60,7 +60,7 @@ Feature: Validate all scenarios in Funding Source
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "green"
 
-  @fundingSourceHappyPath @fundingSource @all
+  @fundingSourceHappyPath @fundingSource @all @smoke
   Scenario: Creation of Funding Source
     Given I complete the fields from the sheet "Edition" in excel "FundingSource_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |

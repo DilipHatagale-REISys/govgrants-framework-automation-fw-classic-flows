@@ -1,8 +1,5 @@
-@progressReport
+@progressReport @regression
 Feature: Validate all scenarios in Progress Report
-
-  Background: Navigate to Award
-    #Given I delete the record "Execution Grant for Automation2" from the object "Progress Report"
 
   @taskCreationForSubrecipientProgressReport @progressReport @all
   Scenario: To assert the task creation for Progress Report
