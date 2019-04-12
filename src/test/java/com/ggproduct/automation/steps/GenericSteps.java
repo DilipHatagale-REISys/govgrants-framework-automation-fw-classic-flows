@@ -3,6 +3,7 @@ package com.ggproduct.automation.steps;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import eyethink.automation.bots.controller.Controller;
@@ -29,4 +30,9 @@ public class GenericSteps {
     public void attemptDeletion(String columnValues, String tableId) {
         projectManager.attemptDeletion(columnValues, tableId);
     }
-}   
+
+    @When("^I get the EGMS ID for record \"([^\"]*)\" having field name \"([^\"]*)\" from the object \"([^\"]*)\"$")
+    public void iGetTheEgmsIdForRecordHavingFieldNameFromTheObject(String recordName, String fieldName, String objectType){
+        projectManager.getRecordIdFromResponse(recordName,fieldName,objectType);
+    }
+}

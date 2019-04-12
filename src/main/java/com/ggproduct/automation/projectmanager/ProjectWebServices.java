@@ -56,4 +56,14 @@ public class ProjectWebServices {
             this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9AzPSkglhtpvenc1ubvIHNrBrLBmjiqcuuhXgrwxiMfDuvYgL.RcnFxMpWY1rVKQrhEN2hsVqXvBvgyVN&client_secret=CD69235B698F79CE700D0218296418C536FAB6BF997EE6322BBA718BE8D8CB9E&username=manu.sa@ggp.test7.automation&password=GoProduct@123";
         }
     }
+
+    public Response automateGetApi(String recordName, String fieldName, String objectType){
+        getAuthToken();
+        String finalEndPoint = endPoint + "/services/apexrest/productAutomationGetFieldValue?objectType=" + objectType
+                + "&fieldValue=" + recordName+"&fieldName="+fieldName;
+        Response response = apiCall.getCall( finalEndPoint, "Authorization", "Bearer " + tokenString);
+        response.prettyPrint();
+        assertStatusCode(response);
+        return response;
+    }
 }

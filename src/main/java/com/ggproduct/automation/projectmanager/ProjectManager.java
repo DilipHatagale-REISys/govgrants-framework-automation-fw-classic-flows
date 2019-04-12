@@ -77,5 +77,8 @@ public class ProjectManager extends ProjectWebServices {
         }
     }
 
+    public void getRecordIdFromResponse(String recordName, String fieldName, String objectType){
+        govgrants.pageDetails().idOfRecord = automateGetApi(recordName,fieldName,objectType).asString();
+    }
 
 }
