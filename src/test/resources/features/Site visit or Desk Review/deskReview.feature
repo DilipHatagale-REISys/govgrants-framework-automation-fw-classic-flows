@@ -1,9 +1,9 @@
-@deskReview
+@deskReview @regression
 Feature: Validate all scenarios in Desk Review
 
   Background: Create Desk Review
     Given I delete the record "Automation Desk Review" from the object "Desk Review"
-    And I login and view the "Active" award "AD-EGA-01" with name "Execution Grant for Automation" as User "EXE"
+    And I login and view the "Active" award "AD-GREG-35" with name "Automation Grant Award for Post Award" as User "EXE"
       | Actions    | Step 1       | Step 2         | Step 3               | Step 4                        |
       | Navigation | As a Grantor | Grants         | Grants and Subawards | Grants, Subaward & Amendments |
       | FlexTable  | Grants       | ActiveGrants   | View                 |                               |
@@ -15,18 +15,18 @@ Feature: Validate all scenarios in Desk Review
       | Creation   | Save And Close       | Cancel                 |
     And I get the "EGMS ID"
 
-  @deskReviewCreation @deskReview @all
+  @deskReviewCreation
   Scenario: Creation of Desk Review
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @deskReviewEdition @deskReview @all
+  @deskReviewEdition
   Scenario: Edition of Desk Review
     When I click on "Edit" in the page details
     And I enter "Edition" values from "DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @participantAssociationDeskReview @deskReview @all
+  @participantAssociationDeskReview
   Scenario Outline: Participant Association of Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "deskreview::participantsTableId"
@@ -37,7 +37,7 @@ Feature: Validate all scenarios in Desk Review
       | Subrecipient   |
       | Automation SPI |
 
-  @approverSelectionDeskReview @deskReview @all
+  @approverSelectionDeskReview
   Scenario Outline: Approver selection of Desk Review
     When I navigate to "Responsibilities" sub tab
     And I click on "Edit" icon for "Program Approver" inside flex table with id "deskreview::approverDeskReviewTableId"
@@ -51,7 +51,7 @@ Feature: Validate all scenarios in Desk Review
       | Program Approver Name | Fiscal Approver Name |
       | Automation PM         | Automation FO        |
 
-  @notifySubrecipientDeskReview @deskReview @all
+  @notifySubrecipientDeskReview
   Scenario: Notify Subrecipient about the Desk Review
     Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -67,7 +67,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "Notify" in the page details
     Then I see status in Progress-bar is "Notified" and is "green"
 
-  @notifyPendingTaskForSubrecipientDeskReview @deskReview @all
+  @notifyPendingTaskForSubrecipientDeskReview
   Scenario: Subrecipient pending task check for Desk Review
     Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -88,7 +88,7 @@ Feature: Validate all scenarios in Desk Review
     When I click on "Start" icon for "Record Id" inside table
     Then I see status in Progress-bar is "Notified" and is "green"
 
-  @conductDeskReview @deskReview @all
+  @conductDeskReview
   Scenario Outline: Conduct Desk Review
     Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -117,7 +117,7 @@ Feature: Validate all scenarios in Desk Review
       | Desk Review Name       |
       | Automation Desk Review |
 
-  @addingOutcomeDeskReview @deskReview @all
+  @addingOutcomeDeskReview
   Scenario Outline: Adding outcomes to Desk Review
     Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -152,7 +152,7 @@ Feature: Validate all scenarios in Desk Review
       | Desk Review Name       |
       | Automation Desk Review |
 
-  @formFillingDeskReview @deskReview @all
+  @formFillingDeskReview
   Scenario Outline: Filling up of form in Desk Review
     Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -183,17 +183,17 @@ Feature: Validate all scenarios in Desk Review
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
     And I navigate to "Reports and Outcomes" sub tab
-    When I click on "Edit" icon for "General Review Form" inside flex table with id "FormComponent"
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "deskreview::reportsTableId"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I click on top right button "Validate" in flex table with id "FormComponent"
-    Then I see that "100.00%" has been added in flextable with Id "FormComponent"
+    And I click on top right button "Validate" in flex table with id "deskreview::reportsTableId"
+    Then I see that "100.00%" has been added in flextable with Id "deskreview::reportsTableId"
     Examples:
       | Desk Review Name       |
       | Automation Desk Review |
 
-  @submittingForApprovalDeskReview @deskReview @all
+  @submittingForApprovalDeskReview
   Scenario Outline: Submitting Desk Review for approval
     Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -229,12 +229,13 @@ Feature: Validate all scenarios in Desk Review
       | FlexTable   | Edit                 | FormComponent |
       | Form Button | Save                 | Back          |
       | Validation  | Validate             | FormComponent |
+    When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
     Examples:
       | Desk Review Name       |
       | Automation Desk Review |
 
-  @approvalOfDeskReview @deskReview @all
+  @approvalOfDeskReview
   Scenario Outline: Approval of Desk Review
     Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -259,7 +260,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "View" icon for "<Desk Review Name>" inside table
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
+    When I enter the following values into flex table with id "deskreview::correctiveTableId" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
@@ -271,17 +272,24 @@ Feature: Validate all scenarios in Desk Review
       | Form Button | Save                 | Back          |
       | Validation  | Validate             | FormComponent |
     When I click on "Submit for Approval" in the page details
-    Given "2" Approvers "PM,FO" approve the record "<Desk Review Approval Task>"
-      | Actions    | Step 1        | Step 2     | Step 3            |
-      | Navigation | As a Grantor  | Monitoring |                   |
-      | FlexTable  | Pending Tasks | My Tasks   | PhasePendingTasks |
-      | Approval   | Start         | Approve    |                   |
+      Given I re-login to "As a Grantor" app as "PM" user
+    When I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "<Desk Review Approval Task>" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "<Desk Review Approval Task>" inside table
+    When I click on "Approve" on the approval decision box
+    And I re-login to "As a Grantor" app as "FO" user
+    When I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "<Desk Review Approval Task>" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "<Desk Review Approval Task>" inside table
+    When I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Approved" and is "green"
     Examples:
-      | Award Name                     | Award EGMS ID | Desk Review Name       | Desk Review Approval Task | Type                      |
-      | Execution Grant for Automation | AD-EGA-01     | Automation Desk Review | Approval Desk Review      | Review Desk review report |
+      | Award Name                            | Award EGMS ID | Desk Review Name       | Desk Review Approval Task | Type                      |
+      | Automation Grant Award for Post Award | AD-GREG-35    | Automation Desk Review | Approval Desk Review      | Review Desk review report |
 
-  @deskReviewSendToSubrecipient @deskReview @all
+  @deskReviewSendToSubrecipient
   Scenario Outline: Send Desk Review to Subrecipient
     Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -306,7 +314,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "View" icon for "<Desk Review Name>" inside table
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
+    When I enter the following values into flex table with id "deskreview::correctiveTableId" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
@@ -326,14 +334,17 @@ Feature: Validate all scenarios in Desk Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "<Desk Review Name>" inside table
+    And I expand nested table containing column value "<Award Name>"
+    When I expand nested table containing column value "<Award Name>"
+    And I perform quick search for "<Desk Review Name>" for the parent value "AD-GREG-35" on grid "inlineEditGridSiteVisitsGridView"
+    When I click on "Start" icon for "<Desk Review Name>" inside table
     And I click on "Send to Subrecipient" in the page details
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
     Examples:
-      | Desk Review Name       | Award Name                     | Desk Review Approval Task |
-      | Automation Desk Review | Execution Grant for Automation | Approve Desk Review       |
+      | Desk Review Name       | Award Name                            | Desk Review Approval Task |
+      | Automation Desk Review | Automation Grant Award for Post Award | Approve Desk Review       |
 
-  @deskReviewCorrectiveActionsBySubrecipient @deskReview @all
+  @deskReviewCorrectiveActionsBySubrecipient
   Scenario Outline: Send Desk Review to Subrecipient
     Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -358,7 +369,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "View" icon for "<Desk Review Name>" inside table
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
+    When I enter the following values into flex table with id "deskreview::correctiveTableId" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
@@ -387,26 +398,26 @@ Feature: Validate all scenarios in Desk Review
     And I click on "Start" icon for "<Type>" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
-    When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+    When I enter the following values into flex table with id "deskreview::receipientTableId" by clicking "New" :
       | Title                               | Description            | Status      | Due Date   | Assigned To    |
-      | Automation Observation Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
+      | Automation Observation Subrecipient | Automation Description | In-Progress | 30 | Automation SPI |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
-    When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+    When I enter the following values into flex table with id "deskreview::receipientTableId" by clicking "New" :
       | Title                           | Description            | Status      | Due Date   | Assigned To    |
-      | Automation Concern Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
+      | Automation Concern Subrecipient | Automation Description | In-Progress | 30 | Automation SPI |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
-    When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+    When I enter the following values into flex table with id "deskreview::receipientTableId" by clicking "New" :
       | Title                           | Description            | Status      | Due Date   | Assigned To    |
-      | Automation Finding Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
+      | Automation Finding Subrecipient | Automation Description | In-Progress | 30 | Automation SPI |
     And I collapse nested table containing column value "Automation Finding"
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
     Examples:
       | Award Name                     | Award EGMS ID | Desk Review Name       | Desk Review Approval Task | Type                      |
-      | Execution Grant for Automation | AD-EGA-01     | Automation Desk Review | Approve Desk Review       | Review Desk review report |
+      | Automation Grant Award for Post Award | AD-GREG-35     | Automation Desk Review | Approve Desk Review       | Review Desk review report |
 
-  @deskReviewSubmitToGrantorBySubrecipient @deskReview @all
+  @deskReviewSubmitToGrantorBySubrecipient
   Scenario Outline: Send Desk Review to Subrecipient
     Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -431,7 +442,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "View" icon for "<Desk Review Name>" inside table
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
+    When I enter the following values into flex table with id "deskreview::correctiveTableId" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
@@ -460,35 +471,31 @@ Feature: Validate all scenarios in Desk Review
     And I click on "Start" icon for "<Type>" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
-    When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+    When I enter the following values into flex table with id "deskreview::receipientTableId" by clicking "New" :
       | Title                               | Description            | Status      | Due Date   | Assigned To    |
-      | Automation Observation Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
+      | Automation Observation Subrecipient | Automation Description | In-Progress | 30 | Automation SPI |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
-
-    When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+    When I enter the following values into flex table with id "deskreview::receipientTableId" by clicking "New" :
       | Title                           | Description            | Status      | Due Date   | Assigned To    |
-      | Automation Concern Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
+      | Automation Concern Subrecipient | Automation Description | In-Progress | 30 | Automation SPI |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
-    When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+    When I enter the following values into flex table with id "deskreview::receipientTableId" by clicking "New" :
       | Title                           | Description            | Status      | Due Date   | Assigned To    |
-      | Automation Finding Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
+      | Automation Finding Subrecipient | Automation Description | In-Progress | 30 | Automation SPI |
     And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
     Examples:
       | Award Name                     | Award EGMS ID | Desk Review Name       | Desk Review Approval Task | Type                      |
-      | Execution Grant for Automation | AD-EGA-01     | Automation Desk Review | Approve Desk Review       | Review Desk review report |
+      | Automation Grant Award for Post Award | AD-GREG-35     | Automation Desk Review | Approve Desk Review       | Review Desk review report |
 
-  @deskReviewAcceptAndClose @deskReview @all
+  @deskReviewAcceptAndClose @smoke
   Scenario Outline: Send Desk Review to Subrecipient
 Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    #And I associate "1" records "Automation SPI"
-    #  | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
-    #  | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     Given I select "2" approvers "Automation PM,Automation FO"
       | Actions    | Step 1                                   | Step 2 | Step 3           |
       | Subtab     | Responsibilities                         |        |                  |
@@ -506,17 +513,17 @@ Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_
     And I click on "View" icon for "<Desk Review Name>" inside table
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "inlineEditGridGrantorSiteVisitFindingsGrid" by clicking "New" :
-      | Title                  | Description            | Type        |
-      | Automation Finding     | Automation Description | Finding     |
-      | Automation Concern     | Automation Description | Concern     |
-      | Automation Observation | Automation Description | Observation |
     And I fill in the form "General Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
       | Actions     | Step 1               | Step 2        |
       | Navigation  | Reports and Outcomes |               |
       | FlexTable   | Edit                 | FormComponent |
       | Form Button | Save                 | Back          |
       | Validation  | Validate             | FormComponent |
+    When I enter the following values into flex table with id "deskreview::correctiveTableId" by clicking "New" :
+      | Title                  | Description            | Type        |
+      | Automation Finding     | Automation Description | Finding     |
+      | Automation Concern     | Automation Description | Concern     |
+      | Automation Observation | Automation Description | Observation |
     When I click on "Submit for Approval" in the page details
     Given "2" Approvers "PM,FO" approve the record "<Desk Review Approval Task>"
       | Actions    | Step 1        | Step 2     | Step 3            |
@@ -535,19 +542,19 @@ Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_
     And I click on "Start" icon for "<Type>" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
-    When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+    When I enter the following values into flex table with id "deskreview::receipientTableId" by clicking "New" :
       | Title                               | Description            | Status      | Due Date   | Assigned To    |
-      | Automation Observation Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
+      | Automation Observation Subrecipient | Automation Description | In-Progress | 30| Automation SPI |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
-    When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+    When I enter the following values into flex table with id "deskreview::receipientTableId" by clicking "New" :
       | Title                           | Description            | Status      | Due Date   | Assigned To    |
-      | Automation Concern Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
+      | Automation Concern Subrecipient | Automation Description | In-Progress | 30| Automation SPI |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
-    When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGridRecipientEnhance" by clicking "New" :
+    When I enter the following values into flex table with id "deskreview::receipientTableId" by clicking "New" :
       | Title                           | Description            | Status      | Due Date   | Assigned To    |
-      | Automation Finding Subrecipient | Automation Description | In-Progress | 12/25/2018 | Automation SPI |
+      | Automation Finding Subrecipient | Automation Description | In-Progress | 30 | Automation SPI |
     And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -558,5 +565,5 @@ Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_
     Then I see status in Progress-bar is "Closed" and is "green"
     Examples:
       | Award Name                     | Type                      | Award EGMS ID | Desk Review Name       | Desk Review Approval Task |
-      | Execution Grant for Automation | Review Desk review report | AD-EGA-01     | Automation Desk Review | Approve Desk Review       |
+      | Automation Grant Award for Post Award | Review Desk review report | AD-GREG-35     | Automation Desk Review | Approve Desk Review       |
 	

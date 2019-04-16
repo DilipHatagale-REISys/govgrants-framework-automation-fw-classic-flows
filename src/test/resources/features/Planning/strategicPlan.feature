@@ -1,7 +1,8 @@
-@strategicPlan @all
+@strategicPlan @regression
 Feature: Validate all scenarios in Strategic Plan
 
   Background: To setup data
+  
     Given I delete the record "Automation Execution Strategic Plan" from the object "Strategic Plan"
     Given I create a planning record as user "EXE" from sheet "StrategicPlanCreation" in excel "StrategicPlan_Field_Values.xlsx"
       | Actions    | Step 1          | Step 2            | Step 3                |

@@ -1,4 +1,4 @@
-@kpi @all
+@kpi @regression
 Feature: Validate all scenarios in Key Performance Indicator(KPI)
 
   Background: To setup data

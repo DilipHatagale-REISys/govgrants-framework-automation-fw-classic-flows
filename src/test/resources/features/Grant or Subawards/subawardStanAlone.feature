@@ -1,8 +1,8 @@
-@awardStandAlone
+@awardStandAlone @regression
 Feature: Validate all scenarios in the Stand Alone Award and Grant
 
   Background: Create Award
-    Given I delete the record "Permanent Award For Automation" from the object "Grant"
+   # Given I delete the record "Automation Grant Award for Post Award" from the object "Grant"
     And I create a Grant as user "EXE" from sheet "Grant_Creation" in excel "Award_Field_Values.xlsx"
       | Actions    | Step 1               | Step 2       | Step 3                        |
       | Navigation | As a Grantor         | Grants       | Grants, Subaward & Amendments |
@@ -14,57 +14,57 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Given I click on "View" icon for "Created" inside flex table with id "subAwardStandAlone::subawardsTableId"
     And I get the "EGMS ID"
 
-  @awardCreation @awardStanAlone @all
+  @awardCreation  @smoke
   Scenario: Creation of an award
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @awardStandAloneEdition @awardStanAlone @all
+  @awardStandAloneEdition 
   Scenario: Edition of an award
     When I click on "Edit" in the page details
     And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
- # @awardStandAloneAddContactsKeyPersonnel @awardStanAlone @all @nonFunctional
-  #Scenario: Associate a Key Contact
-    #When I navigate to "Overview" sub tab
-   # And I click on top right button "Associate" in flex table with id "subAwardStandAlone::associateContactTableId"
-    #When I check "Automation SPI" boxes in flex table with id "subAwardStandAlone::keyContactsTableId"
-    #When I click on top right button "Add" in flex table with id "subAwardStandAlone::keyContactsTableId"
-    #And I close Modal
-    #And I edit the following rows inline in flex table with id "subAwardStandAlone::associateContactTableId" by clicking "Edit" :
-      #| Title          | Project Role             |
-     # | Automation SPI | Project Director/Manager |
-    #Then I see that "Automation SPI" has been added in flextable with Id "subAwardStandAlone::associateContactTableId"
+ @awardStandAloneAddContactsKeyPersonnel  @nonFunctional
+  Scenario: Associate a Key Contact
+    When I navigate to "Overview" sub tab
+   And I click on top right button "Associate" in flex table with id "subAwardStandAlone::associateContactTableId"
+    When I check "Automation SPA" boxes in flex table with id "subAwardStandAlone::keyContactsTableId"
+    When I click on top right button "Add" in flex table with id "subAwardStandAlone::keyContactsTableId"
+    And I close Modal
+    And I edit the following rows inline in flex table with id "subAwardStandAlone::associateContactTableId" by clicking "Edit" :
+      | Title          | Project Role             |
+     | Automation SPA | Project Director/Manager |
+    Then I see that "Automation SPA" has been added in flextable with Id "subAwardStandAlone::associateContactTableId"
 
-  @awardStandAloneFundingAccount @awardStanAlone @all
+  @awardStandAloneFundingAccount  @smoke
   Scenario Outline: Funding Account budget addition to Award
     When I navigate to "Budget" sub tab
     And I click on top right button "Associate" in flex table with id "subAwardStandAlone::fundingAccountsTableId"
-    When I click "Add" after selection of "FA--138" in the table "subAwardStandAlone::awardFundingAccountsTableId"
+    When I click "Add" after selection of "FA--154" in the table "subAwardStandAlone::awardFundingAccountsTableId"
     And I close Modal
     And I edit the following rows inline in flex table with id "subAwardStandAlone::fundingAccountsTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--138         | 5000        |
+      | FA--154         | 5000        |
     Then I see that "<EGMS Id>" has been added in flextable with Id "subAwardStandAlone::fundingAccountsTableId"
     Examples:
       | EGMS Id |
-      | FA--138 |
+      | FA--154 |
 
-  @allFocusAreaAssociation @awardStanAlone @all
+  @allFocusAreaAssociation  @smoke
   Scenario: Validate the association of Focus Area to Award
     When I navigate to "Budget" sub tab
     And I click on top right button "Associate" in flex table with id "subAwardStandAlone::focusAreaTableId"
-    When I click "Associate" after selection of "Automation Grant Focus Area" in the table "popupflextableGAT"
+    When I click "Associate" after selection of "Automation Permanent Focus Area" in the table "popupflextableGAT"
     And I close Modal
     And I edit the following rows inline in flex table with id "subAwardStandAlone::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      | Automation Grant Focus Area         | 0          | 500      |
-      | Permanent Focus Area for Automation | 0          | 500      |
-    Then I see that "Automation Grant Focus Area" has been added in flextable with Id "subAwardStandAlone::focusAreaTableId"
+      | Automation Permanent Focus Area         | 0          | 500      |
+      | Automation Permanent Focus Area | 0          | 500      |
+    Then I see that "Automation Permanent Focus Area" has been added in flextable with Id "subAwardStandAlone::focusAreaTableId"
 
 
-  @awardStandAloneBudgetEdition @awardStanAlone @all
+  @awardStandAloneBudgetEdition 
   Scenario: Budget addition to Award
     When I navigate to "Budget" sub tab
     When I edit the following rows inline in flex table with id "subAwardStandAlone::subAwardBudgetTableId" by clicking "Edit" :
@@ -72,26 +72,26 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Construction    | 2000       |
     Then I see that "Construction" has been added in flextable with Id "subAwardStandAlone::subAwardBudgetTableId"
 
-  @allObjectiveAssociation @awardStanAlone @all @nonFunctional
+  @allObjectiveAssociation  @nonFunctional
   Scenario: Validate the association of Objective to Award
     When I navigate to "Performance" sub tab
     And I click on top right button "Associate" in flex table with id "subAwardStandAlone::objectivesTableId"
-    When I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAwardGoals"
+    When I click "Associate" after selection of "Automation Permanent Objective" in the table "SelectAwardGoals"
     And I close Modal
-    Then I see that "Permanent Objective Automation" has been added in flextable with Id "subAwardStandAlone::objectivesTableId"
+    Then I see that "Automation Permanent Objective" has been added in flextable with Id "subAwardStandAlone::objectivesTableId"
 
-  @34775  @allKPIAssociation @awardStanAlone @all
+  @34775  @allKPIAssociation  @smoke
   Scenario Outline: Validate the association of KPI to Award
     When I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "subAwardStandAlone::kpiTableId" by clicking "Edit" :
       | EGMS ID  | Target |
-      |KPI-0721 | 10     |
+      |Automation Permanent KPI for Regression | 10     |
     Then I see that "<EGMS Id>" has been added in flextable with Id "subAwardStandAlone::kpiTableId"
     Examples:
       | EGMS Id  |
-      |KPI-0721 |
+      |Automation Permanent KPI for Regression|
 
-  @allRiskAssessmentApprovalAndActivation @awardStanAlone @all
+  @allRiskAssessmentApprovalAndActivation  @smoke
   Scenario: Risk Assessment approval in an award
    Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -115,7 +115,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
      | Approval   | Start         | Approve    |                   |
        Then I see status in Progress-bar is "Active" and is "green"
 
-  @allApproverSelection @awardStanAlone @all
+  @allApproverSelection 
   Scenario: Validate the assignment of Approvers for the award
       When I navigate to "Responsibilities" sub tab
      And I edit the following rows inline in flex table with id "GrantorAwardRolesAndResponsibilitiesFlexToggle" by clicking "Edit" :
@@ -125,12 +125,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Executive Approver | Automation EXE | Automation Test Description |
       Then I see that "Automation EXE" has been added in flextable with Id "GrantorAwardRolesAndResponsibilitiesFlexToggle"
 
-  @allSendToRecipientBeforeApproval @awardStanAlone @all
+  @allSendToRecipientBeforeApproval 
   Scenario Outline: Validate the assignment of Approvers for the award
      Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "FA--138,Automation Grant Focus Area"
+    Given I associate "2" records "FA--154,Automation Permanent Focus Area"
       | Actions     | Step 1 | Step 2    | Step 3                                 | Step 4    | Step 5                     |
       | Associate 1 | Budget | Associate | flexGridAwardFundingAccounts           | Add       | SelectAwardFundingAccounts |
       | Associate 2 | Budget | Associate | inlineEditGridGrantorAwardServiceAreas | Associate | popupflextableGAT          |
@@ -138,19 +138,20 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "subAwardStandAlone::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      | Automation Grant Focus Area         | 0          | 500      |
-      | Permanent Focus Area for Automation | 0          | 500      |
+      | Automation Permanent Focus Area         | 0          | 500      |
+      | Automation Permanent Focus Area | 0          | 500      |
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "subAwardStandAlone::fundingAccountsTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--138         | 5000        |
+      | FA--154         | 5000        |
     And I edit the following rows inline in flex table with id "subAwardStandAlone::subAwardBudgetTableId" by clicking "Edit" :
       | Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
       | Construction    | 5000             | 2000       | 3000           |
     Given I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "subAwardStandAlone::kpiTableId" by clicking "Edit" :
       | EGMS ID  | Target |
-      |KPI-0721 | 10     |
+      |Automation Permanent KPI for Regression| 10     |
+
     And I navigate to "Management" sub tab
     Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
       | Actions  | Step 1     | Step 2                   | Step 3 | Step 4 | Step 5          |
@@ -195,14 +196,14 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I click on "Send to Subrecipient" in the page details
     Examples:
       | Award Name                     | Grant Name                     | Type            |
-      | Permanent Award For Automation | Permanent Award For Automation | Subaward Review |
+      | Automation Grant Award for Post Award | Automation Grant Award for Post Award | Subaward Review |
 
-  @allAcceptanceByRecipientBeforeApproval @awardStanAlone @all
+  @allAcceptanceByRecipientBeforeApproval 
   Scenario Outline: Validate the assignment of Approvers for the award
      Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "FA--138,Automation Grant Focus Area"
+    Given I associate "2" records "FA--154,Automation Permanent Focus Area"
       | Actions     | Step 1 | Step 2    | Step 3                                 | Step 4    | Step 5                     |
       | Associate 1 | Budget | Associate | flexGridAwardFundingAccounts           | Add       | SelectAwardFundingAccounts |
       | Associate 2 | Budget | Associate | inlineEditGridGrantorAwardServiceAreas | Associate | popupflextableGAT          |
@@ -210,19 +211,19 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "subAwardStandAlone::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      | Automation Grant Focus Area         | 0          | 500      |
-      | Permanent Focus Area for Automation | 0          | 500      |
+      | Automation Permanent Focus Area         | 0          | 500      |
+      | Automation Permanent Focus Area | 0          | 500      |
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "subAwardStandAlone::fundingAccountsTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--138         | 5000        |
+      | FA--154         | 5000        |
     And I edit the following rows inline in flex table with id "subAwardStandAlone::subAwardBudgetTableId" by clicking "Edit" :
       | Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
       | Construction    | 5000             | 2000       | 3000           |
     Given I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "subAwardStandAlone::kpiTableId" by clicking "Edit" :
       | EGMS ID  | Target |
-      |KPI-0721 | 10     |
+      |Automation Permanent KPI for Regression| 10     |
     And I navigate to "Management" sub tab
     Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
       | Actions  | Step 1     | Step 2                   | Step 3 | Step 4 | Step 5          |
@@ -283,32 +284,32 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see status in Progress-bar is "Created" and is "green"
       Examples:
       | Award Name                     | Grant Name                     | Type            |
-      | Permanent Award For Automation | Permanent Award For Automation | Subaward Review |
+      | Automation Grant Award for Post Award | Automation Grant Award for Post Award | Subaward Review |
 
-  @allReviewerAssignment @awardStanAlone @all
+  @allReviewerAssignment 
   Scenario Outline: Validate the assignment of Reviewer for the award
     Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "FA--138,Automation Grant Focus Area"
+    Given I associate "2" records "FA--154,Automation Permanent Focus Area"
       | Actions     | Step 1 | Step 2    | Step 3                                 | Step 4    | Step 5                     |
       | Associate 1 | Budget | Associate | flexGridAwardFundingAccounts           | Add       | SelectAwardFundingAccounts |
       | Associate 2 | Budget | Associate | inlineEditGridGrantorAwardServiceAreas | Associate | popupflextableGAT          |
     When I navigate to "Budget" sub tab
   And I edit the following rows inline in flex table with id "subAwardFromFDM::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      | Automation Grant Focus Area         | 0          |  500     |
-      | Permanent Focus Area for Automation | 0          | 1095     |
+      | Automation Permanent Focus Area         | 0          |  500     |
+      | Automation Permanent Focus Area | 0          | 1095     |
     Given I edit the following rows inline in flex table with id "subAwardStandAlone::fundingAccountsTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--138         | 5000        |
+      | FA--154         | 5000        |
     And I edit the following rows inline in flex table with id "subAwardStandAlone::subAwardBudgetTableId" by clicking "Edit" :
       | Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
       | Construction    | 5000             | 2000       | 3000           |
     Given I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "subAwardStandAlone::kpiTableId" by clicking "Edit" :
       | EGMS ID  | Target |
-      | KPI-0721 | 10     |
+      | Automation Permanent KPI for Regression| 10     |
     And I navigate to "Management" sub tab
     Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
       | Actions  | Step 1     | Step 2                   | Step 3 | Step 4 | Step 5          |
@@ -382,12 +383,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                     | Grant Name                     | Type            |
       | Permanent Award for Automation | Permanent Award for Automation | Subaward Review |
 
-  @allReviewerInitiation @awardStanAlone @all
+  @allReviewerInitiation 
   Scenario Outline: Validate initiation of review for the award
     Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "FA--138,Automation Grant Focus Area"
+    Given I associate "2" records "FA--154,Automation Permanent Focus Area"
       | Actions     | Step 1 | Step 2    | Step 3                                 | Step 4    | Step 5                     |
       | Associate 1 | Budget | Associate | flexGridAwardFundingAccounts           | Add       | SelectAwardFundingAccounts |
       | Associate 2 | Budget | Associate | inlineEditGridGrantorAwardServiceAreas | Associate | popupflextableGAT          |
@@ -395,19 +396,19 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "subAwardStandAlone::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      | Automation Grant Focus Area         | 0          | 500      |
-      | Permanent Focus Area for Automation | 0          | 500      |
+      | Automation Permanent Focus Area         | 0          | 500      |
+      | Automation Permanent Focus Area | 0          | 500      |
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "subAwardStandAlone::fundingAccountsTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--138         | 5000        |
+      | FA--154         | 5000        |
     And I edit the following rows inline in flex table with id "subAwardStandAlone::subAwardBudgetTableId" by clicking "Edit" :
       | Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
       | Construction    | 5000             | 2000       | 3000           |
     Given I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "subAwardStandAlone::kpiTableId" by clicking "Edit" :
       | EGMS ID  | Target |
-      |KPI-0721 | 10     |
+      |Automation Permanent KPI for Regression| 10     |
     And I navigate to "Management" sub tab
     Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
       | Actions  | Step 1     | Step 2                   | Step 3 | Step 4 | Step 5          |
@@ -482,32 +483,32 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see that "Sent for Review" has been added in flextable with Id "subAwardStandAlone::peerReviewersTableId"
     Examples:
       | Award Name                     | Grant Name                     | Type            |
-      | Permanent Award For Automation | Permanent Award For Automation | Subaward Review |
+      | Automation Grant Award for Post Award | Automation Grant Award for Post Award | Subaward Review |
 
-  @allReviewComplete @awardStanAlone @all
+  @allReviewComplete  @smoke
   Scenario Outline: Validate completion of review for the award
      Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "FA--138,Automation Grant Focus Area"
+    Given I associate "2" records "FA--154,Automation Permanent Focus Area"
       | Actions     | Step 1 | Step 2    | Step 3                                 | Step 4    | Step 5                     |
       | Associate 1 | Budget | Associate | flexGridAwardFundingAccounts           | Add       | SelectAwardFundingAccounts |
       | Associate 2 | Budget | Associate | inlineEditGridGrantorAwardServiceAreas | Associate | popupflextableGAT          |
     When I navigate to "Budget" sub tab
   And I edit the following rows inline in flex table with id "subAwardFromFDM::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      | Automation Grant Focus Area         | 0          |  500     |
-      | Permanent Focus Area for Automation | 0          | 1095     |
+      | Automation Permanent Focus Area         | 0          |  500     |
+      | Automation Permanent Focus Area | 0          | 1095     |
     Given I edit the following rows inline in flex table with id "subAwardStandAlone::fundingAccountsTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--138         | 5000        |
+      | FA--154         | 5000        |
     And I edit the following rows inline in flex table with id "subAwardStandAlone::subAwardBudgetTableId" by clicking "Edit" :
       | Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
       | Construction    | 5000             | 2000       | 3000           |
     Given I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "subAwardStandAlone::kpiTableId" by clicking "Edit" :
       | EGMS ID  | Target |
-      | KPI-0721 | 10     |
+      | Automation Permanent KPI for Regression| 10     |
     And I navigate to "Management" sub tab
     Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
       | Actions  | Step 1     | Step 2                   | Step 3 | Step 4 | Step 5          |
@@ -590,32 +591,32 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see that "Submitted" has been added in flextable with Id "subAwardStandAlone::peerReviewersTableId"
     Examples:
       | Award Name                     | Grant Name                     | Type            | Type1                |
-      | Permanent Award For Automation | Permanent Award For Automation | Subaward Review | Review Grantor Award |
+      | Automation Grant Award for Post Award | Automation Grant Award for Post Award | Subaward Review | Review Grantor Award |
 
-  @allSubmissionForApproval @awardStanAlone @all
+  @allSubmissionForApproval 
   Scenario Outline: Validate award submission for approval
     Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "FA--138,Automation Grant Focus Area"
+    Given I associate "2" records "FA--154,Automation Permanent Focus Area"
       | Actions     | Step 1 | Step 2    | Step 3                                 | Step 4    | Step 5                     |
       | Associate 1 | Budget | Associate | flexGridAwardFundingAccounts           | Add       | SelectAwardFundingAccounts |
       | Associate 2 | Budget | Associate | inlineEditGridGrantorAwardServiceAreas | Associate | popupflextableGAT          |
     When I navigate to "Budget" sub tab
   And I edit the following rows inline in flex table with id "subAwardFromFDM::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      | Automation Grant Focus Area         | 0          |  500     |
-      | Permanent Focus Area for Automation | 0          | 1095     |
+      | Automation Permanent Focus Area         | 0          |  500     |
+      | Automation Permanent Focus Area | 0          | 1095     |
     Given I edit the following rows inline in flex table with id "subAwardStandAlone::fundingAccountsTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--138         | 5000        |
+      | FA--154         | 5000        |
     And I edit the following rows inline in flex table with id "subAwardStandAlone::subAwardBudgetTableId" by clicking "Edit" :
       | Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
       | Construction    | 5000             | 2000       | 3000           |
     Given I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "subAwardStandAlone::kpiTableId" by clicking "Edit" :
       | EGMS ID  | Target |
-      | KPI-0721 | 10     |
+      | Automation Permanent KPI for Regression| 10     |
     And I navigate to "Management" sub tab
     Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
       | Actions  | Step 1     | Step 2                   | Step 3 | Step 4 | Step 5          |
@@ -695,7 +696,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click modal button "Save"
     And I click modal button "Submit Review"
     And I close Modal
-When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
     And I click toggle button to select "Draft Grants"
@@ -708,32 +709,32 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
     Examples:
       | Award Name                     | Grant Name                     | Type            |
-      | Permanent Award For Automation | Permanent Award For Automation | Subaward Review |
+      | Automation Grant Award for Post Award | Automation Grant Award for Post Award | Subaward Review |
 
-  @allApproval @awardStanAlone @all
+  @allApproval 
   Scenario Outline: Validate award Approval by respective approvers
         Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "FA--138,Automation Grant Focus Area"
+    Given I associate "2" records "FA--154,Automation Permanent Focus Area"
       | Actions     | Step 1 | Step 2    | Step 3                                 | Step 4    | Step 5                     |
       | Associate 1 | Budget | Associate | flexGridAwardFundingAccounts           | Add       | SelectAwardFundingAccounts |
       | Associate 2 | Budget | Associate | inlineEditGridGrantorAwardServiceAreas | Associate | popupflextableGAT          |
     When I navigate to "Budget" sub tab
   And I edit the following rows inline in flex table with id "subAwardFromFDM::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      | Automation Grant Focus Area         | 0          |  500     |
-      | Permanent Focus Area for Automation | 0          | 1095     |
+      | Automation Permanent Focus Area         | 0          |  500     |
+      | Automation Permanent Focus Area | 0          | 1095     |
     Given I edit the following rows inline in flex table with id "subAwardStandAlone::fundingAccountsTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--138         | 5000        |
+      | FA--154         | 5000        |
     And I edit the following rows inline in flex table with id "subAwardStandAlone::subAwardBudgetTableId" by clicking "Edit" :
       | Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
       | Construction    | 5000             | 2000       | 3000           |
     Given I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "subAwardStandAlone::kpiTableId" by clicking "Edit" :
       | EGMS ID  | Target |
-      | KPI-0721 | 10     |
+      | Automation Permanent KPI for Regression| 10     |
     And I navigate to "Management" sub tab
     Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
       | Actions  | Step 1     | Step 2                   | Step 3 | Step 4 | Step 5          |
@@ -831,32 +832,32 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
      Then I see status in Progress-bar is "Approved" and is "green"
     Examples:
       | Award Name                     | Grant Name                     | Type            |
-      | Permanent Award For Automation | Permanent Award For Automation | Subaward Review |
+      | Automation Grant Award for Post Award | Automation Grant Award for Post Award | Subaward Review |
 
-  @allSendToRecipientAfterApproval @awardStanAlone @all
+  @allSendToRecipientAfterApproval  @smoke
   Scenario Outline: Validate award Approval by respective approvers
       Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "FA--138,Automation Grant Focus Area"
+    Given I associate "2" records "FA--154,Automation Permanent Focus Area"
       | Actions     | Step 1 | Step 2    | Step 3                                 | Step 4    | Step 5                     |
       | Associate 1 | Budget | Associate | flexGridAwardFundingAccounts           | Add       | SelectAwardFundingAccounts |
       | Associate 2 | Budget | Associate | inlineEditGridGrantorAwardServiceAreas | Associate | popupflextableGAT          |
     When I navigate to "Budget" sub tab
   And I edit the following rows inline in flex table with id "subAwardFromFDM::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      | Automation Grant Focus Area         | 0          |  500     |
-      | Permanent Focus Area for Automation | 0          | 1095     |
+      | Automation Permanent Focus Area         | 0          |  500     |
+      | Automation Permanent Focus Area | 0          | 1095     |
     Given I edit the following rows inline in flex table with id "subAwardStandAlone::fundingAccountsTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--138         | 5000        |
+      | FA--154         | 5000        |
     And I edit the following rows inline in flex table with id "subAwardStandAlone::subAwardBudgetTableId" by clicking "Edit" :
       | Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
       | Construction    | 5000             | 2000       | 3000           |
     Given I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "subAwardStandAlone::kpiTableId" by clicking "Edit" :
       | EGMS ID  | Target |
-      | KPI-0721 | 10     |
+      | Automation Permanent KPI for Regression| 10     |
     And I navigate to "Management" sub tab
     Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
       | Actions  | Step 1     | Step 2                   | Step 3 | Step 4 | Step 5          |
@@ -964,32 +965,32 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     Then I see status in Progress-bar is "Approved" and is "green"
     Examples:
       | Award Name                     | Grant Name                     | Type            | Type1                    |
-      | Permanent Award For Automation | Permanent Award For Automation | Subaward Review | Approve Grantor Subaward |
+      | Automation Grant Award for Post Award | Automation Grant Award for Post Award | Subaward Review | Approve Grantor Subaward |
 
-  @allAcceptanceByRecipientAfterApproval @awardStanAlone @all
+  @allAcceptanceByRecipientAfterApproval 
   Scenario Outline: Validate award Approval by respective approvers
         Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "FA--138,Automation Grant Focus Area"
+    Given I associate "2" records "FA--154,Automation Permanent Focus Area"
       | Actions     | Step 1 | Step 2    | Step 3                                 | Step 4    | Step 5                     |
       | Associate 1 | Budget | Associate | flexGridAwardFundingAccounts           | Add       | SelectAwardFundingAccounts |
       | Associate 2 | Budget | Associate | inlineEditGridGrantorAwardServiceAreas | Associate | popupflextableGAT          |
     When I navigate to "Budget" sub tab
   And I edit the following rows inline in flex table with id "subAwardFromFDM::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      | Automation Grant Focus Area         | 0          |  500     |
-      | Permanent Focus Area for Automation | 0          | 1095     |
+      | Automation Permanent Focus Area         | 0          |  500     |
+      | Automation Permanent Focus Area | 0          | 1095     |
     Given I edit the following rows inline in flex table with id "subAwardStandAlone::fundingAccountsTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--138         | 5000        |
+      | FA--154         | 5000        |
     And I edit the following rows inline in flex table with id "subAwardStandAlone::subAwardBudgetTableId" by clicking "Edit" :
       | Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
       | Construction    | 5000             | 2000       | 3000           |
     Given I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "subAwardStandAlone::kpiTableId" by clicking "Edit" :
       | EGMS ID  | Target |
-      | KPI-0721 | 10     |
+      | Automation Permanent KPI for Regression| 10     |
     And I navigate to "Management" sub tab
     Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
       | Actions  | Step 1     | Step 2                   | Step 3 | Step 4 | Step 5          |
@@ -1102,32 +1103,32 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     Then I see that "Subaward" is in "Accepted" status
     Examples:
       | Award Name                     | Grant Name                     | Type            | Type1                    |
-      | Permanent Award For Automation | Permanent Award For Automation | Subaward Review | Approve Grantor Subaward |
+      | Automation Grant Award for Post Award | Automation Grant Award for Post Award | Subaward Review | Approve Grantor Subaward |
 
-  @allActivation @awardStanAlone @all
+  @allActivation  @smoke
   Scenario Outline: Validate award Approval by respective approvers
         Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "FA--138,Automation Grant Focus Area"
+    Given I associate "2" records "FA--154,Automation Permanent Focus Area"
       | Actions     | Step 1 | Step 2    | Step 3                                 | Step 4    | Step 5                     |
       | Associate 1 | Budget | Associate | flexGridAwardFundingAccounts           | Add       | SelectAwardFundingAccounts |
       | Associate 2 | Budget | Associate | inlineEditGridGrantorAwardServiceAreas | Associate | popupflextableGAT          |
     When I navigate to "Budget" sub tab
   And I edit the following rows inline in flex table with id "subAwardFromFDM::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      | Automation Grant Focus Area         | 0          |  500     |
-      | Permanent Focus Area for Automation | 0          | 1095     |
+      | Automation Permanent Focus Area         | 0          |  500     |
+      | Automation Permanent Focus Area | 0          | 1095     |
     Given I edit the following rows inline in flex table with id "subAwardStandAlone::fundingAccountsTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--138         | 5000        |
+      | FA--154         | 5000        |
     And I edit the following rows inline in flex table with id "subAwardStandAlone::subAwardBudgetTableId" by clicking "Edit" :
       | Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
       | Construction    | 5000             | 2000       | 3000           |
     Given I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "subAwardStandAlone::kpiTableId" by clicking "Edit" :
       | EGMS ID  | Target |
-      | KPI-0721 | 10     |
+      | Automation Permanent KPI for Regression| 10     |
     And I navigate to "Management" sub tab
     Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
       | Actions  | Step 1     | Step 2                   | Step 3 | Step 4 | Step 5          |
@@ -1249,32 +1250,32 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     Then I see that "Subaward" is in "Activated" status
     Examples:
       | Award Name                     | Grant Name                     | Type            |
-      | Permanent Award For Automation | Permanent Award For Automation | Subaward Review |
+      | Automation Grant Award for Post Award | Automation Grant Award for Post Award | Subaward Review |
  
   @awardHappyPathStandAlone @awardStandAlone
   Scenario Outline: Validate award Approval by respective approvers
     Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "FA--138,Automation Grant Focus Area"
+    Given I associate "2" records "FA--154,Permanent Focus Area for Automation"
       | Actions     | Step 1 | Step 2    | Step 3                                 | Step 4    | Step 5                     |
       | Associate 1 | Budget | Associate | flexGridAwardFundingAccounts           | Add       | SelectAwardFundingAccounts |
       | Associate 2 | Budget | Associate | inlineEditGridGrantorAwardServiceAreas | Associate | popupflextableGAT          |
     When I navigate to "Budget" sub tab
   And I edit the following rows inline in flex table with id "subAwardFromFDM::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      | Automation Grant Focus Area         | 0          |  500     |
+      | Automation Permanent Focus Area     | 0          |  500     |
       | Permanent Focus Area for Automation | 0          | 1095     |
     Given I edit the following rows inline in flex table with id "subAwardStandAlone::fundingAccountsTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--138         | 5000        |
+      | FA--154         | 5000        |
     And I edit the following rows inline in flex table with id "subAwardStandAlone::subAwardBudgetTableId" by clicking "Edit" :
       | Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
       | Construction    | 5000             | 2000       | 3000           |
     Given I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "subAwardStandAlone::kpiTableId" by clicking "Edit" :
       | EGMS ID  | Target |
-      | KPI-0721 | 10     |
+      | Automation Permanent KPI for Regression| 10     |
     And I navigate to "Management" sub tab
     Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
       | Actions  | Step 1     | Step 2                   | Step 3 | Step 4 | Step 5          |
@@ -1395,5 +1396,5 @@ When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Activated" and is "green"
     Examples:
-      | Award Name                     | Grant Name                      |
-      | Permanent Award For Automation | Permanent Award For Automation  | 
+      | Award Name                            | Grant Name                      |
+      | Automation Grant Award for Post Award | Automation Grant Award for Post Award  | 

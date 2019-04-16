@@ -1,4 +1,4 @@
-@organizationalSiteVisit
+@organizationalSiteVisit @regression
 Feature: Validate all scenarios in the Site Visit
 
   Background: Creation of Organizational Site Visit
@@ -12,18 +12,18 @@ Feature: Validate all scenarios in the Site Visit
       | FlexTable  | Initiate Site Visit | SiteVisit |
       | Creation   | Save and Continue   | Cancel    |
 
-  @organizationalSiteVisitCreation @organizationalSiteVisit @all
+  @organizationalSiteVisitCreation @smoke
   Scenario: Validate the Site Visit is in created status.
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @organizationalsiteVisitEdition @organizationalSiteVisit @all
+  @organizationalsiteVisitEdition 
   Scenario: Edition of Site Visit
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_SiteVisit_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @participantAssociationOrganizationalSiteVisit @organizationalSiteVisit @all
+  @participantAssociationOrganizationalSiteVisit @smoke
   Scenario Outline: Participant Association of Organizational Site Visit
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "GrantorSiteVisitOrganizationContacts"

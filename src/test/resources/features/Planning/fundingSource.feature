@@ -1,4 +1,4 @@
-@fundingSource @all
+@fundingSource @regression
 Feature: Validate all scenarios in Funding Source
 
   Background: To setup data

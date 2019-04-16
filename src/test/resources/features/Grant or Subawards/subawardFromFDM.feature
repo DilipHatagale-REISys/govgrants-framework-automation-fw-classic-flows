@@ -1,32 +1,32 @@
-@awardFromFDM @all
+@awardFromFDM @regression
 Feature: Validate all scenarios in the Award from FDM
 
   Background: Create Award from FDM
-    Given I delete the record "Execution Announcement for Automation" from the object "FDM"
-    Given I create a subaward from the Announcement "Execution Announcement for Automation" for the Application "Permanent Application(Dr) for Automation" as user "EXE"
+   # Given I delete the record "Automation Grant Award for Post Award" from the object "FDM"
+    Given I create a subaward from the Announcement "Execution Announcement for Automation" for the Application "Automation App Jan25" as user "EXE"
       | Actions    | Step 1          | Step 2       | Step 3                                | Step 4                                  |
       | Navigation | As a Grantor    | Applications | Application Review                    | Funding Decision Memo (FDM)             |
       | FlexTable  | FDMList1        | View         | Approved Funding Decision Memos (FDM) | flexGridFundingDecisionMemoApplications |
       | Buttons    | Create Subaward |              |                                       |                                         |
-    Given I login and view the "Draft" award "Created" with name "Execution Announcement for Automation" as User "EXE"
+    Given I login and view the "Draft" award "Created" with name "Automation Grant Award for Post Award" as User "EXE"
       | Actions    | Step 1       | Step 2         | Step 3               | Step 4                        |
       | Navigation | As a Grantor | Grants         | Grants and Subawards | Grants, Subaward & Amendments |
       | FlexTable  | Grants       | ActiveGrants   | View                 |                               |
       | Subaward   | Subawards    | RelatedAwards1 | View                 |                               |
     Given I get the "EGMS ID"
 
-  @38213  @awardFromFDM @allCreation @awardFromFDM @all @all
+  @38213  @allCreation  @smoke
   Scenario: Creation of an award
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @38217  @awardFromFDM @allEdition @awardFromFDM @all
+  @38217  @Edition 
   Scenario: Edition of an award
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @awardPaymentRequestSchedule @awardFromFDM @all
+  @awardPaymentRequestSchedule  @smoke
   Scenario: Payment Request Schedule in an award
     When I navigate to "Management" sub tab
     When I click on "Edit" icon for "Payment Request" inside flex table with id "subAwardFromFDM::paymentRequestSchedulesTableId"
@@ -35,7 +35,7 @@ Feature: Validate all scenarios in the Award from FDM
     When I close Modal
     Then I see that "Payment Request" has been added in flextable with Id "subAwardFromFDM::paymentRequestSchedulesTableId"
 
-  @awardProgressReportSchedule @awardFromFDM @all
+  @awardProgressReportSchedule  @smoke
   Scenario: Progress Report Schedule in an award
     When I navigate to "Management" sub tab
     When I click on "Edit" icon for "Progress Report" inside flex table with id "subAwardFromFDM::progressReportSchedulesTableId"
@@ -44,7 +44,7 @@ Feature: Validate all scenarios in the Award from FDM
     When I close Modal
     Then I see that "Progress Report" has been added in flextable with Id "subAwardFromFDM::progressReportSchedulesTableId"
 
-  @awardFromFDM @allfdmRiskAssessmentApprovalAndActivation @awardFromFDM @all
+  @fdmRiskAssessmentApprovalAndActivation 
   Scenario: Risk Assessment approval in an award
     Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
       | Actions  | Step 1     | Step 2                          | Step 3 | Step 4            |
@@ -64,7 +64,7 @@ Feature: Validate all scenarios in the Award from FDM
       | Approval   | Start         | Approve    |                   |
     Then I see status in Progress-bar is "Active" and is "green"
 
-  @awardApproverSelection @awardFromFDM @all
+  @awardApproverSelection
   Scenario: Validate the assignment of Approvers for the award
     When I navigate to "Responsibilities" sub tab
     And I click on "Edit" icon for "Program Approver" inside flex table with id "subAwardFromFDM::approversTableId"
@@ -78,12 +78,12 @@ Feature: Validate all scenarios in the Award from FDM
     And I close Modal
     Then I see that "Automation EXE" has been added in flextable with Id "subAwardFromFDM::approversTableId"
 
-  @awardSendToRecipientBeforeApproval @awardFromFDM @all
+  @awardSendToRecipientBeforeApproval 
   Scenario Outline: Validate the assignment of Approvers for the award
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "FA--126,Automation Grant Focus Area"
+    Given I associate "2" records "FA--154,Automation Permanent Focus Area"
       | Actions     | Step 1      | Step 2    | Step 3                                 | Step 4    | Step 5                     |
       | Associate 1 | Budget      | Associate | flexGridAwardFundingAccounts           | Add       | SelectAwardFundingAccounts |
       | Associate 2 | Budget      | Associate | inlineEditGridGrantorAwardServiceAreas | Associate | popupflextableGAT          |
@@ -91,12 +91,12 @@ Feature: Validate all scenarios in the Award from FDM
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "subAwardFromFDM::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      | Automation Grant Focus Area         | 0          | 500      |
+      | Automation Permanent Focus Area         | 0          | 500      |
       | Permanent Focus Area for Automation | 0          | 500      |
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "subAwardFromFDM::fundingAccountTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--126         | 5000        |
+      | FA--154         | 5000        |
     And I edit the following rows inline in flex table with id "subAwardFromFDM::subAwardBudgetTableId" by clicking "Edit" :
       | Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
       | Construction    | 5000             | 2000       | 3000           |
@@ -150,24 +150,24 @@ Feature: Validate all scenarios in the Award from FDM
       | Award Name       | Grant Name                               |
       | Automation Grant | Permanent Application(Dr) for Automation |
 
-  @awardAcceptanceByRecipientBeforeApproval  @awardFromFDM @all
+  @awardAcceptanceByRecipientBeforeApproval @smoke
   Scenario Outline: Validate the assignment of Approvers for the award
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "FA--126,Automation Grant Focus Area"
+    Given I associate "2" records "FA--154,Automation Permanent Focus Area"
       | Actions     | Step 1      | Step 2    | Step 3                                 | Step 4    | Step 5                     |
       | Associate 1 | Budget      | Associate | flexGridAwardFundingAccounts           | Add       | SelectAwardFundingAccounts |
       | Associate 2 | Budget      | Associate | inlineEditGridGrantorAwardServiceAreas | Associate | popupflextableGAT          |
       | Associate 3 | Performance | Associate | GrantorAwardGoalsObjectives            | Associate | SelectAwardGoals           |
     And I edit the following rows inline in flex table with id "subAwardFromFDM::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      | Automation Grant Focus Area         | 0          | 500      |
+      | Automation Permanent Focus Area         | 0          | 500      |
       | Permanent Focus Area for Automation | 0          | 500      |
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "subAwardFromFDM::fundingAccountTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--126         | 100000      |
+      | FA--154         | 100000      |
     And I edit the following rows inline in flex table with id "subAwardFromFDM::subAwardBudgetTableId" by clicking "Edit" :
       | Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
       | Construction    | 5000             | 2000       | 3000           |
@@ -226,12 +226,12 @@ Feature: Validate all scenarios in the Award from FDM
       | Award Name       | Grant Name                               |
       | Automation Grant | Permanent Application(Dr) for Automation |
 
-  @awardReviewerAssignment @awardFromFDM @all
+  @awardReviewerAssignment 
   Scenario Outline: Validate the assignment of Reviewer for the award
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "FA--126,Automation Grant Focus Area"
+    Given I associate "2" records "FA--154,Automation Permanent Focus Area"
       | Actions     | Step 1      | Step 2    | Step 3                                 | Step 4    | Step 5                     |
       | Associate 1 | Budget      | Associate | flexGridAwardFundingAccounts           | Add       | SelectAwardFundingAccounts |
       | Associate 2 | Budget      | Associate | inlineEditGridGrantorAwardServiceAreas | Associate | popupflextableGAT          |
@@ -239,12 +239,12 @@ Feature: Validate all scenarios in the Award from FDM
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "subAwardFromFDM::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      | Automation Grant Focus Area         | 0          | 500      |
+      | Automation Permanent Focus Area         | 0          | 500      |
       | Permanent Focus Area for Automation | 0          | 500      |
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "subAwardFromFDM::fundingAccountTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--126         | 5000        |
+      | FA--154         | 5000        |
     And I edit the following rows inline in flex table with id "subAwardFromFDM::subAwardBudgetTableId" by clicking "Edit" :
       | Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
       | Construction    | 5000             | 2000       | 3000           |
@@ -316,12 +316,12 @@ Feature: Validate all scenarios in the Award from FDM
       | Award Name       | Grant Name                               |
       | Automation Grant | Permanent Application(Dr) for Automation |
 
-  @awardReviewerInitiation @awardFromFDM @all
+  @awardReviewerInitiation  @smoke
   Scenario Outline: Validate initiation of review for the award
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "FA--126,Automation Grant Focus Area"
+    Given I associate "2" records "FA--154,Automation Permanent Focus Area"
       | Actions     | Step 1      | Step 2    | Step 3                                 | Step 4    | Step 5                     |
       | Associate 1 | Budget      | Associate | flexGridAwardFundingAccounts           | Add       | SelectAwardFundingAccounts |
       | Associate 2 | Budget      | Associate | inlineEditGridGrantorAwardServiceAreas | Associate | popupflextableGAT          |
@@ -329,12 +329,12 @@ Feature: Validate all scenarios in the Award from FDM
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "subAwardFromFDM::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      | Automation Grant Focus Area         | 0          | 500      |
+      | Automation Permanent Focus Area         | 0          | 500      |
       | Permanent Focus Area for Automation | 0          | 500      |
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "subAwardFromFDM::fundingAccountTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--126         | 5000        |
+      | FA--154         | 5000        |
     And I edit the following rows inline in flex table with id "subAwardFromFDM::subAwardBudgetTableId" by clicking "Edit" :
       | Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
       | Construction    | 5000             | 2000       | 3000           |
@@ -407,12 +407,12 @@ Feature: Validate all scenarios in the Award from FDM
       | Award Name       | Grant Name                               |
       | Automation Grant | Permanent Application(Dr) for Automation |
 
-  @awardReviewComplete @awardFromFDM @all
+  @awardReviewComplete
   Scenario Outline: Validate completion of review for the award
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "FA--126,Automation Grant Focus Area"
+    Given I associate "2" records "FA--154,Automation Permanent Focus Area"
       | Actions     | Step 1      | Step 2    | Step 3                                 | Step 4    | Step 5                     |
       | Associate 1 | Budget      | Associate | flexGridAwardFundingAccounts           | Add       | SelectAwardFundingAccounts |
       | Associate 2 | Budget      | Associate | inlineEditGridGrantorAwardServiceAreas | Associate | popupflextableGAT          |
@@ -420,12 +420,12 @@ Feature: Validate all scenarios in the Award from FDM
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "subAwardFromFDM::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      | Automation Grant Focus Area         | 0          | 500      |
+      | Automation Permanent Focus Area         | 0          | 500      |
       | Permanent Focus Area for Automation | 0          | 500      |
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "subAwardFromFDM::fundingAccountTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--126         | 5000        |
+      | FA--154         | 5000        |
     And I edit the following rows inline in flex table with id "subAwardFromFDM::subAwardBudgetTableId" by clicking "Edit" :
       | Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
       | Construction    | 5000             | 2000       | 3000           |
@@ -505,12 +505,12 @@ Feature: Validate all scenarios in the Award from FDM
       | Award Name       | Grant Name                               |
       | Automation Grant | Permanent Application(Dr) for Automation |
 
-  @awardSubmissionForApproval @awardFromFDM @all
+  @awardSubmissionForApproval  @smoke
   Scenario Outline: Validate award submission for approval
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "FA--126,Automation Grant Focus Area"
+    Given I associate "2" records "FA--154,Automation Permanent Focus Area"
       | Actions     | Step 1      | Step 2    | Step 3                                 | Step 4    | Step 5                     |
       | Associate 1 | Budget      | Associate | flexGridAwardFundingAccounts           | Add       | SelectAwardFundingAccounts |
       | Associate 2 | Budget      | Associate | inlineEditGridGrantorAwardServiceAreas | Associate | popupflextableGAT          |
@@ -518,12 +518,12 @@ Feature: Validate all scenarios in the Award from FDM
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "subAwardFromFDM::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      | Automation Grant Focus Area         | 0          | 500      |
+      | Automation Permanent Focus Area         | 0          | 500      |
       | Permanent Focus Area for Automation | 0          | 500      |
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "subAwardFromFDM::fundingAccountTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--126         | 5000        |
+      | FA--154         | 5000        |
     And I edit the following rows inline in flex table with id "subAwardFromFDM::subAwardBudgetTableId" by clicking "Edit" :
       | Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
       | Construction    | 5000             | 2000       | 3000           |
@@ -604,12 +604,12 @@ Feature: Validate all scenarios in the Award from FDM
       | Award Name       | Grant Name                               |
       | Automation Grant | Permanent Application(Dr) for Automation |
 
-  @awardApproval @awardFromFDM @all
+  @awardApproval 
   Scenario Outline: Validate award Approval by respective approvers
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "FA--126,Automation Grant Focus Area"
+    Given I associate "2" records "FA--154,Automation Permanent Focus Area"
       | Actions     | Step 1      | Step 2    | Step 3                                 | Step 4    | Step 5                     |
       | Associate 1 | Budget      | Associate | flexGridAwardFundingAccounts           | Add       | SelectAwardFundingAccounts |
       | Associate 2 | Budget      | Associate | inlineEditGridGrantorAwardServiceAreas | Associate | popupflextableGAT          |
@@ -617,12 +617,12 @@ Feature: Validate all scenarios in the Award from FDM
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "subAwardFromFDM::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      | Automation Grant Focus Area         | 0          | 500      |
+      | Automation Permanent Focus Area         | 0          | 500      |
       | Permanent Focus Area for Automation | 0          | 500      |
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "subAwardFromFDM::fundingAccountTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--126         | 5000        |
+      | FA--154         | 5000        |
     And I edit the following rows inline in flex table with id "subAwardFromFDM::subAwardBudgetTableId" by clicking "Edit" :
       | Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
       | Construction    | 5000             | 2000       | 3000           |
@@ -721,24 +721,24 @@ Feature: Validate all scenarios in the Award from FDM
       | Award Name       | Grant Name                               |
       | Automation Grant | Permanent Application(Dr) for Automation |
 
-  @awardSendToRecipientAfterApproval @awardFromFDM @all
+  @awardSendToRecipientAfterApproval  @smoke
   Scenario Outline: Validate award send to subrecipient after approval
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "FA--126,Automation Grant Focus Area"
+    Given I associate "2" records "FA--154,Automation Permanent Focus Area"
       | Actions     | Step 1 | Step 2    | Step 3                                 | Step 4    | Step 5                     |
       | Associate 1 | Budget | Associate | flexGridAwardFundingAccounts           | Add       | SelectAwardFundingAccounts |
       | Associate 2 | Budget | Associate | inlineEditGridGrantorAwardServiceAreas | Associate | popupflextableGAT          |
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "subAwardFromFDM::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      | Automation Grant Focus Area         | 0          | 500      |
+      | Automation Permanent Focus Area         | 0          | 500      |
       | Permanent Focus Area for Automation | 0          | 500      |
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "subAwardFromFDM::fundingAccountTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--126         | 5000        |
+      | FA--154         | 5000        |
     And I edit the following rows inline in flex table with id "subAwardFromFDM::subAwardBudgetTableId" by clicking "Edit" :
       | Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
       | Construction    | 5000             | 2000       | 3000           |
@@ -833,12 +833,12 @@ Feature: Validate all scenarios in the Award from FDM
       | Award Name       | Grant Name                               |
       | Automation Grant | Permanent Application(Dr) for Automation |
 
-  @awardAcceptanceByRecipientAfterApproval @awardFromFDM @all
+  @awardAcceptanceByRecipientAfterApproval 
   Scenario Outline: Validate award acceptance by subrecipient after approval
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "FA--126,Automation Grant Focus Area"
+    Given I associate "2" records "FA--154,Automation Permanent Focus Area"
       | Actions     | Step 1      | Step 2    | Step 3                                 | Step 4    | Step 5                     |
       | Associate 1 | Budget      | Associate | flexGridAwardFundingAccounts           | Add       | SelectAwardFundingAccounts |
       | Associate 2 | Budget      | Associate | inlineEditGridGrantorAwardServiceAreas | Associate | popupflextableGAT          |
@@ -846,12 +846,12 @@ Feature: Validate all scenarios in the Award from FDM
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "subAwardFromFDM::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      | Automation Grant Focus Area         | 0          | 500      |
+      | Automation Permanent Focus Area         | 0          | 500      |
       | Permanent Focus Area for Automation | 0          | 500      |
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "subAwardFromFDM::fundingAccountTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--126         | 5000        |
+      | FA--154         | 5000        |
     And I edit the following rows inline in flex table with id "subAwardFromFDM::subAwardBudgetTableId" by clicking "Edit" :
       | Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
       | Construction    | 5000             | 2000       | 3000           |
@@ -950,12 +950,12 @@ Feature: Validate all scenarios in the Award from FDM
       | Award Name       | Grant Name                     |
       | Automation Grant | Permanent Award For Automation |
 
-  @awardActivation @awardFromFDM @all
+  @awardActivation  @smoke
   Scenario Outline: Validate award Activation
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "FA--126,Automation Grant Focus Area"
+    Given I associate "2" records "FA--154,Automation Permanent Focus Area"
       | Actions     | Step 1      | Step 2    | Step 3                                 | Step 4    | Step 5                     |
       | Associate 1 | Budget      | Associate | flexGridAwardFundingAccounts           | Add       | SelectAwardFundingAccounts |
       | Associate 2 | Budget      | Associate | inlineEditGridGrantorAwardServiceAreas | Associate | popupflextableGAT          |
@@ -963,12 +963,12 @@ Feature: Validate all scenarios in the Award from FDM
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "subAwardFromFDM::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      | Automation Grant Focus Area         | 0          | 500      |
+      | Automation Permanent Focus Area         | 0          | 500      |
       | Permanent Focus Area for Automation | 0          | 500      |
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "subAwardFromFDM::fundingAccountTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--126         | 5000        |
+      | FA--154         | 5000        |
     And I edit the following rows inline in flex table with id "subAwardFromFDM::subAwardBudgetTableId" by clicking "Edit" :
       | Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
       | Construction    | 5000             | 2000       | 3000           |
@@ -1063,12 +1063,12 @@ Feature: Validate all scenarios in the Award from FDM
       | Award Name       | Grant Name                     |
       | Automation Grant | Permanent Award For Automation |
 
-  @awardSiteVisit @awardFromFDM @all
+  @awardSiteVisit 
   Scenario Outline: Validate award site visit creation
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "FA--126,Automation Grant Focus Area"
+    Given I associate "2" records "FA--154,Automation Permanent Focus Area"
       | Actions     | Step 1      | Step 2    | Step 3                                 | Step 4    | Step 5                     |
       | Associate 1 | Budget      | Associate | flexGridAwardFundingAccounts           | Add       | SelectAwardFundingAccounts |
       | Associate 2 | Budget      | Associate | inlineEditGridGrantorAwardServiceAreas | Associate | popupflextableGAT          |
@@ -1076,12 +1076,12 @@ Feature: Validate all scenarios in the Award from FDM
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "subAwardFromFDM::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      | Automation Grant Focus Area         | 0          | 500      |
+      | Automation Permanent Focus Area         | 0          | 500      |
       | Permanent Focus Area for Automation | 0          | 500      |
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "subAwardFromFDM::fundingAccountTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--126         | 5000        |
+      | FA--154         | 5000        |
     And I edit the following rows inline in flex table with id "subAwardFromFDM::subAwardBudgetTableId" by clicking "Edit" :
       | Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
       | Construction    | 5000             | 2000       | 3000           |
@@ -1189,12 +1189,12 @@ Feature: Validate all scenarios in the Award from FDM
       | Award Name       |
       | Automation Grant |
 
-  @awardDeskReview @awardFromFDM @all
+  @awardDeskReview 
   Scenario Outline: Validate award desk review creation
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "FA--126,Automation Grant Focus Area"
+    Given I associate "2" records "FA--154,Automation Permanent Focus Area"
       | Actions     | Step 1      | Step 2    | Step 3                                 | Step 4    | Step 5                     |
       | Associate 1 | Budget      | Associate | flexGridAwardFundingAccounts           | Add       | SelectAwardFundingAccounts |
       | Associate 2 | Budget      | Associate | inlineEditGridGrantorAwardServiceAreas | Associate | popupflextableGAT          |
@@ -1202,12 +1202,12 @@ Feature: Validate all scenarios in the Award from FDM
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "subAwardFromFDM::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      | Automation Grant Focus Area         | 0          | 500      |
+      | Automation Permanent Focus Area         | 0          | 500      |
       | Permanent Focus Area for Automation | 0          | 500      |
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "subAwardFromFDM::fundingAccountTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--126         | 5000        |
+      | FA--154         | 5000        |
     And I edit the following rows inline in flex table with id "subAwardFromFDM::subAwardBudgetTableId" by clicking "Edit" :
       | Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
       | Construction    | 5000             | 2000       | 3000           |
@@ -1277,12 +1277,12 @@ Feature: Validate all scenarios in the Award from FDM
       | Award Name       |
       | Automation Grant |
 
-  @awardHappyPathFromFDM @awardFromFDM @all
+  @awardHappyPathFromFDM @smoke
   Scenario Outline: Validate award happy path
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "FA--126,Automation Grant Focus Area"
+    Given I associate "2" records "FA--154,Automation Permanent Focus Area"
       | Actions     | Step 1      | Step 2    | Step 3                                 | Step 4    | Step 5                     |
       | Associate 1 | Budget      | Associate | flexGridAwardFundingAccounts           | Add       | SelectAwardFundingAccounts |
       | Associate 2 | Budget      | Associate | inlineEditGridGrantorAwardServiceAreas | Associate | popupflextableGAT          |
@@ -1290,12 +1290,12 @@ Feature: Validate all scenarios in the Award from FDM
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "subAwardFromFDM::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      | Automation Grant Focus Area         | 0          | 500      |
+      | Automation Permanent Focus Area         | 0          | 500      |
       | Permanent Focus Area for Automation | 0          | 500      |
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "subAwardFromFDM::fundingAccountTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--126         | 5000        |
+      | FA--154         | 5000        |
     And I edit the following rows inline in flex table with id "subAwardFromFDM::subAwardBudgetTableId" by clicking "Edit" :
       | Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
       | Construction    | 5000             | 2000       | 3000           |

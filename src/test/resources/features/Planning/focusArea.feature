@@ -11,7 +11,7 @@ Feature: Validate all scenarios in Focus Area
       | Creation   | New          | Save and Continue   | Save             |
       | ID         | EGMS ID      |                     |                  |
 
-  @creationOfFocusArea
+  @creationOfFocusArea @smoke
   Scenario: Creation of Focus Area
     Then I see status in Progress-bar is "Created" and is "green"
 
@@ -30,7 +30,7 @@ Feature: Validate all scenarios in Focus Area
     And I close Modal
     Then I see that "Supporting Documents" has been added in flextable with Id "focusArea::focusAreaAttachmentTableId"
 
-  @activateFocusArea @Regression
+  @activateFocusArea @smoke
   Scenario: Activate Focus Area
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "green"

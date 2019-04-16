@@ -1,7 +1,7 @@
 @progressReport @regression
 Feature: Validate all scenarios in Progress Report
 
-  @taskCreationForSubrecipientProgressReport @progressReport @all
+  @taskCreationForSubrecipientProgressReport @smoke
   Scenario: To assert the task creation for Progress Report
     When User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -10,7 +10,7 @@ Feature: Validate all scenarios in Progress Report
       | FlexTable  | PhasePendingTasks | Start         |           |
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @editProgressReport @progressReport @all
+  @editProgressReport 
   Scenario: To edit Progress Report
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -22,7 +22,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @editKPIProgressReport @progressReport @all
+  @editKPIProgressReport 
   Scenario: To edit KPI in Progress Report
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -35,7 +35,7 @@ Feature: Validate all scenarios in Progress Report
       | Automation Program KPI | 7      | 7             |
     Then I see that "7" has been added in flextable with Id "progressReport::kpiTableId"
 
-  @formFillingProgressReport @progressReport @all
+  @formFillingProgressReport @smoke
   Scenario: To fill and complete the form in Progress Report
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -49,7 +49,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Back" in the page details
     Then I see that "100.00%" has been added in flextable with Id "progressReport::formTableId"
 
-  @kpiOfProgressReportsnoteditable @progressReport @all
+  @kpiOfProgressReportsnoteditable @smoke
   Scenario: To validate  KPI for progress report are not editable post submission of prog report to grantor.
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -74,7 +74,7 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "Performance" sub tab
     Then I cannot see row level action button "Edit" against "Actions" in flex table with id "progressReport::kpiTableId"
 
-  @submitProgressReportToGrantor @progressReport @all
+  @submitProgressReportToGrantor @smoke
   Scenario: To submit Progress Report to Grantor
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -97,7 +97,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
 
-  @submittedProgressReportTableUpdate @progressReport @all
+  @submittedProgressReportTableUpdate 
   Scenario: To validate Submitted Progress Report Table is updated post report is submitted to Grantor.
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -125,7 +125,7 @@ Feature: Validate all scenarios in Progress Report
     And I perform quick search for "Record Id" in "Submitted Progress Reports" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "progressReport::progressReportFlexTableId"
 
-  @spiUserBlockedfromSubmisionOfProgressReport @progressReport @all
+  @spiUserBlockedfromSubmisionOfProgressReport 
   Scenario: To validate SPA user is not allowed to Submit Progress Report
     Given User "SPA" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -148,7 +148,7 @@ Feature: Validate all scenarios in Progress Report
       | Validation  | Validate              | FormComponent |
     Then I cannot see top right button "Submit to Grantor" in page detail
 
-  @errorMessagesFieldsRequiredforSubmissionOfProgressReports @progressReport @all
+  @errorMessagesFieldsRequiredforSubmissionOfProgressReports 
   Scenario: To validate Error Messages for fields required for Submission of Progress Report by .
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -159,7 +159,7 @@ Feature: Validate all scenarios in Progress Report
     Then I see the following messages in the page details :
       | Forms and Attachments Tab - Fill all the required data in the form before submitting to Grantor. |
 
-  @internalSentProgressReportToSubRecipient  @progressReport @all
+  @internalSentProgressReportToSubRecipient  @smoke
   Scenario: To send back the Progress Report
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -188,7 +188,7 @@ Feature: Validate all scenarios in Progress Report
     Given I click on "Send Back to Subrecipient" in the page details
     Then I see status in Progress-bar is "Sent Back to Subrecipient" and is "red"
 
-  @historyOfProgressReportSentToSubRecipient  @progressReport @all
+  @historyOfProgressReportSentToSubRecipient  
   Scenario: To validate the field history status update on the internal side
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -218,7 +218,7 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "History" sub tab
     Then I see value "Sent Back to Subrecipient" for title "New Value" inside table "History"
 
-  @taskCreatedOnSendToSubrecipientProgressReport  @progressReport @all
+  @taskCreatedOnSendToSubrecipientProgressReport  @smoke
   Scenario: To assert the task creation for Sub recipient user Progress Report after Progress Report is Sent back to Subrecipient.
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -249,7 +249,7 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     Then I see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
 
-  @resubmitToGrantorProgressReport @progressReport @all
+  @resubmitToGrantorProgressReport 
   Scenario: To validate SR user is able to Submit the Progress Report post Progress Report it was sent back for corrections by the Grantor.
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -291,7 +291,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
 
-  @assignApproversToProgressReport @progressReport @all
+  @assignApproversToProgressReport 
   Scenario: To assign or change th defualt approvers in Progress Report
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -325,7 +325,7 @@ Feature: Validate all scenarios in Progress Report
       | Approver 2 | ProgressReportsRolesandResponsibilities | Edit   | Fiscal Approver  |
     Then I see that "Automation PM" has been added in flextable with Id "ProgressReportsRolesandResponsibilities"
 
-  @submitProgressReportForApproval @progressReport @all
+  @submitProgressReportForApproval @smoke
   Scenario: To submit Progress Report for approval
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -355,7 +355,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
-  @approvalOfProgressReport @progressReportHappyPath @progressReport @all
+  @approvalOfProgressReport @progressReportHappyPath 
   Scenario: To approve Progress Report
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -390,7 +390,7 @@ Feature: Validate all scenarios in Progress Report
       | Approval   | Start         | Approve    |                   |
     Then I see status in Progress-bar is "Approved" and is "green"
 
-  @approveProgressReportOnResubmission @progressReport @all
+  @approveProgressReportOnResubmission @smoke
   Scenario: To validate Progress Report which were sent back to Sub Recipient by Grantor are approved successfully post revision
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -443,7 +443,7 @@ Feature: Validate all scenarios in Progress Report
       | Approval   | Start         | Approve    |                   |
     Then I see status in Progress-bar is "Approved" and is "green"
 
-  @sendBacktoOwnerOfProgressReportByProgramApprover  @progressReport @all
+  @sendBacktoOwnerOfProgressReportByProgramApprover  @smoke
   Scenario: To validate  Progress Report send back to owner functionality by program approver.
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -484,9 +484,8 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Send Back" on the approval decision box
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
 
-  @historyOfProgressReportsendbacktoOwnerOfProgressReport @progressReport @all
+  @historyOfProgressReportsendbacktoOwnerOfProgressReport 
   Scenario: To validate  field history update post Progress Report is send back to owner by program approver.
-
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
       | Navigation | Monitoring        | Grants Portal | SUBPORTAL |
@@ -527,9 +526,8 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "History" sub tab
     Then I see value "Submitted to Grantor" for title "New Value" inside table "History"
 
-  @taskAssertionSendbacktOwnerOfProgressReportbyProgramApprover @progressReport @all
+  @taskAssertionSendbacktOwnerOfProgressReportbyProgramApprover @smoke
   Scenario: To validate  task is not created for Grantor post Program Approver Sends back the progress report to Owner.
-
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
       | Navigation | Monitoring        | Grants Portal | SUBPORTAL |
@@ -573,9 +571,8 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
 
-  @approvalofProgressReportSendbacktoOwnerOfProgressReportbyProgramApprover @progressReport @all
+  @approvalofProgressReportSendbacktoOwnerOfProgressReportbyProgramApprover 
   Scenario: To validate  Progress Report approval is successful post Program Approver Sends back the progress report to Owner.
-
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
       | Navigation | Monitoring        | Grants Portal | SUBPORTAL |
@@ -626,7 +623,7 @@ Feature: Validate all scenarios in Progress Report
       | Approval   | Start         | Approve    |                   |
     Then I see status in Progress-bar is "Approved" and is "green"
 
-  @progressReportsNotEditablePostSubmission @progressReport @all
+  @progressReportsNotEditablePostSubmission 
   Scenario: To validate progress report are not editable post submission of progress report to grantor.
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -650,7 +647,7 @@ Feature: Validate all scenarios in Progress Report
     Given I click on "Submit to Grantor" in the page details
     Then I cannot see top right button "Edit" in page detail
 
-  @sendBacktoOwnerOfProgressReportbyFiscalApprover @progressReport @all
+  @sendBacktoOwnerOfProgressReportbyFiscalApprover 
   Scenario: To validate  Progress Report send back to owner functionality by Fiscal approver.
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -697,7 +694,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Send Back" on the approval decision box
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
 
-  @progressReportsTableUpdateOnAward @progressReport @all
+  @progressReportsTableUpdateOnAward @smoke
   Scenario: To validate Progress Reports Table on the award is updated with respect to approval of progress reports
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -739,7 +736,7 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Performance" sub tab
     Then I see value "7" for title "Actual" inside table "inlineEditGridGrantorAwardKeyOutcomes"
 
-  @historyOfProgressReportsendbacktoOwnerOfProgressReportbyFiscalApprover  @progressReport @all
+  @historyOfProgressReportsendbacktoOwnerOfProgressReportbyFiscalApprover  
   Scenario: To validate  field history update post Progress Report is send back to owner by Fiscal approver.
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -787,7 +784,7 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "History" sub tab
     Then I see value "Submitted to Grantor" for title "New Value" inside table "History"
 
-  @taskAssertionSendbacktoOwnerOfProgressReportbyFiscalApprover @progressReport @all
+  @taskAssertionSendbacktoOwnerOfProgressReportbyFiscalApprover 
   Scenario: To validate  task is not created for Grantor post Fiscal Approver Sends back the progress report to Owner.
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -838,7 +835,7 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
 
-  @approvalofProgressReportSendbacktOwnerOfProgressReportbyFiscalApprover @progressReport @all
+  @approvalofProgressReportSendbacktOwnerOfProgressReportbyFiscalApprover 
   Scenario: To validate  Progress Report approval is successful post Program Approver Sends back the progress report to Owner.
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -896,7 +893,7 @@ Feature: Validate all scenarios in Progress Report
       | Approval   | Start         | Approve    |                   |
     Then I see status in Progress-bar is "Approved" and is "green"
 
-  @taskAssertionForFiscalApproverPostSendBackProgressReportByProgramApprover @progressReport @all
+  @taskAssertionForFiscalApproverPostSendBackProgressReportByProgramApprover 
   Scenario: To validate  task is not created for Fiscal Approver post Program Approver Sends back the progress report to Owner.
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -940,7 +937,7 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
 
-  @approvalOfProgressReport @progressReportHappyPathWithoutDefaultApprovers @progressReport @all
+  @approvalOfProgressReport @progressReportHappyPathWithoutDefaultApprovers @smoke
   Scenario: To approve Progress Report by changing the defualt approvers in Progress Report
     Given User "SPI" receives the task for "Complete Progress Report"
       | Actions    | Step 1            | Step 2        | Step 3    |

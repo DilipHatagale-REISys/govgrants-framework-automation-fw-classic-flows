@@ -14,18 +14,18 @@ Feature: Validate all scenarios in the Application Intake
     When I click on "Save" in the page details
     Then I see that "Competitive Announcement for Automation" is in "Created" status
 
-  @34044 @applicationCreation @applicationIntake @all @smokeTest
+  @34044 @applicationCreation @smokeTest
   Scenario: Creating an Application
     Then I see that "Application Title" is in "Created" status
 
-  @34045 @applicationEdition @applicationIntake @all
+  @34045 @applicationEdition 
   Scenario: Edition of an application
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @34303 @addFocusAreaToApplication @applicationIntake @all 
+  @34303 @addFocusAreaToApplication  
   Scenario Outline: Addition of Focus area to an application
     When I navigate to "Budget" sub tab
     Then I see that "<EGMS Id>" has been added in flextable with Id "applicationIntake::focusAreaTableId"
@@ -33,7 +33,7 @@ Feature: Validate all scenarios in the Application Intake
       | EGMS Id |
       | 03709   |
 
-  @addBudgetDetailsToApplication @applicationIntake @all @smoke
+  @addBudgetDetailsToApplication @smoke
   Scenario: Addition of budget in the budget grid to an application
     When I navigate to "Budget" sub tab
     And I expand nested table containing column value "BP01"
@@ -41,7 +41,7 @@ Feature: Validate all scenarios in the Application Intake
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 1000       | 3000           | 100            |
 
-  @addTargetToKPIInApplication @applicationIntake @all @smoke
+  @addTargetToKPIInApplication @smoke
   Scenario Outline: Addition of KPI target to an application
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "applicationIntake::kpiTableId" by clicking "Edit" :
@@ -52,7 +52,7 @@ Feature: Validate all scenarios in the Application Intake
       | Application Name                          | Flextable Name |
       | Competitive Announcement for Automation | Budget Details |
 
-  @formFillingApplication @applicationIntake @all @smoke
+  @formFillingApplication @smoke
   Scenario: To fill and complete the form in Progress Report
     When I navigate to "Attachments" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "applicationIntake::allFormsTableId"
@@ -64,14 +64,14 @@ Feature: Validate all scenarios in the Application Intake
     And I click on "Save" in the page details
     When I click on "Back" in the page details
 
-  @uploadAttachmentForChecklistInApplication @applicationIntake @all
+  @uploadAttachmentForChecklistInApplication 
   Scenario: Attaching a document for attachment checklist in an application
     When I navigate to "Attachments" sub tab
     And I click on "Attach" icon for "Not Applicable" inside flex table with id "applicationIntake::attachmentsTableId"
     When I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Application"
     And I close Modal
 
-  @34156 @submitApplication @applicationIntakeHappyPath @applicationIntake @all @smoke
+  @34156 @submitApplication @applicationIntakeHappyPath @smoke
   Scenario: Submitting an application to Grantor
     Given I complete the fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -100,7 +100,7 @@ Feature: Validate all scenarios in the Application Intake
     When I click on "Submit Application" in the page details
     Then I see status in Progress-bar is "Submitted" and is "green"
 
-  @34346 @viewSubmitedApplication @applicationIntake @all @smoke
+  @34346 @viewSubmitedApplication @smoke
   Scenario Outline: Viewing the application submitted by subrecipient as Internal user
     Given I complete the fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |

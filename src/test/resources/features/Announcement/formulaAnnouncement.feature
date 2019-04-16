@@ -1,12 +1,9 @@
 @formula @regression
 Feature: Validate all scenarios in the Announcement tab
 
-  Background: Create Announcement
-    Given I delete the record "Automation Announcement" from the object "Announcement"
-
-  @33936 @announcementCreationFA @announcement @all
-  Scenario: Creation of an Announcement
-    Given I create a "Formula" Announcement as user "EXE" from sheet "FormulaAnnouncement" in excel "Announcement_Field_Values.xlsx"
+   Background: Create Announcement
+   Given I delete the record "Automation Formula Announcement" from the object "Announcement"
+   Given I create a "Formula" Announcement as user "EXE" from sheet "FormulaAnnouncement" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
       | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
       | FlexTable   | Announcements                       | Draft Announcements        |                                   |
@@ -14,182 +11,94 @@ Feature: Validate all scenarios in the Announcement tab
       | Creation    | New                                 | Continue                   | Save and Continue                 |
       | ID          | EGMS ID                             |                            |                                   |
     And I click on "Save" in the page details
+    And I get the "EGMS ID"
+
+  @33936 @announcementCreationFA @smoke
+  Scenario: Creation of an Announcement
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @announcementCreatedDeleteAccessToOwnerFA @announcement @all
+  @announcementCreatedDeleteAccessToOwnerFA
   Scenario: Validate that owner can able to delete created status announcement
-    Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
     When I navigate to "Announcements" tab
     And I perform quick search for "Record id" in "ActiveFundingOpportunitiesAll" panel
     When  I click on "Delete" icon for "Record id" inside flex table with id "ActiveFundingOpportunitiesAll"
     And I perform quick search for "Record id" in "ActiveFundingOpportunitiesAll" panel
     Then I do not see value "Record id" for title "Announcement Name" inside table "ActiveFundingOpportunitiesAll"
 
-  @createdAnnouncementDeletionByOtherUserFA @announcement @all
+  @createdAnnouncementDeletionByOtherUserFA
   Scenario Outline: Validate that other users are not able to delete created announcement
-    Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
     When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I perform quick search for "Record id" in "ActiveFundingOpportunitiesAll" panel
     Then I cannot see row level action button "Delete" against "Record id" in flex table with id "ActiveFundingOpportunitiesAll"
     Examples:
-      | Announcement Type | User |
-      | Formula           | PM   |
+      | User |
+      | PM   |
 
-  @announcementCreateCompetitiveCheckUnderDraftFormulaListViewFA @announcement @all
-  Scenario Outline: Validate that Created Competitive announcement will not reflect under Draft Formula announcement list view
-    Given I create a "<Automation type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
+  @announcementCreateFormulaCheckUnderDraftDirectedListViewFA
+  Scenario: Validate that Created Competitive announcement will not reflect under Draft Formula announcement list view
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Draft Announcements" in "ActiveFundingOpportunitiesFormula"
-    When I perform quick search for "Record Id" in "ActiveFundingOpportunitiesFormula" panel
-    Then I do not see value "Record Id" for title "EGMS ID" inside table "ActiveFundingOpportunitiesFormula"
-    Examples:
-      | Announcement Type |
-      | Formula           |
+    And I click toggle button to select "Draft Announcements" in "ActiveFundingOpportunitiesAll"
+    When I perform quick search for "Record Id" in "ActiveFundingOpportunitiesAll" panel
+   Then I do not see values "Record Id" and "Announcement Name" inside table
 
-  @announcementCreateCompetitiveCheckUnderDirectedDraftListViewFA @announcement @all
-  Scenario Outline: Validate that Created Competitive announcement will not reflect under Draft Directed announcement list view
-    Given I create a "<Automation type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
+  @announcementCreateCompetitiveCheckUnderDirectedDraftListViewFA
+  Scenario: Validate that Created Competitive announcement will not reflect under Draft Directed announcement list view
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Announcements" in "ActiveFundingOpportunities"
     When I perform quick search for "Record Id" in "ActiveFundingOpportunitiesFormula" panel
     Then I do not see value "Record Id" for title "EGMS ID" inside table "ActiveFundingOpportunitiesFormula"
-    Examples:
-      | Announcement Type |
-      | Formula           |
 
-  @announcementEditionByOtherUserFA @announcement @all
+  @announcementEditionByOtherUserFA
   Scenario Outline: Validate that other users are not able to edit created announcement
-    Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
     When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I perform quick search for "Record id" in "ActiveFundingOpportunitiesAll" panel
     Then I cannot see row level action button "Edit" against "Record id" in flex table with id "ActiveFundingOpportunitiesAll"
     Examples:
-      | Announcement Type | User |
-      | Formula           | PM   |
+    | User |
+    | PM   |
 
-  @createdAnnouncementEditionOnlyOwnerFA @announcement @all
-  Scenario Outline: Validate that only owner can able to edit created status announcement
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
+  @createdAnnouncementEditionOnlyOwnerFA
+  Scenario: Validate that only owner can able to edit created status announcement
     When I navigate to "Announcements" tab
     And I perform quick search for "Record id" in "ActiveFundingOpportunitiesAll" panel
     When I click on "Edit" icon for "Record id" inside flex table with id "ActiveFundingOpportunitiesAll"
     Then I can see top right button "Save" in page detail
-    Examples:
-      | Announcement Type |
-      | Formula           |
 
-  @34221 @34222 @announcementEditionFA @announcement @all
-  Scenario Outline: Edition of an Announcement
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
+  @34221 @34222 @announcementEditionFA
+  Scenario: Edition of an Announcement
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
-    Examples:
-      | Announcement Type |
-      | Formula           |
-
-  @37029 @announcementContactAssociationFA @announcement @all
+ 
+  @37029 @announcementContactAssociationFA @smoke
   Scenario Outline: Contact association to an Announcement
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
     When I click "Add" after selection of "<Contact>" in the table "AssociateAnnouncementContacts"
     And I close Modal
     Then I see that "<Contact>" has been added in flextable with Id "AnnouncementContacts"
     Examples:
-      | Announcement Type | Contact        |
-      | Formula           | Automation EXE |
+     | Contact        |
+     | Automation EXE |
 
-  @announcementContactDissociationFA @announcement @all
+  @announcementContactDissociationFA
   Scenario Outline: Validate the dissociation of contact to the Announcement
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
     When I click "Add" after selection of "<Contact>" in the table "AssociateAnnouncementContacts"
     When I click on "Remove" icon for "<Contact>" inside flex table with id "announcement::contactTableId"
-    Then I do not see value "<Contact>" for title "Name" inside table "announcement::contactTableId"
+    Then I do not see values "Record Id" and "Contact" inside table
     Examples:
-      | Announcement Type | Contact        |
-      | Formula           | Automation EXE |
+      | Contact        |
+      | Automation EXE |
 
-  @34760 @announcementFormulaInviteApplicantFA @announcementFormula @all
+  @34760 @announcementFormulaInviteApplicantFA @announcementFormula @smoke
   Scenario: Amount addition to Invited applicant association to an Announcement
-    Given I create a "Formula" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
@@ -198,38 +107,22 @@ Feature: Validate all scenarios in the Announcement tab
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
     Then I see that "SAN DIEGO ELECTRICAL TRAINING TRUST" has been added in flextable with Id "announcement::formulaInvitedApplicatsTableId"
 
-  @34769 @announcementFundingAccountAssociationFA @announcement @all
+  @34769 @announcementFundingAccountAssociationFA
   Scenario Outline: Funding Account association to an Announcement
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "<EGMS Id>" in the table "SelectAnnFundingAccounts"
     And I close Modal
     When I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-      | Funding Account                         | Pre-Encumbrance |
-      | Execution Funding Source for Automation | 100             |
+      | Funding Account  | Pre-Encumbrance |
+      | FA--154          | 100             |
     Then I see that "<EGMS Id>" has been added in flextable with Id "flexGridAnnouncementFundingAccountGrantor"
     Examples:
-      | Announcement Type | EGMS Id                                 |
-      | Formula           | Execution Funding Source for Automation |
+      | Announcement Type | EGMS Id     |
+      | Formula           | FA--154     |
 
-  @announcementFADissociationFA @announcement @all
+  @announcementFADissociationFA
   Scenario Outline: Funding Account dissociation to an Announcement
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "announcement::fundingAccountsTableId"
     When I click "Add" after selection of "<EGMS Id>" in the table "SelectAnnFundingAccounts"
@@ -237,19 +130,11 @@ Feature: Validate all scenarios in the Announcement tab
     When I click on "Remove" icon for "<EGMS Id>" inside flex table with id "announcement::fundingAccountsTableId"
     Then I do not see value "<EGMS Id>" for title "EGMS ID" inside table "announcement::fundingAccountsTableId"
     Examples:
-      | Announcement Type | EGMS Id |
-      | Formula           | FA--125 |
+     | EGMS Id |
+     | FA--154 |
 
-  @34771 @announcementBudgetPeriodAdditionFA @announcement @all
-  Scenario Outline: Budget Period Addition to an Announcement
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
+  @34771 @announcementBudgetPeriodAdditionFA
+  Scenario: Budget Period Addition to an Announcement
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -257,115 +142,49 @@ Feature: Validate all scenarios in the Announcement tab
       | Budget Period Name | Start Date | End Date |
       | BP01               | 0          | 500      |
     Then I see that "BP01" has been added in flextable with Id "flexGridAnnouncementBudgetPeriod"
-    Examples:
-      | Announcement Type |
-      | Formula           |
 
-  @announcementBudgetPeriodDissociationFA @announcement @all
-  Scenario Outline: Validate the dissociation of Budget Period to the Announcement
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
+  @announcementBudgetPeriodDissociationFA
+  Scenario: Validate the dissociation of Budget Period to the Announcement
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I click on "Remove" icon for "BP01" inside flex table with id "flexGridAnnouncementBudgetPeriod"
     Then I do not see value "BP01" for title "Budget Period Name" inside table "flexGridAnnouncementBudgetPeriod"
-    Examples:
-      | Announcement Type |
-      | Formula           |
 
-  @34775 @announcementFocusAreaAssociationFA @announcement @all
-  Scenario Outline: Validate the association of Focus Area to Announcement
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
+  @34775 @announcementFocusAreaAssociationFA
+  Scenario: Validate the association of Focus Area to Announcement
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementServiceArea1"
-    When I click "Add" after selection of "Execution Focus Area for Automation1" in the table "SelectAnnouncementServiceArea1"
+    When I click "Add" after selection of "Automation Permanent Focus Area" in the table "SelectAnnouncementServiceArea1"
     And I close Modal
-    Then I see that "Execution Focus Area for Automation1" has been added in flextable with Id "AnnouncementServiceArea1"
-    Examples:
-      | Announcement Type |
-      | Formula           |
+    Then I see that "Automation Permanent Focus Area" has been added in flextable with Id "AnnouncementServiceArea1"
 
-  @34774 @announcementObjectiveAssociationFA @announcement @all
-  Scenario Outline: Validate the association of objective to the Announcement
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
+  @34774 @announcementObjectiveAssociationFA
+  Scenario: Validate the association of objective to the Announcement
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
     When I click "Add" after selection of "Automation Announcement Objective" in the table "SelectAnnGoals"
     And I close Modal
     Then I see that "Automation Announcement Objective" has been added in flextable with Id "AnnouncementGranteeStrategicGoalsObjectives"
-    Examples:
-      | Announcement Type |
-      | Formula           |
 
-  @announcementObjectiveDissociationFA @announcement @all
-  Scenario Outline: Validate the dissociation of objective to the Announcement
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
+  @announcementObjectiveDissociationFA
+  Scenario: Validate the dissociation of objective to the Announcement
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
     When I click "Add" after selection of "Automation Announcement Objective" in the table "SelectAnnGoals"
     And I close Modal
     When I click on "Remove" icon for "Automation Announcement Objective" inside flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
     Then I do not see value "Automation Announcement Objective" for title "EGMS ID" inside table "AnnouncementGranteeStrategicGoalsObjectives"
-    Examples:
-      | Announcement Type |
-      | Formula           |
 
-  @34773 @announcementKPIAssociationFA @announcement @all
-  Scenario Outline: Validate the association of KPI for the announcement
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
+  @34773 @announcementKPIAssociationFA
+  Scenario: Validate the association of KPI for the announcement
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementKeyOutcomes"
-    When I click "Add" after selection of "Automation KPI" in the table "SelectAnnKPIs"
+    When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "SelectAnnKPIs"
     And I close Modal
-    Then I see that "Automation KPI" has been added in flextable with Id "AnnouncementKeyOutcomes"
-    Examples:
-      | Announcement Type |
-      | Competitive       |
+    Then I see that "Automation Permanent KPI for Regression" has been added in flextable with Id "AnnouncementKeyOutcomes"
 
-  @35002 @announcementAttachmentChecklistFA @announcement @all
-  Scenario Outline: Validate the attachment checklist of the announcement
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
+  @35002 @announcementAttachmentChecklistFA
+  Scenario: Validate the attachment checklist of the announcement
     When I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "inlineEditGridAnnouncementChecklists" by clicking "Add" :
       | Description                 | Required  | Applies To | Status |
@@ -374,36 +193,9 @@ Feature: Validate all scenarios in the Announcement tab
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
     Then I see that "Active" has been added in flextable with Id "inlineEditGridAnnouncementChecklists"
-    Examples:
-      | Announcement Type |
-      | Formula      |
 
-  @announcementReviewStepsValidateFA @announcement @all @redTag
-  Scenario Outline: Validate the review steps for the announcement
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
-    When I navigate to "Setup" sub tab
-    Then I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-    Examples:
-      | Announcement Type |
-      | Formula           |
-
-  @34780 @announcementApproverSelectionFA @announcement @all
-  Scenario Outline: Validate the assignment of Approvers for the Announcement
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
+  @34780 @announcementApproverSelectionFA
+  Scenario: Validate the assignment of Approvers for the Announcement
     When I navigate to "Setup" sub tab
     Then I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     When I navigate to "Responsibilities" sub tab
@@ -417,62 +209,28 @@ Feature: Validate all scenarios in the Announcement tab
     When I fill in the "Automation EXE" for the Approver details
     And I switch to Parent frame
     Then I see that "Automation EXE" has been added in flextable with Id "GrantorAnnouncementRolesandResponsibilities"
-    Examples:
-      | Announcement Type |
-      | Formula           |
 
-  @34232 @announcementReviewerAssignmentFA @announcement @all
-  Scenario Outline: Validate the assignment of Reviewer for the Announcement
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
-    When I navigate to "Responsibilities" sub tab
+  @34232 @announcementReviewerAssignmentFA
+  Scenario: Validate the assignment of Reviewer for the Announcement
+    Given I navigate to "Responsibilities" sub tab
     And I click on top right button "New" in flex table with id "flexGridApproverRoles"
     When I enter "Reviewer" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save"
     When I close Modal
     Then I see that "Automation FO" has been added in flextable with Id "flexGridApproverRoles"
-    Examples:
-      | Announcement Type |
-      | Formula           |
 
-
-  @34778 @announcementReviewerInitiationFA @announcement @all
-  Scenario Outline: Validate the Reviewer initiation for the Announcement
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
-    When I navigate to "Responsibilities" sub tab
+  @34778 @announcementReviewerInitiationFA
+  Scenario: Validate the Reviewer initiation for the Announcement
+    Given I navigate to "Responsibilities" sub tab
     And I click on top right button "New" in flex table with id "flexGridApproverRoles"
     When I enter "Reviewer" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save"
     When I close Modal
     And I click on "Send for Review" icon for "Created" inside flex table with id "flexGridApproverRoles"
     Then I see that "Sent for Review" has been added in flextable with Id "flexGridApproverRoles"
-    Examples:
-      | Announcement Type |
-      | Formula           |
 
-  @34779 @announcementReviewCompleteFA @announcement @all
+  @34779 @announcementReviewCompleteFA
   Scenario Outline: Validate the review for the Announcement
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
     Given I assign, initiate a reviewer from sheet "Reviewer" in excel "Announcement_Field_Values.xlsx"
       | Actions             | Step 1           | Step 2                | Step 3 |
       | Reviewer Navigation | Responsibilities |                       |        |
@@ -504,36 +262,17 @@ Feature: Validate all scenarios in the Announcement tab
       | User | Flextable Name | Announcement Type | Active Funding Opportunities id   |
       | FO   | Peer Reviewers | Formula           | ActiveFundingOpportunitiesFormula |
 
-  @35003 @announcementAddAttachmentFA @announcement @all
-  Scenario Outline: Validate the attachment for an Announcement
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
-    When I navigate to "Attachments" sub tab
+  @35003 @announcementAddAttachmentFA
+  Scenario: Validate the attachment for an Announcement
+    Given I navigate to "Attachments" sub tab
     And I click on top right button "Add" in flex table with id "a150b000003epC4AAI"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
     And I close Modal
     Then I see that "Funding Opportunity Announcement" has been added in flextable with Id "a150b000003epC4AAI"
-    Examples:
-      | Announcement Type |
-      | Formula           |
 
   @reviewStepsBeforeSubmitForApprovalFA @announcement
   Scenario Outline: Validate the Review steps of Announcement before submit for Approval
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
-    And I navigate to "Setup" sub tab
+    Given I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
     When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
@@ -645,34 +384,26 @@ Feature: Validate all scenarios in the Announcement tab
 
   @34461 @submittingAnnouncementForApprovalFA @announcement @CHECKThenStepFailure
   Scenario Outline: Validate the submission of Announcement for Approval
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--125"
+   And I associate "1" records "FA--154"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--125         | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,02534,SPO-0072"
+    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
-      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
-      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
@@ -826,36 +557,28 @@ Feature: Validate all scenarios in the Announcement tab
       | Announcement Type | Active Funding Opportunities id   |
       | Formula           | ActiveFundingOpportunitiesFormula |
 
-  @submittedAnnouncementDeletionFA @announcement @all @checkBugetIssue
+  @submittedAnnouncementDeletionFA @checkBugetIssue
   Scenario Outline: Validate that only record owner cannot delete Submitted for Approval status announcements
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--125"
+   And I associate "1" records "FA--154"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--125         | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,02534,SPO-0072"
+    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
-      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
-      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
@@ -1002,45 +725,38 @@ Feature: Validate all scenarios in the Announcement tab
       | 1              | Question1 | Written | 100       |
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates" 
+    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
+    When I get the "EGMS ID" 
     And I click on "Submit For Approval" in the page details
     And I navigate to "Announcements" tab
     When I perform quick search for "Record id" in "ActiveFundingOpportunitiesAll" panel
     Then I cannot see row level action button "Delete" against "Record id" in flex table with id "ActiveFundingOpportunitiesAll"
     Examples:
-      | Announcement Type |
-      | Formula           |
-
-  @announcementForPastApplicationDueDateFA @announcement @all
-  Scenario Outline:    Validate that user can not enter application due date as past date
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
-    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+      | Announcement Type | Active Funding Opportunities id   |
+      | Formula           | ActiveFundingOpportunitiesFormula |
+      
+  @announcementForPastApplicationDueDateFA
+  Scenario Outline: Validate that user can not enter application due date as past date
+     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--125"
+   And I associate "1" records "FA--154"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--125         | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,02534,SPO-0072"
+    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
-      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
-      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
@@ -1081,6 +797,10 @@ Feature: Validate all scenarios in the Announcement tab
       | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
     Given I click on "Complete Review" in the page details
     And I click on "Edit" in the page details
+        And I navigate to "Overview" sub tab 
+    And I enter values into fields
+      | Value            | Fields                        |
+      | -1               | fieldApplicationDueDate__c    |  
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
     And I navigate to "Setup" sub tab
@@ -1187,43 +907,33 @@ Feature: Validate all scenarios in the Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
+    When I get the "EGMS ID"                   
     And I click on "Submit For Approval" in the page details
     Then I see the following messages in the page details :
       | Overview Tab - Application Due Date cannot be in the past. |
     Examples:
-      | Announcement Type |
-      | Formula           |
+      | Announcement Type | Active Funding Opportunities id   |
+      | Formula           | ActiveFundingOpportunitiesFormula |
 
-  @announcementWithBlankBudgetPeriodFA @announcement @all
+  @announcementWithBlankBudgetPeriodFA
   Scenario Outline:    Validate that user should not submit announcement with blank budget period dates
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--125"
+   And I associate "1" records "FA--154"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--125         | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
-    And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-      | Budget Period Name | Start Date | End Date |
-      | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,02534,SPO-0072"
+    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
-      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
-      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
@@ -1371,43 +1081,36 @@ Feature: Validate all scenarios in the Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates" 
+    When I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
     Then I see the following messages in the page details :
       | Financial Tab - Correct Budget Periods Start Date and End Dates. Budget Periods should be continuous and together should form a Project Period. |
     Examples:
-      | Announcement Type |
-      | Formula           |
+      | Announcement Type | Active Funding Opportunities id   |
+      | Formula           | ActiveFundingOpportunitiesFormula |
 
-  @34763 @34765 @34766 @announcementApprovalFA @announcement @all
+  @34763 @34765 @34766 @announcementApprovalFA
   Scenario Outline: Validate the approval of an Announcement
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--125"
+   And I associate "1" records "FA--154"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--125         | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,02534,SPO-0072"
+    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
-      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
-      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
@@ -1555,20 +1258,21 @@ Feature: Validate all scenarios in the Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
+    When I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
-    Given I re-login to "As a Grantor" app as "Automation PM" user
+    Given I re-login to "As a Grantor" app as "Automation PM" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
     And I click on "Start" icon for "Record id" inside table
     When I click on "Approve" on the approval decision box
-    And I re-login to "As a Grantor" app as "Automation FO" user
+    And I re-login to "As a Grantor" app as "Automation FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
     And I click on "Start" icon for "Record id" inside table
     When I click on "Approve" on the approval decision box
-    And I re-login to "As a Grantor" app as "Automation EXE" user
+    And I re-login to "As a Grantor" app as "Automation EXE" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
@@ -1579,36 +1283,28 @@ Feature: Validate all scenarios in the Announcement tab
       | Announcement Type | Active Funding Opportunities id   |
       | Formula           | ActiveFundingOpportunitiesFormula |
 
-  @announcementPendingTaskPostApprovalFA @announcement @all
+  @announcementPendingTaskPostApprovalFA @smoke
   Scenario Outline: Validate that after approval of an Announcement task get deleted from pending task table.
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--125"
+   And I associate "1" records "FA--154"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--125         | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,02534,SPO-0072"
+    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
-      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
-      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
@@ -1755,7 +1451,8 @@ Feature: Validate all scenarios in the Announcement tab
       | 1              | Question1 | Written | 100       |
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates" 
+    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
+    When I get the "EGMS ID" 
     And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
@@ -1767,39 +1464,31 @@ Feature: Validate all scenarios in the Announcement tab
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
     Examples:
-      | Announcement Type |
-      | Formula           |
+      | Announcement Type | Active Funding Opportunities id   |
+      | Formula           | ActiveFundingOpportunitiesFormula |
 
-  @announcementCompletedTaskPostApprovalFA @announcement @all
+  @announcementCompletedTaskPostApprovalFA
   Scenario Outline: Validate that after approval of an Announcement task get added to its completed task table.
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--125"
+   And I associate "1" records "FA--154"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--125         | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,02534,SPO-0072"
+    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
-      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
-      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
@@ -1959,6 +1648,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
+    When I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
@@ -1970,39 +1660,31 @@ Feature: Validate all scenarios in the Announcement tab
     When I perform quick search for "Record Id" in "PhaseCompletedTasks" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "PhaseCompletedTasks"
     Examples:
-      | Announcement Type |
-      | Formula           |
+      | Announcement Type | Active Funding Opportunities id   |
+      | Formula           | ActiveFundingOpportunitiesFormula |
 
-  @announcementSendBackToOwnerFA  @announcement @all
+  @announcementSendBackToOwnerFA 
   Scenario Outline: Validate the send back functionality of an Announcement
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--125"
+   And I associate "1" records "FA--154"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--125         | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,02534,SPO-0072"
+    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
-      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
-      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
@@ -2150,8 +1832,9 @@ Feature: Validate all scenarios in the Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
+    When I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
-    Given I re-login to "As a Grantor" app as "PM" user
+    Given I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
@@ -2159,39 +1842,31 @@ Feature: Validate all scenarios in the Announcement tab
     When I click on "Send Back" on the approval decision box
     Then I see status in Progress-bar is "Created" and is "green"
     Examples:
-      | Announcement Type |
-      | Formula           |
+      | Announcement Type | Active Funding Opportunities id   |
+      | Formula           | ActiveFundingOpportunitiesFormula |
 
-  @announcementSendBackPendingTaskToOwnerFA @announcement @all
+  @announcementSendBackPendingTaskToOwnerFA
   Scenario Outline: Validate that after send back from approvers owner should not get pending task
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--125"
+   And I associate "1" records "FA--154"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--125         | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,02534,SPO-0072"
+    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
-      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
-      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
@@ -2324,51 +1999,44 @@ Feature: Validate all scenarios in the Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
+    When I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
       | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
       | Approval   | Start         | Send Back     |                   |
-    And I re-login to "As a Grantor" app as "<User>" user
+    And I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
     Examples:
-      | Announcement Type |
-      | Formula           |
+      | Announcement Type | Active Funding Opportunities id   |
+      | Formula           | ActiveFundingOpportunitiesFormula |
 
-  @announcementPostSendBackCheckFieldHistoryFA  @announcement @all
+  @announcementPostSendBackCheckFieldHistoryFA 
   Scenario Outline: Validate the field history after send back of an announcement
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--125"
+   And I associate "1" records "FA--154"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--125         | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,02534,SPO-0072"
+    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
-      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
-      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
@@ -2501,6 +2169,7 @@ Feature: Validate all scenarios in the Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
+    When I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
@@ -2510,39 +2179,31 @@ Feature: Validate all scenarios in the Announcement tab
     When I navigate to "History" sub tab
     Then I see value "Created" for title "New Value" inside table "History"
     Examples:
-      | Announcement Type |
-      | Formula           |
-
-  @announcementApprovalRejectionFA @announcement @all
+      | Announcement Type | Active Funding Opportunities id   |
+      | Formula           | ActiveFundingOpportunitiesFormula |
+      
+  @announcementApprovalRejectionFA
   Scenario Outline: Validate the reject functionality of an Announcement
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--125"
+   And I associate "1" records "FA--154"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--125         | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,02534,SPO-0072"
+    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
-      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
-      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
@@ -2690,48 +2351,41 @@ Feature: Validate all scenarios in the Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates" 
+     When I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
-    Given I re-login to "As a Grantor" app as "PM" user
+    Given I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     And I click on "Start" icon for "Record Id" inside table
-    When I click on "Reject" on the approval decision box
+    When I click on "Disapprove" on the approval decision box
     Then I see status in Progress-bar is "Rejected" and is "Red"
     Examples:
-      | Announcement Type |
-      | Formula           |
+      | Announcement Type | Active Funding Opportunities id   |
+      | Formula           | ActiveFundingOpportunitiesFormula |
 
-  @announcementRejectPendingTaskForNextApproverFA @announcement @all
+  @announcementRejectPendingTaskForNextApproverFA
   Scenario Outline: Validate that after rejection from 1st approver, 2nd user should not get pending task
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--125"
+   And I associate "1" records "FA--154"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--125         | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,02534,SPO-0072"
+    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
-      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
-      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
@@ -2864,36 +2518,28 @@ Feature: Validate all scenarios in the Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
+    When I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
       | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
-      | Approval   | Start         | Reject        |                   |
+      | Approval   | Start         | Disapprove         |   Continue                |
     When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "PhasePendingTasks" panel
     Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
     Examples:
-      | Announcement Type | User |
-      | Formula           | FO   |
+      | Announcement Type | Active Funding Opportunities id   | User |
+      | Formula           | ActiveFundingOpportunitiesFormula |  FO  |
 
-  @announcementPostRejectPendingTaskForUserFA @announcement @all
+  @announcementPostRejectPendingTaskForUserFA
   Scenario Outline: Validate that after rejection of an Announcement task get deleted from pending task table.
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
-    And I get the "EGMS ID"
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--77"
+    And I associate "1" records "FA--154"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
@@ -2905,11 +2551,11 @@ Feature: Validate all scenarios in the Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date  | End Date |
       | BP01               | 50          | 500      |
-    Given I associate "3" records "Automation EXE,02534,SPO-0072"
+    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
-      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
-      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
@@ -3057,50 +2703,43 @@ Feature: Validate all scenarios in the Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates" 
+    When I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
       | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
-      | Approval   | Start         | Reject        |                   |
+      | Approval   | Start         | Disapprove      | Continue          |
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
     Examples:
-      | Announcement Type |
-      | Formula           |
+      | Announcement Type | Active Funding Opportunities id   | User |
+      | Formula           | ActiveFundingOpportunitiesFormula |  FO  |
 
-  @announcementPostRejectCompletedTaskForUserFA @announcement @all
+  @announcementPostRejectCompletedTaskForUserFA
   Scenario Outline: Validate that after rejection of an Announcement task get added to it's completed task table.
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--125"
+   And I associate "1" records "FA--154"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--125         | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,02534,SPO-0072"
+    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
-      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
-      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
@@ -3233,50 +2872,43 @@ Feature: Validate all scenarios in the Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
+    When I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
       | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
-      | Approval   | Start         | Reject        |                   |
+      | Approval   | Start         | Disapprove        |   Continue                |
     When I navigate to "Announcements" tab
     And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhaseCompletedTasks" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "PhaseCompletedTasks"
     Examples:
-      | Announcement Type |
-      | Formula           |
+      | Announcement Type | Active Funding Opportunities id   | User |
+      | Formula           | ActiveFundingOpportunitiesFormula |  FO  |
 
-  @announcementPostRejectCheckFieldHistoryFA @announcement @all
+  @announcementPostRejectCheckFieldHistoryFA
   Scenario Outline: Validate the field history after rejection of an announcement
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--125"
+   And I associate "1" records "FA--154"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--125         | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,02534,SPO-0072"
+    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
-      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
-      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
@@ -3409,48 +3041,41 @@ Feature: Validate all scenarios in the Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
+    When I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
       | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
-      | Approval   | Start         | Reject        |                   |
+      | Approval   | Start         | Disapprove       |     Continue              |
     When I navigate to "History" sub tab
     Then I see value "Rejected" for title "New Value" inside table "History"
     Examples:
-      | Announcement Type |
-      | Formula           |
+      | Announcement Type | Active Funding Opportunities id   | User |
+      | Formula           | ActiveFundingOpportunitiesFormula |  FO  |
 
-  @announcementPostRejectionCheckInListViewFA @announcement @all
+  @announcementPostRejectionCheckInListViewFA
   Scenario Outline: Validate the rejected announcement will reflect under "Rejected Announcements" list view
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "Creation" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--125"
+   And I associate "1" records "FA--154"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--125         | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 30         | 365      |
-    Given I associate "3" records "Automation EXE,02534,SPO-0072"
+    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
-      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
-      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
@@ -3597,50 +3222,43 @@ Feature: Validate all scenarios in the Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
+    When I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
       | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
-      | Approval   | Start         | Reject        |                   |
+      | Approval   | Start         | Disapprove        |     Continue              |
     When I navigate to "Announcements" tab
     And I click toggle button to select "Rejected Announcements" in "ActiveFundingOpportunitiesAll"
     When I perform quick search for "Record Id" in "ActiveFundingOpportunitiesAll" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "ActiveFundingOpportunitiesAll"
     Examples:
-      | Announcement Type |
-      | Formula           |
+      | Announcement Type | Active Funding Opportunities id   | User |
+      | Formula           | ActiveFundingOpportunitiesFormula |  FO  |
 
-  @34462 @publishingFormulaAnnouncementFA  @announcementFormulaHappyPath @announcement @all
+  @34462 @publishingFormulaAnnouncementFA  @announcementFormulaHappyPath @smoke
   Scenario Outline: Validate the activation of Internal Program
-    Given I create a "<Announcement Type>" Announcement as user "EXE" from sheet "FormulaAnnouncement" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
-    And I click on "Save" in the page details
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--125"
+   And I associate "1" records "FA--154"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--125         | 100             |
+      | FA--154         | 100             |
      When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date  | End Date |
       | BP01               | 50          | 500      |
-    Given I associate "3" records "Automation EXE,02534,SPO-0072"
+    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
-      | Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1 |
-      | Associate 3 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
@@ -3797,6 +3415,7 @@ Feature: Validate all scenarios in the Announcement tab
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
     And I click on "Save" in the page details
+    When I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
     Given "3" Approvers "PM,FO,EXE" approve the record "Record id"
       | Actions    | Step 1        | Step 2        | Step 3            |
