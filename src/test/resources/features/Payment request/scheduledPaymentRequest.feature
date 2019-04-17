@@ -1,19 +1,13 @@
-@scheduledPaymentRequest
+@scheduledPaymentRequest @Regression @all
 Feature: Scheduled Payment Request Happy Path
 
-  Background: Navigate to award
-    When I am on "SUBPORTAL" portal
-    Given I login and view the "Active" award "Record Id" with name "Automation Execution Award For Regression" as User "SPI"
-      | Actions    | Step 1        | Step 2                   | Step 3               | Step 4                     |
-      | Navigation | Grants Portal | Grants                   | Grants and Subawards | Grants, Awards, Amendments |
-      | FlexTable  | Grants        | RecipientActiveGrants    | View                 |                            |
-      | Subaward   | Subawards     | RecipientsRelatedAwards1 | View                 | Active Subaward            |
-
-  @scheduledReimbursementHappyPath
+  @scheduledReimbursementPaymentRequestHappyPath
   Scenario: Scheduled Payment Request happy path
-    When I navigate to "Requests" sub tab
-    And I click on "View" icon for "Reimbursement" inside flex table with id "flexGridEnhancedDivIdRecipientsAwardPaymentRequests" with wait for record
-    When I get the "EGMS ID"
+    When I am on "SUBPORTAL" portal
+    Given I delete the record "Automation Execution Award For Regression" from the object "Payment Request"
+    When I create a post award record "PaymentRequest" for the Award  "Automation Execution Award For Regression"
+    And I pause execution for "6" seconds
+    When I get the EGMS ID for record "Automation Execution Award For Regression" having field name "Title__c" from the object "PaymentRequest__c"
     Given User "SPI" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2        | Step 3    |
       | Navigation | Monitoring        | Grants Portal | SUBPORTAL |

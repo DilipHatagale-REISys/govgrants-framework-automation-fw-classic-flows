@@ -57,13 +57,34 @@ public class ProjectWebServices {
         }
     }
 
-    public Response automateGetApi(String recordName, String fieldName, String objectType){
+    /*
+     * calls the api to get the Record Id.
+     * @param recordName - the name or title of the record
+     * @param fieldName - the name of the field that stores the title like e.g. Title__c.
+     * @param objectType - the object API name of the record from which you want to get the EGMS ID
+     */
+    public Response automateGetApi(String recordName, String fieldName, String objectType) {
         getAuthToken();
         String finalEndPoint = endPoint + "/services/apexrest/productAutomationGetFieldValue?objectType=" + objectType
-                + "&fieldValue=" + recordName+"&fieldName="+fieldName;
-        Response response = apiCall.getCall( finalEndPoint, "Authorization", "Bearer " + tokenString);
+                + "&fieldValue=" + recordName + "&fieldName=" + fieldName;
+        Response response = apiCall.getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
         response.prettyPrint();
         assertStatusCode(response);
         return response;
+    }
+
+    /*
+     * calls the api which will create post award records currently accepts PaymentRequest, ProgressReport, Closeout.
+     *  @param objectType - This is the batch job type. Currently supports 3 different values – PaymentRequest, ProgressReport, Closeout.
+     *  @param recordName - : the name of the award (for payment/progress) or grant (for closeout) for which you want to run the batch job.
+     */
+    public void automationBatchExecuteApi(String objectType, String recordName) {
+        getAuthToken();
+        String finalEndPoint = endPoint + "/services/apexrest/productAutomationRunBatchJob?type=" + objectType
+                + "&recordName=" + recordName;
+        Response response = apiCall.postCall(null, null, finalEndPoint, "Authorization", "Bearer " + tokenString,
+                null);
+        response.prettyPrint();
+        assertStatusCode(response);
     }
 }
