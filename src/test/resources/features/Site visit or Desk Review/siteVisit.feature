@@ -382,7 +382,6 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "<Type>" in "PhasePendingTasks" panel
     And I click on "Start" icon for "<Type>" inside table
     When I navigate to "Reports and Outcomes" sub tab
-    And I pause execution
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "siteVisits::receipientTableId" by clicking "New" :
       | Title                               | Description            | Status      | Due Date   | Assigned To    |
@@ -524,7 +523,6 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "<Type>" in "PhasePendingTasks" panel
     And I click on "Start" icon for "<Type>" inside table
     When I navigate to "Reports and Outcomes" sub tab
-    And I pause execution
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "siteVisits::receipientTableId" by clicking "New" :
       | Title                               | Description            | Status      | Due Date   | Assigned To    |

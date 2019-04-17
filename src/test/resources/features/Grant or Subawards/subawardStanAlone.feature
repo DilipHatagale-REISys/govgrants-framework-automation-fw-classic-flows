@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in the Stand Alone Award and Grant
 
   Background: Create Award
-   # Given I delete the record "Automation Grant Award for Post Award" from the object "Grant"
+    Given I delete the record "Automation Grant Award for Post Award" from the object "Grant"
     And I create a Grant as user "EXE" from sheet "Grant_Creation" in excel "Award_Field_Values.xlsx"
       | Actions    | Step 1               | Step 2       | Step 3                        |
       | Navigation | As a Grantor         | Grants       | Grants, Subaward & Amendments |
@@ -16,7 +16,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 
   @awardCreation  @smoke
   Scenario: Creation of an award
-    Then I see status in Progress-bar is "Created" and is "green"
+   Then I see status in Progress-bar is "Created" and is "green"
 
   @awardStandAloneEdition 
   Scenario: Edition of an award

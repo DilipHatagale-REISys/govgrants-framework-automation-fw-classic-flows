@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in the Amendment Request
 
   Background: Setup data
-    #Given I delete the record "Automation Grant Award for Post Award" from the object "Amendment Request"
+    Given I delete the record "Automation Grant Award for Post Award" from the object "Amendment Request"
     Given I login and view the "Active" award "Activated" with name "Automation Grant Award for Post Award" as User "PM"
       | Actions    | Step 1       | Step 2         | Step 3               | Step 4                        |
       | Navigation | As a Grantor | Grants         | Grants and Subawards | Grants, Subaward & Amendments |
@@ -24,7 +24,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    #And I click on "Save" in the page details
+    And I click on "Save" in the page details
     When I click on "Edit" in the page details
     And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -36,12 +36,12 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    #And I click on "Save" in the page details
+    And I click on "Save" in the page details
     When I click on top right button "Associate" in flex table with id "flexGridGrantorAmendmentKeyOutcomes"
     And I enter values into fields
-      | Value                       | Field        |
+      | Value                                   | Field        |
       | Automation Permanent KPI for Regression | MasterKPI__c |
-      | 10                          | Target__c    |
+      | 10                                      | Target__c    |
     When I click modal button "Save"
     And I close Modal
     Then I see that "Automation Permanent KPI for Regression" has been added in flextable with Id "flexGridGrantorAmendmentKeyOutcomes"
@@ -52,7 +52,7 @@ Feature: Validate all scenarios in the Amendment Request
    And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
    When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
    And I click modal button "Save and Continue"
-   #And I click on "Save" in the page details
+   And I click on "Save" in the page details
    When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
    And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
    When I switch to Parent frame
@@ -66,7 +66,7 @@ Feature: Validate all scenarios in the Amendment Request
     #And I click modal button "Save and Continue"
     #And I click on "Save" in the page details
     #When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
-    #And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
+    #And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectyyAmendmentGoals"
     #When I switch to Parent frame
     #When I click on "Remove" icon for "Permanent Objective Automation" inside flex table with id "GrantorAmendmentGoalsObjectives"
     #Then I do not see values "SPO-0130" and "Permanent Objective Automation" inside table
@@ -77,18 +77,14 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    #And I click on "Save" in the page details
-    When I navigate to "Responsibilities" sub tab
-    And I click on "Edit" icon for "Program Approver" inside flex table with id "AmendmentreqRolesAndResponsibilities"
-    When I fill in the "Automation PM" for the Approver details
-    And I close Modal
-    When I click on "Edit" icon for "Fiscal Approver" inside flex table with id "AmendmentreqRolesAndResponsibilities"
-    And I fill in the "Automation FO" for the Approver details
-    And I close Modal
-    And I click on "Edit" icon for "Executive Approver" inside flex table with id "AmendmentreqRolesAndResponsibilities"
-    When I fill in the "Automation EXE" for the Approver details
-    And I close Modal
-    Then I see that "Automation EXE" has been added in flextable with Id "AmendmentreqRolesAndResponsibilities"
+    And I click on "Save" in the page details
+      Given I navigate to "Responsibilities" sub tab
+     And I edit the following rows inline in flex table with id "flexGridAmendmentreqRolesAndResponsibilities" by clicking "Edit" :
+      | Role               | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+    Then I see that "Automation EXE" has been added in flextable with Id "flexGridAmendmentreqRolesAndResponsibilities"
 
   @addAttachmentToSOWAmendmentRequest 
   Scenario: Add attachment to Amendment Request
@@ -96,7 +92,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    #And I click on "Save" in the page details
+    And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add" in flex table with id "a150b000003epeQAAQ"
     When I choose the file "Announcement_Field_Values.xlsx" to upload for "Attachment" of type "Terms and Conditions"
@@ -109,7 +105,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-   # And I click on "Save" in the page details
+    And I click on "Save" in the page details
     And I get the "EGMS ID"
     Given I complete the fields from the sheet "ScopeOfWork_Edition" in excel "AmendmentRequest_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -121,12 +117,12 @@ Feature: Validate all scenarios in the Amendment Request
       | 10                   | Target__c    |
     Given I click modal button "Save"
     And I close Modal
-    Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-      | Actions    | Step 1                               | Step 2 | Step 3             |
-      | Subtab     | Responsibilities                     |        |                    |
-      | Approver 1 | AmendmentreqRolesAndResponsibilities | Edit   | Program Approver   |
-      | Approver 2 | AmendmentreqRolesAndResponsibilities | Edit   | Fiscal Approver    |
-      | Approver 3 | AmendmentreqRolesAndResponsibilities | Edit   | Executive Approver |
+     When I navigate to "Responsibilities" sub tab
+     And I edit the following rows inline in flex table with id "flexGridAmendmentreqRolesAndResponsibilities" by clicking "Edit" :
+      | Role               | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
     And I add an attachment "InternalOrganization_Field_Values.xlsx"
       | Actions               | Step 1      | Step 2               | Step 3             |
       | Attachment Navigation | Attachments | Add                  | a150b000003epeQAAQ |
@@ -140,7 +136,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    #And I click on "Save" in the page details
+    And I click on "Save" in the page details
     And I get the "EGMS ID"
     Given I complete the fields from the sheet "ScopeOfWork_Edition" in excel "AmendmentRequest_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -152,12 +148,12 @@ Feature: Validate all scenarios in the Amendment Request
       | 10                   | Target__c    |
     Given I click modal button "Save"
     And I close Modal
-    Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-      | Actions    | Step 1                               | Step 2 | Step 3             |
-      | Subtab     | Responsibilities                     |        |                    |
-      | Approver 1 | AmendmentreqRolesAndResponsibilities | Edit   | Program Approver   |
-      | Approver 2 | AmendmentreqRolesAndResponsibilities | Edit   | Fiscal Approver    |
-      | Approver 3 | AmendmentreqRolesAndResponsibilities | Edit   | Executive Approver |
+     When I navigate to "Responsibilities" sub tab
+     And I edit the following rows inline in flex table with id "flexGridAmendmentreqRolesAndResponsibilities" by clicking "Edit" :
+      | Role               | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
     And I add an attachment "InternalOrganization_Field_Values.xlsx"
       | Actions               | Step 1      | Step 2               | Step 3             |
       | Attachment Navigation | Attachments | Add                  | a150b000003epeQAAQ |
@@ -177,7 +173,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    #And I click on "Save" in the page details
+    And I click on "Save" in the page details
     And I get the "EGMS ID"
     Given I complete the fields from the sheet "ScopeOfWork_Edition" in excel "AmendmentRequest_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -189,12 +185,12 @@ Feature: Validate all scenarios in the Amendment Request
       | 10                   | Target__c    |
     Given I click modal button "Save"
     And I close Modal
-    Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-      | Actions    | Step 1                               | Step 2 | Step 3             |
-      | Subtab     | Responsibilities                     |        |                    |
-      | Approver 1 | AmendmentreqRolesAndResponsibilities | Edit   | Program Approver   |
-      | Approver 2 | AmendmentreqRolesAndResponsibilities | Edit   | Fiscal Approver    |
-      | Approver 3 | AmendmentreqRolesAndResponsibilities | Edit   | Executive Approver |
+     When I navigate to "Responsibilities" sub tab
+     And I edit the following rows inline in flex table with id "flexGridAmendmentreqRolesAndResponsibilities" by clicking "Edit" :
+      | Role               | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
     And I add an attachment "InternalOrganization_Field_Values.xlsx"
       | Actions               | Step 1      | Step 2               | Step 3             |
       | Attachment Navigation | Attachments | Add                  | a150b000003epeQAAQ |
@@ -220,7 +216,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    #And I click on "Save" in the page details
+    And I click on "Save" in the page details
     And I get the "EGMS ID"
     Given I complete the fields from the sheet "ScopeOfWork_Edition" in excel "AmendmentRequest_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -232,12 +228,12 @@ Feature: Validate all scenarios in the Amendment Request
       | 10                   | Target__c    |
     Given I click modal button "Save"
     And I close Modal
-    Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-      | Actions    | Step 1                               | Step 2 | Step 3             |
-      | Subtab     | Responsibilities                     |        |                    |
-      | Approver 1 | AmendmentreqRolesAndResponsibilities | Edit   | Program Approver   |
-      | Approver 2 | AmendmentreqRolesAndResponsibilities | Edit   | Fiscal Approver    |
-      | Approver 3 | AmendmentreqRolesAndResponsibilities | Edit   | Executive Approver |
+     When I navigate to "Responsibilities" sub tab
+     And I edit the following rows inline in flex table with id "flexGridAmendmentreqRolesAndResponsibilities" by clicking "Edit" :
+      | Role               | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
     And I add an attachment "InternalOrganization_Field_Values.xlsx"
       | Actions               | Step 1      | Step 2               | Step 3             |
       | Attachment Navigation | Attachments | Add                  | a150b000003epeQAAQ |
@@ -268,7 +264,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    #And I click on "Save" in the page details
+    And I click on "Save" in the page details
     And I get the "EGMS ID"
     Given I complete the fields from the sheet "ScopeOfWork_Edition" in excel "AmendmentRequest_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -280,12 +276,12 @@ Feature: Validate all scenarios in the Amendment Request
       | 10                   | Target__c    |
     Given I click modal button "Save"
     And I close Modal
-    Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-      | Actions    | Step 1                               | Step 2 | Step 3             |
-      | Subtab     | Responsibilities                     |        |                    |
-      | Approver 1 | AmendmentreqRolesAndResponsibilities | Edit   | Program Approver   |
-      | Approver 2 | AmendmentreqRolesAndResponsibilities | Edit   | Fiscal Approver    |
-      | Approver 3 | AmendmentreqRolesAndResponsibilities | Edit   | Executive Approver |
+     When I navigate to "Responsibilities" sub tab
+     And I edit the following rows inline in flex table with id "flexGridAmendmentreqRolesAndResponsibilities" by clicking "Edit" :
+      | Role               | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
     And I add an attachment "InternalOrganization_Field_Values.xlsx"
       | Actions               | Step 1      | Step 2               | Step 3             |
       | Attachment Navigation | Attachments | Add                  | a150b000003epeQAAQ |
@@ -320,7 +316,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    #And I click on "Save" in the page details
+    And I click on "Save" in the page details
     And I get the "EGMS ID"
     Given I complete the fields from the sheet "ScopeOfWork_Edition" in excel "AmendmentRequest_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -332,12 +328,12 @@ Feature: Validate all scenarios in the Amendment Request
       | 10                   | Target__c    |
     Given I click modal button "Save"
     And I close Modal
-    Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-      | Actions    | Step 1                               | Step 2 | Step 3             |
-      | Subtab     | Responsibilities                     |        |                    |
-      | Approver 1 | AmendmentreqRolesAndResponsibilities | Edit   | Program Approver   |
-      | Approver 2 | AmendmentreqRolesAndResponsibilities | Edit   | Fiscal Approver    |
-      | Approver 3 | AmendmentreqRolesAndResponsibilities | Edit   | Executive Approver |
+     When I navigate to "Responsibilities" sub tab
+     And I edit the following rows inline in flex table with id "flexGridAmendmentreqRolesAndResponsibilities" by clicking "Edit" :
+      | Role               | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
     And I add an attachment "InternalOrganization_Field_Values.xlsx"
       | Actions               | Step 1      | Step 2               | Step 3             |
       | Attachment Navigation | Attachments | Add                  | a150b000003epeQAAQ |

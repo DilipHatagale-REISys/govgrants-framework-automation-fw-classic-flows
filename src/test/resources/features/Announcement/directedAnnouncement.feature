@@ -1495,7 +1495,6 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
-    And I pause execution
     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
@@ -3590,7 +3589,6 @@ Feature: Validate all scenarios in the directed Announcement tab
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Return on Investment (ROI)"
     And I expand nested table containing column value "Strategic Alignment"
-    And I pause execution
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |

@@ -2,7 +2,6 @@
 Feature: Validate all scenarios in Strategic Plan
 
   Background: To setup data
-  
     Given I delete the record "Automation Execution Strategic Plan" from the object "Strategic Plan"
     Given I create a planning record as user "EXE" from sheet "StrategicPlanCreation" in excel "StrategicPlan_Field_Values.xlsx"
       | Actions    | Step 1          | Step 2            | Step 3                |
@@ -137,7 +136,6 @@ Feature: Validate all scenarios in Strategic Plan
     And I enter "ObjectiveCreation" values from "StrategicPlan_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
-    When I pause execution for "3" seconds
     Given I associate "1" records "Automation Permanent KPI for Regression"
       | Actions     | Step 1       | Step 2    | Step 3                | Step 4    | Step 5     |
       | Associate 1 | Related Logs | Associate | KPIGoalsandObjectives | Associate | SelectKPIs |

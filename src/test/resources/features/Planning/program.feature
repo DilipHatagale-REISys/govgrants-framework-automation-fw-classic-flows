@@ -2,7 +2,7 @@
 Feature: Validate all scenarios for program
 
   Background: Create Program
-   #Given I delete the record "Automation Permanent Internal Program" from the object "Program"
+   Given I delete the record "Automation Permanent Internal Program" from the object "Program"
     And I create a planning record as user "EXE" from sheet "Creation" in excel "Program_Field_Values.xlsx"
       | Actions    | Step 1            | Step 2            | Step 3                  |
       | Navigation | As a Grantor      | Planning          | Programs                |
@@ -72,7 +72,6 @@ Feature: Validate all scenarios for program
   @34738 @programKPIAssociation  @smoke
   Scenario Outline: Validate the assignment of Approvers for the Internal Program
     When I navigate to "Setup" sub tab
-    And I pause execution
     And I click on top right button "Associate" in flex table with id "program::kpiTableId"
     When I click "Add" after selection of "<EGMS Id>" in the table "program::associatekpiTableId"
     And I close Modal

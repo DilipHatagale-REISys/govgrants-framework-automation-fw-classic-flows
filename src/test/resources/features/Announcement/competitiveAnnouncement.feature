@@ -1,7 +1,7 @@
 @competitive @regression
 Feature: Validate all scenarios in the Competitive Announcement tab
   Background: Create Announcement
-   #Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
+   Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     Given I create a "Competitive" Announcement as user "EXE" from sheet "CompetitiveAnnouncement" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
       | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
@@ -40,7 +40,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Announcements" in "ActiveFundingOpportunitiesFormula"
     When I perform quick search for "Record Id" in "ActiveFundingOpportunitiesFormula" panel
-    And I pause execution
    # Then I do not see value "Record Id" for title "Announcement Name" inside table "ActiveFundingOpportunitiesFormula"
     Then I do not see values "Record Id" and "Announcement Name" inside table
     
@@ -95,7 +94,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
   Scenario Outline: Funding Account association to an Announcement
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
-    And I pause execution
     When I click "Add" after selection of "<EGMS Id>" in the table "SelectAnnFundingAccounts"
     And I close Modal
     When I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
@@ -3024,7 +3022,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
-    And I pause execution
     Given "3" Approvers "PM,FO,EXE" approve the record "Record id"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |

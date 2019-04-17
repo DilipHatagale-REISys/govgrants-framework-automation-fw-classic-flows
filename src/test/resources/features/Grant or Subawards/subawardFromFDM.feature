@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in the Award from FDM
 
   Background: Create Award from FDM
-   # Given I delete the record "Automation Grant Award for Post Award" from the object "FDM"
+    Given I delete the record "Automation Grant Award for Post Award" from the object "FDM"
     Given I create a subaward from the Announcement "Execution Announcement for Automation" for the Application "Automation App Jan25" as user "EXE"
       | Actions    | Step 1          | Step 2       | Step 3                                | Step 4                                  |
       | Navigation | As a Grantor    | Applications | Application Review                    | Funding Decision Memo (FDM)             |

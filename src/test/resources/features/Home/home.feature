@@ -44,7 +44,6 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I pause execution for "5" seconds
     Then I can see row level action button "Edit" against "Behavioral Healthcare, Developmental Disabilities and Hospitals" in flex table with id "inlineEditGridInternalOrganizationHierarchy"
     Examples:
       | User  |
@@ -55,7 +54,6 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "SIMON PM" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I pause execution for "5" seconds
     Then I can see row level action button "Edit" against "Department of Health" in flex table with id "inlineEditGridInternalOrganizationHierarchy"
 
   @subrecipientOrganizationView @subrecipients @organization @home @nonFunctional
@@ -100,7 +98,6 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I pause execution for "5" seconds
     Then I can see row level action button "Edit" against "Bankers Small Business Community Development Corporation Of California" in flex table with id "ActiveAccount"
     Examples:
       | User  |

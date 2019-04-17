@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in Closeout
 
   Background: Navigate to award
-    #Given I delete the record "Permanent Award For Automation" from the object "Closeout"
+    Given I delete the record "Permanent Award For Automation" from the object "Closeout"
     And I login and view the record "Permanent Award For Automation" as "EXE"
       | Actions          | Step 1        | Step 2       | Step 3               | Step 4                        |
       | Owner Navigation | As a Grantor  | Grants       | Grants and Subawards | Grants, Subaward & Amendments |
