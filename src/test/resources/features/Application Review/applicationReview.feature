@@ -1,20 +1,21 @@
   @applicationReview @regression
 Feature: Validate all scenarios in the Application Review
 
-  #@preScreenApplicationReview 
- # Scenario Outline: Pre-Screen review for an application
- #   Given I login to "As a Grantor" app as "<User>" user
-  #  When I navigate to "Applications" tab
-   # And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-   # And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-   # When I click on "View" icon for "<Announcement Name>" inside table
-   # And I navigate to "Related Logs" sub tab
-   # And I click on "View" icon for "<Review Step Name>" inside flex table with id "flexGridAnnouncementReviewSteps"
-   # When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-   # Then I see that "Review Step" is in "Completed" status
-   # Examples:
-   #   | User | Announcement Name                         | Review Step Name  | Application Name                     |
-   #   | EXE  | Permanent Announcement(Dr) for Automation | Pre-Screen Review | Execution Application for Automation |
+  @preScreenApplicationReview 
+ Scenario Outline: Pre-Screen review for an application
+ Given I login to "As a Grantor" app as "<User>" user
+  When I navigate to "Applications" tab
+  And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+  And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
+  When I click on "View" icon for "<Announcement Name>" inside table
+  And I navigate to "Related Logs" sub tab
+  And I click on "View" icon for "<Review Step Name>" inside flex table with id "flexGridAnnouncementReviewSteps"
+  When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+ And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+  Then I see that "Review Step" is in "In progress" status
+   Examples:
+ | User | Announcement Name                | Review Step Name  | Application Name                |
+ | EXE  | Automation Directed Announcement | Pre-Screen Review |Automation Directed Announcement |
 
   @smeReviewEnterDueInDays @smoke
   Scenario Outline: Enter Due in Days for all review forms in SME-review
@@ -42,7 +43,7 @@ Feature: Validate all scenarios in the Application Review
     Then I see that "SME Review" is in "In Progress" status
     Examples:
       | User | Announcement Name                              | Application Name                     | Review Step Name  |
-      | EXE  | Permanent Directed Announcement for Automation | Permanent Application for Automation | Pre-Screen Review |
+      | EXE  |  Automation Directed Announcement | Automation Directed Announcement  | Pre-Screen Review |
 
   @38463 @smeReviewAddReviewer
   Scenario Outline: Add a reviewer to each review step in SME Review

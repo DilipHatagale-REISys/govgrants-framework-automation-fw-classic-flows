@@ -53,7 +53,7 @@ public class ProjectWebServices {
         if (System.getProperty("env") != null && System.getProperty("env").equalsIgnoreCase("demo")) {
             this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9AzPSkglhtpvenc1ubvIHNq.47G6r14CrPJYDMHpiIQqmNt84jq0.7dv3pQHq6Q5ijx1LbVhtm326_pxc&client_secret=2A8D181502C168F519E5A93B1AF611FE65FAB1862CBF37A7D7CC8857F3C55871&username=manu.sa@ggp.test7.demo7&password=GoProduct@123";
         } else if (System.getProperty("env") != null && System.getProperty("env").equalsIgnoreCase("auto")) {
-            this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9AzPSkglhtpvenc1ubvIHNrBrLBmjiqcuuhXgrwxiMfDuvYgL.RcnFxMpWY1rVKQrhEN2hsVqXvBvgyVN&client_secret=CD69235B698F79CE700D0218296418C536FAB6BF997EE6322BBA718BE8D8CB9E&username=manu.sa@ggp.test7.automation&password=GoProduct@123";
+            this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9CxwbdV68qJLeisSwL_iiNNXgLnZWWgonTCgnyoTblTRp0bGCYw5H_DAumiUZv2Jy_nFTcePGQSI5B_yJ&client_secret=D84032AC9A22208B017C48E04A442F890ECE7D7AB6E44FC81516F6FB011CB87C&username=manu.sa@ggp.test7.automation&password=GoProduct@123";
         }
     }
 

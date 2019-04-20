@@ -2,8 +2,8 @@
 Feature: Validate all scenarios in the Amendment Request
 
   Background: Setup data
-    Given I delete the record "Automation Grant Award for Post Award" from the object "Amendment Request"
-    Given I login and view the "Active" award "Activated" with name "Automation Grant Award for Post Award" as User "PM"
+    Given I delete the record "Automation Grant Regression" from the object "Amendment Request"
+    Given I login and view the "Active" award "Activated" with name "Automation Grant Regression" as User "PM"
       | Actions    | Step 1       | Step 2         | Step 3               | Step 4                        |
       | Navigation | As a Grantor | Grants         | Grants and Subawards | Grants, Subaward & Amendments |
       | FlexTable  | Grants       | ActiveGrants   | View                 |                               |
@@ -15,7 +15,6 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    #And I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
   @editionOfSOWAmendmentRequest 
@@ -54,22 +53,22 @@ Feature: Validate all scenarios in the Amendment Request
    And I click modal button "Save and Continue"
    And I click on "Save" in the page details
    When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
-   And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectAmendmentGoals"
+   And I click "Associate" after selection of "Automation Permanent Objective " in the table "SelectAmendmentGoals"
    When I switch to Parent frame
-   Then I see that "Permanent Objective Automation" has been added in flextable with Id "GrantorAmendmentGoalsObjectives"
+   Then I see that "Automation Permanent Objective " has been added in flextable with Id "GrantorAmendmentGoalsObjectives"
 
-  #@deletionOfObjectiveInSOWAmendmentRequest 
- # Scenario: Deletion of Objective in Amendment Request
- #   Given I navigate to "Requests" sub tab
-  #  And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
-   # When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
-    #And I click modal button "Save and Continue"
-    #And I click on "Save" in the page details
-    #When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
-    #And I click "Associate" after selection of "Permanent Objective Automation" in the table "SelectyyAmendmentGoals"
-    #When I switch to Parent frame
-    #When I click on "Remove" icon for "Permanent Objective Automation" inside flex table with id "GrantorAmendmentGoalsObjectives"
-    #Then I do not see values "SPO-0130" and "Permanent Objective Automation" inside table
+  @deletionOfObjectiveInSOWAmendmentRequest 
+  Scenario: Deletion of Objective in Amendment Request
+   Given I navigate to "Requests" sub tab
+    And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
+    When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I click on "Save" in the page details
+    When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
+    And I click "Associate" after selection of "Automation Grant Objective" in the table "SelectyyAmendmentGoals"
+    When I switch to Parent frame
+    When I click on "Remove" icon for "Automation Grant Objective" inside flex table with id "GrantorAmendmentGoalsObjectives"
+    Then I do not see values "SPO-0077" and "Automation Grant Objective" inside table
 
   @assignApproversToSOWAmendmentRequest 
   Scenario: Assign approvers to Amendment Request
@@ -113,7 +112,7 @@ Feature: Validate all scenarios in the Amendment Request
     Given I click on top right button "Associate" in flex table with id "flexGridGrantorAmendmentKeyOutcomes"
     And I enter values into fields
       | Value                | Field        |
-      | Automation Grant KPI | MasterKPI__c |
+      | Automation Permanent KPI for Regression | MasterKPI__c |
       | 10                   | Target__c    |
     Given I click modal button "Save"
     And I close Modal
@@ -144,7 +143,7 @@ Feature: Validate all scenarios in the Amendment Request
     Given I click on top right button "Associate" in flex table with id "flexGridGrantorAmendmentKeyOutcomes"
     And I enter values into fields
       | Value                | Field        |
-      | Automation Grant KPI | MasterKPI__c |
+      | Automation Permanent KPI for Regression | MasterKPI__c |
       | 10                   | Target__c    |
     Given I click modal button "Save"
     And I close Modal
@@ -181,7 +180,7 @@ Feature: Validate all scenarios in the Amendment Request
     Given I click on top right button "Associate" in flex table with id "flexGridGrantorAmendmentKeyOutcomes"
     And I enter values into fields
       | Value                | Field        |
-      | Automation Grant KPI | MasterKPI__c |
+      | Automation Permanent KPI for Regression | MasterKPI__c |
       | 10                   | Target__c    |
     Given I click modal button "Save"
     And I close Modal
@@ -224,7 +223,7 @@ Feature: Validate all scenarios in the Amendment Request
     Given I click on top right button "Associate" in flex table with id "flexGridGrantorAmendmentKeyOutcomes"
     And I enter values into fields
       | Value                | Field        |
-      | Automation Grant KPI | MasterKPI__c |
+      | Automation Permanent KPI for Regression | MasterKPI__c |
       | 10                   | Target__c    |
     Given I click modal button "Save"
     And I close Modal
@@ -272,7 +271,7 @@ Feature: Validate all scenarios in the Amendment Request
     Given I click on top right button "Associate" in flex table with id "flexGridGrantorAmendmentKeyOutcomes"
     And I enter values into fields
       | Value                | Field        |
-      | Automation Grant KPI | MasterKPI__c |
+      | Automation Permanent KPI for Regression | MasterKPI__c |
       | 10                   | Target__c    |
     Given I click modal button "Save"
     And I close Modal
@@ -305,10 +304,8 @@ Feature: Validate all scenarios in the Amendment Request
       | FlexTable  | Pending Tasks | My Tasks | PhasePendingTasks |
       | Approval   | Start         | Approve  |                   |
     And I click on "Amend Subaward" in the page details
-    Then I see that "Subaward" is in "Pending Activation" status
-    #Then I see status in Progress-bar is "" and is "green"
-     #Then I see the following messages in the page details :
-     #| You cannot draft this award until all awards pending activation have been activated. |
+     Then I see the following messages in the page details contains:
+     | You cannot draft this award until all awards pending activation have been activated. |
     
   @activateSubawardSOWAmendmentRequest @scopeOfWorkHappyPath @smoke
   Scenario: Click on Amend of Amendment Request
@@ -324,7 +321,7 @@ Feature: Validate all scenarios in the Amendment Request
     Given I click on top right button "Associate" in flex table with id "flexGridGrantorAmendmentKeyOutcomes"
     And I enter values into fields
       | Value                | Field        |
-      | Automation Grant KPI | MasterKPI__c |
+      | Automation Permanent KPI for Regression | MasterKPI__c |
       | 10                   | Target__c    |
     Given I click modal button "Save"
     And I close Modal
@@ -401,6 +398,6 @@ Feature: Validate all scenarios in the Amendment Request
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I click on top right button "Associate" in flex table with id "flexGridAmendmentProjectAreasGrantor"
-    When I click "Associate" after selection of "Automation Program Focus Area" in the table "SelectAmendmentGAT"
+    When I click "Associate" after selection of "Automation Permanent Focus Area" in the table "SelectAmendmentGAT"
     And I close Modal
-    Then I see that "Automation Program Focus Area" has been added in flextable with Id "flexGridAmendmentProjectAreasGrantor"
+    Then I see that "Automation Permanent Focus Area" has been added in flextable with Id "flexGridAmendmentProjectAreasGrantor"
