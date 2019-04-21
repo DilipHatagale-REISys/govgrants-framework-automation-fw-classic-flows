@@ -3389,7 +3389,6 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
   | Budget Period Name | Start Date   | End Date|
     | BP01             | 	50        | 150     |
-    And I pause execution
     And I associate "1" records "FA--154"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |

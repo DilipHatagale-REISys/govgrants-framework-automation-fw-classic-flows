@@ -137,7 +137,7 @@ Feature: Validate all scenarios in the Site Visit
 
   @formFillingSiteVisit @smoke @wip
   Scenario Outline: Filling up of form in Site Visit
-    Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
+     Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
      | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     When I navigate to "Responsibilities" sub tab
@@ -158,13 +158,7 @@ Feature: Validate all scenarios in the Site Visit
      When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
      And I click on "View" icon for "<Site Visit Name>" inside table
      And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "siteVisits::correctiveTableId" by clicking "New" :
-      | Title                  | Description            | Type        |
-      | Automation Finding     | Automation Description | Finding     |
-      | Automation Concern     | Automation Description | Concern     |
-      | Automation Observation | Automation Description | Observation |
-    And I navigate to "Reports and Outcomes" sub tab
-    When I click on "Edit" icon for "General Review Form" inside flex table with id "siteVisits::reportsTableId"
+     When I click on "Edit" icon for "General Review Form" inside flex table with id "siteVisits::reportsTableId"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
