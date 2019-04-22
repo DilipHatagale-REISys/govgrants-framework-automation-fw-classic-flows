@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import com.automation.rei.handlers.GovGrantsHandler;
 import eyethink.automation.bots.controller.Controller;
 import eyethink.automation.bots.controller.CoreHandlers;
+import org.testng.Assert;
 
 
 /**
@@ -81,4 +82,13 @@ public class ProjectManager extends ProjectWebServices {
         govgrants.pageDetails().idOfRecord = (automateGetApi(recordName, fieldName, objectType).asString()).replace("\"", "");
     }
 
+    /* handles to verify no record is present in flex table */
+    public boolean isRecordPresentInTheFlexTable(String tableId) {
+       try {
+           return reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='"+tableId+"']//p[contains(text(),'No records found')]")).isDisplayed();
+       } catch (Exception e){
+
+       }
+       return false;
+    }
 }

@@ -4,7 +4,7 @@ Feature: Validate all scenarios in Payment Request
   Background: Navigate to award
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
     And I am on "SUBPORTAL" portal
-    Given I login and view the "Active" award "Record Id" with name "Automation Execution Award For Regression" as User "SPI"
+    Given I login and view the "Active" award "Record Id" with name "Automation Permanent Award" as User "SPI"
       | Actions    | Step 1        | Step 2                   | Step 3               | Step 4                     |
       | Navigation | Grants Portal | Grants                   | Grants and Subawards | Grants, Awards, Amendments |
       | FlexTable  | Grants        | RecipientActiveGrants    | View                 |                            |
@@ -115,7 +115,7 @@ Feature: Validate all scenarios in Payment Request
       | Attachment Navigation | Attachments | Add     | a150b000003epDJAAY |
       | Attachment Details    | Attachment  | Invoice |                    |
     And I click on "Submit to Grantor" in the page details
-    Given I login and view the "Active" award "Record Id" with name "Automation Execution Award For Regression" as User "FO"
+    Given I login and view the "Active" award "Record Id" with name "Automation Permanent Award" as User "FO"
       | Actions    | Step 1       | Step 2         | Step 3               | Step 4                        |
       | Navigation | As a Grantor | Grants         | Grants and Subawards | Grants, Subaward & Amendments |
       | FlexTable  | Grants       | ActiveGrants   | View                 |                               |
@@ -125,7 +125,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "paymentRequest::fundingAccountTableId" by clicking "Edit" :
       | Funding Account | Net Spent This Action |
-      | FA--154         | 1000                  |
+      | FA--148         | 1000                  |
     Then I see value "$1,000.00" for title "Net Spent This Action" inside table "paymentRequest::fundingAccountTableId"
 
   @approverSelectionPaymentRequest
@@ -151,7 +151,7 @@ Feature: Validate all scenarios in Payment Request
       | Attachment Navigation | Attachments | Add     | a150b000003epDJAAY |
       | Attachment Details    | Attachment  | Invoice |                    |
     And I click on "Submit to Grantor" in the page details
-    Given I login and view the "Active" award "Record Id" with name "Automation Execution Award For Regression" as User "FO"
+    Given I login and view the "Active" award "Record Id" with name "Automation Permanent Award" as User "FO"
       | Actions    | Step 1       | Step 2         | Step 3               | Step 4                        |
       | Navigation | As a Grantor | Grants         | Grants and Subawards | Grants, Subaward & Amendments |
       | FlexTable  | Grants       | ActiveGrants   | View                 |                               |
@@ -161,11 +161,11 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Financials" sub tab
     Given I edit the following rows inline in flex table with id "paymentRequest::fundingAccountTableId" by clicking "Edit" :
       | Funding Account | Net Spent This Action |
-      | FA--154         | 1000                  |
+      | FA--148         | 1000                  |
     When I navigate to "Responsibilities" sub tab
-    And I click on "Edit" icon for "Fiscal Approver" inside flex table with id "flexGridPaymentRequestRolesandResponsibilities"
-    When I fill in the "Automation FO" for the Approver details
-    And I close Modal
+    And I edit the following rows inline in flex table with id "flexGridPaymentRequestRolesandResponsibilities" by clicking "Edit" :
+      | Responsibility  | Name          | Description                 |
+      | Fiscal Approver | Automation FO | Automation Test Description |
     Then I see that "Automation FO" has been added in flextable with Id "flexGridPaymentRequestRolesandResponsibilities"
 
   @submitPaymentRequestForApproval @smoke
@@ -191,7 +191,7 @@ Feature: Validate all scenarios in Payment Request
       | Attachment Navigation | Attachments | Add     | a150b000003epDJAAY |
       | Attachment Details    | Attachment  | Invoice |                    |
     And I click on "Submit to Grantor" in the page details
-    Given I login and view the "Active" award "Record Id" with name "Automation Execution Award For Regression" as User "FO"
+    Given I login and view the "Active" award "Record Id" with name "Automation Permanent Award" as User "FO"
       | Actions    | Step 1       | Step 2         | Step 3               | Step 4                        |
       | Navigation | As a Grantor | Grants         | Grants and Subawards | Grants, Subaward & Amendments |
       | FlexTable  | Grants       | ActiveGrants   | View                 |                               |
@@ -201,11 +201,11 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Financials" sub tab
     Given I edit the following rows inline in flex table with id "paymentRequest::fundingAccountTableId" by clicking "Edit" :
       | Funding Account | Net Spent This Action |
-      | FA--154         | 220                   |
-    And I select "1" approvers "Automation FO"
-      | Actions    | Step 1                                         | Step 2 | Step 3          |
-      | Subtab     | Responsibilities                               |        |                 |
-      | Approver 1 | flexGridPaymentRequestRolesandResponsibilities | Edit   | Fiscal Approver |
+      | FA--148         | 220                   |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "flexGridPaymentRequestRolesandResponsibilities" by clicking "Edit" :
+      | Responsibility  | Name          | Description                 |
+      | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
@@ -232,7 +232,7 @@ Feature: Validate all scenarios in Payment Request
       | Attachment Navigation | Attachments | Add     | a150b000003epDJAAY |
       | Attachment Details    | Attachment  | Invoice |                    |
     And I click on "Submit to Grantor" in the page details
-    Given I login and view the "Active" award "Record Id" with name "Automation Execution Award For Regression" as User "FO"
+    Given I login and view the "Active" award "Record Id" with name "Automation Permanent Award" as User "FO"
       | Actions    | Step 1       | Step 2         | Step 3               | Step 4                        |
       | Navigation | As a Grantor | Grants         | Grants and Subawards | Grants, Subaward & Amendments |
       | FlexTable  | Grants       | ActiveGrants   | View                 |                               |
@@ -242,14 +242,14 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Financials" sub tab
     Given I edit the following rows inline in flex table with id "paymentRequest::fundingAccountTableId" by clicking "Edit" :
       | Funding Account | Net Spent This Action |
-      | FA--154         | 220                   |
-    And I select "1" approvers "Automation FO"
-      | Actions    | Step 1                                         | Step 2 | Step 3          |
-      | Subtab     | Responsibilities                               |        |                 |
-      | Approver 1 | flexGridPaymentRequestRolesandResponsibilities | Edit   | Fiscal Approver |
+      | FA--148         | 220                   |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "flexGridPaymentRequestRolesandResponsibilities" by clicking "Edit" :
+      | Responsibility  | Name          | Description                 |
+      | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
     Given I click on "Submit for Approval" in the page details
-    When I re-login to "As a Grantor" app as "FO" user
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
@@ -280,7 +280,7 @@ Feature: Validate all scenarios in Payment Request
       | Attachment Navigation | Attachments | Add     | a150b000003epDJAAY |
       | Attachment Details    | Attachment  | Invoice |                    |
     And I click on "Submit to Grantor" in the page details
-    And I login and view the "Active" award "Record Id" with name "Automation Execution Award For Regression" as User "FO"
+    And I login and view the "Active" award "Record Id" with name "Automation Permanent Award" as User "FO"
       | Actions    | Step 1       | Step 2         | Step 3               | Step 4                        |
       | Navigation | As a Grantor | Grants         | Grants and Subawards | Grants, Subaward & Amendments |
       | FlexTable  | Grants       | ActiveGrants   | View                 |                               |
@@ -290,11 +290,11 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Financials" sub tab
     Given I edit the following rows inline in flex table with id "paymentRequest::fundingAccountTableId" by clicking "Edit" :
       | Funding Account | Net Spent This Action |
-      | FA--154         | 200                   |
-    And I select "1" approvers "Automation FO"
-      | Actions    | Step 1                                         | Step 2 | Step 3          |
-      | Subtab     | Responsibilities                               |        |                 |
-      | Approver 1 | flexGridPaymentRequestRolesandResponsibilities | Edit   | Fiscal Approver |
+      | FA--148         | 200                   |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "flexGridPaymentRequestRolesandResponsibilities" by clicking "Edit" :
+      | Responsibility  | Name          | Description                 |
+      | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
     Given I click on "Submit for Approval" in the page details
     Given "1" Approvers "FO" approve the record "Record Id"
@@ -302,7 +302,7 @@ Feature: Validate all scenarios in Payment Request
       | Navigation | As a Grantor  | Monitoring |                   |
       | FlexTable  | Pending Tasks | My Tasks   | PhasePendingTasks |
       | Approval   | Start         | Approve    |                   |
-    Given I login and view the "Active" award "Record Id" with name "Automation Execution Award For Regression" as User "FO"
+    Given I login and view the "Active" award "Record Id" with name "Automation Permanent Award" as User "FO"
       | Actions    | Step 1       | Step 2         | Step 3               | Step 4                        |
       | Navigation | As a Grantor | Grants         | Grants and Subawards | Grants, Subaward & Amendments |
       | FlexTable  | Grants       | ActiveGrants   | View                 |                               |
@@ -336,7 +336,7 @@ Feature: Validate all scenarios in Payment Request
       | Attachment Navigation | Attachments | Add     | a150b000001rvK3AAI |
       | Attachment Details    | Attachment  | Invoice |                    |
     And I click on "Submit to Grantor" in the page details
-    And I login and view the "Active" award "Record Id" with name "Automation Execution Award For Regression" as User "FO"
+    And I login and view the "Active" award "Record Id" with name "Automation Permanent Award" as User "FO"
       | Actions    | Step 1       | Step 2         | Step 3               | Step 4                        |
       | Navigation | As a Grantor | Grants         | Grants and Subawards | Grants, Subaward & Amendments |
       | FlexTable  | Grants       | ActiveGrants   | View                 |                               |
@@ -346,11 +346,11 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Financials" sub tab
     Given I edit the following rows inline in flex table with id "PaymentFundingAccountsAdvanceFlexToggle" by clicking "Edit" :
       | Funding Account | Advance Requested This Action |
-      | FA--154         | 500                           |
-    And I select "1" approvers "Automation FO"
-      | Actions    | Step 1                                         | Step 2 | Step 3          |
-      | Subtab     | Responsibilities                               |        |                 |
-      | Approver 1 | flexGridPaymentRequestRolesandResponsibilities | Edit   | Fiscal Approver |
+      | FA--148         | 500                           |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "flexGridPaymentRequestRolesandResponsibilities" by clicking "Edit" :
+      | Responsibility  | Name          | Description                 |
+      | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
     Given I click on "Submit for Approval" in the page details
     Given "1" Approvers "FO" approve the record "Record Id"
@@ -358,7 +358,7 @@ Feature: Validate all scenarios in Payment Request
       | Navigation | As a Grantor  | Monitoring |                   |
       | FlexTable  | Pending Tasks | My Tasks   | PhasePendingTasks |
       | Approval   | Start         | Approve    |                   |
-    Given I login and view the "Active" award "Record Id" with name "Automation Execution Award For Regression" as User "FO"
+    Given I login and view the "Active" award "Record Id" with name "Automation Permanent Award" as User "FO"
       | Actions    | Step 1       | Step 2         | Step 3               | Step 4                        |
       | Navigation | As a Grantor | Grants         | Grants and Subawards | Grants, Subaward & Amendments |
       | FlexTable  | Grants       | ActiveGrants   | View                 |                               |
