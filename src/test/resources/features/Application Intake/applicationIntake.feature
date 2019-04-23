@@ -2,17 +2,17 @@
 Feature: Validate all scenarios in the Application Intake
 
   Background: Qualify Announcement and Create Application
-  Given I delete the record "Automation Directed Announcement" from the object "Application"
-    And I delete the record "Automation Directed Announcement" from the object "Qualified Announcement"
+  Given I delete the record "Automation Announcement for Application Intake" from the object "Application"
+    And I delete the record "Automation Announcement for Application Intake" from the object "Qualified Announcement"
     Given I am on "SUBPORTAL" portal
-    And I qualify the announcement "Automation Directed Announcement" as user "SPI"
+    And I qualify the announcement "Automation Announcement for Application Intake" as user "SPI"
       | Actions    | Step 1         | Step 2        | Step 3  | Step 4        |
       | Navigation | Grants Portal  | Opportunities | Active  | Opportunities |
       | FlexTable  | popupflextable | View          | Qualify |               |
     When I click on "Create Application" in the page details
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
-    Then I see that "Automation Directed Announcement" is in "Created" status
+    Then I see that "Automation Announcement for Application Intake" is in "Created" status
 
   @34044 @applicationCreation @smokeTest
   Scenario: Creating an Application
@@ -120,4 +120,4 @@ Feature: Validate all scenarios in the Application Intake
     Then I see status in Progress-bar is "Submitted" and is "green"
     Examples:
       | User | Application Name               |
-      | EXE  | Automation Directed Announcement|
+      | EXE  | Automation Announcement for Application Intake|

@@ -152,7 +152,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I edit the following rows inline in flex table with id "subAwardStandAlone::kpiTableId" by clicking "Edit" :
       | EGMS ID  | Target |
       |Automation Permanent KPI for Regression| 10     |
-
     And I navigate to "Management" sub tab
     Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
       | Actions  | Step 1     | Step 2                   | Step 3 | Step 4 | Step 5          |
@@ -1099,7 +1098,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Acceptance | Start         | Accept        | Accept after Approval | OK                |
     Then I see that "Subaward" is in "Accepted" status
     Examples:
-      | Award Name                     | Grant Name                     | Type            | Type1                    |
+      | Award Name                            | Grant Name                            | Type            | Type1                    |
       | Automation Grant Award for Post Award | Automation Grant Award for Post Award | Subaward Review | Approve Grantor Subaward |
 
   @allActivation @smoke

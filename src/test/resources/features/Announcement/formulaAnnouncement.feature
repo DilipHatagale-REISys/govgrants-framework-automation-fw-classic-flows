@@ -845,9 +845,10 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-    And I click on "Edit" in the page details
-    When I navigate to "Financials" sub tab
+     And I click on "Edit" in the page details
+     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
+        And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
      Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
@@ -1020,8 +1021,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
-    When I navigate to "Financials" sub tab
+     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
+        And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
      Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
@@ -1194,9 +1196,10 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-    And I click on "Edit" in the page details
-    When I navigate to "Financials" sub tab
+     And I click on "Edit" in the page details
+     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
+        And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
      Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
@@ -1386,9 +1389,10 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-    And I click on "Edit" in the page details
-    When I navigate to "Financials" sub tab
+     And I click on "Edit" in the page details
+     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
+        And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
      Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
@@ -1568,9 +1572,10 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-    And I click on "Edit" in the page details
-    When I navigate to "Financials" sub tab
+     And I click on "Edit" in the page details
+     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
+        And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
      Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
@@ -1750,9 +1755,10 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-    And I click on "Edit" in the page details
-    When I navigate to "Financials" sub tab
+     And I click on "Edit" in the page details
+     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
+        And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
      Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
@@ -1930,9 +1936,10 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-    And I click on "Edit" in the page details
-    When I navigate to "Financials" sub tab
+     And I click on "Edit" in the page details
+     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
+        And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
      Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
@@ -2113,9 +2120,10 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-    And I click on "Edit" in the page details
-    When I navigate to "Financials" sub tab
+     And I click on "Edit" in the page details
+     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
+        And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
      Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
@@ -2293,9 +2301,10 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-    And I click on "Edit" in the page details
-    When I navigate to "Financials" sub tab
+     And I click on "Edit" in the page details
+     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
+        And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
      Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
@@ -2473,9 +2482,10 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-    And I click on "Edit" in the page details
-    When I navigate to "Financials" sub tab
+     And I click on "Edit" in the page details
+     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
+        And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
      Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
@@ -2657,8 +2667,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
-    When I navigate to "Financials" sub tab
+     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
+        And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
      Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
@@ -2838,9 +2849,10 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-    And I click on "Edit" in the page details
-    When I navigate to "Financials" sub tab
+     And I click on "Edit" in the page details
+     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
+        And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
      Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
@@ -3020,9 +3032,10 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-    And I click on "Edit" in the page details
-    When I navigate to "Financials" sub tab
+ And I click on "Edit" in the page details
+     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
+        And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
      Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
@@ -3200,9 +3213,10 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-    And I click on "Edit" in the page details
-    When I navigate to "Financials" sub tab
+ And I click on "Edit" in the page details
+     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
+        And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
      Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |

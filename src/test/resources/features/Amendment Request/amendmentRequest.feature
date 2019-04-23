@@ -2,6 +2,7 @@
 Feature: Validate all scenarios in the Amendment Request
 
   Background: Setup data
+    Given I delete the record "Automation Grant Regression" from the object "Subaward"
     Given I delete the record "Automation Grant Regression" from the object "Amendment Request"
     Given I login and view the "Active" award "Activated" with name "Automation Grant Regression" as User "PM"
       | Actions    | Step 1       | Step 2         | Step 3               | Step 4                        |
@@ -53,9 +54,9 @@ Feature: Validate all scenarios in the Amendment Request
    And I click modal button "Save and Continue"
    And I click on "Save" in the page details
    When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
-   And I click "Associate" after selection of "Automation Permanent Objective " in the table "SelectAmendmentGoals"
+   And I click "Associate" after selection of "Automation Permanent Objective" in the table "SelectAmendmentGoals"
    When I switch to Parent frame
-   Then I see that "Automation Permanent Objective " has been added in flextable with Id "GrantorAmendmentGoalsObjectives"
+   Then I see that "Automation Permanent Objective" has been added in flextable with Id "GrantorAmendmentGoalsObjectives"
 
   @deletionOfObjectiveInSOWAmendmentRequest 
   Scenario: Deletion of Objective in Amendment Request
@@ -65,10 +66,10 @@ Feature: Validate all scenarios in the Amendment Request
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
     When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
-    And I click "Associate" after selection of "Automation Grant Objective" in the table "SelectyyAmendmentGoals"
+    And I click "Associate" after selection of "Automation Permanent Objective" in the table "SelectAmendmentGoals"
     When I switch to Parent frame
-    When I click on "Remove" icon for "Automation Grant Objective" inside flex table with id "GrantorAmendmentGoalsObjectives"
-    Then I do not see values "SPO-0077" and "Automation Grant Objective" inside table
+    When I click on "Remove" icon for "Automation Permanent Objective" inside flex table with id "GrantorAmendmentGoalsObjectives"
+    Then I do not see values "EGMS ID" and "Automation Permanent Objective" inside table
 
   @assignApproversToSOWAmendmentRequest 
   Scenario: Assign approvers to Amendment Request
@@ -303,10 +304,9 @@ Feature: Validate all scenarios in the Amendment Request
       | Navigation | As a Grantor  | Grants   |                   |
       | FlexTable  | Pending Tasks | My Tasks | PhasePendingTasks |
       | Approval   | Start         | Approve  |                   |
-    And I click on "Amend Subaward" in the page details
-     Then I see the following messages in the page details contains:
-     | You cannot draft this award until all awards pending activation have been activated. |
-    
+     And I click on "Amend Subaward" in the page details
+     Then I see that "Automation Grant Regression" is in "Pending Activation" status
+        
   @activateSubawardSOWAmendmentRequest @scopeOfWorkHappyPath @smoke 
   Scenario: Click on Amend of Amendment Request
     Given I navigate to "Requests" sub tab
@@ -354,8 +354,8 @@ Feature: Validate all scenarios in the Amendment Request
       | FlexTable  | Pending Tasks | My Tasks | PhasePendingTasks |
       | Approval   | Start         | Approve  |                   |
     And I click on "Amend Subaward" in the page details
-   # When I click on "Activate" in the page details
-    Then I see status in Progress-bar is "Pending Activation" and is "green"
+    When I click on "Activate" in the page details
+    Then I see status in Progress-bar is "Activated" and is "green"
 
   @creationOfBPCAmendmentRequest @smoke
   Scenario: Creation of Budget Period change Amendment Request

@@ -45,7 +45,7 @@ Feature: Validate all scenarios in the directed Announcement tab
 
   @announcementEditionByOtherUser
   Scenario: Validate that other users are not able to edit created announcement
-    When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I perform quick search for "Record id" in "ActiveFundingOpportunitiesAll" panel
     Then I cannot see row level action button "Edit" against "Record id" in flex table with id "ActiveFundingOpportunitiesAll"

@@ -3,7 +3,7 @@ Feature: Validate all scenarios in Desk Review
 
   Background: Create Desk Review
       Given I delete the record "Automation Desk Review" from the object "Desk Review"
-    And I login and view the "Active" award "AD-AGR-01" with name "Automation Grant Regression" as User "EXE"
+     Given I login and view the "Active" award "Activated" with name "Automation Permanent Award" as User "EXE"
       | Actions    | Step 1       | Step 2         | Step 3               | Step 4                        |
       | Navigation | As a Grantor | Grants         | Grants and Subawards | Grants, Subaward & Amendments |
       | FlexTable  | Grants       | ActiveGrants   | View                 |                               |
@@ -220,7 +220,7 @@ Feature: Validate all scenarios in Desk Review
 
   @approvalOfDeskReview
   Scenario Outline: Approval of Desk Review
-    Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
+ Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     When I navigate to "Responsibilities" sub tab
@@ -261,11 +261,11 @@ Feature: Validate all scenarios in Desk Review
     Then I see status in Progress-bar is "Approved" and is "green"
     Examples:
       | Award Name                            | Award EGMS ID | Desk Review Name       | Desk Review Approval Task | Type                      |
-      | Automation Grant Regression  | AD-AGR-01   | Automation Desk Review | Approval Desk Review      | Review Desk review report |
+      | Automation Permanent Award  | AD-AGR-01   | Automation Desk Review | Approve Desk Review      | Review Desk review report |
 
   @deskReviewSendToSubrecipient
   Scenario Outline: Send Desk Review to Subrecipient
-        Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
+ Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     When I navigate to "Responsibilities" sub tab
@@ -307,11 +307,11 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
     And I click on "View" icon for "<Desk Review Name>" inside table
-    And I click on "Send to Subrecipient" in the page details
+    Given I click on "Send to Subrecipient" in the page details
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
     Examples:
       | Desk Review Name       | Award Name                            | Desk Review Approval Task |
-      | Automation Desk Review | Automation Grant Regression  | Approve Desk Review       |
+      | Automation Desk Review | Automation Permanent Award  | Approve Desk Review       |
 
   @deskReviewCorrectiveActionsBySubrecipient
   Scenario Outline: Send Desk Review to Subrecipient
@@ -382,7 +382,7 @@ Feature: Validate all scenarios in Desk Review
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
     Examples:
       | Award Name                     | Award EGMS ID | Desk Review Name       | Desk Review Approval Task | Type                      |
-      | Automation Grant Regression  | AD-AGR-01    | Automation Desk Review | Approve Desk Review       | Review Desk review report |
+      | Automation Permanent Award  | AD-AGR-01    | Automation Desk Review | Approve Desk Review       | Review Desk review report |
 
   @deskReviewSubmitToGrantorBySubrecipient
   Scenario Outline: Send Desk Review to Subrecipient
@@ -454,7 +454,7 @@ Feature: Validate all scenarios in Desk Review
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
     Examples:
       | Award Name                   | Award EGMS ID | Desk Review Name       | Desk Review Approval Task | Type                      |
-      | Automation Grant Regression  | AD-AGR-01    | Automation Desk Review | Approve Desk Review       | Review Desk review report |
+      | Automation Permanent Award  | AD-AGR-01    | Automation Desk Review | Approve Desk Review       | Review Desk review report |
 
   @deskReviewAcceptAndClose @smoke
   Scenario Outline: Send Desk Review to Subrecipient
@@ -510,7 +510,7 @@ Feature: Validate all scenarios in Desk Review
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "deskreview::receipientTableId" by clicking "New" :
       | Title                               | Description            | Status      | Due Date   | Assigned To    |
-      | Automation Observation Subrecipient | Automation Description | In-Progress | 30 | Automation SPI |
+      | Automation Observation Subrecipient | Automation Description | In-Progress | 30         | Automation SPI |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "deskreview::receipientTableId" by clicking "New" :
@@ -531,5 +531,5 @@ Feature: Validate all scenarios in Desk Review
     Then I see status in Progress-bar is "Closed" and is "green"
     Examples:
       | Award Name                     | Type                      | Award EGMS ID | Desk Review Name       | Desk Review Approval Task |
-      | Automation Grant Regression  | Review Desk review report | AD-AGR-01    | Automation Desk Review | Approve Desk Review       |
+      | Automation Permanent Award  | Review Desk review report | AD-AGR-01    | Automation Desk Review | Approve Desk Review       |
 	
