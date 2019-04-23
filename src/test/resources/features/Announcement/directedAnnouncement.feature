@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in the directed Announcement tab
 
   Background: Create Announcement 
-   #Given I delete the record "Automation Directed Announcement" from the object "Announcement"
+   Given I delete the record "Automation Directed Announcement" from the object "Announcement"
       Given I create a "Directed" Announcement as user "EXE" from sheet "DirectedAnnouncement" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
       | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
@@ -144,9 +144,9 @@ Feature: Validate all scenarios in the directed Announcement tab
   Scenario: Validate the association of Focus Area to Announcement
     Given I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementServiceArea1"
-    When I click "Add" after selection of "Automation Permanent Focus Area" in the table "SelectAnnouncementServiceArea1"
+    When I click "Add" after selection of "Automation Execution Focus Area" in the table "SelectAnnouncementServiceArea1"
     And I close Modal
-    Then I see that "Automation Permanent Focus Area" has been added in flextable with Id "AnnouncementServiceArea1"
+    Then I see that "Automation Execution Focus Area" has been added in flextable with Id "AnnouncementServiceArea1"
 
   @34774 @announcementObjectiveAssociation @smoke 
   Scenario: Validate the association of objective to the Announcement
@@ -169,9 +169,9 @@ Feature: Validate all scenarios in the directed Announcement tab
   Scenario: Validate the association of KPI for the announcement
    Given I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementKeyOutcomes"
-    When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "SelectAnnKPIs"
+    When I click "Add" after selection of "Automation Announcement KPI" in the table "SelectAnnKPIs"
     And I close Modal
-    Then I see that "Automation Permanent for Regression" has been added in flextable with Id "AnnouncementKeyOutcomes"
+    Then I see that "Automation Announcement KPI" has been added in flextable with Id "AnnouncementKeyOutcomes"
 
   @35002 @announcementAttachmentChecklist
   Scenario: Validate the attachment checklist of the announcement
@@ -197,30 +197,25 @@ Feature: Validate all scenarios in the directed Announcement tab
   @34232 @announcementReviewerAssignment 
   Scenario: Validate the assignment of Reviewer for the Announcement
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
-      | Role               | Name           | Description                 |
-      | Program Approver   | Automation PM  | Automation Test Description |
-      | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description | 
-    When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
-      | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
-     And I click on "Send for Review" icon for "Automation FO" inside table
-         And I get the "EGMS ID"
-    Then I see that "Sent for Review" has been added in flextable with Id "flexGridApproverRoles"
+    And I click on top right button "New" in flex table with id "flexGridApproverRoles"
+    When I enter "Reviewer" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close Modal
+    Then I see that "Automation FO" has been added in flextable with Id "flexGridApproverRoles"
 
   @34778 @announcementReviewerInitiation
   Scenario: Validate the Reviewer initiation for the Announcement
     When I navigate to "Responsibilities" sub tab
-    #And I click on top right button "New" in flex table with id "flexGridApproverRoles"
-    When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
+        When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
       | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
       | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
      And I click on "Send for Review" icon for "Automation FO" inside table
+    And I get the "EGMS ID"
+    Then I see that "Sent for Review" has been added in flextable with Id "flexGridApproverRoles"
 
   @34779 @announcementReviewComplete
   Scenario Outline: Validate the review for the Announcement
-    Given I navigate to "Responsibilities" sub tab
+     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
       | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
       | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
@@ -260,9 +255,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I close Modal
     Then I see that "Funding Opportunity Announcement" has been added in flextable with Id "a150b000003epC4AAI"
 
-  @reviewStepsBeforeSubmitForApproval @announcement
+  @reviewStepsBeforeSubmitForApproval
   Scenario Outline: Validate the Review steps of Announcement before submit for Approval
-    Given I navigate to "Setup" sub tab
+  And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
     When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
@@ -366,7 +361,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-    Then I see the following messages in the page details contains:
+    Then I see the following messages in the page details :
       | There are no errors with the review step templates. |
     Examples:
       | Announcement Type | Active Funding Opportunities id |
@@ -408,13 +403,14 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
      And I click on "Send for Review" icon for "Automation FO" inside table
     And I get the "EGMS ID"
-       Given I navigate to "Setup" sub tab
+    Given I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "inlineEditGridAnnouncementChecklists" by clicking "Add" :
       | Description                 | Required  | Applies To | Status |
       | Automation test description | Mandatory | Award      | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "inlineEditGridAnnouncementChecklists"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
+    And I navigate to "Attachments" sub tab
     And I click on top right button "Add" in flex table with id "a150b000003epC4AAI"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
     And I close Modal
@@ -553,7 +549,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Announcement Type | Active Funding Opportunities id |
       | Directed          | ActiveFundingOpportunities      |
 
-  @submittedAnnouncementDeletion @checkBugetIssue
+  @submittedAnnouncementDeletion
   Scenario Outline: Validate that only record owner cannot delete Submitted for Approval status announcements
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -596,6 +592,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "inlineEditGridAnnouncementChecklists"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
+    And I navigate to "Attachments" sub tab
     And I click on top right button "Add" in flex table with id "a150b000003epC4AAI"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
     And I close Modal
@@ -781,10 +778,11 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "inlineEditGridAnnouncementChecklists"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
+    And I navigate to "Attachments" sub tab
     And I click on top right button "Add" in flex table with id "a150b000003epC4AAI"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
     And I close Modal
-    And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
@@ -911,10 +909,6 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
-        And I navigate to "Overview" sub tab 
-    And I enter values into fields
-      | Value            | Fields                        |
-      | -1               | fieldApplicationDueDate__c    |   
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
@@ -937,10 +931,12 @@ Feature: Validate all scenarios in the directed Announcement tab
      When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
+    And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
+      | Budget Period Name | Start Date  | End Date |
+      | BP01               | 50          | 500      |
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
-      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
       | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "announcement::directedInvitedApplicatsTableId"
@@ -957,13 +953,14 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
      And I click on "Send for Review" icon for "Automation FO" inside table
     And I get the "EGMS ID"
-     Given I navigate to "Setup" sub tab
+    Given I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "inlineEditGridAnnouncementChecklists" by clicking "Add" :
       | Description                 | Required  | Applies To | Status |
       | Automation test description | Mandatory | Award      | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "inlineEditGridAnnouncementChecklists"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
-    When I close Modal 
+    When I close Modal
+    And I navigate to "Attachments" sub tab
     And I click on top right button "Add" in flex table with id "a150b000003epC4AAI"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
     And I close Modal
@@ -1128,7 +1125,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on top right button "Add Organizations" in flex table with id "announcement::directedInvitedApplicatsTableId"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "announcement::directedAddInviteApplicantTableId"
     And I close Modal
-     When I navigate to "Responsibilities" sub tab
+    When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
@@ -1139,13 +1136,14 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
      And I click on "Send for Review" icon for "Automation FO" inside table
     And I get the "EGMS ID"
-   Given I navigate to "Setup" sub tab
+    Given I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "inlineEditGridAnnouncementChecklists" by clicking "Add" :
       | Description                 | Required  | Applies To | Status |
       | Automation test description | Mandatory | Award      | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "inlineEditGridAnnouncementChecklists"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
-    When I close Modal     
+    When I close Modal
+    And I navigate to "Attachments" sub tab
     And I click on top right button "Add" in flex table with id "a150b000003epC4AAI"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
     And I close Modal
@@ -1305,7 +1303,7 @@ Feature: Validate all scenarios in the directed Announcement tab
 
   @announcementPendingTaskPostApproval
   Scenario Outline: Validate that after approval of an Announcement task get deleted from pending task table.
-    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+        Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -1346,6 +1344,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "inlineEditGridAnnouncementChecklists"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
+    And I navigate to "Attachments" sub tab
     And I click on top right button "Add" in flex table with id "a150b000003epC4AAI"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
     And I close Modal
@@ -1494,7 +1493,7 @@ Feature: Validate all scenarios in the directed Announcement tab
 
   @announcementCompletedTaskPostApproval
   Scenario Outline: Validate that after approval of an Announcement task get added to its completed task table.
-    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+        Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -1535,6 +1534,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "inlineEditGridAnnouncementChecklists"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
+    And I navigate to "Attachments" sub tab
     And I click on top right button "Add" in flex table with id "a150b000003epC4AAI"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
     And I close Modal
@@ -1706,7 +1706,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on top right button "Add Organizations" in flex table with id "announcement::directedInvitedApplicatsTableId"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "announcement::directedAddInviteApplicantTableId"
     And I close Modal
-     When I navigate to "Responsibilities" sub tab
+    When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
@@ -1724,10 +1724,11 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "inlineEditGridAnnouncementChecklists"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
+    And I navigate to "Attachments" sub tab
     And I click on top right button "Add" in flex table with id "a150b000003epC4AAI"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
     And I close Modal
-    And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
@@ -1893,7 +1894,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on top right button "Add Organizations" in flex table with id "announcement::directedInvitedApplicatsTableId"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "announcement::directedAddInviteApplicantTableId"
     And I close Modal
-     When I navigate to "Responsibilities" sub tab
+    When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
@@ -1911,6 +1912,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "inlineEditGridAnnouncementChecklists"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
+    And I navigate to "Attachments" sub tab
     And I click on top right button "Add" in flex table with id "a150b000003epC4AAI"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
     And I close Modal
@@ -2060,7 +2062,7 @@ Feature: Validate all scenarios in the directed Announcement tab
 
   @announcementPostSendBackCheckFieldHistory
   Scenario Outline: Validate the field history after send back of an announcement
-    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+        Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -2083,7 +2085,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on top right button "Add Organizations" in flex table with id "announcement::directedInvitedApplicatsTableId"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "announcement::directedAddInviteApplicantTableId"
     And I close Modal
-     When I navigate to "Responsibilities" sub tab
+    When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
@@ -2101,6 +2103,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "inlineEditGridAnnouncementChecklists"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
+    And I navigate to "Attachments" sub tab
     And I click on top right button "Add" in flex table with id "a150b000003epC4AAI"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
     And I close Modal
@@ -2247,7 +2250,7 @@ Feature: Validate all scenarios in the directed Announcement tab
 
   @announcementApprovalRejection
   Scenario Outline: Validate the reject functionality of an Announcement
-    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+        Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -2281,17 +2284,18 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
      And I click on "Send for Review" icon for "Automation FO" inside table
     And I get the "EGMS ID"
-        Given I navigate to "Setup" sub tab
+    Given I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "inlineEditGridAnnouncementChecklists" by clicking "Add" :
       | Description                 | Required  | Applies To | Status |
       | Automation test description | Mandatory | Award      | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "inlineEditGridAnnouncementChecklists"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
+    And I navigate to "Attachments" sub tab
     And I click on top right button "Add" in flex table with id "a150b000003epC4AAI"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
     And I close Modal
-    And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
@@ -2434,7 +2438,7 @@ Feature: Validate all scenarios in the directed Announcement tab
 
   @announcementRejectPendingTaskForNextApprover
   Scenario Outline: Validate that after rejection from 1st approver, 2nd user should not get pending task
-    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+        Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -2475,7 +2479,8 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "inlineEditGridAnnouncementChecklists"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
-      And I click on top right button "Add" in flex table with id "a150b000003epC4AAI"
+    And I navigate to "Attachments" sub tab
+    And I click on top right button "Add" in flex table with id "a150b000003epC4AAI"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
     And I close Modal
      And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -2624,7 +2629,7 @@ Feature: Validate all scenarios in the directed Announcement tab
 
   @announcementPostRejectPendingTaskForUser
   Scenario Outline: Validate that after rejection of an Announcement task get deleted from pending task table.
-    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+        Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -2647,7 +2652,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on top right button "Add Organizations" in flex table with id "announcement::directedInvitedApplicatsTableId"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "announcement::directedAddInviteApplicantTableId"
     And I close Modal
-     When I navigate to "Responsibilities" sub tab
+    When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
@@ -2665,10 +2670,11 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "inlineEditGridAnnouncementChecklists"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
+    And I navigate to "Attachments" sub tab
     And I click on top right button "Add" in flex table with id "a150b000003epC4AAI"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
     And I close Modal
-    And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
@@ -2813,7 +2819,7 @@ Feature: Validate all scenarios in the directed Announcement tab
 
   @announcementPostRejectCompletedTaskForUser
   Scenario Outline: Validate that after rejection of an Announcement task get added to it's completed task table.
-    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+        Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -2827,18 +2833,16 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I refresh the page
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date  | End Date |
-      | BP01               | 100          | 500      |
+      | BP01               | 50          | 500      |
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
       | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
-     And I click on "Edit" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "announcement::directedInvitedApplicatsTableId"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "announcement::directedAddInviteApplicantTableId"
     And I close Modal
-     And I click on "Save" in the page details
-     When I navigate to "Responsibilities" sub tab
+    When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
@@ -2856,10 +2860,11 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "inlineEditGridAnnouncementChecklists"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
+    And I navigate to "Attachments" sub tab
     And I click on top right button "Add" in flex table with id "a150b000003epC4AAI"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
     And I close Modal
-    And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
@@ -3004,7 +3009,7 @@ Feature: Validate all scenarios in the directed Announcement tab
 
   @announcementPostRejectCheckFieldHistory
   Scenario Outline: Validate the field history after rejection of an announcement
-    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+        Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -3027,7 +3032,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on top right button "Add Organizations" in flex table with id "announcement::directedInvitedApplicatsTableId"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "announcement::directedAddInviteApplicantTableId"
     And I close Modal
-     When I navigate to "Responsibilities" sub tab
+    When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
@@ -3045,10 +3050,11 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "inlineEditGridAnnouncementChecklists"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
+    And I navigate to "Attachments" sub tab
     And I click on top right button "Add" in flex table with id "a150b000003epC4AAI"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
     And I close Modal
-    And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
@@ -3186,12 +3192,12 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "History" sub tab
     Then I see value "Rejected" for title "New Value" inside table "History"
     Examples:
-      | Announcement Type | Active Funding Opportunities id |
-      | Directed          | ActiveFundingOpportunities      |
+      | Announcement Type | Active Funding Opportunities id | User  |
+      | Directed          | ActiveFundingOpportunities      |  EXE  |
 
   @announcementPostRejectionCheckInListView
   Scenario Outline: Validate the rejected announcement will reflect under "Rejected Announcements" list view
-    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+        Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -3232,10 +3238,11 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "inlineEditGridAnnouncementChecklists"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
+    And I navigate to "Attachments" sub tab
     And I click on top right button "Add" in flex table with id "a150b000003epC4AAI"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
     And I close Modal
-    And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
@@ -3370,35 +3377,41 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Navigation | As a Grantor  | Announcements |                   |
       | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
       | Approval   | Start         | Disapprove    |  Continue         |
+    And I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
-    And I click toggle button to select "Rejected Announcements" in "ActiveFundingOpportunitiesAll"
+    And I navigate to "Directed" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Rejected Announcements"
     When I perform quick search for "Record Id" in "ActiveFundingOpportunitiesAll" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "ActiveFundingOpportunitiesAll"
     Examples:
-      | Announcement Type | Active Funding Opportunities id |
-      | Directed          | ActiveFundingOpportunities      |
+      | Announcement Type | Active Funding Opportunities id |User |
+      | Directed          | ActiveFundingOpportunities      | EXE  |
 
   @34462 @publishingDirectedAnnouncement @announcementDirectedHappyPath @smoke 
   Scenario Outline: Validate the activation of Announcement
-    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+       Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-          When I navigate to "Financials" sub tab
-    And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
-    When I refresh the page
-    And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-  | Budget Period Name | Start Date   | End Date|
-    | BP01             | 	50        | 150     |
     And I associate "1" records "FA--154"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154           | 100             |
+      |FA--154         | 100             |
+     When I navigate to "Financials" sub tab
+    And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
+    When I refresh the page
+    And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
+      | Budget Period Name | Start Date  | End Date |
+      | BP01               | 50          | 500      |
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
       | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Add Organizations" in flex table with id "announcement::directedInvitedApplicatsTableId"
+    When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "announcement::directedAddInviteApplicantTableId"
+    And I close Modal
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
@@ -3407,8 +3420,8 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Executive Approver | Automation EXE | Automation Test Description | 
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
       | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
-      | Automation PM | Fiscal Reviewer  | Review Financial details    | 10        |  No                 |
-     And I click on "Send for Review" icon for "Automation PM" inside table
+      | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
+     And I click on "Send for Review" icon for "Automation FO" inside table
     And I get the "EGMS ID"
     Given I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "inlineEditGridAnnouncementChecklists" by clicking "Add" :
@@ -3417,16 +3430,17 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "inlineEditGridAnnouncementChecklists"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
+    And I navigate to "Attachments" sub tab
     And I click on top right button "Add" in flex table with id "a150b000003epC4AAI"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
     And I close Modal
-    And I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
     And I click on "Start" icon for "Record id" inside table
     When I navigate to "Responsibilities" tab
-    When I click on "Enter Review" icon for "Automation PM" inside flex table with id "flexGridApproverRoles"
+    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
       | Value            | Field            |
       | Passed           | Rating__c        |
@@ -3438,7 +3452,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     Given I login and view the record "Record id" as "EXE"
       | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
       | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
-     | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
+      | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
     Given I click on "Complete Review" in the page details
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
@@ -3547,11 +3561,8 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
-    When I navigate to "Overview" sub tab
-    And I click on top right button "Add Organizations" in flex table with id "announcement::directedInvitedApplicatsTableId"
-    When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "announcement::directedAddInviteApplicantTableId"
-    And I close Modal
     And I click on "Save" in the page details
+    When I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
     Given "3" Approvers "PM,FO,EXE" approve the record "Record id"
       | Actions    | Step 1        | Step 2        | Step 3            |

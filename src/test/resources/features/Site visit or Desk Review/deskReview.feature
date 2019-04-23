@@ -260,8 +260,8 @@ Feature: Validate all scenarios in Desk Review
       | Approval   | Start         | Approve    |                   |
     Then I see status in Progress-bar is "Approved" and is "green"
     Examples:
-      | Award Name                            | Award EGMS ID | Desk Review Name       | Desk Review Approval Task | Type                      |
-      | Automation Permanent Award  | AD-AGR-01   | Automation Desk Review | Approve Desk Review      | Review Desk review report |
+      | Award Name                   | Desk Review Name       | Desk Review Approval Task | Type                      |
+      | Automation Permanent Award   | Automation Desk Review | Approve Desk Review      | Review Desk review report |
 
   @deskReviewSendToSubrecipient
   Scenario Outline: Send Desk Review to Subrecipient
@@ -381,8 +381,8 @@ Feature: Validate all scenarios in Desk Review
     And I collapse nested table containing column value "Automation Finding"
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
     Examples:
-      | Award Name                     | Award EGMS ID | Desk Review Name       | Desk Review Approval Task | Type                      |
-      | Automation Permanent Award  | AD-AGR-01    | Automation Desk Review | Approve Desk Review       | Review Desk review report |
+      | Award Name                  | Desk Review Name       | Desk Review Approval Task | Type                      |
+      | Automation Permanent Award  | Automation Desk Review | Approve Desk Review       | Review Desk review report |
 
   @deskReviewSubmitToGrantorBySubrecipient
   Scenario Outline: Send Desk Review to Subrecipient
@@ -453,8 +453,8 @@ Feature: Validate all scenarios in Desk Review
     When I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
     Examples:
-      | Award Name                   | Award EGMS ID | Desk Review Name       | Desk Review Approval Task | Type                      |
-      | Automation Permanent Award  | AD-AGR-01    | Automation Desk Review | Approve Desk Review       | Review Desk review report |
+      | Award Name                   | Desk Review Name       | Desk Review Approval Task | Type                      |
+      | Automation Permanent Award   | Automation Desk Review | Approve Desk Review       | Review Desk review report |
 
   @deskReviewAcceptAndClose @smoke
   Scenario Outline: Send Desk Review to Subrecipient
@@ -490,8 +490,9 @@ Feature: Validate all scenarios in Desk Review
       | FlexTable   | Edit                 | FormComponent |
       | Form Button | Save                 | Back          |
       | Validation  | Validate             | FormComponent |
+      And I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
-    Given "2" Approvers "PM,FO" approve the record "<Desk Review Approval Task>"
+    Given "2" Approvers "PM,FO" approve the record "Record Id"
       | Actions    | Step 1        | Step 2     | Step 3            |
       | Navigation | As a Grantor  | Monitoring |                   |
       | FlexTable  | Pending Tasks | My Tasks   | PhasePendingTasks |
@@ -504,8 +505,8 @@ Feature: Validate all scenarios in Desk Review
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "<Type>" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "<Type>" inside table
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "Record Id" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "deskreview::receipientTableId" by clicking "New" :
@@ -530,6 +531,6 @@ Feature: Validate all scenarios in Desk Review
     And I click on "Accept And Close" in the page details
     Then I see status in Progress-bar is "Closed" and is "green"
     Examples:
-      | Award Name                     | Type                      | Award EGMS ID | Desk Review Name       | Desk Review Approval Task |
-      | Automation Permanent Award  | Review Desk review report | AD-AGR-01    | Automation Desk Review | Approve Desk Review       |
+      | Award Name                  | Type                      | Desk Review Name       | Desk Review Approval Task |
+      | Automation Permanent Award  | Review Desk review report | Automation Desk Review | Approve Desk Review       |
 	
