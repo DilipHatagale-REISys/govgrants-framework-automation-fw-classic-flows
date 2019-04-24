@@ -7,7 +7,7 @@ Feature: Validate all scenarios in Funding Source
       | Actions    | Step 1          | Step 2                | Step 3                         |
       | Navigation | As a Grantor    | Planning              | Planning                       |
       | FlexTable  | Funding Sources | InternalFundingSource | Draft Internal Funding Sources |
-      | Creation   | New             | Save and Continue     | Cancel                         |
+      | Creation   | New             | Save and Continue     | Save                         |
       | ID         | EGMS ID         |                       |                                |
 
   @creationOfFundingSource @smoke
@@ -42,7 +42,7 @@ Feature: Validate all scenarios in Funding Source
     Given I click on top right button "New" in flex table with id "fundingSource::fundingAccountTableId"
     And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     Given I click modal button "Save and Continue"
-    And I click on "Cancel" in the page details
+    And I click on "Save" in the page details
     When I click on "Edit" in the page details
     And I enter "Funding Account Edition" values from "FundingSource_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -73,10 +73,10 @@ Feature: Validate all scenarios in Funding Source
     Given I click on top right button "New" in flex table with id "fundingSource::fundingAccountTableId"
     And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     Given I click modal button "Save and Continue"
-    And I click on "Cancel" in the page details
-    Given I complete the fields from the sheet "Funding Account Edition" in excel "FundingSource_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
+    And I click on "Save" in the page details
+    When I click on "Edit" in the page details
+    And I enter "Funding Account Edition" values from "FundingSource_Field_Values.xlsx"
+    When I click on "Save" in the page details
     And I click on "Activate" in the page details
     When I click "fundingsource__c" lookup link
     Then I see status in Progress-bar is "Active" and is "green"

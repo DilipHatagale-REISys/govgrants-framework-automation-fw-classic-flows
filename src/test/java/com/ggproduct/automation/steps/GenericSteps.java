@@ -41,7 +41,7 @@ public class GenericSteps {
     }
 
     @Description("API call will create a post award record currently supports only for - PaymentRequest, ProgressReport, Closeout")
-    @When("^I create a post award record \"([^\"]*)\" for the Award  \"([^\"]*)\"$")
+    @When("^I create a post award record \"([^\"]*)\" for the Award \"([^\"]*)\"$")
     public void iCreateAPostAwardRecordForTheAward(String objectType, String recordName) {
         projectManager.automationBatchExecuteApi(objectType,recordName);
     }
