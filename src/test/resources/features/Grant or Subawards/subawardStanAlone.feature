@@ -1260,8 +1260,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Budget" sub tab
   And I edit the following rows inline in flex table with id "subAwardFromFDM::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      #| Automation Permanent Focus Area     | 0          |  500     |
-      | Automation Permanent Focus Area  | 0          | 1095     |
+      #| Automation Permanent Focus Area    | 0          |  500     |
+      | Automation Permanent Focus Area     | 0          | 1095     |
     Given I edit the following rows inline in flex table with id "subAwardStandAlone::fundingAccountsTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--154         | 5000        |
@@ -1389,5 +1389,5 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Activated" and is "green"
     Examples:
-      | Award Name                            | Grant Name                      |
+      | Award Name                            | Grant Name                             |
       | Automation Grant Award for Post Award | Automation Grant Award for Post Award  | 

@@ -3,8 +3,7 @@ Feature: Validate all scenarios in the Site Visit
 
   Background: Data setup for Site Visit
     Given I delete the record "Automation Site Visit" from the object "Site Visit"
-    Given I login and view the "Active" award "Activated" with name "Automation Permanent Award" as User "EXE"
-    #And I login and view the "Active" award "Automation Permanent Award" with name "Automation Permanent Award" as User "EXE"
+     Given I login and view the "Active" award "Activated" with name "Automation Permanent Award" as User "EXE"
       | Actions    | Step 1       | Step 2         | Step 3               | Step 4                        |
       | Navigation | As a Grantor | Grants         | Grants and Subawards | Grants, Subaward & Amendments |
       | FlexTable  | Grants       | ActiveGrants   | View                 |                               |
@@ -352,19 +351,20 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Start" icon for "<Type>" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
+    When I pause execution for "6" seconds
     When I enter the following values into flex table with id "siteVisits::receipientTableId" by clicking "New" :
       | Title                               | Description            | Status      | Due Date   | Assigned To    |
-      | Automation Observation Subrecipient | Automation Description | In-Progress | 30         |Automation EXE|
+      | Automation Observation Subrecipient | Automation Description | In-Progress | 30         |Automation SPI|
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "siteVisits::receipientTableId" by clicking "New" :
       | Title                           | Description            | Status      | Due Date   | Assigned To    |
-      | Automation Concern Subrecipient | Automation Description | In-Progress | 30         |Automation EXE|
+      | Automation Concern Subrecipient | Automation Description | In-Progress | 30         |Automation SPI|
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "siteVisits::receipientTableId" by clicking "New" :
       | Title                           | Description            | Status      | Due Date   | Assigned To    |
-      | Automation Finding Subrecipient | Automation Description | In-Progress | 30         |Automation EXE|
+      | Automation Finding Subrecipient | Automation Description | In-Progress | 30         |Automation SPI|
     And I collapse nested table containing column value "Automation Finding"
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
     Examples:
@@ -424,17 +424,17 @@ Feature: Validate all scenarios in the Site Visit
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "siteVisits::receipientTableId" by clicking "New" :
       | Title                               | Description            | Status      | Due Date   | Assigned To    |
-      | Automation Observation Subrecipient | Automation Description | In-Progress | 30         |Automation EXE|
+      | Automation Observation Subrecipient | Automation Description | In-Progress | 30         |Automation SPI|
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "siteVisits::receipientTableId" by clicking "New" :
       | Title                           | Description            | Status      | Due Date   | Assigned To    |
-      | Automation Concern Subrecipient | Automation Description | In-Progress | 30         |Automation EXE|
+      | Automation Concern Subrecipient | Automation Description | In-Progress | 30         |Automation SPI|
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "siteVisits::receipientTableId" by clicking "New" :
       | Title                           | Description            | Status      | Due Date   | Assigned To    |
-      | Automation Finding Subrecipient | Automation Description | In-Progress | 30         |Automation EXE|
+      | Automation Finding Subrecipient | Automation Description | In-Progress | 30         |Automation SPI|
     And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
@@ -495,17 +495,17 @@ Feature: Validate all scenarios in the Site Visit
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "siteVisits::receipientTableId" by clicking "New" :
       | Title                               | Description            | Status      | Due Date   | Assigned To    |
-      | Automation Observation Subrecipient | Automation Description | In-Progress | 30         |Automation EXE|
+      | Automation Observation Subrecipient | Automation Description | In-Progress | 30         |Automation SPI  |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "siteVisits::receipientTableId" by clicking "New" :
       | Title                           | Description            | Status      | Due Date   | Assigned To    |
-      | Automation Concern Subrecipient | Automation Description | In-Progress | 30         |Automation EXE|
+      | Automation Concern Subrecipient | Automation Description | In-Progress | 30         |Automation SPI|
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "siteVisits::receipientTableId" by clicking "New" :
       | Title                           | Description            | Status      | Due Date   | Assigned To    |
-      | Automation Finding Subrecipient | Automation Description | In-Progress | 30         |Automation EXE|
+      | Automation Finding Subrecipient | Automation Description | In-Progress | 30         |Automation SPI|
     And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -515,7 +515,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Accept And Close" in the page details
     Then I see status in Progress-bar is "Closed" and is "green"
     Examples:
-      | Award Name                  | Type                     | Award EGMS ID | Site Visit Name       | Site Visit Approval Task |
+      | Award Name                  | Type                    | Award EGMS ID | Site Visit Name       | Site Visit Approval Task |
       | Automation Permanent Award | Review Site visit report | AD-AGR-01     | Automation Site Visit | Approve Site Visit       |
 	
 	

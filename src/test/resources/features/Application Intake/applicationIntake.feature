@@ -94,6 +94,7 @@ Feature: Validate all scenarios in the Application Intake
     Given I complete the fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
+      
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "applicationIntake::budgetPeriodTableId" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
