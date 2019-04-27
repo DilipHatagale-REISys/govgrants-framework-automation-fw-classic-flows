@@ -4,13 +4,7 @@ Feature: Validate all scenarios in Progress Report
   Background: To create a progress report
 
     Given I delete the record "Automation Permanent Award" from the object "Progress Report"
-    When I create a post award record "ProgressReport" for the Award  "Automation Permanent Award"
-    Given I am on "SUBPORTAL" portal
-    When I login as "SPI" user
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I pause execution for "8" seconds
-    When I get the EGMS ID for record "Automation Permanent Award" having field name "Title__c" from the object "ProgressReports__c"
+    When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c"
     When User "SPI" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2        | Step 3    |
       | Navigation | Monitoring        | Grants Portal | SUBPORTAL |
@@ -100,7 +94,7 @@ Feature: Validate all scenarios in Progress Report
     And I perform quick search for "Record Id" in "progressReport::progressReportFlexTableId" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "progressReport::progressReportFlexTableId"
 
-  @spaUserBlockedfromSubmisionOfProgressReport @notfuctional
+  @spaUserBlockedfromSubmisionOfProgressReport
   Scenario: To validate SPA user is not allowed to Submit Progress Report
     When User "SPA" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -256,7 +250,6 @@ Feature: Validate all scenarios in Progress Report
       | FlexTable   | Edit                  | FormComponent |
       | Form Button | Save                  | Back          |
       | Validation  | Validate              | FormComponent |
-#    When I get the "EGMS ID"
     Given I click on "Submit to Grantor" in the page details
     When User "EXE" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2       | Step 3 |
@@ -467,16 +460,15 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     And I click on "Start" icon for "Record Id" inside table
-    When I click on "Send Back" on the approval decision box
-    Given I re-login to "As a Grantor" app as "PM" user
+    When I click on "Send to Owner" on the approval decision box
+    Given I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
+    Then I do not see value inside table with id "PhasePendingTasks"
 
   @approvalofProgressReportSendbacktoOwnerOfProgressReportbyProgramApprover
   Scenario: To validate  Progress Report approval is successful post Program Approver Sends back the progress report to Owner.
-
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
@@ -506,14 +498,14 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     And I click on "Start" icon for "Record Id" inside table
-    When I click on "Send Back" on the approval decision box
-    Given I re-login to "As a Grantor" app as "PM" user
+    When I click on "Send to Owner" on the approval decision box
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Manage Progress Reports" content inside "Monitoring Activities" subheader on left panel
     When I click toggle button to select "Submitted Progress Reports" in "progressReport::internalProgressReportFlexTableId"
     And I click on "View" icon for "Record Id" inside flex table with id "progressReport::internalProgressReportFlexTableId"
     Given I click on "Submit for Approval" in the page details
-    When "2" Approvers "Automation PM,Automation FO" approve the record "Record Id"
+    When "2" Approvers "PM,FO" approve the record "Record Id"
       | Actions    | Step 1        | Step 2     | Step 3            |
       | Navigation | As a Grantor  | Monitoring |                   |
       | FlexTable  | Pending Tasks | My Tasks   | PhasePendingTasks |
@@ -569,12 +561,12 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Approve" on the approval decision box
-    Given I re-login to "As a Grantor" app as "Automation FO" user
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     And I click on "Start" icon for "Record Id" inside table
-    When I click on "Send Back" on the approval decision box
+    When I click on "Send to Owner" on the approval decision box
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
 
   @progressReportsTableUpdateOnAward
@@ -610,7 +602,7 @@ Feature: Validate all scenarios in Progress Report
       | Approval   | Start         | Approve    |                   |
     When I click "Award__c" lookup link
     And I navigate to "Performance" sub tab
-    Then I see value "7" for title "Actual" inside table "inlineEditGridGrantorAwardKeyOutcomes"
+    Then I see that "7" has been added in flextable with Id "inlineEditGridGrantorAwardKeyOutcomes"
 
   @historyOfProgressReportsendbacktoOwnerOfProgressReportbyFiscalApprover
   Scenario: To validate  field history update post Progress Report is send back to owner by Fiscal approver.
@@ -781,7 +773,7 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
+    Then I do not see value inside table with id "PhasePendingTasks"
 
   @approvalOfProgressReport @progressReportHappyPathWithoutDefaultApprovers
   Scenario: To approve Progress Report by changing the defualt approvers in Progress Report

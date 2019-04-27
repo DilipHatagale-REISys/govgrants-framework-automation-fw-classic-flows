@@ -5,13 +5,7 @@ Feature: Scheduled Payment Request Happy Path
   Scenario Outline: Scheduled Payment Request happy path
     When I am on "SUBPORTAL" portal
     Given I delete the record "<Award>" from the object "Payment Request"
-    When I create a post award record "PaymentRequest" for the Award "Automation Permanent Award"
-    Given I am on "SUBPORTAL" portal
-    When I login as "SPI" user
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I pause execution for "10" seconds
-    When I get the EGMS ID for record "<Award>" having field name "Title__c" from the object "PaymentRequest__c"
+    When I create a post award record "PaymentRequest" for the Award "<Award>" having object api name as "PaymentRequest__c"
     Given User "SPI" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2        | Step 3    |
       | Navigation | Monitoring        | Grants Portal | SUBPORTAL |
@@ -48,10 +42,6 @@ Feature: Scheduled Payment Request Happy Path
     And I edit the following rows inline in flex table with id "paymentRequest::approversTableId" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
-#    And I select "1" approvers "Automation FO"
-#      | Actions    | Step 1                                         | Step 2 | Step 3          |
-#      | Subtab     | Responsibilities                               |        |                 |
-#      | Approver 1 | flexGridPaymentRequestRolesandResponsibilities | Edit   | Fiscal Approver |
     Given I click on "Submit for Approval" in the page details
     Given "1" Approvers "FO" approve the record "Record Id"
       | Actions    | Step 1        | Step 2     | Step 3            |

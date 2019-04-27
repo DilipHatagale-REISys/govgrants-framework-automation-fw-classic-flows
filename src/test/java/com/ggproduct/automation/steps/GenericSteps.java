@@ -34,21 +34,15 @@ public class GenericSteps {
         projectManager.attemptDeletion(columnValues, tableId);
     }
 
-    @Description("API call will retrieve the Record Id.")
-    @When("^I get the EGMS ID for record \"([^\"]*)\" having field name \"([^\"]*)\" from the object \"([^\"]*)\"$")
-    public void iGetTheEgmsIdForRecordHavingFieldNameFromTheObject(String recordName, String fieldName, String objectType){
-        projectManager.getRecordIdFromResponse(recordName,fieldName,objectType);
-    }
-
-    @Description("API call will create a post award record currently supports only for - PaymentRequest, ProgressReport, Closeout")
-    @When("^I create a post award record \"([^\"]*)\" for the Award \"([^\"]*)\"$")
-    public void iCreateAPostAwardRecordForTheAward(String objectType, String recordName) {
-        projectManager.automationBatchExecuteApi(objectType,recordName);
-    }
-
     @Description("To verify no record found in flex table")
     @Then("^I do not see value inside table with id \"([^\"]*)\"$")
-    public void iDoNotSeeValueInsideTableWithId(String tableId){
+    public void iDoNotSeeValueInsideTableWithId(String tableId) {
         Assert.assertTrue(projectManager.isRecordPresentInTheFlexTable(tableId));
+    }
+
+    @Description("API call used to create a post award records i.e. Payment Request, Progress Report and Closout and will fetch the record ID for that record")
+    @When("^I create a post award record \"([^\"]*)\" for the Award \"([^\"]*)\" having object api name as \"([^\"]*)\"$")
+    public void iCreateAPostAwardRecordForTheAwardHavingObjectApiNameAs(String objectType, String recordName, String objectApiName) {
+        projectManager.getRecordIdFromResponse(objectType, recordName, objectApiName);
     }
 }

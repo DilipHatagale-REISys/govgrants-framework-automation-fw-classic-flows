@@ -241,7 +241,7 @@ public class UsersAndURL implements UsersController {
                 username = "bill_pm@ggp.test7.automation";
                 break;
             case "SPA":
-                username = "automationspa@yopmail.com";
+                username = "automationspi@yopmail.com";
                 break;
             default:
                 username = "manu.sa@ggp.test7.automation";
