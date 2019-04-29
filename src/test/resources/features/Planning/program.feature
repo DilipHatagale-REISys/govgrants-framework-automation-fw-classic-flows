@@ -2,7 +2,7 @@
 Feature: Validate all scenarios for program
 
   Background: Create Program
-   #Given I delete the record "Automation Permanent Internal Program" from the object "Program"
+   Given I delete the record "Automation Execution Internal Program" from the object "Program"
     And I create a planning record as user "EXE" from sheet "Creation" in excel "Program_Field_Values.xlsx"
       | Actions    | Step 1            | Step 2            | Step 3                  |
       | Navigation | As a Grantor      | Planning          | Programs                |
@@ -17,8 +17,8 @@ Feature: Validate all scenarios for program
     And I click toggle button to select "<Program flextable Header>"
     Then I see that "Automation Permanent Internal Program" has been added in flextable with Id "Programs"
     Examples:
-      | Program flextable Header | Program Status |
-      | Draft Internal Programs  | Created        |
+      | Program flextable Header |
+      | Draft Internal Programs  |
 
   @34503 @programCreation  @smoke
   Scenario: Verifying if the EXE, PM, PO has create access to Internal Program
@@ -122,7 +122,7 @@ Feature: Validate all scenarios for program
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
   @34754 @programApproval @smoke
-  Scenario Outline: Validate the approval of Internal Program
+  Scenario: Validate the approval of Internal Program
     Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
@@ -155,9 +155,6 @@ Feature: Validate all scenarios for program
       | FlexTable  | Pending Tasks | My Tasks | PhasePendingTasks |
       | Approval   | Start         | Approve  |                   |
     Then I see status in Progress-bar is "Approved" and is "green"
-    Examples:
-      | Program Approver |
-      | PM               |
 
   @34756 @programActivation @programHappyPath  @smoke
   Scenario Outline: Validate the activation of Internal Program

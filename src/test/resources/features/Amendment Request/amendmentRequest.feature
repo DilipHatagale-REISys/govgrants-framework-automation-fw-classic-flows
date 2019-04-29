@@ -2,6 +2,7 @@
 Feature: Validate all scenarios in the Amendment Request
 
   Background: Setup data
+    Given I delete the record "Automation Grant Regression" from the object "Subaward"
     Given I delete the record "Automation Grant Regression" from the object "Amendment Request"
     Given I login and view the "Active" award "Activated" with name "Automation Grant Regression" as User "PM"
       | Actions    | Step 1       | Step 2         | Step 3               | Step 4                        |
@@ -9,7 +10,7 @@ Feature: Validate all scenarios in the Amendment Request
       | FlexTable  | Grants       | ActiveGrants   | View                 |                               |
       | Subaward   | Subawards    | RelatedAwards1 | View                 |                               |
 
-  @creationOfSOWAmendmentRequest  @smoke
+  @50638 @creationOfSOWAmendmentRequest @smoke
   Scenario: Creation of Amendment Request
     Given I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
@@ -17,8 +18,8 @@ Feature: Validate all scenarios in the Amendment Request
     And I click modal button "Save and Continue"
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @editionOfSOWAmendmentRequest 
-  Scenario: Creation of Amendment Request
+   @50639 @editionOfSOWAmendmentRequest 
+   Scenario: Edition of Amendment Request
     Given I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
@@ -29,7 +30,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @associationOfKPIToSOWAmendmentRequest  @smoke
+   @50640 @associationOfKPIToSOWAmendmentRequest  @smoke
   Scenario: Association of KPI to Amendment Request
     Given I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
@@ -45,7 +46,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I close Modal
     Then I see that "Automation Permanent KPI for Regression" has been added in flextable with Id "flexGridGrantorAmendmentKeyOutcomes"
 
-   @associationOfObjectiveToSOWAmendmentRequest  @smoke @wip
+   @50641 @associationOfObjectiveToSOWAmendmentRequest  @smoke @wip
    Scenario: Association of Objective to Amendment Request
    Given I navigate to "Requests" sub tab
    And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
@@ -53,11 +54,11 @@ Feature: Validate all scenarios in the Amendment Request
    And I click modal button "Save and Continue"
    And I click on "Save" in the page details
    When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
-   And I click "Associate" after selection of "Automation Permanent Objective " in the table "SelectAmendmentGoals"
+   And I click "Associate" after selection of "Automation Permanent Objective" in the table "SelectAmendmentGoals"
    When I switch to Parent frame
-   Then I see that "Automation Permanent Objective " has been added in flextable with Id "GrantorAmendmentGoalsObjectives"
+   Then I see that "Automation Permanent Objective" has been added in flextable with Id "GrantorAmendmentGoalsObjectives"
 
-  @deletionOfObjectiveInSOWAmendmentRequest 
+  @50642 @deletionOfObjectiveInSOWAmendmentRequest 
   Scenario: Deletion of Objective in Amendment Request
    Given I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
@@ -65,13 +66,13 @@ Feature: Validate all scenarios in the Amendment Request
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
     When I click on top right button "Associate" in flex table with id "GrantorAmendmentGoalsObjectives"
-    And I click "Associate" after selection of "Automation Grant Objective" in the table "SelectyyAmendmentGoals"
+    And I click "Associate" after selection of "Automation Permanent Objective" in the table "SelectAmendmentGoals"
     When I switch to Parent frame
-    When I click on "Remove" icon for "Automation Grant Objective" inside flex table with id "GrantorAmendmentGoalsObjectives"
-    Then I do not see values "SPO-0077" and "Automation Grant Objective" inside table
+    When I click on "Remove" icon for "Automation Permanent Objective" inside flex table with id "GrantorAmendmentGoalsObjectives"
+    Then I do not see values "EGMS ID" and "Automation Permanent Objective" inside table
 
-  @assignApproversToSOWAmendmentRequest 
-  Scenario: Assign approvers to Amendment Request
+   @50643 @assignApproversToSOWAmendmentRequest 
+   Scenario: Assign approvers to Amendment Request
     Given I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
@@ -85,7 +86,7 @@ Feature: Validate all scenarios in the Amendment Request
       | Executive Approver | Automation EXE | Automation Test Description |
     Then I see that "Automation EXE" has been added in flextable with Id "flexGridAmendmentreqRolesAndResponsibilities"
 
-  @addAttachmentToSOWAmendmentRequest 
+  @50644 @addAttachmentToSOWAmendmentRequest 
   Scenario: Add attachment to Amendment Request
     Given I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
@@ -98,7 +99,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I close Modal
     Then I see that "Terms and Conditions" has been added in flextable with Id "a150b000003epeQAAQ"
 
-  @sendToSubrecipientToSOWAmendmentRequest  
+  @50645 @sendToSubrecipientToSOWAmendmentRequest  
   Scenario: Send Amendment Request to subrecipient
     Given I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
@@ -129,7 +130,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Send to Subrecipient" in the page details
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
 
-  @subrecipientAcknowledgesSOWAmendmentRequest  @smoke
+  @50646 @subrecipientAcknowledgesSOWAmendmentRequest  @smoke
   Scenario: Subrecipient acknowledges Amendment Request
     Given I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
@@ -166,7 +167,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Acknowledge" in the page details
     Then I see that "Amendment Request" is in "Acknowledged" status
 
-  @submitForApprovalSOWAmendmentRequest 
+  @50647 @submitForApprovalSOWAmendmentRequest 
   Scenario: Submit Amendment Request for Approval
     Given I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
@@ -209,7 +210,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
-  @approvalOfSOWAmendmentRequest  @smoke
+  @50648 @approvalOfSOWAmendmentRequest  @smoke
   Scenario: Approval of Amendment Request
     Given I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
@@ -257,7 +258,7 @@ Feature: Validate all scenarios in the Amendment Request
       | Approval   | Start         | Approve  |                   |
     Then I see status in Progress-bar is "Approved" and is "green"
 
-  @amendSubawardSOWAmendmentRequest 
+  @50649 @amendSubawardSOWAmendmentRequest 
   Scenario: Click on Amend of Amendment Request
     Given I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
@@ -303,11 +304,10 @@ Feature: Validate all scenarios in the Amendment Request
       | Navigation | As a Grantor  | Grants   |                   |
       | FlexTable  | Pending Tasks | My Tasks | PhasePendingTasks |
       | Approval   | Start         | Approve  |                   |
-    And I click on "Amend Subaward" in the page details
-     Then I see the following messages in the page details contains:
-     | You cannot draft this award until all awards pending activation have been activated. |
-    
-  @activateSubawardSOWAmendmentRequest @scopeOfWorkHappyPath @smoke 
+     And I click on "Amend Subaward" in the page details
+     Then I see that "Automation Grant Regression" is in "Pending Activation" status
+        
+  @50650 @activateSubawardSOWAmendmentRequest @scopeOfWorkHappyPath @smoke 
   Scenario: Click on Amend of Amendment Request
     Given I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
@@ -347,6 +347,7 @@ Feature: Validate all scenarios in the Amendment Request
       | Navigation | Grants            | As a Grantor | INTERNAL |
       | Left Panel | Pending Tasks     | My Tasks     |          |
       | FlexTable  | PhasePendingTasks | Start        |          |
+      And I get the "EGMS ID"
     And I click on "Submit for Approval" in the page details
     When "3" Approvers "PM,FO,EXE" approve the record "Record Id"
       | Actions    | Step 1        | Step 2   | Step 3            |
@@ -354,10 +355,10 @@ Feature: Validate all scenarios in the Amendment Request
       | FlexTable  | Pending Tasks | My Tasks | PhasePendingTasks |
       | Approval   | Start         | Approve  |                   |
     And I click on "Amend Subaward" in the page details
-   # When I click on "Activate" in the page details
-    Then I see status in Progress-bar is "Pending Activation" and is "green"
+    When I click on "Activate" in the page details
+    Then I see status in Progress-bar is "Activated" and is "green"
 
-  @creationOfBPCAmendmentRequest @smoke
+  @50652 @creationOfBPCAmendmentRequest @smoke
   Scenario: Creation of Budget Period change Amendment Request
     Given I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
@@ -366,7 +367,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @editionOfBPCAmendmentRequest 
+  @50653 @editionOfBPCAmendmentRequest 
   Scenario: Edition of Budget Period Change
     Given I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
@@ -378,7 +379,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @editionOfFocusAreaDatesBPCAmendmentRequest 
+   @50654 @editionOfFocusAreaDatesBPCAmendmentRequest 
   Scenario: Validate the edition of FocusArea Dates to BPC
     Given I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"
@@ -390,7 +391,7 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Grant Focus Area   | 500      |
     Then I see that "Automation Grant Focus Area" has been added in flextable with Id "flexGridAmendmentProjectAreasGrantor"
 
-  @associateFocusAreaToBPCAmendmentRequest @smoke
+  @50655 @associateFocusAreaToBPCAmendmentRequest @smoke
   Scenario: Validate the association of FocusArea to BPC 
     Given I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "GrantorAwardAmendmentRequest"

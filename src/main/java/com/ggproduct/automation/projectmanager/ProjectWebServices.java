@@ -10,6 +10,8 @@ public class ProjectWebServices {
     private static String endPoint = EnvironmentFetcher.environment;
     private String defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9ic.6IFhNpPq_k9vYkenIh973gbcI2GBHkEu4.ukW4PZidcRmrQ6ma0lg.fdcZRtLB4IL1HgKKB87Y5Ab&client_secret=6105591870206036129&username=manu.sa@ggp.test7&password=GoProduct@123";
     private static String tokenString;
+    private String jobID;
+    private String status;
 
     /**
      * get token for authentication of Delete request
@@ -71,20 +73,55 @@ public class ProjectWebServices {
         response.prettyPrint();
         assertStatusCode(response);
         return response;
+
     }
 
     /*
      * calls the api which will create post award records currently accepts PaymentRequest, ProgressReport, Closeout.
-     *  @param objectType - This is the batch job type. Currently supports 3 different values – PaymentRequest, ProgressReport, Closeout.
-     *  @param recordName - : the name of the award (for payment/progress) or grant (for closeout) for which you want to run the batch job.
+     *  @param objectType -: This is the batch job type. Currently supports 3 different values – PaymentRequest, ProgressReport, Closeout.
+     *  @param recordName -: The name of the award (for payment/progress) or grant (for closeout) for which you want to run the batch job.
+     *  @param objectApiName -: This is the object api name.
      */
-    public void automationBatchExecuteApi(String objectType, String recordName) {
+    public Response automationBatchExecuteApi(String objectType, String recordName, String objectApiName) {
         getAuthToken();
         String finalEndPoint = endPoint + "/services/apexrest/productAutomationRunBatchJob?type=" + objectType
                 + "&recordName=" + recordName;
-        Response response = apiCall.postCall(null, null, finalEndPoint, "Authorization", "Bearer " + tokenString,
-                null);
+        Response response = apiCall.getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
         response.prettyPrint();
         assertStatusCode(response);
+        jobID = response.asString().replace("\"", "");
+        finalEndPoint = endPoint + "/services/apexrest/productAutomationGetBatchJobStatus?batchId=" + jobID;
+
+        try {
+            Thread.sleep(20000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        int timer = 0;
+        while (timer < 120) {
+            response = apiCall.getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
+            response.prettyPrint();
+            assertStatusCode(response);
+            status = response.asString().replace("\"", "");
+            if (status.equalsIgnoreCase("Completed") || status.equalsIgnoreCase("Aborted")) {
+                System.out.println("Batch Status is :" + status);
+                break;
+            } else {
+                try {
+                    Thread.sleep(20000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                timer = timer + 20;
+            }
+
+        }
+
+        if (status.equalsIgnoreCase("Completed")) {
+            return automateGetApi(recordName, "Title__c", objectApiName);
+        } else {
+            return null;
+        }
     }
 }

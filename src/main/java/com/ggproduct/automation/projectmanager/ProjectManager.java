@@ -77,8 +77,18 @@ public class ProjectManager extends ProjectWebServices {
         }
     }
 
-    public void getRecordIdFromResponse(String recordName, String fieldName, String objectType) {
-        govgrants.pageDetails().idOfRecord = (automateGetApi(recordName, fieldName, objectType).asString()).replace("\"", "");
+    /*handles to get the record id of a record */
+    public void getRecordIdFromResponse(String objectType, String recordName, String objectApiName) {
+        govgrants.pageDetails().idOfRecord = (automationBatchExecuteApi(objectType, recordName, objectApiName)).asString().replace("\"", "");
     }
 
+    /* handles to verify no record is present in flex table */
+    public boolean isRecordPresentInTheFlexTable(String tableId) {
+        try {
+            return reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='" + tableId + "']//p[contains(text(),'No records found')]")).isDisplayed();
+        } catch (Exception e) {
+
+        }
+        return false;
+    }
 }

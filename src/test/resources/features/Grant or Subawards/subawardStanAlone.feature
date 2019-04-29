@@ -152,7 +152,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I edit the following rows inline in flex table with id "subAwardStandAlone::kpiTableId" by clicking "Edit" :
       | EGMS ID  | Target |
       |Automation Permanent KPI for Regression| 10     |
-
     And I navigate to "Management" sub tab
     Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
       | Actions  | Step 1     | Step 2                   | Step 3 | Step 4 | Step 5          |
@@ -1099,7 +1098,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Acceptance | Start         | Accept        | Accept after Approval | OK                |
     Then I see that "Subaward" is in "Accepted" status
     Examples:
-      | Award Name                     | Grant Name                     | Type            | Type1                    |
+      | Award Name                            | Grant Name                            | Type            | Type1                    |
       | Automation Grant Award for Post Award | Automation Grant Award for Post Award | Subaward Review | Approve Grantor Subaward |
 
   @allActivation @smoke
@@ -1261,8 +1260,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Budget" sub tab
   And I edit the following rows inline in flex table with id "subAwardFromFDM::focusAreaTableId" by clicking "Edit" :
       | Title                               | Start Date | End Date |
-      #| Automation Permanent Focus Area     | 0          |  500     |
-      | Automation Permanent Focus Area  | 0          | 1095     |
+      #| Automation Permanent Focus Area    | 0          |  500     |
+      | Automation Permanent Focus Area     | 0          | 1095     |
     Given I edit the following rows inline in flex table with id "subAwardStandAlone::fundingAccountsTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--154         | 5000        |
@@ -1390,5 +1389,5 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Activated" and is "green"
     Examples:
-      | Award Name                            | Grant Name                      |
+      | Award Name                            | Grant Name                             |
       | Automation Grant Award for Post Award | Automation Grant Award for Post Award  | 
