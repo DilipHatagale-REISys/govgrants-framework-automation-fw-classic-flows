@@ -136,9 +136,9 @@ Feature: Validate all scenarios in the Competitive Announcement tab
   Scenario: Validate the association of Focus Area to Announcement
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementServiceArea1"
-    When I click "Add" after selection of "Automation Execution Focus Area" in the table "SelectAnnouncementServiceArea1"
+    When I click "Add" after selection of "Automation Grant Focus Area" in the table "SelectAnnouncementServiceArea1"
     And I close Modal
-    Then I see that "Automation Execution Focus Area" has been added in flextable with Id "AnnouncementServiceArea1"
+    Then I see that "Automation Grant Focus Area" has been added in flextable with Id "AnnouncementServiceArea1"
     
   @34774 @announcementObjectiveAssociationCA
   Scenario: Validate the association of objective to the Announcement
@@ -404,7 +404,7 @@ And I navigate to "Setup" sub tab
 
   @announcementForPastApplicationDueDateCA
   Scenario Outline:    Validate that user can not enter application due date as past date
-    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+      Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -424,9 +424,9 @@ And I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
+      | Executive Approver | Automation EXE | Automation Test Description | 
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description | 
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
       | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
       | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
@@ -1089,7 +1089,7 @@ And I navigate to "Setup" sub tab
 
   @announcementCompletedTaskPostApprovalCA @smoke 
   Scenario Outline: Validate that after approval of an Announcement task get added to its completed task table.
-    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+      Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -1109,9 +1109,9 @@ And I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
+      | Executive Approver | Automation EXE | Automation Test Description | 
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description | 
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
       | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
       | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
@@ -1249,8 +1249,7 @@ And I navigate to "Setup" sub tab
       | Budget Period Name | Start Date  | End Date      |
       | BP01               | 	50       | 	150          |  
     And I click on "Save" in the page details
-    And I click on "Submit For Approval" in the page details
-    And I click on "Submit For Approval" in the page details
+   And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
@@ -1439,7 +1438,7 @@ And I navigate to "Setup" sub tab
 
   @announcementSendBackPendingTaskToOwnerCA
   Scenario Outline: Validate that after send back from approvers owner should not get pending task
-   Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -1459,9 +1458,9 @@ And I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
+      | Executive Approver | Automation EXE | Automation Test Description | 
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description | 
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
       | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
       | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
@@ -1599,7 +1598,7 @@ And I navigate to "Setup" sub tab
       | Budget Period Name | Start Date  | End Date      |
       | BP01               | 	50       | 	150          |  
     And I click on "Save" in the page details
-    And I click on "Submit For Approval" in the page details
+   And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
@@ -1790,7 +1789,7 @@ And I navigate to "Setup" sub tab
 
   @announcementRejectPendingTaskForNextApproverCA
   Scenario Outline: Validate that after rejection from 1st approver, 2nd user should not get pending task
-   Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -1810,9 +1809,9 @@ And I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
+      | Executive Approver | Automation EXE | Automation Test Description | 
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description | 
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
       | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
       | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
@@ -1950,7 +1949,7 @@ And I navigate to "Setup" sub tab
       | Budget Period Name | Start Date  | End Date      |
       | BP01               | 	50       | 	150          |  
     And I click on "Save" in the page details
-    And I click on "Submit For Approval" in the page details
+   And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
@@ -1960,7 +1959,7 @@ And I navigate to "Setup" sub tab
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
+     Then I do not see values "EGMS ID" and "Automation Competitive Announcement" inside table
     Examples:
       | Announcement Type | Active Funding Opportunities id     | User |
       | Competitive       | ActiveFundingOpportunitiesCompitive | EXE  |
@@ -2518,9 +2517,9 @@ And I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
+      | Executive Approver | Automation EXE | Automation Test Description | 
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description | 
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
       | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
       | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
@@ -2658,12 +2657,12 @@ And I navigate to "Setup" sub tab
       | Budget Period Name | Start Date  | End Date      |
       | BP01               | 	50       | 	150          |  
     And I click on "Save" in the page details
-    And I click on "Submit For Approval" in the page details
-    Given "1" Approvers "PM" approve the record "Record id"
+   And I click on "Submit For Approval" in the page details
+   Given "3" Approvers "PM,FO,EXE" approve the record "Record id"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
       | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
-      | Approval   | Start         | Approve       |           |
+      | Approval   | Start         | Approve       |                   |
     And I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Competitive" content inside "Announcements" subheader on left panel
