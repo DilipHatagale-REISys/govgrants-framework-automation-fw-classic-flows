@@ -144,9 +144,9 @@ Feature: Validate all scenarios in the directed Announcement tab
   Scenario: Validate the association of Focus Area to Announcement
     Given I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementServiceArea1"
-    When I click "Add" after selection of "Automation Execution Focus Area" in the table "SelectAnnouncementServiceArea1"
+    When I click "Add" after selection of "Automation Grant Focus Area" in the table "SelectAnnouncementServiceArea1"
     And I close Modal
-    Then I see that "Automation Execution Focus Area" has been added in flextable with Id "AnnouncementServiceArea1"
+    Then I see that "Automation Grant Focus Area" has been added in flextable with Id "AnnouncementServiceArea1"
 
   @34774 @announcementObjectiveAssociation @smoke 
   Scenario: Validate the association of objective to the Announcement
@@ -198,9 +198,9 @@ Feature: Validate all scenarios in the directed Announcement tab
   Scenario: Validate the assignment of Reviewer for the Announcement
     Given I navigate to "Responsibilities" sub tab
     And I click on top right button "New" in flex table with id "flexGridApproverRoles"
-    When I enter "Reviewer" values from "Announcement_Field_Values.xlsx"
-    And I click modal button "Save"
-    When I close Modal
+        When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
+      | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
+      | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
     Then I see that "Automation FO" has been added in flextable with Id "flexGridApproverRoles"
 
   @34778 @announcementReviewerInitiation
@@ -257,7 +257,7 @@ Feature: Validate all scenarios in the directed Announcement tab
 
   @reviewStepsBeforeSubmitForApproval
   Scenario Outline: Validate the Review steps of Announcement before submit for Approval
-    Given I navigate to "Setup" sub tab
+    When I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
     When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
@@ -361,12 +361,6 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-        And I click on "Edit" in the page details
-    When I navigate to "Financials" sub tab
-    And I enter value "Justified" into field "Justification__c"
-    And I click on "Save" in the page details
-    When I get the "EGMS ID"
-    And I click on "Submit For Approval" in the page details
     Then I see the following messages in the page details :
       | There are no errors with the review step templates. |
     Examples:
@@ -1933,7 +1927,7 @@ And I navigate to "Setup" sub tab
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
       | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
-      | Approval   | Start         | Send to Owner |   Continue                  |
+      | Approval   | Start         | Send to Owner |   Continue        |
     And I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1945,7 +1939,7 @@ And I navigate to "Setup" sub tab
 
   @announcementPostSendBackCheckFieldHistory
   Scenario Outline: Validate the field history after send back of an announcement
- Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+  Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -2831,7 +2825,7 @@ And I navigate to "Setup" sub tab
 
   @announcementPostRejectCheckFieldHistory
   Scenario Outline: Validate the field history after rejection of an announcement
- Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+  Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"

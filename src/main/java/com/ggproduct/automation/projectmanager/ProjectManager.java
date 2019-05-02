@@ -42,7 +42,7 @@ public class ProjectManager extends ProjectWebServices {
         govgrants.pageDetails().getRecordId(recordIdLabel);
     }
 
-    /**
+    /*
      * Handles association of various related records
      *
      * @param recordName

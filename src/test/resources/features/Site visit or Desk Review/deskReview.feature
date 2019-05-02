@@ -15,18 +15,18 @@ Feature: Validate all scenarios in Desk Review
       | Creation   | Save And Close       | Cancel                 |
     And I get the "EGMS ID"
 
-  @deskReviewCreation
+  @51010 @deskReviewCreation
   Scenario: Creation of Desk Review
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @deskReviewEdition
+  @51011 @deskReviewEdition
   Scenario: Edition of Desk Review
     When I click on "Edit" in the page details
     And I enter "Edition" values from "DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @participantAssociationDeskReview @wip
+  @51012 @participantAssociationDeskReview @wip
   Scenario Outline: Participant Association of Desk Review
     When I navigate to "Overview" sub tab
     Then I see that "<Subrecipient>" has been added in flextable with Id "deskreview::participantsTableId"
@@ -34,7 +34,7 @@ Feature: Validate all scenarios in Desk Review
       | Subrecipient   |
       | Automation SPI |
 
-  @approverSelectionDeskReview
+  @51013 @approverSelectionDeskReview
   Scenario Outline: Approver selection of Desk Review
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "deskreview::approverDeskReviewTableId" by clicking "Edit" :
@@ -46,7 +46,7 @@ Feature: Validate all scenarios in Desk Review
       | Program Approver Name | Fiscal Approver Name |
       | Automation PM         | Automation FO        |
 
-  @notifySubrecipientDeskReview
+  @51014 @notifySubrecipientDeskReview
   Scenario: Notify Subrecipient about the Desk Review
     Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -60,7 +60,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "Notify" in the page details
     Then I see status in Progress-bar is "Notified" and is "green"
 
-  @notifyPendingTaskForSubrecipientDeskReview
+  @51015 @notifyPendingTaskForSubrecipientDeskReview
   Scenario: Subrecipient pending task check for Desk Review
     Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -79,7 +79,7 @@ Feature: Validate all scenarios in Desk Review
     When I click on "Start" icon for "Record Id" inside table
     Then I see status in Progress-bar is "Notified" and is "green"
 
-  @conductDeskReview
+  @51016 @conductDeskReview
   Scenario Outline: Conduct Desk Review
     Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -106,7 +106,7 @@ Feature: Validate all scenarios in Desk Review
       | Desk Review Name       |
       | Automation Desk Review |
 
-  @addingOutcomeDeskReview
+  @51017 @addingOutcomeDeskReview
   Scenario Outline: Adding outcomes to Desk Review
        Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -139,7 +139,7 @@ Feature: Validate all scenarios in Desk Review
       | Desk Review Name       |
       | Automation Desk Review |
 
-  @formFillingDeskReview
+  @51018 @formFillingDeskReview
   Scenario Outline: Filling up of form in Desk Review
     Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -178,7 +178,7 @@ Feature: Validate all scenarios in Desk Review
       | Desk Review Name       |
       | Automation Desk Review |
 
-  @submittingForApprovalDeskReview
+  @51019 @submittingForApprovalDeskReview
   Scenario Outline: Submitting Desk Review for approval
     Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -218,9 +218,9 @@ Feature: Validate all scenarios in Desk Review
       | Desk Review Name       |
       | Automation Desk Review |
 
-  @approvalOfDeskReview
-  Scenario Outline: Approval of Desk Review
- Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
+   @51020 @approvalOfDeskReview
+   Scenario Outline: Approval of Desk Review
+   Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     When I navigate to "Responsibilities" sub tab
@@ -263,7 +263,7 @@ Feature: Validate all scenarios in Desk Review
       | Award Name                   | Desk Review Name       | Desk Review Approval Task | Type                      |
       | Automation Permanent Award   | Automation Desk Review | Approve Desk Review      | Review Desk review report |
 
-  @deskReviewSendToSubrecipient
+  @51021 @deskReviewSendToSubrecipient
   Scenario Outline: Send Desk Review to Subrecipient
  Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -313,8 +313,8 @@ Feature: Validate all scenarios in Desk Review
       | Desk Review Name       | Award Name                            | Desk Review Approval Task |
       | Automation Desk Review | Automation Permanent Award  | Approve Desk Review       |
 
-  @deskReviewCorrectiveActionsBySubrecipient
-  Scenario Outline: Send Desk Review to Subrecipient
+  @51022 @deskReviewCorrectiveActionsBySubrecipient
+  Scenario Outline: Corrective Actions By Subrecipient
  Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
@@ -384,8 +384,8 @@ Feature: Validate all scenarios in Desk Review
       | Award Name                  | Desk Review Name       | Desk Review Approval Task | Type                      |
       | Automation Permanent Award  | Automation Desk Review | Approve Desk Review       | Review Desk review report |
 
-  @deskReviewSubmitToGrantorBySubrecipient
-  Scenario Outline: Send Desk Review to Subrecipient
+  @51023 @deskReviewSubmitToGrantorBySubrecipient
+  Scenario Outline: Desk Review Submit to Grantor By Subrecipient
     Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
@@ -456,8 +456,8 @@ Feature: Validate all scenarios in Desk Review
       | Award Name                   | Desk Review Name       | Desk Review Approval Task | Type                      |
       | Automation Permanent Award   | Automation Desk Review | Approve Desk Review       | Review Desk review report |
 
-  @deskReviewAcceptAndClose @smoke
-  Scenario Outline: Send Desk Review to Subrecipient
+  @51024 @deskReviewAcceptAndClose @smoke
+  Scenario Outline: Desk Review Accept and Close
     Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |

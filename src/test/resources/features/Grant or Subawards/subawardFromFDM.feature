@@ -26,7 +26,7 @@ Feature: Validate all scenarios in the Award from FDM
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @awardPaymentRequestSchedule  @smoke
+  @50984 @awardPaymentRequestSchedule  @smoke
   Scenario: Payment Request Schedule in an award
     When I navigate to "Management" sub tab
     When I click on "Edit" icon for "Payment Request" inside flex table with id "subAwardFromFDM::paymentRequestSchedulesTableId"
@@ -35,7 +35,7 @@ Feature: Validate all scenarios in the Award from FDM
     When I close Modal
     Then I see that "Payment Request" has been added in flextable with Id "subAwardFromFDM::paymentRequestSchedulesTableId"
 
-  @awardProgressReportSchedule  @smoke
+  @50985 @awardProgressReportSchedule  @smoke
   Scenario: Progress Report Schedule in an award
     When I navigate to "Management" sub tab
     When I click on "Edit" icon for "Progress Report" inside flex table with id "subAwardFromFDM::progressReportSchedulesTableId"
@@ -44,7 +44,7 @@ Feature: Validate all scenarios in the Award from FDM
     When I close Modal
     Then I see that "Progress Report" has been added in flextable with Id "subAwardFromFDM::progressReportSchedulesTableId"
 
-  @fdmRiskAssessmentApprovalAndActivation 
+  @50986 @fdmRiskAssessmentApprovalAndActivation 
   Scenario: Risk Assessment approval in an award
     Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
       | Actions  | Step 1     | Step 2                          | Step 3 | Step 4            |
@@ -64,7 +64,7 @@ Feature: Validate all scenarios in the Award from FDM
       | Approval   | Start         | Approve    |                   |
     Then I see status in Progress-bar is "Active" and is "green"
 
-  @awardApproverSelection
+  @50989 @awardApproverSelection
   Scenario: Validate the assignment of Approvers for the award
     When I navigate to "Responsibilities" sub tab
     And I click on "Edit" icon for "Program Approver" inside flex table with id "subAwardFromFDM::approversTableId"
@@ -78,8 +78,8 @@ Feature: Validate all scenarios in the Award from FDM
     And I close Modal
     Then I see that "Automation EXE" has been added in flextable with Id "subAwardFromFDM::approversTableId"
 
-  @awardSendToRecipientBeforeApproval 
-  Scenario Outline: Validate the assignment of Approvers for the award
+  @50988 @awardSendToRecipientBeforeApproval 
+  Scenario Outline: Validate the award Send To Recipient Before Approval
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
@@ -145,13 +145,12 @@ Feature: Validate all scenarios in the Award from FDM
       | Approver 2 | GrantorAwardRolesAndResponsibilities | Edit   | Fiscal Approver    |
       | Approver 3 | GrantorAwardRolesAndResponsibilities | Edit   | Executive Approver |
     Then I click on "Send to Subrecipient" in the page details
-
     Examples:
       | Award Name       | Grant Name                               |
       | Automation Grant | Permanent Application(Dr) for Automation |
 
-  @awardAcceptanceByRecipientBeforeApproval @smoke
-  Scenario Outline: Validate the assignment of Approvers for the award
+  @50990 @awardAcceptanceByRecipientBeforeApproval @smoke
+  Scenario Outline: Validate the award Acceptance By Recipient Before Approval
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
@@ -221,12 +220,11 @@ Feature: Validate all scenarios in the Award from FDM
     And I click on "Accept" in the page details
     When I enter "Automation Award accepted" for comments and click "OK"
     Then I see that "Subaward" is in "Created" status
-
     Examples:
       | Award Name       | Grant Name                               |
       | Automation Grant | Permanent Application(Dr) for Automation |
 
-  @awardReviewerAssignment 
+  @50991 @awardReviewerAssignment 
   Scenario Outline: Validate the assignment of Reviewer for the award
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -316,7 +314,7 @@ Feature: Validate all scenarios in the Award from FDM
       | Award Name       | Grant Name                               |
       | Automation Grant | Permanent Application(Dr) for Automation |
 
-  @awardReviewerInitiation  @smoke
+  @50992 @awardReviewerInitiation  @smoke
   Scenario Outline: Validate initiation of review for the award
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -407,7 +405,7 @@ Feature: Validate all scenarios in the Award from FDM
       | Award Name       | Grant Name                               |
       | Automation Grant | Permanent Application(Dr) for Automation |
 
-  @awardReviewComplete
+  @50993 @awardReviewComplete
   Scenario Outline: Validate completion of review for the award
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -505,7 +503,7 @@ Feature: Validate all scenarios in the Award from FDM
       | Award Name       | Grant Name                               |
       | Automation Grant | Permanent Application(Dr) for Automation |
 
-  @awardSubmissionForApproval  @smoke
+  @50994 @awardSubmissionForApproval  @smoke
   Scenario Outline: Validate award submission for approval
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -604,7 +602,7 @@ Feature: Validate all scenarios in the Award from FDM
       | Award Name       | Grant Name                               |
       | Automation Grant | Permanent Application(Dr) for Automation |
 
-  @awardApproval 
+  @50995 @awardApproval 
   Scenario Outline: Validate award Approval by respective approvers
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -721,7 +719,7 @@ Feature: Validate all scenarios in the Award from FDM
       | Award Name       | Grant Name                               |
       | Automation Grant | Permanent Application(Dr) for Automation |
 
-  @awardSendToRecipientAfterApproval  @smoke
+  @50996 @awardSendToRecipientAfterApproval @smoke
   Scenario Outline: Validate award send to subrecipient after approval
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -833,7 +831,7 @@ Feature: Validate all scenarios in the Award from FDM
       | Award Name       | Grant Name                               |
       | Automation Grant | Permanent Application(Dr) for Automation |
 
-  @awardAcceptanceByRecipientAfterApproval 
+  @50997 @awardAcceptanceByRecipientAfterApproval 
   Scenario Outline: Validate award acceptance by subrecipient after approval
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -950,7 +948,7 @@ Feature: Validate all scenarios in the Award from FDM
       | Award Name       | Grant Name                     |
       | Automation Grant | Permanent Award For Automation |
 
-  @awardActivation  @smoke
+  @50998 @awardActivation  @smoke
   Scenario Outline: Validate award Activation
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -1063,7 +1061,7 @@ Feature: Validate all scenarios in the Award from FDM
       | Award Name       | Grant Name                     |
       | Automation Grant | Permanent Award For Automation |
 
-  @awardSiteVisit 
+  @50999 @awardSiteVisit 
   Scenario Outline: Validate award site visit creation
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -1189,7 +1187,7 @@ Feature: Validate all scenarios in the Award from FDM
       | Award Name       |
       | Automation Grant |
 
-  @awardDeskReview 
+  @51000 @awardDeskReview 
   Scenario Outline: Validate award desk review creation
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -1277,7 +1275,7 @@ Feature: Validate all scenarios in the Award from FDM
       | Award Name       |
       | Automation Grant |
 
-  @awardHappyPathFromFDM @smoke
+  @51001 @awardHappyPathFromFDM @smoke
   Scenario Outline: Validate award happy path
     Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
