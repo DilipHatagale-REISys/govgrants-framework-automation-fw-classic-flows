@@ -1,4 +1,4 @@
- @directed @regression
+ @directed
 Feature: Validate all scenarios in the directed Announcement tab
 
   Background: Create Announcement 
