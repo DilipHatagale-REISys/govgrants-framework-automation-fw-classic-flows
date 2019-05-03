@@ -146,9 +146,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Validate the association of Focus Area to Announcement
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementServiceArea1"
-    When I click "Add" after selection of "Automation Grant Focus Area" in the table "SelectAnnouncementServiceArea1"
+    When I click "Add" after selection of "Automation Execution Focus Area" in the table "SelectAnnouncementServiceArea1"
     And I close Modal
-    Then I see that "Automation Grant Focus Area" has been added in flextable with Id "AnnouncementServiceArea1"
+    Then I see that "Automation Execution Focus Area" has been added in flextable with Id "AnnouncementServiceArea1"
 
   @34774 @announcementObjectiveAssociationFA
   Scenario: Validate the association of objective to the Announcement
@@ -192,9 +192,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
   Scenario: Validate the assignment of Reviewer for the Announcement
     Given I navigate to "Responsibilities" sub tab
     And I click on top right button "New" in flex table with id "flexGridApproverRoles"
-        When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
-      | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
+    When I enter "Reviewer" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close Modal
     Then I see that "Automation FO" has been added in flextable with Id "flexGridApproverRoles"
 
   @34778 @announcementReviewerInitiationFA
@@ -702,7 +702,7 @@ And I navigate to "Setup" sub tab
       
   @announcementForPastApplicationDueDateFA
   Scenario Outline: Validate that user can not enter application due date as past date
-     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+        Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -717,7 +717,7 @@ And I navigate to "Setup" sub tab
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
-      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
+      #| Associate 2 | Setup   | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
       | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
@@ -853,9 +853,11 @@ And I navigate to "Setup" sub tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
- And I click on "Edit" in the page details
+    And I click on "Edit" in the page details
      When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
+    When I navigate to "Overview" sub tab
+    And I enter value "-1" into field "ApplicationDueDate__c"
         And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
      Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
@@ -868,10 +870,7 @@ And I navigate to "Setup" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date           | End Date       |
       | BP01               | 	50      | 150     |
-     When I navigate to "Overview" sub tab
-    And I enter value "-10" into field "ApplicationDueDate__c"                                                                                                                         
     And I click on "Save" in the page details
-    And I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
     Then I see the following messages in the page details :
       | Overview Tab - Application Due Date cannot be in the past. |
@@ -881,7 +880,7 @@ And I navigate to "Setup" sub tab
 
   @announcementWithBlankBudgetPeriodFA
   Scenario Outline:    Validate that user should not submit announcement with blank budget period dates
-     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -1032,7 +1031,7 @@ And I navigate to "Setup" sub tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
- And I click on "Edit" in the page details
+    And I click on "Edit" in the page details
      When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
         And I click on "Save" in the page details
@@ -1044,7 +1043,6 @@ And I navigate to "Setup" sub tab
       | Agency                              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
     And I click on "Save" in the page details
-    And I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
     Then I see the following messages in the page details :
       | Financial Tab - Correct Budget Periods Start Date and End Dates. Budget Periods should be continuous and together should form a Project Period. |
@@ -1227,13 +1225,14 @@ And I navigate to "Setup" sub tab
       | Navigation | As a Grantor  | Announcements |                   |
       | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
       | Approval   | Start         | Approve       |                   |
+    Then I see status in Progress-bar is "Approved" and is "green"
     Examples:
       | Announcement Type | User | Active Funding Opportunities id   |
       | Formula           | EXE  | ActiveFundingOpportunitiesFormula |
 
   @announcementPendingTaskPostApprovalFA @smoke 
   Scenario Outline: Validate that after approval of an Announcement task get deleted from pending task table.
-         Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+       Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -1384,7 +1383,7 @@ And I navigate to "Setup" sub tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
- And I click on "Edit" in the page details
+     And I click on "Edit" in the page details
      When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
         And I click on "Save" in the page details
@@ -1400,7 +1399,6 @@ And I navigate to "Setup" sub tab
       | Budget Period Name | Start Date           | End Date       |
       | BP01               | 	50      | 150     |
     And I click on "Save" in the page details
-    And I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
@@ -1417,7 +1415,7 @@ And I navigate to "Setup" sub tab
 
   @announcementCompletedTaskPostApprovalFA
   Scenario Outline: Validate that after approval of an Announcement task get added to its completed task table.
-          Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+       Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -1464,7 +1462,7 @@ And I navigate to "Setup" sub tab
       | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
       | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
     Given I click on "Complete Review" in the page details
-And I navigate to "Setup" sub tab
+  And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
     When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
@@ -1568,7 +1566,7 @@ And I navigate to "Setup" sub tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
- And I click on "Edit" in the page details
+     And I click on "Edit" in the page details
      When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
         And I click on "Save" in the page details
@@ -1780,7 +1778,7 @@ And I navigate to "Setup" sub tab
       
   @announcementSendBackPendingTaskToOwnerFA
   Scenario Outline: Validate that after send back from approvers owner should not get pending task
-    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+          Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -1931,10 +1929,9 @@ And I navigate to "Setup" sub tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
- And I click on "Edit" in the page details
+     And I click on "Edit" in the page details
      When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
-        And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
      Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
@@ -1947,13 +1944,12 @@ And I navigate to "Setup" sub tab
       | Budget Period Name | Start Date           | End Date       |
       | BP01               | 	50      | 150     |
     And I click on "Save" in the page details
-    And I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
       | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
-      | Approval   | Start         | Send to Owner |     Continue      |
+      | Approval   | Start         | Send to Owner |     Continue                |
     And I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2146,7 +2142,7 @@ And I navigate to "Setup" sub tab
       
   @announcementApprovalRejectionFA
   Scenario Outline: Validate the reject functionality of an Announcement
-            Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+       Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -2297,7 +2293,7 @@ And I navigate to "Setup" sub tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
- And I click on "Edit" in the page details
+     And I click on "Edit" in the page details
      When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
         And I click on "Save" in the page details
@@ -2510,7 +2506,7 @@ And I navigate to "Setup" sub tab
 
   @announcementPostRejectPendingTaskForUserFA
   Scenario Outline: Validate that after rejection of an Announcement task get deleted from pending task table.
-        Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -2661,7 +2657,7 @@ And I navigate to "Setup" sub tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
- And I click on "Edit" in the page details
+    And I click on "Edit" in the page details
      When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
         And I click on "Save" in the page details
@@ -2677,8 +2673,8 @@ And I navigate to "Setup" sub tab
       | Budget Period Name | Start Date           | End Date       |
       | BP01               | 	50      | 150     |
     And I click on "Save" in the page details
-    And I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
+ And I click on "Submit For Approval" in the page details
    Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
