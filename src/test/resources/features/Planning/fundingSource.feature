@@ -34,7 +34,7 @@ Feature: Validate all scenarios in Funding Source
     When I click on top right button "New" in flex table with id "fundingSource::fundingAccountTableId"
     And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    And I click on "Cancel" in the page details
+    And I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
   @editionOfFundingAccount

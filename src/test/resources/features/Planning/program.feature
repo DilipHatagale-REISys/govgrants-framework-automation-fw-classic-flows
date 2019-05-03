@@ -2,7 +2,7 @@
 Feature: Validate all scenarios for program
 
   Background: Create Program
-   Given I delete the record "Automation Execution Internal Program" from the object "Program"
+    Given I delete the record "Automation Execution Internal Program" from the object "Program"
     And I create a planning record as user "EXE" from sheet "Creation" in excel "Program_Field_Values.xlsx"
       | Actions    | Step 1            | Step 2            | Step 3                  |
       | Navigation | As a Grantor      | Planning          | Programs                |
@@ -10,21 +10,22 @@ Feature: Validate all scenarios for program
       | Creation   | New               | Save and Continue | Save                    |
       | ID         | EGMS ID           |                   |                         |
 
-  @34730 @programListView 
+  @34730 @programListView
   Scenario Outline: Verifying if the EXE,PM,PO has access to Internal Programs list view
     When I navigate to "Planning" tab
     And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
     And I click toggle button to select "<Program flextable Header>"
-    Then I see that "Automation Permanent Internal Program" has been added in flextable with Id "Programs"
+    And I perform quick search for "<Program>"
+    Then I see that "<Program>" has been added in flextable with Id "Programs"
     Examples:
-      | Program flextable Header |
-      | Draft Internal Programs  |
+      | Program flextable Header | Program                               |
+      | Draft Internal Programs  | Automation Execution Internal Program |
 
   @34503 @programCreation  @smoke
   Scenario: Verifying if the EXE, PM, PO has create access to Internal Program
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @34731 @programEdition 
+  @34731 @programEdition
   Scenario Outline: Verifying if the EXE, PM, PO has create access to Internal Program
     When I click on "Edit" in the page details
     And I enter "RequiredForSubmit" values from "Program_Field_Values.xlsx"
@@ -39,9 +40,9 @@ Feature: Validate all scenarios for program
       | Contact        |
       | Automation EXE |
 
-  @34740 @programApproverSelection 
+  @34740 @programApproverSelection
   Scenario: Validate the assignment of Approvers for the Internal Program
-      When I navigate to "Responsibilities" sub tab
+    When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "program::approverTableId" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
@@ -56,18 +57,18 @@ Feature: Validate all scenarios for program
     And I close Modal
     Then I see that "<EGMS Id>" has been added in flextable with Id "program::focusAreaTableId"
     Examples:
-      | EGMS Id                          |
-      | Automation Permanent Focus Area  |
+      | EGMS Id                         |
+      | Automation Permanent Focus Area |
 
   @34737 @programObjectiveAssociation @smoke
   Scenario Outline: Validate the Association of Objective to the Internal Program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "program::objectivesTableId"
-    When I click "Add" after selection of "<EGMS Id>" in the table "program::associateObjectivesTableId"
-    Then I see that "<EGMS Id>" has been added in flextable with Id "program::objectivesTableId"
+    When I click "Add" after selection of "<Objective>" in the table "program::associateObjectivesTableId"
+    Then I see that "<Objective>" has been added in flextable with Id "program::objectivesTableId"
     Examples:
-      | EGMS Id                         |
-      | Automation Permanent Objective  |
+      | Objective                      |
+      | Automation Permanent Objective |
 
   @34738 @programKPIAssociation  @smoke
   Scenario Outline: Validate the assignment of Approvers for the Internal Program
@@ -80,7 +81,7 @@ Feature: Validate all scenarios for program
       | EGMS Id                                 |
       | Automation Permanent KPI for Regression |
 
-  @34745 @programAttachmentChecklist 
+  @34745 @programAttachmentChecklist
   Scenario: Validate the attachment checklist for the Internal Program
     When I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "flexGridProgramChecklists" by clicking "Add" :
@@ -91,7 +92,7 @@ Feature: Validate all scenarios for program
     When I close Modal
     Then I see that "Active" has been added in flextable with Id "program::checklistTableId"
 
-  @34750 @submittingProgramForApproval 
+  @34750 @submittingProgramForApproval
   Scenario: Validate the submission of Program for Approval
     Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |

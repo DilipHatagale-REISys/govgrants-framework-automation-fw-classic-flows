@@ -8,7 +8,7 @@ Feature: Validate all scenarios in Closeout
       | Owner Navigation | As a Grantor  | Grants       | Grants and Subawards | Grants, Subaward & Amendments |
       | Complete Review  | Active Grants | ActiveGrants | View                 |                               |
 
-  @50971 @creationOfAdhocCloseout @smoke
+  @creationOfAdhocCloseout @smoke
   Scenario: To create an Adhoc Closeout Request
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "closeout::closeoutTableId"
@@ -17,8 +17,8 @@ Feature: Validate all scenarios in Closeout
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @50973 @editionOfCloseout
-  Scenario: To edit a Closeout Request
+  @editionOfCloseout
+  Scenario: To edit a Closout Request
     Given I create a closeout from sheet "Creation" in excel "Closeout_Field_Values.xlsx"
       | Actions   | Step 1            | Step 2                         |
       | Sub tab   | Requests          |                                |
@@ -30,7 +30,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @50974 @assigningApproversInCloseout
+  @assigningApproversInCloseout
   Scenario: To assign approvers Closout Request
     Given I create a closeout from sheet "Creation" in excel "Closeout_Field_Values.xlsx"
       | Actions   | Step 1            | Step 2                         |
@@ -45,7 +45,7 @@ Feature: Validate all scenarios in Closeout
       | Fiscal Approver  | Automation FO | Automation Test Description |
     Then I see that "Automation FO" has been added in flextable with Id "closeout::closeoutApproverTableId"
 
-  @50975 @sendClosoutToSubrecipient @smoke
+  @sendClosoutToSubrecipient @smoke
   Scenario: Send Closout Request to Subrecipient
     Given I create a closeout from sheet "Creation" in excel "Closeout_Field_Values.xlsx"
       | Actions   | Step 1            | Step 2                         |
@@ -64,7 +64,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Send To Subrecipient" in the page details
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
 
-  @50976 @subrecipientEntersFielsInCloseout
+  @subrecipientEntersFielsInCloseout
   Scenario: Subrecipient enters closeout fields
     Given I create a closeout from sheet "Creation" in excel "Closeout_Field_Values.xlsx"
       | Actions   | Step 1            | Step 2                         |
@@ -91,7 +91,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
 
-  @50976 @subrecipientAcknowledgesCloseout @smoke
+  @subrecipientAcknowledgesCloseout @smoke
   Scenario: Subrecipient acknowledges the closeout
     Given I create a closeout from sheet "Creation" in excel "Closeout_Field_Values.xlsx"
       | Actions   | Step 1            | Step 2                         |
@@ -119,7 +119,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Acknowledge" in the page details
     Then I see that "Closeout View" is in "Acknowledged by Subrecipient" status
 
-  @50978 @overrideCloseout @smoke
+  @overrideCloseout @smoke
   Scenario: Grant owner overrides the closeout
     Given I create a closeout from sheet "Creation" in excel "Closeout_Field_Values.xlsx"
       | Actions   | Step 1            | Step 2                         |
@@ -156,7 +156,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Override" in the page details
     Then I see status in Progress-bar is "Overridden" and is "green"
 
-  @50979 @submitCloseoutForApproval
+  @submitCloseoutForApproval
   Scenario: Closeout is submitted for approval
     Given I create a closeout from sheet "Creation" in excel "Closeout_Field_Values.xlsx"
       | Actions   | Step 1            | Step 2                         |
@@ -194,7 +194,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
-  @50980 @adhocCloseoutHappyPath @smoke @notFunctional
+  @adhocCloseoutHappyPath @smoke @notFunctional
   Scenario: Approval of Closeout
     Given I create a closeout from sheet "Creation" in excel "Closeout_Field_Values.xlsx"
       | Actions   | Step 1            | Step 2                         |
@@ -237,7 +237,7 @@ Feature: Validate all scenarios in Closeout
       | Approval   | Start         | Approve  |                   |
     Then I see status in Progress-bar is "Completed" and is "green"
 
-  @50982 @scheduledCloseoutHappyPath @notFunctional
+  @scheduledCloseoutHappyPath @notFunctional
   Scenario: Happy path of Scheduled closeout
     Given I navigate to "Requests" sub tab
     And I click on "View" icon for "Scheduled" inside flex table with id "GrantorCloseOutRequestFlexToggle" with wait for record

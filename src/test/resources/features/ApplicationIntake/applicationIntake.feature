@@ -33,26 +33,26 @@ Feature: Validate all scenarios in the Application Intake
       | EGMS Id                           |
       | Automation Permanent Focus Area   |
 
-    @50964 @addBudgetDetailsToApplication @smoke
-    Scenario: Addition of budget in the budget grid to an application
+  @addBudgetDetailsToApplication @smoke
+  Scenario: Addition of budget in the budget grid to an application
     When I navigate to "Budget" sub tab
     And I expand nested table containing column value "BP01"
     When I edit the following rows inline in flex table with id "applicationIntake::budgetPeriodTableId" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 1000       | 3000           | 100            |
-     Then I see the following messages in the page details contains:
+         Then I see the following messages in the page details contains:
          | Saved Successfully! |
 
-   @50967 @addTargetToKPIInApplication @smoke
-    Scenario: Addition of KPI target to an application
+  @addTargetToKPIInApplication @smoke
+  Scenario: Addition of KPI target to an application
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "applicationIntake::kpiTableId" by clicking "Edit" :
       | Title                                   | Target |
       | Automation Permanent KPI for Regression | 10     |
     Then I see that "10.00" has been added in flextable with Id "applicationIntake::kpiTableId"
 
-    @50969 @formFillingApplication @smoke
-    Scenario: To fill and complete the form in Progress Report
+  @formFillingApplication @smoke
+  Scenario: To fill and complete the form in Progress Report
     When I navigate to "Attachments" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "applicationIntake::allFormsTableId"
     When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"

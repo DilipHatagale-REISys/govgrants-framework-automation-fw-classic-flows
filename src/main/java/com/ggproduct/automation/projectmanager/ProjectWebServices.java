@@ -4,6 +4,9 @@ import com.jayway.restassured.response.Response;
 
 import eyethink.automation.bots.controller.EnvironmentFetcher;
 import eyethink.automation.bots.webservices.RestfulWebServices;
+import eyethink.automation.bots.controller.Controller;
+import eyethink.automation.bots.controller.CoreHandlers;
+import com.automation.rei.handlers.GovGrantsHandler;
 
 public class ProjectWebServices {
     private RestfulWebServices apiCall = new RestfulWebServices();
@@ -12,6 +15,18 @@ public class ProjectWebServices {
     private static String tokenString;
     private String jobID;
     private String status;
+    public CoreHandlers reiDriver;
+    public Controller controller;
+    public GovGrantsHandler govgrants;
+
+    public ProjectWebServices() {
+    }
+
+    public ProjectWebServices(Controller controller, CoreHandlers reiDriver, GovGrantsHandler govgrants) {
+        this.controller = controller;
+        this.reiDriver = reiDriver;
+        this.govgrants = govgrants;
+    }
 
     /**
      * get token for authentication of Delete request
@@ -73,7 +88,6 @@ public class ProjectWebServices {
         response.prettyPrint();
         assertStatusCode(response);
         return response;
-
     }
 
     /*
@@ -83,39 +97,32 @@ public class ProjectWebServices {
      *  @param objectApiName -: This is the object api name.
      */
     public Response automationBatchExecuteApi(String objectType, String recordName, String objectApiName) {
+        int timer = 0;
+        String finalEndPoint = "";
+        Response response = null;
         getAuthToken();
-        String finalEndPoint = endPoint + "/services/apexrest/productAutomationRunBatchJob?type=" + objectType
+
+        finalEndPoint = endPoint + "/services/apexrest/productAutomationRunBatchJob?type=" + objectType
                 + "&recordName=" + recordName;
-        Response response = apiCall.getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
-        response.prettyPrint();
+
+        response = apiCall.getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
         assertStatusCode(response);
+
         jobID = response.asString().replace("\"", "");
         finalEndPoint = endPoint + "/services/apexrest/productAutomationGetBatchJobStatus?batchId=" + jobID;
+        reiDriver.WaitFor().makeThreadSleep(20);
 
-        try {
-            Thread.sleep(20000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        int timer = 0;
         while (timer < 120) {
             response = apiCall.getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
-            response.prettyPrint();
             assertStatusCode(response);
             status = response.asString().replace("\"", "");
             if (status.equalsIgnoreCase("Completed") || status.equalsIgnoreCase("Aborted")) {
                 System.out.println("Batch Status is :" + status);
                 break;
             } else {
-                try {
-                    Thread.sleep(20000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
+                reiDriver.WaitFor().makeThreadSleep(20);
                 timer = timer + 20;
             }
-
         }
 
         if (status.equalsIgnoreCase("Completed")) {

@@ -22,25 +22,14 @@ public class UsersAndURL implements UsersController {
      * IT ALSO HANDLE ANY ADDITIONAL URL IN ADDITION TO STANDARD PROJECT
      **********/
     /****
-     * SINCE THESE ARE GENERIC METHODS SO YOU MAY KEEP THE SAME WITH MODIFICTION
+     * SINCE THESE ARE GENERIC METHODS SO YOU MAY KEEP THE SAME WITH MODIFICATION
      ******/
 
     @Override
     public String getUserName(String userLevel) {
         String userName = null;
-        if ((EnvironmentFetcher.environmentName != null) && (EnvironmentFetcher.environmentName.contains("AUTO"))) {
-//            userName = getQAEnvironmentUser(userLevel);
-//        } else if ((EnvironmentFetcher.environmentName != null)
-//                && (EnvironmentFetcher.environmentName.contains("UAT"))) {
-//            // To be implemented
-//        } else if ((EnvironmentFetcher.environmentName != null)
-//                && (EnvironmentFetcher.environmentName.contains("DEMO"))) {
-//            userName = getDemoEnvironmentUser(userLevel);
-//        } else if ((EnvironmentFetcher.environmentName != null)
-//                && (EnvironmentFetcher.environmentName.contains("AUTO"))) {
+        if ((EnvironmentFetcher.environmentName != null) && (EnvironmentFetcher.environmentName.contains("QA"))) {
             userName = getAutoEnvironmentUser(userLevel);
-//        } else {
-//            userName = getQAEnvironmentUser(userLevel);
         }
         return userName;
     }
@@ -48,7 +37,7 @@ public class UsersAndURL implements UsersController {
     @Override
     public String getPassword(String userLevel) {
         String password = null;
-        if (EnvironmentFetcher.environmentName.contains("AUTO")) {
+        if (EnvironmentFetcher.environmentName.contains("QA")) {
             password = getAutoEnvironmentPassword(userLevel);
         }
         return password;
@@ -68,7 +57,6 @@ public class UsersAndURL implements UsersController {
         }
         return password;
     }
-
 
     private String getAutoEnvironmentUser(String userLevel) {
         Map<String, String> username = new HashMap();

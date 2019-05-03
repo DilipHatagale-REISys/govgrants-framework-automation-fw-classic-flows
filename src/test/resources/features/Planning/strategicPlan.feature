@@ -10,7 +10,7 @@ Feature: Validate all scenarios in Strategic Plan
       | Creation   | New             | Save and Continue | Save                  |
       | ID         | EGMS ID         |                   |                       |
 
-  @50954 @creationOfStrategicPlan @smoke
+  @creationOfStrategicPlan @smoke
   Scenario: Creation of Strategic Plan
     Then I see that "Status" is in "Draft" status
 
@@ -32,7 +32,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I close Modal
     Then I see that "Strategic Plan" has been added in flextable with Id "strategicPlan::attachmentsTableId"
 
-  @33798 @creationOfStrategicGoal @smoke
+  @creationOfStrategicGoal @smoke
   Scenario: Creation of Strategic Goal inside a Strategic Plan
     And I complete the fields from the sheet "StrategicPlanEdition" in excel "StrategicPlan_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -126,7 +126,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I close Modal
     Then I see that "Strategic Plan" has been added in flextable with Id "strategicPlan::strategicObjectivesAttachmentsTableId"
 
-  @34720 @associatingKPIToObjective @smoke
+  @associatingKPIToObjective @smoke
   Scenario: Associating KPI to Objective inside a Strategic Goal
     And I click on top right button "New" in flex table with id "strategicPlan::strategicGoalObjectivesTableId"
     When I enter "StrategicGoalCreation" values from "StrategicPlan_Field_Values.xlsx"
@@ -141,7 +141,7 @@ Feature: Validate all scenarios in Strategic Plan
       | Associate 1 | Related Logs | Associate | KPIGoalsandObjectives | Associate | SelectKPIs |
     Then I see that "Automation Permanent KPI for Regression" has been added in flextable with Id "strategicPlan::ObjectivesKPITableId"
 
-  @34721 @strategicPlanHappyPath @smoke
+  @strategicPlanHappyPath @smoke
   Scenario: strategic plan Happy Path
     And I complete the fields from the sheet "StrategicPlanEdition" in excel "StrategicPlan_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
