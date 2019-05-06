@@ -21,7 +21,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @38661 @EditionOfPaymentRequest
+  @51067 @EditionOfPaymentRequest
   Scenario: To edit an Adhoc Reimbursement Payment Request
     Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
       | Actions    | Step 1                                 | Step 2                | Step 3  |
@@ -55,7 +55,7 @@ Feature: Validate all scenarios in Payment Request
     When I close modal by clicking the top right x button
     Then I see value "$220.00" for title "Spent This Action" inside table "paymentRequest::paymentRequestBudgetTableId"
 
-  @paymentRequestAddAttachment
+  @51068 @paymentRequestAddAttachment
   Scenario: Validate the attachment for Payment Request
     Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
       | Actions    | Step 1                                 | Step 2                | Step 3  |
@@ -67,7 +67,7 @@ Feature: Validate all scenarios in Payment Request
     And I close Modal
     Then I see that "Invoice" has been added in flextable with Id "paymentRequest::attachmentTableId"
 
-  @paymentRequestSendToGrantor
+  @51069 @paymentRequestSendToGrantor
   Scenario: Send Payment Request to Grantor
     Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
       | Actions    | Step 1                                 | Step 2                | Step 3  |
@@ -92,7 +92,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
 
-  @enterFundingAccountAmountPaymentRequest @smoke
+  @51070 @enterFundingAccountAmountPaymentRequest @smoke
   Scenario: Enter Funding Account amount in Payment Request
     Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
       | Actions    | Step 1                                 | Step 2                | Step 3  |
@@ -128,7 +128,7 @@ Feature: Validate all scenarios in Payment Request
       | FA--148         | 1000                  |
     Then I see value "$1,000.00" for title "Net Spent This Action" inside table "paymentRequest::fundingAccountTableId"
 
-  @approverSelectionPaymentRequest
+  @51071 @approverSelectionPaymentRequest
   Scenario: Selection of approvers in Payment Request
     Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
       | Actions    | Step 1                                 | Step 2                | Step 3  |
@@ -168,7 +168,7 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     Then I see that "Automation FO" has been added in flextable with Id "flexGridPaymentRequestRolesandResponsibilities"
 
-  @submitPaymentRequestForApproval @smoke
+  @51072 @submitPaymentRequestForApproval @smoke
   Scenario: Submitting Payment Request for approval
     Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
       | Actions    | Step 1                                 | Step 2                | Step 3  |
@@ -209,7 +209,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
-  @approversApprovePaymentRequest
+  @51073 @approversApprovePaymentRequest
   Scenario: Approval of Payment Request
     Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
       | Actions    | Step 1                                 | Step 2                | Step 3  |
@@ -257,7 +257,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Approved" and is "green"
 
-  @adhocReimbursementHappyPath @smoke
+  @51074 @adhocReimbursementHappyPath @smoke
   Scenario: Paid Payment Request
     Given I create a adhoc "Reimbursement" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
       | Actions    | Step 1                                 | Step 2                | Step 3  |
@@ -315,7 +315,7 @@ Feature: Validate all scenarios in Payment Request
     And I close Modal
     Then I see status in Progress-bar is "Paid" and is "green"
 
-  @adhocAdvanceHappyPath @smoke
+  @51075 @adhocAdvanceHappyPath @smoke
   Scenario: Advance Payment Request happy path
     Given I create a adhoc "Advance" Payment Request from sheet "Adhoc Reimbursement Creation" in excel "PaymentRequest_Field_Values.xlsx"
       | Actions    | Step 1                                 | Step 2                | Step 3  |

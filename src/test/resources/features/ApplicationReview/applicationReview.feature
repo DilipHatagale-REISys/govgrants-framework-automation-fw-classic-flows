@@ -1,7 +1,7 @@
   @applicationReview @regression
 Feature: Validate all scenarios in the Application Review
 
-  @preScreenApplicationReview 
+  @51065 @preScreenApplicationReview 
  Scenario Outline: Pre-Screen review for an application
  Given I login to "As a Grantor" app as "<User>" user
   When I navigate to "Applications" tab
@@ -17,14 +17,8 @@ Feature: Validate all scenarios in the Application Review
  | User | Announcement Name                | Review Step Name  | Application Name                |
  | EXE  | Automation Directed Announcement | Pre-Screen Review |Automation Directed Announcement |
 
-  @smeReviewEnterDueInDays @smoke
+  @51066 @smeReviewEnterDueInDays @smoke
   Scenario Outline: Enter Due in Days for all review forms in SME-review
-    #Given "Pre-Screen Review" is completed by clicking "<Review Step Name>" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
-      #| Actions    | Step 1                                        | Step 2             | Step 3             | Step 4             |
-      #| Navigation | As a Grantor                                  | Applications       | Reviews            | Application Review |
-      #| FlexTable  |  flexTableRandomID1                           | View               | Related Logs       |                    |
-     # | Review     | Application Reviews - All                     | Manage Reviews     | View               |                    |
-      #| Promotion  | flexGridPreScreenRelatedStepApplicationsFinal | Yes                |                    |                    |
     Given I login to "As a Grantor" app as "<User>" user
    When I navigate to "Applications" tab
    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
@@ -70,7 +64,7 @@ Feature: Validate all scenarios in the Application Review
       | EXE  | Permanent Announcement(Dr) for Automation | Execution Application for Automation |
 
   @38462 @smeReviewAssignApplicationToReviewer  @smoke
-  Scenario Outline: Add a reviewer to each review step in SME Review
+  Scenario Outline: Verify that user is able to assign applications of a particular announcement to its reviewers
     Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
       | Actions    | Step 1                                        | Step 2             | Step 3  | Step 4             |
       | Navigation | As a Grantor                                  | Applications       | Reviews | Application Review |
@@ -129,7 +123,7 @@ Feature: Validate all scenarios in the Application Review
       | User | Announcement Name                         | Application Name                     |
       | EXE  | Permanent Announcement(Dr) for Automation | Execution Application for Automation |
 
-  @smeReviewCompleteReviewForm @smoke
+  @51062 @smeReviewCompleteReviewForm @smoke
   Scenario Outline: Complete Review form as Various reviewers in SME Review
     Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
       | Actions    | Step 1                                        | Step 2             | Step 3  | Step 4             |
@@ -185,7 +179,7 @@ Feature: Validate all scenarios in the Application Review
       | User | Announcement Name                         | Application Name                     |
       | EXE  | Permanent Announcement(Dr) for Automation | Execution Application for Automation |
       
-  @promoteToNextFromSMEReview @smoke
+  @51063 @promoteToNextFromSMEReview @smoke
   Scenario Outline:Promoting from Pre-Screen review to the next review step for an application
     Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
       | Actions    | Step 1                                        | Step 2             | Step 3  | Step 4             |
@@ -233,7 +227,7 @@ Feature: Validate all scenarios in the Application Review
       | User | Announcement Name                         | Application Name                     |
       | EXE  | Permanent Announcement(Dr) for Automation | Execution Application for Automation |
 
-  @managementReviewEnterDueInDays 
+  @51064 @managementReviewEnterDueInDays 
   Scenario Outline: Enter Due in Days for all review forms in Management review
     Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
       | Actions    | Step 1                                        | Step 2             | Step 3  | Step 4             |
@@ -280,7 +274,7 @@ Feature: Validate all scenarios in the Application Review
       | User | Announcement Name                         | Application Name                     |
       | EXE  | Permanent Announcement(Dr) for Automation | Execution Application for Automation |
 
-  @managementReviewAddReviewer 
+  @51061 @managementReviewAddReviewer 
   Scenario Outline: Add a reviewer to each review step in Management Review
     Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
       | Actions    | Step 1                                        | Step 2             | Step 3  | Step 4             |
@@ -329,8 +323,8 @@ Feature: Validate all scenarios in the Application Review
       | User | Announcement Name                         | Application Name                     |
       | EXE  | Permanent Announcement(Dr) for Automation | Execution Application for Automation |
 
-  @managementReviewAssignApplicationToReviewer  @smoke
-  Scenario Outline: Add a reviewer to each review step in management Review
+  @51060 @managementReviewAssignApplicationToReviewer  @smoke
+  Scenario Outline: Assign Application to Reviewer in management Review
     Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
       | Actions    | Step 1                                        | Step 2             | Step 3  | Step 4             |
       | Navigation | As a Grantor                                  | Applications       | Reviews | Application Review |
@@ -383,7 +377,7 @@ Feature: Validate all scenarios in the Application Review
       | User | Announcement Name                         | Application Name                     |
       | EXE  | Permanent Announcement(Dr) for Automation | Execution Application for Automation |
 
-  @managementReviewSendForReview @smoke
+  @51059 @managementReviewSendForReview @smoke
   Scenario Outline: Choose the reviews and send for review in Management Review
     Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
       | Actions    | Step 1                                        | Step 2             | Step 3  | Step 4             |
@@ -439,7 +433,7 @@ Feature: Validate all scenarios in the Application Review
      | User | Announcement Name                          | Application Name                     |
       | EXE  | Permanent Announcement(Dr) for Automation | Execution Application for Automation |
       
-  @managementReviewCompleteReviewForm 
+  @51058 @managementReviewCompleteReviewForm 
   Scenario Outline: Complete Review form as Various reviewers in Management Review
     Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
       | Actions    | Step 1                                        | Step 2             | Step 3  | Step 4             |
@@ -504,7 +498,7 @@ Feature: Validate all scenarios in the Application Review
       | User | Announcement Name                         | Application Name                     |
       | EXE  | Permanent Announcement(Dr) for Automation | Execution Application for Automation |
 
-  @promoteToFDMFromManagementReview @smoke
+  @51057 @promoteToFDMFromManagementReview @smoke
   Scenario Outline:Promoting from Last review step review to the FDM step for an application
     Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
       | Actions    | Step 1                                        | Step 2             | Step 3  | Step 4             |
@@ -578,7 +572,7 @@ Feature: Validate all scenarios in the Application Review
       | User | Announcement Name                         | Review Step Name  | Application Name                     |
       | EXE  | Permanent Announcement(Dr) for Automation | Pre-Screen Review | Execution Application for Automation |
 
-  @subAwardAbbreviationInFDM 
+  @51056 @subAwardAbbreviationInFDM 
   Scenario Outline: Adding a sub-award abbreviation in FDM
     Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
       | Actions    | Step 1                                        | Step 2             | Step 3  | Step 4             |
@@ -651,7 +645,7 @@ Feature: Validate all scenarios in the Application Review
        | User | Announcement Name                         | Review Step Name  | Application Name                     |
       | EXE  | Permanent Announcement(Dr) for Automation | Pre-Screen Review | Execution Application for Automation |
 
-  @recommendationForApplicationInFDM 
+  @51055 @recommendationForApplicationInFDM 
   Scenario Outline: Adding a recommendation for an application in FDM
     Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
       | Actions    | Step 1                                        | Step 2             | Step 3  | Step 4             |
@@ -727,7 +721,7 @@ Feature: Validate all scenarios in the Application Review
       | User | Announcement Name                         | Review Step Name  | Application Name                     |
       | EXE  | Permanent Announcement(Dr) for Automation | Pre-Screen Review | Execution Application for Automation |
 
-  @approverAssignmentForApplicationInFDM @smoke
+  @51054 @approverAssignmentForApplicationInFDM @smoke
   Scenario Outline: Assigning an approver in FDM
     Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
       | Actions    | Step 1                                        | Step 2             | Step 3  | Step 4             |
@@ -807,7 +801,7 @@ Feature: Validate all scenarios in the Application Review
       | User | Announcement Name                         | Review Step Name  | Application Name                     |
       | EXE  | Permanent Announcement(Dr) for Automation | Pre-Screen Review | Execution Application for Automation |
 
-  @submitForApprovalFDM 
+  @51053 @submitForApprovalFDM 
   Scenario Outline: Submitting the FDM for approval
     Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
       | Actions    | Step 1                                        | Step 2             | Step 3  | Step 4             |
@@ -888,7 +882,7 @@ Feature: Validate all scenarios in the Application Review
       | User | Announcement Name                         | Review Step Name  | Application Name                     |
       | EXE  | Permanent Announcement(Dr) for Automation | Pre-Screen Review | Execution Application for Automation |
 
-    @approveFDM @applicationReviewAndFDMHappyPath @smoke
+    @51052 @approveFDM @applicationReviewAndFDMHappyPath @smoke
     Scenario Outline: Approving FDM as the assigned user
     Given "Pre-Screen Review" is completed by clicking "Promote to Next Step" for Application "<Application Name>" as user "<User>" submitted for announcement "<Announcement Name>"
       | Actions    | Step 1                                        | Step 2             | Step 3  | Step 4             |

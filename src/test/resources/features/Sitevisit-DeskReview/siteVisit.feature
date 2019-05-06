@@ -15,18 +15,18 @@ Feature: Validate all scenarios in the Site Visit
       | Creation   | Save And Close      | Cancel                 |
     And I get the "EGMS ID"
 
-  @siteVisitCreation @smoke
+  @51081 @siteVisitCreation @smoke
   Scenario: Creation of Site Visit
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @siteVisitEdition
+  @51082 @siteVisitEdition
   Scenario: Edition of Site Visit
     When I click on "Edit" in the page details
     And I enter "Edition" values from "SiteVisit_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @participantAssociationSiteVisit @wip
+  @51083 @participantAssociationSiteVisit
   Scenario Outline: Participant Association of Site Visit
     When I navigate to "Overview" sub tab
     Then I see that "<Subrecipient>" has been added in flextable with Id "siteVisits::participantsTableId"
@@ -34,7 +34,7 @@ Feature: Validate all scenarios in the Site Visit
       | Subrecipient   |
       | Automation PM  |
 
-  @approverSelectionSiteVisit
+  @51084 @approverSelectionSiteVisit
   Scenario Outline: Approver selection of Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "siteVisits::approverSiteVisitTableId" by clicking "Edit" :
@@ -46,7 +46,7 @@ Feature: Validate all scenarios in the Site Visit
       | Program Approver Name | Fiscal Approver Name |
       | Automation PM         | Automation FO        |
 
-  @notifySubrecipientSiteVisit @smoke
+  @51085 @notifySubrecipientSiteVisit @smoke
   Scenario: Notify Subrecipient about the Site Visit
      Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -60,7 +60,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Notify" in the page details
     Then I see status in Progress-bar is "Notified" and is "green"
 
-  @notifyPendingTaskForSubrecipientSiteVisit
+  @51086 @notifyPendingTaskForSubrecipientSiteVisit
   Scenario: Subrecipient pending task check for Site Visit
     Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -79,7 +79,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click on "Start" icon for "Record Id" inside table
     Then I see status in Progress-bar is "Notified" and is "green"
 
-  @conductSiteVisit @smoke
+  @51087 @conductSiteVisit @smoke
   Scenario Outline: Conduct Site Visit
    Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
      | Actions         | Step 1 | Step 2 |
@@ -97,7 +97,7 @@ Feature: Validate all scenarios in the Site Visit
       | Site Visit Name       |
       | Automation Site Visit |
 
-  @addingOutcomeSiteVisit 
+  @51088 @addingOutcomeSiteVisit 
   Scenario Outline: Adding outcomes to Site Visit
     Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
      | Actions         | Step 1 | Step 2 |
@@ -135,7 +135,7 @@ Feature: Validate all scenarios in the Site Visit
       | Site Visit Name       |
       | Automation Site Visit |
 
-  @formFillingSiteVisit @smoke @wip
+  @51089 @formFillingSiteVisit @smoke @wip
   Scenario Outline: Filling up of form in Site Visit
     Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
      | Actions         | Step 1 | Step 2 |
@@ -168,7 +168,7 @@ Feature: Validate all scenarios in the Site Visit
       | Site Visit Name       |
       | Automation Site Visit |
 
-  @submittingForApprovalSiteVisit
+  @51090 @submittingForApprovalSiteVisit
   Scenario Outline:  Submitting Site Visit for approval
     Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
      | Actions         | Step 1 | Step 2 |
@@ -207,7 +207,7 @@ Feature: Validate all scenarios in the Site Visit
       | Site Visit Name       |
       | Automation Site Visit |
 
-  @approvalOfSiteVisit
+  @51091 @approvalOfSiteVisit
   Scenario Outline: Approval of Site Visit
     Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
      | Actions         | Step 1 | Step 2 |
@@ -251,7 +251,7 @@ Feature: Validate all scenarios in the Site Visit
       | Site Visit Approval Task | Type                     | Site Visit Name       |Award Name                  | Award EGMS ID|
       | Approve Site Visit      | Review Site visit report | Automation Site Visit | Automation Permanent Award | AD-AGR-01 |
 
-  @siteVisitSendToSubrecipient 
+  @51092 @siteVisitSendToSubrecipient 
   Scenario Outline: Send Site Visit to Subrecipient
     Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
      | Actions         | Step 1 | Step 2 |
@@ -300,8 +300,8 @@ Feature: Validate all scenarios in the Site Visit
       | Award Name                 | Site Visit Name       | Site Visit Approval Task  |
       | Automation Permanent Award | Automation Site Visit | Approve Site Visit        |
 
-  @siteVisitCorrectiveActionsBySubrecipient @smoke
-  Scenario Outline: Send Site Visit to Subrecipient
+  @51093 @siteVisitCorrectiveActionsBySubrecipient @smoke
+  Scenario Outline: Site Visit Corrective Actions By Subrecipient
     Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
      | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
@@ -351,7 +351,6 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Start" icon for "<Type>" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
-    When I pause execution for "6" seconds
     When I enter the following values into flex table with id "siteVisits::receipientTableId" by clicking "New" :
       | Title                               | Description            | Status      | Due Date   | Assigned To    |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30         |Automation SPI|
@@ -371,8 +370,8 @@ Feature: Validate all scenarios in the Site Visit
       | Award Name                  | Award EGM ID | Site Visit Name       | Site Visit Approval Task | Type                     |
       | Automation Permanent Award | AD-AGR-01    | Automation Site Visit | Approve Site Visit       | Review Site visit report |
 
-  @siteVisitSubmitToGrantorBySubrecipient
-  Scenario Outline: Send Site Visit to Subrecipient
+  @51094 @siteVisitSubmitToGrantorBySubrecipient
+  Scenario Outline:  Site Visit Submit to Grantor by Subrecipient 
     Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
      | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
@@ -442,8 +441,8 @@ Feature: Validate all scenarios in the Site Visit
       | Award Name                  | Award EGMS ID | Site Visit Name       | Site Visit Approval Task | Type                     |
       | Automation Permanent Award | AD-AGR-01     | Automation Site Visit | Approve Site Visit       | Review Site visit report |
 
-  @siteVisitAcceptAndClose @smoke
-  Scenario Outline: Send Site Visit to Subrecipient
+  @51095 @siteVisitAcceptAndClose @smoke
+  Scenario Outline:  Site Visit Accept and Close 
     Given I complete the fields from the sheet "Edition" in excel "SiteVisit_Field_Values.xlsx"
      | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |

@@ -14,14 +14,14 @@ Feature: Validate all scenarios in Strategic Plan
   Scenario: Creation of Strategic Plan
     Then I see that "Status" is in "Draft" status
 
-  @editionOfStrategicPlan
+  @51042 @editionOfStrategicPlan
   Scenario: Edition of Strategic Plan
     And I click on "Edit" in the page details
     When I enter "StrategicPlanEdition" values from "StrategicPlan_Field_Values.xlsx"
     And I click on "Save" in the page details
     Then I see that "Status" is in "Draft" status
 
-  @addAttachmentToStrategicPlan
+  @51044 @addAttachmentToStrategicPlan
   Scenario: Addition of Attachment to Strategic Plan
     And I complete the fields from the sheet "StrategicPlanEdition" in excel "StrategicPlan_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -42,7 +42,7 @@ Feature: Validate all scenarios in Strategic Plan
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
 
-  @editionOfStrategicGoal
+ @51045 @editionOfStrategicGoal
   Scenario: Edition of Strategic Goal inside a Strategic Plan
     And I complete the fields from the sheet "StrategicPlanEdition" in excel "StrategicPlan_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -55,7 +55,7 @@ Feature: Validate all scenarios in Strategic Plan
     When I enter "StrategicGoalEdition" values from "StrategicPlan_Field_Values.xlsx"
     And I click on "Save" in the page details
 
-  @addAttachmentToStrategicGoal
+  @51046 @addAttachmentToStrategicGoal
   Scenario: Addition of Attachment to Strategic Goal inside a Strategic Plan
     And I complete the fields from the sheet "StrategicPlanEdition" in excel "StrategicPlan_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -73,7 +73,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I close Modal
     Then I see that "Strategic Plan" has been added in flextable with Id "strategicPlan::strategicGoalAttachmentTableId"
 
-  @creationOfObjective @smoke
+  @51047 @creationOfObjective @smoke
   Scenario: Creation of Objective inside a Strategic Goal
     And I complete the fields from the sheet "StrategicPlanEdition" in excel "StrategicPlan_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -90,7 +90,7 @@ Feature: Validate all scenarios in Strategic Plan
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
 
-  @editionOfObjective
+  @51048 @editionOfObjective
   Scenario: Edition of Objective inside a Strategic Goal
     And I complete the fields from the sheet "StrategicPlanEdition" in excel "StrategicPlan_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -110,7 +110,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I enter "ObjectiveEdition" values from "StrategicPlan_Field_Values.xlsx"
     When I click on "Save" in the page details
 
-  @additionOfAttachmentToObjective
+  @51049 @additionOfAttachmentToObjective
   Scenario: Addition of Attachment to Objective inside a Strategic Goal
     And I click on top right button "New" in flex table with id "strategicPlan::strategicGoalObjectivesTableId"
     When I enter "StrategicGoalCreation" values from "StrategicPlan_Field_Values.xlsx"

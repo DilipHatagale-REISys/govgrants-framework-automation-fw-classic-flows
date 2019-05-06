@@ -1,7 +1,7 @@
 @scheduledPaymentRequest @Regression @all
 Feature: Scheduled Payment Request Happy Path
 
-  @scheduledReimbursementPaymentRequestHappyPath
+  @51076 @scheduledReimbursementPaymentRequestHappyPath
   Scenario Outline: Scheduled Payment Request happy path
     When I am on "SUBPORTAL" portal
     Given I delete the record "<Award>" from the object "Payment Request"

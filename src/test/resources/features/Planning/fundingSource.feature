@@ -10,18 +10,18 @@ Feature: Validate all scenarios in Funding Source
       | Creation   | New             | Save and Continue     | Save                         |
       | ID         | EGMS ID         |                       |                                |
 
-  @creationOfFundingSource @smoke
+  @51034 @creationOfFundingSource @smoke
   Scenario: Creation of Funding Source
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @editionOfFundingSource
+  @51035 @editionOfFundingSource
   Scenario: Edition of Funding Source
     And I click on "Edit" in the page details
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     And I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @addAttachmentToFundingSource
+  @51036 @addAttachmentToFundingSource
   Scenario: Addition of Attachment to KPI
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add" in flex table with id "fundingSource::fundingSourceAttachmentTableId"
@@ -29,16 +29,16 @@ Feature: Validate all scenarios in Funding Source
     And I close Modal
     Then I see that "Supporting Documents" has been added in flextable with Id "fundingSource::fundingSourceAttachmentTableId"
 
-  @creationOfFundingAccount @smoke
-  Scenario: Creation of Funding Source
+  @51037 @creationOfFundingAccount @smoke
+  Scenario: Creation of Funding Account
     When I click on top right button "New" in flex table with id "fundingSource::fundingAccountTableId"
     And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @editionOfFundingAccount
-  Scenario: Edition of Funding Source
+  @51038 @editionOfFundingAccount
+  Scenario: Edition of Funding Account
     Given I click on top right button "New" in flex table with id "fundingSource::fundingAccountTableId"
     And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     Given I click modal button "Save and Continue"
@@ -48,8 +48,8 @@ Feature: Validate all scenarios in Funding Source
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @activateFundingAccount @smoke
-  Scenario: Activation of Funding Source
+  @51039 @activateFundingAccount @smoke
+   Scenario: Activation of Funding Source
     Given I click on top right button "New" in flex table with id "fundingSource::fundingAccountTableId"
     And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     Given I click modal button "Save and Continue"
@@ -60,8 +60,8 @@ Feature: Validate all scenarios in Funding Source
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "green"
 
-  @fundingSourceHappyPath @smoke
-  Scenario: Creation of Funding Source
+  @51040 @fundingSourceHappyPath @smoke
+  Scenario: Funding Source HappyPath
     Given I complete the fields from the sheet "Edition" in excel "FundingSource_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |

@@ -16,19 +16,19 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Given I click on "View" icon for "Created" inside flex table with id "subAwardStandAlone::subawardsTableId"
     And I get the "EGMS ID"
 
-  @awardCreation  @smoke
+  @51128 @awardCreation  @smoke
   Scenario: Creation of an award
    Then I see status in Progress-bar is "Created" and is "green"
 
-  @awardStandAloneEdition 
+  @51129 @awardStandAloneEdition 
   Scenario: Edition of an award
     When I click on "Edit" in the page details
     And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
- @awardStandAloneAddContactsKeyPersonnel 
-  Scenario: Associate a Key Contact
+   @51130 @awardStandAloneAddContactsKeyPersonnel 
+   Scenario: Associate a Key Contact
     When I navigate to "Overview" sub tab
    And I click on top right button "Associate" in flex table with id "subAwardStandAlone::associateContactTableId"
     When I check "Automation SPA" boxes in flex table with id "subAwardStandAlone::keyContactsTableId"
@@ -39,7 +39,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
      | Automation SPA | Project Director/Manager |
     Then I see that "Automation SPA" has been added in flextable with Id "subAwardStandAlone::associateContactTableId"
 
-  @awardStandAloneFundingAccount  @smoke
+  @51131 @awardStandAloneFundingAccount  @smoke
   Scenario Outline: Funding Account budget addition to Award
     When I navigate to "Budget" sub tab
     And I click on top right button "Associate" in flex table with id "subAwardStandAlone::fundingAccountsTableId"
@@ -53,8 +53,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | EGMS Id |
       | FA--154 |
 
-  @allFocusAreaAssociation  @smoke
-  Scenario: Validate the association of Focus Area to Award
+  @51132 @allFocusAreaAssociation  @smoke
+   Scenario: Validate the association of Focus Area to Award
     When I navigate to "Budget" sub tab
     And I click on top right button "Associate" in flex table with id "subAwardStandAlone::focusAreaTableId"
     When I click "Associate" after selection of "Automation Permanent Focus Area" in the table "popupflextableGAT"
@@ -66,7 +66,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see that "Automation Permanent Focus Area" has been added in flextable with Id "subAwardStandAlone::focusAreaTableId"
 
 
-  @awardStandAloneBudgetEdition 
+  @51133 @awardStandAloneBudgetEdition 
   Scenario: Budget addition to Award
     When I navigate to "Budget" sub tab
     When I edit the following rows inline in flex table with id "subAwardStandAlone::subAwardBudgetTableId" by clicking "Edit" :
@@ -74,7 +74,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Construction    | 2000       |
     Then I see that "Construction" has been added in flextable with Id "subAwardStandAlone::subAwardBudgetTableId"
 
-  @allObjectiveAssociation  @nonFunctional
+  @51134 @allObjectiveAssociation  @nonFunctional
   Scenario: Validate the association of Objective to Award
     When I navigate to "Performance" sub tab
     And I click on top right button "Associate" in flex table with id "subAwardStandAlone::objectivesTableId"
@@ -82,7 +82,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I close Modal
     Then I see that "Automation Permanent Objective" has been added in flextable with Id "subAwardStandAlone::objectivesTableId"
 
-  @34775  @allKPIAssociation  @smoke
+   @51135 @allKPIAssociation  @smoke
   Scenario Outline: Validate the association of KPI to Award
     When I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "subAwardStandAlone::kpiTableId" by clicking "Edit" :
@@ -93,7 +93,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | EGMS Id                               |
       |Automation Permanent KPI for Regression|
 
-  @allRiskAssessmentApprovalAndActivation  @smoke
+  @51136 @allRiskAssessmentApprovalAndActivation  @smoke
   Scenario: Risk Assessment approval in an award
    Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -117,7 +117,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
      | Approval   | Start         | Approve    |                   |
        Then I see status in Progress-bar is "Active" and is "green"
 
-  @allApproverSelection 
+  @51137 @allApproverSelection 
   Scenario: Validate the assignment of Approvers for the award
       When I navigate to "Responsibilities" sub tab
      And I edit the following rows inline in flex table with id "GrantorAwardRolesAndResponsibilitiesFlexToggle" by clicking "Edit" :
@@ -127,7 +127,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Executive Approver | Automation EXE | Automation Test Description |
       Then I see that "Automation EXE" has been added in flextable with Id "GrantorAwardRolesAndResponsibilitiesFlexToggle"
 
-  @allSendToRecipientBeforeApproval 
+  @51148 @allSendToRecipientBeforeApproval 
   Scenario Outline: Validate the assignment of Approvers for the award
      Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -198,8 +198,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                     | Grant Name                     | Type            |
       | Automation Grant Award for Post Award | Automation Grant Award for Post Award | Subaward Review |
 
-  @allAcceptanceByRecipientBeforeApproval @smoke
-  Scenario Outline: Validate the assignment of Approvers for the award
+  @51147 @allAcceptanceByRecipientBeforeApproval @smoke
+  Scenario Outline: Validate the Acceptance by recipient before approval
      Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
@@ -284,7 +284,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                     | Grant Name                     | Type            |
       | Automation Grant Award for Post Award | Automation Grant Award for Post Award | Subaward Review |
 
-  @allReviewerAssignment 
+  @51146 @allReviewerAssignment 
   Scenario Outline: Validate the assignment of Reviewer for the award
     Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -380,7 +380,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                     | Grant Name                     | Type            |
       | Permanent Award for Automation | Permanent Award for Automation | Subaward Review |
 
-  @allReviewerInitiation 
+  @51145 @allReviewerInitiation 
   Scenario Outline: Validate initiation of review for the award
     Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -481,7 +481,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                     | Grant Name                     | Type            |
       | Automation Grant Award for Post Award | Automation Grant Award for Post Award | Subaward Review |
 
-  @allReviewComplete  @smoke
+  @51144 @allReviewComplete  @smoke
   Scenario Outline: Validate completion of review for the award
      Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -589,7 +589,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                     | Grant Name                     | Type            | Type1                |
       | Automation Grant Award for Post Award | Automation Grant Award for Post Award | Subaward Review | Review Grantor Award |
 
-  @allSubmissionForApproval 
+  @51143 @allSubmissionForApproval 
   Scenario Outline: Validate award submission for approval
     Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -707,7 +707,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                     | Grant Name                     | Type            |
       | Automation Grant Award for Post Award | Automation Grant Award for Post Award | Subaward Review |
 
-  @allApproval 
+  @51142 @allApproval 
   Scenario Outline: Validate award Approval by respective approvers
         Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -830,8 +830,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                     | Grant Name                     | Type            |
       | Automation Grant Award for Post Award | Automation Grant Award for Post Award | Subaward Review |
 
-  @allSendToRecipientAfterApproval  @smoke
-  Scenario Outline: Validate award Approval by respective approvers
+ @51141 @allSendToRecipientAfterApproval  @smoke
+  Scenario Outline: Validate award send to recipient after Approval
       Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
@@ -963,8 +963,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                     | Grant Name                     | Type            | Type1                    |
       | Automation Grant Award for Post Award | Automation Grant Award for Post Award | Subaward Review | Approve Grantor Subaward |
 
-  @allAcceptanceByRecipientAfterApproval 
-  Scenario Outline: Validate award Approval by respective approvers
+  @51140 @allAcceptanceByRecipientAfterApproval 
+  Scenario Outline: Validate Award Acceptance by Recipient after Approval
         Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
@@ -1101,8 +1101,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                            | Grant Name                            | Type            | Type1                    |
       | Automation Grant Award for Post Award | Automation Grant Award for Post Award | Subaward Review | Approve Grantor Subaward |
 
-  @allActivation @smoke
-  Scenario Outline: Validate award Approval by respective approvers
+  @51139 @allActivation @smoke
+  Scenario Outline: Validate Award Activation
         Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
@@ -1248,8 +1248,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                            | Grant Name                            | Type            |
       | Automation Grant Award for Post Award | Automation Grant Award for Post Award | Subaward Review |
  
-  @awardHappyPathStandAlone @awardStandAlone
-  Scenario Outline: Validate award Approval by respective approvers
+  @51138 @awardHappyPathStandAlone @awardStandAlone
+  Scenario Outline: Validate award Happy path stand alone
     Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |

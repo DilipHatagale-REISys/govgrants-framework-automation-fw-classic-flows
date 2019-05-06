@@ -1,6 +1,10 @@
 package com.ggproduct.automation.projectmanager;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
 import com.jayway.restassured.response.Response;
+import com.mongodb.util.JSON;
 
 import eyethink.automation.bots.controller.EnvironmentFetcher;
 import eyethink.automation.bots.webservices.RestfulWebServices;
@@ -54,10 +58,18 @@ public class ProjectWebServices {
      */
     public void automationDeletionApi(String recordName, String objectType) {
         getAuthToken();
+        try {
+        	recordName = URLEncoder.encode(recordName, StandardCharsets.UTF_8.toString());
+        	objectType = URLEncoder.encode(objectType, StandardCharsets.UTF_8.toString());
+        } catch (Exception e) {
+        }
+        
+        
         String finalEndPoint = endPoint + "/services/apexrest/productAutomationDeletionApi?objectType=" + objectType
                 + "&recordName=" + recordName;
         Response response = apiCall.DeleteCall(null, null, finalEndPoint, "Authorization", "Bearer " + tokenString,
                 null);
+        System.out.println(finalEndPoint);
         response.prettyPrint();
         assertStatusCode(response);
     }
