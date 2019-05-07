@@ -21,7 +21,7 @@ public class GenericSteps {
 
     @Given("^I delete the record \"([^\"]*)\" from the object \"([^\"]*)\"$")
     public void deleteTestData(String recordName, String objectType) {
-        projectManager.automationDeletionApi(recordName, objectType);
+        projectManager.deletionApi(recordName, objectType);
     }
 
     @Given("^I get the \"([^\"]*)\"$")

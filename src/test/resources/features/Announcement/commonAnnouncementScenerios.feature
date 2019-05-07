@@ -1,9 +1,9 @@
 @common @regression
 Feature: Validate all common scenarios in the  Announcement tab
 
-Background: Create Announcement
-   Given I delete the record "Automation Formula Announcement" from the object "Announcement"
-   Given I create a "Formula" Announcement as user "EXE" from sheet "FormulaAnnouncement" in excel "Announcement_Field_Values.xlsx"
+  Background: Create Announcement
+    Given I delete the record "Automation Formula Announcement" from the object "Announcement"
+    Given I create a "Formula" Announcement as user "EXE" from sheet "FormulaAnnouncement" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
       | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
       | FlexTable   | Announcements                       | Draft Announcements        |                                   |
@@ -13,7 +13,7 @@ Background: Create Announcement
     And I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @33936 @announcementCreationFA @smoke 
+  @33936 @announcementCreationFA @smoke
   Scenario: Creation of an Announcement
     Then I see status in Progress-bar is "Created" and is "green"
 
@@ -41,7 +41,7 @@ Background: Create Announcement
     And I navigate to "Directed" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Announcements" in "ActiveFundingOpportunities"
     When I perform quick search for "Record Id" in "ActiveFundingOpportunities" panel
-   Then I do not see values "Record Id" and "Announcement Name" inside table
+    Then I do not see values "Record Id" and "Announcement Name" inside table
 
   @announcementEditionByOtherUserFA
   Scenario Outline: Validate that other users are not able to edit created announcement
@@ -50,8 +50,8 @@ Background: Create Announcement
     And I perform quick search for "Record id" in "ActiveFundingOpportunitiesAll" panel
     Then I cannot see row level action button "Edit" against "Record id" in flex table with id "ActiveFundingOpportunitiesAll"
     Examples:
-    | User |
-    | PM   |
+      | User |
+      | PM   |
 
   @createdAnnouncementEditionOnlyOwnerFA
   Scenario: Validate that only owner can able to edit created status announcement
@@ -66,8 +66,8 @@ Background: Create Announcement
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
- 
-  @37029 @announcementContactAssociationFA @smoke 
+
+  @37029 @announcementContactAssociationFA @smoke
   Scenario Outline: Contact association to an Announcement
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
@@ -75,8 +75,8 @@ Background: Create Announcement
     And I close Modal
     Then I see that "<Contact>" has been added in flextable with Id "AnnouncementContacts"
     Examples:
-     | Contact        |
-     | Automation EXE |
+      | Contact        |
+      | Automation EXE |
 
   @announcementContactDissociationFA
   Scenario Outline: Validate the dissociation of contact to the Announcement
@@ -89,7 +89,7 @@ Background: Create Announcement
       | Contact        |
       | Automation EXE |
 
-  @34760 @announcementFormulaInviteApplicantFA @smoke 
+  @34760 @announcementFormulaInviteApplicantFA @smoke
   Scenario: Amount addition to Invited applicant association to an Announcement
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
@@ -106,12 +106,12 @@ Background: Create Announcement
     When I click "Add" after selection of "<EGMS Id>" in the table "SelectAnnFundingAccounts"
     And I close Modal
     When I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-      | Funding Account  | Pre-Encumbrance |
-      | FA--154          | 100             |
+      | Funding Account | Pre-Encumbrance |
+      | FA--154         | 100             |
     Then I see that "<EGMS Id>" has been added in flextable with Id "flexGridAnnouncementFundingAccountGrantor"
     Examples:
-      | Announcement Type | EGMS Id     |
-      | Formula           | FA--154     |
+      | Announcement Type | EGMS Id |
+      | Formula           | FA--154 |
 
   @announcementFADissociationFA
   Scenario Outline: Funding Account dissociation to an Announcement
@@ -122,8 +122,8 @@ Background: Create Announcement
     When I click on "Remove" icon for "<EGMS Id>" inside flex table with id "announcement::fundingAccountsTableId"
     Then I do not see value "<EGMS Id>" for title "EGMS ID" inside table "announcement::fundingAccountsTableId"
     Examples:
-     | EGMS Id |
-     | FA--154 |
+      | EGMS Id |
+      | FA--154 |
 
   @34771 @announcementBudgetPeriodAdditionFA
   Scenario: Budget Period Addition to an Announcement
@@ -185,7 +185,7 @@ Background: Create Announcement
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description | 
+      | Executive Approver | Automation EXE | Automation Test Description |
     Then I see that "Automation EXE" has been added in flextable with Id "flexGridAnnouncementRolesandResponsibility"
 
   @34232 @announcementReviewerAssignmentFA
@@ -200,20 +200,20 @@ Background: Create Announcement
   @34778 @announcementReviewerInitiationFA
   Scenario: Validate the Reviewer initiation for the Announcement
     When I navigate to "Responsibilities" sub tab
-        When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
-      | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
-     And I click on "Send for Review" icon for "Automation FO" inside table
+    When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
+      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "Automation FO" inside table
     And I get the "EGMS ID"
     Then I see that "Sent for Review" has been added in flextable with Id "flexGridApproverRoles"
 
   @34779 @announcementReviewCompleteFA @wip
   Scenario Outline: Validate the review for the Announcement
-   When I navigate to "Responsibilities" sub tab
+    When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
-      | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
-     And I click on "Send for Review" icon for "Automation FO" inside table
+      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "Automation FO" inside table
     And I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
@@ -223,9 +223,9 @@ Background: Create Announcement
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
-      | Value            | Field            |
-      | Passed           | Rating__c        |
-      | Passed           | ReviewComments__c|
+      | Value  | Field             |
+      | Passed | Rating__c         |
+      | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
     And I close Modal
@@ -251,7 +251,7 @@ Background: Create Announcement
 
   @reviewStepsBeforeSubmitForApprovalFA
   Scenario Outline: Validate the Review steps of Announcement before submit for Approval
-  And I navigate to "Setup" sub tab
+    And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
     When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :

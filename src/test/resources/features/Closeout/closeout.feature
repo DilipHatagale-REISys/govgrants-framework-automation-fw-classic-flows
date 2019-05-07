@@ -8,7 +8,7 @@ Feature: Validate all scenarios in Closeout
       | Owner Navigation | As a Grantor  | Grants       | Grants and Subawards | Grants, Subaward & Amendments |
       | Complete Review  | Active Grants | ActiveGrants | View                 |                               |
 
-  @creationOfAdhocCloseout @smoke
+  @50971 @creationOfAdhocCloseout @smoke
   Scenario: To create an Adhoc Closeout Request
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "closeout::closeoutTableId"
@@ -17,7 +17,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @editionOfCloseout
+  @50973 @editionOfCloseout
   Scenario: To edit a Closout Request
     Given I create a closeout from sheet "Creation" in excel "Closeout_Field_Values.xlsx"
       | Actions   | Step 1            | Step 2                         |
@@ -30,7 +30,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @assigningApproversInCloseout
+  @50974 @assigningApproversInCloseout
   Scenario: To assign approvers Closout Request
     Given I create a closeout from sheet "Creation" in excel "Closeout_Field_Values.xlsx"
       | Actions   | Step 1            | Step 2                         |
@@ -45,7 +45,7 @@ Feature: Validate all scenarios in Closeout
       | Fiscal Approver  | Automation FO | Automation Test Description |
     Then I see that "Automation FO" has been added in flextable with Id "closeout::closeoutApproverTableId"
 
-  @sendClosoutToSubrecipient @smoke
+  @50975 @sendClosoutToSubrecipient @smoke
   Scenario: Send Closout Request to Subrecipient
     Given I create a closeout from sheet "Creation" in excel "Closeout_Field_Values.xlsx"
       | Actions   | Step 1            | Step 2                         |
@@ -64,7 +64,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Send To Subrecipient" in the page details
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
 
-  @subrecipientEntersFielsInCloseout
+  @50976 @subrecipientEntersFielsInCloseout
   Scenario: Subrecipient enters closeout fields
     Given I create a closeout from sheet "Creation" in excel "Closeout_Field_Values.xlsx"
       | Actions   | Step 1            | Step 2                         |
@@ -119,7 +119,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Acknowledge" in the page details
     Then I see that "Closeout View" is in "Acknowledged by Subrecipient" status
 
-  @overrideCloseout @smoke
+  @50978 @overrideCloseout @smoke
   Scenario: Grant owner overrides the closeout
     Given I create a closeout from sheet "Creation" in excel "Closeout_Field_Values.xlsx"
       | Actions   | Step 1            | Step 2                         |
@@ -147,7 +147,7 @@ Feature: Validate all scenarios in Closeout
     Given I click on "Acknowledge" in the page details
     When User "EXE" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2       | Step 3 |
-      | Navigation | Closeout          | As a Grantor | AUTO   |
+      | Navigation | Closeout          | As a Grantor | QA     |
       | Left Panel | Pending Tasks     | My Tasks     |        |
       | FlexTable  | PhasePendingTasks | Start        |        |
     And I complete the fields from the sheet "Override" in excel "Closeout_Field_Values.xlsx"
@@ -156,7 +156,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Override" in the page details
     Then I see status in Progress-bar is "Overridden" and is "green"
 
-  @submitCloseoutForApproval
+  @50979 @submitCloseoutForApproval
   Scenario: Closeout is submitted for approval
     Given I create a closeout from sheet "Creation" in excel "Closeout_Field_Values.xlsx"
       | Actions   | Step 1            | Step 2                         |
@@ -184,7 +184,7 @@ Feature: Validate all scenarios in Closeout
     And I click on "Acknowledge" in the page details
     Given User "EXE" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2       | Step 3 |
-      | Navigation | Closeout          | As a Grantor | AUTO   |
+      | Navigation | Closeout          | As a Grantor | QA     |
       | Left Panel | Pending Tasks     | My Tasks     |        |
       | FlexTable  | PhasePendingTasks | Start        |        |
     And I complete the fields from the sheet "Override" in excel "Closeout_Field_Values.xlsx"
@@ -222,7 +222,7 @@ Feature: Validate all scenarios in Closeout
     And I click on "Acknowledge" in the page details
     Given User "EXE" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2       | Step 3 |
-      | Navigation | Closeout          | As a Grantor | AUTO   |
+      | Navigation | Closeout          | As a Grantor | QA     |
       | Left Panel | Pending Tasks     | My Tasks     |        |
       | FlexTable  | PhasePendingTasks | Start        |        |
     And I complete the fields from the sheet "Override" in excel "Closeout_Field_Values.xlsx"
@@ -235,6 +235,7 @@ Feature: Validate all scenarios in Closeout
       | Navigation | As a Grantor  | Closeout |                   |
       | FlexTable  | Pending Tasks | My Tasks | PhasePendingTasks |
       | Approval   | Start         | Approve  |                   |
+    When I enter "<string>" for comments and click "<string>"
     Then I see status in Progress-bar is "Completed" and is "green"
 
   @scheduledCloseoutHappyPath @notFunctional
@@ -244,7 +245,7 @@ Feature: Validate all scenarios in Closeout
     When I get the "EGMS ID"
     Given User "EXE" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2       | Step 3 |
-      | Navigation | Closeout          | As a Grantor | AUTO   |
+      | Navigation | Closeout          | As a Grantor | QA     |
       | Left Panel | Pending Tasks     | My Tasks     |        |
       | FlexTable  | PhasePendingTasks | Start        |        |
     And I complete the fields from the sheet "Edition" in excel "Closeout_Field_Values.xlsx"
@@ -267,7 +268,7 @@ Feature: Validate all scenarios in Closeout
     And I click on "Acknowledge" in the page details
     Given User "EXE" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2       | Step 3 |
-      | Navigation | Closeout          | As a Grantor | AUTO   |
+      | Navigation | Closeout          | As a Grantor | QA     |
       | Left Panel | Pending Tasks     | My Tasks     |        |
       | FlexTable  | PhasePendingTasks | Start        |        |
     And I complete the fields from the sheet "Override" in excel "Closeout_Field_Values.xlsx"

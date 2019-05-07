@@ -29,7 +29,7 @@ public class UsersAndURL implements UsersController {
     public String getUserName(String userLevel) {
         String userName = null;
         if ((EnvironmentFetcher.environmentName != null) && (EnvironmentFetcher.environmentName.contains("QA"))) {
-            userName = getAutoEnvironmentUser(userLevel);
+            userName = getQAEnvironmentUser(userLevel);
         }
         return userName;
     }
@@ -38,12 +38,12 @@ public class UsersAndURL implements UsersController {
     public String getPassword(String userLevel) {
         String password = null;
         if (EnvironmentFetcher.environmentName.contains("QA")) {
-            password = getAutoEnvironmentPassword(userLevel);
+            password = getQAEnvironmentPassword(userLevel);
         }
         return password;
     }
 
-    private String getAutoEnvironmentPassword(String userLevel) {
+    private String getQAEnvironmentPassword(String userLevel) {
         String password;
         switch (userLevel.toUpperCase()) {
             case "SARAH PO":
@@ -58,8 +58,8 @@ public class UsersAndURL implements UsersController {
         return password;
     }
 
-    private String getAutoEnvironmentUser(String userLevel) {
-        Map<String, String> username = new HashMap();
+    private String getQAEnvironmentUser(String userLevel) {
+        Map<String, String> username = new HashMap<>();
         username.put("ADMIN", "mayuresh.g@ggp.test7");
         username.put("EXE", "test@gmaildemo.com");
         username.put("PM", "donald_pm@ggp.test7");

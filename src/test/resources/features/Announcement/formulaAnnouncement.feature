@@ -1,9 +1,9 @@
 @formula
 Feature: Validate all scenarios in the Formula Announcement tab
 
-   Background: Create Announcement
-   Given I delete the record "Automation Formula Announcement" from the object "Announcement"
-   Given I create a "Formula" Announcement as user "EXE" from sheet "FormulaAnnouncement" in excel "Announcement_Field_Values.xlsx"
+  Background: Create Announcement
+    Given I delete the record "Automation Formula Announcement" from the object "Announcement"
+    Given I create a "Formula" Announcement as user "EXE" from sheet "FormulaAnnouncement" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
       | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
       | FlexTable   | Announcements                       | Draft Announcements        |                                   |
@@ -13,183 +13,8 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @34461 @submittingAnnouncementForApprovalFA 
+  @34461 @submittingAnnouncementForApprovalFA
   Scenario Outline: Validate the submission of Announcement for Approval
-        Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--154"
-      | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
-      | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
-    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-      | Funding Account | Pre-Encumbrance |
-      | FA--154           | 100             |
-    When I navigate to "Financials" sub tab
-    And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
-    When I refresh the page
-    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
-      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
-    When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
-      | Role               | Name           | Description                 |
-      | Program Approver   | Automation PM  | Automation Test Description |
-      | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description | 
-    When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
-      | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
-     And I click on "Send for Review" icon for "Automation FO" inside table
-   And I get the "EGMS ID"
-    And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    When I navigate to "Announcements" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record id" inside table
-    When I navigate to "Responsibilities" tab
-    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
-    And I enter values into fields
-      | Value            | Field            |
-      | Passed           | Rating__c        |
-      | Passed           | ReviewComments__c|
-    When I click modal button "Save"
-   And I click modal button "Submit Review"
-    And I close Modal
-    Given I login and view the record "Record id" as "EXE"
-      | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
-      | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
-      | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
-    Given I click on "Complete Review" in the page details
-And I navigate to "Setup" sub tab
-    And I expand nested table containing column value "Pre-Screen Review"
-    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
-    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Eligibility    | 50                 |
-      | Completeness   | 50                 |
-    And I expand nested table containing column value "Eligibility"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Eligibility"
-    And I expand nested table containing column value "Completeness"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
-    When I collapse nested table containing column value "Pre-Screen Review"
-    And I expand nested table containing column value "SME Review"
-    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Schedule       | 30                 |
-      | Environment    | 30                 |
-      | Permits        | 40                 |
-    And I expand nested table containing column value "Schedule"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Schedule"
-    And I expand nested table containing column value "Environment"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Environment"
-    And I expand nested table containing column value "Permits"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Permits"
-    And I close modal by clicking the top right x button
-    When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Budget         | 30                 |
-      | Match          | 40                 |
-      | Program Income | 30                 |
-    And I expand nested table containing column value "Budget"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Budget"
-    And I expand nested table containing column value "Match"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Match"
-    And I expand nested table containing column value "Program Income"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
-    When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Capability     | 30                 |
-      | Approach       | 30                 |
-      | Impact         | 40                 |
-    And I expand nested table containing column value "Capability"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Capability"
-    And I expand nested table containing column value "Approach"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Approach"
-    And I expand nested table containing column value "Impact"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
-    When I collapse nested table containing column value "SME Review"
-    And I expand nested table containing column value "Management Review"
-    When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-      | Section Header             | Section Weight (%) |
-      | Return on Investment (ROI) | 50                 |
-      | Strategic Alignment        | 50                 |
-    And I expand nested table containing column value "Return on Investment (ROI)"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Return on Investment (ROI)"
-    And I expand nested table containing column value "Strategic Alignment"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
-    When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
- And I click on "Edit" in the page details
-     When I navigate to "Financials" sub tab
-    And I enter value "Justified" into field "Justification__c"
-        And I click on "Save" in the page details
-    When I navigate to "Overview" sub tab
-     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
-      | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
-      | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
-    When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
-      | Agency                              | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
-    When I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-      | Budget Period Name | Start Date           | End Date       |
-      | BP01               | 	50      | 150     |
-    And I click on "Save" in the page details
-    And I click on "Submit For Approval" in the page details
-    Then I see status in Progress-bar is "Submitted For Approval" and is "green"
-    Examples:
-      | Announcement Type | User | Active Funding Opportunities id   |
-      | Formula           | EXE  | ActiveFundingOpportunitiesFormula |
-
-  @submittedAnnouncementDeletionFA 
-  Scenario Outline: Validate that only record owner cannot delete Submitted for Approval status announcements
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
@@ -198,26 +23,26 @@ And I navigate to "Setup" sub tab
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154           | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
       #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description | 
+      | Executive Approver | Automation EXE | Automation Test Description |
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
-      | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
-     And I click on "Send for Review" icon for "Automation FO" inside table
-   And I get the "EGMS ID"
+      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "Automation FO" inside table
+    And I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -226,11 +51,11 @@ And I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
-      | Value            | Field            |
-      | Passed           | Rating__c        |
-      | Passed           | ReviewComments__c|
+      | Value  | Field             |
+      | Passed | Rating__c         |
+      | Passed | ReviewComments__c |
     When I click modal button "Save"
-   And I click modal button "Submit Review"
+    And I click modal button "Submit Review"
     And I close Modal
     Given I login and view the record "Record id" as "EXE"
       | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
@@ -341,7 +166,182 @@ And I navigate to "Setup" sub tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-    When I get the "EGMS ID" 
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
+    And I enter value "Justified" into field "Justification__c"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
+      | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
+      | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
+    When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
+      | Agency                              | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
+    When I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 50         | 150      |
+    And I click on "Save" in the page details
+    And I click on "Submit For Approval" in the page details
+    Then I see status in Progress-bar is "Submitted For Approval" and is "green"
+    Examples:
+      | Announcement Type | User | Active Funding Opportunities id   |
+      | Formula           | EXE  | ActiveFundingOpportunitiesFormula |
+
+  @submittedAnnouncementDeletionFA
+  Scenario Outline: Validate that only record owner cannot delete Submitted for Approval status announcements
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+      | Actions         | Step 1 | Step 2 |
+      | Edition Buttons | Edit   | Save   |
+    And I associate "1" records "FA--154"
+      | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
+      | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
+    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
+      | Funding Account | Pre-Encumbrance |
+      | FA--154         | 100             |
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
+    When I refresh the page
+    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
+      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
+      | Role               | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+    When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
+      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "Automation FO" inside table
+    And I get the "EGMS ID"
+    And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I navigate to "Announcements" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record id" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "Record id" inside table
+    When I navigate to "Responsibilities" tab
+    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
+    And I enter values into fields
+      | Value  | Field             |
+      | Passed | Rating__c         |
+      | Passed | ReviewComments__c |
+    When I click modal button "Save"
+    And I click modal button "Submit Review"
+    And I close Modal
+    Given I login and view the record "Record id" as "EXE"
+      | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
+      | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
+      | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
+    Given I click on "Complete Review" in the page details
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Eligibility    | 50                 |
+      | Completeness   | 50                 |
+    And I expand nested table containing column value "Eligibility"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Eligibility"
+    And I expand nested table containing column value "Completeness"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
+    When I collapse nested table containing column value "Pre-Screen Review"
+    And I expand nested table containing column value "SME Review"
+    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Schedule       | 30                 |
+      | Environment    | 30                 |
+      | Permits        | 40                 |
+    And I expand nested table containing column value "Schedule"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Schedule"
+    And I expand nested table containing column value "Environment"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Environment"
+    And I expand nested table containing column value "Permits"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Permits"
+    And I close modal by clicking the top right x button
+    When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Budget         | 30                 |
+      | Match          | 40                 |
+      | Program Income | 30                 |
+    And I expand nested table containing column value "Budget"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Budget"
+    And I expand nested table containing column value "Match"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Match"
+    And I expand nested table containing column value "Program Income"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Program Income"
+    And I close modal by clicking the top right x button
+    When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Capability     | 30                 |
+      | Approach       | 30                 |
+      | Impact         | 40                 |
+    And I expand nested table containing column value "Capability"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Capability"
+    And I expand nested table containing column value "Approach"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Approach"
+    And I expand nested table containing column value "Impact"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Impact"
+    And I close modal by clicking the top right x button
+    When I collapse nested table containing column value "SME Review"
+    And I expand nested table containing column value "Management Review"
+    When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 50                 |
+      | Strategic Alignment        | 50                 |
+    And I expand nested table containing column value "Return on Investment (ROI)"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Return on Investment (ROI)"
+    And I expand nested table containing column value "Strategic Alignment"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
+    When I collapse nested table containing column value "Management Review"
+    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
+    When I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
     And I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -351,10 +351,10 @@ And I navigate to "Setup" sub tab
     Examples:
       | Announcement Type | User | Active Funding Opportunities id   |
       | Formula           | EXE  | ActiveFundingOpportunitiesFormula |
-      
+
   @announcementForPastApplicationDueDateFA
   Scenario Outline: Validate that user can not enter application due date as past date
-        Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -362,26 +362,26 @@ And I navigate to "Setup" sub tab
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154           | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
       #| Associate 2 | Setup   | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description | 
+      | Executive Approver | Automation EXE | Automation Test Description |
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
-      | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
-     And I click on "Send for Review" icon for "Automation FO" inside table
-   And I get the "EGMS ID"
+      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "Automation FO" inside table
+    And I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -390,18 +390,18 @@ And I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
-      | Value            | Field            |
-      | Passed           | Rating__c        |
-      | Passed           | ReviewComments__c|
+      | Value  | Field             |
+      | Passed | Rating__c         |
+      | Passed | ReviewComments__c |
     When I click modal button "Save"
-   And I click modal button "Submit Review"
+    And I click modal button "Submit Review"
     And I close Modal
     Given I login and view the record "Record id" as "EXE"
       | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
       | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
       | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
     Given I click on "Complete Review" in the page details
-And I navigate to "Setup" sub tab
+    And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
     When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
@@ -506,13 +506,13 @@ And I navigate to "Setup" sub tab
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
-     When I navigate to "Financials" sub tab
+    When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
     When I navigate to "Overview" sub tab
     And I enter value "-1" into field "ApplicationDueDate__c"
-        And I click on "Save" in the page details
+    And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
-     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
@@ -520,8 +520,8 @@ And I navigate to "Setup" sub tab
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
     When I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-      | Budget Period Name | Start Date           | End Date       |
-      | BP01               | 	50      | 150     |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     Then I see the following messages in the page details :
@@ -540,26 +540,26 @@ And I navigate to "Setup" sub tab
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154           | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
       #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description | 
+      | Executive Approver | Automation EXE | Automation Test Description |
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
-      | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
-     And I click on "Send for Review" icon for "Automation FO" inside table
-   And I get the "EGMS ID"
+      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "Automation FO" inside table
+    And I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -568,18 +568,18 @@ And I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
-      | Value            | Field            |
-      | Passed           | Rating__c        |
-      | Passed           | ReviewComments__c|
+      | Value  | Field             |
+      | Passed | Rating__c         |
+      | Passed | ReviewComments__c |
     When I click modal button "Save"
-   And I click modal button "Submit Review"
+    And I click modal button "Submit Review"
     And I close Modal
     Given I login and view the record "Record id" as "EXE"
       | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
       | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
       | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
     Given I click on "Complete Review" in the page details
-And I navigate to "Setup" sub tab
+    And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
     When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
@@ -684,11 +684,11 @@ And I navigate to "Setup" sub tab
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
-     When I navigate to "Financials" sub tab
+    When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
-        And I click on "Save" in the page details
+    And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
-     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
@@ -704,7 +704,7 @@ And I navigate to "Setup" sub tab
 
   @announcementApprovalFA
   Scenario Outline: Validate the approval of an Announcement
-           Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -712,26 +712,26 @@ And I navigate to "Setup" sub tab
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154           | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
       #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description | 
+      | Executive Approver | Automation EXE | Automation Test Description |
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
-      | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
-     And I click on "Send for Review" icon for "Automation FO" inside table
-   And I get the "EGMS ID"
+      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "Automation FO" inside table
+    And I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -740,18 +740,18 @@ And I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
-      | Value            | Field            |
-      | Passed           | Rating__c        |
-      | Passed           | ReviewComments__c|
+      | Value  | Field             |
+      | Passed | Rating__c         |
+      | Passed | ReviewComments__c |
     When I click modal button "Save"
-   And I click modal button "Submit Review"
+    And I click modal button "Submit Review"
     And I close Modal
     Given I login and view the record "Record id" as "EXE"
       | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
       | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
       | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
     Given I click on "Complete Review" in the page details
-And I navigate to "Setup" sub tab
+    And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
     When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
@@ -855,12 +855,12 @@ And I navigate to "Setup" sub tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
- And I click on "Edit" in the page details
-     When I navigate to "Financials" sub tab
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
-        And I click on "Save" in the page details
+    And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
-     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
@@ -868,11 +868,11 @@ And I navigate to "Setup" sub tab
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
     When I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-      | Budget Period Name | Start Date           | End Date       |
-      | BP01               | 	50      | 150     |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
-     Given "3" Approvers "PM,FO,EXE" approve the record "Record id"
+    Given "3" Approvers "PM,FO,EXE" approve the record "Record id"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
       | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
@@ -882,9 +882,9 @@ And I navigate to "Setup" sub tab
       | Announcement Type | User | Active Funding Opportunities id   |
       | Formula           | EXE  | ActiveFundingOpportunitiesFormula |
 
-  @announcementPendingTaskPostApprovalFA @smoke 
+  @announcementPendingTaskPostApprovalFA @smoke
   Scenario Outline: Validate that after approval of an Announcement task get deleted from pending task table.
-       Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -892,26 +892,26 @@ And I navigate to "Setup" sub tab
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154           | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
       #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description | 
+      | Executive Approver | Automation EXE | Automation Test Description |
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
-      | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
-     And I click on "Send for Review" icon for "Automation FO" inside table
-   And I get the "EGMS ID"
+      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "Automation FO" inside table
+    And I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -920,18 +920,18 @@ And I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
-      | Value            | Field            |
-      | Passed           | Rating__c        |
-      | Passed           | ReviewComments__c|
+      | Value  | Field             |
+      | Passed | Rating__c         |
+      | Passed | ReviewComments__c |
     When I click modal button "Save"
-   And I click modal button "Submit Review"
+    And I click modal button "Submit Review"
     And I close Modal
     Given I login and view the record "Record id" as "EXE"
       | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
       | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
       | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
     Given I click on "Complete Review" in the page details
-And I navigate to "Setup" sub tab
+    And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
     When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
@@ -1035,12 +1035,12 @@ And I navigate to "Setup" sub tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-     And I click on "Edit" in the page details
-     When I navigate to "Financials" sub tab
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
-        And I click on "Save" in the page details
+    And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
-     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
@@ -1048,8 +1048,8 @@ And I navigate to "Setup" sub tab
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
     When I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-      | Budget Period Name | Start Date           | End Date       |
-      | BP01               | 	50      | 150     |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
@@ -1067,7 +1067,7 @@ And I navigate to "Setup" sub tab
 
   @announcementCompletedTaskPostApprovalFA
   Scenario Outline: Validate that after approval of an Announcement task get added to its completed task table.
-       Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -1075,26 +1075,26 @@ And I navigate to "Setup" sub tab
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154           | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
       #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description | 
+      | Executive Approver | Automation EXE | Automation Test Description |
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
-      | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
-     And I click on "Send for Review" icon for "Automation FO" inside table
-   And I get the "EGMS ID"
+      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "Automation FO" inside table
+    And I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1103,18 +1103,18 @@ And I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
-      | Value            | Field            |
-      | Passed           | Rating__c        |
-      | Passed           | ReviewComments__c|
+      | Value  | Field             |
+      | Passed | Rating__c         |
+      | Passed | ReviewComments__c |
     When I click modal button "Save"
-   And I click modal button "Submit Review"
+    And I click modal button "Submit Review"
     And I close Modal
     Given I login and view the record "Record id" as "EXE"
       | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
       | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
       | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
     Given I click on "Complete Review" in the page details
-  And I navigate to "Setup" sub tab
+    And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
     When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
@@ -1218,12 +1218,12 @@ And I navigate to "Setup" sub tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-     And I click on "Edit" in the page details
-     When I navigate to "Financials" sub tab
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
-        And I click on "Save" in the page details
+    And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
-     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
@@ -1231,8 +1231,8 @@ And I navigate to "Setup" sub tab
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
     When I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-      | Budget Period Name | Start Date           | End Date       |
-      | BP01               | 	50      | 150     |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
@@ -1248,9 +1248,9 @@ And I navigate to "Setup" sub tab
       | Announcement Type | User | Active Funding Opportunities id   |
       | Formula           | EXE  | ActiveFundingOpportunitiesFormula |
 
-  @announcementSendBackToOwnerFA 
+  @announcementSendBackToOwnerFA
   Scenario Outline: Validate the send back functionality of an Announcement
-       Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -1258,26 +1258,26 @@ And I navigate to "Setup" sub tab
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154           | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
       #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description | 
+      | Executive Approver | Automation EXE | Automation Test Description |
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
-      | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
-     And I click on "Send for Review" icon for "Automation FO" inside table
-   And I get the "EGMS ID"
+      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "Automation FO" inside table
+    And I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1286,18 +1286,18 @@ And I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
-      | Value            | Field            |
-      | Passed           | Rating__c        |
-      | Passed           | ReviewComments__c|
+      | Value  | Field             |
+      | Passed | Rating__c         |
+      | Passed | ReviewComments__c |
     When I click modal button "Save"
-   And I click modal button "Submit Review"
+    And I click modal button "Submit Review"
     And I close Modal
     Given I login and view the record "Record id" as "EXE"
       | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
       | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
       | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
     Given I click on "Complete Review" in the page details
-And I navigate to "Setup" sub tab
+    And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
     When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
@@ -1401,12 +1401,12 @@ And I navigate to "Setup" sub tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-     And I click on "Edit" in the page details
-     When I navigate to "Financials" sub tab
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
-        And I click on "Save" in the page details
+    And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
-     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
@@ -1414,23 +1414,23 @@ And I navigate to "Setup" sub tab
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
     When I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-      | Budget Period Name | Start Date           | End Date       |
-      | BP01               | 	50      | 150     |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record id"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
       | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
-      | Approval   | Start         | Send to Owner |  Continue         |
+      | Approval   | Start         | Send to Owner | Continue          |
     Then I see status in Progress-bar is "Created" and is "green"
     Examples:
       | Announcement Type | User | Active Funding Opportunities id   |
       | Formula           | EXE  | ActiveFundingOpportunitiesFormula |
-      
+
   @announcementSendBackPendingTaskToOwnerFA
   Scenario Outline: Validate that after send back from approvers owner should not get pending task
-          Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -1438,26 +1438,26 @@ And I navigate to "Setup" sub tab
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154           | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
       #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description | 
+      | Executive Approver | Automation EXE | Automation Test Description |
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
-      | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
-     And I click on "Send for Review" icon for "Automation FO" inside table
-   And I get the "EGMS ID"
+      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "Automation FO" inside table
+    And I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1466,18 +1466,18 @@ And I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
-      | Value            | Field            |
-      | Passed           | Rating__c        |
-      | Passed           | ReviewComments__c|
+      | Value  | Field             |
+      | Passed | Rating__c         |
+      | Passed | ReviewComments__c |
     When I click modal button "Save"
-   And I click modal button "Submit Review"
+    And I click modal button "Submit Review"
     And I close Modal
     Given I login and view the record "Record id" as "EXE"
       | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
       | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
       | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
     Given I click on "Complete Review" in the page details
-And I navigate to "Setup" sub tab
+    And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
     When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
@@ -1581,11 +1581,11 @@ And I navigate to "Setup" sub tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-     And I click on "Edit" in the page details
-     When I navigate to "Financials" sub tab
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
     When I navigate to "Overview" sub tab
-     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
@@ -1593,27 +1593,27 @@ And I navigate to "Setup" sub tab
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
     When I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-      | Budget Period Name | Start Date           | End Date       |
-      | BP01               | 	50      | 150     |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
       | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
-      | Approval   | Start         | Send to Owner |     Continue                |
+      | Approval   | Start         | Send to Owner | Continue          |
     And I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-     Then I do not see values "Record Id" and "Automation Formula Announcement" inside table
+    Then I do not see values "Record Id" and "Automation Formula Announcement" inside table
     Examples:
       | Announcement Type | User | Active Funding Opportunities id   |
       | Formula           | EXE  | ActiveFundingOpportunitiesFormula |
 
-  @announcementPostSendBackCheckFieldHistoryFA 
+  @announcementPostSendBackCheckFieldHistoryFA
   Scenario Outline: Validate the field history after send back of an announcement
-       Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -1621,26 +1621,26 @@ And I navigate to "Setup" sub tab
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154           | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
       #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description | 
+      | Executive Approver | Automation EXE | Automation Test Description |
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
-      | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
-     And I click on "Send for Review" icon for "Automation FO" inside table
-   And I get the "EGMS ID"
+      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "Automation FO" inside table
+    And I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1649,18 +1649,18 @@ And I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
-      | Value            | Field            |
-      | Passed           | Rating__c        |
-      | Passed           | ReviewComments__c|
+      | Value  | Field             |
+      | Passed | Rating__c         |
+      | Passed | ReviewComments__c |
     When I click modal button "Save"
-   And I click modal button "Submit Review"
+    And I click modal button "Submit Review"
     And I close Modal
     Given I login and view the record "Record id" as "EXE"
       | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
       | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
       | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
     Given I click on "Complete Review" in the page details
-And I navigate to "Setup" sub tab
+    And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
     When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
@@ -1764,12 +1764,12 @@ And I navigate to "Setup" sub tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-     And I click on "Edit" in the page details
-     When I navigate to "Financials" sub tab
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
-        And I click on "Save" in the page details
+    And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
-     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
@@ -1777,8 +1777,8 @@ And I navigate to "Setup" sub tab
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
     When I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-      | Budget Period Name | Start Date           | End Date       |
-      | BP01               | 	50      | 150     |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
@@ -1791,10 +1791,10 @@ And I navigate to "Setup" sub tab
     Examples:
       | Announcement Type | User | Active Funding Opportunities id   |
       | Formula           | EXE  | ActiveFundingOpportunitiesFormula |
-      
+
   @announcementApprovalRejectionFA
   Scenario Outline: Validate the reject functionality of an Announcement
-       Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -1802,26 +1802,26 @@ And I navigate to "Setup" sub tab
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154           | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
       #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description | 
+      | Executive Approver | Automation EXE | Automation Test Description |
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
-      | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
-     And I click on "Send for Review" icon for "Automation FO" inside table
-   And I get the "EGMS ID"
+      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "Automation FO" inside table
+    And I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1830,18 +1830,18 @@ And I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
-      | Value            | Field            |
-      | Passed           | Rating__c        |
-      | Passed           | ReviewComments__c|
+      | Value  | Field             |
+      | Passed | Rating__c         |
+      | Passed | ReviewComments__c |
     When I click modal button "Save"
-   And I click modal button "Submit Review"
+    And I click modal button "Submit Review"
     And I close Modal
     Given I login and view the record "Record id" as "EXE"
       | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
       | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
       | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
     Given I click on "Complete Review" in the page details
-And I navigate to "Setup" sub tab
+    And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
     When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
@@ -1945,12 +1945,12 @@ And I navigate to "Setup" sub tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-     And I click on "Edit" in the page details
-     When I navigate to "Financials" sub tab
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
-        And I click on "Save" in the page details
+    And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
-     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
@@ -1958,8 +1958,8 @@ And I navigate to "Setup" sub tab
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
     When I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-      | Budget Period Name | Start Date           | End Date       |
-      | BP01               | 	50      | 150     |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
@@ -1982,26 +1982,26 @@ And I navigate to "Setup" sub tab
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154           | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
       #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description | 
+      | Executive Approver | Automation EXE | Automation Test Description |
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
-      | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
-     And I click on "Send for Review" icon for "Automation FO" inside table
-   And I get the "EGMS ID"
+      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "Automation FO" inside table
+    And I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2010,202 +2010,18 @@ And I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
-      | Value            | Field            |
-      | Passed           | Rating__c        |
-      | Passed           | ReviewComments__c|
+      | Value  | Field             |
+      | Passed | Rating__c         |
+      | Passed | ReviewComments__c |
     When I click modal button "Save"
-   And I click modal button "Submit Review"
+    And I click modal button "Submit Review"
     And I close Modal
     Given I login and view the record "Record id" as "EXE"
       | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
       | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
       | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
     Given I click on "Complete Review" in the page details
-And I navigate to "Setup" sub tab
-    And I expand nested table containing column value "Pre-Screen Review"
-    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
-    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Eligibility    | 50                 |
-      | Completeness   | 50                 |
-    And I expand nested table containing column value "Eligibility"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Eligibility"
-    And I expand nested table containing column value "Completeness"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
-    When I collapse nested table containing column value "Pre-Screen Review"
-    And I expand nested table containing column value "SME Review"
-    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Schedule       | 30                 |
-      | Environment    | 30                 |
-      | Permits        | 40                 |
-    And I expand nested table containing column value "Schedule"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Schedule"
-    And I expand nested table containing column value "Environment"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Environment"
-    And I expand nested table containing column value "Permits"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Permits"
-    And I close modal by clicking the top right x button
-    When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Budget         | 30                 |
-      | Match          | 40                 |
-      | Program Income | 30                 |
-    And I expand nested table containing column value "Budget"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Budget"
-    And I expand nested table containing column value "Match"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Match"
-    And I expand nested table containing column value "Program Income"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
-    When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Capability     | 30                 |
-      | Approach       | 30                 |
-      | Impact         | 40                 |
-    And I expand nested table containing column value "Capability"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Capability"
-    And I expand nested table containing column value "Approach"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Approach"
-    And I expand nested table containing column value "Impact"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
-    When I collapse nested table containing column value "SME Review"
-    And I expand nested table containing column value "Management Review"
-    When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
-    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
-      | Section Header             | Section Weight (%) |
-      | Return on Investment (ROI) | 50                 |
-      | Strategic Alignment        | 50                 |
-    And I expand nested table containing column value "Return on Investment (ROI)"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Return on Investment (ROI)"
-    And I expand nested table containing column value "Strategic Alignment"
-    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
-    When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-     And I click on "Edit" in the page details
-     When I navigate to "Financials" sub tab
-    And I enter value "Justified" into field "Justification__c"
-        And I click on "Save" in the page details
-    When I navigate to "Overview" sub tab
-     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
-      | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
-      | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
-    When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
-      | Agency                              | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
-    When I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-      | Budget Period Name | Start Date           | End Date       |
-      | BP01               | 	50      | 150     |
-    And I click on "Save" in the page details
-    And I click on "Submit For Approval" in the page details
-    Given "1" Approvers "PM" approve the record "Record Id"
-      | Actions    | Step 1        | Step 2        | Step 3            |
-      | Navigation | As a Grantor  | Announcements |                   |
-      | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
-      | Approval   | Start         | Disapprove    |   Continue        |
-    When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
-    And I navigate to "Announcements" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    Then I do not see values "EGMS ID" and "Automation Formula Announcement" inside table
-    Examples:
-      | Announcement Type | Active Funding Opportunities id   | User |
-      | Formula           | ActiveFundingOpportunitiesFormula |  FO  |
-
-  @announcementPostRejectPendingTaskForUserFA
-  Scenario Outline: Validate that after rejection of an Announcement task get deleted from pending task table.
-    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--154"
-      | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
-      | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
-    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-      | Funding Account | Pre-Encumbrance |
-      | FA--154           | 100             |
-    When I navigate to "Financials" sub tab
-    And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
-    When I refresh the page
-    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
-      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
-    When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
-      | Role               | Name           | Description                 |
-      | Program Approver   | Automation PM  | Automation Test Description |
-      | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description | 
-    When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
-      | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
-     And I click on "Send for Review" icon for "Automation FO" inside table
-   And I get the "EGMS ID"
-    And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    When I navigate to "Announcements" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record id" inside table
-    When I navigate to "Responsibilities" tab
-    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
-    And I enter values into fields
-      | Value            | Field            |
-      | Passed           | Rating__c        |
-      | Passed           | ReviewComments__c|
-    When I click modal button "Save"
-   And I click modal button "Submit Review"
-    And I close Modal
-    Given I login and view the record "Record id" as "EXE"
-      | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
-      | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
-      | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
-    Given I click on "Complete Review" in the page details
-And I navigate to "Setup" sub tab
+    And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
     When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
@@ -2310,11 +2126,11 @@ And I navigate to "Setup" sub tab
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
-     When I navigate to "Financials" sub tab
+    When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
-        And I click on "Save" in the page details
+    And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
-     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
@@ -2322,12 +2138,196 @@ And I navigate to "Setup" sub tab
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
     When I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-      | Budget Period Name | Start Date           | End Date       |
-      | BP01               | 	50      | 150     |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
- And I click on "Submit For Approval" in the page details
-   Given "1" Approvers "PM" approve the record "Record Id"
+    Given "1" Approvers "PM" approve the record "Record Id"
+      | Actions    | Step 1        | Step 2        | Step 3            |
+      | Navigation | As a Grantor  | Announcements |                   |
+      | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
+      | Approval   | Start         | Disapprove    | Continue          |
+    When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    Then I do not see values "EGMS ID" and "Automation Formula Announcement" inside table
+    Examples:
+      | Announcement Type | Active Funding Opportunities id   | User |
+      | Formula           | ActiveFundingOpportunitiesFormula | FO   |
+
+  @announcementPostRejectPendingTaskForUserFA
+  Scenario Outline: Validate that after rejection of an Announcement task get deleted from pending task table.
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+      | Actions         | Step 1 | Step 2 |
+      | Edition Buttons | Edit   | Save   |
+    And I associate "1" records "FA--154"
+      | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
+      | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
+    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
+      | Funding Account | Pre-Encumbrance |
+      | FA--154         | 100             |
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
+    When I refresh the page
+    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
+      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
+      | Role               | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+    When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
+      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "Automation FO" inside table
+    And I get the "EGMS ID"
+    And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I navigate to "Announcements" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record id" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "Record id" inside table
+    When I navigate to "Responsibilities" tab
+    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
+    And I enter values into fields
+      | Value  | Field             |
+      | Passed | Rating__c         |
+      | Passed | ReviewComments__c |
+    When I click modal button "Save"
+    And I click modal button "Submit Review"
+    And I close Modal
+    Given I login and view the record "Record id" as "EXE"
+      | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
+      | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
+      | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
+    Given I click on "Complete Review" in the page details
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Eligibility    | 50                 |
+      | Completeness   | 50                 |
+    And I expand nested table containing column value "Eligibility"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Eligibility"
+    And I expand nested table containing column value "Completeness"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
+    When I collapse nested table containing column value "Pre-Screen Review"
+    And I expand nested table containing column value "SME Review"
+    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Schedule       | 30                 |
+      | Environment    | 30                 |
+      | Permits        | 40                 |
+    And I expand nested table containing column value "Schedule"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Schedule"
+    And I expand nested table containing column value "Environment"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Environment"
+    And I expand nested table containing column value "Permits"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Permits"
+    And I close modal by clicking the top right x button
+    When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Budget         | 30                 |
+      | Match          | 40                 |
+      | Program Income | 30                 |
+    And I expand nested table containing column value "Budget"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Budget"
+    And I expand nested table containing column value "Match"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Match"
+    And I expand nested table containing column value "Program Income"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Program Income"
+    And I close modal by clicking the top right x button
+    When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Capability     | 30                 |
+      | Approach       | 30                 |
+      | Impact         | 40                 |
+    And I expand nested table containing column value "Capability"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Capability"
+    And I expand nested table containing column value "Approach"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Approach"
+    And I expand nested table containing column value "Impact"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Impact"
+    And I close modal by clicking the top right x button
+    When I collapse nested table containing column value "SME Review"
+    And I expand nested table containing column value "Management Review"
+    When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
+    And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 50                 |
+      | Strategic Alignment        | 50                 |
+    And I expand nested table containing column value "Return on Investment (ROI)"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I collapse nested table containing column value "Return on Investment (ROI)"
+    And I expand nested table containing column value "Strategic Alignment"
+    When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I close modal by clicking the top right x button
+    When I collapse nested table containing column value "Management Review"
+    And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
+    And I enter value "Justified" into field "Justification__c"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
+      | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
+      | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
+    When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
+      | Agency                              | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
+    When I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 50         | 150      |
+    And I click on "Save" in the page details
+    And I click on "Submit For Approval" in the page details
+    And I click on "Submit For Approval" in the page details
+    Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
       | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
@@ -2338,7 +2338,7 @@ And I navigate to "Setup" sub tab
     Then I do not see values "Record Id" and "Automation Formula Announcement" inside table
     Examples:
       | Announcement Type | Active Funding Opportunities id   | User |
-      | Formula           | ActiveFundingOpportunitiesFormula |  EXE  |
+      | Formula           | ActiveFundingOpportunitiesFormula | EXE  |
 
   @announcementPostRejectCompletedTaskForUserFA
   Scenario Outline: Validate that after rejection of an Announcement task get added to it's completed task table.
@@ -2350,26 +2350,26 @@ And I navigate to "Setup" sub tab
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154           | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
       #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description | 
+      | Executive Approver | Automation EXE | Automation Test Description |
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
-      | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
-     And I click on "Send for Review" icon for "Automation FO" inside table
-   And I get the "EGMS ID"
+      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "Automation FO" inside table
+    And I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2378,18 +2378,18 @@ And I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
-      | Value            | Field            |
-      | Passed           | Rating__c        |
-      | Passed           | ReviewComments__c|
+      | Value  | Field             |
+      | Passed | Rating__c         |
+      | Passed | ReviewComments__c |
     When I click modal button "Save"
-   And I click modal button "Submit Review"
+    And I click modal button "Submit Review"
     And I close Modal
     Given I login and view the record "Record id" as "EXE"
       | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
       | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
       | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
     Given I click on "Complete Review" in the page details
-And I navigate to "Setup" sub tab
+    And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
     When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
@@ -2493,12 +2493,12 @@ And I navigate to "Setup" sub tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
-     And I click on "Edit" in the page details
-     When I navigate to "Financials" sub tab
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
-        And I click on "Save" in the page details
+    And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
-     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
@@ -2506,15 +2506,15 @@ And I navigate to "Setup" sub tab
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
     When I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-      | Budget Period Name | Start Date           | End Date       |
-      | BP01               | 	50      | 150     |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
       | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
-      | Approval   | Start         | Disapprove    |   Continue        |
+      | Approval   | Start         | Disapprove    | Continue          |
     And I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
@@ -2522,11 +2522,11 @@ And I navigate to "Setup" sub tab
     Then I see value "Record Id" for title "EGMS ID" inside table "PhaseCompletedTasks"
     Examples:
       | Announcement Type | Active Funding Opportunities id   | User |
-      | Formula           | ActiveFundingOpportunitiesFormula |  FO  |
+      | Formula           | ActiveFundingOpportunitiesFormula | FO   |
 
   @announcementPostRejectCheckFieldHistoryFA
   Scenario Outline: Validate the field history after rejection of an announcement
-       Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -2534,26 +2534,26 @@ And I navigate to "Setup" sub tab
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154           | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
       #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description | 
+      | Executive Approver | Automation EXE | Automation Test Description |
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
-      | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
-     And I click on "Send for Review" icon for "Automation FO" inside table
-   And I get the "EGMS ID"
+      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "Automation FO" inside table
+    And I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2562,18 +2562,18 @@ And I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
-      | Value            | Field            |
-      | Passed           | Rating__c        |
-      | Passed           | ReviewComments__c|
+      | Value  | Field             |
+      | Passed | Rating__c         |
+      | Passed | ReviewComments__c |
     When I click modal button "Save"
-   And I click modal button "Submit Review"
+    And I click modal button "Submit Review"
     And I close Modal
     Given I login and view the record "Record id" as "EXE"
       | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
       | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
       | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
     Given I click on "Complete Review" in the page details
-And I navigate to "Setup" sub tab
+    And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
     When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
@@ -2677,12 +2677,12 @@ And I navigate to "Setup" sub tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
- And I click on "Edit" in the page details
-     When I navigate to "Financials" sub tab
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
-        And I click on "Save" in the page details
+    And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
-     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
@@ -2690,20 +2690,20 @@ And I navigate to "Setup" sub tab
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
     When I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-      | Budget Period Name | Start Date           | End Date       |
-      | BP01               | 	50      | 150     |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
       | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
-      | Approval   | Start         | Disapprove    |     Continue      |
+      | Approval   | Start         | Disapprove    | Continue          |
     When I navigate to "History" sub tab
     Then I see status in Progress-bar is "Rejected" and is "Red"
     Examples:
       | Announcement Type | Active Funding Opportunities id   | User |
-      | Formula           | ActiveFundingOpportunitiesFormula |  EXE  |
+      | Formula           | ActiveFundingOpportunitiesFormula | EXE  |
 
   @announcementPostRejectionCheckInListViewFA
   Scenario Outline: Validate the rejected announcement will reflect under "Rejected Announcements" list view
@@ -2715,26 +2715,26 @@ And I navigate to "Setup" sub tab
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154           | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
       #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description | 
+      | Executive Approver | Automation EXE | Automation Test Description |
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
-      | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
-     And I click on "Send for Review" icon for "Automation FO" inside table
-   And I get the "EGMS ID"
+      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "Automation FO" inside table
+    And I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2743,18 +2743,18 @@ And I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
-      | Value            | Field            |
-      | Passed           | Rating__c        |
-      | Passed           | ReviewComments__c|
+      | Value  | Field             |
+      | Passed | Rating__c         |
+      | Passed | ReviewComments__c |
     When I click modal button "Save"
-   And I click modal button "Submit Review"
+    And I click modal button "Submit Review"
     And I close Modal
     Given I login and view the record "Record id" as "EXE"
       | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
       | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
       | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
     Given I click on "Complete Review" in the page details
-And I navigate to "Setup" sub tab
+    And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
     When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
@@ -2858,12 +2858,12 @@ And I navigate to "Setup" sub tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
- And I click on "Edit" in the page details
-     When I navigate to "Financials" sub tab
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
-        And I click on "Save" in the page details
+    And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
-     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
@@ -2871,8 +2871,8 @@ And I navigate to "Setup" sub tab
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
     When I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-      | Budget Period Name | Start Date           | End Date       |
-      | BP01               | 	50      | 150     |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
@@ -2888,9 +2888,9 @@ And I navigate to "Setup" sub tab
     Then I see value "Record Id" for title "EGMS ID" inside table "ActiveFundingOpportunitiesFormula"
     Examples:
       | Announcement Type | Active Funding Opportunities id   | User |
-      | Formula           | ActiveFundingOpportunitiesFormula |  EXE  |
+      | Formula           | ActiveFundingOpportunitiesFormula | EXE  |
 
-  @34462 @publishingFormulaAnnouncementFA  @announcementFormulaHappyPath @smoke 
+  @34462 @publishingFormulaAnnouncementFA  @announcementFormulaHappyPath @smoke
   Scenario Outline: Validate the activation of Announcement
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -2900,26 +2900,26 @@ And I navigate to "Setup" sub tab
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154           | 100             |
+      | FA--154         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                         |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts  |
+      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
+      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
       #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                 |
+      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description | 
+      | Executive Approver | Automation EXE | Automation Test Description |
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description                 | Due Date |Allow Record Editing |
-      | Automation FO | Fiscal Reviewer  | Review Financial details   | 10        |  No                 |
-     And I click on "Send for Review" icon for "Automation FO" inside table
-   And I get the "EGMS ID"
+      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "Automation FO" inside table
+    And I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2928,18 +2928,18 @@ And I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
-      | Value            | Field            |
-      | Passed           | Rating__c        |
-      | Passed           | ReviewComments__c|
+      | Value  | Field             |
+      | Passed | Rating__c         |
+      | Passed | ReviewComments__c |
     When I click modal button "Save"
-   And I click modal button "Submit Review"
+    And I click modal button "Submit Review"
     And I close Modal
     Given I login and view the record "Record id" as "EXE"
       | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
       | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
       | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
     Given I click on "Complete Review" in the page details
-And I navigate to "Setup" sub tab
+    And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
     When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
@@ -3043,12 +3043,12 @@ And I navigate to "Setup" sub tab
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
- And I click on "Edit" in the page details
-     When I navigate to "Financials" sub tab
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
-        And I click on "Save" in the page details
+    And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
-     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
       | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
     When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
@@ -3056,12 +3056,12 @@ And I navigate to "Setup" sub tab
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
     When I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
-      | Budget Period Name | Start Date           | End Date       |
-      | BP01               | 	50      | 150     |
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
-     Given "3" Approvers "PM,FO,EXE" approve the record "Record id"
+    Given "3" Approvers "PM,FO,EXE" approve the record "Record id"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
       | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |

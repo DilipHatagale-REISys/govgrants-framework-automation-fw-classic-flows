@@ -1,7 +1,7 @@
 @applicationIntake @regression
 Feature: Validate all scenarios in the Application Intake
 
-    Background: Qualify Announcement and Create Application
+  Background: Qualify Announcement and Create Application
     Given I delete the record "Automation Announcement for Application Intake" from the object "Application"
     And I delete the record "Automation Announcement for Application Intake" from the object "Qualified Announcement"
     Given I am on "SUBPORTAL" portal
@@ -14,24 +14,24 @@ Feature: Validate all scenarios in the Application Intake
     When I click on "Save" in the page details
     Then I see that "Automation Announcement for Application Intake" is in "Created" status
 
-  @34044 @applicationCreation @smokeTest
+  @34044 @applicationCreation @smoke
   Scenario: Creating an Application
-    Then I see that "Application Title" is in "Created" status
+    Then I see status in Progress-bar is "Created" and is "green"
 
-  @34045 @applicationEdition 
+  @34045 @applicationEdition
   Scenario: Edition of an application
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @34303 @addFocusAreaToApplication  
+  @34303 @addFocusAreaToApplication
   Scenario Outline: Addition of Focus area to an application
     When I navigate to "Budget" sub tab
     Then I see that "<EGMS Id>" has been added in flextable with Id "applicationIntake::focusAreaTableId"
     Examples:
-      | EGMS Id                           |
-      | Automation Permanent Focus Area   |
+      | EGMS Id                         |
+      | Automation Permanent Focus Area |
 
   @addBudgetDetailsToApplication @smoke
   Scenario: Addition of budget in the budget grid to an application
@@ -39,9 +39,9 @@ Feature: Validate all scenarios in the Application Intake
     And I expand nested table containing column value "BP01"
     When I edit the following rows inline in flex table with id "applicationIntake::budgetPeriodTableId" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
-      | Construction  | 5000   | 1000       | 3000           | 100            |
-         Then I see the following messages in the page details contains:
-         | Saved Successfully! |
+      | Construction  | 100    | 100        | 100            | 100            |
+    Then I see the following messages in the page details contains:
+      | Saved Successfully! |
 
   @addTargetToKPIInApplication @smoke
   Scenario: Addition of KPI target to an application
@@ -66,13 +66,15 @@ Feature: Validate all scenarios in the Application Intake
 
   @34156 @submitApplication @applicationIntakeHappyPath @smoke
   Scenario: Submitting an application to Grantor
-     Given I complete the fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
+#    Given I complete the fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
+#      | Actions         | Step 1 | Step 2 |
+#      | Edition Buttons | Edit   | Save   |
+    Given I complete the fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "applicationIntake::budgetPeriodTableId" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
-      | Construction  | 5000   | 1000       | 3000           | 1000           |
+      | Construction  | 100    | 100        | 100            | 100            |
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "applicationIntake::kpiTableId" by clicking "Edit" :
       | EGMS ID                                 | Target |
@@ -94,10 +96,11 @@ Feature: Validate all scenarios in the Application Intake
     Given I complete the fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
+    And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "applicationIntake::budgetPeriodTableId" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
-      | Construction  | 5000   | 1000       | 3000           | 1000           |
+      | Construction  | 100    | 100        | 100            | 100            |
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "applicationIntake::kpiTableId" by clicking "Edit" :
       | EGMS ID                                 | Target |
@@ -119,5 +122,5 @@ Feature: Validate all scenarios in the Application Intake
     When I click on "View" icon for "<Application Name>" inside table
     Then I see status in Progress-bar is "Submitted" and is "green"
     Examples:
-      | User | Application Name               |
-      | EXE  | Automation Announcement for Application Intake|
+      | User | Application Name                               |
+      | EXE  | Automation Announcement for Application Intake |

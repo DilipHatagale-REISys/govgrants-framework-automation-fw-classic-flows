@@ -221,7 +221,6 @@ Feature: Validate all scenarios in the Award from FDM
     And I click on "Accept" in the page details
     When I enter "Automation Award accepted" for comments and click "OK"
     Then I see that "Subaward" is in "Created" status
-
     Examples:
       | Award Name       | Grant Name                               |
       | Automation Grant | Permanent Application(Dr) for Automation |

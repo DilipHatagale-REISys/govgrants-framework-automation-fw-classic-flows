@@ -17,7 +17,6 @@ public class ProjectManager extends ProjectWebServices {
     public Controller controller;
     public GovGrantsHandler govgrants;
     public final String defaultLongText = "Automation test description";
-    public String egmsId;
 
     /**
      * Super Constructor
@@ -26,6 +25,7 @@ public class ProjectManager extends ProjectWebServices {
      * @param reiDriver
      */
     public ProjectManager(Controller controller, CoreHandlers reiDriver, GovGrantsHandler govgrants) {
+        super(controller, reiDriver, govgrants);
         this.controller = controller;
         this.reiDriver = reiDriver;
         this.govgrants = govgrants;

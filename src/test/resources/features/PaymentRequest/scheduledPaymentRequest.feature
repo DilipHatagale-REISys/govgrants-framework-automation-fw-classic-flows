@@ -3,8 +3,8 @@ Feature: Scheduled Payment Request Happy Path
 
   @51076 @scheduledReimbursementPaymentRequestHappyPath
   Scenario Outline: Scheduled Payment Request happy path
-    When I am on "SUBPORTAL" portal
     Given I delete the record "<Award>" from the object "Payment Request"
+    Given I delete the record "Automation Payment Request" from the object "Payment Request"
     When I create a post award record "PaymentRequest" for the Award "<Award>" having object api name as "PaymentRequest__c"
     Given User "SPI" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -27,10 +27,10 @@ Feature: Scheduled Payment Request Happy Path
       | Attachment Details    | Attachment  | Invoice |                    |
     And I click on "Submit to Grantor" in the page details
     And I login and view the "Active" award "Record Id" with name "<Award>" as User "FO"
-      | Actions    | Step 1       | Step 2         | Step 3               | Step 4                        |
-      | Navigation | As a Grantor | Grants         | Grants and Subawards | Grants, Subaward & Amendments |
-      | FlexTable  | Grants       | ActiveGrants   | View                 |                               |
-      | Subaward   | Subawards    | RelatedAwards1 | View                 | Active Subaward               |
+      | Actions    | Step 1       | Step 2                 | Step 3               | Step 4                        |
+      | Navigation | As a Grantor | Grants                 | Grants and Subawards | Grants, Subaward & Amendments |
+      | FlexTable  | Grants       | ActiveGrants           | View                 |                               |
+      | Subaward   | Subawards    | flexGridRelatedAwards1 | View                 | Active Subaward               |
     And I navigate to "Requests" sub tab
     Given I click on "View" icon for "Submitted to Grantor" inside flex table with id "paymentRequest::grantorPaymentRequestTableId"
     And I navigate to "Financials" sub tab
@@ -48,13 +48,6 @@ Feature: Scheduled Payment Request Happy Path
       | Navigation | As a Grantor  | Monitoring |                   |
       | FlexTable  | Pending Tasks | My Tasks   | PhasePendingTasks |
       | Approval   | Start         | Approve    |                   |
-    Given I login and view the "Active" award "Record Id" with name "<Award>" as User "FO"
-      | Actions    | Step 1       | Step 2         | Step 3               | Step 4                        |
-      | Navigation | As a Grantor | Grants         | Grants and Subawards | Grants, Subaward & Amendments |
-      | FlexTable  | Grants       | ActiveGrants   | View                 |                               |
-      | Subaward   | Subawards    | RelatedAwards1 | View                 | Active Subaward               |
-    And I navigate to "Requests" sub tab
-    Given I click on "View" icon for "Approved" inside flex table with id "paymentRequest::grantorPaymentRequestTableId"
     When I click on "Mark As Paid" in the page details
     And I enter "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
     When I click modal button "Save"

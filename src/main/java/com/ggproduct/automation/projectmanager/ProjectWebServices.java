@@ -4,7 +4,6 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 import com.jayway.restassured.response.Response;
-import com.mongodb.util.JSON;
 
 import eyethink.automation.bots.controller.EnvironmentFetcher;
 import eyethink.automation.bots.webservices.RestfulWebServices;
@@ -22,9 +21,6 @@ public class ProjectWebServices {
     public CoreHandlers reiDriver;
     public Controller controller;
     public GovGrantsHandler govgrants;
-
-    public ProjectWebServices() {
-    }
 
     public ProjectWebServices(Controller controller, CoreHandlers reiDriver, GovGrantsHandler govgrants) {
         this.controller = controller;
@@ -56,15 +52,13 @@ public class ProjectWebServices {
      *                   Review, Payment Request, Progress Report, Closeout
      * @param recordName - the name or title of the record
      */
-    public void automationDeletionApi(String recordName, String objectType) {
+    public void deletionApi(String recordName, String objectType) {
         getAuthToken();
         try {
-        	recordName = URLEncoder.encode(recordName, StandardCharsets.UTF_8.toString());
-        	objectType = URLEncoder.encode(objectType, StandardCharsets.UTF_8.toString());
+            recordName = URLEncoder.encode(recordName, StandardCharsets.UTF_8.toString());
+            objectType = URLEncoder.encode(objectType, StandardCharsets.UTF_8.toString());
         } catch (Exception e) {
         }
-        
-        
         String finalEndPoint = endPoint + "/services/apexrest/productAutomationDeletionApi?objectType=" + objectType
                 + "&recordName=" + recordName;
         Response response = apiCall.DeleteCall(null, null, finalEndPoint, "Authorization", "Bearer " + tokenString,
@@ -79,9 +73,7 @@ public class ProjectWebServices {
     }
 
     private void setDefaultEndPointGetToken(String defaultEndPointGetToken) {
-        if (System.getProperty("env") != null && System.getProperty("env").equalsIgnoreCase("demo")) {
-            this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9AzPSkglhtpvenc1ubvIHNq.47G6r14CrPJYDMHpiIQqmNt84jq0.7dv3pQHq6Q5ijx1LbVhtm326_pxc&client_secret=2A8D181502C168F519E5A93B1AF611FE65FAB1862CBF37A7D7CC8857F3C55871&username=manu.sa@ggp.test7.demo7&password=GoProduct@123";
-        } else if (System.getProperty("env") != null && System.getProperty("env").equalsIgnoreCase("auto")) {
+        if (System.getProperty("env") != null && System.getProperty("env").equalsIgnoreCase("QA")) {
             this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9dZJodJWITSuFoeXeOau_jPysAF1tDTnpScZyZwXUGhS_ZudVpjPfvLFrO78TVtOgK6flv6R5a4OV8QnR&client_secret=1408645120361878326&username=mayuresh.g@ggp.test7&password=Salesforce12";
         }
     }
@@ -109,7 +101,6 @@ public class ProjectWebServices {
      *  @param objectApiName -: This is the object api name.
      */
     public Response automationBatchExecuteApi(String objectType, String recordName, String objectApiName) {
-        int timer = 0;
         String finalEndPoint = "";
         Response response = null;
         getAuthToken();
@@ -122,25 +113,23 @@ public class ProjectWebServices {
 
         jobID = response.asString().replace("\"", "");
         finalEndPoint = endPoint + "/services/apexrest/productAutomationGetBatchJobStatus?batchId=" + jobID;
-        reiDriver.WaitFor().makeThreadSleep(20);
-
-        while (timer < 120) {
+        reiDriver.WaitFor().makeThreadSleep(20000);
+        long apiWaitTimer = (System.currentTimeMillis()) / 1000 + 120;
+        while (apiWaitTimer > System.currentTimeMillis() / 1000) {
             response = apiCall.getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
             assertStatusCode(response);
             status = response.asString().replace("\"", "");
             if (status.equalsIgnoreCase("Completed") || status.equalsIgnoreCase("Aborted")) {
                 System.out.println("Batch Status is :" + status);
                 break;
-            } else {
-                reiDriver.WaitFor().makeThreadSleep(20);
-                timer = timer + 20;
             }
+            reiDriver.WaitFor().makeThreadSleep(3000);
         }
 
         if (status.equalsIgnoreCase("Completed")) {
             return automateGetApi(recordName, "Title__c", objectApiName);
         } else {
-            return null;
+            return response;
         }
     }
 }
