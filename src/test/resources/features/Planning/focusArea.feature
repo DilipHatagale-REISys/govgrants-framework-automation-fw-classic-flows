@@ -1,4 +1,4 @@
-@focusArea @all
+@focusArea @regression
 Feature: Validate all scenarios in Focus Area
 
   Background: To setup data

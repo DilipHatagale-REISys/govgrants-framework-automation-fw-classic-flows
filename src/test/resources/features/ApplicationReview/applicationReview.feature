@@ -1,4 +1,4 @@
-  @applicationReview @regression
+@applicationReview @regression
 Feature: Validate all scenarios in the Application Review
 
   @51065 @preScreenApplicationReview 

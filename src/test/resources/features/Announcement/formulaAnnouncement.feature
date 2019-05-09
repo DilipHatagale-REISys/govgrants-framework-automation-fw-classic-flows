@@ -1,4 +1,4 @@
-@formula
+@formula @regression
 Feature: Validate all scenarios in the Formula Announcement tab
 
   Background: Create Announcement
@@ -2325,7 +2325,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
     And I click on "Save" in the page details
-    And I click on "Submit For Approval" in the page details
     And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
