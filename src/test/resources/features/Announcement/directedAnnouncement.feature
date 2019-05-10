@@ -2853,9 +2853,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
-      | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
+      | Program Approver   | Automation PM  | Automation Test Description |
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
       | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
       | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |

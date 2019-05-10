@@ -30,7 +30,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
       | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
@@ -205,7 +204,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
       | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
@@ -369,7 +367,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      #| Associate 2 | Setup   | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
       | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
@@ -547,7 +544,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
       | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
@@ -719,7 +715,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
       | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
@@ -899,7 +894,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
       | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
@@ -1082,7 +1076,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
       | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
@@ -1265,7 +1258,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
       | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
@@ -1430,7 +1422,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
 
   @announcementSendBackPendingTaskToOwnerFA
   Scenario Outline: Validate that after send back from approvers owner should not get pending task
-    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -1445,7 +1437,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
       | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
@@ -1584,6 +1575,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
+    And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
       | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
@@ -1597,7 +1589,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
-    Given "1" Approvers "PM" approve the record "Record Id"
+     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
       | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
@@ -1628,7 +1620,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
       | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
@@ -1809,7 +1800,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
       | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
@@ -1989,7 +1979,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
       | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
@@ -2173,7 +2162,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
       | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
@@ -2356,7 +2344,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
       | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
@@ -2540,7 +2527,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
       | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
@@ -2721,7 +2707,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
       | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
@@ -2906,7 +2891,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Given I associate "2" records "Automation EXE,Automation Permanent Objective"
       | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
       | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      #| Associate 2 | Setup    | Associate | AnnouncementServiceArea1                    | Add    | SelectAnnouncementServiceArea1|
       | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :

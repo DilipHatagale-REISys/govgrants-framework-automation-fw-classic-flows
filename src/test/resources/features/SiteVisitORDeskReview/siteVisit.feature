@@ -4,15 +4,15 @@ Feature: Validate all scenarios in the Site Visit
   Background: Data setup for Site Visit
     Given I delete the record "Automation Site Visit" from the object "Site Visit"
      Given I login and view the "Active" award "Activated" with name "Automation Permanent Award" as User "EXE"
-      | Actions    | Step 1       | Step 2         | Step 3               | Step 4                        |
-      | Navigation | As a Grantor | Grants         | Grants and Subawards | Grants, Subaward & Amendments |
-      | FlexTable  | Grants       | ActiveGrants   | View                 |                               |
-      | Subaward   | Subawards    | RelatedAwards1 | View                 |                               |
+      | Actions    | Step 1       | Step 2                | Step 3               | Step 4                        |
+      | Navigation | As a Grantor | Grants                | Grants and Subawards | Grants, Subaward & Amendments |
+      | FlexTable  | Grants       | ActiveGrants          | View                 |                               |
+      | Subaward   | Subawards    | flexGridRelatedAwards1| View                 |                               |
     Given I create a post award record from sheet "Creation" in excel "SiteVisit_Field_Values.xlsx"
-      | Actions    | Step 1              | Step 2                 |
-      | Navigation | Management          |                        |
-      | FlexTable  | Initiate Site Visit | GrantorSiteVisitsAward |
-      | Creation   | Save And Close      | Cancel                 |
+      | Actions    | Step 1                 | Step 2                 |
+      | Navigation | Management             |                        |
+      | FlexTable  | Initiate Site Visit    | GrantorSiteVisitsAward |
+      | Creation   | Save and Continue      | Cancel                 |
     And I get the "EGMS ID"
 
   @51081 @siteVisitCreation @smoke
