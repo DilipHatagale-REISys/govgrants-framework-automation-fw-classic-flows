@@ -1422,7 +1422,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
 
   @announcementSendBackPendingTaskToOwnerFA
   Scenario Outline: Validate that after send back from approvers owner should not get pending task
-Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -1589,7 +1589,7 @@ Given I complete the fields from the sheet "Edition" in excel "Announcement_Fiel
       | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
-     Given "1" Approvers "PM" approve the record "Record Id"
+    Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
       | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |

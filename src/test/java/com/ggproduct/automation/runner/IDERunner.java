@@ -11,7 +11,7 @@ import eyethink.automation.bots.controller.CucumberRunnerManager;
  * @author nauman.shahid
  *
  */
-@CucumberOptions(features = { "classpath:features" }, tags = { "@creationOfFocusArea" }, glue = {
+@CucumberOptions(features = { "classpath:features" }, tags = { "@announcementCreatedDeleteAccessToOwnerFA" }, glue = {
         "com.ggproduct.automation.steps","com.automation.rei.govgrantsSteps"}, plugin = { "com.cucumber.listener.ExtentCucumberFormatter:" })
 
 public class IDERunner extends AbstractTestNGCucumberTests {
