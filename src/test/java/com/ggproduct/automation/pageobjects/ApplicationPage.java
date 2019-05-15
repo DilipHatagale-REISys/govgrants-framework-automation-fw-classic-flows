@@ -9,6 +9,7 @@ import com.ggproduct.automation.projectmanager.ProjectManager;
 import cucumber.api.DataTable;
 import eyethink.automation.bots.controller.Controller;
 import eyethink.automation.bots.controller.CoreHandlers;
+import eyethink.automation.bots.exception.EyeThinkBotsCustomException;
 
 public class ApplicationPage extends ProjectManager {
     public ApplicationPage(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
@@ -21,7 +22,7 @@ public class ApplicationPage extends ProjectManager {
      * @param announcementName
      * @param user
      */
-    public void qualifyAnnouncement(String announcementName, String user, DataTable dataTable) {
+    public void qualifyAnnouncement(String announcementName, String user, DataTable dataTable) throws EyeThinkBotsCustomException {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         govgrants.mainPage().loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), user);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
@@ -56,7 +57,7 @@ public class ApplicationPage extends ProjectManager {
      * @throws IOException
      */
     public void completeReviewStepForApplication(String reviewStep, String buttonName, String applicationName,
-                                                 String announcementOwner, String announcementName, DataTable dataTable) throws IOException {
+                                                 String announcementOwner, String announcementName, DataTable dataTable) throws IOException, EyeThinkBotsCustomException {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         try {
             govgrants.mainPage().loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), announcementOwner);
@@ -119,11 +120,9 @@ public class ApplicationPage extends ProjectManager {
 
     /**
      * Handles entering of recommendation for the given application in FDM
-     *
-     * @param recommendation
-     * @param budget
-     * @param applicationName
-     * @param flextableName
+     * @param flexTableId
+     * @param iconName
+     * @param dataTable
      */
     public void enterRecommendationFDM(String flexTableId, String iconName, DataTable dataTable) {
         govgrants.flexTable().editFlexTableRowsInline(flexTableId, iconName, dataTable);

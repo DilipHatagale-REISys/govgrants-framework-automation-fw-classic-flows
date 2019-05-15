@@ -23,15 +23,10 @@ public class setup {
         this.setupController = new SetupController(controller);
     }
 
-    @Before(order = 0)
-    public void beforeAll() {
-        setupController.getAccessToSetup().callDocker();
-    }
-
     @Before
     public void startUp() throws IOException, AWTException {
         setupController.getAccessToSetup().initializer();
-        setupController.usersController(new UsersAndURL());
+        setupController.getAccessToSetup().usersController(new UsersAndURL());
     }
 
     @After

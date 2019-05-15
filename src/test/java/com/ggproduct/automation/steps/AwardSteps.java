@@ -9,6 +9,7 @@ import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import eyethink.automation.bots.controller.Controller;
 import eyethink.automation.bots.controller.CoreHandlers;
+import eyethink.automation.bots.exception.EyeThinkBotsCustomException;
 
 public class AwardSteps {
     AwardPage awardPage;
@@ -23,7 +24,7 @@ public class AwardSteps {
     }
 
     @Given("^I create a subaward from the Announcement \"([^\"]*)\" for the Application \"([^\"]*)\" as user \"([^\"]*)\"$")
-    public void creationOfAward(String announcementName, String applicationName, String User, DataTable dataTable) {
+    public void creationOfAward(String announcementName, String applicationName, String User, DataTable dataTable) throws EyeThinkBotsCustomException {
         awardPage.creationOfAwardFromFDM(announcementName, applicationName, User, dataTable);
     }
 
@@ -38,7 +39,7 @@ public class AwardSteps {
     }
 
     @Given("^The subrecipient user \"([^\"]*)\" accepts the award \"([^\"]*)\" with comments \"([^\"]*)\"$")
-    public void acceptanceOfAward(String subrecipientUser, String awardName, String comments, DataTable dataTable) throws IOException {
+    public void acceptanceOfAward(String subrecipientUser, String awardName, String comments, DataTable dataTable) throws IOException, EyeThinkBotsCustomException {
         awardPage.acceptanceOfAward(subrecipientUser, awardName, comments, dataTable);
     }
 }

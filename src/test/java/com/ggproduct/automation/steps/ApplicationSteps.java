@@ -9,6 +9,7 @@ import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import eyethink.automation.bots.controller.Controller;
 import eyethink.automation.bots.controller.CoreHandlers;
+import eyethink.automation.bots.exception.EyeThinkBotsCustomException;
 
 public class ApplicationSteps {
     ApplicationPage applicationPage;
@@ -18,7 +19,7 @@ public class ApplicationSteps {
     }
 
     @Given("^I qualify the announcement \"([^\"]*)\" as user \"([^\"]*)\"$")
-    public void qualifyAnnouncement(String announcementName, String user, DataTable dataTable) {
+    public void qualifyAnnouncement(String announcementName, String user, DataTable dataTable) throws EyeThinkBotsCustomException {
         applicationPage.qualifyAnnouncement(announcementName, user, dataTable);
     }
 
@@ -29,7 +30,7 @@ public class ApplicationSteps {
 
     @Given("^\"([^\"]*)\" is completed by clicking \"([^\"]*)\" for Application \"([^\"]*)\" as user \"([^\"]*)\" submitted for announcement \"([^\"]*)\"$")
     public void completeReviewStepForApplication(String reviewStep, String buttonName, String applicationName,
-                                                 String announcementOwner, String announcementName, DataTable dataTable) throws IOException {
+                                                 String announcementOwner, String announcementName, DataTable dataTable) throws IOException, EyeThinkBotsCustomException {
         applicationPage.completeReviewStepForApplication(reviewStep, buttonName, applicationName, announcementOwner,
                 announcementName, dataTable);
     }

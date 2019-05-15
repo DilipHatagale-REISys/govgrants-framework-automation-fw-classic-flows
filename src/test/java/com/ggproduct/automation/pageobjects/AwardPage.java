@@ -9,6 +9,7 @@ import com.ggproduct.automation.projectmanager.ProjectManager;
 import cucumber.api.DataTable;
 import eyethink.automation.bots.controller.Controller;
 import eyethink.automation.bots.controller.CoreHandlers;
+import eyethink.automation.bots.exception.EyeThinkBotsCustomException;
 
 public class AwardPage extends ProjectManager {
     public AwardPage(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
@@ -43,7 +44,7 @@ public class AwardPage extends ProjectManager {
      * @param applicationName
      */
     public void creationOfAwardFromFDM(String announcementName, String applicationName, String User,
-                                       DataTable dataTable) {
+                                       DataTable dataTable) throws EyeThinkBotsCustomException {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         govgrants.mainPage().loginToggleToApp(dataTableMap.get("Navigation").get("Step 1"), User);
         govgrants.mainPage().clickMainMenuBar(dataTableMap.get("Navigation").get("Step 2"));
@@ -97,7 +98,7 @@ public class AwardPage extends ProjectManager {
      * @throws IOException
      */
     public void acceptanceOfAward(String subrecipientUser, String awardName, String comments, DataTable dataTable)
-            throws IOException {
+            throws IOException, EyeThinkBotsCustomException {
         Map<String, Map<String, String>> dataTableMap = govgrants.flexTable().convertDataTableToMapOfMaps(dataTable);
         govgrants.mainPage().reloginToggleToAppInNewPortal(dataTableMap.get("Login").get("Step 1"), subrecipientUser,
                 dataTableMap.get("Login").get("Step 2"));

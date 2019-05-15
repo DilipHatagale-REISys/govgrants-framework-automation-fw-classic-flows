@@ -1,8 +1,7 @@
 package com.ggproduct.automation.projectmanager;
 
-import com.automation.rei.controller.UsersController;
-
 import eyethink.automation.bots.controller.EnvironmentFetcher;
+import eyethink.automation.bots.controller.UsersController;
 
 import java.util.HashMap;
 import java.util.Map;
