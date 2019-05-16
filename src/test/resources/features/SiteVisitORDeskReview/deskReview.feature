@@ -8,18 +8,20 @@ Feature: Validate all scenarios in Desk Review
       | Navigation | As a Grantor | Grants                 | Grants and Subawards | Grants, Subaward & Amendments |
       | FlexTable  | Grants       | ActiveGrants           | View                 |                               |
       | Subaward   | Subawards    | flexGridRelatedAwards1 | View                 |                               |
-    Given I create a post award record from sheet "Creation" in excel "DeskReview_Field_Values.xlsx"
-      | Actions    | Step 1               | Step 2                 |
-      | Navigation | Management           |                        |
-      | FlexTable  | Initiate Desk Review | GrantorDeskReviewAward |
-      | Creation   | Save and Continue    | Cancel                 |
+    Given I navigate to "Management" sub tab
+    And I click on top right button "Initiate Desk Review" in flex table with id "GrantorDeskReviewAward"
+    And I enter "Creation" values from "DeskReview_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I pause execution for "7" seconds
+    And I enter "Edition" values from "DeskReview_Field_Values.xlsx"
+    When I click on "Save" in the page details
     And I get the "EGMS ID"
 
   @51010 @deskReviewCreation
   Scenario: Creation of Desk Review
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @51011 @deskReviewEdition
+  @51011 @deskReviewEdition @notFunctional
   Scenario: Edition of Desk Review
     When I click on "Edit" in the page details
     And I enter "Edition" values from "DeskReview_Field_Values.xlsx"
@@ -28,11 +30,13 @@ Feature: Validate all scenarios in Desk Review
 
   @51012 @participantAssociationDeskReview
   Scenario Outline: Participant Association of Desk Review
-    When I navigate to "Overview" sub tab
+    Given I associate "1" records "Automation SPA"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     Then I see that "<Subrecipient>" has been added in flextable with Id "deskreview::participantsTableId"
     Examples:
       | Subrecipient   |
-      | Automation SPI |
+      | Automation SPA |
 
   @51013 @approverSelectionDeskReview
   Scenario Outline: Approver selection of Desk Review
@@ -43,28 +47,21 @@ Feature: Validate all scenarios in Desk Review
       | Fiscal Approver  | Automation FO | Automation Test Description |
     Then I see that "<Program Approver Name>" has been added in flextable with Id "deskreview::approverDeskReviewTableId"
     Examples:
-      | Program Approver Name | Fiscal Approver Name |
-      | Automation PM         | Automation FO        |
+      | Program Approver Name |
+      | Automation PM         |
 
   @51014 @notifySubrecipientDeskReview
   Scenario: Notify Subrecipient about the Desk Review
-    Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "deskreview::approverDeskReviewTableId" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
-    When I get the "EGMS ID"
     And I click on "Notify" in the page details
     Then I see status in Progress-bar is "Notified" and is "green"
 
   @51015 @notifyPendingTaskForSubrecipientDeskReview
   Scenario: Subrecipient pending task check for Desk Review
-    Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "deskreview::approverDeskReviewTableId" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -80,16 +77,12 @@ Feature: Validate all scenarios in Desk Review
     Then I see status in Progress-bar is "Notified" and is "green"
 
   @51016 @conductDeskReview
-  Scenario Outline: Conduct Desk Review
-    Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
+  Scenario: Conduct Desk Review
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "deskreview::approverDeskReviewTableId" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
-    When I get the "EGMS ID"
     And I click on "Notify" in the page details
     Given User "SPI" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -99,18 +92,13 @@ Feature: Validate all scenarios in Desk Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "<Desk Review Name>" inside table
+    When I perform quick search for "Record Id" in "inlineEditGridDeskReviewGridView" panel
+    And I click on "View" icon for "Record Id" inside table
     When I click on "Conduct" in the page details
     Then I see status in Progress-bar is "In Progress" and is "green"
-    Examples:
-      | Desk Review Name       |
-      | Automation Desk Review |
 
   @51017 @addingOutcomeDeskReview
-  Scenario Outline: Adding outcomes to Desk Review
-    Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
+  Scenario: Adding outcomes to Desk Review
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "deskreview::approverDeskReviewTableId" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -126,7 +114,9 @@ Feature: Validate all scenarios in Desk Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "<Desk Review Name>" inside table
+    When I pause execution for "4" seconds
+    When I perform quick search for "Record Id" in "inlineEditGridDeskReviewGridView" panel
+    And I click on "View" icon for "Record Id" inside table
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "deskreview::correctiveTableId" by clicking "New" :
@@ -135,15 +125,9 @@ Feature: Validate all scenarios in Desk Review
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
     Then I see that "Automation Finding" has been added in flextable with Id "deskreview::correctiveTableId"
-    Examples:
-      | Desk Review Name       |
-      | Automation Desk Review |
 
   @51018 @formFillingDeskReview
-  Scenario Outline: Filling up of form in Desk Review
-    Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
+  Scenario: Filling up of form in Desk Review
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "deskreview::approverDeskReviewTableId" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -159,7 +143,8 @@ Feature: Validate all scenarios in Desk Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "<Desk Review Name>" inside table
+    When I perform quick search for "Record Id" in "inlineEditGridDeskReviewGridView" panel
+    And I click on "View" icon for "Record Id" inside table
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "deskreview::correctiveTableId" by clicking "New" :
@@ -174,15 +159,9 @@ Feature: Validate all scenarios in Desk Review
     When I click on "Back" in the page details
     And I click on top right button "Validate" in flex table with id "deskreview::reportsTableId"
     Then I see that "100.00%" has been added in flextable with Id "deskreview::reportsTableId"
-    Examples:
-      | Desk Review Name       |
-      | Automation Desk Review |
 
   @51019 @submittingForApprovalDeskReview
-  Scenario Outline: Submitting Desk Review for approval
-    Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
+  Scenario: Submitting Desk Review for approval
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "deskreview::approverDeskReviewTableId" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -198,7 +177,8 @@ Feature: Validate all scenarios in Desk Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "<Desk Review Name>" inside table
+    When I perform quick search for "Record Id" in "inlineEditGridDeskReviewGridView" panel
+    And I click on "View" icon for "Record Id" inside table
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "deskreview::correctiveTableId" by clicking "New" :
@@ -214,15 +194,9 @@ Feature: Validate all scenarios in Desk Review
       | Validation  | Validate             | FormComponent |
     When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
-    Examples:
-      | Desk Review Name       |
-      | Automation Desk Review |
 
   @51020 @approvalOfDeskReview
-  Scenario Outline: Approval of Desk Review
-    Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
+  Scenario: Approval of Desk Review
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "deskreview::approverDeskReviewTableId" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -238,7 +212,8 @@ Feature: Validate all scenarios in Desk Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "<Desk Review Name>" inside table
+    When I perform quick search for "Record Id" in "inlineEditGridDeskReviewGridView" panel
+    And I click on "View" icon for "Record Id" inside table
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "deskreview::correctiveTableId" by clicking "New" :
@@ -253,21 +228,15 @@ Feature: Validate all scenarios in Desk Review
       | Form Button | Save                 | Back          |
       | Validation  | Validate             | FormComponent |
     When I click on "Submit for Approval" in the page details
-    Given "2" Approvers "PM,FO" approve the record "<Desk Review Approval Task>"
+    Given "2" Approvers "PM,FO" approve the record "Record Id"
       | Actions    | Step 1        | Step 2     | Step 3            |
       | Navigation | As a Grantor  | Monitoring |                   |
       | FlexTable  | Pending Tasks | My Tasks   | PhasePendingTasks |
       | Approval   | Start         | Approve    |                   |
     Then I see status in Progress-bar is "Approved" and is "green"
-    Examples:
-      | Award Name                 | Desk Review Name       | Desk Review Approval Task | Type                      |
-      | Automation Permanent Award | Automation Desk Review | Approve Desk Review       | Review Desk review report |
 
   @51021 @deskReviewSendToSubrecipient
-  Scenario Outline: Send Desk Review to Subrecipient
-    Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
+  Scenario: Send Desk Review to Subrecipient
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "deskreview::approverDeskReviewTableId" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -283,7 +252,8 @@ Feature: Validate all scenarios in Desk Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "<Desk Review Name>" inside table
+    When I perform quick search for "Record Id" in "inlineEditGridDeskReviewGridView" panel
+    And I click on "View" icon for "Record Id" inside table
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "deskreview::correctiveTableId" by clicking "New" :
@@ -298,7 +268,7 @@ Feature: Validate all scenarios in Desk Review
       | Form Button | Save                 | Back          |
       | Validation  | Validate             | FormComponent |
     When I click on "Submit for Approval" in the page details
-    Given "2" Approvers "PM,FO" approve the record "<Desk Review Approval Task>"
+    Given "2" Approvers "PM,FO" approve the record "Record Id"
       | Actions    | Step 1        | Step 2     | Step 3            |
       | Navigation | As a Grantor  | Monitoring |                   |
       | FlexTable  | Pending Tasks | My Tasks   | PhasePendingTasks |
@@ -306,18 +276,13 @@ Feature: Validate all scenarios in Desk Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "<Desk Review Name>" inside table
+    When I perform quick search for "Record Id" in "inlineEditGridDeskReviewGridView" panel
+    And I click on "View" icon for "Record Id" inside table
     Given I click on "Send to Subrecipient" in the page details
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
-    Examples:
-      | Desk Review Name       | Award Name                 | Desk Review Approval Task |
-      | Automation Desk Review | Automation Permanent Award | Approve Desk Review       |
 
   @51022 @deskReviewCorrectiveActionsBySubrecipient
-  Scenario Outline: Corrective Actions By Subrecipient
-    Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
+  Scenario: Corrective Actions By Subrecipient
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "deskreview::approverDeskReviewTableId" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -333,7 +298,8 @@ Feature: Validate all scenarios in Desk Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "<Desk Review Name>" inside table
+    When I perform quick search for "Record Id" in "inlineEditGridDeskReviewGridView" panel
+    And I click on "View" icon for "Record Id" inside table
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "deskreview::correctiveTableId" by clicking "New" :
@@ -348,7 +314,7 @@ Feature: Validate all scenarios in Desk Review
       | Form Button | Save                 | Back          |
       | Validation  | Validate             | FormComponent |
     When I click on "Submit for Approval" in the page details
-    Given "2" Approvers "PM,FO" approve the record "<Desk Review Approval Task>"
+    Given "2" Approvers "PM,FO" approve the record "Record Id"
       | Actions    | Step 1        | Step 2     | Step 3            |
       | Navigation | As a Grantor  | Monitoring |                   |
       | FlexTable  | Pending Tasks | My Tasks   | PhasePendingTasks |
@@ -356,13 +322,14 @@ Feature: Validate all scenarios in Desk Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "<Desk Review Name>" inside table
+    When I perform quick search for "Record Id" in "inlineEditGridDeskReviewGridView" panel
+    And I click on "View" icon for "Record Id" inside table
     Given I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "<Type>" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "<Type>" inside table
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "Record Id" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "deskreview::receipientTableId" by clicking "New" :
@@ -380,16 +347,9 @@ Feature: Validate all scenarios in Desk Review
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     And I collapse nested table containing column value "Automation Finding"
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
-    Examples:
-      | Award Name                 | Desk Review Name       | Desk Review Approval Task | Type                      |
-      | Automation Permanent Award | Automation Desk Review | Approve Desk Review       | Review Desk review report |
 
   @51023 @deskReviewSubmitToGrantorBySubrecipient
-  Scenario Outline:
-  Desk Review Submit to Grantor By Subrecipient
-    Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
+  Scenario: Desk Review Submit to Grantor By Subrecipient
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "deskreview::approverDeskReviewTableId" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -405,7 +365,8 @@ Feature: Validate all scenarios in Desk Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "<Desk Review Name>" inside table
+    When I perform quick search for "Record Id" in "inlineEditGridDeskReviewGridView" panel
+    And I click on "View" icon for "Record Id" inside table
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "deskreview::correctiveTableId" by clicking "New" :
@@ -420,7 +381,7 @@ Feature: Validate all scenarios in Desk Review
       | Form Button | Save                 | Back          |
       | Validation  | Validate             | FormComponent |
     When I click on "Submit for Approval" in the page details
-    Given "2" Approvers "PM,FO" approve the record "<Desk Review Approval Task>"
+    Given "2" Approvers "PM,FO" approve the record "Record Id"
       | Actions    | Step 1        | Step 2     | Step 3            |
       | Navigation | As a Grantor  | Monitoring |                   |
       | FlexTable  | Pending Tasks | My Tasks   | PhasePendingTasks |
@@ -428,13 +389,14 @@ Feature: Validate all scenarios in Desk Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "<Desk Review Name>" inside table
+    When I perform quick search for "Record Id" in "inlineEditGridDeskReviewGridView" panel
+    And I click on "View" icon for "Record Id" inside table
     Given I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "<Type>" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "<Type>" inside table
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "Record Id" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "deskreview::receipientTableId" by clicking "New" :
@@ -453,15 +415,9 @@ Feature: Validate all scenarios in Desk Review
     And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
-    Examples:
-      | Award Name                 | Desk Review Name       | Desk Review Approval Task | Type                      |
-      | Automation Permanent Award | Automation Desk Review | Approve Desk Review       | Review Desk review report |
 
   @51024 @deskReviewAcceptAndClose @smoke
-  Scenario Outline: Desk Review Accept and Close
-    Given I complete the fields from the sheet "Edition" in excel "DeskReview_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
+  Scenario: Desk Review Accept and Close
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "deskreview::approverDeskReviewTableId" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -477,7 +433,8 @@ Feature: Validate all scenarios in Desk Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "<Desk Review Name>" inside table
+    When I perform quick search for "Record Id" in "inlineEditGridDeskReviewGridView" panel
+    And I click on "View" icon for "Record Id" inside table
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "deskreview::correctiveTableId" by clicking "New" :
@@ -501,7 +458,8 @@ Feature: Validate all scenarios in Desk Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "<Desk Review Name>" inside table
+    When I perform quick search for "Record Id" in "inlineEditGridDeskReviewGridView" panel
+    And I click on "View" icon for "Record Id" inside table
     Given I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
@@ -528,11 +486,10 @@ Feature: Validate all scenarios in Desk Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "<Desk Review Name>" inside table
+    When I perform quick search for "Record Id" in "inlineEditGridDeskReviewGridView" panel
+    And I click on "View" icon for "Record Id" inside table
     And I click on "Accept And Close" in the page details
     Then I see status in Progress-bar is "Closed" and is "green"
-    Examples:
-      | Award Name                 | Type                      | Desk Review Name       | Desk Review Approval Task |
-      | Automation Permanent Award | Review Desk review report | Automation Desk Review | Approve Desk Review       |
-																						
-																						
+
+
+
