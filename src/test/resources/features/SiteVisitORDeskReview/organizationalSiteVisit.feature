@@ -16,7 +16,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Validate the Site Visit is in created status.
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @51079 @organizationalsiteVisitEdition 
+  @51079 @organizationalsiteVisitEdition
   Scenario: Edition of Site Visit
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_SiteVisit_Field_Values.xlsx"
