@@ -46,13 +46,16 @@ public class ProjectWebServices {
     /**
      * calls the api to delete test data
      *
-     * @param objectType - the object for which test data should be deleted.
-     *                   Currently accepts Program, Announcement, Qualified
-     *                   Announcement, Application, Award, Grant, Site Visit, Desk
-     *                   Review, Payment Request, Progress Report, Closeout
-     * @param recordName - the name or title of the record
+     * @param objectType
+     *            - the object for which test data should be deleted. Currently
+     *            accepts Program, Announcement, Qualified Announcement,
+     *            Application, Award, Grant, Site Visit, Desk Review, Payment
+     *            Request, Progress Report, Closeout
+     * @param recordName
+     *            - the name or title of the record
      */
     public void deletionApi(String recordName, String objectType) {
+        System.out.print("Making API call... ");
         getAuthToken();
         try {
             recordName = URLEncoder.encode(recordName, StandardCharsets.UTF_8.toString());
@@ -65,6 +68,7 @@ public class ProjectWebServices {
                 null);
         System.out.println(finalEndPoint);
         response.prettyPrint();
+        System.out.println("Completed. ");
         assertStatusCode(response);
     }
 
@@ -80,9 +84,14 @@ public class ProjectWebServices {
 
     /*
      * calls the api to get the Record Id.
+     * 
      * @param recordName - the name or title of the record
-     * @param fieldName - the name of the field that stores the title like e.g. Title__c.
-     * @param objectType - the object API name of the record from which you want to get the EGMS ID
+     * 
+     * @param fieldName - the name of the field that stores the title like e.g.
+     * Title__c.
+     * 
+     * @param objectType - the object API name of the record from which you want to
+     * get the EGMS ID
      */
     public Response automateGetApi(String recordName, String fieldName, String objectType) {
         getAuthToken();
@@ -95,18 +104,24 @@ public class ProjectWebServices {
     }
 
     /*
-     * calls the api which will create post award records currently accepts PaymentRequest, ProgressReport, Closeout.
-     *  @param objectType -: This is the batch job type. Currently supports 3 different values – PaymentRequest, ProgressReport, Closeout.
-     *  @param recordName -: The name of the award (for payment/progress) or grant (for closeout) for which you want to run the batch job.
-     *  @param objectApiName -: This is the object api name.
+     * calls the api which will create post award records currently accepts
+     * PaymentRequest, ProgressReport, Closeout.
+     * 
+     * @param objectType -: This is the batch job type. Currently supports 3
+     * different values – PaymentRequest, ProgressReport, Closeout.
+     * 
+     * @param recordName -: The name of the award (for payment/progress) or grant
+     * (for closeout) for which you want to run the batch job.
+     * 
+     * @param objectApiName -: This is the object api name.
      */
     public Response automationBatchExecuteApi(String objectType, String recordName, String objectApiName) {
         String finalEndPoint = "";
         Response response = null;
         getAuthToken();
 
-        finalEndPoint = endPoint + "/services/apexrest/productAutomationRunBatchJob?type=" + objectType
-                + "&recordName=" + recordName;
+        finalEndPoint = endPoint + "/services/apexrest/productAutomationRunBatchJob?type=" + objectType + "&recordName="
+                + recordName;
 
         response = apiCall.getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
         assertStatusCode(response);

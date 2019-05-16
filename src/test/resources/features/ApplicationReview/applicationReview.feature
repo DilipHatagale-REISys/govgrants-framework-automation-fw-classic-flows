@@ -2,40 +2,49 @@
 Feature: Validate all scenarios in the Application Review
 
   Background: Setup data
-    Given I delete the record "Automation Announcement for Pre-Application" from the object "APPLICATION REVIEWS"
-#  Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
-#    And I delete the record "Automation Announcement for Pre-Application" from the object "Qualified Announcement"
-#    Given I am on "SUBPORTAL" portal
-#    And I qualify the announcement "Automation Announcement for Pre-Application" as user "SPI"
-#      | Actions    | Step 1         | Step 2        | Step 3  | Step 4        |
-#      | Navigation | Grants Portal  | Opportunities | Active  | Opportunities |
-#      | FlexTable  | popupflextable | View          | Qualify |               |
-#    When I click on "Create Application" in the page details
-#    And I click modal button "Save and Continue"
-#    And I enter "Edition" values from "Application_Field_Values.xlsx"
-#    When I click on "Save" in the page details
-#    And I navigate to "Budget" sub tab
-#    Given I expand nested table containing column value "BP01"
-#    And I edit the following rows inline in flex table with id "applicationIntake::budgetPeriodTableId" by clicking "Edit" :
-#      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
-#      | Construction  | 100    | 100        | 100            | 100            |
-#    When I navigate to "Proposal" sub tab
-#    When I edit the following rows inline in flex table with id "applicationIntake::kpiTableId" by clicking "Edit" :
-#      | EGMS ID                                 | Target |
-#      | Automation Permanent KPI for Regression | 10     |
-#    And I navigate to "Attachments" sub tab
-#    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "applicationIntake::allFormsTableId"
-#    Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
-#    And I click on "Save" in the page details
-#    Given I click on "Back" in the page details
-#    And I click on "Edit" icon for "Application Form - Project H.E.A.T." inside flex table with id "applicationIntake::allFormsTableId"
-#    Given I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
-#    And I click on "Save" in the page details
-#    Given I click on "Back" in the page details
-#    When I click on "Submit Application" in the page details
+    Given I delete the record "Automation Directed Announcement" from the object "APPLICATION REVIEWS"
+    Given I delete the record "Automation Directed Announcement" from the object "Application"
+    And I delete the record "Automation Directed Announcement" from the object "Qualified Announcement"
+       Given I am on "SUBPORTAL" portal
+    And I qualify the announcement "Automation Directed Announcement" as user "SPI"
+      | Actions    | Step 1         | Step 2        | Step 3  | Step 4        |
+      | Navigation | Grants Portal  | Opportunities | Active  | Opportunities |
+      | FlexTable  | popupflextable | View          | Qualify |               |
+    When I click on "Create Application" in the page details
+    When I enter value "Automation Application" into field "Title__c"
+        And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    Given I complete the fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
+      | Actions         | Step 1 | Step 2 |
+      | Edition Buttons | Edit   | Save   |
+    And I navigate to "Budget" sub tab
+    Given I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "applicationIntake::budgetPeriodTableId" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
+      | Construction  | 100    | 100        | 100            | 700            |
+    When I navigate to "Proposal" sub tab
+    When I edit the following rows inline in flex table with id "applicationIntake::kpiTableId" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+      |Test KPI| 10|
+      |JP Health Awareness| 10|
+      |Automation KPI Regression|10|
+      |KPI Created By EXE User|10|
+      |KPI-0611|10|
+    And I navigate to "Attachments" sub tab
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "applicationIntake::allFormsTableId"
+    Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    Given I click on "Back" in the page details
+    And I click on "Edit" icon for "Application Form - Project H.E.A.T." inside flex table with id "applicationIntake::allFormsTableId"
+    Given I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    Given I click on "Back" in the page details
+    And I pause execution
+    When I click on "Submit Application" in the page details
 
-  @51065 @preScreenApplicationReview
-  Scenario Outline: Pre-Screen review for an application
+  @51065 @preScreenApplicationReview 
+ Scenario Outline: Pre-Screen review for an application
     Given I am on "INTERNAL" portal
     Given I login as "EXE" user
     When I navigate to "Applications" tab
@@ -52,20 +61,24 @@ Feature: Validate all scenarios in the Application Review
     When I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
     Then I see that "Review Step" is in "Completed" status
     Examples:
-      | User | Announcement Name                           | Review Step Name  | Application Name                            |
-      | EXE  | Automation Announcement for Pre-Application | Pre-Screen Review | Automation Announcement for Pre-Application |
+      | User | Announcement Name                | Review Step Name  | Application Name      |
+      | EXE  | Automation Directed Announcement | Pre-Screen Review |Automation Application |
 
   @51066 @smeReviewEnterDueInDays @smoke
   Scenario Outline: Enter Due in Days for all review forms in SME-review
-    Given I login to "As a Grantor" app as "<User>" user
+        Given I am on "INTERNAL" portal
+    Given I login as "EXE" user
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    Given I click toggle button to select "Application Reviews - Not Started"
+    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside table
+    And I click toggle button to select "Application Reviews - Under Review"
     And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
     When I click on "View" icon for "<Announcement Name>" inside table
     And I navigate to "Related Logs" sub tab
-    And I click on "View" icon for "<Review Step Name>" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "<Review Step Name>" inside flex table with id "flexGridAnnouncementReviewSteps"
+    And I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
     When I click on "Next Review Step" in the page details
     Given I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -75,21 +88,25 @@ Feature: Validate all scenarios in the Application Review
     Then I see the following messages in the page details :
       | Saved Successfully! |
     Examples:
-      | User | Announcement Name                           | Review Step Name  | Application Name                            |
-      | EXE  | Automation Announcement for Pre-Application | Pre-Screen Review | Automation Announcement for Pre-Application |
-
+    | User | Announcement Name                | Review Step Name  | Application Name      |
+    | EXE  | Automation Directed Announcement | Pre-Screen Review |Automation Application |
+ 
   @38463 @smeReviewAddReviewer
   Scenario Outline: Add a reviewer to each review step in SME Review
-    Given I login to "As a Grantor" app as "<User>" user
+        Given I am on "INTERNAL" portal
+    Given I login as "EXE" user
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    Given I click toggle button to select "Application Reviews - Not Started"
+    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside table
+    And I click toggle button to select "Application Reviews - Under Review"
     And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
     When I click on "View" icon for "<Announcement Name>" inside table
     And I navigate to "Related Logs" sub tab
-    And I click on "View" icon for "<Review Step Name>" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on "Next Review Step" in the page details
+    When I click on "View" icon for "<Review Step Name>" inside flex table with id "flexGridAnnouncementReviewSteps"
+    And I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "Next Review Step" in the page details
     Given I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 10          |
@@ -103,8 +120,8 @@ Feature: Validate all scenarios in the Application Review
     Then I see the following messages in the page details :
       | Saved Successfully! |
     Examples:
-      | User | Announcement Name                           | Review Step Name  | Application Name                            |
-      | EXE  | Automation Announcement for Pre-Application | Pre-Screen Review | Automation Announcement for Pre-Application |
+     | User | Announcement Name                | Review Step Name  | Application Name      |
+     | EXE  | Automation Directed Announcement | Pre-Screen Review |Automation Application |
 
   @38462 @smeReviewAssignApplicationToReviewer  @smoke
   Scenario Outline: Verify that user is able to assign applications of a particular announcement to its reviewers
@@ -116,19 +133,13 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Related Logs" sub tab
     And I click on "View" icon for "<Review Step Name>" inside flex table with id "flexGridAnnouncementReviewSteps"
     When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on "Next Review Step" in the page details
+    When I click on "Next Review Step" in the page details
     Given I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 10          |
       | Fiscal Review     | 10          |
       | Compliance Review | 10          |
-    And I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
-      | Reviewer       |
-      | Automation PM  |
-      | Automation FO  |
-      | Automation EXE |
-    And I expand nested table containing column value "Automation Announcement for Pre-Application"
+    And I expand nested table containing column value "Automation Application"
     When I click on "Assign" icon for "Program Review" inside flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
     When I check "All" boxes in flex table with id "flexGridAssignUserToApp"
     And I click on top right button "Assign" in flex table with id "flexGridAssignUserToApp"
@@ -141,12 +152,12 @@ Feature: Validate all scenarios in the Application Review
     When I check "All" boxes in flex table with id "flexGridAssignUserToApp"
     And I click on top right button "Assign" in flex table with id "flexGridAssignUserToApp"
     And I close Modal
-    When I collapse nested table containing column value "Automation Announcement for Pre-Application"
+    When I collapse nested table containing column value "Automation Application"
     Then I see that "SME Review" is in "In Progress" status
     Examples:
-      | User | Announcement Name                           | Review Step Name  | Application Name                            |
-      | EXE  | Automation Announcement for Pre-Application | Pre-Screen Review | Automation Announcement for Pre-Application |
-
+     | User | Announcement Name                 | Review Step Name  | Application Name      |
+     | EXE  | Automation Directed Announcement | Pre-Screen Review |Automation Application |
+     
   @38464 @smeReviewSendForReview @smoke
   Scenario Outline: Choose the reviews and send for review in SME Review
     Given I login to "As a Grantor" app as "<User>" user
@@ -164,11 +175,6 @@ Feature: Validate all scenarios in the Application Review
       | Program Review    | 10          |
       | Fiscal Review     | 10          |
       | Compliance Review | 10          |
-    And I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
-      | Reviewer       |
-      | Automation PM  |
-      | Automation FO  |
-      | Automation EXE |
     And I expand nested table containing column value "Automation Announcement for Pre-Application"
     When I click on "Assign" icon for "Program Review" inside flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
     When I check "All" boxes in flex table with id "flexGridAssignUserToApp"
@@ -182,13 +188,13 @@ Feature: Validate all scenarios in the Application Review
     When I check "All" boxes in flex table with id "flexGridAssignUserToApp"
     And I click on top right button "Assign" in flex table with id "flexGridAssignUserToApp"
     And I close Modal
-    When I collapse nested table containing column value "Automation Announcement for Pre-Application"
+    When I collapse nested table containing column value "Automation Announcement for Application Intake"
     When I check "Program Review,Fiscal Review,Compliance Review" boxes in flex table with id "flexGridStepReviews"
     And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
     Then I see that "SME Review" is in "In Progress" status
     Examples:
-      | User | Announcement Name                           | Review Step Name  | Application Name                            |
-      | EXE  | Automation Announcement for Pre-Application | Pre-Screen Review | Automation Announcement for Pre-Application |
+     | User | Announcement Name                 | Review Step Name  | Application Name      |
+     | EXE  | Automation Directed Announcement | Pre-Screen Review |Automation Application |
 
   @51062 @smeReviewCompleteReviewForm @smoke
   Scenario Outline: Complete Review form as Various reviewers in SME Review
@@ -225,7 +231,7 @@ Feature: Validate all scenarios in the Application Review
     When I check "All" boxes in flex table with id "flexGridAssignUserToApp"
     And I click on top right button "Assign" in flex table with id "flexGridAssignUserToApp"
     And I close Modal
-    When I collapse nested table containing column value "Automation Announcement for Pre-Application"
+    When I collapse nested table containing column value "Automation Announcement for Application Intake"
     When I check "Program Review,Fiscal Review,Compliance Review" boxes in flex table with id "flexGridStepReviews"
     And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
     And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
@@ -295,7 +301,7 @@ Feature: Validate all scenarios in the Application Review
     When I check "All" boxes in flex table with id "flexGridAssignUserToApp"
     And I click on top right button "Assign" in flex table with id "flexGridAssignUserToApp"
     And I close Modal
-    When I collapse nested table containing column value "Automation Announcement for Pre-Application"
+    When I collapse nested table containing column value "Automation Announcement for Application Intake"
     And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
       | Actions   | Step 1              | Step 2          |
       | FlexTable | flexGridStepReviews | Send for Review |
@@ -355,7 +361,7 @@ Feature: Validate all scenarios in the Application Review
     When I check "All" boxes in flex table with id "flexGridAssignUserToApp"
     And I click on top right button "Assign" in flex table with id "flexGridAssignUserToApp"
     And I close Modal
-    When I collapse nested table containing column value "Automation Announcement for Pre-Application"
+    When I collapse nested table containing column value "Automation Announcement for Application Intake"
     And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
       | Actions   | Step 1              | Step 2          |
       | FlexTable | flexGridStepReviews | Send for Review |
@@ -378,7 +384,7 @@ Feature: Validate all scenarios in the Application Review
     Examples:
       | User | Announcement Name                           | Review Step Name  | Application Name                            |
       | EXE  | Automation Announcement for Pre-Application | Pre-Screen Review | Automation Announcement for Pre-Application |
-
+      
   @51061 @managementReviewAddReviewer
   Scenario Outline: Add a reviewer to each review step in Management Review
     Given I login to "As a Grantor" app as "<User>" user
@@ -414,7 +420,7 @@ Feature: Validate all scenarios in the Application Review
     When I check "All" boxes in flex table with id "flexGridAssignUserToApp"
     And I click on top right button "Assign" in flex table with id "flexGridAssignUserToApp"
     And I close Modal
-    When I collapse nested table containing column value "Automation Announcement for Pre-Application"
+    When I collapse nested table containing column value "Automation Announcement for Application Intake"
     And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
       | Actions   | Step 1              | Step 2          |
       | FlexTable | flexGridStepReviews | Send for Review |
@@ -475,7 +481,7 @@ Feature: Validate all scenarios in the Application Review
     When I check "All" boxes in flex table with id "flexGridAssignUserToApp"
     And I click on top right button "Assign" in flex table with id "flexGridAssignUserToApp"
     And I close Modal
-    When I collapse nested table containing column value "Automation Announcement for Pre-Application"
+    When I collapse nested table containing column value "Automation Announcement for Application Intake"
     And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
       | Actions   | Step 1              | Step 2          |
       | FlexTable | flexGridStepReviews | Send for Review |
@@ -541,7 +547,7 @@ Feature: Validate all scenarios in the Application Review
     When I check "All" boxes in flex table with id "flexGridAssignUserToApp"
     And I click on top right button "Assign" in flex table with id "flexGridAssignUserToApp"
     And I close Modal
-    When I collapse nested table containing column value "Automation Announcement for Pre-Application"
+    When I collapse nested table containing column value "Automation Announcement for Application Intake"
     And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
       | Actions   | Step 1              | Step 2          |
       | FlexTable | flexGridStepReviews | Send for Review |
@@ -609,7 +615,7 @@ Feature: Validate all scenarios in the Application Review
     When I check "All" boxes in flex table with id "flexGridAssignUserToApp"
     And I click on top right button "Assign" in flex table with id "flexGridAssignUserToApp"
     And I close Modal
-    When I collapse nested table containing column value "Automation Announcement for Pre-Application"
+    When I collapse nested table containing column value "Automation Announcement for Application Intake"
     And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
       | Actions   | Step 1              | Step 2          |
       | FlexTable | flexGridStepReviews | Send for Review |
@@ -686,7 +692,7 @@ Feature: Validate all scenarios in the Application Review
     When I check "All" boxes in flex table with id "flexGridAssignUserToApp"
     And I click on top right button "Assign" in flex table with id "flexGridAssignUserToApp"
     And I close Modal
-    When I collapse nested table containing column value "Automation Announcement for Pre-Application"
+    When I collapse nested table containing column value "Automation Announcement for Application Intake"
     And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
       | Actions   | Step 1              | Step 2          |
       | FlexTable | flexGridStepReviews | Send for Review |
@@ -772,7 +778,7 @@ Feature: Validate all scenarios in the Application Review
     When I check "All" boxes in flex table with id "flexGridAssignUserToApp"
     And I click on top right button "Assign" in flex table with id "flexGridAssignUserToApp"
     And I close Modal
-    When I collapse nested table containing column value "Automation Announcement for Pre-Application"
+    When I collapse nested table containing column value "Automation Announcement for Application Intake"
     And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
       | Actions   | Step 1              | Step 2          |
       | FlexTable | flexGridStepReviews | Send for Review |
@@ -857,7 +863,7 @@ Feature: Validate all scenarios in the Application Review
     When I check "All" boxes in flex table with id "flexGridAssignUserToApp"
     And I click on top right button "Assign" in flex table with id "flexGridAssignUserToApp"
     And I close Modal
-    When I collapse nested table containing column value "Automation Announcement for Pre-Application"
+    When I collapse nested table containing column value "Automation Announcement for Application Intake"
     And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
       | Actions   | Step 1              | Step 2          |
       | FlexTable | flexGridStepReviews | Send for Review |
@@ -945,7 +951,7 @@ Feature: Validate all scenarios in the Application Review
     When I check "All" boxes in flex table with id "flexGridAssignUserToApp"
     And I click on top right button "Assign" in flex table with id "flexGridAssignUserToApp"
     And I close Modal
-    When I collapse nested table containing column value "Automation Announcement for Pre-Application"
+    When I collapse nested table containing column value "Automation Announcement for Application Intake"
     And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
       | Actions   | Step 1              | Step 2          |
       | FlexTable | flexGridStepReviews | Send for Review |
@@ -1037,7 +1043,7 @@ Feature: Validate all scenarios in the Application Review
     When I check "All" boxes in flex table with id "flexGridAssignUserToApp"
     And I click on top right button "Assign" in flex table with id "flexGridAssignUserToApp"
     And I close Modal
-    When I collapse nested table containing column value "Automation Announcement for Pre-Application"
+    When I collapse nested table containing column value "Automation Announcement for Application Intake"
     And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
       | Actions   | Step 1              | Step 2          |
       | FlexTable | flexGridStepReviews | Send for Review |
@@ -1130,7 +1136,7 @@ Feature: Validate all scenarios in the Application Review
     When I check "All" boxes in flex table with id "flexGridAssignUserToApp"
     And I click on top right button "Assign" in flex table with id "flexGridAssignUserToApp"
     And I close Modal
-    When I collapse nested table containing column value "Automation Announcement for Pre-Application"
+    When I collapse nested table containing column value "Automation Announcement for Application Intake"
     And I choose Reviews "Program Review,Fiscal Review,Compliance Review" and Send for Review
       | Actions   | Step 1              | Step 2          |
       | FlexTable | flexGridStepReviews | Send for Review |
@@ -1191,5 +1197,5 @@ Feature: Validate all scenarios in the Application Review
     When I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Approved" and is "green"
     Examples:
-      | User | Announcement Name                           | Review Step Name  | Application Name                            |
-      | EXE  | Automation Announcement for Pre-Application | Pre-Screen Review | Automation Announcement for Pre-Application |
+      | User | Announcement Name                           | Review Step Name  | Application Name       |
+      | EXE  | Automation Directed Announcement           | Pre-Screen Review | Automation Application |

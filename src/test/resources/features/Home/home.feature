@@ -35,8 +35,8 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-      | EXE   |
-      | PM    |
+#      | EXE   |
+#      | PM    |
 
   @internalOrganizationADMINEdit 
   Scenario Outline: Validate system allows Edit access to Internal Organizations to the ADMIN/DA
@@ -67,8 +67,8 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-      | EXE   |
-      | PM    |
+#      | EXE   |
+#      | PM    |
 
   @activeSubrecipientOrganizationsView 
   Scenario Outline: Validate whether all users have view access to Active Individual Subrecipients
@@ -81,8 +81,8 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-      | EXE   |
-      | PM    |
+#      | EXE   |
+#      | PM    |
 
   @activeIndividualSubrecipientsEdit 
   Scenario Outline: Validate whether ADMIN/DA have Edit access to Active Individual Subrecipients
@@ -111,14 +111,14 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
-    When I perform quick search for "Automation EXE" in "flexTableRandomID" panel
-    And I click on "View" icon for "Automation EXE" inside flex table with id "flexTableRandomID"
+    When I perform quick search for "Automation POM" in "flexTableRandomID" panel
+    And I click on "View" icon for "Automation POM" inside flex table with id "flexTableRandomID"
      Then I see field "Organization" as "Test Automation Organization"
     Examples:
       | User  |
       | ADMIN |
-      | EXE   |
-      | PM    |
+#      | EXE   |
+#      | PM    |
 
   @internalContactsCreate @smoke
   Scenario Outline: Verify that Internal contacts are accessible across agencies and can be created by any Internal user
@@ -134,8 +134,8 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-      | EXE   |
-      | PM    |
+#      | EXE   |
+#      | PM    |
 
   @internalContactsEdit 
   Scenario Outline: Validate system allows edit access to Contacts to all Internal Users
@@ -147,8 +147,8 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-      | EXE   |
-      | PM    |
+#      | EXE   |
+#      | PM    |
 
   @subrecipientContactsCreate @smoke
   Scenario Outline: Verifying if the Internal Users has create access to Subrecipient Contact
@@ -163,8 +163,8 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-      | EXE   |
-      | PM    |
+#      | EXE   |
+#      | PM    |
 
    @smeReviewersContactView 
    Scenario Outline: Verifying all Internal Users has View access to SME Reviewers Contact
@@ -176,8 +176,8 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-      | EXE   |
-      | PM    |
+#      | EXE   |
+#      | PM    |
 
   @smeReviewersContactCreate @wip
   Scenario Outline: Verifying all Internal Users has Create access to SME Reviewers Contact
@@ -201,8 +201,8 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-      | EXE   |
-      | PM    |
+#      | EXE   |
+#      | PM    |
 
   @activeSMEReviewersContactDetailPageView 
   Scenario Outline: Verify that system allows user to see the detail page of Active SME Reviewer contact
@@ -213,8 +213,8 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-      | EXE   |
-      | PM    |
+#      | EXE   |
+#      | PM    |
 
   @termsandConditionsView 
   Scenario Outline: Verifying all Internal Users has View access to Terms and Conditions
@@ -226,8 +226,8 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-      | EXE   |
-      | PM    |
+#      | EXE   |
+#      | PM    |
 
   @termsAndConditionsCreate @smoke 
   Scenario Outline: Verifying if the ADMIN/DA has create access to Terms and Conditions
@@ -263,8 +263,8 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-      | EXE   |
-      | PM    |
+#      | EXE   |
+#      | PM    |
 
   @dunsRegistrationView 
   Scenario Outline: Validate whether all users have view access to DUNS Registration
@@ -274,8 +274,8 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-      | EXE   |
-      | PM    |
+#      | EXE   |
+#      | PM    |
 
   @samgovRegistrationView 
   Scenario Outline: Validate whether all users have view access to SAM.gov Registration
@@ -285,8 +285,8 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-      | EXE   |
-      | PM    |
+#      | EXE   |
+#      | PM    |
 
   @contactUsView 
   Scenario Outline: Validate whether all users have view access to Contact Us
@@ -296,10 +296,8 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-      | EXE   |
-      | PM    |
-      | SPI   |
-      | SPA   |
+#      | EXE   |
+#      | PM    |
 
   @editInternalOrganization @smoke
   Scenario Outline: Validate whether ADMIN and DA users can Edit the Internal Organization
@@ -315,13 +313,13 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @subrecipientOrganizationEdition @smoke @wip
+  @subrecipientOrganizationEdition @smoke 
   Scenario Outline: Validate whether ADMIN and DA users can Edit the Subrecipient Organization
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    And I perform quick search for "CASA FAMILIAR, INC" in "ActiveAccount" panel
-    When I click on "Edit" icon for "CASA FAMILIAR, INC" inside flex table with id "ActiveAccount"
+    And I perform quick search for "GROUNDWORK SAN DIEGO-CHOLLAS CREEK" in "ActiveAccount" panel
+    When I click on "Edit" icon for "GROUNDWORK SAN DIEGO-CHOLLAS CREEK" inside flex table with id "ActiveAccount"
     And I enter "Edition" values from "SubrecipientOrganization_Field_Values"
     When I click on "Save" in the page details
     Then I see that "Subrecipient Organization" is in "Active" status
@@ -334,18 +332,18 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
-    And I perform quick search for "Automation POD" in "flexTableRandomID" panel
-    When I click on "Edit" icon for "Automation POD" inside flex table with id "flexTableRandomID"
+    And I perform quick search for "Automation POM" in "flexTableRandomID" panel
+    When I click on "Edit" icon for "Automation POM" inside flex table with id "flexTableRandomID"
     And I enter "Edition1" values from "InternalContact_Field_Values.xlsx"
     And I click modal button "Save"
     When I close Modal
-    And I perform quick search for "Automation POD" in "flexTableRandomID" panel
+    And I perform quick search for "Automation POM" in "flexTableRandomID" panel
     Then I see value "Active" for title "Status" inside table "flexTableRandomID"
     Examples:
       | User  |
       | ADMIN |
-      | EXE   |
-      | PM    |
+#      | EXE   |
+#      | PM    |
 
   @subrecipientContactsEdition 
   Scenario Outline: Verifying if the Internal Users has Edit access to Subrecipient Contact
@@ -357,26 +355,26 @@ Feature: Validate all scenarios in the home tab
     And I enter "Edition" values from "SubrecipientContact_Field_Values.xlsx"
     And I click modal button "Save"
     And I perform quick search for "Automation Manager1" in "flexTableRandomID" panel
-    Then I see value "Automation Manager1" for title "Full Name" inside table "flexTableRandomID"
+    Then I see values "Automation Manager1" and "New" inside table
     Examples:
       | User  |
       | ADMIN |
 
-  @smeReviewersContactEdition 
+  @smeReviewersContactEdition @wip
   Scenario Outline: Verifying all Internal Users has Edit access to SME Reviewers Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
-    When I perform quick search for "Automation SME" in "Reviewers" panel
-    And I click on "Edit" icon for "Automation SME" inside flex table with id "Reviewers"
+    When I perform quick search for "Automation SME1" in "Reviewers" panel
+    And I click on "Edit" icon for "Automation SME1" inside flex table with id "Reviewers"
     When I enter "Edition" values from "PotentialReviewersContact_Field_values.xlsx"
     And I click modal button "Save"
-    Then I see that "Automation SME" is in "Active" status
+    Then I see values "Automation SME1" and "New" inside table
     Examples:
       | User  |
       | ADMIN |
-      | EXE   |
-      | PM    |
+#      | EXE   |
+#      | PM    |
 
   @additionalAddressesCreation  @smoke
   Scenario Outline: Validate whether ADMIN and DA users can Create the Additional Addresses
@@ -421,8 +419,8 @@ Feature: Validate all scenarios in the home tab
     And I click on top right button "New" in flex table with id "RelatedContacts"
     And I enter "RelatedContactsCreation" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
-    Then I see values "Jim Cobat" and "FullName" inside table
+     When I perform quick search for "Automation Contact" in "RelatedContacts" panel
+     Then I see values "Automation Contact" and "Active" inside table
     Examples:
       | User  |
       | ADMIN |
@@ -434,10 +432,11 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     And I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
     When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
-    When I perform quick search for "Automation POD" in "RelatedContacts" panel
-    And I click on "Edit" icon for "Automation POD" inside flex table with id "RelatedContacts"
+    When I perform quick search for "Automation Contact" in "RelatedContacts" panel
+    And I click on "Edit" icon for "Automation Contact" inside flex table with id "RelatedContacts"
     When I enter "RelatedContactsEdition" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
+      When I close Modal
     And I click on "Save" in the page details
     Then I see that "Internal Organization" is in "Active" status
     Examples:
@@ -451,9 +450,9 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     And I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
     When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
-    When I perform quick search for "Automation POD" in "RelatedContacts" panel
-    And I click on "Delete" icon for "Automation POD" inside flex table with id "RelatedContacts"
-    Then I do not see value "Automation POD" for title "Full Name" inside table "RelatedContacts"
+    When I perform quick search for "Automation Contact" in "RelatedContacts" panel
+    And I click on "Delete" icon for "Automation Contact" inside flex table with id "RelatedContacts"
+    Then I do not see value "Automation Contact" for title "Full Name" inside table "RelatedContacts"
     Examples:
       | User  |
       | ADMIN |
@@ -466,10 +465,10 @@ Feature: Validate all scenarios in the home tab
     And I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
     When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
     When I enter the following values into flex table with id "flexGridRelatedDUNS" by clicking "New" :
-      | DUNS Number | Registered Entity Name | Location |
-      | 123478411   | Test12                  | Herndon  |
+      | DUNS Number | Registered Entity Name  | Location |
+      | 123456790  | Test12                  | Herndon  |
     And I click on top right button "Save" in flex table with id "flexGridRelatedDUNS"
-    Then I see values "123478657" and "DUNSNumber" inside table
+    Then I see values "123456790" and "DUNSNumber" inside table
     Examples:
       | User  |
       | ADMIN |
@@ -481,9 +480,9 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     And I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
     When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
-    When I click on "Edit" icon for "123456780" inside flex table with id "flexGridRelatedDUNS"
+    When I click on "Edit" icon for "123456790" inside flex table with id "flexGridRelatedDUNS"
     And I click on top right button "Save" in flex table with id "flexGridRelatedDUNS"
-    Then I see values "123456780" and "DUNSNumber" inside table
+    Then I see values "123456790" and "DUNSNumber" inside table
     Examples:
       | User  |
       | ADMIN |
@@ -495,8 +494,8 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     And I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
     When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
-    When I click on "delete" icon for "123456789" inside flex table with id "flexGridRelatedDUNS"
-    Then I do not see values "123456789" and "DUNSNumber" inside table
+    When I click on "delete" icon for "123456790" inside flex table with id "flexGridRelatedDUNS"
+    Then I do not see values "123456790" and "DUNSNumber" inside table
     Examples:
       | User  |
       | ADMIN |

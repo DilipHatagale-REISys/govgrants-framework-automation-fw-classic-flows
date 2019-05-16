@@ -36,7 +36,7 @@ Feature: Validate all scenarios in the Site Visit
     Then I see that "<Subrecipient>" has been added in flextable with Id "siteVisits::participantsTableId"
     Examples:
       | Subrecipient   |
-      | Automation SPA |
+      | Automation SPI |
 
   @51084 @approverSelectionSiteVisit
   Scenario Outline: Approver selection of Site Visit
@@ -184,7 +184,7 @@ Feature: Validate all scenarios in the Site Visit
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
   @51091 @approvalOfSiteVisit
-  Scenario: Approval of Site Visit
+  Scenario Outline: Approval of Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "siteVisits::approverSiteVisitTableId" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -221,6 +221,9 @@ Feature: Validate all scenarios in the Site Visit
       | FlexTable  | Pending Tasks | My Tasks   | PhasePendingTasks |
       | Approval   | Start         | Approve    |                   |
     Then I see status in Progress-bar is "Approved" and is "green"
+    Examples:
+      | Site Visit Approval Task | Type                     | Site Visit Name       |Award Name                 | Award EGMS ID|
+      | Approve Site Visit      | Review Site visit report | Automation Site Visit | Automation Permanent Award | AD-Gr19-01   |
 
   @51092 @siteVisitSendToSubrecipient
   Scenario Outline: Send Site Visit to Subrecipient
@@ -478,5 +481,6 @@ Feature: Validate all scenarios in the Site Visit
     Examples:
       | Site Visit Name       |
       | Automation Site Visit |
+
 	
 	

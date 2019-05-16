@@ -98,6 +98,7 @@ Feature: Validate all scenarios in the Application Intake
       | Edition Buttons | Edit   | Save   |
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
+    And I pause execution for "10" seconds
     And I edit the following rows inline in flex table with id "applicationIntake::budgetPeriodTableId" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 100    | 100        | 100            | 100            |
