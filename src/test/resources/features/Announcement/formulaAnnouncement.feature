@@ -40,7 +40,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
       | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
       | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
-    And I click on "Send for Review" icon for "Automation FO" inside table
+   And I click on "Send for Review" icon for "Automation FO" inside table
     And I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
@@ -189,7 +189,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
 
   @submittedAnnouncementDeletionFA
   Scenario Outline: Validate that only record owner cannot delete Submitted for Approval status announcements
-    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+        Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"

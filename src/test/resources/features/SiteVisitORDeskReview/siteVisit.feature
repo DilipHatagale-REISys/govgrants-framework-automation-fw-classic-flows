@@ -222,8 +222,8 @@ Feature: Validate all scenarios in the Site Visit
       | Approval   | Start         | Approve    |                   |
     Then I see status in Progress-bar is "Approved" and is "green"
     Examples:
-      | Site Visit Approval Task | Type                     | Site Visit Name       | Award Name                 | Award EGMS ID |
-      | Approve Site Visit       | Review Site visit report | Automation Site Visit | Automation Permanent Award | AD-Gr19-01    |
+      | Site Visit Approval Task | Type                     | Site Visit Name       |Award Name                 | Award EGMS ID|
+      | Approve Site Visit      | Review Site visit report | Automation Site Visit | Automation Permanent Award | AD-Gr19-01   |
 
   @51092 @siteVisitSendToSubrecipient
   Scenario Outline: Send Site Visit to Subrecipient

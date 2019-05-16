@@ -2,11 +2,11 @@
 Feature: Validate all scenarios in the Application Review
 
   Background: Setup data
-    Given I delete the record "Automation Directed Announcement" from the object "APPLICATION REVIEWS"
-    Given I delete the record "Automation Directed Announcement" from the object "Application"
-    And I delete the record "Automation Directed Announcement" from the object "Qualified Announcement"
+    Given I delete the record "Automation Announcement for Application" from the object "APPLICATION REVIEWS"
+    Given I delete the record "Automation Announcement for Application" from the object "Application"
+    And I delete the record "Automation Announcement for Application" from the object "Qualified Announcement"
        Given I am on "SUBPORTAL" portal
-    And I qualify the announcement "Automation Directed Announcement" as user "SPI"
+    And I qualify the announcement "Automation Announcement for Application" as user "SPI"
       | Actions    | Step 1         | Step 2        | Step 3  | Step 4        |
       | Navigation | Grants Portal  | Opportunities | Active  | Opportunities |
       | FlexTable  | popupflextable | View          | Qualify |               |
@@ -26,11 +26,6 @@ Feature: Validate all scenarios in the Application Review
     When I edit the following rows inline in flex table with id "applicationIntake::kpiTableId" by clicking "Edit" :
       | EGMS ID                                 | Target |
       | Automation Permanent KPI for Regression | 10     |
-      |Test KPI| 10|
-      |JP Health Awareness| 10|
-      |Automation KPI Regression|10|
-      |KPI Created By EXE User|10|
-      |KPI-0611|10|
     And I navigate to "Attachments" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "applicationIntake::allFormsTableId"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
@@ -40,7 +35,6 @@ Feature: Validate all scenarios in the Application Review
     Given I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
     Given I click on "Back" in the page details
-    And I pause execution
     When I click on "Submit Application" in the page details
 
   @51065 @preScreenApplicationReview 
@@ -52,7 +46,7 @@ Feature: Validate all scenarios in the Application Review
     Given I click toggle button to select "Application Reviews - Not Started"
     And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
     When I click on "Initiate Review Process" icon for "<Announcement Name>" inside table
-    And I click toggle button to select "Application Reviews - Under Review"
+    And I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
     When I click on "View" icon for "<Announcement Name>" inside table
     And I navigate to "Related Logs" sub tab
@@ -62,7 +56,7 @@ Feature: Validate all scenarios in the Application Review
     Then I see that "Review Step" is in "Completed" status
     Examples:
       | User | Announcement Name                | Review Step Name  | Application Name      |
-      | EXE  | Automation Directed Announcement | Pre-Screen Review |Automation Application |
+      | EXE  | Automation Announcement for Application | Pre-Screen Review |Automation Application |
 
   @51066 @smeReviewEnterDueInDays @smoke
   Scenario Outline: Enter Due in Days for all review forms in SME-review
@@ -89,7 +83,7 @@ Feature: Validate all scenarios in the Application Review
       | Saved Successfully! |
     Examples:
     | User | Announcement Name                | Review Step Name  | Application Name      |
-    | EXE  | Automation Directed Announcement | Pre-Screen Review |Automation Application |
+    | EXE  | Automation Announcement for Application | Pre-Screen Review |Automation Application |
  
   @38463 @smeReviewAddReviewer
   Scenario Outline: Add a reviewer to each review step in SME Review
@@ -120,8 +114,8 @@ Feature: Validate all scenarios in the Application Review
     Then I see the following messages in the page details :
       | Saved Successfully! |
     Examples:
-     | User | Announcement Name                | Review Step Name  | Application Name      |
-     | EXE  | Automation Directed Announcement | Pre-Screen Review |Automation Application |
+     | User | Announcement Name                       | Review Step Name  | Application Name      |
+     | EXE  | Automation Announcement for Application | Pre-Screen Review |Automation Application |
 
   @38462 @smeReviewAssignApplicationToReviewer  @smoke
   Scenario Outline: Verify that user is able to assign applications of a particular announcement to its reviewers
@@ -155,9 +149,9 @@ Feature: Validate all scenarios in the Application Review
     When I collapse nested table containing column value "Automation Application"
     Then I see that "SME Review" is in "In Progress" status
     Examples:
-     | User | Announcement Name                 | Review Step Name  | Application Name      |
-     | EXE  | Automation Directed Announcement | Pre-Screen Review |Automation Application |
-     
+     | User | Announcement Name                       | Review Step Name  | Application Name      |
+     | EXE  | Automation Announcement for Application | Pre-Screen Review |Automation Application |
+
   @38464 @smeReviewSendForReview @smoke
   Scenario Outline: Choose the reviews and send for review in SME Review
     Given I login to "As a Grantor" app as "<User>" user
@@ -194,7 +188,7 @@ Feature: Validate all scenarios in the Application Review
     Then I see that "SME Review" is in "In Progress" status
     Examples:
      | User | Announcement Name                 | Review Step Name  | Application Name      |
-     | EXE  | Automation Directed Announcement | Pre-Screen Review |Automation Application |
+     | EXE  | Automation Announcement for Application | Pre-Screen Review |Automation Application |
 
   @51062 @smeReviewCompleteReviewForm @smoke
   Scenario Outline: Complete Review form as Various reviewers in SME Review
@@ -1198,4 +1192,5 @@ Feature: Validate all scenarios in the Application Review
     Then I see status in Progress-bar is "Approved" and is "green"
     Examples:
       | User | Announcement Name                           | Review Step Name  | Application Name       |
-      | EXE  | Automation Directed Announcement           | Pre-Screen Review | Automation Application |
+      | EXE  | Automation Announcement for Application           | Pre-Screen Review | Automation Application |
+

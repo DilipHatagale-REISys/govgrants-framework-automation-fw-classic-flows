@@ -2,6 +2,10 @@
 Feature: Validate all scenarios in the directed Announcement tab
 
   Background: Create Announcement
+   Given I delete the record "Automation Directed Announcement" from the object "APPLICATION REVIEWS"
+    Given I delete the record "Automation Directed Announcement" from the object "PreApplication"
+    Given I delete the record "Automation Directed Announcement" from the object "Application"
+    And I delete the record "Automation Directed Announcement" from the object "Qualified Announcement"
     Given I delete the record "Automation Directed Announcement" from the object "Announcement"
     Given I create a "Directed" Announcement as user "EXE" from sheet "DirectedAnnouncement" in excel "Announcement_Field_Values.xlsx"
       | Actions     | Step 1                              | Step 2                     | Step 3                            |
@@ -15,7 +19,7 @@ Feature: Validate all scenarios in the directed Announcement tab
 
   @34461 @submittingAnnouncementForApprovalDR
   Scenario Outline: Validate the submission of Announcement for Approval
-    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+        Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -47,7 +51,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
       | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
       | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
-    And I click on "Send for Review" icon for "Automation FO" inside table
+   And I click on "Send for Review" icon for "Automation FO" inside table
     And I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab

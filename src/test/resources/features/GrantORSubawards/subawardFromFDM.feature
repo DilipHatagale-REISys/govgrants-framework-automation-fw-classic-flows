@@ -2,17 +2,17 @@
 Feature: Validate all scenarios in the Award from FDM
 
   Background: Create Award from FDM
-    Given I delete the record "Automation Grant Award for Post Award" from the object "FDM"
-    Given I create a subaward from the Announcement "Execution Announcement for Automation" for the Application "Automation App Jan25" as user "EXE"
+    Given I delete the record "Automation Announcement for FDM" from the object "FDM"
+    Given I create a subaward from the Announcement "Automation Announcement for FDM" for the Application "Automation Application for FDM" as user "EXE"
       | Actions    | Step 1          | Step 2       | Step 3                                | Step 4                                  |
       | Navigation | As a Grantor    | Applications | Application Review                    | Funding Decision Memo (FDM)             |
       | FlexTable  | FDMList1        | View         | Approved Funding Decision Memos (FDM) | flexGridFundingDecisionMemoApplications |
       | Buttons    | Create Subaward |              |                                       |                                         |
-    Given I login and view the "Draft" award "Created" with name "Automation Grant Award for Post Award" as User "EXE"
-      | Actions    | Step 1       | Step 2         | Step 3               | Step 4                        |
-      | Navigation | As a Grantor | Grants         | Grants and Subawards | Grants, Subaward & Amendments |
-      | FlexTable  | Grants       | ActiveGrants   | View                 |                               |
-      | Subaward   | Subawards    | RelatedAwards1 | View                 |                               |
+    Given I login and view the "Draft" award "Created" with name "Automation Application for FDM" as User "EXE"
+      | Actions    | Step 1       | Step 2                 | Step 3               | Step 4                        |
+      | Navigation | As a Grantor | Grants                 | Grants and Subawards | Grants, Subaward & Amendments |
+      | FlexTable  | Grants       | ActiveGrants           | View                 |                               |
+      | Subaward   | Subawards    | flexGridRelatedAwards1 | View                 |                               |
     Given I get the "EGMS ID"
 
   @38213  @allCreation  @smoke
@@ -46,18 +46,23 @@ Feature: Validate all scenarios in the Award from FDM
 
   @fdmRiskAssessmentApprovalAndActivation 
   Scenario: Risk Assessment approval in an award
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Management" sub tab
     Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
       | Actions  | Step 1     | Step 2                          | Step 3 | Step 4            |
       | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue |
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
-    Given I select "2" approvers "Automation PM,Automation FO"
-      | Actions    | Step 1                                        | Step 2 | Step 3           |
-      | Subtab     | Responsibilities                              |        |                  |
-      | Approver 1 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Program Approver |
-      | Approver 2 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Fiscal Approver  |
+    When I get the "EGMS ID"
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "flexGridGrantorRiskAssessmentRolesandResponsibilities" by clicking "Edit" :
+      | Responsibility   | Name          | Description                 |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+      | Program Approver | Automation PM | Automation Test Description |
     And I click on "Submit for Approval" in the page details
-    Given "2" Approvers "PM,FO" approve the record "Approve Subaward Risk Assessment"
+    Given "2" Approvers "PM,FO" approve the record "Record Id"
       | Actions    | Step 1        | Step 2     | Step 3            |
       | Navigation | As a Grantor  | Monitoring |                   |
       | FlexTable  | Pending Tasks | My Tasks   | PhasePendingTasks |
@@ -66,44 +71,42 @@ Feature: Validate all scenarios in the Award from FDM
 
   @awardApproverSelection
   Scenario: Validate the assignment of Approvers for the award
-    When I navigate to "Responsibilities" sub tab
-    And I click on "Edit" icon for "Program Approver" inside flex table with id "subAwardFromFDM::approversTableId"
-    When I fill in the "Automation PM" for the Approver details
-    And I close Modal
-    When I click on "Edit" icon for "Fiscal Approver" inside flex table with id "subAwardFromFDM::approversTableId"
-    And I fill in the "Automation FO" for the Approver details
-    And I close Modal
-    And I click on "Edit" icon for "Executive Approver" inside flex table with id "subAwardFromFDM::approversTableId"
-    When I fill in the "Automation EXE" for the Approver details
-    And I close Modal
-    Then I see that "Automation EXE" has been added in flextable with Id "subAwardFromFDM::approversTableId"
+      When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "GrantorAwardRolesAndResponsibilitiesFlexToggle" by clicking "Edit" :
+      | Responsibility     | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+    Then I see that "Automation EXE" has been added in flextable with Id "GrantorAwardRolesAndResponsibilitiesFlexToggle"
 
   @awardSendToRecipientBeforeApproval 
   Scenario Outline: Validate the assignment of Approvers for the award
-    Given I complete the fields from the sheet "Edition" in excel "Award_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    Given I associate "2" records "FA--154,Automation Permanent Focus Area"
-      | Actions     | Step 1      | Step 2    | Step 3                                 | Step 4    | Step 5                     |
-      | Associate 1 | Budget      | Associate | flexGridAwardFundingAccounts           | Add       | SelectAwardFundingAccounts |
-      | Associate 2 | Budget      | Associate | inlineEditGridGrantorAwardServiceAreas | Associate | popupflextableGAT          |
-      | Associate 3 | Performance | Associate | GrantorAwardGoalsObjectives            | Associate | SelectAwardGoals           |
+    Given I associate "2" records "FA--148,Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                       | Step 4 | Step 5                     |
+      | Associate 1 | Budget   | Associate | flexGridAwardFundingAccounts | Add    | SelectAwardFundingAccounts |
+      | Associate 2 | Overview | Associate | flexGridSubawardContact      | Add    | AssociateSubawardContacts  |
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "subAwardStandAlone::associateContactTableId" by clicking "Edit" :
+      | Title          | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
     When I navigate to "Budget" sub tab
-    And I edit the following rows inline in flex table with id "subAwardFromFDM::focusAreaTableId" by clicking "Edit" :
-      | Title                               | Start Date | End Date |
-      | Automation Permanent Focus Area         | 0          | 500      |
-      | Permanent Focus Area for Automation | 0          | 500      |
+    And I edit the following rows inline in flex table with id "subAwardStandAlone::focusAreaTableId" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
     And I navigate to "Budget" sub tab
-    Given I edit the following rows inline in flex table with id "subAwardFromFDM::fundingAccountTableId" by clicking "Edit" :
+    Given I edit the following rows inline in flex table with id "subAwardStandAlone::fundingAccountsTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--154         | 5000        |
-    And I edit the following rows inline in flex table with id "subAwardFromFDM::subAwardBudgetTableId" by clicking "Edit" :
-      | Budget Category | Subaward  Budget | Cash Match | Non-Cash Match |
-      | Construction    | 5000             | 2000       | 3000           |
+      | FA--148         | 5000        |
+    And I edit the following rows inline in flex table with id "subAwardStandAlone::subAwardBudgetTableId" by clicking "Edit" :
+      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
+      | Construction    | 5000           | 2000       | 3000           |
     Given I navigate to "Performance" sub tab
-    And I edit the following rows inline in flex table with id "subAwardFromFDM::kpiTableId" by clicking "Edit" :
-      | EGMS ID  | Target |
-      | KPI-0419 | 10     |
+    And I edit the following rows inline in flex table with id "subAwardStandAlone::kpiTableId" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Management" sub tab
     Given I create a monitoring record from sheet "Payment Request Schedule" in excel "Award_Field_Values.xlsx"
       | Actions  | Step 1     | Step 2                   | Step 3 | Step 4 | Step 5          |
@@ -119,13 +122,14 @@ Feature: Validate all scenarios in the Award from FDM
       | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue |
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
-    Given I select "2" approvers "Automation PM,Automation FO"
-      | Actions    | Step 1                                        | Step 2 | Step 3           |
-      | Subtab     | Responsibilities                              |        |                  |
-      | Approver 1 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Program Approver |
-      | Approver 2 | GrantorRiskAssessmentRolesandResponsibilities | Edit   | Fiscal Approver  |
+    When I get the "EGMS ID"
+    And I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "flexGridGrantorRiskAssessmentRolesandResponsibilities" by clicking "Edit" :
+      | Responsibility   | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
     And I click on "Submit for Approval" in the page details
-    Given "2" Approvers "PM,FO" approve the record "Approve Subaward Risk Assessment"
+    Given "2" Approvers "PM,FO" approve the record "Record Id"
       | Actions    | Step 1        | Step 2     | Step 3            |
       | Navigation | As a Grantor  | Monitoring |                   |
       | FlexTable  | Pending Tasks | My Tasks   | PhasePendingTasks |
@@ -137,18 +141,18 @@ Feature: Validate all scenarios in the Award from FDM
     When I perform quick search for "<Grant Name>" in "ActiveGrants" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "subAwardFromFDM::subAwardsTableId"
-    Given I select "3" approvers "Automation PM,Automation FO,Automation EXE"
-      | Actions    | Step 1                               | Step 2 | Step 3             |
-      | Subtab     | Responsibilities                     |        |                    |
-      | Approver 1 | GrantorAwardRolesAndResponsibilities | Edit   | Program Approver   |
-      | Approver 2 | GrantorAwardRolesAndResponsibilities | Edit   | Fiscal Approver    |
-      | Approver 3 | GrantorAwardRolesAndResponsibilities | Edit   | Executive Approver |
-    Then I click on "Send to Subrecipient" in the page details
-
+    And I click on "View" icon for "<Award Name>" inside flex table with id "subAwardStandAlone::subawardsTableId"
+    And I navigate to "Responsibilities" tab
+    And I edit the following rows inline in flex table with id "GrantorAwardRolesAndResponsibilitiesFlexToggle" by clicking "Edit" :
+      | Responsibility     | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+    When I click on "Send to Subrecipient" in the page details
+    Then I see status in Progress-bar is "Created" and is "green"
     Examples:
-      | Award Name       | Grant Name                               |
-      | Automation Grant | Permanent Application(Dr) for Automation |
+      | Award Name                 | Grant Name                 |
+      | Automation Execution Award | Automation Execution Award |
 
   @awardAcceptanceByRecipientBeforeApproval @smoke
   Scenario Outline: Validate the assignment of Approvers for the award
@@ -223,7 +227,7 @@ Feature: Validate all scenarios in the Award from FDM
     Then I see that "Subaward" is in "Created" status
     Examples:
       | Award Name       | Grant Name                               |
-      | Automation Grant | Permanent Application(Dr) for Automation |
+      | Automation Application for FDM | Permanent Application(Dr) for Automation |
 
   @awardReviewerAssignment 
   Scenario Outline: Validate the assignment of Reviewer for the award
@@ -313,7 +317,7 @@ Feature: Validate all scenarios in the Award from FDM
     Then I see that "Automation FO" has been added in flextable with Id "subAwardFromFDM::peerReviewersTableId"
     Examples:
       | Award Name       | Grant Name                               |
-      | Automation Grant | Permanent Application(Dr) for Automation |
+      | Automation Application for FDM | Permanent Application(Dr) for Automation |
 
   @awardReviewerInitiation  @smoke
   Scenario Outline: Validate initiation of review for the award
@@ -404,7 +408,7 @@ Feature: Validate all scenarios in the Award from FDM
     Then I see that "Sent for Review" has been added in flextable with Id "subAwardFromFDM::peerReviewersTableId"
     Examples:
       | Award Name       | Grant Name                               |
-      | Automation Grant | Permanent Application(Dr) for Automation |
+      | Automation Application for FDM | Permanent Application(Dr) for Automation |
 
   @awardReviewComplete
   Scenario Outline: Validate completion of review for the award
@@ -502,7 +506,7 @@ Feature: Validate all scenarios in the Award from FDM
     Then I see that "Submitted" has been added in flextable with Id "subAwardFromFDM::peerReviewersTableId"
     Examples:
       | Award Name       | Grant Name                               |
-      | Automation Grant | Permanent Application(Dr) for Automation |
+      | Automation Application for FDM | Permanent Application(Dr) for Automation |
 
   @awardSubmissionForApproval  @smoke
   Scenario Outline: Validate award submission for approval
@@ -601,7 +605,7 @@ Feature: Validate all scenarios in the Award from FDM
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
     Examples:
       | Award Name       | Grant Name                               |
-      | Automation Grant | Permanent Application(Dr) for Automation |
+      | Automation Application for FDM | Permanent Application(Dr) for Automation |
 
   @awardApproval 
   Scenario Outline: Validate award Approval by respective approvers
@@ -718,7 +722,7 @@ Feature: Validate all scenarios in the Award from FDM
     Then I see status in Progress-bar is "Approved" and is "green"
     Examples:
       | Award Name       | Grant Name                               |
-      | Automation Grant | Permanent Application(Dr) for Automation |
+      | Automation Application for FDM | Permanent Application(Dr) for Automation |
 
   @awardSendToRecipientAfterApproval  @smoke
   Scenario Outline: Validate award send to subrecipient after approval
@@ -830,7 +834,7 @@ Feature: Validate all scenarios in the Award from FDM
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
     Examples:
       | Award Name       | Grant Name                               |
-      | Automation Grant | Permanent Application(Dr) for Automation |
+      | Automation Application for FDM | Permanent Application(Dr) for Automation |
 
   @awardAcceptanceByRecipientAfterApproval 
   Scenario Outline: Validate award acceptance by subrecipient after approval
@@ -947,7 +951,7 @@ Feature: Validate all scenarios in the Award from FDM
     Then I see that "Subaward" is in "Accepted" status
     Examples:
       | Award Name       | Grant Name                     |
-      | Automation Grant | Permanent Award For Automation |
+      | Automation Application for FDM | Permanent Award For Automation |
 
   @awardActivation  @smoke
   Scenario Outline: Validate award Activation
@@ -1060,7 +1064,7 @@ Feature: Validate all scenarios in the Award from FDM
     Then I see that "Subaward" is in "Activated" status
     Examples:
       | Award Name       | Grant Name                     |
-      | Automation Grant | Permanent Award For Automation |
+      | Automation Application for FDM | Permanent Award For Automation |
 
   @awardSiteVisit 
   Scenario Outline: Validate award site visit creation
@@ -1186,7 +1190,7 @@ Feature: Validate all scenarios in the Award from FDM
     Then I see status in Progress-bar is "Created" and is "green"
     Examples:
       | Award Name       |
-      | Automation Grant |
+      | Automation Application for FDM |
 
   @awardDeskReview 
   Scenario Outline: Validate award desk review creation
@@ -1274,7 +1278,7 @@ Feature: Validate all scenarios in the Award from FDM
     Then I see status in Progress-bar is "Created" and is "green"
     Examples:
       | Award Name       |
-      | Automation Grant |
+      | Automation Application for FDM |
 
   @awardHappyPathFromFDM @smoke
   Scenario Outline: Validate award happy path

@@ -7,7 +7,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Setup" tab
     And I navigate to "Internal Organizations" content inside "Manage Organizations" subheader on left panel
     And I click on top right button "New" in flex table with id "Organizations"
-    When I enter "RequiredForSave" values from "InternalOrganization_Field_Values.xlsx"
+    When I enter "RequiredForSave" values from "InternalOrganization_Field_Values.xlsx"    
     And I click on "Save" in the page details
     Then I see that "State Organization" is in "Created" status
 
@@ -111,8 +111,8 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
-    When I perform quick search for "Automation POM" in "flexTableRandomID" panel
-    And I click on "View" icon for "Automation POM" inside flex table with id "flexTableRandomID"
+    When I perform quick search for "Automation Contact" in "flexTableRandomID" panel
+    And I click on "View" icon for "Automation Contact" inside flex table with id "flexTableRandomID"
      Then I see field "Organization" as "Test Automation Organization"
     Examples:
       | User  |
@@ -332,12 +332,12 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
-    And I perform quick search for "Automation POM" in "flexTableRandomID" panel
-    When I click on "Edit" icon for "Automation POM" inside flex table with id "flexTableRandomID"
+    And I perform quick search for "Automation Contact" in "flexTableRandomID" panel
+    When I click on "Edit" icon for "Automation Contact" inside flex table with id "flexTableRandomID"
     And I enter "Edition1" values from "InternalContact_Field_Values.xlsx"
     And I click modal button "Save"
     When I close Modal
-    And I perform quick search for "Automation POM" in "flexTableRandomID" panel
+    And I perform quick search for "Automation Contact" in "flexTableRandomID" panel
     Then I see value "Active" for title "Status" inside table "flexTableRandomID"
     Examples:
       | User  |
@@ -466,9 +466,9 @@ Feature: Validate all scenarios in the home tab
     When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
     When I enter the following values into flex table with id "flexGridRelatedDUNS" by clicking "New" :
       | DUNS Number | Registered Entity Name  | Location |
-      | 123456790  | Test12                  | Herndon  |
+      | 123458790 | Test12                  | Herndon  |
     And I click on top right button "Save" in flex table with id "flexGridRelatedDUNS"
-    Then I see values "123456790" and "DUNSNumber" inside table
+    Then I see values "123458790" and "DUNSNumber" inside table
     Examples:
       | User  |
       | ADMIN |
@@ -480,9 +480,9 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     And I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
     When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
-    When I click on "Edit" icon for "123456790" inside flex table with id "flexGridRelatedDUNS"
+    When I click on "Edit" icon for "123458790" inside flex table with id "flexGridRelatedDUNS"
     And I click on top right button "Save" in flex table with id "flexGridRelatedDUNS"
-    Then I see values "123456790" and "DUNSNumber" inside table
+    Then I see values "123458790" and "DUNSNumber" inside table
     Examples:
       | User  |
       | ADMIN |
@@ -494,12 +494,11 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     And I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
     When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
-    When I click on "delete" icon for "123456790" inside flex table with id "flexGridRelatedDUNS"
-    Then I do not see values "123456790" and "DUNSNumber" inside table
+    When I click on "delete" icon for "123458790" inside flex table with id "flexGridRelatedDUNS"
+    Then I do not see values "123458790" and "DUNSNumber" inside table
     Examples:
       | User  |
       | ADMIN |
-
 
   @deleteIndirectCostRate  
   Scenario Outline: Validate whether ADMIN and DA users can delete the Indirect Cost Rates
