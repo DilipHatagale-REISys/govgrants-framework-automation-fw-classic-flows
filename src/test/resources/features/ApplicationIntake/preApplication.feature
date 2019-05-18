@@ -13,7 +13,8 @@ Background: Qualify Announcement and Create PreApplication
 	And I click on "Create Pre-Application" in the page details 
 	When I enter value "Automation Announcement for Application " into field "Title__c" 
 	When I click modal button "Save and Continue" 
-	And I click on "Save" in the page details 
+	And I click on "Save" in the page details
+	And I get the "EGMS ID"
 	
 @51292 @preApplicationCreation 
 Scenario: Creating a Pre Application 
@@ -79,7 +80,7 @@ Scenario: Validate Grantor accept the submitted pre-application
 	Given I expand nested table containing column value "BP01" 
 	And I edit the following rows inline in flex table with id "flexGridEnhancePreApplicationProjectsAndBudgetCategories" by clicking "Edit" : 
 		| Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
-		| Construction  | 500    | 100        | 50             | 100           |
+		| Construction  | 500    | 1000        | 50             | 100           |
 	When I navigate to "Attachments" sub tab 
 	When I click on "Attach" icon for "Not Applicable" inside flex table with id "flexGridPreAppRecipientChecklists" 
 	And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement" 
@@ -88,19 +89,17 @@ Scenario: Validate Grantor accept the submitted pre-application
 	When I choose the file "Announcement_Field_Values.xlsx" to upload for "Attachment" of type "Other" 
 	And I close Modal 
 	When I click on "Submit to Grantor" in the page details 
-	Given I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal 
-	When I navigate to "Applications" tab 
-	And I navigate to "Applications" content inside "Applications" subheader on left panel 
 	Given "1" Approvers "EXE" approve the record "Record id" 
-		| Actions    | Step 1        | Step 2       | Step 3                | Step 4 |
-		| Navigation | As a Grantor  | Applications |                       |        |
-		| FlexTable  | Pending Tasks | My Tasks     | PhasePendingTasks     |        |
-		| Approval   | Start         | Accept       | Accept after approval | Ok     |
+      | Actions    | Step 1            | Step 2            | Step 3            |              |
+      | Navigation | As a Grantor      | Applications      |  Pre-Applications | Applications |
+      | Left Panel | Pending Tasks     |  Application Tasks|                   |              |
+      | FlexTable  | PhasePendingTasks | Start             |                   |              |
+    When I click on "Accept" in the page details
+    When I enter "Automation" for comments and click "OK"
 	Then I see status in Progress-bar is "Accepted" and is "green" 
 	
 @preApplicationtoApplication 
-Scenario Outline:
-Validate Grantor accept the submitted pre-application and converted it to application 
+Scenario Outline: Validate Grantor accept the submitted pre-application and converted it to application 
 	Given I click on "Edit" in the page details 
 	And I enter "Edition" values from "PreApplication_Field_Values.xlsx" 
 	When I click on "Save" in the page details 
@@ -116,22 +115,29 @@ Validate Grantor accept the submitted pre-application and converted it to applic
 	When I choose the file "Announcement_Field_Values.xlsx" to upload for "Attachment" of type "Other" 
 	And I close Modal 
 	When I click on "Submit to Grantor" in the page details 
-	Given I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal 
-	When I navigate to "Applications" tab 
-	And I navigate to "Applications" content inside "Applications" subheader on left panel 
 	Given "1" Approvers "EXE" approve the record "Record id" 
-		| Actions    | Step 1        | Step 2       | Step 3                | Step 4 |
-		| Navigation | As a Grantor  | Applications |                       |        |
-		| FlexTable  | Pending Tasks | My Tasks     | PhasePendingTasks     |        |
-		| Approval   | Start         | Accept       | Accept after approval | Ok     |
+      | Actions    | Step 1            | Step 2            | Step 3            |              |
+      | Navigation | As a Grantor      | Applications      |  Pre-Applications | Applications |
+      | Left Panel | Pending Tasks     |  Application Tasks|                   |              |
+      | FlexTable  | PhasePendingTasks | Start             |                   |              |
+    When I click on "Accept" in the page details
+    When I enter "Automation" for comments and click "OK"
+     Given I am on "SUBPORTAL" portal
+     And I qualify the announcement "Automation Announcement for Pre-Application" as user "SPI"
+      | Actions    | Step 1         | Step 2        | Step 3  | Step 4        |
+      | Navigation | Grants Portal  | Opportunities | Active  | Opportunities |
+      | FlexTable  | popupflextable | View          | Qualify |               |
+    When I click on "Create Application" in the page details
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
 	Given I complete the fields from the sheet "Edition" in excel "Application_Field_Values.xlsx" 
-		| Actions                | Step 1 | Step 2 |
+		| Actions         | Step 1 | Step 2 |
 		| Edition Buttons | Edit   | Save   |
 	And I navigate to "Budget" sub tab 
 	Given I expand nested table containing column value "BP01" 
 	And I edit the following rows inline in flex table with id "applicationIntake::budgetPeriodTableId" by clicking "Edit" : 
 		| Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
-		| Construction  | 100    | 100        | 100            | 100            |
+		| Construction  | 1000    | 100        | 100            | 100            |
 	When I navigate to "Proposal" sub tab 
 	When I edit the following rows inline in flex table with id "applicationIntake::kpiTableId" by clicking "Edit" : 
 		| EGMS ID                                 | Target |

@@ -12,7 +12,6 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
     And I enter "Creation" values from "SiteVisit_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    And I pause execution for "7" seconds
     And I enter "Edition" values from "SiteVisit_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I get the "EGMS ID"
@@ -90,7 +89,7 @@ Feature: Validate all scenarios in the Site Visit
 
   @51088 @addingOutcomeSiteVisit
   Scenario: Adding outcomes to Site Visit
-    When I navigate to "Responsibilities" sub tab
+       When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "siteVisits::approverSiteVisitTableId" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |

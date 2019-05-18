@@ -15,7 +15,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 
   @submittedAnnouncementDeletionCA
   Scenario Outline: Validate that only record owner cannot delete Submitted for Approval status announcements
-      Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -34,9 +34,9 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
-      | Program Approver   | Automation PM  | Automation Test Description |
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
       | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
       | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
@@ -186,7 +186,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 
   @announcementForPastApplicationDueDateCA
   Scenario Outline:    Validate that user can not enter application due date as past date
-        Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+   Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -205,9 +205,9 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
-      | Program Approver   | Automation PM  | Automation Test Description |
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
       | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
       | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
@@ -356,7 +356,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 
   @announcementWithBlankBudgetPeriodCA
   Scenario Outline:    Validate that user should not submit announcement with blank budget period dates
-        Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -520,7 +520,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 
   @announcementApprovalCA
   Scenario Outline: Validate the approval of an Announcement
-    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+   Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -692,7 +692,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 
   @announcementPendingTaskPostApprovalCA
   Scenario Outline: Validate that after approval of an Announcement task get deleted from pending task table.
-       Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -867,7 +867,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 
   @announcementCompletedTaskPostApprovalCA @smoke
   Scenario Outline: Validate that after approval of an Announcement task get added to its completed task table.
-        Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -1027,7 +1027,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
-    And I click on "Submit For Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2        | Step 3            |
       | Navigation | As a Grantor  | Announcements |                   |
@@ -1043,7 +1042,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 
   @announcementSendBackToOwnerCA @smoke
   Scenario Outline: Validate the send back functionality of an Announcement
-          Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+   Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -1391,7 +1390,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 
   @announcementPostSendBackCheckFieldHistoryCA
   Scenario Outline: Validate the field history after send back of an announcement
-        Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -1564,7 +1563,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 
   @announcementRejectPendingTaskForNextApproverCA
   Scenario Outline: Validate that after rejection from 1st approver, 2nd user should not get pending task
-        Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -1740,7 +1739,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 
   @announcementPostRejectPendingTaskForUserCA
   Scenario Outline: Validate that after rejection of an Announcement task get deleted from pending task table.
-         Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -1915,7 +1914,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 
   @announcementPostRejectCompletedTaskForUserCA
   Scenario Outline: Validate that after rejection of an Announcement task get added to it's completed task table.
-       Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -2091,7 +2090,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 
   @announcementPostRejectionCheckInListViewCA
   Scenario Outline: Validate the rejected announcement will reflect under "Rejected Announcements" list view
-      Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+   Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"
@@ -2268,7 +2267,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 
   @34462 @publishingCompetitiveAnnouncementCA @announcementCompetitiveHappyPath @smoke
   Scenario Outline: Validate the activation of Announcement
-    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+   Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     And I associate "1" records "FA--154"

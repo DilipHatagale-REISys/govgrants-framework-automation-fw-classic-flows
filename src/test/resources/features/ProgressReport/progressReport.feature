@@ -636,7 +636,6 @@ Feature: Validate all scenarios in Progress Report
       | FlexTable  | Pending Tasks | My Tasks   | PhasePendingTasks |
       | Approval   | Start         | Approve    |                   |
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    When I pause execution for "3" seconds
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel

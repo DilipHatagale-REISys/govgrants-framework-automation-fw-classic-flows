@@ -350,12 +350,13 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
-    When I perform quick search for "Automation Manager1" in "flexTableRandomID" panel
-    When I click on "Edit" icon for "Automation Manager1" inside flex table with id "flexTableRandomID"
+    When I perform quick search for "Automation Manager" in "flexTableRandomID" panel
+    When I click on "Edit" icon for "Automation Manager" inside flex table with id "flexTableRandomID"
     And I enter "Edition" values from "SubrecipientContact_Field_Values.xlsx"
     And I click modal button "Save"
-    And I perform quick search for "Automation Manager1" in "flexTableRandomID" panel
-    Then I see values "Automation Manager1" and "New" inside table
+    And I perform quick search for "Automation Manager" in "flexTableRandomID" panel
+     Then I see that "Automation Manage" is in "New" status
+    #Then I see value "New" for title "Status" inside table "flexTableRandomID"
     Examples:
       | User  |
       | ADMIN |
@@ -369,7 +370,7 @@ Feature: Validate all scenarios in the home tab
     And I click on "Edit" icon for "Automation SME1" inside flex table with id "Reviewers"
     When I enter "Edition" values from "PotentialReviewersContact_Field_values.xlsx"
     And I click modal button "Save"
-    Then I see values "Automation SME1" and "New" inside table
+    Then I see value "New" for title "Status" inside table "Reviewers"
     Examples:
       | User  |
       | ADMIN |
@@ -466,9 +467,9 @@ Feature: Validate all scenarios in the home tab
     When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
     When I enter the following values into flex table with id "flexGridRelatedDUNS" by clicking "New" :
       | DUNS Number | Registered Entity Name  | Location |
-      | 123458790 | Test12                  | Herndon  |
+      | 138038990 | Test132                  | HernNdon  |
     And I click on top right button "Save" in flex table with id "flexGridRelatedDUNS"
-    Then I see values "123458790" and "DUNSNumber" inside table
+    Then I see values "138038990" and "DUNSNumber" inside table
     Examples:
       | User  |
       | ADMIN |
@@ -480,9 +481,10 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     And I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
     When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
-    When I click on "Edit" icon for "123458790" inside flex table with id "flexGridRelatedDUNS"
+     And I perform quick search for "128038790" in "flexGridRelatedDUNS" panel
+    When I click on "Edit" icon for "128038790" inside flex table with id "flexGridRelatedDUNS"
     And I click on top right button "Save" in flex table with id "flexGridRelatedDUNS"
-    Then I see values "123458790" and "DUNSNumber" inside table
+    Then I see values "128038790" and "DUNSNumber" inside table
     Examples:
       | User  |
       | ADMIN |
@@ -494,8 +496,9 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     And I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
     When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
-    When I click on "delete" icon for "123458790" inside flex table with id "flexGridRelatedDUNS"
-    Then I do not see values "123458790" and "DUNSNumber" inside table
+    And I perform quick search for "128038799" in "flexGridRelatedDUNS" panel
+    When I click on "delete" icon for "128038799" inside flex table with id "flexGridRelatedDUNS"
+    Then I do not see values "128038799" and "DUNSNumber" inside table
     Examples:
       | User  |
       | ADMIN |

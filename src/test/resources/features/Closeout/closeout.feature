@@ -191,7 +191,7 @@ Feature: Validate all scenarios in Closeout
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     Given I click on "Override" in the page details
-    When I click on "Submit for Approval" in the page details
+    And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
   @adhocCloseoutHappyPath @smoke @notFunctional

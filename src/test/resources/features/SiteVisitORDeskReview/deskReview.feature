@@ -12,7 +12,6 @@ Feature: Validate all scenarios in Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "GrantorDeskReviewAward"
     And I enter "Creation" values from "DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    And I pause execution for "7" seconds
     And I enter "Edition" values from "DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I get the "EGMS ID"
@@ -114,7 +113,6 @@ Feature: Validate all scenarios in Desk Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I pause execution for "4" seconds
     When I perform quick search for "Record Id" in "inlineEditGridDeskReviewGridView" panel
     And I click on "View" icon for "Record Id" inside table
     When I click on "Conduct" in the page details
@@ -159,7 +157,7 @@ Feature: Validate all scenarios in Desk Review
     When I click on "Back" in the page details
     And I click on top right button "Validate" in flex table with id "deskreview::reportsTableId"
     Then I see that "100.00%" has been added in flextable with Id "deskreview::reportsTableId"
-
+    
   @51019 @submittingForApprovalDeskReview
   Scenario: Submitting Desk Review for approval
     When I navigate to "Responsibilities" sub tab

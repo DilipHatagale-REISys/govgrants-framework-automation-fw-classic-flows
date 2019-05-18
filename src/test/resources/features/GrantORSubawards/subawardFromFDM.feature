@@ -46,7 +46,7 @@ Feature: Validate all scenarios in the Award from FDM
 
   @fdmRiskAssessmentApprovalAndActivation 
   Scenario: Risk Assessment approval in an award
-    When I click on "Edit" in the page details
+      When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Management" sub tab
@@ -81,30 +81,30 @@ Feature: Validate all scenarios in the Award from FDM
 
   @awardSendToRecipientBeforeApproval 
   Scenario Outline: Validate the assignment of Approvers for the award
-    Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
     Given I associate "2" records "FA--148,Automation SPI"
       | Actions     | Step 1   | Step 2    | Step 3                       | Step 4 | Step 5                     |
       | Associate 1 | Budget   | Associate | flexGridAwardFundingAccounts | Add    | SelectAwardFundingAccounts |
       | Associate 2 | Overview | Associate | flexGridSubawardContact      | Add    | AssociateSubawardContacts  |
     When I navigate to "Overview" sub tab
-    And I edit the following rows inline in flex table with id "subAwardStandAlone::associateContactTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "subAwardFromFDM::associateContactTableId" by clicking "Edit" :
       | Title          | Project Role             | Is Key Personnel |
       | Automation SPI | Project Director/Manager | Checked          |
     When I navigate to "Budget" sub tab
-    And I edit the following rows inline in flex table with id "subAwardStandAlone::focusAreaTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "subAwardFromFDM::focusAreaTableId" by clicking "Edit" :
       | Title                           | Start Date | End Date |
-      | Automation Permanent Focus Area | 0          | 3650     |
+      | Automation Permanent Focus Area | 0          | 360     |
     And I navigate to "Budget" sub tab
-    Given I edit the following rows inline in flex table with id "subAwardStandAlone::fundingAccountsTableId" by clicking "Edit" :
+    Given I edit the following rows inline in flex table with id "subAwardFromFDM::fundingAccountsTableId" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--148         | 5000        |
-    And I edit the following rows inline in flex table with id "subAwardStandAlone::subAwardBudgetTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "subAwardFromFDM::subAwardBudgetTableId" by clicking "Edit" :
       | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
       | Construction    | 5000           | 2000       | 3000           |
     Given I navigate to "Performance" sub tab
-    And I edit the following rows inline in flex table with id "subAwardStandAlone::kpiTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "subAwardFromFDM::kpiTableId" by clicking "Edit" :
       | EGMS ID                                 | Target |
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Management" sub tab
@@ -141,7 +141,7 @@ Feature: Validate all scenarios in the Award from FDM
     When I perform quick search for "<Grant Name>" in "ActiveGrants" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "subAwardStandAlone::subawardsTableId"
+    And I click on "View" icon for "<Award Name>" inside flex table with id "subAwardFromFDM::subawardsTableId"
     And I navigate to "Responsibilities" tab
     And I edit the following rows inline in flex table with id "GrantorAwardRolesAndResponsibilitiesFlexToggle" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
