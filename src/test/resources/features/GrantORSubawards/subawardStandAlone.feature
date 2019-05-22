@@ -1158,7 +1158,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 
   @51138 @awardHappyPathStandAlone @awardStandAlone
   Scenario Outline: Validate award Happy path stand alone
-    Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
+   Given I complete the fields from the sheet "Edition_StandAlone" in excel "Award_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
     Given I associate "2" records "FA--148,Automation SPI"
@@ -1218,12 +1218,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I edit the following rows inline in flex table with id "subAwardStandAlone::associateContactTableId" by clicking "Edit" :
       | Title          | Project Role             | Is Key Personnel |
       | Automation SPI | Project Director/Manager | Checked          |
-    And I navigate to "Responsibilities" tab
-    And I edit the following rows inline in flex table with id "flexGridGrantorAwardRolesAndResponsibilities" by clicking "Edit" :
-      | Responsibility     | Name           | Description                 |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "GrantorAwardRolesAndResponsibilitiesFlexToggle" by clicking "Edit" :
+      | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     Given User "SPI" receives the task for "Record Id"
@@ -1241,39 +1241,13 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "subAwardStandAlone::subawardsTableId"
-    And I get the "EGMS ID"
-    When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "flexGridEnhancedDivIdGrantorAwardReviewer" by clicking "New" :
-      | Reviewer Name | Role            | Description              | Due Date | Allow Record Editing |
-      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
-    And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "flexGridGrantorAwardReviewer" with wait for record
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside table
-    When I navigate to "Responsibilities" sub tab
-    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "subAwardStandAlone::peerReviewersTableId"
-    And I enter a review as "Passed"
-    When I click modal button "Save"
-    And I click modal button "Submit Review"
-    And I close Modal
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
-    And I click toggle button to select "Draft Grants"
-    When I perform quick search for "<Grant Name>" in "ActiveGrants" panel
-    And I click on "View" icon for "<Grant Name>" inside table
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "subAwardStandAlone::subawardsTableId"
-    Given I click on "Complete Review" in the page details
+    When I get the "EGMS ID"
     And I click on "Submit for Approval" in the page details
     Given "3" Approvers "PM,FO,EXE" approve the record "Record id"
       | Actions    | Step 1        | Step 2   | Step 3            |
       | Navigation | As a Grantor  | Grants   |                   |
       | FlexTable  | Pending Tasks | My Tasks | PhasePendingTasks |
       | Approval   | Start         | Approve  |                   |
-    And I get the "EGMS ID"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
@@ -1299,7 +1273,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "subAwardStandAlone::subawardsTableId"
     And I click on "Activate" in the page details
-    Then I see status in Progress-bar is "Activated" and is "green"
+    Then I see that "Subaward" is in "Activated" status
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |

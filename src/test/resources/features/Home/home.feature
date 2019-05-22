@@ -1,8 +1,9 @@
 @home @regression
 Feature: Validate all scenarios in the home tab
 
-  @35024 @internalOrganizationCreate @smoke
-  Scenario: Verifying if the Admin has create access to Internal Organization
+  @35024 @internalOrganizationCreate @smoke 
+ Scenario: Verifying if the Admin has create access to Internal Organization
+    Given I delete the record "Product Automation permanent Orgtn" from the object "ACCOUNT" 
     Given I login to "As Administrator" app as "Admin" user
     When I navigate to "Setup" tab
     And I navigate to "Internal Organizations" content inside "Manage Organizations" subheader on left panel
@@ -55,7 +56,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Department of Health" in "inlineEditGridInternalOrganizationHierarchy" panel
- Then I can see row level action button "View" against "Department of Health" in flex table with id "inlineEditGridInternalOrganizationHierarchy"  
+    Then I can see row level action button "View" against "Department of Health" in flex table with id "inlineEditGridInternalOrganizationHierarchy"  
     
   @subrecipientOrganizationView 
   Scenario Outline: Validate whether all users have view access to Subrecipient Organization
@@ -466,8 +467,8 @@ Feature: Validate all scenarios in the home tab
     And I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
     When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
     When I enter the following values into flex table with id "flexGridRelatedDUNS" by clicking "New" :
-      | DUNS Number | Registered Entity Name  | Location |
-      | 138038990 | Test132                  | HernNdon  |
+      | DUNS Number | Registered Entity Name    |Location |
+      | 138038990   | Test132                  | HernNdon  |
     And I click on top right button "Save" in flex table with id "flexGridRelatedDUNS"
     Then I see values "138038990" and "DUNSNumber" inside table
     Examples:

@@ -90,7 +90,7 @@ Scenario: Validate Grantor accept the submitted pre-application
 	And I close Modal 
 	When I click on "Submit to Grantor" in the page details 
 	Given "1" Approvers "EXE" approve the record "Record id" 
-      | Actions    | Step 1            | Step 2            | Step 3            |              |
+      | Actions    | Step 1            | Step 2            | Step 3            | Step 4       |
       | Navigation | As a Grantor      | Applications      |  Pre-Applications | Applications |
       | Left Panel | Pending Tasks     |  Application Tasks|                   |              |
       | FlexTable  | PhasePendingTasks | Start             |                   |              |
@@ -116,7 +116,7 @@ Scenario Outline: Validate Grantor accept the submitted pre-application and conv
 	And I close Modal 
 	When I click on "Submit to Grantor" in the page details 
 	Given "1" Approvers "EXE" approve the record "Record id" 
-      | Actions    | Step 1            | Step 2            | Step 3            |              |
+      | Actions    | Step 1            | Step 2            | Step 3            |  Step 4      |
       | Navigation | As a Grantor      | Applications      |  Pre-Applications | Applications |
       | Left Panel | Pending Tasks     |  Application Tasks|                   |              |
       | FlexTable  | PhasePendingTasks | Start             |                   |              |

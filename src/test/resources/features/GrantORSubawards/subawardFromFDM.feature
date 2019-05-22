@@ -8,11 +8,8 @@ Feature: Validate all scenarios in the Award from FDM
       | Navigation | As a Grantor    | Applications | Application Review                    | Funding Decision Memo (FDM)             |
       | FlexTable  | FDMList1        | View         | Approved Funding Decision Memos (FDM) | flexGridFundingDecisionMemoApplications |
       | Buttons    | Create Subaward |              |                                       |                                         |
-    Given I login and view the "Draft" award "Created" with name "Automation Application for FDM" as User "EXE"
-      | Actions    | Step 1       | Step 2                 | Step 3               | Step 4                        |
-      | Navigation | As a Grantor | Grants                 | Grants and Subawards | Grants, Subaward & Amendments |
-      | FlexTable  | Grants       | ActiveGrants           | View                 |                               |
-      | Subaward   | Subawards    | flexGridRelatedAwards1 | View                 |                               |
+    And I enter value "Automation Test Description" into field "fieldGrantAwardDescription__c"
+    When I click on "Save" in the page details                                        
     Given I get the "EGMS ID"
 
   @38213  @allCreation  @smoke
