@@ -1,18 +1,18 @@
 @home @regression
 Feature: Validate all scenarios in the home tab
 
-  @35024 @internalOrganizationCreate @smoke 
- Scenario: Verifying if the Admin has create access to Internal Organization
-    Given I delete the record "Product Automation permanent Orgtn" from the object "ACCOUNT" 
+  @35024 @internalOrganizationCreate @smoke
+  Scenario: Verifying if the Admin has create access to Internal Organization
+    Given I delete the record "Product Automation permanent Orgtn" from the object "ACCOUNT"
     Given I login to "As Administrator" app as "Admin" user
     When I navigate to "Setup" tab
     And I navigate to "Internal Organizations" content inside "Manage Organizations" subheader on left panel
     And I click on top right button "New" in flex table with id "Organizations"
-    When I enter "RequiredForSave" values from "InternalOrganization_Field_Values.xlsx"    
+    When I enter "RequiredForSave" values from "InternalOrganization_Field_Values.xlsx"
     And I click on "Save" in the page details
     Then I see that "State Organization" is in "Created" status
 
-  @35637 @internalOrganizationAdminEdit 
+  @35637 @internalOrganizationAdminEdit
   Scenario Outline: Verifying if the Admin has edit access to Internal Organization
     Given I login to "As Administrator" app as "Admin" user
     When I navigate to "Setup" tab
@@ -26,7 +26,7 @@ Feature: Validate all scenarios in the home tab
       | Organization name                     |
       | Internal Automation Organization Test |
 
-  @35024 @internalOrganizationView 
+  @35024 @internalOrganizationView
   Scenario Outline: Validate whether all users have view access to Internal Organization
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -39,7 +39,7 @@ Feature: Validate all scenarios in the home tab
 #      | EXE   |
 #      | PM    |
 
-  @internalOrganizationADMINEdit 
+  @internalOrganizationADMINEdit
   Scenario Outline: Validate system allows Edit access to Internal Organizations to the ADMIN/DA
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -56,9 +56,9 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Department of Health" in "inlineEditGridInternalOrganizationHierarchy" panel
-    Then I can see row level action button "View" against "Department of Health" in flex table with id "inlineEditGridInternalOrganizationHierarchy"  
-    
-  @subrecipientOrganizationView 
+    Then I can see row level action button "View" against "Department of Health" in flex table with id "inlineEditGridInternalOrganizationHierarchy"
+
+  @subrecipientOrganizationView
   Scenario Outline: Validate whether all users have view access to Subrecipient Organization
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -71,7 +71,7 @@ Feature: Validate all scenarios in the home tab
 #      | EXE   |
 #      | PM    |
 
-  @activeSubrecipientOrganizationsView 
+  @activeSubrecipientOrganizationsView
   Scenario Outline: Validate whether all users have view access to Active Individual Subrecipients
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -85,7 +85,7 @@ Feature: Validate all scenarios in the home tab
 #      | EXE   |
 #      | PM    |
 
-  @activeIndividualSubrecipientsEdit 
+  @activeIndividualSubrecipientsEdit
   Scenario Outline: Validate whether ADMIN/DA have Edit access to Active Individual Subrecipients
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -96,7 +96,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @activeSubrecipientOrganizationsEdit 
+  @activeSubrecipientOrganizationsEdit
   Scenario Outline: Validate whether ADMIN/DA have Edit access to Active Subrecipient Organizations
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -107,14 +107,14 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @internalContactsView 
+  @internalContactsView
   Scenario Outline: Validate whether all users have view access to Contacts
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
     When I perform quick search for "Automation Contact" in "flexTableRandomID" panel
     And I click on "View" icon for "Automation Contact" inside flex table with id "flexTableRandomID"
-     Then I see field "Organization" as "Test Automation Organization"
+    Then I see field "Organization" as "Test Automation Organization"
     Examples:
       | User  |
       | ADMIN |
@@ -138,12 +138,12 @@ Feature: Validate all scenarios in the home tab
 #      | EXE   |
 #      | PM    |
 
-  @internalContactsEdit 
+  @internalContactsEdit
   Scenario Outline: Validate system allows edit access to Contacts to all Internal Users
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
-     When I perform quick search for "Automation PO" in "flexTableRandomID" panel
+    When I perform quick search for "Automation PO" in "flexTableRandomID" panel
     Then I can see row level action button "Edit" against "Automation PO" in flex table with id "flexTableRandomID"
     Examples:
       | User  |
@@ -160,19 +160,19 @@ Feature: Validate all scenarios in the home tab
     And I enter "Creation" values from "SubrecipientContact_Field_Values.xlsx"
     When I click modal button "Save"
     When I click on "View" icon for "Automation Manager" inside flex table with id "flexTableRandomID"
-     Then I see field "Organization" as "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    Then I see field "Organization" as "SAN DIEGO ELECTRICAL TRAINING TRUST"
     Examples:
       | User  |
       | ADMIN |
 #      | EXE   |
 #      | PM    |
 
-   @smeReviewersContactView 
-   Scenario Outline: Verifying all Internal Users has View access to SME Reviewers Contact
+  @smeReviewersContactView
+  Scenario Outline: Verifying all Internal Users has View access to SME Reviewers Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
-     When I perform quick search for "Mark Bellinger" in "Reviewers" panel
+    When I perform quick search for "Mark Bellinger" in "Reviewers" panel
     Then I can see row level action button "View" against "Mark Bellinger" in flex table with id "Reviewers"
     Examples:
       | User  |
@@ -188,12 +188,12 @@ Feature: Validate all scenarios in the home tab
     When I click on top right button "New" in flex table with id "Reviewers"
     And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
     When I click modal button "Save"
-    Then I see values "Automation SME" and "New" inside table 
+    Then I see values "Automation SME" and "New" inside table
     Examples:
       | User  |
       | ADMIN |
 
-  @smeReviewersContactSendInviatation 
+  @smeReviewersContactSendInviatation
   Scenario Outline: Verify the system allows all Internal users to Send Invitation to SME Reviewer
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -205,7 +205,7 @@ Feature: Validate all scenarios in the home tab
 #      | EXE   |
 #      | PM    |
 
-  @activeSMEReviewersContactDetailPageView 
+  @activeSMEReviewersContactDetailPageView
   Scenario Outline: Verify that system allows user to see the detail page of Active SME Reviewer contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -217,7 +217,7 @@ Feature: Validate all scenarios in the home tab
 #      | EXE   |
 #      | PM    |
 
-  @termsandConditionsView 
+  @termsandConditionsView
   Scenario Outline: Verifying all Internal Users has View access to Terms and Conditions
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -230,7 +230,7 @@ Feature: Validate all scenarios in the home tab
 #      | EXE   |
 #      | PM    |
 
-  @termsAndConditionsCreate @smoke 
+  @termsAndConditionsCreate @smoke
   Scenario Outline: Verifying if the ADMIN/DA has create access to Terms and Conditions
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -245,7 +245,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @termsAndConditionsADMINedit 
+  @termsAndConditionsADMINedit
   Scenario Outline: Verifying if the ADMIN has Edit access to Terms and Conditions
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -256,7 +256,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @einRegistrationView 
+  @einRegistrationView
   Scenario Outline: Validate whether all users have view access to EIN Registration
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -267,7 +267,7 @@ Feature: Validate all scenarios in the home tab
 #      | EXE   |
 #      | PM    |
 
-  @dunsRegistrationView 
+  @dunsRegistrationView
   Scenario Outline: Validate whether all users have view access to DUNS Registration
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -278,7 +278,7 @@ Feature: Validate all scenarios in the home tab
 #      | EXE   |
 #      | PM    |
 
-  @samgovRegistrationView 
+  @samgovRegistrationView
   Scenario Outline: Validate whether all users have view access to SAM.gov Registration
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -289,7 +289,7 @@ Feature: Validate all scenarios in the home tab
 #      | EXE   |
 #      | PM    |
 
-  @contactUsView 
+  @contactUsView
   Scenario Outline: Validate whether all users have view access to Contact Us
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -314,7 +314,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @subrecipientOrganizationEdition @smoke 
+  @subrecipientOrganizationEdition @smoke
   Scenario Outline: Validate whether ADMIN and DA users can Edit the Subrecipient Organization
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -346,7 +346,7 @@ Feature: Validate all scenarios in the home tab
 #      | EXE   |
 #      | PM    |
 
-  @subrecipientContactsEdition 
+  @subrecipientContactsEdition
   Scenario Outline: Verifying if the Internal Users has Edit access to Subrecipient Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -356,7 +356,7 @@ Feature: Validate all scenarios in the home tab
     And I enter "Edition" values from "SubrecipientContact_Field_Values.xlsx"
     And I click modal button "Save"
     And I perform quick search for "Automation Manager" in "flexTableRandomID" panel
-     Then I see that "Automation Manage" is in "New" status
+    Then I see that "Automation Manage" is in "New" status
     #Then I see value "New" for title "Status" inside table "flexTableRandomID"
     Examples:
       | User  |
@@ -394,7 +394,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @additionalAddressesEdition  
+  @additionalAddressesEdition
   Scenario Outline: Validate whether ADMIN and DA users can Edit the Additional Addresses
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -421,13 +421,13 @@ Feature: Validate all scenarios in the home tab
     And I click on top right button "New" in flex table with id "RelatedContacts"
     And I enter "RelatedContactsCreation" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
-     When I perform quick search for "Automation Contact" in "RelatedContacts" panel
-     Then I see values "Automation Contact" and "Active" inside table
+    When I perform quick search for "Automation Contact" in "RelatedContacts" panel
+    Then I see values "Automation Contact" and "Active" inside table
     Examples:
       | User  |
       | ADMIN |
 
-  @relatedContactsEdition  
+  @relatedContactsEdition
   Scenario Outline: Validate whether ADMIN and DA users can Edit the Related Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -438,14 +438,14 @@ Feature: Validate all scenarios in the home tab
     And I click on "Edit" icon for "Automation Contact" inside flex table with id "RelatedContacts"
     When I enter "RelatedContactsEdition" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
-      When I close Modal
+    When I close Modal
     And I click on "Save" in the page details
     Then I see that "Internal Organization" is in "Active" status
     Examples:
       | User  |
       | ADMIN |
 
-  @deleteRelatedContacts  
+  @deleteRelatedContacts
   Scenario Outline: Validate whether ADMIN and DA users can Delete the Related Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -467,22 +467,22 @@ Feature: Validate all scenarios in the home tab
     And I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
     When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
     When I enter the following values into flex table with id "flexGridRelatedDUNS" by clicking "New" :
-      | DUNS Number | Registered Entity Name    |Location |
-      | 138038990   | Test132                  | HernNdon  |
+      | DUNS Number | Registered Entity Name | Location |
+      | 138038990   | Test132                | HernNdon |
     And I click on top right button "Save" in flex table with id "flexGridRelatedDUNS"
     Then I see values "138038990" and "DUNSNumber" inside table
     Examples:
       | User  |
       | ADMIN |
 
-  @dunsNumberEdition  
+  @dunsNumberEdition
   Scenario Outline: Validate whether ADMIN and DA users can Edit the DUNS NUmber
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     And I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
     When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
-     And I perform quick search for "128038790" in "flexGridRelatedDUNS" panel
+    And I perform quick search for "128038790" in "flexGridRelatedDUNS" panel
     When I click on "Edit" icon for "128038790" inside flex table with id "flexGridRelatedDUNS"
     And I click on top right button "Save" in flex table with id "flexGridRelatedDUNS"
     Then I see values "128038790" and "DUNSNumber" inside table
@@ -490,7 +490,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @deleteDUNSNumber  
+  @deleteDUNSNumber
   Scenario Outline: Validate whether ADMIN and DA users can delete the DUNS Number
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -504,7 +504,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @deleteIndirectCostRate  
+  @deleteIndirectCostRate
   Scenario Outline: Validate whether ADMIN and DA users can delete the Indirect Cost Rates
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
