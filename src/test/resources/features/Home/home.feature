@@ -510,7 +510,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     And I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
-    When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
+    When I click on "View" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
     And I perform quick search for "New IDC" in "inlineEditGridIndirectRateGrid" panel
     When I click on "Delete" icon for "New IDC" inside flex table with id "inlineEditGridIndirectRateGrid"
     Then I do not see values "New IDC" and "Title" inside table

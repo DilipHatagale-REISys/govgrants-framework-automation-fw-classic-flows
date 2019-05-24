@@ -82,7 +82,7 @@ Negative Scenario-Verify that FO is not able to create focus area
 		|User|
 		|FO  |
 		
-@52461 @userFOEditfocusArea @smoke @wip
+@52461 @userFOEditfocusArea @smoke 
 Scenario: Negative Case-Verfiy that FO user cannot Edit  the record 
 	Given I am on "INTERNAL" portal 
 	Given I login as "EXE" user 
@@ -100,7 +100,7 @@ Scenario: Negative Case-Verfiy that FO user cannot Edit  the record
 	When I perform quick search for "Automation Execution Focus Area" in "GrantorServiceAreas" panel 
 	Then I cannot see row level action button "Edit" against "Automation Execution Focus Area" in flex table with id "focusArea::focusAreaTableId" 
 	
-	@52620 @userFODeletefocusArea @smoke @wip
+	@52620 @userFODeletefocusArea @smoke 
     Scenario: Negative Case-Verfiy that FO user cannot Delete the record 
 	Given I am on "INTERNAL" portal 
 	Given I login as "EXE" user 

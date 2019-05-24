@@ -269,6 +269,7 @@ Scenario: Click on Amend of Amendment Request
 		| Navigation | Grants            | As a Grantor | INTERNAL |
 		| Left Panel | Pending Tasks     | My Tasks     |          |
 		| FlexTable  | PhasePendingTasks | Start        |          |
+	And I get the "EGMS ID" 
 	And I click on "Submit for Approval" in the page details 
 	When "3" Approvers "PM,FO,EXE" approve the record "Record Id" 
 		| Actions    | Step 1        | Step 2   | Step 3            |

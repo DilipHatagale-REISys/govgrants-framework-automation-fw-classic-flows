@@ -89,16 +89,16 @@ Scenario: Validate Grantor accept the submitted pre-application
 	When I choose the file "Announcement_Field_Values.xlsx" to upload for "Attachment" of type "Other" 
 	And I close Modal 
 	When I click on "Submit to Grantor" in the page details 
-	Given "1" Approvers "EXE" approve the record "Record id" 
-      | Actions    | Step 1            | Step 2            | Step 3            | Step 4       |
-      | Navigation | As a Grantor      | Applications      |  Pre-Applications | Applications |
-      | Left Panel | Pending Tasks     |  Application Tasks|                   |              |
-      | FlexTable  | PhasePendingTasks | Start             |                   |              |
+When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Pending Tasks" content inside "Application Tasks" subheader on left panel
+    When I perform quick search for "Record id" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "Record id" inside table
     When I click on "Accept" in the page details
     When I enter "Automation" for comments and click "OK"
 	Then I see status in Progress-bar is "Accepted" and is "green" 
 	
-@preApplicationtoApplication 
+@preApplicationtoApplication @wip
 Scenario Outline: Validate Grantor accept the submitted pre-application and converted it to application 
 	Given I click on "Edit" in the page details 
 	And I enter "Edition" values from "PreApplication_Field_Values.xlsx" 
@@ -115,11 +115,11 @@ Scenario Outline: Validate Grantor accept the submitted pre-application and conv
 	When I choose the file "Announcement_Field_Values.xlsx" to upload for "Attachment" of type "Other" 
 	And I close Modal 
 	When I click on "Submit to Grantor" in the page details 
-	Given "1" Approvers "EXE" approve the record "Record id" 
-      | Actions    | Step 1            | Step 2            | Step 3            |  Step 4      |
-      | Navigation | As a Grantor      | Applications      |  Pre-Applications | Applications |
-      | Left Panel | Pending Tasks     |  Application Tasks|                   |              |
-      | FlexTable  | PhasePendingTasks | Start             |                   |              |
+	When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Pending Tasks" content inside "Application Tasks" subheader on left panel
+    When I perform quick search for "Record id" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "Record id" inside table
     When I click on "Accept" in the page details
     When I enter "Automation" for comments and click "OK"
      Given I am on "SUBPORTAL" portal

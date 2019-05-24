@@ -158,7 +158,7 @@ Feature: Validate all scenarios in Closeout
 
   @50979 @submitCloseoutForApproval
   Scenario: Closeout is submitted for approval
-    Given I create a closeout from sheet "Creation" in excel "Closeout_Field_Values.xlsx"
+  Given I create a closeout from sheet "Creation" in excel "Closeout_Field_Values.xlsx"
       | Actions   | Step 1            | Step 2                         |
       | Sub tab   | Requests          |                                |
       | FlexTable | New               | flexGridGrantorCloseOutRequest |

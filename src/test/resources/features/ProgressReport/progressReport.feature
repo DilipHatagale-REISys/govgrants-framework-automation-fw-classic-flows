@@ -289,10 +289,9 @@ Feature: Validate all scenarios in Progress Report
 
   @51112 @progressReportHappyPath
   Scenario: To approve Progress Report
-    And I click on "Edit" in the page details
+    Given I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
-    And I navigate to "Performance" sub tab
     Given I edit the following rows inline in flex table with id "progressReport::kpiTableId" by clicking "Edit" :
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
@@ -427,7 +426,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Send to Owner" on the approval decision box
     When I navigate to "History" sub tab
-    Then I see value "Submitted to Grantor" for title "New Value" inside table "History"
+    Then I see value "Sent Back" for title "Status" inside table "History"
 
   @51116 @taskAssertionSendbacktOwnerOfProgressReportbyProgramApprover
   Scenario: To validate  task is not created for Grantor post Program Approver Sends back the progress report to Owner.
@@ -669,7 +668,7 @@ Feature: Validate all scenarios in Progress Report
       | Responsibility   | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
-    Given I click on "Submit for Approval" in the page details
+    And I click on "Submit for Approval" in the page details
     Given "1" Approvers "PM" approve the record "Record Id"
       | Actions    | Step 1        | Step 2     | Step 3            |
       | Navigation | As a Grantor  | Monitoring |                   |
@@ -757,17 +756,17 @@ Feature: Validate all scenarios in Progress Report
       | Navigation | Monitoring        | As a Grantor | QA     |
       | Left Panel | Pending Tasks     | My Tasks     |        |
       | FlexTable  | PhasePendingTasks | Start        |        |
-    When I navigate to "Responsibilities" sub tab
+   When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridProgressReportsRolesandResponsibilities" by clicking "Edit" :
       | Responsibility   | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     Given I click on "Submit for Approval" in the page details
-    When "1" Approvers "PM" approve the record "Record Id"
-      | Actions    | Step 1        | Step 2        | Step 3            |
-      | Navigation | As a Grantor  | Monitoring    |                   |
-      | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
-      | Approval   | Start         | Send to Owner |                   |
+    Given "1" Approvers "PM" approve the record "Record Id"
+      | Actions    | Step 1        | Step 2     | Step 3            |
+      | Navigation | As a Grantor  | Monitoring |                   |
+      | FlexTable  | Pending Tasks | My Tasks   | PhasePendingTasks |
+      | Approval   | Start         | Send to Owner    |                   |
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
