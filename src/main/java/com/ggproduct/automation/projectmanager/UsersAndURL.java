@@ -29,6 +29,8 @@ public class UsersAndURL implements UsersController {
         String userName = null;
         if ((EnvironmentFetcher.environmentName != null) && (EnvironmentFetcher.environmentName.contains("QA"))) {
             userName = getQAEnvironmentUser(userLevel);
+        } else {
+            userName = getAUTOEnvironmentUser(userLevel);
         }
         return userName;
     }
@@ -38,6 +40,8 @@ public class UsersAndURL implements UsersController {
         String password = null;
         if (EnvironmentFetcher.environmentName.contains("QA")) {
             password = getQAEnvironmentPassword(userLevel);
+        } else {
+            password = getAUTOEnvironmentPassword(userLevel);
         }
         return password;
     }
@@ -50,6 +54,21 @@ public class UsersAndURL implements UsersController {
                 break;
             case "ADMIN":
                 password = "Salesforce12";
+                break;
+            default:
+                password = "SALESFORCE2019";
+        }
+        return password;
+    }
+
+    private String getAUTOEnvironmentPassword(String userLevel) {
+        String password;
+        switch (userLevel.toUpperCase()) {
+            case "SARAH PO":
+                password = "test72018";
+                break;
+            case "ADMIN":
+                password = "GoProduct@123";
                 break;
             default:
                 password = "SALESFORCE2019";
@@ -81,4 +100,25 @@ public class UsersAndURL implements UsersController {
         }
     }
 
+    private String getAUTOEnvironmentUser(String userLevel) {
+        Map<String, String> username = new HashMap<>();
+        username.put("ADMIN", "manu.sa@ggp.test7.automation");
+        username.put("EXE", "test@gmaildemo.com.automation");
+        username.put("PM", "donald_pm@ggp.test7.automation");
+        username.put("FO", "auto.fm@auto.com.automation");
+        username.put("SPI", "automationspi@yopmail.com");
+        username.put("SPA", "automationspa@yopmail.com");
+
+        username.put("SIMON PM", "simon_pm@ggp.test7.automation");
+        username.put("ALEX FO", "alex_fo@ggp.test7.automation");
+        username.put("CATHY PM", "cathy_pm@ggp.test7.automation");
+        username.put("OSCAR PM", "oscar_pm@ggp.test7.automation");
+        username.put("Bill PM", "bill_pm@ggp.test7.automation");
+
+        if (userLevel.toUpperCase() != null) {
+            return username.get(userLevel.toUpperCase());
+        } else {
+            return username.get("ADMIN");
+        }
+    }
 }

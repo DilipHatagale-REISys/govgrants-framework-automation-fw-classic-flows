@@ -88,7 +88,6 @@ public class ProjectManager extends ProjectWebServices {
         try {
             return reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='" + tableId + "']//p[contains(text(),'No records found')]")).isDisplayed();
         } catch (Exception e) {
-
         }
         return false;
     }

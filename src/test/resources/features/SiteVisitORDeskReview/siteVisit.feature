@@ -407,7 +407,7 @@ Feature: Validate all scenarios in the Site Visit
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
 
   @51095 @siteVisitAcceptAndClose @smoke
-  Scenario Outline:  Site Visit Accept and Close
+  Scenario Outline: Site Visit Accept and Close
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "siteVisits::approverSiteVisitTableId" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -480,6 +480,3 @@ Feature: Validate all scenarios in the Site Visit
     Examples:
       | Site Visit Name       |
       | Automation Site Visit |
-
-	
-	

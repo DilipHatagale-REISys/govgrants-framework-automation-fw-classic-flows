@@ -20,10 +20,10 @@ Feature: Validate all scenarios in Desk Review
   Scenario: Creation of Desk Review
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @51011 @deskReviewEdition @notFunctional
+  @51011 @deskReviewEdition
   Scenario: Edition of Desk Review
     When I click on "Edit" in the page details
-    And I enter "Edition" values from "DeskReview_Field_Values.xlsx"
+    And I enter value "Automation Description" into field "fieldDescription__c"
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
@@ -157,7 +157,7 @@ Feature: Validate all scenarios in Desk Review
     When I click on "Back" in the page details
     And I click on top right button "Validate" in flex table with id "deskreview::reportsTableId"
     Then I see that "100.00%" has been added in flextable with Id "deskreview::reportsTableId"
-    
+
   @51019 @submittingForApprovalDeskReview
   Scenario: Submitting Desk Review for approval
     When I navigate to "Responsibilities" sub tab
@@ -488,6 +488,3 @@ Feature: Validate all scenarios in Desk Review
     And I click on "View" icon for "Record Id" inside table
     And I click on "Accept And Close" in the page details
     Then I see status in Progress-bar is "Closed" and is "green"
-
-
-

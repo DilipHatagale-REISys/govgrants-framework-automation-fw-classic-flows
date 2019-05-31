@@ -16,7 +16,7 @@
 		<tags>~@ignore</tags>
 		<!-- Versions -->
 		<java.version>1.8</java.version>
-		<rei.version>0.0.3</rei.version>
+		<rei.version>0.0.4</rei.version>
 		<selenium.version>3.10.0</selenium.version>
 		<selenium-server.version>3.10.0</selenium-server.version>
 		<appium.version>5.0.4</appium.version>
@@ -183,15 +183,15 @@
 			<version>0.0.2</version>
 		</dependency>
 		<dependency>
-			<groupId>com.automation</groupId>
-			<artifactId>REI-AutomationFramework</artifactId>
+			<groupId>rei.saas</groupId>
+			<artifactId>saasbusinesslayer.automation</artifactId>
 			<version>${rei.version}</version>
 		</dependency>
 	</dependencies>
 	<repositories>
 		<repository>
-			<id>REI-Automation-Framework</id>
-			<url>http://nexus.reisys.com:8081/nexus/content/repositories/REI-Automation-Framework</url>
+			<id>saasbusinesslayer.automation</id>
+			<url>http://nexus.reisys.com:8081/nexus/content/repositories/saasbusinesslayer.automation</url>
 		</repository>
 		<repository>
 			<id>eyethink.automation.bots</id>
