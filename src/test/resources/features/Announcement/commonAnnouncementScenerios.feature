@@ -3,13 +3,15 @@ Feature: Validate all common scenarios in the  Announcement tab
 
   Background: Create Announcement
     Given I delete the record "Automation Formula Announcement" from the object "Announcement"
-    Given I create a "Formula" Announcement as user "EXE" from sheet "FormulaAnnouncement" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Formula" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Announcements"
+    And I click on top right button "New" in flex table with id "ActiveFundingOpportunitiesFormula"
+    And I enter "FormulaAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Continue"
+    When I enter "Creation Second Modal" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I get the "EGMS ID"
 
@@ -60,8 +62,8 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I click on "Edit" icon for "Record id" inside flex table with id "ActiveFundingOpportunitiesAll"
     Then I can see top right button "Save" in page detail
 
-   @34222 @announcementEditionFA
-   Scenario: Edition of an Announcement
+  @34222 @announcementEditionFA
+  Scenario: Edition of an Announcement
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -91,13 +93,14 @@ Feature: Validate all common scenarios in the  Announcement tab
 
   @52402@announcementFormulaInviteApplicantFA @smoke
   Scenario: Amount addition to Invited applicant association to an Announcement
-    Given I associate "1" records "SAN DIEGO ELECTRICAL TRAINING TRUST"
-      | Actions     | Step 1   | Step 2            | Step 3                                       | Step 4 | Step 5                                          |
-      | Associate 1 | Overview | Add Organizations | announcement::formulaInvitedApplicatsTableId | Add    | announcement::directedAddInviteApplicantTableId |
-    When I edit the following rows inline in flex table with id "announcement::formulaInvitedApplicatsTableId" by clicking "Edit" :
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
+    When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
+    And I close Modal
+    When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Agency                              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
-    Then I see that "SAN DIEGO ELECTRICAL TRAINING TRUST" has been added in flextable with Id "announcement::formulaInvitedApplicatsTableId"
+    Then I see that "SAN DIEGO ELECTRICAL TRAINING TRUST" has been added in flextable with Id "---announcement:-:formulaInvitedApplicatsTableId---"
 
   @52403 @announcementFundingAccountAssociationFA
   Scenario Outline: Funding Account association to an Announcement
@@ -107,23 +110,23 @@ Feature: Validate all common scenarios in the  Announcement tab
     And I close Modal
     When I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154         | 100             |
+      | FA--01          | 100             |
     Then I see that "<EGMS Id>" has been added in flextable with Id "flexGridAnnouncementFundingAccountGrantor"
     Examples:
-      | Announcement Type | EGMS Id |
-      | Formula           | FA--154 |
+      | EGMS Id |
+      | FA--01  |
 
   @52404 @announcementFADissociationFA
   Scenario Outline: Funding Account dissociation to an Announcement
     When I navigate to "Financials" sub tab
-    And I click on top right button "Associate" in flex table with id "announcement::fundingAccountsTableId"
+    And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Add" after selection of "<EGMS Id>" in the table "SelectAnnFundingAccounts"
     And I close Modal
-    When I click on "Remove" icon for "<EGMS Id>" inside flex table with id "announcement::fundingAccountsTableId"
-    Then I do not see value "<EGMS Id>" for title "EGMS ID" inside table "announcement::fundingAccountsTableId"
+    When I click on "Remove" icon for "<EGMS Id>" inside flex table with id "---announcement:-:fundingAccountsTableId---"
+    Then I do not see value "<EGMS Id>" for title "EGMS ID" inside table "---announcement:-:fundingAccountsTableId---"
     Examples:
       | EGMS Id |
-      | FA--154 |
+      | FA--01  |
 
   @52405 @announcementBudgetPeriodAdditionFA
   Scenario: Budget Period Addition to an Announcement
@@ -146,26 +149,26 @@ Feature: Validate all common scenarios in the  Announcement tab
   Scenario: Validate the association of Focus Area to Announcement
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementServiceArea1"
-    When I click "Add" after selection of "Automation Execution Focus Area" in the table "SelectAnnouncementServiceArea1"
+    When I click "Add" after selection of "Automation Permanent Focus Area2" in the table "SelectAnnouncementServiceArea1"
     And I close Modal
-    Then I see that "Automation Execution Focus Area" has been added in flextable with Id "AnnouncementServiceArea1"
+    Then I see that "Automation Permanent Focus Area2" has been added in flextable with Id "AnnouncementServiceArea1"
 
   @34775 @announcementObjectiveAssociationFA
   Scenario: Validate the association of objective to the Announcement
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
-    When I click "Add" after selection of "Automation Announcement Objective" in the table "SelectAnnGoals"
+    When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
     And I close Modal
-    Then I see that "Automation Announcement Objective" has been added in flextable with Id "AnnouncementGranteeStrategicGoalsObjectives"
+    Then I see that "Automation Permanent Objective2" has been added in flextable with Id "AnnouncementGranteeStrategicGoalsObjectives"
 
   @52409 @announcementObjectiveDissociationFA
   Scenario: Validate the dissociation of objective to the Announcement
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
-    When I click "Add" after selection of "Automation Announcement Objective" in the table "SelectAnnGoals"
+    When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
     And I close Modal
-    When I click on "Remove" icon for "Automation Announcement Objective" inside flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
-    Then I do not see value "Automation Announcement Objective" for title "EGMS ID" inside table "AnnouncementGranteeStrategicGoalsObjectives"
+    When I click on "Remove" icon for "Automation Permanent Objective2" inside flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
+    Then I do not see value "Automation Permanent Objective2" for title "EGMS ID" inside table "AnnouncementGranteeStrategicGoalsObjectives"
 
   @32410 @announcementAttachmentChecklistFA
   Scenario: Validate the attachment checklist of the announcement
@@ -191,10 +194,9 @@ Feature: Validate all common scenarios in the  Announcement tab
   @34232 @announcementReviewerAssignmentFA
   Scenario: Validate the assignment of Reviewer for the Announcement
     Given I navigate to "Responsibilities" sub tab
-    And I click on top right button "New" in flex table with id "flexGridApproverRoles"
-    When I enter "Reviewer" values from "Announcement_Field_Values.xlsx"
-    And I click modal button "Save"
-    When I close Modal
+    When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
+      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Review Financial details | 20       | No                   |
     Then I see that "Automation FO" has been added in flextable with Id "flexGridApproverRoles"
 
   @52412 @announcementReviewerInitiationFA
@@ -244,13 +246,13 @@ Feature: Validate all common scenarios in the  Announcement tab
   @35003 @announcementAddAttachmentFA @wip
   Scenario: Validate the attachment for an Announcement
     Given I navigate to "Attachments" sub tab
-    And I click on top right button "Add" in flex table with id "a150b000003epC4AAI"
+    And I click on top right button "Add" in flex table with id "a1511000002nJ5oAAE"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
     And I close Modal
-    Then I see that "Funding Opportunity Announcement" has been added in flextable with Id "a150b000003epC4AAI"
+    Then I see that "Funding Opportunity Announcement" has been added in flextable with Id "a1511000002nJ5oAAE"
 
   @52414 @reviewStepsBeforeSubmitForApprovalFA
-  Scenario Outline: Validate the Review steps of Announcement before submit for Approval
+  Scenario: Validate the Review steps of Announcement before submit for Approval
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
     When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -357,6 +359,3 @@ Feature: Validate all common scenarios in the  Announcement tab
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     Then I see the following messages in the page details :
       | There are no errors with the review step templates. |
-    Examples:
-      | Announcement Type | User | Active Funding Opportunities id   |
-      | Formula           | EXE  | ActiveFundingOpportunitiesFormula |

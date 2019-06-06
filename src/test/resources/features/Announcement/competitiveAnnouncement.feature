@@ -3,13 +3,15 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 
   Background: Create Announcement
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
-    Given I create a "Competitive" Announcement as user "EXE" from sheet "CompetitiveAnnouncement" in excel "Announcement_Field_Values.xlsx"
-      | Actions     | Step 1                              | Step 2                     | Step 3                            |
-      | Navigation  | As a Grantor                        | Announcements              | Creation Second Modal             |
-      | FlexTable   | Announcements                       | Draft Announcements        |                                   |
-      | FlexTableId | ActiveFundingOpportunitiesCompitive | ActiveFundingOpportunities | ActiveFundingOpportunitiesFormula |
-      | Creation    | New                                 | Continue                   | Save and Continue                 |
-      | ID          | EGMS ID                             |                            |                                   |
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Announcements"
+    And I click on top right button "New" in flex table with id "ActiveFundingOpportunitiesCompitive"
+    And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Continue"
+    When I enter "Creation Second Modal" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
@@ -18,19 +20,23 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--154"
+    And I associate "1" records "FA--01"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154         | 100             |
+      | FA--01         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
-    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
+    When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
+    And I close Modal
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
+    When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
+    And I close Modal
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
@@ -186,22 +192,26 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 
   @announcementForPastApplicationDueDateCA
   Scenario Outline:    Validate that user can not enter application due date as past date
-   Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--154"
+    And I associate "1" records "FA--01"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154         | 100             |
+      | FA--01         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
-    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
+    When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
+    And I close Modal
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
+    When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
+    And I close Modal
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
@@ -356,22 +366,26 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 
   @announcementWithBlankBudgetPeriodCA
   Scenario Outline:    Validate that user should not submit announcement with blank budget period dates
-     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--154"
+    And I associate "1" records "FA--01"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154         | 100             |
+      | FA--01         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
-    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
+    When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
+    And I close Modal
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
+    When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
+    And I close Modal
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
@@ -520,22 +534,26 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 
   @announcementApprovalCA
   Scenario Outline: Validate the approval of an Announcement
-   Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--154"
+    And I associate "1" records "FA--01"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154         | 100             |
+      | FA--01         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
-    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
+    When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
+    And I close Modal
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
+    When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
+    And I close Modal
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
@@ -695,19 +713,23 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--154"
+    And I associate "1" records "FA--01"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154         | 100             |
+      | FA--01         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
-    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
+    When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
+    And I close Modal
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
+    When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
+    And I close Modal
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
@@ -870,19 +892,23 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--154"
+    And I associate "1" records "FA--01"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154         | 100             |
+      | FA--01         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
-    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
+    When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
+    And I close Modal
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
+    When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
+    And I close Modal
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
@@ -1042,22 +1068,26 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 
   @announcementSendBackToOwnerCA @smoke
   Scenario Outline: Validate the send back functionality of an Announcement
-   Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--154"
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Announcement_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I associate "1" records "FA--01"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154         | 100             |
+      | FA--01          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
-    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
+    When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
+    And I close Modal
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
+    When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
+    And I close Modal
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
@@ -1083,10 +1113,14 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click modal button "Save"
     And I click modal button "Submit Review"
     And I close Modal
-    Given I login and view the record "Record id" as "EXE"
-      | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
-      | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
-      | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    Given I am on "INTERNAL" portal
+    When I login as "EXE" user
+    And I navigate to "Announcements" tab
+    And I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Announcements"
+    When I perform quick search for "Record Id" in "<Active Funding Opportunities id>" panel
+    When I click on "View" icon for "Record Id" inside flex table with id "<Active Funding Opportunities id>"
     Given I click on "Complete Review" in the page details
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
@@ -1217,19 +1251,23 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--154"
+    And I associate "1" records "FA--01"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154         | 100             |
+      | FA--01         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
-    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
+    When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
+    And I close Modal
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
+    When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
+    And I close Modal
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
@@ -1393,19 +1431,23 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--154"
+    And I associate "1" records "FA--01"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154         | 100             |
+      | FA--01         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
-    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
+    When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
+    And I close Modal
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
+    When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
+    And I close Modal
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
@@ -1563,22 +1605,26 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 
   @announcementRejectPendingTaskForNextApproverCA
   Scenario Outline: Validate that after rejection from 1st approver, 2nd user should not get pending task
-    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--154"
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Announcement_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I associate "1" records "FA--01"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154         | 100             |
+      | FA--01          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
-    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
+    When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
+    And I close Modal
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
+    When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
+    And I close Modal
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
@@ -1604,10 +1650,14 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click modal button "Save"
     And I click modal button "Submit Review"
     And I close Modal
-    Given I login and view the record "Record id" as "EXE"
-      | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
-      | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
-      | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    Given I am on "INTERNAL" portal
+    When I login as "EXE" user
+    And I navigate to "Announcements" tab
+    And I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Announcements"
+    When I perform quick search for "Record Id" in "<Active Funding Opportunities id>" panel
+    When I click on "View" icon for "Record Id" inside flex table with id "<Active Funding Opportunities id>"
     Given I click on "Complete Review" in the page details
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
@@ -1723,11 +1773,12 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
-    Given "1" Approvers "PM" approve the record "Record Id"
-      | Actions    | Step 1        | Step 2        | Step 3            |
-      | Navigation | As a Grantor  | Announcements |                   |
-      | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
-      | Approval   | Start         | Disapprove    | Continue          |
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I "Disapprove" in approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1739,22 +1790,26 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 
   @announcementPostRejectPendingTaskForUserCA
   Scenario Outline: Validate that after rejection of an Announcement task get deleted from pending task table.
-    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--154"
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Announcement_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I associate "1" records "FA--01"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154         | 100             |
+      | FA--01          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
-    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
+    When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
+    And I close Modal
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
+    When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
+    And I close Modal
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
@@ -1914,22 +1969,26 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 
   @announcementPostRejectCompletedTaskForUserCA
   Scenario Outline: Validate that after rejection of an Announcement task get added to it's completed task table.
-    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--154"
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Announcement_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I associate "1" records "FA--01"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154         | 100             |
+      | FA--01         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
-    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
+    When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
+    And I close Modal
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
+    When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
+    And I close Modal
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
@@ -1955,10 +2014,12 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click modal button "Save"
     And I click modal button "Submit Review"
     And I close Modal
-    Given I login and view the record "Record id" as "EXE"
-      | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
-      | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
-      | Complete Review  | Draft Announcements | <Active Funding Opportunities id> | View                |               |
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    And I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    When I click toggle button to select "Draft Announcements"
+    And I perform quick search for "Record id" in "<Active Funding Opportunities id>" panel
+    And I click on "View" icon for "Record id" inside table
     Given I click on "Complete Review" in the page details
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
@@ -2090,22 +2151,26 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 
   @announcementPostRejectionCheckInListViewCA
   Scenario Outline: Validate the rejected announcement will reflect under "Rejected Announcements" list view
-   Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--154"
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Announcement_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I associate "1" records "FA--01"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154         | 100             |
+      | FA--01         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
-    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
+    When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
+    And I close Modal
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
+    When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
+    And I close Modal
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
@@ -2250,11 +2315,12 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
-    Given "1" Approvers "PM" approve the record "Record id"
-      | Actions    | Step 1        | Step 2        | Step 3            |
-      | Navigation | As a Grantor  | Announcements |                   |
-      | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
-      | Approval   | Start         | Disapprove    | Continue          |
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I "Disapprove" in approval decision
     And I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -2267,22 +2333,26 @@ Feature: Validate all scenarios in the Competitive Announcement tab
 
   @34462 @publishingCompetitiveAnnouncementCA @announcementCompetitiveHappyPath @smoke
   Scenario Outline: Validate the activation of Announcement
-   Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
+    Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I associate "1" records "FA--154"
+    And I associate "1" records "FA--01"
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--154         | 100             |
+      | FA--01          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
-    Given I associate "2" records "Automation EXE,Automation Permanent Objective"
-      | Actions     | Step 1   | Step 2    | Step 3                                      | Step 4 | Step 5                        |
-      | Associate 1 | Overview | Associate | AnnouncementContacts                        | Add    | AssociateAnnouncementContacts |
-      | Associate 2 | Setup    | Associate | AnnouncementGranteeStrategicGoalsObjectives | Add    | SelectAnnGoals                |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
+    When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
+    And I close Modal
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
+    When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
+    And I close Modal
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
@@ -2427,11 +2497,24 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
-    Given "3" Approvers "PM,FO,EXE" approve the record "Record id"
-      | Actions    | Step 1        | Step 2        | Step 3            |
-      | Navigation | As a Grantor  | Announcements |                   |
-      | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
-      | Approval   | Start         | Approve       |                   |
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I "Approve" in approval decision
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I "Approve" in approval decision
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I "Approve" in approval decision
     And I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Competitive" content inside "Announcements" subheader on left panel
