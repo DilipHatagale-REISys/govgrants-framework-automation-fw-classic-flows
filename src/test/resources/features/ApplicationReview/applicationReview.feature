@@ -4,36 +4,36 @@ Feature: Validate all scenarios in the Application Review
   Background: Submit the application for Review
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
     And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
-    Given I am on "SUBPORTAL" portal
-    And I qualify the announcement "Automation Announcement for Application Review" as user "SPI"
-      | Actions    | Step 1         | Step 2        | Step 3  | Step 4        |
-      | Navigation | Grants Portal  | Opportunities | Active  | Opportunities |
-      | FlexTable  | popupflextable | View          | Qualify |               |
+    When I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Active" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Automation Announcement for Application Review" in "---application_Review:-:reviews_tableId---" panel
+    When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---application_Review:-:reviews_tableId---"
+    When I click on "Qualify" in the page details
     When I click on "Create Application" in the page details
     When I enter value "Automation Application" into field "Title__c"
     And I click modal button "Save and Continue"
+    When I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
-    Given I complete the fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
     And I navigate to "Budget" sub tab
-    Given I expand nested table containing column value "BP01"
-    And I edit the following rows inline in flex table with id "EnhanceAppBudCateGrantorFlexTableFlexToggle" by clicking "Edit" :
+    When I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---application_Review:-:budget_tableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match |
       | Construction  | 1000   | 100        | 100            |
     When I navigate to "Proposal" sub tab
-    When I edit the following rows inline in flex table with id "applicationIntake::kpiTableId" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---application_Review:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Attachments" sub tab
-    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "applicationIntake::allFormsTableId"
-    Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---application_Review:-:allForms_TableId---"
+    When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
-    Given I click on "Back" in the page details
-    And I click on "Edit" icon for "Program Application Form" inside flex table with id "applicationIntake::allFormsTableId"
-    Given I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
+    When I click on "Back" in the page details
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---application_Review:-:allForms_TableId---"
+    When I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
-    Given I click on "Back" in the page details
+    When I click on "Back" in the page details
     And I get the "EGMS ID"
     When I click on "Submit Application" in the page details
 
@@ -42,150 +42,152 @@ Feature: Validate all scenarios in the Application Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList" with wait for record
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---" with wait for record
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name  | Due in Days |
       | Pre-Screen | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps" with wait for record
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "6" seconds
     And I click on "Next Review Step" in the page details
     When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
       | Fiscal Review     | 5           |
       | Compliance Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer       |
       | Automation EXE |
       | Automation FO  |
       | Automation PM  |
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Program Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation PM" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation PM" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation FO" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation FO" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Compliance Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation EXE" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation EXE" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
-    And I check "All" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "SME Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "7" seconds
     And I click on "Next Review Step" in the page details
     When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Management Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     And I pause execution for "4" seconds
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to FDM" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "Management Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to FDM" in flex table with id "---application_Review:-:app_TableId---"
     When I pause execution for "5" seconds
     When I click on "Funding Decision Memo" in the page details
     Then I can see top right button "Submit for Approval" in page detail
@@ -198,51 +200,51 @@ Feature: Validate all scenarios in the Application Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList" with wait for record
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---" with wait for record
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name  | Due in Days |
       | Pre-Screen | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps" with wait for record
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
     And I click on "Next Review Step" in the page details
     When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
       | Fiscal Review     | 10          |
       | Compliance Review | 15          |
-    Then I see that "10" has been added in flextable with Id "flexGridApplicationReviewTree"
+    Then I see that "10" has been added in flextable with Id "---application_Review:-:form_tableId---"
     Examples:
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
@@ -252,56 +254,56 @@ Feature: Validate all scenarios in the Application Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList" with wait for record
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---" with wait for record
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name  | Due in Days |
       | Pre-Screen | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps" with wait for record
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
     And I click on "Next Review Step" in the page details
     When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
       | Fiscal Review     | 5           |
       | Compliance Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer       |
       | Automation EXE |
       | Automation FO  |
       | Automation PM  |
-    Then I see that "Automation PM" has been added in flextable with Id "flexGridReviewStepUsers"
+    Then I see that "Automation PM" has been added in flextable with Id "---application_Review:-:reviewers_tableId---"
     Examples:
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
@@ -311,80 +313,81 @@ Feature: Validate all scenarios in the Application Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList" with wait for record
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---" with wait for record
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name  | Due in Days |
       | Pre-Screen | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps" with wait for record
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I pause execution for "8" seconds
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
       | Fiscal Review     | 5           |
       | Compliance Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer       |
       | Automation EXE |
       | Automation FO  |
       | Automation PM  |
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Program Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation PM" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation PM" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation FO" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation FO" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Compliance Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation EXE" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation EXE" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
-    Then I see that "Assigned" has been added in flextable with Id "flexGridStepReviews"
+    Then I see that "Assigned" has been added in flextable with Id "---application_Review:-:appreviews_TableId---"
     Examples:
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
@@ -394,83 +397,84 @@ Feature: Validate all scenarios in the Application Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList" with wait for record
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---" with wait for record
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name  | Due in Days |
       | Pre-Screen | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps" with wait for record
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I pause execution for "8" seconds
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
       | Fiscal Review     | 5           |
       | Compliance Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer       |
       | Automation EXE |
       | Automation FO  |
       | Automation PM  |
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Program Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation PM" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation PM" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation FO" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation FO" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Compliance Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation EXE" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation EXE" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
-    And I check "All" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I refresh the page
-    Then I see that "Sent for Review" has been added in flextable with Id "flexGridStepReviews"
+    Then I see that "Sent for Review" has been added in flextable with Id "---application_Review:-:appreviews_TableId---"
     Examples:
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
@@ -480,114 +484,115 @@ Feature: Validate all scenarios in the Application Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList" with wait for record
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---" with wait for record
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name  | Due in Days |
       | Pre-Screen | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps" with wait for record
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I pause execution for "8" seconds
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
       | Fiscal Review     | 5           |
       | Compliance Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer       |
       | Automation EXE |
       | Automation FO  |
       | Automation PM  |
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Program Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation PM" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation PM" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation FO" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation FO" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Compliance Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation EXE" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation EXE" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
-    And I check "All" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "SME Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    Then I see that "Review Completed" has been added in flextable with Id "flexGridStepReviews"
+    When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    Then I see that "Review Completed" has been added in flextable with Id "---application_Review:-:appreviews_TableId---"
     Examples:
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
@@ -597,116 +602,118 @@ Feature: Validate all scenarios in the Application Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList" with wait for record
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---" with wait for record
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name  | Due in Days |
       | Pre-Screen | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps" with wait for record
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I pause execution for "8" seconds
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
       | Fiscal Review     | 5           |
       | Compliance Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer       |
       | Automation EXE |
       | Automation FO  |
       | Automation PM  |
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Program Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation PM" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation PM" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation FO" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation FO" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Compliance Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation EXE" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation EXE" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
-    And I check "All" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "SME Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    Then I see that "Promoted to Management Review Step" has been added in flextable with Id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
+    Then I see that "Promoted to Management Review Step" has been added in flextable with Id "---application_Review:-:app_TableId---"
     Examples:
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
@@ -716,121 +723,123 @@ Feature: Validate all scenarios in the Application Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList" with wait for record
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---" with wait for record
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name  | Due in Days |
       | Pre-Screen | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps" with wait for record
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I pause execution for "8" seconds
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
       | Fiscal Review     | 5           |
       | Compliance Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer       |
       | Automation EXE |
       | Automation FO  |
       | Automation PM  |
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Program Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation PM" in "flexGridAssignPanelApplications" panel
-    And I pause execution for "4" seconds
-    And I check "Automation PM" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
+    And I pause execution for "6" seconds
+    And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation FO" in "flexGridAssignPanelApplications" panel
-    And I pause execution for "4" seconds
-    And I check "Automation FO" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
+    And I pause execution for "6" seconds
+    And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Compliance Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation EXE" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation EXE" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
-    And I check "All" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "SME Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I pause execution for "8" seconds
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Management Review | 5           |
-    Then I see that "5" has been added in flextable with Id "flexGridApplicationReviewTree"
+    Then I see that "5" has been added in flextable with Id "---application_Review:-:form_tableId---"
     Examples:
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
@@ -840,124 +849,126 @@ Feature: Validate all scenarios in the Application Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList" with wait for record
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---" with wait for record
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name  | Due in Days |
       | Pre-Screen | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps" with wait for record
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I pause execution for "8" seconds
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
       | Fiscal Review     | 5           |
       | Compliance Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer       |
       | Automation EXE |
       | Automation FO  |
       | Automation PM  |
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Program Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation PM" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation PM" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation FO" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation FO" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Compliance Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation EXE" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation EXE" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
-    And I check "All" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "SME Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I pause execution for "8" seconds
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Management Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    Then I see that "Automation FO" has been added in flextable with Id "flexGridReviewStepUsers"
+    Then I see that "Automation FO" has been added in flextable with Id "---application_Review:-:reviewers_tableId---"
     Examples:
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
@@ -967,130 +978,132 @@ Feature: Validate all scenarios in the Application Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList" with wait for record
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---" with wait for record
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name  | Due in Days |
       | Pre-Screen | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps" with wait for record
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I pause execution for "8" seconds
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
       | Fiscal Review     | 5           |
       | Compliance Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer       |
       | Automation EXE |
       | Automation FO  |
       | Automation PM  |
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Program Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation PM" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation PM" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation FO" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation FO" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Compliance Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation EXE" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation EXE" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
-    And I check "All" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "SME Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I pause execution for "8" seconds
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Management Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    Then I see that "Assigned" has been added in flextable with Id "flexGridStepReviews"
+    Then I see that "Assigned" has been added in flextable with Id "---application_Review:-:appreviews_TableId---"
     Examples:
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
@@ -1100,133 +1113,135 @@ Feature: Validate all scenarios in the Application Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList" with wait for record
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---" with wait for record
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name  | Due in Days |
       | Pre-Screen | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps" with wait for record
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I pause execution for "8" seconds
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
       | Fiscal Review     | 5           |
       | Compliance Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer       |
       | Automation EXE |
       | Automation FO  |
       | Automation PM  |
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Program Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation PM" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation PM" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation FO" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation FO" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Compliance Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation EXE" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation EXE" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
-    And I check "All" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "SME Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I pause execution for "8" seconds
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Management Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
-    And I pause execution for "4" seconds
-    Then I see that "Sent for Review" has been added in flextable with Id "flexGridStepReviews"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I pause execution for "8" seconds
+    Then I see that "Sent for Review" has been added in flextable with Id "---application_Review:-:appreviews_TableId---"
     Examples:
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
@@ -1236,149 +1251,151 @@ Feature: Validate all scenarios in the Application Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList" with wait for record
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---" with wait for record
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name  | Due in Days |
       | Pre-Screen | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps" with wait for record
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I pause execution for "8" seconds
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
       | Fiscal Review     | 5           |
       | Compliance Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer       |
       | Automation EXE |
       | Automation FO  |
       | Automation PM  |
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Program Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation PM" in "flexGridAssignPanelApplications" panel
-    And I pause execution for "4" seconds
-    And I check "Automation PM" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
+    And I pause execution for "6" seconds
+    And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation FO" in "flexGridAssignPanelApplications" panel
-    And I pause execution for "4" seconds
-    And I check "Automation FO" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
+    And I pause execution for "6" seconds
+    And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Compliance Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation EXE" in "flexGridAssignPanelApplications" panel
-    And I pause execution for "4" seconds
-    And I check "Automation EXE" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
+    And I pause execution for "6" seconds
+    And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
-    And I check "All" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "SME Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I pause execution for "8" seconds
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Management Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
-    And I pause execution for "4" seconds
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I pause execution for "6" seconds
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    Then I see that "Review Completed" has been added in flextable with Id "flexGridStepReviews"
+    When I click on "View" icon for "Management Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    Then I see that "Review Completed" has been added in flextable with Id "---application_Review:-:appreviews_TableId---"
     Examples:
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
@@ -1388,151 +1405,153 @@ Feature: Validate all scenarios in the Application Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList" with wait for record
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---" with wait for record
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name  | Due in Days |
       | Pre-Screen | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps" with wait for record
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I pause execution for "8" seconds
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
       | Fiscal Review     | 5           |
       | Compliance Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer       |
       | Automation EXE |
       | Automation FO  |
       | Automation PM  |
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Program Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation PM" in "flexGridAssignPanelApplications" panel
-    And I pause execution for "4" seconds
-    And I check "Automation PM" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
+    And I pause execution for "6" seconds
+    And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation FO" in "flexGridAssignPanelApplications" panel
-    And I pause execution for "4" seconds
-    And I check "Automation FO" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
+    And I pause execution for "6" seconds
+    And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Compliance Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation EXE" in "flexGridAssignPanelApplications" panel
-    And I pause execution for "4" seconds
-    And I check "Automation EXE" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
+    And I pause execution for "6" seconds
+    And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
-    And I check "All" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "SME Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I pause execution for "8" seconds
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Management Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     And I pause execution for "4" seconds
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to FDM" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    When I pause execution for "5" seconds
+    When I click on "View" icon for "Management Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to FDM" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     Then I see that "Review Step" is in "Completed" status
     Examples:
       | Announcement Name                              | Application Name       |
@@ -1543,152 +1562,155 @@ Feature: Validate all scenarios in the Application Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList" with wait for record
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---" with wait for record
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name  | Due in Days |
       | Pre-Screen | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps" with wait for record
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I pause execution for "8" seconds
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
       | Fiscal Review     | 5           |
       | Compliance Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer       |
       | Automation EXE |
       | Automation FO  |
       | Automation PM  |
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Program Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation PM" in "flexGridAssignPanelApplications" panel
-    And I pause execution for "4" seconds
-    And I check "Automation PM" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
+    And I pause execution for "6" seconds
+    And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation FO" in "flexGridAssignPanelApplications" panel
-    And I pause execution for "4" seconds
-    And I check "Automation FO" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
+    And I pause execution for "6" seconds
+    And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Compliance Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation EXE" in "flexGridAssignPanelApplications" panel
-    And I pause execution for "4" seconds
-    And I check "Automation EXE" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
+    And I pause execution for "6" seconds
+    And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
-    And I check "All" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "SME Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I pause execution for "8" seconds
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Management Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
-    And I pause execution for "4" seconds
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I pause execution for "6" seconds
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to FDM" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    When I pause execution for "5" seconds
+    When I click on "View" icon for "Management Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to FDM" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     When I click on "Funding Decision Memo" in the page details
+    When I pause execution for "8" seconds
     And I click on "Edit" in the page details
     When I enter value "AuGr" into field "GrantCode__c"
     And I click on "Save" in the page details
@@ -1702,152 +1724,155 @@ Feature: Validate all scenarios in the Application Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList" with wait for record
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---" with wait for record
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name  | Due in Days |
       | Pre-Screen | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps" with wait for record
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I pause execution for "8" seconds
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
       | Fiscal Review     | 5           |
       | Compliance Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer       |
       | Automation EXE |
       | Automation FO  |
       | Automation PM  |
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Program Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation PM" in "flexGridAssignPanelApplications" panel
-    And I pause execution for "4" seconds
-    And I check "Automation PM" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
+    And I pause execution for "6" seconds
+    And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation FO" in "flexGridAssignPanelApplications" panel
-    And I pause execution for "4" seconds
-    And I check "Automation FO" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
+    And I pause execution for "6" seconds
+    And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Compliance Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation EXE" in "flexGridAssignPanelApplications" panel
-    And I pause execution for "4" seconds
-    And I check "Automation EXE" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
+    When I pause execution for "8" seconds
+    And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
-    And I check "All" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "SME Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I pause execution for "8" seconds
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Management Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
-    And I pause execution for "4" seconds
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
+    When I pause execution for "8" seconds
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to FDM" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    When I pause execution for "5" seconds
+    When I click on "View" icon for "Management Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to FDM" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     When I click on "Funding Decision Memo" in the page details
+    When I pause execution for "8" seconds
     And I click on "Edit" in the page details
     When I enter value "AuGr" into field "GrantCode__c"
     And I click on "Save" in the page details
@@ -1864,152 +1889,155 @@ Feature: Validate all scenarios in the Application Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList" with wait for record
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---" with wait for record
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name  | Due in Days |
       | Pre-Screen | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps" with wait for record
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I pause execution for "8" seconds
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
       | Fiscal Review     | 5           |
       | Compliance Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer       |
       | Automation EXE |
       | Automation FO  |
       | Automation PM  |
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Program Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation PM" in "flexGridAssignPanelApplications" panel
-    And I pause execution for "4" seconds
-    And I check "Automation PM" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
+    And I pause execution for "6" seconds
+    And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation FO" in "flexGridAssignPanelApplications" panel
-    And I pause execution for "4" seconds
-    And I check "Automation FO" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
+    And I pause execution for "6" seconds
+    And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Compliance Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation EXE" in "flexGridAssignPanelApplications" panel
-    And I pause execution for "4" seconds
-    And I check "Automation EXE" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
+    And I pause execution for "6" seconds
+    And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
-    And I check "All" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "SME Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I pause execution for "8" seconds
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Management Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
-    And I pause execution for "4" seconds
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
+    When I pause execution for "8" seconds
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to FDM" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    When I pause execution for "5" seconds
+    When I click on "View" icon for "Management Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to FDM" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     When I click on "Funding Decision Memo" in the page details
+    When I pause execution for "8" seconds
     And I click on "Edit" in the page details
     When I enter value "AuGr" into field "GrantCode__c"
     When I enter values into fields
@@ -2034,152 +2062,156 @@ Feature: Validate all scenarios in the Application Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList" with wait for record
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---" with wait for record
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name  | Due in Days |
       | Pre-Screen | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps" with wait for record
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I pause execution for "8" seconds
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
       | Fiscal Review     | 5           |
       | Compliance Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer       |
       | Automation EXE |
       | Automation FO  |
       | Automation PM  |
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Program Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation PM" in "flexGridAssignPanelApplications" panel
-    And I pause execution for "4" seconds
-    And I check "Automation PM" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
+    And I pause execution for "6" seconds
+    And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation FO" in "flexGridAssignPanelApplications" panel
-    And I pause execution for "4" seconds
-    And I check "Automation FO" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
+    And I pause execution for "6" seconds
+    And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Compliance Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation EXE" in "flexGridAssignPanelApplications" panel
-    And I pause execution for "4" seconds
-    And I check "Automation EXE" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
+    And I pause execution for "6" seconds
+    And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
-    And I check "All" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "SME Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
+    When I pause execution for "8" seconds
     When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Management Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
-    And I pause execution for "4" seconds
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
+    When I pause execution for "8" seconds
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to FDM" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    When I pause execution for "5" seconds
+    When I click on "View" icon for "Management Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to FDM" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     When I click on "Funding Decision Memo" in the page details
+    When I pause execution for "8" seconds
     And I click on "Edit" in the page details
     When I enter value "AuGr" into field "GrantCode__c"
     When I enter values into fields
@@ -2205,152 +2237,156 @@ Feature: Validate all scenarios in the Application Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList" with wait for record
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---" with wait for record
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name  | Due in Days |
       | Pre-Screen | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "flexGridAnnouncementReviewSteps" with wait for record
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I pause execution for "8" seconds
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
       | Fiscal Review     | 5           |
       | Compliance Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer       |
       | Automation EXE |
       | Automation FO  |
       | Automation PM  |
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Program Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation PM" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation PM" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation FO" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation FO" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
     When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Compliance Review" inside flex table with id "RelatedPanelApplicationsGridFlexToggle" with wait for record
-    And I perform quick search for "Automation EXE" in "flexGridAssignPanelApplications" panel
+    And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
+    And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I pause execution for "4" seconds
-    And I check "Automation EXE" boxes in flex table with id "flexGridAssignPanelApplications"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignPanelApplications"
+    And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
     When I refresh the page
-    And I check "All" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "SME Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to Next Step" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
+    When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
+    And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
     When I pause execution for "7" seconds
-    When I edit the following rows inline in flex table with id "flexGridApplicationReviewTree" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Management Review | 5           |
-    When I enter the following values into flex table with id "flexGridReviewStepUsers" by clicking "Add" :
+    When I enter the following values into flex table with id "---application_Review:-:reviewers_tableId---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "flexGridReviewStepUsers"
-    When I perform quick search for "<Application Name>" in "flexGridAssignAppToUser" panel
-    And I check "<Application Name>" boxes in flex table with id "flexGridAssignAppToUser"
-    When I click on top right button "Assign" in flex table with id "flexGridAssignAppToUser"
+    And I click on "Assign" icon for "Automation FO" inside flex table with id "---application_Review:-:reviewers_tableId---"
+    When I perform quick search for "<Application Name>" in "---application_Review:-:assign_applications_tableId---" panel
+    And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
+    When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
     And I refresh the page
-    When I check "<Application Name>" boxes in flex table with id "flexGridStepReviews"
-    And I click on top right button "Send for Review" in flex table with id "flexGridStepReviews"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
+    And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     And I pause execution for "4" seconds
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    And I perform quick search for "Record ID" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "PhasePendingTasks"
-    When I complete filling in the Review form with recomendation "Recommendation" under title "Comments"
+    And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
+    And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
+    When I complete filling in the Review form with recomendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    Given I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "flexGridAnnouncementList" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "flexGridAnnouncementList"
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---application_Review:-:announcement_TableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---application_Review:-:announcement_TableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewSteps"
-    When I check "<Application Name>" boxes in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    And I click on top right button "Promote to FDM" in flex table with id "flexGridPreScreenRelatedStepApplicationsFinal"
-    When I pause execution for "5" seconds
+    When I click on "View" icon for "Management Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
+    When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
+    And I click on top right button "Promote to FDM" in flex table with id "---application_Review:-:app_TableId---"
+    When I pause execution for "8" seconds
     When I click on "Funding Decision Memo" in the page details
+    When I pause execution for "8" seconds
     And I click on "Edit" in the page details
     When I enter value "AuGr" into field "GrantCode__c"
     When I enter values into fields
@@ -2370,7 +2406,7 @@ Feature: Validate all scenarios in the Application Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I perform quick search for "Record Id" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Approved" and is "green"
