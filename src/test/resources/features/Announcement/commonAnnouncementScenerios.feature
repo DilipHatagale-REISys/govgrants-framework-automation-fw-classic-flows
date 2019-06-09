@@ -91,7 +91,7 @@ Feature: Validate all common scenarios in the  Announcement tab
       | Contact        |
       | Automation EXE |
 
-  @52402@announcementFormulaInviteApplicantFA @smoke
+  @52402 @announcementFormulaInviteApplicantFA @smoke
   Scenario: Amount addition to Invited applicant association to an Announcement
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"

@@ -27,12 +27,12 @@ Feature: Validate all scenarios in Desk Review
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @51012 @participantAssociationDeskReview
+  @51012 @participantAssociationDeskReview @nonFunctional @wip
   Scenario Outline: Participant Association of Desk Review
     Given I associate "1" records "Automation SPA"
       | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
       | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
-    Then I see that "<Subrecipient>" has been added in flextable with Id "deskreview::participantsTableId"
+    Then I see that "<Subrecipient>" has been added in flextable with Id "---deskreview:-:participantsTableIdsitevisits---"
     Examples:
       | Subrecipient   |
       | Automation SPA |
@@ -40,11 +40,11 @@ Feature: Validate all scenarios in Desk Review
   @51013 @approverSelectionDeskReview
   Scenario Outline: Approver selection of Desk Review
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "deskreview::approverDeskReviewTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
-    Then I see that "<Program Approver Name>" has been added in flextable with Id "deskreview::approverDeskReviewTableId"
+    Then I see that "<Program Approver Name>" has been added in flextable with Id "---deskreview:-:approver_DeskReview_TableId---"
     Examples:
       | Program Approver Name |
       | Automation PM         |
@@ -52,17 +52,17 @@ Feature: Validate all scenarios in Desk Review
   @51014 @notifySubrecipientDeskReview
   Scenario: Notify Subrecipient about the Desk Review
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "deskreview::approverDeskReviewTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     And I click on "Notify" in the page details
-    Then I see status in Progress-bar is "Notified" and is "green"
+    Then I see that "Automation Desk Review" is in "Notified" status
 
   @51015 @notifyPendingTaskForSubrecipientDeskReview
   Scenario: Subrecipient pending task check for Desk Review
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "deskreview::approverDeskReviewTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -73,12 +73,12 @@ Feature: Validate all scenarios in Desk Review
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "PhasePendingTasks" panel
     When I click on "Start" icon for "Record Id" inside table
-    Then I see status in Progress-bar is "Notified" and is "green"
+    Then I see that "Automation Desk Review" is in "Notified" status
 
   @51016 @conductDeskReview
   Scenario: Conduct Desk Review
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "deskreview::approverDeskReviewTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -99,7 +99,7 @@ Feature: Validate all scenarios in Desk Review
   @51017 @addingOutcomeDeskReview
   Scenario: Adding outcomes to Desk Review
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "deskreview::approverDeskReviewTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -117,17 +117,17 @@ Feature: Validate all scenarios in Desk Review
     And I click on "View" icon for "Record Id" inside table
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "deskreview::correctiveTableId" by clicking "New" :
+    When I enter the following values into flex table with id "---deskreview:-:corrective_Table_Id---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    Then I see that "Automation Finding" has been added in flextable with Id "deskreview::correctiveTableId"
+    Then I see that "Automation Finding" has been added in flextable with Id "---deskreview:-:corrective_Table_Id---"
 
   @51018 @formFillingDeskReview
   Scenario: Filling up of form in Desk Review
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "deskreview::approverDeskReviewTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -145,23 +145,23 @@ Feature: Validate all scenarios in Desk Review
     And I click on "View" icon for "Record Id" inside table
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "deskreview::correctiveTableId" by clicking "New" :
+    When I enter the following values into flex table with id "---deskreview:-:corrective_Table_Id---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
     And I navigate to "Reports and Outcomes" sub tab
-    When I click on "Edit" icon for "General Review Form" inside flex table with id "deskreview::reportsTableId"
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---deskreview:-:reports_Table_Id---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I click on top right button "Validate" in flex table with id "deskreview::reportsTableId"
-    Then I see that "100.00%" has been added in flextable with Id "deskreview::reportsTableId"
+    And I click on top right button "Validate" in flex table with id "---deskreview:-:reports_Table_Id---"
+    Then I see that "100.00%" has been added in flextable with Id "---deskreview:-:reports_Table_Id---"
 
   @51019 @submittingForApprovalDeskReview
   Scenario: Submitting Desk Review for approval
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "deskreview::approverDeskReviewTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -179,7 +179,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "View" icon for "Record Id" inside table
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "deskreview::correctiveTableId" by clicking "New" :
+    When I enter the following values into flex table with id "---deskreview:-:corrective_Table_Id---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
@@ -196,7 +196,7 @@ Feature: Validate all scenarios in Desk Review
   @51020 @approvalOfDeskReview
   Scenario: Approval of Desk Review
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "deskreview::approverDeskReviewTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -214,7 +214,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "View" icon for "Record Id" inside table
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "deskreview::correctiveTableId" by clicking "New" :
+    When I enter the following values into flex table with id "---deskreview:-:corrective_Table_Id---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
@@ -236,7 +236,7 @@ Feature: Validate all scenarios in Desk Review
   @51021 @deskReviewSendToSubrecipient
   Scenario: Send Desk Review to Subrecipient
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "deskreview::approverDeskReviewTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -254,7 +254,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "View" icon for "Record Id" inside table
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "deskreview::correctiveTableId" by clicking "New" :
+    When I enter the following values into flex table with id "---deskreview:-:corrective_Table_Id---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
@@ -282,7 +282,7 @@ Feature: Validate all scenarios in Desk Review
   @51022 @deskReviewCorrectiveActionsBySubrecipient
   Scenario: Corrective Actions By Subrecipient
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "deskreview::approverDeskReviewTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -300,7 +300,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "View" icon for "Record Id" inside table
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "deskreview::correctiveTableId" by clicking "New" :
+    When I enter the following values into flex table with id "---deskreview:-:corrective_Table_Id---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
@@ -330,17 +330,17 @@ Feature: Validate all scenarios in Desk Review
     And I click on "Start" icon for "Record Id" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
-    When I enter the following values into flex table with id "deskreview::receipientTableId" by clicking "New" :
+    When I enter the following values into flex table with id "---deskreview:-:corrective_Table_Id---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To    |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
-    When I enter the following values into flex table with id "deskreview::receipientTableId" by clicking "New" :
+    When I enter the following values into flex table with id "---deskreview:-:corrective_Table_Id---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To    |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
-    When I enter the following values into flex table with id "deskreview::receipientTableId" by clicking "New" :
+    When I enter the following values into flex table with id "---deskreview:-:corrective_Table_Id---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To    |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     And I collapse nested table containing column value "Automation Finding"
@@ -348,8 +348,8 @@ Feature: Validate all scenarios in Desk Review
 
   @51023 @deskReviewSubmitToGrantorBySubrecipient
   Scenario: Desk Review Submit to Grantor By Subrecipient
-    When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "deskreview::approverDeskReviewTableId" by clicking "Edit" :
+  Given I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -367,75 +367,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "View" icon for "Record Id" inside table
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "deskreview::correctiveTableId" by clicking "New" :
-      | Title                  | Description            | Type        |
-      | Automation Finding     | Automation Description | Finding     |
-      | Automation Concern     | Automation Description | Concern     |
-      | Automation Observation | Automation Description | Observation |
-    And I fill in the form "General Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
-      | Actions     | Step 1               | Step 2        |
-      | Navigation  | Reports and Outcomes |               |
-      | FlexTable   | Edit                 | FormComponent |
-      | Form Button | Save                 | Back          |
-      | Validation  | Validate             | FormComponent |
-    When I click on "Submit for Approval" in the page details
-    Given "2" Approvers "PM,FO" approve the record "Record Id"
-      | Actions    | Step 1        | Step 2     | Step 3            |
-      | Navigation | As a Grantor  | Monitoring |                   |
-      | FlexTable  | Pending Tasks | My Tasks   | PhasePendingTasks |
-      | Approval   | Start         | Approve    |                   |
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "inlineEditGridDeskReviewGridView" panel
-    And I click on "View" icon for "Record Id" inside table
-    Given I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-    When I navigate to "Monitoring" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record Id" inside table
-    When I navigate to "Reports and Outcomes" sub tab
-    And I expand nested table containing column value "Automation Observation"
-    When I enter the following values into flex table with id "deskreview::receipientTableId" by clicking "New" :
-      | Title                               | Description            | Status      | Due Date | Assigned To    |
-      | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
-    When I collapse nested table containing column value "Automation Observation"
-    And I expand nested table containing column value "Automation Concern"
-    When I enter the following values into flex table with id "deskreview::receipientTableId" by clicking "New" :
-      | Title                           | Description            | Status      | Due Date | Assigned To    |
-      | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
-    When I collapse nested table containing column value "Automation Concern"
-    And I expand nested table containing column value "Automation Finding"
-    When I enter the following values into flex table with id "deskreview::receipientTableId" by clicking "New" :
-      | Title                           | Description            | Status      | Due Date | Assigned To    |
-      | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
-    And I collapse nested table containing column value "Automation Finding"
-    When I click on "Submit to Grantor" in the page details
-    Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
-
-  @51024 @deskReviewAcceptAndClose @smoke
-  Scenario: Desk Review Accept and Close
-    When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "deskreview::approverDeskReviewTableId" by clicking "Edit" :
-      | Role             | Name          | Description                 |
-      | Program Approver | Automation PM | Automation Test Description |
-      | Fiscal Approver  | Automation FO | Automation Test Description |
-    When I get the "EGMS ID"
-    And I click on "Notify" in the page details
-    Given User "SPI" receives the task for "Record Id"
-      | Actions    | Step 1            | Step 2        | Step 3    |
-      | Navigation | Monitoring        | Grants Portal | SUBPORTAL |
-      | Left Panel | Pending Tasks     | My Tasks      |           |
-      | FlexTable  | PhasePendingTasks | Start         |           |
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "inlineEditGridDeskReviewGridView" panel
-    And I click on "View" icon for "Record Id" inside table
-    Given I click on "Conduct" in the page details
-    And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "deskreview::correctiveTableId" by clicking "New" :
+    When I enter the following values into flex table with id "---deskreview:-:corrective_Table_Id---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
@@ -466,17 +398,87 @@ Feature: Validate all scenarios in Desk Review
     And I click on "Start" icon for "Record Id" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
-    When I enter the following values into flex table with id "deskreview::receipientTableId" by clicking "New" :
+    When I enter the following values into flex table with id "---deskreview:-:corrective_Table_Id---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To    |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
-    When I enter the following values into flex table with id "deskreview::receipientTableId" by clicking "New" :
+    When I enter the following values into flex table with id "---deskreview:-:corrective_Table_Id---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To    |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
-    When I enter the following values into flex table with id "deskreview::receipientTableId" by clicking "New" :
+    When I enter the following values into flex table with id "---deskreview:-:corrective_Table_Id---" by clicking "New" :
+      | Title                           | Description            | Status      | Due Date | Assigned To    |
+      | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
+    And I collapse nested table containing column value "Automation Finding"
+    When I click on "Submit to Grantor" in the page details
+    Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
+
+  @51024 @deskReviewAcceptAndClose @smoke
+  Scenario: Desk Review Accept and Close
+   Given I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
+      | Role             | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+    When I get the "EGMS ID"
+    And I click on "Notify" in the page details
+    Given User "SPI" receives the task for "Record Id"
+      | Actions    | Step 1            | Step 2        | Step 3    |
+      | Navigation | Monitoring        | Grants Portal | SUBPORTAL |
+      | Left Panel | Pending Tasks     | My Tasks      |           |
+      | FlexTable  | PhasePendingTasks | Start         |           |
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "inlineEditGridDeskReviewGridView" panel
+    And I click on "View" icon for "Record Id" inside table
+    Given I click on "Conduct" in the page details
+    And I navigate to "Reports and Outcomes" sub tab
+    When I enter the following values into flex table with id "---deskreview:-:corrective_Table_Id---" by clicking "New" :
+      | Title                  | Description            | Type        |
+      | Automation Finding     | Automation Description | Finding     |
+      | Automation Concern     | Automation Description | Concern     |
+      | Automation Observation | Automation Description | Observation |
+    And I fill in the form "General Review Form" from sheet "Form Fields" in excel "DeskReview_Field_Values.xlsx"
+      | Actions     | Step 1               | Step 2        |
+      | Navigation  | Reports and Outcomes |               |
+      | FlexTable   | Edit                 | FormComponent |
+      | Form Button | Save                 | Back          |
+      | Validation  | Validate             | FormComponent |
+    And I get the "EGMS ID"
+    When I click on "Submit for Approval" in the page details
+    Given "2" Approvers "PM,FO" approve the record "Record Id"
+      | Actions    | Step 1        | Step 2     | Step 3            |
+      | Navigation | As a Grantor  | Monitoring |                   |
+      | FlexTable  | Pending Tasks | My Tasks   | PhasePendingTasks |
+      | Approval   | Start         | Approve    |                   |
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "inlineEditGridDeskReviewGridView" panel
+    And I click on "View" icon for "Record Id" inside table
+    Given I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "Record Id" inside table
+    When I navigate to "Reports and Outcomes" sub tab
+    And I expand nested table containing column value "Automation Observation"
+    When I expand nested table containing column value "Corrective Actions"
+    When I enter the following values into flex table with id "---deskreview:-:corrective_Table_Id---" by clicking "New" :
+      | Title                               | Description            | Status      | Due Date | Assigned To    |
+      | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
+    When I collapse nested table containing column value "Automation Observation"
+    And I expand nested table containing column value "Automation Concern"
+    When I enter the following values into flex table with id "---deskreview:-:corrective_Table_Id---" by clicking "New" :
+      | Title                           | Description            | Status      | Due Date | Assigned To    |
+      | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
+    When I collapse nested table containing column value "Automation Concern"
+    And I expand nested table containing column value "Automation Finding"
+    When I enter the following values into flex table with id "---deskreview:-:corrective_Table_Id---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To    |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     And I collapse nested table containing column value "Automation Finding"

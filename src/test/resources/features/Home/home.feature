@@ -1,4 +1,4 @@
-@home @regression
+@home @regression @wip
 Feature: Validate all scenarios in the home tab
 
   @35024 @internalOrganizationCreate @smoke
@@ -301,7 +301,7 @@ Feature: Validate all scenarios in the home tab
 #      | PM    |
 
   @editInternalOrganization @smoke
-  Scenario Outline: Validate whether ADMIN and DA users can Edit the Internal Organization
+  Scenario Outline: Validate whether ADMIN users can Edit the Internal Organization
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
@@ -379,7 +379,7 @@ Feature: Validate all scenarios in the home tab
 #      | PM    |
 
   @additionalAddressesCreation  @smoke
-  Scenario Outline: Validate whether ADMIN and DA users can Create the Additional Addresses
+  Scenario Outline: Validate whether ADMIN can Create the Additional Addresses
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel

@@ -27,12 +27,12 @@ Feature: Validate all scenarios in the Site Visit
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @51083 @participantAssociationSiteVisit
+  @51083 @participantAssociationSiteVisit @nonFunctional @wip
   Scenario Outline: Participant Association of Site Visit
     Given I associate "1" records "Automation SPA"
       | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
-      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
-    Then I see that "<Subrecipient>" has been added in flextable with Id "siteVisits::participantsTableId"
+      | Associate 1 | Overview | Associate | participants_table_id | Associate | siteVisit_Contacts_Table_Id |
+    Then I see that "<Subrecipient>" has been added in flextable with Id "---sitevisits:-:participants_table_id---"
     Examples:
       | Subrecipient   |
       | Automation SPI |
@@ -40,11 +40,11 @@ Feature: Validate all scenarios in the Site Visit
   @51084 @approverSelectionSiteVisit
   Scenario Outline: Approver selection of Site Visit
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "siteVisits::approverSiteVisitTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
-    Then I see that "<Program Approver Name>" has been added in flextable with Id "siteVisits::approverSiteVisitTableId"
+    Then I see that "<Program Approver Name>" has been added in flextable with Id "---sitevisits:-:approver_site_visit_table_id---"
     Examples:
       | Program Approver Name |
       | Automation PM         |
@@ -52,17 +52,17 @@ Feature: Validate all scenarios in the Site Visit
   @51085 @notifySubrecipientSiteVisit @smoke
   Scenario: Notify Subrecipient about the Site Visit
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "siteVisits::approverSiteVisitTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     And I click on "Notify" in the page details
-    Then I see status in Progress-bar is "Notified" and is "green"
+    Then I see that "Automation Site Visit" is in "Notified" status
 
   @51086 @notifyPendingTaskForSubrecipientSiteVisit
   Scenario: Subrecipient pending task check for Site Visit
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "siteVisits::approverSiteVisitTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -73,12 +73,12 @@ Feature: Validate all scenarios in the Site Visit
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "PhasePendingTasks" panel
     When I click on "Start" icon for "Record Id" inside table
-    Then I see status in Progress-bar is "Notified" and is "green"
+    Then I see that "Automation Site Visit" is in "Notified" status
 
   @51087 @conductSiteVisit @smoke
   Scenario: Conduct Site Visit
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "siteVisits::approverSiteVisitTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---sitevisits:-:participants_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -90,7 +90,7 @@ Feature: Validate all scenarios in the Site Visit
   @51088 @addingOutcomeSiteVisit
   Scenario: Adding outcomes to Site Visit
        When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "siteVisits::approverSiteVisitTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -108,22 +108,22 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
-    When I click on "Edit" icon for "General Review Form" inside flex table with id "siteVisits::reportsTableId"
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---sitevisits:-:reports_Table_Id---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I click on top right button "Validate" in flex table with id "siteVisits::reportsTableId"
-    When I enter the following values into flex table with id "siteVisits::correctiveTableId" by clicking "New" :
+    And I click on top right button "Validate" in flex table with id "---sitevisits:-:reports_Table_Id---"
+    When I enter the following values into flex table with id "---sitevisits:-:corrective_table_id---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    Then I see that "Automation Finding" has been added in flextable with Id "siteVisits::correctiveTableId"
+    Then I see that "Automation Finding" has been added in flextable with Id "---sitevisits:-:corrective_table_id---"
 
   @51089 @formFillingSiteVisit @smoke
   Scenario: Filling up of form in Site Visit
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "siteVisits::approverSiteVisitTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -141,17 +141,17 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
-    When I click on "Edit" icon for "General Review Form" inside flex table with id "siteVisits::reportsTableId"
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---sitevisits:-:reports_Table_Id---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I click on top right button "Validate" in flex table with id "siteVisits::reportsTableId"
-    Then I see that "100.00%" has been added in flextable with Id "siteVisits::reportsTableId"
+    And I click on top right button "Validate" in flex table with id "---sitevisits:-:reports_Table_Id---"
+    Then I see that "100.00%" has been added in flextable with Id "---sitevisits:-:reports_Table_Id---"
 
   @51090 @submittingForApprovalSiteVisit
   Scenario:  Submitting Site Visit for approval
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "siteVisits::approverSiteVisitTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -169,12 +169,12 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
-    When I click on "Edit" icon for "General Review Form" inside flex table with id "siteVisits::reportsTableId"
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---sitevisits:-:reports_Table_Id---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I click on top right button "Validate" in flex table with id "siteVisits::reportsTableId"
-    When I enter the following values into flex table with id "siteVisits::correctiveTableId" by clicking "New" :
+    And I click on top right button "Validate" in flex table with id "---sitevisits:-:reports_Table_Id---"
+    When I enter the following values into flex table with id "---sitevisits:-:corrective_table_id---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
@@ -185,7 +185,7 @@ Feature: Validate all scenarios in the Site Visit
   @51091 @approvalOfSiteVisit
   Scenario Outline: Approval of Site Visit
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "siteVisits::approverSiteVisitTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---sitevisits:-:participants_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -203,12 +203,12 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
-    When I click on "Edit" icon for "General Review Form" inside flex table with id "siteVisits::reportsTableId"
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---sitevisits:-:reports_Table_Id---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I click on top right button "Validate" in flex table with id "siteVisits::reportsTableId"
-    When I enter the following values into flex table with id "siteVisits::correctiveTableId" by clicking "New" :
+    And I click on top right button "Validate" in flex table with id "---sitevisits:-:reports_Table_Id---"
+    When I enter the following values into flex table with id "---sitevisits:-:corrective_table_id---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
@@ -227,7 +227,7 @@ Feature: Validate all scenarios in the Site Visit
   @51092 @siteVisitSendToSubrecipient
   Scenario Outline: Send Site Visit to Subrecipient
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "siteVisits::approverSiteVisitTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -245,12 +245,12 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
-    When I click on "Edit" icon for "General Review Form" inside flex table with id "siteVisits::reportsTableId"
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---sitevisits:-:reports_Table_Id---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I click on top right button "Validate" in flex table with id "siteVisits::reportsTableId"
-    When I enter the following values into flex table with id "siteVisits::correctiveTableId" by clicking "New" :
+    And I click on top right button "Validate" in flex table with id "---sitevisits:-:reports_Table_Id---"
+    When I enter the following values into flex table with id "---sitevisits:-:corrective_table_id---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
@@ -274,7 +274,7 @@ Feature: Validate all scenarios in the Site Visit
   @51093 @siteVisitCorrectiveActionsBySubrecipient @smoke
   Scenario Outline: Site Visit Corrective Actions By Subrecipient
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "siteVisits::approverSiteVisitTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -292,12 +292,12 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
-    When I click on "Edit" icon for "General Review Form" inside flex table with id "siteVisits::reportsTableId"
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---sitevisits:-:reports_Table_Id---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I click on top right button "Validate" in flex table with id "siteVisits::reportsTableId"
-    When I enter the following values into flex table with id "siteVisits::correctiveTableId" by clicking "New" :
+    And I click on top right button "Validate" in flex table with id "---sitevisits:-:reports_Table_Id---"
+    When I enter the following values into flex table with id "---sitevisits:-:corrective_table_id---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
@@ -320,17 +320,17 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Start" icon for "Record Id" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
-    When I enter the following values into flex table with id "siteVisits::receipientTableId" by clicking "New" :
+    When I enter the following values into flex table with id "---sitevisits:-:corrective_table_id---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To    |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
-    When I enter the following values into flex table with id "siteVisits::receipientTableId" by clicking "New" :
+    When I enter the following values into flex table with id "---sitevisits:-:corrective_table_id---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To    |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
-    When I enter the following values into flex table with id "siteVisits::receipientTableId" by clicking "New" :
+    When I enter the following values into flex table with id "---sitevisits:-:corrective_table_id---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To    |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     And I collapse nested table containing column value "Automation Finding"
@@ -342,7 +342,7 @@ Feature: Validate all scenarios in the Site Visit
   @51094 @siteVisitSubmitToGrantorBySubrecipient
   Scenario:  Site Visit Submit to Grantor by Subrecipient
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "siteVisits::approverSiteVisitTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -360,12 +360,12 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
-    When I click on "Edit" icon for "General Review Form" inside flex table with id "siteVisits::reportsTableId"
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---sitevisits:-:reports_Table_Id---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I click on top right button "Validate" in flex table with id "siteVisits::reportsTableId"
-    When I enter the following values into flex table with id "siteVisits::correctiveTableId" by clicking "New" :
+    And I click on top right button "Validate" in flex table with id "---sitevisits:-:reports_Table_Id---"
+    When I enter the following values into flex table with id "---sitevisits:-:corrective_table_id---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
@@ -389,17 +389,17 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Start" icon for "Record Id" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
-    When I enter the following values into flex table with id "siteVisits::receipientTableId" by clicking "New" :
+    When I enter the following values into flex table with id "---sitevisits:-:corrective_table_id---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To    |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
-    When I enter the following values into flex table with id "siteVisits::receipientTableId" by clicking "New" :
+    When I enter the following values into flex table with id "---sitevisits:-:corrective_table_id---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To    |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
-    When I enter the following values into flex table with id "siteVisits::receipientTableId" by clicking "New" :
+    When I enter the following values into flex table with id "---sitevisits:-:corrective_table_id---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To    |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     And I collapse nested table containing column value "Automation Finding"
@@ -409,7 +409,7 @@ Feature: Validate all scenarios in the Site Visit
   @51095 @siteVisitAcceptAndClose @smoke
   Scenario Outline: Site Visit Accept and Close
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "siteVisits::approverSiteVisitTableId" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -427,12 +427,12 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
-    When I click on "Edit" icon for "General Review Form" inside flex table with id "siteVisits::reportsTableId"
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---sitevisits:-:reports_Table_Id---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I click on top right button "Validate" in flex table with id "siteVisits::reportsTableId"
-    When I enter the following values into flex table with id "siteVisits::correctiveTableId" by clicking "New" :
+    And I click on top right button "Validate" in flex table with id "---sitevisits:-:reports_Table_Id---"
+    When I enter the following values into flex table with id "---sitevisits:-:corrective_table_id---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
@@ -456,17 +456,17 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Start" icon for "Record Id" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
-    When I enter the following values into flex table with id "siteVisits::receipientTableId" by clicking "New" :
+    When I enter the following values into flex table with id "---sitevisits:-:corrective_table_id---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To    |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
-    When I enter the following values into flex table with id "siteVisits::receipientTableId" by clicking "New" :
+    When I enter the following values into flex table with id "---sitevisits:-:corrective_table_id---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To    |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
-    When I enter the following values into flex table with id "siteVisits::receipientTableId" by clicking "New" :
+    When I enter the following values into flex table with id "---sitevisits:-:corrective_table_id---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To    |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     And I collapse nested table containing column value "Automation Finding"

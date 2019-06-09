@@ -4,15 +4,16 @@ Feature: Validate all scenarios in Funding Source
   Background: To setup data
     Given I delete the record "Automation Execution Funding Source" from the object "Funding Source"
 
-  @51034 @creationOfFundingSource @smoke
-  Scenario: Creation of Funding Source
-      Given I create a planning record as user "EXE" from sheet "Creation" in excel "FundingSource_Field_Values.xlsx"
-      | Actions    | Step 1          | Step 2                | Step 3                         |
-      | Navigation | As a Grantor    | Planning              | Planning                       |
-      | FlexTable  | Funding Sources | InternalFundingSource | Draft Internal Funding Sources |
-      | Creation   | New             | Save and Continue     | Save                           |
-      | ID         | EGMS ID         |                       |                                |
-    Then I see status in Progress-bar is "Created" and is "green"
+  @51034 @creationOfFundingSource @smoke 
+  Scenario: Creation of Funding Source 
+	Given I login to "As a Grantor" app as "EXE" user 
+	When I navigate to "Planning" tab 
+	When I navigate to "Funding Sources" content inside "Planning" subheader on left panel 
+	And I click on top right button "New" in flex table with id "---fundingsource:-:funding_Source_Table_Id---" 
+	When I enter "Creation" values from "FundingSource_Field_Values.xlsx" 
+	And I click modal button "Save and Continue" 
+	And I click on "Save" in the page details 
+	Then I see status in Progress-bar is "Created" and is "green" 
 
   @51035 @editionOfFundingSource
   Scenario: Edition of Funding Source
@@ -26,8 +27,8 @@ Feature: Validate all scenarios in Funding Source
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     And I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
-
-  @51036 @addAttachmentToFundingSource
+    
+  @51036 @addAttachmentToFundingSource @wip @deepika
   Scenario: Addition of Attachment to KPI
       Given I create a planning record as user "EXE" from sheet "Creation" in excel "FundingSource_Field_Values.xlsx"
       | Actions    | Step 1          | Step 2                | Step 3                         |
@@ -36,10 +37,10 @@ Feature: Validate all scenarios in Funding Source
       | Creation   | New             | Save and Continue     | Save                           |
       | ID         | EGMS ID         |                       |                                |
     When I navigate to "Attachments" sub tab
-    And I click on top right button "Add" in flex table with id "fundingSource::fundingSourceAttachmentTableId"
+    And I click on top right button "Add" in flex table with id "---fundingSource:-:funding_Source_Attachment_Table_Id---"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Supporting Documents"
     And I close Modal
-    Then I see that "Supporting Documents" has been added in flextable with Id "fundingSource::fundingSourceAttachmentTableId"
+    Then I see that "Supporting Documents" has been added in flextable with Id "---fundingSource:-:funding_Source_Attachment_Table_Id---"
 
   @51037 @creationOfFundingAccount @smoke
   Scenario: Creation of Funding Account
@@ -49,7 +50,7 @@ Feature: Validate all scenarios in Funding Source
       | FlexTable  | Funding Sources | InternalFundingSource | Draft Internal Funding Sources |
       | Creation   | New             | Save and Continue     | Save                           |
       | ID         | EGMS ID         |                       |                                |
-    When I click on top right button "New" in flex table with id "fundingSource::fundingAccountTableId"
+    When I click on top right button "New" in flex table with id "---fundingsource:-:funding_Account_Table_Id---"
     And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
@@ -63,7 +64,7 @@ Feature: Validate all scenarios in Funding Source
       | FlexTable  | Funding Sources | InternalFundingSource | Draft Internal Funding Sources |
       | Creation   | New             | Save and Continue     | Save                           |
       | ID         | EGMS ID         |                       |                                |
-    Given I click on top right button "New" in flex table with id "fundingSource::fundingAccountTableId"
+    Given I click on top right button "New" in flex table with id "---fundingsource:-:funding_Account_Table_Id---"
     And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     Given I click modal button "Save and Continue"
     And I click on "Save" in the page details
@@ -74,15 +75,13 @@ Feature: Validate all scenarios in Funding Source
 
   @51039 @activateFundingAccount @smoke
    Scenario: Activation of Funding Source
-       Given I create a planning record as user "EXE" from sheet "Creation" in excel "FundingSource_Field_Values.xlsx"
-      | Actions    | Step 1          | Step 2                | Step 3                         |
-      | Navigation | As a Grantor    | Planning              | Planning                       |
-      | FlexTable  | Funding Sources | InternalFundingSource | Draft Internal Funding Sources |
-      | Creation   | New             | Save and Continue     | Save                           |
-      | ID         | EGMS ID         |                       |                                |
-    Given I click on top right button "New" in flex table with id "fundingSource::fundingAccountTableId"
-    And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
-    Given I click modal button "Save and Continue"
+    Given I login to "As a Grantor" app as "EXE" user 
+	When I navigate to "Planning" tab 
+	When I navigate to "Funding Sources" content inside "Planning" subheader on left panel 
+	And I click on top right button "New" in flex table with id "---fundingsource:-:funding_Account_Table_Id---"
+	When I enter "Creation" values from "FundingSource_Field_Values.xlsx" 
+	And I click modal button "Save and Continue" 
+	And I click on "Save" in the page details 
     And I click on "Cancel" in the page details
     Given I complete the fields from the sheet "Funding Account Edition" in excel "FundingSource_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -101,12 +100,8 @@ Feature: Validate all scenarios in Funding Source
     Given I complete the fields from the sheet "Edition" in excel "FundingSource_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-    And I add an attachment "InternalOrganization_Field_Values.xlsx"
-      | Actions               | Step 1      | Step 2               | Step 3             |
-      | Attachment Navigation | Attachments | Add                  | a150b000001rv7VAAQ |
-      | Attachment Details    | Attachment  | Supporting Documents |                    |
     And I navigate to "Overview" sub tab
-    Given I click on top right button "New" in flex table with id "fundingSource::fundingAccountTableId"
+    Given I click on top right button "New" in flex table with id "---fundingsource:-:funding_Account_Table_Id---"
     And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     Given I click modal button "Save and Continue"
     And I click on "Save" in the page details
@@ -114,7 +109,7 @@ Feature: Validate all scenarios in Funding Source
     And I enter "Funding Account Edition" values from "FundingSource_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I click on "Activate" in the page details
-    When I click "fundingsource__c" lookup link
+    #When I click "fundingsource__c" lookup link
     Then I see status in Progress-bar is "Active" and is "green"
     
  @52661 @creationFSFOUser @smoke 
@@ -123,7 +118,7 @@ Scenario Outline:Verify that other users (other than Admin/PM/EXE)are not able t
 	Given I login as "<User>" user 
 	When I navigate to "Planning" tab 
 	And I navigate to "Funding Sources" content inside "Planning" subheader on left panel 
-	Then  I cannot see top right button "New" in flex table with id "InternalFundingSource" 
+	Then  I cannot see top right button "New" in flex table with id "---fundingsource:-:funding_Source_Table_Id---" 
 	Examples: 
 		|User|
 		|PM |
@@ -135,7 +130,7 @@ Given I am on "INTERNAL" portal
 	When I navigate to "Planning" tab 
 	And I navigate to "Funding Sources" content inside "Planning" subheader on left panel 
 	And I click toggle button to select "Draft Internal Funding Sources" 
-	When I click on top right button "New" in flex table with id "InternalFundingSource" 
+	When I click on top right button "New" in flex table with id "---fundingsource:-:funding_Source_Table_Id---" 
 	When I enter "Creation" values from "FundingSource_Field_Values.xlsx" 
 	And I click modal button "Save and Continue" 
 	When I click on "Save" in the page details 
@@ -144,7 +139,7 @@ Given I am on "INTERNAL" portal
 	And I enter "Edition" values from "FundingSource_Field_Values.xlsx" 
 	When I click on "Save" in the page details 
     And I navigate to "Overview" sub tab
-    Given I click on top right button "New" in flex table with id "fundingSource::fundingAccountTableId"
+    Given I click on top right button "New" in flex table with id "---fundingsource:-:funding_Account_Table_Id---"
     And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     Given I click modal button "Save and Continue"
     And I click on "Save" in the page details
@@ -157,22 +152,18 @@ Given I am on "INTERNAL" portal
     
     
 @52663 @deactivateFundingSourcePMUser @smoke 
-Scenario: Verify that  user can  deactivate  Funding Source
-Given I am on "INTERNAL" portal 
-	Given I login as "EXE" user 
-	When I navigate to "Planning" tab 
-	And I navigate to "Funding Sources" content inside "Planning" subheader on left panel 
-	And I click toggle button to select "Draft Internal Funding Sources" 
-	When I click on top right button "New" in flex table with id "InternalFundingSource" 
-	When I enter "Creation" values from "FundingSource_Field_Values.xlsx" 
-	And I click modal button "Save and Continue" 
-	When I click on "Save" in the page details 
-	And I get the "EGMS ID" 
-	When I click on "Edit" in the page details 
-	And I enter "Edition" values from "FundingSource_Field_Values.xlsx" 
-	When I click on "Save" in the page details 
+Scenario: Verify that  PM user can  deactivate  Funding Source
+Given I create a planning record as user "EXE" from sheet "Creation" in excel "FundingSource_Field_Values.xlsx"
+      | Actions    | Step 1          | Step 2                | Step 3                         |
+      | Navigation | As a Grantor    | Planning              | Planning                       |
+      | FlexTable  | Funding Sources | InternalFundingSource | Draft Internal Funding Sources |
+      | Creation   | New             | Save and Continue     | Save                           |
+      | ID         | EGMS ID         |                       |                                |
+    Given I complete the fields from the sheet "Edition" in excel "FundingSource_Field_Values.xlsx"
+      | Actions         | Step 1 | Step 2 |
+      | Edition Buttons | Edit   | Save   |
     And I navigate to "Overview" sub tab
-    Given I click on top right button "New" in flex table with id "fundingSource::fundingAccountTableId"
+    Given I click on top right button "New" in flex table with id "---fundingsource:-:funding_Account_Table_Id---"
     And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     Given I click modal button "Save and Continue"
     And I click on "Save" in the page details
@@ -184,18 +175,18 @@ Given I am on "INTERNAL" portal
 	When I navigate to "Planning" tab 
 	And I navigate to "Funding Sources" content inside "Planning" subheader on left panel 
 	And I click toggle button to select "Active Internal Funding Sources" 
-	When I perform quick search for "Automation Execution Funding Source" in "fundingSource::fundingSourceTableId" panel 
+	When I perform quick search for "Automation Execution Funding Source" in "---fundingsource:-:funding_Source_Table_Id---" panel 
 	And I click on "View" icon for "Automation Execution Funding Source" inside table 
 	Then I cannot see top right button "Deactivate" in page detail  
 	
-@52666 @reactivateFundingSource @smoke @wip
+@52666 @reactivateFundingSource @smoke @wip @deepika
 Scenario: Verify that  user can  reactivate the deactivated  Funding Source
 Given I am on "INTERNAL" portal 
 	Given I login as "EXE" user 
 	When I navigate to "Planning" tab 
 	And I navigate to "Funding Sources" content inside "Planning" subheader on left panel 
 	And I click toggle button to select "Draft Internal Funding Sources" 
-	When I click on top right button "New" in flex table with id "InternalFundingSource" 
+	When I click on top right button "New" in flex table with id "---fundingsource:-:funding_Source_Table_Id---" 
 	When I enter "Creation" values from "FundingSource_Field_Values.xlsx" 
 	And I click modal button "Save and Continue" 
 	When I click on "Save" in the page details 
@@ -204,7 +195,7 @@ Given I am on "INTERNAL" portal
 	And I enter "Edition" values from "FundingSource_Field_Values.xlsx" 
 	When I click on "Save" in the page details 
     And I navigate to "Overview" sub tab
-    Given I click on top right button "New" in flex table with id "fundingSource::fundingAccountTableId"
+    Given I click on top right button "New" in flex table with id "---fundingsource:-:funding_Account_Table_Id---"
     And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     Given I click modal button "Save and Continue"
     And I click on "Save" in the page details
@@ -216,7 +207,7 @@ Given I am on "INTERNAL" portal
     When I navigate to "Planning" tab 
 	And I navigate to "Funding Sources" content inside "Planning" subheader on left panel 
 	And I click toggle button to select "Closed Internal Funding Sources" 
-	When I perform quick search for "Automation Execution Funding Source" in "fundingSource::fundingSourceTableId" panel 
+	When I perform quick search for "Automation Execution Funding Source" in "---fundingsource:-:funding_Source_Table_Id---" panel 
 	And I click on "View" icon for "Automation Execution Funding Source" inside table 
 	And I click on "Reactivate" in the page details
     Then I see status in Progress-bar is "Activated" and is "green"

@@ -1,4 +1,4 @@
-@scheduledPaymentRequest @Regression
+@scheduledPaymentRequest @regression
 Feature: Scheduled Payment Request Happy Path
 
   @51076 @scheduledReimbursementPaymentRequestHappyPath
