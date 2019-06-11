@@ -85,7 +85,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
     When I click "Add" after selection of "<Contact>" in the table "AssociateAnnouncementContacts"
-    When I click on "Remove" icon for "<Contact>" inside flex table with id "announcement::contactTableId"
+    When I click on "Remove" icon for "<Contact>" inside flex table with id "---announcement:-:contactTableId---"
     Then I do not see values "Record Id" and "Contact" inside table
     Examples:
       | Contact        |
