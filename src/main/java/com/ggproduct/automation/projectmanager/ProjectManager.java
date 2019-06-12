@@ -108,4 +108,13 @@ public class ProjectManager extends ProjectWebServices {
         Assert.assertTrue(isColumnValueBlank(fieldName));
     }
 
+    /* handles to veify total records present in flex table */
+    public String totalRecordsCount(String tableId) {
+        reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='" + tableId + "']//following-sibling::span[contains(text(),'Total Records')]"));
+        return (reiDriver.findMyElement().getElement(By.xpath("//div[@id='" + tableId + "']//following-sibling::span[contains(text(),'Total Records')]"))).getText();
+    }
+
+    public void AssertTotalRecordsCountInFlexTable(String totalRecord, String tableId) {
+        Assert.assertEquals(totalRecord, totalRecordsCount(tableId));
+    }
 }

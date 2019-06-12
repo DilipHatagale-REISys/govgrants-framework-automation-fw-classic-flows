@@ -52,4 +52,10 @@ public class GenericSteps {
     public void iSeeFieldNameIsBlank(String fieldname){
         projectManager.assertColumnValuIsBlank(fieldname);
     }
+
+    @Description("To verify total records available under flex table")
+    @Then("^I see total records count \"([^\"]*)\" in flex table \"([^\"]*)\"$")
+    public void iSeeTotalRecordsCountInFlexTable(String totalRecords, String tableId) {
+        projectManager.AssertTotalRecordsCountInFlexTable(totalRecords, tableId);
+    }
 }

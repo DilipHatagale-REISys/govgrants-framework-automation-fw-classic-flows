@@ -607,7 +607,7 @@ Feature: Validate all scenarios in Payment Request
     Then I see status in Progress-bar is "Created" and is "Green"
 
   @53844 @editionOfAdvancePaymentRequestBySPIUser @mahadev
-  Scenario: Advance Payment Request creation
+  Scenario: edition of advance payment request
     When I navigate to "Requests" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
@@ -628,19 +628,3 @@ Feature: Validate all scenarios in Payment Request
     And I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see field "Acknowledgement" as "I Agree"
-
-  @53838 @editionOfPaymentRequestSchedule @mahadev
-  Scenario: Verify that Payment Request Schedule is editable to internal user on draft award
-    And I click on "Edit" in the page details
-    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I navigate to "Management" sub tab
-    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAward_StandAlone:-:paymentRequest_Schedule_TableId---"
-    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
-    And I click modal button "Save"
-    When I close modal by clicking the top right x button
-    When I click on "Edit" icon for "Payment Request" inside flex table with id "---subAward_StandAlone:-:paymentRequest_Schedule_TableId---"
-    And I enter value "Quarterly" into field "Frequency__c"
-    And I click modal button "Save"
-    When I close modal by clicking the top right x button
-    Then I see value "Quarterly" for title "Frequency" against the value "Payment Request" inside table "---subAward_StandAlone:-:paymentRequest_Schedule_TableId---"
