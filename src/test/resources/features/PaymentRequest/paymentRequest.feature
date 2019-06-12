@@ -391,7 +391,7 @@ Feature: Validate all scenarios in Payment Request
       | Award Name                 | Grant Name                 |
       | Automation Permanent Award | Automation Permanent Award |
 
-  @38835 @paymentRequestRejectionByFOUser
+  @38835 @paymentRequestRejectionByFOUser @mahadev
   Scenario: Validate the Payment request Rejection by FO user
     When I navigate to "Requests" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -435,7 +435,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Disapprove" on the approval decision box
     Then I see status in Progress-bar is "Rejected" and is "Red"
 
-  @38838 @paymentRequestReSubmitAfterCorrection
+  @38838 @paymentRequestReSubmitAfterCorrection @mahadev
   Scenario: Approval of Payment Request
     When I navigate to "Requests" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -482,7 +482,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
 
-  @38837 @PRsendBackToOwner
+  @38837 @PRsendBackToOwner @mahadev
   Scenario: Approver send back payment request to owner
     When I navigate to "Requests" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -515,7 +515,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Send to Owner" on the approval decision box
     Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
 
-  @38742 @taskCreationforFOUser
+  @38742 @taskCreationforFOUser @mahadev
   Scenario: Validate task creation for fiscal user
     When I navigate to "Requests" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -537,3 +537,110 @@ Feature: Validate all scenarios in Payment Request
     And I perform quick search for "Record Id" in "PhasePendingTasks" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
     Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
+
+  @53845 @paymentRequestAccessibleToSPIandSPA @mahadev
+  Scenario Outline: Validate task creation for fiscal user
+    When I navigate to "Requests" sub tab
+    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    When I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipient_Grant_Table_Id---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipient_Grant_Table_Id---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipient_Award_Table_Id---"
+    When I navigate to "Requests" sub tab
+    And I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I navigate to "Financials" sub tab
+    When I click on "Edit" in the page details
+    And I enter value "I Disagree" into field "TermsAgreement__c"
+    When I click on "Save" in the page details
+    Then I see field "Acknowledgement" as "I Disagree"
+    Examples:
+      | Award Name                 | Grant Name                 |
+      | Automation Permanent Award | Automation Permanent Award |
+
+  @53846 @SPAUserNotAbleToSubmitPaymentRequest @mahadev
+  Scenario Outline: Validate SPA user not able to submit payment Request
+    When I navigate to "Requests" sub tab
+    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    Given I navigate to "Financials" sub tab
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
+    When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
+      | Extra Salary | The narrative | 120        | 1        | Feet        | 100               | 0               | 200                      | 100        | 100            |
+    When I close modal by clicking the top right x button
+    When I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipient_Grant_Table_Id---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipient_Grant_Table_Id---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipient_Award_Table_Id---"
+    When I navigate to "Requests" sub tab
+    And I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    Then I cannot see top right button "Submit to Grantor" in page detail
+    Examples:
+      | Award Name                 | Grant Name                 |
+      | Automation Permanent Award | Automation Permanent Award |
+
+  @53841 @CreationOfAdvancePaymentRequest @mahadev
+  Scenario: Advance Payment Request creation
+    When I navigate to "Requests" sub tab
+    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I see status in Progress-bar is "Created" and is "Green"
+
+  @53844 @editionOfAdvancePaymentRequestBySPIUser @mahadev
+  Scenario: Advance Payment Request creation
+    When I navigate to "Requests" sub tab
+    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipient_Grant_Table_Id---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipient_Grant_Table_Id---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipient_Award_Table_Id---"
+    When I navigate to "Requests" sub tab
+    And I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I see field "Acknowledgement" as "I Agree"
+
+  @53838 @editionOfPaymentRequestSchedule @mahadev
+  Scenario: Verify that Payment Request Schedule is editable to internal user on draft award
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Management" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAward_StandAlone:-:paymentRequest_Schedule_TableId---"
+    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    When I click on "Edit" icon for "Payment Request" inside flex table with id "---subAward_StandAlone:-:paymentRequest_Schedule_TableId---"
+    And I enter value "Quarterly" into field "Frequency__c"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    Then I see value "Quarterly" for title "Frequency" against the value "Payment Request" inside table "---subAward_StandAlone:-:paymentRequest_Schedule_TableId---"

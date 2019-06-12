@@ -1275,3 +1275,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
+
+  @53835 @paymentRequestScheduleBlankOnDraftAward @mahadev
+  Scenario: Verify that Payment Request Schedule is blank on draft award
+    When I navigate to "Management" sub tab
+    Then I see field name "Frequency__c" is blank in flex table

@@ -6,6 +6,7 @@ import com.automation.rei.handlers.GovGrantsHandler;
 import eyethink.automation.bots.controller.Controller;
 import eyethink.automation.bots.controller.CoreHandlers;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 
 /**
@@ -90,6 +91,21 @@ public class ProjectManager extends ProjectWebServices {
         } catch (Exception e) {
         }
         return false;
+    }
+
+    /*handles to verify blank value is present inside flex table */
+    public boolean isColumnValueBlank(String fieldName){
+        reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//*[@field-name='"+fieldName+"' or @id='"+fieldName+"']"));
+        WebElement fieldValue= reiDriver.findMyElement().getElement(By.xpath("//*[@field-name='"+fieldName+"' or @id='"+fieldName+"']"));
+        String value =fieldValue.getText();
+        if(value.equals("")) {
+            return true;
+        }
+        return false;
+    }
+
+    public void assertColumnValuIsBlank(String fieldName){
+        Assert.assertTrue(isColumnValueBlank(fieldName));
     }
 
 }

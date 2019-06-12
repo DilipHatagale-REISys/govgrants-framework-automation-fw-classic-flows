@@ -79,9 +79,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "6" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
@@ -95,7 +93,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -103,7 +100,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -111,7 +107,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -152,9 +147,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "7" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Management Review | 5           |
@@ -169,7 +162,6 @@ Feature: Validate all scenarios in the Application Review
     And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
-    And I pause execution for "4" seconds
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
@@ -188,7 +180,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Management Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "5" seconds
     When I click on "Funding Decision Memo" in the page details
     Then I can see top right button "Submit for Approval" in page detail
     Examples:
@@ -238,7 +229,6 @@ Feature: Validate all scenarios in the Application Review
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
@@ -292,7 +282,6 @@ Feature: Validate all scenarios in the Application Review
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
@@ -350,9 +339,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "8" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
@@ -366,7 +353,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -374,7 +360,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -382,7 +367,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -434,9 +418,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "8" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
@@ -450,7 +432,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -458,7 +439,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -466,7 +446,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -521,9 +500,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "8" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
@@ -537,7 +514,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -545,7 +521,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -553,7 +528,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -639,9 +613,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "8" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
@@ -655,7 +627,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -663,7 +634,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -671,7 +641,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -712,7 +681,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     Then I see that "Promoted to Management Review Step" has been added in flextable with Id "---application_Review:-:app_TableId---"
     Examples:
       | Announcement Name                              | Application Name       |
@@ -760,9 +728,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "8" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
@@ -776,7 +742,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "6" seconds
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -784,7 +749,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "6" seconds
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -792,7 +756,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -833,9 +796,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "8" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Management Review | 5           |
@@ -886,9 +847,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "8" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
@@ -902,7 +861,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -910,7 +868,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -918,7 +875,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -959,9 +915,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "8" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Management Review | 5           |
@@ -1015,9 +969,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "8" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
@@ -1031,7 +983,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -1039,7 +990,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -1047,7 +997,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -1088,9 +1037,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "8" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Management Review | 5           |
@@ -1150,9 +1097,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "8" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
@@ -1166,7 +1111,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -1174,7 +1118,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -1182,7 +1125,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -1223,9 +1165,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "8" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Management Review | 5           |
@@ -1240,7 +1180,6 @@ Feature: Validate all scenarios in the Application Review
     And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
-    And I pause execution for "8" seconds
     Then I see that "Sent for Review" has been added in flextable with Id "---application_Review:-:appreviews_TableId---"
     Examples:
       | Announcement Name                              | Application Name       |
@@ -1288,9 +1227,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "8" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
@@ -1304,7 +1241,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "6" seconds
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -1312,7 +1248,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "6" seconds
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -1320,7 +1255,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "6" seconds
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -1361,9 +1295,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "8" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Management Review | 5           |
@@ -1378,7 +1310,6 @@ Feature: Validate all scenarios in the Application Review
     And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
-    And I pause execution for "6" seconds
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
@@ -1442,9 +1373,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "8" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
@@ -1458,7 +1387,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "6" seconds
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -1466,7 +1394,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "6" seconds
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -1474,7 +1401,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "6" seconds
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -1515,9 +1441,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "8" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Management Review | 5           |
@@ -1532,7 +1456,6 @@ Feature: Validate all scenarios in the Application Review
     And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
-    And I pause execution for "4" seconds
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
@@ -1551,7 +1474,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Management Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     Then I see that "Review Step" is in "Completed" status
     Examples:
       | Announcement Name                              | Application Name       |
@@ -1599,9 +1521,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "8" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
@@ -1615,7 +1535,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "6" seconds
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -1623,7 +1542,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "6" seconds
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -1631,7 +1549,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "6" seconds
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -1672,9 +1589,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "8" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Management Review | 5           |
@@ -1689,7 +1604,6 @@ Feature: Validate all scenarios in the Application Review
     And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
-    And I pause execution for "6" seconds
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
@@ -1708,9 +1622,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Management Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     When I click on "Funding Decision Memo" in the page details
-    When I pause execution for "8" seconds
     And I click on "Edit" in the page details
     When I enter value "AuGr" into field "GrantCode__c"
     And I click on "Save" in the page details
@@ -1761,9 +1673,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "8" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
@@ -1777,7 +1687,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "6" seconds
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -1785,7 +1694,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "6" seconds
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -1793,7 +1701,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
-    When I pause execution for "8" seconds
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -1834,9 +1741,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "8" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Management Review | 5           |
@@ -1851,7 +1756,6 @@ Feature: Validate all scenarios in the Application Review
     And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
-    When I pause execution for "8" seconds
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
@@ -1870,9 +1774,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Management Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     When I click on "Funding Decision Memo" in the page details
-    When I pause execution for "8" seconds
     And I click on "Edit" in the page details
     When I enter value "AuGr" into field "GrantCode__c"
     And I click on "Save" in the page details
@@ -1926,9 +1828,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "8" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
@@ -1942,7 +1842,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "6" seconds
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -1950,7 +1849,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "6" seconds
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -1958,7 +1856,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "6" seconds
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -1999,9 +1896,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "8" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Management Review | 5           |
@@ -2016,7 +1911,6 @@ Feature: Validate all scenarios in the Application Review
     And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
-    When I pause execution for "8" seconds
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
@@ -2035,9 +1929,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Management Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     When I click on "Funding Decision Memo" in the page details
-    When I pause execution for "8" seconds
     And I click on "Edit" in the page details
     When I enter value "AuGr" into field "GrantCode__c"
     When I enter values into fields
@@ -2099,9 +1991,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "8" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
@@ -2115,7 +2005,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "6" seconds
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -2123,7 +2012,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "6" seconds
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -2131,7 +2019,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "6" seconds
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -2172,10 +2059,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "8" seconds
-    When I pause execution for "7" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Management Review | 5           |
@@ -2190,7 +2074,6 @@ Feature: Validate all scenarios in the Application Review
     And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
-    When I pause execution for "8" seconds
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
@@ -2209,9 +2092,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Management Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     When I click on "Funding Decision Memo" in the page details
-    When I pause execution for "8" seconds
     And I click on "Edit" in the page details
     When I enter value "AuGr" into field "GrantCode__c"
     When I enter values into fields
@@ -2274,9 +2155,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---application_Review:-:review_steps_tableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "8" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Program Review    | 5           |
@@ -2290,7 +2169,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Program Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation PM" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -2298,7 +2176,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -2306,7 +2183,6 @@ Feature: Validate all scenarios in the Application Review
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
-    And I pause execution for "4" seconds
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
@@ -2346,11 +2222,8 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Related Logs" sub tab
     When I click on "View" icon for "SME Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on top right button "Promote to Next Step" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     And I click on "Next Review Step" in the page details
-    When I pause execution for "7" seconds
     When I edit the following rows inline in flex table with id "---application_Review:-:form_tableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
       | Management Review | 5           |
@@ -2365,7 +2238,6 @@ Feature: Validate all scenarios in the Application Review
     And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
-    And I pause execution for "4" seconds
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
@@ -2384,9 +2256,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Management Review" inside flex table with id "---application_Review:-:review_steps_tableId---"
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:app_TableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---application_Review:-:app_TableId---"
-    When I pause execution for "8" seconds
     When I click on "Funding Decision Memo" in the page details
-    When I pause execution for "8" seconds
     And I click on "Edit" in the page details
     When I enter value "AuGr" into field "GrantCode__c"
     When I enter values into fields

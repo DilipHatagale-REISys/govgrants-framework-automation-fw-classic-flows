@@ -46,4 +46,10 @@ public class GenericSteps {
     public void iCreateAPostAwardRecordForTheAwardHavingObjectApiNameAs(String objectType, String recordName, String objectApiName) {
         projectManager.getRecordIdFromResponse(objectType, recordName, objectApiName);
     }
+
+    @Description("To verify field value is blank in flex table")
+    @Then("^I see field name \"([^\"]*)\" is blank in flex table$")
+    public void iSeeFieldNameIsBlank(String fieldname){
+        projectManager.assertColumnValuIsBlank(fieldname);
+    }
 }
