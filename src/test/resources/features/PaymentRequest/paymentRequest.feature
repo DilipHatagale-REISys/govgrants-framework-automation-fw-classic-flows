@@ -435,7 +435,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Disapprove" on the approval decision box
     Then I see status in Progress-bar is "Rejected" and is "Red"
 
-  @38838 @paymentRequestReSubmitAfterCorrection @mahadev
+  @38838 @paymentRequestReSubmitAfterCorrection @mahadev @smoke
   Scenario: Approval of Payment Request
     When I navigate to "Requests" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"

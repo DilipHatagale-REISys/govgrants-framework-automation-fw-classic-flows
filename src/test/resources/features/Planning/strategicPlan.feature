@@ -21,7 +21,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Save" in the page details
     Then I see that "Status" is in "Draft" status
 
-  @51044 @addAttachmentToStrategicPlan @wip @deepika
+  @51044 @addAttachmentToStrategicPlan 
   Scenario: Addition of Attachment to Strategic Plan
     And I complete the fields from the sheet "StrategicPlanEdition" in excel "StrategicPlan_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -57,7 +57,7 @@ Feature: Validate all scenarios in Strategic Plan
     When I enter "StrategicGoalEdition" values from "StrategicPlan_Field_Values.xlsx"
     And I click on "Save" in the page details
 
-  @51046 @addAttachmentToStrategicGoal @wip @deepika
+  @51046 @addAttachmentToStrategicGoal 
   Scenario: Addition of Attachment to Strategic Goal inside a Strategic Plan
     And I complete the fields from the sheet "StrategicPlanEdition" in excel "StrategicPlan_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -112,7 +112,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I enter "ObjectiveEdition" values from "StrategicPlan_Field_Values.xlsx"
     When I click on "Save" in the page details
 
-  @51049 @additionOfAttachmentToObjective @wip @deepika
+  @51049 @additionOfAttachmentToObjective 
   Scenario: Addition of Attachment to Objective inside a Strategic Goal
     And I click on top right button "New" in flex table with id "---strategicplan:-:strategic_Goal_Objectives_Table_Id---"
     When I enter "StrategicGoalCreation" values from "StrategicPlan_Field_Values.xlsx"
@@ -149,10 +149,10 @@ Feature: Validate all scenarios in Strategic Plan
     And I complete the fields from the sheet "StrategicPlanEdition" in excel "StrategicPlan_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-#    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
-#      | Actions               | Step 1      | Step 2         | Step 3             |
-#      | Attachment Navigation | Attachments | Add            | a150b000003ep3EAAQ |
-#      | Attachment Details    | Attachment  | Strategic Plan |                    |
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+      | Actions               | Step 1      | Step 2         | Step 3             |
+      | Attachment Navigation | Attachments | Add            | a1511000002nIxtAAE |
+      | Attachment Details    | Attachment  | Strategic Plan |                    |
     When I navigate to "Overview" sub tab
     And I click on top right button "New" in flex table with id "---strategicplan:-:strategic_Goal_Objectives_Table_Id---"
     Given I enter "StrategicGoalCreation" values from "StrategicPlaflexGridGrantorStrategicGoalObjectivesn_Field_Values.xlsx"
@@ -161,10 +161,10 @@ Feature: Validate all scenarios in Strategic Plan
     And I complete the fields from the sheet "StrategicGoalEdition" in excel "StrategicPlan_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-#    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
-#      | Actions               | Step 1      | Step 2         | Step 3             |
-#      | Attachment Navigation | Attachments | Add            | a150b000003epW2AAI |
-#      | Attachment Details    | Attachment  | Strategic Plan |                    |
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+      | Actions               | Step 1      | Step 2         | Step 3             |
+      | Attachment Navigation | Attachments | Add            | a1511000002nIxtAAE |
+      | Attachment Details    | Attachment  | Strategic Plan |                    |
     When I navigate to "Overview" sub tab
     Given I click on top right button "New" in flex table with id "---strategicplan:-:strategic_Goal_Related_Objectives_Table_Id---"
     And I enter "ObjectiveCreation" values from "StrategicPlan_Field_Values.xlsx"
@@ -173,10 +173,10 @@ Feature: Validate all scenarios in Strategic Plan
     Given I complete the fields from the sheet "ObjectiveEdition" in excel "StrategicPlan_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
-#    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
-#      | Actions               | Step 1      | Step 2         | Step 3             |
-#      | Attachment Navigation | Attachments | Add            | a150b000003epU7AAI |
-#      | Attachment Details    | Attachment  | Strategic Plan |                    |
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+      | Actions               | Step 1      | Step 2         | Step 3             |
+      | Attachment Navigation | Attachments | Add            | a1511000002nIxtAAE |
+      | Attachment Details    | Attachment  | Strategic Plan |                    |
     Given I associate "1" records "Automation Permanent KPI for Regression"
       | Actions     | Step 1       | Step 2    | Step 3                | Step 4    | Step 5     |
       | Associate 1 | Related Logs | Associate | KPIGoalsandObjectives | Associate | SelectKPIs |

@@ -27,7 +27,7 @@ Scenario: Edition of KPI
 	And I click on "Save" in the page details 
 	Then I see status in Progress-bar is "Created" and is "green" 
 	
-@51026 @addToKPI @wip @deepika 
+@51026 @addAttachmentToKPI
 Scenario: Addition of Attachment to KPI 
 	Given I create a planning record as user "EXE" from sheet "Creation" in excel "KPI_Field_Values.xlsx" 
 		| Actions    | Step 1                           | Step 2            | Step 3                                 |
@@ -52,10 +52,10 @@ Scenario: Happy Path of KPI
 	Given I complete the fields from the sheet "Edition" in excel "KPI_Field_Values.xlsx" 
 		| Actions         | Step 1 | Step 2 |
 		| Edition Buttons | Edit   | Save   |
-		#	And I add an attachment "InternalOrganization_Field_Values.xlsx" 
-		#		| Actions               | Step 1      | Step 2               | Step 3             |
-		#		| Attachment Navigation | Attachments | Add                  | a150b000001rv7YAAQ |
-		#		| Attachment Details    | Attachment  | Supporting Documents |                    |
+			And I add an attachment "InternalOrganization_Field_Values.xlsx" 
+				| Actions               | Step 1      | Step 2               | Step 3             |
+				| Attachment Navigation | Attachments | Add                  | a1511000002nJhwAAE |
+				| Attachment Details    | Attachment  | Supporting Documents |                    |
 	Given I click on "Activate" in the page details 
 	Then I see status in Progress-bar is "Active" and is "green" 
 	

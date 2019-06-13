@@ -1,7 +1,7 @@
 @scheduledPaymentRequest @regression
 Feature: Scheduled Payment Request Happy Path
 
-  @51076 @scheduledReimbursementPaymentRequestHappyPath
+  @51076 @scheduledReimbursementPaymentRequestHappyPath @smoke
   Scenario Outline: Scheduled Payment Request happy path
     Given I delete the record "<Award Name>" from the object "Payment Request"
     Given I delete the record "Automation Payment Request" from the object "Payment Request"

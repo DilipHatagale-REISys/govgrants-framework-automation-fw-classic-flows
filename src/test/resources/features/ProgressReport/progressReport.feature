@@ -12,7 +12,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
     And I click on "Save" in the page details
 
-  @51097 @taskCreationForSubrecipientProgressReport
+  @51097 @taskCreationForSubrecipientProgressReport @smoke
   Scenario: To assert the task creation for Progress Report
     Then I see status in Progress-bar is "Created" and is "green"
 
@@ -31,7 +31,7 @@ Feature: Validate all scenarios in Progress Report
       | Automation Permanent KPI for Regression | 7      | 7             |
     Then I see that "7" has been added in flextable with Id "---progressReport:-:kpiTableId---"
 
-  @51100 @formFillingProgressReport
+  @51100 @formFillingProgressReport @smoke
   Scenario: To fill and complete the form in Progress Report
     When I navigate to "Forms and Attachments" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
@@ -58,7 +58,7 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Performance" sub tab
     Then I cannot see row level action button "Edit" against "Actions" in flex table with id "---progressReport:-:kpiTableId---"
 
-  @51102 @submitProgressReportToGrantor
+  @51102 @submitProgressReportToGrantor @smoke
   Scenario: To submit Progress Report to Grantor
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
@@ -126,7 +126,7 @@ Feature: Validate all scenarios in Progress Report
       | Performance Tab - Enter at least one Plan before submitting to Grantor.                                     |
       | Forms and Attachments Tab - Fill all the required data in the form before submitting to Grantor.            |
 
-  @51106 @internalSentProgressReportToSubRecipient
+  @51106 @internalSentProgressReportToSubRecipient 
   Scenario: To send back the Progress Report
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
@@ -201,7 +201,7 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
 
-  @51109 @resubmitProgressReportToGrantor
+  @51109 @resubmitProgressReportToGrantor @smoke
   Scenario: To validate SR user is able to Submit the Progress Report post Progress Report it was sent back for corrections by the Grantor.
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
@@ -263,7 +263,7 @@ Feature: Validate all scenarios in Progress Report
       | Fiscal Approver  | Automation FO | Automation Test Description |
     Then I see that "Automation PM" has been added in flextable with Id "flexGridProgressReportsRolesandResponsibilities"
 
-  @51111 @submitProgressReportForApproval
+  @51111 @submitProgressReportForApproval @smoke
   Scenario: To submit Progress Report for approval
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
@@ -287,7 +287,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
-  @51112 @progressReportHappyPath
+  @51112 @progressReportHappyPath @smoke
   Scenario: To approve Progress Report
     Given I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
@@ -480,7 +480,7 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     Then I do not see value inside table with id "PhasePendingTasks"
 
-  @51117 @approvalofProgressReportSendbacktoOwnerOfProgressReportbyProgramApprover
+  @51117 @approvalofProgressReportSendbacktoOwnerOfProgressReportbyProgramApprover @smoke
   Scenario: To validate  Progress Report approval is successful post Program Approver Sends back the progress report to Owner.
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
@@ -549,7 +549,7 @@ Feature: Validate all scenarios in Progress Report
     Given I click on "Submit to Grantor" in the page details
     Then I cannot see top right button "Edit" in page detail
 
-  @51119 @sendBacktoOwnerOfProgressReportbyFiscalApprover
+  @51119 @sendBacktoOwnerOfProgressReportbyFiscalApprover @smoke
   Scenario: To validate  Progress Report send back to owner functionality by Fiscal approver.
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
@@ -818,7 +818,7 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     Then I do not see value inside table with id "PhasePendingTasks"
 
-  @51125 @approvalOfProgressReport @progressReportHappyPathWithoutDefaultApprovers
+  @51125 @approvalOfProgressReport @progressReportHappyPathWithoutDefaultApprovers @smoke
   Scenario: To approve Progress Report by changing the defualt approvers in Progress Report
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"

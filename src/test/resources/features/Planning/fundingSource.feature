@@ -28,7 +28,7 @@ Feature: Validate all scenarios in Funding Source
     And I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
     
-  @51036 @addAttachmentToFundingSource @wip @deepika
+  @51036 @addAttachmentToFundingSource 
   Scenario: Addition of Attachment to KPI
       Given I create a planning record as user "EXE" from sheet "Creation" in excel "FundingSource_Field_Values.xlsx"
       | Actions    | Step 1          | Step 2                | Step 3                         |
@@ -109,7 +109,6 @@ Feature: Validate all scenarios in Funding Source
     And I enter "Funding Account Edition" values from "FundingSource_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I click on "Activate" in the page details
-    #When I click "fundingsource__c" lookup link
     Then I see status in Progress-bar is "Active" and is "green"
     
  @52661 @creationFSFOUser @smoke 

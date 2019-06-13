@@ -83,7 +83,7 @@ Feature: Validate all scenarios in the Amendment Request
       | Executive Approver | Automation EXE | Automation Test Description |
     Then I see that "Automation EXE" has been added in flextable with Id "---amendment:-:amendmentreq_roles_responsibilities---"
 
-  @53200 @addAttachmentToSOWAmendmentRequest @wip
+  @53200 @addAttachmentToSOWAmendmentRequest
   Scenario: Add attachment to Amendment Request
     Given I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendment_request_grantor_id---"
@@ -91,10 +91,10 @@ Feature: Validate all scenarios in the Amendment Request
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
-    And I click on top right button "Add" in flex table with id "a150b000003epeQAAQ"
+    And I click on top right button "Add" in flex table with id "a1511000002nJWIAA2"
     When I choose the file "Announcement_Field_Values.xlsx" to upload for "Attachment" of type "Terms and Conditions"
     And I close Modal
-    Then I see that "Terms and Conditions" has been added in flextable with Id "a150b000003epeQAAQ"
+    Then I see that "Terms and Conditions" has been added in flextable with Id "a1511000002nJWIAA2"
 
   @53201 @sendToSubrecipientToSOWAmendmentRequest
   Scenario: Send Amendment Request to subrecipient
@@ -205,10 +205,10 @@ Feature: Validate all scenarios in the Amendment Request
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
-#    And I add an attachment "InternalOrganization_Field_Values.xlsx"
-#      | Actions               | Step 1      | Step 2               | Step 3             |
-#      | Attachment Navigation | Attachments | Add                  | a150b000003epeQAAQ |
-#      | Attachment Details    | Attachment  | Terms and Conditions |                    |
+    And I add an attachment "InternalOrganization_Field_Values.xlsx"
+      | Actions               | Step 1      | Step 2               | Step 3             |
+      | Attachment Navigation | Attachments | Add                  | a1511000002nJWIAA2 |
+      | Attachment Details    | Attachment  | Terms and Conditions |                    |
     And I click on "Send to Subrecipient" in the page details
     Given User "SPI" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -253,10 +253,10 @@ Feature: Validate all scenarios in the Amendment Request
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
-#    And I add an attachment "InternalOrganization_Field_Values.xlsx"
-#      | Actions               | Step 1      | Step 2               | Step 3             |
-#      | Attachment Navigation | Attachments | Add                  | a150b000003epeQAAQ |
-#      | Attachment Details    | Attachment  | Terms and Conditions |                    |
+    And I add an attachment "InternalOrganization_Field_Values.xlsx"
+      | Actions               | Step 1      | Step 2               | Step 3             |
+      | Attachment Navigation | Attachments | Add                  | a1511000002nJWIAA2 |
+      | Attachment Details    | Attachment  | Terms and Conditions |                    |
     And I click on "Send to Subrecipient" in the page details
     Given User "SPI" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -302,10 +302,10 @@ Feature: Validate all scenarios in the Amendment Request
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
-#    And I add an attachment "InternalOrganization_Field_Values.xlsx"
-#      | Actions               | Step 1      | Step 2               | Step 3             |
-#      | Attachment Navigation | Attachments | Add                  | a150b000003epeQAAQ |
-#      | Attachment Details    | Attachment  | Terms and Conditions |                    |
+    And I add an attachment "InternalOrganization_Field_Values.xlsx"
+      | Actions               | Step 1      | Step 2               | Step 3             |
+      | Attachment Navigation | Attachments | Add                  | a1511000002nJWIAA2 |
+      | Attachment Details    | Attachment  | Terms and Conditions |                    |
     And I click on "Send to Subrecipient" in the page details
     Given User "SPI" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2        | Step 3    |

@@ -26,7 +26,7 @@ Feature: Validate all scenarios in Focus Area
     And I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @50961 @addAttachmentToFocusArea @wip @deepika
+  @50961 @addAttachmentToFocusArea
   Scenario: Addition of Attachment to Focus Area
     Given I login to "As a Grantor" app as "EXE" user
     When I navigate to "Planning" tab
@@ -36,10 +36,10 @@ Feature: Validate all scenarios in Focus Area
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
-    And I click on top right button "Add" in flex table with id "a150b000003epDEAAY"
+    And I click on top right button "Add" in flex table with id "a1511000002nJ73AAE"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Supporting Documents"
     And I close Modal
-    Then I see that "Supporting Documents" has been added in flextable with Id "a150b000003epDEAAY"
+    Then I see that "Supporting Documents" has been added in flextable with Id "a1511000002nJ73AAE"
 
   @34729 @activateFocusArea @smoke
   Scenario: Activate Focus Area
@@ -63,10 +63,10 @@ Feature: Validate all scenarios in Focus Area
     When I click modal button "Save and Continue"
     When I enter "Edition" values from "FocusArea_Field_Values.xlsx"
     And I click on "Save" in the page details
-#    When I navigate to "Attachments" sub tab
-#    And I click on top right button "Add" in flex table with id "---focusarea:-:focusArea_Attachment_Table_Id---"
-#    When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Supporting Documents"
-#    And I close Modal
+    When I navigate to "Attachments" sub tab
+    And I click on top right button "Add" in flex table with id "---focusarea:-:focusArea_Attachment_Table_Id---"
+    When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Supporting Documents"
+    And I close Modal
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "green"
 

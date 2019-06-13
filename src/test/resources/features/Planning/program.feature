@@ -24,7 +24,7 @@ Feature: Validate all scenarios for program
       | Program flextable Header | Program                               |
       | Draft Internal Programs  |Automation Execution Internal Program  |
 
-  @34503 @programCreation  @smoke
+  @34503 @programCreation @smoke
   Scenario: Verifying if the EXE, PM, PO has create access to Internal Program
     Then I see status in Progress-bar is "Created" and is "green"
 
@@ -73,7 +73,7 @@ Feature: Validate all scenarios for program
       | Objective                      |
       | Automation Permanent Objective |
 
-  @34738 @programKPIAssociation  @smoke
+  @34738 @programKPIAssociation @smoke
   Scenario Outline: Validate the aasociation of KPI
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:kpi_Table_Id---"
@@ -84,7 +84,7 @@ Feature: Validate all scenarios for program
       | EGMS Id                                 |
       | Automation Permanent KPI for Regression |
 
-  @34745 @programAttachmentChecklist @wip @deepika
+  @34745 @programAttachmentChecklist 
   Scenario: Validate the attachment checklist for the Internal Program
     When I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "---program:-:checklist_Table_Id---" by clicking "Add" :
@@ -111,17 +111,17 @@ Feature: Validate all scenarios for program
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
-#    When I navigate to "Setup" sub tab
-#    When I enter the following values into flex table with id "---program:-:checklist_Table_Id---" by clicking "Add" :
-#      | Description                 | Required  | Applies To  | Status |
-#      | Automation test description | Mandatory | Application | Active |
-#    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklist_Table_Id---"
-#    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-#    When I close Modal
-#    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
-#      | Actions               | Step 1      | Step 2            | Step 3             |
-#      | Attachment Navigation | Attachments | Add               | a150b000003epY5AAI |
-#      | Attachment Details    | Attach1ment | Program Artifacts |                    |
+    When I navigate to "Setup" sub tab
+    When I enter the following values into flex table with id "---program:-:checklist_Table_Id---" by clicking "Add" :
+      | Description                 | Required  | Applies To  | Status |
+      | Automation test description | Mandatory | Application | Active |
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklist_Table_Id---"
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close Modal
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+      | Actions               | Step 1      | Step 2            | Step 3             |
+      | Attachment Navigation | Attachments | Add               | a1511000002nJS1AAM |
+      | Attachment Details    | Attach1ment | Program Artifacts |                    |
     And I click on "Submit For Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
@@ -141,17 +141,17 @@ Feature: Validate all scenarios for program
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
-#    When I navigate to "Setup" sub tab
-#    When I enter the following values into flex table with id "---program:-:checklist_Table_Id---" by clicking "Add" :
-#      | Description                 | Required  | Applies To  | Status |
-#      | Automation test description | Mandatory | Application | Active |
-#    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklist_Table_Id---"
-#    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-#    When I close Modal
-#    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
-#      | Actions               | Step 1      | Step 2            | Step 3             |
-#      | Attachment Navigation | Attachments | Add               | a150b000003epY5AAI |
-#      | Attachment Details    | Attach1ment | Program Artifacts |                    |
+    When I navigate to "Setup" sub tab
+    When I enter the following values into flex table with id "---program:-:checklist_Table_Id---" by clicking "Add" :
+      | Description                 | Required  | Applies To  | Status |
+      | Automation test description | Mandatory | Application | Active |
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklist_Table_Id---"
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close Modal
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+      | Actions               | Step 1      | Step 2            | Step 3             |
+      | Attachment Navigation | Attachments | Add               | a1511000002nJS1AAM |
+      | Attachment Details    | Attach1ment | Program Artifacts |                    |
     And I click on "Submit For Approval" in the page details
     Given "2" Approvers "PM,EXE" approve the record "Record Id"
       | Actions    | Step 1        | Step 2   | Step 3            |
@@ -160,7 +160,7 @@ Feature: Validate all scenarios for program
       | Approval   | Start         | Approve  |                   |
     Then I see status in Progress-bar is "Approved" and is "green"
 
-  @34756 @programActivation @programHappyPath  @smoke
+  @34756 @programActivation @programHappyPath @smoke
   Scenario Outline: Validate the activation of Internal Program
     Given I complete the fields from the sheet "Edition" in excel "Program_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
@@ -177,17 +177,17 @@ Feature: Validate all scenarios for program
       | Program Approver   | Automation PM  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
     When I get the "EGMS ID"
-#    When I navigate to "Setup" sub tab
-#    When I enter the following values into flex table with id "---program:-:checklist_Table_Id---" by clicking "Add" :
-#      | Description                 | Required  | Applies To  | Status |
-#      | Automation test description | Mandatory | Application | Active |
-#    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklist_Table_Id---"
-#    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-#    When I close Modal
-#    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
-#      | Actions               | Step 1      | Step 2            | Step 3             |
-#      | Attachment Navigation | Attachments | Add               | a150b000003epY5AAI |
-#      | Attachment Details    | Attach1ment | Program Artifacts |                    |
+    When I navigate to "Setup" sub tab
+    When I enter the following values into flex table with id "---program:-:checklist_Table_Id---" by clicking "Add" :
+      | Description                 | Required  | Applies To  | Status |
+      | Automation test description | Mandatory | Application | Active |
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklist_Table_Id---"
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close Modal
+    Given I add an attachment "InternalOrganization_Field_Values.xlsx"
+      | Actions               | Step 1      | Step 2            | Step 3             |
+      | Attachment Navigation | Attachments | Add               | a1511000002nJS1AAM |
+      | Attachment Details    | Attach1ment | Program Artifacts |                    |
     And I click on "Submit For Approval" in the page details
     Given "2" Approvers "PM,EXE" approve the record "Record Id"
       | Actions    | Step 1        | Step 2   | Step 3            |

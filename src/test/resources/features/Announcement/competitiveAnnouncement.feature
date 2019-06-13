@@ -1,4 +1,4 @@
-@competitive @regression
+@competitive @regression 
 Feature: Validate all scenarios in the Competitive Announcement tab
 
   Background: Create Announcement

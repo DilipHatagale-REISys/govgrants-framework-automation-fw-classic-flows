@@ -16,7 +16,7 @@ Feature: Validate all scenarios in the Pre-Application
     And I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @53151 @preApplicationCreation
+  @53151 @preApplicationCreation @smoke
   Scenario: Creating a Pre Application
     Then I see status in Progress-bar is "Created" and is "green"
 
@@ -27,7 +27,7 @@ Feature: Validate all scenarios in the Pre-Application
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @53154 @addBudgetDetailsToPreApplication
+  @53154 @addBudgetDetailsToPreApplication @smoke
   Scenario: Addition of budget in the budget grid to an pre-application
     When I navigate to "Budget" sub tab
     And I expand nested table containing column value "BP01"
@@ -45,15 +45,15 @@ Feature: Validate all scenarios in the Pre-Application
     When I close Modal
     Then I see that "Active" has been added in flextable with Id "flexGridPreAppRecipientChecklists"
 
-  @53159 @PreApplicationAttachmentCA @wip
+  @53159 @PreApplicationAttachmentCA 
   Scenario: Validate the attachment of the PreApplication
     When I navigate to "Attachments" sub tab
-    And I click on top right button "Add" in flex table with id "a150b000003fLctAAE"
+    And I click on top right button "Add" in flex table with id "a1511000002nJeZAAU"
     When I choose the file "Announcement_Field_Values.xlsx" to upload for "Attachment" of type "Other"
     And I close Modal
-    Then I see that "Other" has been added in flextable with Id "a150b000003fLctAAE"
+    Then I see that "Other" has been added in flextable with Id "a1511000002nJeZAAU"
 
-  @53160 @submitPreApplication
+  @53160 @submitPreApplication @smoke
   Scenario: Submitting an pre application to Grantor
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
@@ -62,17 +62,14 @@ Feature: Validate all scenarios in the Pre-Application
     And I edit the following rows inline in flex table with id "flexGridEnhancePreApplicationProjectsAndBudgetCategories" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000        | 50            | 100            |
-#    When I navigate to "Attachments" sub tab
-#    When I click on "Attach" icon for "Not Applicable" inside flex table with id "flexGridPreAppRecipientChecklists"
-#    And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
-#    When I close Modal
-#    And I click on top right button "Add" in flex table with id "a150b000003fLctAAE"
-#    When I choose the file "Announcement_Field_Values.xlsx" to upload for "Attachment" of type "Other"
-#    And I close Modal
+    When I navigate to "Attachments" sub tab
+    And I click on top right button "Add" in flex table with id "a1511000002nJeZAAU"
+    When I choose the file "Announcement_Field_Values.xlsx" to upload for "Attachment" of type "Other"
+    And I close Modal
     When I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted" and is "green"
 
-  @53161 @preApplicationSubmittedToGrantorPendingTask @preapplicationHappyPath
+  @53161 @preApplicationSubmittedToGrantorPendingTask @preapplicationHappyPath @smoke
   Scenario: Validate Grantor accept the submitted pre-application
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
@@ -81,13 +78,10 @@ Feature: Validate all scenarios in the Pre-Application
     And I edit the following rows inline in flex table with id "flexGridEnhancePreApplicationProjectsAndBudgetCategories" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000        | 50            | 100            |
-#    When I navigate to "Attachments" sub tab
-#    When I click on "Attach" icon for "Not Applicable" inside flex table with id "flexGridPreAppRecipientChecklists"
-#    And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
-#    When I close Modal
-#    And I click on top right button "Add" in flex table with id "a150b000003fLctAAE"
-#    When I choose the file "Announcement_Field_Values.xlsx" to upload for "Attachment" of type "Other"
-#    And I close Modal
+    When I navigate to "Attachments" sub tab
+    And I click on top right button "Add" in flex table with id "a1511000002nJeZAAU"
+    When I choose the file "Announcement_Field_Values.xlsx" to upload for "Attachment" of type "Other"
+    And I close Modal
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
@@ -107,13 +101,10 @@ Feature: Validate all scenarios in the Pre-Application
     And I edit the following rows inline in flex table with id "flexGridEnhancePreApplicationProjectsAndBudgetCategories" by clicking "Edit" :
       | Category Name | Budget  | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000    | 5000       | 50             | 100            |
-#    When I navigate to "Attachments" sub tab
-#    When I click on "Attach" icon for "Not Applicable" inside flex table with id "flexGridPreAppRecipientChecklists"
-#    And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
-#    When I close Modal
-#    And I click on top right button "Add" in flex table with id "a150b000003fLctAAE"
-#    When I choose the file "Announcement_Field_Values.xlsx" to upload for "Attachment" of type "Other"
-#    And I close Modal
+    When I navigate to "Attachments" sub tab
+    And I click on top right button "Add" in flex table with id "a1511000002nJeZAAU"
+    When I choose the file "Announcement_Field_Values.xlsx" to upload for "Attachment" of type "Other"
+    And I close Modal
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab

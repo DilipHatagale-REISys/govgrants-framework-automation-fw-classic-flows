@@ -16,7 +16,7 @@ Feature: Validate all scenarios in Desk Review
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @51010 @deskReviewCreation
+  @51010 @deskReviewCreation @smoke
   Scenario: Creation of Desk Review
     Then I see status in Progress-bar is "Created" and is "green"
 
@@ -27,7 +27,7 @@ Feature: Validate all scenarios in Desk Review
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @51012 @participantAssociationDeskReview @nonFunctional @wip
+  @51012 @participantAssociationDeskReview @nonFunctional
   Scenario Outline: Participant Association of Desk Review
     Given I associate "1" records "Automation SPA"
       | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
@@ -49,7 +49,7 @@ Feature: Validate all scenarios in Desk Review
       | Program Approver Name |
       | Automation PM         |
 
-  @51014 @notifySubrecipientDeskReview
+  @51014 @notifySubrecipientDeskReview @smoke
   Scenario: Notify Subrecipient about the Desk Review
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
@@ -96,7 +96,7 @@ Feature: Validate all scenarios in Desk Review
     When I click on "Conduct" in the page details
     Then I see status in Progress-bar is "In Progress" and is "green"
 
-  @51017 @addingOutcomeDeskReview
+  @51017 @addingOutcomeDeskReview @smoke
   Scenario: Adding outcomes to Desk Review
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
@@ -193,9 +193,9 @@ Feature: Validate all scenarios in Desk Review
     When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
-  @51020 @approvalOfDeskReview
+  @51020 @approvalOfDeskReview @smoke
   Scenario: Approval of Desk Review
-    When I navigate to "Responsibilities" sub tab
+    Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
@@ -279,9 +279,9 @@ Feature: Validate all scenarios in Desk Review
     Given I click on "Send to Subrecipient" in the page details
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
 
-  @51022 @deskReviewCorrectiveActionsBySubrecipient
+  @51022 @deskReviewCorrectiveActionsBySubrecipient @smoke
   Scenario: Corrective Actions By Subrecipient
-    When I navigate to "Responsibilities" sub tab
+    Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
@@ -344,7 +344,7 @@ Feature: Validate all scenarios in Desk Review
       | Title                           | Description            | Status      | Due Date | Assigned To    |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     And I collapse nested table containing column value "Automation Finding"
-    Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
+    Then I see that "Automation Desk Review" is in "Sent to Subrecipient" status
 
   @51023 @deskReviewSubmitToGrantorBySubrecipient
   Scenario: Desk Review Submit to Grantor By Subrecipient
