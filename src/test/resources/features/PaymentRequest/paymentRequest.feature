@@ -18,7 +18,7 @@ Feature: Validate all scenarios in Payment Request
   Scenario: To create an Adhoc Reimbursement Payment Request
     When I navigate to "Requests" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+    When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I navigate to "Financials" sub tab
     When I enter value "I Agree" into field "TermsAgreement__c"
@@ -29,7 +29,7 @@ Feature: Validate all scenarios in Payment Request
   Scenario: To edit an Adhoc Reimbursement Payment Request
     When I navigate to "Requests" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+    When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I navigate to "Financials" sub tab
     When I enter value "I Agree" into field "TermsAgreement__c"
@@ -43,7 +43,7 @@ Feature: Validate all scenarios in Payment Request
   Scenario: To edit the budget an Adhoc Reimbursement Payment Request
     When I navigate to "Requests" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+    When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -59,7 +59,7 @@ Feature: Validate all scenarios in Payment Request
   Scenario: Validate the attachment for Payment Request
     When I navigate to "Requests" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+    When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -73,7 +73,7 @@ Feature: Validate all scenarios in Payment Request
   Scenario: Send Payment Request to Grantor
     When I navigate to "Requests" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+    When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -90,7 +90,7 @@ Feature: Validate all scenarios in Payment Request
   Scenario Outline: Enter Funding Account amount in Payment Request
     When I navigate to "Requests" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+    When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -124,7 +124,7 @@ Feature: Validate all scenarios in Payment Request
   Scenario Outline: Selection of approvers in Payment Request
     When I navigate to "Requests" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+    When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -162,7 +162,7 @@ Feature: Validate all scenarios in Payment Request
   Scenario Outline: Submitting Payment Request for approval
     When I navigate to "Requests" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+    When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -201,7 +201,7 @@ Feature: Validate all scenarios in Payment Request
   Scenario Outline: Approval of Payment Request
     When I navigate to "Requests" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+    When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -247,7 +247,7 @@ Feature: Validate all scenarios in Payment Request
   Scenario Outline: Paid Payment Request
     When I navigate to "Requests" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+    When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -297,7 +297,7 @@ Feature: Validate all scenarios in Payment Request
   Scenario Outline: Advance Payment Request happy path
     When I navigate to "Requests" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+    When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -395,7 +395,7 @@ Feature: Validate all scenarios in Payment Request
   Scenario: Validate the Payment request Rejection by FO user
     When I navigate to "Requests" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+    When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -439,7 +439,7 @@ Feature: Validate all scenarios in Payment Request
   Scenario: Approval of Payment Request
     When I navigate to "Requests" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+    When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -486,7 +486,7 @@ Feature: Validate all scenarios in Payment Request
   Scenario: Approver send back payment request to owner
     When I navigate to "Requests" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+    When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -519,7 +519,7 @@ Feature: Validate all scenarios in Payment Request
   Scenario: Validate task creation for fiscal user
     When I navigate to "Requests" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+    When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -542,7 +542,7 @@ Feature: Validate all scenarios in Payment Request
   Scenario Outline: Validate task creation for fiscal user
     When I navigate to "Requests" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+    When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -570,7 +570,7 @@ Feature: Validate all scenarios in Payment Request
   Scenario Outline: Validate SPA user not able to submit payment Request
     When I navigate to "Requests" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+    When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -600,7 +600,7 @@ Feature: Validate all scenarios in Payment Request
   Scenario: Advance Payment Request creation
     When I navigate to "Requests" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+    When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -610,21 +610,50 @@ Feature: Validate all scenarios in Payment Request
   Scenario: edition of advance payment request
     When I navigate to "Requests" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+    When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
-    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
-    And I click toggle button to select "Active Grants"
-    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipient_Grant_Table_Id---" panel
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipient_Grant_Table_Id---"
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipient_Award_Table_Id---"
-    When I navigate to "Requests" sub tab
-    And I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I click on "Edit" in the page details
     And I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see field "Acknowledgement" as "I Agree"
+
+    @53969 @advancePaymentRequestSubmitToGrantorBySPI @mahadev
+    Scenario: verify that advance payment request should be able to submit by SPI user
+      When I navigate to "Requests" sub tab
+      And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+      When I enter value "Automation Payment Request" into field "Title__c"
+      And I click modal button "Save and Continue"
+      When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+      When I click on "Save" in the page details
+      Given I navigate to "Financials" sub tab
+      And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestAdvanceTableId---" by clicking "Edit" :
+        | Budget Category | Advance Requested This Action |
+        | Construction    | 500                           |
+      When I navigate to "Attachments" sub tab
+      And I click on top right button "Add" in flex table with id "---paymentRequest:-:advancePR_Attachmet_TableId---"
+      When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Invoice"
+      And I close Modal
+      And I click on "Submit to Grantor" in the page details
+      Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
+
+    @53971 @advancePaymentRequestSubmitToGrantorBySPA @mahadev
+    Scenario Outline: verify that advance payment request should be able to submit by SPI user
+      When I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
+      And I navigate to "Grants" tab
+      When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+      And I click toggle button to select "Active Grants"
+      When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipient_Grant_Table_Id---" panel
+      And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipient_Grant_Table_Id---"
+      When I navigate to "Subawards" sub tab
+      And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipient_Award_Table_Id---"
+      When I navigate to "Requests" sub tab
+      And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+      When I enter value "Automation Payment Request" into field "Title__c"
+      And I click modal button "Save and Continue"
+      When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+      When I click on "Save" in the page details
+      Then I cannot see top right button "Submit to Grantor" in page detail
+      Examples:
+        | Award Name                 | Grant Name                 |
+        | Automation Permanent Award | Automation Permanent Award |

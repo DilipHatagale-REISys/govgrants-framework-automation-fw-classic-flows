@@ -58,4 +58,9 @@ public class GenericSteps {
     public void iSeeTotalRecordsCountInFlexTable(String totalRecords, String tableId) {
         projectManager.AssertTotalRecordsCountInFlexTable(totalRecords, tableId);
     }
+
+    @Then("^I (can see|cannot see) page block \"([^\"]*)\"$")
+    public void iCanSeeCannotSeePageBlock(String usage,String pageblockName)  {
+        projectManager.AssertPageBlockDisplayed(pageblockName,"can see".equalsIgnoreCase(usage));
+    }
 }

@@ -7,6 +7,7 @@ import eyethink.automation.bots.controller.Controller;
 import eyethink.automation.bots.controller.CoreHandlers;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import java.util.List;
 
 
 /**
@@ -116,5 +117,19 @@ public class ProjectManager extends ProjectWebServices {
 
     public void AssertTotalRecordsCountInFlexTable(String totalRecord, String tableId) {
         Assert.assertEquals(totalRecord, totalRecordsCount(tableId));
+    }
+
+    public By pageBlock(String pageBlockName){
+       return By.xpath("//h3//a[contains(text(),'"+pageBlockName+"')]");
+    }
+
+    public void AssertPageBlockDisplayed(String pageblockName, boolean assertcan) {
+        List<WebElement> elements = reiDriver.findMyElement().getElements(pageBlock(pageblockName));
+        if (assertcan) {
+            Assert.assertNotEquals(elements.size(), 0);
+        } else {
+            Assert.assertEquals(elements.size(), 0);
+        }
+
     }
 }
