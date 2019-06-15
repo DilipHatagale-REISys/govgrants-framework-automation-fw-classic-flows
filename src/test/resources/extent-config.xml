@@ -3,8 +3,8 @@
 	<configuration>
 		<encoding>UTF-8</encoding>
 		<theme>dark</theme>
-		<documentTitle>REI - Automation Framework</documentTitle>
-		<reportName>REI - Automation Framework | Reliable Emerging Innovative | GovGrants Product Automation</reportName>
+		<documentTitle>REI Systems | Reliable Effective Innovative </documentTitle>
+		<reportName>GovGrants Product Test Automation Report    |    Powered By: EyeThink Core BDD Automation Framework (For REI - Systems) - Copyright © 2018</reportName>
 		<!-- settings to enable/disable views -->
 		<enableCategoryView>false</enableCategoryView>
 		<enableAuthorView>true</enableAuthorView>
