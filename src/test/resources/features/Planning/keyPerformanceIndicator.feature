@@ -5,37 +5,46 @@ Background: To setup data
 	Given I delete the record "Automation Execution KPI" from the object "KPI" 
 	
 @34735 @creationOfKPI @smoke 
-Scenario: Creation of KPI 
-	Given I create a planning record as user "EXE" from sheet "Creation" in excel "KPI_Field_Values.xlsx" 
-		| Actions    | Step 1                           | Step 2            | Step 3                                 |
-		| Navigation | As a Grantor                     | Planning          | Planning                               |
-		| FlexTable  | Key Performance Indicators (KPI) |GrantorMasterKPIs  | Draft Key Performance Indicators (KPI) |
-		| Creation   | New                              | Save and Continue | Save                                   |
-		| ID         | EGMS ID                          |                   |                                        |
+Scenario: Creation of KPI
+	When I login to "As a Grantor" app as "EXE" user
+	And I navigate to "Planning" tab
+	When I navigate to "Key Performance Indicators (KPI)" content inside "Planning" subheader on left panel
+	And I click toggle button to select "Draft Key Performance Indicators (KPI)"
+	And I click on top right button "New" in flex table with id "GrantorMasterKPIs"
+	And I enter "Creation" values from "KPI_Field_Values.xlsx"
+	And I click modal button "Save and Continue"
+	And I click on "Save" in the page details
+	And I get the "EGMS ID"
 	Then I see status in Progress-bar is "Created" and is "green" 
 	
 @51028 @editionOfKPI 
 Scenario: Edition of KPI 
-	Given I create a planning record as user "EXE" from sheet "Creation" in excel "KPI_Field_Values.xlsx" 
-		| Actions    | Step 1                           | Step 2            | Step 3                                 |
-		| Navigation | As a Grantor                     | Planning          | Planning                               |
-		| FlexTable  | Key Performance Indicators (KPI) |GrantorMasterKPIs  | Draft Key Performance Indicators (KPI) |
-		| Creation   | New                              | Save and Continue | Save                                   |
-		| ID         | EGMS ID                          |                   |                                        |
-	And I click on "Edit" in the page details 
+	When I login to "As a Grantor" app as "EXE" user
+	And I navigate to "Planning" tab
+	When I navigate to "Key Performance Indicators (KPI)" content inside "Planning" subheader on left panel
+	And I click toggle button to select "Draft Key Performance Indicators (KPI)"
+	And I click on top right button "New" in flex table with id "GrantorMasterKPIs"
+	And I enter "Creation" values from "KPI_Field_Values.xlsx"
+	And I click modal button "Save and Continue"
+	And I click on "Save" in the page details
+	And I get the "EGMS ID"
+	And I click on "Edit" in the page details
 	When I enter "Edition" values from "KPI_Field_Values.xlsx" 
 	And I click on "Save" in the page details 
 	Then I see status in Progress-bar is "Created" and is "green" 
 	
 @51026 @addAttachmentToKPI
 Scenario: Addition of Attachment to KPI 
-	Given I create a planning record as user "EXE" from sheet "Creation" in excel "KPI_Field_Values.xlsx" 
-		| Actions    | Step 1                           | Step 2            | Step 3                                 |
-		| Navigation | As a Grantor                     | Planning          | Planning                               |
-		| FlexTable  | Key Performance Indicators (KPI) |GrantorMasterKPIs  | Draft Key Performance Indicators (KPI) |
-		| Creation   | New                              | Save and Continue | Save                                   |
-		| ID         | EGMS ID                          |                   |                                        |
-	When I navigate to "Attachments" sub tab 
+	When I login to "As a Grantor" app as "EXE" user
+	And I navigate to "Planning" tab
+	When I navigate to "Key Performance Indicators (KPI)" content inside "Planning" subheader on left panel
+	And I click toggle button to select "Draft Key Performance Indicators (KPI)"
+	And I click on top right button "New" in flex table with id "GrantorMasterKPIs"
+	And I enter "Creation" values from "KPI_Field_Values.xlsx"
+	And I click modal button "Save and Continue"
+	And I click on "Save" in the page details
+	And I get the "EGMS ID"
+	When I navigate to "Attachments" sub tab
 	And I click on top right button "Add" in flex table with id "---keyperformanceindicator:-:kpi_Attachment_Table_Id---" 
 	When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Supporting Documents" 
 	And I close Modal 
@@ -43,32 +52,38 @@ Scenario: Addition of Attachment to KPI
 	
 @34736 @kpiHappyPath @smoke 
 Scenario: Happy Path of KPI 
-	Given I create a planning record as user "EXE" from sheet "Creation" in excel "KPI_Field_Values.xlsx" 
-		| Actions    | Step 1                           | Step 2            | Step 3                                 |
-		| Navigation | As a Grantor                     | Planning          | Planning                               |
-		| FlexTable  | Key Performance Indicators (KPI) |GrantorMasterKPIs  | Draft Key Performance Indicators (KPI) |
-		| Creation   | New                              | Save and Continue | Save                                   |
-		| ID         | EGMS ID                          |                   |                                        |
-	Given I complete the fields from the sheet "Edition" in excel "KPI_Field_Values.xlsx" 
-		| Actions         | Step 1 | Step 2 |
-		| Edition Buttons | Edit   | Save   |
-			And I add an attachment "InternalOrganization_Field_Values.xlsx" 
-				| Actions               | Step 1      | Step 2               | Step 3             |
-				| Attachment Navigation | Attachments | Add                  | a1511000002nJhwAAE |
-				| Attachment Details    | Attachment  | Supporting Documents |                    |
-	Given I click on "Activate" in the page details 
-	Then I see status in Progress-bar is "Active" and is "green" 
-	
+	When I login to "As a Grantor" app as "EXE" user
+	And I navigate to "Planning" tab
+	When I navigate to "Key Performance Indicators (KPI)" content inside "Planning" subheader on left panel
+	And I click toggle button to select "Draft Key Performance Indicators (KPI)"
+	And I click on top right button "New" in flex table with id "GrantorMasterKPIs"
+	And I enter "Creation" values from "KPI_Field_Values.xlsx"
+	And I click modal button "Save and Continue"
+	And I click on "Save" in the page details
+	And I get the "EGMS ID"
+	And I click on "Edit" in the page details
+	When I enter "Edition" values from "KPI_Field_Values.xlsx"
+	And I click on "Save" in the page details
+	And I navigate to "Attachments" sub tab
+	When I click on top right button "Add" in flex table with id "a1511000002nJhwAAE"
+	When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Supporting Documents"
+	And I close Modal
+	Given I click on "Activate" in the page details
+	Then I see status in Progress-bar is "Active" and is "green"
+
 	
 @52627 @activateKPI @smoke 
 Scenario: Activate KPI 
-	Given I create a planning record as user "EXE" from sheet "Creation" in excel "KPI_Field_Values.xlsx" 
-		| Actions    | Step 1                           | Step 2            | Step 3                                 |
-		| Navigation | As a Grantor                     | Planning          | Planning                               |
-		| FlexTable  | Key Performance Indicators (KPI) |GrantorMasterKPIs  | Draft Key Performance Indicators (KPI) |
-		| Creation   | New                              | Save and Continue | Save                                   |
-		| ID         | EGMS ID                          |                   |                                        |
-	When I click on "Activate" in the page details 
+	When I login to "As a Grantor" app as "EXE" user
+	And I navigate to "Planning" tab
+	When I navigate to "Key Performance Indicators (KPI)" content inside "Planning" subheader on left panel
+	And I click toggle button to select "Draft Key Performance Indicators (KPI)"
+	And I click on top right button "New" in flex table with id "GrantorMasterKPIs"
+	And I enter "Creation" values from "KPI_Field_Values.xlsx"
+	And I click modal button "Save and Continue"
+	And I click on "Save" in the page details
+	And I get the "EGMS ID"
+	When I click on "Activate" in the page details
 	Then I see status in Progress-bar is "Active" and is "green" 
 	
 @52627 @kpiCreationPM @smoke 
