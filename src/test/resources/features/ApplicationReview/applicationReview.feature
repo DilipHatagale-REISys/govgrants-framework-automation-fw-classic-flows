@@ -58,7 +58,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -66,7 +65,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -96,21 +95,18 @@ Feature: Validate all scenarios in the Application Review
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -118,7 +114,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -126,7 +122,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -134,7 +130,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -159,7 +155,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -167,7 +162,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -207,7 +202,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -215,7 +209,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -260,7 +254,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -268,7 +261,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -318,7 +311,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -326,7 +318,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -356,21 +348,18 @@ Feature: Validate all scenarios in the Application Review
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     Then I see that "Assigned" has been added in flextable with Id "---application_Review:-:appreviews_TableId---"
     Examples:
       | Announcement Name                              | Application Name       |
@@ -397,7 +386,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -405,7 +393,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -435,21 +423,18 @@ Feature: Validate all scenarios in the Application Review
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I refresh the page
@@ -479,7 +464,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -487,7 +471,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -517,21 +501,18 @@ Feature: Validate all scenarios in the Application Review
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -539,7 +520,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -547,7 +528,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -555,7 +536,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -592,7 +573,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -600,7 +580,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -630,21 +610,18 @@ Feature: Validate all scenarios in the Application Review
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -652,7 +629,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -660,7 +637,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -668,7 +645,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -707,7 +684,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -715,7 +691,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -745,21 +721,18 @@ Feature: Validate all scenarios in the Application Review
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -767,7 +740,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -775,7 +748,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -783,7 +756,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -826,7 +799,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -834,7 +806,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -864,21 +836,18 @@ Feature: Validate all scenarios in the Application Review
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -886,7 +855,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -894,7 +863,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -902,7 +871,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -948,7 +917,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -956,7 +924,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -986,21 +954,18 @@ Feature: Validate all scenarios in the Application Review
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -1008,7 +973,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1016,7 +981,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1024,7 +989,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1049,7 +1014,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     Then I see that "Assigned" has been added in flextable with Id "---application_Review:-:appreviews_TableId---"
     Examples:
       | Announcement Name                              | Application Name       |
@@ -1076,7 +1040,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1084,7 +1047,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1114,21 +1077,18 @@ Feature: Validate all scenarios in the Application Review
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -1136,7 +1096,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1144,7 +1104,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1152,7 +1112,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1177,7 +1137,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     Then I see that "Sent for Review" has been added in flextable with Id "---application_Review:-:appreviews_TableId---"
@@ -1206,7 +1165,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1214,7 +1172,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1244,21 +1202,18 @@ Feature: Validate all scenarios in the Application Review
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -1266,7 +1221,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1274,7 +1229,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1282,7 +1237,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1307,7 +1262,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1315,7 +1269,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1352,7 +1306,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1360,7 +1313,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1390,21 +1343,18 @@ Feature: Validate all scenarios in the Application Review
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -1412,7 +1362,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1420,7 +1370,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1428,7 +1378,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1453,7 +1403,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1461,7 +1410,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1500,7 +1449,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1508,7 +1456,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1538,21 +1486,18 @@ Feature: Validate all scenarios in the Application Review
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -1560,7 +1505,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1568,7 +1513,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1576,7 +1521,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1601,7 +1546,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1609,7 +1553,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1652,7 +1596,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1660,7 +1603,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1690,21 +1633,18 @@ Feature: Validate all scenarios in the Application Review
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -1712,7 +1652,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1720,7 +1660,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1728,7 +1668,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1753,7 +1693,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1761,7 +1700,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1807,7 +1746,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1815,7 +1753,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1845,21 +1783,18 @@ Feature: Validate all scenarios in the Application Review
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -1867,7 +1802,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1875,7 +1810,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1883,7 +1818,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1908,7 +1843,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1916,7 +1850,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1970,7 +1904,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1978,7 +1911,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -2008,21 +1941,18 @@ Feature: Validate all scenarios in the Application Review
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -2030,7 +1960,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -2038,7 +1968,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -2046,7 +1976,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -2071,7 +2001,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -2079,7 +2008,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -2134,7 +2063,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -2142,7 +2070,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -2172,21 +2100,18 @@ Feature: Validate all scenarios in the Application Review
     And I check "Automation PM" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation FO" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation FO" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---application_Review:-:reviewForms_TableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---application_Review:-:panelApp_TableId---" panel
     And I check "Automation EXE" boxes in flex table with id "---application_Review:-:panelApp_TableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:panelApp_TableId---"
     When I close Modal
-    When I refresh the page
     And I check "All" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -2194,7 +2119,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -2202,7 +2127,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -2210,7 +2135,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -2235,7 +2160,6 @@ Feature: Validate all scenarios in the Application Review
     And I check "<Application Name>" boxes in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I click on top right button "Assign" in flex table with id "---application_Review:-:assign_applications_tableId---"
     When I close Modal
-    And I refresh the page
     When I check "<Application Name>" boxes in flex table with id "---application_Review:-:appreviews_TableId---"
     And I click on top right button "Send for Review" in flex table with id "---application_Review:-:appreviews_TableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -2243,7 +2167,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
     And I perform quick search for "Record ID" in "---application_Review:-:pending_task_TableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---application_Review:-:pending_task_TableId---"
-    When I complete filling in the Review form with recomendation "Recommended"
+    When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
