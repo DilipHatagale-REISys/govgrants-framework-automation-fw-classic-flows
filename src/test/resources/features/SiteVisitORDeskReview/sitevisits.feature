@@ -105,7 +105,7 @@ Feature: Validate all scenarios in the Site Visit
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manage_site_visit_table_id---" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---sitevisits:-:reports_Table_Id---"
@@ -138,7 +138,7 @@ Feature: Validate all scenarios in the Site Visit
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manage_site_visit_table_id---" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---sitevisits:-:reports_Table_Id---"
@@ -166,7 +166,7 @@ Feature: Validate all scenarios in the Site Visit
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manage_site_visit_table_id---" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---sitevisits:-:reports_Table_Id---"
@@ -200,7 +200,7 @@ Feature: Validate all scenarios in the Site Visit
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manage_site_visit_table_id---" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---sitevisits:-:reports_Table_Id---"
@@ -242,7 +242,7 @@ Feature: Validate all scenarios in the Site Visit
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manage_site_visit_table_id---" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---sitevisits:-:reports_Table_Id---"
@@ -289,7 +289,7 @@ Feature: Validate all scenarios in the Site Visit
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manage_site_visit_table_id---" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---sitevisits:-:reports_Table_Id---"
@@ -311,7 +311,7 @@ Feature: Validate all scenarios in the Site Visit
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manage_site_visit_table_id---" panel
     And I click on "View" icon for "Record Id" inside table
     Given I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -358,7 +358,7 @@ Feature: Validate all scenarios in the Site Visit
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manage_site_visit_table_id---" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---sitevisits:-:reports_Table_Id---"
@@ -380,7 +380,7 @@ Feature: Validate all scenarios in the Site Visit
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manage_site_visit_table_id---" panel
     And I click on "View" icon for "Record Id" inside table
     Given I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -425,7 +425,7 @@ Feature: Validate all scenarios in the Site Visit
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manage_site_visit_table_id---" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---sitevisits:-:reports_Table_Id---"
@@ -447,7 +447,7 @@ Feature: Validate all scenarios in the Site Visit
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manage_site_visit_table_id---" panel
     And I click on "View" icon for "Record Id" inside table
     Given I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -500,7 +500,7 @@ Feature: Validate all scenarios in the Site Visit
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manage_site_visit_table_id---" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---sitevisits:-:reports_Table_Id---"
@@ -531,8 +531,8 @@ Feature: Validate all scenarios in the Site Visit
       | Site Visit Name       |
       | Automation Site Visit |
       
-  @39159 @siteVisitDeleteAccesstoOwner @smoke @deepika
-  Scenario Outline: Verify that record owner can delete created state site visit/desk review from Award level
+@39159 @siteVisitDeleteAccesstoOwner @smoke @deepika
+  Scenario Outline: Verify that record owner can delete created state site visit from Award level
     Given I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
     And I click on "Delete" icon for "<Site Visit Name>" inside table
@@ -541,8 +541,8 @@ Feature: Validate all scenarios in the Site Visit
       | Site Visit Name       |
       | Automation Site Visit |
       
-  @39169 @reportsAndOutcomesEditAccess @deepika
-  Scenario: Verify that upon conduct,  Reports And Outcomes tab are editable to the internal user for an award  level site visit/ desk review
+@39169 @reportsAndOutcomesEditAccess @deepika
+  Scenario: Verify that upon conduct,  Reports And Outcomes tab are editable to the internal user for an award  level site visit
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -559,15 +559,15 @@ Feature: Validate all scenarios in the Site Visit
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manage_site_visit_table_id---" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
     Then I can see row level action button "Edit" against "General Review Form" in flex table with id "---sitevisits:-:reports_Table_Id---"
 
-  @35666 @submittedToGrantorOptionallySendBackToSubrecipient @deepika
+ @35666 @submittedToGrantorOptionallySendBackToSubrecipient @deepika
   Scenario: Verify that PM user (other than record owner) is able to conduct created site visit
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---sitevisits:-:participants_table_id---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -576,7 +576,37 @@ Feature: Validate all scenarios in the Site Visit
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manage_site_visit_table_id---" panel
     And I click on "View" icon for "Record Id" inside table
     Then I cannot see top right button "Conduct" in page detail
+    
+@54225 @detailsOnSiteVisitBeforeNotification @deepika 
+  Scenario: Verify user is not able to delete site visit record if it is not in Created state (Negative TC) 
+	Given I navigate to "Responsibilities" sub tab 
+	And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" : 
+		| Role             | Name          | Description                 |
+		| Program Approver | Automation PM | Automation Test Description |
+		| Fiscal Approver  | Automation FO | Automation Test Description |
+	When I get the "EGMS ID" 
+	And I click on "Notify" in the page details 
+	And I navigate to "Monitoring" tab 
+	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel 
+	When I perform quick search for "Record Id" in "---sitevisits:-:manage_site_visit_table_id---" panel 
+	Then I cannot see row level action button "Delete" against "Record id" in flex table with id "---sitevisits:-:manage_site_visit_table_id---"
+	
+@54221 @siteVisitNotifiedByFOuser @deepika @wip
+   Scenario: Verify user (record owner only) is able to plan and notify created site visit to subrecipient and other user cannot notify  - Award Level 
+	Given I navigate to "Responsibilities" sub tab
+	And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" : 
+		| Role             | Name          | Description                 |
+		| Program Approver | Automation PM | Automation Test Description |
+		| Fiscal Approver  | Automation FO | Automation Test Description |
+	When I get the "EGMS ID" 
+	When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal 
+	And I navigate to "Monitoring" tab 
+	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel 
+	When I perform quick search for "Record Id" in "---sitevisits:-:manage_site_visit_table_id---" panel 
+	And I click on "View" icon for "Record Id" inside table 
+	Then I cannot see top right button "Notify" in page detail
+    
   
