@@ -46,7 +46,7 @@ Scenario Outline: Participant Association of Organizational Desk Review
 		| Automation SPI |
       
 @54210 @monitoringTypeFiscalDR @deepika
-Scenario: Validate the Monitoring type 'Fiscal' for Organizational Site Visit 
+Scenario: Validate the Monitoring type 'Fiscal' for Organizational Desk Review
 	Given I navigate to "Related Log" sub tab 
 	And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview" 
 	And I enter "Fiscal" values from "Organizational_DeskReview_Field_Values.xlsx" 
@@ -55,7 +55,7 @@ Scenario: Validate the Monitoring type 'Fiscal' for Organizational Site Visit
 
 	
  @54295 @monitoringTypeProgramDR @deepika
-Scenario: Validate the Monitoring type 'Program' for Organizational Site Visit 
+Scenario: Validate the Monitoring type 'Program' for Organizational Desk Review
 	Given I navigate to "Related Log" sub tab 
 	And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview" 
 	And I enter "Program" values from "Organizational_DeskReview_Field_Values.xlsx" 
@@ -63,24 +63,24 @@ Scenario: Validate the Monitoring type 'Program' for Organizational Site Visit
 	Then I see field "Monitoring Type" as "Program"
 	
 	
-	@orgDeskReviewTypeApplication @deepika
-Scenario: Validate the Site Visit type	
+@54423 @orgDeskReviewTypeApplication @deepika
+Scenario: Validate the Desk Review Org Level type Application
 	Given I navigate to "Related Log" sub tab
 	And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
 	And I enter "Application" values from "Organizational_DeskReview_Field_Values.xlsx"
 	When I click modal button "Save and Continue" 
 	Then I see field "Desk Review Type" as "Application"
 
-	@orgDeskReviewTypeAward @deepika
-Scenario: Validate the Site Visit type
+@54424 @orgDeskReviewTypeAward @deepika
+Scenario: Validate the Desk Review Org Level type Award
 	Given I navigate to "Related Log" sub tab
 	And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
 	And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
 	When I click modal button "Save and Continue"
 	Then I see field "Desk Review Type" as "Award"
 	
-	   @addParticipantsT0OrgDeskReview @deepika
-Scenario: Validate the participants for the Site Visit
+@54425 @addParticipantsT0OrgDeskReview @deepika
+Scenario: Validate the participants for the Desk Review Org Level
 	Given I navigate to "Related Log" sub tab
 	And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
 	And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
@@ -90,3 +90,162 @@ Scenario: Validate the participants for the Site Visit
 	When I click "Associate" after selection of "Automation EXE" in the table "SelectSiteDeskReviewContacts" 
 	And I close Modal 
 	Then I see that "Automation EXE" has been added in flextable with Id "GrantorSiteVisitOrganizationContacts" 
+	
+@54458 @approverSelectionDeskReviewOrgLevel
+  Scenario Outline: Approver selection of Desk Review Org Level
+    Given I navigate to "Related Log" sub tab
+	And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
+	And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
+	When I click modal button "Save and Continue"
+	  When I click on "Cancel" in the page details 
+	When I click on "Edit" in the page details 
+	And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx" 
+	When I click on "Save" in the page details  
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "flexGridGrantorSiteVisitRolesandResponsibilities" by clicking "Edit" :
+      | Roles            | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+    Then I see that "<Program Approver Name>" has been added in flextable with Id "flexGridGrantorSiteVisitRolesandResponsibilities"
+    Examples:
+      | Program Approver Name |
+      | Automation PM         |
+      
+ @54459 @notifySubrecipientDeskReviewOrgLevel @smoke
+  Scenario: Notify Subrecipient about the Desk Review Org Level
+    Given I navigate to "Related Log" sub tab
+	And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
+	And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
+	When I click modal button "Save and Continue"
+	  When I click on "Cancel" in the page details 
+	When I click on "Edit" in the page details 
+	And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx" 
+	When I click on "Save" in the page details  
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "flexGridGrantorSiteVisitRolesandResponsibilities" by clicking "Edit" :
+      | Responsibilities | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+    When I navigate to "Overview" sub tab
+	And I click on top right button "Associate" in flex table with id "GrantorSiteVisitOrganizationContacts" 
+	When I click "Associate" after selection of "Automation SPI" in the table "SelectSiteDeskReviewContacts" 
+	And I close Modal
+	And I click on top right button "Associate" in flex table with id "SiteVisitOrganizationAwards"
+	When I click "Associate" after selection of "Automation Permanent Award" in the table "SelectAwardSiteDeskReviews" 	
+	And I close Modal 
+    And I click on "Notify" in the page details
+    Then I see that "Automation Desk Review Org level" is in "Notified" status
+    
+ @54460 @notifyPendingTaskForSubrecipientDeskReviewOrgLevel
+  Scenario: Subrecipient pending task check for Desk Review Org Level
+    Given I navigate to "Related Log" sub tab
+	And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
+	And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
+	When I click modal button "Save and Continue"
+	  When I click on "Cancel" in the page details 
+	When I click on "Edit" in the page details 
+	And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx" 
+	When I click on "Save" in the page details 
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "flexGridGrantorSiteVisitRolesandResponsibilities" by clicking "Edit" :
+      | Responsibilities | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+    When I navigate to "Overview" sub tab
+	And I click on top right button "Associate" in flex table with id "GrantorSiteVisitOrganizationContacts" 
+	When I click "Associate" after selection of "Automation SPI" in the table "SelectSiteDeskReviewContacts" 
+	And I close Modal
+	And I click on top right button "Associate" in flex table with id "SiteVisitOrganizationAwards"
+	When I click "Associate" after selection of "Automation Permanent Award" in the table "SelectAwardSiteDeskReviews" 	
+	And I close Modal 
+    When I get the "EGMS ID"
+    And I click on "Notify" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Applications" tab
+    When I navigate to "Pending Tasks" content inside "Application Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside table
+    Then I see that "Automation Desk Review Org level" is in "Notified" status
+    
+  @54461 @conductDeskReviewOrgLevel @smoke
+  Scenario: Conduct Desk Review Org level
+    Given I navigate to "Related Log" sub tab
+	And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
+	And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
+	When I click modal button "Save and Continue"
+	  When I click on "Cancel" in the page details 
+	When I click on "Edit" in the page details 
+	And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx" 
+	When I click on "Save" in the page details  
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "flexGridGrantorSiteVisitRolesandResponsibilities" by clicking "Edit" :
+      | Responsibilities | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+    When I navigate to "Overview" sub tab
+	And I click on top right button "Associate" in flex table with id "GrantorSiteVisitOrganizationContacts" 
+	When I click "Associate" after selection of "Automation SPI" in the table "SelectSiteDeskReviewContacts" 
+	And I close Modal
+	And I click on top right button "Associate" in flex table with id "SiteVisitOrganizationAwards"
+	When I click "Associate" after selection of "Automation Permanent Award" in the table "SelectAwardSiteDeskReviews" 	
+	And I close Modal 
+    When I get the "EGMS ID"
+    And I click on "Notify" in the page details
+    When I click on "Conduct" in the page details
+    Then I see status in Progress-bar is "In Progress" and is "green"
+    
+  @54462 @addingOutcomeDeskReviewOrgLevel
+  Scenario: Adding outcomes to Desk Review OrgLevel
+    Given I navigate to "Related Log" sub tab
+	And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
+	And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
+	When I click modal button "Save and Continue"
+	  When I click on "Cancel" in the page details 
+	When I click on "Edit" in the page details 
+	And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx" 
+	When I click on "Save" in the page details 
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "flexGridGrantorSiteVisitRolesandResponsibilities" by clicking "Edit" :
+      | Responsibilities | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+    When I navigate to "Overview" sub tab
+	And I click on top right button "Associate" in flex table with id "GrantorSiteVisitOrganizationContacts" 
+	When I click "Associate" after selection of "Automation SPI" in the table "SelectSiteDeskReviewContacts" 
+	And I close Modal
+	And I click on top right button "Associate" in flex table with id "SiteVisitOrganizationAwards"
+	When I click "Associate" after selection of "Automation Permanent Award" in the table "SelectAwardSiteDeskReviews" 	
+	And I close Modal 
+    When I get the "EGMS ID"
+    And I click on "Notify" in the page details
+    When I click on "Conduct" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Applications" tab
+    When I navigate to "Pending Tasks" content inside "Application Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside table
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    When I navigate to "Manage Site Visits" content inside "Manage Site Visit" subheader on left panel
+    When I perform quick search for "Record Id" in "ApplicationsDeskReviewReportsGrid" panel
+    And I click on "View" icon for "Record Id" inside table
+    And I navigate to "Reports and Outcomes" sub tab
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "FormComponent"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    And I click on top right button "Validate" in flex table with id "FormComponent"
+    When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGrid" by clicking "New" :
+      | Title                  | Description            | Type        |
+      | Automation Finding     | Automation Description | Finding     |
+      | Automation Concern     | Automation Description | Concern     |
+      | Automation Observation | Automation Description | Observation |
+    Then I see that "Automation Finding" has been added in flextable with Id "flexGridGrantorSiteVisitFindingsGrid"
+    
+    
+    
+    
+    
+	
+	
+	

@@ -185,7 +185,7 @@ Feature: Validate all scenarios in the Site Visit
   @51091 @approvalOfSiteVisit
   Scenario Outline: Approval of Site Visit
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---sitevisits:-:participants_table_id---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
