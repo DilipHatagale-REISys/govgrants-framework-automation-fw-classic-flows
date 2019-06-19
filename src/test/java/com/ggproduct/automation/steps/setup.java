@@ -24,8 +24,8 @@ public class setup {
     }
 
     @Before
-    public void startUp() throws IOException, AWTException {
-        setupController.getAccessToSetup().initializer();
+    public void startUp(Scenario scenario) throws IOException, AWTException {
+        setupController.getAccessToSetup().initializer(scenario);
         setupController.getAccessToSetup().usersController(new UsersAndURL());
     }
 
