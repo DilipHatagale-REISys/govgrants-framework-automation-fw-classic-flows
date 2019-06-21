@@ -67,7 +67,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on top right button "Add" in flex table with id "---paymentRequest:-:attachment_Table_Id---"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Invoice"
     And I close Modal
-    Then I see that "Invoice" has been added in flextable with Id "---paymentRequest:-:attachment_Table_Id---"
+    Then I see that "Invoice" has been added in flextable with Id "---paymentRequest:-:attachment_Table_Id_verification---"
 
   @51069 @paymentRequestSendToGrantor
   Scenario: Send Payment Request to Grantor
