@@ -2,14 +2,17 @@
 Feature: Validate all scenarios in the Pre-Application
 
   Background: Qualify Announcement and Create PreApplication
+    Given I delete the record "Automation Announcement for Application" from the object "PreApplication"
     Given I delete the record "Automation Announcement for Pre-Application" from the object "PreApplication"
     And I delete the record "Automation Announcement for Pre-Application" from the object "Application"
+    And I delete the record "Automation Announcement for Pre-Application" from the object "Qualified Announcement"
     Given I am on "SUBPORTAL" portal
     And I login as "SPI" user
     When I navigate to "Opportunities" tab
-    And I navigate to "Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "Automation Announcement for Pre-Application" in "qleads" panel
+    And I navigate to "Active" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Automation Announcement for Pre-Application" in "popupflextable" panel
     When I click on "View" icon for "Automation Announcement for Pre-Application" inside table
+    When I click on "Qualify" in the page details
     And I click on "Create Pre-Application" in the page details
     When I enter value "Automation Announcement for Application " into field "Title__c"
     When I click modal button "Save and Continue"
@@ -31,27 +34,27 @@ Feature: Validate all scenarios in the Pre-Application
   Scenario: Addition of budget in the budget grid to an pre-application
     When I navigate to "Budget" sub tab
     And I expand nested table containing column value "BP01"
-    When I edit the following rows inline in flex table with id "flexGridEnhancePreApplicationProjectsAndBudgetCategories" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---pre-application:-:pre_application_attachment_id---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 1000       | 5000           | 100            |
     Then I see the following messages in the page details contains:
       | Saved Successfully! |
 
-  @53155 @PreApplicationAttachmentChecklistCA @wip
+  @53155 @PreApplicationAttachmentChecklistCA 
   Scenario: Validate the attachment checklist of the PreApplication
     When I navigate to "Attachments" sub tab
-    When I click on "Attach" icon for "Not Applicable" inside flex table with id "flexGridPreAppRecipientChecklists"
+    When I click on "Attach" icon for "Not Applicable" inside flex table with id "---pre-application:-:pre_application_attachment_id---"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
-    Then I see that "Active" has been added in flextable with Id "flexGridPreAppRecipientChecklists"
+    Then I see that "Active" has been added in flextable with Id "---pre-application:-:pre_application_attachment_id---"
 
   @53159 @PreApplicationAttachmentCA 
   Scenario: Validate the attachment of the PreApplication
     When I navigate to "Attachments" sub tab
-    And I click on top right button "Add" in flex table with id "a1511000002nJeZAAU"
+    And I click on top right button "Add" in flex table with id "---pre-application:-:pre_application_attachment_id---"
     When I choose the file "Announcement_Field_Values.xlsx" to upload for "Attachment" of type "Other"
     And I close Modal
-    Then I see that "Other" has been added in flextable with Id "a1511000002nJeZAAU"
+    Then I see that "Other" has been added in flextable with Id "---pre-application:-:pre_application_attachment_id---"
 
   @53160 @submitPreApplication @smoke
   Scenario: Submitting an pre application to Grantor
@@ -59,13 +62,16 @@ Feature: Validate all scenarios in the Pre-Application
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
     Given I expand nested table containing column value "BP01"
-    And I edit the following rows inline in flex table with id "flexGridEnhancePreApplicationProjectsAndBudgetCategories" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---pre-application:-:pre_application_attachment_id---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000        | 50            | 100            |
     When I navigate to "Attachments" sub tab
-    And I click on top right button "Add" in flex table with id "a1511000002nJeZAAU"
+    And I click on top right button "Add" in flex table with id "---pre-application:-:pre_application_attachment_id---"
     When I choose the file "Announcement_Field_Values.xlsx" to upload for "Attachment" of type "Other"
     And I close Modal
+    When I click on "Attach" icon for "Not Applicable" inside flex table with id "---pre-application:-:pre_application_attachment_id---"
+    And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
+    When I close Modal
     When I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted" and is "green"
 
@@ -75,13 +81,16 @@ Feature: Validate all scenarios in the Pre-Application
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
     Given I expand nested table containing column value "BP01"
-    And I edit the following rows inline in flex table with id "flexGridEnhancePreApplicationProjectsAndBudgetCategories" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "EnhancePreApplicationProjectsAndBudgetCategoriesgrid" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000        | 50            | 100            |
     When I navigate to "Attachments" sub tab
-    And I click on top right button "Add" in flex table with id "a1511000002nJeZAAU"
+    And I click on top right button "Add" in flex table with id "---pre-application:-:pre_application_attachment_id---"
     When I choose the file "Announcement_Field_Values.xlsx" to upload for "Attachment" of type "Other"
     And I close Modal
+    When I click on "Attach" icon for "Not Applicable" inside flex table with id "---pre-application:-:pre_application_attachment_id---"
+    And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
+    When I close Modal
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
@@ -98,13 +107,16 @@ Feature: Validate all scenarios in the Pre-Application
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
     Given I expand nested table containing column value "BP01"
-    And I edit the following rows inline in flex table with id "flexGridEnhancePreApplicationProjectsAndBudgetCategories" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---pre-application:-:pre_application_attachment_id---" by clicking "Edit" :
       | Category Name | Budget  | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000    | 5000       | 50             | 100            |
     When I navigate to "Attachments" sub tab
-    And I click on top right button "Add" in flex table with id "a1511000002nJeZAAU"
+    And I click on top right button "Add" in flex table with id "---pre-application:-:pre_application_attachment_id---"
     When I choose the file "Announcement_Field_Values.xlsx" to upload for "Attachment" of type "Other"
     And I close Modal
+    When I click on "Attach" icon for "Not Applicable" inside flex table with id "---pre-application:-:pre_application_attachment_id---"
+    And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
+    When I close Modal
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab

@@ -91,7 +91,7 @@ Scenario: Validate the participants for the Desk Review Org Level
 	And I close Modal 
 	Then I see that "Automation EXE" has been added in flextable with Id "GrantorSiteVisitOrganizationContacts" 
 	
-@54458 @approverSelectionDeskReviewOrgLevel
+@54458 @approverSelectionDeskReviewOrgLevel @deepika
   Scenario Outline: Approver selection of Desk Review Org Level
     Given I navigate to "Related Log" sub tab
 	And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -111,7 +111,7 @@ Scenario: Validate the participants for the Desk Review Org Level
       | Program Approver Name |
       | Automation PM         |
       
- @54459 @notifySubrecipientDeskReviewOrgLevel @smoke
+ @54459 @notifySubrecipientDeskReviewOrgLevel @smoke @deepika
   Scenario: Notify Subrecipient about the Desk Review Org Level
     Given I navigate to "Related Log" sub tab
 	And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -136,7 +136,7 @@ Scenario: Validate the participants for the Desk Review Org Level
     And I click on "Notify" in the page details
     Then I see that "Automation Desk Review Org level" is in "Notified" status
     
- @54460 @notifyPendingTaskForSubrecipientDeskReviewOrgLevel
+ @54460 @notifyPendingTaskForSubrecipientDeskReviewOrgLevel @deepika
   Scenario: Subrecipient pending task check for Desk Review Org Level
     Given I navigate to "Related Log" sub tab
 	And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -161,20 +161,23 @@ Scenario: Validate the participants for the Desk Review Org Level
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-    And I navigate to "Applications" tab
-    When I navigate to "Pending Tasks" content inside "Application Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "PendingTasks" panel
     When I click on "Start" icon for "Record Id" inside table
     Then I see that "Automation Desk Review Org level" is in "Notified" status
     
-  @54461 @conductDeskReviewOrgLevel @smoke
+  @54461 @conductDeskReviewOrgLevel @smoke @deepika
   Scenario: Conduct Desk Review Org level
     Given I navigate to "Related Log" sub tab
 	And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
+	And I pause execution for "20" seconds
 	And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
+	When I pause execution
 	When I click modal button "Save and Continue"
-	  When I click on "Cancel" in the page details 
+	When I click on "Cancel" in the page details 
 	When I click on "Edit" in the page details 
+	And I pause execution for "20" seconds
 	And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx" 
 	When I click on "Save" in the page details  
     When I navigate to "Responsibilities" sub tab
@@ -194,7 +197,7 @@ Scenario: Validate the participants for the Desk Review Org Level
     When I click on "Conduct" in the page details
     Then I see status in Progress-bar is "In Progress" and is "green"
     
-  @54462 @addingOutcomeDeskReviewOrgLevel
+  @54462 @addingOutcomeDeskReviewOrgLevel @deepika
   Scenario: Adding outcomes to Desk Review OrgLevel
     Given I navigate to "Related Log" sub tab
 	And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -220,14 +223,63 @@ Scenario: Validate the participants for the Desk Review Org Level
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-    And I navigate to "Applications" tab
-    When I navigate to "Pending Tasks" content inside "Application Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "PendingTasks" panel
     When I click on "Start" icon for "Record Id" inside table
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Applications" tab
-    When I navigate to "Manage Site Visits" content inside "Manage Site Visit" subheader on left panel
-    When I perform quick search for "Record Id" in "ApplicationsDeskReviewReportsGrid" panel
+    And I navigate to "Home" tab
+    When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
+    When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
+    And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table
+    Given I navigate to "Related Log" sub tab
+    When I perform quick search for "Record Id" in "DeskReview" panel
+    And I click on "View" icon for "Record Id" inside table
+    And I navigate to "Reports and Outcomes" sub tab
+    When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGrid" by clicking "New" :
+      | Title                  | Description            | Type        |
+      | Automation Finding     | Automation Description | Finding     |
+      | Automation Concern     | Automation Description | Concern     |
+      | Automation Observation | Automation Description | Observation |
+    Then I see that "Automation Finding" has been added in flextable with Id "flexGridGrantorSiteVisitFindingsGrid"
+      
+@54572 @formFillingSiteVisitOrgLevel @smoke @deepika
+Scenario: Filling up of form in Desk Review Org Level
+    Given I navigate to "Related Log" sub tab
+	And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
+	And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
+	When I click modal button "Save and Continue"
+	  When I click on "Cancel" in the page details 
+	When I click on "Edit" in the page details 
+	And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx" 
+	When I click on "Save" in the page details 
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "flexGridGrantorSiteVisitRolesandResponsibilities" by clicking "Edit" :
+      | Responsibilities | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+    When I navigate to "Overview" sub tab
+	And I click on top right button "Associate" in flex table with id "GrantorSiteVisitOrganizationContacts" 
+	When I click "Associate" after selection of "Automation SPI" in the table "SelectSiteDeskReviewContacts" 
+	And I close Modal
+	And I click on top right button "Associate" in flex table with id "SiteVisitOrganizationAwards"
+	When I click "Associate" after selection of "Automation Permanent Award" in the table "SelectAwardSiteDeskReviews" 	
+	And I close Modal 
+    When I get the "EGMS ID"
+    And I click on "Notify" in the page details
+    When I click on "Conduct" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "PendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside table
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
+    When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
+    And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table
+    Given I navigate to "Related Log" sub tab
+    When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "FormComponent"
@@ -235,14 +287,54 @@ Scenario: Validate the participants for the Desk Review Org Level
     And I click on "Save" in the page details
     When I click on "Back" in the page details
     And I click on top right button "Validate" in flex table with id "FormComponent"
+    Then I see that "100.00%" has been added in flextable with Id "FormComponent"
+    
+@54571 @submittingForApprovalDeskReviewOrgLevel @deepika
+Scenario: Submitting Desk Review for approval Org level
+    Given I navigate to "Related Log" sub tab
+	And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
+	And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
+	When I click modal button "Save and Continue"
+	  When I click on "Cancel" in the page details 
+	When I click on "Edit" in the page details 
+	And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx" 
+	When I click on "Save" in the page details 
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "flexGridGrantorSiteVisitRolesandResponsibilities" by clicking "Edit" :
+      | Responsibilities | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+    When I navigate to "Overview" sub tab
+	And I click on top right button "Associate" in flex table with id "GrantorSiteVisitOrganizationContacts" 
+	When I click "Associate" after selection of "Automation SPI" in the table "SelectSiteDeskReviewContacts" 
+	And I close Modal
+	And I click on top right button "Associate" in flex table with id "SiteVisitOrganizationAwards"
+	When I click "Associate" after selection of "Automation Permanent Award" in the table "SelectAwardSiteDeskReviews" 	
+	And I close Modal 
+    When I get the "EGMS ID"
+    And I click on "Notify" in the page details
+    When I click on "Conduct" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "PendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside table
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
+    When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
+    And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table
+    Given I navigate to "Related Log" sub tab
+    When I perform quick search for "Record Id" in "DeskReview" panel
+    And I click on "View" icon for "Record Id" inside table
+    And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "flexGridGrantorSiteVisitFindingsGrid" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    Then I see that "Automation Finding" has been added in flextable with Id "flexGridGrantorSiteVisitFindingsGrid"
-    
-    
+      When I click on "Submit for Approval" in the page details
+      Then I see status in Progress-bar is "Submitted for Approval" and is "green"
     
     
     

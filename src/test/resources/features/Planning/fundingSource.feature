@@ -29,7 +29,7 @@ Feature: Validate all scenarios in Funding Source
     Then I see status in Progress-bar is "Created" and is "green"
     
   @51036 @addAttachmentToFundingSource 
-  Scenario: Addition of Attachment to KPI
+  Scenario: Addition of Attachment to Funding Source
       Given I create a planning record as user "EXE" from sheet "Creation" in excel "FundingSource_Field_Values.xlsx"
       | Actions    | Step 1          | Step 2                | Step 3                         |
       | Navigation | As a Grantor    | Planning              | Planning                       |
@@ -37,7 +37,7 @@ Feature: Validate all scenarios in Funding Source
       | Creation   | New             | Save and Continue     | Save                           |
       | ID         | EGMS ID         |                       |                                |
     When I navigate to "Attachments" sub tab
-    And I click on top right button "Add" in flex table with id "---fundingSource:-:funding_Source_Attachment_Table_Id---"
+    And I click on top right button "Add" in flex table with id "---fundingsource:-:funding_Source_Attachment_Table_Id---"
     When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Supporting Documents"
     And I close Modal
     Then I see that "Supporting Documents" has been added in flextable with Id "---fundingSource:-:funding_Source_Attachment_Table_Id---"
@@ -78,7 +78,7 @@ Feature: Validate all scenarios in Funding Source
     Given I login to "As a Grantor" app as "EXE" user 
 	When I navigate to "Planning" tab 
 	When I navigate to "Funding Sources" content inside "Planning" subheader on left panel 
-	And I click on top right button "New" in flex table with id "---fundingsource:-:funding_Account_Table_Id---"
+	And I click on top right button "New" in flex table with id "InternalFundingSource"
 	When I enter "Creation" values from "FundingSource_Field_Values.xlsx" 
 	And I click modal button "Save and Continue" 
 	And I click on "Save" in the page details 

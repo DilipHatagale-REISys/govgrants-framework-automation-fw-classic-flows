@@ -27,9 +27,9 @@ Feature: Validate all scenarios in Desk Review
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @51012 @participantAssociationDeskReview @nonFunctional
+  @51012 @participantAssociationDeskReview 
   Scenario Outline: Participant Association of Desk Review
-    Given I associate "1" records "Automation SPA"
+    Given I associate "1" records "Automation SPI"
       | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
       | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     Then I see that "<Subrecipient>" has been added in flextable with Id "---deskreview:-:participantsTableIdsitevisits---"
@@ -39,7 +39,7 @@ Feature: Validate all scenarios in Desk Review
 
   @51013 @approverSelectionDeskReview
   Scenario Outline: Approver selection of Desk Review
-    When I navigate to "Responsibilities" sub tab
+    Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
@@ -51,22 +51,28 @@ Feature: Validate all scenarios in Desk Review
 
   @51014 @notifySubrecipientDeskReview @smoke
   Scenario: Notify Subrecipient about the Desk Review
-    When I navigate to "Responsibilities" sub tab
+    Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
+    Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     And I click on "Notify" in the page details
     Then I see that "Automation Desk Review" is in "Notified" status
 
   @51015 @notifyPendingTaskForSubrecipientDeskReview
   Scenario: Subrecipient pending task check for Desk Review
-    When I navigate to "Responsibilities" sub tab
+    Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
+    Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     And I click on "Notify" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
@@ -77,11 +83,14 @@ Feature: Validate all scenarios in Desk Review
 
   @51016 @conductDeskReview
   Scenario: Conduct Desk Review
-    When I navigate to "Responsibilities" sub tab
+    Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
+    Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     And I click on "Notify" in the page details
     Given User "SPI" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -98,12 +107,15 @@ Feature: Validate all scenarios in Desk Review
 
   @51017 @addingOutcomeDeskReview @smoke
   Scenario: Adding outcomes to Desk Review
-    When I navigate to "Responsibilities" sub tab
+    Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
+    Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     And I click on "Notify" in the page details
     Given User "SPI" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -126,12 +138,15 @@ Feature: Validate all scenarios in Desk Review
 
   @51018 @formFillingDeskReview
   Scenario: Filling up of form in Desk Review
-    When I navigate to "Responsibilities" sub tab
+    Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
+    Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     And I click on "Notify" in the page details
     Given User "SPI" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -160,12 +175,15 @@ Feature: Validate all scenarios in Desk Review
 
   @51019 @submittingForApprovalDeskReview
   Scenario: Submitting Desk Review for approval
-    When I navigate to "Responsibilities" sub tab
+    Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
+    Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     And I click on "Notify" in the page details
     Given User "SPI" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -201,6 +219,9 @@ Feature: Validate all scenarios in Desk Review
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
+    Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     And I click on "Notify" in the page details
     Given User "SPI" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -235,12 +256,15 @@ Feature: Validate all scenarios in Desk Review
 
   @51021 @deskReviewSendToSubrecipient
   Scenario: Send Desk Review to Subrecipient
-    When I navigate to "Responsibilities" sub tab
+    Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
+    Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     And I click on "Notify" in the page details
     Given User "SPI" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -287,6 +311,9 @@ Feature: Validate all scenarios in Desk Review
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
+    Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     And I click on "Notify" in the page details
     Given User "SPI" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -354,6 +381,9 @@ Feature: Validate all scenarios in Desk Review
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
+    Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     And I click on "Notify" in the page details
     Given User "SPI" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2        | Step 3    |
@@ -423,6 +453,9 @@ Feature: Validate all scenarios in Desk Review
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
+    Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     And I click on "Notify" in the page details
     Given User "SPI" receives the task for "Record Id"
       | Actions    | Step 1            | Step 2        | Step 3    |

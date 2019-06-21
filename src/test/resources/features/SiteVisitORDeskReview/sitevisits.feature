@@ -22,14 +22,14 @@ Feature: Validate all scenarios in the Site Visit
 
   @51082 @siteVisitEdition @notFunctional
   Scenario: Edition of Site Visit
-    When I click on "Edit" in the page details
+    Given I click on "Edit" in the page details
     And I enter "Edition" values from "SiteVisit_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
   @51083 @participantAssociationSiteVisit 
   Scenario Outline: Participant Association of Site Visit
-    Given I associate "1" records "Automation EXE"
+    Given I associate "1" records "Automation SPI"
       | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
       | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     Then I see that "<Participant>" has been added in flextable with Id "---sitevisits:-:participants_table_id---"
@@ -39,7 +39,7 @@ Feature: Validate all scenarios in the Site Visit
 
   @51084 @approverSelectionSiteVisit
   Scenario Outline: Approver selection of Site Visit
-    When I navigate to "Responsibilities" sub tab
+    Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
@@ -51,22 +51,28 @@ Feature: Validate all scenarios in the Site Visit
 
   @51085 @notifySubrecipientSiteVisit @smoke
   Scenario: Notify Subrecipient about the Site Visit
-    When I navigate to "Responsibilities" sub tab
+    Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
+    Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     And I click on "Notify" in the page details
     Then I see that "Automation Site Visit" is in "Notified" status
 
   @51086 @notifyPendingTaskForSubrecipientSiteVisit
   Scenario: Subrecipient pending task check for Site Visit
-    When I navigate to "Responsibilities" sub tab
+    Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
+    Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     And I click on "Notify" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
@@ -77,23 +83,29 @@ Feature: Validate all scenarios in the Site Visit
 
   @51087 @conductSiteVisit @smoke
   Scenario: Conduct Site Visit
-    When I navigate to "Responsibilities" sub tab
+    Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
+    Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Then I see status in Progress-bar is "In Progress" and is "green"
 
   @51088 @addingOutcomeSiteVisit
   Scenario: Adding outcomes to Site Visit
-    When I navigate to "Responsibilities" sub tab
+    Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
+    Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -122,12 +134,15 @@ Feature: Validate all scenarios in the Site Visit
 
   @51089 @formFillingSiteVisit @smoke
   Scenario: Filling up of form in Site Visit
-    When I navigate to "Responsibilities" sub tab
+    Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
+     Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given User "SPI" receives the task for "Record Id"
@@ -150,12 +165,15 @@ Feature: Validate all scenarios in the Site Visit
 
   @51090 @submittingForApprovalSiteVisit
   Scenario:  Submitting Site Visit for approval
-    When I navigate to "Responsibilities" sub tab
+    Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
+    Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given User "SPI" receives the task for "Record Id"
@@ -184,12 +202,15 @@ Feature: Validate all scenarios in the Site Visit
 
   @51091 @approvalOfSiteVisit
   Scenario Outline: Approval of Site Visit
-    When I navigate to "Responsibilities" sub tab
+    Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
+     Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given User "SPI" receives the task for "Record Id"
@@ -226,12 +247,15 @@ Feature: Validate all scenarios in the Site Visit
 
   @51092 @siteVisitSendToSubrecipient
   Scenario Outline: Send Site Visit to Subrecipient
-    When I navigate to "Responsibilities" sub tab
+    Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
+    Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given User "SPI" receives the task for "Record Id"
@@ -279,6 +303,9 @@ Feature: Validate all scenarios in the Site Visit
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
+    Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given User "SPI" receives the task for "Record Id"
@@ -342,12 +369,15 @@ Feature: Validate all scenarios in the Site Visit
 
   @51094 @siteVisitSubmitToGrantorBySubrecipient
   Scenario:  Site Visit Submit to Grantor by Subrecipient
-    When I navigate to "Responsibilities" sub tab
+    Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
+     Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given User "SPI" receives the task for "Record Id"
@@ -415,6 +445,9 @@ Feature: Validate all scenarios in the Site Visit
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
+    Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given User "SPI" receives the task for "Record Id"
@@ -484,12 +517,15 @@ Feature: Validate all scenarios in the Site Visit
       
   @39180 @siteVisitAddCorrectiveActionsByFOUser @smoke @wip @deepika
   Scenario Outline: Verify that only recipient user can add corrective actions and not by Internal User on status send to subrecipeint for Award level 
-    When I navigate to "Responsibilities" sub tab
+    Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
+    Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given User "SPI" receives the task for "Record Id"
@@ -549,6 +585,9 @@ Feature: Validate all scenarios in the Site Visit
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
+    Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given User "SPI" receives the task for "Record Id"
@@ -572,6 +611,9 @@ Feature: Validate all scenarios in the Site Visit
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
+    Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
     And I click on "Notify" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -588,6 +630,9 @@ Feature: Validate all scenarios in the Site Visit
 		| Program Approver | Automation PM | Automation Test Description |
 		| Fiscal Approver  | Automation FO | Automation Test Description |
 	When I get the "EGMS ID" 
+    Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
 	And I click on "Notify" in the page details 
 	And I navigate to "Monitoring" tab 
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel 
@@ -602,6 +647,9 @@ Feature: Validate all scenarios in the Site Visit
 		| Program Approver | Automation PM | Automation Test Description |
 		| Fiscal Approver  | Automation FO | Automation Test Description |
 	When I get the "EGMS ID" 
+	Given I associate "1" records "Automation SPI"
+      | Actions     | Step 1   | Step 2    | Step 3                   | Step 4    | Step 5                       |
+      | Associate 1 | Overview | Associate | GrantorSiteVisitContacts | Associate | SelectSiteDeskReviewContacts |
 	When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal 
 	And I navigate to "Monitoring" tab 
 	When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel 
