@@ -53,6 +53,6 @@ public class MonitoringPage extends ProjectManager {
         govgrants.inputForms().enterInputFieldsFromExcelFile(excelName, sheetName);
         govgrants.modal().clickModalContentSpecificButton(dataTableMap.get("Creation").get("Step 1"));
         govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("Creation").get("Step 2"));
-        govgrants.pageDetails().getRecordId(dataTableMap.get("ID").get("Step 1"));
+        govgrants.pageDetails().getFieldValue(dataTableMap.get("ID").get("Step 1"));
     }
 }

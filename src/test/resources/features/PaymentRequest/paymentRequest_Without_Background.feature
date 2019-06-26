@@ -52,7 +52,7 @@ Feature: scenarios without background
       | Automation SPI | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:award_Approvers_TableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Responsibility     | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
@@ -178,7 +178,7 @@ Feature: scenarios without background
       | Automation SPI | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:award_Approvers_TableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Responsibility     | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
@@ -310,7 +310,7 @@ Feature: scenarios without background
       | Automation SPI | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:award_Approvers_TableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Responsibility     | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
@@ -440,7 +440,7 @@ Feature: scenarios without background
       | Automation SPI | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:award_Approvers_TableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Responsibility     | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
@@ -567,7 +567,7 @@ Feature: scenarios without background
       | Automation SPI | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:award_Approvers_TableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Responsibility     | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
@@ -648,130 +648,1261 @@ Feature: scenarios without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-    @53964 @validateProgramIncomeTrackingNotDisplayedOnPaymentRequest @mahadev
-    Scenario Outline: Validate user can not see page block Program Income tracking not displayed on Reimbursement payment request when program Income Allowed is No at Grant
-      Given I delete the record "Automation Payment Request" from the object "Payment Request"
-      When I delete the record "Automation Execution Award" from the object "Grant"
-      When I login to "As a Grantor" app as "EXE" user
-      And I navigate to "Grants" tab
-      When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
-      And I click on top right button "New" in flex table with id "---subAward_StandAlone:-:active_Grants_TableId---"
-      And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
-      And I click modal button "Continue"
-      And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
-      When I enter value "No" into field "IsProgramIncomeAnticipated__c"
-      When I click modal button "Save and Continue"
-      And I navigate to "Subawards" sub tab
-      When I click on "View" icon for "Created" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
-      And I get the "EGMS ID"
-      And I click on "Edit" in the page details
-      When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
-      And I click on "Save" in the page details
-      And I navigate to "Budget" sub tab
-      When I click on top right button "Associate" in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---"
-      When I click "Add" after selection of "Automation Permenent Funding Account" in the table "---subAward_StandAlone:-:award_Funding_Accounts_TableId---"
-      And I close modal by clicking the top right x button
-      When I navigate to "Budget" sub tab
-      And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:focusArea_TableId---" by clicking "Edit" :
-        | Title                           | Start Date | End Date |
-        | Automation Permanent Focus Area | 0          | 3650     |
-      When I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
-        | Funding Account | Encumbrance |
-        | FA--01          | 1000        |
-      And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:subAward_Budget_TableId---" by clicking "Edit" :
-        | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
-        | Construction    | 1000           | 100        | 100            |
-      When I navigate to "Performance" sub tab
-      And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:kpi_TableId---" by clicking "Edit" :
-        | EGMS ID                                 | Target |
-        | Automation Permanent KPI for Regression | 10     |
-      And I navigate to "Management" sub tab
-      And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAward_StandAlone:-:paymentRequest_Schedule_TableId---"
-      When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
-      And I click modal button "Save"
-      When I close modal by clicking the top right x button
-      And I click on "Edit" icon for "Progress Report	" inside flex table with id "---subAward_StandAlone:-:progressReport_Schedule_TableId---"
-      When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
-      And I click modal button "Save"
-      When I close modal by clicking the top right x button
-      When I navigate to "Overview" sub tab
-      And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:associated_Contacts_TableId---" by clicking "Edit" :
-        | Name           | Project Role             | Is Key Personnel |
-        | Automation SPI | Project Director/Manager | Checked          |
-      When I navigate to "Responsibilities" sub tab
-      And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:award_Approvers_TableId---" by clicking "Edit" :
-        | Role               | Name           | Description                 |
-        | Program Approver   | Automation PM  | Automation Test Description |
-        | Fiscal Approver    | Automation FO  | Automation Test Description |
-        | Executive Approver | Automation EXE | Automation Test Description |
-      When I get the "EGMS ID"
-      And I click on "Send to Subrecipient" in the page details
-      And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-      When I navigate to "Grants" tab
-      When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-      And I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
-      When I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
-      When I click on "Accept" in the page details
-      When I enter "Automation Award accepted" for comments and click "OK"
-      When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-      And I navigate to "Grants" tab
-      When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
-      And I click toggle button to select "Draft Grants"
-      When I perform quick search for "<Grant Name>" in "---subAward_StandAlone:-:active_Grants_TableId---" panel
-      And I click on "View" icon for "<Grant Name>" inside table
-      When I navigate to "Subawards" sub tab
-      And I click on "View" icon for "<Award Name>" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
-      When I get the "EGMS ID"
-      And I click on "Submit for Approval" in the page details
-      When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-      And I navigate to "Grants" tab
-      When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-      When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
-      And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
-      And I click on "Approve" on the approval decision box
-      When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-      And I navigate to "Grants" tab
-      When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-      When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
-      And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
-      And I click on "Approve" on the approval decision box
-      When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-      And I navigate to "Grants" tab
-      When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-      When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
-      And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
-      And I click on "Approve" on the approval decision box
-      When I click on "Send to Subrecipient" in the page details
-      When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-      And I navigate to "Grants" tab
-      When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-      And I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
-      When I click on "Start" icon for "Record Id" inside table
-      And I click on "Accept after Approval" in the page details
-      When I enter "Automation Award accepted" for comments and click "OK"
-      When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-      And I navigate to "Grants" tab
-      When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
-      And I click toggle button to select "Draft Grants"
-      When I perform quick search for "<Grant Name>" in "---subAward_StandAlone:-:active_Grants_TableId---" panel
-      And I click on "View" icon for "<Grant Name>" inside table
-      When I navigate to "Subawards" sub tab
-      And I click on "View" icon for "<Award Name>" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
-      And I click on "Activate" in the page details
-      When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-      And I navigate to "Grants" tab
-      When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
-      And I click toggle button to select "Active Grants"
-      When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipient_Grant_Table_Id---" panel
-      And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipient_Grant_Table_Id---"
-      When I navigate to "Subawards" sub tab
-      And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipient_Award_Table_Id---"
-      When I navigate to "Requests" sub tab
-      And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-      When I enter value "Automation Payment Request" into field "Title__c"
-      And I click modal button "Save and Continue"
-      When I navigate to "Financials" sub tab
-      Then I cannot see page block "Program Income Tracking"
-      Examples:
-        | Award Name                 | Grant Name                 |
-        | Automation Execution Award | Automation Execution Award |
+  @53964 @validateProgramIncomeTrackingNotDisplayedOnPaymentRequest @mahadev
+  Scenario Outline: Validate user can not see page block Program Income tracking not displayed on Reimbursement payment request when program Income Allowed is No at Grant
+    Given I delete the record "Automation Payment Request" from the object "Payment Request"
+    When I delete the record "Automation Execution Award" from the object "Grant"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAward_StandAlone:-:active_Grants_TableId---"
+    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I enter value "No" into field "IsProgramIncomeAnticipated__c"
+    When I click modal button "Save and Continue"
+    And I navigate to "Subawards" sub tab
+    When I click on "View" icon for "Created" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    And I get the "EGMS ID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---"
+    When I click "Add" after selection of "Automation Permenent Funding Account" in the table "---subAward_StandAlone:-:award_Funding_Accounts_TableId---"
+    And I close modal by clicking the top right x button
+    When I refresh the page
+    When I navigate to "Budget" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:focusArea_TableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    When I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
+      | Funding Account | Encumbrance |
+      | FA--01          | 1000        |
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:subAward_Budget_TableId---" by clicking "Edit" :
+      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
+      | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:kpi_TableId---" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+    And I navigate to "Management" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAward_StandAlone:-:paymentRequest_Schedule_TableId---"
+    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    And I click on "Edit" icon for "Progress Report	" inside flex table with id "---subAward_StandAlone:-:progressReport_Schedule_TableId---"
+    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:associated_Contacts_TableId---" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:award_Approvers_TableId---" by clicking "Edit" :
+      | Responsibility     | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+    When I get the "EGMS ID"
+    And I click on "Send to Subrecipient" in the page details
+    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    When I click on "Accept" in the page details
+    When I enter "Automation Award accepted" for comments and click "OK"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click toggle button to select "Draft Grants"
+    When I perform quick search for "<Grant Name>" in "---subAward_StandAlone:-:active_Grants_TableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    When I get the "EGMS ID"
+    And I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    When I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    When I click on "Start" icon for "Record Id" inside table
+    And I click on "Accept after Approval" in the page details
+    When I enter "Automation Award accepted" for comments and click "OK"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click toggle button to select "Draft Grants"
+    When I perform quick search for "<Grant Name>" in "---subAward_StandAlone:-:active_Grants_TableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    And I click on "Activate" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipient_Grant_Table_Id---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipient_Grant_Table_Id---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipient_Award_Table_Id---"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I navigate to "Financials" sub tab
+    Then I cannot see page block "Program Income Tracking"
+    Examples:
+      | Award Name                 | Grant Name                 |
+      | Automation Execution Award | Automation Execution Award |
+
+  @54174 @ValidateAwardBudget_IsSameAsBalanceonAward @mahadev
+  Scenario Outline: validate awarded budget is same as award balace on award activation
+    Given I delete the record "Automation Execution Award" from the object "Payment Request"
+    Given I delete the record "Automation Payment Request" from the object "Payment Request"
+    And I delete the record "Automation Execution Award" from the object "Grant"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAward_StandAlone:-:active_Grants_TableId---"
+    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "AdvPaymentGrandEdition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    And I get the "EGMS ID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---"
+    When I click "Add" after selection of "Automation Permenent Funding Account" in the table "---subAward_StandAlone:-:award_Funding_Accounts_TableId---"
+    And I close modal by clicking the top right x button
+    When I refresh the page
+    When I navigate to "Budget" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:focusArea_TableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    When I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
+      | Funding Account | Encumbrance |
+      | FA--01          | 1000        |
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:subAward_Budget_TableId---" by clicking "Edit" :
+      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
+      | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:kpi_TableId---" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+    And I navigate to "Management" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAward_StandAlone:-:paymentRequest_Schedule_TableId---"
+    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    And I click on "Edit" icon for "Progress Report	" inside flex table with id "---subAward_StandAlone:-:progressReport_Schedule_TableId---"
+    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:associated_Contacts_TableId---" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:award_Approvers_TableId---" by clicking "Edit" :
+      | Responsibility     | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+    When I get the "EGMS ID"
+    And I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    When I click on "Start" icon for "Record Id" inside table
+    And I click on "Accept after Approval" in the page details
+    When I enter "Automation Award accepted" for comments and click "OK"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click toggle button to select "Draft Grants"
+    When I perform quick search for "<Grant Name>" in "---subAward_StandAlone:-:active_Grants_TableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    And I click on "Activate" in the page details
+    And I get the field value "Total Subaward Amount this Budget Period" from sub tab "Budget"
+    Then I compare field "Balance" from sub tab "Actuals" with expected field
+    Examples:
+      | Award Name                  | Grant Name                 |
+      | Automation Execution  Award | Automation Execution Award |
+
+  @54168 @ValidateAwardBudget_IsSameAsBalanceOnReimbursementPR @mahadev
+  Scenario Outline: validate awarded budget is same as award balace on award activation
+    Given I delete the record "Automation Execution Award" from the object "Payment Request"
+    Given I delete the record "Automation Payment Request" from the object "Payment Request"
+    And I delete the record "Automation Execution Award" from the object "Grant"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAward_StandAlone:-:active_Grants_TableId---"
+    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "AdvPaymentGrandEdition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    And I get the "EGMS ID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---"
+    When I click "Add" after selection of "Automation Permenent Funding Account" in the table "---subAward_StandAlone:-:award_Funding_Accounts_TableId---"
+    And I close modal by clicking the top right x button
+    And I refresh the page
+    When I navigate to "Budget" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:focusArea_TableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    When I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
+      | Funding Account | Encumbrance |
+      | FA--01          | 1000        |
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:subAward_Budget_TableId---" by clicking "Edit" :
+      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
+      | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:kpi_TableId---" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+    And I navigate to "Management" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAward_StandAlone:-:paymentRequest_Schedule_TableId---"
+    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    And I click on "Edit" icon for "Progress Report	" inside flex table with id "---subAward_StandAlone:-:progressReport_Schedule_TableId---"
+    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:associated_Contacts_TableId---" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:award_Approvers_TableId---" by clicking "Edit" :
+      | Responsibility     | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+    When I get the "EGMS ID"
+    And I click on "Send to Subrecipient" in the page details
+    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    When I click on "Accept" in the page details
+    When I enter "Automation Award accepted" for comments and click "OK"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click toggle button to select "Draft Grants"
+    When I perform quick search for "<Grant Name>" in "---subAward_StandAlone:-:active_Grants_TableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    When I get the "EGMS ID"
+    And I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    When I click on "Start" icon for "Record Id" inside table
+    And I click on "Accept after Approval" in the page details
+    When I enter "Automation Award accepted" for comments and click "OK"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click toggle button to select "Draft Grants"
+    When I perform quick search for "<Grant Name>" in "---subAward_StandAlone:-:active_Grants_TableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    And I click on "Activate" in the page details
+    When I get the field value "Awarded Budget" from sub tab "Actuals"
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipient_Grant_Table_Id---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipient_Grant_Table_Id---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipient_Award_Table_Id---"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I compare field "Awarded Budget" from sub tab "Financials" with expected field
+    Examples:
+      | Award Name                  | Grant Name                 |
+      | Automation Execution  Award | Automation Execution Award |
+
+  @54496 @Validate_Active_Suppporting_Document_Checklist_On_ReimbursementPR @mahadev
+  Scenario Outline: validate Suppporting Document Checklist is displayed on reimbursement payment request
+    Given I delete the record "Automation Execution Award" from the object "Payment Request"
+    Given I delete the record "Automation Payment Request" from the object "Payment Request"
+    And I delete the record "Automation Execution Award" from the object "Grant"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAward_StandAlone:-:active_Grants_TableId---"
+    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "AdvPaymentGrandEdition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Attachments" sub tab
+    When I enter the following values into flex table with id "flexGridGrantChecklists" by clicking "Add" :
+      | Description | Required  | Applies To            | Status |
+      | Automation  | Mandatory | Reimbursement Request | Active |
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    And I get the "EGMS ID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---"
+    And I perform quick search for "Automation Permenent Funding Account" in "---subAward_StandAlone:-:award_Funding_Accounts_TableId---" panel
+    When I click "Add" after selection of "Automation Permenent Funding Account" in the table "---subAward_StandAlone:-:award_Funding_Accounts_TableId---"
+    And I close modal by clicking the top right x button
+    When I navigate to "Budget" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:focusArea_TableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    When I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
+      | Funding Account | Encumbrance |
+      | FA--01          | 1000        |
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:subAward_Budget_TableId---" by clicking "Edit" :
+      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
+      | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:kpi_TableId---" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+    And I navigate to "Management" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAward_StandAlone:-:paymentRequest_Schedule_TableId---"
+    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    And I click on "Edit" icon for "Progress Report	" inside flex table with id "---subAward_StandAlone:-:progressReport_Schedule_TableId---"
+    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:associated_Contacts_TableId---" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:award_Approvers_TableId---" by clicking "Edit" :
+      | Responsibility     | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+    And I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    When I click on "Start" icon for "Record Id" inside table
+    And I click on "Accept after Approval" in the page details
+    When I enter "Automation Award accepted" for comments and click "OK"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click toggle button to select "Draft Grants"
+    When I perform quick search for "<Grant Name>" in "---subAward_StandAlone:-:active_Grants_TableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    And I click on "Activate" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipient_Grant_Table_Id---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipient_Grant_Table_Id---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipient_Award_Table_Id---"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Given I navigate to "Financials" sub tab
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
+    When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) |
+      | Extra Salary | The narrative | 10         | 1        | Feet        | 10                |
+    When I close modal by clicking the top right x button
+    And I navigate to "Attachments" sub tab
+    Then I see that "Automation" has been added in flextable with Id "---paymentRequest:-:checklist_TableId---"
+    Examples:
+      | Award Name                  | Grant Name                 |
+      | Automation Execution  Award | Automation Execution Award |
+
+  @54499 @Validate_InActive_Suppporting_Document_Checklist_On_ReimbursementPR @mahadev
+  Scenario Outline: validate Suppporting Document Checklist is not displayed on reimbursement payment request if selected as Inactive on grant
+    Given I delete the record "Automation Execution Award" from the object "Payment Request"
+    Given I delete the record "Automation Payment Request" from the object "Payment Request"
+    And I delete the record "Automation Execution Award" from the object "Grant"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAward_StandAlone:-:active_Grants_TableId---"
+    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "AdvPaymentGrandEdition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Attachments" sub tab
+    When I enter the following values into flex table with id "flexGridGrantChecklists" by clicking "Add" :
+      | Description | Required  | Applies To            | Status   |
+      | Automation  | Mandatory | Reimbursement Request | Inactive |
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    And I get the "EGMS ID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---"
+    And I perform quick search for "Automation Permenent Funding Account" in "---subAward_StandAlone:-:award_Funding_Accounts_TableId---" panel
+    When I click "Add" after selection of "Automation Permenent Funding Account" in the table "---subAward_StandAlone:-:award_Funding_Accounts_TableId---"
+    And I close modal by clicking the top right x button
+    When I refresh the page
+    When I navigate to "Budget" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:focusArea_TableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    When I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
+      | Funding Account | Encumbrance |
+      | FA--01          | 1000        |
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:subAward_Budget_TableId---" by clicking "Edit" :
+      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
+      | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:kpi_TableId---" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+    And I navigate to "Management" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAward_StandAlone:-:paymentRequest_Schedule_TableId---"
+    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    And I click on "Edit" icon for "Progress Report	" inside flex table with id "---subAward_StandAlone:-:progressReport_Schedule_TableId---"
+    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:associated_Contacts_TableId---" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:award_Approvers_TableId---" by clicking "Edit" :
+      | Responsibility     | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+    And I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    When I click on "Start" icon for "Record Id" inside table
+    And I click on "Accept after Approval" in the page details
+    When I enter "Automation Award accepted" for comments and click "OK"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click toggle button to select "Draft Grants"
+    When I perform quick search for "<Grant Name>" in "---subAward_StandAlone:-:active_Grants_TableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    And I click on "Activate" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipient_Grant_Table_Id---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipient_Grant_Table_Id---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipient_Award_Table_Id---"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Given I navigate to "Financials" sub tab
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
+    When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) |
+      | Extra Salary | The narrative | 10         | 1        | Feet        | 10                |
+    When I close modal by clicking the top right x button
+    When I navigate to "Attachments" sub tab
+    Then I see "No Records Found" inside flex table with id "---paymentRequest:-:checklist_TableId---";
+    Examples:
+      | Award Name                 | Grant Name                 |
+      | Automation Execution Award | Automation Execution Award |
+
+  @54415 @Validate_UserCan_Attachdocument_On_ReimbursementPR @mahadev
+  Scenario Outline: validate user can add attachment documents for Reimbursement payment request as Invoice
+    Given I delete the record "Automation Execution Award" from the object "Payment Request"
+    Given I delete the record "Automation Payment Request" from the object "Payment Request"
+    And I delete the record "Automation Execution Award" from the object "Grant"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAward_StandAlone:-:active_Grants_TableId---"
+    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "AdvPaymentGrandEdition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Attachments" sub tab
+    When I enter the following values into flex table with id "flexGridGrantChecklists" by clicking "Add" :
+      | Description | Required  | Applies To            | Status |
+      | Automation  | Mandatory | Reimbursement Request | Active |
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    And I get the "EGMS ID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---"
+    And I perform quick search for "Automation Permenent Funding Account" in "---subAward_StandAlone:-:award_Funding_Accounts_TableId---" panel
+    When I click "Add" after selection of "Automation Permenent Funding Account" in the table "---subAward_StandAlone:-:award_Funding_Accounts_TableId---"
+    And I close modal by clicking the top right x button
+    When I navigate to "Budget" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:focusArea_TableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    When I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
+      | Funding Account | Encumbrance |
+      | FA--01          | 1000        |
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:subAward_Budget_TableId---" by clicking "Edit" :
+      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
+      | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:kpi_TableId---" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+    And I navigate to "Management" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAward_StandAlone:-:paymentRequest_Schedule_TableId---"
+    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    And I click on "Edit" icon for "Progress Report	" inside flex table with id "---subAward_StandAlone:-:progressReport_Schedule_TableId---"
+    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:associated_Contacts_TableId---" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:award_Approvers_TableId---" by clicking "Edit" :
+      | Responsibility     | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+    And I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    When I click on "Start" icon for "Record Id" inside table
+    And I click on "Accept after Approval" in the page details
+    When I enter "Automation Award accepted" for comments and click "OK"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click toggle button to select "Draft Grants"
+    When I perform quick search for "<Grant Name>" in "---subAward_StandAlone:-:active_Grants_TableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    And I click on "Activate" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipient_Grant_Table_Id---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipient_Grant_Table_Id---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipient_Award_Table_Id---"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Given I navigate to "Financials" sub tab
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
+    When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) |
+      | Extra Salary | The narrative | 10         | 1        | Feet        | 10                |
+    When I close modal by clicking the top right x button
+    And I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipient_Grant_Table_Id---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipient_Grant_Table_Id---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipient_Award_Table_Id---"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Attachments" sub tab
+    And I click on "Add" button for "Attachment" flex table
+    And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Invoice"
+    When I close Modal
+    Then I see that "Announcement_Field_Values.xlsx" has been added in flextable with Id "a1511000002nJ7EAAU"
+    Examples:
+      | Award Name                 | Grant Name                 |
+      | Automation Execution Award | Automation Execution Award |
+
+  @54498 @Validate_InActive_Suppporting_Document_Checklist_On_AdvancePR @mahadev
+  Scenario Outline: validate Suppporting Document Checklist is not displayed on advance payment request if selected as Inactive on grant
+    Given I delete the record "Automation Execution Award" from the object "Payment Request"
+    Given I delete the record "Automation Payment Request" from the object "Payment Request"
+    And I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipient_Grant_Table_Id---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipient_Grant_Table_Id---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipient_Award_Table_Id---"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I navigate to "Attachments" sub tab
+    Then I see "No Records Found" inside flex table with id "---paymentRequest:-:checklist_TableId---";
+    Examples:
+      | Award Name                 | Grant Name                 |
+      | Automation Permanent Award | Automation Permanent Award |
+
+  @54495 @Validate_Active_Suppporting_Document_Checklist_On_AdvancePR @mahadev
+  Scenario Outline: validate Suppporting Document Checklist is displayed on advance payment request
+    Given I delete the record "Automation Execution Award" from the object "Payment Request"
+    Given I delete the record "Automation Payment Request" from the object "Payment Request"
+    And I delete the record "Automation Execution Award" from the object "Grant"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAward_StandAlone:-:active_Grants_TableId---"
+    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Attachments" sub tab
+    When I enter the following values into flex table with id "flexGridGrantChecklists" by clicking "Add" :
+      | Description | Required  | Applies To      | Status |
+      | Automation  | Mandatory | Advance Request | Active |
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    And I get the "EGMS ID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---"
+    And I perform quick search for "Automation Permenent Funding Account" in "---subAward_StandAlone:-:award_Funding_Accounts_TableId---" panel
+    When I click "Add" after selection of "Automation Permenent Funding Account" in the table "---subAward_StandAlone:-:award_Funding_Accounts_TableId---"
+    And I close modal by clicking the top right x button
+    When I refresh the page
+    When I navigate to "Budget" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:focusArea_TableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    When I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
+      | Funding Account | Encumbrance |
+      | FA--01          | 1000        |
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:subAward_Budget_TableId---" by clicking "Edit" :
+      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
+      | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:kpi_TableId---" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+    And I navigate to "Management" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAward_StandAlone:-:paymentRequest_Schedule_TableId---"
+    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    And I click on "Edit" icon for "Progress Report	" inside flex table with id "---subAward_StandAlone:-:progressReport_Schedule_TableId---"
+    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:associated_Contacts_TableId---" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:award_Approvers_TableId---" by clicking "Edit" :
+      | Responsibility     | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+    And I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    When I click on "Start" icon for "Record Id" inside table
+    And I click on "Accept after Approval" in the page details
+    When I enter "Automation Award accepted" for comments and click "OK"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click toggle button to select "Draft Grants"
+    When I perform quick search for "<Grant Name>" in "---subAward_StandAlone:-:active_Grants_TableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    And I click on "Activate" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipient_Grant_Table_Id---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipient_Grant_Table_Id---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipient_Award_Table_Id---"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Attachments" sub tab
+    Then I see that "Automation" has been added in flextable with Id "---paymentRequest:-:checklist_TableId---"
+    Examples:
+      | Award Name                  | Grant Name                 |
+      | Automation Execution  Award | Automation Execution Award |
+
+  @54506 @Validate_Optional_Suppporting_Document_Checklist_On_ReimbursementPR @mahadev
+  Scenario Outline: validate Optional Suppporting Document Checklist should not display any error message on reimbursement payment request
+    Given I delete the record "Automation Execution Award" from the object "Payment Request"
+    Given I delete the record "Automation Payment Request" from the object "Payment Request"
+    And I delete the record "Automation Execution Award" from the object "Grant"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAward_StandAlone:-:active_Grants_TableId---"
+    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "AdvPaymentGrandEdition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Attachments" sub tab
+    When I enter the following values into flex table with id "flexGridGrantChecklists" by clicking "Add" :
+      | Description | Required | Applies To            | Status |
+      | Automation  | Optional | Reimbursement Request | Active |
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    And I get the "EGMS ID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---"
+    And I perform quick search for "Automation Permenent Funding Account" in "---subAward_StandAlone:-:award_Funding_Accounts_TableId---" panel
+    When I click "Add" after selection of "Automation Permenent Funding Account" in the table "---subAward_StandAlone:-:award_Funding_Accounts_TableId---"
+    And I close modal by clicking the top right x button
+    And I refresh the page
+    When I navigate to "Budget" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:focusArea_TableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    When I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
+      | Funding Account | Encumbrance |
+      | FA--01          | 1000        |
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:subAward_Budget_TableId---" by clicking "Edit" :
+      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
+      | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:kpi_TableId---" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+    And I navigate to "Management" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAward_StandAlone:-:paymentRequest_Schedule_TableId---"
+    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    And I click on "Edit" icon for "Progress Report	" inside flex table with id "---subAward_StandAlone:-:progressReport_Schedule_TableId---"
+    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:associated_Contacts_TableId---" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:award_Approvers_TableId---" by clicking "Edit" :
+      | Responsibility     | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+    And I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    When I click on "Start" icon for "Record Id" inside table
+    And I click on "Accept after Approval" in the page details
+    When I enter "Automation Award accepted" for comments and click "OK"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click toggle button to select "Draft Grants"
+    When I perform quick search for "<Grant Name>" in "---subAward_StandAlone:-:active_Grants_TableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    And I click on "Activate" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipient_Grant_Table_Id---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipient_Grant_Table_Id---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipient_Award_Table_Id---"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Given I navigate to "Financials" sub tab
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
+    When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) |
+      | Extra Salary | The narrative | 10         | 1        | Feet        | 10                |
+    When I close modal by clicking the top right x button
+    And I click on "Submit to Grantor" in the page details
+    Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
+    Examples:
+      | Award Name                  | Grant Name                 |
+      | Automation Execution  Award | Automation Execution Award |
+
+  @54507 @Validate_Optional_Suppporting_Document_Checklist_On_AdvancePR @mahadev
+  Scenario Outline: validate Optional Suppporting Document Checklist should not display any error message on advance payment request
+    Given I delete the record "Automation Execution Award" from the object "Payment Request"
+    Given I delete the record "Automation Payment Request" from the object "Payment Request"
+    And I delete the record "Automation Execution Award" from the object "Grant"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAward_StandAlone:-:active_Grants_TableId---"
+    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Attachments" sub tab
+    When I enter the following values into flex table with id "flexGridGrantChecklists" by clicking "Add" :
+      | Description | Required | Applies To      | Status |
+      | Automation  | Optional | Advance Request | Active |
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    And I get the "EGMS ID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---"
+    And I perform quick search for "Automation Permenent Funding Account" in "---subAward_StandAlone:-:award_Funding_Accounts_TableId---" panel
+    When I click "Add" after selection of "Automation Permenent Funding Account" in the table "---subAward_StandAlone:-:award_Funding_Accounts_TableId---"
+    And I close modal by clicking the top right x button
+    When I refresh the page
+    When I navigate to "Budget" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:focusArea_TableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    When I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
+      | Funding Account | Encumbrance |
+      | FA--01          | 1000        |
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:subAward_Budget_TableId---" by clicking "Edit" :
+      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
+      | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:kpi_TableId---" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+    And I navigate to "Management" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAward_StandAlone:-:paymentRequest_Schedule_TableId---"
+    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    And I click on "Edit" icon for "Progress Report	" inside flex table with id "---subAward_StandAlone:-:progressReport_Schedule_TableId---"
+    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:associated_Contacts_TableId---" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:award_Approvers_TableId---" by clicking "Edit" :
+      | Responsibility     | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+    And I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    When I click on "Start" icon for "Record Id" inside table
+    And I click on "Accept after Approval" in the page details
+    When I enter "Automation Award accepted" for comments and click "OK"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click toggle button to select "Draft Grants"
+    When I perform quick search for "<Grant Name>" in "---subAward_StandAlone:-:active_Grants_TableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    And I click on "Activate" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipient_Grant_Table_Id---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipient_Grant_Table_Id---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipient_Award_Table_Id---"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:budget_TableId---" by clicking "Edit" :
+      | Budget Category | Advance Requested This Action |
+      | Construction    | 10                            |
+    When I click on "Submit to Grantor" in the page details
+    Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
+    Examples:
+      | Award Name                  | Grant Name                 |
+      | Automation Execution  Award | Automation Execution Award |
+
+  @54503 @Validate_Mandatory_Suppporting_Document_Checklist_On_AdvancePR @mahadev
+  Scenario Outline: validate mandatory Suppporting Document Checklist should  display error message on advance PR if attachment not added
+    Given I delete the record "Automation Execution Award" from the object "Payment Request"
+    Given I delete the record "Automation Payment Request" from the object "Payment Request"
+    And I delete the record "Automation Execution Award" from the object "Grant"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAward_StandAlone:-:active_Grants_TableId---"
+    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Attachments" sub tab
+    When I enter the following values into flex table with id "flexGridGrantChecklists" by clicking "Add" :
+      | Description | Required  | Applies To      | Status |
+      | Automation  | Mandatory | Advance Request | Active |
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    And I get the "EGMS ID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---"
+    And I perform quick search for "Automation Permenent Funding Account" in "---subAward_StandAlone:-:award_Funding_Accounts_TableId---" panel
+    When I click "Add" after selection of "Automation Permenent Funding Account" in the table "---subAward_StandAlone:-:award_Funding_Accounts_TableId---"
+    And I close modal by clicking the top right x button
+    When I refresh the page
+    When I navigate to "Budget" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:focusArea_TableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    When I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
+      | Funding Account | Encumbrance |
+      | FA--01          | 1000        |
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:subAward_Budget_TableId---" by clicking "Edit" :
+      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
+      | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:kpi_TableId---" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+    And I navigate to "Management" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAward_StandAlone:-:paymentRequest_Schedule_TableId---"
+    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    And I click on "Edit" icon for "Progress Report	" inside flex table with id "---subAward_StandAlone:-:progressReport_Schedule_TableId---"
+    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:associated_Contacts_TableId---" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:award_Approvers_TableId---" by clicking "Edit" :
+      | Responsibility     | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+    And I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
+    And I click on "Approve" on the approval decision box
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
+    When I click on "Start" icon for "Record Id" inside table
+    And I click on "Accept after Approval" in the page details
+    When I enter "Automation Award accepted" for comments and click "OK"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click toggle button to select "Draft Grants"
+    When I perform quick search for "<Grant Name>" in "---subAward_StandAlone:-:active_Grants_TableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    And I click on "Activate" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipient_Grant_Table_Id---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipient_Grant_Table_Id---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipient_Award_Table_Id---"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:budget_TableId---" by clicking "Edit" :
+      | Budget Category | Advance Requested This Action |
+      | Construction    | 10                            |
+    When I click on "Submit to Grantor" in the page details
+    Then I see the following messages in the page details contains:
+      | Attachments Tab - Each mandatory item listed in the checklist must be completed before submitting this Payment Request. |
+    Examples:
+      | Award Name                 | Grant Name                 |
+      | Automation Execution Award | Automation Execution Award |

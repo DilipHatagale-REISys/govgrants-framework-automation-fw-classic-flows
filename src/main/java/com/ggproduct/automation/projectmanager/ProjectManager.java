@@ -1,12 +1,13 @@
 package com.ggproduct.automation.projectmanager;
 
 import org.openqa.selenium.By;
-
 import com.automation.rei.handlers.GovGrantsHandler;
 import eyethink.automation.bots.controller.Controller;
 import eyethink.automation.bots.controller.CoreHandlers;
 import org.openqa.selenium.WebElement;
+import org.springframework.context.annotation.Description;
 import org.testng.Assert;
+
 import java.util.List;
 
 
@@ -20,6 +21,7 @@ public class ProjectManager extends ProjectWebServices {
     public Controller controller;
     public GovGrantsHandler govgrants;
     public final String defaultLongText = "Automation test description";
+    private String fieldValue;
 
     /**
      * Super Constructor
@@ -42,7 +44,7 @@ public class ProjectManager extends ProjectWebServices {
     /******* "Key Methods with complete functionality" *****************/
 
     public void getRecordId(String recordIdLabel) {
-        govgrants.pageDetails().getRecordId(recordIdLabel);
+        govgrants.pageDetails().getFieldValue(recordIdLabel);
     }
 
     /*
@@ -86,26 +88,26 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     /* handles to verify no record is present in flex table */
-    public boolean isRecordPresentInTheFlexTable(String tableId) {
+    public boolean isRecordPresentInTheFlexTable(String text, String tableId) {
         try {
-            return reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='" + tableId + "']//p[contains(text(),'No records found')]")).isDisplayed();
+            return reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='" + tableId + "']//*[" + reiDriver.xpath().contains("text()", text) + "]")).isDisplayed();
         } catch (Exception e) {
         }
         return false;
     }
 
     /*handles to verify blank value is present inside flex table */
-    public boolean isColumnValueBlank(String fieldName){
-        reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//*[@field-name='"+fieldName+"' or @id='"+fieldName+"']"));
-        WebElement fieldValue= reiDriver.findMyElement().getElement(By.xpath("//*[@field-name='"+fieldName+"' or @id='"+fieldName+"']"));
-        String value =fieldValue.getText();
-        if(value.equals("")) {
+    public boolean isColumnValueBlank(String fieldName) {
+        reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//*[@field-name='" + fieldName + "' or @id='" + fieldName + "']"));
+        WebElement fieldValue = reiDriver.findMyElement().getElement(By.xpath("//*[@field-name='" + fieldName + "' or @id='" + fieldName + "']"));
+        String value = fieldValue.getText();
+        if (value.equals("")) {
             return true;
         }
         return false;
     }
 
-    public void assertColumnValuIsBlank(String fieldName){
+    public void assertColumnValuIsBlank(String fieldName) {
         Assert.assertTrue(isColumnValueBlank(fieldName));
     }
 
@@ -119,10 +121,16 @@ public class ProjectManager extends ProjectWebServices {
         Assert.assertEquals(totalRecord, totalRecordsCount(tableId));
     }
 
-    public By pageBlock(String pageBlockName){
-       return By.xpath("//h3//a[contains(text(),'"+pageBlockName+"')]");
+    public By pageBlock(String pageBlockName) {
+        return By.xpath("//h3//a[contains(text(),'" + pageBlockName + "')]");
     }
 
+    /**
+     *
+     * @param pageblockName - page block name
+     * @param assertcan - can see|cannot see
+     * @Author - Mahadev.hanme
+     */
     public void AssertPageBlockDisplayed(String pageblockName, boolean assertcan) {
         List<WebElement> elements = reiDriver.findMyElement().getElements(pageBlock(pageblockName));
         if (assertcan) {
@@ -131,5 +139,64 @@ public class ProjectManager extends ProjectWebServices {
             Assert.assertEquals(elements.size(), 0);
         }
 
+    }
+
+    /*
+     * handles to capture message on approval decision box
+     * @param - message - message which needs to verify
+     * @Author - Mahadev.hanme
+     */
+    public Boolean captureMessageOnApprovalDecisionBox(String message) {
+        By expectedMsg = By.xpath("//div[@id='ApprovalDecisionComponent']//span[contains(text(),'" + message + "')]");
+
+        try {
+            reiDriver.findMyElement().getElement(expectedMsg);
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
+    /*
+     * To capture field value by passing field label
+     * @param fieldName - Label of field
+     * @param  subTabName - subTab Name
+     * @Author - Mahadev.hanme
+     */
+    public void getFieldValue(String fieldName, String subTabName) {
+        govgrants.pageDetails().clickSubTabsInsideTableView(subTabName);
+        fieldValue = govgrants.pageDetails().getFieldValue(fieldName);
+    }
+
+    /**
+     * To compare two different field values
+     * @param fieldName  - Label of field
+     * @param subTabName - subTab Name
+     * @Author - Mahadev.hanme
+     */
+    public Boolean compareTwoFieldValues(String fieldName, String subTabName) {
+        govgrants.pageDetails().clickSubTabsInsideTableView(subTabName);
+        if (fieldValue.equalsIgnoreCase(govgrants.pageDetails().getFieldValue(fieldName)))
+            return true;
+        else
+            return false;
+    }
+
+    @Description("To verify two different field values are equal or not")
+    public void assertTwoFieldValues(String targetValue, String subTabName) {
+        Assert.assertTrue(compareTwoFieldValues(targetValue, subTabName));
+    }
+
+    /**
+     * Handles to click on Attachment table top right button
+     * @param buttonName - Attachment flex table top right button
+     * @param flexTableHeaderName - Flex table Header label name
+     * @Author - Mahadev.hanme
+     */
+    public void clickAddButton(String buttonName, String flexTableHeaderName) {
+        try {
+            reiDriver.WaitFor().magicWait(By.xpath("//div[@id='myTabbedContent']//span[contains(text(),'" + flexTableHeaderName + "')]/..//div[@class='panel-heading']//*[text()='" + buttonName + "']")).click();
+        } catch (Exception e) {
+        }
     }
 }

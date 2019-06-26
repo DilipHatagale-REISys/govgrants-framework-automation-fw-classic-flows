@@ -55,3 +55,19 @@ Feature: Scheduled Payment Request Happy Path
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Permanent Award | Automation Permanent Award |
+
+  @38313 @taskCreationForSPIUser @mahadev
+  Scenario Outline: Scheduled Payment Request happy path
+    Given I delete the record "<Award Name>" from the object "Payment Request"
+    Given I delete the record "Automation Payment Request" from the object "Payment Request"
+    When I create a post award record "PaymentRequest" for the Award "Automation Permanent Award" having object api name as "PaymentRequest__c"
+    And I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI" user
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
+    Then I see value "Record Id" for title "EGMS ID" inside table "---paymentRequest:-:pendingTask_Table_Id---"
+    Examples:
+      | Award Name                 |
+      | Automation Permanent Award |
+

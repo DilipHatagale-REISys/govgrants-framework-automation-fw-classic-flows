@@ -2,8 +2,6 @@ package com.ggproduct.automation.steps;
 
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.projectmanager.ProjectManager;
-
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -35,12 +33,6 @@ public class GenericSteps {
         projectManager.attemptDeletion(columnValues, tableId);
     }
 
-    @Description("To verify no record found in flex table")
-    @Then("^I do not see value inside table with id \"([^\"]*)\"$")
-    public void iDoNotSeeValueInsideTableWithId(String tableId) {
-        Assert.assertTrue(projectManager.isRecordPresentInTheFlexTable(tableId));
-    }
-
     @Description("API call used to create a post award records i.e. Payment Request, Progress Report and Closout and will fetch the record ID for that record")
     @When("^I create a post award record \"([^\"]*)\" for the Award \"([^\"]*)\" having object api name as \"([^\"]*)\"$")
     public void iCreateAPostAwardRecordForTheAwardHavingObjectApiNameAs(String objectType, String recordName, String objectApiName) {
@@ -62,5 +54,35 @@ public class GenericSteps {
     @Then("^I (can see|cannot see) page block \"([^\"]*)\"$")
     public void iCanSeeCannotSeePageBlock(String usage,String pageblockName)  {
         projectManager.AssertPageBlockDisplayed(pageblockName,"can see".equalsIgnoreCase(usage));
+    }
+
+    @Description("To capture message on approval decision box")
+    @Then("^I see the message \"([^\"]*)\" on approval decision box$")
+    public void iSeeTheMessageOnApprovalDecisionBox(String message)  {
+        projectManager.captureMessageOnApprovalDecisionBox(message);
+    }
+
+    @Description("To get the field value from page block")
+    @And("^I get the field value \"([^\"]*)\" from sub tab \"([^\"]*)\"$")
+    public void iGetTheFieldValueFromSubTab(String fieldName, String subTabName)  {
+        projectManager.getFieldValue(fieldName,subTabName);
+    }
+
+    @Description("To compare two different field values")
+    @Then("^I compare field \"([^\"]*)\" from sub tab \"([^\"]*)\" with expected field$")
+    public void iCompareFieldFromSubTabWithExpectedField(String fieldName, String subTabName)  {
+        projectManager.assertTwoFieldValues(fieldName,subTabName);
+    }
+
+    @Description("To check no records displayed in flex table")
+    @Then("^I see \"([^\"]*)\" inside flex table with id \"([^\"]*)\";$")
+    public void iSeeInsideFlexTableWithId(String text, String tableID)  {
+        Assert.assertTrue(projectManager.isRecordPresentInTheFlexTable(text,tableID));
+    }
+
+    @Description("To click on attachment flex table top right button")
+    @And("^I click on \"([^\"]*)\" button for \"([^\"]*)\" flex table$")
+    public void iClickOnButtonForFlexTable(String buttonName, String flexTableHeaderName)  {
+        projectManager.clickAddButton(buttonName,flexTableHeaderName);
     }
 }

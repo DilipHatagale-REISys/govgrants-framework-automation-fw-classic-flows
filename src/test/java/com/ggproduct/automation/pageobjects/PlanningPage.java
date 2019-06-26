@@ -36,6 +36,6 @@ public class PlanningPage extends ProjectManager {
 
         }
         govgrants.pageDetails().clickAnyTopRightButton(dataTableMap.get("Creation").get("Step 3"));
-        govgrants.pageDetails().getRecordId(dataTableMap.get("ID").get("Step 1"));
+        govgrants.pageDetails().getFieldValue(dataTableMap.get("ID").get("Step 1"));
     }
 }

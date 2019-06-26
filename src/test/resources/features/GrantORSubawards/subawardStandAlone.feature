@@ -1475,3 +1475,18 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
+
+  @38205 @DraftAwardNavigation @mahadev
+  Scenario Outline: Navigation to draft award by FO User
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click toggle button to select "Draft Grants"
+    When I perform quick search for "<Grant Name>" in "---subAward_StandAlone:-:active_Grants_TableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAward_StandAlone:-:active_Grants_TableId---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    Then I see status in Progress-bar is "Created" and is "Green"
+    Examples:
+      | Award Name                 | Grant Name                 |
+      | Automation Execution Award | Automation Execution Award |
