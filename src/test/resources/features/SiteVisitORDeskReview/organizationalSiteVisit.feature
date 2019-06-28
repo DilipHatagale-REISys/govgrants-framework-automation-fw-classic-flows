@@ -337,7 +337,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
-@54889 @approvalOfSiteVisitOrgLevel
+@54889 @approvalOfSiteVisitOrgLevel @deepika
   Scenario: Approval of Site Visit Org Level
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -401,7 +401,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Approved" and is "green"
 
-  @54890 @siteVisitSendToSubrecipientOrgLevel
+  @54890 @siteVisitSendToSubrecipientOrgLevel @deepika
   Scenario: Send Site Visit to Subrecipient	Org Level
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
