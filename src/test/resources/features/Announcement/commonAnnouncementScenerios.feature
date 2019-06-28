@@ -246,10 +246,9 @@ Feature: Validate all common scenarios in the  Announcement tab
   @35003 @announcementAddAttachmentFA @wip
   Scenario: Validate the attachment for an Announcement
     Given I navigate to "Attachments" sub tab
-    And I click on top right button "Add" in flex table with id "a1511000002nJ5oAAE"
-    When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Funding Opportunity Announcement"
-    And I close Modal
-    Then I see that "Funding Opportunity Announcement" has been added in flextable with Id "a1511000002nJ5oAAE"
+    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Funding Opportunity Announcement"
+    Then I see "Funding Opportunity Announcement" has been added in "Attachments" flex table
+    #Then I see that "Funding Opportunity Announcement" has been added in flextable with Id "a1511000002nJ5oAAE"
 
   @52414 @reviewStepsBeforeSubmitForApprovalFA
   Scenario: Validate the Review steps of Announcement before submit for Approval

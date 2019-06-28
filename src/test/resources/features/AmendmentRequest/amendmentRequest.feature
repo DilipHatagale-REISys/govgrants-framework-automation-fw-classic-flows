@@ -3,11 +3,15 @@ Feature: Validate all scenarios in the Amendment Request
 
   Background: Setup data
     Given I delete the record "Automation Award for Amendment Request" from the object "Amendment Request"
-    Given I login and view the "Active" award "Activated" with name "Automation Award for Amendment Request" as User "PM"
-      | Actions    | Step 1       | Step 2                 | Step 3               | Step 4                        |
-      | Navigation | As a Grantor | Grants                 | Grants and Subawards | Grants, Subaward & Amendments |
-      | FlexTable  | Grants       | ActiveGrants           | View                 |                               |
-      | Subaward   | Subawards    | flexGridRelatedAwards1 | View                 |                               |
+    Given I delete the record "Automation Award for Amendment Request" from the object "subaward"
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    And I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "Automation Award for Amendment Request" in "---subAward_StandAlone:-:active_Grants_TableId---" panel
+    And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAward_StandAlone:-:active_Grants_TableId---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
 
   @53194 @creationOfSOWAmendmentRequest @smoke
   Scenario: Creation of SOW Amendment Request
@@ -55,7 +59,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Save" in the page details
     When I click on top right button "Associate" in flex table with id "---amendment:-:grantor_goals_objectives---"
     And I click "Associate" after selection of "Automation Permanent Objective" in the table "SelectAmendmentGoals"
-    When I switch to Parent frame
+    When I switch to Parent iframe
     Then I see that "Automation Permanent Objective" has been added in flextable with Id "---amendment:-:grantor_goals_objectives---"
 
   @53198 @deletionOfObjectiveInSOWAmendmentRequest
@@ -91,8 +95,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
-    And I click on top right button "Add" in flex table with id "a1511000002nJWIAA2"
-    When I choose the file "Announcement_Field_Values.xlsx" to upload for "Attachment" of type "Terms and Conditions"
+    When I upload attachment "Announcement_Field_Values.xlsx" of type "Terms and Conditions"
     And I close Modal
     Then I see that "Terms and Conditions" has been added in flextable with Id "a1511000002nJWIAA2"
 
@@ -141,11 +144,12 @@ Feature: Validate all scenarios in the Amendment Request
       | Fiscal Approver    | Automation FO  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
     And I click on "Send to Subrecipient" in the page details
-    Given User "SPI" receives the task for "Record Id"
-      | Actions    | Step 1            | Step 2        | Step 3    |
-      | Navigation | Grants            | Grants Portal | SUBPORTAL |
-      | Left Panel | Pending Tasks     | My Tasks      |           |
-      | FlexTable  | PhasePendingTasks | Start         |           |
+
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
     And I click on "Acknowledge" in the page details
     Then I see that "Amendment Request" is in "Acknowledged" status
 
@@ -167,17 +171,18 @@ Feature: Validate all scenarios in the Amendment Request
       | Fiscal Approver    | Automation FO  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
     And I click on "Send to Subrecipient" in the page details
-    Given User "SPI" receives the task for "Record Id"
-      | Actions    | Step 1            | Step 2        | Step 3    |
-      | Navigation | Grants            | Grants Portal | SUBPORTAL |
-      | Left Panel | Pending Tasks     | My Tasks      |           |
-      | FlexTable  | PhasePendingTasks | Start         |           |
+
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
     And I click on "Acknowledge" in the page details
-    When User "PM" receives the task for "Record Id"
-      | Actions    | Step 1            | Step 2       | Step 3   |
-      | Navigation | Grants            | As a Grantor | INTERNAL |
-      | Left Panel | Pending Tasks     | My Tasks     |          |
-      | FlexTable  | PhasePendingTasks | Start        |          |
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
     And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
@@ -205,28 +210,39 @@ Feature: Validate all scenarios in the Amendment Request
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
-    And I add an attachment "InternalOrganization_Field_Values.xlsx"
-      | Actions               | Step 1      | Step 2               | Step 3             |
-      | Attachment Navigation | Attachments | Add                  | a1511000002nJWIAA2 |
-      | Attachment Details    | Attachment  | Terms and Conditions |                    |
+    When I navigate to "Attachments" sub tab
+    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Terms and Conditions"
     And I click on "Send to Subrecipient" in the page details
-    Given User "SPI" receives the task for "Record Id"
-      | Actions    | Step 1            | Step 2        | Step 3    |
-      | Navigation | Grants            | Grants Portal | SUBPORTAL |
-      | Left Panel | Pending Tasks     | My Tasks      |           |
-      | FlexTable  | PhasePendingTasks | Start         |           |
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
     And I click on "Acknowledge" in the page details
-    When User "PM" receives the task for "Record Id"
-      | Actions    | Step 1            | Step 2       | Step 3   |
-      | Navigation | Grants            | As a Grantor | INTERNAL |
-      | Left Panel | Pending Tasks     | My Tasks     |          |
-      | FlexTable  | PhasePendingTasks | Start        |          |
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
     And I click on "Submit for Approval" in the page details
-    When "3" Approvers "PM,FO,EXE" approve the record "Record Id"
-      | Actions    | Step 1        | Step 2   | Step 3            |
-      | Navigation | As a Grantor  | Grants   |                   |
-      | FlexTable  | Pending Tasks | My Tasks | PhasePendingTasks |
-      | Approval   | Start         | Approve  |                   |
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I "Approve" in approval decision
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I "Approve" in approval decision
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I "Approve" in approval decision
     Then I see status in Progress-bar is "Approved" and is "green"
 
   @53205 @amendSubawardSOWAmendmentRequest
@@ -253,28 +269,46 @@ Feature: Validate all scenarios in the Amendment Request
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
-    And I add an attachment "InternalOrganization_Field_Values.xlsx"
-      | Actions               | Step 1      | Step 2               | Step 3             |
-      | Attachment Navigation | Attachments | Add                  | a1511000002nJWIAA2 |
-      | Attachment Details    | Attachment  | Terms and Conditions |                    |
+    When I navigate to "Attachments" sub tab
+    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Terms and Conditions"
     And I click on "Send to Subrecipient" in the page details
-    Given User "SPI" receives the task for "Record Id"
-      | Actions    | Step 1            | Step 2        | Step 3    |
-      | Navigation | Grants            | Grants Portal | SUBPORTAL |
-      | Left Panel | Pending Tasks     | My Tasks      |           |
-      | FlexTable  | PhasePendingTasks | Start         |           |
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+
+#    Given User "SPI" receives the task for "Record Id"
+#      | Actions    | Step 1            | Step 2        | Step 3    |
+#      | Navigation | Grants            | Grants Portal | SUBPORTAL |
+#      | Left Panel | Pending Tasks     | My Tasks      |           |
+#      | FlexTable  | PhasePendingTasks | Start         |           |
     And I click on "Acknowledge" in the page details
-    When User "PM" receives the task for "Record Id"
-      | Actions    | Step 1            | Step 2       | Step 3   |
-      | Navigation | Grants            | As a Grantor | INTERNAL |
-      | Left Panel | Pending Tasks     | My Tasks     |          |
-      | FlexTable  | PhasePendingTasks | Start        |          |
+
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
     And I click on "Submit for Approval" in the page details
-    When "3" Approvers "PM,FO,EXE" approve the record "Record Id"
-      | Actions    | Step 1        | Step 2   | Step 3            |
-      | Navigation | As a Grantor  | Grants   |                   |
-      | FlexTable  | Pending Tasks | My Tasks | PhasePendingTasks |
-      | Approval   | Start         | Approve  |                   |
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I "Approve" in approval decision
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I "Approve" in approval decision
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I "Approve" in approval decision
     And I click on "Amend Subaward" in the page details
     Then I see that "Automation Award for Amendment Request" is in "Pending Activation" status
 
@@ -302,29 +336,42 @@ Feature: Validate all scenarios in the Amendment Request
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
-    And I add an attachment "InternalOrganization_Field_Values.xlsx"
-      | Actions               | Step 1      | Step 2               | Step 3             |
-      | Attachment Navigation | Attachments | Add                  | a1511000002nJWIAA2 |
-      | Attachment Details    | Attachment  | Terms and Conditions |                    |
+    When I navigate to "Attachments" sub tab
+    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Terms and Conditions"
     And I click on "Send to Subrecipient" in the page details
-    Given User "SPI" receives the task for "Record Id"
-      | Actions    | Step 1            | Step 2        | Step 3    |
-      | Navigation | Grants            | Grants Portal | SUBPORTAL |
-      | Left Panel | Pending Tasks     | My Tasks      |           |
-      | FlexTable  | PhasePendingTasks | Start         |           |
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
     And I click on "Acknowledge" in the page details
-    When User "PM" receives the task for "Record Id"
-      | Actions    | Step 1            | Step 2       | Step 3   |
-      | Navigation | Grants            | As a Grantor | INTERNAL |
-      | Left Panel | Pending Tasks     | My Tasks     |          |
-      | FlexTable  | PhasePendingTasks | Start        |          |
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
     And I get the "EGMS ID"
     And I click on "Submit for Approval" in the page details
-    When "3" Approvers "PM,FO,EXE" approve the record "Record Id"
-      | Actions    | Step 1        | Step 2   | Step 3            |
-      | Navigation | As a Grantor  | Grants   |                   |
-      | FlexTable  | Pending Tasks | My Tasks | PhasePendingTasks |
-      | Approval   | Start         | Approve  |                   |
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I am on "INTERNAL" portal
+    And I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I "Approve" in approval decision
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I "Approve" in approval decision
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I "Approve" in approval decision
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Activated" and is "green"

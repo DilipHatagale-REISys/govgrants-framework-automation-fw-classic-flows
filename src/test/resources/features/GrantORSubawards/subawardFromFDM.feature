@@ -268,6 +268,13 @@ Feature: Validate all scenarios in the Award from FDM
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:subAwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
       | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "flexGridSubawardContact"
+    And I click "Add" after selection of "Automation SPI" in the table "AssociateSubawardContacts"
+    And I close Modal
+    And I edit the following rows inline in flex table with id "flexGridSubawardContact" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
     Given I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Target |
@@ -362,6 +369,13 @@ Feature: Validate all scenarios in the Award from FDM
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:subAwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
       | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "flexGridSubawardContact"
+    And I click "Add" after selection of "Automation SPI" in the table "AssociateSubawardContacts"
+    And I close Modal
+    And I edit the following rows inline in flex table with id "flexGridSubawardContact" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
     Given I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Target |
@@ -467,6 +481,13 @@ Feature: Validate all scenarios in the Award from FDM
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:subAwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
       | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "flexGridSubawardContact"
+    And I click "Add" after selection of "Automation SPI" in the table "AssociateSubawardContacts"
+    And I close Modal
+    And I edit the following rows inline in flex table with id "flexGridSubawardContact" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
     Given I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Target |
@@ -582,6 +603,13 @@ Feature: Validate all scenarios in the Award from FDM
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:subAwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
       | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "flexGridSubawardContact"
+    And I click "Add" after selection of "Automation SPI" in the table "AssociateSubawardContacts"
+    And I close Modal
+    And I edit the following rows inline in flex table with id "flexGridSubawardContact" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
     Given I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Target |
@@ -714,6 +742,13 @@ Feature: Validate all scenarios in the Award from FDM
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:subAwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
       | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "flexGridSubawardContact"
+    And I click "Add" after selection of "Automation SPI" in the table "AssociateSubawardContacts"
+    And I close Modal
+    And I edit the following rows inline in flex table with id "flexGridSubawardContact" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
     Given I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Target |
@@ -847,6 +882,13 @@ Feature: Validate all scenarios in the Award from FDM
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:subAwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
       | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "flexGridSubawardContact"
+    And I click "Add" after selection of "Automation SPI" in the table "AssociateSubawardContacts"
+    And I close Modal
+    And I edit the following rows inline in flex table with id "flexGridSubawardContact" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
     Given I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Target |
@@ -987,6 +1029,13 @@ Feature: Validate all scenarios in the Award from FDM
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:subAwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
       | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "flexGridSubawardContact"
+    And I click "Add" after selection of "Automation SPI" in the table "AssociateSubawardContacts"
+    And I close Modal
+    And I edit the following rows inline in flex table with id "flexGridSubawardContact" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
     Given I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Target |
@@ -1117,6 +1166,13 @@ Feature: Validate all scenarios in the Award from FDM
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:subAwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
       | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "flexGridSubawardContact"
+    And I click "Add" after selection of "Automation SPI" in the table "AssociateSubawardContacts"
+    And I close Modal
+    And I edit the following rows inline in flex table with id "flexGridSubawardContact" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
     Given I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Target |
@@ -1229,7 +1285,7 @@ Feature: Validate all scenarios in the Award from FDM
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
     Examples:
-      | Award Name                     | Grant Name                     |
+      | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
   @awardHappyPathFromFDM @smoke
@@ -1240,13 +1296,20 @@ Feature: Validate all scenarios in the Award from FDM
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
       | Title                           | Start Date | End Date   |
-      | Automation Permanent Focus Area | 6/14/2022 | 9/24/2022 |
+      | Automation Permanent Focus Area | 6/14/2022  | 9/24/2022  |
     Given I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--01          | 1000        |
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:subAwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
       | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "flexGridSubawardContact"
+    And I click "Add" after selection of "Automation SPI" in the table "AssociateSubawardContacts"
+    And I close Modal
+    And I edit the following rows inline in flex table with id "flexGridSubawardContact" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
     Given I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Target |

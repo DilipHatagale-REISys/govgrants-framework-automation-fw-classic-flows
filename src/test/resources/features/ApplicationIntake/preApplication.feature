@@ -43,18 +43,14 @@ Feature: Validate all scenarios in the Pre-Application
   @53155 @PreApplicationAttachmentChecklistCA 
   Scenario: Validate the attachment checklist of the PreApplication
     When I navigate to "Attachments" sub tab
-    When I click on "Attach" icon for "Not Applicable" inside flex table with id "---pre-application:-:pre_application_attachment_id---"
-    And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
-    When I close Modal
-    Then I see that "Active" has been added in flextable with Id "---pre-application:-:pre_application_attachment_id---"
+    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Announcement"
+    Then I see "Active" has been added in "Attachments" flex table
 
   @53159 @PreApplicationAttachmentCA 
   Scenario: Validate the attachment of the PreApplication
     When I navigate to "Attachments" sub tab
-    And I click on top right button "Add" in flex table with id "---pre-application:-:pre_application_attachment_id---"
-    When I choose the file "Announcement_Field_Values.xlsx" to upload for "Attachment" of type "Other"
-    And I close Modal
-    Then I see that "Other" has been added in flextable with Id "---pre-application:-:pre_application_attachment_id---"
+    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
+    Then I see "Other" has been added in "Attachments" flex table
 
   @53160 @submitPreApplication @smoke
   Scenario: Submitting an pre application to Grantor
@@ -66,10 +62,8 @@ Feature: Validate all scenarios in the Pre-Application
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000        | 50            | 100            |
     When I navigate to "Attachments" sub tab
-    And I click on top right button "Add" in flex table with id "---pre-application:-:pre_application_attachment_id---"
-    When I choose the file "Announcement_Field_Values.xlsx" to upload for "Attachment" of type "Other"
-    And I close Modal
-    When I click on "Attach" icon for "Not Applicable" inside flex table with id "---pre-application:-:pre_application_attachment_id---"
+    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
+    When I click on "Attach" icon for "Not Applicable" inside flex table with id "PreAppRecipientChecklistsgrid"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
     When I click on "Submit to Grantor" in the page details
@@ -85,10 +79,8 @@ Feature: Validate all scenarios in the Pre-Application
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000        | 50            | 100            |
     When I navigate to "Attachments" sub tab
-    And I click on top right button "Add" in flex table with id "---pre-application:-:pre_application_attachment_id---"
-    When I choose the file "Announcement_Field_Values.xlsx" to upload for "Attachment" of type "Other"
-    And I close Modal
-    When I click on "Attach" icon for "Not Applicable" inside flex table with id "---pre-application:-:pre_application_attachment_id---"
+    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
+    When I click on "Attach" icon for "Not Applicable" inside flex table with id "PreAppRecipientChecklistsgrid"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
     When I click on "Submit to Grantor" in the page details
@@ -111,10 +103,8 @@ Feature: Validate all scenarios in the Pre-Application
       | Category Name | Budget  | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000    | 5000       | 50             | 100            |
     When I navigate to "Attachments" sub tab
-    And I click on top right button "Add" in flex table with id "---pre-application:-:pre_application_attachment_id---"
-    When I choose the file "Announcement_Field_Values.xlsx" to upload for "Attachment" of type "Other"
-    And I close Modal
-    When I click on "Attach" icon for "Not Applicable" inside flex table with id "---pre-application:-:pre_application_attachment_id---"
+    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
+    When I click on "Attach" icon for "Not Applicable" inside flex table with id "PreAppRecipientChecklistsgrid"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
     When I click on "Submit to Grantor" in the page details

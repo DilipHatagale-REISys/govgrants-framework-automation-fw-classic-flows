@@ -402,7 +402,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Automation Permanent Focus Area | 0          | 3650     |
     Given I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--01          | 1000        |
+      | FA--01          | 10000       |
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:subAward_Budget_TableId---" by clicking "Edit" :
       | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
       | Construction    | 1000           | 100        | 100            |

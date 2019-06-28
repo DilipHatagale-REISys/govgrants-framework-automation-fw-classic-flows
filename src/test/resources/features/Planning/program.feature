@@ -59,11 +59,11 @@ Feature: Validate all scenarios for program
   Scenario Outline: Validate the association of Focus Area for the Internal Program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusArea_Table_Id---"
-    When I click "Add" after selection of "<EGMS Id>" in the table "---program:-:associate_FocusArea_Table_Id---"
+    When I click "Add" after selection of "<Title>" in the table "---program:-:associate_FocusArea_Table_Id---"
     And I close Modal
-    Then I see that "EGMS Id" has been added in flextable with Id "---program:-:focusArea_Table_Id---"
+    Then I see that "<Title>" has been added in flextable with Id "---program:-:focusArea_Table_Id---"
     Examples:
-      | EGMS Id                         |
+      | Title                         |
       | Automation Permanent Focus Area |
 
   @34737 @programObjectiveAssociation @smoke
