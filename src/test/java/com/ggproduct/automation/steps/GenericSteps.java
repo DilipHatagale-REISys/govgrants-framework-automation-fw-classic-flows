@@ -80,9 +80,9 @@ public class GenericSteps {
         Assert.assertTrue(projectManager.isRecordPresentInTheFlexTable(text,tableID));
     }
 
-    @Description("To click on attachment flex table top right button")
-    @And("^I click on \"([^\"]*)\" button for \"([^\"]*)\" flex table$")
-    public void iClickOnButtonForFlexTable(String buttonName, String flexTableHeaderName)  {
-        projectManager.clickAddButton(buttonName,flexTableHeaderName);
+    @Description("To verify text under attachment flex table")
+    @Then("^I see \"([^\"]*)\" has been added in \"([^\"]*)\" flex table$")
+    public void iSeeHasBeenAddedInFlexTable(String valueToBeSearch, String flexTableHeader) {
+        projectManager.AssertFieldValueIsPresentInFlexTable(valueToBeSearch,flexTableHeader);
     }
 }

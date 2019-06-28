@@ -2,8 +2,8 @@
 Feature: Validate all scenarios in Focus Area
 
   Background: To setup data
-  Given I delete the record "Automation Execution Focus Area" from the object "Focus Area"
-    
+    Given I delete the record "Automation Execution Focus Area" from the object "Focus Area"
+
   @34512 @creationOfFocusArea @smoke
   Scenario: Creation of Focus Area
     Given I login to "As a Grantor" app as "EXE" user
@@ -36,10 +36,8 @@ Feature: Validate all scenarios in Focus Area
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
-    And I click on top right button "Add" in flex table with id "a1511000002nJ73AAE"
-    When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Supporting Documents"
-    And I close Modal
-    Then I see that "Supporting Documents" has been added in flextable with Id "a1511000002nJ73AAE"
+    When I upload attachment "Announcement_Field_Values.xlsx" of type "Supporting Documents"
+    Then I see "Supporting Documents" has been added in "Attachments" flex table
 
   @34729 @activateFocusArea @smoke
   Scenario: Activate Focus Area
@@ -64,9 +62,7 @@ Feature: Validate all scenarios in Focus Area
     When I enter "Edition" values from "FocusArea_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
-    And I click on top right button "Add" in flex table with id "---focusarea:-:focusArea_Attachment_Table_Id---"
-    When I choose the file "InternalOrganization_Field_Values.xlsx" to upload for "Attachment" of type "Supporting Documents"
-    And I close Modal
+    When I upload attachment "Announcement_Field_Values.xlsx" of type "Supporting Documents"
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "green"
 
@@ -77,7 +73,7 @@ Feature: Validate all scenarios in Focus Area
     And I navigate to "Focus Areas" content inside "Planning" subheader on left panel
     Then  I cannot see top right button "New" in flex table with id "---focusarea:-:focusArea_Table_Id---"
 
-  @52461 @userFOEditfocusArea @smoke 
+  @52461 @userFOEditfocusArea @smoke
   Scenario: Negative Case-Verfiy that FO user cannot Edit  the record
     Given I login to "As a Grantor" app as "EXE" user
     When I navigate to "Planning" tab
@@ -93,7 +89,7 @@ Feature: Validate all scenarios in Focus Area
     When I perform quick search for "Automation Execution Focus Area" in "---focusarea:-:focusArea_Table_Id---" panel
     Then I cannot see row level action button "Edit" against "Automation Execution Focus Area" in flex table with id "---focusarea:-:focusArea_Table_Id---"
 
-  @52620 @userFODeletefocusArea @smoke 
+  @52620 @userFODeletefocusArea @smoke
   Scenario: Negative Case-Verfiy that FO user cannot Delete the record
     Given I login to "As a Grantor" app as "EXE" user
     When I navigate to "Planning" tab
@@ -168,4 +164,4 @@ Feature: Validate all scenarios in Focus Area
     And I click toggle button to select "Inactive Focus Area" in "---focusarea:-:focusArea_Table_Id---"
     When I perform quick search for "Automation Execution Focus Area" in "---focusarea:-:focusArea_Table_Id---" panel
     And I click on "View" icon for "Automation Execution Focus Area" inside table
-    Then I see status in Progress-bar is "Closed" and is "green"
+    Then I see status in Progress-bar is "Closed" and is "Green"

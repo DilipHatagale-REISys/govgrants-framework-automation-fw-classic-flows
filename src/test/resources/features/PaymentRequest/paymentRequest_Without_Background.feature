@@ -1250,6 +1250,7 @@ Feature: scenarios without background
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                |
     When I close modal by clicking the top right x button
     When I navigate to "Attachments" sub tab
+    And I get the "<string>"
     Then I see "No Records Found" inside flex table with id "---paymentRequest:-:checklist_TableId---";
     Examples:
       | Award Name                 | Grant Name                 |
@@ -1388,10 +1389,8 @@ Feature: scenarios without background
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Attachments" sub tab
-    And I click on "Add" button for "Attachment" flex table
-    And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Invoice"
-    When I close Modal
-    Then I see that "Announcement_Field_Values.xlsx" has been added in flextable with Id "a1511000002nJ7EAAU"
+    When I upload attachment "Announcement_Field_Values.xlsx" of type "Receipt"
+    Then I see "Announcement_Field_Values.xlsx" has been added in "Attachment" flex table
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |

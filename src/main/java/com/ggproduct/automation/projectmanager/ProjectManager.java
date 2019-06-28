@@ -126,9 +126,8 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     /**
-     *
      * @param pageblockName - page block name
-     * @param assertcan - can see|cannot see
+     * @param assertcan     - can see|cannot see
      * @Author - Mahadev.hanme
      */
     public void AssertPageBlockDisplayed(String pageblockName, boolean assertcan) {
@@ -170,6 +169,7 @@ public class ProjectManager extends ProjectWebServices {
 
     /**
      * To compare two different field values
+     *
      * @param fieldName  - Label of field
      * @param subTabName - subTab Name
      * @Author - Mahadev.hanme
@@ -188,15 +188,21 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     /**
-     * Handles to click on Attachment table top right button
-     * @param buttonName - Attachment flex table top right button
-     * @param flexTableHeaderName - Flex table Header label name
-     * @Author - Mahadev.hanme
+     * To verify any value is present in specifically in attachment flex table or not
+     *
+     * @param value
+     * @param flexTableHeader
+     * @return
      */
-    public void clickAddButton(String buttonName, String flexTableHeaderName) {
-        try {
-            reiDriver.WaitFor().magicWait(By.xpath("//div[@id='myTabbedContent']//span[contains(text(),'" + flexTableHeaderName + "')]/..//div[@class='panel-heading']//*[text()='" + buttonName + "']")).click();
-        } catch (Exception e) {
-        }
+    public Boolean iSeeValueInFlexTable(String value, String flexTableHeader) {
+        reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='myTabbedContent']//a[@title='" + flexTableHeader + "']/../../../following-sibling::div//tbody//td/span[text()='" + value + "']"));
+        if (reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='myTabbedContent']//a[@title='" + flexTableHeader + "']/../../../following-sibling::div//tbody//td/span[text()='" + value + "']")).isDisplayed())
+            return true;
+        else
+            return false;
+    }
+
+    public void AssertFieldValueIsPresentInFlexTable(String valueToBeSearch, String flexTableHeader) {
+        Assert.assertTrue(iSeeValueInFlexTable(valueToBeSearch, flexTableHeader));
     }
 }
