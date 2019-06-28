@@ -1,5 +1,5 @@
 @organizationalDeskReview @regression
-Feature: Validate all scenarios in the Site Visit
+Feature: Validate all scenarios in Organizational Desk Review
 
   Background: Creation of Organizational Desk Review
     Given I delete the record "Automation Desk Review Org level" from the object "Desk Review"
@@ -472,7 +472,7 @@ Scenario: Submitting Desk Review for approval Org level
     Given I click on "Send to Subrecipient" in the page details
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
 
-@54888 @deskReviewCorrectiveActionsBySubrecipient @smoke @deepika
+@54888 @deskReviewCorrectiveActionsBySubrecipientOrgLevel @smoke @deepika @wip
   Scenario: Desk Review Corrective Actions By Subrecipient
    Given I navigate to "Related Log" sub tab
    And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -538,7 +538,8 @@ Scenario: Submitting Desk Review for approval Org level
    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
    And I navigate to "Monitoring" tab
    When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-   And I click on "View" icon for "Automation Site Visit Org level" inside table
+  When I perform quick search for "Record Id" in "inlineEditGridDeskReviewGridView" panel
+   And I click on "View" icon for "Record Id" inside table
    Given I click on "Send to Subrecipient" in the page details
    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
    When I navigate to "Monitoring" tab

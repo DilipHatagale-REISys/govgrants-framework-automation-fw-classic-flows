@@ -393,6 +393,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "Start" icon for "Record Id" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
+    And I pause execution
     When I enter the following values into flex table with id "---deskreview:-:deskReview_corrective_Table_Id---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To    |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
