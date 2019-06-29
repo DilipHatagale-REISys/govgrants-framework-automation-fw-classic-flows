@@ -1,5 +1,5 @@
 @organizationalSiteVisit @regression
-Feature: Validate all scenarios in the Site Visit
+Feature: Validate all scenarios in Organizational Site Visit
 
   Background: Creation of Organizational Site Visit
     Given I delete the record "Automation Site Visit Org level" from the object "Site Visit"
@@ -130,7 +130,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click "Associate" after selection of "Automation SPI" in the table "SelectSiteDeskReviewContacts"
     And I close Modal
     And I click on top right button "Associate" in flex table with id "SiteVisitOrganizationApplications"
-    When I click "Add" after selection of "Automation Application" in the table "SelectApplicationSiteDeskReviews"
+    When I click "Add" after selection of "Automation Announcement for Application" in the table "SelectApplicationSiteDeskReviews"
     And I close Modal
     And I click on "Notify" in the page details
     Then I see that "Automation Site Visit Org level" is in "Notified" status
@@ -155,14 +155,14 @@ Feature: Validate all scenarios in the Site Visit
     When I click "Associate" after selection of "Automation SPI" in the table "SelectSiteDeskReviewContacts"
     And I close Modal
     And I click on top right button "Associate" in flex table with id "SiteVisitOrganizationApplications"
-    When I click "Add" after selection of "Automation Application" in the table "SelectApplicationSiteDeskReviews"
+    When I click "Add" after selection of "Automation Announcement for Application" in the table "SelectApplicationSiteDeskReviews"
     And I close Modal
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I perform quick search for "Record Id" in "PendingTasks" panel
     When I click on "Start" icon for "Record Id" inside table
     Then I see that "Automation Site Visit Org level" is in "Notified" status
 
@@ -186,7 +186,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click "Associate" after selection of "Automation SPI" in the table "SelectSiteDeskReviewContacts"
     And I close Modal
     And I click on top right button "Associate" in flex table with id "SiteVisitOrganizationApplications"
-    When I click "Add" after selection of "Automation Application" in the table "SelectApplicationSiteDeskReviews"
+    When I click "Add" after selection of "Automation Announcement for Application" in the table "SelectApplicationSiteDeskReviews"
     And I close Modal
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
@@ -213,7 +213,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click "Associate" after selection of "Automation SPI" in the table "SelectSiteDeskReviewContacts"
     And I close Modal
     And I click on top right button "Associate" in flex table with id "SiteVisitOrganizationApplications"
-    When I click "Add" after selection of "Automation Application" in the table "SelectApplicationSiteDeskReviews"
+    When I click "Add" after selection of "Automation Announcement for Application" in the table "SelectApplicationSiteDeskReviews"
     And I close Modal
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
@@ -254,21 +254,11 @@ Feature: Validate all scenarios in the Site Visit
       | Responsibilities | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
-  When I navigate to "Overview" sub tab
-  And I click on top right button "Associate" in flex table with id "GrantorSiteVisitOrganizationContacts"
-  When I click "Associate" after selection of "Automation SPI" in the table "SelectSiteDeskReviewContacts"
-  And I close Modal
-  And I click on top right button "Associate" in flex table with id "SiteVisitOrganizationApplications"
-  When I click "Add" after selection of "Automation Announcement for Application" in the table "SelectApplicationSiteDeskReviews"
-  And I close Modal
-  When I get the "EGMS ID"
-  And I click on "Notify" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "GrantorSiteVisitOrganizationContacts"
     When I click "Associate" after selection of "Automation SPI" in the table "SelectSiteDeskReviewContacts"
     And I close Modal
     And I click on top right button "Associate" in flex table with id "SiteVisitOrganizationApplications"
-    And I pause execution
     When I click "Add" after selection of "Automation Announcement for Application" in the table "SelectApplicationSiteDeskReviews"
     And I close Modal
     When I get the "EGMS ID"
@@ -347,7 +337,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
-@54889 @approvalOfSiteVisitOrgLevel
+@54889 @approvalOfSiteVisitOrgLevel @deepika
   Scenario: Approval of Site Visit Org Level
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -411,7 +401,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Approved" and is "green"
 
-  @54890 @siteVisitSendToSubrecipientOrgLevel
+  @54890 @siteVisitSendToSubrecipientOrgLevel @deepika
   Scenario: Send Site Visit to Subrecipient	Org Level
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -473,10 +463,11 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
     And I click on "Approve" on the approval decision box
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "Automation Site Visit Org level" inside table
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    When I navigate to "Manage Site Visits" content inside "Manage Site Visit" subheader on left panel
+    When I perform quick search for "Record Id" in "ApplicationsSiteVisitReportsGrid" panel
+    And I click on "View" icon for "Record Id" inside table
     Given I click on "Send to Subrecipient" in the page details
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
 
