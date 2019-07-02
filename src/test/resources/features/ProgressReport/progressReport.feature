@@ -633,7 +633,7 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "Automation Permanent Award" in "ActiveGrants" panel
     And I click on "View" icon for "Automation Permanent Award" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
     And I navigate to "Performance" sub tab
     Then I see that "7" has been added in flextable with Id "inlineEditGridGrantorAwardKeyOutcomes"
 
