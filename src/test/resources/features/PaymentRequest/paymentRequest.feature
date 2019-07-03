@@ -1127,7 +1127,7 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Financials" sub tab
     Then I see field "Program Income" as "$1,000.00"
 
-  @54667 @Validate_ProgramIncomeTrackingField_OnAward_GrantorSide
+  @54667 @Validate_ProgramIncomeTrackingField_OnAward_GrantorSide @mahadev
   Scenario Outline: Validate Program Income tracking gets updated on award at grantor side after approval of reimbursement PR
     When I navigate to "Requests" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -1171,3 +1171,54 @@ Feature: Validate all scenarios in Payment Request
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Permanent Award | Automation Permanent Award |
+
+  @54741 @Validate_FOUser_NotAbleToDisallowAmoune_INAdvancePR @mahadev
+  Scenario: Validate FO User not able to disallow amount in Advance Payment Request
+    When I navigate to "Requests" sub tab
+    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestAdvanceTableId---" by clicking "Edit" :
+      | Budget Category | Advance Requested This Action |
+      | Construction    | 10                            |
+    When I get the "EGMS ID"
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---"
+    And I navigate to "Financials" sub tab
+    Then I cannot see row level action button "Disallow Amount" against "Construction" in flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---"
+
+  @54743 @Validate_ProgramIncomeTrackingField_OnAward_GrantorSide @mahadev
+  Scenario: Validate Program Income tracking gets updated on award at grantor side after approval of reimbursement PR
+    When I navigate to "Requests" sub tab
+    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I navigate to "Financials" sub tab
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
+    When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
+      | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 10         | 10             |
+    When I close modal by clicking the top right x button
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---"
+    And I navigate to "Financials" sub tab
+    When I click on "Disallow Amount" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
+    When I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequest_Disallow_TableId---" by clicking "Edit" :
+      | Title        | Disallowed Amount | Disallowed Amount Reason    |
+      | Extra Salary | 50                | Automation Test Description |
+    Then I see the following messages in the page details :
+    | Advance applied cannot be greater than the Net Payment.|
