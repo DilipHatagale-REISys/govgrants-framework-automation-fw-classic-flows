@@ -85,4 +85,10 @@ public class GenericSteps {
     public void iSeeHasBeenAddedInFlexTable(String valueToBeSearch, String flexTableHeader) {
         projectManager.AssertFieldValueIsPresentInFlexTable(valueToBeSearch,flexTableHeader);
     }
+
+    @Description("To upload attachment from default workspace")
+    @And("^I upload attachment \"([^\"]*)\" from workspace$")
+    public void iUploadAttachmentFromWorkspace(String fileNameToBeUpload)  {
+        projectManager.uploadAttachmentFromWorkspace(fileNameToBeUpload);
+    }
 }

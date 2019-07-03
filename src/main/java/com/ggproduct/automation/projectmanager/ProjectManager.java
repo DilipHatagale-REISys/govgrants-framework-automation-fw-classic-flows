@@ -188,15 +188,15 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     /**
-     * To verify any value is present in specifically in attachment flex table or not
+     * To verify any value is present specifically in attachment flex table or not
      *
      * @param value
      * @param flexTableHeader
      * @return
      */
     public Boolean iSeeValueInFlexTable(String value, String flexTableHeader) {
-        reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='myTabbedContent']//a[@title='" + flexTableHeader + "']/../../../following-sibling::div//tbody//td/span[text()='" + value + "']"));
-        if (reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='myTabbedContent']//a[@title='" + flexTableHeader + "']/../../../following-sibling::div//tbody//td/span[text()='" + value + "']")).isDisplayed())
+        reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='myTabbedContent']//a[@title='" + flexTableHeader + "']/../../../following-sibling::div//tbody//td//span[text()='" + value + "']"));
+        if (reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='myTabbedContent']//a[@title='" + flexTableHeader + "']/../../../following-sibling::div//tbody//td//span[text()='" + value + "']")).isDisplayed())
             return true;
         else
             return false;
@@ -204,5 +204,18 @@ public class ProjectManager extends ProjectWebServices {
 
     public void AssertFieldValueIsPresentInFlexTable(String valueToBeSearch, String flexTableHeader) {
         Assert.assertTrue(iSeeValueInFlexTable(valueToBeSearch, flexTableHeader));
+    }
+
+    /**
+     * Handles to upload the file from workspace
+     * @param fileNameFromWorkSpace - file which is to be upload
+     */
+    public void uploadAttachmentFromWorkspace(String fileNameFromWorkSpace) {
+        reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='myTabbedContent']//span[contains(text(),'Attachment')]/..//div[@class='panel-heading']//*[text()='Add']")).click();
+        reiDriver.switchTo().switchToFrame(By.xpath("//iframe[contains(@ng-src, 'apex') or contains(@src,'apex')]"));
+        reiDriver.WaitFor().magicWait(By.xpath("//div[@id='Attachmentadd']//span[text()='Upload file from Workspace']")).click();
+        reiDriver.WaitFor().magicWait(By.xpath("//div[@id='Attachmentadd']//td[text()='" + fileNameFromWorkSpace + "']/..//input")).click();
+        govgrants.modal().clickModalContentSpecificButton("Attach");
+        govgrants.modal().closeModalByClickingTopRightCloseButton();
     }
 }
