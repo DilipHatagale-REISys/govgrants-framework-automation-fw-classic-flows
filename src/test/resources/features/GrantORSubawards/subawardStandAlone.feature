@@ -3,8 +3,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 
   Background: Create Award
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    Given I delete the record "Automation Execution Award" from the object "Progress Report"
-    Given I delete the record "Automation Execution Award" from the object "Grant"
+    When I delete the record "Automation Execution Award" from the object "Payment Request"
+    And I delete the record "Automation Execution Award" from the object "Progress Report"
+    And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
@@ -14,7 +15,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I navigate to "Subawards" sub tab
-    Given I click on "View" icon for "Created" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    And I click on "View" icon for "Created" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
     And I get the "EGMS ID"
 
   @51128 @awardCreation @smoke
@@ -50,6 +51,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on top right button "Associate" in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---"
     When I click "Add" after selection of "<EGMS Id>" in the table "---subAward_StandAlone:-:award_Funding_Accounts_TableId---"
     And I close Modal
+    When I refresh the page
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--01          | 1000        |
@@ -151,11 +153,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on top right button "Associate" in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---"
     When I click "Add" after selection of "Automation Permenent Funding Account" in the table "---subAward_StandAlone:-:award_Funding_Accounts_TableId---"
     And I close modal by clicking the top right x button
+    When I refresh the page
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:focusArea_TableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
-    Given I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--01          | 1000        |
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:subAward_Budget_TableId---" by clicking "Edit" :
@@ -233,11 +236,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on top right button "Associate" in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---"
     When I click "Add" after selection of "Automation Permenent Funding Account" in the table "---subAward_StandAlone:-:award_Funding_Accounts_TableId---"
     And I close modal by clicking the top right x button
+    When I refresh the page
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:focusArea_TableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
-    Given I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--01          | 1000        |
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:subAward_Budget_TableId---" by clicking "Edit" :
@@ -322,11 +326,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on top right button "Associate" in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---"
     When I click "Add" after selection of "Automation Permenent Funding Account" in the table "---subAward_StandAlone:-:award_Funding_Accounts_TableId---"
     And I close modal by clicking the top right x button
+    When I refresh the page
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:focusArea_TableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
-    Given I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--01          | 1000        |
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:subAward_Budget_TableId---" by clicking "Edit" :
@@ -396,11 +401,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on top right button "Associate" in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---"
     When I click "Add" after selection of "Automation Permenent Funding Account" in the table "---subAward_StandAlone:-:award_Funding_Accounts_TableId---"
     And I close modal by clicking the top right x button
+    When I refresh the page
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:focusArea_TableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
-    Given I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--01          | 10000       |
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:subAward_Budget_TableId---" by clicking "Edit" :
@@ -471,11 +477,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on top right button "Associate" in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---"
     When I click "Add" after selection of "Automation Permenent Funding Account" in the table "---subAward_StandAlone:-:award_Funding_Accounts_TableId---"
     And I close modal by clicking the top right x button
+    When I refresh the page
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:focusArea_TableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
-    Given I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--01          | 1000        |
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:subAward_Budget_TableId---" by clicking "Edit" :
@@ -558,11 +565,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on top right button "Associate" in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---"
     When I click "Add" after selection of "Automation Permenent Funding Account" in the table "---subAward_StandAlone:-:award_Funding_Accounts_TableId---"
     And I close modal by clicking the top right x button
+    When I refresh the page
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:focusArea_TableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
-    Given I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--01          | 1000        |
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:subAward_Budget_TableId---" by clicking "Edit" :
@@ -657,11 +665,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on top right button "Associate" in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---"
     When I click "Add" after selection of "Automation Permenent Funding Account" in the table "---subAward_StandAlone:-:award_Funding_Accounts_TableId---"
     And I close modal by clicking the top right x button
+    When I refresh the page
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:focusArea_TableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
-    Given I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--01          | 1000        |
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:subAward_Budget_TableId---" by clicking "Edit" :
@@ -774,11 +783,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on top right button "Associate" in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---"
     When I click "Add" after selection of "Automation Permenent Funding Account" in the table "---subAward_StandAlone:-:award_Funding_Accounts_TableId---"
     And I close modal by clicking the top right x button
+    When I refresh the page
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:focusArea_TableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
-    Given I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--01          | 1000        |
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:subAward_Budget_TableId---" by clicking "Edit" :
@@ -877,7 +887,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
     And I click on "Approve" on the approval decision box
-    Given I click on "Send to Subrecipient" in the page details
+    And I click on "Send to Subrecipient" in the page details
     Then I see status in Progress-bar is "Approved" and is "green"
     Examples:
       | Award Name                 | Grant Name                 |
@@ -892,11 +902,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on top right button "Associate" in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---"
     When I click "Add" after selection of "Automation Permenent Funding Account" in the table "---subAward_StandAlone:-:award_Funding_Accounts_TableId---"
     And I close modal by clicking the top right x button
+    When I refresh the page
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:focusArea_TableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
-    Given I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--01          | 1000        |
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:subAward_Budget_TableId---" by clicking "Edit" :
@@ -995,7 +1006,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
     And I click on "Approve" on the approval decision box
-    Given I click on "Send to Subrecipient" in the page details
+    And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1013,15 +1024,16 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
-    And I navigate to "Budget" sub tab
-    When I click on top right button "Associate" in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---"
+    When I navigate to "Budget" sub tab
+    And I click on top right button "Associate" in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---"
     When I click "Add" after selection of "Automation Permenent Funding Account" in the table "---subAward_StandAlone:-:award_Funding_Accounts_TableId---"
     And I close modal by clicking the top right x button
+    When I refresh the page
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:focusArea_TableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
-    Given I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--01          | 1000        |
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:subAward_Budget_TableId---" by clicking "Edit" :
@@ -1120,7 +1132,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
     And I click on "Approve" on the approval decision box
-    Given I click on "Send to Subrecipient" in the page details
+    And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1151,6 +1163,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on top right button "Associate" in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---"
     When I click "Add" after selection of "Automation Permenent Funding Account" in the table "---subAward_StandAlone:-:award_Funding_Accounts_TableId---"
     And I close modal by clicking the top right x button
+    When I refresh the page
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:focusArea_TableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -1255,7 +1268,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
     And I click on "Approve" on the approval decision box
-    Given I click on "Send to Subrecipient" in the page details
+    And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1337,6 +1350,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on top right button "Associate" in flex table with id "---subAward_StandAlone:-:funding_Accounts_TableId---"
     When I click "Add" after selection of "Automation Permenent Funding Account" in the table "---subAward_StandAlone:-:award_Funding_Accounts_TableId---"
     And I close modal by clicking the top right x button
+    And I refresh the page
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "---subAward_StandAlone:-:focusArea_TableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -1440,7 +1454,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I perform quick search for "Record Id" in "---subAward_StandAlone:-:pending_Task_TableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAward_StandAlone:-:pending_Task_TableId---"
     And I click on "Approve" on the approval decision box
-    Given I click on "Send to Subrecipient" in the page details
+    And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
