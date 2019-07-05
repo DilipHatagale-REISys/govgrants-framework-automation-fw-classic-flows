@@ -1647,14 +1647,24 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @55297 @EditProgressReportSchedule
+  @55297 @EditProgressReportSchedule @mahadev
   Scenario: Validate user can edit progress report schedule on draft award
+    And I navigate to "Management" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAward_StandAlone:-:progressReport_Schedule_TableId---"
+    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAward_StandAlone:-:progressReport_Schedule_TableId---"
+    When I enter value "Calendar" into field "ScheduleBase__c"
+    And I click modal button "Save"
+    Then I see field "Schedule Base" as "Calendar"
+
+  @55296 @ViewProgressReportSchedule_OnDraftAward @mahadev
+  Scenario: Validate user can view progress report schedule on draft award
     And I navigate to "Management" sub tab
     And I click on "Edit" icon for "Progress Report	" inside flex table with id "---subAward_StandAlone:-:progressReport_Schedule_TableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close modal by clicking the top right x button
-    And I click on "Edit" icon for "Progress Report	" inside flex table with id "---subAward_StandAlone:-:progressReport_Schedule_TableId---"
-    When I enter value "Calendar" into field "ScheduleBase__c"
-    And I click modal button "Save"
-    Then I see field "Schedule Base" as "Calendar"
+    And I click on "View" icon for "Progress Report" inside flex table with id "---subAward_StandAlone:-:progressReport_Schedule_TableId---"
+    Then I see field "Schedule Title" as "Automation Progress Report"

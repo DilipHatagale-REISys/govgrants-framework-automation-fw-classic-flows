@@ -12,6 +12,7 @@ Feature: Validate all scenarios in the Award from FDM
     When I perform quick search for "Automation Announcement for FDM" in "FDMList1" panel
     And I click on "View" icon for "Automation Announcement for FDM" inside table without waiting for record
     And I click on "Create Subaward" icon for "Automation Announcement for FDM" inside flex table with id "flexGridFundingDecisionMemoApplications" without waiting for record
+    When I pause execution for "8" seconds
     And I enter value "Automation Test Description" into field "fieldGrantAwardDescription__c"
     When I click on "Save" in the page details
     Given I get the "EGMS ID"
@@ -109,7 +110,7 @@ Feature: Validate all scenarios in the Award from FDM
     Given I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--01          | 500         |
-      | FA--39         | 500         |
+      | FA--39          | 500         |
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:subAwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
       | Construction    | 1000           | 100        | 100            |
@@ -168,7 +169,7 @@ Feature: Validate all scenarios in the Award from FDM
     When I click on "Send to Subrecipient" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
     Examples:
-      | Award Name                     | Grant Name                     |
+      | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
   @awardAcceptanceByRecipientBeforeApproval @smoke
@@ -178,8 +179,8 @@ Feature: Validate all scenarios in the Award from FDM
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
-      | Title                           | Start Date | End Date   |
-      | Automation Permanent Focus Area | 6/14/2022 | 9/24/2022 |
+      | Title                           | Start Date | End Date  |
+      | Automation Permanent Focus Area | 6/14/2022  | 9/24/2022 |
     Given I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--01          | 1000        |
@@ -240,7 +241,7 @@ Feature: Validate all scenarios in the Award from FDM
     When I enter "Automation Award accepted" for comments and click "OK"
     Then I see status in Progress-bar is "Created" and is "Green"
     Examples:
-      | Award Name                     | Grant Name                     |
+      | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
   @awardReviewerAssignment
@@ -260,8 +261,8 @@ Feature: Validate all scenarios in the Award from FDM
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
-      | Title                           | Start Date | End Date   |
-      | Automation Permanent Focus Area | 6/14/2022 | 9/24/2022 |
+      | Title                           | Start Date | End Date  |
+      | Automation Permanent Focus Area | 6/14/2022  | 9/24/2022 |
     Given I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--01          | 1000        |
@@ -351,7 +352,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I click on "Send for Review" icon for "Created" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---"
     Then I see that "Sent for Review" has been added in flextable with Id "---subAwardFromFDM:-:peerReviewersTableId---"
     Examples:
-      | Award Name                     | Grant Name                     |
+      | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
   @awardReviewComplete
@@ -361,8 +362,8 @@ Feature: Validate all scenarios in the Award from FDM
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
-      | Title                           | Start Date | End Date   |
-      | Automation Permanent Focus Area | 6/14/2022 | 9/24/2022 |
+      | Title                           | Start Date | End Date  |
+      | Automation Permanent Focus Area | 6/14/2022  | 9/24/2022 |
     Given I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--01          | 1000        |
@@ -388,7 +389,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I click on "Edit" icon for "Progress Report" inside flex table with id "flexGridTnCSchedules" without waiting for record
     And I enter "Progress Report Schedule_FDM" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-     And I close Modal
+    And I close Modal
     And I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "flexGridAwardRiskAssessmentView"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -463,7 +464,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I close Modal
     Then I see that "Submitted" has been added in flextable with Id "---subAwardFromFDM:-:peerReviewersTableId---"
     Examples:
-      | Award Name                     | Grant Name                     |
+      | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
   @awardSubmissionForApproval  @smoke
@@ -473,8 +474,8 @@ Feature: Validate all scenarios in the Award from FDM
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
-      | Title                           | Start Date | End Date   |
-      | Automation Permanent Focus Area | 6/14/2022 | 9/24/2022 |
+      | Title                           | Start Date | End Date  |
+      | Automation Permanent Focus Area | 6/14/2022  | 9/24/2022 |
     Given I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--01          | 1000        |
@@ -585,7 +586,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
     Examples:
-      | Award Name                     | Grant Name                     |
+      | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
   @awardApproval
@@ -595,8 +596,8 @@ Feature: Validate all scenarios in the Award from FDM
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
-      | Title                           | Start Date | End Date   |
-      | Automation Permanent Focus Area | 6/14/2022 | 9/24/2022 |
+      | Title                           | Start Date | End Date  |
+      | Automation Permanent Focus Area | 6/14/2022  | 9/24/2022 |
     Given I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--01          | 1000        |
@@ -724,7 +725,7 @@ Feature: Validate all scenarios in the Award from FDM
     When I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Approved" and is "Green"
     Examples:
-      | Award Name                     | Grant Name                     |
+      | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
   @awardSendToRecipientAfterApproval @smoke
@@ -734,8 +735,8 @@ Feature: Validate all scenarios in the Award from FDM
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
-      | Title                           | Start Date | End Date   |
-      | Automation Permanent Focus Area | 6/14/2022 | 9/24/2022 |
+      | Title                           | Start Date | End Date  |
+      | Automation Permanent Focus Area | 6/14/2022  | 9/24/2022 |
     Given I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--01          | 1000        |
@@ -864,7 +865,7 @@ Feature: Validate all scenarios in the Award from FDM
     When I click on "Send to Subrecipient" in the page details
     Then I see that "Status" is in "Sent to Subrecipient after Approval" status
     Examples:
-      | Award Name                     | Grant Name                     |
+      | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
   @awardAcceptanceByRecipientAfterApproval
@@ -874,8 +875,8 @@ Feature: Validate all scenarios in the Award from FDM
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
-      | Title                           | Start Date | End Date   |
-      | Automation Permanent Focus Area | 6/14/2022 | 9/24/2022 |
+      | Title                           | Start Date | End Date  |
+      | Automation Permanent Focus Area | 6/14/2022  | 9/24/2022 |
     Given I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--01          | 1000        |
@@ -1011,7 +1012,7 @@ Feature: Validate all scenarios in the Award from FDM
     When I enter "Automation Award accepted" for comments and click "OK"
     Then I see status in Progress-bar is "Accepted" and is "Green"
     Examples:
-      | Award Name                     | Grant Name                     |
+      | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
   @awardSiteVisit
@@ -1021,8 +1022,8 @@ Feature: Validate all scenarios in the Award from FDM
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
-      | Title                           | Start Date | End Date   |
-      | Automation Permanent Focus Area | 6/14/2022 | 9/24/2022 |
+      | Title                           | Start Date | End Date  |
+      | Automation Permanent Focus Area | 6/14/2022  | 9/24/2022 |
     Given I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--01          | 1000        |
@@ -1148,7 +1149,7 @@ Feature: Validate all scenarios in the Award from FDM
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "Green"
     Examples:
-      | Award Name                     | Grant Name                     |
+      | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
   @awardDeskReview
@@ -1158,8 +1159,8 @@ Feature: Validate all scenarios in the Award from FDM
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
-      | Title                           | Start Date | End Date   |
-      | Automation Permanent Focus Area | 6/14/2022 | 9/24/2022 |
+      | Title                           | Start Date | End Date  |
+      | Automation Permanent Focus Area | 6/14/2022  | 9/24/2022 |
     Given I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--01          | 1000        |
@@ -1295,8 +1296,8 @@ Feature: Validate all scenarios in the Award from FDM
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "inlineEditGridGrantorAwardServiceAreas" by clicking "Edit" :
-      | Title                           | Start Date | End Date   |
-      | Automation Permanent Focus Area | 6/14/2022  | 9/24/2022  |
+      | Title                           | Start Date | End Date  |
+      | Automation Permanent Focus Area | 6/14/2022  | 9/24/2022 |
     Given I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--01          | 1000        |
@@ -1441,5 +1442,20 @@ Feature: Validate all scenarios in the Award from FDM
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Activated" and is "green"
     Examples:
-      | Award Name                     | Grant Name                     |
+      | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
+
+  @54166 @Validate_PaymentRelatedSetting_OnAwardFromAnnouncement @mahadev
+  Scenario: Validate payment related settings are get copied from announcement to grant
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Published Announcements"
+    When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:announcemet_TableId---" panel
+    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:announcemet_TableId---"
+    When I get the field value "Advance Payment Allowed?" from sub tab "Overview"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click toggle button to select "Draft Grants"
+    When I perform quick search for "Automation Announcement for FDM" in "---subAward_StandAlone:-:active_Grants_TableId---" panel
+    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAward_StandAlone:-:active_Grants_TableId---"
+    Then I compare field "Advance Payment Allowed?" from sub tab "Overview" with expected field
