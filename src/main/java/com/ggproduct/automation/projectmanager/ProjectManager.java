@@ -218,4 +218,23 @@ public class ProjectManager extends ProjectWebServices {
         govgrants.modal().clickModalContentSpecificButton("Attach");
         govgrants.modal().closeModalByClickingTopRightCloseButton();
     }
+
+    public By subTab(String subTabName) {
+        return By.xpath("//div[@id='myTabs']//li//span[text()='\"+ subTabName+\"']/ancestor::li[1]");
+    }
+
+    /**
+     *
+     * @param subTabName
+     * @param assertcan - can see | cannot see
+     */
+    public void AssertSubTabDisplayed(String subTabName,boolean assertcan){
+        List<WebElement> elements = reiDriver.findMyElement().getElements(subTab(subTabName));
+        if (assertcan) {
+            Assert.assertNotEquals(elements.size(), 0);
+        } else {
+            Assert.assertEquals(elements.size(), 0);
+        }
+
+    }
 }

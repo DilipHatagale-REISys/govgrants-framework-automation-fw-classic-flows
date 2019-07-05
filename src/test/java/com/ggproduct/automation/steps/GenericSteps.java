@@ -93,5 +93,9 @@ public class GenericSteps {
         projectManager.uploadAttachmentFromWorkspace(fileNameToBeUpload);
     }
 
-
+    @Description("To verify SubTab is displayed or not")
+    @Then("^I (can see|cannot see) \"([^\"]*)\" sub tab$")
+    public void iCanSeeTab(String subTabName,String usage)  {
+        projectManager.AssertSubTabDisplayed(subTabName,"Can see".equalsIgnoreCase(usage));
+    }
 }

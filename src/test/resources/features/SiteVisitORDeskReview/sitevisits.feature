@@ -899,7 +899,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "View" icon for "Record Id" inside table
     Then I can see top right button "Send to Subrecipient" in page detail
 
-  @55209 @subrecipientCannotSeeReportAndOutcomesWhenInNotifiedStatus @deepika @wip
+  @55209 @subrecipientCannotSeeReportAndOutcomesWhenInNotifiedStatus @deepika
   Scenario:  Applicant is not able to view the report or outcomes while in the Notified status.
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
@@ -919,7 +919,7 @@ Feature: Validate all scenarios in the Site Visit
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
-    #Then I cannot see "Reports and Outcomes" tab
+    Then I cannot see "Reports and Outcomes" sub tab
 
    @55208 @SiteVisitWithoutFormFilling @deepika
    Scenario: User will not be able to submit the Site Visit for approval without completed forms
@@ -951,7 +951,7 @@ Feature: Validate all scenarios in the Site Visit
        |Reports and Outcomes Tab - Forms need to be validated before the site visit is submitted.|
 
   @55275 @approverPendingTaskUnderMonitoringAward @deepika
-  Scenario:Validate whether the approver will be able to view the Pending task under Monitoring
+  Scenario: Validate whether the approver will be able to view the Pending task under Monitoring
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -1236,3 +1236,18 @@ Feature: Validate all scenarios in the Site Visit
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
     And I click on "View" icon for "Record Id" inside table
     Then I can see top right button "Accept and Close" in page detail
+
+    @reportsAndOutcomesTab
+    Scenario: Validate the Reports and Outcome Tab visible after Notified
+      Given I navigate to "Responsibilities" sub tab
+      When I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
+        | Role             | Name          | Description                 |
+        | Program Approver | Automation PM | Automation Test Description |
+        | Fiscal Approver  | Automation FO | Automation Test Description |
+      When I get the "EGMS ID"
+      Given I navigate to "Overview" sub tab
+      And I click on top right button "Associate" in flex table with id "GrantorSiteVisitContacts"
+      When I click "Associate" after selection of "Automation SPA" in the table "SelectSiteDeskReviewContacts"
+      And I close Modal
+      And I click on "Notify" in the page details
+      Then I can see "Reports and Outcomes" sub tab
