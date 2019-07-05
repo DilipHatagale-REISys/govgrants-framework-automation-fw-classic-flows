@@ -950,7 +950,7 @@ Feature: Validate all scenarios in the Site Visit
      Then I see the following messages in the page details :
        |Reports and Outcomes Tab - Forms need to be validated before the site visit is submitted.|
 
-  @55275 @approverPendingTaskUnderMonitoringAward
+  @55275 @approverPendingTaskUnderMonitoringAward @deepika
   Scenario:Validate whether the approver will be able to view the Pending task under Monitoring
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
@@ -1044,7 +1044,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Reassign,Automation EXE" on the approval decision box
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
-  @55277 @approverForwardUserGetPendingTask
+  @55277 @approverForwardUserGetPendingTask @deepika
   Scenario: Validate when the Approver forward Site Visit to other user, the Pending Task will be created to the User
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
@@ -1099,7 +1099,7 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     Then I see that "Approve Site Visit" has been added in flextable with Id "PhasePendingTasks"
 
-  @55278 @SendBackToOnwerSiteVisitUnderMonitoringTab
+  @55278 @SendBackToOnwerSiteVisitUnderMonitoringTab @deepika
   Scenario: Validate whether the approver sendback to owner, the record owner will get a pending task
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :

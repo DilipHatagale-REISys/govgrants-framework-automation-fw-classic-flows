@@ -733,4 +733,4 @@ Scenario: Submitting Desk Review for approval Org level
     And I click on "Start" icon for "Record Id" inside table
     And I click on "Accept And Close" in the page details
     Then I see status in Progress-bar is "Closed" and is "green"
-	
+

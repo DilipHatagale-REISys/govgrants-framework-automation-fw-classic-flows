@@ -575,7 +575,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "Accept And Close" in the page details
     Then I see status in Progress-bar is "Closed" and is "green"
 
-  @55279 @approverSendBackToUserDeskReview
+  @55279 @approverSendBackToUserDeskReview @deepika
   Scenario: Validate whether the approver will be able to SendBack to Owner
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
@@ -621,7 +621,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "Send to Owner" on the approval decision box
     Then I see status in Progress-bar is "In Progress" and is "green"
 
-  @55280 @approverForwardDeskReview
+  @55280 @approverForwardDeskReview @deepika
   Scenario: Validate whether the approver will be able to Forward the Desk Review to Other User
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approver_DeskReview_TableId---" by clicking "Edit" :
