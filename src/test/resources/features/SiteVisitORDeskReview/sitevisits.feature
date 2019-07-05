@@ -1237,8 +1237,8 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "View" icon for "Record Id" inside table
     Then I can see top right button "Accept and Close" in page detail
 
-    @reportsAndOutcomesTab
-    Scenario: Validate the Reports and Outcome Tab visible after Notified
+    @55461 @reportsAndOutcomesTabAfterNotifiedStatus @deepika
+    Scenario: Validate the Reports and Outcome Tab visibility after Notified Status
       Given I navigate to "Responsibilities" sub tab
       When I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
         | Role             | Name          | Description                 |
