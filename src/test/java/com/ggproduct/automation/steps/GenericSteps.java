@@ -2,6 +2,7 @@ package com.ggproduct.automation.steps;
 
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.projectmanager.ProjectManager;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -90,5 +91,11 @@ public class GenericSteps {
     @And("^I upload attachment \"([^\"]*)\" from workspace$")
     public void iUploadAttachmentFromWorkspace(String fileNameToBeUpload)  {
         projectManager.uploadAttachmentFromWorkspace(fileNameToBeUpload);
+    }
+
+    @Then("^I cannot see \"([^\"]*)\" tab$")
+    public void iCannotSeeTab(String arg0) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
     }
 }

@@ -919,7 +919,7 @@ Feature: Validate all scenarios in the Site Visit
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
-   # Then I cannot see "Reports and Outcomes" tab
+    Then I cannot see "Reports and Outcomes" tab
 
    @55208 @SiteVisitWithoutFormFilling @deepika
    Scenario: User will not be able to submit the Site Visit for approval without completed forms
@@ -993,7 +993,7 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     Then I see that "Approve Site Visit" has been added in flextable with Id "PhasePendingTasks"
 
-  @55276 @approverForwardSiteVisit
+  @55276 @approverForwardSiteVisit @deepika
   Scenario: Validate whether the approver will be able to Forward the Site Visit to Other User
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approver_site_visit_table_id---" by clicking "Edit" :
