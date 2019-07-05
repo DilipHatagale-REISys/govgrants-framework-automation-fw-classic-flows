@@ -93,9 +93,5 @@ public class GenericSteps {
         projectManager.uploadAttachmentFromWorkspace(fileNameToBeUpload);
     }
 
-    @Then("^I cannot see \"([^\"]*)\" tab$")
-    public void iCannotSeeTab(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
+
 }

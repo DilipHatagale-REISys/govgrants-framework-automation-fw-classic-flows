@@ -919,7 +919,7 @@ Feature: Validate all scenarios in the Site Visit
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
-    Then I cannot see "Reports and Outcomes" tab
+    #Then I cannot see "Reports and Outcomes" tab
 
    @55208 @SiteVisitWithoutFormFilling @deepika
    Scenario: User will not be able to submit the Site Visit for approval without completed forms
