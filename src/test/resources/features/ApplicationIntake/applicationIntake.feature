@@ -28,7 +28,7 @@ Feature: Validate all scenarios in the Application Intake
  @34303 @addFocusAreaToApplication 
   Scenario Outline: Addition of Focus area to an application
     When I navigate to "Budget" sub tab
-    Then I see that "<EGMS Id>" has been added in flextable with Id "---applicationIntake:-:focusArea_Table_Id---"
+    Then I see that "<EGMS Id>" has been added in flextable with Id "---applicationIntake:-:focusAreaTableId---"
     Examples:
       | EGMS Id                         |
       | Automation Permanent Focus Area |
@@ -37,7 +37,7 @@ Feature: Validate all scenarios in the Application Intake
   Scenario: Addition of budget in the budget grid to an application
     When I navigate to "Budget" sub tab
     And I expand nested table containing column value "BP01"
-    When I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriod_Table_Id---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 100    | 100        | 100            | 100            |
     Then I see the following messages in the page details contains:
@@ -46,7 +46,7 @@ Feature: Validate all scenarios in the Application Intake
  @addTargetToKPIInApplication @smoke
   Scenario: Addition of KPI target to an application
     When I navigate to "Proposal" sub tab
-    When I edit the following rows inline in flex table with id "---applicationIntake:-:kpi_Table_Id---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Target |
       | Automation Permanent KPI for Regression | 10     |
      Then I see the following messages in the page details contains:
@@ -55,15 +55,15 @@ Feature: Validate all scenarios in the Application Intake
  @formFillingApplication @smoke
   Scenario: To fill and complete the form in Progress Report
     When I navigate to "Attachments" sub tab
-    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:all_Forms_Table_Id---"
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationIntake:-:all_Forms_Table_Id---"
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     When I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    Then I see that "100%" has been added in flextable with Id "---applicationIntake:-:all_Forms_Table_Id---"
+    Then I see that "100%" has been added in flextable with Id "---applicationIntake:-:allFormsTableId---"
 
   @34156 @submitApplication @applicationIntakeHappyPath @smoke
   Scenario: Submitting an application to Grantor
@@ -72,19 +72,19 @@ Feature: Validate all scenarios in the Application Intake
       | Edition Buttons | Edit   | Save   |
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
-    And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriod_Table_Id---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000    | 100        | 100            | 100            |
     When I navigate to "Proposal" sub tab
-    When I edit the following rows inline in flex table with id "---applicationIntake:-:kpi_Table_Id---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Attachments" sub tab
-    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:all_Forms_Table_Id---"
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
     Given I click on "Back" in the page details
-    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationIntake:-:all_Forms_Table_Id---"
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
     Given I click on "Back" in the page details
@@ -98,19 +98,19 @@ Feature: Validate all scenarios in the Application Intake
       | Edition Buttons | Edit   | Save   |
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
-    And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriod_Table_Id---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000    | 100        | 100            | 100            |
     When I navigate to "Proposal" sub tab
-    When I edit the following rows inline in flex table with id "---applicationIntake:-:kpi_Table_Id---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Attachments" sub tab
-    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:all_Forms_Table_Id---"
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
     Given I click on "Back" in the page details
-    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationIntake:-:all_Forms_Table_Id---"
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
     Given I click on "Back" in the page details

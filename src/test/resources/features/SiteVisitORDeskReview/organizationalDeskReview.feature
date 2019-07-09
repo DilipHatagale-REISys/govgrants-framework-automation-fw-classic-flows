@@ -37,10 +37,10 @@ Scenario Outline: Participant Association of Organizational Desk Review
     When I click modal button "Save and Continue"
     When I click on "Save" in the page details 
 	When I navigate to "Overview" sub tab 
-	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_contacts_Id---" 
-	When I click "Associate" after selection of "<Subrecipient>" in the table "---orgLevelDeskReview:-:deskReview_Contacts_Table_Id---" 
+	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---" 
+	When I click "Associate" after selection of "<Subrecipient>" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---" 
 	And I close Modal 
-	Then I see that "<Subrecipient>" has been added in flextable with Id "---orgLevelDeskReview:-:associate_contacts_Id---" 
+	Then I see that "<Subrecipient>" has been added in flextable with Id "---orgLevelDeskReview:-:associateContactsId---" 
 	Examples: 
 		| Subrecipient   |
 		| Automation SPI |
@@ -86,10 +86,10 @@ Scenario: Validate the participants for the Desk Review Org Level
 	And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
 	When I click modal button "Save and Continue"
 	When I click on "Save" in the page details 
-	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_contacts_Id---" 
-	When I click "Associate" after selection of "Automation EXE" in the table "---orgLevelDeskReview:-:deskReview_Contacts_Table_Id---" 
+	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---" 
+	When I click "Associate" after selection of "Automation EXE" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---" 
 	And I close Modal 
-	Then I see that "Automation EXE" has been added in flextable with Id "---orgLevelDeskReview:-:associate_contacts_Id---" 
+	Then I see that "Automation EXE" has been added in flextable with Id "---orgLevelDeskReview:-:associateContactsId---" 
 	
 @54458 @approverSelectionDeskReviewOrgLevel @deepika
   Scenario Outline: Approver selection of Desk Review Org Level
@@ -102,11 +102,11 @@ Scenario: Validate the participants for the Desk Review Org Level
 	And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx" 
 	When I click on "Save" in the page details  
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approver_site_visit_table_Id---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Roles            | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
-    Then I see that "<Program Approver Name>" has been added in flextable with Id "---orgLevelDeskReview:-:approver_site_visit_table_Id---"
+    Then I see that "<Program Approver Name>" has been added in flextable with Id "---orgLevelDeskReview:-:approverSiteVisitTableId---"
     Examples:
       | Program Approver Name |
       | Automation PM         |
@@ -122,16 +122,16 @@ Scenario: Validate the participants for the Desk Review Org Level
 	And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx" 
 	When I click on "Save" in the page details  
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approver_site_visit_table_Id---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I navigate to "Overview" sub tab
-	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_contacts_Id---" 
-	When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReview_Contacts_Table_Id---" 
+	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---" 
+	When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---" 
 	And I close Modal
-	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_award_Id---"
-	When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:select_award_Id---"
+	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+	When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
 	And I close Modal 
     And I click on "Notify" in the page details
     Then I see that "Automation Desk Review Org level" is in "Notified" status
@@ -147,16 +147,16 @@ Scenario: Validate the participants for the Desk Review Org Level
 	And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx" 
 	When I click on "Save" in the page details 
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approver_site_visit_table_Id---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I navigate to "Overview" sub tab
-	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_contacts_Id---" 
-	When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReview_Contacts_Table_Id---" 
+	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---" 
+	When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---" 
 	And I close Modal
-	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_award_Id---"
-	When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:select_award_Id---"
+	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+	When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
 	And I close Modal 
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
@@ -178,16 +178,16 @@ Scenario: Validate the participants for the Desk Review Org Level
 	And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx" 
 	When I click on "Save" in the page details  
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approver_site_visit_table_Id---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I navigate to "Overview" sub tab
-	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_contacts_Id---" 
-	When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReview_Contacts_Table_Id---" 
+	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---" 
+	When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---" 
 	And I close Modal
-	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_award_Id---"
-	When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:select_award_Id---"
+	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+	When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
 	And I close Modal 
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
@@ -205,16 +205,16 @@ Scenario: Validate the participants for the Desk Review Org Level
 	And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx" 
 	When I click on "Save" in the page details 
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approver_site_visit_table_Id---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I navigate to "Overview" sub tab
-	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_contacts_Id---" 
-	When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReview_Contacts_Table_Id---" 
+	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---" 
+	When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---" 
 	And I close Modal
-	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_award_Id---"
-	When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:select_award_Id---"
+	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+	When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
 	And I close Modal 
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
@@ -233,12 +233,12 @@ Scenario: Validate the participants for the Desk Review Org Level
     When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
-    When I enter the following values into flex table with id "---orgLevelDeskReview:-:corrective_Table_Id---" by clicking "New" :
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    Then I see that "Automation Finding" has been added in flextable with Id "---orgLevelDeskReview:-:corrective_Table_Id---"
+    Then I see that "Automation Finding" has been added in flextable with Id "---orgLevelDeskReview:-:correctiveTableId---"
       
 @54572 @formFillingDeskReviewOrgLevel @smoke @deepika
 Scenario: Filling up of form in Desk Review Org Level
@@ -251,16 +251,16 @@ Scenario: Filling up of form in Desk Review Org Level
 	And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx" 
 	When I click on "Save" in the page details 
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approver_site_visit_table_Id---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I navigate to "Overview" sub tab
-	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_contacts_Id---" 
-	When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReview_Contacts_Table_Id---" 
+	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---" 
+	When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---" 
 	And I close Modal
-	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_award_Id---"
-	When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:select_award_Id---"
+	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+	When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
 	And I close Modal 
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
@@ -279,12 +279,12 @@ Scenario: Filling up of form in Desk Review Org Level
     When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
-    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reports_Table_Id---"
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reports_Table_Id---"
-    Then I see that "100.00%" has been added in flextable with Id "---orgLevelDeskReview:-:reports_Table_Id---"
+    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
+    Then I see that "100.00%" has been added in flextable with Id "---orgLevelDeskReview:-:reportsTableId---"
     
 @54571 @submittingForApprovalDeskReviewOrgLevel @deepika
 Scenario: Submitting Desk Review for approval Org level
@@ -297,16 +297,16 @@ Scenario: Submitting Desk Review for approval Org level
 	And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx" 
 	When I click on "Save" in the page details 
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approver_site_visit_table_Id---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I navigate to "Overview" sub tab
-	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_contacts_Id---" 
-	When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReview_Contacts_Table_Id---" 
+	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---" 
+	When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---" 
 	And I close Modal
-	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_award_Id---"
-	When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:select_award_Id---"
+	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+	When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
 	And I close Modal 
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
@@ -325,16 +325,16 @@ Scenario: Submitting Desk Review for approval Org level
     When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
-    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reports_Table_Id---"
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    When I enter the following values into flex table with id "---orgLevelDeskReview:-:corrective_Table_Id---" by clicking "New" :
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-      And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reports_Table_Id---"
+      And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
       When I click on "Submit for Approval" in the page details
       Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
@@ -350,16 +350,16 @@ Scenario: Submitting Desk Review for approval Org level
       When I click on "Save" in the page details
       When I get the "EGMS ID"
       When I navigate to "Responsibilities" sub tab
-      And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approver_site_visit_table_Id---" by clicking "Edit" :
+      And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "Edit" :
         | Responsibilities | Name          | Description                 |
         | Program Approver | Automation PM | Automation Test Description |
         | Fiscal Approver  | Automation FO | Automation Test Description |
       When I navigate to "Overview" sub tab
-      And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_contacts_Id---"
-      When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReview_Contacts_Table_Id---"
+      And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
+      When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
       And I close Modal
-      And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_award_Id---"
-      When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:select_award_Id---"
+      And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+      When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
       And I close Modal
       When I get the "EGMS ID"
       And I click on "Notify" in the page details
@@ -378,28 +378,28 @@ Scenario: Submitting Desk Review for approval Org level
       When I perform quick search for "Record Id" in "DeskReview" panel
       And I click on "View" icon for "Record Id" inside table
       And I navigate to "Reports and Outcomes" sub tab
-      When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reports_Table_Id---"
+      When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
       And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
       And I click on "Save" in the page details
       When I click on "Back" in the page details
-      When I enter the following values into flex table with id "---orgLevelDeskReview:-:corrective_Table_Id---" by clicking "New" :
+      When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
         | Title                  | Description            | Type        |
         | Automation Finding     | Automation Description | Finding     |
         | Automation Concern     | Automation Description | Concern     |
         | Automation Observation | Automation Description | Observation |
-      And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reports_Table_Id---"
+      And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
       When I click on "Submit for Approval" in the page details
       When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
       And I navigate to "Monitoring" tab
       When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-      When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-      And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+      When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
+      And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
       And I click on "Approve" on the approval decision box
       When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
       And I navigate to "Monitoring" tab
       When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-      When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-      And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+      When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
+      And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
       And I click on "Approve" on the approval decision box
       Then I see status in Progress-bar is "Approved" and is "green"
 
@@ -414,16 +414,16 @@ Scenario: Submitting Desk Review for approval Org level
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approver_site_visit_table_Id---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
       | Program Approver | Automation FO | Automation Test Description |
       | Fiscal Approver  | Automation PM | Automation Test Description |
     When I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_contacts_Id---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReview_Contacts_Table_Id---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
+    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I close Modal
-    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_award_Id---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:select_award_Id---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
     And I close Modal
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
@@ -442,28 +442,28 @@ Scenario: Submitting Desk Review for approval Org level
     When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
-    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reports_Table_Id---"
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    When I enter the following values into flex table with id "---orgLevelDeskReview:-:corrective_Table_Id---" by clicking "New" :
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reports_Table_Id---"
+    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     Given I click on "Send to Subrecipient" in the page details
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
@@ -479,16 +479,16 @@ Scenario: Submitting Desk Review for approval Org level
   And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
   When I click on "Save" in the page details
   When I navigate to "Responsibilities" sub tab
-  And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approver_site_visit_table_Id---" by clicking "Edit" :
+  And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "Edit" :
     | Responsibilities | Name          | Description                 |
     | Program Approver | Automation FO | Automation Test Description |
     | Fiscal Approver  | Automation PM | Automation Test Description |
   When I navigate to "Overview" sub tab
-  And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_contacts_Id---"
-  When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReview_Contacts_Table_Id---"
+  And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
+  When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
   And I close Modal
-  And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_award_Id---"
-  When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:select_award_Id---"
+  And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+  When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
   And I close Modal
   When I get the "EGMS ID"
   And I click on "Notify" in the page details
@@ -507,48 +507,48 @@ Scenario: Submitting Desk Review for approval Org level
   When I perform quick search for "Record Id" in "DeskReview" panel
   And I click on "View" icon for "Record Id" inside table
   And I navigate to "Reports and Outcomes" sub tab
-  When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reports_Table_Id---"
+  When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
   And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
   And I click on "Save" in the page details
   When I click on "Back" in the page details
-  When I enter the following values into flex table with id "---orgLevelDeskReview:-:corrective_Table_Id---" by clicking "New" :
+  When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
     | Title                  | Description            | Type        |
     | Automation Finding     | Automation Description | Finding     |
     | Automation Concern     | Automation Description | Concern     |
     | Automation Observation | Automation Description | Observation |
-  And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reports_Table_Id---"
+  And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
   When I click on "Submit for Approval" in the page details
   When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
   And I navigate to "Monitoring" tab
   When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-  When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-  And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+  When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
+  And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
   And I click on "Approve" on the approval decision box
   When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
   And I navigate to "Monitoring" tab
   When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-  When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-  And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+  When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
+  And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
   And I click on "Approve" on the approval decision box
   Given I click on "Send to Subrecipient" in the page details
    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
    When I navigate to "Monitoring" tab
    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-   When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+   When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
    And I click on "Start" icon for "Record Id" inside table
    When I navigate to "Reports and Outcomes" sub tab
    And I expand nested table containing column value "Automation Observation"
-   When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipient_Table_Id---" by clicking "New" :
+   When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipientTableId---" by clicking "New" :
      | Title                               | Description            | Status      | Due Date | Assigned To    |
      | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
    When I collapse nested table containing column value "Automation Observation"
    And I expand nested table containing column value "Automation Concern"
-   When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipient_Table_Id---" by clicking "New" :
+   When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipientTableId---" by clicking "New" :
      | Title                           | Description            | Status      | Due Date | Assigned To    |
      | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
    When I collapse nested table containing column value "Automation Concern"
    And I expand nested table containing column value "Automation Finding"
-   When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipient_Table_Id---" by clicking "New" :
+   When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipientTableId---" by clicking "New" :
      | Title                           | Description            | Status      | Due Date | Assigned To    |
      | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
    And I collapse nested table containing column value "Automation Finding"
@@ -565,16 +565,16 @@ Scenario: Submitting Desk Review for approval Org level
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approver_site_visit_table_Id---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
       | Program Approver | Automation FO | Automation Test Description |
       | Fiscal Approver  | Automation PM | Automation Test Description |
     When I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_contacts_Id---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReview_Contacts_Table_Id---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
+    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I close Modal
-    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_award_Id---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:select_award_Id---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
     And I close Modal
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
@@ -593,48 +593,48 @@ Scenario: Submitting Desk Review for approval Org level
     When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
-    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reports_Table_Id---"
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    When I enter the following values into flex table with id "---orgLevelDeskReview:-:corrective_Table_Id---" by clicking "New" :
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reports_Table_Id---"
+    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     Given I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
-    When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipient_Table_Id---" by clicking "New" :
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipientTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To    |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
-    When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipient_Table_Id---" by clicking "New" :
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipientTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To    |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
-    When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipient_Table_Id---" by clicking "New" :
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipientTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To    |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     And I collapse nested table containing column value "Automation Finding"
@@ -652,16 +652,16 @@ Scenario: Submitting Desk Review for approval Org level
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approver_site_visit_table_Id---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
       | Program Approver | Automation FO | Automation Test Description |
       | Fiscal Approver  | Automation PM | Automation Test Description |
     When I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_contacts_Id---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReview_Contacts_Table_Id---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
+    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I close Modal
-    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_award_Id---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:select_award_Id---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
     And I close Modal
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
@@ -680,48 +680,48 @@ Scenario: Submitting Desk Review for approval Org level
     When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
-    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reports_Table_Id---"
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    When I enter the following values into flex table with id "---orgLevelDeskReview:-:corrective_Table_Id---" by clicking "New" :
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reports_Table_Id---"
+    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     Given I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
-    When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipient_Table_Id---" by clicking "New" :
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipientTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To    |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
-    When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipient_Table_Id---" by clicking "New" :
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipientTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To    |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
-    When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipient_Table_Id---" by clicking "New" :
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipientTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To    |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     And I collapse nested table containing column value "Automation Finding"
@@ -729,7 +729,7 @@ Scenario: Submitting Desk Review for approval Org level
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     And I click on "Accept And Close" in the page details
     Then I see status in Progress-bar is "Closed" and is "green"
@@ -745,16 +745,16 @@ Scenario: Submitting Desk Review for approval Org level
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approver_site_visit_table_Id---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
       | Program Approver | Automation FO | Automation Test Description |
       | Fiscal Approver  | Automation PM | Automation Test Description |
     When I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_contacts_Id---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReview_Contacts_Table_Id---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
+    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I close Modal
-    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_award_Id---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:select_award_Id---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
     And I close Modal
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
@@ -773,48 +773,48 @@ Scenario: Submitting Desk Review for approval Org level
     When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
-    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reports_Table_Id---"
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    When I enter the following values into flex table with id "---orgLevelDeskReview:-:corrective_Table_Id---" by clicking "New" :
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reports_Table_Id---"
+    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     Given I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
-    When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipient_Table_Id---" by clicking "New" :
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipientTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To    |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
-    When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipient_Table_Id---" by clicking "New" :
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipientTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To    |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
-    When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipient_Table_Id---" by clicking "New" :
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipientTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To    |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     And I collapse nested table containing column value "Automation Finding"
@@ -822,7 +822,7 @@ Scenario: Submitting Desk Review for approval Org level
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     Then I can see top right button "Accept and Close" in page detail
     
@@ -837,16 +837,16 @@ Scenario: Submitting Desk Review for approval Org level
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approver_site_visit_table_Id---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
       | Program Approver | Automation FO | Automation Test Description |
       | Fiscal Approver  | Automation PM | Automation Test Description |
     When I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_contacts_Id---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReview_Contacts_Table_Id---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
+    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I close Modal
-    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_award_Id---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:select_award_Id---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
     And I close Modal
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
@@ -865,28 +865,28 @@ Scenario: Submitting Desk Review for approval Org level
     When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
-    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reports_Table_Id---"
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    When I enter the following values into flex table with id "---orgLevelDeskReview:-:corrective_Table_Id---" by clicking "New" :
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reports_Table_Id---"
+    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
     And I click on "Send to Owner" on the approval decision box
     Then I see status in Progress-bar is "Created" and is "green"
 
@@ -901,16 +901,16 @@ Scenario: Submitting Desk Review for approval Org level
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approver_site_visit_table_Id---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
       | Program Approver | Automation FO | Automation Test Description |
       | Fiscal Approver  | Automation PM | Automation Test Description |
     When I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_contacts_Id---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReview_Contacts_Table_Id---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
+    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I close Modal
-    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_award_Id---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:select_award_Id---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
     And I close Modal
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
@@ -929,34 +929,34 @@ Scenario: Submitting Desk Review for approval Org level
     When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
-    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reports_Table_Id---"
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    When I enter the following values into flex table with id "---orgLevelDeskReview:-:corrective_Table_Id---" by clicking "New" :
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reports_Table_Id---"
+    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     Given I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Submit to Grantor" in the page details
     Then I see the following messages in the page details :
@@ -973,16 +973,16 @@ Scenario: Submitting Desk Review for approval Org level
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approver_site_visit_table_Id---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
       | Program Approver | Automation FO | Automation Test Description |
       | Fiscal Approver  | Automation PM | Automation Test Description |
     When I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_contacts_Id---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReview_Contacts_Table_Id---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
+    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I close Modal
-    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associate_award_Id---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:select_award_Id---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
     And I close Modal
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
@@ -1001,34 +1001,34 @@ Scenario: Submitting Desk Review for approval Org level
     When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
-    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reports_Table_Id---"
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    When I enter the following values into flex table with id "---orgLevelDeskReview:-:corrective_Table_Id---" by clicking "New" :
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reports_Table_Id---"
+    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
     And I click on "Reassign,Automation EXE" on the approval decision box
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    Then I see that "Approve Desk Review Org" has been added in flextable with Id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
+    Then I see that "Approve Desk Review Org" has been added in flextable with Id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
 
 
 
