@@ -8,8 +8,8 @@ Feature: Validate all scenarios in Progress Report
     When I login as "SPI" user
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I click on "Save" in the page details
 
   @51097 @taskCreationForSubrecipientProgressReport @smoke
@@ -21,7 +21,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
-    Then I see status in Progress-bar is "Created" and is "green"
+    Then I see status in Progress-bar is "Created" and is "Green"
 
   @51099 @editKPIProgressReport
   Scenario: To edit KPI in Progress Report
@@ -34,7 +34,7 @@ Feature: Validate all scenarios in Progress Report
   @51100 @formFillingProgressReport @smoke
   Scenario: To fill and complete the form in Progress Report
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
@@ -50,7 +50,7 @@ Feature: Validate all scenarios in Progress Report
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
@@ -68,7 +68,7 @@ Feature: Validate all scenarios in Progress Report
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
@@ -85,7 +85,7 @@ Feature: Validate all scenarios in Progress Report
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
@@ -101,8 +101,8 @@ Feature: Validate all scenarios in Progress Report
     When I re-login as "SPA" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
@@ -110,7 +110,7 @@ Feature: Validate all scenarios in Progress Report
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
@@ -136,7 +136,7 @@ Feature: Validate all scenarios in Progress Report
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
@@ -144,8 +144,8 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     Given I click on "Send Back to Subrecipient" in the page details
     Then I see status in Progress-bar is "Sent Back to Subrecipient" and is "red"
 
@@ -159,7 +159,7 @@ Feature: Validate all scenarios in Progress Report
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
@@ -167,8 +167,8 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     Given I click on "Send Back to Subrecipient" in the page details
     When I navigate to "History" sub tab
     Then I see value "Sent Back to Subrecipient" for title "New Value" inside table "History"
@@ -183,7 +183,7 @@ Feature: Validate all scenarios in Progress Report
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
@@ -191,15 +191,15 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     Given I click on "Send Back to Subrecipient" in the page details
     Given I am on "SUBPORTAL" portal
     When I login as "SPI" user
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    Then I see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    Then I see value "Record Id" for title "EGMS ID" inside table "---progressReport:-:pendingTaskTableId---"
 
   @51109 @resubmitProgressReportToGrantor @smoke
   Scenario: To validate SR user is able to Submit the Progress Report post Progress Report it was sent back for corrections by the Grantor.
@@ -211,7 +211,7 @@ Feature: Validate all scenarios in Progress Report
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
@@ -219,14 +219,14 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     Given I click on "Send Back to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
@@ -234,7 +234,7 @@ Feature: Validate all scenarios in Progress Report
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 25     | 7             |
     And I click on "Submit to Grantor" in the page details
-    Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
+    Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
 
   @51110 @assignApproversToProgressReport
   Scenario: To assign or change the defualt approvers in Progress Report
@@ -246,7 +246,7 @@ Feature: Validate all scenarios in Progress Report
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
@@ -254,14 +254,14 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "flexGridProgressReportsRolesandResponsibilities" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
       | Responsibility   | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
-    Then I see that "Automation PM" has been added in flextable with Id "flexGridProgressReportsRolesandResponsibilities"
+    Then I see that "Automation PM" has been added in flextable with Id "---progressReport:-:approversTableId---"
 
   @51111 @submitProgressReportForApproval @smoke
   Scenario: To submit Progress Report for approval
@@ -273,7 +273,7 @@ Feature: Validate all scenarios in Progress Report
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
@@ -282,8 +282,8 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
@@ -296,7 +296,7 @@ Feature: Validate all scenarios in Progress Report
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
@@ -304,20 +304,20 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     Given I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in approval decision
     Then I see status in Progress-bar is "Approved" and is "green"
 
@@ -331,7 +331,7 @@ Feature: Validate all scenarios in Progress Report
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
@@ -339,14 +339,14 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     Given I click on "Send Back to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I navigate to "Performance" sub tab
     Given I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Actual | Reported Date |
@@ -356,20 +356,20 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     Given I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in approval decision
     Then I see status in Progress-bar is "Approved" and is "green"
 
@@ -383,7 +383,7 @@ Feature: Validate all scenarios in Progress Report
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
@@ -391,10 +391,10 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "flexGridProgressReportsRolesandResponsibilities" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
       | Responsibility   | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -402,7 +402,7 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Send to Owner" on the approval decision box
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
@@ -417,7 +417,7 @@ Feature: Validate all scenarios in Progress Report
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
@@ -425,10 +425,10 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "flexGridProgressReportsRolesandResponsibilities" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
       | Responsibility   | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -436,7 +436,7 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Send to Owner" on the approval decision box
     When I navigate to "History" sub tab
@@ -452,7 +452,7 @@ Feature: Validate all scenarios in Progress Report
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
@@ -460,10 +460,10 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "flexGridProgressReportsRolesandResponsibilities" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
       | Responsibility   | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -471,14 +471,14 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Send to Owner" on the approval decision box
     Given I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    Then I see "No Records Found" inside flex table with id "PhasePendingTasks";
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    Then I see "No Records Found" inside flex table with id "---progressReport:-:pendingTaskTableId---";
 
   @51117 @approvalofProgressReportSendbacktoOwnerOfProgressReportbyProgramApprover @smoke
   Scenario: To validate  Progress Report approval is successful post Program Approver Sends back the progress report to Owner.
@@ -490,7 +490,7 @@ Feature: Validate all scenarios in Progress Report
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
@@ -498,10 +498,10 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "flexGridProgressReportsRolesandResponsibilities" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
       | Responsibility   | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -509,7 +509,7 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Send to Owner" on the approval decision box
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -521,14 +521,14 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in approval decision
     Then I see status in Progress-bar is "Approved" and is "green"
 
@@ -542,7 +542,7 @@ Feature: Validate all scenarios in Progress Report
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
@@ -559,7 +559,7 @@ Feature: Validate all scenarios in Progress Report
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
@@ -567,10 +567,10 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "flexGridProgressReportsRolesandResponsibilities" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
       | Responsibility   | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -578,13 +578,13 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Send to Owner" on the approval decision box
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
@@ -599,7 +599,7 @@ Feature: Validate all scenarios in Progress Report
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
@@ -607,10 +607,10 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "flexGridProgressReportsRolesandResponsibilities" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
       | Responsibility   | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -618,14 +618,14 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in approval decision
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
@@ -633,7 +633,7 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "Automation Permanent Award" in "ActiveGrants" panel
     And I click on "View" icon for "Automation Permanent Award" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---subAwardStandAlone:-:subawards_TableId---"
     And I navigate to "Performance" sub tab
     Then I see that "7" has been added in flextable with Id "inlineEditGridGrantorAwardKeyOutcomes"
 
@@ -647,7 +647,7 @@ Feature: Validate all scenarios in Progress Report
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
@@ -655,10 +655,10 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "flexGridProgressReportsRolesandResponsibilities" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
       | Responsibility   | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -666,13 +666,13 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Send to Owner" on the approval decision box
     When I navigate to "History" sub tab
@@ -688,7 +688,7 @@ Feature: Validate all scenarios in Progress Report
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
@@ -696,10 +696,10 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "flexGridProgressReportsRolesandResponsibilities" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
       | Responsibility   | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -707,20 +707,20 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Send to Owner" on the approval decision box
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    Then I see "No Records Found" inside flex table with id "PhasePendingTasks";
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    Then I see "No Records Found" inside flex table with id "---progressReport:-:pendingTaskTableId---";
 
   @51123 @approvalofProgressReportSendbacktOwnerOfProgressReportbyFiscalApprover
   Scenario: To validate  Progress Report approval is successful post Program Approver Sends back the progress report to Owner.
@@ -732,7 +732,7 @@ Feature: Validate all scenarios in Progress Report
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
@@ -740,10 +740,10 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "flexGridProgressReportsRolesandResponsibilities" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
       | Responsibility   | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -751,13 +751,13 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Send to Owner" on the approval decision box
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -769,14 +769,14 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in approval decision
     Then I see status in Progress-bar is "Approved" and is "green"
 
@@ -790,7 +790,7 @@ Feature: Validate all scenarios in Progress Report
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 3             |
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
@@ -798,10 +798,10 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "flexGridProgressReportsRolesandResponsibilities" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
       | Responsibility   | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -809,14 +809,14 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    Then I see "No Records Found" inside flex table with id "PhasePendingTasks";
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    Then I see "No Records Found" inside flex table with id "---progressReport:-:pendingTaskTableId---";
 
   @51125 @approvalOfProgressReport @progressReportHappyPathWithoutDefaultApprovers @smoke
   Scenario: To approve Progress Report by changing the defualt approvers in Progress Report
@@ -828,7 +828,7 @@ Feature: Validate all scenarios in Progress Report
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "FormEnhancedTablePR"
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
@@ -836,10 +836,10 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "flexGridProgressReportsRolesandResponsibilities" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
       | Responsibility   | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
@@ -847,13 +847,13 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in approval decision
-    Then I see status in Progress-bar is "Approved" and is "green"
+    Then I see status in Progress-bar is "Approved" and is "Green"

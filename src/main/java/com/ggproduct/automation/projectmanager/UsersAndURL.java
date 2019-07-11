@@ -106,8 +106,8 @@ public class UsersAndURL implements UsersController {
         username.put("EXE", "test@gmaildemo.com.automation");
         username.put("PM", "donald_pm@ggp.test7.automation");
         username.put("FO", "auto.fm@auto.com.automation");
-        username.put("SPI", "automationspi@yopmail.com");
-        username.put("SPA", "automationspa@yopmail.com");
+        username.put("SPI", "spiautomation@yopmail.com");
+        username.put("SPA", "spaautomation@yopmail.com");
 
         username.put("SIMON PM", "simon_pm@ggp.test7.automation");
         username.put("ALEX FO", "alex_fo@ggp.test7.automation");

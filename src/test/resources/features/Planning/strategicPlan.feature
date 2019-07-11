@@ -7,7 +7,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I navigate to "Planning" tab
     When I navigate to "Strategic Plans" content inside "Planning" subheader on left panel
     And I click toggle button to select "Draft Strategic Plans"
-    And I click on top right button "New" in flex table with id "StrategicPlans"
+    And I click on top right button "New" in flex table with id "---strategicplan:-:StrategicPlansTableId---"
     And I enter "StrategicPlanCreation" values from "StrategicPlan_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
@@ -36,19 +36,19 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Edit" in the page details
     When I enter "StrategicPlanEdition" values from "StrategicPlan_Field_Values.xlsx"
     And I click on "Save" in the page details
-    When I click on top right button "New" in flex table with id "---strategicplan:-:strategic_Goal_Objectives_Table_Id---"
+    When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
     And I enter "StrategicGoalCreation" values from "StrategicPlan_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     When I click on "Back To Strategic Plan" in the page details
-    Then I see that "Automation Execution Strategic Goal" has been added in flextable with Id "---strategicplan:-:strategic_Goal_Objectives_Table_Id---"
+    Then I see that "Automation Execution Strategic Goal" has been added in flextable with Id "---strategicplan:-:strategicGoalObjectivesTableId---"
 
   @51045 @editionOfStrategicGoal
   Scenario: Edition of Strategic Goal inside a Strategic Plan
     And I click on "Edit" in the page details
     When I enter "StrategicPlanEdition" values from "StrategicPlan_Field_Values.xlsx"
     And I click on "Save" in the page details
-    And I click on top right button "New" in flex table with id "---strategicplan:-:strategic_Goal_Objectives_Table_Id---"
+    And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
     When I enter "StrategicGoalCreation" values from "StrategicPlan_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     When I click on "Save" in the page details
@@ -61,7 +61,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Edit" in the page details
     When I enter "StrategicPlanEdition" values from "StrategicPlan_Field_Values.xlsx"
     And I click on "Save" in the page details
-    And I click on top right button "New" in flex table with id "---strategicplan:-:strategic_Goal_Objectives_Table_Id---"
+    And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
     When I enter "StrategicGoalCreation" values from "StrategicPlan_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     When I click on "Save" in the page details
@@ -77,14 +77,14 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Edit" in the page details
     When I enter "StrategicPlanEdition" values from "StrategicPlan_Field_Values.xlsx"
     And I click on "Save" in the page details
-    And I click on top right button "New" in flex table with id "---strategicplan:-:strategic_Goal_Objectives_Table_Id---"
+    And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
     When I enter "StrategicGoalCreation" values from "StrategicPlan_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     When I click on "Save" in the page details
     And I click on "Edit" in the page details
     When I enter "StrategicGoalEdition" values from "StrategicPlan_Field_Values.xlsx"
     And I click on "Save" in the page details
-    When I click on top right button "New" in flex table with id "---strategicplan:-:strategic_Goal_Related_Objectives_Table_Id---"
+    When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"
     And I enter "ObjectiveCreation" values from "StrategicPlan_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
@@ -94,14 +94,14 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Edit" in the page details
     When I enter "StrategicPlanEdition" values from "StrategicPlan_Field_Values.xlsx"
     And I click on "Save" in the page details
-    And I click on top right button "New" in flex table with id "---strategicplan:-:strategic_Goal_Objectives_Table_Id---"
+    And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
     When I enter "StrategicGoalCreation" values from "StrategicPlan_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     When I click on "Save" in the page details
     And I click on "Edit" in the page details
     When I enter "StrategicGoalEdition" values from "StrategicPlan_Field_Values.xlsx"
     And I click on "Save" in the page details
-    When I click on top right button "New" in flex table with id "---strategicplan:-:strategic_Goal_Related_Objectives_Table_Id---"
+    When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"
     And I enter "ObjectiveCreation" values from "StrategicPlan_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
@@ -111,11 +111,11 @@ Feature: Validate all scenarios in Strategic Plan
 
   @51049 @additionOfAttachmentToObjective
   Scenario: Addition of Attachment to Objective inside a Strategic Goal
-    And I click on top right button "New" in flex table with id "---strategicplan:-:strategic_Goal_Objectives_Table_Id---"
+    And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
     When I enter "StrategicGoalCreation" values from "StrategicPlan_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     When I click on "Save" in the page details
-    When I click on top right button "New" in flex table with id "---strategicplan:-:strategic_Goal_Related_Objectives_Table_Id---"
+    When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"
     And I enter "ObjectiveCreation" values from "StrategicPlan_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
@@ -125,19 +125,19 @@ Feature: Validate all scenarios in Strategic Plan
 
   @34720 @associatingKPIToObjective @smoke
   Scenario: Associating KPI to Objective inside a Strategic Goal
-    And I click on top right button "New" in flex table with id "---strategicplan:-:strategic_Goal_Objectives_Table_Id---"
+    And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
     When I enter "StrategicGoalCreation" values from "StrategicPlan_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     When I click on "Save" in the page details
-    When I click on top right button "New" in flex table with id "---strategicplan:-:strategic_Goal_Related_Objectives_Table_Id---"
+    When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"
     And I enter "ObjectiveCreation" values from "StrategicPlan_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     When I navigate to "Related Logs" sub tab
-    And I click on top right button "Associate" in flex table with id "---strategicplan:-:Objectives_KPI_Table_Id---"
-    When I perform quick search for "Automation Permanent KPI for Regression" in "---strategicplan:-:List_Of_Active_KPI_Table_Id---" panel
-    When I click "Associate" after selection of "Automation Permanent KPI for Regression" in the table "---strategicplan:-:List_Of_Active_KPI_Table_Id---"
-    Then I see that "Automation Permanent KPI for Regression" has been added in flextable with Id "---strategicplan:-:Objectives_KPI_Table_Id---"
+    And I click on top right button "Associate" in flex table with id "---strategicplan:-:ObjectivesKPITableId---"
+    When I perform quick search for "Automation Permanent KPI for Regression" in "---strategicplan:-:ListOfActiveKPITableId---" panel
+    When I click "Associate" after selection of "Automation Permanent KPI for Regression" in the table "---strategicplan:-:ListOfActiveKPITableId---"
+    Then I see that "Automation Permanent KPI for Regression" has been added in flextable with Id "---strategicplan:-:ObjectivesKPITableId---"
 
     #marking as notFunctional as we can not activate multiple strategic plan for one organization
   @34721 @strategicPlanHappyPath @smoke @notFunctional
@@ -150,7 +150,7 @@ Feature: Validate all scenarios in Strategic Plan
       | Attachment Navigation | Attachments | Add            | a1511000002nIxtAAE |
       | Attachment Details    | Attachment  | Strategic Plan |                    |
     When I navigate to "Overview" sub tab
-    And I click on top right button "New" in flex table with id "---strategicplan:-:strategic_Goal_Objectives_Table_Id---"
+    And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
     And I enter "StrategicGoalCreation" values from "StrategicPlaflexGridGrantorStrategicGoalObjectivesn_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
@@ -162,7 +162,7 @@ Feature: Validate all scenarios in Strategic Plan
       | Attachment Navigation | Attachments | Add            | a1511000002nIxtAAE |
       | Attachment Details    | Attachment  | Strategic Plan |                    |
     When I navigate to "Overview" sub tab
-    And I click on top right button "New" in flex table with id "---strategicplan:-:strategic_Goal_Related_Objectives_Table_Id---"
+    And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"
     And I enter "ObjectiveCreation" values from "StrategicPlan_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details

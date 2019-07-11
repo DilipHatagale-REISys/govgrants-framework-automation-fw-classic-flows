@@ -5,25 +5,26 @@ Feature: Validate all scenarios in the Application Intake
     Given I delete the record "Automation Announcement for Application Intake" from the object "Application"
     And I delete the record "Automation Announcement for Application Intake" from the object "Qualified Announcement"
     Given I am on "SUBPORTAL" portal
-    And I qualify the announcement "Automation Announcement for Application Intake" as user "SPI"
-      | Actions    | Step 1         | Step 2        | Step 3  | Step 4        |
-      | Navigation | Grants Portal  | Opportunities | Active  | Opportunities |
-      | FlexTable  | popupflextable | View          | Qualify |               |
+    When I login to "Grants Portal" app as "SPI" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Active" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Automation Announcement for Application Intake" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    When I click on "Qualify" in the page details
     When I click on "Create Application" in the page details
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
-    Then I see that "Automation Announcement for Application Intake" is in "Created" status
 
   @34044 @applicationCreation @smoke
   Scenario: Creating an Application
-    Then I see status in Progress-bar is "Created" and is "green"
+    Then I see status in Progress-bar is "Created" and is "Green"
 
  @34045 @applicationEdition
   Scenario: Edition of an application
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
-    Then I see status in Progress-bar is "Created" and is "green"
+    Then I see status in Progress-bar is "Created" and is "Green"
 
  @34303 @addFocusAreaToApplication 
   Scenario Outline: Addition of Focus area to an application
@@ -67,9 +68,9 @@ Feature: Validate all scenarios in the Application Intake
 
   @34156 @submitApplication @applicationIntakeHappyPath @smoke
   Scenario: Submitting an application to Grantor
-   Given I complete the fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Application_Field_Values.xlsx"
+    When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
@@ -89,13 +90,13 @@ Feature: Validate all scenarios in the Application Intake
     And I click on "Save" in the page details
     Given I click on "Back" in the page details
     When I click on "Submit Application" in the page details
-    Then I see status in Progress-bar is "Submitted" and is "green"
+    Then I see status in Progress-bar is "Submitted" and is "Green"
 
   @34346 @viewSubmitedApplication @smoke
-  Scenario Outline: Viewing the application submitted by subrecipient as Internal user
-    Given I complete the fields from the sheet "Edition" in excel "Application_Field_Values.xlsx"
-      | Actions         | Step 1 | Step 2 |
-      | Edition Buttons | Edit   | Save   |
+  Scenario Outline: Viewing the application submitted by sub-recipient as Internal user
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Application_Field_Values.xlsx"
+    When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
@@ -120,7 +121,7 @@ Feature: Validate all scenarios in the Application Intake
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "All Applications"
     When I click on "View" icon for "<Application Name>" inside table
-    Then I see status in Progress-bar is "Submitted" and is "green"
+    Then I see status in Progress-bar is "Submitted" and is "Green"
     Examples:
       | User | Application Name                               |
       | EXE  | Automation Announcement for Application Intake |

@@ -9,10 +9,10 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
-    When I perform quick search for "Automation Permanent Award" in "---paymentRequest:-:recipient_Grant_Table_Id---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipient_Grant_Table_Id---"
+    When I perform quick search for "Automation Permanent Award" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipient_Award_Table_Id---"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
 
   @38840 @creationOfAdhocReimbursementPaymentRequest @smoke
   Scenario: To create an Adhoc Reimbursement Payment Request
@@ -48,12 +48,12 @@ Feature: Validate all scenarios in Payment Request
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 0                        | 10         | 10             |
     When I close modal by clicking the top right x button
-    Then I see that "$20.00" has been added in flextable with Id "---paymentRequest:-:paymentRequest_BudgetTableId---"
+    Then I see that "$20.00" has been added in flextable with Id "---paymentRequest:-:paymentRequestBudgetTableId---"
 
   @51068 @Reimbursement_paymentRequestAddAttachment
   Scenario: Validate the attachment for Reimbursement Payment Request
@@ -76,7 +76,7 @@ Feature: Validate all scenarios in Payment Request
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 10                       | 10         | 10             |
@@ -93,7 +93,7 @@ Feature: Validate all scenarios in Payment Request
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 100        | 100            |
@@ -103,10 +103,10 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
-    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantor_grants_Table_Id---" panel
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:grantor_Award_Table_Id---"
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:grantorAwardTableId---"
     When I navigate to "Requests" sub tab
     And I click on "View" icon for "Submitted to Grantor" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---"
     When I navigate to "Financials" sub tab
@@ -127,7 +127,7 @@ Feature: Validate all scenarios in Payment Request
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 100        | 100            |
@@ -137,10 +137,10 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
-    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantor_grants_Table_Id---" panel
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:grantor_Award_Table_Id---"
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:grantorAwardTableId---"
     And I navigate to "Requests" sub tab
     And I click on "View" icon for "Submitted to Grantor" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---"
     And I navigate to "Financials" sub tab
@@ -148,10 +148,10 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account | Net Spent This Action |
       | FA--01          | 20                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approvers_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
-    Then I see that "Automation FO" has been added in flextable with Id "---paymentRequest:-:approvers_TableId---"
+    Then I see that "Automation FO" has been added in flextable with Id "---paymentRequest:-:approversTableId---"
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Permanent Award | Automation Permanent Award |
@@ -165,7 +165,7 @@ Feature: Validate all scenarios in Payment Request
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 100        | 100            |
@@ -175,10 +175,10 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
-    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantor_grants_Table_Id---" panel
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:grantor_Award_Table_Id---"
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:grantorAwardTableId---"
     And I navigate to "Requests" sub tab
     And I click on "View" icon for "Submitted to Grantor" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---"
     And I navigate to "Financials" sub tab
@@ -186,7 +186,7 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account | Net Spent This Action |
       | FA--01          | 20                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approvers_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
@@ -204,7 +204,7 @@ Feature: Validate all scenarios in Payment Request
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 10         | 10             |
@@ -214,10 +214,10 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
-    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantor_grants_Table_Id---" panel
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:grantor_Award_Table_Id---"
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:grantorAwardTableId---"
     And I navigate to "Requests" sub tab
     And I click on "View" icon for "Submitted to Grantor" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---"
     And I navigate to "Financials" sub tab
@@ -225,7 +225,7 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account | Net Spent This Action |
       | FA--01          | 20                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approvers_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
@@ -233,7 +233,7 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Approved" and is "green"
@@ -250,7 +250,7 @@ Feature: Validate all scenarios in Payment Request
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
-    And I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---"
+    And I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---"
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
       | Extra Salary | The narrative | 10         | 1        | Feet        | 0                 | 0               | 0                        | 100        | 100            |
@@ -260,10 +260,10 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
-    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantor_grants_Table_Id---" panel
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:grantor_Award_Table_Id---"
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:grantorAwardTableId---"
     And I navigate to "Requests" sub tab
     And I click on "View" icon for "Submitted to Grantor" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---"
     And I navigate to "Financials" sub tab
@@ -271,7 +271,7 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account | Net Spent This Action |
       | FA--01          | 10                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approvers_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
@@ -304,18 +304,18 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
-    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantor_grants_Table_Id---" panel
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:grantor_Award_Table_Id---"
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:grantorAwardTableId---"
     And I navigate to "Requests" sub tab
     And I click on "View" icon for "Submitted to Grantor" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---"
     And I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:advance_Funding_Account_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:advanceFundingAccountTableId---" by clicking "Edit" :
       | Funding Account | Advance Requested This Action |
       | FA--01          | 10                            |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approvers_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
@@ -329,10 +329,10 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
-    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipient_Grant_Table_Id---" panel
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipient_Grant_Table_Id---"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipient_Award_Table_Id---"
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Requests" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
@@ -340,7 +340,7 @@ Feature: Validate all scenarios in Payment Request
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 0                        | 10         | 10             |
@@ -350,7 +350,7 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
-    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantor_grants_Table_Id---" panel
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---"
@@ -361,7 +361,7 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account | Net Spent This Action |
       | FA--01          | 20                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approvers_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
@@ -386,7 +386,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     And I get the "EGMS ID"
     When I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) |
       | Extra Salary | The narrative | 20         | 1        | Feet        | 10                |
@@ -398,13 +398,13 @@ Feature: Validate all scenarios in Payment Request
     And I perform quick search for "Record Id" in "PhasePendingTasks" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
     And I navigate to "Financials" sub tab
-    When I click on "Disallow Amount" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
-    When I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequest_Disallow_TableId---" by clicking "Edit" :
+    When I click on "Disallow Amount" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
+    When I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestDisallowTableId---" by clicking "Edit" :
       | Title        | Disallowed Amount | Disallowed Amount Reason    |
       | Extra Salary | 10                | Automation Test Description |
     And I close modal by clicking the top right x button
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approvers_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name           | Description                 |
       | Fiscal Approver | Automation EXE | Automation Test Description |
     And I navigate to "Financials" sub tab
@@ -415,8 +415,8 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---"
+    And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I click on "Disapprove" on the approval decision box
     Then I see status in Progress-bar is "Rejected" and is "Red"
 
@@ -429,7 +429,7 @@ Feature: Validate all scenarios in Payment Request
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 100        | 100            |
@@ -446,20 +446,20 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account | Net Spent This Action |
       | FA--01          | 10                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approvers_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     And I click on "Send Back to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     And I click on "Edit" in the page details
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "Edit" :
       | Title        | Narrative     | Unit Price |
       | Extra Salary | The narrative | 10         |
@@ -477,7 +477,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     And I get the "EGMS ID"
     And I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement |
       | Extra Salary | The narrative | 10         | 1        | Feet        |
@@ -493,7 +493,7 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account | Net Spent This Action |
       | FA--01          | 10                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approvers_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -510,7 +510,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     And I get the "EGMS ID"
     And I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 200                      | 100        | 100            |
@@ -536,10 +536,10 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
-    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipient_Grant_Table_Id---" panel
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipient_Grant_Table_Id---"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipient_Award_Table_Id---"
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Requests" sub tab
     And I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentRequestTableId---"
     And I navigate to "Financials" sub tab
@@ -561,7 +561,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     And I get the "EGMS ID"
     And I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 100        | 100            |
@@ -570,10 +570,10 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
-    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipient_Grant_Table_Id---" panel
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipient_Grant_Table_Id---"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipient_Award_Table_Id---"
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Requests" sub tab
     And I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentRequestTableId---"
     Then I cannot see top right button "Submit to Grantor" in page detail
@@ -626,10 +626,10 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
-    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipient_Grant_Table_Id---" panel
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipient_Grant_Table_Id---"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipient_Award_Table_Id---"
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Requests" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
@@ -658,14 +658,14 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---"
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccounts_Adv_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountsAdvTableId---" by clicking "Edit" :
       | Funding Account | Advance Requested This Action |
       | FA--01          | 10                            |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approvers_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
@@ -690,14 +690,14 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---"
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccounts_Adv_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountsAdvTableId---" by clicking "Edit" :
       | Funding Account | Advance Requested This Action |
       | FA--01          | 10                            |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approvers_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
@@ -722,14 +722,14 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---"
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccounts_Adv_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountsAdvTableId---" by clicking "Edit" :
       | Funding Account | Advance Requested This Action |
       | FA--01          | 10                            |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approvers_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
@@ -754,14 +754,14 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---"
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccounts_Adv_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountsAdvTableId---" by clicking "Edit" :
       | Funding Account | Advance Requested This Action |
       | FA--01          | 10                            |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approvers_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
@@ -786,8 +786,8 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    Then I see "No Records Found" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---";
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    Then I see "No Records Found" inside flex table with id "---paymentRequest:-:pendingTaskTableId---";
 
   @53985 @AdvancePaymentRequestShouldNotReceiveToEXE @mahadev
   Scenario: Advance Payment Request should not receive to Program Approver
@@ -806,8 +806,8 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    Then I see "No Records Found" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---";
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    Then I see "No Records Found" inside flex table with id "---paymentRequest:-:pendingTaskTableId---";
 
   @54175 @ValidateError_On_Entering_AdvanceRequestedAmount_GreaterThanBalance @mahadev
   Scenario: Advance Payment Request should not receive to Program Approver
@@ -841,14 +841,14 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---"
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccounts_Adv_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountsAdvTableId---" by clicking "Edit" :
       | Funding Account | Advance Requested This Action |
       | FA--01          | 10                            |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approvers_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
@@ -857,8 +857,8 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---"
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Approved" and is "Green"
 
@@ -871,7 +871,7 @@ Feature: Validate all scenarios in Payment Request
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 10                       | 10         | 10             |
@@ -888,7 +888,7 @@ Feature: Validate all scenarios in Payment Request
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:budget_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
     When I click on "Submit to Grantor" in the page details
@@ -904,7 +904,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     And I get the "EGMS ID"
     When I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) |
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                |
@@ -916,7 +916,7 @@ Feature: Validate all scenarios in Payment Request
     And I perform quick search for "Record Id" in "PhasePendingTasks" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approvers_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name           | Description                 |
       | Fiscal Approver | Automation EXE | Automation Test Description |
     And I navigate to "Financials" sub tab
@@ -927,8 +927,8 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---"
+    And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I click on "Disapprove" on the approval decision box
     Then I cannot see top right button "Mark as Paid" in page detail
 
@@ -949,14 +949,14 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---"
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccounts_Adv_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountsAdvTableId---" by clicking "Edit" :
       | Funding Account | Advance Requested This Action |
       | FA--01          | 10                            |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approvers_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
@@ -981,14 +981,14 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---"
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccounts_Adv_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountsAdvTableId---" by clicking "Edit" :
       | Funding Account | Advance Requested This Action |
       | FA--01          | 10                            |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approvers_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
@@ -1005,7 +1005,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     And I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement |
       | Extra Salary | The narrative | 10         | 1        | Feet        |
@@ -1014,14 +1014,14 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---"
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account | Net Spent This Action |
       | FA--01          | 10                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approvers_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
@@ -1044,14 +1044,14 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---"
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccounts_Adv_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountsAdvTableId---" by clicking "Edit" :
       | Funding Account | Advance Requested This Action |
       | FA--01          | 10                            |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approvers_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
@@ -1122,8 +1122,8 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---"
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I navigate to "Financials" sub tab
     Then I see field "Program Income" as "$1,000.00"
 
@@ -1137,7 +1137,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     And I get the "EGMS ID"
     And I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 10         | 10             |
@@ -1146,14 +1146,14 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---"
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account | Net Spent This Action |
       | FA--01          | 20                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approvers_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
@@ -1162,10 +1162,10 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
-    When I perform quick search for "<Grant Name>" in "---subAward_StandAlone:-:active_Grants_TableId---" panel
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     When I navigate to "Actuals" sub tab
     Then I see field "Program Income" as "$1,000.00"
     Examples:
@@ -1189,10 +1189,10 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---"
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I navigate to "Financials" sub tab
-    Then I cannot see row level action button "Disallow Amount" against "Construction" in flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---"
+    Then I cannot see row level action button "Disallow Amount" against "Construction" in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---"
 
   @54743 @Validate_ProgramIncomeTrackingField_OnAward_GrantorSide @mahadev
   Scenario: Validate Program Income tracking gets updated on award at grantor side after approval of reimbursement PR
@@ -1204,7 +1204,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     And I get the "EGMS ID"
     And I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 10         | 10             |
@@ -1213,11 +1213,11 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---"
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I navigate to "Financials" sub tab
-    When I click on "Disallow Amount" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
-    When I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequest_Disallow_TableId---" by clicking "Edit" :
+    When I click on "Disallow Amount" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
+    When I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestDisallowTableId---" by clicking "Edit" :
       | Title        | Disallowed Amount | Disallowed Amount Reason    |
       | Extra Salary | 50                | Automation Test Description |
     Then I see the following messages in the page details :
@@ -1233,7 +1233,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     And I get the "EGMS ID"
     And I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement |
       | Extra Salary | The narrative | 10         | 1        | Feet        |
@@ -1242,14 +1242,14 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---"
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account | Net Spent This Action |
       | FA--01          | 10                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approvers_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
@@ -1266,7 +1266,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     And I get the "EGMS ID"
     And I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement |
       | Extra Salary | The narrative | 10         | 1        | Feet        |
@@ -1275,14 +1275,14 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---"
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account | Net Spent This Action |
       | FA--01          | 10                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approvers_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
@@ -1299,7 +1299,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     And I get the "EGMS ID"
     And I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement |
       | Extra Salary | The narrative | 10         | 1        | Feet        |
@@ -1308,14 +1308,14 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---"
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account | Net Spent This Action |
       | FA--01          | 10                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approvers_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
@@ -1332,7 +1332,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     And I get the "EGMS ID"
     And I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement |
       | Extra Salary | The narrative | 10         | 1        | Feet        |
@@ -1341,14 +1341,14 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---"
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account | Net Spent This Action |
       | FA--01          | 10                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approvers_TableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
@@ -1365,7 +1365,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     And I get the "EGMS ID"
     And I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement |
       | Extra Salary | The narrative | 10         | 1        | Feet        |
@@ -1374,14 +1374,14 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---"
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     When I click on "Send Back to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    Then I see value "Record Id" for title "EGMS ID" inside table "---paymentRequest:-:pendingTask_Table_Id---"
+    And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    Then I see value "Record Id" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
   @54367 @Validate_AdvancePRSendBackToSubReceipient @mahadev
   Scenario: Validate task is getting created for SPI user after send back advance payment request to subreceipient
@@ -1400,14 +1400,14 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTask_Table_Id---"
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     When I click on "Send Back to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    Then I see value "Record Id" for title "EGMS ID" inside table "---paymentRequest:-:pendingTask_Table_Id---"
+    And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    Then I see value "Record Id" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
   @54594 @Validate_AdvancePRSendBackToSubReceipient @mahadev
   Scenario: Validate task is getting created for SPI user after send back advance payment request to subreceipient
@@ -1420,48 +1420,41 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
-    When I perform quick search for "Automation Permanent Award" in "---paymentRequest:-:recipient_Grant_Table_Id---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipient_Grant_Table_Id---"
+    When I perform quick search for "Automation Permanent Award" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipient_Award_Table_Id---"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Requests" sub tab
     And I click on "Delete" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentRequestTableId---"
     Then I do not see value "Record Id" for title "EGMS ID" inside table "---paymentRequest:-:paymentRequestTableId---"
 
-  @55398 @ApprovedReimbursementPR_Displayed_In_CompletedTask @mahadev @wip
-  Scenario: Approval of Reimbursement Payment Request
+  @54647 @Validate_PendingTask_AdvancePR_FOUser @mahadev
+  Scenario: Validate task is getting created for fiscal user after submitting advance payment request
+    When I navigate to "Requests" sub tab
+    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestAdvanceTableId---" by clicking "Edit" :
+      | Budget Category | Advance Requested This Action |
+      | Construction    | 10                            |
+    When I get the "EGMS ID"
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    Then I see value "Record Id" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
+
+  @55400 @EditAction_NotDisplayed_ReimbursementPR @mahadev
+  Scenario: validate edit action should not be displayed for budget categories for Reimbursement Payment request
     When I navigate to "Requests" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
-    And I get the "EGMS ID"
-    And I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequest_BudgetTableId---" with wait for record
-    When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
-      | Title        | Narrative     | Unit Price | Quantity | Measurement |
-      | Extra Salary | The narrative | 10         | 1        | Feet        |
-    When I close modal by clicking the top right x button
-    And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    When I navigate to "Monitoring" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTask_Table_Id---" panel
-    And I click on "Start" icon for "Record Id" inside table
-    And I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
-      | Funding Account | Net Spent This Action |
-      | FA--01          | 10                    |
-    When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approvers_TableId---" by clicking "Edit" :
-      | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
-    When I get the "EGMS ID"
-    When I click on "Submit for Approval" in the page details
-    When I click on "Approve" on the approval decision box
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:completedTask_TableId---" panel
-    Then I see value "Record Id" for title "EGMS ID" inside table "---paymentRequest:-:completedTask_TableId---"
+    When I navigate to "Financials" sub tab
+    Then I cannot see row level action button "Edit" against "Construction" in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---"
