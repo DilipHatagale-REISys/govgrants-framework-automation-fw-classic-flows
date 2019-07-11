@@ -93,9 +93,19 @@ public class GenericSteps {
         projectManager.uploadAttachmentFromWorkspace(fileNameToBeUpload);
     }
 
-    @Description("To verify SubTab is displayed or not")
-    @Then("^I (can see|cannot see) \"([^\"]*)\" sub tab$")
-    public void iCanSeeTab(String subTabName,String usage)  {
-        projectManager.AssertSubTabDisplayed(subTabName,"Can see".equalsIgnoreCase(usage));
+    @When("^I download the file$")
+    public void saveTheFileToProjectRoot() throws Throwable {
+        projectManager.saveFile();
     }
+
+    @When("^I click on top right parallel lines bar for \"([^\"]*)\"$")
+    public void clickTopRightParallelLinesBar(String title) {
+        projectManager.clickRightHeaderBars(title);
+    }
+
+    @Then("^I verify that \"([^\"]*)\" file is downloaded$")
+    public void iVerifyThatPdfFileIsDownloaded(String fileType) {
+        projectManager.assertThatFileIsDownloaded(fileType);
+    }
+
 }

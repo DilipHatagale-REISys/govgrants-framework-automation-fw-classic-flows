@@ -8,10 +8,10 @@ Feature: Validate all scenarios in the Amendment Request
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
-    When I perform quick search for "Automation Award for Amendment Request" in "---subAward_StandAlone:-:active_Grants_TableId---" panel
-    And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAward_StandAlone:-:active_Grants_TableId---"
+    When I perform quick search for "Automation Award for Amendment Request" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAward_StandAlone:-:subawards_TableId---"
+    And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
 
   @53194 @creationOfSOWAmendmentRequest @smoke
   Scenario: Creation of SOW Amendment Request

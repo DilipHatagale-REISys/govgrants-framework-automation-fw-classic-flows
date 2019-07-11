@@ -9,7 +9,7 @@ Feature: Validate all scenarios in Funding Source
     When I login to "As a Grantor" app as "EXE" user
     When I navigate to "Planning" tab
     When I navigate to "Funding Sources" content inside "Planning" subheader on left panel
-    And I click on top right button "New" in flex table with id "---fundingsource:-:funding_Source_Table_Id---"
+    And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
     When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
@@ -20,7 +20,7 @@ Feature: Validate all scenarios in Funding Source
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
     When I navigate to "Funding Sources" content inside "Planning" subheader on left panel
-    And I click on top right button "New" in flex table with id "---fundingsource:-:funding_Source_Table_Id---"
+    And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
     When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
@@ -32,7 +32,7 @@ Feature: Validate all scenarios in Funding Source
     When I login to "As a Grantor" app as "EXE" user
     When I navigate to "Planning" tab
     When I navigate to "Funding Sources" content inside "Planning" subheader on left panel
-    And I click on top right button "New" in flex table with id "---fundingsource:-:funding_Source_Table_Id---"
+    And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
     When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
@@ -46,12 +46,12 @@ Feature: Validate all scenarios in Funding Source
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
     When I navigate to "Funding Sources" content inside "Planning" subheader on left panel
-    And I click on top right button "New" in flex table with id "---fundingsource:-:funding_Source_Table_Id---"
+    And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
     When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     And I click on "Save" in the page details
-    When I click on top right button "New" in flex table with id "---fundingsource:-:funding_Account_Table_Id---"
+    When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
     And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
@@ -62,12 +62,12 @@ Feature: Validate all scenarios in Funding Source
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
     When I navigate to "Funding Sources" content inside "Planning" subheader on left panel
-    And I click on top right button "New" in flex table with id "---fundingsource:-:funding_Source_Table_Id---"
+    And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
     When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     And I click on "Save" in the page details
-    When I click on top right button "New" in flex table with id "---fundingsource:-:funding_Account_Table_Id---"
+    When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
     And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I enter "Funding Account Edition" values from "FundingSource_Field_Values.xlsx"
@@ -84,7 +84,7 @@ Feature: Validate all scenarios in Funding Source
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     And I click on "Save" in the page details
-    When I click on top right button "New" in flex table with id "---fundingsource:-:funding_Account_Table_Id---"
+    When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
     And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I enter "Funding Account Edition" values from "FundingSource_Field_Values.xlsx"
@@ -97,13 +97,13 @@ Feature: Validate all scenarios in Funding Source
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
     When I navigate to "Funding Sources" content inside "Planning" subheader on left panel
-    And I click on top right button "New" in flex table with id "---fundingsource:-:funding_Source_Table_Id---"
+    And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
     When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Overview" sub tab
-    When I click on top right button "New" in flex table with id "---fundingsource:-:funding_Account_Table_Id---"
+    When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
     And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I enter "Funding Account Edition" values from "FundingSource_Field_Values.xlsx"
@@ -117,7 +117,7 @@ Feature: Validate all scenarios in Funding Source
     When I login as "<User>" user
     When I navigate to "Planning" tab
     And I navigate to "Funding Sources" content inside "Planning" subheader on left panel
-    Then  I cannot see top right button "New" in flex table with id "---fundingsource:-:funding_Source_Table_Id---"
+    Then  I cannot see top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
     Examples:
       | User |
       | PM   |
@@ -129,13 +129,13 @@ Feature: Validate all scenarios in Funding Source
     When I navigate to "Planning" tab
     And I navigate to "Funding Sources" content inside "Planning" subheader on left panel
     And I click toggle button to select "Draft Internal Funding Sources"
-    When I click on top right button "New" in flex table with id "---fundingsource:-:funding_Source_Table_Id---"
+    When I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
     When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Overview" sub tab
-    When I click on top right button "New" in flex table with id "---fundingsource:-:funding_Account_Table_Id---"
+    When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
     And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I enter "Funding Account Edition" values from "FundingSource_Field_Values.xlsx"
@@ -155,7 +155,7 @@ Feature: Validate all scenarios in Funding Source
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Overview" sub tab
-    When I click on top right button "New" in flex table with id "---fundingsource:-:funding_Account_Table_Id---"
+    When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
     And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
@@ -167,7 +167,7 @@ Feature: Validate all scenarios in Funding Source
     When I navigate to "Planning" tab
     And I navigate to "Funding Sources" content inside "Planning" subheader on left panel
     And I click toggle button to select "Active Internal Funding Sources"
-    When I perform quick search for "Automation Execution Funding Source" in "---fundingsource:-:funding_Source_Table_Id---" panel
+    When I perform quick search for "Automation Execution Funding Source" in "---fundingsource:-:fundingSourceTableId---" panel
     And I click on "View" icon for "Automation Execution Funding Source" inside table
     Then I cannot see top right button "Deactivate" in page detail
 
@@ -178,13 +178,13 @@ Feature: Validate all scenarios in Funding Source
     When I navigate to "Planning" tab
     And I navigate to "Funding Sources" content inside "Planning" subheader on left panel
     And I click toggle button to select "Draft Internal Funding Sources"
-    When I click on top right button "New" in flex table with id "---fundingsource:-:funding_Source_Table_Id---"
+    When I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
     When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Overview" sub tab
-    When I click on top right button "New" in flex table with id "---fundingsource:-:funding_Account_Table_Id---"
+    When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
     And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
@@ -196,13 +196,13 @@ Feature: Validate all scenarios in Funding Source
     When I navigate to "Planning" tab
     And I navigate to "Funding Sources" content inside "Planning" subheader on left panel
     And I click toggle button to select "Closed Internal Funding Sources"
-    When I perform quick search for "<Funding Source>" in "---fundingsource:-:funding_Source_Table_Id---" panel
+    When I perform quick search for "<Funding Source>" in "---fundingsource:-:fundingSourceTableId---" panel
     And I click on "View" icon for "<Funding Source>" inside table
-    When I click on "View" icon for "Closed" inside flex table with id "---fundingsource:-:funding_Account_Table_Id---"
+    When I click on "View" icon for "Closed" inside flex table with id "---fundingsource:-:fundingAccountTableId---"
     And I click on "Activate" in the page details
     And I navigate to "Funding Sources" content inside "Planning" subheader on left panel
     And I click toggle button to select "Active Internal Funding Sources"
-    When I perform quick search for "<Funding Source>" in "---fundingsource:-:funding_Source_Table_Id---" panel
+    When I perform quick search for "<Funding Source>" in "---fundingsource:-:fundingSourceTableId---" panel
     And I click on "View" icon for "<Funding Source>" inside table
     Then I see status in Progress-bar is "Active" and is "Green"
     Examples:
