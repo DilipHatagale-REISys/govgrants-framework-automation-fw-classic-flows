@@ -1673,3 +1673,27 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   Scenario: Validate user can view progress report schedule on draft award
     And I navigate to "Management" sub tab
     Then I see value "Not Applicable" for title "Frequency" inside table "---subAwardStandAlone:-:progressReportScheduleTableId---"
+
+  @55298 @DownloadProgressReportInPDF @jitendra
+  Scenario: Validate user can Download the progress created Report in PDF format.
+    And I navigate to "Management" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAward_StandAlone:-:progressReportScheduleTableId---"
+    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    When I click on top right parallel lines bar for "Progress Reports Schedule"
+    And I select "Download as PDF" from parallel lines dropdown of "Progress Reports Schedule"
+    And I download the file
+    Then I verify that "pdf" file is downloaded
+
+  @55306 @DownloadProgressReportInXLS @jitendra
+  Scenario: Validate user can Download the progress created Report in PDF format.
+    And I navigate to "Management" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAward_StandAlone:-:progressReportScheduleTableId---"
+    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    When I click on top right parallel lines bar for "Progress Reports Schedule"
+    And I select "Download as XLS" from parallel lines dropdown of "Progress Reports Schedule"
+    And I download the file
+    Then I verify that "xls" file is downloaded

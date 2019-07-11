@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.springframework.context.annotation.Description;
 import org.testng.Assert;
 
+import java.awt.*;
+import java.io.File;
 import java.util.List;
 
 
@@ -217,5 +219,36 @@ public class ProjectManager extends ProjectWebServices {
         reiDriver.WaitFor().magicWait(By.xpath("//div[@id='Attachmentadd']//td[text()='" + fileNameFromWorkSpace + "']/..//input")).click();
         govgrants.modal().clickModalContentSpecificButton("Attach");
         govgrants.modal().closeModalByClickingTopRightCloseButton();
+    }
+
+    /**
+     * save file using robot class
+     *
+     * @throws AWTException
+     */
+    public void saveFile() throws AWTException {
+        reiDriver.switchTo().switchToWindowHandler(1);
+        reiDriver.WaitFor().makeThreadSleep(20000);
+        reiDriver.RobotActions().ctrl_Save();
+        reiDriver.WaitFor().makeThreadSleep(2000);
+        reiDriver.RobotActions().Robot_Enter();
+        reiDriver.WaitFor().makeThreadSleep(20000);
+    }
+
+    public void clickRightHeaderBars(String title) {
+        govgrants.phasePannel().clickParallelMenuBars(title);
+    }
+
+    public void assertThatFileIsDownloaded(String fileType){
+        File file = new File(System.getProperty("user.dir") + "\\target");
+        File[] directory = reiDriver.file().getCompleteFilesListOnLocalDirectory(file.getAbsolutePath());
+        for (File files : directory) {
+            if (files.getName().endsWith(".tmp")) {
+                new File(files.getAbsolutePath().toString())
+                        .renameTo(new File(file.getAbsolutePath() + "govgrant."+fileType+""));
+                break;
+            }
+        }
+        Assert.assertTrue(new File(file.getAbsolutePath() + "govgrant."+fileType+"").exists());
     }
 }

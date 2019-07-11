@@ -93,5 +93,19 @@ public class GenericSteps {
         projectManager.uploadAttachmentFromWorkspace(fileNameToBeUpload);
     }
 
+    @When("^I download the file$")
+    public void saveTheFileToProjectRoot() throws Throwable {
+        projectManager.saveFile();
+    }
+
+    @When("^I click on top right parallel lines bar for \"([^\"]*)\"$")
+    public void clickTopRightParallelLinesBar(String title) {
+        projectManager.clickRightHeaderBars(title);
+    }
+
+    @Then("^I verify that \"([^\"]*)\" file is downloaded$")
+    public void iVerifyThatPdfFileIsDownloaded(String fileType) {
+        projectManager.assertThatFileIsDownloaded(fileType);
+    }
 
 }
