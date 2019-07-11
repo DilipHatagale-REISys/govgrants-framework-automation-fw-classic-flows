@@ -1456,6 +1456,6 @@ Feature: Validate all scenarios in the Award from FDM
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
     And I click toggle button to select "Draft Grants"
-    When I perform quick search for "Automation Announcement for FDM" in "---subAward_StandAlone:-:active_Grants_TableId---" panel
-    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAward_StandAlone:-:active_Grants_TableId---"
+    When I perform quick search for "Automation Announcement for FDM" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     Then I compare field "Advance Payment Allowed?" from sub tab "Overview" with expected field
