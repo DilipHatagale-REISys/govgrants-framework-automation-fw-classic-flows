@@ -1072,7 +1072,7 @@ Scenario: Submitting Desk Review for approval Org level
 	Then I see the following messages in the page details :
       |Source is Required to save under Overview.|
 
-  @notifyButtonDeskReviewOrgLevel @smoke @deepika
+  @55803 @notifyButtonDeskReviewOrgLevel @smoke @deepika
   Scenario: User will be able to view the Notify button on the Desk review Page
     Given I navigate to "Related Log" sub tab
 	And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
