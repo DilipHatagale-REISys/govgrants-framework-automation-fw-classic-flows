@@ -253,18 +253,15 @@ public class ProjectManager extends ProjectWebServices {
 
     }
 
-    public By subTab(String subTabName) {
-        return By.xpath("//div[@id='myTabs']//li//span[text()='"+ subTabName+"']/ancestor::li[1]");
-    }
-
     /**
      *
      * @param subTabName
-     * @param assertcan - can see | cannot see
+     * @param canSee - can see | cannot see
      */
-    public void AssertSubTabDisplayed(String subTabName,boolean assertcan){
-        List<WebElement> elements = reiDriver.findMyElement().getElements(subTab(subTabName));
-        if (assertcan) {
+    public void assertThatSubTabDisplayed(String subTabName,boolean canSee){
+        By subTab = By.xpath("//div[@id='myTabs']//li//span[text()='"+ subTabName+"']/ancestor::li[1]");
+        List<WebElement> elements = reiDriver.findMyElement().getElements(subTab);
+        if (canSee) {
             Assert.assertNotEquals(elements.size(), 0);
         } else {
             Assert.assertEquals(elements.size(), 0);

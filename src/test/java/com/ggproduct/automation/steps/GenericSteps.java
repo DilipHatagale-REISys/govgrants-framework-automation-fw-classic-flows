@@ -109,9 +109,8 @@ public void iVerifyThatPdfFileIsDownloaded(String fileType) {
         }
 
 @Description("To verify sub tab is displayed or not")
-@Then("^I can see \"([^\"]*)\" sub tab$")
+@Then("^I (can see | cannot see) \"([^\"]*)\" sub tab$")
 public void iCanSeeSubTab(String usage,String subTabName)  {
-        projectManager.AssertSubTabDisplayed(subTabName,"can see".equalsIgnoreCase(usage));
+        projectManager.assertThatSubTabDisplayed(subTabName,"can see".equalsIgnoreCase(usage));
         }
-
 }
