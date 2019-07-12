@@ -253,7 +253,7 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     public By subTab(String subTabName) {
-        return By.xpath("//div[@id='myTabs']//li//span[text()='\"+ subTabName+\"']/ancestor::li[1]");
+        return By.xpath("//div[@id='myTabs']//li//span[text()='"+ subTabName+"']/ancestor::li[1]");
     }
 
     /**

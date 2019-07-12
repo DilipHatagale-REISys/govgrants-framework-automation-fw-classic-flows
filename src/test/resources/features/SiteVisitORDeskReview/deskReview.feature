@@ -1148,3 +1148,43 @@ Feature: Validate all scenarios in Desk Review
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
     And I click on "View" icon for "Record Id" inside table
     Then I can see top right button "Accept and Close" in page detail
+    
+  @55791 @internalUserParticipantAssociationDeskReview @deepika
+  Scenario Outline: Internal User participant Association of Desk Review
+    Given I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
+    When I click "Associate" after selection of "<Internal>" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I close Modal
+    Then I see that "<Internal>" has been added in flextable with Id "---deskreview:-:participantsTableId---"
+    Examples:
+      | Internal       |
+      | Automation EXE |
+
+  @55801 @notifySButtonDeskReview @deepika
+  Scenario: User will be able to view the Notify button on the Desk review Page
+    Given I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
+      | Role             | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+    Given I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
+    When I click "Associate" after selection of "Automation EXE" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I close Modal
+    Then I can see top right button "Notify" in page detail 
+    
+  @55804 @conductButtonDeskReview @deepika
+  Scenario: User will be able to view the Conduct button on the Desk Review to complete the action items
+    Given I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
+      | Role             | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+    Given I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
+    When I click "Associate" after selection of "Automation EXE" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I close Modal
+    And I click on "Notify" in the page details
+    Then I can see top right button "Conduct" in page detail 
+    
+    

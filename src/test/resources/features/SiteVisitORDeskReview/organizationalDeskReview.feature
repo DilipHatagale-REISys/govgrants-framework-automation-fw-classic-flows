@@ -30,7 +30,7 @@ Scenario: Validate the edition of Desk Review Org level
 	Then I see status in Progress-bar is "Created" and is "green" 
     
 @54294 @participantAssociationOrganizationalDeskReview @smoke @deepika
-Scenario Outline: Participant Association of Organizational Desk Review 
+Scenario Outline: Subrrecipient Participant Association of Organizational Desk Review 
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Creation" values from "Organizational_DeskReview_Field_Values.xlsx"
@@ -43,7 +43,7 @@ Scenario Outline: Participant Association of Organizational Desk Review
 	Then I see that "<Subrecipient>" has been added in flextable with Id "---orgLevelDeskReview:-:associateContactsId---" 
 	Examples: 
 		| Subrecipient   |
-		| Automation SPI |
+		| Automation SPA |
       
 @54210 @monitoringTypeFiscalDR @deepika
 Scenario: Validate the Monitoring type 'Fiscal' for Organizational Desk Review
@@ -1030,8 +1030,96 @@ Scenario: Submitting Desk Review for approval Org level
     When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
     Then I see that "Approve Desk Review Org" has been added in flextable with Id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
 
+  @55793 @internalUserParticipantOrganizationalDeskReview @smoke @deepika
+  Scenario Outline: Internal User participant Association of Organizational Desk Review 
+    Given I navigate to "Related log" sub tab
+    And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
+    And I enter "Creation" values from "Organizational_DeskReview_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    When I click on "Save" in the page details 
+	When I navigate to "Overview" sub tab 
+	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---" 
+	When I click "Associate" after selection of "<User>" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---" 
+	And I close Modal 
+	Then I see that "<User>" has been added in flextable with Id "---orgLevelDeskReview:-:associateContactsId---" 
+	Examples: 
+		| User           |
+		| Automation EXE |
+		
+  @55797 @organizationalDeskReviewPurpose @deepika
+  Scenario: Validate the Purpose of Desk Review Org level
+    Given I navigate to "Related log" sub tab
+    And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
+    And I enter "Creation" values from "Organizational_DeskReview_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    When I click on "Cancel" in the page details 
+	When I click on "Edit" in the page details 
+	And I enter "Edition1" values from "Organizational_DeskReview_Field_Values.xlsx" 
+	When I click on "Save" in the page details
+	Then I see the following messages in the page details :
+      |Purpose is Required to save under Overview.|
+      
+  @55798 @organizationalDeskReviewSource @deepika
+  Scenario: Validate the Source of Desk Review Org level
+    Given I navigate to "Related log" sub tab
+    And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
+    And I enter "Creation" values from "Organizational_DeskReview_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    When I click on "Cancel" in the page details 
+	When I click on "Edit" in the page details 
+	And I enter "Edition1" values from "Organizational_DeskReview_Field_Values.xlsx" 
+	When I click on "Save" in the page details
+	Then I see the following messages in the page details :
+      |Source is Required to save under Overview.|
 
-
-
+  @notifyButtonDeskReviewOrgLevel @smoke @deepika
+  Scenario: User will be able to view the Notify button on the Desk review Page
+    Given I navigate to "Related Log" sub tab
+	And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
+	And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
+	When I click modal button "Save and Continue"
+	  When I click on "Cancel" in the page details 
+	When I click on "Edit" in the page details 
+	And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx" 
+	When I click on "Save" in the page details  
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "Edit" :
+      | Responsibilities | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+    When I navigate to "Overview" sub tab
+	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---" 
+	When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---" 
+	And I close Modal
+	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+	When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
+	And I close Modal 
+    Then I can see top right button "Notify" in page detail 
+    
+  @55806 @conductButtonDeskReviewOrgLevel @smoke @deepika
+  Scenario: User will be able to view the Conduct button on the Desk Review to complete the action items
+    Given I navigate to "Related Log" sub tab
+	And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
+	And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
+	When I click modal button "Save and Continue"
+	When I click on "Cancel" in the page details 
+	When I click on "Edit" in the page details 
+	And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx" 
+	When I click on "Save" in the page details  
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "Edit" :
+      | Responsibilities | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+    When I navigate to "Overview" sub tab
+	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---" 
+	When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---" 
+	And I close Modal
+	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+	When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
+	And I close Modal 
+    When I get the "EGMS ID"
+    And I click on "Notify" in the page details
+    Then I can see top right button "Conduct" in page detail 
     
 
