@@ -1697,3 +1697,13 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I select "Download as XLS" from parallel lines dropdown of "Progress Reports Schedule"
     And I download the file
     Then I verify that "xls" file is downloaded
+
+  @55290 @SelectDesiredFrequencyAsMonth @jitendra
+  Scenario: Verify While creating schedule user should be allowed to select the Desired Frequency as Monthly
+    And I navigate to "Management" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAward_StandAlone:-:progressReportScheduleTableId---"
+    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    And I expand nested table containing column value "Progress Report"
+    Then I see total records count "Total Records:12" in flex table "---subAwardStandAlone:-:progressReportScheduleTableId---"
