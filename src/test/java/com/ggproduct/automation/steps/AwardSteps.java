@@ -7,9 +7,11 @@ import com.ggproduct.automation.pageobjects.AwardPage;
 
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 import eyethink.automation.bots.controller.Controller;
 import eyethink.automation.bots.controller.CoreHandlers;
 import eyethink.automation.bots.exception.EyeThinkBotsCustomException;
+import org.springframework.context.annotation.Description;
 
 public class AwardSteps {
     AwardPage awardPage;
@@ -41,5 +43,11 @@ public class AwardSteps {
     @Given("^The subrecipient user \"([^\"]*)\" accepts the award \"([^\"]*)\" with comments \"([^\"]*)\"$")
     public void acceptanceOfAward(String subrecipientUser, String awardName, String comments, DataTable dataTable) throws IOException, EyeThinkBotsCustomException {
         awardPage.acceptanceOfAward(subrecipientUser, awardName, comments, dataTable);
+    }
+
+    @Description("To verify no of rows checked for field name")
+    @Then("^I can see \"([^\"]*)\" record value is checked for field name \"([^\"]*)\"$")
+    public void iCanSeeRecordValueIsCheckedForFieldName(String count, String fieldName) {
+        awardPage.AssertFieldValueIsChecked(fieldName,count);
     }
 }

@@ -1,6 +1,7 @@
 package com.ggproduct.automation.pageobjects;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import com.automation.rei.handlers.GovGrantsHandler;
@@ -10,6 +11,9 @@ import cucumber.api.DataTable;
 import eyethink.automation.bots.controller.Controller;
 import eyethink.automation.bots.controller.CoreHandlers;
 import eyethink.automation.bots.exception.EyeThinkBotsCustomException;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 public class AwardPage extends ProjectManager {
     public AwardPage(Controller controller, CoreHandlers handler, GovGrantsHandler govgrants) {
@@ -122,4 +126,21 @@ public class AwardPage extends ProjectManager {
         }
         enteringCommentsOnConfirmation(comments, dataTableMap.get("Acceptance").get("Step 4"));
     }
+
+    /**
+     * To get the count of row values checked for field available in flex table
+     * @param fieldName - Field API name
+     * @return
+     */
+    private int getCheckedFieldValueCount(String fieldName){
+        reiDriver.WaitFor().magicWait(By.xpath("//field[@field-name='"+fieldName+"']/i[contains(@class,'fa-check')]"));
+        List<WebElement> checkSymbol = reiDriver.findMyElement().getElements(By.xpath("//field[@field-name='"+fieldName+"']/i[contains(@class,'fa-check')]"));
+        return checkSymbol.size();
+    }
+
+    public void AssertFieldValueIsChecked(String fieldName,String count){
+        Assert.assertEquals(Integer.parseInt(count),getCheckedFieldValueCount(fieldName));
+    }
+
+
 }
