@@ -137,7 +137,7 @@ Scenario: Validate the participants for the Desk Review Org Level
     Then I see that "Automation Desk Review Org level" is in "Notified" status
     
  @54460 @notifyPendingTaskForSubrecipientDeskReviewOrgLevel @deepika
-  Scenario: Subrecipient pending task check for Desk Review Org Level
+  Scenario: The respective POC from the applicant organization will receive a pending task about the Desk review 
     Given I navigate to "Related Log" sub tab
 	And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
 	And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
@@ -1121,5 +1121,98 @@ Scenario: Submitting Desk Review for approval Org level
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     Then I can see top right button "Conduct" in page detail 
+    
+  @55867 @subrecipientCannotSeeReportAndOutcomesWhenInNotifiedStatusOrgDR @deepika
+  Scenario: Desk Review Applicant is not able to view the report or outcomes while in the Notified status.
+    Given I navigate to "Related Log" sub tab
+	And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
+	And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
+	When I click modal button "Save and Continue"
+	  When I click on "Cancel" in the page details 
+	When I click on "Edit" in the page details 
+	And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx" 
+	When I click on "Save" in the page details 
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "Edit" :
+      | Responsibilities | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+    When I navigate to "Overview" sub tab
+	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---" 
+	When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---" 
+	And I close Modal
+	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+	When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
+	And I close Modal 
+    When I get the "EGMS ID"
+    And I click on "Notify" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "PendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside table
+    Then I cannot see "Reports and Outcomes" sub tab
+    
+  @55873 @recipientsCannotCreateOutcomesOrgDR @deepika
+  Scenario: Recipients will not be able to create / edit the Outcomes. 
+    Given I navigate to "Related Log" sub tab
+	And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
+	And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
+	When I click modal button "Save and Continue"
+	  When I click on "Cancel" in the page details 
+	When I click on "Edit" in the page details 
+	And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx" 
+	When I click on "Save" in the page details 
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "Edit" :
+      | Responsibilities | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+    When I navigate to "Overview" sub tab
+	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---" 
+	When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---" 
+	And I close Modal
+	And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+	When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
+	And I close Modal 
+    When I get the "EGMS ID"
+    And I click on "Notify" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "PendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside table
+    Then  I cannot see top right button "New" in flex table with id "---orgLevelDeskReview:-:correctiveTableId---"
+    
+  @deskReviewWithoutFormFillingOrgLevel @deepika
+  Scenario: User will not be able to submit the Desk Review for approval without completed forms
+    Given I navigate to "Related Log" sub tab
+    And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
+    And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    When I click on "Cancel" in the page details
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "Edit" :
+      | Responsibilities | Name          | Description                 |
+      | Program Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver  | Automation PM | Automation Test Description |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
+    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
+    And I close Modal
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    And I close Modal
+    When I get the "EGMS ID"
+    And I click on "Notify" in the page details
+    When I click on "Conduct" in the page details
+    When I click on "Submit for Approval" in the page details
+    And I pause execution
+    Then I see the following messages in the page details :
+      |Reports and Outcomes Tab - Forms need to be validated before the site visit is submitted.|
+    
     
 

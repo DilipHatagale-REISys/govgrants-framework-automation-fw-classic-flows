@@ -108,9 +108,4 @@ public class GenericSteps {
         projectManager.assertThatFileIsDownloaded(fileType);
     }
 
-    @Description("To verify sub tab is displayed or not")
-    @Then("^I (can see|cannot see) \"([^\"]*)\" sub tab$")
-    public void iCannotSeeSubTab(String usage,String subTabName) {
-        projectManager.assertThatSubTabDisplayed(subTabName,"can see".equalsIgnoreCase(usage));
-    }
 }

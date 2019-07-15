@@ -8,7 +8,7 @@ Feature: Validate all scenarios in the Site Visit
     When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
-    When I navigate to "SubawardS" sub tab
+    When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
     Given I navigate to "Management" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
@@ -50,7 +50,7 @@ Feature: Validate all scenarios in the Site Visit
     Then I see that "<Program Approver Name>" has been added in flextable with Id "---sitevisits:-:approverSiteVisitTableId---"
     Examples:
       | Program Approver Name |
-      | Automation PM         |
+      | Automation EXE        |
 
   @51085 @notifySubrecipientSiteVisit @smoke
   Scenario: Notify Subrecipient about the Site Visit
@@ -67,7 +67,7 @@ Feature: Validate all scenarios in the Site Visit
     Then I see that "Automation Site Visit" is in "Notified" status
 
   @51086 @notifyPendingTaskForSubrecipientSiteVisit
-  Scenario: Subrecipient pending task check for Site Visit
+  Scenario: The respective POC from the applicant organization will receive a pending task about the Site Visit
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -1289,5 +1289,33 @@ Feature: Validate all scenarios in the Site Visit
     And I close Modal
     And I click on "Notify" in the page details
    Then I can see top right button "Conduct" in page detail 
+   
+  @55872 @recipientsCannotCreateOutcomesSV @deepika
+  Scenario: Recipients will not be able to create / edit the Site Visit Outcomes. 
+    Given I navigate to "Responsibilities" sub tab
+    When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
+      | Role             | Name          | Description                 |
+      | Program Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+    When I get the "EGMS ID"
+    Given I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
+    When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
+    And I close Modal
+    And I click on "Notify" in the page details
+    When I click on "Conduct" in the page details
+    Given I am on "SUBPORTAL" portal
+    When I login as "SPI" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "Record Id" inside table
+    And I navigate to "Reports and Outcomes" sub tab
+    Then  I cannot see top right button "New" in flex table with id "---sitevisits:-:correctiveTableId---"
       
       

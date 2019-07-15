@@ -70,7 +70,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click modal button "Save and Continue"
     Then I see field "Desk Review Type" as "Application"
 
-  @54427    @orgSiteVisitTypeAward @deepika
+  @54427 @orgSiteVisitTypeAward @deepika
   Scenario: Validate the Site Visit type Award
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -136,7 +136,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     Then I see that "Automation Site Visit Org level" is in "Notified" status
 
   @54455 @notifyPendingTaskForSubrecipientSiteVisitOrgLevel @deepika
-  Scenario: Subrecipient pending task check for Site Visit Org Level
+  Scenario: The respective POC from the applicant organization will receive a pending task about the Site Visit
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
     And I enter "Creation" values from "Organizational_SiteVisit_Field_Values.xlsx"
@@ -1119,4 +1119,99 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     Then I can see top right button "Conduct" in page detail 
+    
+  @55868 @subrecipientCannotSeeReportAndOutcomesWhenInNotifiedStatusOrgSV @deepika
+  Scenario: Site Visit Applicant is not able to view the report or outcomes while in the Notified status.
+    Given I navigate to "Related log" sub tab
+    And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
+    And I enter "Creation" values from "Organizational_SiteVisit_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    When I click on "Cancel" in the page details
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Organizational_SiteVisit_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
+      | Responsibilities | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
+    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    And I close Modal
+    And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Application" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    And I close Modal
+    When I get the "EGMS ID"
+    And I click on "Notify" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "PendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside table
+    Then I cannot see "Reports and Outcomes" sub tab
+    
+  @55871 @recipientsCannotCreateOutcomesOrgSV @deepika
+  Scenario: Recipients will not be able to create / edit the Outcomes. 
+    Given I navigate to "Related log" sub tab
+    And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
+    And I enter "Creation" values from "Organizational_SiteVisit_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    When I click on "Cancel" in the page details
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Organizational_SiteVisit_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
+      | Responsibilities | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
+    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    And I close Modal
+    And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Application" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    And I close Modal
+    When I get the "EGMS ID"
+    And I click on "Notify" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "PendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside table
+    And I navigate to "Reports and Outcomes" sub tab
+    Then  I cannot see top right button "New" in flex table with id "---orgLevelSiteVisits:-:correctiveTableId---"
+    
+  @siteVisitWithoutFormFillingOrgLevel @deepika
+  Scenario: User will not be able to submit the Site Visit for approval without completed forms
+     Given I navigate to "Related log" sub tab
+    And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
+    And I enter "Creation" values from "Organizational_SiteVisit_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    When I click on "Cancel" in the page details
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Organizational_SiteVisit_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
+      | Responsibilities | Name          | Description                 |
+      | Program Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver  | Automation PM | Automation Test Description |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
+    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    And I close Modal
+    And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Application" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    And I close Modal
+    When I get the "EGMS ID"
+    And I click on "Notify" in the page details
+    When I click on "Conduct" in the page details
+    When I click on "Submit for Approval" in the page details
+    Then I see the following messages in the page details :
+      |Reports and Outcomes Tab - Fill all the required data in the form before submitting.|   
+    
+
+    
       
