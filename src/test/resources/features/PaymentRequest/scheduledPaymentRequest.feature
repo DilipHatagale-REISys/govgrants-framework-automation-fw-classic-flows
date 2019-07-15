@@ -32,12 +32,12 @@ Feature: Scheduled Payment Request Happy Path
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:grantorAwardTableId---"
-    And I navigate to "Requests" sub tab
+    And I navigate to "Actuals" sub tab
     Given I click on "View" icon for "Submitted to Grantor" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---"
     And I navigate to "Financials" sub tab
     Given I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account | Net Spent This Action |
-      | FA--01          | 20                    |
+      | FA--03          | 20                    |
     And I get the "EGMS ID"
     When I navigate to "Responsibilities" tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :

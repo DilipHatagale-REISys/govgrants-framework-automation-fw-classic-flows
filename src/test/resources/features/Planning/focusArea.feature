@@ -5,30 +5,30 @@ Feature: Validate all scenarios in Focus Area
     Given I delete the record "Automation Execution Focus Area" from the object "Focus Area"
 
   @34512 @creationOfFocusArea @smoke
-  Scenario: Creation of Focus Area
-    Given I login to "As a Grantor" app as "EXE" user
+  Scenario: Creation of Focus Area by User - Admin/EXE/PM
+    Given I login to "As a Grantor" app as "User" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
     When I enter value "Automation Execution Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
-    Then I see status in Progress-bar is "Created" and is "green"
+    Then I see status in Progress-bar is "Created" and is "Green"
 
   @50963 @editionOfFocusArea @smoke
-  Scenario: Edition of Focus Area
-    Given I login to "As a Grantor" app as "EXE" user
+  Scenario: Edition of Focus Area by User - Admin/EXE/PM
+    Given I login to "As a Grantor" app as "User" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
     When I enter value "Automation Execution Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
-    When I enter "Edition" values from "FocusArea_Field_Values.xlsx"
+    When I enter value "Automation Test Description" into field "Description__c"
     And I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
   @50961 @addAttachmentToFocusArea
-  Scenario: Addition of Attachment to Focus Area
-    Given I login to "As a Grantor" app as "EXE" user
+  Scenario: Addition of Attachment to Focus Area by User - Admin/EXE/PM
+    Given I login to "As a Grantor" app as "User" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
@@ -40,8 +40,8 @@ Feature: Validate all scenarios in Focus Area
     Then I see "Supporting Documents" has been added in "Attachments" flex table
 
   @34729 @activateFocusArea @smoke
-  Scenario: Activate Focus Area
-    Given I login to "As a Grantor" app as "EXE" user
+  Scenario: Activate Focus Area by User - Admin/EXE/PM
+    Given I login to "As a Grantor" app as "User" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
@@ -49,22 +49,22 @@ Feature: Validate all scenarios in Focus Area
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     When I click on "Activate" in the page details
-    Then I see status in Progress-bar is "Active" and is "green"
+    Then I see status in Progress-bar is "Active" and is "Green"
 
   @50962 @focusAreaHappyPath @smoke
-  Scenario: Happy Path of Focus Area
-    Given I login to "As a Grantor" app as "EXE" user
+  Scenario: Happy Path of Focus Area by User - Admin/EXE/PM
+    Given I login to "As a Grantor" app as "User" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
     When I enter value "Automation Execution Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
-    When I enter "Edition" values from "FocusArea_Field_Values.xlsx"
+    When I enter value "Automation Test Description" into field "Description__c"
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Supporting Documents"
     When I click on "Activate" in the page details
-    Then I see status in Progress-bar is "Active" and is "green"
+    Then I see status in Progress-bar is "Active" and is "Green"
 
   @52455 @creationOFFocusAreaFOUser @smoke
   Scenario: Negative Scenario-Verify that FO is not able to create focus area
@@ -75,7 +75,7 @@ Feature: Validate all scenarios in Focus Area
 
   @52461 @userFOEditfocusArea @smoke
   Scenario: Negative Case-Verfiy that FO user cannot Edit  the record
-    Given I login to "As a Grantor" app as "EXE" user
+    Given I login to "As a Grantor" app as "User" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
@@ -91,7 +91,7 @@ Feature: Validate all scenarios in Focus Area
 
   @52620 @userFODeletefocusArea @smoke
   Scenario: Negative Case-Verfiy that FO user cannot Delete the record
-    Given I login to "As a Grantor" app as "EXE" user
+    Given I login to "As a Grantor" app as "User" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
@@ -105,35 +105,29 @@ Feature: Validate all scenarios in Focus Area
     When I perform quick search for "Automation Execution Focus Area" in "---focusarea:-:focusAreaTableId---" panel
     Then I cannot see row level action button "Delete" against "Automation Execution Focus Area" in flex table with id "---focusarea:-:focusAreaTableId---"
 
-  @52474 @deactivatingfocusArea @smoke
-  Scenario: Verfiy deactivating focus area
-    Given I login to "As a Grantor" app as "EXE" user
+  @53220 @deactivatingfocusArea @smoke
+  Scenario: Verfiy deactivating focus area by user - Admin/EXE/PM
+    Given I login to "As a Grantor" app as "User" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
     When I enter value "Automation Execution Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
-    When I click on "Save" in the page details
-    And I get the "EGMS ID"
-    When I click on "Edit" in the page details
-    And I enter "Edition" values from "FocusArea_Field_Values.xlsx"
+    When I enter value "Automation Test Description" into field "Description__c"
     When I click on "Save" in the page details
     When I click on "Activate" in the page details
     And I click on "Deactivate" in the page details
     Then I see status in Progress-bar is "Closed" and is "Green"
 
-  @52475 @foUserdeactivatingfocusArea @smoke
+  @53221 @foUserdeactivatingfocusArea @smoke
   Scenario: Negative Case- Verfiy that other users (other than Admin, EXE, PM) can not deactivate focus area
-    Given I login to "As a Grantor" app as "EXE" user
+    Given I login to "As a Grantor" app as "User" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
     When I enter value "Automation Execution Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
-    When I click on "Save" in the page details
-    And I get the "EGMS ID"
-    When I click on "Edit" in the page details
-    And I enter "Edition" values from "FocusArea_Field_Values.xlsx"
+    When I enter value "Automation Test Description" into field "Description__c"
     When I click on "Save" in the page details
     When I click on "Activate" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -145,17 +139,14 @@ Feature: Validate all scenarios in Focus Area
     Then I cannot see top right button "Deactivate" in page detail
 
   @52476 @closedfocusAreaListView @smoke
-  Scenario: Verfiy that user can see Closed Focus Area under Inactive Focus Area list view.
-    Given I login to "As a Grantor" app as "EXE" user
+  Scenario: Verfiy that user can see Closed Focus Area under Inactive Focus Area list view (Admin/EXE/PM)
+    Given I login to "As a Grantor" app as "User" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
     When I enter value "Automation Execution Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
-    When I click on "Save" in the page details
-    And I get the "EGMS ID"
-    When I click on "Edit" in the page details
-    And I enter "Edition" values from "FocusArea_Field_Values.xlsx"
+    When I enter value "Automation Test Description" into field "Description__c"
     When I click on "Save" in the page details
     When I click on "Activate" in the page details
     And I click on "Deactivate" in the page details

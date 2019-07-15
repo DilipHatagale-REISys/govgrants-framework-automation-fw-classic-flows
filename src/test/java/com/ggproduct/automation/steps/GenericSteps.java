@@ -42,7 +42,7 @@ public class GenericSteps {
 
     @Description("To verify field value is blank in flex table")
     @Then("^I see field name \"([^\"]*)\" is blank in flex table$")
-    public void iSeeFieldNameIsBlank(String fieldname){
+    public void iSeeFieldNameIsBlank(String fieldname) {
         projectManager.assertColumnValuIsBlank(fieldname);
     }
 
@@ -53,43 +53,43 @@ public class GenericSteps {
     }
 
     @Then("^I (can see|cannot see) page block \"([^\"]*)\"$")
-    public void iCanSeeCannotSeePageBlock(String usage,String pageblockName)  {
-        projectManager.AssertPageBlockDisplayed(pageblockName,"can see".equalsIgnoreCase(usage));
+    public void iCanSeeCannotSeePageBlock(String usage, String pageblockName) {
+        projectManager.AssertPageBlockDisplayed(pageblockName, "can see".equalsIgnoreCase(usage));
     }
 
     @Description("To capture message on approval decision box")
     @Then("^I see the message \"([^\"]*)\" on approval decision box$")
-    public void iSeeTheMessageOnApprovalDecisionBox(String message)  {
+    public void iSeeTheMessageOnApprovalDecisionBox(String message) {
         projectManager.captureMessageOnApprovalDecisionBox(message);
     }
 
     @Description("To get the field value from page block")
     @And("^I get the field value \"([^\"]*)\" from sub tab \"([^\"]*)\"$")
-    public void iGetTheFieldValueFromSubTab(String fieldName, String subTabName)  {
-        projectManager.getFieldValue(fieldName,subTabName);
+    public void iGetTheFieldValueFromSubTab(String fieldName, String subTabName) {
+        projectManager.getFieldValue(fieldName, subTabName);
     }
 
     @Description("To compare two different field values")
     @Then("^I compare field \"([^\"]*)\" from sub tab \"([^\"]*)\" with expected field$")
-    public void iCompareFieldFromSubTabWithExpectedField(String fieldName, String subTabName)  {
-        projectManager.assertTwoFieldValues(fieldName,subTabName);
+    public void iCompareFieldFromSubTabWithExpectedField(String fieldName, String subTabName) {
+        projectManager.assertTwoFieldValues(fieldName, subTabName);
     }
 
     @Description("To check no records displayed in flex table")
     @Then("^I see \"([^\"]*)\" inside flex table with id \"([^\"]*)\";$")
-    public void iSeeInsideFlexTableWithId(String text, String tableID)  {
-        Assert.assertTrue(projectManager.isRecordPresentInTheFlexTable(text,tableID));
+    public void iSeeInsideFlexTableWithId(String text, String tableID) {
+        Assert.assertTrue(projectManager.isRecordPresentInTheFlexTable(text, tableID));
     }
 
     @Description("To verify text under attachment flex table")
     @Then("^I see \"([^\"]*)\" has been added in \"([^\"]*)\" flex table$")
     public void iSeeHasBeenAddedInFlexTable(String valueToBeSearch, String flexTableHeader) {
-        projectManager.AssertFieldValueIsPresentInFlexTable(valueToBeSearch,flexTableHeader);
+        projectManager.AssertFieldValueIsPresentInFlexTable(valueToBeSearch, flexTableHeader);
     }
 
     @Description("To upload attachment from default workspace")
     @And("^I upload attachment \"([^\"]*)\" from workspace$")
-    public void iUploadAttachmentFromWorkspace(String fileNameToBeUpload)  {
+    public void iUploadAttachmentFromWorkspace(String fileNameToBeUpload) {
         projectManager.uploadAttachmentFromWorkspace(fileNameToBeUpload);
     }
 
