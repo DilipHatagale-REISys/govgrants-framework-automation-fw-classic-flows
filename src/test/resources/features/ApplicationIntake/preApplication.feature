@@ -34,7 +34,7 @@ Feature: Validate all scenarios in the Pre-Application
   Scenario: Addition of budget in the budget grid to an pre-application
     When I navigate to "Budget" sub tab
     And I expand nested table containing column value "BP01"
-    When I edit the following rows inline in flex table with id "---pre-application:-:pre_application_attachment_id---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---pre-application:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 1000       | 5000           | 100            |
     Then I see the following messages in the page details contains:
@@ -58,12 +58,12 @@ Feature: Validate all scenarios in the Pre-Application
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
     Given I expand nested table containing column value "BP01"
-    And I edit the following rows inline in flex table with id "---pre-application:-:pre_application_attachment_id---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---pre-application:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000        | 50            | 100            |
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
-    When I click on "Attach" icon for "Not Applicable" inside flex table with id "PreAppRecipientChecklistsgrid"
+    When I click on "Attach" icon for "Not Applicable" inside flex table with id "---pre-application:-:recipientCheckListGridId---"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
     When I click on "Submit to Grantor" in the page details
@@ -75,12 +75,12 @@ Feature: Validate all scenarios in the Pre-Application
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
     Given I expand nested table containing column value "BP01"
-    And I edit the following rows inline in flex table with id "EnhancePreApplicationProjectsAndBudgetCategoriesgrid" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---pre-application:-:budgetCategoryGridTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000        | 50            | 100            |
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
-    When I click on "Attach" icon for "Not Applicable" inside flex table with id "PreAppRecipientChecklistsgrid"
+    When I click on "Attach" icon for "Not Applicable" inside flex table with id "---pre-application:-:recipientCheckListGridId---"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
     When I click on "Submit to Grantor" in the page details
@@ -99,12 +99,12 @@ Feature: Validate all scenarios in the Pre-Application
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
     Given I expand nested table containing column value "BP01"
-    And I edit the following rows inline in flex table with id "---pre-application:-:pre_application_attachment_id---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---pre-application:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget  | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000    | 5000       | 50             | 100            |
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
-    When I click on "Attach" icon for "Not Applicable" inside flex table with id "PreAppRecipientChecklistsgrid"
+    When I click on "Attach" icon for "Not Applicable" inside flex table with id "---pre-application:-:recipientCheckListGridId---"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
     When I click on "Submit to Grantor" in the page details
