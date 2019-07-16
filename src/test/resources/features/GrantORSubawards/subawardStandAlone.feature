@@ -1661,7 +1661,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   @55298 @DownloadProgressReportInPDF @jitendra
   Scenario: Validate user can Download the progress created Report in PDF format.
     And I navigate to "Management" sub tab
-    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAward_StandAlone:-:progressReportScheduleTableId---"
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close modal by clicking the top right x button
@@ -1672,8 +1672,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 
   @55306 @DownloadProgressReportInXLS @jitendra
   Scenario: Validate user can Download the progress created Report in PDF format.
-    And I navigate to "Management" sub tab
-    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAward_StandAlone:-:progressReportScheduleTableId---"
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close modal by clicking the top right x button
@@ -1684,10 +1684,39 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 
   @55290 @SelectDesiredFrequencyAsMonth @jitendra
   Scenario: Verify While creating schedule user should be allowed to select the Desired Frequency as Monthly
-    And I navigate to "Management" sub tab
-    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAward_StandAlone:-:progressReportScheduleTableId---"
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
     Then I see total records count "Total Records:12" in flex table "---subAwardStandAlone:-:progressReportScheduleTableId---"
+
+  @55301 @SelectDesiredFrequencyAsQuarterly @jitendra
+  Scenario: Verify While creating schedule user should be allowed to select the Desired Frequency as Quarterly.
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "Progress Report Quarterly" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    And I expand nested table containing column value "Progress Report"
+    Then I see total records count "Total Records:4" in flex table "---subAwardStandAlone:-:progressReportSchedulesId---"
+
+  @55293 @ScheduleEndDateAfterStartDate @jitendra
+  Scenario: Verify While creating schedule user is not allowed to select the Schedule End Date after Project Period End Date.
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "ScheduledEndDateAfterStartDate" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    Then I see the following messages in the page details contains:
+      | Schedule End date cannot be after Project Period End Date |
+
+  @55300 @SelectDesiredFrequencyAsBiMonthly @jitendra
+  Scenario: Verify While creating schedule user should be allowed to select the Desired Frequency as Bi Monthly.
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "Progress Report BiMonthly" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
+    And I expand nested table containing column value "Progress Report"
+    Then I see total records count "Total Records:6" in flex table "---subAwardStandAlone:-:progressReportSchedulesId---"
