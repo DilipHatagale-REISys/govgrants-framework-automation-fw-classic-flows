@@ -45,10 +45,6 @@ public class ProjectManager extends ProjectWebServices {
 
     /******* "Key Methods with complete functionality" *****************/
 
-    public void getRecordId(String recordIdLabel) {
-        govgrants.pageDetails().getFieldValue(recordIdLabel);
-    }
-
     /*
      * Handles association of various related records
      *

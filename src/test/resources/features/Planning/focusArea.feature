@@ -73,7 +73,7 @@ Feature: Validate all scenarios in Focus Area
     And I navigate to "Focus Areas" content inside "Planning" subheader on left panel
     Then  I cannot see top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
 
-  @52461 @userFOEditfocusArea @smoke
+  @53219 @userFOEditfocusArea @smoke
   Scenario: Negative Case-Verfiy that FO user cannot Edit  the record
     Given I login to "As a Grantor" app as "User" user
     When I navigate to "Planning" tab

@@ -1,5 +1,5 @@
 @scheduledPaymentRequest @regression
-Feature: Scheduled Payment Request Happy Path
+Feature: Scheduled Reimbursement Payment Request Scenarios
 
   @51076 @scheduledReimbursementPaymentRequestHappyPath @smoke
   Scenario Outline: Scheduled Payment Request happy path
@@ -54,26 +54,27 @@ Feature: Scheduled Payment Request Happy Path
       | Award Name                 | Grant Name                 |
       | Automation Permanent Award | Automation Permanent Award |
 
-  @38313 @taskCreationForSPIUser @mahadev
-  Scenario Outline: Scheduled Payment Request happy path
+  @38313 @taskCreationForSubrecipientUser @mahadev
+  Scenario Outline: Validate task is getting created for SPI user
     Given I delete the record "<Award Name>" from the object "Payment Request"
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
     When I create a post award record "PaymentRequest" for the Award "Automation Permanent Award" having object api name as "PaymentRequest__c"
     And I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI" user
+    When I login to "Grants Portal" app as "<Login User>" user
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
     Examples:
-      | Award Name                 |
-      | Automation Permanent Award |
+      | Award Name                 | Login User |
+      | Automation Permanent Award | SPI        |
+      | Automation Permanent Award | SPA        |
 
   @55398 @SubmittedPR_Displayed_In_CompletedTask @mahadev
-  Scenario: Validate submitted payment request displays under completed task for SPI user
+  Scenario Outline: Validate submitted payment request displays under completed task for SPI user
     Given I delete the record "<Award Name>" from the object "Payment Request"
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I create a post award record "PaymentRequest" for the Award "Automation Permanent Award" having object api name as "PaymentRequest__c"
+    When I create a post award record "PaymentRequest" for the Award "<Award Name>" having object api name as "PaymentRequest__c"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Monitoring" tab
@@ -94,3 +95,6 @@ Feature: Scheduled Payment Request Happy Path
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:completedTaskTableId---" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "---paymentRequest:-:completedTaskTableId---"
+    Examples:
+      | Award Name                 |
+      | Automation Permanent Award |

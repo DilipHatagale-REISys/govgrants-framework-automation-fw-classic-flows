@@ -25,20 +25,6 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @51067 @EditionOfPaymentRequest
-  Scenario: To edit an Adhoc Reimbursement Payment Request
-    When I navigate to "Actuals" sub tab
-    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
-    And I click modal button "Save and Continue"
-    When I navigate to "Financials" sub tab
-    When I enter value "I Agree" into field "TermsAgreement__c"
-    When I click on "Save" in the page details
-    When I click on "Edit" in the page details
-    And I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    Then I see field "Acknowledgement" as "I Agree"
-
   @38660 @budgetAdditionPaymentRequest @smoke
   Scenario: To edit the budget an Adhoc Reimbursement Payment Request
     When I navigate to "Actuals" sub tab

@@ -2,7 +2,6 @@ package com.ggproduct.automation.steps;
 
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.projectmanager.ProjectManager;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -22,11 +21,6 @@ public class GenericSteps {
     @Given("^I delete the record \"([^\"]*)\" from the object \"([^\"]*)\"$")
     public void deleteTestData(String recordName, String objectType) {
         projectManager.deletionApi(recordName, objectType);
-    }
-
-    @Given("^I get the \"([^\"]*)\"$")
-    public void getRecordId(String recordIdLabel) {
-        projectManager.getRecordId(recordIdLabel);
     }
 
     @When("I attempt to delete record \"([^\"]*)\" inside table with id \"([^\"]*)\"")
