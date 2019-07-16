@@ -337,7 +337,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
-@54889 @approvalOfSiteVisitOrgLevel @deepika
+  @54889 @approvalOfSiteVisitOrgLevel @deepika
   Scenario: Approval of Site Visit Org Level
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -457,7 +457,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
     And I click on "Approve" on the approval decision box
-        When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
@@ -958,7 +958,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Submit to Grantor" in the page details
     Then I see the following messages in the page details :
-      |Reports and Outcomes : Enter corrective actions on all Findings outcomes using the "+" icons.|
+      | Reports and Outcomes : Enter corrective actions on all Findings outcomes using the "+" icons. |
 
   @55465 @approverForwardUserGetPendingTaskSiteVisit @deepika
   Scenario: Validate when the Approver forward Org Level Site Visit to other user, the Pending Task will be created to the User
@@ -1043,7 +1043,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     Examples:
       | Internal       |
       | Automation EXE |
-      
+
   @55799 @organizationalsiteVisitPurpose @deepika
   Scenario: Validate the Purpose of Site Visit Org level
     Given I navigate to "Related log" sub tab
@@ -1055,8 +1055,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I enter "Edition1" values from "Organizational_SiteVisit_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see the following messages in the page details :
-     |Purpose is Required to save under Overview.|
-    
+      | Purpose is Required to save under Overview. |
+
   @55800 @organizationalsiteVisitSource @deepika
   Scenario: Validate the Source of Site Visit Org level
     Given I navigate to "Related log" sub tab
@@ -1068,9 +1068,9 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I enter "Edition1" values from "Organizational_SiteVisit_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see the following messages in the page details :
-    |Source is Required to save under Overview.|
-    
-  @55802 @notifyButtonSiteVisitOrgLevel @smoke @deepika @wip
+      | Source is Required to save under Overview. |
+
+  @55802 @notifyButtonSiteVisitOrgLevel @smoke @deepika
   Scenario: User will be able to view the Notify button on the Site Visit
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -1092,9 +1092,9 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Automation Announcement for Application" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     And I close Modal
-    Then I can see top right button "Notify" in page detail 
-    
-  @55806 @conductButtonSiteVisitOrgLevel @deepika @wip
+    Then I can see top right button "Notify" in page detail
+
+  @55806 @conductButtonSiteVisitOrgLevel @deepika
   Scenario: User will be able to view the Conduct button on the Site Visit to complete the action items
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -1118,8 +1118,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I close Modal
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
-    Then I can see top right button "Conduct" in page detail 
-    
+    Then I can see top right button "Conduct" in page detail
+
   @55868 @subrecipientCannotSeeReportAndOutcomesWhenInNotifiedStatusOrgSV @deepika
   Scenario: Site Visit Applicant is not able to view the report or outcomes while in the Notified status.
     Given I navigate to "Related log" sub tab
@@ -1149,10 +1149,10 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "PendingTasks" panel
     When I click on "Start" icon for "Record Id" inside table
-    Then I cannot see "Reports and Outcomes" sub tab
-    
+    Then I cannot see "Reports and Outcomes" sub tab at view detail page
+
   @55871 @recipientsCannotCreateOutcomesOrgSV @deepika
-  Scenario: Recipients will not be able to create / edit the Outcomes. 
+  Scenario: Recipients will not be able to create / edit the Outcomes.
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
     And I enter "Creation" values from "Organizational_SiteVisit_Field_Values.xlsx"
@@ -1182,10 +1182,10 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Start" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
     Then  I cannot see top right button "New" in flex table with id "---orgLevelSiteVisits:-:correctiveTableId---"
-    
-  @siteVisitWithoutFormFillingOrgLevel @deepika
+
+  @56008 @siteVisitWithoutFormFillingOrgLevel @deepika
   Scenario: User will not be able to submit the Site Visit for approval without completed forms
-     Given I navigate to "Related log" sub tab
+    Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
     And I enter "Creation" values from "Organizational_SiteVisit_Field_Values.xlsx"
     When I click modal button "Save and Continue"
@@ -1210,8 +1210,133 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Conduct" in the page details
     When I click on "Submit for Approval" in the page details
     Then I see the following messages in the page details :
-      |Reports and Outcomes Tab - Fill all the required data in the form before submitting.|   
+      | Reports and Outcomes Tab - Fill all the required data in the form before submitting. |
+
+  @56007 @peerReviewSiteVisitOrgLevel @deepika
+  Scenario: Validate the peer review on their Org Level Site Visit
+    Given I navigate to "Related log" sub tab
+    And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
+    And I enter "Creation" values from "Organizational_SiteVisit_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    When I click on "Cancel" in the page details
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Organizational_SiteVisit_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
+      | Responsibilities | Name          | Description                 |
+      | Program Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver  | Automation PM | Automation Test Description |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
+    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    And I close Modal
+    And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Application" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    And I close Modal
+    When I get the "EGMS ID"
+    And I click on "Notify" in the page details
+    When I click on "Conduct" in the page details
+    And I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "flexGridSiteVisitReviewerRoles" by clicking "New" :
+      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "Automation FO" inside table
+    And I get the "EGMS ID"
+    And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record id" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "Record id" inside table
+    When I navigate to "Responsibilities" tab
+    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridSiteVisitReviewerRoles"
+    And I enter values into fields
+      | Value  | Field             |
+      | Passed | Rating__c         |
+      | Passed | ReviewComments__c |
+    When I click modal button "Save"
+    And I click modal button "Submit Review"
+    And I close Modal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I click on "View" icon for "Record Id" inside table
+    When I click on "Complete Review" in the page details
+    Then I see status in Progress-bar is "In Progress" and is "green"
+
+  @56005 @uploadsupportingDocumentChecklistFromWorkSpace @deepika @wip
+  Scenario: User will be able to review the supporting document checklist submitted by the subrecipient
+    When I navigate to "Attachments" sub tab
+    And I upload attachment "InternalOrganization_Field_Values.xlsx" from workspace
+    Then I see "InternalOrganization_Field_Values.xlsx" has been added in "Attachment" flex table
+
+  @56004 @sendBacktoOwnerReceivePendingTaskSVOrgLevel @deepika
+  Scenario: Validate when Site Visit record sent back to Recipients when outcomes are not properly addressed and recipients will be able to receive a pending task
+    Given I navigate to "Related log" sub tab
+    And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
+    And I enter "Creation" values from "Organizational_SiteVisit_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    When I click on "Cancel" in the page details
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Organizational_SiteVisit_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
+      | Responsibilities | Name          | Description                 |
+      | Program Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver  | Automation PM | Automation Test Description |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
+    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    And I close Modal
+    And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Application" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    And I close Modal
+    When I get the "EGMS ID"
+    And I click on "Notify" in the page details
+    When I click on "Conduct" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "PendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside table
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
+    When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
+    And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table
+    Given I navigate to "Related Log" sub tab
+    When I perform quick search for "Record Id" in "SiteVisit" panel
+    And I click on "View" icon for "Record Id" inside table
+    And I navigate to "Reports and Outcomes" sub tab
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    When I enter the following values into flex table with id "---orgLevelSiteVisits:-:correctiveTableId---" by clicking "New" :
+      | Title                  | Description            | Type        |
+      | Automation Finding     | Automation Description | Finding     |
+      | Automation Concern     | Automation Description | Concern     |
+      | Automation Observation | Automation Description | Observation |
+    And I click on top right button "Validate" in flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
+    When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I click on "Send to Owner" on the approval decision box
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    Then I see status in Progress-bar is "In Progress" and is "green"
     
 
-    
-      

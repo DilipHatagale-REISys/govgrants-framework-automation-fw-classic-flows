@@ -211,7 +211,7 @@ Feature: Validate all common scenarios in the  Announcement tab
 
   @52413 @announcementReviewCompleteFA @wip
   Scenario Outline: Validate the review for the Announcement
-    When I navigate to "Responsibilities" sub tab
+    Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:enterReviewTableId---" by clicking "New" :
       | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
       | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
