@@ -1403,3 +1403,40 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     Then I see status in Progress-bar is "In Progress" and is "green"
+
+  @56038 @submittingForApprovalButtonSiteVisit @deepika
+  Scenario:  User will be able to view the Submit for Approval button for Site Visit
+    Given I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
+      | Role             | Name           | Description                 |
+      | Program Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver  | Automation FO  | Automation Test Description |
+    When I get the "EGMS ID"
+    Given I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
+    When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
+    And I close Modal
+    And I click on "Notify" in the page details
+    When I click on "Conduct" in the page details
+    Given I am on "SUBPORTAL" portal
+    When I login as "SPI" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "Record Id" inside table
+    And I navigate to "Reports and Outcomes" sub tab
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---sitevisits:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
+      | Title                  | Description            | Type        |
+      | Automation Finding     | Automation Description | Finding     |
+      | Automation Concern     | Automation Description | Concern     |
+      | Automation Observation | Automation Description | Observation |
+    Then I can see top right button "Submit for Approval" in page detail

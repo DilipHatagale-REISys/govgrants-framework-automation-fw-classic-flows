@@ -2932,3 +2932,32 @@ Feature: Payment Request scenarios without background
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
+
+  @51067 @EditionOfReimbursementPaymentRequest @mahadev
+  Scenario Outline: Edition of Reimbursement Payment Request
+    Given I delete the record "Automation Payment Request" from the object "Payment Request"
+    And I delete the record "<Award Name>" from the object "Payment Request"
+    And I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "<Login User>" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "<Award Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
+    When I navigate to "Actuals" sub tab
+    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I navigate to "Financials" sub tab
+    When I enter value "I Agree" into field "TermsAgreement__c"
+    When I click on "Save" in the page details
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I see field "Acknowledgement" as "I Agree"
+    Examples:
+      | Award Name                 | Login User |
+      | Automation Permanent Award | SPI        |
+      | Automation Permanent Award | SPA        |
