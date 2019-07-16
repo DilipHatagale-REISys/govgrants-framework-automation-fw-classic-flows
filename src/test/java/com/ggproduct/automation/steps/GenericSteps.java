@@ -23,11 +23,6 @@ public class GenericSteps {
         projectManager.deletionApi(recordName, objectType);
     }
 
-    //@Given("^I get the \"([^\"]*)\"$")
-    //public void getRecordId(String recordIdLabel) {
-      //  projectManager.getRecordId(recordIdLabel);
-    //}
-
     @When("I attempt to delete record \"([^\"]*)\" inside table with id \"([^\"]*)\"")
     public void attemptDeletion(String columnValues, String tableId) {
         projectManager.attemptDeletion(columnValues, tableId);
