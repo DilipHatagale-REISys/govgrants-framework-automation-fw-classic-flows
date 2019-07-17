@@ -5,8 +5,7 @@ import java.util.Map;
 
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.projectmanager.ProjectManager;
-
-import cucumber.api.DataTable;
+import io.cucumber.datatable.DataTable;
 import eyethink.automation.bots.controller.Controller;
 import eyethink.automation.bots.controller.CoreHandlers;
 

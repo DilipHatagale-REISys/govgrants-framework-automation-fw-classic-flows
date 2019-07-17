@@ -1,26 +1,18 @@
 package com.ggproduct.automation.runner;
 
-import cucumber.api.CucumberOptions;
-import cucumber.api.testng.AbstractTestNGCucumberTests;
-import eyethink.automation.bots.controller.CucumberRunnerManager;
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
+import org.junit.runner.RunWith;
 
-/**
- * IDE runner class. Place any tag name in tags and it will run the specific tag
- * through IDE . Can be used to debug code as well.
- * Only designed to open chrome browser
- * @author nauman.shahid
- *
- */
+@RunWith(Cucumber.class)
 @CucumberOptions(
-        tags = { "@51081" }, 
-        features = { "classpath:features" },
-        glue = { "com.ggproduct.automation.steps","com.automation.rei.govgrantsSteps"}, 
-        plugin = { "com.cucumber.listener.ExtentCucumberFormatter:" }
-        )
+        glue = {"setup","com.ggproduct.automation.steps","com.automation.rei.govgrantsSteps","eyethink.automation.bots.bdd"},
+        features = {"features"},
+        plugin = {"json:target/cucumber-report/cucumber.json","pretty","html:target/cucumber-html"},
+        tags = {"@validateChangeinTaskMenuSequence-gHome"},
+        monochrome = true
+)
 
-public class IDERunner extends AbstractTestNGCucumberTests {
-    static {
-        new CucumberRunnerManager();
-    }
+public class IDERunner {
 
 }

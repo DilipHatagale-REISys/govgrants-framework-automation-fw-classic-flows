@@ -4,9 +4,8 @@ import java.io.IOException;
 
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.pageobjects.MonitoringPage;
-
-import cucumber.api.DataTable;
-import cucumber.api.java.en.Given;
+import io.cucumber.java.en.*;
+import io.cucumber.datatable.DataTable;
 import eyethink.automation.bots.controller.Controller;
 import eyethink.automation.bots.controller.CoreHandlers;
 
