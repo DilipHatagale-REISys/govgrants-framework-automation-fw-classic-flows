@@ -30,7 +30,7 @@
 		<cucumber.version>4.5.4</cucumber.version>
 		<cucable.version>1.5.2</cucable.version>
 		<picocontainer.version>1.2.5</picocontainer.version>
-		<report.version>2.1.0</report.version>
+		<report.version>2.2.0</report.version>
 		<testng.version>6.14.3</testng.version>
 		<junit.version>4.13-beta-3</junit.version>
 		<junit.surefire.version>3.0.0-M3</junit.surefire.version>
@@ -284,6 +284,7 @@
 					<expandBeforeAfterHooks>true</expandBeforeAfterHooks>
 					<customCss>target/Automation-Report/eyethink_css/custom.css</customCss>
 					<customParametersFile>target/Automation-Report/eyethink_css/custom.properties</customParametersFile>
+                    <logLevel>off</logLevel>
 				</configuration>
 			</plugin>
 		</plugins>
