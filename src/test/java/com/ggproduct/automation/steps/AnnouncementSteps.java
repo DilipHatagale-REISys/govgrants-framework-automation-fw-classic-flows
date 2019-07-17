@@ -3,8 +3,8 @@ package com.ggproduct.automation.steps;
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.pageobjects.AnnouncementPage;
 
-import cucumber.api.DataTable;
-import cucumber.api.java.en.Given;
+import io.cucumber.datatable.DataTable;
+import io.cucumber.java.en.*;
 import eyethink.automation.bots.controller.Controller;
 import eyethink.automation.bots.controller.CoreHandlers;
 
