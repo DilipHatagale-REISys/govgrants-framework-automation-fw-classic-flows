@@ -28,7 +28,7 @@ public class setup {
         this.eyeThink=eyeThink;
         if(report == null) {
             this.report = new CSS();
-            report.reportConfigWriteUp(System.getProperty("user.dir"),"GovGrants Framework Test Automation");
+            report.reportConfigWriteUp(System.getProperty("user.dir"),"GovGrants Product Test Automation");
         }
     }
 
