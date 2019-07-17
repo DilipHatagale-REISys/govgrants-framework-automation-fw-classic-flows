@@ -290,9 +290,9 @@ Feature: Validate all scenarios in the Award from FDM
     And I click modal button "Save"
     And I close Modal
     And I navigate to "Management" sub tab
-    Given I create a monitoring record from sheet "Risk Assessment Creation" in excel "Award_Field_Values.xlsx"
-      | Actions  | Step 1     | Step 2                          | Step 3 | Step 4            |
-      | Creation | Management | flexGridAwardRiskAssessmentView | New    | Save and Continue |
+    And I click on top right button "New" in flex table with id "flexGridAwardRiskAssessmentView"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I get the "EGMS ID"

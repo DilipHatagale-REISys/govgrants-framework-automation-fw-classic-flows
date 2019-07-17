@@ -1717,7 +1717,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Edit" in the page details
     When I enter value "AuGr" into field "GrantCode__c"
     And I click on "Save" in the page details
-    And I enter the recommendation in FDM in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit"
+    And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
       | Application Title      | Recommended Budget | Recommend for Funding | Comments    |
       | Automation Application | 500                | Yes                   | Recommended |
     Then I see that "Recommended" has been added in flextable with Id "flexGridFundingDecisionMemoApplications"
@@ -1871,7 +1871,7 @@ Feature: Validate all scenarios in the Application Review
       | AuGr                        | GrantCode__c          |
       | Automation Test Description | fieldJustification__c |
     And I click on "Save" in the page details
-    And I enter the recommendation in FDM in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit"
+    And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
       | Application Title      | Recommended Budget | Recommend for Funding | Comments    |
       | Automation Application | 500                | Yes                   | Recommended |
     When I navigate to "Responsibilities" sub tab
@@ -2029,7 +2029,7 @@ Feature: Validate all scenarios in the Application Review
       | AuGr                        | GrantCode__c          |
       | Automation Test Description | fieldJustification__c |
     And I click on "Save" in the page details
-    And I enter the recommendation in FDM in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit"
+    And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
       | Application Title      | Recommended Budget | Recommend for Funding | Comments    |
       | Automation Application | 500                | Yes                   | Recommended |
     When I navigate to "Responsibilities" sub tab
@@ -2188,7 +2188,7 @@ Feature: Validate all scenarios in the Application Review
       | AuGr                        | GrantCode__c          |
       | Automation Test Description | fieldJustification__c |
     And I click on "Save" in the page details
-    And I enter the recommendation in FDM in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit"
+    And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
       | Application Title      | Recommended Budget | Recommend for Funding | Comments    |
       | Automation Application | 500                | Yes                   | Recommended |
     When I navigate to "Responsibilities" sub tab

@@ -20,11 +20,6 @@ public class GenericSteps {
         projectManager.deletionApi(recordName, objectType);
     }
 
-    @When("I attempt to delete record \"([^\"]*)\" inside table with id \"([^\"]*)\"")
-    public void attemptDeletion(String columnValues, String tableId) {
-        projectManager.attemptDeletion(columnValues, tableId);
-    }
-
     @Description("API call used to create a post award records i.e. Payment Request, Progress Report and Closout and will fetch the record ID for that record")
     @When("^I create a post award record \"([^\"]*)\" for the Award \"([^\"]*)\" having object api name as \"([^\"]*)\"$")
     public void iCreateAPostAwardRecordForTheAwardHavingObjectApiNameAs(String objectType, String recordName, String objectApiName) {
@@ -67,7 +62,7 @@ public class GenericSteps {
     }
 
     @Description("To check no records displayed in flex table")
-    @Then("^I see \"([^\"]*)\" inside flex table with id \"([^\"]*)\";$")
+    @Then("^I see \"([^\"]*)\" inside flex table with id \"([^\"]*)\"$")
     public void iSeeInsideFlexTableWithId(String text, String tableID) {
         Assert.assertTrue(projectManager.isRecordPresentInTheFlexTable(text, tableID));
     }
@@ -97,6 +92,12 @@ public class GenericSteps {
     @Then("^I verify that \"([^\"]*)\" file is downloaded$")
     public void iVerifyThatPdfFileIsDownloaded(String fileType) {
         projectManager.assertThatFileIsDownloaded(fileType);
+    }
+
+    @Description("To verify no of rows checked for field name")
+    @Then("^I can see \"([^\"]*)\" record value is checked for field name \"([^\"]*)\"$")
+    public void iCanSeeRecordValueIsCheckedForFieldName(String count, String fieldName) {
+        projectManager.AssertFieldValueIsChecked(fieldName,count);
     }
 
 }

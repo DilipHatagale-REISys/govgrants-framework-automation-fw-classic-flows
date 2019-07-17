@@ -478,7 +478,7 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
-    Then I see "No Records Found" inside flex table with id "---progressReport:-:pendingTaskTableId---";
+    Then I see "No Records Found" inside flex table with id "---progressReport:-:pendingTaskTableId---"
 
   @51117 @approvalofProgressReportSendbacktoOwnerOfProgressReportbyProgramApprover @smoke
   Scenario: To validate  Progress Report approval is successful post Program Approver Sends back the progress report to Owner.
@@ -720,7 +720,7 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
-    Then I see "No Records Found" inside flex table with id "---progressReport:-:pendingTaskTableId---";
+    Then I see "No Records Found" inside flex table with id "---progressReport:-:pendingTaskTableId---"
 
   @51123 @approvalofProgressReportSendbacktOwnerOfProgressReportbyFiscalApprover
   Scenario: To validate  Progress Report approval is successful post Program Approver Sends back the progress report to Owner.
@@ -816,7 +816,7 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
-    Then I see "No Records Found" inside flex table with id "---progressReport:-:pendingTaskTableId---";
+    Then I see "No Records Found" inside flex table with id "---progressReport:-:pendingTaskTableId---"
 
   @51125 @approvalOfProgressReport @progressReportHappyPathWithoutDefaultApprovers @smoke
   Scenario: To approve Progress Report by changing the defualt approvers in Progress Report
