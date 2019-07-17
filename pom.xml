@@ -10,71 +10,83 @@
 
 	<name>automation</name>
 	<url>http://maven.apache.org</url>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tags>~@ignore</tags>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<generated.runner.directory>${project.build.directory}/parallel/runners</generated.runner.directory>
+		<generated.feature.directory>${project.build.directory}/parallel/features</generated.feature.directory>
+		<cucumber.report.json.location>${project.build.directory}/cucumber-report</cucumber.report.json.location>
+		<generated.report.location>${project.build.directory}/Automation-Report</generated.report.location>
+		<tags/>
+		<threads/>
+		<env/>
 		<!-- Versions -->
 		<java.version>1.8</java.version>
-		<rei.version>0.0.3</rei.version>
+		<saas.version>1.0.0</saas.version>
+		<eyeThink.version>1.0.0</eyeThink.version>
 		<selenium.version>3.10.0</selenium.version>
 		<selenium-server.version>3.10.0</selenium-server.version>
 		<appium.version>5.0.4</appium.version>
-		<cucumber-jvm.version>4.1.0</cucumber-jvm.version>
-		<cucumber-testng.version>1.2.5</cucumber-testng.version>
-		<cucumber-picocontainer.version>1.2.5</cucumber-picocontainer.version>
+		<cucumber.version>4.5.0</cucumber.version>
+		<cucable.version>1.5.2</cucable.version>
+		<picocontainer.version>1.2.5</picocontainer.version>
+		<report.version>2.1.0</report.version>
 		<testng.version>6.14.3</testng.version>
-		<cucumber-extentsreport.version>3.0.2</cucumber-extentsreport.version>
+		<junit.version>4.13-beta-3</junit.version>
+		<junit.surefire.version>3.0.0-M3</junit.surefire.version>
 		<webdrivermanager.version>3.6.1</webdrivermanager.version>
 		<rest-assured.version>2.9.0</rest-assured.version>
-		<maven-failsafe-plugin.version>2.22.1</maven-failsafe-plugin.version>
+		<maven.failsafe.plugin.version>3.0.0-M3</maven.failsafe.plugin.version>
+		<maven.build.helper.plugin.version>3.0.0</maven.build.helper.plugin.version>
+		<maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>
 	</properties>
 
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
 		<dependency>
 			<groupId>io.github.bonigarcia</groupId>
 			<artifactId>webdrivermanager</artifactId>
 			<version>${webdrivermanager.version}</version>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/io.appium/java-client -->
 		<dependency>
 			<groupId>io.appium</groupId>
 			<artifactId>java-client</artifactId>
 			<version>${appium.version}</version>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-jvm -->
 		<dependency>
 			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-jvm</artifactId>
-			<version>${cucumber-jvm.version}</version>
-			<type>pom</type>
+			<artifactId>cucumber-java</artifactId>
+			<version>${cucumber.version}</version>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-testng -->
 		<dependency>
-			<groupId>info.cukes</groupId>
-			<artifactId>cucumber-testng</artifactId>
-			<version>${cucumber-testng.version}</version>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<version>${cucumber.version}</version>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-picocontainer -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven.surefire</groupId>
+			<artifactId>surefire-junit4</artifactId>
+			<version>${junit.surefire.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.trivago.rta</groupId>
+			<artifactId>cucable-plugin</artifactId>
+			<version>${cucable.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-picocontainer</artifactId>
-			<version>${cucumber-picocontainer.version}</version>
+			<version>${picocontainer.version}</version>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-nop</artifactId>
@@ -85,68 +97,36 @@
 			<artifactId>selenium-java</artifactId>
 			<version>${selenium.version}</version>
 		</dependency>
-
-		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<version>${testng.version}</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-server -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-server</artifactId>
 			<version>${selenium-server.version}</version>
 		</dependency>
-
-		<dependency>
-			<groupId>org.apache.maven.surefire</groupId>
-			<artifactId>surefire</artifactId>
-			<version>2.21.0</version>
-			<type>pom</type>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.apache.maven/maven-model -->
 		<dependency>
 			<groupId>org.apache.maven</groupId>
 			<artifactId>maven-model</artifactId>
 			<version>3.3.9</version>
 		</dependency>
-		<!-- Extent Reports for cucumber -->
-		<dependency>
-			<groupId>com.vimalselvam</groupId>
-			<artifactId>cucumber-extentsreport</artifactId>
-			<version>${cucumber-extentsreport.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.aventstack</groupId>
-			<artifactId>extentreports</artifactId>
-			<version>3.1.5</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
 			<version>3.16</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
 			<version>3.16</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.jayway.restassured/rest-assured -->
 		<dependency>
 			<groupId>com.jayway.restassured</groupId>
 			<artifactId>rest-assured</artifactId>
 			<version>${rest-assured.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>2.8.1</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/ru.yandex.qatools.ashot/ashot -->
 		<dependency>
 			<groupId>ru.yandex.qatools.ashot</groupId>
 			<artifactId>ashot</artifactId>
@@ -167,25 +147,25 @@
 			<artifactId>monte-repack</artifactId>
 			<version>1.0.1</version>
 		</dependency>
-        <dependency>
+		<dependency>
 			<groupId>com.paulhammant</groupId>
 			<artifactId>ngwebdriver</artifactId>
 			<version>1.1.3</version>
 		</dependency>
-        <dependency>
-	        <groupId>com.github.adiralashiva8</groupId>
-	        <artifactId>testng-metrics</artifactId>
-	        <version>1.0</version>
-        </dependency>
+		<dependency>
+			<groupId>com.trivago.rta</groupId>
+			<artifactId>cluecumber-report-plugin</artifactId>
+			<version>${report.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>eyethink</groupId>
 			<artifactId>automation.bots</artifactId>
-			<version>0.0.2</version>
+			<version>${eyeThink.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>rei.saas</groupId>
 			<artifactId>saasbusinesslayer.automation</artifactId>
-			<version>${rei.version}</version>
+			<version>${saas.version}</version>
 		</dependency>
 	</dependencies>
 	<repositories>
@@ -198,89 +178,113 @@
 			<url>http://nexus.reisys.com:8081/nexus/content/repositories/eyethink.automation.bots</url>
 		</repository>
 	</repositories>
+
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.6.1</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-
-			<!--In this project, this plugin is not requried as it can be used for 
-				pure testng or unit test -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.20</version>
 				<configuration>
-					<workingDirectory>target-output</workingDirectory>
+					<skipTests>true</skipTests>
 				</configuration>
 			</plugin>
-			<!-- Failsafe will execute tests which is requried dependency for execution 
-				while using temyers -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>2.19.1</version>
-				<configuration>
-					<parallel>methods</parallel>
-					<threadCount>${threads}</threadCount>
-					<excludes>
-						<exclude>**/IT*.java</exclude>
-					</excludes>
-				</configuration>
+				<version>${maven.failsafe.plugin.version}</version>
 				<executions>
 					<execution>
-						<id>failsafe-integration-test</id>
+						<id>Run parallel tests</id>
+						<phase>integration-test</phase>
 						<goals>
 							<goal>integration-test</goal>
 							<goal>verify</goal>
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<forkCount>${threads}</forkCount>
+					<testFailureIgnore>true</testFailureIgnore>
+					<disableXmlReport>true</disableXmlReport>
+					<argLine>-Dfile.encoding=UTF-8</argLine>
+					<excludes>
+						<exclude>**/IT*.java</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
-			<!-- This will take care of generating runners and parallel execution -->
 			<plugin>
-				<groupId>com.github.temyers</groupId>
-				<artifactId>cucumber-jvm-parallel-plugin</artifactId>
-				<version>5.0.0</version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
+				<configuration>
+					<source>8</source>
+					<target>8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.trivago.rta</groupId>
+				<artifactId>cucable-plugin</artifactId>
+				<version>${cucable.version}</version>
 				<executions>
 					<execution>
-						<id>generateRunners</id>
+						<id>generate-test-resources</id>
+						<phase>generate-test-resources</phase>
+						<goals>
+							<goal>parallel</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<sourceRunnerTemplateFile>src/test/resources/configuration/CustomCreator.java</sourceRunnerTemplateFile>
+					<sourceFeatures>src/test/resources/features</sourceFeatures>
+					<generatedFeatureDirectory>${generated.feature.directory}</generatedFeatureDirectory>
+					<generatedRunnerDirectory>${generated.runner.directory}</generatedRunnerDirectory>
+					<parallelizationMode>scenarios</parallelizationMode>
+					<includeScenarioTags>${tags}</includeScenarioTags>
+					<logLevel>minimal</logLevel>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>${maven.build.helper.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>add-test-source</id>
 						<phase>generate-test-sources</phase>
 						<goals>
-							<goal>generateRunners</goal>
+							<goal>add-test-source</goal>
 						</goals>
 						<configuration>
-							<glue>
-								<package>com.ggproduct.automation.steps</package>
-								<package>com.automation.rei.govgrantsSteps</package>
-                                <package>eyethink.automation.bots.bdd</package>
-							</glue>
-							<featuresDirectory>src/test/resources/features/</featuresDirectory>
-							<plugins>
-								<plugin>
-									<name>json</name>
-								</plugin>
-								<plugin>
-									<name>html</name>
-								</plugin>
-							</plugins>
-							<useTestNG>true</useTestNG>
-							<parallelScheme>SCENARIO</parallelScheme>
-							<tags>
-								<tag>~@wip</tag>
-								<tag>~@notFunctional</tag>
-								<tag>${tags}</tag>
-							</tags>
-							<customVmTemplate>src/test/resources/custom-runner.vm</customVmTemplate>
+							<sources>
+								<source>${generated.runner.directory}</source>
+							</sources>
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.trivago.rta</groupId>
+				<artifactId>cluecumber-report-plugin</artifactId>
+				<version>${report.version}</version>
+				<executions>
+					<execution>
+						<id>report</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>reporting</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<sourceJsonReportDirectory>${cucumber.report.json.location}</sourceJsonReportDirectory>
+					<generatedHtmlReportDirectory>${generated.report.location}</generatedHtmlReportDirectory>
+					<customPageTitle>EyeThink Automation Report</customPageTitle>
+					<failScenariosOnPendingOrUndefinedSteps>true</failScenariosOnPendingOrUndefinedSteps>
+					<expandBeforeAfterHooks>true</expandBeforeAfterHooks>
+					<customCss>target/Automation-Report/eyethink_css/custom.css</customCss>
+					<customParametersFile>target/Automation-Report/eyethink_css/custom.properties</customParametersFile>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
