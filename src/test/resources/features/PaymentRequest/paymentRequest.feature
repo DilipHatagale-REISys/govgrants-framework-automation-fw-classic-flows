@@ -773,7 +773,7 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
-    Then I see "No Records Found" inside flex table with id "---paymentRequest:-:pendingTaskTableId---";
+    Then I see "No Records Found" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
 
   @53985 @AdvancePaymentRequestShouldNotReceiveToEXE @mahadev
   Scenario: Advance Payment Request should not receive to Program Approver
@@ -793,7 +793,7 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
-    Then I see "No Records Found" inside flex table with id "---paymentRequest:-:pendingTaskTableId---";
+    Then I see "No Records Found" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
 
   @54175 @ValidateError_On_Entering_AdvanceRequestedAmount_GreaterThanBalance @mahadev
   Scenario: Advance Payment Request should not receive to Program Approver

@@ -1262,7 +1262,7 @@ Feature: Payment Request scenarios without background
     When I close modal by clicking the top right x button
     When I navigate to "Attachments" sub tab
     And I get the "<string>"
-    Then I see "No Records Found" inside flex table with id "---paymentRequest:-:checklistTableId---";
+    Then I see "No Records Found" inside flex table with id "---paymentRequest:-:checklistTableId---"
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -1406,7 +1406,7 @@ Feature: Payment Request scenarios without background
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
     And I navigate to "Attachments" sub tab
-    Then I see "No Records Found" inside flex table with id "---paymentRequest:-:checklistTableId---";
+    Then I see "No Records Found" inside flex table with id "---paymentRequest:-:checklistTableId---"
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Permanent Award | Automation Permanent Award |

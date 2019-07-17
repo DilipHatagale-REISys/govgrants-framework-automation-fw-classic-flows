@@ -248,4 +248,19 @@ public class ProjectManager extends ProjectWebServices {
         Assert.assertTrue(new File(file.getAbsolutePath() + "govgrant."+fileType+"").exists());
     }
 
+    public void AssertFieldValueIsChecked(String fieldName,String count){
+        Assert.assertEquals(Integer.parseInt(count),getCheckedFieldValueCount(fieldName));
+    }
+
+    /**
+     * To get the count of row values checked for field available in flex table
+     * @param fieldName - Field API name
+     * @return
+     */
+    private int getCheckedFieldValueCount(String fieldName){
+        reiDriver.WaitFor().magicWait(By.xpath("//field[@field-name='"+fieldName+"']/i[contains(@class,'fa-check')]"));
+        List<WebElement> checkSymbol = reiDriver.findMyElement().getElements(By.xpath("//field[@field-name='"+fieldName+"']/i[contains(@class,'fa-check')]"));
+        return checkSymbol.size();
+    }
+
 }
