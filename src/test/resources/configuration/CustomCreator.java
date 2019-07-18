@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
         glue = {"setup","com.ggproduct.automation.steps","com.automation.rei.govgrantsSteps","eyethink.automation.bots.bdd"},
         features = {"target/parallel/features/[CUCABLE:FEATURE].feature"},
         plugin = {"json:target/cucumber-report/[CUCABLE:RUNNER].json","pretty"},
+        tags = {"~@wip"},
         monochrome = true
 )
 public class CustomCreator {
