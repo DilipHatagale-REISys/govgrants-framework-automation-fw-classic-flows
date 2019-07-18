@@ -6,7 +6,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I delete the record "Automation Execution Award" from the object "Payment Request"
     And I delete the record "Automation Execution Award" from the object "Progress Report"
     And I delete the record "Automation Execution Award" from the object "Grant"
-    When I login to "As a Grantor" app as "EXE" user
+    When I login to "As a Grantor" app as "User" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
@@ -32,46 +32,50 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   @51130 @awardStandAloneAddContactsKeyPersonnel
   Scenario Outline: Associate a Key Contact
     And I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---"
     When I perform quick search for "<Contact>" in "---subAwardStandAlone:-:keyContactsTableId---" panel
     When I click "Add" after selection of "<Contact>" in the table "---subAwardStandAlone:-:keyContactsTableId---"
     And I close modal by clicking the top right x button
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subawardsTableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
       | Automation SPI | Project Director/Manager | Checked          |
       | Automation SPA | Other                    |                  |
-    Then I see that "Automation SPA" has been added in flextable with Id "---subAwardStandAlone:-:subawardsTableId---"
+    Then I see that "Automation SPA" has been added in flextable with Id "---subAwardStandAlone:-:associatedContactsTableId---"
     Examples:
       | Contact        |
       | Automation SPA |
 
-  @51131 @awardStandAloneFundingAccount @smoke
-  Scenario Outline: Funding Account budget addition to Award
+  @51131 @awardStandAloneAddFundingAccount @smoke
+  Scenario Outline: Funding Account budget addition to award
     When I navigate to "Budget" sub tab
     And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "<EGMS Id>" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Add" after selection of "<Funding Account>" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     And I close Modal
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--03          | 1000        |
-    Then I see that "<EGMS Id>" has been added in flextable with Id "---subAwardStandAlone:-:fundingAccountsTableId---"
+    Then I see that "<Funding Account>" has been added in flextable with Id "---subAwardStandAlone:-:fundingAccountsTableId---"
     Examples:
-      | EGMS Id |
-      | FA--03  |
+      | Funding Account |
+      | FA--03          |
 
   @51132 @allFocusAreaAssociation @smoke
-  Scenario: Validate the association of Focus Area to Award
+  Scenario Outline: Validate the association of Focus Area to Award
     When I navigate to "Budget" sub tab
     And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:focusAreaTableId---"
-    When I click "Associate" after selection of "Automation Permanent Focus Area2" in the table "popupflextableGAT"
+    And I perform quick search for "<Focus Area>" in "---subAwardStandAlone:-:associateFocusAreaTableId---" panel
+    When I click "Associate" after selection of "<Focus Area>" in the table "---subAwardStandAlone:-:associateFocusAreaTableId---"
     And I close Modal
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                            | Start Date | End Date |
       | Automation Permanent Focus Area  | 0          | 3650     |
       | Automation Permanent Focus Area2 | 0          | 3650     |
-    Then I see that "Automation Permanent Focus Area2" has been added in flextable with Id "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I see that "<Focus Area>" has been added in flextable with Id "---subAwardStandAlone:-:focusAreaTableId---"
+    Examples:
+      | Focus Area                       |
+      | Automation Permanent Focus Area2 |
 
-  @51133 @awardStandAloneBudgetEdition
+  @51133 @awardStandAloneBudgetAddition
   Scenario: Budget addition to Award
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
@@ -131,7 +135,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Approve" on the approval decision box
-    Then I see status in Progress-bar is "Active" and is "green"
+    Then I see status in Progress-bar is "Active" and is "Green"
 
   @51137 @allApproverSelection
   Scenario: Validate the assignment of Approvers for the award
@@ -166,7 +170,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
       | Automation Permanent KPI for Regression | 10     |
-    And I navigate to "Management" sub tab
+    And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
@@ -200,7 +204,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Approve" on the approval decision box
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "User" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
     And I click toggle button to select "Draft Grants"
@@ -209,7 +213,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     When I navigate to "Overview" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subawardsTableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
       | Automation SPI | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
@@ -218,9 +222,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
-    When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    Then I see status in Progress-bar is "Created" and is "green"
+    Then I see status in Progress-bar is "Created" and is "Green"
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
