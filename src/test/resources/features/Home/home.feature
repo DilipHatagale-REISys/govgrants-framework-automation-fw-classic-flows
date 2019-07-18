@@ -179,6 +179,10 @@ Feature: Validate all scenarios in the home tab
       | ADMIN |
 #      | EXE   |
 #      | PM    |
+  @smoke
+    Examples:
+    | User |
+    | qwe  |
 
   @smeReviewersContactCreate @wip
   Scenario Outline: Verifying all Internal Users has Create access to SME Reviewers Contact
