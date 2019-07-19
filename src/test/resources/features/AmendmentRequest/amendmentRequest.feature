@@ -4,7 +4,7 @@ Feature: Validate all scenarios in the Amendment Request
   Background: Setup data
     Given I delete the record "Automation Award for Amendment Request" from the object "Amendment Request"
     Given I delete the record "Automation Award for Amendment Request" from the object "subaward"
-    When I login to "As a Grantor" app as "User" user
+    When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
@@ -186,7 +186,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
     And I click on "Acknowledge" in the page details
-    When I re-login to "As a Grantor" app as "User" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
@@ -227,7 +227,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
     And I click on "Acknowledge" in the page details
-    When I re-login to "As a Grantor" app as "User" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
@@ -286,7 +286,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
     And I click on "Acknowledge" in the page details
-    When I re-login to "As a Grantor" app as "User" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
@@ -310,6 +310,14 @@ Feature: Validate all scenarios in the Amendment Request
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
     And I "Approve" in approval decision
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "Automation Award for Amendment Request" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I click on "Amend Subaward" in the page details
     Then I see that "Automation Award for Amendment Request" is in "Pending Activation" status
 
@@ -346,7 +354,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
     And I click on "Acknowledge" in the page details
-    When I re-login to "As a Grantor" app as "User" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel

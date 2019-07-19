@@ -3,7 +3,7 @@ Feature: Validate all scenarios for program
 
   Background: Create Program
     Given I delete the record "Automation Execution Internal Program" from the object "Program"
-    When I login to "As a Grantor" app as "User" user
+    When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
     And I click toggle button to select "Draft Internal Programs"
@@ -239,7 +239,7 @@ Feature: Validate all scenarios for program
     When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---program:-:pendingTaskTableId---"
     When I click on "Approve" on the approval decision box
-    When I re-login to "As a Grantor" app as "User" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
@@ -288,7 +288,7 @@ Feature: Validate all scenarios for program
     When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---program:-:pendingTaskTableId---"
     When I click on "Approve" on the approval decision box
-    When I re-login to "As a Grantor" app as "User" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
     And I click toggle button to select "Draft Internal Programs"
@@ -373,7 +373,7 @@ Feature: Validate all scenarios for program
     When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---program:-:pendingTaskTableId---"
     When I click on "Approve" on the approval decision box
-    When I re-login to "As a Grantor" app as "User" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
     And I click toggle button to select "Draft Internal Programs"
