@@ -1,4 +1,4 @@
-@home @regression
+@home @regression @wip
 Feature: Validate all scenarios in the home tab
 
   @35024 @internalOrganizationCreate @smoke
