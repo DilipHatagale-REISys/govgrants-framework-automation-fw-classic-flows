@@ -1,4 +1,4 @@
-@home @regression @wip
+@home @regression
 Feature: Validate all scenarios in the home tab
 
   @35024 @internalOrganizationCreate @smoke
@@ -30,14 +30,19 @@ Feature: Validate all scenarios in the home tab
   Scenario Outline: Validate whether all users have view access to Internal Organization
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
+    When I pause execution
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I click on "View" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
+    When I pause execution
+    When I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
+    #And I switch to Product Quick Search modal
+    When I pause execution
+    When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "a0Z1k000001eULHEA2Level1"
     Then I see that "Internal Organization" is in "Active" status
     Examples:
       | User  |
       | ADMIN |
-#      | EXE   |
-#      | PM    |
+      #| EXE   |
+     # | PM    |
 
   @internalOrganizationADMINEdit
   Scenario Outline: Validate system allows Edit access to Internal Organizations to the ADMIN/DA
@@ -177,8 +182,8 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-#      | EXE   |
-#      | PM    |
+      | EXE   |
+      | PM    |
 
   @smeReviewersContactCreate @wip
   Scenario Outline: Verifying all Internal Users has Create access to SME Reviewers Contact
