@@ -29,7 +29,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @51080 @participantAssociationOrganizationalSiteVisit @smoke
+  @51080 @participantAssociationOrganizationalSiteVisitExternallUser @smoke
   Scenario Outline: Participant Association of Organizational Site Visit
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -466,7 +466,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     Given I click on "Send to Subrecipient" in the page details
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
 
-  @siteVisitCorrectiveActionsBySubrecipientOrgLevel @smoke @deepika
+  @56355 @siteVisitCorrectiveActionsBySubrecipientOrgLevel @smoke @deepika
   Scenario: Site Visit Corrective Actions By Subrecipient
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -824,7 +824,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on "Start" icon for "Record Id" inside table
     Then I can see top right button "Accept and Close" in page detail
 
-  @55463 @siteVisitOrgLevelSendBackToOwner @deepika
+   @siteVisitOrgLevelSendBackToOwner @deepika
   Scenario: User will be able to return the Site Visit Org Level record back to Recipients when outcomes are not properly addressed
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -1390,3 +1390,4 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on top right button "Validate" in flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     Then I can see top right button "Submit for Approval" in page detail
 
+   

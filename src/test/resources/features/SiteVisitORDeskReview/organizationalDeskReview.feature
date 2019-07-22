@@ -79,17 +79,22 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click modal button "Save and Continue"
     Then I see field "Desk Review Type" as "Award"
 
-  @54425 @addParticipantsT0OrgDeskReview @deepika
-  Scenario: Validate the participants for the Desk Review Org Level
+  @54425 @addParticipantsT0OrgDeskReviewInternalUser @deepika
+  Scenario Outline: User will be able to add contacts or users from both internal and subrecipient organizations.  
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     When I click on "Save" in the page details
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation EXE" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
+    When I click "Associate" after selection of "<User>" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I close Modal
-    Then I see that "Automation EXE" has been added in flextable with Id "---orgLevelDeskReview:-:associateContactsId---"
+    Then I see that "<User>" has been added in flextable with Id "---orgLevelDeskReview:-:associateContactsId---"
+    Examples:
+      | User           |
+      | Automation SPI |
+      | Automation EXE |
+
 
   @54458 @approverSelectionDeskReviewOrgLevel @deepika
   Scenario Outline: Approver selection of Desk Review Org Level

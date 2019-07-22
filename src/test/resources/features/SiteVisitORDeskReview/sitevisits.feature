@@ -661,7 +661,7 @@ Feature: Validate all scenarios in the Site Visit
     And I navigate to "Reports and Outcomes" sub tab
     Then I can see row level action button "Edit" against "General Review Form" in flex table with id "---sitevisits:-:reportsTableId---"
 
-  @35666 @submittedToGrantorOptionallySendBackToSubrecipient @deepika
+  @35666 @recordOnwerConductSiteVisit @deepika
   Scenario: Verify that PM user (other than record owner) is able to conduct created site visit
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
@@ -973,7 +973,7 @@ Feature: Validate all scenarios in the Site Visit
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
     When I click on "Submit for Approval" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -1137,7 +1137,7 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
     Then I see that "Automation Site Visit" has been added in flextable with Id "inlineEditGridSiteVisitsGridView"
 
-  @viewSiteVisitAcceptButtonAfterSRecipientsSubmission @deepika
+  @56357 @viewSiteVisitAcceptButtonAfterSRecipientsSubmission @deepika
   Scenario: Validate User will be able to view the Accept button after review the submission by Recipients
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
