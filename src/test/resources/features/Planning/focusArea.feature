@@ -6,7 +6,7 @@ Feature: Validate all scenarios in Focus Area
 
   @34512 @creationOfFocusArea @smoke
   Scenario: Creation of Focus Area by User - Admin/EXE/PM
-    Given I login to "As a Grantor" app as "User" user
+    Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
@@ -16,7 +16,7 @@ Feature: Validate all scenarios in Focus Area
 
   @50963 @editionOfFocusArea @smoke
   Scenario: Edition of Focus Area by User - Admin/EXE/PM
-    Given I login to "As a Grantor" app as "User" user
+    Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
@@ -28,7 +28,7 @@ Feature: Validate all scenarios in Focus Area
 
   @50961 @addAttachmentToFocusArea
   Scenario: Addition of Attachment to Focus Area by User - Admin/EXE/PM
-    Given I login to "As a Grantor" app as "User" user
+    Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
@@ -41,7 +41,7 @@ Feature: Validate all scenarios in Focus Area
 
   @34729 @activateFocusArea @smoke
   Scenario: Activate Focus Area by User - Admin/EXE/PM
-    Given I login to "As a Grantor" app as "User" user
+    Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
@@ -53,7 +53,7 @@ Feature: Validate all scenarios in Focus Area
 
   @50962 @focusAreaHappyPath @smoke
   Scenario: Happy Path of Focus Area by User - Admin/EXE/PM
-    Given I login to "As a Grantor" app as "User" user
+    Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
@@ -75,7 +75,7 @@ Feature: Validate all scenarios in Focus Area
 
   @53219 @userFOEditfocusArea @smoke
   Scenario: Negative Case-Verfiy that FO user cannot Edit  the record
-    Given I login to "As a Grantor" app as "User" user
+    Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
@@ -91,7 +91,7 @@ Feature: Validate all scenarios in Focus Area
 
   @52620 @userFODeletefocusArea @smoke
   Scenario: Negative Case-Verfiy that FO user cannot Delete the record
-    Given I login to "As a Grantor" app as "User" user
+    Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
@@ -107,7 +107,7 @@ Feature: Validate all scenarios in Focus Area
 
   @53220 @deactivatingfocusArea @smoke
   Scenario: Verfiy deactivating focus area by user - Admin/EXE/PM
-    Given I login to "As a Grantor" app as "User" user
+    Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
@@ -121,7 +121,7 @@ Feature: Validate all scenarios in Focus Area
 
   @53221 @foUserdeactivatingfocusArea @smoke
   Scenario: Negative Case- Verfiy that other users (other than Admin, EXE, PM) can not deactivate focus area
-    Given I login to "As a Grantor" app as "User" user
+    Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
@@ -140,7 +140,7 @@ Feature: Validate all scenarios in Focus Area
 
   @52476 @closedfocusAreaListView @smoke
   Scenario: Verfiy that user can see Closed Focus Area under Inactive Focus Area list view (Admin/EXE/PM)
-    Given I login to "As a Grantor" app as "User" user
+    Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"

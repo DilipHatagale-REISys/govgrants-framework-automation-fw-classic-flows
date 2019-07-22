@@ -7,7 +7,6 @@ import eyethink.automation.bots.controller.Controller;
 import eyethink.automation.bots.controller.CoreHandlers;
 import org.openqa.selenium.WebElement;
 import org.springframework.context.annotation.Description;
-
 import java.awt.*;
 import java.io.File;
 import java.util.List;
@@ -88,7 +87,7 @@ public class ProjectManager extends ProjectWebServices {
     /* handles to verify no record is present in flex table */
     public boolean isRecordPresentInTheFlexTable(String text, String tableId) {
         try {
-            return reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='" + tableId + "']//*[" + reiDriver.xpath().contains("text()", text) + "]")).isDisplayed();
+            return  reiDriver.findMyElement().getElement(By.xpath("//div[@id='" + tableId + "']//*[" + reiDriver.xpath().contains("text()", text) + "]")).isDisplayed();
         } catch (Exception e) {
         }
         return false;
@@ -96,7 +95,6 @@ public class ProjectManager extends ProjectWebServices {
 
     /*handles to verify blank value is present inside flex table */
     public boolean isColumnValueBlank(String fieldName) {
-        reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//*[@field-name='" + fieldName + "' or @id='" + fieldName + "']"));
         WebElement fieldValue = reiDriver.findMyElement().getElement(By.xpath("//*[@field-name='" + fieldName + "' or @id='" + fieldName + "']"));
         String value = fieldValue.getText();
         if (value.equals("")) {
@@ -111,7 +109,6 @@ public class ProjectManager extends ProjectWebServices {
 
     /* handles to veify total records present in flex table */
     public String totalRecordsCount(String tableId) {
-        reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='" + tableId + "']//following-sibling::span[contains(text(),'Total Records')]"));
         return (reiDriver.findMyElement().getElement(By.xpath("//div[@id='" + tableId + "']//following-sibling::span[contains(text(),'Total Records')]"))).getText();
     }
 
@@ -193,7 +190,6 @@ public class ProjectManager extends ProjectWebServices {
      * @return
      */
     public Boolean iSeeValueInFlexTable(String value, String flexTableHeader) {
-        reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='myTabbedContent']//a[@title='" + flexTableHeader + "']/../../../following-sibling::div//tbody//td//span[text()='" + value + "']"));
         if (reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='myTabbedContent']//a[@title='" + flexTableHeader + "']/../../../following-sibling::div//tbody//td//span[text()='" + value + "']")).isDisplayed())
             return true;
         else
@@ -209,10 +205,10 @@ public class ProjectManager extends ProjectWebServices {
      * @param fileNameFromWorkSpace - file which is to be upload
      */
     public void uploadAttachmentFromWorkspace(String fileNameFromWorkSpace) {
-        reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='myTabbedContent']//span[contains(text(),'Attachment')]/..//div[@class='panel-heading']//*[text()='Add']")).click();
+        reiDriver.findMyElement().getElement(By.xpath("//div[@id='myTabbedContent']//span[contains(text(),'Attachment')]/..//div[@class='panel-heading']//*[text()='Add']")).click();
         reiDriver.switchTo().switchToFrame(By.xpath("//iframe[contains(@ng-src, 'apex') or contains(@src,'apex')]"));
-        reiDriver.WaitFor().magicWait(By.xpath("//div[@id='Attachmentadd']//span[text()='Upload file from Workspace']")).click();
-        reiDriver.WaitFor().magicWait(By.xpath("//div[@id='Attachmentadd']//td[text()='" + fileNameFromWorkSpace + "']/..//input")).click();
+        reiDriver.findMyElement().getElement(By.xpath("//div[@id='Attachmentadd']//span[text()='Upload file from Workspace']")).click();
+        reiDriver.findMyElement().getElement(By.xpath("//div[@id='Attachmentadd']//td[text()='" + fileNameFromWorkSpace + "']/..//input")).click();
         govgrants.modal().clickModalContentSpecificButton("Attach");
         govgrants.modal().closeModalByClickingTopRightCloseButton();
     }
@@ -258,9 +254,7 @@ public class ProjectManager extends ProjectWebServices {
      * @return
      */
     private int getCheckedFieldValueCount(String fieldName){
-        reiDriver.WaitFor().magicWait(By.xpath("//field[@field-name='"+fieldName+"']/i[contains(@class,'fa-check')]"));
         List<WebElement> checkSymbol = reiDriver.findMyElement().getElements(By.xpath("//field[@field-name='"+fieldName+"']/i[contains(@class,'fa-check')]"));
         return checkSymbol.size();
     }
-
 }
