@@ -2,11 +2,11 @@
 Feature: Validate all scenarios in the Pre-Application
 
   Background: Qualify Announcement and Create PreApplication
-    Given I delete the record "Automation Announcement for Pre-Application" from the object "PreApplication"
-    And I delete the record "Automation Announcement for Pre-Application" from the object "Application"
+    Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
+    When I delete the record "Automation Announcement for Pre-Application" from the object "PreApplication"
     And I delete the record "Automation Announcement for Pre-Application" from the object "Qualified Announcement"
     And I delete the record "Automation Announcement for Application" from the object "Qualified Announcement"
-    Given I am on "SUBPORTAL" portal
+    When I am on "SUBPORTAL" portal
     And I login as "SPI" user
     When I navigate to "Opportunities" tab
     And I navigate to "Active" content inside "Opportunities" subheader on left panel
@@ -21,14 +21,14 @@ Feature: Validate all scenarios in the Pre-Application
 
   @53151 @preApplicationCreation @smoke
   Scenario: Creating a Pre Application
-    Then I see status in Progress-bar is "Created" and is "green"
+    Then I see status in Progress-bar is "Created" and is "Green"
 
   @53153 @preApplicationEdition
   Scenario: Validate edition of pre-application
     When I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values"
     When I click on "Save" in the page details
-    Then I see status in Progress-bar is "Created" and is "green"
+    Then I see status in Progress-bar is "Created" and is "Green"
 
   @53154 @addBudgetDetailsToPreApplication @smoke
   Scenario: Addition of budget in the budget grid to an pre-application
@@ -78,13 +78,13 @@ Feature: Validate all scenarios in the Pre-Application
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
     When I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record id" in "PhasePendingTasks" panel
+    When I perform quick search for "Record id" in "---preApplication:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record id" inside table
     When I click on "Accept" in the page details
-    Then I see status in Progress-bar is "Accepted" and is "green"
+    Then I see status in Progress-bar is "Accepted" and is "Green"
 
   @53162 @preApplicationtoApplication
   Scenario Outline: Validate Grantor accept the submitted pre-application and converted it to application
@@ -98,10 +98,10 @@ Feature: Validate all scenarios in the Pre-Application
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
     When I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record id" in "PhasePendingTasks" panel
+    When I perform quick search for "Record id" in "---preApplication:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record id" inside table
     When I click on "Accept" in the page details
     Given I am on "SUBPORTAL" portal
@@ -134,12 +134,12 @@ Feature: Validate all scenarios in the Pre-Application
     And I click on "Save" in the page details
     Given I click on "Back" in the page details
     When I click on "Submit Application" in the page details
-    Given I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
+    Given I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "All Applications"
     When I click on "View" icon for "<Application Name>" inside table
     Then I see status in Progress-bar is "Submitted" and is "Green"
     Examples:
-      | User | Announcement Name                       |
-      | PM   | Automation Announcement for Application |
+      | Announcement Name                       |
+      | Automation Announcement for Application |

@@ -3,7 +3,7 @@ Feature: Validate all scenarios in Closeout
 
   Background: Navigate to award
     Given I delete the record "Automation Permanent Award" from the object "Closeout"
-    When I login to "As a Grantor" app as "PM" user
+    When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"

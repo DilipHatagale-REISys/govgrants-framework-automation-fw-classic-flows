@@ -19,14 +19,14 @@ Feature: Validate all scenarios in the Application Intake
   Scenario: Creating an Application
     Then I see status in Progress-bar is "Created" and is "Green"
 
- @34045 @applicationEdition
+  @34045 @applicationEdition
   Scenario: Edition of an application
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "Green"
 
- @34303 @addFocusAreaToApplication 
+  @34303 @addFocusAreaToApplication
   Scenario Outline: Addition of Focus area to an application
     When I navigate to "Budget" sub tab
     Then I see that "<EGMS Id>" has been added in flextable with Id "---applicationIntake:-:focusAreaTableId---"
@@ -34,7 +34,7 @@ Feature: Validate all scenarios in the Application Intake
       | EGMS Id                         |
       | Automation Permanent Focus Area |
 
- @addBudgetDetailsToApplication @smoke
+  @addBudgetDetailsToApplication @smoke
   Scenario: Addition of budget in the budget grid to an application
     When I navigate to "Budget" sub tab
     And I expand nested table containing column value "BP01"
@@ -44,16 +44,16 @@ Feature: Validate all scenarios in the Application Intake
     Then I see the following messages in the page details contains:
       | Saved Successfully! |
 
- @addTargetToKPIInApplication @smoke
+  @addTargetToKPIInApplication @smoke
   Scenario: Addition of KPI target to an application
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Target |
       | Automation Permanent KPI for Regression | 10     |
-     Then I see the following messages in the page details contains:
+    Then I see the following messages in the page details contains:
       | Saved Successfully! |
 
- @formFillingApplication @smoke
+  @formFillingApplication @smoke
   Scenario: To fill and complete the form in Progress Report
     When I navigate to "Attachments" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
@@ -75,7 +75,7 @@ Feature: Validate all scenarios in the Application Intake
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
-      | Construction  | 1000    | 100        | 100            | 100            |
+      | Construction  | 1000   | 100        | 100            | 100            |
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
@@ -101,7 +101,7 @@ Feature: Validate all scenarios in the Application Intake
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
-      | Construction  | 1000    | 100        | 100            | 100            |
+      | Construction  | 1000   | 100        | 100            | 100            |
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
@@ -116,12 +116,12 @@ Feature: Validate all scenarios in the Application Intake
     And I click on "Save" in the page details
     Given I click on "Back" in the page details
     When I click on "Submit Application" in the page details
-    Given I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
+    Given I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "All Applications"
     When I click on "View" icon for "<Application Name>" inside table
     Then I see status in Progress-bar is "Submitted" and is "Green"
     Examples:
-      | User | Application Name                               |
-      | EXE  | Automation Announcement for Application Intake |
+      | Application Name                               |
+      | Automation Announcement for Application Intake |

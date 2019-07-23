@@ -3,7 +3,7 @@ Feature: Validate all scenarios in Strategic Plan
 
   Background: To setup data
     Given I delete the record "Automation Execution Strategic Plan" from the object "Strategic Plan"
-    When I login to "As a Grantor" app as "PM" user
+    When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
     When I navigate to "Strategic Plans" content inside "Planning" subheader on left panel
     And I click toggle button to select "Draft Strategic Plans"

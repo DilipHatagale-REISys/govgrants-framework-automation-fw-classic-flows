@@ -4,7 +4,7 @@ Feature: Validate all scenarios in the Amendment Request
   Background: Setup data
     Given I delete the record "Automation Award for Amendment Request" from the object "Amendment Request"
     Given I delete the record "Automation Award for Amendment Request" from the object "subaward"
-    When I login to "As a Grantor" app as "PM" user
+    When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
@@ -32,7 +32,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Edit" in the page details
     And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
-    Then I see status in Progress-bar is "Created" and is "green"
+    Then I see status in Progress-bar is "Created" and is "Green"
 
   @53196 @associationOfKPIToSOWAmendmentRequest @smoke
   Scenario: Association of KPI to Amendment Request
@@ -116,7 +116,6 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
-    And I get the "EGMS ID"
     When I click on "Edit" in the page details
     And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -136,7 +135,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Send to Subrecipient" in the page details
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "Green"
 
-  @53202 @subrecipientAcknowledgesSOWAmendmentRequest @smoke
+  @53202 @subrecipientAcknowledgesSOWAmendmentRequest @smoke ~wip
   Scenario: Subrecipient acknowledges Amendment Request
     Given I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -162,7 +161,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Acknowledge" in the page details
     Then I see that "Amendment Request" is in "Acknowledged" status
 
-  @53203 @submitForApprovalSOWAmendmentRequest
+  @53203 @submitForApprovalSOWAmendmentRequest ~wip
   Scenario: Submit Amendment Request for Approval
     Given I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -194,7 +193,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
 
-  @53204 @approvalOfSOWAmendmentRequest @smoke
+  @53204 @approvalOfSOWAmendmentRequest @smoke ~wip
   Scenario: Approval of Amendment Request
     Given I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -253,7 +252,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I "Approve" in approval decision
     Then I see status in Progress-bar is "Approved" and is "Green"
 
-  @53205 @amendSubawardSOWAmendmentRequest
+  @53205 @amendSubawardSOWAmendmentRequest ~wip
   Scenario: Click on Amend of Amendment Request
     Given I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -321,7 +320,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Amend Subaward" in the page details
     Then I see that "Automation Award for Amendment Request" is in "Pending Activation" status
 
-  @53207 @activateSubawardSOWAmendmentRequest @scopeOfWorkHappyPath @smoke
+  @53207 @activateSubawardSOWAmendmentRequest @scopeOfWorkHappyPath @smoke ~wip
   Scenario: Click Activate Amendment Request
     Given I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
