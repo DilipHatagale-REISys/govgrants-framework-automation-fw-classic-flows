@@ -84,7 +84,6 @@ Feature: Validate all scenarios in the Pre-Application
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
     And I click on "Start" icon for "Record id" inside table
     When I click on "Accept" in the page details
-    When I enter "Automation" for comments and click "OK"
     Then I see status in Progress-bar is "Accepted" and is "green"
 
   @53162 @preApplicationtoApplication
@@ -105,7 +104,6 @@ Feature: Validate all scenarios in the Pre-Application
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
     And I click on "Start" icon for "Record id" inside table
     When I click on "Accept" in the page details
-    When I enter "Automation" for comments and click "OK"
     Given I am on "SUBPORTAL" portal
     And I login as "SPI" user
     When I navigate to "Applications" tab
