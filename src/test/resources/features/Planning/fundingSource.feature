@@ -79,7 +79,7 @@ Feature: Validate all scenarios in Funding Source
     Given I login to "As a Grantor" app as "EXE" user
     When I navigate to "Planning" tab
     When I navigate to "Funding Sources" content inside "Planning" subheader on left panel
-    And I click on top right button "New" in flex table with id "InternalFundingSource"
+    And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
     When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
@@ -109,10 +109,10 @@ Feature: Validate all scenarios in Funding Source
     And I enter "Funding Account Edition" values from "FundingSource_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I click on "Activate" in the page details
-    Then I see status in Progress-bar is "Active" and is "green"
+    Then I see status in Progress-bar is "Active" and is "Green"
 
   @52661 @creationFSFOUser @smoke
-  Scenario Outline:Verify that other users (other than Admin/PM/EXE)are not able to create funding account &  funding source
+  Scenario Outline:Verify that users (other than Admin/PM/EXE)are not able to create funding account &  funding source
     When I am on "INTERNAL" portal
     When I login as "<User>" user
     When I navigate to "Planning" tab
@@ -149,7 +149,7 @@ Feature: Validate all scenarios in Funding Source
     When I login to "As a Grantor" app as "EXE" user
     When I navigate to "Planning" tab
     When I navigate to "Funding Sources" content inside "Planning" subheader on left panel
-    And I click on top right button "New" in flex table with id "InternalFundingSource"
+    And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
     When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"

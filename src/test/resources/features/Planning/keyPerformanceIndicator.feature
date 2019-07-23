@@ -5,8 +5,8 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     Given I delete the record "Automation Execution KPI" from the object "KPI"
 
   @34735 @creationOfKPI @smoke
-  Scenario: Creation of KPI
-    When I login to "As a Grantor" app as "EXE" user
+  Scenario Outline: Creation of KPI
+    When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
     When I navigate to "Key Performance Indicators (KPI)" content inside "Planning" subheader on left panel
     And I click toggle button to select "Draft Key Performance Indicators (KPI)"
@@ -14,11 +14,15 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     And I enter "Creation" values from "KPI_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
-    Then I see status in Progress-bar is "Created" and is "green"
+    Then I see status in Progress-bar is "Created" and is "Green"
+    Examples:
+      | User  |
+      | ADMIN |
+      | EXE   |
 
   @51028 @editionOfKPI
-  Scenario: Edition of KPI
-    When I login to "As a Grantor" app as "EXE" user
+  Scenario Outline: Edition of KPI
+    When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
     When I navigate to "Key Performance Indicators (KPI)" content inside "Planning" subheader on left panel
     And I click toggle button to select "Draft Key Performance Indicators (KPI)"
@@ -27,11 +31,15 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "KPI_Field_Values.xlsx"
     And I click on "Save" in the page details
-    Then I see status in Progress-bar is "Created" and is "green"
+    Then I see status in Progress-bar is "Created" and is "Green"
+    Examples:
+      | User  |
+      | ADMIN |
+      | EXE   |
 
   @51026 @addAttachmentToKPI
-  Scenario: Addition of Attachment to KPI
-    When I login to "As a Grantor" app as "EXE" user
+  Scenario Outline: Addition of Attachment to KPI
+    When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
     When I navigate to "Key Performance Indicators (KPI)" content inside "Planning" subheader on left panel
     And I click toggle button to select "Draft Key Performance Indicators (KPI)"
@@ -42,10 +50,14 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     When I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Supporting Documents"
     Then I see "Supporting Documents" has been added in "Attachments" flex table
+    Examples:
+      | User  |
+      | ADMIN |
+      | EXE   |
 
   @34736 @kpiHappyPath @smoke
-  Scenario: Happy Path of KPI
-    When I login to "As a Grantor" app as "EXE" user
+  Scenario Outline: Happy Path of KPI
+    When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
     When I navigate to "Key Performance Indicators (KPI)" content inside "Planning" subheader on left panel
     And I click toggle button to select "Draft Key Performance Indicators (KPI)"
@@ -57,7 +69,11 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     And I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Supporting Documents"
     And I click on "Activate" in the page details
-    Then I see status in Progress-bar is "Active" and is "green"
+    Then I see status in Progress-bar is "Active" and is "Green"
+    Examples:
+      | User  |
+      | ADMIN |
+      | EXE   |
 
   @52627 @activateKPI @smoke
   Scenario: Activate KPI
@@ -70,7 +86,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
     When I click on "Activate" in the page details
-    Then I see status in Progress-bar is "Active" and is "green"
+    Then I see status in Progress-bar is "Active" and is "Green"
 
   @kpiCreationPM @smoke
   Scenario: Negative Case - Verify that other users (Other than Admin/EXE) are not able to create KPI
@@ -129,7 +145,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     When I click on "Save" in the page details
     When I click on "Activate" in the page details
     And I click on "Deactivate" in the page details
-    Then I see status in Progress-bar is "Inactive" and is "green"
+    Then I see status in Progress-bar is "Inactive" and is "Green"
     Examples:
       | User  |
       | ADMIN |

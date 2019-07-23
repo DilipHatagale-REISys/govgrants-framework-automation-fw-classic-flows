@@ -99,5 +99,4 @@ public class GenericSteps {
     public void iCanSeeRecordValueIsCheckedForFieldName(String count, String fieldName) {
         projectManager.AssertFieldValueIsChecked(fieldName,count);
     }
-
 }
