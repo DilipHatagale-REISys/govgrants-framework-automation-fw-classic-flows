@@ -182,7 +182,7 @@ Feature: Validate all scenarios in Closeout
     And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
-  @adhocCloseoutHappyPath @smoke @notFunctional ~wip
+  @adhocCloseoutHappyPath @smoke @notFunctional @wip
   Scenario: Approval of Closeout
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
@@ -223,7 +223,7 @@ Feature: Validate all scenarios in Closeout
       | Approval   | Start         | Approve  |                   |
     Then I see status in Progress-bar is "Completed" and is "green"
 
-  @scheduledCloseoutHappyPath @notFunctional ~wip
+  @scheduledCloseoutHappyPath @notFunctional @wip
   Scenario: Happy path of Scheduled closeout
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
