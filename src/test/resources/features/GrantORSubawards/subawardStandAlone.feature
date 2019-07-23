@@ -6,7 +6,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I delete the record "Automation Execution Award" from the object "Payment Request"
     And I delete the record "Automation Execution Award" from the object "Progress Report"
     And I delete the record "Automation Execution Award" from the object "Grant"
-    When I login to "As a Grantor" app as "User" user
+    When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"

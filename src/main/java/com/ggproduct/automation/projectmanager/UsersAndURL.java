@@ -28,9 +28,9 @@ public class UsersAndURL implements UsersController {
     public String getUserName(String userLevel) {
         String userName = null;
         if ((EnvironmentFetcher.environmentName != null) && (EnvironmentFetcher.environmentName.contains("QA"))) {
-            userName = getQAEnvironmentUser(userLevel);
+            userName = getQAEnvironmentUser(setUpUserLevel(userLevel));
         } else {
-            userName = getAUTOEnvironmentUser(userLevel);
+            userName = getAUTOEnvironmentUser(setUpUserLevel(userLevel));
         }
         return userName;
     }
@@ -39,9 +39,9 @@ public class UsersAndURL implements UsersController {
     public String getPassword(String userLevel) {
         String password = null;
         if (EnvironmentFetcher.environmentName.contains("QA")) {
-            password = getQAEnvironmentPassword(userLevel);
+            password = getQAEnvironmentPassword(setUpUserLevel(userLevel));
         } else {
-            password = getAUTOEnvironmentPassword(userLevel);
+            password = getAUTOEnvironmentPassword(setUpUserLevel(userLevel));
         }
         return password;
     }
@@ -120,5 +120,15 @@ public class UsersAndURL implements UsersController {
         } else {
             return username.get("ADMIN");
         }
+    }
+
+    /**
+     * setup userLevel based on jvm property or default value or as passed from feature
+     * @param userType dynamicUser or EXE/PM
+     * @return userLevel
+     * @author nauman.shahid
+     */
+    private String setUpUserLevel(String userType) {
+        return userType.equalsIgnoreCase("dynamicUser") && System.getProperty("userType") != null ? System.getProperty("userType") : !userType.equalsIgnoreCase("dynamicUser") ? userType : "PM";
     }
 }
