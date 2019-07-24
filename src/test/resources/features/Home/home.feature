@@ -1,4 +1,4 @@
-@home @regression @wip
+@home @regression
 Feature: Validate all scenarios in the home tab
 
   @35024 @internalOrganizationCreate @smoke
@@ -31,13 +31,14 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I click on "View" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
+    When I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
+    When I click on "View" icon for "Test Automation Organization" inside flex table with id "a0Z1k000001eULHEA2Level1"
     Then I see that "Internal Organization" is in "Active" status
     Examples:
-      | User  |
+      | User   |
+      | PM     |
+      | EXE   |
       | ADMIN |
-#      | EXE   |
-#      | PM    |
 
   @internalOrganizationADMINEdit
   Scenario Outline: Validate system allows Edit access to Internal Organizations to the ADMIN/DA
@@ -63,35 +64,35 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    And I click on "View" icon for "Bankers Small Business Community Development Corporation Of California" inside flex table with id "ActiveAccount"
+    And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "ActiveAccount"
     Then I see that "Subrecipient Organization" is in "Active" status
     Examples:
       | User  |
       | ADMIN |
-#      | EXE   |
-#      | PM    |
+      | EXE   |
+      | PM    |
 
   @activeSubrecipientOrganizationsView
   Scenario Outline: Validate whether all users have view access to Active Individual Subrecipients
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Pankaj Nelli" in "ActiveAccountIndApplicant" panel
-    And I click on "View" icon for "Pankaj Nelli" inside flex table with id "ActiveAccountIndApplicant"
+    When I perform quick search for "Automation SPI" in "ActiveAccountIndApplicant" panel
+    And I click on "View" icon for "Automation SPI" inside flex table with id "ActiveAccountIndApplicant"
     Then I see that "Individual Subrecipient" is in "Active" status
     Examples:
       | User  |
       | ADMIN |
-#      | EXE   |
-#      | PM    |
+      | EXE   |
+      | PM    |
 
   @activeIndividualSubrecipientsEdit
   Scenario Outline: Validate whether ADMIN/DA have Edit access to Active Individual Subrecipients
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Pankaj Nelli" in "ActiveAccountIndApplicant" panel
-    Then I can see row level action button "Edit" against "Pankaj Nelli" in flex table with id "ActiveAccountIndApplicant"
+    When I perform quick search for "Automation SPI" in "ActiveAccountIndApplicant" panel
+    Then I can see row level action button "Edit" against "Automation SPI" in flex table with id "ActiveAccountIndApplicant"
     Examples:
       | User  |
       | ADMIN |
@@ -101,8 +102,8 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Bankers Small Business Community Development Corporation Of California" in "ActiveAccount" panel
-    Then I can see row level action button "Edit" against "Bankers Small Business Community Development Corporation Of California" in flex table with id "ActiveAccount"
+    When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
+    Then I can see row level action button "Edit" against "SAN DIEGO ELECTRICAL TRAINING TRUST" in flex table with id "ActiveAccount"
     Examples:
       | User  |
       | ADMIN |
@@ -112,14 +113,14 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
-    When I perform quick search for "Automation Contact" in "flexTableRandomID" panel
-    And I click on "View" icon for "Automation Contact" inside flex table with id "flexTableRandomID"
+    When I perform quick search for "Automation PO" in "flexTableRandomID" panel
+    And I click on "View" icon for "Automation PO" inside flex table with id "flexTableRandomID"
     Then I see field "Organization" as "Test Automation Organization"
     Examples:
       | User  |
       | ADMIN |
-#      | EXE   |
-#      | PM    |
+      | EXE   |
+      | PM    |
 
   @internalContactsCreate @smoke
   Scenario Outline: Verify that Internal contacts are accessible across agencies and can be created by any Internal user
@@ -135,8 +136,8 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-#      | EXE   |
-#      | PM    |
+      | EXE   |
+      | PM    |
 
   @internalContactsEdit
   Scenario Outline: Validate system allows edit access to Contacts to all Internal Users
@@ -148,8 +149,8 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-#      | EXE   |
-#      | PM    |
+      | EXE   |
+      | PM    |
 
   @subrecipientContactsCreate @smoke
   Scenario Outline: Verifying if the Internal Users has create access to Subrecipient Contact
@@ -164,21 +165,21 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-#      | EXE   |
-#      | PM    |
+      | EXE   |
+      | PM    |
 
   @smeReviewersContactView
   Scenario Outline: Verifying all Internal Users has View access to SME Reviewers Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
-    When I perform quick search for "Mark Bellinger" in "Reviewers" panel
-    Then I can see row level action button "View" against "Mark Bellinger" in flex table with id "Reviewers"
+    When I perform quick search for "Automation Contact" in "Reviewers" panel
+    Then I can see row level action button "View" against "Automation Contact" in flex table with id "Reviewers"
     Examples:
       | User  |
       | ADMIN |
-#      | EXE   |
-#      | PM    |
+      | EXE   |
+      | PM    |
 
   @smeReviewersContactCreate @wip
   Scenario Outline: Verifying all Internal Users has Create access to SME Reviewers Contact
@@ -193,7 +194,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @smeReviewersContactSendInviatation
+  @smeReviewersContactSendInvitation
   Scenario Outline: Verify the system allows all Internal users to Send Invitation to SME Reviewer
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -202,20 +203,20 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-#      | EXE   |
-#      | PM    |
+      | EXE   |
+      | PM    |
 
   @activeSMEReviewersContactDetailPageView
   Scenario Outline: Verify that system allows user to see the detail page of Active SME Reviewer contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
-    Then I can see row level action button "View" against "Smiley SME" in flex table with id "ActiveAccountReviewer"
+    Then I can see row level action button "View" against "Automation SME in flex table with id "ActiveAccountReviewer"
     Examples:
       | User  |
       | ADMIN |
-#      | EXE   |
-#      | PM    |
+      | EXE   |
+      | PM    |
 
   @termsandConditionsView
   Scenario Outline: Verifying all Internal Users has View access to Terms and Conditions
@@ -227,8 +228,8 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-#      | EXE   |
-#      | PM    |
+      | EXE   |
+      | PM    |
 
   @termsAndConditionsCreate @smoke
   Scenario Outline: Verifying if the ADMIN/DA has create access to Terms and Conditions
@@ -264,8 +265,8 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-#      | EXE   |
-#      | PM    |
+      | EXE   |
+      | PM    |
 
   @dunsRegistrationView
   Scenario Outline: Validate whether all users have view access to DUNS Registration
@@ -275,8 +276,8 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-#      | EXE   |
-#      | PM    |
+      | EXE   |
+      | PM    |
 
   @samgovRegistrationView
   Scenario Outline: Validate whether all users have view access to SAM.gov Registration
@@ -286,8 +287,8 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-#      | EXE   |
-#      | PM    |
+      | EXE   |
+      | PM    |
 
   @contactUsView
   Scenario Outline: Validate whether all users have view access to Contact Us
@@ -297,8 +298,8 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-#      | EXE   |
-#      | PM    |
+      | EXE   |
+      | PM    |
 
   @editInternalOrganization @smoke
   Scenario Outline: Validate whether ADMIN users can Edit the Internal Organization
@@ -343,8 +344,8 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-#      | EXE   |
-#      | PM    |
+      | EXE   |
+      | PM    |
 
   @subrecipientContactsEdition
   Scenario Outline: Verifying if the Internal Users has Edit access to Subrecipient Contact
@@ -464,7 +465,7 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    And I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
+    #And I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
     When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
     When I enter the following values into flex table with id "flexGridRelatedDUNS" by clicking "New" :
       | DUNS Number | Registered Entity Name | Location |
@@ -517,4 +518,35 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
+
+   @createCases @deepika
+   Scenario Outline: Verify all Internal / External Users should be able to create the Cases
+    Given I login to "As a Grantor" app as "<User>" user
+    When I navigate to "Home" tab
+    And I navigate to "Manage Cases" content inside "Technical Support" subheader on left panel
+    When I click on top right button "New" in flex table with id "CaseList"
+    And I enter "CaseCreation" values from "HomeCases_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I see that "Case Creation" is in "Tier 1 Support - Pending Assignment" status
+    Examples:
+      | User  |
+      | ADMIN |
+      | EXE   |
+      | PM    |
+   
+   @editionCases @deepika
+   Scenario Outline: Verify all Internal / External Users should be able to create the Cases
+    Given I login to "As a Grantor" app as "<User>" user
+    When I navigate to "Home" tab
+    And I navigate to "Manage Cases" content inside "Technical Support" subheader on left panel
+    And I perform quick search for "Case Creation" in "inlineEditGridIndirectRateGrid" panel
+    When I click on "Delete" icon for "New IDC" inside flex table with id "CaseList"
+    And I enter "CaseEdition" values from "HomeCases_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    Then I see that "Case Creation" is in "Tier 1 Support - Pending Assignment" status
+    Examples:
+      | User  |
+      | ADMIN |
+      | EXE   |
+      | PM    |
 	
