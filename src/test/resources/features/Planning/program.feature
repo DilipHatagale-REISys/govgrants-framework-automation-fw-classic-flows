@@ -50,10 +50,10 @@ Feature: Validate all scenarios for program
   Scenario: Validate the assignment of Approvers for the Internal Program
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
-      | Program Approver   | Automation PM  | Automation Test Description |
+      | Responsibility     | Name           | Description                 |
       | Executive Approver | Automation EXE | Automation Test Description |
-    Then I see that "Program Approver" has been added in flextable with Id "---program:-:approverTableId---"
+      | Program Approver   | Automation PM  | Automation Test Description |
+    Then I see that "Automation EXE" has been added in flextable with Id "---program:-:approverTableId---"
 
   @34616 @programFocusAreaAssociation @smoke
   Scenario Outline: Validate the association of Focus Area for the Internal Program
@@ -123,7 +123,7 @@ Feature: Validate all scenarios for program
     And I switch to Parent iframe
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Responsibility     | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
     When I navigate to "Setup" sub tab
@@ -162,7 +162,7 @@ Feature: Validate all scenarios for program
     And I switch to Parent iframe
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Responsibility     | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
     When I navigate to "Setup" sub tab
@@ -213,7 +213,7 @@ Feature: Validate all scenarios for program
     And I switch to Parent iframe
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Responsibility     | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
     When I get the "EGMS ID"
@@ -272,7 +272,7 @@ Feature: Validate all scenarios for program
     And I switch to Parent iframe
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Responsibility     | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
     And I click on "Submit For Approval" in the page details
@@ -357,7 +357,7 @@ Feature: Validate all scenarios for program
     And I switch to Parent iframe
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Responsibility     | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
     And I click on "Submit For Approval" in the page details
