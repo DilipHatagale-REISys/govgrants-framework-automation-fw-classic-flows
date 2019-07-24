@@ -3,7 +3,7 @@ Feature: Validate all scenarios in the Pre-Application
 
   Background: Qualify Announcement and Create PreApplication
     Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
-    When I delete the record "Automation Announcement for Pre-Application" from the object "PreApplication"
+    When I delete the record "Automation Announcement for Application" from the object "PreApplication"
     And I delete the record "Automation Announcement for Pre-Application" from the object "Qualified Announcement"
     And I delete the record "Automation Announcement for Application" from the object "Qualified Announcement"
     When I am on "SUBPORTAL" portal

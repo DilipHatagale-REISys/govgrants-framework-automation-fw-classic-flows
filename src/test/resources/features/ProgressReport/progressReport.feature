@@ -141,7 +141,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     Given I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
@@ -164,7 +164,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     Given I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
@@ -188,7 +188,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     Given I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
@@ -216,7 +216,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     Given I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
@@ -251,7 +251,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     Given I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
@@ -279,7 +279,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Back" in the page details
     When I get the "EGMS ID"
     Given I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
@@ -301,7 +301,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     Given I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
@@ -336,7 +336,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     Given I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
@@ -353,7 +353,7 @@ Feature: Validate all scenarios in Progress Report
       | Automation Permanent KPI for Regression | 95     | 7             |
     When I click on "Save" in the page details
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
@@ -388,7 +388,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     Given I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
@@ -422,7 +422,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     Given I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
@@ -457,7 +457,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     Given I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
@@ -495,7 +495,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     Given I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
@@ -512,7 +512,7 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Send to Owner" on the approval decision box
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Manage Progress Reports" content inside "Monitoring Activities" subheader on left panel
     When I click toggle button to select "Submitted Progress Reports" in "---progressReport:-:internalProgressReportFlexTableId---"
@@ -530,7 +530,7 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in approval decision
-    Then I see status in Progress-bar is "Approved" and is "green"
+    Then I see status in Progress-bar is "Approved" and is "Green"
 
   @51118 @progressReportsNotEditablePostSubmission
   Scenario: To validate progress report are not editable post submission of progress report to grantor.
@@ -550,7 +550,7 @@ Feature: Validate all scenarios in Progress Report
     Then I cannot see top right button "Edit" in page detail
 
   @51119 @sendBacktoOwnerOfProgressReportbyFiscalApprover @smoke
-  Scenario: To validate  Progress Report send back to owner functionality by Fiscal approver.
+  Scenario: To validate Progress Report send back to owner functionality by Fiscal approver.
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -564,7 +564,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     Given I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
@@ -587,7 +587,7 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Send to Owner" on the approval decision box
-    Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
+    Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
 
   @51120 @progressReportsTableUpdateOnAward
   Scenario: To validate Progress Reports Table on the award is updated with respect to approval of progress reports
@@ -604,7 +604,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     Given I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
@@ -627,15 +627,16 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in approval decision
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
-    When I perform quick search for "Automation Permanent Award" in "ActiveGrants" panel
+    When I perform quick search for "Automation Permanent Award" in "---progressReport:-:activeGrantsTableId---" panel
     And I click on "View" icon for "Automation Permanent Award" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---subAwardStandAlone:-:subawards_TableId---"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---progressReport:-:subawardsTableId---"
     And I navigate to "Performance" sub tab
-    Then I see that "7" has been added in flextable with Id "inlineEditGridGrantorAwardKeyOutcomes"
+    Then I see that "7" has been added in flextable with Id "---progressReport:-:awardKPITableId---"
 
   @51121 @historyOfProgressReportsendbacktoOwnerOfProgressReportbyFiscalApprover
   Scenario: To validate  field history update post Progress Report is send back to owner by Fiscal approver.
@@ -652,7 +653,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     Given I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
@@ -693,7 +694,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     Given I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
@@ -716,7 +717,7 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Send to Owner" on the approval decision box
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
@@ -737,7 +738,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     Given I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
@@ -760,7 +761,7 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Send to Owner" on the approval decision box
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Manage Progress Reports" content inside "Monitoring Activities" subheader on left panel
     When I click toggle button to select "Submitted Progress Reports" in "---progressReport:-:internalProgressReportFlexTableId---"
@@ -795,7 +796,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     Given I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
@@ -819,7 +820,7 @@ Feature: Validate all scenarios in Progress Report
     Then I see "No Records Found" inside flex table with id "---progressReport:-:pendingTaskTableId---"
 
   @51125 @approvalOfProgressReport @progressReportHappyPathWithoutDefaultApprovers @smoke
-  Scenario: To approve Progress Report by changing the defualt approvers in Progress Report
+  Scenario: To approve Progress Report by changing the default approvers in Progress Report
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -833,7 +834,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     Given I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
