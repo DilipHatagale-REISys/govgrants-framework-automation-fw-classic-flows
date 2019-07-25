@@ -247,7 +247,14 @@ public class ProjectManager extends ProjectWebServices {
     public void AssertFieldValueIsChecked(String fieldName,String count){
         Assert.assertEquals(Integer.parseInt(count),getCheckedFieldValueCount(fieldName));
     }
-
+    
+    /**
+     * Handles to switch to Iframe
+     */
+    public void switchToIframe(String iframeId) {
+        reiDriver.switchTo().switchToFrame(By.xpath("//iframe[@id='" + iframeId + "']"));
+    }
+    
     /**
      * To get the count of row values checked for field available in flex table
      * @param fieldName - Field API name

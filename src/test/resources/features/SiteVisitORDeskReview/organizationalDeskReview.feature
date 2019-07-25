@@ -39,7 +39,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "<Subrecipient>" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
+    
     Then I see that "<Subrecipient>" has been added in flextable with Id "---orgLevelDeskReview:-:associateContactsId---"
     Examples:
       | Subrecipient   |
@@ -88,7 +88,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click on "Save" in the page details
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "<User>" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
+    
     Then I see that "<User>" has been added in flextable with Id "---orgLevelDeskReview:-:associateContactsId---"
     Examples:
       | User           |
@@ -134,10 +134,10 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
+    
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I close Modal
+    
     And I click on "Notify" in the page details
     Then I see that "Automation Desk Review Org level" is in "Notified" status
 
@@ -159,10 +159,10 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I close Modal
+    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -190,10 +190,10 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I close Modal
+    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -217,10 +217,10 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I close Modal
+    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -263,10 +263,10 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I close Modal
+    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -288,7 +288,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
+    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     Then I see that "100.00%" has been added in flextable with Id "---orgLevelDeskReview:-:reportsTableId---"
 
   @54571 @submittingForApprovalDeskReviewOrgLevel @deepika
@@ -309,10 +309,10 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I close Modal
+    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -334,12 +334,13 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
+    And I refresh the page
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
+    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
@@ -362,10 +363,10 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I close Modal
+    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -387,12 +388,13 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
+    And I refresh the page
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
+    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -426,10 +428,10 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I close Modal
+    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -451,12 +453,13 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
+    And I refresh the page
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
+    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -499,10 +502,10 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I close Modal
+    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -524,12 +527,13 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
+    And I refresh the page
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
+    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -593,10 +597,10 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I close Modal
+    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -618,12 +622,13 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
+    And I refresh the page
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
+    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -688,10 +693,10 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I close Modal
+    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -713,12 +718,13 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
+    And I refresh the page
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
+    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -789,10 +795,10 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I close Modal
+    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -814,12 +820,13 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
+    And I refresh the page
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
+    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -889,10 +896,10 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I close Modal
+    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -914,12 +921,13 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
+    And I refresh the page
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
+    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -953,10 +961,10 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I close Modal
+    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -978,12 +986,13 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
+    And I refresh the page
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
+    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1033,10 +1042,10 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I close Modal
+    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -1054,17 +1063,17 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Report and Outcomes" sub tab
-    And I pause execution
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
+    And I refresh the page
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
+    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1094,7 +1103,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "<User>" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
+    
     Then I see that "<User>" has been added in flextable with Id "---orgLevelDeskReview:-:associateContactsId---"
     Examples:
       | User           |
@@ -1144,10 +1153,9 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I close Modal
+    
     Then I can see top right button "Notify" in page detail
 
   @55806 @conductButtonDeskReviewOrgLevel @smoke @deepika
@@ -1168,10 +1176,10 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I close Modal
+    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     Then I can see top right button "Conduct" in page detail
@@ -1194,10 +1202,10 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I close Modal
+    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -1225,10 +1233,10 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I close Modal
+    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -1256,10 +1264,10 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I close Modal
+    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -1285,10 +1293,10 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I close Modal
+    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -1311,7 +1319,7 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
+    
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1344,10 +1352,10 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I close Modal
+    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -1369,12 +1377,13 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
+    And I refresh the page
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
+    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1416,10 +1425,10 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I close Modal
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I close Modal
+    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -1441,10 +1450,11 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
+    And I refresh the page
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
+    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     Then I can see top right button "Submit for Approval" in page detail
