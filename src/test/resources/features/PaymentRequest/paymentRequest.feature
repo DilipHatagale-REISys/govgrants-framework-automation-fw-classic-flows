@@ -41,18 +41,6 @@ Feature: Validate all scenarios in Payment Request
     When I close modal by clicking the top right x button
     Then I see that "$20.00" has been added in flextable with Id "---paymentRequest:-:paymentRequestBudgetTableId---"
 
-  @51068 @Reimbursement_paymentRequestAddAttachment
-  Scenario: Validate the attachment for Reimbursement Payment Request
-    When I navigate to "Actuals" sub tab
-    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
-    And I click modal button "Save and Continue"
-    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    When I navigate to "Attachments" sub tab
-    When I upload attachment "Announcement_Field_Values.xlsx" of type "Invoice"
-    Then I see "Invoice" has been added in "Attachment" flex table
-
   @51069 @paymentRequestSendToGrantor
   Scenario: Send Reimbursement Payment Request to Grantor
     When I navigate to "Actuals" sub tab
@@ -127,7 +115,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:grantorAwardTableId---"
-    And I navigate to "Terms" sub tab
+    And I navigate to "Actuals" sub tab
     And I click on "View" icon for "Submitted to Grantor" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---"
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
@@ -165,7 +153,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:grantorAwardTableId---"
-    And I navigate to "Terms" sub tab
+    And I navigate to "Actuals" sub tab
     And I click on "View" icon for "Submitted to Grantor" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---"
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
@@ -204,7 +192,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:grantorAwardTableId---"
-    And I navigate to "Terms" sub tab
+    And I navigate to "Actuals" sub tab
     And I click on "View" icon for "Submitted to Grantor" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---"
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
@@ -250,7 +238,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:grantorAwardTableId---"
-    And I navigate to "Terms" sub tab
+    And I navigate to "Actuals" sub tab
     And I click on "View" icon for "Submitted to Grantor" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---"
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
@@ -294,7 +282,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:grantorAwardTableId---"
-    And I navigate to "Terms" sub tab
+    And I navigate to "Actuals" sub tab
     And I click on "View" icon for "Submitted to Grantor" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---"
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:advanceFundingAccountTableId---" by clicking "Edit" :
@@ -341,7 +329,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---"
-    And I navigate to "Terms" sub tab
+    And I navigate to "Actuals" sub tab
     And I click on "View" icon for "Submitted to Grantor" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---"
     And I navigate to "Financials" sub tab
     When I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
@@ -1208,7 +1196,7 @@ Feature: Validate all scenarios in Payment Request
       | Title        | Disallowed Amount | Disallowed Amount Reason    |
       | Extra Salary | 50                | Automation Test Description |
     Then I see the following messages in the page details :
-    | Advance applied cannot be greater than the Net Payment.|
+      | Advance applied cannot be greater than the Net Payment. |
 
   @54323 @Validate_SuccesfulApproved_messageOn_ReimbursementPR @mahadev
   Scenario: Validate succesfully approved message on Reimbursement Payment Request
@@ -1396,7 +1384,7 @@ Feature: Validate all scenarios in Payment Request
     And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
-  @54594 @Validate_AdvancePRSendBackToSubReceipient @mahadev
+  @54594 @Validate_that_User_can_Delete_Only_Created_Status_PR @mahadev
   Scenario: Validate task is getting created for SPI user after send back advance payment request to subreceipient
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -1473,7 +1461,7 @@ Feature: Validate all scenarios in Payment Request
 
   @54648 @CheckPendingTaskAfterSubmitToGrantor @jitendra
   Scenario: Verify that on submit to grantor , user is able to check pending task for Payment Request (Reimbursement)
-    When I navigate to "Terms" sub tab
+    When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
@@ -1494,7 +1482,7 @@ Feature: Validate all scenarios in Payment Request
 
   @54649 @PendingTaskForPendingRequestAfterSubmitForApproval @jitendra
   Scenario: Verify that on submitting for approval, user is able to check pending task for Payment Request (Advance)
-    When I navigate to "Terms" sub tab
+    When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
@@ -1526,3 +1514,43 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
+
+  @55687 @Verify_OnAdvancePaymentRequest_UserCannotSee_FinalPayment_Request @mahadev
+  Scenario: Verify that on Advance payment request user can not see final payment request option
+    When I navigate to "Actuals" sub tab
+    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Overview" sub tab
+    Then I cannot see field "Is Final Payment Request?" inside page block
+
+  @38744 @Validate_FiscalApprovers_can_Add_Disallowancefor_PaymentRequest
+  Scenario: Validate the Fiscal Approvers can add Disallowance for Payment request.
+    When I navigate to "Actuals" sub tab
+    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I navigate to "Financials" sub tab
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
+    When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Unit Price | Quantity | Measurement |
+      | Extra Salary | The narrative | 20         | 1        | Feet        |
+    When I close modal by clicking the top right x button
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
+    When I navigate to "Financials" sub tab
+    When I click on "Disallow Amount" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
+    When I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestDisallowTableId---" by clicking "Edit" :
+      | Title        | Disallowed Amount | Disallowed Amount Reason    |
+      | Extra Salary | 5                 | Automation Test Description |
+    And I close modal by clicking the top right x button
+    Then I see that "$5.00" has been added in flextable with Id "---paymentRequest:-:paymentRequestBudgetTableId---"

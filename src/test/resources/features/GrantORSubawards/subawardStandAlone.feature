@@ -1502,7 +1502,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 
   @38205 @DraftAwardNavigation @mahadev
   Scenario Outline: Navigation to draft award by FO User
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
     And I click toggle button to select "Draft Grants"
@@ -1512,8 +1512,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     Then I see status in Progress-bar is "Created" and is "Green"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                 | Grant Name                 | User |
+      | Automation Execution Award | Automation Execution Award | PM   |
+      | Automation Execution Award | Automation Execution Award | FO   |
 
   @55311 @ProgressReport_ScheduleUpdate_On_ActiveAward @mahadev
   Scenario Outline: Validate progress report schedules update on active award
@@ -1720,7 +1721,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click modal button "Save"
     When I close Modal
     And I expand nested table containing column value "Progress Report"
-    Then I see total records count "Total Records:12" in flex table "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    Then I see total records count "Total Records:120" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
 
   @55301 @SelectDesiredFrequencyAsQuarterly @jitendra
   Scenario: Verify While creating schedule user should be allowed to select the Desired Frequency as Quarterly.
@@ -1730,7 +1731,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click modal button "Save"
     When I close Modal
     And I expand nested table containing column value "Progress Report"
-    Then I see total records count "Total Records:4" in flex table "---subAwardStandAlone:-:progressReportSchedulesId---"
+    Then I see total records count "Total Records:4" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
 
   @55293 @ScheduleEndDateAfterStartDate @jitendra
   Scenario: Verify While creating schedule user is not allowed to select the Schedule End Date after Project Period End Date.
@@ -1750,3 +1751,33 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I close Modal
     And I expand nested table containing column value "Progress Report"
     Then I see total records count "Total Records:6" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
+
+  @55299 @SelectDesiredFrequencyAsAnnually @mahadev
+  Scenario: Verify While creating schedule user should be allowed to select the Desired Frequency as annually.
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "Progress Report Annually" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close Modal
+    And I expand nested table containing column value "Progress Report"
+    Then I see total records count "Total Records:1" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
+
+  @55302 @SelectDesiredFrequencyAsSemiAnnually @mahadev
+  Scenario: Verify While creating schedule user should be allowed to select the Desired Frequency as semi-annually.
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "Progress Report Semi-Annually" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close Modal
+    And I expand nested table containing column value "Progress Report"
+    Then I see total records count "Total Records:2" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
+
+  @55303 @SelectDesiredFrequencyAsMonthly @mahadev
+  Scenario: Verify While creating schedule user should be allowed to select the Desired Frequency as monthly.
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "Progress Report Monthly" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close Modal
+    And I expand nested table containing column value "Progress Report"
+    Then I see total records count "Total Records:12" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
