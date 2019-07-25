@@ -99,9 +99,4 @@ public class GenericSteps {
     public void iCanSeeRecordValueIsCheckedForFieldName(String count, String fieldName) {
         projectManager.AssertFieldValueIsChecked(fieldName,count);
     }
-
-    @When("I switch to iframe with id \"([^\"]*)\"")
-    public void switchToIframe(String iframeId) {
-        projectManager.switchToIframe(iframeId);
-    }
 }
