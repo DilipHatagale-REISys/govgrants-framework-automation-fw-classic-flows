@@ -1128,7 +1128,6 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     And I click on "Send to Owner" on the approval decision box
-    And I pause execution
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel

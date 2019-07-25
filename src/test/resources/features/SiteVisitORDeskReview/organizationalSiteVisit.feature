@@ -805,7 +805,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details   
-    And I pause execution 
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
