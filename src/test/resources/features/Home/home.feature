@@ -7,7 +7,7 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As Administrator" app as "Admin" user
     When I navigate to "Setup" tab
     And I navigate to "Internal Organizations" content inside "Manage Organizations" subheader on left panel
-    And I click on top right button "New" in flex table with id "Organizations"
+    And I click on top right button "New" in flex table with id "---home:-:organizationId---"
     When I enter "RequiredForSave" values from "InternalOrganization_Field_Values.xlsx"
     And I click on "Save" in the page details
     Then I see that "State Organization" is in "Created" status
@@ -17,7 +17,7 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As Administrator" app as "Admin" user
     When I navigate to "Setup" tab
     And I navigate to "Internal Organizations" content inside "Manage Organizations" subheader on left panel
-    When I click on "View" icon for "<Organization name>" inside flex table with id "Organizations"
+    When I click on "View" icon for "<Organization name>" inside flex table with id "---home:-:organizationId---"
     When I click on "Edit" in the page details
     When I enter value "Automation" into field "Abbreviation__c"
     And I click on "Save" in the page details
@@ -26,45 +26,45 @@ Feature: Validate all scenarios in the home tab
       | Organization name                     |
       | Internal Automation Organization Test |
 
-  @35024 @internalOrganizationView
+  @56708 @internalOrganizationView
   Scenario Outline: Validate whether all users have view access to Internal Organization
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
-    When I click on "View" icon for "Test Automation Organization" inside flex table with id "a0Z1k000001eULHEA2Level1"
+    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
+    When I switch to iframe with id "iframeFlexGridSearch"
+    When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     Then I see that "Internal Organization" is in "Active" status
     Examples:
-      | User   |
-      | PM     |
+      | User  |
+      | PM    |
       | EXE   |
       | ADMIN |
 
-  @internalOrganizationADMINEdit
-  Scenario Outline: Validate system allows Edit access to Internal Organizations to the ADMIN/DA
-    Given I login to "As a Grantor" app as "<User>" user
+  @56709 @internalOrganizationADMINEdit
+  Scenario: Validate system allows Edit access to Internal Organizations to the ADMIN/DA
+    Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
-    Then I can see row level action button "Edit" against "Test Automation Organization" in flex table with id "inlineEditGridInternalOrganizationHierarchy"
-    Examples:
-      | User  |
-      | ADMIN |
+    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
+    When I switch to iframe with id "iframeFlexGridSearch"
+    When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
+    Then I see that "Internal Organization" is in "Active" status
 
-  @internalOrganizationPMView
+  @56710 @internalOrganizationPMView
   Scenario: Verify whether the PM profiles can Edit their own Organizations
     Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I perform quick search for "Department of Health" in "inlineEditGridInternalOrganizationHierarchy" panel
-    Then I can see row level action button "View" against "Department of Health" in flex table with id "inlineEditGridInternalOrganizationHierarchy"
+    When I perform quick search for "Department of Health" in "---home:-:internalOrganizationId---" panel
+    Then I can see row level action button "View" against "Department of Health" in flex table with id "---home:-:internalOrganizationId---"
 
-  @subrecipientOrganizationView
+  @56712 @subrecipientOrganizationView
   Scenario Outline: Validate whether all users have view access to Subrecipient Organization
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "ActiveAccount"
+    And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---home:-:subrecipientActiveAccountId---"
     Then I see that "Subrecipient Organization" is in "Active" status
     Examples:
       | User  |
@@ -72,13 +72,13 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @activeSubrecipientOrganizationsView
+  @56713 @activeSubrecipientOrganizationsView
   Scenario Outline: Validate whether all users have view access to Active Individual Subrecipients
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Automation SPI" in "ActiveAccountIndApplicant" panel
-    And I click on "View" icon for "Automation SPI" inside flex table with id "ActiveAccountIndApplicant"
+    When I perform quick search for "Automation SPI" in "---home:-:subrecipientActiveAccountId---IndApplicant" panel
+    And I click on "View" icon for "Automation SPI" inside flex table with id "---home:-:subrecipientActiveAccountId---IndApplicant"
     Then I see that "Individual Subrecipient" is in "Active" status
     Examples:
       | User  |
@@ -86,35 +86,35 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @activeIndividualSubrecipientsEdit
+  @56714 @activeIndividualSubrecipientsEdit
   Scenario Outline: Validate whether ADMIN/DA have Edit access to Active Individual Subrecipients
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Automation SPI" in "ActiveAccountIndApplicant" panel
-    Then I can see row level action button "Edit" against "Automation SPI" in flex table with id "ActiveAccountIndApplicant"
+    When I perform quick search for "Automation SPI" in "---home:-:subrecipientActiveAccountId---IndApplicant" panel
+    Then I can see row level action button "Edit" against "Automation SPI" in flex table with id "---home:-:subrecipientActiveAccountId---IndApplicant"
     Examples:
       | User  |
       | ADMIN |
 
-  @activeSubrecipientOrganizationsEdit
+  @56715 @activeSubrecipientOrganizationsEdit
   Scenario Outline: Validate whether ADMIN/DA have Edit access to Active Subrecipient Organizations
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
-    Then I can see row level action button "Edit" against "SAN DIEGO ELECTRICAL TRAINING TRUST" in flex table with id "ActiveAccount"
+    When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "---home:-:subrecipientActiveAccountId---" panel
+    Then I can see row level action button "Edit" against "SAN DIEGO ELECTRICAL TRAINING TRUST" in flex table with id "---home:-:subrecipientActiveAccountId---"
     Examples:
       | User  |
       | ADMIN |
 
-  @internalContactsView
+  @56716 @internalContactsView
   Scenario Outline: Validate whether all users have view access to Contacts
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
-    When I perform quick search for "Automation PO" in "flexTableRandomID" panel
-    And I click on "View" icon for "Automation PO" inside flex table with id "flexTableRandomID"
+    When I perform quick search for "Automation PO" in "---home:-:subrecipientContactTableId---" panel
+    And I click on "View" icon for "Automation PO" inside flex table with id "---home:-:subrecipientContactTableId---"
     Then I see field "Organization" as "Test Automation Organization"
     Examples:
       | User  |
@@ -122,15 +122,15 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @internalContactsCreate @smoke
+  @56717 @internalContactsCreate @smoke
   Scenario Outline: Verify that Internal contacts are accessible across agencies and can be created by any Internal user
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
-    When I click on top right button "New" in flex table with id "flexTableRandomID"
+    When I click on top right button "New" in flex table with id "---home:-:subrecipientContactTableId---"
     And I enter "Creation" values from "InternalContact_Field_Values.xlsx"
     When I click modal button "Save"
-    And I close Modal
+    And I refresh the page
     When I perform quick search for "Automation PO" in "flexTableRandomID" panel
     Then I can see row level action button "View" against "Automation PO" in flex table with id "flexTableRandomID"
     Examples:
@@ -139,28 +139,29 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @internalContactsEdit
+  @56718 @internalContactsEdit
   Scenario Outline: Validate system allows edit access to Contacts to all Internal Users
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
-    When I perform quick search for "Automation PO" in "flexTableRandomID" panel
-    Then I can see row level action button "Edit" against "Automation PO" in flex table with id "flexTableRandomID"
+    When I perform quick search for "Automation PO" in "---home:-:subrecipientContactTableId---" panel
+    Then I can see row level action button "Edit" against "Automation PO" in flex table with id "---home:-:subrecipientContactTableId---"
     Examples:
       | User  |
       | ADMIN |
       | EXE   |
       | PM    |
 
-  @subrecipientContactsCreate @smoke
+  @56719 @subrecipientContactsCreate @smoke
   Scenario Outline: Verifying if the Internal Users has create access to Subrecipient Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
-    When I click on top right button "New" in flex table with id "flexTableRandomID"
+    When I click on top right button "New" in flex table with id "---home:-:subrecipientContactTableId---"
     And I enter "Creation" values from "SubrecipientContact_Field_Values.xlsx"
     When I click modal button "Save"
-    When I click on "View" icon for "Automation Manager" inside flex table with id "flexTableRandomID"
+    And I refresh the page
+    When I click on "View" icon for "Automation Manager" inside flex table with id "---home:-:subrecipientContactTableId---"
     Then I see field "Organization" as "SAN DIEGO ELECTRICAL TRAINING TRUST"
     Examples:
       | User  |
@@ -168,96 +169,97 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @smeReviewersContactView
-  Scenario Outline: Verifying all Internal Users has View access to SME Reviewers Contact
+  @56720 @smeReviewersContactView
+  Scenario Outline: Verifying all Internal Users has View access to SME ---home:-:reviewersTableId--- Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
-    And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
-    When I perform quick search for "Automation Contact" in "Reviewers" panel
-    Then I can see row level action button "View" against "Automation Contact" in flex table with id "Reviewers"
+    And I navigate to "SME ---home:-:reviewersTableId---" content inside "Contacts" subheader on left panel
+    When I perform quick search for "Automation Contact" in "---home:-:reviewersTableId---" panel
+    Then I can see row level action button "View" against "Automation Contact" in flex table with id "---home:-:reviewersTableId---"
     Examples:
       | User  |
       | ADMIN |
       | EXE   |
       | PM    |
 
-  @smeReviewersContactCreate @wip
-  Scenario Outline: Verifying all Internal Users has Create access to SME Reviewers Contact
+  @56721 @smeReviewersContactCreate
+  Scenario Outline: Verifying all Internal Users has Create access to SME ---home:-:reviewersTableId--- Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
-    And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
-    When I click on top right button "New" in flex table with id "Reviewers"
-    And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
+    And I navigate to "SME ---home:-:reviewersTableId---" content inside "Contacts" subheader on left panel
+    When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
+    And I enter "Creation" values from "PotentialContact_Field_Values.xlsx"
     When I click modal button "Save"
+    And I refresh the page
     Then I see values "Automation SME" and "New" inside table
     Examples:
       | User  |
       | ADMIN |
 
-  @smeReviewersContactSendInvitation
+  @56722 @smeReviewersContactSendInvitation
   Scenario Outline: Verify the system allows all Internal users to Send Invitation to SME Reviewer
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
-    And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
-    And I click on "Send Invitation" icon for "Automation SME" inside flex table with id "Reviewers"
+    And I navigate to "SME ---home:-:reviewersTableId---" content inside "Contacts" subheader on left panel
+    And I click on "Send Invitation" icon for "Automation SME" inside flex table with id "---home:-:reviewersTableId---"
     Examples:
       | User  |
       | ADMIN |
       | EXE   |
       | PM    |
 
-  @activeSMEReviewersContactDetailPageView
+  @56723 @activeSMEReviewersContactDetailPageView
   Scenario Outline: Verify that system allows user to see the detail page of Active SME Reviewer contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
-    And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
-    Then I can see row level action button "View" against "Automation SME in flex table with id "ActiveAccountReviewer"
+    And I navigate to "SME ---home:-:reviewersTableId---" content inside "Contacts" subheader on left panel
+    Then I can see row level action button "View" against "Automation SME" in flex table with id "---home:-:reviewersTableId---"
     Examples:
       | User  |
       | ADMIN |
       | EXE   |
       | PM    |
 
-  @termsandConditionsView
+  @56724 @termsandConditionsView
   Scenario Outline: Verifying all Internal Users has View access to Terms and Conditions
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Terms and Conditions" content inside "Manage Terms and Conditions" subheader on left panel
-    When I perform quick search for "TC-5885" in "MasterTermConditions" panel
-    Then I can see row level action button "View" against "TC-5885" in flex table with id "MasterTermConditions"
+    When I perform quick search for "TC-5885" in "---home:-:termsAndConditionsTableId---" panel
+    Then I can see row level action button "View" against "TC-5885" in flex table with id "---home:-:termsAndConditionsTableId---"
     Examples:
       | User  |
       | ADMIN |
       | EXE   |
       | PM    |
 
-  @termsAndConditionsCreate @smoke
+  @56725 @termsAndConditionsCreate @smoke
   Scenario Outline: Verifying if the ADMIN/DA has create access to Terms and Conditions
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Terms and Conditions" content inside "Manage Terms and Conditions" subheader on left panel
-    When I click on top right button "New" in flex table with id "MasterTermConditions"
+    When I click on top right button "New" in flex table with id "---home:-:termsAndConditionsTableId---"
     And I enter "Creation" values from "TermsandConditions_Field_Values.xlsx"
     When I click modal button "Save"
     And I close modal by clicking the top right x button
-    When I perform quick search for "AutomationT&C" in "MasterTermConditions" panel
-    Then I see value "Active" for title "Status" against the value "AutomationT&C" inside table "MasterTermConditions"
+    When I perform quick search for "AutomationT&C" in "---home:-:termsAndConditionsTableId---" panel
+    Then I see value "Active" for title "Status" against the value "AutomationT&C" inside table "---home:-:termsAndConditionsTableId---"
     Examples:
       | User  |
       | ADMIN |
 
-  @termsAndConditionsADMINedit
+  @56726 @termsAndConditionsADMINedit
   Scenario Outline: Verifying if the ADMIN has Edit access to Terms and Conditions
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Terms and Conditions" content inside "Manage Terms and Conditions" subheader on left panel
-    When I perform quick search for "TC-5885" in "MasterTermConditions" panel
-    Then I can see row level action button "Edit" against "TC-5885" in flex table with id "MasterTermConditions"
+    When I perform quick search for "TC-5885" in "---home:-:termsAndConditionsTableId---" panel
+    Then I can see row level action button "Edit" against "TC-5885" in flex table with id "---home:-:termsAndConditionsTableId---"
     Examples:
       | User  |
       | ADMIN |
 
-  @einRegistrationView
+  @56727 @einRegistrationView
   Scenario Outline: Validate whether all users have view access to EIN Registration
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -268,7 +270,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @dunsRegistrationView
+  @56728 @dunsRegistrationView
   Scenario Outline: Validate whether all users have view access to DUNS Registration
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -279,7 +281,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @samgovRegistrationView
+  @56729 @samgovRegistrationView
   Scenario Outline: Validate whether all users have view access to SAM.gov Registration
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -290,7 +292,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @contactUsView
+  @56730 @contactUsView
   Scenario Outline: Validate whether all users have view access to Contact Us
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -301,27 +303,12 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @editInternalOrganization @smoke
-  Scenario Outline: Validate whether ADMIN users can Edit the Internal Organization
-    Given I login to "As a Grantor" app as "<User>" user
-    When I navigate to "Home" tab
-    And I navigate to "Internal" content inside "Organization" subheader on left panel
-    And I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
-    When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
-    And I enter "Edition" values from "InternalOrganization_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    Then I see that "Internal Organization" is in "Active" status
-    Examples:
-      | User  |
-      | ADMIN |
-
-  @subrecipientOrganizationEdition @smoke
+  @56732 @subrecipientOrganizationEdition @smoke
   Scenario Outline: Validate whether ADMIN and DA users can Edit the Subrecipient Organization
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    And I perform quick search for "GROUNDWORK SAN DIEGO-CHOLLAS CREEK" in "ActiveAccount" panel
-    When I click on "Edit" icon for "GROUNDWORK SAN DIEGO-CHOLLAS CREEK" inside flex table with id "ActiveAccount"
+    When I click on "Edit" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---home:-:subrecipientActiveAccountId---"
     And I enter "Edition" values from "SubrecipientOrganization_Field_Values"
     When I click on "Save" in the page details
     Then I see that "Subrecipient Organization" is in "Active" status
@@ -329,85 +316,85 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @internalContactsEdition @smoke
+  @56733 @internalContactsEdition @smoke
   Scenario Outline: Validate whether all Internal Users can edit the Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
-    And I perform quick search for "Automation Contact" in "flexTableRandomID" panel
-    When I click on "Edit" icon for "Automation Contact" inside flex table with id "flexTableRandomID"
+    And I perform quick search for "Automation Contact" in "---home:-:subrecipientContactTableId---" panel
+    When I click on "Edit" icon for "Automation Contact" inside flex table with id "---home:-:subrecipientContactTableId---"
     And I enter "Edition1" values from "InternalContact_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
-    And I perform quick search for "Automation Contact" in "flexTableRandomID" panel
-    Then I see value "Active" for title "Status" inside table "flexTableRandomID"
+    And I perform quick search for "Automation Contact" in "---home:-:subrecipientContactTableId---" panel
+    Then I see value "Active" for title "Status" inside table "---home:-:subrecipientContactTableId---"
     Examples:
       | User  |
       | ADMIN |
       | EXE   |
       | PM    |
 
-  @subrecipientContactsEdition
+  @56734 @subrecipientContactsEdition
   Scenario Outline: Verifying if the Internal Users has Edit access to Subrecipient Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
-    When I perform quick search for "Automation Manager" in "flexTableRandomID" panel
-    When I click on "Edit" icon for "Automation Manager" inside flex table with id "flexTableRandomID"
+    When I perform quick search for "Automation Manager" in "---home:-:subrecipientContactTableId---" panel
+    When I click on "Edit" icon for "Automation Manager" inside flex table with id "---home:-:subrecipientContactTableId---"
     And I enter "Edition" values from "SubrecipientContact_Field_Values.xlsx"
     And I click modal button "Save"
-    And I perform quick search for "Automation Manager" in "flexTableRandomID" panel
-    Then I see that "Automation Manage" is in "New" status
-    #Then I see value "New" for title "Status" inside table "flexTableRandomID"
+    And I refresh the page
+    And I perform quick search for "Automation Manager" in "---home:-:subrecipientContactTableId---" panel
+    Then I see value "New" for title "Status" inside table "---home:-:subrecipientContactTableId---"
     Examples:
       | User  |
       | ADMIN |
 
-  @smeReviewersContactEdition @wip
-  Scenario Outline: Verifying all Internal Users has Edit access to SME Reviewers Contact
+  @56735 @smereviewersContactEdition
+  Scenario Outline: Verifying all Internal Users has Edit access to SME ---home:-:reviewersTableId--- Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
-    And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
-    When I perform quick search for "Automation SME1" in "Reviewers" panel
-    And I click on "Edit" icon for "Automation SME1" inside flex table with id "Reviewers"
-    When I enter "Edition" values from "PotentialReviewersContact_Field_values.xlsx"
+    And I navigate to "SME ---home:-:reviewersTableId---" content inside "Contacts" subheader on left panel
+    When I perform quick search for "Automation SME1" in "---home:-:reviewersTableId---" panel
+    And I click on "Edit" icon for "Automation SME1" inside flex table with id "---home:-:reviewersTableId---"
+    When I enter "Edition" values from "PotentialContact_Field_values.xlsx"
     And I click modal button "Save"
-    Then I see value "New" for title "Status" inside table "Reviewers"
+    And I refresh the page
+    Then I see value "New" for title "Status" inside table "---home:-:reviewersTableId---"
     Examples:
       | User  |
       | ADMIN |
-#      | EXE   |
-#      | PM    |
+      | EXE   |
+      | PM    |
 
-  @additionalAddressesCreation  @smoke
+  @56736 @additionalAddressesCreation  @smoke
   Scenario Outline: Validate whether ADMIN can Create the Additional Addresses
-    Given I login to "As a Grantor" app as "<User>" user
+    Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    And I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
-    When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
-    And I click on top right button "New" in flex table with id "AdditionalAddressInternal"
+    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
+    When I switch to iframe with id "iframeFlexGridSearch"
+    When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
+    And I click on top right button "New" in flex table with id "---home:-:additionalAddressTableId---"
     And I enter "AdditionalAddressesCreation" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
     Then I see that "Internal Organization" is in "Active" status
     Examples:
       | User  |
       | ADMIN |
 
-  @additionalAddressesEdition
+  @56737 @additionalAddressesEdition
   Scenario Outline: Validate whether ADMIN and DA users can Edit the Additional Addresses
-    Given I login to "As a Grantor" app as "<User>" user
+    Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    And I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
-    When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
-    When I perform quick search for "Billing Address" in "AdditionalAddressInternal" panel
-    And I click on "Edit" icon for "Billing Address" inside flex table with id "AdditionalAddressInternal"
+    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
+    When I switch to iframe with id "iframeFlexGridSearch"
+    When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
+    When I perform quick search for "Billing Address" in "---home:-:additionalAddressTableId---" panel
+    And I click on "Edit" icon for "Billing Address" inside flex table with id "---home:-:additionalAddressTableId---"
     And I enter "AdditioanlAddressesEdition" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
-    Then I see that "Internal Organization" is in "Active" status
+    Then I see that "Test Automation Organization" is in "Active" status
     Examples:
       | User  |
       | ADMIN |
@@ -417,27 +404,29 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    And I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
-    When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
-    And I click on top right button "New" in flex table with id "RelatedContacts"
-    And I enter "RelatedContactsCreation" values from "InternalOrganization_Field_Values.xlsx"
+    And I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
+    When I switch to iframe with id "iframeFlexGridSearch"
+    When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "---home:-:internalOrganizationId---"
+    And I click on top right button "New" in flex table with id "---home:-:relatedContactsTableId---"
+    And I enter "---home:-:relatedContactsTableId---Creation" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
-    When I perform quick search for "Automation Contact" in "RelatedContacts" panel
+    When I perform quick search for "Automation Contact" in "---home:-:relatedContactsTableId---" panel
     Then I see values "Automation Contact" and "Active" inside table
     Examples:
       | User  |
       | ADMIN |
 
-  @relatedContactsEdition
+  @56738 @relatedContactsEdition
   Scenario Outline: Validate whether ADMIN and DA users can Edit the Related Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    And I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
-    When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
-    When I perform quick search for "Automation Contact" in "RelatedContacts" panel
-    And I click on "Edit" icon for "Automation Contact" inside flex table with id "RelatedContacts"
-    When I enter "RelatedContactsEdition" values from "InternalOrganization_Field_Values.xlsx"
+    And I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
+    When I switch to iframe with id "iframeFlexGridSearch"
+    When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "---home:-:internalOrganizationId---"
+    When I perform quick search for "Automation Contact" in "---home:-:relatedContactsTableId---" panel
+    And I click on "Edit" icon for "Automation Contact" inside flex table with id "---home:-:relatedContactsTableId---"
+    When I enter "---home:-:relatedContactsTableId---Edition" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
     When I close Modal
     And I click on "Save" in the page details
@@ -446,72 +435,77 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @deleteRelatedContacts
+  @56739 @delete---home:-:relatedContactsTableId---
   Scenario Outline: Validate whether ADMIN and DA users can Delete the Related Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    And I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
-    When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
-    When I perform quick search for "Automation Contact" in "RelatedContacts" panel
-    And I click on "Delete" icon for "Automation Contact" inside flex table with id "RelatedContacts"
-    Then I do not see value "Automation Contact" for title "Full Name" inside table "RelatedContacts"
+    And I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
+    When I switch to iframe with id "iframeFlexGridSearch"
+    When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "---home:-:internalOrganizationId---"
+    When I perform quick search for "Automation Contact" in "---home:-:relatedContactsTableId---" panel
+    And I click on "Delete" icon for "Automation Contact" inside flex table with id "---home:-:relatedContactsTableId---"
+    Then I do not see value "Automation Contact" for title "Full Name" inside table "---home:-:relatedContactsTableId---"
     Examples:
       | User  |
       | ADMIN |
 
-  @dunsNumberCreation  @smoke
+  @56740 @dunsNumberCreation  @smoke
   Scenario Outline: Validate whether ADMIN and DA users can create the DUNS Number
-    Given I login to "As a Grantor" app as "<User>" user
+    Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    #And I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
-    When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
-    When I enter the following values into flex table with id "flexGridRelatedDUNS" by clicking "New" :
+    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
+    When I switch to iframe with id "iframeFlexGridSearch"
+    When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
+    When I enter the following values into flex table with id "---home:-:dunsTableId---" by clicking "New" :
       | DUNS Number | Registered Entity Name | Location |
       | 138038990   | Test132                | HernNdon |
-    And I click on top right button "Save" in flex table with id "flexGridRelatedDUNS"
+    And I click on top right button "Save" in flex table with id "---home:-:dunsTableId---"
     Then I see values "138038990" and "DUNSNumber" inside table
     Examples:
       | User  |
       | ADMIN |
 
-  @dunsNumberEdition
+  @56741 @dunsNumberEdition
   Scenario Outline: Validate whether ADMIN and DA users can Edit the DUNS NUmber
-    Given I login to "As a Grantor" app as "<User>" user
+    Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    And I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
-    When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
-    And I perform quick search for "128038790" in "flexGridRelatedDUNS" panel
-    When I click on "Edit" icon for "128038790" inside flex table with id "flexGridRelatedDUNS"
-    And I click on top right button "Save" in flex table with id "flexGridRelatedDUNS"
+    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
+    When I switch to iframe with id "iframeFlexGridSearch"
+    When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
+    And I perform quick search for "128038790" in "---home:-:dunsTableId---" panel
+    When I click on "Edit" icon for "128038790" inside flex table with id "---home:-:dunsTableId---"
+    And I click on top right button "Save" in flex table with id "---home:-:dunsTableId---"
     Then I see values "128038790" and "DUNSNumber" inside table
     Examples:
       | User  |
       | ADMIN |
 
-  @deleteDUNSNumber
+  @56742 @deleteDUNSNumber
   Scenario Outline: Validate whether ADMIN and DA users can delete the DUNS Number
-    Given I login to "As a Grantor" app as "<User>" user
+    Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    And I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
-    When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
-    And I perform quick search for "128038799" in "flexGridRelatedDUNS" panel
-    When I click on "delete" icon for "128038799" inside flex table with id "flexGridRelatedDUNS"
+    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
+    When I switch to iframe with id "iframeFlexGridSearch"
+    When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
+    And I perform quick search for "128038799" in "---home:-:dunsTableId---" panel
+    When I click on "delete" icon for "128038799" inside flex table with id "---home:-:dunsTableId---"
     Then I do not see values "128038799" and "DUNSNumber" inside table
     Examples:
       | User  |
       | ADMIN |
 
-  @deleteIndirectCostRate
+  @56743 @deleteIndirectCostRate
   Scenario Outline: Validate whether ADMIN and DA users can delete the Indirect Cost Rates
-    Given I login to "As a Grantor" app as "<User>" user
+    Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    And I perform quick search for "Test Automation Organization" in "inlineEditGridInternalOrganizationHierarchy" panel
-    When I click on "View" icon for "Test Automation Organization" inside flex table with id "inlineEditGridInternalOrganizationHierarchy"
+    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
+    When I switch to iframe with id "iframeFlexGridSearch"
+    When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     And I perform quick search for "New IDC" in "inlineEditGridIndirectRateGrid" panel
     When I click on "Delete" icon for "New IDC" inside flex table with id "inlineEditGridIndirectRateGrid"
     Then I do not see values "New IDC" and "Title" inside table
@@ -519,8 +513,8 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-   @createCases @deepika
-   Scenario Outline: Verify all Internal / External Users should be able to create the Cases
+  @56744 @createCases @deepika
+  Scenario Outline: Verify all Internal / External Users should be able to create the Cases
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Manage Cases" content inside "Technical Support" subheader on left panel
@@ -533,14 +527,15 @@ Feature: Validate all scenarios in the home tab
       | ADMIN |
       | EXE   |
       | PM    |
-   
-   @editionCases @deepika
-   Scenario Outline: Verify all Internal / External Users should be able to create the Cases
+
+  @56745 @editionCases @deepika
+  Scenario Outline: Verify all Internal / External Users should be able to Edit the Cases
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Manage Cases" content inside "Technical Support" subheader on left panel
-    And I perform quick search for "Case Creation" in "inlineEditGridIndirectRateGrid" panel
-    When I click on "Delete" icon for "New IDC" inside flex table with id "CaseList"
+    And I perform quick search for "Case Creation" in "CaseList" panel
+    When I click on "View" icon for "Case Creation" inside flex table with id "CaseList"
+    When I click on "Edit" in the page details
     And I enter "CaseEdition" values from "HomeCases_Field_Values.xlsx"
     And I click on "Save" in the page details
     Then I see that "Case Creation" is in "Tier 1 Support - Pending Assignment" status
@@ -549,4 +544,3 @@ Feature: Validate all scenarios in the home tab
       | ADMIN |
       | EXE   |
       | PM    |
-	

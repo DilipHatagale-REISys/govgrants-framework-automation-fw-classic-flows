@@ -34,7 +34,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     Then I see that "<Participant>" has been added in flextable with Id "---sitevisits:-:participantsTableId---"
     Examples:
       | Participant    |
@@ -62,7 +62,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     Then I see that "Automation Site Visit" is in "Notified" status
 
@@ -77,7 +77,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
@@ -97,7 +97,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Then I see status in Progress-bar is "In Progress" and is "green"
@@ -112,7 +112,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -149,7 +149,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -181,7 +181,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -219,7 +219,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -269,7 +269,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -327,7 +327,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -407,7 +407,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -485,7 +485,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation EXE" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -571,7 +571,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -641,7 +641,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -669,7 +669,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -689,7 +689,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
@@ -707,7 +707,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
@@ -726,7 +726,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -776,7 +776,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -839,7 +839,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -894,7 +894,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -916,7 +916,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -945,7 +945,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -987,7 +987,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -1037,7 +1037,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -1091,7 +1091,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -1145,7 +1145,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -1227,7 +1227,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     Then I can see top right button "Conduct" in page detail
 
@@ -1236,7 +1236,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "<Internal>" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     Then I see that "<Internal>" has been added in flextable with Id "---sitevisits:-:participantsTableId---"
     Examples:
       | Internal       |
@@ -1252,7 +1252,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation EXE" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     Then I can see top right button "Notify" in page detail
 
   @55805 @conductButtonSiteVisit @deepika
@@ -1266,7 +1266,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation EXE" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     Then I can see top right button "Conduct" in page detail
 
@@ -1281,7 +1281,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -1309,7 +1309,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     And I navigate to "Responsibilities" sub tab
@@ -1331,7 +1331,7 @@ Feature: Validate all scenarios in the Site Visit
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
+     And I refresh the page
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
@@ -1357,7 +1357,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -1412,7 +1412,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I close Modal
+     And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
