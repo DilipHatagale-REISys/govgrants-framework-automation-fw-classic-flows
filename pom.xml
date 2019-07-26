@@ -157,6 +157,21 @@
 			<artifactId>cluecumber-report-plugin</artifactId>
 			<version>${report.version}</version>
 		</dependency>
+        <dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+			<version>1.5.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>smtp</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.0</version>
+		</dependency>
 		<dependency>
 			<groupId>eyethink</groupId>
 			<artifactId>automation.bots</artifactId>
