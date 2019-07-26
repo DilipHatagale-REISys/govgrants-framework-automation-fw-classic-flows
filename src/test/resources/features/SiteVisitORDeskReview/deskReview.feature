@@ -1053,10 +1053,11 @@ Feature: Validate all scenarios in Desk Review
   @55370 @viewDeskReviewAcceptButtonAfterSRecipientsSubmission @deepika
   Scenario: Validate User will be able to view the Desk Review Accept button after review the submission by Recipients
     Given I navigate to "Responsibilities" sub tab
+    And I pause execution
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
-      | Program Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver  | Automation FO  | Automation Test Description |
+      | Program Approver | Automation EXE | Automation Test Description |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
