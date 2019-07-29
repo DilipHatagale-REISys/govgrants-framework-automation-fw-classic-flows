@@ -399,7 +399,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @relatedContactsCreation  @smoke
+  @56907 @relatedContactsCreation  @smoke
   Scenario Outline: Validate whether ADMIN and DA users can Create the Related Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -417,7 +417,7 @@ Feature: Validate all scenarios in the home tab
       | ADMIN |
 
   @56738 @relatedContactsEdition
-  Scenario Outline: Validate whether ADMIN and DA users can Edit the Related Contact
+  Scenario Outline: The Internal Users should be able to Edit Related Contacts
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
@@ -428,14 +428,16 @@ Feature: Validate all scenarios in the home tab
     And I click on "Edit" icon for "Automation Contact" inside flex table with id "---home:-:relatedContactsTableId---"
     When I enter "---home:-:relatedContactsTableId---Edition" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
     And I click on "Save" in the page details
     Then I see that "Internal Organization" is in "Active" status
     Examples:
       | User  |
-      | ADMIN |
+      | EXE   |
+      | PM    |
+      | FO    |
+      
 
-  @56739 @delete---home:-:relatedContactsTableId---
+  @56739 @deleterelatedContacts
   Scenario Outline: Validate whether ADMIN and DA users can Delete the Related Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -544,3 +546,40 @@ Feature: Validate all scenarios in the home tab
       | ADMIN |
       | EXE   |
       | PM    |
+
+  @56883 @adminOrPMEditAccessToOwnOrg
+  Scenario Outline: Users with Admin/ PM profiles can edit their own organizations.
+    Given I login to "As a Grantor" app as "<User>" user
+    When I navigate to "Home" tab
+    And I navigate to "Internal" content inside "Organization" subheader on left panel
+    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
+    When I switch to iframe with id "iframeFlexGridSearch"
+    When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
+    Then I see that "Internal Organization" is in "Active" status
+    Examples:
+      | User  |
+      | ADMIN |
+      | PM    |
+
+   @56911 @foUserCannotEditOrg
+    Scenario: Validate whether Fo User Can edit Internal Organizations
+    Given I login to "As a Grantor" app as "FO" user
+    When I navigate to "Home" tab
+    And I navigate to "Internal" content inside "Organization" subheader on left panel
+    When I perform quick search for "Department of Education" in "---home:-:internalOrganizationId---" panel
+    Then I cannot see row level action button "Edit" against "Department of Education" in flex table with id "---home:-:internalOrganizationId---"
+
+   @56912 @internalOrganizationPageHeader
+   Scenario Outline: Verify that Internal organization page has Header
+     Given I login to "As a Grantor" app as "<User>" user
+     When I navigate to "Home" tab
+     And I navigate to "Internal" content inside "Organization" subheader on left panel
+     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---"panel
+     When I switch to iframe with id "iframeFlexGridSearch"
+     When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
+     Then I see that "Test Automation Organization" is in "Active" status
+     Examples:
+       | User  |
+       | ADMIN |
+#       | PM    |
+
