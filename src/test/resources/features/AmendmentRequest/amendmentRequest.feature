@@ -135,7 +135,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Send to Subrecipient" in the page details
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "Green"
 
-  @53202 @subrecipientAcknowledgesSOWAmendmentRequest @smoke ~wip
+  @53202 @subrecipientAcknowledgesSOWAmendmentRequest @smoke @wip
   Scenario: Subrecipient acknowledges Amendment Request
     Given I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -161,7 +161,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Acknowledge" in the page details
     Then I see that "Amendment Request" is in "Acknowledged" status
 
-  @53203 @submitForApprovalSOWAmendmentRequest ~wip
+  @53203 @submitForApprovalSOWAmendmentRequest @wip
   Scenario: Submit Amendment Request for Approval
     Given I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -193,7 +193,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
 
-  @53204 @approvalOfSOWAmendmentRequest @smoke ~wip
+  @53204 @approvalOfSOWAmendmentRequest @smoke @wip
   Scenario: Approval of Amendment Request
     Given I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -252,7 +252,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I "Approve" in approval decision
     Then I see status in Progress-bar is "Approved" and is "Green"
 
-  @53205 @amendSubawardSOWAmendmentRequest ~wip
+  @53205 @amendSubawardSOWAmendmentRequest @wip
   Scenario: Click on Amend of Amendment Request
     Given I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -320,7 +320,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Amend Subaward" in the page details
     Then I see that "Automation Award for Amendment Request" is in "Pending Activation" status
 
-  @53207 @activateSubawardSOWAmendmentRequest @scopeOfWorkHappyPath @smoke ~wip
+  @53207 @activateSubawardSOWAmendmentRequest @scopeOfWorkHappyPath @smoke @wip
   Scenario: Click Activate Amendment Request
     Given I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
