@@ -181,7 +181,7 @@ Feature: Validate all scenarios in the Application Review
     Then I can see top right button "Submit for Approval" in page detail
     Examples:
       | Announcement Name                              | Application Name       |
-      | Automation Announcement for Pre-Application | Automation Announcement for Application |
+      | Automation Announcement for Application Review | Automation Application |
 
   @51066 @smeReviewEnterDueInDays @smoke
   Scenario Outline: Enter Due in Days for all review forms in SME-review

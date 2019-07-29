@@ -17,7 +17,7 @@ Feature: Validate all scenarios in the Award from FDM
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @38213  @smoke
+  @38213 @allCreation @smoke
   Scenario: Creation of an award
     Then I see status in Progress-bar is "Created" and is "Green"
 
