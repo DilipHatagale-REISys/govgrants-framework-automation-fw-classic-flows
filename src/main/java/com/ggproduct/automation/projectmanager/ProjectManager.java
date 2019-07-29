@@ -1,5 +1,6 @@
 package com.ggproduct.automation.projectmanager;
 
+import com.automation.rei.handlers.EmailUtils;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import com.automation.rei.handlers.GovGrantsHandler;
@@ -7,9 +8,12 @@ import eyethink.automation.bots.controller.Controller;
 import eyethink.automation.bots.controller.CoreHandlers;
 import org.openqa.selenium.WebElement;
 import org.springframework.context.annotation.Description;
+
+import javax.mail.MessagingException;
 import java.awt.*;
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -20,6 +24,7 @@ import java.util.List;
 public class ProjectManager extends ProjectWebServices {
     public CoreHandlers reiDriver;
     public Controller controller;
+    UsersAndURL usersAndURL = new UsersAndURL();
     public GovGrantsHandler govgrants;
     public final String defaultLongText = "Automation test description";
     private String fieldValue;
@@ -256,5 +261,41 @@ public class ProjectManager extends ProjectWebServices {
     private int getCheckedFieldValueCount(String fieldName){
         List<WebElement> checkSymbol = reiDriver.findMyElement().getElements(By.xpath("//field[@field-name='"+fieldName+"']/i[contains(@class,'fa-check')]"));
         return checkSymbol.size();
+    }
+
+
+    /**
+     *
+     * @param userType e.g (INTERNAL,EXTERNAL)
+     * @param subject e.g Subject of mail that needs to be verified
+     *
+     * @return true if we get expected Subject in mail notification
+     * @throws MessagingException
+     */
+    public boolean validateMailSubject(String userType, String subject) throws MessagingException {
+        Map<String,String> credentials = usersAndURL.getUserCredentialsForMailNotification(userType);
+
+        if (subject.toLowerCase().contains("<award id>")){
+            subject = subject.replace("<award id>",automateGetApi("Automation Permanent Award","GrantAwardName__c","Award__c").asString().replaceAll("^\"|\"$", ""));
+        }
+
+        if (subject.toLowerCase().contains("<payment id>")){
+            subject = subject.replace("<payment id>",reiDriver.Properties().getValue("PaymentId"));
+        }
+
+        if(subject.toLowerCase().contains("<subrecipient name>")){
+            if(System.getProperty("env").equalsIgnoreCase("auto")){
+                subject = subject.replace("<subrecipient name>","Automation SPI");
+            }
+        }
+
+        String subjectString = govgrants.getEmailUtils().accessEmail(credentials.get("username"),credentials.get("password"), EmailUtils.HostName.GMAIL, EmailUtils.MailClient.GMAIL,
+                EmailUtils.EmailFolder.INBOX).getSubjectOfLatestMessage();
+
+        if (subjectString.contains(subject)){
+            return true;
+        }
+
+        return false;
     }
 }

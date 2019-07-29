@@ -8,6 +8,9 @@ import io.cucumber.java.en.*;
 import org.junit.Assert;
 import org.springframework.context.annotation.Description;
 
+import javax.mail.MessagingException;
+import java.util.List;
+
 public class GenericSteps {
     ProjectManager projectManager;
 
@@ -98,5 +101,11 @@ public class GenericSteps {
     @Then("^I can see \"([^\"]*)\" record value is checked for field name \"([^\"]*)\"$")
     public void iCanSeeRecordValueIsCheckedForFieldName(String count, String fieldName) {
         projectManager.AssertFieldValueIsChecked(fieldName,count);
+    }
+
+    @Given("^I can see mail notification for \"([^\"]*)\" user with following subject:$")
+    public void iSeeMailSubject(String userType, List<String> subjectList) throws MessagingException {
+        String subject = subjectList.get(0);
+        Assert.assertTrue(projectManager.validateMailSubject(userType,subject));
     }
 }

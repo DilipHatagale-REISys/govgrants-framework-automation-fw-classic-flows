@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         glue = {"setup","com.ggproduct.automation.steps","com.automation.rei.govgrantsSteps","eyethink.automation.bots.bdd"},
-        features = {"features"},
+        features = {"src/test/resources/features"},
         plugin = {"json:target/cucumber-report/cucumber.json","pretty","html:target/cucumber-html"},
         tags = {"@validateChangeinTaskMenuSequence-gHome"},
         monochrome = true
