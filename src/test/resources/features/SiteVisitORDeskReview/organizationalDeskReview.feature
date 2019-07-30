@@ -88,7 +88,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click on "Save" in the page details
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "<User>" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    
     Then I see that "<User>" has been added in flextable with Id "---orgLevelDeskReview:-:associateContactsId---"
     Examples:
       | User           |

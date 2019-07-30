@@ -191,7 +191,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Competitive       | ActiveFundingOpportunitiesCompitive | EXE  |
 
   @announcementForPastApplicationDueDateCA
-  Scenario Outline:    Validate that user can not enter application due date as past date
+  Scenario Outline: Validate that user can not enter application due date as past date
     Given I complete the fields from the sheet "Edition" in excel "Announcement_Field_Values.xlsx"
       | Actions         | Step 1 | Step 2 |
       | Edition Buttons | Edit   | Save   |
