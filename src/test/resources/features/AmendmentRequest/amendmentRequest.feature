@@ -419,7 +419,7 @@ Feature: Validate all scenarios in the Amendment Request
 
   @53211 @associateFocusAreaToBPCAmendmentRequest @smoke
   Scenario Outline: Validate the association of FocusArea to BPC
-    Given I navigate to "Management" sub tab
+    When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -432,3 +432,108 @@ Feature: Validate all scenarios in the Amendment Request
     Examples:
       | Focus Area                       |
       | Automation Permanent Focus Area2 |
+
+  @56843 @ValidateGranotrCanIncreaseAwardBudgetAmountInFundingchangeTypeRequest @mahadev
+  Scenario: Verify Internal user can send request to Sub-recipient for increase in the award budget amount using Funding change option.
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter values into fields
+      | Value                       | Field                              |
+      | Automation Test Description | fieldFundingChangeJustification__c |
+      | 1000                        | fieldRequestedChangeInBudget__c    |
+    And I click on "Save" in the page details
+    And I click on "Send to Subrecipient" in the page details
+    Then I see status in Progress-bar is "Sent to Subrecipient" and is "Green"
+
+  @56844 @ValidateGranotrCanDecreaseAwardBudgetAmountInFundingchangeTypeRequest @mahadev
+  Scenario: Verify Internal user can send request to Sub-recipient for increase in the award budget amount using Funding change option.
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter values into fields
+      | Value                       | Field                              |
+      | Automation Test Description | fieldFundingChangeJustification__c |
+      | -2000                       | fieldRequestedChangeInBudget__c    |
+    And I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
+      | Role             | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+    And I click on "Send to Subrecipient" in the page details
+    Then I see status in Progress-bar is "Sent to Subrecipient" and is "Green"
+
+  @56845 @ValidateGrantorCanDeleteCreatedAmendmentRequest @mahadev
+  Scenario: Verify Internal (Award owner) user can delete the created amendment request
+    Given I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I click on "Save" in the page details
+    When I get the "EGMS ID"
+    And I navigate to "Grants" tab
+    And I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "Automation Award for Amendment Request" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    When I navigate to "Management" sub tab
+    And I click on "Delete" icon for "Record Id" inside flex table with id "---amendment:-:amendmentRequestTableId---"
+    Then I do not see value "Record Id" for title "EGMS ID" inside table "---amendment:-:amendmentRequestTableId---"
+
+  @56847 @VerifyAwardOwnerCanEditCreatedAmendmentRequest @mahadev
+  Scenario: Verify Internal user can send request to Sub-recipient for increase in the award budget amount using Funding change option.
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter values into fields
+      | Value                       | Field                              |
+      | Automation Test Description | fieldFundingChangeJustification__c |
+      | 1000                        | fieldRequestedChangeInBudget__c    |
+    And I click on "Save" in the page details
+    When I click on "Edit" in the page details
+    And I enter value "500" into field "fieldRequestedChangeInBudget__c"
+    And I click on "Save" in the page details
+    Then I see field "Requested Change in Budget" as "500"
+
+  @56848 @ValidateGrantorCannotEditRequestAfterSendingToSubRecipient @mahadev
+  Scenario: Verify Internal user can send request to Sub-recipient for increase in the award budget amount using Funding change option.
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter values into fields
+      | Value                       | Field                              |
+      | Automation Test Description | fieldFundingChangeJustification__c |
+      | 1000                        | fieldRequestedChangeInBudget__c    |
+    And I click on "Save" in the page details
+    And I click on "Send to Subrecipient" in the page details
+    When I get the "EGMS ID"
+    And I navigate to "Grants" tab
+    And I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "Automation Award for Amendment Request" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    When I navigate to "Management" sub tab
+    Then I cannot see row level action button "Edit" against "Record Id" in flex table with id "---amendment:-:amendmentRequestTableId---"
+
+  @56851 @validateErrorMessageIfRequestedChangeInBudgetFieldIsnotEntered @mahadev
+  Scenario: Verify error message if requested budget change is not entered
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter values into fields
+      | Value                       | Field                              |
+      | Automation Test Description | fieldFundingChangeJustification__c |
+    And I click on "Save" in the page details
+    And I click on "Send to Subrecipient" in the page details
+    Then I see the following messages in the page details contains:
+      | Overview Tab - The requested change in budget is required and cannot be $0 |

@@ -6,8 +6,6 @@ import java.nio.charset.StandardCharsets;
 import com.jayway.restassured.response.Response;
 
 import eyethink.automation.bots.controller.EnvironmentFetcher;
-import eyethink.automation.bots.webservices.RestfulWebServices;
-import eyethink.automation.bots.controller.Controller;
 import eyethink.automation.bots.controller.CoreHandlers;
 import com.automation.rei.handlers.GovGrantsHandler;
 
@@ -18,11 +16,9 @@ public class ProjectWebServices {
     private String jobID;
     private String status;
     public CoreHandlers reiDriver;
-    public Controller controller;
     public GovGrantsHandler govgrants;
 
-    public ProjectWebServices(Controller controller, CoreHandlers reiDriver, GovGrantsHandler govgrants) {
-        this.controller = controller;
+    public ProjectWebServices(CoreHandlers reiDriver, GovGrantsHandler govgrants) {
         this.reiDriver = reiDriver;
         this.govgrants = govgrants;
     }

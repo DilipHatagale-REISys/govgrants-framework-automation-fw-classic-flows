@@ -824,7 +824,7 @@ Feature: Payment Request scenarios without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @54174 @ValidateAwardBudget_IsSameAsBalanceonAward @mahadev
+  @54174 @ValidateAwardBudgetIsSameAsBalanceonAward @mahadev
   Scenario Outline: validate awarded budget is same as award balace on award activation
     Given I delete the record "Automation Execution Award" from the object "Payment Request"
     And I delete the record "Automation Execution Award" from the object "Progress Report"
@@ -931,7 +931,7 @@ Feature: Payment Request scenarios without background
       | Award Name                  | Grant Name                 |
       | Automation Execution  Award | Automation Execution Award |
 
-  @54168 @ValidateAwardBudget_IsSameAsBalanceOnReimbursementPR @mahadev
+  @54168 @ValidateAwardBudgetIsSameAsBalanceOnReimbursementPR @mahadev
   Scenario Outline: validate awarded budget is same as award balace on award activation
     Given I delete the record "Automation Execution Award" from the object "Payment Request"
     And I delete the record "Automation Execution Award" from the object "Progress Report"
@@ -1067,7 +1067,7 @@ Feature: Payment Request scenarios without background
       | Award Name                  | Grant Name                 |
       | Automation Execution  Award | Automation Execution Award |
 
-  @54496 @Validate_Active_Suppporting_Document_Checklist_On_ReimbursementPR @mahadev
+  @54496 @ValidateActiveSuppportingDocumentChecklistOnReimbursementPR @mahadev
   Scenario Outline: validate Suppporting Document Checklist is displayed on reimbursement payment request
     Given I delete the record "Automation Execution Award" from the object "Payment Request"
     And I delete the record "Automation Payment Request" from the object "Payment Request"
@@ -1198,7 +1198,7 @@ Feature: Payment Request scenarios without background
       | Award Name                  | Grant Name                 |
       | Automation Execution  Award | Automation Execution Award |
 
-  @54499 @Validate_InActive_Suppporting_Document_Checklist_On_ReimbursementPR @mahadev
+  @54499 @ValidateInActiveSuppportingDocumentChecklistOnReimbursementPR @mahadev
   Scenario Outline: validate Suppporting Document Checklist is not displayed on reimbursement payment request if selected as Inactive on grant
     Given I delete the record "Automation Execution Award" from the object "Payment Request"
     And I delete the record "Automation Payment Request" from the object "Payment Request"
@@ -1330,7 +1330,7 @@ Feature: Payment Request scenarios without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @54415 @Validate_UserCan_Attach_documentType_Invoice_On_ReimbursementPR @mahadev
+  @54415 @ValidateUserCanAttachDocumentTypeInvoiceOnReimbursementPR @mahadev
   Scenario Outline: validate user can add active supporting document for Reimbursement payment request as type Invoice
     Given I delete the record "Automation Execution Award" from the object "Payment Request"
     And I delete the record "Automation Execution Award" from the object "Progress Report"
@@ -1456,7 +1456,7 @@ Feature: Payment Request scenarios without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @54498 @Validate_InActive_Suppporting_Document_Checklist_On_AdvancePR @mahadev
+  @54498 @ValidateInActiveSuppportingDocumentChecklistOnAdvancePR @mahadev
   Scenario Outline: validate Suppporting Document Checklist is not displayed on advance payment request if selected as Inactive on grant
     Given I delete the record "Automation Execution Award" from the object "Payment Request"
     And I delete the record "Automation Payment Request" from the object "Payment Request"
@@ -1481,7 +1481,7 @@ Feature: Payment Request scenarios without background
       | Award Name                 | Grant Name                 |
       | Automation Permanent Award | Automation Permanent Award |
 
-  @54495 @Validate_Active_Suppporting_Document_Checklist_On_AdvancePR @mahadev
+  @54495 @ValidateActiveSuppportingDocumentChecklistOnAdvancePR @mahadev
   Scenario Outline: validate Suppporting Document Checklist is displayed on advance payment request
     Given I delete the record "Automation Execution Award" from the object "Payment Request"
     And I delete the record "Automation Payment Request" from the object "Payment Request"
@@ -1606,7 +1606,7 @@ Feature: Payment Request scenarios without background
       | Award Name                  | Grant Name                 |
       | Automation Execution  Award | Automation Execution Award |
 
-  @54506 @Validate_Optional_Suppporting_Document_Checklist_On_ReimbursementPR @mahadev
+  @54506 @ValidateOptionalSuppportingDocumentChecklistOnReimbursementPR @mahadev
   Scenario Outline: validate Optional Suppporting Document Checklist should not display any error message on reimbursement payment request
     Given I delete the record "Automation Execution Award" from the object "Payment Request"
     And I delete the record "Automation Payment Request" from the object "Payment Request"
@@ -1737,7 +1737,7 @@ Feature: Payment Request scenarios without background
       | Award Name                  | Grant Name                 |
       | Automation Execution  Award | Automation Execution Award |
 
-  @54507 @Validate_Optional_Suppporting_Document_Checklist_On_AdvancePR @mahadev
+  @54507 @ValidateOptionalSuppportingDocumentChecklistOnAdvancePR @mahadev
   Scenario Outline: validate Optional Suppporting Document Checklist should not display any error message on advance payment request
     Given I delete the record "Automation Execution Award" from the object "Payment Request"
     And I delete the record "Automation Execution Award" from the object "Progress Report"
@@ -1866,7 +1866,7 @@ Feature: Payment Request scenarios without background
       | Award Name                  | Grant Name                 |
       | Automation Execution  Award | Automation Execution Award |
 
-  @54503 @Validate_Mandatory_Suppporting_Document_Checklist_On_AdvancePR @mahadev
+  @54503 @ValidateMandatorySuppportingDocumentChecklistOnAdvancePR @mahadev
   Scenario Outline: validate mandatory Suppporting Document Checklist should  display error message on advance PR if attachment not added
     Given I delete the record "Automation Execution Award" from the object "Payment Request"
     And I delete the record "Automation Payment Request" from the object "Payment Request"
@@ -1996,7 +1996,7 @@ Feature: Payment Request scenarios without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @54167 @ValidateAwardBudget_IsSameAsBalanceOnAdvancePR @mahadev
+  @54167 @ValidateAwardBudgetIsSameAsBalanceOnAdvancePR @mahadev
   Scenario Outline: validate awarded budget is same as award balace on award activation
     Given I delete the record "Automation Execution Award" from the object "Payment Request"
     When I delete the record "Automation Execution Award" from the object "Progress Report"
@@ -2116,7 +2116,7 @@ Feature: Payment Request scenarios without background
       | Award Name                  | Grant Name                 |
       | Automation Execution  Award | Automation Execution Award |
 
-  @54708 @Validate_AdvanceRequested_Amount_field_On_AwardAtSubPortal_Updated_After_AdvancePR_Approval @mahadev
+  @54708 @ValidateAdvanceRequestedAmountFieldOnAwardAtSubPortalUpdatedAfterAdvancePRApproval @mahadev
   Scenario Outline: validate Advance Requested Amount field at sub portal gets updated after Advance payment request approval
     Given I delete the record "Automation Execution Award" from the object "Payment Request"
     And I delete the record "Automation Payment Request" from the object "Payment Request"
@@ -2266,7 +2266,7 @@ Feature: Payment Request scenarios without background
       | Award Name                  | Grant Name                 |
       | Automation Execution  Award | Automation Execution Award |
 
-  @54707 @Validate_AdvanceRequested_Amount_field_On_AwardAtInternalPortal_Updated_After_AdvancePR_Approval @mahadev
+  @54707 @ValidateAdvanceRequestedAmountFieldOnAwardAtInternalPortalUpdatedAfterAdvancePRApproval @mahadev
   Scenario Outline: validate Advance Requested Amount field at Internal portal gets updated after Advance payment request approval
     Given I delete the record "Automation Execution Award" from the object "Payment Request"
     And I delete the record "Automation Payment Request" from the object "Payment Request"
@@ -2415,7 +2415,7 @@ Feature: Payment Request scenarios without background
       | Award Name                  | Grant Name                 |
       | Automation Execution  Award | Automation Execution Award |
 
-  @54709 @Validate_ReimbursementBalance_field_On_AwardAtSubPortal_Updated_After_ReimbursementPR_Approval @mahadev
+  @54709 @ValidateReimbursementBalanceFieldOnAwardAtSubPortalUpdatedAfterReimbursementPRApproval @mahadev
   Scenario Outline: validate Advance Requested Amount field at sub portal gets updated after Advance payment request approval
     Given I delete the record "Automation Execution Award" from the object "Payment Request"
     And I delete the record "Automation Payment Request" from the object "Payment Request"
@@ -2568,7 +2568,7 @@ Feature: Payment Request scenarios without background
       | Award Name                  | Grant Name                 |
       | Automation Execution  Award | Automation Execution Award |
 
-  @54712 @Validate_Reimbursement_Approved_Amount_field_On_PaymentRequest_After_ReimbursementPR_Approval @mahadev
+  @54712 @ValidateReimbursementApprovedAmountFieldOnPaymentRequestAfterReimbursementPRApproval @mahadev
   Scenario Outline: validate Reimbursement balance on payment request at sub portal gets updated after Reimbursement payment request approval
     Given I delete the record "Automation Execution Award" from the object "Payment Request"
     And I delete the record "Automation Payment Request" from the object "Payment Request"
@@ -2723,7 +2723,7 @@ Feature: Payment Request scenarios without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @54711 @Validate_TotalField_GettingUpdated_On_AdvancePR @mahadev
+  @54711 @ValidateTotalFieldGettingUpdatedOnAdvancePR @mahadev
   Scenario Outline: Validate total field is getting updated on advance payment request
     Given I delete the record "Automation Execution Award" from the object "Payment Request"
     And I delete the record "Automation Payment Request" from the object "Payment Request"
@@ -2849,7 +2849,7 @@ Feature: Payment Request scenarios without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @54504 @Validate_OptionalSupporting_document_Checklist_On_ReimbursementPR @mahadev
+  @54504 @ValidateOptionalSupportingDocumentChecklistOnReimbursementPR @mahadev
   Scenario Outline: validate optional supporting document checklist does not show any validation message for Reimbursement payment request
     Given I delete the record "Automation Execution Award" from the object "Payment Request"
     And I delete the record "Automation Execution Award" from the object "Progress Report"
@@ -2978,8 +2978,8 @@ Feature: Payment Request scenarios without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @55402 @Verify_AfterBatchExecution_UserNotified_field_gets_Updated_at_both_the_ends_Exe @mahadev
-  Scenario Outline: Verify when Batch is run then User Notified field gets Updated at both the ends (Exe)
+  @55402 @ValidatedUserNotifiedFieldUpdatedInternalPortal @mahadev
+  Scenario Outline: Verify when Batch is run then User Notified field gets Updated at Internal Portal
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
     And I delete the record "Automation Execution Award" from the object "Progress Report"
     And I delete the record "Automation Execution Award" from the object "Payment Request"
@@ -3116,7 +3116,7 @@ Feature: Payment Request scenarios without background
       | Automation Permanent Award | SPI        |
       | Automation Permanent Award | SPA        |
 
-  @51068 @Reimbursement_paymentRequestAddAttachment
+  @51068 @ReimbursementPaymentRequestAddAttachment
   Scenario Outline: Validate the attachment for Reimbursement Payment Request
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
     And I delete the record "Automation Permanent Award" from the object "Payment Request"
@@ -3143,7 +3143,7 @@ Feature: Payment Request scenarios without background
       | SPI  |
       | SPA  |
 
-  @55400 @EditAction_NotDisplayed_ReimbursementPR @mahadev
+  @55400 @EditActionNotDisplayedReimbursementPR @mahadev
   Scenario Outline: validate edit action should not be displayed for budget categories for Reimbursement Payment request
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
     And I delete the record "Automation Permanent Award" from the object "Payment Request"
@@ -3168,3 +3168,121 @@ Feature: Payment Request scenarios without background
       | User |
       | SPI  |
       | SPA  |
+
+  @55401 @ValidatedUserNotifiedFieldUpdatedExternalPortal @mahadev
+  Scenario Outline: Verify when Batch is run then User Notified field gets Updated at External Portal
+    Given I delete the record "Automation Payment Request" from the object "Payment Request"
+    And I delete the record "Automation Execution Award" from the object "Progress Report"
+    And I delete the record "Automation Execution Award" from the object "Payment Request"
+    And I delete the record "Automation Execution Award" from the object "Grant"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I get the "EGMS ID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
+    When I click "Add" after selection of "Automation Permenent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    And I close modal by clicking the top right x button
+    When I navigate to "Budget" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account | Encumbrance |
+      | FA--03          | 1000        |
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
+      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
+      | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
+    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close Modal
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close Modal
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
+      | Responsibility     | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+    When I get the "EGMS ID"
+    And I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click toggle button to select "Draft Grants"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside table
+    And I click on "Accept after Approval" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click toggle button to select "Draft Grants"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "Activate" in the page details
+    When I create a post award record "PaymentRequest" for the Award "<Award Name>" having object api name as "PaymentRequest__c"
+    When I re-login to "Grants Portal" app as "<User>" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
+    And I navigate to "Terms" sub tab
+    When I expand nested table containing column value "Payment Request"
+    Then I can see "1" record value is checked for field name "TaskCreated__c"
+    Examples:
+      | Award Name                 | Grant Name                 | User |
+      | Automation Execution Award | Automation Execution Award | SPI  |
+      | Automation Execution Award | Automation Execution Award | SPA  |

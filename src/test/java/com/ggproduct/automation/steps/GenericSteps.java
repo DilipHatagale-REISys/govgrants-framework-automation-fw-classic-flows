@@ -2,7 +2,6 @@ package com.ggproduct.automation.steps;
 
 import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.projectmanager.ProjectManager;
-import eyethink.automation.bots.controller.Controller;
 import eyethink.automation.bots.controller.CoreHandlers;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
@@ -14,8 +13,8 @@ import java.util.List;
 public class GenericSteps {
     ProjectManager projectManager;
 
-    public GenericSteps(Controller controller, CoreHandlers reiDriver, GovGrantsHandler govgrants) {
-        projectManager = new ProjectManager(controller, reiDriver, govgrants);
+    public GenericSteps(CoreHandlers reiDriver, GovGrantsHandler govgrants) {
+        projectManager = new ProjectManager(reiDriver, govgrants);
     }
 
     @Given("^I delete the record \"([^\"]*)\" from the object \"([^\"]*)\"$")

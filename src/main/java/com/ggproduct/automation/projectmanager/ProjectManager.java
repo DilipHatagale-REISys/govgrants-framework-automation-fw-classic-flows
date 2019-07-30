@@ -4,7 +4,6 @@ import com.automation.rei.handlers.EmailUtils;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import com.automation.rei.handlers.GovGrantsHandler;
-import eyethink.automation.bots.controller.Controller;
 import eyethink.automation.bots.controller.CoreHandlers;
 import org.openqa.selenium.WebElement;
 import org.springframework.context.annotation.Description;
@@ -23,7 +22,6 @@ import java.util.Map;
  */
 public class ProjectManager extends ProjectWebServices {
     public CoreHandlers reiDriver;
-    public Controller controller;
     UsersAndURL usersAndURL = new UsersAndURL();
     public GovGrantsHandler govgrants;
     public final String defaultLongText = "Automation test description";
@@ -31,13 +29,10 @@ public class ProjectManager extends ProjectWebServices {
 
     /**
      * Super Constructor
-     *
-     * @param controller
      * @param reiDriver
      */
-    public ProjectManager(Controller controller, CoreHandlers reiDriver, GovGrantsHandler govgrants) {
-        super(controller, reiDriver, govgrants);
-        this.controller = controller;
+    public ProjectManager( CoreHandlers reiDriver, GovGrantsHandler govgrants) {
+        super(reiDriver, govgrants);
         this.reiDriver = reiDriver;
         this.govgrants = govgrants;
     }
