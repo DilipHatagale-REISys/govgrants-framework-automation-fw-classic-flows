@@ -39,6 +39,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "<Subrecipient>" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
+    When I refresh the page
     Then I see that "<Subrecipient>" has been added in flextable with Id "---orgLevelDeskReview:-:associateContactsId---"
     Examples:
       | Subrecipient   |
@@ -52,7 +53,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click modal button "Save and Continue"
     Then I see field "Monitoring Type" as "Fiscal"
 
-
   @54295 @monitoringTypeProgramDR @deepika
   Scenario: Validate the Monitoring type 'Program' for Organizational Desk Review
     Given I navigate to "Related Log" sub tab
@@ -60,7 +60,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I enter "Program" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     Then I see field "Monitoring Type" as "Program"
-
 
   @54423 @orgDeskReviewTypeApplication @deepika
   Scenario: Validate the Desk Review Org Level type Application
@@ -92,7 +91,6 @@ Feature: Validate all scenarios in Organizational Desk Review
       | User           |
       | Automation SPI |
       | Automation EXE |
-
 
   @54458 @approverSelectionDeskReviewOrgLevel @deepika
   Scenario Outline: Approver selection of Desk Review Org Level
@@ -284,7 +282,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     Then I see that "100.00%" has been added in flextable with Id "---orgLevelDeskReview:-:reportsTableId---"
 
   @54571 @submittingForApprovalDeskReviewOrgLevel @deepika
@@ -336,7 +333,6 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
@@ -390,7 +386,6 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -455,7 +450,6 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -529,7 +523,6 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -624,7 +617,6 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -720,7 +712,6 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -822,7 +813,6 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -923,7 +913,6 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -988,7 +977,6 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1069,7 +1057,6 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1379,7 +1366,6 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1452,5 +1438,4 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    #And I click on top right button "Validate" in flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     Then I can see top right button "Submit for Approval" in page detail

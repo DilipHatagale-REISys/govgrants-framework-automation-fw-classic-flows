@@ -2974,7 +2974,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Announcement Type | Active Funding Opportunities id | User |
       | Directed          | ActiveFundingOpportunities      | EXE  |
 
-  @34462 @publishingDirectedAnnouncement @announcementDirectedHappyPath @smoke
+  @34462 @publishingDirectedAnnouncement @c @smoke
   Scenario Outline: Validate the activation of Announcement
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
