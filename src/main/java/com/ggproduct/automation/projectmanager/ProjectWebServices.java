@@ -101,6 +101,29 @@ public class ProjectWebServices {
     }
 
     /*
+     * calls the api to get the Record Id.
+     *
+     * @param recordName - the name or title of the record
+     *
+     * @param fieldName - the name of the field that stores the title like e.g.
+     * Title__c.
+     *
+     * @param objectType - the object API name of the record from which you want to
+     * get the field value
+     *
+     * @param outputFieldName - use it in case you want to get any field value other than EGMS ID.
+     */
+    public Response automateGetApi(String recordName, String fieldName, String objectType,String outputFieldName) {
+        getAuthToken();
+        String finalEndPoint = endPoint + "/services/apexrest/productAutomationGetFieldValue?objectType=" + objectType
+                + "&fieldValue=" + recordName + "&fieldName=" + fieldName +"&outputFieldName=" +outputFieldName;
+        Response response = reiDriver.apiCall().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
+        response.prettyPrint();
+        assertStatusCode(response);
+        return response;
+    }
+
+    /*
      * calls the api which will create post award records currently accepts
      * PaymentRequest, ProgressReport, Closeout.
      * 
