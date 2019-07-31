@@ -293,4 +293,16 @@ public class ProjectManager extends ProjectWebServices {
 
         return false;
     }
+
+    /**
+     *
+     * @param recordName - the name or title of the record
+     * @param fieldName - the name of the field that stores the title like e.g. Title__c.
+     * @param objectType - the object API name of the record from which you want to
+     * @param outputFieldName - Field API name of which you want to get the value
+     * @return
+     */
+    public String getFieldValueFromAPI(String recordName, String fieldName, String objectType,String outputFieldName ){
+        return automateGetApi(recordName,fieldName,objectType,outputFieldName).asString().replaceAll("\"","");
+    }
 }
