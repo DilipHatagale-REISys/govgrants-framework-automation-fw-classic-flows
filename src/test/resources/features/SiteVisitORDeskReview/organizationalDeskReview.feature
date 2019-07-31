@@ -39,7 +39,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "<Subrecipient>" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    
     Then I see that "<Subrecipient>" has been added in flextable with Id "---orgLevelDeskReview:-:associateContactsId---"
     Examples:
       | Subrecipient   |
@@ -88,7 +87,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click on "Save" in the page details
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "<User>" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    
     Then I see that "<User>" has been added in flextable with Id "---orgLevelDeskReview:-:associateContactsId---"
     Examples:
       | User           |
@@ -134,10 +132,8 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    
     And I click on "Notify" in the page details
     Then I see that "Automation Desk Review Org level" is in "Notified" status
 
