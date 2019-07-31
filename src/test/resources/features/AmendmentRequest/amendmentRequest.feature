@@ -537,3 +537,88 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Send to Subrecipient" in the page details
     Then I see the following messages in the page details contains:
       | Overview Tab - The requested change in budget is required and cannot be $0 |
+
+    @56854 @checkDuplicateFundingChangeNotAllowed @jitendra
+    Scenario: Verify Once Internal user request for Amendment request is in Progress then no other request can be created.
+      When I navigate to "Management" sub tab
+      And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+      When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+      And I click modal button "Save and Continue"
+      And I click on "Save" in the page details
+      And I navigate to "Grants" tab
+      And I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+      And I click toggle button to select "Active Grants"
+      When I perform quick search for "Automation Award for Amendment Request" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+      And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+      When I navigate to "Subawards" sub tab
+      And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+      When I navigate to "Management" sub tab
+      And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+      When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+      And I click modal button "Save and Continue"
+      Then I see the following messages in the page details contains:
+      |Another request for this award is already in progress. You cannot process this request|
+
+  @56855 @checkPendingTaskForFundingChangeSPI @jitendra
+  Scenario: Verify SPI user is able to check the funding change request submitted by award owner.
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter values into fields
+      | Value                       | Field                              |
+      | Automation Test Description | fieldFundingChangeJustification__c |
+      | 1000                        | fieldRequestedChangeInBudget__c    |
+    And I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    Then I see value "Record Id" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
+
+
+  @56856 @NoDeleteIconAfterSentToSubRecipientForFundingChangeSPI @jitendra
+  Scenario: Verify Once Internal user sent request to sub recipient than cannot Delete the same request.
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter values into fields
+      | Value                       | Field                              |
+      | Automation Test Description | fieldFundingChangeJustification__c |
+      | 1000                        | fieldRequestedChangeInBudget__c    |
+    And I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I click on "Send to Subrecipient" in the page details
+    And I navigate to "Grants" tab
+    And I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "Automation Award for Amendment Request" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    When I navigate to "Management" sub tab
+    Then I cannot see row level action button "Delete" against "Funding Change" in flex table with id "---amendment:-:amendmentRequestTableId---"
+
+  @56859 @checkFieldRequestedChangeinBudgetSPI @jitendra
+  Scenario: Verify SPI user is able to check the funding change request submitted by award owner.
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter values into fields
+      | Value                       | Field                              |
+      | Automation Test Description | fieldFundingChangeJustification__c |
+      | 1000                        | fieldRequestedChangeInBudget__c    |
+    And I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
+    And I navigate to "Overview" sub tab
+    Then I see field "Requested Change in Budget" as "$1,000.00"

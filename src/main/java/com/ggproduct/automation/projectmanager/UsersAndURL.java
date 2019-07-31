@@ -156,5 +156,4 @@ public class UsersAndURL implements UsersController {
         }
         return credentials;
     }
-
 }
