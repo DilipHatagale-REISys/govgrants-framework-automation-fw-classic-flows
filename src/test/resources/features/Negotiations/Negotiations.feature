@@ -281,7 +281,7 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Complete Negotiation" in the page details
     And I navigate to "Applications" tab
     When I navigate to "Completed Negotiations" content inside "Negotiations" subheader on left panel
-    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "flexGridEnhancedDivId"
+    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "flexGridCompletedNegotiations"
     Then I can see top right button "Create Subaward" in page detail
 
   @57217 @createNegotiationButtonAfterNegotiationComplete @deepika
@@ -375,7 +375,7 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Save" in the page details
     Then I cannot see top right button "Complete Negotiation" in page detail
 
-  @57220 @viewCompletedNegotiation @deepika @wip
+  @57220 @viewCompletedNegotiation @deepika
   Scenario: validate whther user is able to view the completed Negotiation on left Navigation under Completed Negotiations
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -406,5 +406,5 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Complete Negotiation" in the page details
     And I navigate to "Applications" tab
     When I navigate to "Completed Negotiations" content inside "Negotiations" subheader on left panel
-    Then I see that "Autoamtion Announcement for Negotiations" is in "Negotiated" status
+    Then I can see row level action button "View" against "Autoamtion Announcement for Negotiations" in flex table with id "flexGridCompletedNegotiations"
 
