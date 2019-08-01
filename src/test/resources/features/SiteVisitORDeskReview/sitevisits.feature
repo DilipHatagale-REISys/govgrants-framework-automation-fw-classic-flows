@@ -1394,9 +1394,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Send to Owner" on the approval decision box
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "inlineEditGridSiteVisitsGridView"
     Then I see status in Progress-bar is "In Progress" and is "green"
 
   @56038 @submittingForApprovalButtonSiteVisit @deepika
