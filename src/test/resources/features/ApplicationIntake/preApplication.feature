@@ -43,7 +43,7 @@ Feature: Validate all scenarios in the Pre-Application
   @53155 @PreApplicationAttachmentChecklistCA
   Scenario: Validate the attachment checklist of the PreApplication
     When I navigate to "Attachments" sub tab
-    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Announcement"
+    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
     Then I see "Active" has been added in "Attachments" flex table
 
   @53159 @PreApplicationAttachmentCA
@@ -86,7 +86,7 @@ Feature: Validate all scenarios in the Pre-Application
     When I click on "Accept" in the page details
     Then I see status in Progress-bar is "Accepted" and is "Green"
 
-  @53162 @preApplicationtoApplication
+  @53162 @preApplicationToApplication
   Scenario Outline: Validate Grantor accept the submitted pre-application and converted it to application
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
@@ -138,7 +138,7 @@ Feature: Validate all scenarios in the Pre-Application
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "All Applications"
-    When I click on "View" icon for "<Application Name>" inside table
+    And I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationIntake:-:recipientPreApplicationsTableId---"
     Then I see status in Progress-bar is "Submitted" and is "Green"
     Examples:
       | Announcement Name                       |
