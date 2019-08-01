@@ -325,7 +325,7 @@ Feature: Validate all scenarios in the home tab
     When I click on "Edit" icon for "Automation Contact" inside flex table with id "flexTableRandomID"
     And I enter "Edition1" values from "InternalContact_Field_Values.xlsx"
     And I click modal button "Save"
-    And I refresh the page
+    When I refresh the page
     And I perform quick search for "Automation Contact" in "flexTableRandomID" panel
     Then I see value "Active" for title "Status" inside table "flexTableRandomID"
     Examples:
@@ -378,6 +378,7 @@ Feature: Validate all scenarios in the home tab
     And I click on top right button "New" in flex table with id "---home:-:additionalAddressTableId---"
     And I enter "AdditionalAddressesCreation" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
+    When I close modal by clicking the top right x button
     Then I see that "Internal Organization" is in "Active" status
     Examples:
       | User  |
@@ -395,40 +396,39 @@ Feature: Validate all scenarios in the home tab
     And I click on "Edit" icon for "Billing Address" inside flex table with id "---home:-:additionalAddressTableId---"
     And I enter "AdditioanlAddressesEdition" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
+    And I refresh the page
     Then I see that "Test Automation Organization" is in "Active" status
     Examples:
       | User  |
       | ADMIN |
 
   @56907 @relatedContactsCreation  @smoke
-  Scenario Outline: Validate whether ADMIN and DA users can Create the Related Contact
-    Given I login to "As a Grantor" app as "<User>" user
+  Scenario: Validate whether ADMIN and DA users can Create the Related Contact
+    Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I switch to iframe with id "iframeFlexGridSearch"
-    When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "---home:-:internalOrganizationId---"
+    When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
     And I click on top right button "New" in flex table with id "---home:-:relatedContactsTableId---"
     And I enter "RelatedContactsCreation" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
     When I perform quick search for "Automation Contact" in "---home:-:relatedContactsTableId---" panel
     Then I see values "Automation Contact" and "Active" inside table
-    Examples:
-      | User  |
-      | ADMIN |
 
   @56738 @relatedContactsEdition
   Scenario Outline: The Internal Users should be able to Edit Related Contacts
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    And I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
+    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I switch to iframe with id "iframeFlexGridSearch"
-    When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "---home:-:internalOrganizationId---"
+    When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
     When I perform quick search for "Automation Contact" in "---home:-:relatedContactsTableId---" panel
     And I click on "Edit" icon for "Automation Contact" inside flex table with id "---home:-:relatedContactsTableId---"
     When I enter "RelatedContactsEdition" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
+    And I close Modal
     And I click on "Save" in the page details
     Then I see that "Internal Organization" is in "Active" status
     Examples:
@@ -440,12 +440,12 @@ Feature: Validate all scenarios in the home tab
 
   @56739 @deleterelatedContacts
   Scenario Outline: Validate whether ADMIN and DA users can Delete the Related Contact
-    Given I login to "As a Grantor" app as "<User>" user
+    Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    And I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
+    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I switch to iframe with id "iframeFlexGridSearch"
-    When I click on "Edit" icon for "Test Automation Organization" inside flex table with id "---home:-:internalOrganizationId---"
+    When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
     When I perform quick search for "Automation Contact" in "---home:-:relatedContactsTableId---" panel
     And I click on "Delete" icon for "Automation Contact" inside flex table with id "---home:-:relatedContactsTableId---"
     Then I do not see value "Automation Contact" for title "Full Name" inside table "---home:-:relatedContactsTableId---"
@@ -505,19 +505,19 @@ Feature: Validate all scenarios in the home tab
       | ADMIN |
 
   @56743 @deleteIndirectCostRate
-  Scenario Outline: Validate whether ADMIN and DA users can delete the Indirect Cost Rates
+  Scenario: Validate whether ADMIN and DA users can delete the Indirect Cost Rates
     Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I switch to iframe with id "iframeFlexGridSearch"
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
+    When I click on top right button "New" in flex table with id "inlineEditGridIndirectRateGrid"
+    And I enter "New IDC" values from "InternalOrganization_Field_Values.xlsx"
+    When I click modal button "Save"
     And I perform quick search for "New IDC" in "inlineEditGridIndirectRateGrid" panel
     When I click on "Delete" icon for "New IDC" inside flex table with id "inlineEditGridIndirectRateGrid"
     Then I do not see values "New IDC" and "Title" inside table
-    Examples:
-      | User  |
-      | ADMIN |
 
   @56883 @adminOrPMEditAccessToOwnOrg
   Scenario Outline: Users with Admin/ PM profiles can edit their own organizations.
@@ -531,6 +531,7 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
+
 
   @56911 @foUserCannotEditOrg
   Scenario: Validate whether Fo User Can edit Internal Organizations
