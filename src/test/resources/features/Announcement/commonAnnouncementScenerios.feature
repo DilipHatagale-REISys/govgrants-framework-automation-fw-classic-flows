@@ -74,7 +74,6 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
     When I click "Add" after selection of "<Contact>" in the table "AssociateAnnouncementContacts"
-    And I close Modal
     Then I see that "<Contact>" has been added in flextable with Id "AnnouncementContacts"
     Examples:
       | Contact        |
@@ -86,7 +85,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
     When I click "Add" after selection of "<Contact>" in the table "AssociateAnnouncementContacts"
     When I click on "Remove" icon for "<Contact>" inside flex table with id "---announcement:-:contactTableId---"
-    Then I do not see values "Record Id" and "Contact" inside table
+    Then I do not see values "Record Id" and "<Contact>" inside table
     Examples:
       | Contact        |
       | Automation EXE |
@@ -110,11 +109,11 @@ Feature: Validate all common scenarios in the  Announcement tab
     And I close Modal
     When I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--01          | 100             |
+      | FA--03          | 100             |
     Then I see that "<EGMS Id>" has been added in flextable with Id "flexGridAnnouncementFundingAccountGrantor"
     Examples:
       | EGMS Id |
-      | FA--01  |
+      | FA--03  |
 
   @52404 @announcementFADissociationFA
   Scenario Outline: Funding Account dissociation to an Announcement
@@ -126,7 +125,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     Then I do not see value "<EGMS Id>" for title "EGMS ID" inside table "---announcement:-:fundingAccountsTableId---"
     Examples:
       | EGMS Id |
-      | FA--01  |
+      | FA--03  |
 
   @52405 @announcementBudgetPeriodAdditionFA
   Scenario: Budget Period Addition to an Announcement
@@ -150,7 +149,6 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementServiceArea1"
     When I click "Add" after selection of "Automation Permanent Focus Area2" in the table "SelectAnnouncementServiceArea1"
-    And I close Modal
     Then I see that "Automation Permanent Focus Area2" has been added in flextable with Id "AnnouncementServiceArea1"
 
   @34775 @announcementObjectiveAssociationFA
@@ -158,7 +156,6 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
-    And I close Modal
     Then I see that "Automation Permanent Objective2" has been added in flextable with Id "AnnouncementGranteeStrategicGoalsObjectives"
 
   @52409 @announcementObjectiveDissociationFA
@@ -166,7 +163,6 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
-    And I close Modal
     When I click on "Remove" icon for "Automation Permanent Objective2" inside flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
     Then I do not see value "Automation Permanent Objective2" for title "EGMS ID" inside table "AnnouncementGranteeStrategicGoalsObjectives"
 
@@ -194,25 +190,25 @@ Feature: Validate all common scenarios in the  Announcement tab
   @34232 @announcementReviewerAssignmentFA
   Scenario: Validate the assignment of Reviewer for the Announcement
     Given I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---announcement:-:enterReviewTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---announcement:-:reviewersTableId---" by clicking "New" :
       | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
       | Automation FO | Fiscal Reviewer | Review Financial details | 20       | No                   |
-    Then I see that "Automation FO" has been added in flextable with Id "---announcement:-:enterReviewTableId---"
+    Then I see that "Automation FO" has been added in flextable with Id "---announcement:-:reviewersTableId---"
 
   @52412 @announcementReviewerInitiationFA
   Scenario: Validate the Reviewer initiation for the Announcement
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---announcement:-:enterReviewTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---announcement:-:reviewersTableId---" by clicking "New" :
       | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
       | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "Automation FO" inside table
     And I get the "EGMS ID"
-    Then I see that "Sent for Review" has been added in flextable with Id "---announcement:-:enterReviewTableId---"
+    Then I see that "Sent for Review" has been added in flextable with Id "---announcement:-:reviewersTableId---"
 
   @52413 @announcementReviewCompleteFA @wip
   Scenario Outline: Validate the review for the Announcement
     Given I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---announcement:-:enterReviewTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---announcement:-:reviewersTableId---" by clicking "New" :
       | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
       | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "Automation FO" inside table
@@ -223,14 +219,13 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
     And I click on "Start" icon for "Record id" inside table
     When I navigate to "Responsibilities" tab
-    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---announcement:-:enterReviewTableId---"
+    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---announcement:-:reviewersTableId---"
     And I enter values into fields
       | Value  | Field             |
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -248,7 +243,6 @@ Feature: Validate all common scenarios in the  Announcement tab
     Given I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Funding Opportunity Announcement"
     Then I see "Funding Opportunity Announcement" has been added in "Attachments" flex table
-    #Then I see that "Funding Opportunity Announcement" has been added in flextable with Id "a1511000002nJ5oAAE"
 
   @52414 @reviewStepsBeforeSubmitForApprovalFA
   Scenario: Validate the Review steps of Announcement before submit for Approval
