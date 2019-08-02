@@ -942,7 +942,6 @@ Feature: Validate all scenarios in the Amendment Request
     And I click toggle button to select "Approved Amendments"
     And I perform quick search for "Record Id" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---"
-    When I pause execution for "8" seconds
     Then I can see top right button "Amend Subaward" in page detail
 
   @57125 @VerifyAwardOwnerCanCheckAmendmentRequestInPendingTask @mahadev
@@ -1410,3 +1409,4 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Save" in the page details
     And I click on "Send to Subrecipient" in the page details
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "Green"
+
