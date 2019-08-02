@@ -1383,11 +1383,9 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
     And I click on "Send to Owner" on the approval decision box
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
-    Then I see status in Progress-bar is "In Progress" and is "green"
+    And I navigate to "Applications" tab
+    When I navigate to "Manage Site Visits" content inside "Manage Site Visit" subheader on left panel
+    Then I see that "Automation Site Visit Org Level" has been added in flextable with Id "ApplicationsSiteVisitReportsGrid"
     
   @56044 @submittingForApprovalButtonOrgLevelSiteVisit @deepika
   Scenario: User will be able to view the Submit for Approval button for Org Level Site Visit

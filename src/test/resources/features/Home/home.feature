@@ -396,7 +396,7 @@ Feature: Validate all scenarios in the home tab
     And I click on "Edit" icon for "Billing Address" inside flex table with id "---home:-:additionalAddressTableId---"
     And I enter "AdditioanlAddressesEdition" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close modal by clicking the top right x button
+    And I refresh the page
     Then I see that "Test Automation Organization" is in "Active" status
     Examples:
       | User  |
