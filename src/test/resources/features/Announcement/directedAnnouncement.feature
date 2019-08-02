@@ -73,7 +73,6 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -250,7 +249,6 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -432,7 +430,6 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -610,7 +607,6 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -788,7 +784,6 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -984,7 +979,6 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -1171,7 +1165,6 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -1357,7 +1350,6 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -1540,7 +1532,6 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -1727,7 +1718,6 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -1911,7 +1901,6 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -2095,7 +2084,6 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -2282,7 +2270,6 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -2468,7 +2455,6 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -2655,7 +2641,6 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -2840,7 +2825,6 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
