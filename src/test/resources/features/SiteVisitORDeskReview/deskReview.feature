@@ -5,11 +5,11 @@ Feature: Validate all scenarios in Desk Review
     Given I delete the record "Automation Desk Review" from the object "Desk Review"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
+    And I click on "View" icon for "Automation Permanent Award for Site Visit/Desk Review" inside flex table with id "ActiveGrants"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "Automation Permanent Award for Site Visit/Desk Review" inside flex table with id "flexGridRelatedAwards1"
     Given I navigate to "Management" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "GrantorDeskReviewAward"
     And I enter "Creation" values from "DeskReview_Field_Values.xlsx"
