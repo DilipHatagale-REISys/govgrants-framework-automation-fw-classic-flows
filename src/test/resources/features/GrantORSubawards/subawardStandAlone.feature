@@ -80,15 +80,14 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
-      | Construction    | 1000           | 100        | 100            |
-    Then I see that "Construction" has been added in flextable with Id "---subAwardStandAlone:-:subAwardBudgetTableId---"
+      | Construction    | 1000           | 10         | 90             |
+    Then I see that "$10.00" has been added in flextable with Id "---subAwardStandAlone:-:subAwardBudgetTableId---"
 
   @51134 @allObjectiveAssociation
   Scenario: Validate the association of Objective to Award
     When I navigate to "Performance" sub tab
     And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:objectivesTableId---"
     When I click "Associate" after selection of "Automation Permanent Objective2" in the table "SelectAwardGoals"
-    And I close Modal
     Then I see that "Automation Permanent Objective2" has been added in flextable with Id "---subAwardStandAlone:-:objectivesTableId---"
 
   @51135 @allKPIAssociation @smoke
@@ -148,7 +147,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see that "Automation EXE" has been added in flextable with Id "---subAwardStandAlone:-:awardApproversTableId---"
 
   @51148 @allSendToRecipientBeforeApproval
-  Scenario Outline: Validate the assignment of Approvers for the award
+  Scenario Outline: Validate the award send to subrecipient before approval process
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -204,7 +203,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Approve" on the approval decision box
-    When I re-login to "As a Grantor" app as "User" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Draft Grants"
@@ -1157,7 +1156,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @51138 @awardHappyPathStandAlone @awardStandAlone
+  @51138 @awardHappyPathStandAlone
   Scenario Outline: Validate award Happy path stand alone
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -1516,7 +1515,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Automation Execution Award | Automation Execution Award | PM   |
       | Automation Execution Award | Automation Execution Award | FO   |
 
-  @55311 @ProgressReport_ScheduleUpdate_On_ActiveAward @mahadev
+  @55311 @ProgressReportScheduleUpdateOnActiveAward @mahadev
   Scenario Outline: Validate progress report schedules update on active award
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -1539,7 +1538,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
       | Automation Permanent KPI for Regression | 10     |
-    And I navigate to "Management" sub tab
+    And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
@@ -1664,7 +1663,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 
   @55297 @EditProgressReportSchedule @mahadev
   Scenario: Validate user can edit progress report schedule on draft award
-    And I navigate to "Management" sub tab
+    And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
@@ -1674,9 +1673,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click modal button "Save"
     Then I see field "Schedule Base" as "Calendar"
 
-  @55296 @ViewProgressReportSchedule_OnDraftAward @mahadev
+  @55296 @ViewProgressReportScheduleOnDraftAward @mahadev
   Scenario: Validate user can view progress report schedule on draft award
-    And I navigate to "Management" sub tab
+    And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
@@ -1684,14 +1683,14 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     Then I see field "Schedule Title" as "Automation Progress Report"
 
-  @55289 @ViewProgressReportSchedule_AutoCreated_OnDraftAward @mahadev
+  @55289 @ViewProgressReportScheduleAutoCreatedOnDraftAward @mahadev
   Scenario: Validate user can view progress report schedule on draft award
     And I navigate to "Management" sub tab
     Then I see value "Not Applicable" for title "Frequency" inside table "---subAwardStandAlone:-:progressReportScheduleTableId---"
 
   @55298 @DownloadProgressReportInPDF @jitendra
   Scenario: Validate user can Download the progress created Report in PDF format.
-    And I navigate to "Management" sub tab
+    And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
