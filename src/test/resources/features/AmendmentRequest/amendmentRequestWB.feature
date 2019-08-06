@@ -1221,7 +1221,7 @@ Feature: Amendment Request scenarios without background
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
     When I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
     When I perform quick search for "<Grant Name>" in "---amendment:-:recipientActiveGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---amendment:-:recipientActiveGrantsTableId---"
