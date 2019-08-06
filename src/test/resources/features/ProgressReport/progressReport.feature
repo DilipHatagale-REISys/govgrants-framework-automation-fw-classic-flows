@@ -56,7 +56,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Back" in the page details
     When I click on "Submit to Grantor" in the page details
     And I navigate to "Performance" sub tab
-    Then I cannot see row level action button "Edit" against "Actions" in flex table with id "---progressReport:-:kpiTableId---"
+    Then I cannot see row level action button "Edit" against "Automation Permanent KPI for Regression" in flex table with id "---progressReport:-:kpiTableId---"
 
   @51102 @submitProgressReportToGrantor @smoke
   Scenario: To submit Progress Report to Grantor
@@ -284,6 +284,11 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
+      | Responsibility   | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
@@ -306,6 +311,11 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
+      | Responsibility   | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
     Given I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -358,6 +368,11 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
+      | Responsibility   | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
     Given I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -374,7 +389,7 @@ Feature: Validate all scenarios in Progress Report
     Then I see status in Progress-bar is "Approved" and is "green"
 
   @51114 @sendBacktoOwnerOfProgressReportByProgramApprover
-  Scenario: To validate  Progress Report send back to owner functionality by program approver.
+  Scenario: To validate Progress Report send back to owner functionality by program approver.
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -782,7 +797,7 @@ Feature: Validate all scenarios in Progress Report
     Then I see status in Progress-bar is "Approved" and is "green"
 
   @51124 @taskAssertionForFiscalApproverPostSendBackProgressReportByProgramApprover
-  Scenario: To validate  task is not created for Fiscal Approver post Program Approver Sends back the progress report to Owner.
+  Scenario: To validate task is not getting created for Fiscal Approver post Program Approver Sends back the progress report to Owner.
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -793,9 +808,9 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "Forms and Attachments" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
-    And I click on "Save" in the page details
+    When I click on "Save" in the page details
     And I click on "Back" in the page details
-    Given I click on "Submit to Grantor" in the page details
+    When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -806,15 +821,15 @@ Feature: Validate all scenarios in Progress Report
       | Responsibility   | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
-    Given I click on "Submit for Approval" in the page details
+    When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    And I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
-    And I "Approve" in approval decision
+    And I click on "Send to Owner" on the approval decision box
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    When I navigate to "Monitoring" tab
+    And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     Then I see "No Records Found" inside flex table with id "---progressReport:-:pendingTaskTableId---"
