@@ -60,7 +60,6 @@ Feature: Validate all scenarios for program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I click "Add" after selection of "<Title>" in the table "---program:-:associateFocusAreaTableId---"
-    And I close Modal
     Then I see that "<Title>" has been added in flextable with Id "---program:-:focusAreaTableId---"
     Examples:
       | Title                           |
@@ -77,12 +76,11 @@ Feature: Validate all scenarios for program
       | Automation Permanent Objective |
 
   @34738 @programKPIAssociation @smoke
-  Scenario Outline: Validate the aasociation of KPI
+  Scenario Outline: Validate the association of KPI
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
     When I perform quick search for "<EGMS Id>" in "---program:-:associateKPITableId---" panel
     When I click "Add" after selection of "<EGMS Id>" in the table "---program:-:associateKPITableId---"
-    And I close Modal
     Then I see that "<EGMS Id>" has been added in flextable with Id "---program:-:kpiTableId---"
     Examples:
       | EGMS Id                                 |
@@ -241,14 +239,14 @@ Feature: Validate all scenarios for program
     When I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Planning" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---program:-:pendingTaskTableId---"
-    When I click on "Approve" on the approval decision box
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Draft Internal Programs"
+    When I perform quick search for "Record Id" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---program:-:programsTableId---"
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @53689 @Verify_Relatedlogs_table_for_focusArea_for_Active_Program @mahadev
+  @53689 @verifyRelatedLogsTableForFocusAreaForActiveProgram @mahadev
   Scenario Outline: Verify related log table for focus area for Active Program
     And I click on "Edit" in the page details
     When I enter "Edition" values from "Program_Field_Values.xlsx"
