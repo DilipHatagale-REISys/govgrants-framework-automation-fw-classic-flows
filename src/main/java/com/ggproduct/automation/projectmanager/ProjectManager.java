@@ -1,6 +1,6 @@
 package com.ggproduct.automation.projectmanager;
 
-import com.automation.rei.handlers.EmailUtils;
+import eyethink.automation.bots.corelib.Emails;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import com.automation.rei.handlers.GovGrantsHandler;
@@ -284,8 +284,12 @@ public class ProjectManager extends ProjectWebServices {
             }
         }
 
-        String subjectString = govgrants.getEmailUtils().accessEmail(credentials.get("username"),credentials.get("password"), EmailUtils.HostName.GMAIL, EmailUtils.MailClient.GMAIL,
-                EmailUtils.EmailFolder.INBOX).getSubjectOfLatestMessage();
+        String subjectString = reiDriver.email().accessEmail(
+                credentials.get("username"),
+                credentials.get("password"),
+                Emails.HostName.GMAIL,
+                Emails.MailClient.GMAIL,
+                Emails.EmailFolder.INBOX).getSubjectOfLatestMessage();
 
         if (subjectString.contains(subject)){
             return true;

@@ -173,7 +173,7 @@ Feature: Validate all scenarios in the home tab
   Scenario Outline: Verifying all Internal Users has View access to SME ---home:-:reviewersTableId--- Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
-    And I navigate to "SME ---home:-:reviewersTableId---" content inside "Contacts" subheader on left panel
+    And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     When I perform quick search for "Automation Contact" in "---home:-:reviewersTableId---" panel
     Then I can see row level action button "View" against "Automation Contact" in flex table with id "---home:-:reviewersTableId---"
     Examples:
@@ -186,7 +186,7 @@ Feature: Validate all scenarios in the home tab
   Scenario Outline: Verifying all Internal Users has Create access to SME ---home:-:reviewersTableId--- Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
-    And I navigate to "SME ---home:-:reviewersTableId---" content inside "Contacts" subheader on left panel
+    And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
     And I enter "Creation" values from "PotentialContact_Field_Values.xlsx"
     When I click modal button "Save"
@@ -200,7 +200,7 @@ Feature: Validate all scenarios in the home tab
   Scenario Outline: Verify the system allows all Internal users to Send Invitation to SME Reviewer
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
-    And I navigate to "SME ---home:-:reviewersTableId---" content inside "Contacts" subheader on left panel
+    And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     And I click on "Send Invitation" icon for "Automation SME" inside flex table with id "---home:-:reviewersTableId---"
     Examples:
       | User  |
@@ -354,7 +354,7 @@ Feature: Validate all scenarios in the home tab
   Scenario Outline: Verifying all Internal Users has Edit access to SME ---home:-:reviewersTableId--- Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
-    And I navigate to "SME ---home:-:reviewersTableId---" content inside "Contacts" subheader on left panel
+    And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     When I perform quick search for "Automation SME1" in "---home:-:reviewersTableId---" panel
     And I click on "Edit" icon for "Automation SME1" inside flex table with id "---home:-:reviewersTableId---"
     When I enter "Edition" values from "PotentialContact_Field_values.xlsx"
@@ -409,7 +409,7 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I switch to iframe with id "iframeFlexGridSearch"
-    When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
+    When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     And I click on top right button "New" in flex table with id "---home:-:relatedContactsTableId---"
     And I enter "RelatedContactsCreation" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
@@ -423,13 +423,13 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I switch to iframe with id "iframeFlexGridSearch"
-    When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
-    When I perform quick search for "Automation Contact" in "---home:-:relatedContactsTableId---" panel
-    And I click on "Edit" icon for "Automation Contact" inside flex table with id "---home:-:relatedContactsTableId---"
+    When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
+    And I refresh the page
+    When I perform quick search for "Automation PO" in "---home:-:relatedContactsTableId---" panel
+    And I click on "Edit" icon for "Automation PO" inside flex table with id "---home:-:relatedContactsTableId---"
     When I enter "RelatedContactsEdition" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
     And I close Modal
-    And I click on "Save" in the page details
     Then I see that "Internal Organization" is in "Active" status
     Examples:
       | User |
@@ -446,6 +446,7 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I switch to iframe with id "iframeFlexGridSearch"
     When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
+    And I refresh the page
     When I perform quick search for "Automation Contact" in "---home:-:relatedContactsTableId---" panel
     And I click on "Delete" icon for "Automation Contact" inside flex table with id "---home:-:relatedContactsTableId---"
     Then I do not see value "Automation Contact" for title "Full Name" inside table "---home:-:relatedContactsTableId---"
@@ -460,11 +461,11 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I switch to iframe with id "iframeFlexGridSearch"
-    When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
+    When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     When I enter the following values into flex table with id "---home:-:dunsTableId---" by clicking "New" :
       | DUNS Number | Registered Entity Name | Location |
-      | 178088990   | Test132                | HernNdon |
-    Then I see values "178088990" and "HernNdon" inside table
+      | 199098990   | Test132                | HernNdon |
+    Then I see values "199098990" and "HernNdon" inside table
     Examples:
       | User  |
       | ADMIN |
@@ -479,10 +480,10 @@ Feature: Validate all scenarios in the home tab
     When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
     When I enter the following values into flex table with id "---home:-:dunsTableId---" by clicking "New" :
       | DUNS Number | Registered Entity Name | Location |
-      | 108047990   | Test132                | HernNdon |
-    When I click on "Edit" icon for "108047990" inside flex table with id "---home:-:dunsTableId---"
+      | 138047990   | Test132                | HernNdon |
+    When I click on "Edit" icon for "138047990" inside flex table with id "---home:-:dunsTableId---"
     And I click on top right button "Save" in flex table with id "---home:-:dunsTableId---"
-    Then I see values "108047990" and "HernNdon" inside table
+    Then I see values "138047990" and "HernNdon" inside table
     Examples:
       | User  |
       | ADMIN |
@@ -497,9 +498,9 @@ Feature: Validate all scenarios in the home tab
     When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
     When I enter the following values into flex table with id "---home:-:dunsTableId---" by clicking "New" :
       | DUNS Number | Registered Entity Name | Location |
-      | 198034980   | Test132                | HernNdon |
-    When I click on "delete" icon for "198034980" inside flex table with id "---home:-:dunsTableId---"
-    Then I do not see values "198034980" and "DUNSNumber" inside table
+      | 148047990   | Test132                | HernNdon |
+    When I click on "delete" icon for "148047990" inside flex table with id "---home:-:dunsTableId---"
+    Then I do not see values "148047990" and "DUNSNumber" inside table
     Examples:
       | User  |
       | ADMIN |
@@ -532,7 +533,6 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-
   @56911 @foUserCannotEditOrg
   Scenario: Validate whether Fo User Can edit Internal Organizations
     Given I login to "As a Grantor" app as "FO" user
@@ -558,7 +558,9 @@ Feature: Validate all scenarios in the home tab
   Scenario Outline: Verifying if the Internal Users has Edit access to Subrecipient Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
-    And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
+    And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
+    When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "---home:-:subrecipientActiveAccountId---" panel
+    When I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table without waiting for record
     And I click on top right button "Verify" in flex table with id "OrganizationIntegrationDetail"
     Then I see values "SAM.Gov" and "Entity Validation" inside table
     Examples:
@@ -588,13 +590,13 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @57343 @individualSubrecipientContactCreation
+  @57343 @individualSubrecipientContactCreation @wip
   Scenario Outline: Validate whether ADMIN/DA have Edit access to Active Individual Subrecipients
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
     When I perform quick search for "Automation SPI" in "ActiveAccountIndApplicant" panel
-    And I click on "Save" in the page details
+    When I click on "View" icon for "Automation SPI" inside table without waiting for record
     And I click on top right button "New" in flex table with id "AdditionalAddressInternal"
     And I enter "AdditionalAddressesCreation" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
@@ -745,7 +747,8 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
     When I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---home:-:subrecipientActiveAccountId---"
     And I navigate to "Related Log" sub tab
-    Then I can see row level action button "View" against "Automation Application" in flex table with id "ActiveGrantsByOrganization"
+    When I perform quick search for "Automation Application" in "ActiveGrantsByOrganization" panel
+    Then I can see row level action button "View" against "Automation Application" in flex table with id "RecipientAppReviewList"
     Examples:
       | User  |
       | ADMIN |
@@ -764,6 +767,8 @@ Feature: Validate all scenarios in the home tab
       | ADMIN |
       | EXE   |
       | PM    |
+
+
 
 
 
