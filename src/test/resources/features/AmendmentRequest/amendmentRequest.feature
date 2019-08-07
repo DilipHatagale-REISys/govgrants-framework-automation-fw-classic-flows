@@ -42,7 +42,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    And I click on "Save" in the page details
+   # And I click on "Save" in the page details
     When I click on top right button "Associate" in flex table with id "---amendment:-:keyOutcomesTableId---"
     And I enter values into fields
       | Value                                    | Field        |
@@ -392,7 +392,6 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    And I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "Green"
 
   @53209 @editionOfBPCAmendmentRequest
@@ -404,7 +403,6 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Save" in the page details
     When I click on "Edit" in the page details
     And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
-    When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "Green"
 
   @53210 @editionOfFocusAreaDatesBPCAmendmentRequest
@@ -413,7 +411,6 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    And I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
       | Title                           | End Date |
       | Automation Permanent Focus Area | 500      |
@@ -425,7 +422,6 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    And I click on "Save" in the page details
     And I click on top right button "Associate" in flex table with id "---amendment:-:projectAreasTableId---"
     When I perform quick search for "<Focus Area>" in "---amendment:-:focusAreaTableId---" panel
     When I click "Associate" after selection of "<Focus Area>" in the table "---amendment:-:focusAreaTableId---"
@@ -474,7 +470,6 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    And I click on "Save" in the page details
     When I get the "EGMS ID"
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -546,7 +541,6 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    And I click on "Save" in the page details
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
@@ -687,6 +681,7 @@ Feature: Validate all scenarios in the Amendment Request
       | Extra Salary | The narrative | 1000           |
     When I close modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
+    And I refresh the page
     Then I cannot see top right button "Edit" in page detail
 
   @56968 @VerifyDeletionOfFundingChangeAmendmentByAwardOwner @mahadev
@@ -1487,7 +1482,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Amendment Requests" content inside "Grants, Subaward & Amendments" subheader on left panel
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Approved Amendments"
     And I perform quick search for "Record Id" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---"
@@ -1565,7 +1560,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Amendment Requests" content inside "Grants, Subaward & Amendments" subheader on left panel
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Approved Amendments"
     And I perform quick search for "Record Id" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---"
@@ -1573,7 +1568,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Activate" in the page details
     And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
     When I perform quick search for "<Grant Name>" in "---amendment:-:recipientActiveGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---amendment:-:recipientActiveGrantsTableId---"
@@ -1665,7 +1660,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Amendment Requests" content inside "Grants, Subaward & Amendments" subheader on left panel
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Approved Amendments"
     And I perform quick search for "Record Id" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---"
@@ -1673,10 +1668,10 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Activate" in the page details
     And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
-    When I perform quick search for "<Grant Name>" in "---amendment:-:recipientActiveGrantsTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---amendment:-:recipientActiveGrantsTableId---"
+    When I perform quick search for "<Grant Name>" in "RecipientActiveGrants" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "RecipientActiveGrants"
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Activated" inside flex table with id "---amendment:-:recipientAwardsTableId---"
     When I navigate to "Actuals" sub tab
