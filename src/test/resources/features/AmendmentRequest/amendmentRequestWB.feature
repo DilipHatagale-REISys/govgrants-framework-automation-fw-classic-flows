@@ -542,8 +542,8 @@ Feature: Amendment Request scenarios without background
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
-    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:recipientActiveGrantsTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:recipientActiveGrantsTableId---"
+    When I perform quick search for "<Grant Name>" in "GrantsList" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "GrantsList"
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:recipientAwardsTableId---"
     When I navigate to "Budget" sub tab
