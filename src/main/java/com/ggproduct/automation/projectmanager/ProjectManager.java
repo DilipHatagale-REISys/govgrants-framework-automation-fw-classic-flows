@@ -126,7 +126,7 @@ public class ProjectManager extends ProjectWebServices {
      * @Author - Mahadev.hanme
      */
     public void AssertPageBlockDisplayed(String pageblockName, boolean assertcan) {
-        List<WebElement> elements = reiDriver.findMyElement().getElements(pageBlock(pageblockName));
+        List<WebElement> elements = reiDriver.findMyElement().getElements(pageBlock(pageblockName),false);
         if (assertcan) {
             Assert.assertNotEquals(elements.size(), 0);
         } else {

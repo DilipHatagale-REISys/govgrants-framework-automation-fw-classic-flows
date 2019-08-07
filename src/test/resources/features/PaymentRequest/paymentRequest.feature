@@ -2,12 +2,13 @@
 Feature: Validate all scenarios in Payment Request
 
   Background: Navigate to award
+    Given I delete the record "Automation Payment Request2" from the object "Payment Request"
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
     And I delete the record "Automation Permanent Award" from the object "Payment Request"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
     When I perform quick search for "Automation Permanent Award" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
@@ -36,8 +37,8 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Financials" sub tab
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
-      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
-      | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 0                        | 10         | 10             |
+      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) |
+      | Extra Salary | The narrative | 10         | 1        | Feet        | 10                |
     When I close modal by clicking the top right x button
     Then I see that "$20.00" has been added in flextable with Id "---paymentRequest:-:paymentRequestBudgetTableId---"
 
@@ -75,7 +76,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -109,7 +110,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -147,7 +148,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -186,7 +187,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -232,7 +233,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -276,7 +277,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -301,7 +302,7 @@ Feature: Validate all scenarios in Payment Request
     And I close Modal
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
@@ -323,7 +324,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -509,7 +510,7 @@ Feature: Validate all scenarios in Payment Request
     And I get the "EGMS ID"
     When I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
@@ -543,7 +544,7 @@ Feature: Validate all scenarios in Payment Request
     When I close modal by clicking the top right x button
     When I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
@@ -596,10 +597,10 @@ Feature: Validate all scenarios in Payment Request
     Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
 
   @53971 @advancePaymentRequestSubmitToGrantorBySPA @mahadev
-  Scenario Outline: verify that advance payment request should be able to submit by SPA user
+  Scenario Outline: verify that advance payment request should not be able to submit by SPA user
     When I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
@@ -854,8 +855,8 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Submit to Grantor" in the page details
     Then I cannot see top right button "Edit" in page detail
 
-  @54585 @ReimbursementPaymentRequestNotEditable_AfterSubmit_ToGrantor
-  Scenario: Reimbursement Payment request should not be editable after submitting to grantor
+  @54585 @AdvancePaymentRequestNotEditableAfterSubmittedToGrantor
+  Scenario: Advance Payment request should not be editable after submitting to grantor
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
@@ -869,7 +870,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Submit to Grantor" in the page details
     Then I cannot see top right button "Edit" in page detail
 
-  @54593 @Validate_PaidButton_NotDisplayed_After_Rejecting_ReimbursementPR @mahadev
+  @54593 @validatePaidButtonNotDisplayedAfterRejectingReimbursementPR @mahadev
   Scenario: Validate the paid button not displayed on reimbursement Payment request after rejection
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -907,8 +908,8 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Disapprove" on the approval decision box
     Then I cannot see top right button "Mark as Paid" in page detail
 
-  @54589 @Validate_PaidButton_NotDisplayed_After_Rejecting_AdvancePR @mahadev
-  Scenario: validate Validate the paid button not displayed on advance Payment request after rejection
+  @54589 @validatePaidButtonNotDisplayedAfterRejectingAdvancePR @mahadev
+  Scenario: Validate the paid button not displayed on advance Payment request after rejection
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
@@ -939,7 +940,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Disapprove" on the approval decision box
     Then I cannot see top right button "Mark as Paid" in page detail
 
-  @54587 @Validate_FiscalApproval_CannotEdit_AdvancePR_AfterSubmittingForApproval @mahadev
+  @54587 @ValidateFiscalApprovalCannotEditAdvancePRAfterSubmittingForApproval @mahadev
   Scenario: Validate fiscal approver can not edit advance payment request after submitting for approval
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -970,7 +971,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Submit for Approval" in the page details
     Then I cannot see top right button "Edit" in page detail
 
-  @54588 @Validate_FiscalApproval_CannotEdit_ReimbursementPR_AfterSubmittingForApproval @smoke
+  @54588 @ValidateFiscalApprovalCannotEditReimbursementPRAfterSubmittingForApproval @smoke
   Scenario: Validate fiscal approver can not edit Reimbursement payment request after submitting for approval
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -1068,8 +1069,8 @@ Feature: Validate all scenarios in Payment Request
     And I upload attachment "InternalOrganization_Field_Values.xlsx" from workspace
     Then I see "InternalOrganization_Field_Values.xlsx" has been added in "Attachment" flex table
 
-  @54416 @UploadAttachmentFromWorkspace_ReimbursementPR @mahadev
-  Scenario: verify that user can uploaded document from workspace for Reimbursement Payment Request
+  @54416 @UploadAttachmentFromWorkspaceReimbursementPR @mahadev
+  Scenario: verify that user can upload document from workspace for Reimbursement Payment Request
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
@@ -1080,8 +1081,8 @@ Feature: Validate all scenarios in Payment Request
     And I upload attachment "Announcement_Field_Values.xlsx" from workspace
     Then I see "Announcement_Field_Values.xlsx" has been added in "Attachment" flex table
 
-  @54685 @Validate_ProgramIncomeTrackingField_OnAdvancePaymentRequest_GrantorSide @mahadev
-  Scenario: Validate Program Income Tracking field on payment request at grantor side gets updated after submitting payment request to grantor.
+  @54685 @ValidateProgramIncomeTrackingFieldOnAdvancePaymentRequestGrantorSide @mahadev
+  Scenario: Validate Program Income Tracking field on payment request at grantor side gets updated after submitting payment request to grantor
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
@@ -1135,7 +1136,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Submit for Approval" in the page details
     When I click on "Approve" on the approval decision box
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -1393,7 +1394,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
     When I perform quick search for "Automation Permanent Award" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
@@ -1467,6 +1468,7 @@ Feature: Validate all scenarios in Payment Request
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I get the "EGMS ID"
     And I navigate to "Financials" sub tab
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
@@ -1515,8 +1517,8 @@ Feature: Validate all scenarios in Payment Request
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
-  @55687 @Verify_OnAdvancePaymentRequest_UserCannotSee_FinalPayment_Request @mahadev
-  Scenario: Verify that on Advance payment request user can not see final payment request option
+  @55687 @verifyOnAdvancePaymentRequestUserCannotSeeFinalPaymentRequestField @mahadev
+  Scenario: Verify that on Advance payment request user can not see final payment request field
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
@@ -1526,8 +1528,8 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Overview" sub tab
     Then I cannot see field "Is Final Payment Request?" inside page block
 
-  @38744 @Validate_FiscalApprovers_can_Add_Disallowancefor_PaymentRequest
-  Scenario: Validate the Fiscal Approvers can add Disallowance for Payment request.
+  @38744 @ValidateFiscalApproversCanAddDisallowanceAmountPaymentRequest
+  Scenario: Validate the Fiscal Approvers can add Disallowance for Reimbursement Payment request
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
@@ -1630,7 +1632,7 @@ Feature: Validate all scenarios in Payment Request
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> from <subrecipient name> has been Submitted |
 
-  @55630 @Validate_AdvancePRSendBackToSubReceipientEmailNotification @jitendra
+  @55630 @validateAdvancePRSendBackToSubReceipientEmailNotification @jitendra
   Scenario: Verify that on Send Back to subrecipient , user is able to check email(Advance)
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -1655,7 +1657,7 @@ Feature: Validate all scenarios in Payment Request
     Then I can see mail notification for "EXTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Sent Back for Revisions |
 
-  @55628 @ApprovalOfAdvancePaymentRequest_EmailNotification @jitendra
+  @55628 @approvalOfAdvancePaymentRequestEmailNotification @jitendra
   Scenario: Verify that on submitting for approval , user is able to check email (Advance)
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -1706,7 +1708,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -1755,7 +1757,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -1810,11 +1812,10 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    And I click on "Forward,Automation EXE" on the approval decision box
+    And I click on "Reassign,Automation EXE" on the approval decision box
     And I pause execution for "100" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Forwarded |
-
 
   @55632 @ApprovalOfPREmailNotificationAdvance @jitendra
   Scenario: Verify that after approval of advance PR , user can check email notifications for Advance Payment request.
@@ -1884,7 +1885,6 @@ Feature: Validate all scenarios in Payment Request
     Then I can see mail notification for "EXTERNAL" user with following subject:
       | Payment Request <payment id> from <subrecipient name> has been Sent Back |
 
-
   @55638 @SendToOwnerPREmailNotificationReimbursement @jitendra
   Scenario: Verify that on Send to Owner , user is able to check  email notifications Payment Request (Reimbursement)
     When I navigate to "Actuals" sub tab
@@ -1903,7 +1903,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -1925,7 +1925,7 @@ Feature: Validate all scenarios in Payment Request
     Then I can see mail notification for "EXTERNAL" user with following subject:
       | Payment Request <payment id> from <subrecipient name> has been Sent Back |
 
-  @55639 @ForwaredPREmailNotificationReimbursement @jitendra
+  @55639 @forwaredPREmailNotificationReimbursement @jitendra
   Scenario: Verify that on Forward , user is able to check  email notifications Payment Request (Reimbursement)
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -1943,7 +1943,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -1960,12 +1960,12 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    And I click on "Forward,Automation EXE" on the approval decision box
+    And I click on "Reassign,Automation EXE" on the approval decision box
     And I pause execution for "100" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Forwarded |
 
-  @55637 @RejectPREmailNotificationReimbursement @jitendra
+  @55637 @rejectPREmailNotificationReimbursement @jitendra
   Scenario: Verify that on Reject , user is able to check  email notifications Payment Request (Reimbursement)
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -1983,7 +1983,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -2005,8 +2005,8 @@ Feature: Validate all scenarios in Payment Request
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Rejected |
 
-  @55633 @RejectEmailNotificationAdvance @jitendra
-  Scenario: Verify that on Reject , user is able to check  email notifications Payment Request (Advance)
+  @55633 @rejectEmailNotificationAdvance @jitendra
+  Scenario: Verify that on Reject, user is able to check  email notifications Payment Request (Advance)
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
@@ -2056,7 +2056,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -2076,3 +2076,204 @@ Feature: Validate all scenarios in Payment Request
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Permanent Award | Automation Permanent Award |
+
+  @55404 @AdvancePRSentBackToOwner @jitendra
+  Scenario: Verify that Payment Approval can send back Payment request to Owner (Advance)
+    When I navigate to "Actuals" sub tab
+    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestAdvanceTableId---" by clicking "Edit" :
+      | Budget Category | Advance Requested This Action |
+      | Construction    | 10                            |
+    When I navigate to "Attachments" sub tab
+    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice"
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
+    And I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:advanceFundingAccountTableId---" by clicking "Edit" :
+      | Funding Account | Advance Requested This Action |
+      | FA--03          | 10                            |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
+      | Responsibility  | Name          | Description                 |
+      | Fiscal Approver | Automation FO | Automation Test Description |
+    When I get the "EGMS ID"
+    When I click on "Submit for Approval" in the page details
+    And I "Send to Owner" in approval decision
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    Then I see that "Record Id" has been added in flextable with Id "---paymentRequest:-:pendingTaskTableId---"
+
+  @57516 @AdvancePRErrorMsgAfterSubmitToApproval @jitendra
+  Scenario: Verify If Payment Approval is not selected by FO user it should show validation error message.(Advance Payment Request)
+    When I navigate to "Actuals" sub tab
+    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestAdvanceTableId---" by clicking "Edit" :
+      | Budget Category | Advance Requested This Action |
+      | Construction    | 10                            |
+    When I navigate to "Attachments" sub tab
+    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice"
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I click on "Submit for Approval" in the page details
+    Then I see the following messages in the page details contains:
+      | Responsibilities Tab - A Fiscal Approver is required in order to submit this Payment Request for approval. |
+
+  @57518 @ReimbursementPRErrorMsgAfterSubmitToApproval @jitendra
+  Scenario: Verify If Payment Approval is not selected by FO user it should show validation error message.(Reimbursement Payment Request)
+    When I navigate to "Actuals" sub tab
+    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I get the "EGMS ID"
+    When I navigate to "Financials" sub tab
+    And I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---"
+    When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
+      | Extra Salary | The narrative | 10         | 1        | Feet        | 0                 | 0               | 0                        | 100        | 100            |
+    When I close modal by clicking the top right x button
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I click on "Submit for Approval" in the page details
+    Then I see the following messages in the page details contains:
+      | Responsibilities Tab - A Fiscal Approver is required in order to submit this Payment Request for approval. |
+
+  @55405 @AdvanceMultiplePRErrorMsgOnSecondPR @jitendra
+  Scenario Outline:Verify If Multiple Payment are Initiated then it will show validation Error with respect to sub-award.
+    When I navigate to "Actuals" sub tab
+    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestAdvanceTableId---" by clicking "Edit" :
+      | Budget Category | Advance Requested This Action |
+      | Construction    | 10                            |
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestAdvanceTableId---" by clicking "Edit" :
+      | Budget Category | Advance Requested This Action |
+      | Supplies        | 10                            |
+    When I navigate to "Attachments" sub tab
+    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice"
+    And I click on "Submit to Grantor" in the page details
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
+    When I navigate to "Actuals" sub tab
+    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Payment Request2" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestAdvanceTableId---" by clicking "Edit" :
+      | Budget Category | Advance Requested This Action |
+      | Construction    | 10                            |
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestAdvanceTableId---" by clicking "Edit" :
+      | Budget Category | Advance Requested This Action |
+      | Supplies        | 10                            |
+    When I navigate to "Attachments" sub tab
+    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice"
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
+    And I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:advanceFundingAccountTableId---" by clicking "Edit" :
+      | Funding Account | Advance Requested This Action |
+      | FA--03          | 20                            |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
+      | Responsibility  | Name          | Description                 |
+      | Fiscal Approver | Automation FO | Automation Test Description |
+    When I click on "Submit for Approval" in the page details
+    And I "Approve" in approval decision
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:grantorAwardTableId---"
+    And I navigate to "Actuals" sub tab
+    And I click on "View" icon for "Submitted to Grantor" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---"
+    And I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:advanceFundingAccountTableId---" by clicking "Edit" :
+      | Funding Account | Advance Requested This Action |
+      | FA--03          | 9,999,999                     |
+    Then I see the text containing :
+      | Financials Tab - Advance requested cannot be greater than Encumbrance balance |
+    Examples:
+      | Award Name                 | Grant Name                 |
+      | Automation Permanent Award | Automation Permanent Award |
+
+  @38836 @validateForwardedAdvancePRShownToAssignedUser @mahadev
+  Scenario: Validate the Payment Request forwarded is shown to the assigned user
+    When I navigate to "Actuals" sub tab
+    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "PaymentId"
+    And I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestAdvanceTableId---" by clicking "Edit" :
+      | Budget Category | Advance Requested This Action |
+      | Construction    | 10                            |
+    When I get the "EGMS ID"
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
+    And I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountsAdvTableId---" by clicking "Edit" :
+      | Funding Account | Advance Requested This Action |
+      | FA--03          | 10                            |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
+      | Responsibility  | Name          | Description                 |
+      | Fiscal Approver | Automation FO | Automation Test Description |
+    When I click on "Submit for Approval" in the page details
+    And I click on "Reassign,Automation EXE" on the approval decision box
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    Then I see value "Record Id" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
+

@@ -644,7 +644,7 @@ Feature: Validate all scenarios in Progress Report
     And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
     When I perform quick search for "Automation Permanent Award" in "---progressReport:-:activeGrantsTableId---" panel
     And I click on "View" icon for "Automation Permanent Award" inside table
