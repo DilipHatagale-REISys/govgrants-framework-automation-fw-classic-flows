@@ -1,6 +1,7 @@
 package com.ggproduct.automation.steps;
 
 import com.ggproduct.automation.pageobjects.AmendmentRequestPage;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
 import org.springframework.context.annotation.Description;
 
@@ -15,5 +16,10 @@ public class AmendmentRequestSteps  {
     @When("I enter Revised Encumbrance")
     public void iEnterRevisedEncumbrance() {
         amendmentRequestPage.enterRevisedEncumbrance();
+    }
+
+    @And("^I get the updated budget end date$")
+    public void getEndDate(){
+        amendmentRequestPage.updatedBudgetPeriodEndDate();
     }
 }
