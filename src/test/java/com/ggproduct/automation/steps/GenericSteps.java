@@ -13,8 +13,8 @@ import java.util.List;
 public class GenericSteps {
     ProjectManager projectManager;
 
-    public GenericSteps(CoreHandlers reiDriver, GovGrantsHandler govgrants) {
-        projectManager = new ProjectManager(reiDriver, govgrants);
+    public GenericSteps() {
+        projectManager = new ProjectManager();
     }
 
     @Given("^I delete the record \"([^\"]*)\" from the object \"([^\"]*)\"$")

@@ -1,15 +1,10 @@
 package com.ggproduct.automation.pageobjects;
 
-import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.projectmanager.ProjectManager;
-import eyethink.automation.bots.controller.CoreHandlers;
+import eyethink.automation.bots.Register.EyeThink;
 import org.openqa.selenium.By;
 
 public class AmendmentRequestPage extends ProjectManager {
-
-    public AmendmentRequestPage(CoreHandlers reiDriver, GovGrantsHandler govgrants) {
-        super(reiDriver, govgrants);
-    }
 
     /**
      * Used to calculate revised encumbrance balance
@@ -32,7 +27,7 @@ public class AmendmentRequestPage extends ProjectManager {
      * @Author - Mahadev.hanme
       */
     public void enterRevisedEncumbrance() {
-        reiDriver.findMyElement().getElement(By.xpath("//field[@field-name='ActualEncumbrance__c']/input")).clear();
-        reiDriver.findMyElement().getElement(By.xpath("//field[@field-name='ActualEncumbrance__c']/input")).sendKeys(calculateRevisedEncumbrance().toString());
+        EyeThink.core().findMyElement().getElement(By.xpath("//field[@field-name='ActualEncumbrance__c']/input")).clear();
+        EyeThink.core().findMyElement().getElement(By.xpath("//field[@field-name='ActualEncumbrance__c']/input")).sendKeys(calculateRevisedEncumbrance().toString());
     }
 }

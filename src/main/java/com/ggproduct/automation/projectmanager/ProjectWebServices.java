@@ -2,12 +2,9 @@ package com.ggproduct.automation.projectmanager;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-
 import com.jayway.restassured.response.Response;
-
+import eyethink.automation.bots.Register.EyeThink;
 import eyethink.automation.bots.controller.EnvironmentFetcher;
-import eyethink.automation.bots.controller.CoreHandlers;
-import com.automation.rei.handlers.GovGrantsHandler;
 
 public class ProjectWebServices {
     private static String endPoint = EnvironmentFetcher.environment;
@@ -15,20 +12,13 @@ public class ProjectWebServices {
     private static String tokenString;
     private String jobID;
     private String status;
-    public CoreHandlers reiDriver;
-    public GovGrantsHandler govgrants;
-
-    public ProjectWebServices(CoreHandlers reiDriver, GovGrantsHandler govgrants) {
-        this.reiDriver = reiDriver;
-        this.govgrants = govgrants;
-    }
 
     /**
      * get token for authentication of Delete request
      */
     private void getAuthToken() {
         setDefaultEndPointGetToken(defaultEndPointGetToken);
-        Response response = reiDriver.apiCall().postCall(null, null, endPoint + getDefaultEndPointGetToken(), null, null, null);
+        Response response = EyeThink.core().apiCall().postCall(null, null, endPoint + getDefaultEndPointGetToken(), null, null, null);
         tokenString = response.body().jsonPath().getString("access_token");
     }
 
@@ -59,7 +49,7 @@ public class ProjectWebServices {
         }
         String finalEndPoint = endPoint + "/services/apexrest/productAutomationDeletionApi?objectType=" + objectType
                 + "&recordName=" + recordName;
-        Response response = reiDriver.apiCall().DeleteCall(null, null, finalEndPoint, "Authorization", "Bearer " + tokenString,
+        Response response = EyeThink.core().apiCall().DeleteCall(null, null, finalEndPoint, "Authorization", "Bearer " + tokenString,
                 null);
         System.out.println(finalEndPoint);
         response.prettyPrint();
@@ -94,7 +84,7 @@ public class ProjectWebServices {
         getAuthToken();
         String finalEndPoint = endPoint + "/services/apexrest/productAutomationGetFieldValue?objectType=" + objectType
                 + "&fieldValue=" + recordName + "&fieldName=" + fieldName;
-        Response response = reiDriver.apiCall().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
+        Response response = EyeThink.core().apiCall().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
         response.prettyPrint();
         assertStatusCode(response);
         return response;
@@ -117,7 +107,7 @@ public class ProjectWebServices {
         getAuthToken();
         String finalEndPoint = endPoint + "/services/apexrest/productAutomationGetFieldValue?objectType=" + objectType
                 + "&fieldValue=" + recordName + "&fieldName=" + fieldName +"&outputFieldName=" +outputFieldName;
-        Response response = reiDriver.apiCall().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
+        Response response = EyeThink.core().apiCall().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
         response.prettyPrint();
         assertStatusCode(response);
         return response;
@@ -143,22 +133,22 @@ public class ProjectWebServices {
         finalEndPoint = endPoint + "/services/apexrest/productAutomationRunBatchJob?type=" + objectType + "&recordName="
                 + recordName;
 
-        response = reiDriver.apiCall().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
+        response = EyeThink.core().apiCall().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
         assertStatusCode(response);
 
         jobID = response.asString().replace("\"", "");
         finalEndPoint = endPoint + "/services/apexrest/productAutomationGetBatchJobStatus?batchId=" + jobID;
-        reiDriver.WaitFor().makeThreadSleep(20000);
+        EyeThink.core().WaitFor().makeThreadSleep(20000);
         long apiWaitTimer = (System.currentTimeMillis()) / 1000 + 120;
         while (apiWaitTimer > System.currentTimeMillis() / 1000) {
-            response = reiDriver.apiCall().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
+            response = EyeThink.core().apiCall().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
             assertStatusCode(response);
             status = response.asString().replace("\"", "");
             if (status.equalsIgnoreCase("Completed") || status.equalsIgnoreCase("Aborted")) {
                 System.out.println("Batch Status is :" + status);
                 break;
             }
-            reiDriver.WaitFor().makeThreadSleep(3000);
+            EyeThink.core().WaitFor().makeThreadSleep(3000);
         }
 
         if (status.equalsIgnoreCase("Completed")) {

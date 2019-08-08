@@ -11,6 +11,7 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I click on "Save" in the page details
+    When I get the "EGMS ID"
 
   @51097 @taskCreationForSubrecipientProgressReport @smoke
   Scenario: To assert the task creation for Progress Report
@@ -126,7 +127,7 @@ Feature: Validate all scenarios in Progress Report
       | Performance Tab - Enter at least one Plan before submitting to Grantor.                                     |
       | Forms and Attachments Tab - Fill all the required data in the form before submitting to Grantor.            |
 
-  @51106 @internalSentProgressReportToSubRecipient 
+  @51106 @internalSentProgressReportToSubRecipient
   Scenario: To send back the Progress Report
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
@@ -423,7 +424,7 @@ Feature: Validate all scenarios in Progress Report
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
 
   @51115 @historyOfProgressReportsendbacktoOwnerOfProgressReport
-  Scenario: To validate  field history update post Progress Report is send back to owner by program approver.
+  Scenario: To validate field history update post Progress Report is send back to owner by program approver.
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -873,3 +874,81 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in approval decision
     Then I see status in Progress-bar is "Approved" and is "Green"
+
+  @55313 @verifyDraftProgressReportNotDisplayedOnGrantAtInternal @mahadev
+  Scenario Outline: Verify generated progress report should not displayed at management tab of grant
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Management" sub tab
+    Then I do not see value "Record Id" for title "EGMS ID" inside table "---progressReport:-:grantorGrantProgressReportTableId---"
+    Examples:
+      | Grant Name                 |
+      | Automation Permanent Award |
+
+  @55316 @verifyGrantIsUpdatedWithGeneratedProgressReportAtSubPortal @mahadev
+  Scenario Outline: Verify Progress Report table is getting updated at Sub-recipient user end on award
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
+    When I navigate to "Performance" sub tab
+    Then I see value "Record Id" for title "EGMS ID" inside table "---progressReport:-:recipientAwardProgressReportTableId---"
+    Examples:
+      | Grant Name                 |
+      | Automation Permanent Award |
+
+  @57646 @VerifySPIUserCanUpdateDraftProgressReport @mahadev
+  Scenario: To edit Progress Report
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    Then I see field "Key Accomplishments" as "Key accomplishments for this reporting period"
+
+  @57690 @verifyProgressReportTablUpdatedWithStatusSubmittedForApprovalAtSubPortal @mahadev
+  Scenario Outline: Verify Progress report table get updated with status Submitted for Approval at grantee portal
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 7      | 7             |
+    When I navigate to "Forms and Attachments" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
+    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I get the "EGMS ID"
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
+      | Responsibility   | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+    When I click on "Submit for Approval" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
+    When I navigate to "Performance" sub tab
+    And I click on "View" icon for "Record Id" inside flex table with id "---progressReport:-:recipientAwardProgressReportTableId---"
+    Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
+    Examples:
+      | Grant Name                 |
+      | Automation Permanent Award |

@@ -1,10 +1,9 @@
 package com.ggproduct.automation.projectmanager;
 
+import eyethink.automation.bots.Register.EyeThink;
 import eyethink.automation.bots.corelib.Emails;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import com.automation.rei.handlers.GovGrantsHandler;
-import eyethink.automation.bots.controller.CoreHandlers;
 import org.openqa.selenium.WebElement;
 import org.springframework.context.annotation.Description;
 
@@ -21,21 +20,9 @@ import java.util.Map;
  * @author Handles generic/common methods and WebElements of the project.
  */
 public class ProjectManager extends ProjectWebServices {
-    public CoreHandlers reiDriver;
     UsersAndURL usersAndURL = new UsersAndURL();
-    public GovGrantsHandler govgrants;
     public final String defaultLongText = "Automation test description";
     private String fieldValue;
-
-    /**
-     * Super Constructor
-     * @param reiDriver
-     */
-    public ProjectManager( CoreHandlers reiDriver, GovGrantsHandler govgrants) {
-        super(reiDriver, govgrants);
-        this.reiDriver = reiDriver;
-        this.govgrants = govgrants;
-    }
 
     /******
      * BELOW PATTREN IS CONSIDERED BEST IN CODING WORLD. ADD JAVA DOCS AND KEEP
@@ -53,12 +40,12 @@ public class ProjectManager extends ProjectWebServices {
      */
     public void chooseRecordForAssociation(String buttonName, String flexTableId, String... recordUniqueValues) {
         for (String recordUniqueValue : recordUniqueValues) {
-            govgrants.quickSearch().performModalSpecificQuickSearch(flexTableId, recordUniqueValue);
-            govgrants.mainPage().waitForNavigationLogoToDisappear();
-            reiDriver.WaitFor().makeThreadSleep(1000);
-            govgrants.flexTable().selectCheckBoxes(flexTableId, recordUniqueValue);
+            EyeThink.saas().quickSearch().performModalSpecificQuickSearch(flexTableId, recordUniqueValue);
+            EyeThink.saas().mainPage().waitForNavigationLogoToDisappear();
+            EyeThink.core().WaitFor().makeThreadSleep(1000);
+            EyeThink.saas().flexTable().selectCheckBoxes(flexTableId, recordUniqueValue);
         }
-        govgrants.phasePannel().clickAnyRightPannelButton(flexTableId, buttonName);
+        EyeThink.saas().phasePannel().clickAnyRightPannelButton(flexTableId, buttonName);
     }
 
     /**
@@ -68,26 +55,26 @@ public class ProjectManager extends ProjectWebServices {
      * @param confirmation
      */
     public void enteringCommentsOnConfirmation(String comments, String confirmation) {
-        reiDriver.findMyElement().getElement(By.xpath("//form[@class='bootbox-form']//textarea")).sendKeys(comments);
-        govgrants.modal().handleModalAlert(confirmation);
+        EyeThink.core().findMyElement().getElement(By.xpath("//form[@class='bootbox-form']//textarea")).sendKeys(comments);
+        EyeThink.saas().modal().handleModalAlert(confirmation);
     }
 
     public void attemptDeletion(String columnValues, String tableId) {
         try {
-            govgrants.flexTable().clickTableActionIcon(tableId, "Delete", columnValues);
+            EyeThink.saas().flexTable().clickTableActionIcon(tableId, "Delete", columnValues);
         } catch (Exception e) {
         }
     }
 
     /*handles to get the record id of a record */
     public void getRecordIdFromResponse(String objectType, String recordName, String objectApiName) {
-        govgrants.pageDetails().idOfRecord = (automationBatchExecuteApi(objectType, recordName, objectApiName)).asString().replace("\"", "");
+        EyeThink.saas().pageDetails().idOfRecord = (automationBatchExecuteApi(objectType, recordName, objectApiName)).asString().replace("\"", "");
     }
 
     /* handles to verify no record is present in flex table */
     public boolean isRecordPresentInTheFlexTable(String text, String tableId) {
         try {
-            return  reiDriver.findMyElement().getElement(By.xpath("//div[@id='" + tableId + "']//*[" + reiDriver.xpath().contains("text()", text) + "]")).isDisplayed();
+            return  EyeThink.core().findMyElement().getElement(By.xpath("//div[@id='" + tableId + "']//*[" + EyeThink.core().xpath().contains("text()", text) + "]")).isDisplayed();
         } catch (Exception e) {
         }
         return false;
@@ -95,7 +82,7 @@ public class ProjectManager extends ProjectWebServices {
 
     /*handles to verify blank value is present inside flex table */
     public boolean isColumnValueBlank(String fieldName) {
-        WebElement fieldValue = reiDriver.findMyElement().getElement(By.xpath("//*[@field-name='" + fieldName + "' or @id='" + fieldName + "']"));
+        WebElement fieldValue = EyeThink.core().findMyElement().getElement(By.xpath("//*[@field-name='" + fieldName + "' or @id='" + fieldName + "']"));
         String value = fieldValue.getText();
         if (value.equals("")) {
             return true;
@@ -109,7 +96,7 @@ public class ProjectManager extends ProjectWebServices {
 
     /* handles to veify total records present in flex table */
     public String totalRecordsCount(String tableId) {
-        return (reiDriver.findMyElement().getElement(By.xpath("//div[@id='" + tableId + "']//following-sibling::span[contains(text(),'Total Records')]"))).getText();
+        return (EyeThink.core().findMyElement().getElement(By.xpath("//div[@id='" + tableId + "']//following-sibling::span[contains(text(),'Total Records')]"))).getText();
     }
 
     public void AssertTotalRecordsCountInFlexTable(String totalRecord, String tableId) {
@@ -126,13 +113,13 @@ public class ProjectManager extends ProjectWebServices {
      * @Author - Mahadev.hanme
      */
     public void AssertPageBlockDisplayed(String pageblockName, boolean assertcan) {
-        List<WebElement> elements = reiDriver.findMyElement().getElements(pageBlock(pageblockName),false);
+        List<WebElement> elements = EyeThink.core().findMyElement().getElements(pageBlock(pageblockName),false);
+
         if (assertcan) {
             Assert.assertNotEquals(elements.size(), 0);
         } else {
             Assert.assertEquals(elements.size(), 0);
         }
-
     }
 
     /*
@@ -144,7 +131,7 @@ public class ProjectManager extends ProjectWebServices {
         By expectedMsg = By.xpath("//div[@id='ApprovalDecisionComponent']//span[contains(text(),'" + message + "')]");
 
         try {
-            reiDriver.findMyElement().getElement(expectedMsg);
+            EyeThink.core().findMyElement().getElement(expectedMsg);
             return true;
         } catch (Exception ex) {
             return false;
@@ -158,8 +145,8 @@ public class ProjectManager extends ProjectWebServices {
      * @Author - Mahadev.hanme
      */
     public void getFieldValue(String fieldName, String subTabName) {
-        govgrants.pageDetails().clickSubTabsInsideTableView(subTabName);
-        fieldValue = govgrants.pageDetails().getFieldValue(fieldName);
+        EyeThink.saas().pageDetails().clickSubTabsInsideTableView(subTabName);
+        fieldValue = EyeThink.saas().pageDetails().getFieldValue(fieldName);
     }
 
     /**
@@ -170,8 +157,8 @@ public class ProjectManager extends ProjectWebServices {
      * @Author - Mahadev.hanme
      */
     public Boolean compareTwoFieldValues(String fieldName, String subTabName) {
-        govgrants.pageDetails().clickSubTabsInsideTableView(subTabName);
-        if (fieldValue.equalsIgnoreCase(govgrants.pageDetails().getFieldValue(fieldName)))
+        EyeThink.saas().pageDetails().clickSubTabsInsideTableView(subTabName);
+        if (fieldValue.equalsIgnoreCase(EyeThink.saas().pageDetails().getFieldValue(fieldName)))
             return true;
         else
             return false;
@@ -190,7 +177,7 @@ public class ProjectManager extends ProjectWebServices {
      * @return
      */
     public Boolean iSeeValueInFlexTable(String value, String flexTableHeader) {
-        if (reiDriver.WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='myTabbedContent']//a[@title='" + flexTableHeader + "']/../../../following-sibling::div//tbody//td//span[text()='" + value + "']")).isDisplayed())
+        if (EyeThink.core().WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='myTabbedContent']//a[@title='" + flexTableHeader + "']/../../../following-sibling::div//tbody//td//span[text()='" + value + "']")).isDisplayed())
             return true;
         else
             return false;
@@ -205,12 +192,12 @@ public class ProjectManager extends ProjectWebServices {
      * @param fileNameFromWorkSpace - file which is to be upload
      */
     public void uploadAttachmentFromWorkspace(String fileNameFromWorkSpace) {
-        reiDriver.findMyElement().getElement(By.xpath("//div[@id='myTabbedContent']//span[contains(text(),'Attachment')]/..//div[@class='panel-heading']//*[text()='Add']")).click();
-        reiDriver.switchTo().switchToFrame(By.xpath("//iframe[contains(@ng-src, 'apex') or contains(@src,'apex')]"));
-        reiDriver.findMyElement().getElement(By.xpath("//div[@id='Attachmentadd']//span[text()='Upload file from Workspace']")).click();
-        reiDriver.findMyElement().getElement(By.xpath("//div[@id='Attachmentadd']//td[text()='" + fileNameFromWorkSpace + "']/..//input")).click();
-        govgrants.modal().clickModalContentSpecificButton("Attach");
-        govgrants.modal().closeModalByClickingTopRightCloseButton();
+        EyeThink.core().findMyElement().getElement(By.xpath("//div[@id='myTabbedContent']//span[contains(text(),'Attachment')]/..//div[@class='panel-heading']//*[text()='Add']")).click();
+        EyeThink.core().switchTo().switchToFrame(By.xpath("//iframe[contains(@ng-src, 'apex') or contains(@src,'apex')]"));
+        EyeThink.core().findMyElement().getElement(By.xpath("//div[@id='Attachmentadd']//span[text()='Upload file from Workspace']")).click();
+        EyeThink.core().findMyElement().getElement(By.xpath("//div[@id='Attachmentadd']//td[text()='" + fileNameFromWorkSpace + "']/..//input")).click();
+        EyeThink.saas().modal().clickModalContentSpecificButton("Attach");
+        EyeThink.saas().modal().closeModalByClickingTopRightCloseButton();
     }
 
     /**
@@ -219,21 +206,21 @@ public class ProjectManager extends ProjectWebServices {
      * @throws AWTException
      */
     public void saveFile() throws AWTException {
-        reiDriver.switchTo().switchToWindowHandler(1);
-        reiDriver.WaitFor().makeThreadSleep(20000);
-        reiDriver.RobotActions().ctrl_Save();
-        reiDriver.WaitFor().makeThreadSleep(2000);
-        reiDriver.RobotActions().Robot_Enter();
-        reiDriver.WaitFor().makeThreadSleep(20000);
+        EyeThink.core().switchTo().switchToWindowHandler(1);
+        EyeThink.core().WaitFor().makeThreadSleep(20000);
+        EyeThink.core().RobotActions().ctrl_Save();
+        EyeThink.core().WaitFor().makeThreadSleep(2000);
+        EyeThink.core().RobotActions().Robot_Enter();
+        EyeThink.core().WaitFor().makeThreadSleep(20000);
     }
 
     public void clickRightHeaderBars(String title) {
-        govgrants.phasePannel().clickParallelMenuBars(title);
+        EyeThink.saas().phasePannel().clickParallelMenuBars(title);
     }
 
     public void assertThatFileIsDownloaded(String fileType){
         File file = new File(System.getProperty("user.dir") + "\\target");
-        File[] directory = reiDriver.file().getCompleteFilesListOnLocalDirectory(file.getAbsolutePath());
+        File[] directory = EyeThink.core().file().getCompleteFilesListOnLocalDirectory(file.getAbsolutePath());
         for (File files : directory) {
             if (files.getName().endsWith(".tmp")) {
                 new File(files.getAbsolutePath().toString())
@@ -254,7 +241,7 @@ public class ProjectManager extends ProjectWebServices {
      * @return
      */
     private int getCheckedFieldValueCount(String fieldName){
-        List<WebElement> checkSymbol = reiDriver.findMyElement().getElements(By.xpath("//field[@field-name='"+fieldName+"']/i[contains(@class,'fa-check')]"));
+        List<WebElement> checkSymbol = EyeThink.core().findMyElement().getElements(By.xpath("//field[@field-name='"+fieldName+"']/i[contains(@class,'fa-check')]"));
         return checkSymbol.size();
     }
 
@@ -275,7 +262,7 @@ public class ProjectManager extends ProjectWebServices {
         }
 
         if (subject.toLowerCase().contains("<payment id>")){
-            subject = subject.replace("<payment id>",reiDriver.Properties().getValue("PaymentId"));
+            subject = subject.replace("<payment id>",EyeThink.core().Properties().getValue("PaymentId"));
         }
 
         if(subject.toLowerCase().contains("<subrecipient name>")){
@@ -284,7 +271,7 @@ public class ProjectManager extends ProjectWebServices {
             }
         }
 
-        String subjectString = reiDriver.email().accessEmail(
+        String subjectString = EyeThink.core().email().accessEmail(
                 credentials.get("username"),
                 credentials.get("password"),
                 Emails.HostName.GMAIL,
