@@ -1781,6 +1781,14 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I expand nested table containing column value "Progress Report"
     Then I see total records count "Total Records:12" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
 
+  @55291 @ScheduleBaseAsReportingPeriod @jitendra
+  Scenario: Verify While creating schedule user should be allowed to select the Desired Frequency as monthly.
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "Progress Report Monthly" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    Then I see field "Schedule Base" as "Reporting Period"
+
   @55294 @verifyUserIsNotAllowedToSelectProgressReportScheduleStartDateBeforeBudgetPeriodStartDate @mahadev
   Scenario: Verify While creating schedule user is not allowed to select the Schedule Start Date which is before Budget period start date on draft award
     And I navigate to "Terms" sub tab

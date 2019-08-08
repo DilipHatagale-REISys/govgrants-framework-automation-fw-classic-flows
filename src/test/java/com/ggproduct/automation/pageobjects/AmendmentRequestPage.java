@@ -4,6 +4,10 @@ import com.ggproduct.automation.projectmanager.ProjectManager;
 import eyethink.automation.bots.Register.EyeThink;
 import org.openqa.selenium.By;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class AmendmentRequestPage extends ProjectManager {
 
     /**
@@ -27,7 +31,14 @@ public class AmendmentRequestPage extends ProjectManager {
      * @Author - Mahadev.hanme
       */
     public void enterRevisedEncumbrance() {
-        EyeThink.core().findMyElement().getElement(By.xpath("//field[@field-name='ActualEncumbrance__c']/input")).clear();
-        EyeThink.core().findMyElement().getElement(By.xpath("//field[@field-name='ActualEncumbrance__c']/input")).sendKeys(calculateRevisedEncumbrance().toString());
+        EyeThink.core().textInput().clearText(EyeThink.core().findMyElement().getElement(By.xpath("//field[@field-name='ActualEncumbrance__c']/input")));
+        EyeThink.core().textInput().enterText(By.xpath("//field[@field-name='ActualEncumbrance__c']/input"),calculateRevisedEncumbrance().toString());
+    }
+
+    public void updatedBudgetPeriodEndDate() {
+        String rawDate = getFieldValueFromAPI("Automation Award for Amendment Request", "GrantAwardName__c", "Award__c", "BudgetPeriodEndDate__c");
+        String[] rawDateSplitted = rawDate.split(" ")[0].split("-");
+        String fieldValue = rawDateSplitted[1] + "/" + rawDateSplitted[2] + "/" + rawDateSplitted[0];
+        EyeThink.core().Properties().saveValue("updatedBudgetPeriodDate", EyeThink.core().get().getDateWithOffsetFromGivenDate(fieldValue,1,DateTimeFormatter.ofPattern("M/d/uuuu")));
     }
 }
