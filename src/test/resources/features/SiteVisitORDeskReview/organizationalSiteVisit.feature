@@ -1227,8 +1227,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "PendingTasks" panel
     When I click on "Start" icon for "Record Id" inside table
-    And I navigate to "Reports and Outcomes" sub tab
-    Then  I cannot see top right button "New" in flex table with id "---orgLevelSiteVisits:-:correctiveTableId---"
+    Then I cannot see "Reports and Outcomes" sub tab at view detail page
 
   @56008 @siteVisitWithoutFormFillingOrgLevel @deepika
   Scenario: User will not be able to submit the Site Visit for approval without completed forms

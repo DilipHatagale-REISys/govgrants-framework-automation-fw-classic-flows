@@ -63,6 +63,9 @@ Feature: Validate all scenarios in Desk Review
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
     And I refresh the page
+           And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     Then I see that "Automation Desk Review" is in "Notified" status
 
@@ -77,6 +80,9 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I refresh the page
+           And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I refresh the page
     And I click on "Notify" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -96,6 +102,9 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I refresh the page
+           And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
@@ -123,6 +132,9 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I refresh the page
+           And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
@@ -156,6 +168,9 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I refresh the page
+           And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
@@ -195,6 +210,9 @@ Feature: Validate all scenarios in Desk Review
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
     And I refresh the page
+           And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
     When I login as "SPI" user
@@ -232,6 +250,9 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I refresh the page
+           And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
@@ -282,6 +303,9 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I refresh the page
+           And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
@@ -338,6 +362,9 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I refresh the page
+           And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
@@ -415,6 +442,9 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I refresh the page
+           And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
@@ -494,6 +524,9 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I refresh the page
+           And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
@@ -580,6 +613,9 @@ Feature: Validate all scenarios in Desk Review
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
     And I refresh the page
+           And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
     When I login as "SPI" user
@@ -624,6 +660,9 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I refresh the page
+           And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
@@ -675,6 +714,9 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
@@ -731,6 +773,9 @@ Feature: Validate all scenarios in Desk Review
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
     And I refresh the page
+           And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
     When I login as "SPI" user
@@ -759,6 +804,9 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I refresh the page
+           And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
@@ -815,6 +863,9 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I refresh the page
+           And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
@@ -880,6 +931,9 @@ Feature: Validate all scenarios in Desk Review
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
     And I refresh the page
+           And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
     When I login as "SPI" user
@@ -941,6 +995,9 @@ Feature: Validate all scenarios in Desk Review
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
     And I refresh the page
+       And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
     When I login as "SPI" user
@@ -996,6 +1053,9 @@ Feature: Validate all scenarios in Desk Review
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
     And I refresh the page
+       And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
@@ -1013,6 +1073,9 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I refresh the page
+       And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I refresh the page
     And I click on "Notify" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1033,6 +1096,9 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I refresh the page
+       And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I refresh the page
     And I click on "Notify" in the page details
     And I click on "Conduct" in the page details
@@ -1061,6 +1127,9 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I refresh the page
+       And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
@@ -1184,6 +1253,9 @@ Feature: Validate all scenarios in Desk Review
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
     And I refresh the page
+       And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
     When I login as "SPI" user
@@ -1204,6 +1276,9 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I refresh the page
+       And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
@@ -1233,10 +1308,13 @@ Feature: Validate all scenarios in Desk Review
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
     And I refresh the page
+       And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     Given I click on "Conduct" in the page details
     And I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "flexGridSiteVisitReviewerRoles" by clicking "New" :
+    When I enter the following values into flex table with id "---deskreview:-:reviewersFlexTableId---" by clicking "New" :
       | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
       | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "Automation FO" inside table
@@ -1247,7 +1325,7 @@ Feature: Validate all scenarios in Desk Review
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
     And I click on "Start" icon for "Record id" inside table
     When I navigate to "Responsibilities" tab
-    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridSiteVisitReviewerRoles"
+    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---deskreview:-:reviewersFlexTableId---"
     And I enter values into fields
       | Value  | Field             |
       | Passed | Rating__c         |
@@ -1280,6 +1358,9 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
@@ -1322,7 +1403,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside flex table with id "inlineEditGridDeskReviewGridView"
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Then I see status in Progress-bar is "In Progress" and is "green"
 
   @56040 @submittingForApprovalButtonDeskReview @deepika
@@ -1336,6 +1417,9 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
