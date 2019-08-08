@@ -7,9 +7,9 @@ Feature: Validate all scenarios in the Site Visit
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
-    And I click on "View" icon for "Automation Permanent Award for Site Visit/Desk Review" inside flex table with id "ActiveGrants"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award for Site Visit/Desk Review" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
     Given I navigate to "Management" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
     And I enter "Creation" values from "SiteVisit_Field_Values.xlsx"
@@ -78,6 +78,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
@@ -97,6 +100,12 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Then I see status in Progress-bar is "In Progress" and is "green"
@@ -112,6 +121,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -149,6 +161,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -181,6 +196,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -219,6 +237,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -269,6 +290,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -327,6 +351,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -407,6 +434,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -485,6 +515,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation EXE" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -571,6 +604,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -641,6 +677,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -669,6 +708,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -689,6 +731,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
@@ -726,6 +771,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -776,6 +824,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -839,6 +890,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -894,6 +948,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -916,6 +973,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -945,6 +1005,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -987,6 +1050,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -1037,6 +1103,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -1091,6 +1160,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -1129,8 +1201,8 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Send to Owner" on the approval decision box    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
-    Then I see that "Automation Site Visit" has been added in flextable with Id "inlineEditGridSiteVisitsGridView"
+    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    Then I see that "Automation Site Visit" has been added in flextable with Id "---sitevisits:-:manageSiteVisitTableId---"
 
   @56357 @viewSiteVisitAcceptButtonAfterSRecipientsSubmission @deepika
   Scenario: Validate User will be able to view the Accept button after review the submission by Recipients
@@ -1144,6 +1216,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -1226,6 +1301,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     Then I can see top right button "Conduct" in page detail
 
@@ -1265,6 +1343,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation EXE" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     Then I can see top right button "Conduct" in page detail
 
@@ -1280,6 +1361,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -1308,10 +1392,13 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     And I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "flexGridSiteVisitReviewerRoles" by clicking "New" :
+    When I enter the following values into flex table with id "---sitevisits:-:reviewersFlexTableId---" by clicking "New" :
       | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
       | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "Automation FO" inside table
@@ -1322,7 +1409,7 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
     And I click on "Start" icon for "Record id" inside table
     When I navigate to "Responsibilities" tab
-    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridSiteVisitReviewerRoles"
+    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---sitevisits:-:reviewersFlexTableId---"
     And I enter values into fields
       | Value  | Field             |
       | Passed | Rating__c         |
@@ -1356,6 +1443,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
@@ -1395,8 +1485,8 @@ Feature: Validate all scenarios in the Site Visit
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Manage Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "inlineEditGridSiteVisitsGridView" panel
-    And I click on "View" icon for "Record Id" inside flex table with id "inlineEditGridSiteVisitsGridView"
+    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Then I see status in Progress-bar is "In Progress" and is "green"
 
   @56038 @submittingForApprovalButtonSiteVisit @deepika
@@ -1411,6 +1501,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
      And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal

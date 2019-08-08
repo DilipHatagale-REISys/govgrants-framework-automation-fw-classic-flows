@@ -685,7 +685,98 @@ Feature: Validate all scenarios in Negotiations
     When I refresh the page
     Then I cannot see top right button "Edit Negotiation" in page detail
 
-
+    @57838 @detailsRequiredtoSaveBeforeSubmitToGrantor
+    Scenario: Validate whether user to able to Submit to Grantor before providing deatils
+      Given I login to "As a Grantor" app as "dynamicUser" user
+      And I navigate to "Applications" tab
+      When I navigate to "Funding Decision Memo (FDM)" content inside "Application Review" subheader on left panel
+      And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+      When I perform quick search for "Autoamtion Announcement for Negotiations" in "---subAwardFromFDM:-:fdmTableId---" panel
+      And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+      When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+      And I get the "EGMS ID"
+      When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
+      When I click on "Save" in the page details
+      When I click on "Send to Subrecipient" in the page details
+      When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+      And I navigate to "Home" tab
+      When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+      And I perform quick search for "Record Id" in "PendingTasks" panel
+      When I click on "Start" icon for "Record Id" inside table
+      When I click on "Save" in the page details
+      When I click on "Submit to Grantor" in the page details
+      Then I see the following messages in the page details :
+        | Negotiation Tab - Provide details in the Applicant Response section. |
+        
+    @57839 @pendingNegotiationsViewinTable
+    Scenario: Validate whether users will view the Negiation Intiated inside Pending Negotaitions Table
+    Given I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memo (FDM)" content inside "Application Review" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "Autoamtion Announcement for Negotiations" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    And I get the "EGMS ID"
+    When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "PendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside table
+    And I enter values into fields
+      | Value                              | Field                |
+      | Automation Negotiation Iniatiation | ApplicantResponse__c |
+    When I click on "Save" in the page details
+    When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    When I navigate to "Pending Negotiations" content inside "Negotiations" subheader on left panel
+    And I perform quick search for "Record Id" in "flexGridPendingNegotiations" panel
+    And I expand nested table containing column value "Negotiation Initiated"
+    Then I see values "Automation Negotiation Iniatiation" and "Submitted" inside table
+    
+    @57840 @SendToSubrecipientAfterSubmittingToGrantor
+    Scenario: Validate whether users able to Send to Subrecipient after Submit to Grantor for adjustments
+    Given I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memo (FDM)" content inside "Application Review" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "Autoamtion Announcement for Negotiations" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    And I get the "EGMS ID"
+    When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "PendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside table
+    And I enter values into fields
+      | Value                              | Field                |
+      | Automation Negotiation Iniatiation | ApplicantResponse__c |
+    When I click on "Save" in the page details
+    When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside table
+    When I click on "Edit Negotiation" in the page details
+    And I enter values into fields
+      | Value                              | Field                           |
+      | Automation Negotiation Iniatiation | ExplanationOfRevisionsNeeded__c |
+    When I click on "Save" in the page details
+    When I click on "Send to Subrecipient" in the page details
+    Then I see status in Progress-bar is "Negotiation Initiated" and is "green" 
+    
+        
+        
+        
     
     
     

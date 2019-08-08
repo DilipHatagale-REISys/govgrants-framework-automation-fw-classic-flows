@@ -1670,8 +1670,8 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
-    When I perform quick search for "<Grant Name>" in "RecipientActiveGrants" panel
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "RecipientActiveGrants"
+    When I perform quick search for "<Grant Name>" in "---amendment:-:recipientActiveGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---amendment:-:recipientActiveGrantsTableId---"
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Activated" inside flex table with id "---amendment:-:recipientAwardsTableId---"
     When I navigate to "Actuals" sub tab
@@ -1776,7 +1776,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on top right button "Advance" in flex table with id "---amendment:-:recipientsAwardPaymentRequestsTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
-    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I enter "PaymentRequestEdition" values from "AmendmentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Overview" sub tab
     Then I see field "Payment Period End Date" as "{SavedValue:BudgetPeriodEndDate}"
@@ -1842,15 +1842,15 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Active Grants"
-    When I perform quick search for "<Grant Name>" in "RecipientActiveGrants" panel
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "RecipientActiveGrants"
+    When I perform quick search for "<Grant Name>" in "---amendment:-:recipientActiveGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---amendment:-:recipientActiveGrantsTableId---"
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Activated" inside flex table with id "---amendment:-:recipientAwardsTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
-    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I enter "PaymentRequestEdition" values from "AmendmentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "Green"
     Examples:

@@ -154,6 +154,7 @@ Feature: Validate all scenarios in the home tab
 
   @56719 @subrecipientContactsCreate @smoke
   Scenario Outline: Verifying if the Internal Users has create access to Subrecipient Contact
+    Given I delete the record "Automation Manager" from the object "Contact"
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
@@ -183,12 +184,13 @@ Feature: Validate all scenarios in the home tab
       | PM    |
 
   @56721 @smeReviewersContactCreate
-  Scenario Outline: Verifying all Internal Users has Create access to SME ---home:-:reviewersTableId--- Contact
+  Scenario Outline: Verifying all Internal Users has Create access to reviewers contact
+    Given I delete the record "Automation SME" from the object "Contact"
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
-    And I enter "Creation" values from "PotentialContact_Field_Values.xlsx"
+    And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
     When I click modal button "Save"
     And I refresh the page
     Then I see values "Automation SME" and "New" inside table
@@ -317,16 +319,21 @@ Feature: Validate all scenarios in the home tab
       | ADMIN |
 
   @56733 @internalContactsEdition @smoke
-  Scenario Outline: Validate whether all Internal Users can edit the Contact
+  Scenario Outline: Validate whether all Internal Users can edit the
+    Given I delete the record "Automation PO" from the object "Contact"
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
-    And I perform quick search for "Automation Contact" in "flexTableRandomID" panel
-    When I click on "Edit" icon for "Automation Contact" inside flex table with id "flexTableRandomID"
+    When I click on top right button "New" in flex table with id "---home:-:subrecipientContactTableId---"
+    And I enter "Creation" values from "InternalContact_Field_Values.xlsx"
+    When I click modal button "Save"
+    And I refresh the page
+    When I perform quick search for "Automation PO" in "flexTableRandomID" panel
+    When I click on "Edit" icon for "Automation PO" inside flex table with id "flexTableRandomID"
     And I enter "Edition1" values from "InternalContact_Field_Values.xlsx"
     And I click modal button "Save"
     When I refresh the page
-    And I perform quick search for "Automation Contact" in "flexTableRandomID" panel
+    And I perform quick search for "Automation PO" in "flexTableRandomID" panel
     Then I see value "Active" for title "Status" inside table "flexTableRandomID"
     Examples:
       | User  |
@@ -336,6 +343,7 @@ Feature: Validate all scenarios in the home tab
 
   @56734 @subrecipientContactsEdition
   Scenario Outline: Verifying if the Internal Users has Edit access to Subrecipient Contact
+    Given I delete the record "Automation Manager" from the object "Contact"
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
@@ -352,6 +360,7 @@ Feature: Validate all scenarios in the home tab
 
   @56735 @smereviewersContactEdition
   Scenario Outline: Verifying all Internal Users has Edit access to SME ---home:-:reviewersTableId--- Contact
+    Given I delete the record "Automation SME1" from the object "Contact"
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
@@ -404,6 +413,7 @@ Feature: Validate all scenarios in the home tab
 
   @56907 @relatedContactsCreation  @smoke
   Scenario: Validate whether ADMIN and DA users can Create the Related Contact
+    Given I delete the record "Automation Contact" from the object "Contact"
     Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
@@ -418,6 +428,7 @@ Feature: Validate all scenarios in the home tab
 
   @56738 @relatedContactsEdition
   Scenario Outline: The Internal Users should be able to Edit Related Contacts
+    Given I delete the record "Automation PO" from the object "Contact"
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
@@ -440,13 +451,16 @@ Feature: Validate all scenarios in the home tab
 
   @56739 @deleterelatedContacts
   Scenario Outline: Validate whether ADMIN and DA users can Delete the Related Contact
+    Given I delete the record "Automation Contact" from the object "Contact"
     Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I switch to iframe with id "iframeFlexGridSearch"
-    When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
-    And I refresh the page
+    When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
+    And I click on top right button "New" in flex table with id "---home:-:relatedContactsTableId---"
+    And I enter "RelatedContactsCreation" values from "InternalOrganization_Field_Values.xlsx"
+    And I click modal button "Save"
     When I perform quick search for "Automation Contact" in "---home:-:relatedContactsTableId---" panel
     And I click on "Delete" icon for "Automation Contact" inside flex table with id "---home:-:relatedContactsTableId---"
     Then I do not see value "Automation Contact" for title "Full Name" inside table "---home:-:relatedContactsTableId---"
@@ -456,6 +470,7 @@ Feature: Validate all scenarios in the home tab
 
   @56740 @dunsNumberCreation  @smoke
   Scenario Outline: Validate whether ADMIN and DA users can create the DUNS Number
+    Given I delete the record "Test Automation Organization" from the object "DUNS"
     Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
@@ -464,11 +479,11 @@ Feature: Validate all scenarios in the home tab
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     When I enter the following values into flex table with id "---home:-:dunsTableId---" by clicking "New" :
       | DUNS Number | Registered Entity Name | Location |
-      | 199098990   | Test132                | HernNdon |
-    Then I see values "199098990" and "HernNdon" inside table
+      | 123456789   | Test132                | HernNdon |
+    Then I see values "123456789" and "HernNdon" inside table
     Examples:
       | User  |
-      | ADMIN |
+      | PM    |
 
   @56741 @dunsNumberEdition
   Scenario Outline: Validate whether ADMIN and DA users can Edit the DUNS NUmber
