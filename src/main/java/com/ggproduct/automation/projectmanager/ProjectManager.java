@@ -114,12 +114,12 @@ public class ProjectManager extends ProjectWebServices {
      */
     public void AssertPageBlockDisplayed(String pageblockName, boolean assertcan) {
         List<WebElement> elements = EyeThink.core().findMyElement().getElements(pageBlock(pageblockName),false);
+
         if (assertcan) {
             Assert.assertNotEquals(elements.size(), 0);
         } else {
             Assert.assertEquals(elements.size(), 0);
         }
-
     }
 
     /*

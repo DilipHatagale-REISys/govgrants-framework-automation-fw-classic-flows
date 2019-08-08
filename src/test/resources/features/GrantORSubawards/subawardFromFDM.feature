@@ -108,7 +108,6 @@ Feature: Validate all scenarios in the Award from FDM
       | Title          | Project Role   | Is Key Personnel |
       | Automation SPA | Fiscal Contact | Checked          |
     When I navigate to "Budget" sub tab
-    And I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--03          | 500         |
@@ -162,7 +161,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---"
-    And I navigate to "Responsibilities" tab
+    And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
@@ -223,7 +222,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---"
-    And I navigate to "Responsibilities" tab
+    And I navigate to "Responsibilities" sub tab
     And I get the "EGMS ID"
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
@@ -315,7 +314,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     When I click on "View" icon for "<Award Name>" inside table with wait for record
-    And I navigate to "Responsibilities" tab
+    And I navigate to "Responsibilities" sub tab
     And I get the "EGMS ID"
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
@@ -409,7 +408,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     When I click on "View" icon for "<Award Name>" inside table with wait for record
-    And I navigate to "Responsibilities" tab
+    And I navigate to "Responsibilities" sub tab
     And I get the "EGMS ID"
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
@@ -513,7 +512,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardFromFDM:-:grantsTableId---"
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---"
-    And I navigate to "Responsibilities" tab
+    And I navigate to "Responsibilities" sub tab
     And I get the "EGMS ID"
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
@@ -628,7 +627,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardFromFDM:-:grantsTableId---"
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---"
-    And I navigate to "Responsibilities" tab
+    And I navigate to "Responsibilities" sub tab
     And I get the "EGMS ID"
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
@@ -760,7 +759,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardFromFDM:-:grantsTableId---"
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---"
-    And I navigate to "Responsibilities" tab
+    And I navigate to "Responsibilities" sub tab
     And I get the "EGMS ID"
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
@@ -848,7 +847,7 @@ Feature: Validate all scenarios in the Award from FDM
     When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
       | FA--03          | 1000        |
-    And I navigate to "Responsibilities" tab
+    And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
@@ -1026,7 +1025,7 @@ Feature: Validate all scenarios in the Award from FDM
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---"
     And I get the "EGMS ID"
-    And I navigate to "Responsibilities" tab
+    And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
@@ -1189,7 +1188,7 @@ Feature: Validate all scenarios in the Award from FDM
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---"
     And I get the "EGMS ID"
-    And I navigate to "Responsibilities" tab
+    And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
@@ -1202,7 +1201,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---"
     And I click on "Accept" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Draft Grants"
@@ -1268,7 +1267,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I click on "Accept after Approval" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Draft Grants"
@@ -1351,7 +1350,7 @@ Feature: Validate all scenarios in the Award from FDM
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---"
     And I get the "EGMS ID"
-    And I navigate to "Responsibilities" tab
+    And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
@@ -1364,7 +1363,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---"
     And I click on "Accept" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Draft Grants"
@@ -1430,7 +1429,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I click on "Accept after Approval" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Draft Grants"
@@ -1444,17 +1443,20 @@ Feature: Validate all scenarios in the Award from FDM
       | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
-  @54166 @Validate_PaymentRelatedSetting_OnAwardFromAnnouncement @mahadev
-  Scenario: Validate payment related settings are get copied from announcement to grant
+  @54166 @validatePaymentRelatedSettingOnAwardFromAnnouncement @mahadev
+  Scenario Outline: Validate payment related settings are get copied from announcement to grant
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Published Announcements"
-    When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:announcemetTableId---" panel
-    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:announcemetTableId---"
+    When I perform quick search for "<Annoucement Name>" in "---subAwardFromFDM:-:announcemetTableId---" panel
+    And I click on "View" icon for "<Annoucement Name>" inside flex table with id "---subAwardFromFDM:-:announcemetTableId---"
     When I get the field value "Advance Payment Allowed?" from sub tab "Overview"
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Draft Grants"
-    When I perform quick search for "Automation Announcement for FDM" in "---subAwardStandAlone:-:---subAwardFromFDM:-:grantsTableId---" panel
-    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardStandAlone:-:---subAwardFromFDM:-:grantsTableId---"
+    When I perform quick search for "<Grant Name>" in "---subAwardFromFDM:-:grantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardFromFDM:-:grantsTableId---"
     Then I compare field "Advance Payment Allowed?" from sub tab "Overview" with expected field
+    Examples:
+      | Annoucement Name                | Grant Name                      |
+      | Automation Announcement for FDM | Automation Announcement for FDM |
