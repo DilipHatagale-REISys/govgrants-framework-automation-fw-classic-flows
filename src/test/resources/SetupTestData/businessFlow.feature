@@ -21,6 +21,7 @@ Feature: Validate all product Business Flow Test Cases
 
   @51040 @activationOFFundingSource
   Scenario: Funding Source HappyPath
+    Given I delete the record "Automation Execution Funding Source" from the object "Funding Source"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
     When I navigate to "Funding Sources" content inside "Planning" subheader on left panel
@@ -2053,7 +2054,7 @@ Feature: Validate all product Business Flow Test Cases
     And I click on "Accept And Close" in the page details
     Then I see status in Progress-bar is "Closed" and is "green"
 
-  @57365 @activationOfBudgetPeriodAmendmentRequest
+ @activationOfBudgetPeriodAmendmentRequest
   Scenario: Verify user can submit Reimbursement Payment request to grantor after Budget Period Change Amendment is done on Subaward
     Given I delete the record "Automation Award for Amendment Request" from the object "Amendment Request"
     And I delete the record "Automation Award for Amendment Request" from the object "Payment Request"
