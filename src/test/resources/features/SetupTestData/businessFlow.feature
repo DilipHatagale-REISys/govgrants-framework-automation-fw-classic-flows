@@ -1,7 +1,6 @@
 @businessFlow
-Feature: Validate all product Business Flow Test Cases
-
-  Background: To setup data
+Feature: The feature is only designed for ensuring all business flows are working smoothly
+//Disclaimer: Only for Test Automation Validation
 
   @50962 @activstionOfFocusArea
   Scenario: Happy Path of Focus Area by User - Admin/EXE/PM
