@@ -66,32 +66,6 @@ Feature: Validate all scenarios in the Application Intake
     When I click on "Back" in the page details
     Then I see that "100%" has been added in flextable with Id "---applicationIntake:-:allFormsTableId---"
 
-  @34156 @submitApplication @applicationIntakeHappyPath @smoke
-  Scenario: Submitting an application to Grantor
-    When I click on "Edit" in the page details
-    And I enter "Edition" values from "Application_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I navigate to "Budget" sub tab
-    Given I expand nested table containing column value "BP01"
-    And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
-      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
-      | Construction  | 1000   | 100        | 100            | 100            |
-    When I navigate to "Proposal" sub tab
-    When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
-    And I navigate to "Attachments" sub tab
-    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
-    Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    Given I click on "Back" in the page details
-    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
-    Given I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    Given I click on "Back" in the page details
-    When I click on "Submit Application" in the page details
-    Then I see status in Progress-bar is "Submitted" and is "Green"
-
   @34346 @viewSubmitedApplication @smoke
   Scenario Outline: Viewing the application submitted by sub-recipient as Internal user
     When I click on "Edit" in the page details
