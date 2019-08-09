@@ -1881,7 +1881,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Submit for Approval" in the page details
     And I click on "Send to Owner" on the approval decision box
     And I pause execution for "100" seconds
-    Then I can see mail notification for "EXTERNAL" user with following subject:
+    Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> from <subrecipient name> has been Sent Back |
 
   @55638 @SendToOwnerPREmailNotificationReimbursement @jitendra
@@ -1921,7 +1921,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Submit for Approval" in the page details
     And I click on "Send to Owner" on the approval decision box
     And I pause execution for "100" seconds
-    Then I can see mail notification for "EXTERNAL" user with following subject:
+    Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> from <subrecipient name> has been Sent Back |
     Examples:
       | Award Name                 | Grant Name                 |
@@ -2005,7 +2005,7 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    And I click on "Reject" on the approval decision box
+    And I click on "Disapprove" on the approval decision box
     And I pause execution for "100" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Rejected |
@@ -2042,7 +2042,7 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    And I click on "Reject" on the approval decision box
+    And I click on "Disapprove" on the approval decision box
     And I pause execution for "100" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Rejected |

@@ -952,3 +952,52 @@ Feature: Validate all scenarios in Progress Report
     Examples:
       | Grant Name                 |
       | Automation Permanent Award |
+
+  @34931 @submitProgressReportToGrantorInternalUser @jitendra
+  Scenario Outline: Verify that all internal users can view submitted Progress Reports
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "<progressReportSheet>"
+    And I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I navigate to "Performance" sub tab
+    Given I edit the following rows inline in flex table with id "<kpiTableId>" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 7      | 7             |
+    When I navigate to "Forms and Attachments" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "<formTableId>"
+    And I enter "Form Fields" values from "<progressReportSheet>"
+    And I click on "Save" in the page details
+    And I click on "Back" in the page details
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Manage Progress Reports" content inside "Monitoring Activities" subheader on left panel
+    And I click toggle button to select "Submitted Progress Reports"
+    And I click on "View" icon for "Submitted to Grantor" inside flex table with id "---progressreport:-:internalProgressReportFlexTableId---"
+    Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
+    Examples:
+      | progressReportSheet              | kpiTableId                        | formTableId                        |
+      | ProgressReport_Field_Values.xlsx | ---progressReport:-:kpiTableId--- | ---progressReport:-:formTableId--- |
+
+  @55310 @editProgressReportSchedule @jitendra
+  Scenario Outline: To edit Progress Report
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "<progressReportSheet>"
+    And I click on "Save" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "Automation Permanent Award" in "<activeGrantsTableId>" panel
+    And I click on "View" icon for "Automation Permanent Award" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "<subawardsTableId>"
+    And I navigate to "Terms" sub tab
+    When I click on "Edit" icon for "Automation Permanent Award" inside flex table with id "<progressReportsScheduleId>"
+    And I enter value "Annually" into field "fieldFrequency__c"
+    And I click modal button "Save"
+    And I close Modal
+    Then I see value "Annually" for title "Frequency" inside table "<progressReportsScheduleId>"
+    Examples:
+      | progressReportsScheduleId                        | progressReportSheet              | subawardsTableId                        | activeGrantsTableId                        |
+      | ---progressReport:-:progressReportsScheduleId--- | ProgressReport_Field_Values.xlsx | ---progressReport:-:subawardsTableId--- | ---progressReport:-:activeGrantsTableId--- |
