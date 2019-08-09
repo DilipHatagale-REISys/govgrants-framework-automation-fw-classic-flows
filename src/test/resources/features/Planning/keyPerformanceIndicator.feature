@@ -75,19 +75,6 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
       | ADMIN |
       | EXE   |
 
-  @52627 @activateKPI @smoke
-  Scenario: Activate KPI
-    When I login to "As a Grantor" app as "EXE" user
-    And I navigate to "Planning" tab
-    When I navigate to "Key Performance Indicators (KPI)" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Draft Key Performance Indicators (KPI)"
-    And I click on top right button "New" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
-    And I enter "Creation" values from "KPI_Field_Values.xlsx"
-    And I click modal button "Save and Continue"
-    And I click on "Save" in the page details
-    When I click on "Activate" in the page details
-    Then I see status in Progress-bar is "Active" and is "Green"
-
   @kpiCreationPM @smoke
   Scenario: Negative Case - Verify that other users (Other than Admin/EXE) are not able to create KPI
     Given I am on "INTERNAL" portal

@@ -66,26 +66,6 @@ Feature: Validate all scenarios in the Pre-Application
     When I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted" and is "green"
 
-  @53161 @preApplicationSubmittedToGrantorPendingTask @preapplicationHappyPath @smoke
-  Scenario: Validate Grantor accept the submitted pre-application
-    Given I click on "Edit" in the page details
-    And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    Given I expand nested table containing column value "BP01"
-    And I edit the following rows inline in flex table with id "---preApplication:-:budgetCategoryGridTableId---" by clicking "Edit" :
-      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
-      | Construction  | 5000   | 5000       | 50             | 100            |
-    When I navigate to "Attachments" sub tab
-    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
-    When I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    When I navigate to "Applications" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record id" in "---preApplication:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record id" inside table
-    When I click on "Accept" in the page details
-    Then I see status in Progress-bar is "Accepted" and is "Green"
-
   @53162 @preApplicationToApplication
   Scenario Outline: Validate Grantor accept the submitted pre-application and converted it to application
     Given I click on "Edit" in the page details

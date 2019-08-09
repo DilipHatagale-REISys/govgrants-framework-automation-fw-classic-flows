@@ -92,25 +92,6 @@ Feature: Validate all scenarios in Funding Source
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "green"
 
-  @51040 @fundingSourceHappyPath @smoke
-  Scenario: Funding Source HappyPath
-    When I login to "As a Grantor" app as "EXE" user
-    And I navigate to "Planning" tab
-    When I navigate to "Funding Sources" content inside "Planning" subheader on left panel
-    And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
-    When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
-    And I click modal button "Save and Continue"
-    When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    And I navigate to "Overview" sub tab
-    When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
-    And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
-    When I click modal button "Save and Continue"
-    And I enter "Funding Account Edition" values from "FundingSource_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I click on "Activate" in the page details
-    Then I see status in Progress-bar is "Active" and is "Green"
-
   @52661 @creationFSFOUser @smoke
   Scenario Outline:Verify that users (other than Admin/PM/EXE)are not able to create funding account &  funding source
     When I am on "INTERNAL" portal

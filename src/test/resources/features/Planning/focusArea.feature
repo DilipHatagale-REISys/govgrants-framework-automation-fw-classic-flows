@@ -51,21 +51,6 @@ Feature: Validate all scenarios in Focus Area
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @50962 @focusAreaHappyPath @smoke
-  Scenario: Happy Path of Focus Area by User - Admin/EXE/PM
-    Given I login to "As a Grantor" app as "dynamicUser" user
-    When I navigate to "Planning" tab
-    When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
-    And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
-    When I enter value "Automation Execution Focus Area" into field "Title__c"
-    When I click modal button "Save and Continue"
-    When I enter value "Automation Test Description" into field "Description__c"
-    And I click on "Save" in the page details
-    When I navigate to "Attachments" sub tab
-    When I upload attachment "Announcement_Field_Values.xlsx" of type "Supporting Documents"
-    When I click on "Activate" in the page details
-    Then I see status in Progress-bar is "Active" and is "Green"
-
   @52455 @creationOFFocusAreaFOUser @smoke
   Scenario: Negative Scenario-Verify that FO is not able to create focus area
     Given I login to "As a Grantor" app as "FO" user

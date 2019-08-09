@@ -379,39 +379,6 @@ Feature: Validate all scenarios in Negotiations
     When I refresh the page
     Then I cannot see top right button "Complete Negotiation" in page detail
 
-  @57220 @viewCompletedNegotiation @deepika
-  Scenario: validate whther user is able to view the completed Negotiation on left Navigation under Completed Negotiations
-    Given I login to "As a Grantor" app as "dynamicUser" user
-    And I navigate to "Applications" tab
-    When I navigate to "Funding Decision Memo (FDM)" content inside "Application Review" subheader on left panel
-    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
-    When I perform quick search for "Autoamtion Announcement for Negotiations" in "---subAwardFromFDM:-:fdmTableId---" panel
-    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
-    When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
-    And I get the "EGMS ID"
-    When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    When I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-    And I navigate to "Home" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside table
-    And I enter values into fields
-      | Value                              | Field                |
-      | Automation Negotiation Iniatiation | ApplicantResponse__c |
-    When I click on "Save" in the page details
-    When I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Applications" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside table
-    When I click on "Complete Negotiation" in the page details
-    And I navigate to "Applications" tab
-    When I navigate to "Completed Negotiations" content inside "Negotiations" subheader on left panel
-    Then I can see row level action button "View" against "Autoamtion Announcement for Negotiations" in flex table with id "flexGridCompletedNegotiations"
-
   @57490 @viewCompletedNegotiationfromApplicationsTab @deepika
   Scenario: validate whether user is able to view the completed Negotiation on Applications Tab
     Given I login to "As a Grantor" app as "dynamicUser" user
