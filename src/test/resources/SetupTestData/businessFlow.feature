@@ -1705,7 +1705,6 @@ Feature: Validate all product Business Flow Test Cases
     And I click on "View" icon for "Record Id" inside table
     Given I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-    When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     And I click on "Start" icon for "Record Id" inside table
@@ -2029,7 +2028,7 @@ Feature: Validate all product Business Flow Test Cases
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
-    When I navigate to "Report and Outcomes" sub tab
+    When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipientTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To    |
