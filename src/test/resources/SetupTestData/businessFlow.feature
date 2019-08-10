@@ -1,9 +1,9 @@
-@businessFlow
+@moduleOrBusinezzFlowName
 Feature: Validate all product Business Flow Test Cases
 
   Background: To setup data
 
-  @50962 @activstionOfFocusArea
+  @50962 @focusAreaPlanning @jitendra
   Scenario: Happy Path of Focus Area by User - Admin/EXE/PM
     Given I delete the record "Automation Execution Focus Area" from the object "Focus Area"
     Given I login to "As a Grantor" app as "dynamicUser" user
@@ -15,11 +15,11 @@ Feature: Validate all product Business Flow Test Cases
     When I enter value "Automation Test Description" into field "Description__c"
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
-    When I upload attachment "Announcement_Field_Values.xlsx" of type "Supporting Documents"
+    When I upload attachment "Announcement_Field_Values.xlsx" of type
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @51040 @activationOFFundingSource
+  @51040 @fundingSourcePlanning @jitendra
   Scenario: Funding Source HappyPath
     Given I delete the record "Automation Execution Funding Source" from the object "Funding Source"
     When I login to "As a Grantor" app as "EXE" user
@@ -39,7 +39,7 @@ Feature: Validate all product Business Flow Test Cases
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @52627 @activateKPI
+  @52627 @kpiPlanning @jitendra
   Scenario: Activate KPI
     Given I delete the record "Automation Execution KPI" from the object "KPI"
     When I login to "As a Grantor" app as "EXE" user
@@ -53,7 +53,7 @@ Feature: Validate all product Business Flow Test Cases
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @34756 @programActivation
+  @34756 @programPlanning @jitendra
   Scenario: Validate the activation of Internal Program
     Given I delete the record "Automation Execution Internal Program" from the object "Program"
     And I click on "Edit" in the page details
@@ -113,7 +113,7 @@ Feature: Validate all product Business Flow Test Cases
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @34462 @publishingCompetitiveAnnouncementCA
+  @34462 @competitiveAnnouncement @jitendra
   Scenario Outline: Validate the activation of Announcement
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "EXE" user
@@ -323,7 +323,7 @@ Feature: Validate all product Business Flow Test Cases
       | Announcement Type | Active Funding Opportunities id     | User |
       | Competitive       | ActiveFundingOpportunitiesCompitive | EXE  |
 
-  @34462 @publishingDirectedAnnouncement
+  @34462 @directedAnnouncement @jitendra
   Scenario Outline: Validate the activation of Directed Announcement
     Given I delete the record "Automation Directed Announcement" from the object "APPLICATION REVIEWS"
     Given I delete the record "Automation Directed Announcement" from the object "PreApplication"
@@ -540,7 +540,7 @@ Feature: Validate all product Business Flow Test Cases
       | Announcement Type | Active Funding Opportunities id | User |
       | Directed          | ActiveFundingOpportunities      | EXE  |
 
-  @34462 @publishingFormulaAnnouncementFA
+  @34462 @formulaAnnouncement @jitendra
   Scenario Outline: Validate the activation of Formula Announcement
     Given I delete the record "Automation Formula Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -758,7 +758,7 @@ Feature: Validate all product Business Flow Test Cases
       | User |
       | EXE  |
 
-  @53161 @preApplicationSubmittedToGrantorPendingTask
+  @53161 @preApplication @jitendra
   Scenario: Validate Grantor accept the submitted pre-application
     Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
     When I delete the record "Automation Announcement for Application" from the object "PreApplication"
@@ -794,7 +794,7 @@ Feature: Validate all product Business Flow Test Cases
     When I click on "Accept" in the page details
     Then I see status in Progress-bar is "Accepted" and is "Green"
 
-  @34156 @submitApplication
+  @34156 @applicationIntake @jitendra
   Scenario: Submitting an application to Grantor
     Given I delete the record "Automation Announcement for Application Intake" from the object "Application"
     And I delete the record "Automation Announcement for Application Intake" from the object "Qualified Announcement"
@@ -832,7 +832,7 @@ Feature: Validate all product Business Flow Test Cases
     When I click on "Submit Application" in the page details
     Then I see status in Progress-bar is "Submitted" and is "Green"
 
-  @51065 @applicationReviewHappyPath
+  @51065 @applicationReview @jitendra
   Scenario Outline: complete review process for an application
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
     And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
@@ -1012,7 +1012,7 @@ Feature: Validate all product Business Flow Test Cases
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
 
-  @57220 @CompletedNegotiation
+  @57220 @completedNegotiation @deepika
   Scenario: validate whther user is able to view the completed Negotiation on left Navigation under Completed Negotiations
     Given I delete the record "Autoamtion Announcement for Negotiations" from the object "FDM"
     Given I login to "As a Grantor" app as "dynamicUser" user
@@ -1046,7 +1046,7 @@ Feature: Validate all product Business Flow Test Cases
     When I navigate to "Completed Negotiations" content inside "Negotiations" subheader on left panel
     Then I can see row level action button "View" against "Autoamtion Announcement for Negotiations" in flex table with id "flexGridCompletedNegotiations"
 
-  @awardHappyPathFromFDM @smoke
+  @subAwardFromFDM @mahadev
   Scenario Outline: Validate award happy path
     Given I delete the record "Automation Desk Review" from the object "Desk Review"
     When I delete the record "Automation Site Visit" from the object "Site Visit"
@@ -1216,7 +1216,7 @@ Feature: Validate all product Business Flow Test Cases
       | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
-  @51138 @awardHappyPathStandAlone
+  @51138 @subAwardStandAlone @mahadev
   Scenario Outline: Validate award Happy path stand alone
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
     When I delete the record "Automation Execution Award" from the object "Payment Request"
@@ -1370,7 +1370,7 @@ Feature: Validate all product Business Flow Test Cases
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @51074 @adhocReimbursementHappyPath
+  @51074 @adhocPaymentRequest @mahadev
   Scenario Outline: Reimbursement Payment Request happy path
     Given I delete the record "Automation Payment Request2" from the object "Payment Request"
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
@@ -1426,7 +1426,7 @@ Feature: Validate all product Business Flow Test Cases
       | Award Name                 | Grant Name                 |
       | Automation Permanent Award | Automation Permanent Award |
 
-  @51075 @adhocAdvanceHappyPath
+  @51075 @adhocAdvancePaymentRequest @mahdev
   Scenario Outline: Advance Payment Request happy path
     Given I delete the record "Automation Payment Request2" from the object "Payment Request"
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
@@ -1530,7 +1530,7 @@ Feature: Validate all product Business Flow Test Cases
       | Automation Permanent Award | Automation Permanent Award |
 
 
-  @51076 @scheduledReimbursementPaymentRequestHappyPath
+  @51076 @scheduledReimbursementPaymentRequest @Mahadev
   Scenario Outline: Scheduled Payment Request happy path
     Given I delete the record "<Award Name>" from the object "Payment Request"
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
@@ -1583,7 +1583,7 @@ Feature: Validate all product Business Flow Test Cases
       | Award Name                 | Grant Name                 |
       | Automation Permanent Award | Automation Permanent Award |
 
-  @51112 @progressReportHappyPath @smoke
+  @51112 @progressReport @mahadev
   Scenario: To approve Progress Report
     Given I delete the record "Automation Permanent Award" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c"
@@ -1632,7 +1632,7 @@ Feature: Validate all product Business Flow Test Cases
     And I "Approve" in approval decision
     Then I see status in Progress-bar is "Approved" and is "green"
 
-  @51095 @siteVisitAcceptAndClose
+  @51095 @awardSiteVisit @deepika
   Scenario Outline: Site Visit Accept and Close
     Given I delete the record "Automation Site Visit" from the object "Site Visit"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -1735,7 +1735,7 @@ Feature: Validate all product Business Flow Test Cases
       | Site Visit Name       |
       | Automation Site Visit |
 
-  @51024 @deskReviewAcceptAndClose
+  @51024 @awardDeskReview @deepika
   Scenario: Desk Review Accept and Close
     Given I delete the record "Automation Desk Review" from the object "Desk Review"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -1838,7 +1838,7 @@ Feature: Validate all product Business Flow Test Cases
     And I click on "Accept And Close" in the page details
     Then I see status in Progress-bar is "Closed" and is "green"
 
-  @55207 @siteVisitAcceptAndCloseOrgLevel
+  @55207 @orgSiteVisit @deepika
   Scenario: Site Visit Accept and Close Org Level
     Given I delete the record "Automation Site Visit Org level" from the object "Site Visit"
     Given I login to "As a Grantor" app as "dynamicUser" user
@@ -1946,7 +1946,7 @@ Feature: Validate all product Business Flow Test Cases
     And I click on "Accept And Close" in the page details
     Then I see status in Progress-bar is "Closed" and is "green"
 
-  @55204 @deskReviewAcceptAndCloseOrgLevel
+  @55204 @orgDeskReview @deepika
   Scenario: Desk Review Accept and Close
     Given I delete the record "Automation Desk Review Org level" from the object "Desk Review"
     Given I login to "As a Grantor" app as "dynamicUser" user
@@ -2053,7 +2053,7 @@ Feature: Validate all product Business Flow Test Cases
     And I click on "Accept And Close" in the page details
     Then I see status in Progress-bar is "Closed" and is "green"
 
- @activationOfBudgetPeriodAmendmentRequest
+  @bpAmendmentRequest @deepika
   Scenario: Verify user can submit Reimbursement Payment request to grantor after Budget Period Change Amendment is done on Subaward
     Given I delete the record "Automation Award for Amendment Request" from the object "Amendment Request"
     And I delete the record "Automation Award for Amendment Request" from the object "Payment Request"
