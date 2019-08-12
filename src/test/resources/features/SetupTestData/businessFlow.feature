@@ -1,4 +1,4 @@
-@businessFlow
+@productSanityRun
 Feature: The feature is only designed for ensuring all business flows are working smoothly
 //Disclaimer: Only for Test Automation Validation
 
@@ -55,6 +55,15 @@ Feature: The feature is only designed for ensuring all business flows are workin
   @34756 @programActivation
   Scenario: Validate the activation of Internal Program
     Given I delete the record "Automation Execution Internal Program" from the object "Program"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Draft Internal Programs"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I click on "Save" in the page details
     And I click on "Edit" in the page details
     When I enter "Edition" values from "Program_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -396,8 +405,8 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
     When I click toggle button to select "Draft Announcements"
-    And I perform quick search for "Record Id" in "ActiveFundingOpportunitiesCompitive" panel
-    And I click on "View" icon for "Record Id" inside flex table with id "ActiveFundingOpportunitiesCompitive"
+    And I perform quick search for "Record Id" in "ActiveFundingOpportunities" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "ActiveFundingOpportunities"
     Given I click on "Complete Review" in the page details
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
