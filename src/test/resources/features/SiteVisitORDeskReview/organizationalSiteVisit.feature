@@ -9,7 +9,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
     And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table
 
-  @51078 @organizationalSiteVisitCreation @smoke
   Scenario: Validate the Site Visit is in created status.
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
