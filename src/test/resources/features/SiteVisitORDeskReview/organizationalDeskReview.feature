@@ -231,7 +231,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     Given I navigate to "Related Log" sub tab
     When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
-    And I navigate to "Report and Outcomes" sub tab
+    And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
@@ -277,7 +277,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     Given I navigate to "Related Log" sub tab
     When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
-    And I navigate to "Report and Outcomes" sub tab
+    And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -322,7 +322,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     Given I navigate to "Related Log" sub tab
     When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
-    And I navigate to "Report and Outcomes" sub tab
+    And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -375,7 +375,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     Given I navigate to "Related Log" sub tab
     When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
-    And I navigate to "Report and Outcomes" sub tab
+    And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -439,7 +439,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     Given I navigate to "Related Log" sub tab
     When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
-    And I navigate to "Report and Outcomes" sub tab
+    And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -512,7 +512,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     Given I navigate to "Related Log" sub tab
     When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
-    And I navigate to "Report and Outcomes" sub tab
+    And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -606,7 +606,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     Given I navigate to "Related Log" sub tab
     When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
-    And I navigate to "Report and Outcomes" sub tab
+    And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -701,7 +701,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     Given I navigate to "Related Log" sub tab
     When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
-    And I navigate to "Report and Outcomes" sub tab
+    And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -801,7 +801,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     Given I navigate to "Related Log" sub tab
     When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
-    And I navigate to "Report and Outcomes" sub tab
+    And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -865,7 +865,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     Given I navigate to "Related Log" sub tab
     When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
-    And I navigate to "Report and Outcomes" sub tab
+    And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -905,7 +905,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Submit to Grantor" in the page details
     Then I see the following messages in the page details :
-      | Report and Outcomes : Enter corrective actions on all Findings outcomes using the "+" icons. |
+      | Reports and Outcomes : Enter corrective actions on all Findings outcomes using the "+" icons. |
 
   @55460 @approverForwardUserGetPendingTaskDeskReview @deepika
   Scenario: Validate when the Approver forward Org Level Desk Review to other user, the Pending Task will be created to the User
@@ -945,7 +945,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     Given I navigate to "Related Log" sub tab
     When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
-    And I navigate to "Report and Outcomes" sub tab
+    And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -1095,7 +1095,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "PendingTasks" panel
     When I click on "Start" icon for "Record Id" inside table
-    Then I cannot see "Report and Outcomes" sub tab at view detail page
+    Then I cannot see "Reports and Outcomes" sub tab at view detail page
 
   @55873 @recipientsCannotCreateOutcomesOrgDR @deepika
   Scenario: Recipients will not be able to create / edit the Outcomes.
@@ -1155,7 +1155,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click on "Conduct" in the page details
     When I click on "Submit for Approval" in the page details
     Then I see the following messages in the page details :
-      | Report and Outcomes Tab - Fill all the required data in the form before submitting. |
+      | Reports and Outcomes Tab - Fill all the required data in the form before submitting. |
 
   @55999 @peerReviewDeskReviewOrgLevel @deepika
   Scenario: Validate the peer review on their Org Level Desk Review
@@ -1253,7 +1253,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     Given I navigate to "Related Log" sub tab
     When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
-    And I navigate to "Report and Outcomes" sub tab
+    And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -1319,7 +1319,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     Given I navigate to "Related Log" sub tab
     When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
-    And I navigate to "Report and Outcomes" sub tab
+    And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details

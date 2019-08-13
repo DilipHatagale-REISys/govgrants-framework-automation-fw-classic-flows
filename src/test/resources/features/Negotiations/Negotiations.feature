@@ -545,7 +545,7 @@ Feature: Validate all scenarios in Negotiations
     Then I can see top right button "Edit" in page detail
 
   @57501 @editingNegotiationsDetailsBySubrecipients
-  Scenario: Validate whether Subrecipient User can edit Negotiations Details
+  Scenario: Verify that after sending negotiation request to applicant , applicant can able to see application status as “Negotiation Initiated”
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
@@ -739,11 +739,135 @@ Feature: Validate all scenarios in Negotiations
       | Automation Negotiation Iniatiation | ExplanationOfRevisionsNeeded__c |
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    Then I see status in Progress-bar is "Negotiation Initiated" and is "green" 
-    
-        
-        
-        
+    Then I see status in Progress-bar is "Negotiation Initiated" and is "green"
+
+   @58029 @initiateNegotiationForAttachmentsNotes @deepika
+  Scenario: Validate the selection of AttchementsNotes options from Application Sections for Revision option on the Approved FDM
+    Given I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memo (FDM)" content inside "Application Review" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "Autoamtion Announcement for Negotiations" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    And I get the "EGMS ID"
+    When I click on "Save" in the page details
+    Then I can see "Negotiations" sub tab at view detail page
+
+  @58030 @completedNegotiationAttachmentsNotes @deepika
+  Scenario: Validate whether user is able to view the completed Negotiation on Applications Tab for Attachments Notes
+    Given I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memo (FDM)" content inside "Application Review" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "Autoamtion Announcement for Negotiations" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    And I get the "EGMS ID"
+    When I click on "Save" in the page details
+    When I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "PendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside table
+    And I enter values into fields
+      | Value                              | Field                |
+      | Automation Negotiation Iniatiation | ApplicantResponse__c |
+    When I click on "Save" in the page details
+    When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside table
+    When I click on "Complete Negotiation" in the page details
+    And I navigate to "Applications" tab
+    And I click toggle button to select "All Applications"
+    When I perform quick search for "Autoamtion Announcement for Negotiations" in "AppReviewList" panel
+    Then I see values "Autoamtion Announcement for Negotiations" and "Negotiated" inside table
+
+  @@58031 @applicationStatusReviewedAfterIntiationofNegotiation @deepika
+  Scenario: Verify that on FDM View page when user click on Initiate Negotiation action then user is able to see status of application to “Reviewed”
+    Given I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    When I navigate to "Applications" content inside "Applications" subheader on left panel
+    And I click toggle button to select "All Applications"
+    When I perform quick search for "Autoamtion Announcement for Negotiations" in "AppReviewList" panel
+    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "AppReviewList"
+    When I click on "Initiate Negotiation" in the page details
+    And I get the "EGMS ID"
+    When I click on "Save" in the page details
+   And I navigate to "Applications" tab
+   When I navigate to "Applications" content inside "Applications" subheader on left panel
+   And I click toggle button to select "All Applications"
+   When I perform quick search for "Autoamtion Announcement for Negotiations" in "AppReviewList" panel
+   And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "AppReviewList"
+   Then I see that "Autoamtion Announcement for Negotiations" is in "Reviewed" status
+
+ @58032 @pendingNegotiationRequestUnderCompletedNegotiations @deepika
+  Scenario: Verify that user cannot see pending negotiation requests in “Completed Negotiations” table
+    Given I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memo (FDM)" content inside "Application Review" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "Autoamtion Announcement for Negotiations" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    And I get the "EGMS ID"
+    When I click on "Save" in the page details
+    When I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "PendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside table
+    And I enter values into fields
+      | Value                              | Field                |
+      | Automation Negotiation Iniatiation | ApplicantResponse__c |
+    When I click on "Save" in the page details
+    When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    When I navigate to "Completed Negotiations" content inside "Negotiations" subheader on left panel
+    And I perform quick search for "Record Id" in "flexGridCompletedNegotiations" panel
+    Then I do not see values "Record Id" and "Autoamtion Announcement for Negotiations" inside table
+
+  @58034 @userCannotSeeIntiationButtonAfterIntiated @deepika
+  Scenario: Verify that after creating Negotiation Request, user can see “Not Initiated” status of Negotiation Request
+    Given I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memo (FDM)" content inside "Application Review" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "Autoamtion Announcement for Negotiations" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    And I get the "EGMS ID"
+    When I click on "Save" in the page details
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memo (FDM)" content inside "Application Review" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "Autoamtion Announcement for Negotiations" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    Then I cannot see row level action button "Initiate Negotiation" against "Autoamtion Announcement for Negotiations" in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
+
+  @34331 @foUserCannotSubmitNegotiations @deepika
+  Scenario: Verify that other than owner, other users cannot send negotiation request (Negative TC)
+    Given I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memo (FDM)" content inside "Application Review" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "Autoamtion Announcement for Negotiations" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    And I get the "EGMS ID"
+    When I click on "Save" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    When I navigate to "Pending Negotiations" content inside "Negotiations" subheader on left panel
+    And I perform quick search for "Record Id" in "flexGridPendingNegotiations" panel
+    Then I cannot see top right button "Send to Subrecipient" in page detail
+
     
     
     
