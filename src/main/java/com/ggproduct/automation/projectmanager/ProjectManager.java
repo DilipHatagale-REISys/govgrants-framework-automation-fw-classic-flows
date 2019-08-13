@@ -8,7 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.springframework.context.annotation.Description;
 
 import javax.mail.MessagingException;
-import java.awt.*;
 import java.io.File;
 import java.util.List;
 import java.util.Map;
@@ -198,20 +197,6 @@ public class ProjectManager extends ProjectWebServices {
         EyeThink.core().findMyElement().getElement(By.xpath("//div[@id='Attachmentadd']//td[text()='" + fileNameFromWorkSpace + "']/..//input")).click();
         EyeThink.saas().modal().clickModalContentSpecificButton("Attach");
         EyeThink.saas().modal().closeModalByClickingTopRightCloseButton();
-    }
-
-    /**
-     * save file using robot class
-     *
-     * @throws AWTException
-     */
-    public void saveFile() throws AWTException {
-        EyeThink.core().switchTo().switchToWindowHandler(1);
-        EyeThink.core().WaitFor().makeThreadSleep(20000);
-        EyeThink.core().RobotActions().ctrl_Save();
-        EyeThink.core().WaitFor().makeThreadSleep(2000);
-        EyeThink.core().RobotActions().Robot_Enter();
-        EyeThink.core().WaitFor().makeThreadSleep(20000);
     }
 
     public void clickRightHeaderBars(String title) {
