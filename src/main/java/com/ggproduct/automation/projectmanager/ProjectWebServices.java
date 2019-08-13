@@ -63,7 +63,7 @@ public class ProjectWebServices {
 
     private void setDefaultEndPointGetToken(String defaultEndPointGetToken) {
         if (System.getProperty("env") != null && System.getProperty("env").equalsIgnoreCase("QA")) {
-            this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9dZJodJWITSuFoeXeOau_jPysAF1tDTnpScZyZwXUGhS_ZudVpjPfvLFrO78TVtOgK6flv6R5a4OV8QnR&client_secret=1408645120361878326&username=mayuresh.g@ggp.test7&password=Salesforce12";
+            this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9dZJodJWITSuFoeXeOau_jPysAF1tDTnpScZyZwXUGhS_ZudVpjPfvLFrO78TVtOgK6flv6R5a4OV8QnR&client_secret=1408645120361878326&username=mayuresh.g@ggp.test7&password=Salesforce_2019";
         }else{
             this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9dCCPs.KiE4SymniyHC6UlDBvpddW0i9Is5ZW8.1bmzcTfzQPXqLgXCJvQhrp2tvXyx8dA2Je1raJhl9J&client_secret=8D36B87614E5F594696DE1054975B77B586F596926368B8149790532F4F57C47&username=manu.sa@ggp.test7.automation&password=GoProduct@123";
         }

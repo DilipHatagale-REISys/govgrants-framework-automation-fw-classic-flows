@@ -110,9 +110,14 @@ Feature: Validate all scenarios in the home tab
 
   @56716 @internalContactsView
   Scenario Outline: Validate whether all users have view access to Contacts
+    Given I delete the record "Automation PO" from the object "Contact"
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
+    When I click on top right button "New" in flex table with id "---home:-:subrecipientContactTableId---"
+    And I enter "Creation" values from "InternalContact_Field_Values.xlsx"
+    When I click modal button "Save"
+    And I refresh the page
     When I perform quick search for "Automation PO" in "---home:-:subrecipientContactTableId---" panel
     And I click on "View" icon for "Automation PO" inside flex table with id "---home:-:subrecipientContactTableId---"
     Then I see field "Organization" as "Test Automation Organization"
@@ -124,6 +129,7 @@ Feature: Validate all scenarios in the home tab
 
   @56717 @internalContactsCreate @smoke
   Scenario Outline: Verify that Internal contacts are accessible across agencies and can be created by any Internal user
+    Given I delete the record "Automation PO" from the object "Contact"
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
@@ -141,9 +147,14 @@ Feature: Validate all scenarios in the home tab
 
   @56718 @internalContactsEdit
   Scenario Outline: Validate system allows edit access to Contacts to all Internal Users
+    Given I delete the record "Automation PO" from the object "Contact"
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
+    When I click on top right button "New" in flex table with id "---home:-:subrecipientContactTableId---"
+    And I enter "Creation" values from "InternalContact_Field_Values.xlsx"
+    When I click modal button "Save"
+    And I refresh the page
     When I perform quick search for "Automation PO" in "---home:-:subrecipientContactTableId---" panel
     Then I can see row level action button "Edit" against "Automation PO" in flex table with id "---home:-:subrecipientContactTableId---"
     Examples:
@@ -171,12 +182,17 @@ Feature: Validate all scenarios in the home tab
       | PM    |
 
   @56720 @smeReviewersContactView
-  Scenario Outline: Verifying all Internal Users has View access to SME ---home:-:reviewersTableId--- Contact
+  Scenario Outline: Verifying all Internal Users has View access to SME Reviewers Contact
+    Given I delete the record "Automation SME" from the object "Contact"
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
-    When I perform quick search for "Automation Contact" in "---home:-:reviewersTableId---" panel
-    Then I can see row level action button "View" against "Automation Contact" in flex table with id "---home:-:reviewersTableId---"
+    When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
+    And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
+    When I click modal button "Save"
+    And I refresh the page
+    When I perform quick search for "Automation SME" in "---home:-:reviewersTableId---" panel
+    Then I can see row level action button "View" against "Automation SME" in flex table with id "---home:-:reviewersTableId---"
     Examples:
       | User  |
       | ADMIN |
@@ -347,7 +363,10 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
-    When I perform quick search for "Automation Manager" in "---home:-:subrecipientContactTableId---" panel
+    When I click on top right button "New" in flex table with id "---home:-:subrecipientContactTableId---"
+    And I enter "Creation" values from "SubrecipientContact_Field_Values.xlsx"
+    When I click modal button "Save"
+    And I refresh the page
     When I click on "Edit" icon for "Automation Manager" inside flex table with id "---home:-:subrecipientContactTableId---"
     And I enter "Edition" values from "SubrecipientContact_Field_Values.xlsx"
     And I click modal button "Save"
@@ -360,12 +379,15 @@ Feature: Validate all scenarios in the home tab
 
   @56735 @smereviewersContactEdition
   Scenario Outline: Verifying all Internal Users has Edit access to SME ---home:-:reviewersTableId--- Contact
-    Given I delete the record "Automation SME1" from the object "Contact"
+    Given I delete the record "Automation SME" from the object "Contact"
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
-    When I perform quick search for "Automation SME1" in "---home:-:reviewersTableId---" panel
-    And I click on "Edit" icon for "Automation SME1" inside flex table with id "---home:-:reviewersTableId---"
+    When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
+    And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
+    When I click modal button "Save"
+    And I refresh the page
+    And I click on "Edit" icon for "Automation SME" inside flex table with id "---home:-:reviewersTableId---"
     When I enter "Edition" values from "PotentialContact_Field_values.xlsx"
     And I click modal button "Save"
     And I refresh the page
@@ -428,16 +450,18 @@ Feature: Validate all scenarios in the home tab
 
   @56738 @relatedContactsEdition
   Scenario Outline: The Internal Users should be able to Edit Related Contacts
-    Given I delete the record "Automation PO" from the object "Contact"
+    Given I delete the record "Automation Contact" from the object "Contact"
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I switch to iframe with id "iframeFlexGridSearch"
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
-    And I refresh the page
-    When I perform quick search for "Automation PO" in "---home:-:relatedContactsTableId---" panel
-    And I click on "Edit" icon for "Automation PO" inside flex table with id "---home:-:relatedContactsTableId---"
+    And I click on top right button "New" in flex table with id "---home:-:relatedContactsTableId---"
+    And I enter "RelatedContactsCreation" values from "InternalOrganization_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I perform quick search for "Automation Contact" in "---home:-:relatedContactsTableId---" panel
+    And I click on "Edit" icon for "Automation Contact" inside flex table with id "---home:-:relatedContactsTableId---"
     When I enter "RelatedContactsEdition" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
     And I close Modal

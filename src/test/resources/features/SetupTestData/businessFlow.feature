@@ -1,4 +1,4 @@
-@businessFlow
+@productSanityRun
 Feature: The feature is only designed for ensuring all business flows are working smoothly
 //Disclaimer: Only for Test Automation Validation
 
