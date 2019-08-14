@@ -4,6 +4,7 @@ import java.awt.AWTException;
 import java.io.IOException;
 
 import com.automation.rei.handlers.GovGrantsHandler;
+import com.ggproduct.automation.projectmanager.ProjectManager;
 import com.ggproduct.automation.projectmanager.UsersAndURL;
 import eyethink.automation.bots.Register.AuthorizedProject;
 import eyethink.automation.bots.Register.EyeThink;
@@ -35,6 +36,7 @@ public class setup {
     @Before(order = 1)
     public void setUpUsers() throws IOException, AWTException {
         userController.usersController(new UsersAndURL());
+        new ProjectManager().initData();
     }
 
 

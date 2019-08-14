@@ -9,8 +9,11 @@ import org.springframework.context.annotation.Description;
 
 import javax.mail.MessagingException;
 import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 
 /**
@@ -280,5 +283,32 @@ public class ProjectManager extends ProjectWebServices {
      */
     public String getFieldValueFromAPI(String recordName, String fieldName, String objectType,String outputFieldName ){
         return automateGetApi(recordName,fieldName,objectType,outputFieldName).asString().replaceAll("\"","");
+    }
+
+    /**
+     *  Initialise the data based on environment
+     */
+    public void initData() {
+        String env = System.getProperty("env");
+        Properties p = new Properties();
+        if (null != env && !"".equalsIgnoreCase(env) && env.equalsIgnoreCase("QA")) {
+            try {
+                p.load(this.getClass().getResourceAsStream("/properties/QAEnvData.properties"));
+            } catch (IOException e) {
+
+            }
+        } else {
+            try {
+                p.load(this.getClass().getResourceAsStream("/properties/AUTOEnvData.properties"));
+            } catch (IOException e) {
+
+            }
+        }
+
+        Iterator i = p.keySet().iterator();
+        while (i.hasNext()) {
+            String currentKey = i.next().toString();
+            EyeThink.core().Properties().saveValue(currentKey, p.getProperty(currentKey));
+        }
     }
 }
