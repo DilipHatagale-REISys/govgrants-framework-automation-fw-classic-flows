@@ -29,7 +29,7 @@
 		<appium.version>5.0.4</appium.version>
 		<cucumber.version>4.5.4</cucumber.version>
 		<cucable.version>1.5.2</cucable.version>
-		<picocontainer.version>1.2.5</picocontainer.version>
+		<picocontainer.version>4.7.1</picocontainer.version>
 		<report.version>2.2.0</report.version>
 		<testng.version>6.14.3</testng.version>
 		<junit.version>4.13-beta-3</junit.version>
@@ -83,7 +83,7 @@
 			<version>${cucable.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>info.cukes</groupId>
+			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-picocontainer</artifactId>
 			<version>${picocontainer.version}</version>
 		</dependency>
