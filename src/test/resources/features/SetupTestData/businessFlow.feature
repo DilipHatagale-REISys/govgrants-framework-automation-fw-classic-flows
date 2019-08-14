@@ -127,7 +127,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Draft Announcements"
+    And I click toggle button to select "Draft Competitive Announcements"
     And I click on top right button "New" in flex table with id "ActiveFundingOpportunitiesCompitive"
     And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
@@ -140,11 +140,11 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
-    When I click "Add" after selection of "FA--03" in the table "SelectAnnFundingAccounts"
+    When I click "Add" after selection of "FA-ST-04" in the table "SelectAnnFundingAccounts"
     And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--03          | 100             |
+      | FA-ST-04          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -180,10 +180,11 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
+    And I close Modal
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Announcements"
+    When I click toggle button to select "Draft Competitive Announcements"
     And I perform quick search for "Record Id" in "ActiveFundingOpportunitiesCompitive" panel
     And I click on "View" icon for "Record Id" inside flex table with id "ActiveFundingOpportunitiesCompitive"
     Given I click on "Complete Review" in the page details
@@ -322,7 +323,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Announcements"
+    When I click toggle button to select "Draft Competitive Announcements"
     And I perform quick search for "Record id" in "ActiveFundingOpportunitiesCompitive" panel
     When I click on "View" icon for "Record id" inside table
     And I click on "Publish" in the page details
@@ -341,7 +342,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Directed" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Draft Announcements"
+    And I click toggle button to select "Draft Directed Announcements"
     And I click on top right button "New" in flex table with id "ActiveFundingOpportunities"
     And I enter "DirectedAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
@@ -354,11 +355,11 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
-    When I click "Add" after selection of "FA--03" in the table "SelectAnnFundingAccounts"
+    When I click "Add" after selection of "FA-ST-04" in the table "SelectAnnFundingAccounts"
     And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--03          | 100             |
+      | FA-ST-04          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -401,10 +402,11 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
+    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Announcements"
+    When I click toggle button to select "Draft Directed Announcements"
     And I perform quick search for "Record Id" in "ActiveFundingOpportunities" panel
     And I click on "View" icon for "Record Id" inside flex table with id "ActiveFundingOpportunities"
     Given I click on "Complete Review" in the page details
@@ -554,10 +556,10 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
     And I "Approve" in approval decision
-    And I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
+    And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Directed" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Announcements"
+    When I click toggle button to select "Draft Directed Announcements"
     And I perform quick search for "Record id" in "ActiveFundingOpportunities" panel
     When I click on "View" icon for "Record id" inside table
     And I click on "Publish" in the page details
@@ -572,7 +574,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Draft Announcements"
+    And I click toggle button to select "Draft Formula Announcements"
     And I click on top right button "New" in flex table with id "ActiveFundingOpportunitiesFormula"
     And I enter "FormulaAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
@@ -585,11 +587,11 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
-    When I click "Add" after selection of "FA--03" in the table "SelectAnnFundingAccounts"
+    When I click "Add" after selection of "FA-ST-04" in the table "SelectAnnFundingAccounts"
     And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--03          | 100             |
+      | FA-ST-04          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -625,10 +627,11 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
+    And I close Modal
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Draft Announcements"
+    And I click toggle button to select "Draft Formula Announcements"
     When I perform quick search for "Automation Formula Announcement" in "ActiveFundingOpportunitiesFormula" panel
     And I click on "View" icon for "Automation Formula Announcement" inside table
     Given I click on "Complete Review" in the page details
@@ -775,7 +778,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Announcements"
+    When I click toggle button to select "Draft Formula Announcements"
     And I perform quick search for "Record Id" in "ActiveFundingOpportunitiesFormula" panel
     When I click on "View" icon for "Record id" inside table
     And I click on "Publish" in the page details
