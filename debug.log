@@ -1,0 +1,2 @@
+[0802/132012.602:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
+[0807/163321.618:ERROR:prune_crash_reports.cc(34)] PruneCrashReportDatabase: Failed to get pending reports
