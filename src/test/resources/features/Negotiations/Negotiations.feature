@@ -787,7 +787,7 @@ Feature: Validate all scenarios in Negotiations
     When I perform quick search for "Autoamtion Announcement for Negotiations" in "AppReviewList" panel
     Then I see values "Autoamtion Announcement for Negotiations" and "Negotiated" inside table
 
-  @@58031 @applicationStatusReviewedAfterIntiationofNegotiation @deepika
+  @58031 @applicationStatusReviewedAfterIntiationofNegotiation @deepika
   Scenario: Verify that on FDM View page when user click on Initiate Negotiation action then user is able to see status of application to “Reviewed”
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
