@@ -1,13 +1,13 @@
 @productSanityRun
 Feature: The feature is only designed for ensuring all business flows are working smoothly
-//Disclaimer: Only for Test Automation Validation
+  //Disclaimer: Only for Test Automation Validation
 
-  @50962 @activstionOfFocusArea
+  @activationOfFocusArea
   Scenario: Happy Path of Focus Area by User - Admin/EXE/PM
     Given I delete the record "Automation Execution Focus Area" from the object "Focus Area"
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
-    When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
+    When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
     When I enter value "Automation Execution Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
@@ -18,12 +18,12 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @51040 @activationOFFundingSource
+  @activationOFFundingSource
   Scenario: Funding Source HappyPath
     Given I delete the record "Automation Execution Funding Source" from the object "Funding Source"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
-    When I navigate to "Funding Sources" content inside "Planning" subheader on left panel
+    When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
     When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -38,12 +38,12 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @52627 @activateKPI
+  @activateKPI
   Scenario: Activate KPI
     Given I delete the record "Automation Execution KPI" from the object "KPI"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
-    When I navigate to "Key Performance Indicators (KPI)" content inside "Planning" subheader on left panel
+    When I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
     And I click toggle button to select "Draft Key Performance Indicators (KPI)"
     And I click on top right button "New" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
     And I enter "Creation" values from "KPI_Field_Values.xlsx"
@@ -52,7 +52,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @34756 @programActivation
+  @programActivation
   Scenario: Validate the activation of Internal Program
     Given I delete the record "Automation Execution Internal Program" from the object "Program"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -121,13 +121,13 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @34462 @publishingCompetitiveAnnouncementCA
-  Scenario Outline: Validate the activation of Announcement
+  @publishingCompetitiveAnnouncementCA
+  Scenario: Validate the activation of Competitive Announcement
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
-    When I login to "As a Grantor" app as "EXE" user
+    When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Draft Announcements"
+    And I click toggle button to select "Draft Competitive Announcements"
     And I click on top right button "New" in flex table with id "ActiveFundingOpportunitiesCompitive"
     And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
@@ -140,11 +140,12 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
-    When I click "Add" after selection of "FA--03" in the table "SelectAnnFundingAccounts"
+    When I perform quick search for "Automation Permenent Funding Account" in "SelectAnnFundingAccounts" panel
+    When I click "Add" after selection of "Automation Permenent Funding Account" in the table "SelectAnnFundingAccounts"
     And I close Modal
-    Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-      | Funding Account | Pre-Encumbrance |
-      | FA--03          | 100             |
+    When I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
+      | Funding Account                             | Pre-Encumbrance |
+      | ---subAwardStandAlone:-:QAFundingAccount--- | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -180,10 +181,10 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
-    When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Announcements"
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    When I click toggle button to select "Draft Competitive Announcements"
     And I perform quick search for "Record Id" in "ActiveFundingOpportunitiesCompitive" panel
     And I click on "View" icon for "Record Id" inside flex table with id "ActiveFundingOpportunitiesCompitive"
     Given I click on "Complete Review" in the page details
@@ -319,29 +320,22 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
     And I "Approve" in approval decision
-    And I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
+    And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Announcements"
+    When I click toggle button to select "Draft Competitive Announcements"
     And I perform quick search for "Record id" in "ActiveFundingOpportunitiesCompitive" panel
     When I click on "View" icon for "Record id" inside table
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
-    Examples:
-      | Announcement Type | Active Funding Opportunities id     | User |
-      | Competitive       | ActiveFundingOpportunitiesCompitive | EXE  |
 
-  @34462 @publishingDirectedAnnouncement
-  Scenario Outline: Validate the activation of Directed Announcement
-    Given I delete the record "Automation Directed Announcement" from the object "APPLICATION REVIEWS"
-    Given I delete the record "Automation Directed Announcement" from the object "PreApplication"
-    Given I delete the record "Automation Directed Announcement" from the object "Application"
-    And I delete the record "Automation Directed Announcement" from the object "Qualified Announcement"
-    Given I delete the record "Automation Directed Announcement" from the object "Announcement"
-    When I login to "As a Grantor" app as "dynamicUser" user
+  @publishingDirectedAnnouncement
+  Scenario: Validate the activation of Directed Announcement
+    When I delete the record "Automation Directed Announcement" from the object "Announcement"
+    And I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Directed" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Draft Announcements"
+    And I click toggle button to select "Draft Directed Announcements"
     And I click on top right button "New" in flex table with id "ActiveFundingOpportunities"
     And I enter "DirectedAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
@@ -403,8 +397,8 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click modal button "Submit Review"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
-    When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Announcements"
+    When I navigate to "Directed" content inside "Announcements" subheader on left panel
+    When I click toggle button to select "Draft Directed Announcements"
     And I perform quick search for "Record Id" in "ActiveFundingOpportunities" panel
     And I click on "View" icon for "Record Id" inside flex table with id "ActiveFundingOpportunities"
     Given I click on "Complete Review" in the page details
@@ -536,19 +530,16 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
     And I "Approve" in approval decision
-    And I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
+    And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Directed" content inside "Announcements" subheader on left panel
     When I click toggle button to select "Draft Announcements"
-    And I perform quick search for "Record id" in "ActiveFundingOpportunities" panel
-    When I click on "View" icon for "Record id" inside table
+    And I perform quick search for "Record Id" in "ActiveFundingOpportunities" panel
+    When I click on "View" icon for "Record Id" inside table
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
-    Examples:
-      | Announcement Type | Active Funding Opportunities id | User |
-      | Directed          | ActiveFundingOpportunities      | EXE  |
 
-  @34462 @publishingFormulaAnnouncementFA
+  @publishingFormulaAnnouncementFA
   Scenario Outline: Validate the activation of Formula Announcement
     Given I delete the record "Automation Formula Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -766,7 +757,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | User |
       | EXE  |
 
-  @53161 @preApplicationSubmittedToGrantorPendingTask
+  @preApplicationSubmittedToGrantorPendingTask
   Scenario: Validate Grantor accept the submitted pre-application
     Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
     When I delete the record "Automation Announcement for Application" from the object "PreApplication"
@@ -802,7 +793,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click on "Accept" in the page details
     Then I see status in Progress-bar is "Accepted" and is "Green"
 
-  @34156 @submitApplication
+  @submitApplication
   Scenario: Submitting an application to Grantor
     Given I delete the record "Automation Announcement for Application Intake" from the object "Application"
     And I delete the record "Automation Announcement for Application Intake" from the object "Qualified Announcement"
@@ -840,7 +831,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click on "Submit Application" in the page details
     Then I see status in Progress-bar is "Submitted" and is "Green"
 
-  @51065 @applicationReviewHappyPath
+  @applicationReviewHappyPath
   Scenario Outline: complete review process for an application
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
     And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
@@ -1020,7 +1011,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
 
-  @57220 @CompletedNegotiation
+  @CompletedNegotiation
   Scenario: validate whther user is able to view the completed Negotiation on left Navigation under Completed Negotiations
     Given I delete the record "Autoamtion Announcement for Negotiations" from the object "FDM"
     Given I login to "As a Grantor" app as "dynamicUser" user
@@ -1224,7 +1215,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
-  @51138 @awardHappyPathStandAlone
+  @awardHappyPathStandAlone
   Scenario Outline: Validate award Happy path stand alone
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
     When I delete the record "Automation Execution Award" from the object "Payment Request"
@@ -1253,8 +1244,8 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account | Encumbrance |
-      | FA--03          | 1000        |
+      | Funding Account                             | Encumbrance |
+      | ---subAwardStandAlone:-:QAFundingAccount--- | 1000        |
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
       | Construction    | 1000           | 100        | 100            |
@@ -1378,7 +1369,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @51074 @adhocReimbursementHappyPath
+  @adhocReimbursementHappyPath
   Scenario Outline: Reimbursement Payment Request happy path
     Given I delete the record "Automation Payment Request2" from the object "Payment Request"
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
@@ -1434,7 +1425,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Award Name                 | Grant Name                 |
       | Automation Permanent Award | Automation Permanent Award |
 
-  @51075 @adhocAdvanceHappyPath
+  @adhocAdvanceHappyPath
   Scenario Outline: Advance Payment Request happy path
     Given I delete the record "Automation Payment Request2" from the object "Payment Request"
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
@@ -1538,7 +1529,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Automation Permanent Award | Automation Permanent Award |
 
 
-  @51076 @scheduledReimbursementPaymentRequestHappyPath
+  @scheduledReimbursementPaymentRequestHappyPath
   Scenario Outline: Scheduled Payment Request happy path
     Given I delete the record "<Award Name>" from the object "Payment Request"
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
@@ -1591,7 +1582,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Award Name                 | Grant Name                 |
       | Automation Permanent Award | Automation Permanent Award |
 
-  @51112 @progressReportHappyPath @smoke
+  @progressReportHappyPath @smoke
   Scenario: To approve Progress Report
     Given I delete the record "Automation Permanent Award" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c"
@@ -1640,7 +1631,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I "Approve" in approval decision
     Then I see status in Progress-bar is "Approved" and is "green"
 
-  @51095 @siteVisitAcceptAndClose
+  @siteVisitAcceptAndClose
   Scenario Outline: Site Visit Accept and Close
     Given I delete the record "Automation Site Visit" from the object "Site Visit"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -1744,7 +1735,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Site Visit Name       |
       | Automation Site Visit |
 
-  @51024 @deskReviewAcceptAndClose
+  @deskReviewAcceptAndClose
   Scenario: Desk Review Accept and Close
     Given I delete the record "Automation Desk Review" from the object "Desk Review"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -1847,7 +1838,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on "Accept And Close" in the page details
     Then I see status in Progress-bar is "Closed" and is "green"
 
-  @55207 @siteVisitAcceptAndCloseOrgLevel
+  @siteVisitAcceptAndCloseOrgLevel
   Scenario: Site Visit Accept and Close Org Level
     Given I delete the record "Automation Site Visit Org level" from the object "Site Visit"
     Given I login to "As a Grantor" app as "dynamicUser" user
@@ -1955,7 +1946,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on "Accept And Close" in the page details
     Then I see status in Progress-bar is "Closed" and is "green"
 
-  @55204 @deskReviewAcceptAndCloseOrgLevel
+  @deskReviewAcceptAndCloseOrgLevel
   Scenario: Desk Review Accept and Close
     Given I delete the record "Automation Desk Review Org level" from the object "Desk Review"
     Given I login to "As a Grantor" app as "dynamicUser" user
@@ -2062,7 +2053,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on "Accept And Close" in the page details
     Then I see status in Progress-bar is "Closed" and is "green"
 
- @activationOfBudgetPeriodAmendmentRequest
+  @activationOfBudgetPeriodAmendmentRequest
   Scenario: Verify user can submit Reimbursement Payment request to grantor after Budget Period Change Amendment is done on Subaward
     Given I delete the record "Automation Award for Amendment Request" from the object "Amendment Request"
     And I delete the record "Automation Award for Amendment Request" from the object "Payment Request"
@@ -2134,9 +2125,3 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Activated" and is "Green"
-
-
-
-
-
-
