@@ -1,8 +1,6 @@
 package com.ggproduct.automation.steps;
 
-import com.automation.rei.handlers.GovGrantsHandler;
 import com.ggproduct.automation.projectmanager.ProjectManager;
-import eyethink.automation.bots.controller.CoreHandlers;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
 import org.springframework.context.annotation.Description;
@@ -79,11 +77,6 @@ public class GenericSteps {
     @And("^I upload attachment \"([^\"]*)\" from workspace$")
     public void iUploadAttachmentFromWorkspace(String fileNameToBeUpload) {
         projectManager.uploadAttachmentFromWorkspace(fileNameToBeUpload);
-    }
-
-    @When("^I download the file$")
-    public void saveTheFileToProjectRoot() throws Throwable {
-        projectManager.saveFile();
     }
 
     @When("^I click on top right parallel lines bar for \"([^\"]*)\"$")
