@@ -807,7 +807,6 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-
      @58245 @reassign
      Scenario: The Reassign on the left Navigation allows the reassignment of tasks.
        Given I delete the record "Automation Execution Internal Program" from the object "Program"
@@ -899,7 +898,6 @@ Feature: Validate all scenarios in the home tab
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Home" tab
     Then I see task count for "Planning" phase with the total records of flex table id "1"
-
 
 
 
