@@ -1,8 +1,6 @@
 @moduleOrBusinezzFlowName
 Feature: Validate all product Business Flow Test Cases
 
-  Background: To setup data
-
   @50962 @focusAreaPlanning @jitendra
   Scenario: Happy Path of Focus Area by User - Admin/EXE/PM
     Given I delete the record "Automation Execution Focus Area" from the object "Focus Area"
