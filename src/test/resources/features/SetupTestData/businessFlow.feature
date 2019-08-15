@@ -1603,7 +1603,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Award Name                 | Grant Name                 |
       | Automation Permanent Award | Automation Permanent Award |
 
-  @progressReportHappyPath @smoke
+  @progressReportHappyPath
   Scenario: To approve Progress Report
     Given I delete the record "Automation Permanent Award" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c"
@@ -2145,4 +2145,73 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on "View" icon for "Approved" inside flex table with id "---amendment:-:amendmentRequestTableId---"
     When I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
-    Then I see status in Progress-bar is "Activated" and is "Green"
+    And I navigate to "Grants" tab
+    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Active Grants"
+    When I perform quick search for "Automation Award for Amendment Request" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I navigate to "Subawards" sub tab
+    When I perform quick search for "Amended" in "---subAwardStandAlone:-:subawardsTableId---" panel
+    And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    Then I see status in Progress-bar is "Amended" and is "Green"
+
+   @completeCloseout
+  Scenario: Closeout is submitted for approval
+     Given I login to "As a Grantor" app as "dynamicUser" user
+     And I navigate to "Grants" tab
+     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+     And I click toggle button to select "Active Grants"
+     When I perform quick search for "Automation Permanent Award" in "---closeout:-:grantsTableId---" panel
+     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---closeout:-:grantsTableId---"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
+    When I enter "Creation" values from "Closeout_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "Edit" :
+      | Responsibility   | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+    Given I click on "Send To Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I navigate to "Closeout" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---closeout:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---closeout:-:pendingTaskTableId---"
+    When I click on "Edit" in the page details
+    And I enter "Subrecipient fields" values from "Closeout_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Acknowledge" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I navigate to "Closeout" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---closeout:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---closeout:-:pendingTaskTableId---"
+    When I click on "Edit" in the page details
+    And I enter "Override" values from "Closeout_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I click on "Override" in the page details
+    And I click on "Submit for Approval" in the page details
+     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+     And I navigate to "Closeout" tab
+     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
+     And I "Approve" in approval decision
+     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+     And I navigate to "Closeout" tab
+     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
+     And I "Approve" in approval decision
+     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+     And I navigate to "Closeout" tab
+     When I navigate to "Project Period Closeouts" content inside "Closeouts" subheader on left panel
+     And I click toggle button to select "Completed Project Period Closeouts"
+     When I perform quick search for "Record Id" in "ProjectPeriodCloseoutGrantor" panel
+     When I click on "View" icon for "Record Id" inside flex table with id "ProjectPeriodCloseoutGrantor"
+     Then I see status in Progress-bar is "Completed" and is "green"
+
