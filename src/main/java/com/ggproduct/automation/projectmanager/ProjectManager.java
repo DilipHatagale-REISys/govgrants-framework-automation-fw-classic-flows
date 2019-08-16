@@ -30,41 +30,6 @@ public class ProjectManager extends ProjectWebServices {
 
     /******* "Key Methods with complete functionality" *****************/
 
-    /*
-     * Handles association of various related records
-     *
-     * @param recordName
-     * @param recordUniqueName
-     * @param buttonName
-     */
-    public void chooseRecordForAssociation(String buttonName, String flexTableId, String... recordUniqueValues) {
-        for (String recordUniqueValue : recordUniqueValues) {
-            EyeThink.saas().quickSearch().performModalSpecificQuickSearch(flexTableId, recordUniqueValue);
-            EyeThink.saas().mainPage().waitForNavigationLogoToDisappear();
-            EyeThink.core().WaitFor().makeThreadSleep(1000);
-            EyeThink.saas().flexTable().selectCheckBoxes(flexTableId, recordUniqueValue);
-        }
-        EyeThink.saas().phasePannel().clickAnyRightPannelButton(flexTableId, buttonName);
-    }
-
-    /**
-     * Handles entering the comments in a confirmation box and click OK
-     *
-     * @param comments
-     * @param confirmation
-     */
-    public void enteringCommentsOnConfirmation(String comments, String confirmation) {
-        EyeThink.core().findMyElement().getElement(By.xpath("//form[@class='bootbox-form']//textarea")).sendKeys(comments);
-        EyeThink.saas().modal().handleModalAlert(confirmation);
-    }
-
-    public void attemptDeletion(String columnValues, String tableId) {
-        try {
-            EyeThink.saas().flexTable().clickTableActionIcon(tableId, "Delete", columnValues);
-        } catch (Exception e) {
-        }
-    }
-
     /*handles to get the record id of a record */
     public void getRecordIdFromResponse(String objectType, String recordName, String objectApiName) {
         EyeThink.saas().pageDetails().idOfRecord = (automationBatchExecuteApi(objectType, recordName, objectApiName)).asString().replace("\"", "");
