@@ -902,6 +902,19 @@ Feature: Validate all scenarios in the home tab
 
 
 
+     @reassign @wip
+     Scenario Outline: The Reassign on the left Navigation allows the reassignment of tasks.
+       Given I login to "As a Grantor" app as "<User>" user
+       When I navigate to "Home" tab
+       And I navigate to "Reassign" content inside "My Tasks" subheader on left panel
+       When I reassign task to “Automation EXE"
+       Examples:
+         | User  |
+         | ADMIN |
+         | EXE   |
+         | PM    |
+
+
 
 
 
