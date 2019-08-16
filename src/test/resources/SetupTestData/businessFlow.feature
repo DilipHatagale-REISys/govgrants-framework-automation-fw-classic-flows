@@ -877,7 +877,7 @@ Feature: Validate all product Business Flow Test Cases
     When I click on "Submit Application" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementTableId---" with wait for record
@@ -906,7 +906,7 @@ Feature: Validate all product Business Flow Test Cases
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementTableId---"
@@ -972,7 +972,7 @@ Feature: Validate all product Business Flow Test Cases
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementTableId---"
@@ -1005,7 +1005,7 @@ Feature: Validate all product Business Flow Test Cases
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementTableId---"
@@ -1024,7 +1024,7 @@ Feature: Validate all product Business Flow Test Cases
     Given I delete the record "Autoamtion Announcement for Negotiations" from the object "FDM"
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
-    When I navigate to "Funding Decision Memo (FDM)" content inside "Application Review" subheader on left panel
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
     When I perform quick search for "Autoamtion Announcement for Negotiations" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
@@ -1050,7 +1050,7 @@ Feature: Validate all product Business Flow Test Cases
     When I click on "Start" icon for "Record Id" inside table
     When I click on "Complete Negotiation" in the page details
     And I navigate to "Applications" tab
-    When I navigate to "Completed Negotiations" content inside "Negotiations" subheader on left panel
+    When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     Then I can see row level action button "View" against "Autoamtion Announcement for Negotiations" in flex table with id "flexGridCompletedNegotiations"
 
   @subAwardFromFDM @mahadev
@@ -1060,7 +1060,7 @@ Feature: Validate all product Business Flow Test Cases
     And I delete the record "Automation Announcement for FDM" from the object "FDM"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
-    When I navigate to "Funding Decision Memo (FDM)" content inside "Application Review" subheader on left panel
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
     When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"

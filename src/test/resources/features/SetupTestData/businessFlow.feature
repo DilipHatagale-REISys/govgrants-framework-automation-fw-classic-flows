@@ -1042,12 +1042,12 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
 
-  @57220 @CompletedNegotiation
+  @57220 @completedNegotiation
   Scenario: validate whther user is able to view the completed Negotiation on left Navigation under Completed Negotiations
     Given I delete the record "Autoamtion Announcement for Negotiations" from the object "FDM"
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
-    When I navigate to "Funding Decision Memo (FDM)" content inside "Application Review" subheader on left panel
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Review" subheader on left panel
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
     When I perform quick search for "Autoamtion Announcement for Negotiations" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
@@ -1073,7 +1073,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click on "Start" icon for "Record Id" inside table
     When I click on "Complete Negotiation" in the page details
     And I navigate to "Applications" tab
-    When I navigate to "Completed Negotiations" content inside "Negotiations" subheader on left panel
+    When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     Then I can see row level action button "View" against "Autoamtion Announcement for Negotiations" in flex table with id "flexGridCompletedNegotiations"
 
   @awardHappyPathFromFDM @smoke
@@ -1083,7 +1083,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I delete the record "Automation Announcement for FDM" from the object "FDM"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
-    When I navigate to "Funding Decision Memo (FDM)" content inside "Application Review" subheader on left panel
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Review" subheader on left panel
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
     When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
@@ -1558,7 +1558,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Permanent Award | Automation Permanent Award |
-
 
   @51076 @scheduledReimbursementPaymentRequestHappyPath
   Scenario Outline: Scheduled Payment Request happy path
