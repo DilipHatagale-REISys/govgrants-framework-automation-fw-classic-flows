@@ -1030,6 +1030,8 @@ Feature: Validate all product Business Flow Test Cases
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I get the "EGMS ID"
+    And I navigate to "Negotiations" sub tab
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
@@ -1051,7 +1053,7 @@ Feature: Validate all product Business Flow Test Cases
     When I click on "Complete Negotiation" in the page details
     And I navigate to "Applications" tab
     When I navigate to "Completed Negotiations" content inside "Negotiations" subheader on left panel
-    Then I can see row level action button "View" against "Autoamtion Announcement for Negotiations" in flex table with id "flexGridCompletedNegotiations"
+    Then I see that "Negotiated" has been added in flextable with Id "flexGridCompletedNegotiations"
 
   @subAwardFromFDM @mahadev
   Scenario Outline: Validate award happy path
