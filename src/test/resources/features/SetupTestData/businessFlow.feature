@@ -2011,7 +2011,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     Given I navigate to "Related Log" sub tab
     When I perform quick search for "Record Id" in "DeskReview" panel
     And I click on "View" icon for "Record Id" inside table
-    And I navigate to "Report and Outcomes" sub tab
+    And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -2201,17 +2201,5 @@ Feature: The feature is only designed for ensuring all business flows are workin
      When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
      When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
      And I "Approve" in approval decision
-     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-     And I navigate to "Closeout" tab
-     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
-     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
-     And I "Approve" in approval decision
-     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-     And I navigate to "Closeout" tab
-     When I navigate to "Project Period Closeouts" content inside "Closeouts" subheader on left panel
-     And I click toggle button to select "Completed Project Period Closeouts"
-     When I perform quick search for "Record Id" in "ProjectPeriodCloseoutGrantor" panel
-     When I click on "View" icon for "Record Id" inside flex table with id "ProjectPeriodCloseoutGrantor"
-     Then I see status in Progress-bar is "Completed" and is "green"
+     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
