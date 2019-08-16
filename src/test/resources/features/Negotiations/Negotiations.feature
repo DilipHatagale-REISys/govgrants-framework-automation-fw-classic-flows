@@ -2,7 +2,6 @@
 Feature: Validate all scenarios in Negotiations
 
   Background: To setup data
-    Given I delete the record "Autoamtion Announcement for Negotiations" from the object "Negotiation"
     Given I delete the record "Autoamtion Announcement for Negotiations" from the object "FDM" 
 
   @57031 @initiateNegotiations @deepika
