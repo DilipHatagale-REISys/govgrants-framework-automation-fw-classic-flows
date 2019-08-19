@@ -23,7 +23,7 @@ public class setup {
     private TestSetupController userController;
     private static CSS report;
 
-    public setup(TestSetupController userController, GovGrantsHandler saasLayer) {
+    public setup(TestSetupController userController, GovGrantsHandler saasLayer,ProjectManager projectManager) {
         this.userController = userController;
         EyeThink.setRegister(AuthorizedProject.SAAS_GOVGRANTS_PRODUCT);
         InstanceRecording.recordInstance(GovGrantsHandler.class, saasLayer);
@@ -31,7 +31,7 @@ public class setup {
             this.report = new CSS();
             report.reportConfigWriteUp(System.getProperty("user.dir"),"GovGrants Product Test Automation");
         }
-        new ProjectManager().initData();
+        projectManager.initData();
     }
 
     @Before(order = 1)
