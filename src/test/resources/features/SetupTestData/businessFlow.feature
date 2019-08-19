@@ -44,7 +44,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
     When I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
-    And I click toggle button to select "Draft Key Performance Indicators (KPI)"
+    And I click toggle button to select "Key Performance Indicators (KPI) - Draft"
     And I click on top right button "New" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
     And I enter "Creation" values from "KPI_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -58,7 +58,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-    And I click toggle button to select "Draft Internal Programs"
+    And I click toggle button to select "Internal Programs - Draft"
     And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
     When I enter "Creation" values from "Program_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -115,7 +115,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-    And I click toggle button to select "Draft Internal Programs"
+    And I click toggle button to select "Internal Programs - Draft"
     When I perform quick search for "Record Id" in "---program:-:programsTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---program:-:programsTableId---"
     And I click on "Activate" in the page details
@@ -183,7 +183,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
-    When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     When I click toggle button to select "Draft Competitive Announcements"
     And I perform quick search for "Record Id" in "ActiveFundingOpportunitiesCompitive" panel
     And I click on "View" icon for "Record Id" inside flex table with id "ActiveFundingOpportunitiesCompitive"
@@ -335,7 +335,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Directed" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Draft Directed Announcements"
+    And I click toggle button to select "Directed Announcements - Draft"
     And I click on top right button "New" in flex table with id "ActiveFundingOpportunities"
     And I enter "DirectedAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
@@ -374,8 +374,8 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
-      | Executive Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
       | Program Approver   | Automation PM  | Automation Test Description |
     When I enter the following values into flex table with id "flexGridApproverRoles" by clicking "New" :
       | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
@@ -399,7 +399,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Directed" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Directed Announcements"
+    When I click toggle button to select "Directed Announcements - Draft"
     And I perform quick search for "Record Id" in "ActiveFundingOpportunities" panel
     And I click on "View" icon for "Record Id" inside flex table with id "ActiveFundingOpportunities"
     Given I click on "Complete Review" in the page details
@@ -552,19 +552,19 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Directed" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Directed Announcements"
+    When I click toggle button to select "Directed Announcements - Draft"
     And I perform quick search for "Record id" in "ActiveFundingOpportunities" panel
     When I click on "View" icon for "Record id" inside table
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
 
-  @publishingFormulaAnnouncementFA
-  Scenario Outline: Validate the activation of Formula Announcement
+  @publishingFormulaAnnouncement
+  Scenario: Validate the activation of Formula Announcement
     Given I delete the record "Automation Formula Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Draft Formula Announcements"
+    And I click toggle button to select "Formula Announcements - Draft"
     And I click on top right button "New" in flex table with id "ActiveFundingOpportunitiesFormula"
     And I enter "FormulaAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
@@ -621,7 +621,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Draft Formula Announcements"
+    And I click toggle button to select "Formula Announcements - Draft"
     When I perform quick search for "Automation Formula Announcement" in "ActiveFundingOpportunitiesFormula" panel
     And I click on "View" icon for "Automation Formula Announcement" inside table
     Given I click on "Complete Review" in the page details
@@ -768,14 +768,11 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Formula Announcements"
+    When I click toggle button to select "Formula Announcements - Draft"
     And I perform quick search for "Record Id" in "ActiveFundingOpportunitiesFormula" panel
     When I click on "View" icon for "Record id" inside table
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
-    Examples:
-      | User |
-      | EXE  |
 
   @preApplicationSubmittedToGrantorPendingTask
   Scenario: Validate Grantor accept the submitted pre-application
@@ -786,7 +783,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I am on "SUBPORTAL" portal
     And I login as "SPI" user
     When I navigate to "Opportunities" tab
-    And I navigate to "Active" content inside "Opportunities" subheader on left panel
+    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "Automation Announcement for Pre-Application" in "popupflextable" panel
     When I click on "View" icon for "Automation Announcement for Pre-Application" inside table
     When I click on "Qualify" in the page details
@@ -820,7 +817,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
-    When I navigate to "Active" content inside "Opportunities" subheader on left panel
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "Automation Announcement for Application Intake" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "Qualify" in the page details
@@ -858,7 +855,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
-    When I navigate to "Active" content inside "Opportunities" subheader on left panel
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "Automation Announcement for Application Review" in "---applicationReview:-:reviewsTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationReview:-:reviewsTableId---"
     When I click on "Qualify" in the page details

@@ -8,8 +8,8 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
   Scenario Outline: Creation of KPI
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
-    When I navigate to "Key Performance Indicators (KPI)" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Draft Key Performance Indicators (KPI)"
+    When I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Key Performance Indicators (KPI) - Draft"
     And I click on top right button "New" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
     And I enter "Creation" values from "KPI_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -24,8 +24,8 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
   Scenario Outline: Edition of KPI
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
-    When I navigate to "Key Performance Indicators (KPI)" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Draft Key Performance Indicators (KPI)"
+    When I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Key Performance Indicators (KPI) - Draft"
     And I click on top right button "New" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
     And I enter "Creation" values from "KPI_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -41,8 +41,8 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
   Scenario Outline: Addition of Attachment to KPI
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
-    When I navigate to "Key Performance Indicators (KPI)" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Draft Key Performance Indicators (KPI)"
+    When I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Key Performance Indicators (KPI) - Draft"
     And I click on top right button "New" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
     And I enter "Creation" values from "KPI_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -59,8 +59,8 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
   Scenario Outline: Happy Path of KPI
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
-    When I navigate to "Key Performance Indicators (KPI)" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Draft Key Performance Indicators (KPI)"
+    When I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Key Performance Indicators (KPI) - Draft"
     And I click on top right button "New" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
     And I enter "Creation" values from "KPI_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -80,7 +80,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     Given I am on "INTERNAL" portal
     Given I login as "PM" user
     When I navigate to "Planning" tab
-    And I navigate to "Key Performance Indicators (KPI)" content inside "Planning" subheader on left panel
+    And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
     Then  I cannot see top right button "New" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
 
   @52625 @userFOEditKPI @smoke
@@ -88,16 +88,16 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     Given I am on "INTERNAL" portal
     Given I login as "EXE" user
     When I navigate to "Planning" tab
-    And I navigate to "Key Performance Indicators (KPI)" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Draft Key Performance Indicators (KPI)"
+    And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Key Performance Indicators (KPI) - Draft"
     When I click on top right button "New" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
     When I enter "Creation" values from "KPI_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Planning" tab
-    And I navigate to "Key Performance Indicators (KPI)" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Draft Key Performance Indicators (KPI)" in "---keyperformanceindicator:-:kpiTableId---"
+    And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Key Performance Indicators (KPI) - Draft" in "---keyperformanceindicator:-:kpiTableId---"
     When I perform quick search for "Automation Execution KPI" in "---keyperformanceindicator:-:kpiTableId---" panel
     Then I cannot see row level action button "Edit" against "Automation Execution KPI" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
 
@@ -106,16 +106,16 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     Given I am on "INTERNAL" portal
     Given I login as "EXE" user
     When I navigate to "Planning" tab
-    And I navigate to "Key Performance Indicators (KPI)" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Draft Key Performance Indicators (KPI)"
+    And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Key Performance Indicators (KPI) - Draft"
     When I click on top right button "New" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
     When I enter "Creation" values from "KPI_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Planning" tab
-    And I navigate to "Key Performance Indicators (KPI)" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Draft Key Performance Indicators (KPI)" in "---keyperformanceindicator:-:kpiTableId---"
+    And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Key Performance Indicators (KPI) - Draft" in "---keyperformanceindicator:-:kpiTableId---"
     When I perform quick search for "Automation Execution KPI" in "---keyperformanceindicator:-:kpiTableId---" panel
     Then I cannot see row level action button "Delete" against "Automation Execution KPI" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
 
@@ -124,8 +124,8 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     Given I am on "INTERNAL" portal
     Given I login as "<User>" user
     When I navigate to "Planning" tab
-    And I navigate to "Key Performance Indicators (KPI)" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Draft Key Performance Indicators (KPI)"
+    And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Key Performance Indicators (KPI) - Draft"
     When I click on top right button "New" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
     When I enter "Creation" values from "KPI_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -143,8 +143,8 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     Given I am on "INTERNAL" portal
     Given I login as "<User>" user
     When I navigate to "Planning" tab
-    And I navigate to "Key Performance Indicators (KPI)" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Draft Key Performance Indicators (KPI)"
+    And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Key Performance Indicators (KPI) - Draft"
     When I click on top right button "New" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
     When I enter "Creation" values from "KPI_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -152,8 +152,8 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     When I click on "Activate" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Planning" tab
-    And I navigate to "Key Performance Indicators (KPI)" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Active Key Performance Indicators (KPI)"
+    And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Key Performance Indicators (KPI) -Active"
     When I perform quick search for "Automation Execution KPI" in "---keyperformanceindicator:-:kpiTableId---" panel
     And I click on "View" icon for "Automation Execution KPI" inside table
     Then I cannot see top right button "Deactivate" in page detail
@@ -166,8 +166,8 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     Given I am on "INTERNAL" portal
     Given I login as "EXE" user
     When I navigate to "Planning" tab
-    And I navigate to "Key Performance Indicators (KPI)" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Draft Key Performance Indicators (KPI)"
+    And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Key Performance Indicators (KPI) - Draft"
     When I click on top right button "New" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
     When I enter "Creation" values from "KPI_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -175,8 +175,8 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     When I click on "Activate" in the page details
     And I click on "Deactivate" in the page details
     When I navigate to "Planning" tab
-    And I navigate to "Key Performance Indicators (KPI)" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Inactive Key Performance Indicators (KPI)"
+    And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Key Performance Indicators (KPI) - Inactive"
     When I perform quick search for "Automation Execution KPI" in "---keyperformanceindicator:-:kpiTableId---" panel
     And I click on "View" icon for "Automation Execution KPI" inside table
     Then I see status in Progress-bar is "Inactive" and is "Green"

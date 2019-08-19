@@ -897,10 +897,7 @@ Feature: Validate all scenarios in the home tab
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Home" tab
-    Then I see task count for "Planning" phase with the total records of flex table id "1"
-
-
-
+    Then I see task count for "Planning" phase with the total records of flex table id "PhasePendingTasks"
 
      @reassign @wip
      Scenario Outline: The Reassign on the left Navigation allows the reassignment of tasks.
