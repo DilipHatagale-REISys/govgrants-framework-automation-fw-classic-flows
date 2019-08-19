@@ -6,7 +6,7 @@ Feature: Validate all scenarios for program
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-    And I click toggle button to select "Draft Internal Programs"
+    And I click toggle button to select "Internal Programs - Draft"
     And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
     When I enter "Creation" values from "Program_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -22,7 +22,7 @@ Feature: Validate all scenarios for program
     Then I see that "<Program>" has been added in flextable with Id "---program:-:programsTableId---"
     Examples:
       | Program flextable Header | Program                               |
-      | Draft Internal Programs  | Automation Execution Internal Program |
+      | Internal Programs - Draft  | Automation Execution Internal Program |
 
   @34503 @programCreation @smoke
   Scenario: Verifying if the EXE, PM, PO has create access to Internal Program
@@ -230,13 +230,13 @@ Feature: Validate all scenarios for program
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-    And I click toggle button to select "Draft Internal Programs"
+    And I click toggle button to select "Internal Programs - Draft"
     When I perform quick search for "<Program Name>" in "---program:-:programsTableId---" panel
     And I click on "View" icon for "<Program Name>" inside flex table with id "---program:-:programsTableId---"
     And I click on "Activate" in the page details
     When I navigate to "Planning" tab
-    When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Active Focus Area"
+    When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Focus Area - Active"
     And I perform quick search for "<Focus Area>" in "---focusarea:-:focusAreaTableId---" panel
     When I click on "View" icon for "<Focus Area>" inside flex table with id "---focusarea:-:focusAreaTableId---"
     And I navigate to "Related Log" sub tab
@@ -261,8 +261,8 @@ Feature: Validate all scenarios for program
     When I click "Add" after selection of "<Focus Area>" in the table "---program:-:associateFocusAreaTableId---"
     And I switch to Parent iframe
     When I navigate to "Planning" tab
-    When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Active Focus Area"
+    When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Focus Area - Active"
     And I perform quick search for "<Focus Area>" in "---focusarea:-:focusAreaTableId---" panel
     When I click on "View" icon for "<Focus Area>" inside flex table with id "---focusarea:-:focusAreaTableId---"
     And I navigate to "Related Log" sub tab
@@ -315,13 +315,13 @@ Feature: Validate all scenarios for program
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-    And I click toggle button to select "Draft Internal Programs"
+    And I click toggle button to select "Internal Programs - Draft"
     When I perform quick search for "<Program Name>" in "---program:-:programsTableId---" panel
     And I click on "View" icon for "<Program Name>" inside flex table with id "---program:-:programsTableId---"
     And I click on "Activate" in the page details
     When I navigate to "Planning" tab
-    When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Active Focus Area"
+    When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Focus Area - Active"
     And I perform quick search for "<Focus Area>" in "---focusarea:-:focusAreaTableId---" panel
     When I click on "View" icon for "<Focus Area>" inside flex table with id "---focusarea:-:focusAreaTableId---"
     And I navigate to "Related Log" sub tab

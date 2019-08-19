@@ -1,6 +1,7 @@
 package com.ggproduct.automation.projectmanager;
 
 import eyethink.automation.bots.Register.EyeThink;
+import eyethink.automation.bots.controller.EnvironmentFetcher;
 import eyethink.automation.bots.corelib.Emails;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -9,8 +10,11 @@ import org.springframework.context.annotation.Description;
 
 import javax.mail.MessagingException;
 import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 
 /**
@@ -29,41 +33,6 @@ public class ProjectManager extends ProjectWebServices {
      ***/
 
     /******* "Key Methods with complete functionality" *****************/
-
-    /*
-     * Handles association of various related records
-     *
-     * @param recordName
-     * @param recordUniqueName
-     * @param buttonName
-     */
-    public void chooseRecordForAssociation(String buttonName, String flexTableId, String... recordUniqueValues) {
-        for (String recordUniqueValue : recordUniqueValues) {
-            EyeThink.saas().quickSearch().performModalSpecificQuickSearch(flexTableId, recordUniqueValue);
-            EyeThink.saas().mainPage().waitForNavigationLogoToDisappear();
-            EyeThink.core().WaitFor().makeThreadSleep(1000);
-            EyeThink.saas().flexTable().selectCheckBoxes(flexTableId, recordUniqueValue);
-        }
-        EyeThink.saas().phasePannel().clickAnyRightPannelButton(flexTableId, buttonName);
-    }
-
-    /**
-     * Handles entering the comments in a confirmation box and click OK
-     *
-     * @param comments
-     * @param confirmation
-     */
-    public void enteringCommentsOnConfirmation(String comments, String confirmation) {
-        EyeThink.core().findMyElement().getElement(By.xpath("//form[@class='bootbox-form']//textarea")).sendKeys(comments);
-        EyeThink.saas().modal().handleModalAlert(confirmation);
-    }
-
-    public void attemptDeletion(String columnValues, String tableId) {
-        try {
-            EyeThink.saas().flexTable().clickTableActionIcon(tableId, "Delete", columnValues);
-        } catch (Exception e) {
-        }
-    }
 
     /*handles to get the record id of a record */
     public void getRecordIdFromResponse(String objectType, String recordName, String objectApiName) {
@@ -280,5 +249,31 @@ public class ProjectManager extends ProjectWebServices {
      */
     public String getFieldValueFromAPI(String recordName, String fieldName, String objectType,String outputFieldName ){
         return automateGetApi(recordName,fieldName,objectType,outputFieldName).asString().replaceAll("\"","");
+    }
+
+    /**
+     *  Initialise the data based on environment
+     */
+    public void initData() {
+        Properties p = new Properties();
+        if (null != EnvironmentFetcher.environmentName && !"".equalsIgnoreCase(EnvironmentFetcher.environmentName) && EnvironmentFetcher.environmentName.equalsIgnoreCase("QA")) {
+            try {
+                p.load(this.getClass().getResourceAsStream("/properties/QAEnvData.properties"));
+            } catch (IOException e) {
+
+            }
+        } else {
+            try {
+                p.load(this.getClass().getResourceAsStream("/properties/AUTOEnvData.properties"));
+            } catch (IOException e) {
+
+            }
+        }
+
+        Iterator i = p.keySet().iterator();
+        while (i.hasNext()) {
+            String currentKey = i.next().toString();
+            EyeThink.core().Properties().saveValue(currentKey, p.getProperty(currentKey));
+        }
     }
 }

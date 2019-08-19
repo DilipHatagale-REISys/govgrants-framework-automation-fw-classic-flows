@@ -8,7 +8,7 @@ Feature: Validate all scenarios in Funding Source
   Scenario: Creation of Funding Source
     When I login to "As a Grantor" app as "EXE" user
     When I navigate to "Planning" tab
-    When I navigate to "Funding Sources" content inside "Planning" subheader on left panel
+    When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
     When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -19,7 +19,7 @@ Feature: Validate all scenarios in Funding Source
   Scenario: Edition of Funding Source
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
-    When I navigate to "Funding Sources" content inside "Planning" subheader on left panel
+    When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
     When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -31,7 +31,7 @@ Feature: Validate all scenarios in Funding Source
   Scenario: Addition of Attachment to Funding Source
     When I login to "As a Grantor" app as "EXE" user
     When I navigate to "Planning" tab
-    When I navigate to "Funding Sources" content inside "Planning" subheader on left panel
+    When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
     When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -45,7 +45,7 @@ Feature: Validate all scenarios in Funding Source
   Scenario: Creation of Funding Account
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
-    When I navigate to "Funding Sources" content inside "Planning" subheader on left panel
+    When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
     When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -61,7 +61,7 @@ Feature: Validate all scenarios in Funding Source
   Scenario: Edition of Funding Account
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
-    When I navigate to "Funding Sources" content inside "Planning" subheader on left panel
+    When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
     When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -78,7 +78,7 @@ Feature: Validate all scenarios in Funding Source
   Scenario: Activation of Funding Source
     Given I login to "As a Grantor" app as "EXE" user
     When I navigate to "Planning" tab
-    When I navigate to "Funding Sources" content inside "Planning" subheader on left panel
+    When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
     When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -97,7 +97,7 @@ Feature: Validate all scenarios in Funding Source
     When I am on "INTERNAL" portal
     When I login as "<User>" user
     When I navigate to "Planning" tab
-    And I navigate to "Funding Sources" content inside "Planning" subheader on left panel
+    And I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     Then  I cannot see top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
     Examples:
       | User |
@@ -108,8 +108,8 @@ Feature: Validate all scenarios in Funding Source
     When I am on "INTERNAL" portal
     When I login as "EXE" user
     When I navigate to "Planning" tab
-    And I navigate to "Funding Sources" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Draft Internal Funding Sources"
+    And I navigate to "Funding Sources" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Internal Funding Sources - Draft"
     When I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
     When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -127,9 +127,10 @@ Feature: Validate all scenarios in Funding Source
 
   @52663 @deactivateFundingSourcePMUser @smoke
   Scenario: Verify that  PM user can  deactivate  Funding Source
+    Given I am on "INTERNAL" portal
     When I login to "As a Grantor" app as "EXE" user
     When I navigate to "Planning" tab
-    When I navigate to "Funding Sources" content inside "Planning" subheader on left panel
+    When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
     When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -146,8 +147,8 @@ Feature: Validate all scenarios in Funding Source
     And I click on "Activate" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Planning" tab
-    And I navigate to "Funding Sources" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Active Internal Funding Sources"
+    And I navigate to "Funding Sources" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Internal Funding Sources - Active"
     When I perform quick search for "Automation Execution Funding Source" in "---fundingsource:-:fundingSourceTableId---" panel
     And I click on "View" icon for "Automation Execution Funding Source" inside table
     Then I cannot see top right button "Deactivate" in page detail
@@ -157,8 +158,8 @@ Feature: Validate all scenarios in Funding Source
     When I am on "INTERNAL" portal
     When I login as "EXE" user
     When I navigate to "Planning" tab
-    And I navigate to "Funding Sources" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Draft Internal Funding Sources"
+    And I navigate to "Funding Sources" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Internal Funding Sources - Draft"
     When I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
     When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -175,14 +176,14 @@ Feature: Validate all scenarios in Funding Source
     And I click on "Activate" in the page details
     When I click on "Deactivate" in the page details
     When I navigate to "Planning" tab
-    And I navigate to "Funding Sources" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Closed Internal Funding Sources"
+    And I navigate to "Funding Sources" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Internal Funding Sources -Closed"
     When I perform quick search for "<Funding Source>" in "---fundingsource:-:fundingSourceTableId---" panel
     And I click on "View" icon for "<Funding Source>" inside table
     When I click on "View" icon for "Closed" inside flex table with id "---fundingsource:-:fundingAccountTableId---"
     And I click on "Activate" in the page details
-    And I navigate to "Funding Sources" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Active Internal Funding Sources"
+    And I navigate to "Funding Sources" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Internal Funding Sources - Active"
     When I perform quick search for "<Funding Source>" in "---fundingsource:-:fundingSourceTableId---" panel
     And I click on "View" icon for "<Funding Source>" inside table
     Then I see status in Progress-bar is "Active" and is "Green"
