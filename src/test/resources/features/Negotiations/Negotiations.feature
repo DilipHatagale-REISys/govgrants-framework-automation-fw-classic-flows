@@ -14,6 +14,7 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I get the "EGMS ID"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I can see "Negotiations" sub tab at view detail page
@@ -28,6 +29,7 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I get the "EGMS ID"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
@@ -43,13 +45,14 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I get the "EGMS ID"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I enter values into fields
       | Value                              | Field                |
@@ -67,13 +70,14 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I get the "EGMS ID"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I enter values into fields
       | Value                              | Field                |
@@ -83,7 +87,7 @@ Feature: Validate all scenarios in Negotiations
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:phasePendingTasksTableId---" panel
     When I click on "Start" icon for "Record Id" inside table
     When I click on "Complete Negotiation" in the page details
     Then I see status in Progress-bar is "Negotiated" and is "green"
@@ -98,14 +102,15 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I get the "EGMS ID"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
-    Then I see that "Negotiation Request" has been added in flextable with Id "PendingTasks"
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
+    Then I see that "Negotiation Request" has been added in flextable with Id "---negotiation:-:homePendingTasks---"
 
   @57036 @negotiationIconAfterFDMApproved @deepika
   Scenario: Validate the Applicants will be able to view Negotiation Icon after FDM Approved
@@ -127,13 +132,14 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I get the "EGMS ID"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I enter values into fields
       | Value                              | Field                |
@@ -143,8 +149,8 @@ Feature: Validate all scenarios in Negotiations
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    Then I see that "Review Negotiation" has been added in flextable with Id "PhasePendingTasks"
+    And I perform quick search for "Record Id" in "---negotiation:-:phasePendingTasksTableId---" panel
+    Then I see that "Review Negotiation" has been added in flextable with Id "---negotiation:-:phasePendingTasksTableId---"
 
   @57038 @sendBackToSubrecipientForFurtherChanges @deepika
   Scenario: Validate whether the users will be able to select Send Back to Subrecipient for further changes
@@ -156,13 +162,14 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I get the "EGMS ID"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I enter values into fields
       | Value                              | Field                |
@@ -172,7 +179,7 @@ Feature: Validate all scenarios in Negotiations
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:phasePendingTasksTableId---" panel
     When I click on "Start" icon for "Record Id" inside table
     When I click on "Send to Subrecipient" in the page details
     Then I see status in Progress-bar is "Negotiation Initiated" and is "green"
@@ -187,13 +194,14 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I get the "EGMS ID"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I enter values into fields
       | Value                              | Field                |
@@ -203,7 +211,7 @@ Feature: Validate all scenarios in Negotiations
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:phasePendingTasksTableId---" panel
     When I click on "Start" icon for "Record Id" inside table
     When I click on "Complete Negotiation" in the page details
     Then I can see top right button "Create Subaward" in page detail
@@ -236,13 +244,14 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I get the "EGMS ID"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I enter values into fields
       | Value                              | Field                |
@@ -262,13 +271,14 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I get the "EGMS ID"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I enter values into fields
       | Value                              | Field                |
@@ -278,12 +288,12 @@ Feature: Validate all scenarios in Negotiations
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:phasePendingTasksTableId---" panel
     When I click on "Start" icon for "Record Id" inside table
     When I click on "Complete Negotiation" in the page details
     And I navigate to "Applications" tab
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
-    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "flexGridCompletedNegotiations"
+    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationCompletedTaskTableId---"
     Then I can see top right button "Create Subaward" in page detail
 
   @57217 @createNegotiationButtonAfterNegotiationComplete @deepika
@@ -296,13 +306,14 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I get the "EGMS ID"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I enter values into fields
       | Value                              | Field                |
@@ -312,7 +323,7 @@ Feature: Validate all scenarios in Negotiations
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:phasePendingTasksTableId---" panel
     When I click on "Start" icon for "Record Id" inside table
     When I click on "Complete Negotiation" in the page details
     And I navigate to "Applications" tab
@@ -333,14 +344,15 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I get the "EGMS ID"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
-    Then I can see row level action button "Start" against "Negotiation Request" in flex table with id "PendingTasks"
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
+    Then I can see row level action button "Start" against "Negotiation Request" in flex table with id "---negotiation:-:homePendingTasks---"
 
   @57219 @applicantEditNegotiationRequest @deepika
   Scenario: Applicant will be able to edit the respective application section(s) that the Agency mentioned in the Negotiation Request
@@ -352,13 +364,14 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I get the "EGMS ID"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside table
     When I click on "Save" in the page details
     Then I see the following messages in the page details :
@@ -374,6 +387,7 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I get the "EGMS ID"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I refresh the page
@@ -389,13 +403,14 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I get the "EGMS ID"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I enter values into fields
       | Value                              | Field                |
@@ -405,12 +420,12 @@ Feature: Validate all scenarios in Negotiations
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:phasePendingTasksTableId---" panel
     When I click on "Start" icon for "Record Id" inside table
     When I click on "Complete Negotiation" in the page details
     And I navigate to "Applications" tab
     And I click toggle button to select "All Applications"
-    When I perform quick search for "Autoamtion Announcement for Negotiations" in "AppReviewList" panel
+    When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
     Then I see values "Autoamtion Announcement for Negotiations" and "Negotiated" inside table
 
   @57492 @createSubawardButtonOnCompletedNegotiationfromApplicationsTab @deepika
@@ -423,13 +438,14 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I get the "EGMS ID"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I enter values into fields
       | Value                              | Field                |
@@ -439,13 +455,13 @@ Feature: Validate all scenarios in Negotiations
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:phasePendingTasksTableId---" panel
     When I click on "Start" icon for "Record Id" inside table
     When I click on "Complete Negotiation" in the page details
     And I navigate to "Applications" tab
     And I click toggle button to select "All Applications"
-    When I perform quick search for "Autoamtion Announcement for Negotiations" in "AppReviewList" panel
-    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "AppReviewList"
+    When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
+    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     And I refresh the page
     Then I can see top right button "Create Subaward" in page detail
 
@@ -455,8 +471,8 @@ Feature: Validate all scenarios in Negotiations
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
     And I click toggle button to select "All Applications"
-    When I perform quick search for "Autoamtion Announcement for Negotiations" in "AppReviewList" panel
-    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "AppReviewList"
+    When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
+    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     And I refresh the page
     Then I can see top right button "Initiate Negotiation" in page detail
 
@@ -466,10 +482,11 @@ Feature: Validate all scenarios in Negotiations
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
     And I click toggle button to select "All Applications"
-    When I perform quick search for "Autoamtion Announcement for Negotiations" in "AppReviewList" panel
-    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "AppReviewList"
+    When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
+    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     When I click on "Initiate Negotiation" in the page details
     And I get the "EGMS ID"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I can see "Negotiations" sub tab at view detail page
@@ -480,10 +497,11 @@ Feature: Validate all scenarios in Negotiations
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
     And I click toggle button to select "All Applications"
-    When I perform quick search for "Autoamtion Announcement for Negotiations" in "AppReviewList" panel
-    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "AppReviewList"
+    When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
+    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     When I click on "Initiate Negotiation" in the page details
     And I get the "EGMS ID"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I can see top right button "Edit Negotiation" in page detail
@@ -494,10 +512,11 @@ Feature: Validate all scenarios in Negotiations
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
     And I click toggle button to select "All Applications"
-    When I perform quick search for "Autoamtion Announcement for Negotiations" in "AppReviewList" panel
-    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "AppReviewList"
+    When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
+    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     When I click on "Initiate Negotiation" in the page details
     And I get the "EGMS ID"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
@@ -510,10 +529,11 @@ Feature: Validate all scenarios in Negotiations
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
     And I click toggle button to select "All Applications"
-    When I perform quick search for "Autoamtion Announcement for Negotiations" in "AppReviewList" panel
-    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "AppReviewList"
+    When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
+    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     When I click on "Initiate Negotiation" in the page details
     And I get the "EGMS ID"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
@@ -526,17 +546,18 @@ Feature: Validate all scenarios in Negotiations
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
     And I click toggle button to select "All Applications"
-    When I perform quick search for "Autoamtion Announcement for Negotiations" in "AppReviewList" panel
-    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "AppReviewList"
+    When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
+    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     When I click on "Initiate Negotiation" in the page details
     And I get the "EGMS ID"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I enter values into fields
       | Value                              | Field                |
@@ -550,17 +571,18 @@ Feature: Validate all scenarios in Negotiations
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
     And I click toggle button to select "All Applications"
-    When I perform quick search for "Autoamtion Announcement for Negotiations" in "AppReviewList" panel
-    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "AppReviewList"
+    When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
+    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "negotiation:-:negotiationAppReviewListTableId---"
     When I click on "Initiate Negotiation" in the page details
     And I get the "EGMS ID"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I enter values into fields
       | Value                              | Field                |
@@ -579,15 +601,16 @@ Feature: Validate all scenarios in Negotiations
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
     And I click toggle button to select "All Applications"
-    When I perform quick search for "Autoamtion Announcement for Negotiations" in "AppReviewList" panel
-    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "AppReviewList"
+    When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
+    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     When I click on "Initiate Negotiation" in the page details
     And I get the "EGMS ID"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
-    Then I can see row level action button "View" against "Autoamtion Announcement for Negotiations" in flex table with id "flexGridPendingNegotiations"
+    Then I can see row level action button "View" against "Autoamtion Announcement for Negotiations" in flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
 
   @57503 @subrecipientCannotEditNegotiationRequestOnceSubmitToGrantor
   Scenario: Validate whether Subrecipient user can edit Negotiations Details once Submit to Grantor
@@ -599,13 +622,14 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I get the "EGMS ID"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I enter values into fields
       | Value                              | Field                |
@@ -625,13 +649,14 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I get the "EGMS ID"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I enter values into fields
       | Value                              | Field                |
@@ -641,7 +666,7 @@ Feature: Validate all scenarios in Negotiations
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:phasePendingTasksTableId---" panel
     When I click on "Start" icon for "Record Id" inside table
     When I click on "Edit Negotiation" in the page details
     And I enter values into fields
@@ -662,19 +687,20 @@ Feature: Validate all scenarios in Negotiations
       And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
       When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
       And I get the "EGMS ID"
+      When I clear the value from field "ApplicationSectionsForRevision__c"
       When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
       When I click on "Save" in the page details
       When I click on "Send to Subrecipient" in the page details
       When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
       And I navigate to "Home" tab
       When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-      And I perform quick search for "Record Id" in "PendingTasks" panel
+      And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
       When I click on "Start" icon for "Record Id" inside table
       When I click on "Save" in the page details
       When I click on "Submit to Grantor" in the page details
       Then I see the following messages in the page details :
         | Negotiation Tab - Provide details in the Applicant Response section. |
-        
+
     @57839 @pendingNegotiationsViewinTable
     Scenario: Validate whether users will view the Negiation Intiated inside Pending Negotaitions Table
     Given I login to "As a Grantor" app as "dynamicUser" user
@@ -685,13 +711,14 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I get the "EGMS ID"
+      When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I enter values into fields
       | Value                              | Field                |
@@ -701,10 +728,10 @@ Feature: Validate all scenarios in Negotiations
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
-    And I perform quick search for "Record Id" in "flexGridPendingNegotiations" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:negotiationPendingTaskTableId---" panel
     And I expand nested table containing column value "Negotiation Initiated"
     Then I see values "Automation Negotiation Iniatiation" and "Submitted" inside table
-    
+
     @57840 @SendToSubrecipientAfterSubmittingToGrantor
     Scenario: Validate whether users able to Send to Subrecipient after Submit to Grantor for adjustments
     Given I login to "As a Grantor" app as "dynamicUser" user
@@ -715,13 +742,14 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I get the "EGMS ID"
+      When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I enter values into fields
       | Value                              | Field                |
@@ -731,7 +759,7 @@ Feature: Validate all scenarios in Negotiations
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:phasePendingTasksTableId---" panel
     When I click on "Start" icon for "Record Id" inside table
     When I click on "Edit Negotiation" in the page details
     And I enter values into fields
@@ -769,7 +797,7 @@ Feature: Validate all scenarios in Negotiations
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I enter values into fields
       | Value                              | Field                |
@@ -779,12 +807,12 @@ Feature: Validate all scenarios in Negotiations
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:phasePendingTasksTableId---" panel
     When I click on "Start" icon for "Record Id" inside table
     When I click on "Complete Negotiation" in the page details
     And I navigate to "Applications" tab
     And I click toggle button to select "All Applications"
-    When I perform quick search for "Autoamtion Announcement for Negotiations" in "AppReviewList" panel
+    When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
     Then I see values "Autoamtion Announcement for Negotiations" and "Negotiated" inside table
 
   @58031 @applicationStatusReviewedAfterIntiationofNegotiation @deepika
@@ -793,16 +821,16 @@ Feature: Validate all scenarios in Negotiations
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
     And I click toggle button to select "All Applications"
-    When I perform quick search for "Autoamtion Announcement for Negotiations" in "AppReviewList" panel
-    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "AppReviewList"
+    When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
+    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     When I click on "Initiate Negotiation" in the page details
     And I get the "EGMS ID"
     When I click on "Save" in the page details
    And I navigate to "Applications" tab
    When I navigate to "Applications" content inside "Applications" subheader on left panel
    And I click toggle button to select "All Applications"
-   When I perform quick search for "Autoamtion Announcement for Negotiations" in "AppReviewList" panel
-   And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "AppReviewList"
+   When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
+   And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
    Then I see that "Autoamtion Announcement for Negotiations" is in "Reviewed" status
 
  @58032 @pendingNegotiationRequestUnderCompletedNegotiations @deepika
@@ -820,7 +848,7 @@ Feature: Validate all scenarios in Negotiations
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I enter values into fields
       | Value                              | Field                |
@@ -830,7 +858,7 @@ Feature: Validate all scenarios in Negotiations
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
-    And I perform quick search for "Record Id" in "flexGridCompletedNegotiations" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:negotiationCompletedTaskTableId---" panel
     Then I do not see values "Record Id" and "Autoamtion Announcement for Negotiations" inside table
 
   @58034 @userCannotSeeIntiationButtonAfterIntiated @deepika
@@ -865,7 +893,7 @@ Feature: Validate all scenarios in Negotiations
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
-    And I perform quick search for "Record Id" in "flexGridPendingNegotiations" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:negotiationPendingTaskTableId---" panel
     Then I cannot see top right button "Send to Subrecipient" in page detail
 
     
