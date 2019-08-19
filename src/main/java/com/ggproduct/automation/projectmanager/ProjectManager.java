@@ -1,6 +1,7 @@
 package com.ggproduct.automation.projectmanager;
 
 import eyethink.automation.bots.Register.EyeThink;
+import eyethink.automation.bots.controller.EnvironmentFetcher;
 import eyethink.automation.bots.corelib.Emails;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -289,9 +290,8 @@ public class ProjectManager extends ProjectWebServices {
      *  Initialise the data based on environment
      */
     public void initData() {
-        String env = System.getProperty("env");
         Properties p = new Properties();
-        if (null != env && !"".equalsIgnoreCase(env) && env.equalsIgnoreCase("QA")) {
+        if (null != EnvironmentFetcher.environmentName && !"".equalsIgnoreCase(EnvironmentFetcher.environmentName) && EnvironmentFetcher.environmentName.equalsIgnoreCase("QA")) {
             try {
                 p.load(this.getClass().getResourceAsStream("/properties/QAEnvData.properties"));
             } catch (IOException e) {
