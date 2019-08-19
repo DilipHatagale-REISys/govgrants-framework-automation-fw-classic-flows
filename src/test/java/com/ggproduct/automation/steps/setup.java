@@ -31,12 +31,12 @@ public class setup {
             this.report = new CSS();
             report.reportConfigWriteUp(System.getProperty("user.dir"),"GovGrants Product Test Automation");
         }
+        new ProjectManager().initData();
     }
 
     @Before(order = 1)
     public void setUpUsers() throws IOException, AWTException {
         userController.usersController(new UsersAndURL());
-        new ProjectManager().initData();
     }
 
 
