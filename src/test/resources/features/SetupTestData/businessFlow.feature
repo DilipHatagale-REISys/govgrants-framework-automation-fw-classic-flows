@@ -170,7 +170,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record id" in "PhasePendingTasks" panel
+    When I perform quick search for "Record id" in "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---" panel
     And I click on "Start" icon for "Record id" inside table
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
@@ -181,6 +181,9 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click modal button "Save"
     And I click modal button "Submit Review"
     And I close Modal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -305,20 +308,20 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---"
     And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---"
     And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---"
     And I "Approve" in approval decision
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
@@ -385,7 +388,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record id" in "PhasePendingTasks" panel
+    When I perform quick search for "Record id" in "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---" panel
     And I click on "Start" icon for "Record id" inside table
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
@@ -534,20 +537,20 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---"
     And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---"
     And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---"
     And I "Approve" in approval decision
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
@@ -607,7 +610,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record id" in "PhasePendingTasks" panel
+    When I perform quick search for "Record id" in "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---" panel
     And I click on "Start" icon for "Record id" inside table
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
@@ -750,20 +753,20 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---"
     And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---"
     And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---"
     And I "Approve" in approval decision
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
@@ -1034,19 +1037,21 @@ Feature: The feature is only designed for ensuring all business flows are workin
     Given I delete the record "Autoamtion Announcement for Negotiations" from the object "FDM"
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
-    When I navigate to "Funding Decision Memo (FDM)" content inside "Application Review" subheader on left panel
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
     When I perform quick search for "Autoamtion Announcement for Negotiations" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I get the "EGMS ID"
+    And I navigate to "Negotiations" sub tab
+    When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I enter values into fields
       | Value                              | Field                |
@@ -1056,12 +1061,13 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:phasePendingTasksTableId---" panel
     When I click on "Start" icon for "Record Id" inside table
     When I click on "Complete Negotiation" in the page details
     And I navigate to "Applications" tab
-    When I navigate to "Completed Negotiations" content inside "Negotiations" subheader on left panel
-    Then I can see row level action button "View" against "Autoamtion Announcement for Negotiations" in flex table with id "flexGridCompletedNegotiations"
+    When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
+    Then I can see row level action button "View" against "Autoamtion Announcement for Negotiations" in flex table with id "---negotiation:-:negotiationCompletedTaskTableId---"
+
 
   @awardHappyPathFromFDM @smoke
   Scenario Outline: Validate award happy path
@@ -1070,7 +1076,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I delete the record "Automation Announcement for FDM" from the object "FDM"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
-    When I navigate to "Funding Decision Memo (FDM)" content inside "Application Review" subheader on left panel
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Review" subheader on left panel
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
     When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
@@ -1396,7 +1402,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Active Grants"
+    And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Permanent Award" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
     When I navigate to "Subawards" sub tab
@@ -1417,7 +1423,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Active Grants"
+    And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
@@ -1452,7 +1458,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Active Grants"
+    And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Permanent Award" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
     When I navigate to "Subawards" sub tab
@@ -1473,7 +1479,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Active Grants"
+    And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
@@ -1498,7 +1504,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Active Grants"
+    And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
     When I navigate to "Subawards" sub tab
@@ -1519,7 +1525,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Active Grants"
+    And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
@@ -1545,7 +1551,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Permanent Award | Automation Permanent Award |
-
 
   @scheduledReimbursementPaymentRequestHappyPath
   Scenario Outline: Scheduled Payment Request happy path
@@ -1573,7 +1578,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Active Grants"
+    And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
@@ -1655,7 +1660,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Active Grants"
+    And I click toggle button to select "Grants - Active"
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
@@ -1679,19 +1684,20 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I refresh the page
+    And I pause execution
     And I click on "Notify" in the page details
-    When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
     When I login as "SPI" user
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
     And I click on "View" icon for "Record Id" inside table
+    When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---sitevisits:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
@@ -1706,14 +1712,14 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1724,7 +1730,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------" panel
     And I click on "Start" icon for "Record Id" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
@@ -1759,7 +1765,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Active Grants"
+    And I click toggle button to select "Grants - Active"
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
@@ -1788,8 +1794,8 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I login as "SPI" user
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
@@ -1811,14 +1817,14 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1829,7 +1835,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------" panel
     And I click on "Start" icon for "Record Id" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
@@ -1882,7 +1888,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
-    When I click "Add" after selection of "Automation Application" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I click "Add" after selection of "Autoamtion Announcement for Negotiations" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
@@ -1890,7 +1896,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside table
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Home" tab
@@ -1916,14 +1922,14 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record Id" in "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Home" tab
@@ -1937,7 +1943,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I perform quick search for "Record Id" in "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
@@ -1959,7 +1965,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I perform quick search for "Record Id" in "---negotiation:-:phase---negotiation:-:homePendingTasks---TableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     And I click on "Accept And Close" in the page details
     Then I see status in Progress-bar is "Closed" and is "green"
@@ -1998,7 +2004,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside table
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Home" tab
@@ -2046,7 +2052,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
-    When I navigate to "Report and Outcomes" sub tab
+    When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:receipientTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To    |
@@ -2079,7 +2085,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Active Grants"
+    And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Award for Amendment Request" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
@@ -2132,7 +2138,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Active Grants"
+    And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Award for Amendment Request" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
@@ -2144,7 +2150,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click on "Activate" in the page details
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Active Grants"
+    And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Award for Amendment Request" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
@@ -2157,7 +2163,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
      Given I login to "As a Grantor" app as "dynamicUser" user
      And I navigate to "Grants" tab
      When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-     And I click toggle button to select "Active Grants"
+     And I click toggle button to select "Grants - Active"
      When I perform quick search for "Automation Permanent Award" in "---closeout:-:grantsTableId---" panel
      And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---closeout:-:grantsTableId---"
     When I navigate to "Requests" sub tab
@@ -2199,17 +2205,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
      When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
      And I "Approve" in approval decision
      Then I see status in Progress-bar is "Submitted for Approval" and is "green"
-     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-     And I navigate to "Closeout" tab
-     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
-     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
-     And I "Approve" in approval decision
-     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-     And I navigate to "Closeout" tab
-     When I navigate to "Project Period Closeouts" content inside "Closeouts" subheader on left panel
-     And I click toggle button to select "Completed Project Period Closeouts"
-     When I perform quick search for "Record Id" in "ProjectPeriodCloseoutGrantor" panel
-     When I click on "View" icon for "Record Id" inside flex table with id "ProjectPeriodCloseoutGrantor"
-     Then I see status in Progress-bar is "Completed" and is "green"
+
+
 
