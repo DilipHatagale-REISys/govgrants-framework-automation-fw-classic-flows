@@ -17,7 +17,7 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
       | Automation Permanent Award | SPI        |
       | Automation Permanent Award | SPA        |
 
-  @55398 @SubmittedPR_Displayed_In_CompletedTask @mahadev
+  @55398 @submittedPRDisplayedInCompletedTask @mahadev
   Scenario Outline: Validate submitted payment request displays under completed task for SPI user
     Given I delete the record "<Award Name>" from the object "Payment Request"
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
