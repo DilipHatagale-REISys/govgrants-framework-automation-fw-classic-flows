@@ -910,6 +910,9 @@ Feature: Validate all scenarios in the home tab
 
 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 392b92fce6d4254099bbcf25c516441c7159b6f7
