@@ -1680,7 +1680,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I refresh the page
-    And I pause execution
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
     When I login as "SPI" user
