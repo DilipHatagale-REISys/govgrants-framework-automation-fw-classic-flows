@@ -8,7 +8,7 @@ Feature: Validate all scenarios in Focus Area
   Scenario: Creation of Focus Area by User - Admin/EXE/PM
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
-    When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
+    When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
     When I enter value "Automation Execution Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
@@ -18,7 +18,7 @@ Feature: Validate all scenarios in Focus Area
   Scenario: Edition of Focus Area by User - Admin/EXE/PM
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
-    When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
+    When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
     When I enter value "Automation Execution Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
@@ -30,7 +30,7 @@ Feature: Validate all scenarios in Focus Area
   Scenario: Addition of Attachment to Focus Area by User - Admin/EXE/PM
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
-    When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
+    When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
     When I enter value "Automation Execution Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
@@ -43,7 +43,7 @@ Feature: Validate all scenarios in Focus Area
   Scenario: Activate Focus Area by User - Admin/EXE/PM
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
-    When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
+    When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
     When I enter value "Automation Execution Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
@@ -55,22 +55,22 @@ Feature: Validate all scenarios in Focus Area
   Scenario: Negative Scenario-Verify that FO is not able to create focus area
     Given I login to "As a Grantor" app as "FO" user
     When I navigate to "Planning" tab
-    And I navigate to "Focus Areas" content inside "Planning" subheader on left panel
+    And I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     Then  I cannot see top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
 
   @53219 @userFOEditfocusArea @smoke
   Scenario: Negative Case-Verfiy that FO user cannot Edit  the record
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
-    When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
+    When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
     When I enter value "Automation Execution Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
     When I click on "Save" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Planning" tab
-    And I navigate to "Focus Areas" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Draft Focus Area" in "---focusarea:-:focusAreaTableId---"
+    And I navigate to "Focus Areas" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Focus Area - Draft" in "---focusarea:-:focusAreaTableId---"
     When I perform quick search for "Automation Execution Focus Area" in "---focusarea:-:focusAreaTableId---" panel
     Then I cannot see row level action button "Edit" against "Automation Execution Focus Area" in flex table with id "---focusarea:-:focusAreaTableId---"
 
@@ -78,15 +78,15 @@ Feature: Validate all scenarios in Focus Area
   Scenario: Negative Case-Verfiy that FO user cannot Delete the record
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
-    When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
+    When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
     When I enter value "Automation Execution Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
     When I click on "Save" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Planning" tab
-    And I navigate to "Focus Areas" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Draft Focus Area" in "---focusarea:-:focusAreaTableId---"
+    And I navigate to "Focus Areas" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Focus Area - Draft" in "---focusarea:-:focusAreaTableId---"
     When I perform quick search for "Automation Execution Focus Area" in "---focusarea:-:focusAreaTableId---" panel
     Then I cannot see row level action button "Delete" against "Automation Execution Focus Area" in flex table with id "---focusarea:-:focusAreaTableId---"
 
@@ -94,7 +94,7 @@ Feature: Validate all scenarios in Focus Area
   Scenario: Verfiy deactivating focus area by user - Admin/EXE/PM
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
-    When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
+    When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
     When I enter value "Automation Execution Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
@@ -108,7 +108,7 @@ Feature: Validate all scenarios in Focus Area
   Scenario: Negative Case- Verfiy that other users (other than Admin, EXE, PM) can not deactivate focus area
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
-    When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
+    When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
     When I enter value "Automation Execution Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
@@ -117,8 +117,8 @@ Feature: Validate all scenarios in Focus Area
     When I click on "Activate" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Planning" tab
-    And I navigate to "Focus Areas" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Active Focus Area" in "---focusarea:-:focusAreaTableId---"
+    And I navigate to "Focus Areas" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Focus Area - Active" in "---focusarea:-:focusAreaTableId---"
     When I perform quick search for "Automation Execution Focus Area" in "---focusarea:-:focusAreaTableId---" panel
     And I click on "View" icon for "Automation Execution Focus Area" inside table
     Then I cannot see top right button "Deactivate" in page detail
@@ -127,7 +127,7 @@ Feature: Validate all scenarios in Focus Area
   Scenario: Verfiy that user can see Closed Focus Area under Inactive Focus Area list view (Admin/EXE/PM)
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
-    When I navigate to "Focus Areas" content inside "Planning" subheader on left panel
+    When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
     When I enter value "Automation Execution Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
@@ -136,8 +136,8 @@ Feature: Validate all scenarios in Focus Area
     When I click on "Activate" in the page details
     And I click on "Deactivate" in the page details
     When I navigate to "Planning" tab
-    And I navigate to "Focus Areas" content inside "Planning" subheader on left panel
-    And I click toggle button to select "Inactive Focus Area" in "---focusarea:-:focusAreaTableId---"
+    And I navigate to "Focus Areas" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Focus Area - Inactive" in "---focusarea:-:focusAreaTableId---"
     When I perform quick search for "Automation Execution Focus Area" in "---focusarea:-:focusAreaTableId---" panel
     And I click on "View" icon for "Automation Execution Focus Area" inside table
     Then I see status in Progress-bar is "Closed" and is "Green"
