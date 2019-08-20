@@ -6,7 +6,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Draft Announcements"
+    And I click toggle button to select "Formula Announcements - Draft"
     And I click on top right button "New" in flex table with id "ActiveFundingOpportunitiesFormula"
     And I enter "FormulaAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
@@ -41,7 +41,7 @@ Feature: Validate all common scenarios in the  Announcement tab
   Scenario: Validate that Created Competitive announcement will not reflect under Draft Formula announcement list view
     When I navigate to "Announcements" tab
     And I navigate to "Directed" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Draft Announcements" in "ActiveFundingOpportunities"
+    And I click toggle button to select "Directed Announcements - Draft" in "ActiveFundingOpportunities"
     When I perform quick search for "Record Id" in "ActiveFundingOpportunities" panel
     Then I do not see values "Record Id" and "Announcement Name" inside table
 
@@ -109,11 +109,11 @@ Feature: Validate all common scenarios in the  Announcement tab
     And I close Modal
     When I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--03          | 100             |
+      | {SavedValue:fundingAccount}          | 100             |
     Then I see that "<EGMS Id>" has been added in flextable with Id "flexGridAnnouncementFundingAccountGrantor"
     Examples:
       | EGMS Id |
-      | FA--03  |
+      | {SavedValue:fundingAccount}  |
 
   @52404 @announcementFADissociationFA
   Scenario Outline: Funding Account dissociation to an Announcement
@@ -125,7 +125,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     Then I do not see value "<EGMS Id>" for title "EGMS ID" inside table "---announcement:-:fundingAccountsTableId---"
     Examples:
       | EGMS Id |
-      | FA--03  |
+      | {SavedValue:fundingAccount}  |
 
   @52405 @announcementBudgetPeriodAdditionFA
   Scenario: Budget Period Addition to an Announcement
@@ -169,13 +169,13 @@ Feature: Validate all common scenarios in the  Announcement tab
   @32410 @announcementAttachmentChecklistFA
   Scenario: Validate the attachment checklist of the announcement
     When I navigate to "Setup" sub tab
-    When I enter the following values into flex table with id "inlineEditGridAnnouncementChecklists" by clicking "Add" :
+    When I enter the following values into flex table with id "---announcement:-:annChecklist---" by clicking "Add" :
       | Description                 | Required  | Applies To | Status |
       | Automation test description | Mandatory | Award      | Active |
-    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "inlineEditGridAnnouncementChecklists"
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---announcement:-:annChecklist---"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close Modal
-    Then I see that "Active" has been added in flextable with Id "inlineEditGridAnnouncementChecklists"
+    Then I see that "Active" has been added in flextable with Id "---announcement:-:annChecklist---"
 
   @52411 @announcementApproverSelectionFA
   Scenario: Validate the assignment of Approvers for the Announcement
@@ -226,10 +226,11 @@ Feature: Validate all common scenarios in the  Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
+    And I close Modal
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Draft Announcements"
+    And I click toggle button to select "Formula Announcements - Draft"
     When I perform quick search for "Record id" in "<Active Funding Opportunities id>" panel
     And I click on "View" icon for "Record id" inside table
     When I click on "Complete Review" in the page details
@@ -248,107 +249,107 @@ Feature: Validate all common scenarios in the  Announcement tab
   Scenario: Validate the Review steps of Announcement before submit for Approval
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
-    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---announcement:-:validateannouncementreviewTableId---"
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewpanelCatergoriesTableId---" by clicking "Edit" :
+    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
       | Eligibility    | 50                 |
       | Completeness   | 50                 |
     And I expand nested table containing column value "Eligibility"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Eligibility"
     And I expand nested table containing column value "Completeness"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
-    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "---announcement:-:validateannouncementreviewTableId---"
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewpanelCatergoriesTableId---" by clicking "Edit" :
+    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
       | Schedule       | 30                 |
       | Environment    | 30                 |
       | Permits        | 40                 |
     And I expand nested table containing column value "Schedule"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Environment"
     And I expand nested table containing column value "Permits"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
     And I close modal by clicking the top right x button
-    When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:validateannouncementreviewTableId---"
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewpanelCatergoriesTableId---" by clicking "Edit" :
+    When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
       | Budget         | 30                 |
       | Match          | 40                 |
       | Program Income | 30                 |
     And I expand nested table containing column value "Budget"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Budget"
     And I expand nested table containing column value "Match"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Match"
     And I expand nested table containing column value "Program Income"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
     And I close modal by clicking the top right x button
-    When I click on "Review Form" icon for "Program Review" inside flex table with id "---announcement:-:validateannouncementreviewTableId---"
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewpanelCatergoriesTableId---" by clicking "Edit" :
+    When I click on "Review Form" icon for "Program Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
       | Capability     | 30                 |
       | Approach       | 30                 |
       | Impact         | 40                 |
     And I expand nested table containing column value "Capability"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Capability"
     And I expand nested table containing column value "Approach"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Approach"
     And I expand nested table containing column value "Impact"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
-    When I click on "Review Form" icon for "Management Review" inside flex table with id "---announcement:-:validateannouncementreviewTableId---"
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewpanelCatergoriesTableId---" by clicking "Edit" :
+    When I click on "Review Form" icon for "Management Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header             | Section Weight (%) |
       | Return on Investment (ROI) | 50                 |
       | Strategic Alignment        | 50                 |
     And I expand nested table containing column value "Return on Investment (ROI)"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Return on Investment (ROI)"
     And I expand nested table containing column value "Strategic Alignment"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "---announcement:-:validateannouncementreviewTableId---"
+    And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
     Then I see the following messages in the page details :
       | There are no errors with the review step templates. |
