@@ -1685,8 +1685,8 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I login as "SPI" user
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------"
+    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
@@ -1707,14 +1707,14 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------"
+    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------"
+    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1725,7 +1725,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------" panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     And I click on "Start" icon for "Record Id" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
@@ -1789,8 +1789,8 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I login as "SPI" user
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------"
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
@@ -1812,14 +1812,14 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------"
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks--"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------"
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks--"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1830,7 +1830,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTab---negotiation:-:phase---negotiation:-:homePendingTasks---TableId------" panel
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
     And I click on "Start" icon for "Record Id" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
