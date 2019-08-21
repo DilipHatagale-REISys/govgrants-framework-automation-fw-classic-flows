@@ -916,5 +916,3 @@ Feature: Validate all scenarios in the home tab
     And I click on "My_Workspace_File"
     Then I see "Record Id" has been added in My Workspace – Files
 
-
-
