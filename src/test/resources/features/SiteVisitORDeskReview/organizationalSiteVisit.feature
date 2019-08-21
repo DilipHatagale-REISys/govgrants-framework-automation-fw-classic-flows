@@ -903,7 +903,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Submit to Grantor" in the page details
     Then I see the following messages in the page details :
-      | Reports and Outcomes : Enter corrective actions on all Findings outcomes using the "+" icons. |
+      | Reports and Outcomes Tab - Enter corrective actions on all Findings outcomes using the "+" icons. |
 
   @55465 @approverForwardUserGetPendingTaskSiteVisit @deepika
   Scenario: Validate when the Approver forward Org Level Site Visit to other user, the Pending Task will be created to the User
@@ -1279,7 +1279,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on "Send to Owner" on the approval decision box
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    When I navigate to "Manage Site Visits" content inside "Manage Site Visit" subheader on left panel
+    When I navigate to "Application Site Visits" content inside "Application Reviews" subheader on left panel
     Then I see that "Automation Site Visit Org Level" has been added in flextable with Id "ApplicationsSiteVisitReportsGrid"
     
   @56044 @submittingForApprovalButtonOrgLevelSiteVisit @deepika

@@ -1277,9 +1277,9 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
     And I click on "Send to Owner" on the approval decision box
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Applications" tab
-    When I navigate to "Manage Site Visits" content inside "Manage Site Visit" subheader on left panel
-    Then I see that "Automation Desk Review Org Level" has been added in flextable with Id "ApplicationsDeskReviewReportsGrid"
+    And I navigate to "Monitoring" tab
+    When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
+    Then I see that "Automation Desk Review Org Level" has been added in flextable with Id "---deskreview:-:deskReviewGridViewTableId---"
 
   @56041 @submittingForApprovalButtonOrgLevelDeskReview @deepika
   Scenario: User will be able to view the Submit for Approval button for Org Level Desk Review

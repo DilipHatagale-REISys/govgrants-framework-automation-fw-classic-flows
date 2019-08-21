@@ -240,7 +240,7 @@ Feature: Validate all scenarios in Negotiations
     When I perform quick search for "Autoamtion Announcement for Negotiations" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I refresh the page
-    Then I cannot see row level action button "Create Subaward" against "Autoamtion Announcement for Negotiations" in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
+    Then I can see row level action button "Create Subaward" against "Autoamtion Announcement for Negotiations" in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
 
   @57212 @editNegotiationNotAvilableAFterSubmitToGrantor @deepika
   Scenario: Validate the Applicant try to edit the Application after Submit to Grantor
@@ -723,9 +723,8 @@ Feature: Validate all scenarios in Negotiations
       And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
       When I click on "Start" icon for "Record Id" inside table
       When I click on "Save" in the page details
-      When I click on "Submit to Grantor" in the page details
       Then I see the following messages in the page details :
-        | Negotiation Tab - Provide details in the Applicant Response section. |
+        | Details is Required to save under Negotiations. |
 
     @57839 @pendingNegotiationsViewinTable
     Scenario: Validate whether users will view the Negiation Intiated inside Pending Negotaitions Table
@@ -794,7 +793,7 @@ Feature: Validate all scenarios in Negotiations
       | Value                              | Field                           |
       | Automation Negotiation Iniatiation | ExplanationOfRevisionsNeeded__c |
     When I click on "Save" in the page details
-    When I click on "Send to Subrecipient" in the page details
+    When I click on "Send Back to Subrecipient" in the page details
     Then I see status in Progress-bar is "Negotiation Initiated" and is "green"
 
    @58029 @initiateNegotiationForAttachmentsNotes @deepika
