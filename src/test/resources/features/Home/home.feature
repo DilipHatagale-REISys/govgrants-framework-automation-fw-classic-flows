@@ -899,7 +899,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     Then I see task count for "Planning" phase with the total records of flex table id "PhasePendingTasks"
 
-  @ValidateFilesOnHome
+  @validateFilesOnHome @wip
   Scenario: Addition of Attachment to Focus Area by User - Admin/EXE/PM
     Given I delete the record "Automation Execution Focus Area" from the object "Focus Area"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -914,5 +914,6 @@ Feature: Validate all scenarios in the home tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Supporting Documents"
     When I navigate to "Home" tab
     And I click on "My_Workspace_File"
+    And I perform quick search for "Record Id" in "My_Workspace_File" panel
     Then I see "Record Id" has been added in My Workspace – Files
 
