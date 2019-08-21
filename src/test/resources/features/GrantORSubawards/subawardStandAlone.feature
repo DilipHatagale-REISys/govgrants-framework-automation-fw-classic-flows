@@ -1759,3 +1759,91 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
+
+  @55295 @veifyViewAccessForProgressReportsSchedulesOnDraftAward @mahadev
+  Scenario Outline: Verify that system allows EXE, PO, FD, and FO can see the created Progress Report Schedules
+    When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "Progress Report Monthly" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close Modal
+    When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I navigate to "Terms" sub tab
+    And I click on "View" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    Then I see field "Frequency" as "Monthly"
+    Examples:
+      | User | Grant Name                 | Award Name                 |
+      | EXE  | Automation Execution Award | Automation Execution Award |
+      | FO   | Automation Execution Award | Automation Execution Award |
+
+  @45728 @veifyNonAwardOwnerCanNotEditSchedule @mahadev
+  Scenario Outline: Verify non award owner cannot edit Progress Report Schedule
+    When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "Progress Report Monthly" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close Modal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I navigate to "Terms" sub tab
+    Then I cannot see row level action button "Edit" against "Progress Report" in flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    Examples:
+      | Grant Name                 | Award Name                 |
+      | Automation Execution Award | Automation Execution Award |
+
+  @45735 @validateUserCannotSelectschdeuleStartDateBeforeBudgetPeriodStartDate @mahadev
+  Scenario: Verify While creating schedule user is not allowed to select the Schedule Start Date before Budget Period Start Date
+    When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "Progress Report StartDate Error" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    Then I see the following messages in the page details contains:
+      | Schedule Start date cannot be before Budget Period Start Date |
+
+  @57692 @SelectDesiredFrequencyAsMonthlywithScheduleBaseAsReportingPeriod @mahadev
+  Scenario: Verify functionality of Desired Frequency as Monthly with Schedule Base type as Reporting period
+    When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "Progress Report MoreThanOneyear" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close Modal
+    And I expand nested table containing column value "Progress Report"
+    Then I see total records count "Total Records:16" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
+
+  @45740 @SelectDesiredFrequencyAsMonthlywithScheduleBaseAsReportingPeriod @mahadev
+  Scenario: Verify functionality of Desired Frequency as Monthly with Schedule Base type as Reporting period
+    When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "ProgressReportQuartelyReporting" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close Modal
+    And I expand nested table containing column value "Progress Report"
+    Then I see total records count "Total Records:6" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
