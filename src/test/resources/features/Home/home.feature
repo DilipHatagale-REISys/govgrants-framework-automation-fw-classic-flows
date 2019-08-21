@@ -898,21 +898,3 @@ Feature: Validate all scenarios in the home tab
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Home" tab
     Then I see task count for "Planning" phase with the total records of flex table id "PhasePendingTasks"
-
-
-
-
-
-
-
-
-
-
-
-
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> 392b92fce6d4254099bbcf25c516441c7159b6f7
