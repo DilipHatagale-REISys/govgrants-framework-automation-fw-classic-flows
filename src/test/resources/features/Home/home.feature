@@ -857,7 +857,7 @@ Feature: Validate all scenarios in the home tab
        When I perform quick search for "Approve Program" in "HomePendingTasks" panel
        Then I see that "Approve Program" has been added in flextable with Id "HomePendingTasks"
 
-  @pendingTaskCount @wip
+  @pendingTaskCount
   Scenario: Validate whether user is able to view the total acount of pending Tasks assigned to user
     Given I delete the record "Automation Execution Internal Program" from the object "Program"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -910,7 +910,9 @@ Feature: Validate all scenarios in the home tab
 
 
 
+<<<<<<< HEAD
 
 
 
-
+=======
+>>>>>>> 392b92fce6d4254099bbcf25c516441c7159b6f7
