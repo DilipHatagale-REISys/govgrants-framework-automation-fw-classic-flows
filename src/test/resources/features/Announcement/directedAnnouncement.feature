@@ -26,11 +26,11 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
-    When I click "Add" after selection of "FA--03" in the table "SelectAnnFundingAccounts"
+    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
     And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--03          | 100             |
+      | {SavedValue:fundingAccount}          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -73,10 +73,11 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
+    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Announcements"
+    When I click toggle button to select "Directed Announcements - Draft"
     And I perform quick search for "Automation Directed Announcement" in "ActiveFundingOpportunities" panel
     And I click on "View" icon for "Automation Directed Announcement" inside flex table with id "ActiveFundingOpportunities"
     Given I click on "Complete Review" in the page details
@@ -202,11 +203,11 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
-    When I click "Add" after selection of "FA--03" in the table "SelectAnnFundingAccounts"
+    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
     And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--03          | 100             |
+      | {SavedValue:fundingAccount}          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -249,10 +250,11 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
+    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Announcements"
+    When I click toggle button to select "Directed Announcements - Draft"
     And I perform quick search for "Automation Directed Announcement" in "ActiveFundingOpportunities" panel
     And I click on "View" icon for "Automation Directed Announcement" inside flex table with id "ActiveFundingOpportunities"
     Given I click on "Complete Review" in the page details
@@ -368,7 +370,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Submit For Approval" in the page details
     And I navigate to "Announcements" tab
     And I navigate to "Directed" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Announcements"
+    When I click toggle button to select "Directed Announcements - Draft"
     When I perform quick search for "Record id" in "ActiveFundingOpportunities" panel
     Then I cannot see row level action button "Delete" against "Record id" in flex table with id "ActiveFundingOpportunities"
     Examples:
@@ -383,11 +385,11 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
-    When I click "Add" after selection of "FA--03" in the table "SelectAnnFundingAccounts"
+    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
     And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--03          | 100             |
+      | {SavedValue:fundingAccount}          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -430,10 +432,11 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
+    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Announcements"
+    When I click toggle button to select "Directed Announcements - Draft"
     And I perform quick search for "Automation Directed Announcement" in "ActiveFundingOpportunities" panel
     And I click on "View" icon for "Automation Directed Announcement" inside flex table with id "ActiveFundingOpportunities"
     Given I click on "Complete Review" in the page details
@@ -563,11 +566,11 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
-    When I click "Add" after selection of "FA--03" in the table "SelectAnnFundingAccounts"
+    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
     And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--03          | 100             |
+      | {SavedValue:fundingAccount}          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -607,10 +610,11 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
+    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Announcements"
+    When I click toggle button to select "Directed Announcements - Draft"
     And I perform quick search for "Automation Directed Announcement" in "ActiveFundingOpportunities" panel
     And I click on "View" icon for "Automation Directed Announcement" inside flex table with id "ActiveFundingOpportunities"
     Given I click on "Complete Review" in the page details
@@ -737,11 +741,11 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
-    When I click "Add" after selection of "FA--03" in the table "SelectAnnFundingAccounts"
+    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
     And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--03          | 100             |
+      | {SavedValue:fundingAccount}          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -784,10 +788,11 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
+    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Announcements"
+    When I click toggle button to select "Directed Announcements - Draft"
     And I perform quick search for "Automation Directed Announcement" in "ActiveFundingOpportunities" panel
     And I click on "View" icon for "Automation Directed Announcement" inside flex table with id "ActiveFundingOpportunities"
     Given I click on "Complete Review" in the page details
@@ -932,11 +937,11 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
-    When I click "Add" after selection of "FA--03" in the table "SelectAnnFundingAccounts"
+    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
     And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--03          | 100             |
+      | {SavedValue:fundingAccount}          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -979,10 +984,11 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
+    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Announcements"
+    When I click toggle button to select "Directed Announcements - Draft"
     And I perform quick search for "Automation Directed Announcement" in "ActiveFundingOpportunities" panel
     And I click on "View" icon for "Automation Directed Announcement" inside flex table with id "ActiveFundingOpportunities"
     Given I click on "Complete Review" in the page details
@@ -1118,11 +1124,11 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
-    When I click "Add" after selection of "FA--03" in the table "SelectAnnFundingAccounts"
+    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
     And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--03          | 100             |
+      | {SavedValue:fundingAccount}          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -1165,10 +1171,11 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
+    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Announcements"
+    When I click toggle button to select "Directed Announcements - Draft"
     And I perform quick search for "Automation Directed Announcement" in "ActiveFundingOpportunities" panel
     And I click on "View" icon for "Automation Directed Announcement" inside flex table with id "ActiveFundingOpportunities"
     Given I click on "Complete Review" in the page details
@@ -1303,11 +1310,11 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
-    When I click "Add" after selection of "FA--03" in the table "SelectAnnFundingAccounts"
+    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
     And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--03          | 100             |
+      | {SavedValue:fundingAccount}          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -1350,10 +1357,11 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
+    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Announcements"
+    When I click toggle button to select "Directed Announcements - Draft"
     And I perform quick search for "Automation Directed Announcement" in "ActiveFundingOpportunities" panel
     And I click on "View" icon for "Automation Directed Announcement" inside flex table with id "ActiveFundingOpportunities"
     Given I click on "Complete Review" in the page details
@@ -1472,7 +1480,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
-    And I "Approve" in approval decision
+    And I "Send to Owner" in approval decision
     Then I see status in Progress-bar is "Created" and is "green"
     Examples:
       | Announcement Type | Active Funding Opportunities id | User |
@@ -1485,11 +1493,11 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
-    When I click "Add" after selection of "FA--03" in the table "SelectAnnFundingAccounts"
+    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
     And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--03          | 100             |
+      | {SavedValue:fundingAccount}          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -1532,10 +1540,11 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
+    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Announcements"
+    When I click toggle button to select "Directed Announcements - Draft"
     And I perform quick search for "Automation Directed Announcement" in "ActiveFundingOpportunities" panel
     And I click on "View" icon for "Automation Directed Announcement" inside flex table with id "ActiveFundingOpportunities"
     Given I click on "Complete Review" in the page details
@@ -1654,7 +1663,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
-    And I "Approve" in approval decision
+    And I "Send to Owner" in approval decision
     And I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1671,11 +1680,11 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
-    When I click "Add" after selection of "FA--03" in the table "SelectAnnFundingAccounts"
+    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
     And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--03          | 100             |
+      | {SavedValue:fundingAccount}          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -1718,10 +1727,11 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
+    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Announcements"
+    When I click toggle button to select "Directed Announcements - Draft"
     And I perform quick search for "Automation Directed Announcement" in "ActiveFundingOpportunities" panel
     And I click on "View" icon for "Automation Directed Announcement" inside flex table with id "ActiveFundingOpportunities"
     Given I click on "Complete Review" in the page details
@@ -1840,7 +1850,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
-    And I "Approve" in approval decision
+    And I "Send to Owner" in approval decision
     When I navigate to "History" sub tab
     Then I see that "Announcement" is in "Created" status
     Examples:
@@ -1854,11 +1864,11 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
-    When I click "Add" after selection of "FA--03" in the table "SelectAnnFundingAccounts"
+    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
     And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--03          | 100             |
+      | {SavedValue:fundingAccount}          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -1901,10 +1911,11 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
+    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Announcements"
+    When I click toggle button to select "Directed Announcements - Draft"
     And I perform quick search for "Automation Directed Announcement" in "ActiveFundingOpportunities" panel
     And I click on "View" icon for "Automation Directed Announcement" inside flex table with id "ActiveFundingOpportunities"
     Given I click on "Complete Review" in the page details
@@ -2023,7 +2034,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
-    And I "Approve" in approval decision
+    And I "Disapprove" in approval decision
     Then I see status in Progress-bar is "Rejected" and is "Red"
     Examples:
       | Announcement Type | Active Funding Opportunities id | User |
@@ -2037,11 +2048,11 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
-    When I click "Add" after selection of "FA--03" in the table "SelectAnnFundingAccounts"
+    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
     And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--03          | 100             |
+      | {SavedValue:fundingAccount}          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -2084,10 +2095,11 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
+    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Announcements"
+    When I click toggle button to select "Directed Announcements - Draft"
     And I perform quick search for "Automation Directed Announcement" in "ActiveFundingOpportunities" panel
     And I click on "View" icon for "Automation Directed Announcement" inside flex table with id "ActiveFundingOpportunities"
     Given I click on "Complete Review" in the page details
@@ -2206,7 +2218,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
-    And I "Approve" in approval decision
+    And I "Disapprove" in approval decision
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
@@ -2223,11 +2235,11 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
-    When I click "Add" after selection of "FA--03" in the table "SelectAnnFundingAccounts"
+    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
     And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--03          | 100             |
+      | {SavedValue:fundingAccount}          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -2270,10 +2282,11 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
+    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Announcements"
+    When I click toggle button to select "Directed Announcements - Draft"
     And I perform quick search for "Automation Directed Announcement" in "ActiveFundingOpportunities" panel
     And I click on "View" icon for "Automation Directed Announcement" inside flex table with id "ActiveFundingOpportunities"
     Given I click on "Complete Review" in the page details
@@ -2392,7 +2405,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
-    And I "Approve" in approval decision
+    And I "Disapprove" in approval decision
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
@@ -2408,11 +2421,11 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
-    When I click "Add" after selection of "FA--03" in the table "SelectAnnFundingAccounts"
+    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
     And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--03          | 100             |
+      | {SavedValue:fundingAccount}          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -2455,10 +2468,11 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
+    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Announcements"
+    When I click toggle button to select "Directed Announcements - Draft"
     And I perform quick search for "Automation Directed Announcement" in "ActiveFundingOpportunities" panel
     And I click on "View" icon for "Automation Directed Announcement" inside flex table with id "ActiveFundingOpportunities"
     Given I click on "Complete Review" in the page details
@@ -2577,7 +2591,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
-    And I "Approve" in approval decision
+    And I "Disapprove" in approval decision
     And I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
@@ -2594,11 +2608,11 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
-    When I click "Add" after selection of "FA--03" in the table "SelectAnnFundingAccounts"
+    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
     And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--03          | 100             |
+      | {SavedValue:fundingAccount}          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -2641,10 +2655,11 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
+    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Announcements"
+    When I click toggle button to select "Directed Announcements - Draft"
     And I perform quick search for "Automation Directed Announcement" in "ActiveFundingOpportunities" panel
     And I click on "View" icon for "Automation Directed Announcement" inside flex table with id "ActiveFundingOpportunities"
     Given I click on "Complete Review" in the page details
@@ -2763,9 +2778,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
-    And I "Approve" in approval decision
+    And I "Disapprove" in approval decision
     When I navigate to "History" sub tab
-    Then I see status in Progress-bar is "Rejected" and is "Red"
+    Then I see value "Rejected" for title "New Value" inside table "History"
     Examples:
       | Announcement Type | Active Funding Opportunities id | User |
       | Directed          | ActiveFundingOpportunities      | EXE  |
@@ -2778,11 +2793,11 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
-    When I click "Add" after selection of "FA--03" in the table "SelectAnnFundingAccounts"
+    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
     And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | FA--03          | 100             |
+      | {SavedValue:fundingAccount}          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -2825,10 +2840,11 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
+    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Announcements"
+    When I click toggle button to select "Directed Announcements - Draft"
     And I perform quick search for "Automation Directed Announcement" in "ActiveFundingOpportunities" panel
     And I click on "View" icon for "Automation Directed Announcement" inside flex table with id "ActiveFundingOpportunities"
     Given I click on "Complete Review" in the page details
@@ -2951,7 +2967,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Directed" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Rejected Announcements"
+    And I click toggle button to select "Directed Announcements - Rejected"
     When I perform quick search for "Record Id" in "ActiveFundingOpportunities" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "ActiveFundingOpportunities"
     Examples:

@@ -143,8 +143,8 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
     And I close Modal
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account             | Pre-Encumbrance |
-      | {SavedValue:fundingAccount} | 100             |
+      | Funding Account | Pre-Encumbrance |
+      | {SavedValue:fundingAccount}          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
     When I refresh the page
@@ -580,8 +580,8 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
     And I close Modal
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account             | Pre-Encumbrance |
-      | {SavedValue:fundingAccount} | 100             |
+      | Funding Account | Pre-Encumbrance |
+      | {SavedValue:fundingAccount}          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
     When I refresh the page
