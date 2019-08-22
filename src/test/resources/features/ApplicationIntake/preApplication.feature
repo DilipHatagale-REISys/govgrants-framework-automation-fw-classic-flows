@@ -14,7 +14,7 @@ Feature: Validate all scenarios in the Pre-Application
     When I click on "View" icon for "Automation Announcement for Pre-Application" inside table
     When I click on "Qualify" in the page details
     And I click on "Create Pre-Application" in the page details
-    When I enter value "Automation Announcement for Application " into field "Title__c"
+    When I enter value "Automation Announcement for Application" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I get the "EGMS ID"
@@ -88,7 +88,7 @@ Feature: Validate all scenarios in the Pre-Application
     And I login as "SPI" user
     When I navigate to "Applications" tab
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
-    When I click toggle button to select "Submitted Pre-Applications"
+    When I click toggle button to select "Pre-Applications - Submitted"
     And I perform quick search for "<Announcement Name>" in "RecipientPreApplications" panel
     When I click on "View" icon for "<Announcement Name>" inside table
     When I click on "Create Application" in the page details
@@ -104,7 +104,11 @@ Feature: Validate all scenarios in the Pre-Application
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
       | Automation Permanent KPI for Regression | 10     |
+    And I get the "EGMS ID"
     And I navigate to "Attachments" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---applicationIntake:-:attachmentsTableId---"
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    And I close Modal
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -117,8 +121,9 @@ Feature: Validate all scenarios in the Pre-Application
     Given I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
-    When I click toggle button to select "All Applications"
-    And I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationIntake:-:recipientPreApplicationsTableId---"
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "Record Id" in "---applicationIntake:-:appAllTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---applicationIntake:-:appAllTableId---"
     Then I see status in Progress-bar is "Submitted" and is "Green"
     Examples:
       | Announcement Name                       |
