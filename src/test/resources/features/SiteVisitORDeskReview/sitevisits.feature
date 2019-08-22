@@ -1053,7 +1053,7 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     And I click on "Reassign,Automation EXE" on the approval decision box
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -1194,7 +1194,7 @@ Feature: Validate all scenarios in the Site Visit
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     And I click on "View" icon for "Record Id" inside table
@@ -1283,13 +1283,7 @@ Feature: Validate all scenarios in the Site Visit
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
-    And I navigate to "Reports and Outcomes" sub tab
-    Then  I cannot see top right button "New" in flex table with id "---sitevisits:-:correctiveTableId---"
+    Then I cannot see "Reports and Outcomes" sub tab at view detail page
 
   @56013 @siteVisitPeerreview @deepika
   Scenario: Validate the peer review on their Site Visit

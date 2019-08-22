@@ -813,7 +813,7 @@ Feature: Validate all scenarios in the home tab
        When I login to "As a Grantor" app as "dynamicUser" user
        And I navigate to "Planning" tab
        When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-       And I click toggle button to select "Draft Internal Programs"
+       And I click toggle button to select "Internal Programs - Draft"
        And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
        When I enter "Creation" values from "Program_Field_Values.xlsx"
        And I click modal button "Save and Continue"
@@ -863,7 +863,7 @@ Feature: Validate all scenarios in the home tab
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-    And I click toggle button to select "Draft Internal Programs"
+    And I click toggle button to select "Internal Programs - Draft"
     And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
     When I enter "Creation" values from "Program_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -898,3 +898,21 @@ Feature: Validate all scenarios in the home tab
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Home" tab
     Then I see task count for "Planning" phase with the total records of flex table id "PhasePendingTasks"
+
+  @validateFilesOnHome @wip
+  Scenario: Addition of Attachment to Focus Area by User - Admin/EXE/PM
+    Given I delete the record "Automation Execution Focus Area" from the object "Focus Area"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    When I navigate to "Planning" tab
+    When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
+    And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
+    When I enter value "Automation Execution Focus Area" into field "Title__c"
+    When I click modal button "Save and Continue"
+    And I click on "Save" in the page details
+    When I get the "EGMS ID"
+    When I navigate to "Attachments" sub tab
+    When I upload attachment "Announcement_Field_Values.xlsx" of type "Supporting Documents"
+    When I navigate to "Home" tab
+    And I click on "My_Workspace_File"
+    And I perform quick search for "Record Id" in "My_Workspace_File" panel
+    Then I see "Record Id" has been added in My Workspace – Files

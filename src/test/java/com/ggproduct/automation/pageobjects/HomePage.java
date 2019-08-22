@@ -51,4 +51,27 @@ public class HomePage extends ProjectManager {
         String finalCount = EyeThink.core().findMyElement().getElement(By.xpath("//div[@class='container-fluid']//li//span[text()='" + tabName + "']/../..//span[contains(@ng-bind,'taskCount')]")).getText();
         Assert.assertEquals(findTaskCount(tabName, tableID), finalCount);
     }
+
+    /**
+     * handles to verify whether file is displayed under workspace or not
+     * @param recordID - string to be search under files
+     * @return
+     */
+    public boolean isFileDisplayedInWorkspace(String recordID){
+        Boolean flag=false;
+        EyeThink.core().textInput().enterText(By.xpath("//input[@id='FilesSearchText0' or name='FilesSearchText']"),EyeThink.saas().pageDetails().idOfRecord);
+        EyeThink.core().findMyElement().getElement(By.xpath("//input[@id='FilesSearchButton0']")).click();
+
+        try {
+            return  EyeThink.core().findMyElement().getElement(By.xpath("//div[@id='FilesDataTable']//a[text()='"+EyeThink.saas().pageDetails().idOfRecord+"']")).isDisplayed();
+        }catch (Exception e){
+        }
+        return false;
+    }
+
+    public void assertFileInWorkspace(String recordId){
+        Assert.assertTrue(isFileDisplayedInWorkspace(recordId));
+    }
+
+
 }

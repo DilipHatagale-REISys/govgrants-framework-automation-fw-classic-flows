@@ -22,4 +22,11 @@ public  class HomeSteps {
     public void iSeeTaskCountForPhaseWithTheTotalRecordsOfFlexTableId(String phaseName, String tableID) {
         homePage.assertTaskCount(phaseName,tableID);
     }
+
+    @Description("To verify files has been added in My Workspace - Files")
+    @Then("I see \"([^\"]*)\" has been added in My Workspace - Files")
+    public void iSeeHasBeenAddedInMyWorkspaceFiles(String recordID) {
+        homePage.assertFileInWorkspace(recordID);
+    }
+
 }

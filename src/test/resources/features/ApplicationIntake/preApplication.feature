@@ -9,8 +9,8 @@ Feature: Validate all scenarios in the Pre-Application
     When I am on "SUBPORTAL" portal
     And I login as "SPI" user
     When I navigate to "Opportunities" tab
-    And I navigate to "Active" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "Automation Announcement for Pre-Application" in "popupflextable" panel
+    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Automation Announcement for Pre-Application" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "Automation Announcement for Pre-Application" inside table
     When I click on "Qualify" in the page details
     And I click on "Create Pre-Application" in the page details
