@@ -93,7 +93,7 @@ Feature: Validate all scenarios in the Application Intake
     Given I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
-    When I click toggle button to select "All Applications"
+    When I click toggle button to select "Applications - All"
     When I click on "View" icon for "<Application Name>" inside table
     Then I see status in Progress-bar is "Submitted" and is "Green"
     Examples:
