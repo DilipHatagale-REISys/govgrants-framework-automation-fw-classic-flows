@@ -237,7 +237,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
 
-  @51110 @assignApproversToProgressReport
+   @assignApproversToProgressReport
   Scenario: To assign or change the defualt approvers in Progress Report
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
