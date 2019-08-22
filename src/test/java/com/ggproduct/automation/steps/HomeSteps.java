@@ -23,10 +23,9 @@ public  class HomeSteps {
         homePage.assertTaskCount(phaseName,tableID);
     }
 
-    @Description("To verify files has been added in My Workspace - Files")
-    @Then("I see \"([^\"]*)\" has been added in My Workspace - Files")
+    @Description("To verify files has been added in My Workspace Files")
+    @Then("^I see \"([^\"]*)\" has been added in My Workspace Files$")
     public void iSeeHasBeenAddedInMyWorkspaceFiles(String recordID) {
         homePage.assertFileInWorkspace(recordID);
     }
-
 }
