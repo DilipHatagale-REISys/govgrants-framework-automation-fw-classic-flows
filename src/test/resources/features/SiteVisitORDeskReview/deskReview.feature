@@ -1174,7 +1174,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---
+    When I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     Then I cannot see "Reports and Outcomes" sub tab at view detail page
 
   @55874 @recipientsCannotCreateOutcomesDR @deepika
