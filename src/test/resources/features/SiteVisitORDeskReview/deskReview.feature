@@ -33,12 +33,12 @@ Feature: Validate all scenarios in Desk Review
   Scenario Outline: Participant Association of Desk Review
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
-    When I click "Associate" after selection of "Automation EXE" in the table "---deskreview:-:deskReviewContactsTableId---"
+    When I click "Associate" after selection of "<Participant>" in the table "---deskreview:-:deskReviewContactsTableId---"
     And I refresh the page
-    Then I see that "<Subrecipient>" has been added in flextable with Id "---deskreview:-:participantsTableId---"
+    Then I see that "<Participant>" has been added in flextable with Id "---deskreview:-:participantsTableId---"
     Examples:
-      | Subrecipient   |
-      | Automation SPA |
+      | Participant    |
+      | Automation EXE |
 
   @51013 @approverSelectionDeskReview
   Scenario Outline: Approver selection of Desk Review
@@ -829,7 +829,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Submit to Grantor" in the page details
     Then I see the following messages in the page details :
-      | Reports and Outcomes : Enter corrective actions on all Findings outcomes using the "+" icons. |
+      | Reports and Outcomes Tab - Enter corrective actions on all Findings outcomes using the "+" icons. |
 
   @55363 @deskReviewSendBackToOwner @deepika
   Scenario: User will be able to return the Desk Review record back to Recipients when outcomes are not properly addressed
@@ -1150,6 +1150,9 @@ Feature: Validate all scenarios in Desk Review
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation EXE" in the table "---deskreview:-:deskReviewContactsTableId---"
     And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     Then I can see top right button "Conduct" in page detail
 
@@ -1205,8 +1208,14 @@ Feature: Validate all scenarios in Desk Review
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
     And I click on "View" icon for "Record Id" inside table
     Given I click on "Conduct" in the page details
+    Given I am on "SUBPORTAL" portal
+    When I login as "SPI" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     And I navigate to "Reports and Outcomes" sub tab
-    Then  I cannot see top right button "New" in flex table with id "---deskreview:-:correctiveTableId---"
+    Then I cannot see "Reports and Outcomes" sub tab at view detail page
 
   @56017 @deskReviewPeerReview @deepika
   Scenario: Validate the peer review on their Desk review
@@ -1363,12 +1372,15 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
-      | Fiscal Approver  | Automation FO  | Automation Test Description |
       | Program Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver  | Automation FO  | Automation Test Description |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation EXE" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I refresh the page
+    And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
@@ -1376,7 +1388,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel

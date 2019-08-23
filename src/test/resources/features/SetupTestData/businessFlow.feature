@@ -1937,7 +1937,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    #And I click on top right button "Validate" in flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
