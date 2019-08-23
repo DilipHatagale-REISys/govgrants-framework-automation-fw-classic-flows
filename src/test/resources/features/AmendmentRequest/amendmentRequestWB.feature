@@ -32,7 +32,7 @@ Feature: Amendment Request scenarios without background
       | Automation Permanent Focus Area | 0          | 3650     |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--03          | 1000        |
+      | {SavedValue:fundingAccount}          | 1000        |
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
@@ -147,7 +147,7 @@ Feature: Amendment Request scenarios without background
     And I navigate to "Overview" sub tab
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Revised Encumbrance |
-      | FA--03          | 3000                |
+      | {SavedValue:fundingAccount}          | 3000                |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -220,7 +220,7 @@ Feature: Amendment Request scenarios without background
       | Automation Permanent Focus Area | 0          | 3650     |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--03          | 1000        |
+      | {SavedValue:fundingAccount}          | 1000        |
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
@@ -335,7 +335,7 @@ Feature: Amendment Request scenarios without background
     And I navigate to "Overview" sub tab
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Revised Encumbrance |
-      | FA--03          | 3000                |
+      | {SavedValue:fundingAccount}          | 3000                |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -401,7 +401,7 @@ Feature: Amendment Request scenarios without background
       | Automation Permanent Focus Area | 0          | 3650     |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--03          | 1000        |
+      | {SavedValue:fundingAccount}          | 1000        |
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
@@ -516,7 +516,7 @@ Feature: Amendment Request scenarios without background
     And I navigate to "Overview" sub tab
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Revised Encumbrance |
-      | FA--03          | 3000                |
+      | {SavedValue:fundingAccount}          | 3000                |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -583,7 +583,7 @@ Feature: Amendment Request scenarios without background
       | Automation Permanent Focus Area | 0          | 3650     |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--03          | 1000        |
+      | {SavedValue:fundingAccount}          | 1000        |
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
@@ -721,7 +721,7 @@ Feature: Amendment Request scenarios without background
       | Automation Permanent Focus Area | 0          | 3650     |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--03          | 1000        |
+      | {SavedValue:fundingAccount}          | 1000        |
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
@@ -836,7 +836,7 @@ Feature: Amendment Request scenarios without background
     And I navigate to "Overview" sub tab
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Revised Encumbrance |
-      | FA--03          | 3000                |
+      | {SavedValue:fundingAccount}          | 3000                |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -903,7 +903,7 @@ Feature: Amendment Request scenarios without background
       | Automation Permanent Focus Area | 0          | 3650     |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--03          | 1000        |
+      | {SavedValue:fundingAccount}          | 1000        |
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
@@ -1018,7 +1018,7 @@ Feature: Amendment Request scenarios without background
     And I navigate to "Overview" sub tab
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Revised Encumbrance |
-      | FA--03          | 3000                |
+      | {SavedValue:fundingAccount}          | 3000                |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1083,7 +1083,7 @@ Feature: Amendment Request scenarios without background
       | Automation Permanent Focus Area | 0          | 3650     |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--03          | 1000        |
+      | {SavedValue:fundingAccount}          | 1000        |
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
@@ -1198,7 +1198,7 @@ Feature: Amendment Request scenarios without background
     And I navigate to "Overview" sub tab
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Revised Encumbrance |
-      | FA--03          | 3000                |
+      | {SavedValue:fundingAccount}          | 3000                |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1262,7 +1262,7 @@ Feature: Amendment Request scenarios without background
       | Automation Permanent Focus Area | 0          | 3650     |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--03          | 1000        |
+      | {SavedValue:fundingAccount}          | 1000        |
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
@@ -1377,7 +1377,7 @@ Feature: Amendment Request scenarios without background
     And I navigate to "Overview" sub tab
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Revised Encumbrance |
-      | FA--03          | 3000                |
+      | {SavedValue:fundingAccount}          | 3000                |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1407,7 +1407,7 @@ Feature: Amendment Request scenarios without background
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Activated" inside flex table with id "---amendment:-:recipientAwardsTableId---"
     When I navigate to "Budget" sub tab
-    Then I see value "$3,000.00" for title "Encumbrance" against the value "FA--03" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    Then I see value "$3,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
     Examples:
       | Award Name                                       | Grant Name                                       |
       | Automation Execution Award for Amendment Request | Automation Execution Award for Amendment Request |
@@ -1443,7 +1443,7 @@ Feature: Amendment Request scenarios without background
       | Automation Permanent Focus Area | 0          | 3650     |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--03          | 1000        |
+      | {SavedValue:fundingAccount}          | 1000        |
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
@@ -1558,7 +1558,7 @@ Feature: Amendment Request scenarios without background
     And I navigate to "Overview" sub tab
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Revised Encumbrance |
-      | FA--03          | 3000                |
+      | {SavedValue:fundingAccount}          | 3000                |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1588,7 +1588,7 @@ Feature: Amendment Request scenarios without background
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Activated" inside flex table with id "---amendment:-:recipientAwardsTableId---"
     When I navigate to "Actual" sub tab
-    Then I see value "$3,000.00" for title "Encumbrance Balance" against the value "FA--03" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    Then I see value "$3,000.00" for title "Encumbrance Balance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
     Examples:
       | Award Name                                       | Grant Name                                       |
       | Automation Execution Award for Amendment Request | Automation Execution Award for Amendment Request |
@@ -1624,7 +1624,7 @@ Feature: Amendment Request scenarios without background
       | Automation Permanent Focus Area | 0          | 3650     |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--03          | 1000        |
+      | {SavedValue:fundingAccount}          | 1000        |
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
@@ -1739,7 +1739,7 @@ Feature: Amendment Request scenarios without background
     And I navigate to "Overview" sub tab
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Revised Encumbrance |
-      | FA--03          | 3000                |
+      | {SavedValue:fundingAccount}          | 3000                |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1812,7 +1812,7 @@ Feature: Amendment Request scenarios without background
       | Automation Permanent Focus Area | 0          | 3650     |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Encumbrance |
-      | FA--03          | 1000        |
+      | {SavedValue:fundingAccount}          | 1000        |
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
@@ -1927,7 +1927,7 @@ Feature: Amendment Request scenarios without background
     And I navigate to "Overview" sub tab
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Revised Encumbrance |
-      | FA--03          | 3000                |
+      | {SavedValue:fundingAccount}          | 3000                |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
