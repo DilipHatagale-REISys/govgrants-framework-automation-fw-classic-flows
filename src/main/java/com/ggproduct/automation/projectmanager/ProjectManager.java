@@ -276,4 +276,37 @@ public class ProjectManager extends ProjectWebServices {
             EyeThink.core().Properties().saveValue(currentKey, p.getProperty(currentKey));
         }
     }
+
+    /**
+     * navigate to last page in the flex table if there is a pagination
+     * @param flexTableId
+     */
+    public void navigateToLastPageInFlexTable(String flexTableId){
+        By lastPage = By.xpath("//div[@id='"+flexTableId+"']//span[contains(@class,'fa-fast-forward')]");
+        try {
+            EyeThink.core().findMyElement().getElement(lastPage).click();
+        } catch (Exception ee){
+            // eating the exception
+        }
+    }
+
+    /***
+     * It will get the last value from the specified column name and it's value is saved in Hasmap against a key "lastValueFromTableForCol"
+     * @param columnName (unique column name of flex table)
+     * @param flexTableId
+     */
+    public void getLastValueFromTableHavingColumnNameAs(String columnName, String flexTableId){
+        By columnHeaders = By.xpath("//div[@id='"+flexTableId+"']//th//span[@ng-bind='fieldLabel']");
+        List<WebElement> columnList = EyeThink.core().findMyElement().getElements(columnHeaders);
+        int counter = 1;
+        for (WebElement columnEle : columnList){
+            if (columnEle.getText().equalsIgnoreCase(columnName)){
+                break;
+            }
+            counter++;
+        }
+        By lastValueLocator = By.xpath("//div[@id='"+flexTableId+"']//th//span[text()='"+columnName+"']/ancestor::thead/parent::table//tbody[last()-1]//td["+counter+"]/span/field/span");
+        String lastValue = EyeThink.core().findMyElement().getElement(lastValueLocator).getText();
+        EyeThink.core().Properties().saveValue("lastValueFromTableForCol",lastValue);
+    }
 }
