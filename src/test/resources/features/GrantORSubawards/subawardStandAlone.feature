@@ -2023,3 +2023,55 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Examples:
       | Grant Name                 | Award Name                 |
       | Automation Execution Award | Automation Execution Award |
+
+  @45729 @progressReportAnnuallyWithLessThan365DateError @jitendra
+  Scenario: Verify if annually frequency is selected and schedule dates are less than year it show validation message.
+    When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "AnnualError" values from "Errors.xlsx"
+    And I click modal button "Save"
+    Then I see the following messages in the page details contains:
+      | The time between Schedule Start Date and Schedule End Date must be greater than or equal to 365 days if Annually frequency is selected. |
+
+  @45732 @progressReportBiMonthWithLessThan60DaysDateError @jitendra
+  Scenario: Validate User is not allowed to select schedule dates less than 60 days when frequency is Bi-Monthly.
+    When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "BI-MonthlyError" values from "Errors.xlsx"
+    And I click modal button "Save"
+    Then I see the following messages in the page details contains:
+      | The time between Schedule Start Date and Schedule End Date must be greater than or equal to 60 days if Bi-Monthly frequency is selected. |
+
+  @45731 @progressReportMonthyWithLessThan28DaysDateError @jitendra
+  Scenario: Verify if Monthly frequency is selected and schedule period is less than month than Validation message is shown.
+    When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "MonthlyError" values from "Errors.xlsx"
+    And I click modal button "Save"
+    Then I see the following messages in the page details contains:
+      | The time between Schedule Start Date and Schedule End Date must be greater than or equal to 28 days if Monthly frequency is selected. |
+
+  @45733 @SelectDesiredFrequencyAsMonthlywithScheduleBaseAsReportingPeriod @mahadev
+  Scenario: Verify Reporting Period End Date is same as the Schedule End Date (Active award).
+    When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "ProgressReportQuartelyReporting" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    And I save the field labeled "Schedule End Date" as "ScheduleEndDate"
+    When I close Modal
+    And I expand nested table containing column value "Progress Report"
+    And I navigate to last page in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
+    And I get the last value for column name "Reporting Period End Date" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
+    Then I verify that the Schedule end date is matching with Reporting Period End Date
