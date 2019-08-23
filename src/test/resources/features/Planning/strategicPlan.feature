@@ -1,4 +1,4 @@
-@strategicPlan @regression
+@strategicPlan @regression @planning
 Feature: Validate all scenarios in Strategic Plan
 
   Background: To setup data
