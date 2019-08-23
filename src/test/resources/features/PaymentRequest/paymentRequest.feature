@@ -40,7 +40,7 @@ Feature: Validate all scenarios in Payment Request
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) |
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                |
     When I close modal by clicking the top right x button
-    Then I see that "$20.00" has been added in flextable with Id "---paymentRequest:-:paymentRequestBudgetTableId---"
+    Then I see value "$20.00" for title "Spent This Action" against the value "Construction" inside table "---paymentRequest:-:paymentRequestBudgetTableId---"
 
   @51069 @paymentRequestSendToGrantor
   Scenario: Send Reimbursement Payment Request to Grantor
