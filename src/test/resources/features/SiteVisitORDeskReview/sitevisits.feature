@@ -787,7 +787,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Submit to Grantor" in the page details
     Then I see the following messages in the page details :
-      | Reports and Outcomes : Enter corrective actions on all Findings outcomes using the "+" icons. |
+      | Reports and Outcomes Tab - Enter corrective actions on all Findings outcomes using the "+" icons. |
 
   @55210 @viewSendToSubrecipientButton @deepika
   Scenario:  Validate the Infomation send to the subrecipients and User will be able to view the Send to Subrecipient button
