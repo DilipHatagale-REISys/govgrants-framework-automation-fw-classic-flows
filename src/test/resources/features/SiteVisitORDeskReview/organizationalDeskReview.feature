@@ -905,7 +905,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Submit to Grantor" in the page details
     Then I see the following messages in the page details :
-      | Reports and Outcomes : Enter corrective actions on all Findings outcomes using the "+" icons. |
+      | Reports and Outcomes Tab - Enter corrective actions on all Findings outcomes using the "+" icons. |
 
   @55460 @approverForwardUserGetPendingTaskDeskReview @deepika
   Scenario: Validate when the Approver forward Org Level Desk Review to other user, the Pending Task will be created to the User
@@ -1126,7 +1126,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "PendingTasks" panel
     When I click on "Start" icon for "Record Id" inside table
-    Then  I cannot see top right button "New" in flex table with id "---orgLevelDeskReview:-:correctiveTableId---"
+    Then I cannot see "Reports and Outcomes" sub tab at view detail page
 
   @56001 @deskReviewWithoutFormFillingOrgLevel @deepika
   Scenario: User will not be able to submit the Desk Review for approval without completed forms

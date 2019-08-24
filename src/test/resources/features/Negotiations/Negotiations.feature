@@ -188,7 +188,7 @@ Feature: Validate all scenarios in Negotiations
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---negotiation:-:phasePendingTasksTableId---" panel
     When I click on "Start" icon for "Record Id" inside table
-    When I click on "Send to Subrecipient" in the page details
+    When I click on "Send Back to Subrecipient" in the page details
     Then I see status in Progress-bar is "Negotiation Initiated" and is "green"
 
   @57039 @createSubAwardAfterNegotiationCompleted @deepika
@@ -439,7 +439,7 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Start" icon for "Record Id" inside table
     When I click on "Complete Negotiation" in the page details
     And I navigate to "Applications" tab
-    And I click toggle button to select "All Applications"
+    And I click toggle button to select "Applications - All"
     When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
     Then I see values "Autoamtion Announcement for Negotiations" and "Negotiated" inside table
 
@@ -475,7 +475,7 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Start" icon for "Record Id" inside table
     When I click on "Complete Negotiation" in the page details
     And I navigate to "Applications" tab
-    And I click toggle button to select "All Applications"
+    And I click toggle button to select "AApplications - All"
     When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     And I refresh the page
@@ -486,7 +486,7 @@ Feature: Validate all scenarios in Negotiations
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
-    And I click toggle button to select "All Applications"
+    And I click toggle button to select "Applications - All"
     When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     And I refresh the page
@@ -497,7 +497,7 @@ Feature: Validate all scenarios in Negotiations
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
-    And I click toggle button to select "All Applications"
+    And I click toggle button to select "Applications - All"
     When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     When I click on "Initiate Negotiation" in the page details
@@ -513,7 +513,7 @@ Feature: Validate all scenarios in Negotiations
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
-    And I click toggle button to select "All Applications"
+    And I click toggle button to select "Applications - All"
     When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     When I click on "Initiate Negotiation" in the page details
@@ -529,7 +529,7 @@ Feature: Validate all scenarios in Negotiations
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
-    And I click toggle button to select "All Applications"
+    And I click toggle button to select "AApplications - All"
     When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     When I click on "Initiate Negotiation" in the page details
@@ -547,7 +547,7 @@ Feature: Validate all scenarios in Negotiations
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
-    And I click toggle button to select "All Applications"
+    And I click toggle button to select "Applications - All"
     When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     When I click on "Initiate Negotiation" in the page details
@@ -565,7 +565,7 @@ Feature: Validate all scenarios in Negotiations
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
-    And I click toggle button to select "All Applications"
+    And I click toggle button to select "Applications - All"
     When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     When I click on "Initiate Negotiation" in the page details
@@ -591,7 +591,7 @@ Feature: Validate all scenarios in Negotiations
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
-    And I click toggle button to select "All Applications"
+    And I click toggle button to select "AApplications - All"
     When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "negotiation:-:negotiationAppReviewListTableId---"
     When I click on "Initiate Negotiation" in the page details
@@ -622,7 +622,7 @@ Feature: Validate all scenarios in Negotiations
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
-    And I click toggle button to select "All Applications"
+    And I click toggle button to select "Applications - All"
     When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     When I click on "Initiate Negotiation" in the page details
@@ -698,7 +698,7 @@ Feature: Validate all scenarios in Negotiations
       | Value                              | Field                           |
       | Automation Negotiation Iniatiation | ExplanationOfRevisionsNeeded__c |
     When I click on "Save" in the page details
-    When I click on "Send to Subrecipient" in the page details
+    When I click on "Send Back to Subrecipient" in the page details
     When I refresh the page
     Then I cannot see top right button "Edit Negotiation" in page detail
 
@@ -838,7 +838,7 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Start" icon for "Record Id" inside table
     When I click on "Complete Negotiation" in the page details
     And I navigate to "Applications" tab
-    And I click toggle button to select "All Applications"
+    And I click toggle button to select "Applications - All"
     When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
     Then I see values "Autoamtion Announcement for Negotiations" and "Negotiated" inside table
 
@@ -847,7 +847,7 @@ Feature: Validate all scenarios in Negotiations
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
-    And I click toggle button to select "All Applications"
+    And I click toggle button to select "Applications - All"
     When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     When I click on "Initiate Negotiation" in the page details
@@ -855,7 +855,7 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Save" in the page details
    And I navigate to "Applications" tab
    When I navigate to "Applications" content inside "Applications" subheader on left panel
-   And I click toggle button to select "All Applications"
+   And I click toggle button to select "Applications - All"
    When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
    Then I see that "Autoamtion Announcement for Negotiations" is in "Reviewed" status
