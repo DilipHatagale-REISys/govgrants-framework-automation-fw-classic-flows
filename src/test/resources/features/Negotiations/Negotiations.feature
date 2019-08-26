@@ -475,7 +475,7 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Start" icon for "Record Id" inside table
     When I click on "Complete Negotiation" in the page details
     And I navigate to "Applications" tab
-    And I click toggle button to select "AApplications - All"
+    And I click toggle button to select "Applications - All"
     When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     And I refresh the page
@@ -529,7 +529,7 @@ Feature: Validate all scenarios in Negotiations
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
-    And I click toggle button to select "AApplications - All"
+    And I click toggle button to select "Applications - All"
     When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     When I click on "Initiate Negotiation" in the page details
@@ -591,7 +591,7 @@ Feature: Validate all scenarios in Negotiations
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
-    And I click toggle button to select "AApplications - All"
+    And I click toggle button to select "Applications - All"
     When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "negotiation:-:negotiationAppReviewListTableId---"
     When I click on "Initiate Negotiation" in the page details
