@@ -2060,7 +2060,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see the following messages in the page details contains:
       | The time between Schedule Start Date and Schedule End Date must be greater than or equal to 28 days if Monthly frequency is selected. |
 
-  @45733 @SelectDesiredFrequencyAsMonthlywithScheduleBaseAsReportingPeriod @mahadev
+  @45733 @SelectDesiredFrequencyAsMonthlywithScheduleBaseAsReportingPeriod @jitendra
   Scenario: Verify Reporting Period End Date is same as the Schedule End Date (Active award).
     When I click on "Edit" in the page details
     And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -2073,5 +2073,55 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I close Modal
     And I expand nested table containing column value "Progress Report"
     And I navigate to last page in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
-    And I get the last value for column name "Reporting Period End Date" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
+    And I get the value from row "last row" for column name "Reporting Period End Date" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
     Then I verify that the Schedule end date is matching with Reporting Period End Date
+
+  @37232 @progressReportSemiAnuallyWithLessThan120DaysDateError @jitendra
+  Scenario: Validate User is not allowed to select schedule dates less than 120 days when frequency is Semi-Annually.
+    When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "SemiAnnuallyError" values from "Errors.xlsx"
+    And I click modal button "Save"
+    Then I see the following messages in the page details contains:
+      | The time between Schedule Start Date and Schedule End Date must be greater than or equal to 120 days if Semi-Annually frequency is selected |
+
+  @45744 @progressReportNoStartDateError @jitendra
+  Scenario: Verify if Schedule Start date field is not selected then it should not allow to create the schedule.
+    When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "NoScheduleStartDateError" values from "Errors.xlsx"
+    And I enter value "" into field "CalReportingStartDate__c"
+    And I click modal button "Save"
+    Then I see the following messages in the page details contains:
+      | Schedule Start Date is required. |
+
+  @45738 @SelectDesiredFrequencyAsMonthlywithScheduleBaseAsReportingPeriod @jitendra
+  Scenario: Verify Reporting Period Start Date is same as the Schedule Start Date (Active).
+    When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "ProgressReportQuartelyReporting" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    And I save the field labeled "Schedule Start Date" as "ScheduleStartDate"
+    When I close Modal
+    And I expand nested table containing column value "Progress Report"
+    And I get the value from row "1" for column name "Reporting Period Start Date" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
+    Then I verify that the Schedule start date is matching with Reporting Period start Date
+
+  @45736 @SelectDesiredFrequencyAsBiMonthlyBasedOnGivenDate @jitendra
+  Scenario: Verify functionality of Desired Frequency as Bi Monthly with Schedule Base type as Reporting period.
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "Bi-MonthlyForEightRecord" values from "Errors.xlsx"
+    And I click modal button "Save"
+    When I close Modal
+    And I expand nested table containing column value "Progress Report"
+    Then I see total records count "Total Records:8" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"

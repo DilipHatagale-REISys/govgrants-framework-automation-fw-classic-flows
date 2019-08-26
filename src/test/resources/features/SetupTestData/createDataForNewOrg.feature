@@ -8,8 +8,8 @@ Feature: Validate creation of data in new Org
     And I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
-    When I enter value "<focus area name>" into field "Title__c"
     When I enter "Creation" values from "FocusArea_Field_Values.xlsx"
+    When I enter value "<focus area name>" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "FocusArea_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -17,7 +17,7 @@ Feature: Validate creation of data in new Org
     Then I see status in Progress-bar is "Active" and is "Green"
     Examples:
       | User | focus area name                 |
-      | PM   | Automation Execution Focus Area |
+      | PM   | Automation Execution Focus Area1 |
 
   @fundingSourceActivation-setupdata
   Scenario Outline: Activate Funding Source
