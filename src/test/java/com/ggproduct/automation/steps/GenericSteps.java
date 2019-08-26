@@ -7,6 +7,8 @@ import org.junit.Assert;
 import org.springframework.context.annotation.Description;
 
 import javax.mail.MessagingException;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class GenericSteps {
@@ -105,7 +107,11 @@ public class GenericSteps {
     @Description("Navigate to last page of the flex table")
     @And("I navigate to last page in flex table \"([^\"]*)\"")
     public void iNavigateToLastPageInFlexTable(String flexTableId) {
-        projectManager.navigateToLastPageInFlexTable(flexTableId);
+        try {
+            EyeThink.saas().flexTable().flexTablePagination(flexTableId, "Last");
+        } catch (Exception e){
+            // eating exception....
+        }
     }
 
     @Description("Get last value for specified column name in the flex table")
@@ -119,5 +125,11 @@ public class GenericSteps {
     public void iVerifyThatTheScheduleEndDateIsMatchingWithReportingPeriodEndDate() {
         Assert.assertEquals(EyeThink.core().Properties().getValue("lastValueFromTableForCol"),
                 EyeThink.core().Properties().getValue("ScheduleEndDate"));
+    }
+
+    @Then("I verify that the Schedule start date is matching with Reporting Period start Date")
+    public void iVerifyThatTheScheduleStartDateIsMatchingWithReportingPeriodStartDate() {
+        Assert.assertEquals(EyeThink.core().Properties().getValue("lastValueFromTableForCol"),
+                EyeThink.core().Properties().getValue("ScheduleStartDate"));
     }
 }

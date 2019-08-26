@@ -278,20 +278,6 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     /**
-     * navigate to last page in the flex table if there is a pagination
-     * @param flexTableId
-     */
-    public void navigateToLastPageInFlexTable(String flexTableId){
-        By lastPage = By.xpath("//div[@id='"+flexTableId+"']//span[contains(@class,'fa-fast-forward')]");
-        try {
-            EyeThink.core().findMyElement().getElement(lastPage).click();
-        } catch (Exception ee){
-            // eating the exception
-        }
-    }
-
-
-    /**
      * @param rowNumber  Specify the row number such as 1,2,3 and so on. and if you want column value from last row then mention "last row"
      * @param columnName Name of the column from which you want a value
      * @param flexTableId Id of flex table
