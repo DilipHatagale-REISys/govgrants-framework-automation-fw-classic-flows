@@ -995,7 +995,7 @@ Feature: Validate all scenarios in Desk Review
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
     And I click on "View" icon for "Record Id" inside table
-    Then I can see top right button "Conduct" in page detail
+    Then I cannot see top right button "Conduct" in page detail
 
   @55368 @reportsAndOutcomesEditAccessDeskReview @deepika
   Scenario: Verify that upon conduct, Reports And Outcomes tab are editable to the internal user for an award  level desk review
@@ -1202,19 +1202,6 @@ Feature: Validate all scenarios in Desk Review
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
-    Given I click on "Conduct" in the page details
-    Given I am on "SUBPORTAL" portal
-    When I login as "SPI" user
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
-    And I navigate to "Reports and Outcomes" sub tab
     Then I cannot see "Reports and Outcomes" sub tab at view detail page
 
   @56017 @deskReviewPeerReview @deepika
