@@ -276,4 +276,38 @@ public class ProjectManager extends ProjectWebServices {
             EyeThink.core().Properties().saveValue(currentKey, p.getProperty(currentKey));
         }
     }
+
+    /**
+     * @param rowNumber  Specify the row number such as 1,2,3 and so on. and if you want column value from last row then mention "last row"
+     * @param columnName Name of the column from which you want a value
+     * @param flexTableId Id of flex table
+     * @return value from specified row for specified column from the Flex Table.
+     * @author jitendra.pisal
+     */
+    private String getValueOfSpecifiedColFromTableHavingColumnNameAs(String rowNumber, String columnName, String flexTableId){
+
+        int columnValueFromRowInInt = 0;
+        int counter = 1;
+        By columnHeaders = By.xpath("//div[@id='"+flexTableId+"']//th//span[@ng-bind='fieldLabel']");
+        List<WebElement> columnList = EyeThink.core().findMyElement().getElements(columnHeaders);
+
+        // get the column index of required column.
+        for (WebElement columnEle : columnList){
+            if (columnEle.getText().equalsIgnoreCase(columnName)){
+                break;
+            }
+            counter++;
+        }
+
+        List<WebElement> listOfDataInColumn = EyeThink.core().findMyElement().getElements(By.xpath("//div[@id='"+flexTableId+"']//th//span[text()='"+columnName+"']/ancestor::thead/parent::table//tr//td["+counter+"]/span/field/span"));
+        columnValueFromRowInInt = rowNumber.equalsIgnoreCase("last row") ? listOfDataInColumn.size()
+                : Integer.parseInt(rowNumber);
+
+        return listOfDataInColumn.get(columnValueFromRowInInt-1).getText();
+    }
+
+    public void iSavedSpecificValueFromFlexTable(String columnValueFromRow, String columnName, String flexTableId){
+        EyeThink.core().Properties().saveValue("lastValueFromTableForCol",getValueOfSpecifiedColFromTableHavingColumnNameAs(columnValueFromRow,
+                columnName, flexTableId));
+    }
 }

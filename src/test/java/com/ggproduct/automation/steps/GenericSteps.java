@@ -1,11 +1,14 @@
 package com.ggproduct.automation.steps;
 
 import com.ggproduct.automation.projectmanager.ProjectManager;
+import eyethink.automation.bots.Register.EyeThink;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
 import org.springframework.context.annotation.Description;
 
 import javax.mail.MessagingException;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class GenericSteps {
@@ -99,5 +102,34 @@ public class GenericSteps {
     public void iSeeMailSubject(String userType, List<String> subjectList) throws MessagingException {
         String subject = subjectList.get(0);
         Assert.assertTrue(projectManager.validateMailSubject(userType,subject));
+    }
+
+    @Description("Navigate to last page of the flex table")
+    @And("I navigate to last page in flex table \"([^\"]*)\"")
+    public void iNavigateToLastPageInFlexTable(String flexTableId) {
+        try {
+            EyeThink.saas().flexTable().flexTablePagination(flexTableId, "Last");
+        } catch (Exception e){
+            // eating exception....
+        }
+    }
+
+    @Description("Get last value for specified column name in the flex table")
+    @And("I get the value from row {string} for column name {string} in flex table {string}")
+    public void iGetTheSpecifiedValueForColumnNameInFlexTable(String columnValueFromRow, String columnName, String flexTableId) {
+        projectManager.iSavedSpecificValueFromFlexTable(columnValueFromRow, columnName,flexTableId);
+    }
+
+    @Description("Validation of equality for values of Schedule end date AND Reporting Period End Date")
+    @Then("I verify that the Schedule end date is matching with Reporting Period End Date")
+    public void iVerifyThatTheScheduleEndDateIsMatchingWithReportingPeriodEndDate() {
+        Assert.assertEquals(EyeThink.core().Properties().getValue("lastValueFromTableForCol"),
+                EyeThink.core().Properties().getValue("ScheduleEndDate"));
+    }
+
+    @Then("I verify that the Schedule start date is matching with Reporting Period start Date")
+    public void iVerifyThatTheScheduleStartDateIsMatchingWithReportingPeriodStartDate() {
+        Assert.assertEquals(EyeThink.core().Properties().getValue("lastValueFromTableForCol"),
+                EyeThink.core().Properties().getValue("ScheduleStartDate"));
     }
 }

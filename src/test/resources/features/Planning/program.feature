@@ -1,4 +1,4 @@
-@program @regression
+@program @regression @planning
 Feature: Validate all scenarios for program
 
   Background: Create Program
