@@ -109,9 +109,9 @@ public class GenericSteps {
     }
 
     @Description("Get last value for specified column name in the flex table")
-    @And("I get the last value for column name {string} in flex table {string}")
-    public void iGetTheLastValueForColumnNameInFlexTable(String columnName, String flexTableId) {
-        projectManager.getLastValueFromTableHavingColumnNameAs(columnName,flexTableId);
+    @And("I get the value from row {string} for column name {string} in flex table {string}")
+    public void iGetTheSpecifiedValueForColumnNameInFlexTable(String columnValueFromRow, String columnName, String flexTableId) {
+        projectManager.iSavedSpecificValueFromFlexTable(columnValueFromRow, columnName,flexTableId);
     }
 
     @Description("Validation of equality for values of Schedule end date AND Reporting Period End Date")
