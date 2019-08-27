@@ -1610,7 +1610,7 @@ Feature: Validate all scenarios in Progress Report
     And I click modal button "Save"
     And I close Modal
     When I expand nested table containing column value "Progress Report"
-    Then I see progress report table is getting updated
+    Then I see progress report table is getting updated with count "Total Records:5" inside flextable with Id "---progressReport:-:progressReportsTaskScheduleId---"
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |

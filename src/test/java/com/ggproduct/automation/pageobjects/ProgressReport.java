@@ -11,8 +11,8 @@ public class ProgressReport extends ProjectManager {
         this.ggAssertionObjects = ggAssertionObject;
     }
 
-    public void verifyProgressReportSchedulesUpdated(){
+    public void verifyProgressReportSchedulesUpdated(String totalRecords, String tableID){
        ggAssertionObjects.assertValuesAreInFlexTableWithColumnTitle(EyeThink.core().Properties().getValue("EGMSID"),"EGMS ID","RelatedPRSchedulesFlexToggle",true);
-       AssertTotalRecordsCountInFlexTable("Total Records:5","RelatedPRSchedulesFlexToggle");
+       AssertTotalRecordsCountInFlexTable(totalRecords,tableID);
     }
 }

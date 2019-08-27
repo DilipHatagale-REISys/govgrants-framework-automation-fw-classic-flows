@@ -10,8 +10,8 @@ public class ProgressReportSteps {
         this.progressReport = progressReport;
     }
 
-    @Then("I see progress report table is getting updated")
-    public void iSeeProgressReportTableIsGettingUpdated() {
-        progressReport.verifyProgressReportSchedulesUpdated();
+    @Then("^I see progress report table is getting updated with count \"([^\"]*)\" inside flextable with Id \"([^\"]*)\"$")
+    public void iSeeProgressReportTableIsGettingUpdatedWithCountInsideFlextableWithId(String totalRecords, String tableID) {
+        progressReport.verifyProgressReportSchedulesUpdated(totalRecords,tableID);
     }
 }
