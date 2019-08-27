@@ -5,7 +5,7 @@ import com.ggproduct.automation.projectmanager.ProjectManager;
 import eyethink.automation.bots.Register.EyeThink;
 
 public class ProgressReport extends ProjectManager {
-    public GovGrantsAssertionObjects ggAssertionObjects;
+    private GovGrantsAssertionObjects ggAssertionObjects;
 
     public ProgressReport(GovGrantsAssertionObjects ggAssertionObject ){
         this.ggAssertionObjects = ggAssertionObject;
