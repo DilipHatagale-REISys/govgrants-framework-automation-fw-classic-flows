@@ -4,10 +4,14 @@ import com.ggproduct.automation.pageobjects.ProgressReport;
 import io.cucumber.java.en.Then;
 
 public class ProgressReportSteps {
-    ProgressReport progressReport;
+    private ProgressReport progressReport;
 
-    public ProgressReportSteps(){
-        this.progressReport = new ProgressReport();
+    public ProgressReportSteps(ProgressReport progressReport){
+        this.progressReport = progressReport;
     }
 
+    @Then("I see progress report table is getting updated")
+    public void iSeeProgressReportTableIsGettingUpdated() {
+        progressReport.verifyProgressReportSchedulesUpdated();
+    }
 }

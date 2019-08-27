@@ -310,4 +310,9 @@ public class ProjectManager extends ProjectWebServices {
         EyeThink.core().Properties().saveValue("lastValueFromTableForCol",getValueOfSpecifiedColFromTableHavingColumnNameAs(columnValueFromRow,
                 columnName, flexTableId));
     }
+
+    public void iSavedSpecificValueFromFlexTableInsideGivenKey(String columnValueFromRow, String columnName, String key, String flexTableId){
+        EyeThink.core().Properties().saveValue(key,getValueOfSpecifiedColFromTableHavingColumnNameAs(columnValueFromRow,
+                columnName, flexTableId));
+    }
 }
