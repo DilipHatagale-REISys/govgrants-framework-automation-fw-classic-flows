@@ -3,6 +3,7 @@ package com.ggproduct.automation.pageobjects;
 import com.automation.rei.govgrantsSteps.GovGrantsAssertionObjects;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 import eyethink.automation.bots.Register.EyeThink;
+import org.junit.Assert;
 
 public class ProgressReport extends ProjectManager {
     private GovGrantsAssertionObjects ggAssertionObjects;
@@ -12,7 +13,7 @@ public class ProgressReport extends ProjectManager {
     }
 
     public void verifyProgressReportSchedulesUpdated(String totalRecords, String tableID){
-       ggAssertionObjects.assertValuesAreInFlexTableWithColumnTitle(EyeThink.core().Properties().getValue("EGMSID"),"EGMS ID",tableID,true);
+        Assert.assertEquals(EyeThink.core().Properties().getValue("EGMSID1"),EyeThink.core().Properties().getValue("EGMSID2"));
        AssertTotalRecordsCountInFlexTable(totalRecords,tableID);
     }
 }
