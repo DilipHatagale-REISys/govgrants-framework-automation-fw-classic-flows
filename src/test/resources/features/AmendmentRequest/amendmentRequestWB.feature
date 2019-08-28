@@ -501,7 +501,7 @@ Feature: Amendment Request scenarios without background
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
     When I close modal by clicking the top right x button
-    When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    When I click on "Add Line Items" icon for "Project inspection fees" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
@@ -538,14 +538,14 @@ Feature: Amendment Request scenarios without background
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---"
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-    And I navigate to "Grants" tab
+    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "<Grant Name>" in "GrantsList" panel
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "GrantsList"
+    When I perform quick search for "<Grant Name>" in "---amendment:-:recipientActiveGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---amendment:-:recipientActiveGrantsTableId---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:recipientAwardsTableId---"
+    And I click on "View" icon for "Activated" inside flex table with id "---amendment:-:recipientAwardsTableId---"
     When I navigate to "Budget" sub tab
     Then I see field "Total Subaward Amount this Budget Period" as "$3,000.00"
     Examples:
@@ -1470,8 +1470,8 @@ Feature: Amendment Request scenarios without background
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
-      | Fiscal Approver    | Automation FO  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -1638,11 +1638,11 @@ Feature: Amendment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    When I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    When I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -1724,7 +1724,7 @@ Feature: Amendment Request scenarios without background
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
     When I close modal by clicking the top right x button
-    When I click on "Add Line Items" icon for "Site work" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    When I click on "Add Line Items" icon for "Project inspection fees" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
