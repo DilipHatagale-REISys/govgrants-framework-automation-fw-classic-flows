@@ -2099,3 +2099,14 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I expand nested table containing column value "Progress Report"
     And I get the value from row "1" for column name "Reporting Period Start Date" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
     Then I verify that the Schedule start date is matching with Reporting Period start Date
+
+  @34933 @SelectDesiredFrequencyAsAnnuallyBasedOnGivenDate @jitendra
+  Scenario: Verify the functionality of Desired Frequency as Annually with Schedule Base type as Reporting period.
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "Bi-MonthlyForEightRecord" values from "Errors.xlsx"
+    And I enter value "Annually" into field "Frequency__c"
+    And I click modal button "Save"
+    When I close Modal
+    And I expand nested table containing column value "Progress Report"
+    Then I see total records count "Total Records:2" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
