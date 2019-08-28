@@ -2437,13 +2437,14 @@ Feature: Validate all scenarios in Progress Report
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Terms" sub tab
     When I expand nested table containing column value "Progress Report"
-    And I save the value from row "1" for column name "EGMS ID" as "EGMSID" from flex table "---progressReport:-:progressReportsTaskScheduleId---"
+    And I save the value from row "1" for column name "EGMS ID" as "EGMSID1" from flex table "---progressReport:-:progressReportsTaskScheduleId---"
     When I collapse nested table containing column value "Progress Report"
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Quarterly" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     And I close Modal
     When I expand nested table containing column value "Progress Report"
+    And I save the value from row "1" for column name "EGMS ID" as "EGMSID2" from flex table "---progressReport:-:progressReportsTaskScheduleId---"
     Then I see progress report table is getting updated with count "Total Records:5" inside flextable with Id "---progressReport:-:progressReportsTaskScheduleId---"
     Examples:
       | Award Name                 | Grant Name                 |
@@ -2708,3 +2709,39 @@ Feature: Validate all scenarios in Progress Report
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
+
+  @34935 @ValidateOnActiveAwardProgressReportIsCreatedAtSubRecipientEndWhenBatchIsExecuted @mahadev
+  Scenario Outline: Validate on active award Progress report is created at Sub-recipient end when batch is executed
+    Given I delete the record "<Award Name>" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c"
+    And I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
+    When I navigate to "Management" sub tab
+    Then I see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:recipientAwardProgressReportTableId---"
+    Examples:
+      | Award Name                 | Grant Name                 |
+      | Automation Permanent Award | Automation Permanent Award |
+
+  @58751 @validatesubrecipientUserCanSeeProgressReportUnderPerformanceSubTabAtSubawardView @mahadev
+  Scenario Outline: Validate sub-recipient user can see progress report under Performance tab at Sub-award View when Batch is executed
+    Given I delete the record "<Award Name>" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c"
+    And I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
+    When I navigate to "Performance" sub tab
+    Then I see value "{SavedValue:Record Id}" for title "EGMS ID" against the value "Created" inside table "---progressReport:-:recipientAwardProgressReportTableId---"
+    Examples:
+      | Award Name                 | Grant Name                 |
+      | Automation Permanent Award | Automation Permanent Award |
