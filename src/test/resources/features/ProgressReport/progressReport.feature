@@ -12,7 +12,6 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
-    And I save the field labeled "EGMS ID" as "Test"
 
   @51097 @taskCreationForSubrecipientProgressReport @smoke
   Scenario: To assert the task creation for Progress Report
