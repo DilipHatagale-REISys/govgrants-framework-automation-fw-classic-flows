@@ -2184,8 +2184,6 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     And I click on "Submit to Grantor" in the page details
-
-
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
