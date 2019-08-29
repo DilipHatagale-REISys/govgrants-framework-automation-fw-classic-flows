@@ -5,10 +5,7 @@ import eyethink.automation.bots.Register.EyeThink;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
 import org.springframework.context.annotation.Description;
-
 import javax.mail.MessagingException;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 public class GenericSteps {
@@ -131,5 +128,10 @@ public class GenericSteps {
     public void iVerifyThatTheScheduleStartDateIsMatchingWithReportingPeriodStartDate() {
         Assert.assertEquals(EyeThink.core().Properties().getValue("lastValueFromTableForCol"),
                 EyeThink.core().Properties().getValue("ScheduleStartDate"));
+    }
+
+    @When("^I save the value from row \"([^\"]*)\" for column name \"([^\"]*)\" as \"([^\"]*)\" from flex table \"([^\"]*)\"$")
+    public void iSaveTheValueFromRowForColumnNameAsFromFlexTable(String columnValueFromRow, String columnName, String key, String flexTableId) {
+        projectManager.iSavedSpecificValueFromFlexTableInsideGivenKey(columnValueFromRow, columnName, key, flexTableId);
     }
 }

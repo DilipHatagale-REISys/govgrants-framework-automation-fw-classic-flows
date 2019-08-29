@@ -413,7 +413,7 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Permanent Focus Area | 500      |
     Then I see that "Automation Permanent Focus Area" has been added in flextable with Id "---amendment:-:projectAreasTableId---"
 
-  @53211 @associateFocusAreaToBPCAmendmentRequest @smoke
+  @53211 @associateFocusAreaToBPCAmendmentRequest @smoke @wip
   Scenario Outline: Validate the association of FocusArea to BPC
     When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"

@@ -593,7 +593,7 @@ Feature: Validate all scenarios in Negotiations
     When I navigate to "Applications" content inside "Applications" subheader on left panel
     And I click toggle button to select "Applications - All"
     When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
-    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "negotiation:-:negotiationAppReviewListTableId---"
+    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     When I click on "Initiate Negotiation" in the page details
     And I get the "EGMS ID"
     And I navigate to "Negotiations" sub tab
@@ -635,7 +635,7 @@ Feature: Validate all scenarios in Negotiations
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     Then I can see row level action button "View" against "Autoamtion Announcement for Negotiations" in flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
 
-  @57503 @subrecipientCannotEditNegotiationRequestOnceSubmitToGrantor
+  @57503 @subrecipientCannotEditNegotiationRequestOnceSubmitToGrantor @wip
   Scenario: Validate whether Subrecipient user can edit Negotiations Details once Submit to Grantor
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -660,7 +660,7 @@ Feature: Validate all scenarios in Negotiations
       | Automation Negotiation Iniatiation | ApplicantResponse__c |
     When I click on "Save" in the page details
     When I click on "Submit to Grantor" in the page details
-    When I refresh the page
+    And I refresh the page
     Then I cannot see top right button "Edit" in page detail
 
   @57504 @userCanEditandSendToSubrecipientEvenAfterSubmitToGrantor
