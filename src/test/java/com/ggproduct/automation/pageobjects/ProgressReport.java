@@ -26,9 +26,9 @@ public class ProgressReport extends ProjectManager {
      */
     public Boolean isGivenToggleOptionPresent(String anyItemToBeCheck, String flexTableId) {
         EyeThink.saas().phasePanel().clickDoubleArrowToggle("#toggleFlexTableGrantorProgressReportsInternal");
-        List<WebElement> elements = EyeThink.core().findMyElement().getElements(By.xpath("//div[@id='" + flexTableId + "']//div[@id='dropdownListView']//ul/li/a/span[contains(@class,'ng-binding')]"));
+        List<WebElement> dropdownValues = EyeThink.core().findMyElement().getElements(By.xpath("//div[@id='" + flexTableId + "']//div[@id='dropdownListView']//ul/li/a/span[contains(@class,'ng-binding')]"));
 
-        for (WebElement el : elements) {
+        for (WebElement el : dropdownValues) {
             if (el.getText().equalsIgnoreCase(anyItemToBeCheck)) {
                 return true;
             }
@@ -48,12 +48,12 @@ public class ProgressReport extends ProjectManager {
         Set<String> headerTitles = new HashSet<>();
         headerTitles.add(columnName);
         Map<String, Integer> columnMapping = EyeThink.saas().flexTable().constructColumnMapping(row, headerTitles);
-        System.out.println("The column number was: " + columnMapping.get(columnName));
+
         By columnSelector = By
                 .xpath("//div[@id='" + tableId + "']//table//tr" + "//td[not(contains(@class, 'ng-hide'))and contains(@class,'tableCell')]["
                         + columnMapping.get(columnName) + "]" + "//span[contains(@class,'tableCellText')]");
-        List<WebElement> elements = EyeThink.core().findMyElement().getElements(columnSelector);
-        for (WebElement value : elements) {
+        List<WebElement> rowValues = EyeThink.core().findMyElement().getElements(columnSelector);
+        for (WebElement value : rowValues) {
             if (!value.getText().equalsIgnoreCase(valueToBeCheck))
                 return false;
         }
