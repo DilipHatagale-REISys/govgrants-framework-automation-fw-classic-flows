@@ -1083,3 +1083,41 @@ Feature: Validate all scenarios in Progress Report
     Examples:
       | Grant Name                 |
       | Automation Permanent Award |
+
+  @58535 @SelectDesiredFrequencyAsAnnuallyBasedOnGivenDate @jitendra
+  Scenario: Verify Sub-recipient user is not allowed to Edit the Schedules created on active award when Progress report is generated.
+    And I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "Automation Permanent Award" in "---progressReport:-:recipientActiveGrantId---" panel
+    And I click on "View" icon for "Automation Permanent Award" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---progressReport:-:recipientsRelatedSubAwardsTableId---"
+    And I navigate to "Terms" sub tab
+    Then I cannot see row level action button "Edit" against "Progress Report" in flex table with id "---progressreport:-:progressReportsScheduleId---"
+
+  @58662 @NotEditButtonInPRScheduleForSPI @jitendra
+  Scenario: Validate SPI user is not allowed to change the Progress report Schedule on Active subaward when status of Progress Report is submitted to Grantor.
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Performance" sub tab
+    Given I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 7      | 7             |
+    When I navigate to "Forms and Attachments" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
+    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I click on "Back" in the page details
+    And I click on "Submit to Grantor" in the page details
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "Automation Permanent Award" in "---progressReport:-:recipientActiveGrantId---" panel
+    And I click on "View" icon for "Automation Permanent Award" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---progressReport:-:recipientsRelatedSubAwardsTableId---"
+    When I navigate to "Terms" sub tab
+    Then I cannot see row level action button "Edit" against "Progress Report" in flex table with id "---progressreport:-:progressReportsScheduleId---"
