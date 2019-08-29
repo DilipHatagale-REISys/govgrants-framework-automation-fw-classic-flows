@@ -2745,3 +2745,22 @@ Feature: Validate all scenarios in Progress Report
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Permanent Award | Automation Permanent Award |
+
+  @58885 @validateDraftProgressReportAtProgressReportTableUnderMonitoringTabIsNotPresentAtInternalUserEnd @mahadev
+  Scenario: Validate draft progress report at under monitoring tab is not present at Internal User end using List view
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
+    Then I cannot see toggle option "Progress Reports - Draft" inside flex table id "---progressReport:-:internalProgressReportFlexTableId---"
+
+  @34937 @verifySubrecipientUserAbleToSeeDraftProgressReportAtMonitoringTab @mahadev
+  Scenario: Verify that sub-recipient user will be able to see Draft Progress Report at Progress Reports - Draft table on active award by using List View
+    Given I delete the record "Automation Permanent Award" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c"
+    And I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
+    And I click toggle button to select "Progress Reports - All"
+    And I perform quick search for "Record Id" in "---progressReport:-:progressReportFlexTableId---" panel
+    Then I see value "{SavedValue:Record Id}" for title "EGMS ID" against the value "Created" inside table "---progressReport:-:progressReportFlexTableId---"
