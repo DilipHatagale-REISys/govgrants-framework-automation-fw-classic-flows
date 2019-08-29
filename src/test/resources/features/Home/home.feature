@@ -395,8 +395,8 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-#      | EXE   |
-#      | PM    |
+      | EXE   |
+      | PM    |
 
   @56736 @additionalAddressesCreation  @smoke
   Scenario Outline: Validate whether ADMIN can Create the Additional Addresses
