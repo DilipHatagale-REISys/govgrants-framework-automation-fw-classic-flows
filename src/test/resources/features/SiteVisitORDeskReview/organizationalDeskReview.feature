@@ -1037,7 +1037,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    
     Then I can see top right button "Notify" in page detail
 
   @55806 @conductButtonDeskReviewOrgLevel @smoke @deepika
@@ -1201,10 +1200,12 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
+    And I close modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Desk Review Reports - All"
+    When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
     And I click on "View" icon for "Record Id" inside table
     When I click on "Complete Review" in the page details
     Then I see status in Progress-bar is "In Progress" and is "green"
