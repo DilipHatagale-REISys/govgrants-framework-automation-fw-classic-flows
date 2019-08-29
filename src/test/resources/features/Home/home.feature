@@ -857,7 +857,7 @@ Feature: Validate all scenarios in the home tab
        When I perform quick search for "Approve Program" in "HomePendingTasks" panel
        Then I see that "Approve Program" has been added in flextable with Id "HomePendingTasks"
 
-  @pendingTaskCount
+  @59015 @pendingTaskCount
   Scenario: Validate whether user is able to view the total acount of pending Tasks assigned to user
     Given I delete the record "Automation Execution Internal Program" from the object "Program"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -899,7 +899,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     Then I see task count for "Planning" phase with the total records of flex table id "PhasePendingTasks"
 
-  @validateFilesOnHome
+  @59016 @validateFilesOnHome
   Scenario: Addition of Attachment to Focus Area by User - Admin/EXE/PM
     Given I delete the record "Automation Execution Focus Area" from the object "Focus Area"
     When I login to "As a Grantor" app as "dynamicUser" user
