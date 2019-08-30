@@ -660,7 +660,6 @@ Feature: Validate all scenarios in Negotiations
       | Automation Negotiation Iniatiation | ApplicantResponse__c |
     When I click on "Save" in the page details
     When I click on "Submit to Grantor" in the page details
-    And I refresh the page
     Then I cannot see top right button "Edit" in page detail
 
   @57504 @userCanEditandSendToSubrecipientEvenAfterSubmitToGrantor
