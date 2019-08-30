@@ -5,10 +5,7 @@ import eyethink.automation.bots.Register.EyeThink;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class ProgressReport extends ProjectManager {
 
@@ -26,9 +23,9 @@ public class ProgressReport extends ProjectManager {
      */
     public Boolean isGivenToggleOptionPresent(String anyItemToBeCheck, String flexTableId) {
         EyeThink.saas().phasePanel().clickDoubleArrowToggle("#toggleFlexTableGrantorProgressReportsInternal");
-        List<WebElement> dropdownValues = EyeThink.core().findMyElement().getElements(By.xpath("//div[@id='" + flexTableId + "']//div[@id='dropdownListView']//ul/li/a/span[contains(@class,'ng-binding')]"));
+        List<WebElement> toggleOptions = EyeThink.core().findMyElement().getElements(By.xpath("//div[@id='" + flexTableId + "']//div[@id='dropdownListView']//ul/li/a/span[contains(@class,'ng-binding')]"));
 
-        for (WebElement el : dropdownValues) {
+        for (WebElement el : toggleOptions) {
             if (el.getText().equalsIgnoreCase(anyItemToBeCheck)) {
                 return true;
             }
@@ -45,13 +42,9 @@ public class ProgressReport extends ProjectManager {
      */
     public boolean isColumnValuePresentInsideFlexTable(String valueToBeCheck, String columnName, String tableId) {
         WebElement row = EyeThink.core().findMyElement().getElement(By.xpath("//div[@id='" + tableId + "']//table//tbody//tr"));
-        Set<String> headerTitles = new HashSet<>();
-        headerTitles.add(columnName);
-        Map<String, Integer> columnMapping = EyeThink.saas().flexTable().constructColumnMapping(row, headerTitles);
+        Map<String, Integer> columnMapping = EyeThink.saas().flexTable().constructColumnMapping(row, Collections.singleton(columnName));
+        By columnSelector = By.xpath("//div[@id='" + tableId + "']//table//tr//td[not(contains(@class, 'ng-hide')) and contains(@class,'tableCell'][" + columnMapping.get(columnName) + "]//descendant-or-self :: *[text='" + valueToBeCheck + "']");
 
-        By columnSelector = By
-                .xpath("//div[@id='" + tableId + "']//table//tr" + "//td[not(contains(@class, 'ng-hide'))and contains(@class,'tableCell')]["
-                        + columnMapping.get(columnName) + "]" + "//span[contains(@class,'tableCellText')]");
         List<WebElement> rowValues = EyeThink.core().findMyElement().getElements(columnSelector);
         for (WebElement value : rowValues) {
             if (!value.getText().equalsIgnoreCase(valueToBeCheck))

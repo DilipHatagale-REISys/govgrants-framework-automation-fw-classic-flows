@@ -31,13 +31,11 @@ public class ProjectWebServices {
     /**
      * calls the api to delete test data
      *
-     * @param objectType
-     *            - the object for which test data should be deleted. Currently
-     *            accepts Program, Announcement, Qualified Announcement,
-     *            Application, Award, Grant, Site Visit, Desk Review, Payment
-     *            Request, Progress Report, Closeout
-     * @param recordName
-     *            - the name or title of the record
+     * @param objectType - the object for which test data should be deleted. Currently
+     *                   accepts Program, Announcement, Qualified Announcement,
+     *                   Application, Award, Grant, Site Visit, Desk Review, Payment
+     *                   Request, Progress Report, Closeout
+     * @param recordName - the name or title of the record
      */
     public void deletionApi(String recordName, String objectType) {
         System.out.print("Making API call... ");
@@ -64,19 +62,19 @@ public class ProjectWebServices {
     private void setDefaultEndPointGetToken(String defaultEndPointGetToken) {
         if (System.getProperty("env") != null && System.getProperty("env").equalsIgnoreCase("QA")) {
             this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9dZJodJWITSuFoeXeOau_jPysAF1tDTnpScZyZwXUGhS_ZudVpjPfvLFrO78TVtOgK6flv6R5a4OV8QnR&client_secret=1408645120361878326&username=mayuresh.g@ggp.test7&password=Salesforce_2019";
-        }else{
+        } else {
             this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG99E3Ry5mh4zqNsp6HovAR3hiAd00iG0vZEOz_lOZPaa9fEr.3xsLKSq_f_FQsFBuflDmE6Dcb8P4HCw0v&client_secret=F695740F6556CF21D48477FF165B31C0622F9D525AE7A161ABBEAC05437A164B&username=nakul@admin.test7.automation&password=Product@123";
         }
     }
 
     /*
      * calls the api to get the Record Id.
-     * 
+     *
      * @param recordName - the name or title of the record
-     * 
+     *
      * @param fieldName - the name of the field that stores the title like e.g.
      * Title__c.
-     * 
+     *
      * @param objectType - the object API name of the record from which you want to
      * get the EGMS ID
      */
@@ -103,10 +101,10 @@ public class ProjectWebServices {
      *
      * @param outputFieldName - use it in case you want to get any field value other than EGMS ID.
      */
-    public Response automateGetApi(String recordName, String fieldName, String objectType,String outputFieldName) {
+    public Response automateGetApi(String recordName, String fieldName, String objectType, String outputFieldName) {
         getAuthToken();
         String finalEndPoint = endPoint + "/services/apexrest/productAutomationGetFieldValue?objectType=" + objectType
-                + "&fieldValue=" + recordName + "&fieldName=" + fieldName +"&outputFieldName=" +outputFieldName;
+                + "&fieldValue=" + recordName + "&fieldName=" + fieldName + "&outputFieldName=" + outputFieldName;
         Response response = EyeThink.core().apiCall().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
         response.prettyPrint();
         assertStatusCode(response);
@@ -116,20 +114,21 @@ public class ProjectWebServices {
     /*
      * calls the api which will create post award records currently accepts
      * PaymentRequest, ProgressReport, Closeout.
-     * 
+     *
      * @param objectType -: This is the batch job type. Currently supports 3
      * different values – PaymentRequest, ProgressReport, Closeout.
-     * 
+     *
      * @param recordName -: The name of the award (for payment/progress) or grant
      * (for closeout) for which you want to run the batch job.
-     * 
+     *
      * @param objectApiName -: This is the object api name.
      */
-    public Response automationBatchExecuteApi(String objectType, String recordName, String objectApiName) {
-        String finalEndPoint = "";
+    public Response automationBatchExecuteApi(String objectType, String recordName, String... objectName) {
+        String finalEndPoint,objectApiName = "";
         Response response = null;
         getAuthToken();
 
+        objectApiName = objectName[0];
         finalEndPoint = endPoint + "/services/apexrest/productAutomationRunBatchJob?type=" + objectType + "&recordName="
                 + recordName;
 
@@ -151,7 +150,7 @@ public class ProjectWebServices {
             EyeThink.core().WaitFor().makeThreadSleep(3000);
         }
 
-        if (status.equalsIgnoreCase("Completed")) {
+        if (status.equalsIgnoreCase("Completed") && objectName.length == 1) {
             return automateGetApi(recordName, "Title__c", objectApiName);
         } else {
             return response;

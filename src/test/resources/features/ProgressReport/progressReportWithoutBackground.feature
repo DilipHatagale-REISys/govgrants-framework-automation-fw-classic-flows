@@ -1,4 +1,4 @@
-@regression @PaymentRequest
+@regression @progressReports
 Feature: Validate all scenarios in Progress Report
 
   @37184 @ValidateScheduleFrequencyQuarterlyScheduleBaseAsCalendar @mahadev
@@ -2885,6 +2885,8 @@ Feature: Validate all scenarios in Progress Report
 
   @58885 @validateDraftProgressReportAtProgressReportTableUnderMonitoringTabIsNotPresentAtInternalUserEnd @mahadev
   Scenario: Validate draft progress report at under monitoring tab is not present at Internal User end using List view
+    Given I delete the record "Automation Permanent Award" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Monitoring" tab
     When I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
@@ -2901,3 +2903,23 @@ Feature: Validate all scenarios in Progress Report
     And I click toggle button to select "Progress Reports - All"
     And I perform quick search for "Record Id" in "---progressReport:-:progressReportFlexTableId---" panel
     Then I see value "{SavedValue:Record Id}" for title "EGMS ID" against the value "Created" inside table "---progressReport:-:progressReportFlexTableId---"
+
+  @58967 @validateUserNotifiedColumnIsUpdatedWithACheckedMarkForMultipleProgressReportsScheduleWhenGeneratedForSRUser @mahadev
+  Scenario Outline: Validate user notified column is updated with a tick mark for multiple Progress reports Schedule when task is generated for SR user
+    Given I delete the record "Automation Permanent Award" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c,false"
+    When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c,false"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    When I navigate to "Terms" sub tab
+    And I expand nested table containing column value "Progress Report"
+    Then I can see "2" record value is checked for field name "TaskCreated__c"
+    Examples:
+      | Award Name                 | Grant Name                 |
+      | Automation Permanent Award | Automation Permanent Award |
