@@ -408,7 +408,7 @@ Feature: Validate all scenarios in Negotiations
     Then I cannot see top right button "Complete Negotiation" in page detail
 
   @57490 @viewCompletedNegotiationfromApplicationsTab @deepika
-  Scenario: validate whether user is able to view the completed Negotiation on Applications Tab
+  Scenario: Validate whether user is able to view the completed Negotiation on Applications Tab
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
