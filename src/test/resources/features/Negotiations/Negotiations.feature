@@ -239,7 +239,6 @@ Feature: Validate all scenarios in Negotiations
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
     When I perform quick search for "Autoamtion Announcement for Negotiations" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
-    When I refresh the page
     Then I can see row level action button "Create Subaward" against "Autoamtion Announcement for Negotiations" in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
 
   @57212 @editNegotiationNotAvilableAFterSubmitToGrantor @deepika
@@ -267,7 +266,6 @@ Feature: Validate all scenarios in Negotiations
       | Automation Negotiation Iniatiation | ApplicantResponse__c |
     When I click on "Save" in the page details
     When I click on "Submit to Grantor" in the page details
-    When I refresh the page
     Then I cannot see top right button "Edit Negotiation" in page detail
 
   @57214 @createAwardButtonAfterNegotiationComplete @deepika
@@ -342,7 +340,6 @@ Feature: Validate all scenarios in Negotiations
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
     When I perform quick search for "Autoamtion Announcement for Negotiations" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
-    When I refresh the page
     Then I cannot see row level action button "Initiate Negotiation" against "Autoamtion Announcement for Negotiations" in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
 
   @57218 @pendingTaskActionIcon @deepika
@@ -404,7 +401,6 @@ Feature: Validate all scenarios in Negotiations
     When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
-    When I refresh the page
     Then I cannot see top right button "Complete Negotiation" in page detail
 
   @57490 @viewCompletedNegotiationfromApplicationsTab @deepika
@@ -478,7 +474,6 @@ Feature: Validate all scenarios in Negotiations
     And I click toggle button to select "Applications - All"
     When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
-    And I refresh the page
     Then I can see top right button "Create Subaward" in page detail
 
   @57493 @initiateNegotiationsButtonOnApplication @deepika
@@ -489,7 +484,6 @@ Feature: Validate all scenarios in Negotiations
     And I click toggle button to select "Applications - All"
     When I perform quick search for "Autoamtion Announcement for Negotiations" in "---negotiation:-:negotiationAppReviewListTableId---" panel
     And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
-    And I refresh the page
     Then I can see top right button "Initiate Negotiation" in page detail
 
   @57494 @initiateNegotiationFromApplication @deepika
@@ -539,7 +533,6 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    When I refresh the page
     Then I cannot see top right button "Edit Negotiation" in page detail
 
   @57499 @createSubawardButtonHiddenOnceSendToSubrecipient
@@ -557,7 +550,6 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    When I refresh the page
     Then I cannot see top right button "Create Subaward" in page detail
 
   @57500 @subrecipientCanEditNegotiations
@@ -635,7 +627,7 @@ Feature: Validate all scenarios in Negotiations
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     Then I can see row level action button "View" against "Autoamtion Announcement for Negotiations" in flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
 
-  @57503 @subrecipientCannotEditNegotiationRequestOnceSubmitToGrantor @wip
+  @57503 @subrecipientCannotEditNegotiationRequestOnceSubmitToGrantor
   Scenario: Validate whether Subrecipient user can edit Negotiations Details once Submit to Grantor
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -660,7 +652,7 @@ Feature: Validate all scenarios in Negotiations
       | Automation Negotiation Iniatiation | ApplicantResponse__c |
     When I click on "Save" in the page details
     When I click on "Submit to Grantor" in the page details
-    Then I cannot see top right button "Edit" in page detail
+    Then I cannot see top right button "Edit Negotiation" in page detail
 
   @57504 @userCanEditandSendToSubrecipientEvenAfterSubmitToGrantor
   Scenario: Validate whether user to able to Edit and Send to Subrecipient once Submit to Grantor
@@ -698,7 +690,6 @@ Feature: Validate all scenarios in Negotiations
       | Automation Negotiation Iniatiation | ExplanationOfRevisionsNeeded__c |
     When I click on "Save" in the page details
     When I click on "Send Back to Subrecipient" in the page details
-    When I refresh the page
     Then I cannot see top right button "Edit Negotiation" in page detail
 
     @57838 @detailsRequiredtoSaveBeforeSubmitToGrantor
