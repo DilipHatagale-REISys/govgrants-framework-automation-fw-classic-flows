@@ -677,7 +677,6 @@ Feature: Validate all scenarios in the Amendment Request
       | Extra Salary | The narrative | 1000           |
     When I close modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    And I refresh the page
     Then I cannot see top right button "Edit" in page detail
 
   @56968 @VerifyDeletionOfFundingChangeAmendmentByAwardOwner @mahadev
