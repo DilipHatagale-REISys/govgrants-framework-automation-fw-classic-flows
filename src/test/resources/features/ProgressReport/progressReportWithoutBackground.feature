@@ -1,4 +1,4 @@
-@regression @PaymentRequest
+@regression @progressReports
 Feature: Validate all scenarios in Progress Report
 
   @37184 @ValidateScheduleFrequencyQuarterlyScheduleBaseAsCalendar @mahadev
