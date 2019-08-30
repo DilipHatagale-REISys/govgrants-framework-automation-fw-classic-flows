@@ -320,4 +320,16 @@ public class ProjectManager extends ProjectWebServices {
         EyeThink.core().Properties().saveValue(key,getValueOfSpecifiedColFromTableHavingColumnNameAs(columnValueFromRow,
                 columnName, flexTableId));
     }
+
+    public boolean verifyIfFieldsAreEditableInFlexTable(String headingTitle){
+        String tableId = EyeThink.core().findMyElement().getElement(By.xpath("//*[contains(@class, 'panel-heading')]//a[text()='"+headingTitle+"']")).getAttribute("data-target");
+        tableId = tableId.substring(1);
+        By editableFields = By.xpath("//*[@id='"+tableId+"']//textarea");
+        try {
+            EyeThink.core().findMyElement().getElement(editableFields);
+            return true;
+        } catch (Exception e){
+            return false;
+        }
+    }
 }
