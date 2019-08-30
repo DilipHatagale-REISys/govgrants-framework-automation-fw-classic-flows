@@ -1949,7 +1949,7 @@ Feature: Validate all scenarios in Payment Request
       | Award Name                 | Grant Name                 |
       | Automation Permanent Award | Automation Permanent Award |
 
-  @55404 @advancePRSentBackToOwner @jitendra
+  @55404 @advancePRSentBackToOwner @jitendra @wip
   Scenario: Verify that Payment Approval can send back Payment request to Owner (Advance)
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -1981,7 +1981,7 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     And I "Send to Owner" in approval decision
-    And I navigate to "Grants" tab
+    And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I see that "Record Id" has been added in flextable with Id "---paymentRequest:-:pendingTaskTableId---"
@@ -2012,7 +2012,7 @@ Feature: Validate all scenarios in Payment Request
       | Responsibilities Tab - A Fiscal Approver is required in order to submit this Payment Request for approval. |
 
   @57518 @reimbursementPRErrorMsgAfterSubmitToApproval @jitendra
-  Scenario: Verify If Payment Approval is not selected by FO user it should show validation error message.(Reimbursement Payment Request)
+  Scenario: Verify if Payment Approval is not selected by FO user it should show validation error message.(Reimbursement Payment Request)
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
@@ -2023,21 +2023,25 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Financials" sub tab
     And I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---"
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
-      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
-      | Extra Salary | The narrative | 10         | 1        | Feet        | 0                 | 0               | 0                        | 100        | 100            |
+      | Title        | Narrative     | Unit Price | Quantity | Measurement |
+      | Extra Salary | The narrative | 10         | 1        | Feet        |
     When I close modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
+    When I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
+      | Funding Account             | Net Spent This Action |
+      | {SavedValue:fundingAccount} | 10                    |
     And I click on "Submit for Approval" in the page details
     Then I see the following messages in the page details contains:
       | Responsibilities Tab - A Fiscal Approver is required in order to submit this Payment Request for approval. |
 
   @55405 @advanceMultiplePRErrorMsgOnSecondPR @jitendra
-  Scenario Outline:Verify If Multiple Payment are Initiated then it will show validation Error with respect to sub-award.
+  Scenario Outline:Verify If Multiple Payment are Initiated then it will show validation Error with respect to sub-award
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
@@ -2076,8 +2080,6 @@ Feature: Validate all scenarios in Payment Request
     And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestAdvanceTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Site work       | 10                            |
-    When I navigate to "Attachments" sub tab
-    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice"
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -2149,7 +2151,7 @@ Feature: Validate all scenarios in Payment Request
     And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
-  @55403 @verifyReimbursementPRApprovalsendbackOwner @jitendra
+  @55403 @verifyReimbursementPRApprovalsendbackOwner @jitendra @wip
   Scenario Outline: Verify that Payment Approval can send back Payment request to Owner (Reimbursement)
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"

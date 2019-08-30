@@ -42,7 +42,7 @@ Feature: Validate all scenarios in the Award from FDM
     When I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardFromFDM:-:progressReportSchedulesTableId---"
     When I enter "Progress Report Schedule_FDM" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    When I close modal by clicking the top right x button
     Then I see that "Progress Report" has been added in flextable with Id "---subAwardFromFDM:-:progressReportSchedulesTableId---"
 
   @fdmRiskAssessmentApprovalAndActivation
@@ -542,7 +542,6 @@ Feature: Validate all scenarios in the Award from FDM
     And I enter a review as "Passed"
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -582,11 +581,11 @@ Feature: Validate all scenarios in the Award from FDM
     When I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---" without waiting for record
     And I enter "Payment Request Schedule_FDM" values from "Award_Field_Values.xlsx"
     When I click modal button "Save"
-    And I close Modal
+    When I close modal by clicking the top right x button
     When I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardFromFDM:-:progressReportSchedulesTableId---" without waiting for record
     And I enter "Progress Report Schedule_FDM" values from "Award_Field_Values.xlsx"
     When I click modal button "Save"
-    And I close Modal
+    When I close modal by clicking the top right x button
     When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---subAwardFromFDM:-:riskAssessmentTableId---"
     When I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -862,11 +861,11 @@ Feature: Validate all scenarios in the Award from FDM
     When I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---" without waiting for record
     And I enter "Payment Request Schedule_FDM" values from "Award_Field_Values.xlsx"
     When I click modal button "Save"
-    And I close Modal
+    When I close modal by clicking the top right x button
     When I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardFromFDM:-:progressReportSchedulesTableId---" without waiting for record
     And I enter "Progress Report Schedule_FDM" values from "Award_Field_Values.xlsx"
     When I click modal button "Save"
-    When I close Modal
+    When I close modal by clicking the top right x button
     And I navigate to "Management" sub tab
     When I click on top right button "New" in flex table with id "---subAwardFromFDM:-:riskAssessmentTableId---"
     When I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -908,7 +907,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---"
     And I click on "Accept" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
