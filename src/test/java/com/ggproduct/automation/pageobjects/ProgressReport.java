@@ -47,7 +47,7 @@ public class ProgressReport extends ProjectManager {
 
         List<WebElement> rowValues = EyeThink.core().findMyElement().getElements(columnSelector);
         for (WebElement value : rowValues) {
-            if (!value.getText().equalsIgnoreCase(valueToBeCheck))
+            if (!"".equalsIgnoreCase(valueToBeCheck) && !value.getText().equalsIgnoreCase(valueToBeCheck))
                 return false;
         }
         return true;
