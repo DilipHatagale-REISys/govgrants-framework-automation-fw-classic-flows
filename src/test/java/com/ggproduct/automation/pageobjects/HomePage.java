@@ -16,9 +16,9 @@ public class HomePage extends ProjectManager {
      */
     public void reassignUser(String userName) {
         try {
-            EyeThink.core().findMyElement().getElement(By.xpath("//div[contains(@class,'panel-body')]//span[@class='select2-chosen']")).click();
-            EyeThink.core().textInput().enterText(By.xpath("//div[@id='select2-drop']//div/input"),userName);
-            EyeThink.core().findMyElement().getElement(By.xpath("//div[contains(@class,'select2-search')]/following-sibling::ul//li//span[text()='" + userName + "']")).click();
+            EyeThink.core().perform().click().onWeb(By.xpath("//div[contains(@class,'panel-body')]//span[@class='select2-chosen']"));
+            EyeThink.core().perform().enterText().onWeb().enter(By.xpath("//div[@id='select2-drop']//div/input"),userName);
+            EyeThink.core().perform().click().onWeb(By.xpath("//div[contains(@class,'select2-search')]/following-sibling::ul//li//span[text()='" + userName + "']"));
         } catch (Exception e) {
         }
     }
@@ -48,7 +48,7 @@ public class HomePage extends ProjectManager {
     }
 
     public void assertTaskCount(String tabName, String tableID) {
-        String finalCount = EyeThink.core().findMyElement().getElement(By.xpath("//div[@class='container-fluid']//li//span[text()='" + tabName + "']/../..//span[contains(@ng-bind,'taskCount')]")).getText();
+        String finalCount = EyeThink.core().get().text(By.xpath("//div[@class='container-fluid']//li//span[text()='" + tabName + "']/../..//span[contains(@ng-bind,'taskCount')]"));
         Assert.assertEquals(findTaskCount(tabName, tableID), finalCount);
     }
 
@@ -59,11 +59,11 @@ public class HomePage extends ProjectManager {
      */
     public boolean isFileDisplayedInWorkspace(String recordID){
         Boolean flag=false;
-        EyeThink.core().textInput().enterText(By.xpath("//input[@id='FilesSearchText0' or name='FilesSearchText']"),EyeThink.saas().pageDetails().idOfRecord);
-        EyeThink.core().findMyElement().getElement(By.xpath("//input[@id='FilesSearchButton0']")).click();
+        EyeThink.core().perform().enterText().onWeb().enter(By.xpath("//input[@id='FilesSearchText0' or name='FilesSearchText']"),EyeThink.saas().pageDetails().idOfRecord);
+        EyeThink.core().perform().click().onWeb(By.xpath("//input[@id='FilesSearchButton0']"));
 
         try {
-            return  EyeThink.core().findMyElement().getElement(By.xpath("//div[@id='FilesDataTable']//a[text()='"+EyeThink.saas().pageDetails().idOfRecord+"']")).isDisplayed();
+            return  EyeThink.core().perform().is().onWeb().isDisplayed(By.xpath("//div[@id='FilesDataTable']//a[text()='"+EyeThink.saas().pageDetails().idOfRecord+"']"));
         }catch (Exception e){
         }
         return false;

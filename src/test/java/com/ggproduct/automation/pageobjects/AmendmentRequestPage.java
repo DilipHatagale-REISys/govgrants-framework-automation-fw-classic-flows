@@ -31,14 +31,14 @@ public class AmendmentRequestPage extends ProjectManager {
      * @Author - Mahadev.hanme
       */
     public void enterRevisedEncumbrance() {
-        EyeThink.core().textInput().clearText(EyeThink.core().findMyElement().getElement(By.xpath("//field[@field-name='ActualEncumbrance__c']/input")));
-        EyeThink.core().textInput().enterText(By.xpath("//field[@field-name='ActualEncumbrance__c']/input"),calculateRevisedEncumbrance().toString());
+        EyeThink.core().perform().enterText().onWeb().clear(By.xpath("//field[@field-name='ActualEncumbrance__c']/input"));
+        EyeThink.core().perform().enterText().onWeb().enter(By.xpath("//field[@field-name='ActualEncumbrance__c']/input"),calculateRevisedEncumbrance().toString());
     }
 
     public void updatedBudgetPeriodEndDate() {
         String rawDate = getFieldValueFromAPI("Automation Award for Amendment Request", "GrantAwardName__c", "Award__c", "BudgetPeriodEndDate__c");
         String[] rawDateSplitted = rawDate.split(" ")[0].split("-");
         String fieldValue = rawDateSplitted[1] + "/" + rawDateSplitted[2] + "/" + rawDateSplitted[0];
-        EyeThink.core().Properties().saveValue("updatedBudgetPeriodDate", EyeThink.core().get().getDateWithOffsetFromGivenDate(fieldValue,1,DateTimeFormatter.ofPattern("M/d/uuuu")));
+        EyeThink.core().Properties().saveValue("updatedBudgetPeriodDate", EyeThink.core().get().dateWithOffsetFromGivenDate(fieldValue,1,DateTimeFormatter.ofPattern("M/d/uuuu")));
     }
 }
