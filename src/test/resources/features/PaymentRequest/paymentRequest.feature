@@ -1474,7 +1474,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     And I pause execution for "100" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
-      | Payment Request {SavedValue:PaymentId} from <subrecipient name> has been Submitted |
+      | Payment Request <payment id> from <subrecipient name> has been Submitted |
 
   @55627 @emailNotificationOnSubmitToGrantorReimbursement @jitendra
   Scenario: Verify that on submit to grantor , user is able to check  email notifications Payment Request (Reimbursement)
@@ -1494,7 +1494,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     And I pause execution for "100" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
-      | Payment Request {SavedValue:PaymentId} from <subrecipient name> has been Submitted |
+      | Payment Request <payment id> from <subrecipient name> has been Submitted |
 
   @55630 @validateAdvancePRSendBackToSubReceipientEmailNotification @jitendra
   Scenario: Verify that on Send Back to subrecipient , user is able to check email(Advance)
