@@ -3,7 +3,7 @@ Feature: Validate all scenarios in the home tab
 
   @35024 @internalOrganizationCreate @smoke
   Scenario: Verifying if the Admin has create access to Internal Organization
-    #Given I delete the record "Product Automation permanent Orgtn" from the object "ACCOUNT"
+    Given I delete the record "Product Automation permanent Orgtn" from the object "ACCOUNT"
     Given I login to "As Administrator" app as "Admin" user
     When I navigate to "Setup" tab
     And I navigate to "Internal Organizations" content inside "Manage Organizations" subheader on left panel
