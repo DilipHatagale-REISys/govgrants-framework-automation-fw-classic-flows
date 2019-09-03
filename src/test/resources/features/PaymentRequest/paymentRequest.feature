@@ -930,8 +930,8 @@ Feature: Validate all scenarios in Payment Request
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Attachments" sub tab
-    And I upload attachment "InternalOrganization_Field_Values.xlsx" from workspace
-    Then I see "InternalOrganization_Field_Values.xlsx" has been added in "Attachment" flex table
+    And I upload attachment "Announcement_Field_Values.xlsx" from workspace
+    Then I see "Announcement_Field_Values.xlsx" has been added in "Attachment" flex table
 
   @54416 @uploadAttachmentFromWorkspaceReimbursementPR @mahadev
   Scenario: verify that user can upload document from workspace for Reimbursement Payment Request
@@ -1034,8 +1034,8 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Financials" sub tab
     Then I cannot see row level action button "Disallow Amount" against "Construction" in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---"
 
-  @54743 @validateProgramIncomeTrackingFieldOnAwardAtGrantorSide @mahadev
-  Scenario: Validate Program Income tracking gets updated on award at grantor side after approval of reimbursement PR
+  @54743 @verifyFiscalApproverCannotEnterDisallowedAmountGreaterthanRequestedAmount @mahadev
+  Scenario: Verify that fiscal officer can not enter 'Disallowed Amount' greater than Requested Amount
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
@@ -1061,7 +1061,7 @@ Feature: Validate all scenarios in Payment Request
       | Title        | Disallowed Amount | Disallowed Amount Reason    |
       | Extra Salary | 50                | Automation Test Description |
     Then I see the following messages in the page details :
-      | Advance applied cannot be greater than the Net Payment. |
+      | Advance applied cannot be greater than the Net Payment. : |
 
   @54323 @validateSuccesfulApprovedMessageOnReimbursementPR @mahadev
   Scenario: Validate succesfully approved message on Reimbursement Payment Request
@@ -1474,7 +1474,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     And I pause execution for "100" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
-      | Payment Request <payment id> from <subrecipient name> has been Submitted |
+      | Payment Request {SavedValue:PaymentId} from <subrecipient name> has been Submitted |
 
   @55627 @emailNotificationOnSubmitToGrantorReimbursement @jitendra
   Scenario: Verify that on submit to grantor , user is able to check  email notifications Payment Request (Reimbursement)
@@ -1494,7 +1494,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     And I pause execution for "100" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
-      | Payment Request <payment id> from <subrecipient name> has been Submitted |
+      | Payment Request {SavedValue:PaymentId} from <subrecipient name> has been Submitted |
 
   @55630 @validateAdvancePRSendBackToSubReceipientEmailNotification @jitendra
   Scenario: Verify that on Send Back to subrecipient , user is able to check email(Advance)
