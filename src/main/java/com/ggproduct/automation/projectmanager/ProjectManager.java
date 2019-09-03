@@ -3,6 +3,7 @@ package com.ggproduct.automation.projectmanager;
 import eyethink.automation.bots.Register.EyeThink;
 import eyethink.automation.bots.controller.EnvironmentFetcher;
 import eyethink.automation.bots.corelib.Emails;
+import eyethink.automation.bots.objects.Elements;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -47,7 +48,7 @@ public class ProjectManager extends ProjectWebServices {
     /* handles to verify no record is present in flex table */
     public boolean isRecordPresentInTheFlexTable(String text, String tableId) {
         try {
-            return  EyeThink.core().findMyElement().getElement(By.xpath("//div[@id='" + tableId + "']//*[" + EyeThink.core().xpath().contains("text()", text) + "]")).isDisplayed();
+            return EyeThink.core().is().onWeb().isDisplayed(By.xpath("//div[@id='" + tableId + "']//*[" + EyeThink.core().xpath().contains("text()", text) + "]"));
         } catch (Exception e) {
         }
         return false;
@@ -55,9 +56,7 @@ public class ProjectManager extends ProjectWebServices {
 
     /*handles to verify blank value is present inside flex table */
     public boolean isColumnValueBlank(String fieldName) {
-        WebElement fieldValue = EyeThink.core().findMyElement().getElement(By.xpath("//*[@field-name='" + fieldName + "' or @id='" + fieldName + "']"));
-        String value = fieldValue.getText();
-        if (value.equals("")) {
+        if (EyeThink.core().get().text(By.xpath("//*[@field-name='" + fieldName + "' or @id='" + fieldName + "']")).equals("")) {
             return true;
         }
         return false;
@@ -69,7 +68,7 @@ public class ProjectManager extends ProjectWebServices {
 
     /* handles to veify total records present in flex table */
     public String totalRecordsCount(String tableId) {
-        return (EyeThink.core().findMyElement().getElement(By.xpath("//div[@id='" + tableId + "']//following-sibling::span[contains(text(),'Total Records')]"))).getText();
+        return (EyeThink.core().get().text(By.xpath("//div[@id='" + tableId + "']//following-sibling::span[contains(text(),'Total Records')]")));
     }
 
     public void AssertTotalRecordsCountInFlexTable(String totalRecord, String tableId) {
@@ -86,7 +85,7 @@ public class ProjectManager extends ProjectWebServices {
      * @Author - Mahadev.hanme
      */
     public void AssertPageBlockDisplayed(String pageblockName, boolean assertcan) {
-        List<WebElement> elements = EyeThink.core().findMyElement().getElements(pageBlock(pageblockName),false);
+        List<Elements> elements = EyeThink.core().elementReference().listOfElements().onWeb(pageBlock(pageblockName),false);
 
         if (assertcan) {
             Assert.assertNotEquals(elements.size(), 0);
@@ -104,7 +103,7 @@ public class ProjectManager extends ProjectWebServices {
         By expectedMsg = By.xpath("//div[@id='ApprovalDecisionComponent']//span[contains(text(),'" + message + "')]");
 
         try {
-            EyeThink.core().findMyElement().getElement(expectedMsg);
+            EyeThink.core().elementReference().onWeb(expectedMsg);
             return true;
         } catch (Exception ex) {
             return false;
@@ -150,7 +149,8 @@ public class ProjectManager extends ProjectWebServices {
      * @return
      */
     public Boolean iSeeValueInFlexTable(String value, String flexTableHeader) {
-        if (EyeThink.core().WaitFor().WaitForElementToBePresent(By.xpath("//div[@id='myTabbedContent']//a[@title='" + flexTableHeader + "']/../../../following-sibling::div//tbody//td//span[text()='" + value + "']")).isDisplayed())
+        WebElement elementValueFlexTable = EyeThink.core().elementReference().onWeb(By.xpath("//div[@id='myTabbedContent']//a[@title='" + flexTableHeader + "']/../../../following-sibling::div//tbody//td//span[text()='" + value + "']"));
+        if (EyeThink.core().is().onWeb().isDisplayed(elementValueFlexTable))
             return true;
         else
             return false;
@@ -165,10 +165,10 @@ public class ProjectManager extends ProjectWebServices {
      * @param fileNameFromWorkSpace - file which is to be upload
      */
     public void uploadAttachmentFromWorkspace(String fileNameFromWorkSpace) {
-        EyeThink.core().findMyElement().getElement(By.xpath("//div[@id='myTabbedContent']//span[contains(text(),'Attachment')]/..//div[@class='panel-heading']//*[text()='Add']")).click();
+        EyeThink.core().click().onWeb(By.xpath("//div[@id='myTabbedContent']//span[contains(text(),'Attachment')]/..//div[@class='panel-heading']//*[text()='Add']"));
         EyeThink.core().switchTo().switchToFrame(By.xpath("//iframe[contains(@ng-src, 'apex') or contains(@src,'apex')]"));
-        EyeThink.core().findMyElement().getElement(By.xpath("//div[@id='Attachmentadd']//span[text()='Upload file from Workspace']")).click();
-        EyeThink.core().findMyElement().getElement(By.xpath("//div[@id='Attachmentadd']//td[text()='" + fileNameFromWorkSpace + "']/..//input")).click();
+        EyeThink.core().click().onWeb(By.xpath("//div[@id='Attachmentadd']//span[text()='Upload file from Workspace']"));
+        EyeThink.core().click().onWeb((By.xpath("//div[@id='Attachmentadd']//td[text()='" + fileNameFromWorkSpace + "']/..//input")));
         EyeThink.saas().modal().clickModalContentSpecificButton("Attach");
         EyeThink.saas().modal().closeModalByClickingTopRightCloseButton();
     }
@@ -200,7 +200,7 @@ public class ProjectManager extends ProjectWebServices {
      * @return
      */
     private int getCheckedFieldValueCount(String fieldName){
-        List<WebElement> checkSymbol = EyeThink.core().findMyElement().getElements(By.xpath("//field[@field-name='"+fieldName+"']/i[contains(@class,'fa-check')]"));
+        List<Elements> checkSymbol = EyeThink.core().elementReference().listOfElements().onWeb(By.xpath("//field[@field-name='"+fieldName+"']/i[contains(@class,'fa-check')]"));
         return checkSymbol.size();
     }
 
@@ -294,17 +294,17 @@ public class ProjectManager extends ProjectWebServices {
         int columnValueFromRowInInt = 0;
         int counter = 1;
         By columnHeaders = By.xpath("//div[@id='"+flexTableId+"']//th//span[@ng-bind='fieldLabel']");
-        List<WebElement> columnList = EyeThink.core().findMyElement().getElements(columnHeaders);
+        List<Elements> columnList = EyeThink.core().elementReference().listOfElements().onWeb(columnHeaders);
 
         // get the column index of required column.
-        for (WebElement columnEle : columnList){
+        for (Elements columnEle : columnList){
             if (columnEle.getText().equalsIgnoreCase(columnName)){
                 break;
             }
             counter++;
         }
 
-        List<WebElement> listOfDataInColumn = EyeThink.core().findMyElement().getElements(By.xpath("//div[@id='"+flexTableId+"']//th//span[text()='"+columnName+"']/ancestor::thead/parent::table//tr//td["+counter+"]/span/field/span"));
+        List<Elements> listOfDataInColumn = EyeThink.core().elementReference().listOfElements().onWeb(By.xpath("//div[@id='"+flexTableId+"']//th//span[text()='"+columnName+"']/ancestor::thead/parent::table//tr//td["+counter+"]/span/field/span"));
         columnValueFromRowInInt = rowNumber.equalsIgnoreCase("last row") ? listOfDataInColumn.size()
                 : Integer.parseInt(rowNumber);
 
@@ -322,11 +322,11 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     public boolean verifyIfFieldsAreEditableInFlexTable(String headingTitle){
-        String tableId = EyeThink.core().findMyElement().getElement(By.xpath("//*[contains(@class, 'panel-heading')]//a[text()='"+headingTitle+"']")).getAttribute("data-target");
+        String tableId = EyeThink.core().elementReference().onWeb(By.xpath("//*[contains(@class, 'panel-heading')]//a[text()='"+headingTitle+"']")).getAttribute("data-target");
         tableId = tableId.substring(1);
         By editableFields = By.xpath("//*[@id='"+tableId+"']//textarea");
         try {
-            EyeThink.core().findMyElement().getElement(editableFields);
+            EyeThink.core().elementReference().onWeb(editableFields);
             return true;
         } catch (Exception e){
             return false;
