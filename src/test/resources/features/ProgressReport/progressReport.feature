@@ -1458,3 +1458,91 @@ Feature: Validate all scenarios in Progress Report
     When I click toggle button to select "Progress Reports - Approved"
     And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:internalProgressReportFlexTableId---" panel
     Then I see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:internalProgressReportFlexTableId---"
+
+  @58884 @jitendra
+  Scenario: Verify that Internal User will be able to see Send back to Sub-recipient Progress Report record on active award by using List View .
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Performance" sub tab
+    Given I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 7      | 7             |
+    When I navigate to "Forms and Attachments" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
+    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I click on "Back" in the page details
+    Given I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    Given I click on "Send Back to Subrecipient" in the page details
+    Given I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I navigate to "Monitoring" tab
+    And I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Progress Reports - Approved"
+    And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:internalProgressReportFlexTableId---" panel
+    Then I see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:internalProgressReportFlexTableId---"
+
+  @59044 @jitendra
+  Scenario: Validate SPI user is not able to edit forms table under forms and attachments view when Progress report state is Submitted for Approval.
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Performance" sub tab
+    Given I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 7      | 7             |
+    When I navigate to "Forms and Attachments" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
+    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I get the "EGMS ID"
+    Given I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
+      | Responsibility   | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+    When I click on "Submit for Approval" in the page details
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "Automation Permanent Award" in "---progressReport:-:recipientActiveGrantId---" panel
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---progressReport:-:recipientActiveGrantId---"
+    When I navigate to "Management" sub tab
+    And I click on "View" icon for "Submitted for Approval" inside flex table with id "---progressReport:-:recipientGrantProgressReportTableId---"
+    And I navigate to "Forms and Attachments" sub tab
+    Then I cannot see row level action button "Edit" against "Community Initiative Progress Report" in flex table with id "---progressReport:-:formTableId---"
+
+  @58959 @jitendra
+  Scenario: Validate Internal User with different organization should not be able to view the Progress report with submitted to Grantor state.
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Performance" sub tab
+    Given I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 7      | 7             |
+    When I navigate to "Forms and Attachments" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
+    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I get the "EGMS ID"
+    Given I click on "Submit to Grantor" in the page details
+    Given I re-login to "As a Grantor" app as "SIMON PM" user on "INTERNAL" portal
+    When I navigate to "Monitoring" tab
+    And I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Progress Reports - All"
+    And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:internalProgressReportFlexTableId---" panel
+    Then I do not see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:internalProgressReportFlexTableId---"

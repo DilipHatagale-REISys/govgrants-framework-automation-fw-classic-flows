@@ -190,7 +190,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
-    And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     Then I see status in Progress-bar is "Submitted For Approval" and is "green"
 
@@ -539,7 +538,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
-    And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     Then I see the following messages in the page details :
       | Overview Tab - Application Due Date cannot be in the past. |
@@ -898,7 +896,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
-    And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -1097,7 +1094,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
-    And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -1287,7 +1283,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
-    And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -1477,7 +1472,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
-    And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -1664,7 +1658,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
-    And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -1855,7 +1848,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
-    And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -2043,7 +2035,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
-    And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -2230,7 +2221,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
-    And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -2421,7 +2411,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
-    And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -2611,7 +2600,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
-    And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -2802,7 +2790,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
-    And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -2991,7 +2978,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
-    And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -3183,7 +3169,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
-    And I click on "Save" in the page details
     And I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
