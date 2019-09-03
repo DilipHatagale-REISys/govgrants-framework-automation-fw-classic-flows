@@ -65,7 +65,7 @@ Feature: Validate all scenarios in Progress Report
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
-    Given I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
@@ -133,21 +133,21 @@ Feature: Validate all scenarios in Progress Report
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
-    Given I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
-    And I click on "Save" in the page details
+    When I click on "Save" in the page details
     And I click on "Back" in the page details
-    Given I click on "Submit to Grantor" in the page details
+    When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
-    Given I click on "Send Back to Subrecipient" in the page details
+    And I click on "Send Back to Subrecipient" in the page details
     Then I see status in Progress-bar is "Sent Back to Subrecipient" and is "red"
 
   @51107 @historyOfProgressReportSentToSubRecipient
@@ -155,22 +155,22 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
-    And I navigate to "Performance" sub tab
-    Given I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Attachments" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
-    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
+    When I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
-    Given I click on "Submit to Grantor" in the page details
+    When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
-    Given I click on "Send Back to Subrecipient" in the page details
+    And I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    When I click on "Send Back to Subrecipient" in the page details
     When I navigate to "History" sub tab
     Then I see value "Sent Back to Subrecipient" for title "New Value" inside table "History"
 
@@ -1113,7 +1113,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Back" in the page details
     And I click on "Submit to Grantor" in the page details
     And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Permanent Award" in "---progressReport:-:recipientActiveGrantId---" panel
     And I click on "View" icon for "Automation Permanent Award" inside table
@@ -1123,7 +1123,7 @@ Feature: Validate all scenarios in Progress Report
     Then I cannot see row level action button "Edit" against "Progress Report" in flex table with id "---progressreport:-:progressReportsScheduleId---"
 
   @58887 @validateOnlyApprovedRecordsDisplayedUnderMonitoringTab @mahadev
-  Scenario: Validate only approved records are displayed when Internal user select Approved option at list view under monitoring tab
+  Scenario: Validate only approved records are displayed when Internal user select approved option at list view under monitoring tab
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details

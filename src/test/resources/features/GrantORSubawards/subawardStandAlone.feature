@@ -51,7 +51,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
     And I perform quick search for "{SavedValue:fundingAccount}" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
-    And I close Modal
+    And I close modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
@@ -251,12 +251,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I navigate to "Management" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -340,11 +340,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I navigate to "Management" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -414,11 +414,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I navigate to "Management" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -489,11 +489,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I navigate to "Management" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -575,11 +575,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I navigate to "Management" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -672,11 +672,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I navigate to "Management" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -787,11 +787,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I navigate to "Management" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -911,11 +911,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I navigate to "Management" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -1041,11 +1041,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I navigate to "Management" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -1167,7 +1167,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I expand nested table containing column value "Payment Request"
     Then I see total records count "Total Records:120" in flex table "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
 
@@ -1180,11 +1180,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     And I enter value "Quarterly" into field "Frequency__c"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     Then I see value "Quarterly" for title "Frequency" against the value "Payment Request" inside table "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
 
   @53840 @paymentRequestSchedulesUpdateOnDraftAward @mahadev
@@ -1200,7 +1200,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     And I enter value "Quarterly" into field "Frequency__c"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I expand nested table containing column value "Payment Request"
     Then I see total records count "Total Records:40" in flex table "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
 
@@ -1231,11 +1231,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I navigate to "Management" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -1512,7 +1512,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "ProgressReport_Edition" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
     Then I see total records count "Total Records:10" in flex table "---subAwardStandAlone:-:progressReportScheduleTableId---"
     Examples:
@@ -1537,7 +1537,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "View" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     Then I see field "Schedule Title" as "Automation Progress Report"
 
@@ -1552,7 +1552,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I click on top right parallel lines bar for "Progress Reports Schedule"
     And I select "Download as PDF" from parallel lines dropdown of "Progress Reports Schedule"
     And I download the file
@@ -1576,7 +1576,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
     Then I see total records count "Total Records:120" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
 
@@ -1586,7 +1586,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Quarterly" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
     Then I see total records count "Total Records:4" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
 
@@ -1605,7 +1605,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report BiMonthly" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
     Then I see total records count "Total Records:6" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
 
@@ -1615,7 +1615,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Annually" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
     Then I see total records count "Total Records:1" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
 
@@ -1625,7 +1625,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Semi-Annually" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
     Then I see total records count "Total Records:2" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
 
@@ -1635,7 +1635,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Monthly" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
     Then I see total records count "Total Records:12" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
 
@@ -1691,7 +1691,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I navigate to "Management" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -1767,7 +1767,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Monthly" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1793,7 +1793,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Monthly" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1829,7 +1829,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report MoreThanOneyear" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
     Then I see total records count "Total Records:16" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
 
@@ -1842,24 +1842,24 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "ProgressReportQuartelyReporting" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
     Then I see total records count "Total Records:6" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
 
   @35041 @SelectDesiredFrequencyAsMonthlyWithSchdeuleBaseAsCalendar @mahadev
-  Scenario: Verify While creating schedule user should be allowed to select the Desired Frequency as monthly with schdeule base as calendar
+  Scenario: Verify while creating schedule user should be allowed to select the desired frequency as monthly with schdeule base as calendar
     When I click on "Edit" in the page details
     And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "ProgressReportCalendarSchedule" values from "Award_Field_Values.xlsx"
+    When I enter "ProgressReportCalendarSchedule" values from "ProgressReport_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
     Then I see total records count "Total Records:12" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
 
-  @45725 @validateSubRecipientCannotEditSchedule
+  @45725 @validateSubRecipientCannotEditSchedule @mahadev
   Scenario Outline: Verify if subaward is sent to sub-recipient for Accept action then external user should not have access to modify Schedule
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -1886,11 +1886,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I navigate to "Management" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -1968,11 +1968,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I navigate to "Management" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -2054,7 +2054,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Bi-MonthlyForEightRecord" values from "Errors.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
     Then I see total records count "Total Records:8" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
 
@@ -2065,7 +2065,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I enter "Bi-MonthlyForEightRecord" values from "Errors.xlsx"
     And I enter value "Semi-Annually" into field "Frequency__c"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
     Then I see total records count "Total Records:3" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
     
@@ -2079,7 +2079,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I enter "ProgressReportQuartelyReporting" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     And I save the field labeled "Schedule End Date" as "ScheduleEndDate"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
     And I navigate to last page in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
     And I get the value from row "last row" for column name "Reporting Period End Date" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
@@ -2095,7 +2095,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I enter "ProgressReportQuartelyReporting" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     And I save the field labeled "Schedule Start Date" as "ScheduleStartDate"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
     And I get the value from row "1" for column name "Reporting Period Start Date" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
     Then I verify that the Schedule start date is matching with Reporting Period start Date
@@ -2127,7 +2127,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I navigate to "Management" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -2201,6 +2201,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I enter "Bi-MonthlyForEightRecord" values from "Errors.xlsx"
     And I enter value "Annually" into field "Frequency__c"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
     Then I see total records count "Total Records:2" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"

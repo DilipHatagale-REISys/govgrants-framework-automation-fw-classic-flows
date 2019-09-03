@@ -43,11 +43,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -177,11 +177,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -317,11 +317,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -455,11 +455,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -591,11 +591,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -732,11 +732,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -868,11 +868,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -974,11 +974,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    When I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -1116,11 +1116,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -1247,11 +1247,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -1378,11 +1378,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -1529,11 +1529,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -1654,11 +1654,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -1785,11 +1785,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -1914,11 +1914,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -2038,11 +2038,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -2160,11 +2160,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -2310,11 +2310,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -2459,11 +2459,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -2612,11 +2612,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -2768,11 +2768,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -2898,11 +2898,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -3022,11 +3022,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -3213,11 +3213,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -3331,11 +3331,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -3524,11 +3524,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -3587,7 +3587,7 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Monthly" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
     Then I see total records count "Total Records:12" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
     Examples:
@@ -3636,11 +3636,11 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -3699,7 +3699,7 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Monthly" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    And I close modal by clicking the top right x button
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel

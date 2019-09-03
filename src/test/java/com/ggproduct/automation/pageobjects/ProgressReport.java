@@ -44,7 +44,7 @@ public class ProgressReport extends ProjectManager {
     public boolean isColumnValuePresentInsideFlexTable(String valueToBeCheck, String columnName, String tableId) {
         WebElement row = EyeThink.core().elementReference().onWeb(By.xpath("//div[@id='" + tableId + "']//table//tbody//tr"));
         Map<String, Integer> columnMapping = EyeThink.saas().flexTable().constructColumnMapping(row, Collections.singleton(columnName));
-        By columnSelector = By.xpath("//div[@id='" + tableId + "']//table//tr//td[not(contains(@class, 'ng-hide')) and contains(@class,'tableCell'][" + columnMapping.get(columnName) + "]//descendant-or-self :: *[text='" + valueToBeCheck + "']");
+        By columnSelector = By.xpath("//div[@id='" + tableId + "']//table//tr//td[not(contains(@class, 'ng-hide')) and contains(@class,'tableCell')][" + columnMapping.get(columnName) + "]//descendant-or-self :: *[text()='" + valueToBeCheck + "']");
 
         List<Elements> rowValues = EyeThink.core().elementReference().listOfElements().onWeb(columnSelector);
         for (Elements value : rowValues) {
