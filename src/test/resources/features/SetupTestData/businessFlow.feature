@@ -1701,10 +1701,8 @@ Feature: The feature is only designed for ensuring all business flows are workin
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation EXE" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
-    And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
     When I login as "SPI" user
@@ -1805,10 +1803,8 @@ Feature: The feature is only designed for ensuring all business flows are workin
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation EXE" in the table "---deskreview:-:deskReviewContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
-    And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
     When I login as "SPI" user
@@ -1907,10 +1903,8 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Autoamtion Announcement for Negotiations" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
-    And I refresh the page
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -1931,7 +1925,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I refresh the page
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
@@ -2013,10 +2006,8 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -2038,7 +2029,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I refresh the page
     When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
@@ -2236,7 +2226,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     When I click on "Approve" on the approval decision box
-    And I refresh the page
     When I click on "Mark As Paid" in the page details
     And I enter "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
     When I click modal button "Save"

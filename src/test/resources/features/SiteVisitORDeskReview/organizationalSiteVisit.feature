@@ -9,6 +9,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
     And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table
 
+  @59010 @orgSiteVisitCreation
   Scenario: Validate the Site Visit is in created status.
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -50,7 +51,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I enter "Fiscal" values from "Organizational_SiteVisit_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     Then I see field "Monitoring Type" as "Fiscal"
-
 
   @54290 @monitoringTypeSiteVisitProgram @deepika
   Scenario: Validate the Monitoring type 'Program' for Organizational Site Visit
@@ -125,10 +125,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Autoamtion Announcement for Negotiations" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
-    And I refresh the page
     And I click on "Notify" in the page details
     Then I see that "Automation Site Visit Org level" is in "Notified" status
 
@@ -150,10 +148,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Autoamtion Announcement for Negotiations" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
-     And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -181,10 +177,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Autoamtion Announcement for Negotiations" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
-    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -208,10 +202,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Autoamtion Announcement for Negotiations" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
-    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -254,10 +246,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Autoamtion Announcement for Negotiations" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
-    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -279,7 +269,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    #And I click on top right button "Validate" in flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     Then I see that "100.00%" has been added in flextable with Id "---orgLevelSiteVisits:-:reportsTableId---"
 
   @54569 @submittingForApprovalSiteVisitOrgLevel @deepika
@@ -300,10 +289,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Autoamtion Announcement for Negotiations" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
-    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -325,13 +312,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I refresh the page
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    #And I click on top right button "Validate" in flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
@@ -353,10 +338,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Autoamtion Announcement for Negotiations" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
-    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -378,13 +361,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I refresh the page
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    #And I click on top right button "Validate" in flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -418,10 +399,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Autoamtion Announcement for Negotiations" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
-    And I refresh the page    
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -443,13 +422,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I refresh the page
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    #And I click on top right button "Validate" in flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -493,10 +470,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Autoamtion Announcement for Negotiations" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
-    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -518,13 +493,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I refresh the page
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    #And I click on top right button "Validate" in flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -588,10 +561,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Autoamtion Announcement for Negotiations" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
-    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -613,13 +584,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I refresh the page
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    #And I click on top right button "Validate" in flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -676,10 +645,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Autoamtion Announcement for Negotiations" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
-    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -697,7 +664,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I perform quick search for "Record Id" in "SiteVisit" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
-    And I refresh the page
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -707,7 +673,6 @@ Feature: Validate all scenarios in Organizational Site Visit
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    ##And I click on top right button "Validate" in flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -759,7 +724,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on "Start" icon for "Record Id" inside table
     Then I can see top right button "Accept and Close" in page detail
 
-   @siteVisitOrgLevelSendBackToOwner @deepika
+   @59011 @siteVisitOrgLevelSendBackToOwner @deepika
   Scenario: User will be able to return the Site Visit Org Level record back to Recipients when outcomes are not properly addressed
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -777,10 +742,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Autoamtion Announcement for Negotiations" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
-    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -802,13 +765,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I refresh the page
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    #And I click on top right button "Validate" in flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -842,10 +803,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Autoamtion Announcement for Negotiations" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
-    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -867,13 +826,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I refresh the page
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    #And I click on top right button "Validate" in flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -923,10 +880,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Autoamtion Announcement for Negotiations" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
-    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -948,13 +903,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I refresh the page
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    #And I click on top right button "Validate" in flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1033,7 +986,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Autoamtion Announcement for Negotiations" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     Then I can see top right button "Notify" in page detail
@@ -1056,10 +1008,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Autoamtion Announcement for Negotiations" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
-    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     Then I can see top right button "Conduct" in page detail
@@ -1082,10 +1032,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Autoamtion Announcement for Negotiations" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
-    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -1113,10 +1061,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Autoamtion Announcement for Negotiations" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
-    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -1144,10 +1090,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Autoamtion Announcement for Negotiations" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
-    And I refresh the page 
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -1173,10 +1117,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Autoamtion Announcement for Negotiations" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
-    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -1199,11 +1141,12 @@ Feature: Validate all scenarios in Organizational Site Visit
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
+    And I close modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I navigate to "Applications" tab
+    When I navigate to "Application Site Visits" content inside "Application Reviews" subheader on left panel
+    And I click toggle button to select "Application Site Visits - All"
+    When I click on "View" icon for "Automation Site Visit Org level" inside flex table with id "---orgLevelSiteVisits:-:latestSiteVisitReportsGridTableId---"
     When I click on "Complete Review" in the page details
     Then I see status in Progress-bar is "In Progress" and is "green"
 
@@ -1231,10 +1174,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Autoamtion Announcement for Negotiations" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
-    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -1252,18 +1193,15 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I perform quick search for "Record Id" in "SiteVisit" panel
     And I click on "View" icon for "Record Id" inside table
     And I navigate to "Reports and Outcomes" sub tab
-    And I refresh the page
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I refresh the page
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    #And I click on top right button "Validate" in flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1300,10 +1238,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Autoamtion Announcement for Negotiations" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
-    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -1324,12 +1260,10 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
-    And I refresh the page
     When I click on "Back" in the page details
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    #And I click on top right button "Validate" in flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     Then I can see top right button "Submit for Approval" in page detail

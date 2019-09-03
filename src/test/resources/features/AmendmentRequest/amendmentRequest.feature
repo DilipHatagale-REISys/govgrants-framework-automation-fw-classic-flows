@@ -677,7 +677,6 @@ Feature: Validate all scenarios in the Amendment Request
       | Extra Salary | The narrative | 1000           |
     When I close modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    And I refresh the page
     Then I cannot see top right button "Edit" in page detail
 
   @56968 @VerifyDeletionOfFundingChangeAmendmentByAwardOwner @mahadev
@@ -1486,7 +1485,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Activate" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subaward & Amendments" subheader on left panel
+    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Award for Amendment Request" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
@@ -1765,7 +1764,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Activate" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Awards, Amendments" subheader on left panel
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---amendment:-:recipientActiveGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---amendment:-:recipientActiveGrantsTableId---"

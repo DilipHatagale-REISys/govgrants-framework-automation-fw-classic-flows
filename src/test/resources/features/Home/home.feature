@@ -1,4 +1,4 @@
-@home
+@home @regression
 Feature: Validate all scenarios in the home tab
 
   @35024 @internalOrganizationCreate @smoke
@@ -77,9 +77,9 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Automation SPI" in "ActiveAccountIndApplicant" panel
-    And I click on "View" icon for "Automation SPI" inside flex table with id "ActiveAccountIndApplicant"
-    Then I see that "Individual Subrecipient" is in "Active" status
+    When I perform quick search for "Automation Ind" in "ActiveAccountIndApplicant" panel
+    And I click on "View" icon for "Automation Ind" inside flex table with id "ActiveAccountIndApplicant"
+    Then I see that "Automation Ind" is in "Active" status
     Examples:
       | User  |
       | ADMIN |
@@ -117,7 +117,6 @@ Feature: Validate all scenarios in the home tab
     When I click on top right button "New" in flex table with id "---home:-:subrecipientContactTableId---"
     And I enter "Creation" values from "InternalContact_Field_Values.xlsx"
     When I click modal button "Save"
-    And I refresh the page
     When I perform quick search for "Automation PO" in "---home:-:subrecipientContactTableId---" panel
     And I click on "View" icon for "Automation PO" inside flex table with id "---home:-:subrecipientContactTableId---"
     Then I see field "Organization" as "Test Automation Organization"
@@ -136,7 +135,6 @@ Feature: Validate all scenarios in the home tab
     When I click on top right button "New" in flex table with id "---home:-:subrecipientContactTableId---"
     And I enter "Creation" values from "InternalContact_Field_Values.xlsx"
     When I click modal button "Save"
-    And I refresh the page
     When I perform quick search for "Automation PO" in "flexTableRandomID" panel
     Then I can see row level action button "View" against "Automation PO" in flex table with id "flexTableRandomID"
     Examples:
@@ -154,7 +152,6 @@ Feature: Validate all scenarios in the home tab
     When I click on top right button "New" in flex table with id "---home:-:subrecipientContactTableId---"
     And I enter "Creation" values from "InternalContact_Field_Values.xlsx"
     When I click modal button "Save"
-    And I refresh the page
     When I perform quick search for "Automation PO" in "---home:-:subrecipientContactTableId---" panel
     Then I can see row level action button "Edit" against "Automation PO" in flex table with id "---home:-:subrecipientContactTableId---"
     Examples:
@@ -172,7 +169,6 @@ Feature: Validate all scenarios in the home tab
     When I click on top right button "New" in flex table with id "---home:-:subrecipientContactTableId---"
     And I enter "Creation" values from "SubrecipientContact_Field_Values.xlsx"
     When I click modal button "Save"
-    And I refresh the page
     When I click on "View" icon for "Automation Manager" inside flex table with id "---home:-:subrecipientContactTableId---"
     Then I see field "Organization" as "SAN DIEGO ELECTRICAL TRAINING TRUST"
     Examples:
@@ -190,7 +186,6 @@ Feature: Validate all scenarios in the home tab
     When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
     And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
     When I click modal button "Save"
-    And I refresh the page
     When I perform quick search for "Automation SME" in "---home:-:reviewersTableId---" panel
     Then I can see row level action button "View" against "Automation SME" in flex table with id "---home:-:reviewersTableId---"
     Examples:
@@ -208,7 +203,6 @@ Feature: Validate all scenarios in the home tab
     When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
     And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
     When I click modal button "Save"
-    And I refresh the page
     Then I see values "Automation SME" and "New" inside table
     Examples:
       | User  |
@@ -241,8 +235,12 @@ Feature: Validate all scenarios in the home tab
   @56724 @termsandConditionsView
   Scenario Outline: Verifying all Internal Users has View access to Terms and Conditions
     Given I login to "As a Grantor" app as "<User>" user
-    When I navigate to "Home" tab
-    And I navigate to "Terms and Conditions" content inside "Manage Terms and Conditions" subheader on left panel
+    When I navigate to "Planning" tab
+    And I navigate to "Terms and Conditions" content inside "Setup" subheader on left panel
+    When I click on top right button "New" in flex table with id "---home:-:termsAndConditionsTableId---"
+    And I enter "Creation" values from "TermsandConditions_Field_Values.xlsx"
+    When I click modal button "Save"
+    And I close modal by clicking the top right x button
     When I perform quick search for "TC-5885" in "---home:-:termsAndConditionsTableId---" panel
     Then I can see row level action button "View" against "TC-5885" in flex table with id "---home:-:termsAndConditionsTableId---"
     Examples:
@@ -254,8 +252,8 @@ Feature: Validate all scenarios in the home tab
   @56725 @termsAndConditionsCreate @smoke
   Scenario Outline: Verifying if the ADMIN/DA has create access to Terms and Conditions
     Given I login to "As a Grantor" app as "<User>" user
-    When I navigate to "Home" tab
-    And I navigate to "Terms and Conditions" content inside "Manage Terms and Conditions" subheader on left panel
+    When I navigate to "Planning" tab
+    And I navigate to "Terms and Conditions" content inside "Setup" subheader on left panel
     When I click on top right button "New" in flex table with id "---home:-:termsAndConditionsTableId---"
     And I enter "Creation" values from "TermsandConditions_Field_Values.xlsx"
     When I click modal button "Save"
@@ -269,8 +267,12 @@ Feature: Validate all scenarios in the home tab
   @56726 @termsAndConditionsADMINedit
   Scenario Outline: Verifying if the ADMIN has Edit access to Terms and Conditions
     Given I login to "As a Grantor" app as "<User>" user
-    When I navigate to "Home" tab
-    And I navigate to "Terms and Conditions" content inside "Manage Terms and Conditions" subheader on left panel
+    When I navigate to "Planning" tab
+    And I navigate to "Terms and Conditions" content inside "Setup" subheader on left panel
+    When I click on top right button "New" in flex table with id "---home:-:termsAndConditionsTableId---"
+    And I enter "Creation" values from "TermsandConditions_Field_Values.xlsx"
+    When I click modal button "Save"
+    And I close modal by clicking the top right x button
     When I perform quick search for "TC-5885" in "---home:-:termsAndConditionsTableId---" panel
     Then I can see row level action button "Edit" against "TC-5885" in flex table with id "---home:-:termsAndConditionsTableId---"
     Examples:
@@ -343,12 +345,10 @@ Feature: Validate all scenarios in the home tab
     When I click on top right button "New" in flex table with id "---home:-:subrecipientContactTableId---"
     And I enter "Creation" values from "InternalContact_Field_Values.xlsx"
     When I click modal button "Save"
-    And I refresh the page
     When I perform quick search for "Automation PO" in "flexTableRandomID" panel
     When I click on "Edit" icon for "Automation PO" inside flex table with id "flexTableRandomID"
     And I enter "Edition1" values from "InternalContact_Field_Values.xlsx"
     And I click modal button "Save"
-    When I refresh the page
     And I perform quick search for "Automation PO" in "flexTableRandomID" panel
     Then I see value "Active" for title "Status" inside table "flexTableRandomID"
     Examples:
@@ -366,11 +366,9 @@ Feature: Validate all scenarios in the home tab
     When I click on top right button "New" in flex table with id "---home:-:subrecipientContactTableId---"
     And I enter "Creation" values from "SubrecipientContact_Field_Values.xlsx"
     When I click modal button "Save"
-    And I refresh the page
     When I click on "Edit" icon for "Automation Manager" inside flex table with id "---home:-:subrecipientContactTableId---"
     And I enter "Edition" values from "SubrecipientContact_Field_Values.xlsx"
     And I click modal button "Save"
-    And I refresh the page
     And I perform quick search for "Automation Manager" in "---home:-:subrecipientContactTableId---" panel
     Then I see value "New" for title "Status" inside table "---home:-:subrecipientContactTableId---"
     Examples:
@@ -386,17 +384,13 @@ Feature: Validate all scenarios in the home tab
     When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
     And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
     When I click modal button "Save"
-    And I refresh the page
     And I click on "Edit" icon for "Automation SME" inside flex table with id "---home:-:reviewersTableId---"
     When I enter "Edition" values from "PotentialContact_Field_values.xlsx"
     And I click modal button "Save"
-    And I refresh the page
     Then I see value "New" for title "Status" inside table "---home:-:reviewersTableId---"
     Examples:
       | User  |
       | ADMIN |
-      | EXE   |
-      | PM    |
 
   @56736 @additionalAddressesCreation  @smoke
   Scenario Outline: Validate whether ADMIN can Create the Additional Addresses
@@ -423,11 +417,14 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I switch to iframe with id "iframeFlexGridSearch"
     When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
+    And I click on top right button "New" in flex table with id "---home:-:additionalAddressTableId---"
+    And I enter "AdditionalAddressesCreation" values from "InternalOrganization_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close modal by clicking the top right x button
     When I perform quick search for "Billing Address" in "---home:-:additionalAddressTableId---" panel
     And I click on "Edit" icon for "Billing Address" inside flex table with id "---home:-:additionalAddressTableId---"
     And I enter "AdditioanlAddressesEdition" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
-    And I refresh the page
     Then I see that "Test Automation Organization" is in "Active" status
     Examples:
       | User  |
@@ -470,8 +467,6 @@ Feature: Validate all scenarios in the home tab
       | User |
       | EXE  |
       | PM   |
-      | FO   |
-
 
   @56739 @deleterelatedContacts
   Scenario Outline: Validate whether ADMIN and DA users can Delete the Related Contact
@@ -506,8 +501,8 @@ Feature: Validate all scenarios in the home tab
       | 123456789   | Test132                | HernNdon |
     Then I see values "123456789" and "HernNdon" inside table
     Examples:
-      | User  |
-      | PM    |
+      | User |
+      | PM   |
 
   @56741 @dunsNumberEdition
   Scenario Outline: Validate whether ADMIN and DA users can Edit the DUNS NUmber
@@ -593,25 +588,25 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @57340 @thirdPartyVerification
+  @57340 @thirdPartyVerification @nonFunctional
   Scenario Outline: Verifying if the Internal Users has Edit access to Subrecipient Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
     When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "---home:-:subrecipientActiveAccountId---" panel
     When I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table without waiting for record
-    And I click on top right button "Verify" in flex table with id "OrganizationIntegrationDetail"
     Then I see values "SAM.Gov" and "Entity Validation" inside table
     Examples:
       | User  |
       | ADMIN |
 
-  @57341 @listpageViewChildOrganizations
+  @57341 @listpageViewChildOrganizations @wip
   Scenario Outline:: Verify system allows access to all Internal users to view the List page
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Department of Education" in "---home:-:internalOrganizationId---" panel
+    When I switch to Parent iframe
     And I expand nested table containing column value "Department of Education"
     Then I see values "Teaching and Learning" and "Agency" inside table
     Examples:
@@ -650,7 +645,7 @@ Feature: Validate all scenarios in the home tab
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-    And I click toggle button to select "Draft Internal Programs"
+    And I click toggle button to select "Internal Programs - Draft"
     And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
     When I enter "Creation" values from "Program_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -703,7 +698,7 @@ Feature: Validate all scenarios in the home tab
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-    And I click toggle button to select "Draft Internal Programs"
+    And I click toggle button to select "Internal Programs - Draft"
     And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
     When I enter "Creation" values from "Program_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -741,8 +736,6 @@ Feature: Validate all scenarios in the home tab
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---"
     And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
     When I close Modal
-    And I navigate to "Attachments" sub tab
-    When I upload attachment "Announcement_Field_Values.xlsx" of type "Program Artifacts"
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Home" tab
@@ -799,65 +792,73 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Automation SPI" in "ActiveAccountIndApplicant" panel
-    Then I can see row level action button "View" against "Automation SPI" in flex table with id "ActiveAccountIndApplicant"
+    When I perform quick search for "Automation Ind" in "ActiveAccountIndApplicant" panel
+    Then I can see row level action button "View" against "Automation Ind" in flex table with id "ActiveAccountIndApplicant"
     Examples:
       | User  |
       | ADMIN |
       | EXE   |
       | PM    |
 
-     @58245 @reassign
-     Scenario: The Reassign on the left Navigation allows the reassignment of tasks.
-       Given I delete the record "Automation Execution Internal Program" from the object "Program"
-       When I login to "As a Grantor" app as "dynamicUser" user
-       And I navigate to "Planning" tab
-       When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-       And I click toggle button to select "Internal Programs - Draft"
-       And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
-       When I enter "Creation" values from "Program_Field_Values.xlsx"
-       And I click modal button "Save and Continue"
-       And I get the "EGMS ID"
-       And I click on "Save" in the page details
-       And I click on "Edit" in the page details
-       When I enter "Edition" values from "Program_Field_Values.xlsx"
-       And I click on "Save" in the page details
-       When I navigate to "Overview" sub tab
-       And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-       When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
-       And I close Modal
-       When I navigate to "Setup" sub tab
-       And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
-       When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
-       When I click "Add" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
-       And I switch to Parent iframe
-       And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
-       When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
-       When I click "Add" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
-       And I switch to Parent iframe
-       And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
-       When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
-       When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
-       And I switch to Parent iframe
-       When I navigate to "Responsibilities" sub tab
-       And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-         | Responsibility     | Name           | Description                 |
-         | Program Approver   | Automation PM  | Automation Test Description |
-         | Executive Approver | Automation EXE | Automation Test Description |
-       And I click on "Submit For Approval" in the page details
-       When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-       When I navigate to "Home" tab
-       And I navigate to "Reassign" content inside "My Tasks" subheader on left panel
-       When I reassign task to "Automation EXE"
-       When I perform quick search for "Approve Program" in "TaskReassignment" panel
-       And I click "Reassign Selected" after selection of "Approve Program" in the table "TaskReassignment"
-       When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-       When I navigate to "Home" tab
-       When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-       When I perform quick search for "Approve Program" in "HomePendingTasks" panel
-       Then I see that "Approve Program" has been added in flextable with Id "HomePendingTasks"
+  @58245 @reassign
+  Scenario: The Reassign on the left Navigation allows the reassignment of tasks.
+    Given I delete the record "Automation Execution Internal Program" from the object "Program"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
+    And I close Modal
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
+    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
+    When I click "Add" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
+    And I switch to Parent iframe
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
+    When I click "Add" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    And I switch to Parent iframe
+    And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
+    When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
+    When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
+    And I switch to Parent iframe
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
+      | Responsibility     | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+    When I get the "EGMS ID"
+    When I navigate to "Setup" sub tab
+    When I enter the following values into flex table with id "---program:-:checklistTableId---" by clicking "Add" :
+      | Description                 | Required  | Applies To  | Status |
+      | Automation test description | Mandatory | Application | Active |
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---"
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close Modal
+    And I click on "Submit For Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I navigate to "Home" tab
+    And I navigate to "Reassign" content inside "My Tasks" subheader on left panel
+    When I reassign task to "Automation EXE"
+    When I perform quick search for "Approve Program" in "TaskReassignment" panel
+    And I click "Reassign Selected" after selection of "Approve Program" in the table "TaskReassignment"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Approve Program" in "HomePendingTasks" panel
+    Then I see that "Approve Program" has been added in flextable with Id "HomePendingTasks"
 
-  @pendingTaskCount
+  @59015 @pendingTaskCount
   Scenario: Validate whether user is able to view the total acount of pending Tasks assigned to user
     Given I delete the record "Automation Execution Internal Program" from the object "Program"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -899,7 +900,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     Then I see task count for "Planning" phase with the total records of flex table id "PhasePendingTasks"
 
-  @validateFilesOnHome
+  @59016 @validateFilesOnHome
   Scenario: Addition of Attachment to Focus Area by User - Admin/EXE/PM
     Given I delete the record "Automation Execution Focus Area" from the object "Focus Area"
     When I login to "As a Grantor" app as "dynamicUser" user

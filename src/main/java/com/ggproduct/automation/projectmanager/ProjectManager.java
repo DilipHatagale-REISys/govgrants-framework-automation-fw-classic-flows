@@ -37,8 +37,12 @@ public class ProjectManager extends ProjectWebServices {
 
     /*handles to get the record id of a record */
     public void getRecordIdFromResponse(String objectType, String recordName, String objectApiName) {
-        EyeThink.saas().pageDetails().idOfRecord = (automationBatchExecuteApi(objectType, recordName, objectApiName)).asString().replace("\"", "");
-        EyeThink.core().Properties().saveValue("Record Id",EyeThink.saas().pageDetails().idOfRecord);
+       String response ="";
+        response = (automationBatchExecuteApi(objectType, recordName, objectApiName.split(","))).asString().replace("\"", "");
+        if(!response.equalsIgnoreCase("Completed")) {
+            EyeThink.saas().pageDetails().idOfRecord = response;
+            EyeThink.core().Properties().saveValue("Record Id", EyeThink.saas().pageDetails().idOfRecord);
+        }
     }
 
     /* handles to verify no record is present in flex table */
@@ -315,5 +319,17 @@ public class ProjectManager extends ProjectWebServices {
     public void iSavedSpecificValueFromFlexTableInsideGivenKey(String columnValueFromRow, String columnName, String key, String flexTableId){
         EyeThink.core().Properties().saveValue(key,getValueOfSpecifiedColFromTableHavingColumnNameAs(columnValueFromRow,
                 columnName, flexTableId));
+    }
+
+    public boolean verifyIfFieldsAreEditableInFlexTable(String headingTitle){
+        String tableId = EyeThink.core().findMyElement().getElement(By.xpath("//*[contains(@class, 'panel-heading')]//a[text()='"+headingTitle+"']")).getAttribute("data-target");
+        tableId = tableId.substring(1);
+        By editableFields = By.xpath("//*[@id='"+tableId+"']//textarea");
+        try {
+            EyeThink.core().findMyElement().getElement(editableFields);
+            return true;
+        } catch (Exception e){
+            return false;
+        }
     }
 }

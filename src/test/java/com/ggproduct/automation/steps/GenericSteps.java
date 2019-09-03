@@ -134,4 +134,13 @@ public class GenericSteps {
     public void iSaveTheValueFromRowForColumnNameAsFromFlexTable(String columnValueFromRow, String columnName, String key, String flexTableId) {
         projectManager.iSavedSpecificValueFromFlexTableInsideGivenKey(columnValueFromRow, columnName, key, flexTableId);
     }
+
+    @Then("^I (see|do not see) that the fields in flex table title as \"([^\"]*)\" are editable$")
+    public void iSeeThatTheFieldsInFlexTableTitleAsAreEditable(String editable, String tableTitle) {
+        if (editable.equals("see")){
+            Assert.assertTrue(projectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle));
+        } else {
+            Assert.assertFalse(projectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle));
+        }
+    }
 }

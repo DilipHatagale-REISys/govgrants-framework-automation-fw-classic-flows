@@ -198,7 +198,6 @@ Feature: Validate all scenarios in Closeout
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     When I click on "Approve" on the approval decision box
-    And I refresh the page
     When I click on "Mark As Paid" in the page details
     And I enter "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
     When I click modal button "Save"
