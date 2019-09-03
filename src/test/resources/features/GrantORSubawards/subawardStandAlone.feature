@@ -1847,19 +1847,19 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see total records count "Total Records:6" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
 
   @35041 @SelectDesiredFrequencyAsMonthlyWithSchdeuleBaseAsCalendar @mahadev
-  Scenario: Verify While creating schedule user should be allowed to select the Desired Frequency as monthly with schdeule base as calendar
+  Scenario: Verify while creating schedule user should be allowed to select the desired frequency as monthly with schdeule base as calendar
     When I click on "Edit" in the page details
     And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "ProgressReportCalendarSchedule" values from "Award_Field_Values.xlsx"
+    When I enter "ProgressReportCalendarSchedule" values from "ProgressReport_Field_Values.xlsx"
     And I click modal button "Save"
     And I close modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
     Then I see total records count "Total Records:12" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
 
-  @45725 @validateSubRecipientCannotEditSchedule
+  @45725 @validateSubRecipientCannotEditSchedule @mahadev
   Scenario Outline: Verify if subaward is sent to sub-recipient for Accept action then external user should not have access to modify Schedule
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
