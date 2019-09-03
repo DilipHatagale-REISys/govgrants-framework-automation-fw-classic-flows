@@ -44,7 +44,7 @@ public class ProjectManager extends ProjectWebServices {
     /* handles to verify no record is present in flex table */
     public boolean isRecordPresentInTheFlexTable(String text, String tableId) {
         try {
-            return EyeThink.core().perform().is().onWeb().isDisplayed(By.xpath("//div[@id='" + tableId + "']//*[" + EyeThink.core().xpath().contains("text()", text) + "]"));
+            return EyeThink.core().is().onWeb().isDisplayed(By.xpath("//div[@id='" + tableId + "']//*[" + EyeThink.core().xpath().contains("text()", text) + "]"));
         } catch (Exception e) {
         }
         return false;
@@ -81,7 +81,7 @@ public class ProjectManager extends ProjectWebServices {
      * @Author - Mahadev.hanme
      */
     public void AssertPageBlockDisplayed(String pageblockName, boolean assertcan) {
-        List<Elements> elements = EyeThink.core().get().element().listOfElements().getWebElements(pageBlock(pageblockName),false);
+        List<Elements> elements = EyeThink.core().elementReference().listOfElements().onWeb(pageBlock(pageblockName),false);
 
         if (assertcan) {
             Assert.assertNotEquals(elements.size(), 0);
@@ -99,7 +99,7 @@ public class ProjectManager extends ProjectWebServices {
         By expectedMsg = By.xpath("//div[@id='ApprovalDecisionComponent']//span[contains(text(),'" + message + "')]");
 
         try {
-            EyeThink.core().get().element().elementReference().getWebElement(expectedMsg);
+            EyeThink.core().elementReference().onWeb(expectedMsg);
             return true;
         } catch (Exception ex) {
             return false;
@@ -145,8 +145,8 @@ public class ProjectManager extends ProjectWebServices {
      * @return
      */
     public Boolean iSeeValueInFlexTable(String value, String flexTableHeader) {
-        WebElement elementValueFlexTable = EyeThink.core().get().element().elementReference().getWebElement(By.xpath("//div[@id='myTabbedContent']//a[@title='" + flexTableHeader + "']/../../../following-sibling::div//tbody//td//span[text()='" + value + "']"));
-        if (EyeThink.core().perform().is().onWeb().isDisplayed(elementValueFlexTable))
+        WebElement elementValueFlexTable = EyeThink.core().elementReference().onWeb(By.xpath("//div[@id='myTabbedContent']//a[@title='" + flexTableHeader + "']/../../../following-sibling::div//tbody//td//span[text()='" + value + "']"));
+        if (EyeThink.core().is().onWeb().isDisplayed(elementValueFlexTable))
             return true;
         else
             return false;
@@ -161,10 +161,10 @@ public class ProjectManager extends ProjectWebServices {
      * @param fileNameFromWorkSpace - file which is to be upload
      */
     public void uploadAttachmentFromWorkspace(String fileNameFromWorkSpace) {
-        EyeThink.core().perform().click().onWeb(By.xpath("//div[@id='myTabbedContent']//span[contains(text(),'Attachment')]/..//div[@class='panel-heading']//*[text()='Add']"));
+        EyeThink.core().click().onWeb(By.xpath("//div[@id='myTabbedContent']//span[contains(text(),'Attachment')]/..//div[@class='panel-heading']//*[text()='Add']"));
         EyeThink.core().switchTo().switchToFrame(By.xpath("//iframe[contains(@ng-src, 'apex') or contains(@src,'apex')]"));
-        EyeThink.core().perform().click().onWeb(By.xpath("//div[@id='Attachmentadd']//span[text()='Upload file from Workspace']"));
-        EyeThink.core().perform().click().onWeb((By.xpath("//div[@id='Attachmentadd']//td[text()='" + fileNameFromWorkSpace + "']/..//input")));
+        EyeThink.core().click().onWeb(By.xpath("//div[@id='Attachmentadd']//span[text()='Upload file from Workspace']"));
+        EyeThink.core().click().onWeb((By.xpath("//div[@id='Attachmentadd']//td[text()='" + fileNameFromWorkSpace + "']/..//input")));
         EyeThink.saas().modal().clickModalContentSpecificButton("Attach");
         EyeThink.saas().modal().closeModalByClickingTopRightCloseButton();
     }
@@ -196,7 +196,7 @@ public class ProjectManager extends ProjectWebServices {
      * @return
      */
     private int getCheckedFieldValueCount(String fieldName){
-        List<Elements> checkSymbol = EyeThink.core().get().element().listOfElements().getWebElements(By.xpath("//field[@field-name='"+fieldName+"']/i[contains(@class,'fa-check')]"));
+        List<Elements> checkSymbol = EyeThink.core().elementReference().listOfElements().onWeb(By.xpath("//field[@field-name='"+fieldName+"']/i[contains(@class,'fa-check')]"));
         return checkSymbol.size();
     }
 
@@ -290,7 +290,7 @@ public class ProjectManager extends ProjectWebServices {
         int columnValueFromRowInInt = 0;
         int counter = 1;
         By columnHeaders = By.xpath("//div[@id='"+flexTableId+"']//th//span[@ng-bind='fieldLabel']");
-        List<Elements> columnList = EyeThink.core().get().element().listOfElements().getWebElements(columnHeaders);
+        List<Elements> columnList = EyeThink.core().elementReference().listOfElements().onWeb(columnHeaders);
 
         // get the column index of required column.
         for (Elements columnEle : columnList){
@@ -300,7 +300,7 @@ public class ProjectManager extends ProjectWebServices {
             counter++;
         }
 
-        List<Elements> listOfDataInColumn = EyeThink.core().get().element().listOfElements().getWebElements(By.xpath("//div[@id='"+flexTableId+"']//th//span[text()='"+columnName+"']/ancestor::thead/parent::table//tr//td["+counter+"]/span/field/span"));
+        List<Elements> listOfDataInColumn = EyeThink.core().elementReference().listOfElements().onWeb(By.xpath("//div[@id='"+flexTableId+"']//th//span[text()='"+columnName+"']/ancestor::thead/parent::table//tr//td["+counter+"]/span/field/span"));
         columnValueFromRowInInt = rowNumber.equalsIgnoreCase("last row") ? listOfDataInColumn.size()
                 : Integer.parseInt(rowNumber);
 
