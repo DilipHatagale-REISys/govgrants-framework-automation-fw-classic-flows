@@ -745,7 +745,7 @@ Feature: Validate all scenarios in Negotiations
     And I navigate to "Applications" tab
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     And I perform quick search for "Record Id" in "---negotiation:-:negotiationPendingTaskTableId---" panel
-    And I expand nested table containing column value "Negotiation Initiated"
+    #And I expand nested table containing column value "Negotiation Initiated"
     Then I see values "Automation Negotiation Iniatiation" and "Submitted" inside table
 
     @57840 @SendToSubrecipientAfterSubmittingToGrantor

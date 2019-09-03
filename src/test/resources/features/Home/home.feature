@@ -1,7 +1,7 @@
 @home @regression
 Feature: Validate all scenarios in the home tab
 
-  @35024 @internalOrganizationCreate @smoke
+  @35024 @internalOrganizationCreate @smoke @nonFunctional
   Scenario: Verifying if the Admin has create access to Internal Organization
     Given I delete the record "Product Automation permanent Orgtn" from the object "ACCOUNT"
     Given I login to "As Administrator" app as "Admin" user
@@ -12,7 +12,7 @@ Feature: Validate all scenarios in the home tab
     And I click on "Save" in the page details
     Then I see that "State Organization" is in "Created" status
 
-  @35637 @internalOrganizationAdminEdit
+  @35637 @internalOrganizationAdminEdit @nonFunctional
   Scenario Outline: Verifying if the Admin has edit access to Internal Organization
     Given I login to "As Administrator" app as "Admin" user
     When I navigate to "Setup" tab
@@ -91,8 +91,8 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Automation SPI" in "ActiveAccountIndApplicant" panel
-    Then I can see row level action button "Edit" against "Automation SPI" in flex table with id "ActiveAccountIndApplicant"
+    When I perform quick search for "Automation Ind" in "ActiveAccountIndApplicant" panel
+    Then I can see row level action button "Edit" against "Automation Ind" in flex table with id "ActiveAccountIndApplicant"
     Examples:
       | User  |
       | ADMIN |
@@ -246,8 +246,6 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-      | EXE   |
-      | PM    |
 
   @56725 @termsAndConditionsCreate @smoke
   Scenario Outline: Verifying if the ADMIN/DA has create access to Terms and Conditions

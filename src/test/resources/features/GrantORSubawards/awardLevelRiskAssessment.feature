@@ -586,7 +586,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "PendingTasks" panel
     Then I do not see values "Record Id" and "Automation Award for Risk Assessment" inside table
 
-  @58817 @activeAwardisRequiredToIssueAward
+  @58817 @activeRAisRequiredToIssueAward
   Scenario Outline: Validate that an Active Award Risk Assessment is required to issue an Award if *Risk Assessment Required =Yes.
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
     When I delete the record "Automation Execution Award" from the object "Payment Request"
@@ -1292,6 +1292,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Management" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I enter "Risk Assessment Creation1" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue"
     Then I see the following messages in the page details :
       | Acknowledgement is required. |
 
@@ -1339,8 +1340,8 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
     And I perform quick search for "Record Id" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
-    And I perform quick search for "Record Id" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
-    Then I see that "Record Id" has been added in flextable with Id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
+    #Then I see that "Record Id" has been added in flextable with Id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
+    Then I see "Active" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
 
   @58938 @initialRAIsExpiredandSucceedingAreActive
   Scenario: Initial Risk Assessment should be marked as Expired if succeeding Risk Assessments are made active
@@ -1382,7 +1383,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Approve" on the approval decision box
-    When I re-login to "As a Grantor" app as "FO" user on "DynamicUser" portal
+    When I re-login to "As a Grantor" app as "DynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
@@ -1424,7 +1425,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
-    Then I see that "Automation Award for Risk Assessment" is in "Active" status
+    Then I see values "Automation Award for Risk Assessment" and "Active" inside table
 
 
 

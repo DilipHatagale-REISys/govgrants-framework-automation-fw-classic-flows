@@ -415,11 +415,11 @@ Feature: Amendment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close modal by clicking the top right x button
+    When I close Modal
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close modal by clicking the top right x button
+    When I close Modal
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -601,7 +601,7 @@ Feature: Amendment Request scenarios without background
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close modal by clicking the top right x button
+    When I close Modal
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -735,11 +735,11 @@ Feature: Amendment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close modal by clicking the top right x button
+    When I close Modal
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close modal by clicking the top right x button
+    When I close Modal
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -917,11 +917,11 @@ Feature: Amendment Request scenarios without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close modal by clicking the top right x button
+    When I close Modal
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close modal by clicking the top right x button
+    When I close Modal
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -1223,8 +1223,8 @@ Feature: Amendment Request scenarios without background
     When I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "<Grant Name>" in "---amendment:-:recipientActiveGrantsTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---amendment:-:recipientActiveGrantsTableId---"
+    When I perform quick search for "<Grant Name>" in "---amendment:-:internalActiveGrants---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---amendment:-:internalActiveGrants---"
     When I navigate to "Actuals" sub tab
     Then I see field "Awarded Amount" as "$3,000.00"
     Examples:
@@ -1280,7 +1280,7 @@ Feature: Amendment Request scenarios without background
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close modal by clicking the top right x button
+    When I close Modal
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -1402,10 +1402,10 @@ Feature: Amendment Request scenarios without background
     When I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "<Grant Name>" in "---amendment:-:recipientActiveGrantsTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---amendment:-:recipientActiveGrantsTableId---"
+    When I perform quick search for "<Grant Name>" in "---amendment:-:internalActiveGrants---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---amendment:-:internalActiveGrants---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Activated" inside flex table with id "---amendment:-:recipientAwardsTableId---"
+    And I click on "View" icon for "Activated" inside flex table with id "---amendment:-:internalRelatedAwards1---"
     When I navigate to "Budget" sub tab
     Then I see value "$3,000.00" for title "Encumbrance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
     Examples:
@@ -1583,10 +1583,10 @@ Feature: Amendment Request scenarios without background
     When I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "<Grant Name>" in "---amendment:-:recipientActiveGrantsTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---amendment:-:recipientActiveGrantsTableId---"
+    When I perform quick search for "<Grant Name>" in "---amendment:-:internalActiveGrants---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---amendment:-:internalActiveGrants---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Activated" inside flex table with id "---amendment:-:recipientAwardsTableId---"
+    And I click on "View" icon for "Activated" inside flex table with id "---amendment:-:internalRelatedAwards1---"
     When I navigate to "Actual" sub tab
     Then I see value "$3,000.00" for title "Encumbrance Balance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
     Examples:
