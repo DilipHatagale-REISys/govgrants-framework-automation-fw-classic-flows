@@ -15,6 +15,7 @@ public class ProjectWebServices {
     private static String tokenString;
     private String jobID;
     private String status;
+    private UsersAndURL users = new UsersAndURL();
 
     /**
      * get token for authentication of Delete request
@@ -67,8 +68,8 @@ public class ProjectWebServices {
         this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password" +
                 "&client_id=" + api.consumerKey + "" +
                 "&client_secret=" +  api.consumerSecret + "" +
-                "&username=" + new UsersAndURL().getUserName("ADMIN") +
-                "&password=" + new UsersAndURL().getPassword("ADMIN");
+                "&username=" + users.getUserName("ADMIN") +
+                "&password=" + users.getPassword("ADMIN");
     }
 
     /*
