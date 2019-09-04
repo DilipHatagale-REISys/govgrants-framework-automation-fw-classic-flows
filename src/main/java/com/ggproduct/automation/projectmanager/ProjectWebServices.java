@@ -5,7 +5,6 @@ import java.nio.charset.StandardCharsets;
 import com.jayway.restassured.response.Response;
 import eyethink.automation.bots.Register.EyeThink;
 import eyethink.automation.bots.controller.EnvironmentFetcher;
-import eyethink.automation.bots.controller.TestSetupController;
 
 public class ProjectWebServices {
     private static String endPoint = EnvironmentFetcher.environment;
@@ -32,13 +31,11 @@ public class ProjectWebServices {
     /**
      * calls the api to delete test data
      *
-     * @param objectType
-     *            - the object for which test data should be deleted. Currently
-     *            accepts Program, Announcement, Qualified Announcement,
-     *            Application, Award, Grant, Site Visit, Desk Review, Payment
-     *            Request, Progress Report, Closeout
-     * @param recordName
-     *            - the name or title of the record
+     * @param objectType - the object for which test data should be deleted. Currently
+     *                   accepts Program, Announcement, Qualified Announcement,
+     *                   Application, Award, Grant, Site Visit, Desk Review, Payment
+     *                   Request, Progress Report, Closeout
+     * @param recordName - the name or title of the record
      */
     public void deletionApi(String recordName, String objectType) {
         System.out.print("Making API call... ");
@@ -64,17 +61,9 @@ public class ProjectWebServices {
 
     private void setDefaultEndPointGetToken(String defaultEndPointGetToken) {
         if (System.getProperty("env") != null && System.getProperty("env").equalsIgnoreCase("QA")) {
-            this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password" +
-                    "&client_id=3MVG9dZJodJWITSuFoeXeOau_jPysAF1tDTnpScZyZwXUGhS_ZudVpjPfvLFrO78TVtOgK6flv6R5a4OV8QnR" +
-                    "&client_secret=1408645120361878326" +
-                    "&username=" + TestSetupController.usersController.getUserName("ADMIN") +
-                    "&password=" + TestSetupController.usersController.getPassword("ADMIN");
-        }else{
-            this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password" +
-                    "&client_id=3MVG9dCCPs.KiE4SymniyHC6UlMIAR0YvAXol5FuMHzSJqbOVMTccQ38dL.hKCIoEsFGgNLDt8rESz_Kj4agG" +
-                    "&client_secret=44C0443943FD6112314BEE069C8C6680E3106B5F4B86E46EBB84D60B4435CB90" +
-                    "&username=" + TestSetupController.usersController.getUserName("ADMIN") +
-                    "&password=" + TestSetupController.usersController.getPassword("ADMIN");
+            this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9dZJodJWITSuFoeXeOau_jPysAF1tDTnpScZyZwXUGhS_ZudVpjPfvLFrO78TVtOgK6flv6R5a4OV8QnR&client_secret=1408645120361878326&username=mayuresh.g@ggp.test7&password=Salesforce_2019";
+        } else {
+            this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9dCCPs.KiE4SymniyHC6UlMIAR0YvAXol5FuMHzSJqbOVMTccQ38dL.hKCIoEsFGgNLDt8rESz_Kj4agG&client_secret=44C0443943FD6112314BEE069C8C6680E3106B5F4B86E46EBB84D60B4435CB90&username=nakul@admin.test7.automation&password=Product@123";
         }
     }
 
@@ -112,10 +101,10 @@ public class ProjectWebServices {
      *
      * @param outputFieldName - use it in case you want to get any field value other than EGMS ID.
      */
-    public Response automateGetApi(String recordName, String fieldName, String objectType,String outputFieldName) {
+    public Response automateGetApi(String recordName, String fieldName, String objectType, String outputFieldName) {
         getAuthToken();
         String finalEndPoint = endPoint + "/services/apexrest/productAutomationGetFieldValue?objectType=" + objectType
-                + "&fieldValue=" + recordName + "&fieldName=" + fieldName +"&outputFieldName=" +outputFieldName;
+                + "&fieldValue=" + recordName + "&fieldName=" + fieldName + "&outputFieldName=" + outputFieldName;
         Response response = EyeThink.core().apiCall().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
         response.prettyPrint();
         assertStatusCode(response);
@@ -134,11 +123,11 @@ public class ProjectWebServices {
      *
      * @param objectApiName -: This is the object api name.
      */
-    public Response automationBatchExecuteApi(String objectType, String recordName, String objectApiName) {
-        String finalEndPoint = "";
+    public Response automationBatchExecuteApi(String objectType, String recordName, String... objectName) {
+        String finalEndPoint,objectApiName = "";
         Response response = null;
         getAuthToken();
-
+        objectApiName = objectName[0];
         finalEndPoint = endPoint + "/services/apexrest/productAutomationRunBatchJob?type=" + objectType + "&recordName="
                 + recordName;
 
@@ -160,7 +149,7 @@ public class ProjectWebServices {
             EyeThink.core().WaitFor().makeThreadSleep(3000);
         }
 
-        if (status.equalsIgnoreCase("Completed")) {
+        if (status.equalsIgnoreCase("Completed") && objectName.length == 1) {
             return automateGetApi(recordName, "Title__c", objectApiName);
         } else {
             return response;
