@@ -2,6 +2,9 @@ package com.ggproduct.automation.projectmanager;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
+
 import com.jayway.restassured.response.Response;
 import eyethink.automation.bots.Register.EyeThink;
 import eyethink.automation.bots.controller.EnvironmentFetcher;
@@ -60,11 +63,12 @@ public class ProjectWebServices {
     }
 
     private void setDefaultEndPointGetToken(String defaultEndPointGetToken) {
-        if (System.getProperty("env") != null && System.getProperty("env").equalsIgnoreCase("QA")) {
-            this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9dZJodJWITSuFoeXeOau_jPysAF1tDTnpScZyZwXUGhS_ZudVpjPfvLFrO78TVtOgK6flv6R5a4OV8QnR&client_secret=1408645120361878326&username=mayuresh.g@ggp.test7&password=Salesforce_2019";
-        } else {
-            this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG99E3Ry5mh4zqNsp6HovAR3hiAd00iG0vZEOz_lOZPaa9fEr.3xsLKSq_f_FQsFBuflDmE6Dcb8P4HCw0v&client_secret=F695740F6556CF21D48477FF165B31C0622F9D525AE7A161ABBEAC05437A164B&username=nakul@admin.test7.automation&password=Product@123";
-        }
+        ApiInfo api = apis.get(EnvironmentFetcher.environmentName.toUpperCase());
+        this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password" +
+                "&client_id=" + api.consumerKey + "" +
+                "&client_secret=" +  api.consumerSecret + "" +
+                "&username=" + new UsersAndURL().getUserName("ADMIN") +
+                "&password=" + new UsersAndURL().getPassword("ADMIN");
     }
 
     /*
@@ -154,6 +158,21 @@ public class ProjectWebServices {
             return automateGetApi(recordName, "Title__c", objectApiName);
         } else {
             return response;
+        }
+    }
+
+    private static Map<String, ApiInfo> apis = new HashMap<>();
+    static {
+        apis.put("QA", new ApiInfo("3MVG9dZJodJWITSuFoeXeOau_jPysAF1tDTnpScZyZwXUGhS_ZudVpjPfvLFrO78TVtOgK6flv6R5a4OV8QnR", "1408645120361878326"));
+        apis.put("AUTO", new ApiInfo("3MVG9dCCPs.KiE4SymniyHC6UlMIAR0YvAXol5FuMHzSJqbOVMTccQ38dL.hKCIoEsFGgNLDt8rESz_Kj4agG", "44C0443943FD6112314BEE069C8C6680E3106B5F4B86E46EBB84D60B4435CB90"));
+    }
+
+    private static class ApiInfo {
+        final String consumerKey;
+        final String consumerSecret;
+        ApiInfo(String key, String secret) {
+            consumerKey = key;
+            consumerSecret = secret;
         }
     }
 }
