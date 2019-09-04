@@ -63,7 +63,7 @@ public class ProjectWebServices {
         if (System.getProperty("env") != null && System.getProperty("env").equalsIgnoreCase("QA")) {
             this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9dZJodJWITSuFoeXeOau_jPysAF1tDTnpScZyZwXUGhS_ZudVpjPfvLFrO78TVtOgK6flv6R5a4OV8QnR&client_secret=1408645120361878326&username=mayuresh.g@ggp.test7&password=Salesforce_2019";
         } else {
-            this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG99E3Ry5mh4zqNsp6HovAR3hiAd00iG0vZEOz_lOZPaa9fEr.3xsLKSq_f_FQsFBuflDmE6Dcb8P4HCw0v&client_secret=F695740F6556CF21D48477FF165B31C0622F9D525AE7A161ABBEAC05437A164B&username=nakul@admin.test7.automation&password=Product@123";
+            this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9dCCPs.KiE4SymniyHC6UlMIAR0YvAXol5FuMHzSJqbOVMTccQ38dL.hKCIoEsFGgNLDt8rESz_Kj4agG&client_secret=44C0443943FD6112314BEE069C8C6680E3106B5F4B86E46EBB84D60B4435CB90&username=nakul@admin.test7.automation&password=Product@123";
         }
     }
 
@@ -127,7 +127,6 @@ public class ProjectWebServices {
         String finalEndPoint,objectApiName = "";
         Response response = null;
         getAuthToken();
-
         objectApiName = objectName[0];
         finalEndPoint = endPoint + "/services/apexrest/productAutomationRunBatchJob?type=" + objectType + "&recordName="
                 + recordName;
