@@ -11,13 +11,13 @@ public class ProgressReportSteps {
         this.progressReport = progressReport;
     }
 
-    @Description("To verify total records available under flex table")
+    @Description("To verify progress report schedules getting updated")
     @Then("^I see progress report table is getting updated with count \"([^\"]*)\" inside flextable with Id \"([^\"]*)\"$")
     public void iSeeProgressReportTableIsGettingUpdatedWithCountInsideFlextableWithId(String totalRecords, String tableID) {
         progressReport.verifyProgressReportSchedulesUpdated(totalRecords,tableID);
     }
 
-    @Description("To verify toggle optin is not present on flex table")
+    @Description("To verify toggle option is not present on flex table")
     @Then("^I cannot see toggle option \"([^\"]*)\" inside flex table id \"([^\"]*)\"$")
     public void iCannotSeeToggleOptionInsideFlexTableId(String anyItemToBeCheck, String flexTableId) {
         progressReport.assertToggleOptionNotDisplayed(anyItemToBeCheck,flexTableId);
