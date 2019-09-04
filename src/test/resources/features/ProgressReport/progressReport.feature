@@ -1546,3 +1546,23 @@ Feature: Validate all scenarios in Progress Report
     When I click toggle button to select "Progress Reports - All"
     And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:internalProgressReportFlexTableId---" panel
     Then I do not see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:internalProgressReportFlexTableId---"
+
+
+  @59136 @jitendra
+  Scenario: Validate Sub-recipient user is not allowed to submit progress report to grantor when required data is not filled under Forms and Attachments Tab.
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Performance" sub tab
+    Given I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 7      | 7             |
+    When I navigate to "Forms and Attachments" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
+    And I enter "ErrorForm" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I get the "EGMS ID"
+    Given I click on "Submit to Grantor" in the page details
+    Then I see the following messages in the page details contains:
+    |Forms and Attachments Tab - Fill all the required data in the form before submitting to Grantor.|
