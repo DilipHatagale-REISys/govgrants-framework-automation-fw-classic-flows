@@ -56,7 +56,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I see that "Automation PM" has been added in flextable with Id "---subAwardStandAlone:-:riskAssessmentApproverTableId---"
 
   @58166 @submitRiskAssessmentForApproval
-  Scenario: Validate whether user is to able to submit Risk Assessment for Approval
+  Scenario: Validate whether Award Owner is to able to submit Risk Assessment for Approval
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -83,6 +83,7 @@ Feature: Validate all scenarios in the Risk Assessment
       | Program Approver | Automation PM | Automation Test Description |
     And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
+
 
   @58167 @approvalProcessofRiskAssessment
   Scenario: Validate the Approval process of Risk Assessment
@@ -473,7 +474,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I can see row level action button "View" against "Record Id" in flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
 
   @58179 @validateFOUserCanSubmitForApproval
-  Scenario: Validate whether other than record Owner can submit Risk Assessment for Approval
+  Scenario: Validate whether other than record Owner (FO user ) can submit Risk Assessment for Approval - Negative Test Case
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -507,7 +508,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I cannot see top right button "Submit for Approval" in page detail
 
   @58180 @validateEditButtonAfterSubmitforApproval
-  Scenario: Validate whether user can Edit Risk Assessment once submit for Approval
+  Scenario: Validate Award Owner is not allowed to Edit the Risk Assessment post submitting it for approval.
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -578,13 +579,14 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
+    And I get the "EGMS ID"
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PendingTasks" panel
+    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     Then I do not see values "Record Id" and "Automation Award for Risk Assessment" inside table
 
   @58817 @activeRAisRequiredToIssueAward
-  Scenario Outline: Validate that an Active Award Risk Assessment is required to issue an Award if *Risk Assessment Required =Yes.
+  Scenario Outline: Validate system generates a message to enforce the user to activate risk assessment before issuing an award when Risk Assessment Required =Yes.
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
     When I delete the record "Automation Execution Award" from the object "Payment Request"
     And I delete the record "Automation Execution Award" from the object "Progress Report"
@@ -734,7 +736,7 @@ Feature: Validate all scenarios in the Risk Assessment
       | Automation FO | Fiscal Reviewer | Automation Test Description | 7        | No                   |
     And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---riskassessment:-:raPeerReviewFlexTableId---"
     Then I see the following messages in the page details :
-      | Review Successfully Initiated |
+      | Review Successfully Initiated. |
 
   @58819 @peerReviewedRiskAssessment
   Scenario: Validate Peer reviewer is complete and Reviewed
@@ -836,7 +838,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
-    Then I see that "New" has been added in flextable with Id "---subAwardStandAlone:-:riskAssessmentTableId---"
+    Then I see "New" has been added in "---subAwardStandAlone:-:riskAssessmentTableId---" flex table
 
   @58821 @validateEditionOfRiskAssessment
   Scenario: Validate whether user can Edit the created Risk Assessment
@@ -936,19 +938,19 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
+    And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
+    And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
+    And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
@@ -1067,7 +1069,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
       | Automation SPI | Project Director/Manager | Checked          |
-    When I navigate to "Responsibilities" sub tab
+    When I navigate to "Responsibilities" sub tabf
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
@@ -1272,7 +1274,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I see that "Automation Award for Risk Assessment" has been added in flextable with Id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
 
   @58936 @acknowledgementIsRequiredToContinue
-  Scenario: Acknowlegement is required to continue for Risk Assessment
+  Scenario: Validate System generates an error message if the user tries to proceed on the risk assessment without providing acknowledgment
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1289,7 +1291,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Management" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I enter "Risk Assessment Creation1" values from "Award_Field_Values.xlsx"
-    When I click on "Save and Continue"
+    When I click on "Save and Continue" in the page details
     Then I see the following messages in the page details :
       | Acknowledgement is required. |
 
@@ -1337,7 +1339,6 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
     And I perform quick search for "Record Id" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
-    #Then I see that "Record Id" has been added in flextable with Id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     Then I see "Active" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
 
   @58938 @initialRAIsExpiredandSucceedingAreActive
@@ -1423,6 +1424,69 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     Then I see values "Automation Award for Risk Assessment" and "Active" inside table
+
+  @59324 @otherThanRecordOnwerFoUserCannotEditRiskAssessment
+  Scenario: Validate  whether other than Award Onwer any other user can Edit the Risk Assessment before Submit for Approval.
+    Given I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Creation1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Management" sub tab
+    When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I get the "EGMS ID"
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    And I perform quick search for "Record Id" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
+    Then I cannot see top right button "Edit" in page detail
+
+  @58179 @otherThanRecordOnwerFoUserCannotSubmitForApproval
+  Scenario: Validate whether other than record Owner FO user  cannot submit Risk Assessment for Approval - Negative Test Case
+    Given I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Creation1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Management" sub tab
+    When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
+      | Responsibility   | Name          | Description                 |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+      | Program Approver | Automation PM | Automation Test Description |
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Manage Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    And I perform quick search for "Record Id" in "flexGridRiskAssessmentGridViewInternal" panel
+    When I click on "View" icon for "Record Id" inside flex table with id "flexGridRiskAssessmentGridViewInternal"
+    Then I cannot see top right button "Submit for Approval" in page detail
 
 
 
