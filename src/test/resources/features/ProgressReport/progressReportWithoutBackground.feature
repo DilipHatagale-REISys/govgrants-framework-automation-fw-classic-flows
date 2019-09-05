@@ -3736,7 +3736,7 @@ Feature: Validate scenarios in Progress Report
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @59189 @validateSubmitProgressReportWithoutUploadingSupportingDocumentWhenSupportingDocumentChecklistIsSelectedOptionalAtGrant @mahadev
+  @59189 @validateSubmitProgressReportWithoutUploadingSupportingDocument @mahadev
   Scenario Outline: Validate SR is allowed to submit Progress report to grantor without uploading Supporting document When Supporting document checklist is selected Optional at Grant
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -3862,7 +3862,7 @@ Feature: Validate scenarios in Progress Report
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @59190 @validateSubrecipientDocumentLinkFieldValueIsNotApplicableAtProgressReportWhenSupportingDocumentChecklistIsMandatoryOnGrant @mahadev
+  @59190 @validateSubrecipientDocumentLinkFieldValueIsNotApplicable @mahadev
   Scenario Outline: Validate by default Subrecipient document link field value is Not Applicable at SR user end when Supporting document checklist is selected Mandatory at Grant
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -3980,7 +3980,7 @@ Feature: Validate scenarios in Progress Report
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @59193 @validateOnceDocumentUploadedBySRUserThenDocumentLinkFieldValueChangeToViewHyperlink @mahadev
+  @59193 @validateDocumentLinkFieldValueChangeToViewHyperlink @mahadev
   Scenario Outline: Validate once document is uploaded by SR user than Document Link field value change to view hyperlink on created Progress report
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
