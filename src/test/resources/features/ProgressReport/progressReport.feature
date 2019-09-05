@@ -1304,7 +1304,7 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Performance" sub tab
     Then I do not see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:progressReportFlexTableId---"
 
-  @58756 @jitendra
+  @58756 @PerformanceTabUpdate @jitendra
   Scenario: Validate Performance Tab under Subaward View at Internal user is getting updated when Progress report status is  Submitted to Grantor on active subaward.
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
@@ -1330,7 +1330,7 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Performance" sub tab
     Then I see value "Submitted to Grantor" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressReport:-:grantorProgressReportsTableId---"
 
-  @58882 @jitendra
+  @58882 @ListViewSPISeeAprrovedPR @jitendra
   Scenario: Verify that Sub-recipient User will be able to see Approved Progress Report on active award by using List View.
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
@@ -1375,7 +1375,7 @@ Feature: Validate all scenarios in Progress Report
     And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:progressReportFlexTableId---" panel
     Then I see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:progressReportFlexTableId---"
 
-  @59039 @jitendra
+  @59039 @NoEditToPerformanceNarrativePRStateIsSubmittedToGrantor @jitendra
   Scenario: Validate SPI user 'does not' have edit access to Performance Narrative Table under Progress report when Progress report state is Submitted to Grantor State.
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
@@ -1393,7 +1393,7 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Performance" sub tab
     Then I do not see that the fields in flex table title as "Performance Narrative" are editable
 
-  @58881 @jitendra
+  @58881 @SeeSubmittedPROnActiveAwardBySPIUser @jitendra
   Scenario: Verify that Sub-recipient User will be able to see Submitted Progress Report on active award by using List View.
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
@@ -1414,7 +1414,7 @@ Feature: Validate all scenarios in Progress Report
     And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:progressReportFlexTableId---" panel
     Then I see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:progressReportFlexTableId---"
 
-  @58883 @jitendra
+  @58883 @SeeApprovedPROnActiveAwardByInternalUser @jitendra
   Scenario: Verify that Internal User will be able to see Approved Progress Report on active award by using List View.
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
@@ -1459,7 +1459,7 @@ Feature: Validate all scenarios in Progress Report
     And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:internalProgressReportFlexTableId---" panel
     Then I see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:internalProgressReportFlexTableId---"
 
-  @58884 @jitendra
+  @58884 @SeeSendBackToSubrecipientPROnActiveAwardByInternalUser @jitendra
   Scenario: Verify that Internal User will be able to see Send back to Sub-recipient Progress Report record on active award by using List View .
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
@@ -1487,7 +1487,7 @@ Feature: Validate all scenarios in Progress Report
     And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:internalProgressReportFlexTableId---" panel
     Then I see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:internalProgressReportFlexTableId---"
 
-  @59044 @jitendra
+  @59044 @NoEditAccessForFormsSPI @jitendra
   Scenario: Validate SPI user is not able to edit forms table under forms and attachments view when Progress report state is Submitted for Approval.
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
@@ -1524,7 +1524,7 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Forms and Attachments" sub tab
     Then I cannot see row level action button "Edit" against "Community Initiative Progress Report" in flex table with id "---progressReport:-:formTableId---"
 
-  @58959 @jitendra
+  @58959 @NoViewAccessToOtherOrganisationuSERPR @jitendra
   Scenario: Validate Internal User with different organization should not be able to view the Progress report with submitted to Grantor state.
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
@@ -1548,7 +1548,7 @@ Feature: Validate all scenarios in Progress Report
     Then I do not see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:internalProgressReportFlexTableId---"
 
 
-  @59136 @jitendra
+  @59136 @CanNotSubmitPRWithNotFillingReqData @jitendra
   Scenario: Validate Sub-recipient user is not allowed to submit progress report to grantor when required data is not filled under Forms and Attachments Tab.
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"

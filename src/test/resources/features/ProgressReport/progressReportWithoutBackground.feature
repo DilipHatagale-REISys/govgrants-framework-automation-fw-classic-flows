@@ -3149,7 +3149,7 @@ Feature: Validate scenarios in Progress Report
     Then I see the following messages in the page details contains:
       | Performance Tab - Enter at least one Plan before submitting to Grantor. |
 
-  @59137 @jitendra
+  @59137 @NoPRSubmitToGrantorIfSupportDocIsMissing @jitendra
   Scenario Outline: Validate Sub-recipient user is not allowed to submit progress report to grantor when Supporting document is missing under Forms and Attachments Tab.
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
     When I delete the record "Automation Execution Award" from the object "Payment Request"
@@ -3278,7 +3278,7 @@ Feature: Validate scenarios in Progress Report
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @58524 @jitendra
+  @58524 @changeFrqAsQuarterlyOnPRwithStatusAsSubmittedToApprovalOnActiveGrant @jitendra
   Scenario Outline: Validate User is allowed to change frequency as Quarterly, on progress report schedule when progress report status is Submitted to Approval on active award.
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
     When I delete the record "Automation Execution Award" from the object "Payment Request"
@@ -3463,7 +3463,7 @@ Feature: Validate scenarios in Progress Report
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @59199 @jitendra
+  @59199 @NotModifySupportDocListAfterSubmitToGrantor @jitendra
   Scenario Outline: Validate SR User is not able to modify Supporting Documents Checklist table when Progress report is Submitted to Grantor.
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
     When I delete the record "Automation Execution Award" from the object "Payment Request"
@@ -3594,7 +3594,7 @@ Feature: Validate scenarios in Progress Report
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @59200 @jitendra
+  @59200 @modifyDocumentCheckAfterSentBackToSPI @jitendra
   Scenario Outline: Validate SR User is  able to modify Supporting Documents Checklist table when Progress report status is sent back to sub-recipient.
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
     When I delete the record "Automation Execution Award" from the object "Payment Request"
