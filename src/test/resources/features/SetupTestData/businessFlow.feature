@@ -1032,19 +1032,19 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
 
-  @CompletedNegotiation
+  @negotiationcomplete
   Scenario: validate whther user is able to view the completed Negotiation on left Navigation under Completed Negotiations
-    Given I delete the record "Autoamtion Announcement for Negotiations" from the object "FDM"
+    Given I delete the record "Automation Announcement for FDM" from the object "FDM"
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
-    When I perform quick search for "Autoamtion Announcement for Negotiations" in "---subAwardFromFDM:-:fdmTableId---" panel
-    And I click on "View" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
-    When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for Negotiations" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    When I click on "Initiate Negotiation" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I get the "EGMS ID"
     And I navigate to "Negotiations" sub tab
-    When I clear the value from field "ApplicationSectionsForRevision__c"
+    #When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
@@ -1066,7 +1066,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click on "Complete Negotiation" in the page details
     And I navigate to "Applications" tab
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
-    Then I can see row level action button "View" against "Autoamtion Announcement for Negotiations" in flex table with id "---negotiation:-:negotiationCompletedTaskTableId---"
+    Then I can see row level action button "View" against "Automation Announcement for FDM" in flex table with id "---negotiation:-:negotiationCompletedTaskTableId---"
 
   @awardHappyPathFromFDM @smoke
   Scenario Outline: Validate award happy path
@@ -1748,8 +1748,8 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside table
+    When I perform quick search for "Site Visit Scheduled Recipient" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    And I click on "Start" icon for "Site Visit Scheduled Recipient" inside table
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
@@ -1802,7 +1802,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
-    When I click "Associate" after selection of "Automation EXE" in the table "---deskreview:-:deskReviewContactsTableId---"
+    When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I click on "Notify" in the page details
@@ -1904,7 +1904,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
-    When I click "Add" after selection of "Autoamtion Announcement for Negotiations" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for FDM" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
