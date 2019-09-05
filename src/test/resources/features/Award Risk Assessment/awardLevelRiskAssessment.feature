@@ -84,7 +84,6 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
 
-
   @58167 @approvalProcessofRiskAssessment
   Scenario: Validate the Approval process of Risk Assessment
     Given I login to "As a Grantor" app as "dynamicUser" user
