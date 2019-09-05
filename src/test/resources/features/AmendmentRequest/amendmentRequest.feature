@@ -664,7 +664,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
-    When I click on "Add Line Items" icon for "Site work" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    When I click on "Add Line Items" icon for "Supplies" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
@@ -733,7 +733,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
-    When I click on "Add Line Items" icon for "Site work" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    When I click on "Add Line Items" icon for "Supplies" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
@@ -785,7 +785,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
-    When I click on "Add Line Items" icon for "Site work" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    When I click on "Add Line Items" icon for "Supplies" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
@@ -843,7 +843,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
-    When I click on "Add Line Items" icon for "Site work" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    When I click on "Add Line Items" icon for "Supplies" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
@@ -891,7 +891,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
-    When I click on "Add Line Items" icon for "Site work" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    When I click on "Add Line Items" icon for "Supplies" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
@@ -957,7 +957,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
-    When I click on "Add Line Items" icon for "Site work" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    When I click on "Add Line Items" icon for "Supplies" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
@@ -999,7 +999,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
-    When I click on "Add Line Items" icon for "Site work" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    When I click on "Add Line Items" icon for "Supplies" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
@@ -1043,7 +1043,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
-    When I click on "Add Line Items" icon for "Site work" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    When I click on "Add Line Items" icon for "Supplies" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
@@ -1096,7 +1096,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
-    When I click on "Add Line Items" icon for "Site work" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    When I click on "Add Line Items" icon for "Supplies" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
@@ -1141,7 +1141,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
-    When I click on "Add Line Items" icon for "Site work" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    When I click on "Add Line Items" icon for "Supplies" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
@@ -1162,7 +1162,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Revise" in the page details
     When I navigate to "Overview" sub tab
     Then I see value "$500.00" for title "Difference" against the value "Construction" inside table "---amendment:-:grantorBudgetChangeTableId---"
-    And I see value "$500.00" for title "Difference" against the value "Site work" inside table "---amendment:-:grantorBudgetChangeTableId---"
+    And I see value "$500.00" for title "Difference" against the value "Supplies" inside table "---amendment:-:grantorBudgetChangeTableId---"
 
   @57139 @awardOwnerActivateAmendedSubAward @jitendra
   Scenario: Verify that award owner can active the Amended sub-award
@@ -1878,7 +1878,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
-    When I click on "Add Line Items" icon for "Site work" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    When I click on "Add Line Items" icon for "Supplies" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
@@ -1946,7 +1946,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Activate" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Award for Amendment Request" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
@@ -2022,7 +2022,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Activate" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Award for Amendment Request" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
@@ -2098,7 +2098,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Activate" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Award for Amendment Request" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
@@ -2174,7 +2174,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Activate" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Award for Amendment Request" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
@@ -2256,7 +2256,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Activate" in the page details
     And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---amendment:-:recipientActiveGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---amendment:-:recipientActiveGrantsTableId---"
@@ -2332,7 +2332,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Activate" in the page details
     And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---amendment:-:recipientActiveGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---amendment:-:recipientActiveGrantsTableId---"

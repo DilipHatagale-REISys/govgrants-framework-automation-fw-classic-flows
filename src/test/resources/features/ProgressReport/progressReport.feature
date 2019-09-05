@@ -901,7 +901,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Submit for Approval" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
@@ -1074,7 +1074,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Submit for Approval" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
@@ -1565,4 +1565,16 @@ Feature: Validate all scenarios in Progress Report
     When I get the "EGMS ID"
     Given I click on "Submit to Grantor" in the page details
     Then I see the following messages in the page details contains:
-    |Forms and Attachments Tab - Fill all the required data in the form before submitting to Grantor.|
+      | Forms and Attachments Tab - Fill all the required data in the form before submitting to Grantor. |
+
+  @59278 @validateErrorMessageForKPI  @mahadev
+  Scenario: Validate if SR user keep the Actual field under performance tab as empty validate message is display on Progress report when KPI is selected as Yes on Grant
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual |
+      | Automation Permanent KPI for Regression |        |
+    Then I see the following messages in the page details :
+      | Required fields are missing : Actual |
