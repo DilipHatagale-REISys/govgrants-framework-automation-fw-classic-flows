@@ -1,4 +1,4 @@
-@preApplication @regression
+@preApplication @regression @app
 Feature: Validate all scenarios in the Pre-Application
 
   Background: Qualify Announcement and Create PreApplication
@@ -106,9 +106,6 @@ Feature: Validate all scenarios in the Pre-Application
       | Automation Permanent KPI for Regression | 10     |
     And I get the "EGMS ID"
     And I navigate to "Attachments" sub tab
-    And I click on "Attach" icon for "Active" inside flex table with id "---applicationIntake:-:attachmentsTableId---"
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    And I close Modal
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
