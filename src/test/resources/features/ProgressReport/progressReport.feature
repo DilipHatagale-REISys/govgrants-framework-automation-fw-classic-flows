@@ -1578,3 +1578,43 @@ Feature: Validate all scenarios in Progress Report
       | Automation Permanent KPI for Regression |        |
     Then I see the following messages in the page details :
       | Required fields are missing : Actual |
+
+  @59567 @validateSubmittedByFieldAfterSubmittingPRToGrantor @mahadev
+  Scenario: Validate Submitted By field at Certification table should get updated on Progress report at SR user end when Progress report status is Submitted to Grantor
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 7      | 7             |
+    When I navigate to "Forms and Attachments" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
+    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    And I navigate to "Overview" sub tab
+    Then I see field "Submitted By:" as "Automation SPI"
+
+  @59280 @validateSRUserIsAbleToViewSnapshot @mahadev
+  Scenario: Validate SR user is able to view the Snapshot after Progress report is Submitted to Grantor status
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 7      | 7             |
+    When I navigate to "Forms and Attachments" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
+    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    And I click on "Menu" in the page details
+    And I select "Take Snapshot" from dropdown
+    When I navigate to "History" sub tab
+    And I click on hyperlink containing value "Progress Report Snapshot"
+    When I download the file
+    Then I see "Submitted to Grantor" on page "1" of "govgrants" pdf file

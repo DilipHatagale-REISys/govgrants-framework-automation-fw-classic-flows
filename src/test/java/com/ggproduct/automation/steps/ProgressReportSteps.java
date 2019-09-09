@@ -1,6 +1,7 @@
 package com.ggproduct.automation.steps;
 
 import com.ggproduct.automation.pageobjects.ProgressReport;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.springframework.context.annotation.Description;
 
@@ -27,5 +28,11 @@ public class ProgressReportSteps {
     @Then("^I see all values \"([^\"]*)\" under column \"([^\"]*)\" inside flextable with id \"([^\"]*)\"$")
     public void iSeeAllValuesUnderColumnInsideFlextableWithId(String columnValue, String columnName, String flexTableId) {
         progressReport.verifyColumnValuesInFlexTable(columnValue,columnName,flexTableId);
+    }
+
+    @Description("To click on any hyperlink inside page details")
+    @And("^I click on hyperlink containing value \"([^\"]*)\"$")
+    public void iClickOnHyperlinkContainingValue(String linkName) {
+        progressReport.clickOnLink(linkName);
     }
 }

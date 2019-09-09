@@ -57,4 +57,12 @@ public class ProgressReport extends ProjectManager {
     public void verifyColumnValuesInFlexTable(String valueToBeCheck, String columnName, String tableId){
         Assert.assertTrue(isColumnValuePresentInsideFlexTable(valueToBeCheck,columnName,tableId));
     }
+
+    /**
+     * To click on hyperlink inside page details
+     * @param linkName
+     */
+    public void clickOnLink(String linkName){
+        EyeThink.core().click().onWeb(By.xpath("//span[contains(text(),'"+ linkName +"')]"));
+    }
 }
