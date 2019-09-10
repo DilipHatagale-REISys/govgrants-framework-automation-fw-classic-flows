@@ -2335,8 +2335,5 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Approve" on the approval decision box
-    And I navigate to "Monitoring" tab
-    When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
-    And I perform quick search for "Record Id" in "flexGridRiskAssessmentGridViewInternal" panel
-    When I click on "View" icon for "Record Id" inside flex table with id "flexGridRiskAssessmentGridViewInternal"
     Then I see status in Progress-bar is "Active" and is "Green"
+
