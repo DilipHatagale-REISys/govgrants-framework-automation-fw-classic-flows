@@ -1,7 +1,7 @@
 @riskAssessment @regression @wip
 Feature: Risk Assessment scenarios without background
 
-  @riskAssessmentSetasYesAtAnnouncementSettings
+  @59253 @riskAssessmentSetasYesAtAnnouncementSettings @deepika
   Scenario:  Validate whether creation of risk assessment is mandatory for award activation when Risk assessment is set as 'Yes' in Announcement setting.
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     And I delete the record "Automation Competitive Announcement" from the object "Qualified Announcement"
@@ -476,7 +476,7 @@ Feature: Risk Assessment scenarios without background
     And I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @riskAssessmentSetasNoAtAnnouncementSettings
+  @59252 @riskAssessmentSetasNoAtAnnouncementSettings @deepika
   Scenario:Given Award is created from FDM, Validate filling/creating risk assessment is not applicable when setting is No
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     And I delete the record "Automation Competitive Announcement" from the object "Qualified Announcement"
@@ -926,7 +926,8 @@ Feature: Risk Assessment scenarios without background
     And I click on "Save" in the page details
     And I get the "EGMS ID"
     And I navigate to "Management" sub tab
-    Then I cannot see page block "Risk Assessment"
+    Then I cannot see field "Risk Assessment" inside page block
+
 
 
 
