@@ -332,4 +332,17 @@ public class ProjectManager extends ProjectWebServices {
             return false;
         }
     }
+
+    /***
+     *  Add note to progress report
+     */
+    public void addNotesToPR(){
+        By addBtnNotes= By.xpath("//div[contains(@id,'Notes')]//*[text()='Add']");
+        EyeThink.core().click().onWeb(addBtnNotes);
+        EyeThink.core().switchTo().switchToFrame(By.xpath("//iframe[contains(@id,'iframeAddNote')]"));
+        EyeThink.core().enterText().onWeb().enter(By.xpath("//label[@for='Title']/following-sibling::input"),  "Note Title");
+        EyeThink.core().enterText().onWeb().enter(By.xpath("//label[@for='Description']/following-sibling::textarea"), "Note Description");
+        EyeThink.saas().modal().clickModalContentSpecificButton("Save");
+        EyeThink.saas().modal().closeModalByClickingTopRightCloseButton();
+    }
 }
