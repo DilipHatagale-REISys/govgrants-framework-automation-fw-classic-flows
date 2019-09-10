@@ -301,7 +301,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Management" sub tab
-    Then  I cannot see page block "Risk Assessment"
+    Then I cannot see field "Risk Assessment" inside page block
 
   @58173 @validationsBeforeSubmitForApproval @deepika
   Scenario: Validate whether system generates an error message if the user tries to proceed on the risk assessment without  entering all required fields before submitting for approval process
