@@ -4898,7 +4898,7 @@ Feature: Validate scenarios in Progress Report
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     When I navigate to "Forms and Attachments" sub tab
-    And I click on "Download" icon for "Automation SPI" inside table
+    Then I see "Automation SPI" has been added in "Attachments" flex table
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
