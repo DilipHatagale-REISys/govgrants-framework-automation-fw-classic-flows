@@ -5,7 +5,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Given I delete the record "Automation Award for Risk Assessment" from the object "Award"
     Given I delete the record "Automation Award for Risk Assessment" from the object "Grant"
 
-  @58164 @creationOfRiskAssessment
+  @58164 @creationOfRiskAssessment @deepika
   Scenario: Validate the Creation of Risk Assessment from Draft Award
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -28,7 +28,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "Green"
 
-  @58165 @addingApproverstoRiskAssessment
+  @58165 @addingApproverstoRiskAssessment @deepika
   Scenario: Validate whether user is able to Add Approvers to Risk Assessment
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -56,7 +56,7 @@ Feature: Validate all scenarios in the Risk Assessment
       | Program Approver | Automation PM | Automation Test Description |
     Then I see that "Automation PM" has been added in flextable with Id "---subAwardStandAlone:-:riskAssessmentApproverTableId---"
 
-  @58166 @submitRiskAssessmentForApproval
+  @58166 @submitRiskAssessmentForApproval @deepika
   Scenario: Validate whether Award Owner is to able to submit Risk Assessment for Approval
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -85,7 +85,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
 
-  @58167 @approvalProcessofRiskAssessment
+  @58167 @approvalProcessofRiskAssessment @deepika
   Scenario: Validate the Approval process of Risk Assessment
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -127,7 +127,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @58168 @rejectRiskAssessmenttoOwner
+  @58168 @rejectRiskAssessmenttoOwner @deepika
   Scenario: Validate whether First Approver is able to reject the Risk Assessment. Also status in Progress bar is Rejected.
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -163,7 +163,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "Disapprove" on the approval decision box
     Then I see status in Progress-bar is "Rejected" and is "Red"
 
-  @58169 @validatePendingTaskCreationforRiskAssesment
+  @58169 @validatePendingTaskCreationforRiskAssesment @deepika
   Scenario: Validate whether user is able to view the pending task once submitted for approval under Monitoring Tab
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -197,7 +197,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     Then I see that "Record Id" has been added in flextable with Id "---subAwardStandAlone:-:pendingTaskTableId---"
 
-  @58170 @sendtoOwnerRiskAssesment
+  @58170 @sendtoOwnerRiskAssesment @deepika
   Scenario: Validate whether user is to able to Send to Owner for Risk Assessment
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -239,7 +239,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "Send to Owner" on the approval decision box
     Then I see status in Progress-bar is "Created" and is "Green"
 
-  @58171 @forwardRiskAssesmentToOtherUser
+  @58171 @forwardRiskAssesmentToOtherUser @deepika
   Scenario: Validate whether user is to able to forward Risk Assessment for Approval
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -285,7 +285,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     Then I see that "Approve Subaward Risk Assessment" has been added in flextable with Id "---subAwardStandAlone:-:pendingTaskTableId---"
 
-  @58172 @riskAssesmentSetToNowhileAwardCreation
+  @58172 @riskAssesmentSetToNowhileAwardCreation @deepika
   Scenario: Validate filling/creating risk assessment is not applicable when setting is No while creation of Award
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -303,7 +303,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Management" sub tab
     Then  I cannot see page block "Risk Assessment"
 
-  @58173 @validationsBeforeSubmitForApproval
+  @58173 @validationsBeforeSubmitForApproval @deepika
   Scenario: Validate whether system generates an error message if the user tries to proceed on the risk assessment without  entering all required fields before submitting for approval process
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -334,7 +334,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I see the following messages in the page details :
       | Assessment Tab - Complete all of the questions on the Risk Assessment form. |
 
-  @58174 @peerReviewofRiskAssessment
+  @58174 @peerReviewofRiskAssessment @deepika
   Scenario: Validate whether user is able to add reviewer to the peer reviewers table
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -367,7 +367,7 @@ Feature: Validate all scenarios in the Risk Assessment
       | Automation FO | Fiscal Reviewer | Automation Test Description | 7        | No                   |
     Then I see that "Automation FO" has been added in flextable with Id "flexGridRiskAssessmentApproverRoles"
 
-  @58175 @peerReviewIntiationforRA
+  @58175 @peerReviewIntiationforRA @deepika
   Scenario: Validate whether user is to able to intiate the peer review process for Risk Assessment
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -401,7 +401,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "flexGridRiskAssessmentApproverRoles"
     Then I see that "Sent for Review" has been added in flextable with Id "flexGridRiskAssessmentApproverRoles"
 
-  @58176 @completePeerReviewforRiskAssessment
+  @58176 @completePeerReviewforRiskAssessment @deepika
   Scenario: Validate whether user is to able complete peer review process
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -446,7 +446,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I see the following messages in the page details contains:
       | Review has been submitted successfully. |
 
-  @58177 @viewRiskAssessmentstatusUnderMonitoring
+  @58177 @viewRiskAssessmentstatusUnderMonitoring @deepika
   Scenario: Validate whether user is able to view created Risk Assessment under Monitoring tab
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -474,7 +474,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     Then I see status in Progress-bar is "Created" and is "Green"
 
-  @58180 @validateEditButtonAfterSubmitforApproval
+  @58180 @validateEditButtonAfterSubmitforApproval @deepika
   Scenario: Validate  Award Owner is not allowed to Edit the Risk Assessment post submitting it for approval
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -504,7 +504,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "Submit for Approval" in the page details
     Then I cannot see top right button "Edit" in page detail
 
-  @58181 @validateDeletionOfRiskAssessment
+  @58181 @validateDeletionOfRiskAssessment @deepika
   Scenario: Validate owner has the availability (permission) of delete icon across created Award Risk Assessment
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -531,7 +531,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     Then I can see row level action button "Delete" against "Record Id" in flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
 
-  @58816 @validateRiskAssessmentWhenSetasNoWhileGrantCreation
+  @58816 @validateRiskAssessmentWhenSetasNoWhileGrantCreation @deepika
   Scenario: Validate Activation of Award Risk Assessment is not required if Grant has setting Risk Assessment=No.
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -552,7 +552,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     Then I do not see values "Record Id" and "Automation Award for Risk Assessment" inside table
 
-  @58817 @activeRAisRequiredToIssueAward
+  @58817 @activeRAisRequiredToIssueAward @deepika
   Scenario Outline: Validate system generates a message to enforce the user to activate risk assessment before issuing an award when Risk Assessment Required =Yes.
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
     When I delete the record "Automation Execution Award" from the object "Payment Request"
@@ -670,7 +670,7 @@ Feature: Validate all scenarios in the Risk Assessment
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @58818 @peerReviewButtonforRiskAssessmentHiddenOnceSubmitforApproval
+  @58818 @peerReviewButtonforRiskAssessmentHiddenOnceSubmitforApproval @deepika
   Scenario: Validate New button disappears from the section post Risk Assessment is submitted for approval.
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -704,7 +704,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     Then I cannot see top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
 
-  @58819 @peerReviewedRiskAssessment
+  @58819 @peerReviewedRiskAssessment @deepika
   Scenario: Validate Peer reviewer is complete and Reviewed
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -755,7 +755,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Complete Review" in the page details
     Then I see status in Progress-bar is "Reviewed" and is "green"
 
-  @58820 @creationofSecondRiskAssessmentwhenFirstIsActive
+  @58820 @creationofSecondRiskAssessmentwhenFirstIsActive @deepika
   Scenario: Validate Pending task is created for the Fiscal approver when Program approver approves the Risk Assessment
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -794,7 +794,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     Then I see that "Record Id" has been added in flextable with Id "PhasePendingTasks"
 
-  @58821 @validateEditionOfRiskAssessment
+  @58821 @validateEditionOfRiskAssessment @deepika
   Scenario: Validate whether user can Edit the created Risk Assessment
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -821,7 +821,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     Then I can see row level action button "Edit" against "Record Id" in flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
 
-  @58822 @riskAssessmentRevisionBeforeAwardActivation
+  @58822 @riskAssessmentRevisionBeforeAwardActivation @deepika
   Scenario Outline: Award Owner has the permission to revise the award Risk Assessment until award activation.
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
     When I delete the record "Automation Execution Award" from the object "Payment Request"
@@ -938,7 +938,7 @@ Feature: Validate all scenarios in the Risk Assessment
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @58823 @userCannotCreateRiskAssesmentOnceAwardisActivated @wip
+  @58823 @userCannotCreateRiskAssesmentOnceAwardisActivated @wip @deepika
   Scenario Outline: New button should be hidden so that user is blocked from creating new risk assessment.
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
     When I delete the record "Automation Execution Award" from the object "Payment Request"
@@ -1118,7 +1118,7 @@ Feature: Validate all scenarios in the Risk Assessment
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @58824 @riskAssessmentCopiedToamendedAward
+  @58824 @riskAssessmentCopiedToamendedAward @deepika
   Scenario: Validate Award Risk Assessment is copied to new created award when amendment type is in below list-BPC
     Given I delete the record "Automation Award for Amendment Request" from the object "Amendment Request"
     And I delete the record "Automation Award for Amendment Request" from the object "Payment Request"
@@ -1200,7 +1200,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Management" sub tab
     Then  I cannot see top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
 
-  @58825 @monitoringTabListViewsOfRiskAssessment
+  @58825 @monitoringTabListViewsOfRiskAssessment @deepika
   Scenario: Monitoring Tab List Views for all Award level risk assessments in the internal portal
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1227,7 +1227,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     Then I see that "Automation Award for Risk Assessment" has been added in flextable with Id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
 
-  @58936 @acknowledgementIsRequiredToContinue
+  @58936 @acknowledgementIsRequiredToContinue @deepika
   Scenario: Validate System generates an error message if the user tries to proceed on the risk assessment without providing acknowledgment
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1249,7 +1249,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I see the following messages in the page details :
       | Acknowledgement is required. |
 
-  @58937 @recipientCanViewActiveRiskAssessment
+  @58937 @recipientCanViewActiveRiskAssessment @deepika
   Scenario: Subrecipients can view the Active or Expired Risk Assessment
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1295,7 +1295,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
     Then I see "Active" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
 
-  @58938 @initialRAIsExpiredandSucceedingAreActive
+  @58938 @initialRAIsExpiredandSucceedingAreActive @deepika
   Scenario: Initial Risk Assessment should be marked as Expired if succeeding Risk Assessments are made active
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1379,7 +1379,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     Then I see values "Automation Award for Risk Assessment" and "Active" inside table
 
-  @59324 @otherThanRecordOnwerFoUserCannotEditRiskAssessment
+  @59324 @otherThanRecordOnwerFoUserCannotEditRiskAssessment @deepika
   Scenario: Validate  whether other than Award Onwer any other user can Edit the Risk Assessment before Submit for Approval.
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1408,7 +1408,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     Then I cannot see top right button "Edit" in page detail
 
-  @58179 @otherThanRecordOnwerFoUserCannotSubmitForApproval
+  @58179 @otherThanRecordOnwerFoUserCannotSubmitForApproval @deepika
   Scenario: Validate Non award owner can't / does not have permission to submit the Risk Assessment for Approval
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1442,7 +1442,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "View" icon for "Record Id" inside flex table with id "flexGridRiskAssessmentGridViewInternal"
     Then I cannot see top right button "Submit for Approval" in page detail
 
-  @59626 @programApproverSendBacktoOwner
+  @59626 @programApproverSendBacktoOwner @deepika
   Scenario: Validate whether Program approver is to able to Send Risk Assessment Back to Owner
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1478,7 +1478,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "Send to Owner" on the approval decision box
     Then I see status in Progress-bar is "Created" and is "Green"
 
-  @59618 @submittedReviewChangesProgressBarStatus
+  @59618 @submittedReviewChangesProgressBarStatus @deepika
   Scenario: Validate once reviewer submits the review then the progress bar changes from Submitted for Review to Reviewed
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1529,7 +1529,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Complete Review" in the page details
     Then I see status in Progress-bar is "Reviewed" and is "green"
 
-  @59706 @foUserCannotEditRiskAssesmentOnceSubmittedForApproval
+  @59706 @foUserCannotEditRiskAssesmentOnceSubmittedForApproval @deepika
   Scenario: Validate whether the non-award owner is able view the Edit button on the Risk Assessment post submitting it for approval
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1564,7 +1564,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     Then I cannot see top right button "Edit" in page detail
 
-  @59628 @taskIsNotCreatedToSecondApproverWhenPORejects
+  @59628 @taskIsNotCreatedToSecondApproverWhenPORejects @deepika
   Scenario: Validate task is not created to fiscal approver when program approver performs send to the owner.
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1604,7 +1604,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
 
-  @59613 @ownerToAddProgramReviewer
+  @59613 @ownerToAddProgramReviewer @deepika
   Scenario: Validate owner is allowed to add a peer reviewer of type Program Reviewer in the peer reviewers table in Award Risk Assessment
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1637,7 +1637,7 @@ Feature: Validate all scenarios in the Risk Assessment
       | Automation PM | Program Reviewer | Automation Test Description | 7        | No                   |
     Then I see that "Automation PM" has been added in flextable with Id "flexGridRiskAssessmentApproverRoles"
 
-  @59625 @validatePendingTaskCreationforRiskAssesment
+  @59625 @validatePendingTaskCreationforRiskAssesment @deepika
   Scenario: Validate whether pending task is created for Program approver under Home Tab when the award owner submits the Risk Assessment for approval
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1671,7 +1671,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---riskassessment:-:homePendingTaskTableId---" panel
     Then I see that "Approve Subaward Risk Assessment" has been added in flextable with Id "---riskassessment:-:homePendingTaskTableId---"
 
-  @59713 @nonAwardUserCanViewCreatedRiskAssessment
+  @59713 @nonAwardUserCanViewCreatedRiskAssessment @deepika
   Scenario: Validate whether Non-Award Owner (FO) is able to view created Risk Assessment under Monitoring tab
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
