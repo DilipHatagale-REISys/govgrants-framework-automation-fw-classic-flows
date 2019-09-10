@@ -1062,7 +1062,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I navigate to "Applications" tab
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     And I perform quick search for "Record Id" in "---negotiation:-:negotiationPendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside table
+    When I click on "View" icon for "Record Id" inside table
     When I click on "Complete Negotiation" in the page details
     And I navigate to "Applications" tab
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
