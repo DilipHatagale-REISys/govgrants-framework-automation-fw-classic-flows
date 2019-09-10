@@ -6,6 +6,8 @@ import eyethink.automation.bots.objects.Elements;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class ProgressReport extends ProjectManager {
@@ -64,5 +66,46 @@ public class ProgressReport extends ProjectManager {
      */
     public void clickOnLink(String linkName){
         EyeThink.core().click().onWeb(By.xpath("//span[contains(text(),'"+ linkName +"')]"));
+    }
+
+    /**
+     * returns true if field contains todays date
+     */
+    public void compareDateFieldWithTodaysDate(String fieldLabel){
+        Assert.assertEquals(EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("MM/dd/yyyy")).replaceAll("^0",""),EyeThink.saas().pageDetails().getFieldValue(fieldLabel));
+    }
+
+    /**
+     * To verify top right button not displayed on attachments flex table
+     * @param buttonName
+     * @param flextableHeaderName
+     * @return
+     */
+    public Boolean isTopRightButtonDisplayed(String buttonName, String flextableHeaderName){
+        if (EyeThink.core().is().onWeb().isDisplayed(By.xpath("//a[text()='"+ flextableHeaderName +"']/../../div/button[text()='"+ buttonName +"']")))
+            return true;
+        else
+            return false;
+    }
+
+    public void assertTopRightButtonOnFlexTable(String buttonName, String flextableHeaderName){
+        Assert.assertFalse(isTopRightButtonDisplayed(buttonName,flextableHeaderName));
+    }
+
+    /**
+     * To verify row level action button displayed or not
+     * @param buttonName
+     * @param flextableHeaderName
+     * @return
+     */
+    public Boolean isRowLevelActionButtonDisplayed(String buttonName, String uniqueColumnValue, String flextableHeaderName){
+        if (EyeThink.core().is().onWeb().isDisplayed(By.xpath("//a[@title='"+ flextableHeaderName +"']/../../../following-sibling::div//tbody//td//span[text()='"+ uniqueColumnValue +"']/../following-sibling::td//a[contains(@title,'"+ buttonName +"')]")))
+            return true;
+        else
+            return false;
+    }
+
+    public void assertRowLevelActionButtonInsideFlexTable(String buttonName, String uniqueColumnValue, String flextableHeaderName){
+        Assert.assertFalse(isRowLevelActionButtonDisplayed(buttonName,uniqueColumnValue,flextableHeaderName));
     }
 }
