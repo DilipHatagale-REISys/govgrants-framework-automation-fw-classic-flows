@@ -2,8 +2,8 @@
 Feature: Validate all scenarios in Progress Report
 
   Background: To create a progress report
-    Given I delete the record "Automation Award for Amendment Request" from the object "Progress Report"
-    When I create a post award record "ProgressReport" for the Award "Automation Award for Amendment Request" having object api name as "ProgressReports__c"
+    Given I delete the record "Automation Permanent Award" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c"
     Given I am on "SUBPORTAL" portal
     When I login as "SPI" user
     And I navigate to "Monitoring" tab
