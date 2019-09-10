@@ -1741,8 +1741,8 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Complete Progress Report" in "---progressReport:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Complete Progress Report" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     When I navigate to "Forms and Attachments" sub tab
     When I add the Notes for progress report
     And I click on "Save" in the page details
