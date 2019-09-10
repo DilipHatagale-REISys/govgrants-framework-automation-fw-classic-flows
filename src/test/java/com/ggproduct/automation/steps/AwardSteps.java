@@ -5,7 +5,7 @@ import io.cucumber.java.en.When;
 import org.springframework.context.annotation.Description;
 
 public class AwardSteps {
-    AwardPage awardPage;
+    private AwardPage awardPage;
 
     public AwardSteps(AwardPage awardPage){this.awardPage = awardPage;}
 
