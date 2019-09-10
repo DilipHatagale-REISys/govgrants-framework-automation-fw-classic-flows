@@ -1045,7 +1045,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I get the "EGMS ID"
     And I navigate to "Negotiations" sub tab
     When I clear the value from field "ApplicationSectionsForRevision__c"
-    And I switch to Parent iframe
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
