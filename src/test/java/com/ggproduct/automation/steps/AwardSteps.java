@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Description;
 public class AwardSteps {
     AwardPage awardPage;
 
-    public AwardSteps(AwardPage awardPage){this.awardPage = new AwardPage();}
+    public AwardSteps(){this.awardPage = new AwardPage();}
 
     @Description("To enter comments in confirmation popup modal after accepting award")
     @When("^I enter \"([^\"]*)\" for comments and click \"([^\"]*)\"$")
