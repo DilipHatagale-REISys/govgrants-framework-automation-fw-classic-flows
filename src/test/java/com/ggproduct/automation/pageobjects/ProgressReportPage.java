@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-public class ProgressReport extends ProjectManager {
+public class ProgressReportPage extends ProjectManager {
 
     public void verifyProgressReportSchedulesUpdated(String totalRecords, String tableID) {
         Assert.assertEquals(EyeThink.core().Properties().getValue("EGMSID1"), EyeThink.core().Properties().getValue("EGMSID2"));
