@@ -144,7 +144,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I close Modal
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account | Pre-Encumbrance |
-      | {SavedValue:fundingAccount}          | 100             |
+      | {SavedValue:fundingAccount}       | 20000             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
     When I refresh the page
@@ -1032,7 +1032,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
 
-  @negotiationcomplete
+  @negotiationComplete
   Scenario: validate whther user is able to view the completed Negotiation on left Navigation under Completed Negotiations
     Given I delete the record "Automation Announcement for FDM" from the object "FDM"
     Given I login to "As a Grantor" app as "dynamicUser" user
@@ -1044,7 +1044,8 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click on "Initiate Negotiation" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I get the "EGMS ID"
     And I navigate to "Negotiations" sub tab
-    #When I clear the value from field "ApplicationSectionsForRevision__c"
+    When I clear the value from field "ApplicationSectionsForRevision__c"
+    And I switch to Parent iframe
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
@@ -1060,7 +1061,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     And I perform quick search for "Record Id" in "---negotiation:-:phasePendingTasksTableId---" panel
     When I click on "Start" icon for "Record Id" inside table
     When I click on "Complete Negotiation" in the page details
@@ -1706,7 +1707,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
     When I login as "SPI" user
-    And I navigate to "Monitoring" tab
+    And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
@@ -1746,10 +1747,10 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on "View" icon for "Record Id" inside table
     Given I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-    When I navigate to "Monitoring" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Site Visit Scheduled Recipient" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
-    And I click on "Start" icon for "Site Visit Scheduled Recipient" inside table
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
@@ -1805,7 +1806,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click "Associate" after selection of "Automation SPA" in the table "---deskreview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
-    And I click on "Notify" in the page details
+    When I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
     When I login as "SPI" user
     And I navigate to "Monitoring" tab
