@@ -1720,3 +1720,136 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "---progressReport:-:pendingTaskTableId---"
+
+  @59680 @NoSendBackToSubRecipient @jitendra
+  Scenario: Validate Internal user is not able to see Send Back to Subrecipient button once Progress report is send back to subrecipient.
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 7      | 7             |
+    When I navigate to "Forms and Attachments" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
+    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    And I click on "Send Back to Subrecipient" in the page details
+    Then I cannot see top right button "Send Back to Subrecipient" in page detail
+
+  @59679 @NoSubmitForApprovalBtn @jitendra
+  Scenario: Validate Submit for Approval button disappear from Progress report once Award owner click on it.
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Performance" sub tab
+    Given I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 7      | 7             |
+    When I navigate to "Forms and Attachments" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
+    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I get the "EGMS ID"
+    Given I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
+      | Responsibility   | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+    When I click on "Submit for Approval" in the page details
+    Then I cannot see top right button "Submit for Approval" in page detail
+
+  @59678 @EditButtonForApprovarPresnet @jitendra
+  Scenario: Validate Approvers Table is editable at award owner end when the status of progress report is Submitted to Grantor.
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 7      | 7             |
+    When I navigate to "Forms and Attachments" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
+    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    And I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
+      | Responsibility   | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+    Then I can see row level action button "Edit" against "Automation PM" in flex table with id "---progressReport:-:approversTableId---"
+
+  @59677 @historyOfProgressReportSentToSubRecipient @jitendra
+  Scenario: Validate History Field is getting Updated at Award owner End when Progress report status is Submitted to Grantor.
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 7      | 7             |
+    When I navigate to "Forms and Attachments" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
+    When I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    When I navigate to "History" sub tab
+    Then I see value "Submitted to Grantor" for title "New Value" inside table "History"
+
+  @59676 @allowsEditAfterSentBackToSR @jitendra
+  Scenario: Validate SR is able to Edit the Progress report when Award owner Sent Back the Progress report.
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 7      | 7             |
+    When I navigate to "Forms and Attachments" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
+    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    And I click on "Send Back to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    When I navigate to "Forms and Attachments" sub tab
+    When I add the Notes for progress report
+    And I click on "Save" in the page details
+    Then I see status in Progress-bar is "Sent Back to Subrecipient" and is "red"

@@ -143,4 +143,9 @@ public class GenericSteps {
             Assert.assertFalse(projectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle));
         }
     }
+
+    @When("I add the Notes for progress report")
+    public void iAddTheNotesForProgressReport() {
+        projectManager.addNotesToPR();
+    }
 }
