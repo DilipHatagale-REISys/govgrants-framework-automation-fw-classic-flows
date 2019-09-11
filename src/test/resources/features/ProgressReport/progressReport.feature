@@ -1853,3 +1853,65 @@ Feature: Validate all scenarios in Progress Report
     When I add the Notes for progress report
     And I click on "Save" in the page details
     Then I see status in Progress-bar is "Sent Back to Subrecipient" and is "red"
+
+  @59773 @validateSRUserEntersKPIActualValue @mahadev
+  Scenario: Validate SR user is able to enter Actual field value at KPI under performance tab at Progress report
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 10     | 7             |
+    Then I see value "10" for title "Actual" against the value "Automation Permanent KPI for Regression" inside table "---progressReport:-:kpiTableId---"
+    Then I see the following messages in the page details contains:
+      | Saved Successfully! |
+
+  @59774 @validateSRUserEntersReportedDatefield @mahadev
+  Scenario: Validate SR user is able to select Reported Date field at KPI under performance tab at Progress report
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 7      | 0             |
+    When I save the value from row "1" for column name "Reported Date" as "ReportedDate" from flex table "---progressReport:-:kpiTableId---"
+    Then I see the Reported Date field contains todays date
+
+  @59775 @validateActualFieldAtInternalSide @mahadev
+  Scenario: Validate Actual field updated by SR user reflect the same value at Internal user end when Progress report status is Submitted to Grantor
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 10     | 7             |
+    When I navigate to "Forms and Attachments" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
+    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    And I navigate to "Performance" sub tab
+    Then I see value "10" for title "Actual" against the value "Automation Permanent KPI for Regression" inside table "---progressReport:-:kpiTableId---"
+
+  @59776 @validateSRUserEntersKPIActualValueMoreThanTargetValue @mahadev
+  Scenario: Validate SR user is able to enter Actual field value at KPI under performance tab more than the Target Value at Progress report
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 100    | 7             |
+    Then I see value "100" for title "Actual" against the value "Automation Permanent KPI for Regression" inside table "---progressReport:-:kpiTableId---"
+    Then I see the following messages in the page details contains:
+      | Saved Successfully! |
+
+  @59777 @validateSRUserEntersKPIActualValueLessThanTargetValue @mahadev
+  Scenario: Validate SR user is able to enter Actual field value at KPI under performance tab less than the Target Value at Progress report
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 2      | 7             |
+    Then I see value "2" for title "Actual" against the value "Automation Permanent KPI for Regression" inside table "---progressReport:-:kpiTableId---"
+    Then I see the following messages in the page details contains:
+      | Saved Successfully! |

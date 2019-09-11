@@ -6,7 +6,6 @@ import eyethink.automation.bots.objects.Elements;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -108,4 +107,17 @@ public class ProgressReportPage extends ProjectManager {
     public void assertRowLevelActionButtonInsideFlexTable(String buttonName, String uniqueColumnValue, String flextableHeaderName){
         Assert.assertFalse(isRowLevelActionButtonDisplayed(buttonName,uniqueColumnValue,flextableHeaderName));
     }
+
+    public void downloadAttachment(){
+        By downloadBtn = By.xpath("//div[contains(@id,'Attachments')]//a[@title='Download'] ");
+        EyeThink.core().click().onWeb(downloadBtn);
+    }
+
+    /**
+     * To verify reported date field contains today's date
+     */
+    public void assertReportedDateField(){
+        Assert.assertEquals(EyeThink.core().Properties().getValue("ReportedDate"),EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("MM/dd/yyyy")).replaceAll("^0",""));
+    }
 }
+

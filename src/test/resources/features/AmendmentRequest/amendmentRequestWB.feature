@@ -3,10 +3,7 @@ Feature: Amendment Request scenarios without background
 
   @54853 @ValidateRevisedBudgetAmountBalanceUpdatedOnAdvancePaymentRequest @mahadev
   Scenario Outline: Verify that as per 'Revised Award Budget', "Balance" amount is updated on advance payment request
-    Given I delete the record "Automation Execution Award for Amendment Request" from the object "Payment Request"
-    When I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award for Amendment Request" from the object "Progress Report"
-    And I delete the record "Automation Execution Award for Amendment Request" from the object "Amendment Request"
+    Given I delete the record "Automation Execution Award for Amendment Request" from the object "Award"
     And I delete the record "Automation Execution Award for Amendment Request" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -18,7 +15,6 @@ Feature: Amendment Request scenarios without background
     When I click modal button "Save and Continue"
     And I navigate to "Subawards" sub tab
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
-    And I get the "EGMS ID"
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "AmendmentRequest_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -31,8 +27,8 @@ Feature: Amendment Request scenarios without background
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account | Encumbrance |
-      | {SavedValue:fundingAccount}          | 1000        |
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
@@ -146,8 +142,8 @@ Feature: Amendment Request scenarios without background
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
     And I navigate to "Overview" sub tab
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account | Revised Encumbrance |
-      | {SavedValue:fundingAccount}          | 3000                |
+      | Funding Account             | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 3000                |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -191,10 +187,7 @@ Feature: Amendment Request scenarios without background
 
   @54862 @ValidateRevisedBudgetAmountBalanceUpdatedOnAwardOnActualsTabAtGrantorSide @mahadev
   Scenario Outline: Verify that as per 'Revised Award Budget', "Balance" amount is updated on Award at grantor side
-    Given I delete the record "Automation Execution Award for Amendment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award for Amendment Request" from the object "Progress Report"
-    When I delete the record "Automation Payment Request" from the object "Payment Request"
-    And I delete the record "Automation Execution Award for Amendment Request" from the object "Amendment Request"
+    Given I delete the record "Automation Execution Award for Amendment Request" from the object "Award"
     And I delete the record "Automation Execution Award for Amendment Request" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -219,8 +212,8 @@ Feature: Amendment Request scenarios without background
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account | Encumbrance |
-      | {SavedValue:fundingAccount}          | 1000        |
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
@@ -334,8 +327,8 @@ Feature: Amendment Request scenarios without background
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
     And I navigate to "Overview" sub tab
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account | Revised Encumbrance |
-      | {SavedValue:fundingAccount}          | 3000                |
+      | Funding Account             | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 3000                |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -372,10 +365,7 @@ Feature: Amendment Request scenarios without background
 
   @54864 @ValidateRevisedBudgetAmountBalanceUpdatedOnAwardBudgetTabAtGranteeSide @mahadev
   Scenario Outline: Verify that as per 'Revised Award Budget', "Balance" amount is updated on Award on budget tab at grantee side
-    Given I delete the record "Automation Execution Award for Amendment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award for Amendment Request" from the object "Progress Report"
-    When I delete the record "Automation Payment Request" from the object "Payment Request"
-    And I delete the record "Automation Execution Award for Amendment Request" from the object "Amendment Request"
+    Given I delete the record "Automation Execution Award for Amendment Request" from the object "Award"
     And I delete the record "Automation Execution Award for Amendment Request" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -400,8 +390,8 @@ Feature: Amendment Request scenarios without background
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account | Encumbrance |
-      | {SavedValue:fundingAccount}          | 1000        |
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
@@ -515,8 +505,8 @@ Feature: Amendment Request scenarios without background
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
     And I navigate to "Overview" sub tab
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account | Revised Encumbrance |
-      | {SavedValue:fundingAccount}          | 3000                |
+      | Funding Account             | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 3000                |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -554,10 +544,7 @@ Feature: Amendment Request scenarios without background
 
   @57277 @verifyValidationErrorMessageIfRequestedBudgetFieldChangeEnteredLessThanRequestedAmount @mahadev
   Scenario Outline: Verify validation error message is shown if Requested Change in Budget field is given less than the requested amount at Sub-recipient
-    Given I delete the record "Automation Execution Award for Amendment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award for Amendment Request" from the object "Progress Report"
-    When I delete the record "Automation Payment Request" from the object "Payment Request"
-    And I delete the record "Automation Execution Award for Amendment Request" from the object "Amendment Request"
+    Given I delete the record "Automation Execution Award for Amendment Request" from the object "Award"
     And I delete the record "Automation Execution Award for Amendment Request" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -582,8 +569,8 @@ Feature: Amendment Request scenarios without background
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account | Encumbrance |
-      | {SavedValue:fundingAccount}          | 1000        |
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
@@ -692,10 +679,7 @@ Feature: Amendment Request scenarios without background
 
   @54859 @ValidateRevisedBudgetAmountBalanceUpdatedOnAwardAtSubPortal @jitendra
   Scenario Outline: Verify that as per 'Revised Awarded Amount', "Balance" amount is updated on Grant (SPI)
-    Given I delete the record "Automation Execution Award for Amendment Request" from the object "Payment Request"
-    When I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award for Amendment Request" from the object "Progress Report"
-    And I delete the record "Automation Execution Award for Amendment Request" from the object "Amendment Request"
+    Given I delete the record "Automation Execution Award for Amendment Request" from the object "Award"
     And I delete the record "Automation Execution Award for Amendment Request" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -720,8 +704,8 @@ Feature: Amendment Request scenarios without background
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account | Encumbrance |
-      | {SavedValue:fundingAccount}          | 1000        |
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
@@ -835,8 +819,8 @@ Feature: Amendment Request scenarios without background
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
     And I navigate to "Overview" sub tab
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account | Revised Encumbrance |
-      | {SavedValue:fundingAccount}          | 3000                |
+      | Funding Account             | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 3000                |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -874,10 +858,7 @@ Feature: Amendment Request scenarios without background
 
   @54858 @ValidateRevisedBudgetAmountBalanceUpdatedOnGrantAtSubPortal @jitendra
   Scenario Outline: Verify that as per 'Revised Awarded Amount', "Balance" amount is updated on Grant (SPI)
-    Given I delete the record "Automation Execution Award for Amendment Request" from the object "Payment Request"
-    When I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award for Amendment Request" from the object "Progress Report"
-    And I delete the record "Automation Execution Award for Amendment Request" from the object "Amendment Request"
+    Given I delete the record "Automation Execution Award for Amendment Request" from the object "Award"
     And I delete the record "Automation Execution Award for Amendment Request" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -902,8 +883,8 @@ Feature: Amendment Request scenarios without background
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account | Encumbrance |
-      | {SavedValue:fundingAccount}          | 1000        |
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
@@ -1017,8 +998,8 @@ Feature: Amendment Request scenarios without background
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
     And I navigate to "Overview" sub tab
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account | Revised Encumbrance |
-      | {SavedValue:fundingAccount}          | 3000                |
+      | Funding Account             | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 3000                |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1054,10 +1035,7 @@ Feature: Amendment Request scenarios without background
 
   @54861 @ValidateRevisedBudgetAmountBalanceUpdatedOnGrantAtSubPortal @jitendra
   Scenario Outline: Verify that as per 'Revised Awarded Amount', "Balance" amount is updated on Grant (SPI)
-    Given I delete the record "Automation Execution Award for Amendment Request" from the object "Payment Request"
-    When I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award for Amendment Request" from the object "Progress Report"
-    And I delete the record "Automation Execution Award for Amendment Request" from the object "Amendment Request"
+    Given I delete the record "Automation Execution Award for Amendment Request" from the object "Award"
     And I delete the record "Automation Execution Award for Amendment Request" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1082,8 +1060,8 @@ Feature: Amendment Request scenarios without background
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account | Encumbrance |
-      | {SavedValue:fundingAccount}          | 1000        |
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
@@ -1197,8 +1175,8 @@ Feature: Amendment Request scenarios without background
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
     And I navigate to "Overview" sub tab
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account | Revised Encumbrance |
-      | {SavedValue:fundingAccount}          | 3000                |
+      | Funding Account             | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 3000                |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1233,10 +1211,7 @@ Feature: Amendment Request scenarios without background
 
   @54867 @ValidateRevisedBudgetAmountBalanceUpdatedOnAwardAtSubPortal @jitendra
   Scenario Outline: Verify that as per 'Revised Awarded Amount', "Balance" amount is updated on Grant (SPI)
-    Given I delete the record "Automation Execution Award for Amendment Request" from the object "Payment Request"
-    When I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award for Amendment Request" from the object "Progress Report"
-    And I delete the record "Automation Execution Award for Amendment Request" from the object "Amendment Request"
+    Given I delete the record "Automation Execution Award for Amendment Request" from the object "Award"
     And I delete the record "Automation Execution Award for Amendment Request" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1261,8 +1236,8 @@ Feature: Amendment Request scenarios without background
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account | Encumbrance |
-      | {SavedValue:fundingAccount}          | 1000        |
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
@@ -1376,8 +1351,8 @@ Feature: Amendment Request scenarios without background
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
     And I navigate to "Overview" sub tab
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account | Revised Encumbrance |
-      | {SavedValue:fundingAccount}          | 3000                |
+      | Funding Account             | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 3000                |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1414,10 +1389,7 @@ Feature: Amendment Request scenarios without background
 
   @54868 @ValidateRevisedBudgetAmountBalanceUpdatedOnAwardAtSubPortal @jitendra
   Scenario Outline: Verify that as per 'Revised Awarded Amount', "Balance" amount is updated on Grant (SPI)
-    Given I delete the record "Automation Execution Award for Amendment Request" from the object "Payment Request"
-    When I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award for Amendment Request" from the object "Progress Report"
-    And I delete the record "Automation Execution Award for Amendment Request" from the object "Amendment Request"
+    Given I delete the record "Automation Execution Award for Amendment Request" from the object "Award"
     And I delete the record "Automation Execution Award for Amendment Request" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1442,8 +1414,8 @@ Feature: Amendment Request scenarios without background
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account | Encumbrance |
-      | {SavedValue:fundingAccount}          | 1000        |
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
@@ -1557,8 +1529,8 @@ Feature: Amendment Request scenarios without background
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
     And I navigate to "Overview" sub tab
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account | Revised Encumbrance |
-      | {SavedValue:fundingAccount}          | 3000                |
+      | Funding Account             | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 3000                |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1595,10 +1567,7 @@ Feature: Amendment Request scenarios without background
 
   @54854 @ValidateRevisedBudgetAmountBalanceUpdatedOnReimbursementPaymentRequest @mahadev
   Scenario Outline: Verify that as per 'Revised Award Budget', "Balance" amount is updated on Reimbursement payment request page
-    Given I delete the record "Automation Execution Award for Amendment Request" from the object "Payment Request"
-    When I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award for Amendment Request" from the object "Progress Report"
-    And I delete the record "Automation Execution Award for Amendment Request" from the object "Amendment Request"
+    Given I delete the record "Automation Execution Award for Amendment Request" from the object "Award"
     And I delete the record "Automation Execution Award for Amendment Request" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1623,8 +1592,8 @@ Feature: Amendment Request scenarios without background
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account | Encumbrance |
-      | {SavedValue:fundingAccount}          | 1000        |
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
@@ -1738,8 +1707,8 @@ Feature: Amendment Request scenarios without background
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
     And I navigate to "Overview" sub tab
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account | Revised Encumbrance |
-      | {SavedValue:fundingAccount}          | 3000                |
+      | Funding Account             | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 3000                |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1783,10 +1752,7 @@ Feature: Amendment Request scenarios without background
 
   @54865 @ValidateRevisedBudgetAmountBalanceUpdatedOnAwardBudgetTabAtGrantorSide @mahadev
   Scenario Outline: Verify that as per 'Revised Award Budget', "Balance" amount is updated on Award on budget tab at grantor side
-    Given I delete the record "Automation Execution Award for Amendment Request" from the object "Payment Request"
-    When I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award for Amendment Request" from the object "Progress Report"
-    And I delete the record "Automation Execution Award for Amendment Request" from the object "Amendment Request"
+    Given I delete the record "Automation Execution Award for Amendment Request" from the object "Award"
     And I delete the record "Automation Execution Award for Amendment Request" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1811,8 +1777,8 @@ Feature: Amendment Request scenarios without background
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account | Encumbrance |
-      | {SavedValue:fundingAccount}          | 1000        |
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
@@ -1926,8 +1892,8 @@ Feature: Amendment Request scenarios without background
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
     And I navigate to "Overview" sub tab
     When I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account | Revised Encumbrance |
-      | {SavedValue:fundingAccount}          | 3000                |
+      | Funding Account             | Revised Encumbrance |
+      | {SavedValue:fundingAccount} | 3000                |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab

@@ -3,9 +3,7 @@ Feature: Validate scenarios in Progress Report
 
   @37184 @ValidateScheduleFrequencyQuarterlyScheduleBaseAsCalendar @mahadev
   Scenario Outline: Verify on Active award User is allowed to select Frequency as Quarterly when schedule base is Calendar
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
+    Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -149,9 +147,7 @@ Feature: Validate scenarios in Progress Report
 
   @37228 @ValidateScheduleFrequencyAnnuallyScheduleBaseAsCalendar @mahadev
   Scenario Outline: Validate User is allowed to change frequency as Annually, schedule base as calendar on progress report schedule when the award is active
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
+    Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -293,9 +289,7 @@ Feature: Validate scenarios in Progress Report
 
   @34938 @ValidateScheduleFrequencyAnnuallyScheduleBaseAsCalendar @mahadev
   Scenario Outline: Verify on Active award User is allowed to select Frequency as  Annually when schedule base is Calendar
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
+    And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -439,9 +433,7 @@ Feature: Validate scenarios in Progress Report
 
   @34945 @ValidateScheduleFrequencySemiAnnuallyScheduleBaseAsCalendar @mahadev
   Scenario Outline: Verify on Active award User is allowed to select Frequency as Semi-Annually  when schedule base is Calendar
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
+    And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -585,9 +577,7 @@ Feature: Validate scenarios in Progress Report
 
   @34946 @ValidateScheduleFrequencyBiMonthlyScheduleBaseAsCalendar @mahadev
   Scenario Outline:  Verify on Active award User is allowed to select Frequency as Bi-Monthly when schedule base is Calendar
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
+    Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -731,9 +721,7 @@ Feature: Validate scenarios in Progress Report
 
   @58534 @validateSubrecipientCannotEditScheduleOnActiveAward @mahadev
   Scenario Outline: Verify Sub-recipient user are not allowed to Edit the Progress Report Schedule table on active subaward
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
+    And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -880,10 +868,7 @@ Feature: Validate scenarios in Progress Report
 
   @34932 @validateUserIsAllowedToChangeFrequencyAsAnnuallyScheduleBaseAsCalendar @mahadev
   Scenario Outline: Validate User is allowed to change frequency as Annually, schedule base as calendar on active award and progress report should be created
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1026,10 +1011,7 @@ Feature: Validate scenarios in Progress Report
 
   @34936 @validateUserIsNotAllowedToSelectReportingPeriodStartDateBeforeProjectPeriodStartDateOnActiveAward @mahadev
   Scenario Outline: Validate User is not allowed to save reporting Period Start date less than Project Period Start Date on active award
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
+    And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1182,11 +1164,8 @@ Feature: Validate scenarios in Progress Report
     Then I see value "Record Id" for title "EGMS ID" inside table "---progressReport:-:pendingTaskTableId---"
 
   @45732 @progressReportBiMonthWithLessThan60DaysDateError @jitendra
-  Scenario Outline: Validate User is not allowed to select schedule dates less than 60 days when frequency is Bi-Monthly.
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
+  Scenario Outline: Validate User is not allowed to select schedule dates less than 60 days when frequency is Bi-Monthly
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1328,11 +1307,8 @@ Feature: Validate scenarios in Progress Report
       | Automation Execution Award | Automation Execution Award |
 
   @45733 @SelectDesiredFrequencyAsMonthlywithScheduleBaseAsReportingPeriod @jitendra
-  Scenario Outline: Verify Reporting Period End Date is same as the Schedule End Date (Active award).
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
+  Scenario Outline: Verify Reporting Period End Date is same as the Schedule End Date (Active award)
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1468,11 +1444,8 @@ Feature: Validate scenarios in Progress Report
       | Automation Execution Award | Automation Execution Award |
 
   @37232 @progressReportSemiAnuallyWithLessThan120DaysDateError @jitendra
-  Scenario Outline: Validate User is not allowed to select schedule dates less than 120 days when frequency is Semi-Annually.
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
+  Scenario Outline: Validate User is not allowed to select schedule dates less than 120 days when frequency is Semi-Annually
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1604,11 +1577,8 @@ Feature: Validate scenarios in Progress Report
       | Automation Execution Award | Automation Execution Award |
 
   @45744 @progressReportNoStartDateError @jitendra
-  Scenario Outline: Verify if Schedule Start date field is not selected then it should not allow to create the schedule.
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
+  Scenario Outline: Verify if Schedule Start date field is not selected then it should not allow to create the schedule
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1741,11 +1711,8 @@ Feature: Validate scenarios in Progress Report
       | Automation Execution Award | Automation Execution Award |
 
   @45738 @SelectDesiredFrequencyAsMonthlywithScheduleBaseAsReportingPeriod @jitendra
-  Scenario Outline: Verify Reporting Period Start Date is same as the Schedule Start Date (Active).
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
+  Scenario Outline: Verify Reporting Period Start Date is same as the Schedule Start Date (Active)
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1880,11 +1847,8 @@ Feature: Validate scenarios in Progress Report
       | Automation Execution Award | Automation Execution Award |
 
   @55314 @updateOfSemiAnnualFrequencyOnModalBeforeClose @jitendra
-  Scenario Outline: Validate User is allowed to change frequency Not applicable to Semi-Annually , schedule base as calendar on progress report schedule when the award is active.
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
+  Scenario Outline: Validate User is allowed to change frequency Not applicable to Semi-Annually , schedule base as calendar on progress report schedule when the award is active
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2017,10 +1981,7 @@ Feature: Validate scenarios in Progress Report
 
   @58532 @verifyUserIsAllowedToChangeFrequencyAsMonthlyOnProgressReportSchedule  @mahadev
   Scenario Outline: Verify User is allowed to change frequency as Monthly, on progress report schedule when Progress report is approved on active award
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
+    And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2198,10 +2159,7 @@ Feature: Validate scenarios in Progress Report
 
   @34934 @verifyUserIsAllowedToChangeFrequencyAsMonthlyOnProgressReportSchedule  @mahadev
   Scenario Outline: Verify User is allowed to change frequency as Monthly, on progress report schedule when Progress report is approved on active award
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
+    And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2333,10 +2291,7 @@ Feature: Validate scenarios in Progress Report
 
   @55397 @VerifyOnceBatchIsRunAndUserEditFrequencyThenSchedulesShouldBeGeneratedAccordingly  @mahadev
   Scenario Outline: Verify Once Batch is run and User edit the Frequency then the Schedule should be generated accordingly
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
+    And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2452,10 +2407,7 @@ Feature: Validate scenarios in Progress Report
 
   @58665 @verifyUserIsAllowedToChangeFrequencyAsMonthlyOnProgressReportScheduleWhenProgressReportIsApprovedByProgramApprover  @mahadev
   Scenario Outline: Verify User is allowed to change frequency as Quarterly,on active award when Progress report is approved by Program approver
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
+    And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2600,10 +2552,7 @@ Feature: Validate scenarios in Progress Report
 
   @58737 @verifySubawardIsGettingUpdatedWithProgressReportSchedulesAtSubRecipientEndOnActiveAward @mahadev
   Scenario Outline: Verify Subaward is getting updated with Progress report schedules at Sub-recipient end on active award
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
+    And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2747,11 +2696,8 @@ Feature: Validate scenarios in Progress Report
       | Automation Permanent Award | Automation Permanent Award |
 
   @55307 @updateOfSemiAnnualFrequencyOnModalBeforeClose @jitendra
-  Scenario Outline: Validate User is allowed to change frequency as Annually, schedule base as calendar on progress report schedule when Progress report is submitted to Grantor.
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
+  Scenario Outline: Validate User is allowed to change frequency as Annually, schedule base as calendar on progress report schedule when Progress report is submitted to Grantor
+    And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2885,10 +2831,7 @@ Feature: Validate scenarios in Progress Report
 
   @58664 @canNotSeeEditBtnFrPRWithBiMonthlyPR @jitendra
   Scenario Outline: Validate SPA user is not allowed to change the Progress report Schedule on Active subaward when status of Progress Report is  created.
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
+    And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -3151,10 +3094,7 @@ Feature: Validate scenarios in Progress Report
 
   @59137 @NoPRSubmitToGrantorIfSupportDocIsMissing @jitendra
   Scenario Outline: Validate Sub-recipient user is not allowed to submit progress report to grantor when Supporting document is missing under Forms and Attachments Tab.
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -3279,10 +3219,8 @@ Feature: Validate scenarios in Progress Report
       | Automation Execution Award | Automation Execution Award |
 
   @58524 @changeFrqAsQuarterlyOnPRwithStatusAsSubmittedToApprovalOnActiveGrant @jitendra
-  Scenario Outline: Validate User is allowed to change frequency as Quarterly, on progress report schedule when progress report status is Submitted to Approval on active award.
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
+  Scenario Outline: Validate User is allowed to change frequency as Quarterly, on progress report schedule when progress report status is Submitted to Approval on active award
+    And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -3464,11 +3402,8 @@ Feature: Validate scenarios in Progress Report
       | Automation Execution Award | Automation Execution Award |
 
   @59199 @NotModifySupportDocListAfterSubmitToGrantor @jitendra
-  Scenario Outline: Validate SR User is not able to modify Supporting Documents Checklist table when Progress report is Submitted to Grantor.
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
+  Scenario Outline: Validate SR User is not able to modify Supporting Documents Checklist table when Progress report is Submitted to Grantor
+    Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -3595,11 +3530,8 @@ Feature: Validate scenarios in Progress Report
       | Automation Execution Award | Automation Execution Award |
 
   @59200 @modifyDocumentCheckAfterSentBackToSPI @jitendra
-  Scenario Outline: Validate SR User is  able to modify Supporting Documents Checklist table when Progress report status is sent back to sub-recipient.
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
+  Scenario Outline: Validate SR User is  able to modify Supporting Documents Checklist table when Progress report status is sent back to sub-recipient
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -4357,8 +4289,7 @@ Feature: Validate scenarios in Progress Report
       | Automation Execution Award | Automation Execution Award |
 
   @59289 @TemplateLinkOptional @jitendra
-  Scenario Outline: Validate  Supporting Checklist Table at Progress Report is generated with the latest updated data by award owner at SR User End.
-    Given I delete the record "Automation Execution Award" from the object "Progress Report"
+  Scenario Outline: Validate  Supporting Checklist Table at Progress Report is generated with the latest updated data by award owner at SR User End
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -4632,7 +4563,6 @@ Feature: Validate scenarios in Progress Report
 
   @59565 @validateSupportingDocumentUploadedIsReflectingUnderAttachmentsTable @mahadev
   Scenario Outline: Validate document uploaded at supporting  document checklist table is getting reflected at Attachments table also in progress report
-    Given I delete the record "<Award Name>" from the object "Progress Report"
     When I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Grant Name>" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -4765,7 +4695,6 @@ Feature: Validate scenarios in Progress Report
 
   @59671 @validateSupportingDocumentUploadedIsAbleToViewByAwardOwner @mahadev
   Scenario Outline: Validate Internal User is able to view the uploaded supporting documents by SPI user when Progress report status is submitted to Grantor
-    Given I delete the record "<Award Name>" from the object "Progress Report"
     When I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Grant Name>" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -4858,7 +4787,6 @@ Feature: Validate scenarios in Progress Report
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I click on "Accept after Approval" in the page details
-    When I enter "Automation Award Accepted" for comments and click "OK"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -4905,7 +4833,6 @@ Feature: Validate scenarios in Progress Report
 
   @59672 @validateAwardOwnerCanNotDeleteSupportingDocumentChecklist @mahadev
   Scenario Outline: Validate Internal User is not able to delete the uploaded supporting documents by SPI user when Progress report status is submitted to Grantor
-    Given I delete the record "<Award Name>" from the object "Progress Report"
     When I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Grant Name>" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -4998,7 +4925,6 @@ Feature: Validate scenarios in Progress Report
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I click on "Accept after Approval" in the page details
-    When I enter "Automation Award Accepted" for comments and click "OK"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -5045,7 +4971,6 @@ Feature: Validate scenarios in Progress Report
 
   @59673 @validateAwardOwnerCanNotUploadSupportingDocumentChecklist @mahadev
   Scenario Outline: Validate Internal User is not able to upload new supporting documents when Progress report status is submitted to Grantor
-    Given I delete the record "<Award Name>" from the object "Progress Report"
     When I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Grant Name>" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -5138,7 +5063,6 @@ Feature: Validate scenarios in Progress Report
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I click on "Accept after Approval" in the page details
-    When I enter "Automation Award Accepted" for comments and click "OK"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -5183,3 +5107,516 @@ Feature: Validate scenarios in Progress Report
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
+  @59298 @MndatorySuppDocState @jitendra
+  Scenario Outline: Validate Previous created Progress report remains the same at SR user end when Supporting checklist Table is updated by Award Owner.
+    Given I delete the record "Automation Execution Award" from the object "Progress Report"
+    Given I delete the record "Automation Execution Award" from the object "Award"
+    And I delete the record "Automation Execution Award" from the object "Grant"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Attachments" sub tab
+    When I enter the following values into flex table with id "flexGridGrantChecklists" by clicking "Add" :
+      | Description | Required | Applies To      | Status |
+      | Automation  | Mandatory | Progress Report | Active |
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I get the "EGMS ID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
+    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
+    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    And I close modal by clicking the top right x button
+    When I navigate to "Budget" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
+      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
+      | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
+    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    And I close modal by clicking the top right x button
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    And I close modal by clicking the top right x button
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
+      | Responsibility     | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+    And I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside table
+    And I click on "Accept after Approval" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "Activate" in the page details
+    When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    And I navigate to "Attachments" sub tab
+    And I edit the following rows inline in flex table with id "---progressreport:-:grantChecklistsTableId---" by clicking "Edit" :
+      | Description | Required |
+      | Automation  | Optional |
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "<Grant Name>" in "---progressreport:-:recipientActiveGrantTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressreport:-:recipientActiveGrantTableId---" with wait for record
+    When I navigate to "Management" sub tab
+    And I click on "Edit" icon for "Record Id" inside flex table with id "---progressreport:-:recipientGrantProgressReportTableId---"
+    When I navigate to "Forms and Attachments" sub tab
+    Then I see value "Mandatory" for title "Required" against the value "Active" inside table "---progressreport:-:progressReportChecklistsTableId---"
+    Examples:
+      | Award Name                 | Grant Name                 |
+      | Automation Execution Award | Automation Execution Award |
+
+  @59573 @SREditDoc @jitendra
+  Scenario Outline: Validate SR user is able to Edit the documents uploaded at supporting document checklist table for Progress report.
+    Given I delete the record "Automation Execution Award" from the object "Award"
+    And I delete the record "Automation Execution Award" from the object "Grant"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Attachments" sub tab
+    When I enter the following values into flex table with id "flexGridGrantChecklists" by clicking "Add" :
+      | Description | Required  | Applies To      | Status |
+      | Automation  | Mandatory | Progress Report | Active |
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I get the "EGMS ID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
+    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
+    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    And I close modal by clicking the top right x button
+    When I navigate to "Budget" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
+      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
+      | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
+    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    And I close modal by clicking the top right x button
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    And I close modal by clicking the top right x button
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
+      | Responsibility     | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+    And I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside table
+    And I click on "Accept after Approval" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "Activate" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    And I click on "Save" in the page details
+    When I get the "EGMS ID"
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 7      | 7             |
+    When I navigate to "Forms and Attachments" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---"
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    And I close Modal
+    When I click on "Edit" attachment to upload attachment "Program_Field_Values.xlsx" of type "Other"
+    And I close Modal
+    Then I see "Program_Field_Values.xlsx" has been added in "Attachments" flex table
+    Examples:
+      | Award Name                 | Grant Name                 |
+      | Automation Execution Award | Automation Execution Award |
+
+  @59572 @SRDeleteDoc @jitendra
+  Scenario Outline: Validate SR user is able to Delete the documents uploaded at supporting document checklist table at progress report.
+    Given I delete the record "Automation Execution Award" from the object "Award"
+    And I delete the record "Automation Execution Award" from the object "Grant"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Attachments" sub tab
+    When I enter the following values into flex table with id "flexGridGrantChecklists" by clicking "Add" :
+      | Description | Required  | Applies To      | Status |
+      | Automation  | Mandatory | Progress Report | Active |
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I get the "EGMS ID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
+    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
+    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    And I close modal by clicking the top right x button
+    When I navigate to "Budget" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
+      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
+      | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
+    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    And I close modal by clicking the top right x button
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    And I close modal by clicking the top right x button
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
+      | Responsibility     | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+    And I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside table
+    And I click on "Accept after Approval" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "Activate" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    And I click on "Save" in the page details
+    When I get the "EGMS ID"
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 7      | 7             |
+    When I navigate to "Forms and Attachments" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---"
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    And I close Modal
+    When I click on "Delete" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---"
+    Then I do not see value "Mandatory" for title "Required" inside table "---progressreport:-:progressReportChecklistsTableId---"
+    Examples:
+      | Award Name                 | Grant Name                 |
+      | Automation Execution Award | Automation Execution Award |
+
+  @59574 @dowloadAttachment @jitendra
+  Scenario Outline: Validate SR user is able to Delete the documents uploaded at supporting document checklist table at progress report.
+    Given I delete the record "Automation Execution Award" from the object "Award"
+    And I delete the record "Automation Execution Award" from the object "Grant"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Attachments" sub tab
+    When I enter the following values into flex table with id "flexGridGrantChecklists" by clicking "Add" :
+      | Description | Required  | Applies To      | Status |
+      | Automation  | Mandatory | Progress Report | Active |
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I get the "EGMS ID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
+    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
+    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    And I close modal by clicking the top right x button
+    When I navigate to "Budget" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
+      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
+      | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
+    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    And I close modal by clicking the top right x button
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    And I close modal by clicking the top right x button
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
+      | Responsibility     | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+    And I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside table
+    And I click on "Accept after Approval" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "Activate" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    And I click on "Save" in the page details
+    When I get the "EGMS ID"
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 7      | 7             |
+    When I navigate to "Forms and Attachments" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---"
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    And I close Modal
+    When I download the attachment present in attachment table
+    Then I verify that the file "Program_Field_Values.xlsx" is downloaded
+    Examples:
+      | Award Name                 | Grant Name                 |
+      | Automation Execution Award | Automation Execution Award |

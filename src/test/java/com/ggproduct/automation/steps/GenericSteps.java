@@ -6,6 +6,7 @@ import io.cucumber.java.en.*;
 import org.junit.Assert;
 import org.springframework.context.annotation.Description;
 import javax.mail.MessagingException;
+import java.io.File;
 import java.util.List;
 
 public class GenericSteps {
@@ -147,5 +148,18 @@ public class GenericSteps {
     @When("I add the Notes for progress report")
     public void iAddTheNotesForProgressReport() {
         projectManager.addNotesToPR();
+    }
+
+    @Then("I verify that the file {string} is downloaded")
+    public void iVerifyThatTheFileIsDownloaded(String fileName) {
+        EyeThink.core().WaitFor().makeThreadSleep(10000);
+        boolean yes = false;
+        File[] list = EyeThink.core().file().getCompleteFilesListOnLocalDirectory(System.getProperty("user.dir")+"/target");
+        for (File f : list){
+            if (fileName.equalsIgnoreCase(f.getName())){
+                yes = true;
+            }
+        }
+        Assert.assertTrue(yes);
     }
 }
