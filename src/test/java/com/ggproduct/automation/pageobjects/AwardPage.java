@@ -12,7 +12,7 @@ public class AwardPage extends ProjectManager {
      * @param buttonName
      */
     public void enterCommentsOnConfirmation(String comments, String buttonName) {
-        EyeThink.core().enterText().onWeb().enter(By.xpath("//form[@class='bootbox-form']//textarea"),comments);
-        EyeThink.saas().modal().acceptRejectPopUp(buttonName);
+        //EyeThink.core().enterText().onWeb().enter(By.xpath("//form[@class='bootbox-form']//textarea"),comments);
+        //EyeThink.saas().modal().acceptRejectPopUp(buttonName);
     }
 }

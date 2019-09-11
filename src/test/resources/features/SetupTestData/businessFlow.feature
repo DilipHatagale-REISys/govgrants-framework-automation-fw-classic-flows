@@ -2274,7 +2274,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
 
   @activeRiskAssessment
   Scenario: Validate whether user is able to View Active Risk Assessment under Monitoring
-    Given I login to "As a Grantor" app as "dynamicUser" user
+    When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
@@ -2284,6 +2284,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click modal button "Save and Continue"
     And I navigate to "Subawards" sub tab
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I get the "EGMS ID"
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -2314,7 +2315,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I enter a review as "Passed"
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "DynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
