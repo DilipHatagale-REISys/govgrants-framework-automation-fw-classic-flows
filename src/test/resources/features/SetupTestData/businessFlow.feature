@@ -1237,9 +1237,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
 
   @awardHappyPathStandAlone
   Scenario Outline: Validate subaward Happy path stand alone
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Progress Report"
+    Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
