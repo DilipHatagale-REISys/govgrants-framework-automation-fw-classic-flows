@@ -60,4 +60,10 @@ public class ProgressReportSteps {
     public void iDownloadTheAttachmentPresentInAttachmentTable() {
         progressReportPage.downloadAttachment();
     }
+
+    @Description("To verify reported date field contains todays date")
+    @Then("^I see the Reported Date field contains todays date$")
+    public void iSeeTheReportedDateFieldContainsTodaysDate() {
+        progressReportPage.assertReportedDateField();
+    }
 }

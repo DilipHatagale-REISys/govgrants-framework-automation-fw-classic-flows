@@ -3,9 +3,7 @@ Feature: Payment Request scenarios without background
 
   @53910 @ValidateAdvancePaymentRequestButton @mahadev
   Scenario Outline: validate advance buutton not displayed to SPI user when Advance Payment Allowed selected as NO
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Progress Report"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
+    Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -134,9 +132,7 @@ Feature: Payment Request scenarios without background
 
   @53966 @enterDetailedBudgetOnAdvPaymentRequest @mahadev
   Scenario Outline: Validate user can enter detailed budget for Advance Payment Request when Are Expense Details Required on Reimbursements? is Yes at Grant
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Progress Report"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -277,10 +273,8 @@ Feature: Payment Request scenarios without background
 
   @53953 @validateProgramIncomeFieldIsDisplayedOnAdvancePaymentRequest @mahadev
   Scenario Outline: Validate user can enter Program Income at payment request when program Income Allowed is Yes at Grant
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Progress Report"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Grant"
+    When I delete the record "Automation Execution Award" from the object "Award"
+    And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -414,10 +408,8 @@ Feature: Payment Request scenarios without background
 
   @53912 @validateProgramIncomeTrackingNotDisplayedOnAdvPaymentRequest @mahadev
   Scenario Outline: Validate user can not see page block Program Income tracking not displayed on Advance payment request when program Income Allowed is No at Grant
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Progress Report"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Grant"
+    When I delete the record "Automation Execution Award" from the object "Award"
+    And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -551,10 +543,8 @@ Feature: Payment Request scenarios without background
 
   @53965 @validateProgramIncomeFieldIsDisplayedOnReimbursementPaymentRequest @mahadev
   Scenario Outline: Validate user can enter Program Income On Reimbursement Payment Request when program Income Allowed is Yes at Grant
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Progress Report"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Grant"
+    When I delete the record "Automation Execution Award" from the object "Award"
+    And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -691,10 +681,8 @@ Feature: Payment Request scenarios without background
 
   @53964 @validateProgramIncomeTrackingNotDisplayedOnPaymentRequest @mahadev
   Scenario Outline: Validate user can not see page block Program Income tracking not displayed on Reimbursement payment request when program Income Allowed is No at Grant
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Progress Report"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Grant"
+    When I delete the record "Automation Execution Award" from the object "Award"
+    And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -828,9 +816,7 @@ Feature: Payment Request scenarios without background
 
   @54174 @ValidateAwardBudgetIsSameAsBalanceonAward @mahadev
   Scenario Outline: validate awarded budget is same as award balance on award activation
-    Given I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Progress Report"
-    And I delete the record "Automation Payment Request" from the object "Payment Request"
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -935,9 +921,7 @@ Feature: Payment Request scenarios without background
 
   @54168 @ValidateAwardBudgetIsSameAsBalanceOnReimbursementPR @mahadev
   Scenario Outline: validate awarded budget is same as award balace on award activation
-    Given I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Progress Report"
-    And I delete the record "Automation Payment Request" from the object "Payment Request"
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1071,9 +1055,7 @@ Feature: Payment Request scenarios without background
 
   @54496 @ValidateActiveSuppportingDocumentChecklistOnReimbursementPR @mahadev
   Scenario Outline: validate Suppporting Document Checklist is displayed on reimbursement payment request
-    Given I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Payment Request" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Progress Report"
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1155,7 +1137,7 @@ Feature: Payment Request scenarios without background
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside table
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I click on "Send to Subrecipient" in the page details
@@ -1170,13 +1152,13 @@ Feature: Payment Request scenarios without background
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside table
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I click on "Activate" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
@@ -1202,9 +1184,7 @@ Feature: Payment Request scenarios without background
 
   @54499 @ValidateInActiveSuppportingDocumentChecklistOnReimbursementPR @mahadev
   Scenario Outline: validate Suppporting Document Checklist is not displayed on reimbursement payment request if selected as Inactive on grant
-    Given I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Payment Request" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Progress Report"
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1333,9 +1313,7 @@ Feature: Payment Request scenarios without background
 
   @54415 @ValidateUserCanAttachDocumentTypeInvoiceOnReimbursementPR @mahadev
   Scenario Outline: validate user can add active supporting document for Reimbursement payment request as type Invoice
-    Given I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Progress Report"
-    When I delete the record "Automation Payment Request" from the object "Payment Request"
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1459,18 +1437,13 @@ Feature: Payment Request scenarios without background
 
   @54498 @ValidateInActiveSuppportingDocumentChecklistOnAdvancePR @mahadev
   Scenario Outline: validate Suppporting Document Checklist is not displayed on advance payment request if selected as Inactive on grant
-    Given I delete the record "Automation Execution Award" from the object "Payment Request"
     And I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
+    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
@@ -1479,14 +1452,12 @@ Feature: Payment Request scenarios without background
     And I navigate to "Attachments" sub tab
     Then I see "No Records Found" inside flex table with id "---paymentRequest:-:checklistTableId---"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Permanent Award | Automation Permanent Award |
+      | Award Name                 |
+      | Automation Permanent Award |
 
   @54495 @ValidateActiveSuppportingDocumentChecklistOnAdvancePR @mahadev
   Scenario Outline: validate Suppporting Document Checklist is displayed on advance payment request
-    Given I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1609,9 +1580,7 @@ Feature: Payment Request scenarios without background
 
   @54506 @ValidateOptionalSuppportingDocumentChecklistOnReimbursementPR @mahadev
   Scenario Outline: validate Optional Suppporting Document Checklist should not display any error message on reimbursement payment request
-    Given I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1740,9 +1709,7 @@ Feature: Payment Request scenarios without background
 
   @54507 @ValidateOptionalSuppportingDocumentChecklistOnAdvancePR @mahadev
   Scenario Outline: validate Optional Suppporting Document Checklist should not display any error message on advance payment request
-    Given I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Progress Report"
-    When I delete the record "Automation Payment Request" from the object "Payment Request"
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1869,9 +1836,7 @@ Feature: Payment Request scenarios without background
 
   @54503 @ValidateMandatorySuppportingDocumentChecklistOnAdvancePR @mahadev
   Scenario Outline: validate mandatory Suppporting Document Checklist should  display error message on advance PR if attachment not added
-    Given I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Payment Request" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Progress Report"
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1999,9 +1964,7 @@ Feature: Payment Request scenarios without background
 
   @54167 @ValidateAwardBudgetIsSameAsBalanceOnAdvancePR @mahadev
   Scenario Outline: validate awarded budget is same as award balace on award activation
-    Given I delete the record "Automation Execution Award" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
-    And I delete the record "Automation Payment Request" from the object "Payment Request"
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2119,9 +2082,7 @@ Feature: Payment Request scenarios without background
 
   @54708 @ValidateAdvanceRequestedAmountFieldOnAwardAtSubPortalUpdatedAfterAdvancePRApproval @mahadev
   Scenario Outline: validate Advance Requested Amount field at sub portal gets updated after Advance payment request approval
-    Given I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2269,11 +2230,9 @@ Feature: Payment Request scenarios without background
 
   @54707 @ValidateAdvanceRequestedAmountFieldOnAwardAtInternalPortalUpdatedAfterAdvancePRApproval @mahadev
   Scenario Outline: validate Advance Requested Amount field at Internal portal gets updated after Advance payment request approval
-    Given I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
-    When I login to "As a Grantor" app as "EXE" user
+    When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
@@ -2418,9 +2377,7 @@ Feature: Payment Request scenarios without background
 
   @54709 @ValidateReimbursementBalanceFieldOnAwardAtSubPortalUpdatedAfterReimbursementPRApproval @mahadev
   Scenario Outline: validate Advance Requested Amount field at sub portal gets updated after Advance payment request approval
-    Given I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2571,9 +2528,7 @@ Feature: Payment Request scenarios without background
 
   @54712 @ValidateReimbursementApprovedAmountFieldOnPaymentRequestAfterReimbursementPRApproval @mahadev
   Scenario Outline: validate Reimbursement balance on payment request at sub portal gets updated after Reimbursement payment request approval
-    Given I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2726,9 +2681,7 @@ Feature: Payment Request scenarios without background
 
   @54711 @ValidateTotalFieldGettingUpdatedOnAdvancePR @mahadev
   Scenario Outline: Validate total field is getting updated on advance payment request
-    Given I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2852,9 +2805,7 @@ Feature: Payment Request scenarios without background
 
   @54504 @ValidateOptionalSupportingDocumentChecklistOnReimbursementPR @mahadev
   Scenario Outline: validate optional supporting document checklist does not show any validation message for Reimbursement payment request
-    Given I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Progress Report"
-    When I delete the record "Automation Payment Request" from the object "Payment Request"
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2982,9 +2933,7 @@ Feature: Payment Request scenarios without background
 
   @55402 @ValidatedUserNotifiedFieldUpdatedInternalPortal @mahadev
   Scenario Outline: Verify when Batch is run then User Notified field gets Updated at Internal Portal
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Progress Report"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -3092,16 +3041,13 @@ Feature: Payment Request scenarios without background
   @51067 @EditionOfReimbursementPaymentRequest @mahadev
   Scenario Outline: Edition of Reimbursement Payment Request
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    And I delete the record "<Award Name>" from the object "Payment Request"
+    And I delete the record "Automation Permanent Award" from the object "Payment Request"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "<Login User>" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "<Award Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
+    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
@@ -3114,9 +3060,9 @@ Feature: Payment Request scenarios without background
     When I click on "Save" in the page details
     Then I see field "Acknowledgement" as "I Agree"
     Examples:
-      | Award Name                 | Login User |
-      | Automation Permanent Award | SPI        |
-      | Automation Permanent Award | SPA        |
+      | Login User |
+      | SPI        |
+      | SPA        |
 
   @51068 @ReimbursementPaymentRequestAddAttachment
   Scenario Outline: Validate the attachment for Reimbursement Payment Request
@@ -3125,12 +3071,9 @@ Feature: Payment Request scenarios without background
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "<User>" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Automation Permanent Award" in "---paymentRequest:-:recipientGrantTableId---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
+    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
@@ -3152,12 +3095,9 @@ Feature: Payment Request scenarios without background
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "<User>" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Automation Permanent Award" in "---paymentRequest:-:recipientGrantTableId---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
+    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
@@ -3173,9 +3113,7 @@ Feature: Payment Request scenarios without background
 
   @55401 @ValidatedUserNotifiedFieldUpdatedExternalPortal @mahadev
   Scenario Outline: Verify when Batch is run then User Notified field gets Updated at External Portal
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Progress Report"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -3291,9 +3229,7 @@ Feature: Payment Request scenarios without background
 
   @55809 @PRReimbursement2ndIsFinalPayment1stPRShouldShowValidMsg @jitendra
   Scenario Outline: Verify that once final payment request is approved then Created status Payment should show validation message on Submit to Grantor Button.
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Progress Report"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -3482,9 +3418,7 @@ Feature: Payment Request scenarios without background
 
   @55304 @validateProgressReportSchedulesOnActiveAwardAfterEditingSchedules @mahadev
   Scenario Outline: Validate progress report schedules getting updated on active award after editing schedule
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Progress Report"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -3594,9 +3528,7 @@ Feature: Payment Request scenarios without background
 
   @55308 @validateProgressReportSchedulesAtGranteePortalOnActiveAwardAfterEditingSchedules @mahadev
   Scenario Outline: Validate progress report schedules getting updated on active award after editing schedule
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Progress Report"
-    And I delete the record "Automation Execution Award" from the object "Payment Request"
+    When I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
