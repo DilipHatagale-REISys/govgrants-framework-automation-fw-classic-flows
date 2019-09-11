@@ -345,4 +345,19 @@ public class ProjectManager extends ProjectWebServices {
         EyeThink.saas().modal().clickModalContentSpecificButton("Save");
         EyeThink.saas().modal().closeModalByClickingTopRightCloseButton();
     }
+
+    public void editDataInAttachment(String iconName, String fileName, String fileType){
+        By attachmentClassificationPath = By.xpath("//select[@title='Classification' or text()='Classification']");
+        By attachmentDescriptionPath = By.xpath("//div//label[text()='Description']/..//textarea");
+        By attachmentFilePath = By.xpath("//td//input[@type='file']");
+        String defaultFilePath = System.getProperty("user.dir") + "/src/main/resources/";
+        String tableId = EyeThink.core().get().attribute(By.xpath("//*[contains(@class, 'panel-heading')]//button[text()='Add']"), "data-target");
+        tableId = tableId.substring(tableId.length() - 18);
+        EyeThink.saas().flexTable().clickTableActionIcon(tableId, iconName, new String[]{fileName});
+        EyeThink.core().select().onWeb(attachmentClassificationPath).selectByValue(fileType);
+        EyeThink.core().enterText().onWeb().clear(attachmentDescriptionPath);
+        EyeThink.core().enterText().onWeb().enter(attachmentDescriptionPath, "T&CDefault Comment");
+        EyeThink.core().enterText().onWeb().enter(attachmentFilePath, defaultFilePath + fileName);
+        EyeThink.core().click().onWeb(By.xpath("//input[@value='Save']"));
+    }
 }

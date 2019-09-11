@@ -108,6 +108,11 @@ public class ProgressReportPage extends ProjectManager {
         Assert.assertFalse(isRowLevelActionButtonDisplayed(buttonName,uniqueColumnValue,flextableHeaderName));
     }
 
+    public void downloadAttachment(){
+        By downloadBtn = By.xpath("//div[contains(@id,'Attachments')]//a[@title='Download'] ");
+        EyeThink.core().click().onWeb(downloadBtn);
+    }
+
     /**
      * To verify reported date field contains today's date
      */
@@ -115,3 +120,4 @@ public class ProgressReportPage extends ProjectManager {
         Assert.assertEquals(EyeThink.core().Properties().getValue("ReportedDate"),EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("MM/dd/yyyy")).replaceAll("^0",""));
     }
 }
+
