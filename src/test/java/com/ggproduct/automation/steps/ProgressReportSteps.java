@@ -1,8 +1,10 @@
 package com.ggproduct.automation.steps;
 
 import com.ggproduct.automation.pageobjects.ProgressReportPage;
+import eyethink.automation.bots.Register.EyeThink;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.springframework.context.annotation.Description;
 
 public class ProgressReportSteps {
@@ -52,5 +54,10 @@ public class ProgressReportSteps {
     @Then("^I cannot see row level action button \"([^\"]*)\" against Value \"([^\"]*)\" inside \"([^\"]*)\" flex table$")
     public void iCannotSeeRowLevelActionButtonAgainstValueInsideFlexTable(String buttonName, String uniqueValue, String flextableHeaderName) {
         progressReportPage.assertRowLevelActionButtonInsideFlexTable(buttonName,uniqueValue,flextableHeaderName);
+    }
+
+    @When("I download the attachment present in attachment table")
+    public void iDownloadTheAttachmentPresentInAttachmentTable() {
+        progressReportPage.downloadAttachment();
     }
 }

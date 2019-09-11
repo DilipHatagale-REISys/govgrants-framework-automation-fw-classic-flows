@@ -108,4 +108,9 @@ public class ProgressReportPage extends ProjectManager {
     public void assertRowLevelActionButtonInsideFlexTable(String buttonName, String uniqueColumnValue, String flextableHeaderName){
         Assert.assertFalse(isRowLevelActionButtonDisplayed(buttonName,uniqueColumnValue,flextableHeaderName));
     }
+
+    public void downloadAttachment(){
+        By downloadBtn = By.xpath("//div[contains(@id,'Attachments')]//a[@title='Download'] ");
+        EyeThink.core().click().onWeb(downloadBtn);
+    }
 }
