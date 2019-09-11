@@ -2,9 +2,7 @@
 Feature: Validate all scenarios in the Stand Alone Award and Grant
 
   Background: Create Award
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Payment Request"
-    And I delete the record "Automation Execution Award" from the object "Progress Report"
+    Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab

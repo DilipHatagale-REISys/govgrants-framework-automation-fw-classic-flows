@@ -143,8 +143,8 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
     And I close Modal
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account | Pre-Encumbrance |
-      | {SavedValue:fundingAccount}       | 20000             |
+      | Funding Account             | Pre-Encumbrance |
+      | {SavedValue:fundingAccount} | 20000           |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
     When I refresh the page
@@ -580,8 +580,8 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
     And I close Modal
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account | Pre-Encumbrance |
-      | {SavedValue:fundingAccount}          | 100             |
+      | Funding Account             | Pre-Encumbrance |
+      | {SavedValue:fundingAccount} | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
     When I refresh the page
@@ -1069,7 +1069,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     Then I can see row level action button "View" against "Automation Announcement for FDM" in flex table with id "---negotiation:-:negotiationCompletedTaskTableId---"
 
   @awardHappyPathFromFDM @smoke
-  Scenario Outline: Validate award happy path
+  Scenario Outline: Validate subaward from FDM happy path
     Given I delete the record "Automation Desk Review" from the object "Desk Review"
     When I delete the record "Automation Site Visit" from the object "Site Visit"
     And I delete the record "Automation Announcement for FDM" from the object "FDM"
@@ -1236,7 +1236,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
   @awardHappyPathStandAlone
-  Scenario Outline: Validate award Happy path stand alone
+  Scenario Outline: Validate subaward Happy path stand alone
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
     When I delete the record "Automation Execution Award" from the object "Payment Request"
     And I delete the record "Automation Execution Award" from the object "Progress Report"
@@ -2164,7 +2164,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I delete the record "Automation Permanent Award" from the object "Payment Request"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Permanent Award" in "---closeout:-:grantsTableId---" panel
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---closeout:-:grantsTableId---"
@@ -2178,12 +2178,9 @@ Feature: The feature is only designed for ensuring all business flows are workin
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Automation Permanent Award" in "---closeout:-:recipientsGrantTableId---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---closeout:-:recipientsGrantTableId---"
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---closeout:-:awardTableId---"
+    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
@@ -2326,4 +2323,3 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Active" and is "Green"
-
