@@ -53,4 +53,10 @@ public class ProgressReportSteps {
     public void iCannotSeeRowLevelActionButtonAgainstValueInsideFlexTable(String buttonName, String uniqueValue, String flextableHeaderName) {
         progressReportPage.assertRowLevelActionButtonInsideFlexTable(buttonName,uniqueValue,flextableHeaderName);
     }
+
+    @Description("To verify reported date field contains todays date")
+    @Then("^I see the Reported Date field contains todays date$")
+    public void iSeeTheReportedDateFieldContainsTodaysDate() {
+        progressReportPage.assertReportedDateField();
+    }
 }
