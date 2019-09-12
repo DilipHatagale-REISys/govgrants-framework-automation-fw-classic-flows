@@ -27,6 +27,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Strategic Plan"
+    When I close "Add Attachments" modal by clicking the top right x button
     Then I see "Strategic Plan" has been added in "Attachments" flex table
 
   @33798 @creationOfStrategicGoal @smoke
@@ -66,6 +67,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Strategic Plan"
+    When I close "Add Attachments" modal by clicking the top right x button
     Then I see "Strategic Plan" has been added in "Attachments" flex table
 
   @51047 @creationOfObjective @smoke
@@ -115,6 +117,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Strategic Plan"
+    When I close "Add Attachments" modal by clicking the top right x button
     Then I see "Strategic Plan" has been added in "Attachments" flex table
 
   @34724 @associatingKPIToObjective @smoke

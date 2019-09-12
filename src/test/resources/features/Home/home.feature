@@ -240,7 +240,7 @@ Feature: Validate all scenarios in the home tab
     When I click on top right button "New" in flex table with id "---home:-:termsAndConditionsTableId---"
     And I enter "Creation" values from "TermsandConditions_Field_Values.xlsx"
     When I click modal button "Save"
-    And I close modal by clicking the top right x button
+    When I close "New" modal by clicking the top right x button
     When I perform quick search for "TC-5885" in "---home:-:termsAndConditionsTableId---" panel
     Then I can see row level action button "View" against "TC-5885" in flex table with id "---home:-:termsAndConditionsTableId---"
     Examples:
@@ -255,7 +255,7 @@ Feature: Validate all scenarios in the home tab
     When I click on top right button "New" in flex table with id "---home:-:termsAndConditionsTableId---"
     And I enter "Creation" values from "TermsandConditions_Field_Values.xlsx"
     When I click modal button "Save"
-    And I close modal by clicking the top right x button
+    When I close "New" modal by clicking the top right x button
     When I perform quick search for "AutomationT&C" in "---home:-:termsAndConditionsTableId---" panel
     Then I see value "Active" for title "Status" against the value "AutomationT&C" inside table "---home:-:termsAndConditionsTableId---"
     Examples:
@@ -270,7 +270,7 @@ Feature: Validate all scenarios in the home tab
     When I click on top right button "New" in flex table with id "---home:-:termsAndConditionsTableId---"
     And I enter "Creation" values from "TermsandConditions_Field_Values.xlsx"
     When I click modal button "Save"
-    And I close modal by clicking the top right x button
+    When I close "New" modal by clicking the top right x button
     When I perform quick search for "TC-5885" in "---home:-:termsAndConditionsTableId---" panel
     Then I can see row level action button "Edit" against "TC-5885" in flex table with id "---home:-:termsAndConditionsTableId---"
     Examples:
@@ -401,7 +401,7 @@ Feature: Validate all scenarios in the home tab
     And I click on top right button "New" in flex table with id "---home:-:additionalAddressTableId---"
     And I enter "AdditionalAddressesCreation" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close modal by clicking the top right x button
+    When I close "New" modal by clicking the top right x button
     Then I see that "Internal Organization" is in "Active" status
     Examples:
       | User  |
@@ -418,7 +418,7 @@ Feature: Validate all scenarios in the home tab
     And I click on top right button "New" in flex table with id "---home:-:additionalAddressTableId---"
     And I enter "AdditionalAddressesCreation" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close modal by clicking the top right x button
+    When I close "New" modal by clicking the top right x button
     When I perform quick search for "Billing Address" in "---home:-:additionalAddressTableId---" panel
     And I click on "Edit" icon for "Billing Address" inside flex table with id "---home:-:additionalAddressTableId---"
     And I enter "AdditioanlAddressesEdition" values from "InternalOrganization_Field_Values.xlsx"
@@ -459,7 +459,7 @@ Feature: Validate all scenarios in the home tab
     And I click on "Edit" icon for "Automation Contact" inside flex table with id "---home:-:relatedContactsTableId---"
     When I enter "RelatedContactsEdition" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
-    And I close Modal
+    When I close "Edit" modal by clicking the top right x button
     Then I see that "Internal Organization" is in "Active" status
     Examples:
       | User |
@@ -655,7 +655,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
-    And I close Modal
+    When I close "Associate" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -680,9 +680,10 @@ Feature: Validate all scenarios in the home tab
       | Automation test description | Mandatory | Application | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---"
     And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close Modal
+    When I close "Upload Template" modal by clicking the top right x button
     And I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Program Artifacts"
+    When I close "Add Attachments" modal by clicking the top right x button
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Home" tab
@@ -708,7 +709,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
-    And I close Modal
+    When I close "Associate" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -733,7 +734,7 @@ Feature: Validate all scenarios in the home tab
       | Automation test description | Mandatory | Application | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---"
     And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close Modal
+    When I close "Upload Template" modal by clicking the top right x button
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Home" tab
@@ -816,7 +817,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
-    And I close Modal
+    When I close "Associate" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -842,7 +843,7 @@ Feature: Validate all scenarios in the home tab
       | Automation test description | Mandatory | Application | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---"
     And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close Modal
+    When I close "Upload Template" modal by clicking the top right x button
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Home" tab
@@ -874,7 +875,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
-    And I close Modal
+    When I close "Associate" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -911,6 +912,7 @@ Feature: Validate all scenarios in the home tab
     When I get the "EGMS ID"
     When I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Supporting Documents"
+    When I close "Add Attachments" modal by clicking the top right x button
     When I navigate to "Home" tab
     And I click on "My_Workspace_File"
     Then I see "Record Id" has been added in My Workspace Files
