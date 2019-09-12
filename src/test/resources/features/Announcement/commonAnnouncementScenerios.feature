@@ -95,7 +95,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    When I close "Invite Recipient Organizations" modal by clicking the top right x button
+    And I close Modal
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Agency                              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
@@ -106,26 +106,26 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "<EGMS Id>" in the table "SelectAnnFundingAccounts"
-    When I close "Funding Accounts" modal by clicking the top right x button
+    And I close Modal
     When I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-      | Funding Account             | Pre-Encumbrance |
-      | {SavedValue:fundingAccount} | 100             |
+      | Funding Account | Pre-Encumbrance |
+      | {SavedValue:fundingAccount}          | 100             |
     Then I see that "<EGMS Id>" has been added in flextable with Id "flexGridAnnouncementFundingAccountGrantor"
     Examples:
-      | EGMS Id                     |
-      | {SavedValue:fundingAccount} |
+      | EGMS Id |
+      | {SavedValue:fundingAccount}  |
 
   @52404 @announcementFADissociationFA
   Scenario Outline: Funding Account dissociation to an Announcement
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Add" after selection of "<EGMS Id>" in the table "SelectAnnFundingAccounts"
-    When I close "Funding Accounts" modal by clicking the top right x button
+    And I close Modal
     When I click on "Remove" icon for "<EGMS Id>" inside flex table with id "---announcement:-:fundingAccountsTableId---"
     Then I do not see value "<EGMS Id>" for title "EGMS ID" inside table "---announcement:-:fundingAccountsTableId---"
     Examples:
-      | EGMS Id                     |
-      | {SavedValue:fundingAccount} |
+      | EGMS Id |
+      | {SavedValue:fundingAccount}  |
 
   @52405 @announcementBudgetPeriodAdditionFA
   Scenario: Budget Period Addition to an Announcement
@@ -174,7 +174,7 @@ Feature: Validate all common scenarios in the  Announcement tab
       | Automation test description | Mandatory | Award      | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---announcement:-:annChecklist---"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
-    When I close "Add Attachments" modal by clicking the top right x button
+    When I close Modal
     Then I see that "Active" has been added in flextable with Id "---announcement:-:annChecklist---"
 
   @52411 @announcementApproverSelectionFA
@@ -226,7 +226,7 @@ Feature: Validate all common scenarios in the  Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    When I close "Enter Review" modal by clicking the top right x button
+    And I close Modal
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -236,8 +236,8 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I click on "Complete Review" in the page details
     Then I see status in Progress-bar is "Reviewed" and is "green"
     Examples:
-      | User | Announcement Type | Active Funding Opportunities id   |
-      | FO   | Formula           | ActiveFundingOpportunitiesFormula |
+      | User | Flextable Name | Announcement Type | Active Funding Opportunities id   |
+      | FO   | Peer Reviewers | Formula           | ActiveFundingOpportunitiesFormula |
 
   @35003 @announcementAddAttachmentFA @wip
   Scenario: Validate the attachment for an Announcement
@@ -263,7 +263,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
@@ -287,7 +287,7 @@ Feature: Validate all common scenarios in the  Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -309,7 +309,7 @@ Feature: Validate all common scenarios in the  Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -331,7 +331,7 @@ Feature: Validate all common scenarios in the  Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
@@ -348,7 +348,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
     Then I see the following messages in the page details :

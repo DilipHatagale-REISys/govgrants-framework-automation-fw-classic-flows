@@ -170,7 +170,7 @@ public class ProjectManager extends ProjectWebServices {
         EyeThink.core().click().onWeb(By.xpath("//div[@id='Attachmentadd']//span[text()='Upload file from Workspace']"));
         EyeThink.core().click().onWeb((By.xpath("//div[@id='Attachmentadd']//td[text()='" + fileNameFromWorkSpace + "']/..//input")));
         EyeThink.saas().modal().clickModalContentSpecificButton("Attach");
-        EyeThink.saas().modal().closeModalByClickingTopRightCloseButton("Add Attachments");
+        EyeThink.saas().modal().closeModalByClickingTopRightCloseButton();
     }
 
     public void clickRightHeaderBars(String title) {
@@ -343,7 +343,7 @@ public class ProjectManager extends ProjectWebServices {
         EyeThink.core().enterText().onWeb().enter(By.xpath("//label[@for='Title']/following-sibling::input"),  "Note Title");
         EyeThink.core().enterText().onWeb().enter(By.xpath("//label[@for='Description']/following-sibling::textarea"), "Note Description");
         EyeThink.saas().modal().clickModalContentSpecificButton("Save");
-        EyeThink.saas().modal().closeModalByClickingTopRightCloseButton("Add Notes");
+        EyeThink.saas().modal().closeModalByClickingTopRightCloseButton();
     }
 
     public void editDataInAttachment(String iconName, String fileName, String fileType){
