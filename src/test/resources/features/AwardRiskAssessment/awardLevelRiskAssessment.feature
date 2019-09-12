@@ -1944,7 +1944,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I see value "Submitted to Grantor" for title "New Value" inside table "History"
 
   @59810 @newbuttonHiddenWhenSubmittedforApproval @deepika
-  Scenario: Validate whether the record owner is blocked from creating new risk assessment when the first approver  approves the Risk Assessment and the record is in Submitted for Approval
+  Scenario: Validate whether the record owner can create new Risk Assessment when Submitted for Approval
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -2230,7 +2230,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I see status in Progress-bar is "Active" and is "Green"
 
  @recordOwnerCannotCreateNewRAWhenInSubmittedForApproval @deepika
-  Scenario : Validate whether the record owner is blocked from creating new risk assessment when the first approver approves the Risk Assessment and the record is in Submitted for Approval
+  Scenario: Validate whether the record owner is blocked from creating new risk assessment when the first approver approves the Risk Assessment and the record is in Submitted for Approval
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
