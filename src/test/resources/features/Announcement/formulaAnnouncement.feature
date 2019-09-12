@@ -23,7 +23,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    And I close Modal
+    When I close "Funding Accounts" modal by clicking the top right x button
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -62,7 +62,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
+    When I close "Enter Review" modal by clicking the top right x button
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -86,7 +86,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -110,7 +110,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -132,7 +132,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -154,7 +154,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -171,7 +171,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -182,7 +182,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    And I close Modal
+    When I close "Invite Recipient Organizations" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Agency                              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
@@ -201,7 +201,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    And I close Modal
+    When I close "Funding Accounts" modal by clicking the top right x button
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -240,7 +240,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
+    When I close "Enter Review" modal by clicking the top right x button
     Given I login and view the record "Record id" as "EXE"
       | Actions          | Step 1              | Step 2                            | Step 3              | Step 4        |
       | Owner Navigation | As a Grantor        | Announcements                     | <Announcement Type> | Announcements |
@@ -262,7 +262,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -286,7 +286,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -308,7 +308,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -330,7 +330,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -347,7 +347,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     When I get the "EGMS ID"
@@ -369,7 +369,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    And I close Modal
+    When I close "Funding Accounts" modal by clicking the top right x button
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -408,7 +408,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
+    When I close "Enter Review" modal by clicking the top right x button
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -432,7 +432,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -456,7 +456,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -478,7 +478,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -500,7 +500,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -517,7 +517,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -530,7 +530,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    And I close Modal
+    When I close "Invite Recipient Organizations" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Agency                              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
@@ -550,7 +550,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    And I close Modal
+    When I close "Funding Accounts" modal by clicking the top right x button
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -589,7 +589,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
+    When I close "Enter Review" modal by clicking the top right x button
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -613,7 +613,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -637,7 +637,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -659,7 +659,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -681,7 +681,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -698,7 +698,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -709,7 +709,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    And I close Modal
+    When I close "Invite Recipient Organizations" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Agency                              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
@@ -729,7 +729,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    And I close Modal
+    When I close "Funding Accounts" modal by clicking the top right x button
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -768,7 +768,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
+    When I close "Enter Review" modal by clicking the top right x button
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -792,7 +792,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -816,7 +816,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -838,7 +838,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -860,7 +860,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -877,7 +877,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -888,7 +888,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    And I close Modal
+    When I close "Invite Recipient Organizations" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Agency                              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
@@ -928,7 +928,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    And I close Modal
+    When I close "Funding Accounts" modal by clicking the top right x button
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -967,7 +967,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
+    When I close "Enter Review" modal by clicking the top right x button
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -991,7 +991,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -1015,7 +1015,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -1037,7 +1037,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -1059,7 +1059,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -1076,7 +1076,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -1086,7 +1086,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    And I close Modal
+    When I close "Invite Recipient Organizations" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Agency                              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
@@ -1117,7 +1117,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    And I close Modal
+    When I close "Funding Accounts" modal by clicking the top right x button
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -1156,7 +1156,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
+    When I close "Enter Review" modal by clicking the top right x button
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -1180,7 +1180,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -1204,7 +1204,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -1226,7 +1226,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -1248,7 +1248,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -1265,7 +1265,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -1275,7 +1275,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    And I close Modal
+    When I close "Invite Recipient Organizations" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Agency                              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
@@ -1306,7 +1306,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    And I close Modal
+    When I close "Funding Accounts" modal by clicking the top right x button
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -1345,7 +1345,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
+    When I close "Enter Review" modal by clicking the top right x button
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -1369,7 +1369,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -1393,7 +1393,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -1415,7 +1415,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -1437,7 +1437,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -1454,7 +1454,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -1464,7 +1464,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    And I close Modal
+    When I close "Invite Recipient Organizations" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Agency                              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
@@ -1492,7 +1492,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    And I close Modal
+    When I close "Funding Accounts" modal by clicking the top right x button
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -1531,7 +1531,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
+    When I close "Enter Review" modal by clicking the top right x button
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -1555,7 +1555,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -1579,7 +1579,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -1601,7 +1601,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -1623,7 +1623,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -1640,7 +1640,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -1650,7 +1650,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    And I close Modal
+    When I close "Invite Recipient Organizations" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Agency                              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
@@ -1682,7 +1682,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    And I close Modal
+    When I close "Funding Accounts" modal by clicking the top right x button
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -1721,7 +1721,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
+    When I close "Enter Review" modal by clicking the top right x button
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -1745,7 +1745,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -1769,7 +1769,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -1791,7 +1791,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -1813,7 +1813,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -1830,7 +1830,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -1840,7 +1840,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    And I close Modal
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Agency                              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
@@ -1869,7 +1869,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    And I close Modal
+    When I close "Funding Accounts" modal by clicking the top right x button
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -1908,7 +1908,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
+    When I close "Enter Review" modal by clicking the top right x button
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -1932,7 +1932,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -1956,7 +1956,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -1978,7 +1978,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -2000,7 +2000,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -2017,7 +2017,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -2027,7 +2027,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    And I close Modal
+    When I close "Invite Recipient Organizations" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Agency                              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
@@ -2055,7 +2055,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    And I close Modal
+    When I close "Funding Accounts" modal by clicking the top right x button
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -2094,7 +2094,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
+    When I close "Enter Review" modal by clicking the top right x button
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -2118,7 +2118,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -2142,7 +2142,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -2164,7 +2164,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -2186,7 +2186,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -2203,7 +2203,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -2213,7 +2213,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    And I close Modal
+    When I close "Invite Recipient Organizations" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Agency                              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
@@ -2245,7 +2245,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    And I close Modal
+    When I close "Funding Accounts" modal by clicking the top right x button
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -2284,7 +2284,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
+    When I close "Enter Review" modal by clicking the top right x button
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -2308,7 +2308,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -2332,7 +2332,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -2354,7 +2354,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -2376,7 +2376,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -2393,7 +2393,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -2403,7 +2403,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    And I close Modal
+    When I close "Invite Recipient Organizations" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Agency                              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
@@ -2434,7 +2434,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    And I close Modal
+    When I close "Funding Accounts" modal by clicking the top right x button
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -2473,7 +2473,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
+    When I close "Enter Review" modal by clicking the top right x button
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -2497,7 +2497,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -2521,7 +2521,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -2543,7 +2543,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -2565,7 +2565,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -2582,7 +2582,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -2592,7 +2592,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    And I close Modal
+    When I close "Invite Recipient Organizations" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Agency                              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
@@ -2624,7 +2624,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    And I close Modal
+    When I close "Funding Accounts" modal by clicking the top right x button
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -2663,7 +2663,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
+    When I close "Enter Review" modal by clicking the top right x button
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -2687,7 +2687,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -2711,7 +2711,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -2733,7 +2733,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -2755,7 +2755,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -2772,7 +2772,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -2782,7 +2782,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    And I close Modal
+    When I close "Invite Recipient Organizations" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Agency                              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
@@ -2811,7 +2811,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    And I close Modal
+    When I close "Funding Accounts" modal by clicking the top right x button
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -2850,7 +2850,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
+    When I close "Enter Review" modal by clicking the top right x button
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -2874,7 +2874,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -2898,7 +2898,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -2920,7 +2920,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -2942,7 +2942,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -2959,7 +2959,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -2970,7 +2970,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    And I close Modal
+    When I close "Invite Recipient Organizations" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Agency                              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
@@ -3003,7 +3003,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    And I close Modal
+    When I close "Funding Accounts" modal by clicking the top right x button
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -3042,7 +3042,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
+    When I close "Enter Review" modal by clicking the top right x button
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -3066,7 +3066,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -3090,7 +3090,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -3112,7 +3112,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -3134,7 +3134,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -3151,7 +3151,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -3161,7 +3161,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    And I close Modal
+    When I close "Invite Recipient Organizations" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Agency                              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
