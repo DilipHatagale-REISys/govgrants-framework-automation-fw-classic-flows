@@ -115,7 +115,7 @@ Feature: Validate creation of data in new Org
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
-    And I close Modal
+    When I close "Associate" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -141,7 +141,7 @@ Feature: Validate creation of data in new Org
       | Automation test description | Mandatory | Application | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---"
     And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close Modal
+    When I close "Upload Template" modal by clicking the top right x button
     And I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Program Artifacts"
     And I click on "Submit For Approval" in the page details
@@ -190,7 +190,7 @@ Feature: Validate creation of data in new Org
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
-    And I close Modal
+    When I close "Funding Accounts" modal by clicking the top right x button
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -229,7 +229,7 @@ Feature: Validate creation of data in new Org
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
+    When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -253,7 +253,7 @@ Feature: Validate creation of data in new Org
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
@@ -277,7 +277,7 @@ Feature: Validate creation of data in new Org
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -299,7 +299,7 @@ Feature: Validate creation of data in new Org
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -321,7 +321,7 @@ Feature: Validate creation of data in new Org
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
@@ -338,7 +338,7 @@ Feature: Validate creation of data in new Org
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
     And I click on "Edit" in the page details
@@ -402,7 +402,7 @@ Feature: Validate creation of data in new Org
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
-    And I close Modal
+    When I close "Funding Accounts" modal by clicking the top right x button
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -423,7 +423,7 @@ Feature: Validate creation of data in new Org
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    And I close Modal
+    When I close "Invite Recipient Organizations" modal by clicking the top right x button
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
       | Role               | Name           | Description                 |
@@ -448,7 +448,7 @@ Feature: Validate creation of data in new Org
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
+    When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Directed" content inside "Announcements" subheader on left panel
@@ -475,7 +475,7 @@ Feature: Validate creation of data in new Org
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
@@ -503,7 +503,7 @@ Feature: Validate creation of data in new Org
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
     And I pause execution for "5" seconds
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
@@ -529,7 +529,7 @@ Feature: Validate creation of data in new Org
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
     And I pause execution for "5" seconds
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
@@ -555,7 +555,7 @@ Feature: Validate creation of data in new Org
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
@@ -575,7 +575,7 @@ Feature: Validate creation of data in new Org
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
     And I click on "Edit" in the page details
@@ -635,8 +635,8 @@ Feature: Validate creation of data in new Org
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    And I close Modal
-    Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
+    When I close "Funding Accounts" modal by clicking the top right x button
+    When I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
     When I navigate to "Financials" sub tab
@@ -674,7 +674,7 @@ Feature: Validate creation of data in new Org
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close Modal
+    When I close "Enter Review" modal by clicking the top right x button
     And I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -698,7 +698,7 @@ Feature: Validate creation of data in new Org
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
@@ -722,7 +722,7 @@ Feature: Validate creation of data in new Org
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -744,7 +744,7 @@ Feature: Validate creation of data in new Org
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -766,7 +766,7 @@ Feature: Validate creation of data in new Org
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
@@ -783,7 +783,7 @@ Feature: Validate creation of data in new Org
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    And I close modal by clicking the top right x button
+    When I close "Review Panel Categories" modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
     And I click on "Edit" in the page details
@@ -793,7 +793,7 @@ Feature: Validate creation of data in new Org
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    And I close Modal
+    When I close "Invite Recipient Organizations" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Agency                              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
@@ -931,7 +931,7 @@ Feature: Validate creation of data in new Org
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
-    When I close Modal
+    When I close "Assign Applications" modal by clicking the top right x button
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -969,19 +969,19 @@ Feature: Validate creation of data in new Org
     And I perform quick search for "Automation PM" in "---applicationReview:-:panelAppTableId---" panel
     And I check "Automation PM" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
-    When I close Modal
+    When I close "Assign Applications" modal by clicking the top right x button
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
     And I perform quick search for "Automation FO" in "---applicationReview:-:panelAppTableId---" panel
     And I check "Automation FO" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
-    When I close Modal
+    When I close "Assign Applications" modal by clicking the top right x button
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---applicationReview:-:panelAppTableId---" panel
     And I check "Automation EXE" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
-    When I close Modal
+    When I close "Assign Applications" modal by clicking the top right x button
     And I check "All" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -1030,7 +1030,7 @@ Feature: Validate creation of data in new Org
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
-    When I close Modal
+    When I close "Assign Applications" modal by clicking the top right x button
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1082,7 +1082,7 @@ Feature: Validate creation of data in new Org
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
     When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
-    And I close modal by clicking the top right x button
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
     When I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -1101,11 +1101,11 @@ Feature: Validate creation of data in new Org
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close Modal
+    When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I navigate to "Management" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
