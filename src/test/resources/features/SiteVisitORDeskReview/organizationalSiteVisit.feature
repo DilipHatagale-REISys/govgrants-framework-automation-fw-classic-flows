@@ -1141,7 +1141,7 @@ Feature: Validate all scenarios in Organizational Site Visit
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    And I close modal by clicking the top right x button
+    When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Application Site Visits" content inside "Application Reviews" subheader on left panel

@@ -2,16 +2,16 @@
 Feature: Validate all scenarios in Progress Report
 
   Background: To create a progress report
-#    Given I delete the record "Automation Permanent Award" from the object "Progress Report"
-#    When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c"
-#    Given I am on "SUBPORTAL" portal
-#    When I login as "SPI" user
-#    And I navigate to "Monitoring" tab
-#    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-#    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
-#    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
-#    And I click on "Save" in the page details
-#    When I get the "EGMS ID"
+    Given I delete the record "Automation Permanent Award" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c"
+    Given I am on "SUBPORTAL" portal
+    When I login as "SPI" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    And I click on "Save" in the page details
+    When I get the "EGMS ID"
 
   @51097 @taskCreationForSubrecipientProgressReport @smoke
   Scenario: To assert the task creation for Progress Report
@@ -957,7 +957,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Edit" icon for "Automation Permanent Award" inside flex table with id "<progressReportsScheduleId>"
     And I enter value "Annually" into field "fieldFrequency__c"
     And I click modal button "Save"
-    And I close Modal
+    When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     Then I see value "Annually" for title "Frequency" inside table "<progressReportsScheduleId>"
     Examples:
       | progressReportsScheduleId                        | progressReportSheet              | subawardsTableId                        | activeGrantsTableId                        |
