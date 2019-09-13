@@ -1915,3 +1915,8 @@ Feature: Validate all scenarios in Progress Report
     Then I see value "2" for title "Actual" against the value "Automation Permanent KPI for Regression" inside table "---progressReport:-:kpiTableId---"
     Then I see the following messages in the page details contains:
       | Saved Successfully! |
+
+  @59571 @emptyDocAttach @jitendra
+  Scenario: Validate Supporting checklist Table is empty if Supporting document checklist data is not added at Grant at SR user end.
+    When I navigate to "Forms and Attachments" sub tab
+    Then I see "No Records Found" inside flex table with id "---progressreport:-:progressReportChecklistsTableId---"
