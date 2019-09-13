@@ -1299,8 +1299,4 @@ Feature: Risk Assessment scenarios without background
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
-=======
-
-
->>>>>>> 2d6f1810c91a917e152e923bea7926fb6b5be02c:src/test/resources/features/Award Risk Assessment/riskAssessmentWB.feature
 
