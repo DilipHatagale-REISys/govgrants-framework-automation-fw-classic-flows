@@ -4410,7 +4410,7 @@ Feature: Validate scenarios in Progress Report
     When I navigate to "Management" sub tab
     And I click on "View" icon for "Record Id" inside flex table with id "---progressreport:-:recipientGrantProgressReportTableId---"
     When I navigate to "Forms and Attachments" sub tab
-    Then I see value "	Optional" for title "Required" against the value "Active" inside table "---progressreport:-:progressReportChecklistsTableId---"
+    Then I see value "Optional" for title "Required" against the value "Active" inside table "---progressreport:-:progressReportChecklistsTableId---"
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
