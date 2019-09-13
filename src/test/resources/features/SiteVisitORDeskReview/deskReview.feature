@@ -1185,7 +1185,7 @@ Feature: Validate all scenarios in Desk Review
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    When I close modal by clicking the top right x button
+    When I close "Desk Review Reviewers" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel

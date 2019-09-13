@@ -33,7 +33,7 @@ Feature: Amendment Request scenarios without background
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
       | Extra Salary | The narrative | 1000            |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close "Subaward Budget Category" modal by clicking the top right x button
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
@@ -218,7 +218,7 @@ Feature: Amendment Request scenarios without background
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
       | Extra Salary | The narrative | 1000            |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close "Subaward Budget Category" modal by clicking the top right x button
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
@@ -312,13 +312,13 @@ Feature: Amendment Request scenarios without background
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close "Subaward Budget Category" modal by clicking the top right x button
     When I click on "Add Line Items" icon for "Project inspection fees" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close "Subaward Budget Category" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -396,7 +396,7 @@ Feature: Amendment Request scenarios without background
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
       | Extra Salary | The narrative | 1000            |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Subaward Budget Category" modal by clicking the top right x button
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
@@ -490,13 +490,13 @@ Feature: Amendment Request scenarios without background
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Add Line Items" modal by clicking the top right x button
     When I click on "Add Line Items" icon for "Project inspection fees" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -575,7 +575,7 @@ Feature: Amendment Request scenarios without background
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
       | Extra Salary | The narrative | 1000            |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Subaward Budget Category" modal by clicking the top right x button
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
@@ -669,7 +669,7 @@ Feature: Amendment Request scenarios without background
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 300            |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Subaward Budget Category" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     Then I see the following messages in the page details contains:
       | Overview Tab - You have a requested a change of $300.0, but the required change is -$-500.00. |
@@ -710,7 +710,7 @@ Feature: Amendment Request scenarios without background
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
       | Extra Salary | The narrative | 1000            |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Subaward Budget Category" modal by clicking the top right x button
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
@@ -804,13 +804,13 @@ Feature: Amendment Request scenarios without background
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Add Line Items" modal by clicking the top right x button
     When I click on "Add Line Items" icon for "Project inspection fees" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -889,7 +889,7 @@ Feature: Amendment Request scenarios without background
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
       | Extra Salary | The narrative | 1000            |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Subaward Budget Category" modal by clicking the top right x button
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
@@ -983,13 +983,13 @@ Feature: Amendment Request scenarios without background
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Add Line Items" modal by clicking the top right x button
     When I click on "Add Line Items" icon for "Project inspection fees" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1066,7 +1066,7 @@ Feature: Amendment Request scenarios without background
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
       | Extra Salary | The narrative | 1000            |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Subaward Budget Category" modal by clicking the top right x button
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
@@ -1160,13 +1160,13 @@ Feature: Amendment Request scenarios without background
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Add Line Items" modal by clicking the top right x button
     When I click on "Add Line Items" icon for "Project inspection fees" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1242,7 +1242,7 @@ Feature: Amendment Request scenarios without background
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
       | Extra Salary | The narrative | 1000            |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Subaward Budget Category" modal by clicking the top right x button
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
@@ -1336,13 +1336,13 @@ Feature: Amendment Request scenarios without background
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Add Line Items" modal by clicking the top right x button
     When I click on "Add Line Items" icon for "Project inspection fees" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1420,7 +1420,7 @@ Feature: Amendment Request scenarios without background
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
       | Extra Salary | The narrative | 1000            |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Subaward Budget Category" modal by clicking the top right x button
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
@@ -1514,13 +1514,13 @@ Feature: Amendment Request scenarios without background
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Add Line Items" modal by clicking the top right x button
     When I click on "Add Line Items" icon for "Project inspection fees" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1598,7 +1598,7 @@ Feature: Amendment Request scenarios without background
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
       | Extra Salary | The narrative | 1000            |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Subaward Budget Category" modal by clicking the top right x button
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
@@ -1692,13 +1692,13 @@ Feature: Amendment Request scenarios without background
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Add Line Items" modal by clicking the top right x button
     When I click on "Add Line Items" icon for "Project inspection fees" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1783,7 +1783,7 @@ Feature: Amendment Request scenarios without background
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Subaward Budget |
       | Extra Salary | The narrative | 1000            |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Subaward Budget Category" modal by clicking the top right x button
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
@@ -1877,13 +1877,13 @@ Feature: Amendment Request scenarios without background
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Add Line Items" modal by clicking the top right x button
     When I click on "Add Line Items" icon for "Site work" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
