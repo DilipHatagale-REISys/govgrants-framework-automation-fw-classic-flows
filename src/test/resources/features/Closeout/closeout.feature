@@ -169,11 +169,12 @@ Feature: Validate all scenarios in Closeout
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
+    And I save the field labeled "EGMS ID" as "EGMSID"
     And I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---"
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
       | Extra Salary | The narrative | 500        | 1        | Feet        | 0                 | 0               | 0                        | 100        | 100            |
-    When I close modal by clicking the top right x button
+    When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -195,7 +196,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Mark As Paid" in the page details
     And I enter "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
     When I click modal button "Save"
-    And I close Modal
+    When I close "{SavedValue:EGMSID}" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "DynamicUser" user on "INTERNAL" portal
     And I navigate to "Closeout" tab
     When I navigate to "Project Period Closeouts" content inside "Closeouts" subheader on left panel
@@ -229,8 +230,8 @@ Feature: Validate all scenarios in Closeout
     And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Permanent Award | Automation Permanent Award |
+      | Award Name                 |
+      | Automation Permanent Award |
 
   @adhocCloseoutHappyPath @smoke @notFunctional @wip
   Scenario: Approval of Closeout

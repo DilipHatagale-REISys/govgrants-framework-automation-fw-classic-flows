@@ -66,4 +66,9 @@ public class ProgressReportSteps {
     public void iSeeTheReportedDateFieldContainsTodaysDate() {
         progressReportPage.assertReportedDateField();
     }
+
+    @Then("^I see field \"([^\"]*)\" is not editable$")
+    public void iSeeFieldIsNotEditable(String fieldAPIName) {
+        progressReportPage.assertFieldIsEditableOrNot(fieldAPIName);
+    }
 }
