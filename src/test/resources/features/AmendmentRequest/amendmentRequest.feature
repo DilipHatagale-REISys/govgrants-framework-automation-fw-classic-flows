@@ -106,7 +106,6 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Terms and Conditions"
-    When I close "Add Attachments" modal by clicking the top right x button
     When I wait for "6" seconds
     Then I see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
 
@@ -204,13 +203,13 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Edit" in the page details
     And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
-    When I click on top right button "Associate" in flex table with id "---amendment:-:keyOutcomesTableId---"
+    Given I click on top right button "Associate" in flex table with id "---amendment:-:keyOutcomesTableId---"
     And I enter values into fields
       | Value                                   | Field        |
       | Automation Permanent KPI for Regression | MasterKPI__c |
       | 10                                      | Target__c    |
-    And I click modal button "Save"
-    When I close "Grantor Amendment KPIs" modal by clicking the top right x button
+    Given I click modal button "Save"
+    And I close Modal
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:approversTableId---" by clicking "Edit" :
       | Role               | Name           | Description                 |
@@ -219,7 +218,6 @@ Feature: Validate all scenarios in the Amendment Request
       | Fiscal Approver    | Automation FO  | Automation Test Description |
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Terms and Conditions"
-    When I close "Add Attachments" modal by clicking the top right x button
     And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -270,7 +268,7 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Permanent KPI for Regression | MasterKPI__c |
       | 10                                      | Target__c    |
     Given I click modal button "Save"
-    When I close "Grantor Amendment KPIs" modal by clicking the top right x button
+    And I close Modal
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:approversTableId---" by clicking "Edit" :
       | Role               | Name           | Description                 |
@@ -279,7 +277,6 @@ Feature: Validate all scenarios in the Amendment Request
       | Fiscal Approver    | Automation FO  | Automation Test Description |
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Terms and Conditions"
-    When I close "Add Attachments" modal by clicking the top right x button
     And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -339,7 +336,7 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Permanent KPI for Regression | MasterKPI__c |
       | 10                                      | Target__c    |
     When I click modal button "Save"
-    When I close "Grantor Amendment KPIs" modal by clicking the top right x button
+    And I close Modal
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:approversTableId---" by clicking "Edit" :
       | Role               | Name           | Description                 |
@@ -348,7 +345,6 @@ Feature: Validate all scenarios in the Amendment Request
       | Fiscal Approver    | Automation FO  | Automation Test Description |
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Terms and Conditions"
-    When I close "Add Attachments" modal by clicking the top right x button
     And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -673,13 +669,13 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     Then I cannot see top right button "Edit" in page detail
 
@@ -742,13 +738,13 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -794,13 +790,13 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -852,13 +848,13 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -900,13 +896,13 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -966,13 +962,13 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1008,13 +1004,13 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1052,13 +1048,13 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1105,13 +1101,13 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 500            |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 500            |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1150,13 +1146,13 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 500            |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 500            |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1196,7 +1192,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1263,7 +1259,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I am on "INTERNAL" portal
@@ -1306,7 +1302,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1352,7 +1348,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1389,7 +1385,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1432,7 +1428,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1455,7 +1451,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1533,7 +1529,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 100            |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1633,7 +1629,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 100            |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1684,7 +1680,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) |
       | Extra Salary | The narrative | 10         | 1        | Feet        | 0                 |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     When I get the "EGMS ID"
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1887,13 +1883,13 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     And I switch to iframe with id "RecipientAmendmentRequestBudgetTableiframeContentId"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1916,7 +1912,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab

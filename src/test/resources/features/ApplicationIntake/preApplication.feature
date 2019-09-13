@@ -44,14 +44,12 @@ Feature: Validate all scenarios in the Pre-Application
   Scenario: Validate the attachment checklist of the PreApplication
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
-    When I close "Add Attachments" modal by clicking the top right x button
     Then I see "Active" has been added in "Attachments" flex table
 
   @53159 @PreApplicationAttachmentCA
   Scenario: Validate the attachment of the PreApplication
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
-    When I close "Add Attachments" modal by clicking the top right x button
     Then I see "Other" has been added in "Attachments" flex table
 
   @53160 @submitPreApplication @smoke
@@ -65,7 +63,6 @@ Feature: Validate all scenarios in the Pre-Application
       | Construction  | 5000   | 5000       | 50             | 100            |
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
-    When I close "Add Attachments" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted" and is "green"
 
@@ -80,7 +77,6 @@ Feature: Validate all scenarios in the Pre-Application
       | Construction  | 5000   | 5000       | 50             | 100            |
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
-    When I close "Add Attachments" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab

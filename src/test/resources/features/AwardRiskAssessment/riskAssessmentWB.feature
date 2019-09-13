@@ -3,12 +3,12 @@ Feature: Risk Assessment scenarios without background
 
   @59253 @riskAssessmentSetasYesAtAnnouncementSettings @deepika
   Scenario:  Validate whether creation of risk assessment is mandatory for award activation when Risk assessment is set as 'Yes' in Announcement setting.
-    Given I delete the record "Automation Desk Review" from the object "Desk Review"
-    When I delete the record "Automation Site Visit" from the object "Site Visit"
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     And I delete the record "Automation Competitive Announcement" from the object "Qualified Announcement"
     Given I delete the record "Automation Competitive Announcement" from the object "Application"
     Given I delete the record "Automation Competitive Announcement" from the object "APPLICATION REVIEWS"
+    Given I delete the record "Automation Desk Review" from the object "Desk Review"
+    When I delete the record "Automation Site Visit" from the object "Site Visit"
     And I delete the record "Automation Competitive Announcement" from the object "FDM"
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
@@ -27,7 +27,7 @@ Feature: Risk Assessment scenarios without background
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
-    When I close "Funding Accounts" modal by clicking the top right x button
+    And I close Modal
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -66,6 +66,7 @@ Feature: Risk Assessment scenarios without background
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
+    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -89,7 +90,7 @@ Feature: Risk Assessment scenarios without background
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
@@ -113,7 +114,7 @@ Feature: Risk Assessment scenarios without background
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -135,7 +136,7 @@ Feature: Risk Assessment scenarios without background
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -157,7 +158,7 @@ Feature: Risk Assessment scenarios without background
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
@@ -174,7 +175,7 @@ Feature: Risk Assessment scenarios without background
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
     And I click on "Edit" in the page details
@@ -247,7 +248,7 @@ Feature: Risk Assessment scenarios without background
     And I navigate to "Attachments" sub tab
     And I click on "Attach" icon for "Active" inside flex table with id "---applicationIntake:-:attachmentsTableId---"
     And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close "Add Attachments" modal by clicking the top right x button
+    And I close Modal
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -307,7 +308,7 @@ Feature: Risk Assessment scenarios without background
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
-    When I close "Assign Applications" modal by clicking the top right x button
+    When I close Modal
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -345,19 +346,19 @@ Feature: Risk Assessment scenarios without background
     And I perform quick search for "Automation PM" in "---applicationReview:-:panelAppTableId---" panel
     And I check "Automation PM" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
-    When I close "Assign Reviewers" modal by clicking the top right x button
+    When I close Modal
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
     And I perform quick search for "Automation FO" in "---applicationReview:-:panelAppTableId---" panel
     And I check "Automation FO" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
-    When I close "Assign Reviewers" modal by clicking the top right x button
+    When I close Modal
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---applicationReview:-:panelAppTableId---" panel
     And I check "Automation EXE" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
-    When I close "Assign Reviewers" modal by clicking the top right x button
+    When I close Modal
     And I check "All" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -406,7 +407,7 @@ Feature: Risk Assessment scenarios without background
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
-    When I close "Assign Applications" modal by clicking the top right x button
+    When I close Modal
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -501,7 +502,7 @@ Feature: Risk Assessment scenarios without background
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
-    When I close "Funding Accounts" modal by clicking the top right x button
+    And I close Modal
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -540,6 +541,7 @@ Feature: Risk Assessment scenarios without background
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
+    And I close Modal
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -563,7 +565,7 @@ Feature: Risk Assessment scenarios without background
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
@@ -587,7 +589,7 @@ Feature: Risk Assessment scenarios without background
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -609,7 +611,7 @@ Feature: Risk Assessment scenarios without background
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -631,7 +633,7 @@ Feature: Risk Assessment scenarios without background
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
@@ -648,7 +650,7 @@ Feature: Risk Assessment scenarios without background
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
     And I click on "Edit" in the page details
@@ -721,7 +723,7 @@ Feature: Risk Assessment scenarios without background
     And I navigate to "Attachments" sub tab
     And I click on "Attach" icon for "Active" inside flex table with id "---applicationIntake:-:attachmentsTableId---"
     And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close "Add Attachments" modal by clicking the top right x button
+    And I close Modal
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -781,7 +783,7 @@ Feature: Risk Assessment scenarios without background
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
-    When I close "Assign Applications" modal by clicking the top right x button
+    When I close Modal
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -819,19 +821,19 @@ Feature: Risk Assessment scenarios without background
     And I perform quick search for "Automation PM" in "---applicationReview:-:panelAppTableId---" panel
     And I check "Automation PM" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
-    When I close "Assign Reviewers" modal by clicking the top right x button
+    When I close Modal
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
     And I perform quick search for "Automation FO" in "---applicationReview:-:panelAppTableId---" panel
     And I check "Automation FO" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
-    When I close "Assign Reviewers" modal by clicking the top right x button
+    When I close Modal
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
     And I perform quick search for "Automation EXE" in "---applicationReview:-:panelAppTableId---" panel
     And I check "Automation EXE" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
-    When I close "Assign Reviewers" modal by clicking the top right x button
+    When I close Modal
     And I check "All" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -880,7 +882,7 @@ Feature: Risk Assessment scenarios without background
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
-    When I close "Assign Applications" modal by clicking the top right x button
+    When I close Modal
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1297,4 +1299,8 @@ Feature: Risk Assessment scenarios without background
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
+=======
+
+
+>>>>>>> 2d6f1810c91a917e152e923bea7926fb6b5be02c:src/test/resources/features/Award Risk Assessment/riskAssessmentWB.feature
 

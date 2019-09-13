@@ -126,7 +126,6 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     Then I see that "Record Id" is in "Approved" status
-    Then I see status in Progress-bar is "Approved" and is "Green"
 
   @58168 @rejectRiskAssessmenttoOwner @deepika
   Scenario: Validate whether First Approver is able to reject the Risk Assessment. Also status in Progress bar is Rejected.

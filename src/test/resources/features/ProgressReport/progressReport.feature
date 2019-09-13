@@ -957,7 +957,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Edit" icon for "Automation Permanent Award" inside flex table with id "<progressReportsScheduleId>"
     And I enter value "Annually" into field "fieldFrequency__c"
     And I click modal button "Save"
-    When I close "Edit Progress Report Schedule" modal by clicking the top right x button
+    And I close Modal
     Then I see value "Annually" for title "Frequency" inside table "<progressReportsScheduleId>"
     Examples:
       | progressReportsScheduleId                        | progressReportSheet              | subawardsTableId                        | activeGrantsTableId                        |
@@ -1915,33 +1915,3 @@ Feature: Validate all scenarios in Progress Report
     Then I see value "2" for title "Actual" against the value "Automation Permanent KPI for Regression" inside table "---progressReport:-:kpiTableId---"
     Then I see the following messages in the page details contains:
       | Saved Successfully! |
-
-  @59831 @validateSRUserCannotEditPreviousActualField @mahadev
-  Scenario: Validate SR user is not able to edit the Previous Actual field on KPI table under Performance tab at Progress report
-    And I navigate to "Performance" sub tab
-    When I click on "Edit" icon for "Automation Permanent KPI for Regression" inside flex table with id "---progressReport:-:kpiTableId---"
-    Then I see field "PreviousActual__c" is not editable
-
-  @59829 @validateSRUserCannotEditKPIOnceSubmittedToGrantor @mahadev
-  Scenario: Validate SR user is not able to update the KPI actuals field value once Progress report is Submitted to Grantor
-    And I click on "Edit" in the page details
-    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    And I navigate to "Performance" sub tab
-    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                                   | Actual | Reported Date |
-      | Automation Permanent KPI for Regression | 10     | 7             |
-    When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
-    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    And I click on "Back" in the page details
-    When I click on "Submit to Grantor" in the page details
-    And I navigate to "Performance" sub tab
-    Then I cannot see row level action button "Edit" against "Automation Permanent KPI for Regression" in flex table with id "---progressreport:-:kpiTableId---"
-
-  @59832 @validateSRUserCannotEditPreviousDateField @mahadev
-  Scenario: Validate SR user is not able to edit the Previous Actual field on KPI table under Performance tab at Progress report
-    And I navigate to "Performance" sub tab
-    When I click on "Edit" icon for "Automation Permanent KPI for Regression" inside flex table with id "---progressReport:-:kpiTableId---"
-    Then I see field "PreviousDate__c" is not editable
