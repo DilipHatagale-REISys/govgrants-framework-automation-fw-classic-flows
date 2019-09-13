@@ -23,10 +23,10 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    When I close "Funding Accounts" modal by clicking the top right x button
+    And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-      | Funding Account             | Pre-Encumbrance |
-      | {SavedValue:fundingAccount} | 100             |
+      | Funding Account | Pre-Encumbrance |
+      | {SavedValue:fundingAccount}         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -62,7 +62,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    When I close "Enter Review" modal by clicking the top right x button
+    And I close Modal
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -86,7 +86,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -110,7 +110,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -132,7 +132,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -154,7 +154,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -171,7 +171,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -190,8 +190,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I perform quick search for "Record id" in "ActiveFundingOpportunitiesCompitive" panel
     Then I cannot see row level action button "Delete" against "Record id" in flex table with id "ActiveFundingOpportunitiesCompitive"
     Examples:
-      | Announcement Type |
-      | Competitive       |
+      | Announcement Type | Active Funding Opportunities id     | User |
+      | Competitive       | ActiveFundingOpportunitiesCompitive | EXE  |
 
   @announcementForPastApplicationDueDateCA
   Scenario Outline: Validate that user can not enter application due date as past date
@@ -201,10 +201,10 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    When I close "Funding Accounts" modal by clicking the top right x button
+    And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-      | Funding Account             | Pre-Encumbrance |
-      | {SavedValue:fundingAccount} | 100             |
+      | Funding Account | Pre-Encumbrance |
+      | {SavedValue:fundingAccount}         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -240,7 +240,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    When I close "Enter Review" modal by clicking the top right x button
+    And I close Modal
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -264,7 +264,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -288,7 +288,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -310,7 +310,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -332,7 +332,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -349,7 +349,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -367,8 +367,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I see the following messages in the page details :
       | Overview Tab - Application Due Date cannot be in the past. |
     Examples:
-      | Announcement Type |
-      | Competitive       |
+      | Announcement Type | Active Funding Opportunities id     | User |
+      | Competitive       | ActiveFundingOpportunitiesCompitive | EXE  |
 
   @announcementWithBlankBudgetPeriodCA
   Scenario Outline:    Validate that user should not submit announcement with blank budget period dates
@@ -378,10 +378,10 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    When I close "Funding Accounts" modal by clicking the top right x button
+    And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-      | Funding Account             | Pre-Encumbrance |
-      | {SavedValue:fundingAccount} | 100             |
+      | Funding Account | Pre-Encumbrance |
+      | {SavedValue:fundingAccount}         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -417,7 +417,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    When I close "Enter Review" modal by clicking the top right x button
+    And I close Modal
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -441,7 +441,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -465,7 +465,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -487,7 +487,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -509,7 +509,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -526,7 +526,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -538,8 +538,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I see the following messages in the page details :
       | Financial Tab - Correct Budget Periods Start Date and End Dates. Budget Periods should be continuous and together should form a Project Period. |
     Examples:
-      | Announcement Type |
-      | Competitive       |
+      | Announcement Type | Active Funding Opportunities id     | User |
+      | Competitive       | ActiveFundingOpportunitiesCompitive | EXE  |
 
   @announcementApprovalCA
   Scenario Outline: Validate the approval of an Announcement
@@ -549,10 +549,10 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    When I close "Funding Accounts" modal by clicking the top right x button
+    And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-      | Funding Account             | Pre-Encumbrance |
-      | {SavedValue:fundingAccount} | 100             |
+      | Funding Account | Pre-Encumbrance |
+      | {SavedValue:fundingAccount}         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -588,7 +588,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    When I close "Enter Review" modal by clicking the top right x button
+    And I close Modal
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -612,7 +612,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -636,7 +636,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -658,7 +658,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -680,7 +680,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -697,7 +697,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -717,8 +717,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Approval   | Start         | Approve       |                   |
     Then I see status in Progress-bar is "Approved" and is "green"
     Examples:
-      | Announcement Type |
-      | Competitive       |
+      | Announcement Type | Active Funding Opportunities id     | User |
+      | Competitive       | ActiveFundingOpportunitiesCompitive | EXE  |
 
   @announcementPendingTaskPostApprovalCA
   Scenario Outline: Validate that after approval of an Announcement task get deleted from pending task table.
@@ -728,10 +728,10 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    When I close "Funding Accounts" modal by clicking the top right x button
+    And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-      | Funding Account             | Pre-Encumbrance |
-      | {SavedValue:fundingAccount} | 100             |
+      | Funding Account | Pre-Encumbrance |
+      | {SavedValue:fundingAccount}         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -767,7 +767,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    When I close "Enter Review" modal by clicking the top right x button
+    And I close Modal
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -791,7 +791,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -815,7 +815,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -837,7 +837,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -859,7 +859,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -876,7 +876,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -899,8 +899,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     Then I do not see values "Record Id" and "Automation Competitive Announcement" inside table
     Examples:
-      | Announcement Type |
-      | Competitive       |
+      | Announcement Type | Active Funding Opportunities id     | User |
+      | Competitive       | ActiveFundingOpportunitiesCompitive | EXE  |
 
   @announcementCompletedTaskPostApprovalCA @smoke
   Scenario Outline: Validate that after approval of an Announcement task get added to its completed task table.
@@ -910,10 +910,10 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    When I close "Funding Accounts" modal by clicking the top right x button
+    And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-      | Funding Account             | Pre-Encumbrance |
-      | {SavedValue:fundingAccount} | 100             |
+      | Funding Account | Pre-Encumbrance |
+      | {SavedValue:fundingAccount}         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -949,7 +949,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    When I close "Enter Review" modal by clicking the top right x button
+    And I close Modal
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -973,7 +973,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -997,7 +997,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -1019,7 +1019,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -1041,7 +1041,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -1058,7 +1058,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -1081,8 +1081,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I perform quick search for "Record Id" in "PhaseCompletedTasks" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "PhaseCompletedTasks"
     Examples:
-      | Announcement Type |
-      | Competitive       |
+      | Announcement Type | Active Funding Opportunities id     | User |
+      | Competitive       | ActiveFundingOpportunitiesCompitive | EXE  |
 
   @announcementSendBackToOwnerCA @smoke
   Scenario Outline: Validate the send back functionality of an Announcement
@@ -1093,8 +1093,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-      | Funding Account             | Pre-Encumbrance |
-      | {SavedValue:fundingAccount} | 100             |
+      | Funding Account | Pre-Encumbrance |
+      | {SavedValue:fundingAccount}          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -1130,7 +1130,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    When I close "Enter Review" modal by clicking the top right x button
+    And I close Modal
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     Given I am on "INTERNAL" portal
     When I login as "EXE" user
@@ -1156,7 +1156,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -1180,7 +1180,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -1202,7 +1202,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -1224,7 +1224,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -1241,7 +1241,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -1261,8 +1261,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Approval   | Start         | Send to Owner | Continue          |
     Then I see status in Progress-bar is "Created" and is "green"
     Examples:
-      | Announcement Type | Active Funding Opportunities id     |
-      | Competitive       | ActiveFundingOpportunitiesCompitive |
+      | Announcement Type | Active Funding Opportunities id     | User |
+      | Competitive       | ActiveFundingOpportunitiesCompitive | EXE  |
 
   @announcementSendBackPendingTaskToOwnerCA
   Scenario Outline: Validate that after send back from approvers owner should not get pending task
@@ -1272,10 +1272,10 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    When I close "Funding Accounts" modal by clicking the top right x button
+    And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-      | Funding Account             | Pre-Encumbrance |
-      | {SavedValue:fundingAccount} | 100             |
+      | Funding Account | Pre-Encumbrance |
+      | {SavedValue:fundingAccount}         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -1311,7 +1311,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    When I close "Enter Review" modal by clicking the top right x button
+    And I close Modal
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -1335,7 +1335,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -1359,7 +1359,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -1381,7 +1381,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -1403,7 +1403,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -1420,7 +1420,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -1444,8 +1444,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     Then I do not see values "Record Id" and "Automation Competitive Announcement" inside table
     Examples:
-      | Announcement Type | User |
-      | Competitive       | EXE  |
+      | Announcement Type | Active Funding Opportunities id     | User |
+      | Competitive       | ActiveFundingOpportunitiesCompitive | EXE  |
 
   @announcementPostSendBackCheckFieldHistoryCA
   Scenario Outline: Validate the field history after send back of an announcement
@@ -1455,10 +1455,10 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
-    When I close "Funding Accounts" modal by clicking the top right x button
+    And I close Modal
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-      | Funding Account             | Pre-Encumbrance |
-      | {SavedValue:fundingAccount} | 100             |
+      | Funding Account | Pre-Encumbrance |
+      | {SavedValue:fundingAccount}         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -1494,7 +1494,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    When I close "Enter Review" modal by clicking the top right x button
+    And I close Modal
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -1518,7 +1518,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -1542,7 +1542,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -1564,7 +1564,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -1586,7 +1586,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -1603,7 +1603,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -1624,8 +1624,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "History" sub tab
     Then I see that "Announcement" is in "Created" status
     Examples:
-      | Announcement Type |
-      | Competitive       |
+      | Announcement Type | Active Funding Opportunities id     | User |
+      | Competitive       | ActiveFundingOpportunitiesCompitive | EXE  |
 
   @announcementRejectPendingTaskForNextApproverCA
   Scenario Outline: Validate that after rejection from 1st approver, 2nd user should not get pending task
@@ -1636,8 +1636,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-      | Funding Account             | Pre-Encumbrance |
-      | {SavedValue:fundingAccount} | 100             |
+      | Funding Account | Pre-Encumbrance |
+      | {SavedValue:fundingAccount}          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -1673,7 +1673,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    When I close "Enter Review" modal by clicking the top right x button
+    And I close Modal
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     Given I am on "INTERNAL" portal
     When I login as "EXE" user
@@ -1699,7 +1699,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -1723,7 +1723,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -1745,7 +1745,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -1767,7 +1767,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -1784,7 +1784,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -1809,8 +1809,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I perform quick search for "Record Id" in "PhasePendingTasks" panel
     Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
     Examples:
-      | Announcement Type | Active Funding Opportunities id     |
-      | Competitive       | ActiveFundingOpportunitiesCompitive |
+      | Announcement Type | Active Funding Opportunities id     | User |
+      | Competitive       | ActiveFundingOpportunitiesCompitive | EXE  |
 
   @announcementPostRejectPendingTaskForUserCA
   Scenario Outline: Validate that after rejection of an Announcement task get deleted from pending task table.
@@ -1821,8 +1821,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-      | Funding Account             | Pre-Encumbrance |
-      | {SavedValue:fundingAccount} | 100             |
+      | Funding Account | Pre-Encumbrance |
+      | {SavedValue:fundingAccount}          | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -1858,7 +1858,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    When I close "Enter Review" modal by clicking the top right x button
+    And I close Modal
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -1882,7 +1882,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -1906,7 +1906,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -1928,7 +1928,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -1950,7 +1950,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -1967,7 +1967,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -1990,8 +1990,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I perform quick search for "Record Id" in "PhasePendingTasks" panel
     Then I do not see values "Record Id" and "Automation Competitive Announcement" inside table
     Examples:
-      | Announcement Type |
-      | Competitive       |
+      | Announcement Type | Active Funding Opportunities id     | User |
+      | Competitive       | ActiveFundingOpportunitiesCompitive | EXE  |
 
   @announcementPostRejectCompletedTaskForUserCA
   Scenario Outline: Validate that after rejection of an Announcement task get added to it's completed task table.
@@ -2002,8 +2002,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-      | Funding Account             | Pre-Encumbrance |
-      | {SavedValue:fundingAccount} | 100             |
+      | Funding Account | Pre-Encumbrance |
+      | {SavedValue:fundingAccount}         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -2039,7 +2039,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    When I close "Enter Review" modal by clicking the top right x button
+    And I close Modal
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     And I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -2063,7 +2063,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -2087,7 +2087,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -2109,7 +2109,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -2131,7 +2131,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -2148,7 +2148,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -2172,8 +2172,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I perform quick search for "Record Id" in "PhaseCompletedTasks" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "PhaseCompletedTasks"
     Examples:
-      | Active Funding Opportunities id     |
-      | ActiveFundingOpportunitiesCompitive |
+      | Announcement Type | Active Funding Opportunities id     | User |
+      | Competitive       | ActiveFundingOpportunitiesCompitive | EXE  |
 
   @announcementPostRejectionCheckInListViewCA
   Scenario Outline: Validate the rejected announcement will reflect under "Rejected Announcements" list view
@@ -2184,8 +2184,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Actions     | Step 1     | Step 2    | Step 3                                    | Step 4 | Step 5                   |
       | Associate 1 | Financials | Associate | flexGridAnnouncementFundingAccountGrantor | Add    | SelectAnnFundingAccounts |
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
-      | Funding Account             | Pre-Encumbrance |
-      | {SavedValue:fundingAccount} | 100             |
+      | Funding Account | Pre-Encumbrance |
+      | {SavedValue:fundingAccount}         | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -2221,7 +2221,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    When I close "Enter Review" modal by clicking the top right x button
+    And I close Modal
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -2245,7 +2245,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
     When I click on "Review Form" icon for "Compliance Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -2269,7 +2269,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -2291,7 +2291,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
     And I edit the following rows inline in flex table with id "flexGridReviewPanelCategories" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -2313,7 +2313,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Impact"
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I click on "Review Form" icon for "Management Review" inside flex table with id "flexGridAnnouncementReviewTemplates"
@@ -2330,7 +2330,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "RelatedReviewPanelQuestionsmodalDiv" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
-    When I close "Review Panel Categories" modal by clicking the top right x button
+    And I close modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
@@ -2356,5 +2356,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I perform quick search for "Record id" in "ActiveFundingOpportunitiesCompitive" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "ActiveFundingOpportunitiesCompitive"
     Examples:
-      | Announcement Type | User |
-      | Competitive       | EXE  |
+      | Announcement Type | Active Funding Opportunities id     | User |
+      | Competitive       | ActiveFundingOpportunitiesCompitive | EXE  |
+
+
+	

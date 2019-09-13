@@ -957,7 +957,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Edit" icon for "Automation Permanent Award" inside flex table with id "<progressReportsScheduleId>"
     And I enter value "Annually" into field "fieldFrequency__c"
     And I click modal button "Save"
-    When I close "Edit Progress Report Schedule" modal by clicking the top right x button
+    And I close Modal
     Then I see value "Annually" for title "Frequency" inside table "<progressReportsScheduleId>"
     Examples:
       | progressReportsScheduleId                        | progressReportSheet              | subawardsTableId                        | activeGrantsTableId                        |

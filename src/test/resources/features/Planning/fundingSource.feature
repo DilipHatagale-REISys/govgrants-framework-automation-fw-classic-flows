@@ -39,7 +39,6 @@ Feature: Validate all scenarios in Funding Source
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Supporting Documents"
-    When I close "Add Attachments" modal by clicking the top right x button
     Then I see "Supporting Documents" has been added in "Attachments" flex table
 
   @51037 @creationOfFundingAccount @smoke
