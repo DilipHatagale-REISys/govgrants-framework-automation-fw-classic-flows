@@ -922,7 +922,6 @@ Feature: Risk Assessment scenarios without background
     And I click on "Save" in the page details
     And I get the "EGMS ID"
     And I navigate to "Management" sub tab
-<<<<<<< HEAD:src/test/resources/features/AwardRiskAssessment/riskAssessmentWB.feature
     Then I cannot see field "Risk Assessment" inside page block
 
    @59955 @awardIsActiveSecondRiskAssessmentIsInCreatedState @deepika
