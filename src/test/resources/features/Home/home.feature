@@ -32,13 +32,10 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
-    When I switch to iframe with id "iframeFlexGridSearch"
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     Then I see that "Internal Organization" is in "Active" status
     Examples:
       | User  |
-      | PM    |
-      | EXE   |
       | ADMIN |
 
   @56709 @internalOrganizationADMINEdit
@@ -47,7 +44,6 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
-    When I switch to iframe with id "iframeFlexGridSearch"
     When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
     Then I see that "Internal Organization" is in "Active" status
 
@@ -396,7 +392,6 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
-    When I switch to iframe with id "iframeFlexGridSearch"
     When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
     And I click on top right button "New" in flex table with id "---home:-:additionalAddressTableId---"
     And I enter "AdditionalAddressesCreation" values from "InternalOrganization_Field_Values.xlsx"
@@ -413,7 +408,6 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
-    When I switch to iframe with id "iframeFlexGridSearch"
     When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
     And I click on top right button "New" in flex table with id "---home:-:additionalAddressTableId---"
     And I enter "AdditionalAddressesCreation" values from "InternalOrganization_Field_Values.xlsx"
@@ -435,7 +429,6 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
-    When I switch to iframe with id "iframeFlexGridSearch"
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     And I click on top right button "New" in flex table with id "---home:-:relatedContactsTableId---"
     And I enter "RelatedContactsCreation" values from "InternalOrganization_Field_Values.xlsx"
@@ -450,7 +443,6 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
-    When I switch to iframe with id "iframeFlexGridSearch"
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     And I click on top right button "New" in flex table with id "---home:-:relatedContactsTableId---"
     And I enter "RelatedContactsCreation" values from "InternalOrganization_Field_Values.xlsx"
@@ -473,7 +465,6 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
-    When I switch to iframe with id "iframeFlexGridSearch"
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     And I click on top right button "New" in flex table with id "---home:-:relatedContactsTableId---"
     And I enter "RelatedContactsCreation" values from "InternalOrganization_Field_Values.xlsx"
@@ -492,7 +483,6 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
-    When I switch to iframe with id "iframeFlexGridSearch"
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     When I enter the following values into flex table with id "---home:-:dunsTableId---" by clicking "New" :
       | DUNS Number | Registered Entity Name | Location |
@@ -508,7 +498,6 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
-    When I switch to iframe with id "iframeFlexGridSearch"
     When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
     When I enter the following values into flex table with id "---home:-:dunsTableId---" by clicking "New" :
       | DUNS Number | Registered Entity Name | Location |
@@ -526,7 +515,6 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
-    When I switch to iframe with id "iframeFlexGridSearch"
     When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
     When I enter the following values into flex table with id "---home:-:dunsTableId---" by clicking "New" :
       | DUNS Number | Registered Entity Name | Location |
@@ -543,7 +531,6 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
-    When I switch to iframe with id "iframeFlexGridSearch"
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     When I click on top right button "New" in flex table with id "inlineEditGridIndirectRateGrid"
     And I enter "New IDC" values from "InternalOrganization_Field_Values.xlsx"
@@ -558,7 +545,6 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
-    When I switch to iframe with id "iframeFlexGridSearch"
     When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
     Then I see that "Internal Organization" is in "Active" status
     Examples:
@@ -579,7 +565,6 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
-    When I switch to iframe with id "iframeFlexGridSearch"
     When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
     Then I see that "Test Automation Organization" is in "Active" status
     Examples:

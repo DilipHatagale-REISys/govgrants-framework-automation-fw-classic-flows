@@ -2265,14 +2265,13 @@ Feature: The feature is only designed for ensuring all business flows are workin
 
   @activeRiskAssessment
   Scenario: Validate whether user is able to View Active Risk Assessment under Monitoring
-    When I login to "As a Grantor" app as "dynamicUser" user
     When I delete the record "Automation Award for Risk Assessment" from the object "Award"
     When I delete the record "Automation Award for Risk Assessment" from the object "Grant"
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
-    And I enter "Grant_Creation1" values from "Award_Field_Values.xlsx"
+    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
     And I click modal button "Continue"
     And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
     When I click modal button "Save and Continue"
