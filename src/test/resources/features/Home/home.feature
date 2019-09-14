@@ -37,6 +37,10 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
+      | PM    |
+      |EXE    |
+
+
 
   @56709 @internalOrganizationADMINEdit
   Scenario: Validate system allows Edit access to Internal Organizations to the ADMIN/DA
