@@ -200,7 +200,7 @@ Feature: Validate all scenarios in Closeout
     When I re-login to "As a Grantor" app as "DynamicUser" user on "INTERNAL" portal
     And I navigate to "Closeout" tab
     When I navigate to "Project Period Closeouts" content inside "Closeouts" subheader on left panel
-    And I click toggle button to select "Project Period Closeouts - Open"
+    And I click toggle button to select "Project Period Closeouts - All"
     And I perform quick search for "Record Id" in "ProjectPeriodCloseoutGrantor" panel
     And I click on "View" icon for "Record Id" inside flex table with id "ProjectPeriodCloseoutGrantor"
     When I navigate to "Responsibilities" sub tab

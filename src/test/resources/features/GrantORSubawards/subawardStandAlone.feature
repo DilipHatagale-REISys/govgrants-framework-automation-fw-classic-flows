@@ -129,6 +129,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Approve" on the approval decision box
+    And I wait for "30" seconds
     Then I see status in Progress-bar is "Active" and is "Green"
 
   @51137 @allApproverSelection
