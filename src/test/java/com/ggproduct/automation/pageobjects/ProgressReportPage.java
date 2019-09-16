@@ -119,5 +119,20 @@ public class ProgressReportPage extends ProjectManager {
     public void assertReportedDateField(){
         Assert.assertEquals(EyeThink.core().Properties().getValue("ReportedDate"),EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("MM/dd/yyyy")).replaceAll("^0",""));
     }
+
+    public Boolean isFieldEditable(String fieldAPIName){
+        boolean flag=true;
+        try {
+            if (EyeThink.core().is().onWeb().isDisplayed(By.xpath("//field[@field-name='"+ fieldAPIName +"']/input")))
+                flag = true;
+        }catch (Exception e){
+            flag = false;
+        }
+        return flag;
+    }
+
+    public void assertFieldIsEditableOrNot(String fieldAPIName){
+        Assert.assertFalse(isFieldEditable(fieldAPIName));
+    }
 }
 
