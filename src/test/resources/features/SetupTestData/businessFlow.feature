@@ -1897,7 +1897,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
-    When I click "Add" after selection of "Automation Announcement for FDM" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Application" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -2224,7 +2224,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I re-login to "As a Grantor" app as "DynamicUser" user on "INTERNAL" portal
     And I navigate to "Closeout" tab
     When I navigate to "Project Period Closeouts" content inside "Closeouts" subheader on left panel
-    And I click toggle button to select "Project Period Closeouts - Open"
+    And I click toggle button to select "Project Period Closeouts - All"
     And I perform quick search for "Record Id" in "ProjectPeriodCloseoutGrantor" panel
     And I click on "View" icon for "Record Id" inside flex table with id "ProjectPeriodCloseoutGrantor"
     When I navigate to "Responsibilities" sub tab
