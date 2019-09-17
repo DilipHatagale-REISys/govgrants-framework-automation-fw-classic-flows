@@ -64,7 +64,7 @@ public class ProgressReportPage extends ProjectManager {
      * @param linkName
      */
     public void clickOnLink(String linkName){
-        EyeThink.core().click().onWeb(By.xpath("//span[contains(text(),'"+ linkName +"')]"));
+        EyeThink.core().click().onWeb(By.xpath("//a[contains(text(),'"+linkName+"')] | //span[contains(text(),'"+ linkName +"')]"));
     }
 
     /**
