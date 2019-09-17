@@ -936,7 +936,7 @@ Feature: Validate all scenarios in Desk Review
     Then I cannot see row level action button "Delete" against "Record id" in flex table with id "---deskreview:-:deskReviewGridViewTableId---"
 
   @55369 @submittedToGrantorOptionallySendBackToSubrecipientDeskReview @deepika
-  Scenario: Verify that PM user (other than record owner) is able to conduct created desk review
+  Scenario: Verify other than record owner can FO user would be able to conduct created desk review
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
