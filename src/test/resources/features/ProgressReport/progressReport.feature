@@ -2344,3 +2344,187 @@ Feature: Validate all scenarios in Progress Report
   Scenario: Validate Final Report? field under Report Overview table at overview tab on Progress report is present.
     When I navigate to "Overview" sub tab
     Then I see field "Final Report?" inside page block
+
+  @60020 @validateSubmittedForReviewProgressReportsAtManagementTabOnGrantAtInternalSide @mahadev
+  Scenario Outline: Validate Progress Reports Table at Management tab on Grant overview is getting updated with Progress report whose status is Submitted for Review at Award owner end
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "EGMSID"
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 7      | 7             |
+    When I navigate to "Forms and Attachments" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
+    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    When I navigate to "Responsibilities" sub tab
+    And I enter the following values into flex table with id "---progressReport:-:peerReviewersTableId---" by clicking "New" :
+      | Reviewer Name | Role            | Description                 | Due Date |
+      | Automation FO | Fiscal Reviewer | Automation Test Description | 7        |
+    And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---progressReport:-:peerReviewersTableId---"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "<Grant Name>" in "---progressReport:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:activeGrantsTableId---"
+    When I navigate to "Management" sub tab
+    Then I see value "Submitted for Review" for title "Status" against the value "{SavedValue:EGMSID}" inside table "---progressReport:-:grantorGrantProgressReportTableId---"
+    Examples:
+      | Grant Name                 |
+      | Automation Permanent Award |
+
+  @60021 @validateReviewedProgressReportsAtManagementTabOnGrantAtInternalSide @mahadev
+  Scenario Outline: Validate Progress Reports Table at Management tab on Grant overview is getting updated with Progress report whose status is Reviewed at Award owner end
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "EGMSID"
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 7      | 7             |
+    When I navigate to "Forms and Attachments" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
+    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    When I navigate to "Responsibilities" sub tab
+    And I enter the following values into flex table with id "---progressReport:-:peerReviewersTableId---" by clicking "New" :
+      | Reviewer Name | Role            | Description                 | Due Date |
+      | Automation FO | Fiscal Reviewer | Automation Test Description | 7        |
+    And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---progressReport:-:peerReviewersTableId---"
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside table
+    When I navigate to "Responsibilities" sub tab
+    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---"
+    And I enter a review as "Passed"
+    When I click modal button "Save"
+    And I click modal button "Submit Review"
+    When I close "Enter Review" modal by clicking the top right x button
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside table
+    When I click on "Complete Review" in the page details
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "<Grant Name>" in "---progressReport:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:activeGrantsTableId---"
+    When I navigate to "Management" sub tab
+    Then I see value "Reviewed" for title "Status" against the value "{SavedValue:EGMSID}" inside table "---progressReport:-:grantorGrantProgressReportTableId---"
+    Examples:
+      | Grant Name                 |
+      | Automation Permanent Award |
+
+  @60022 @validateSubmittedForReviewProgressReportsAtManagementTabOnGrantAtExternalSide @mahadev
+  Scenario Outline: Validate Progress Reports Table at Management tab on Grant overview is getting updated with Progress report whose status is Submitted for Review at SR User end
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "EGMSID"
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 7      | 7             |
+    When I navigate to "Forms and Attachments" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
+    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    When I navigate to "Responsibilities" sub tab
+    And I enter the following values into flex table with id "---progressReport:-:peerReviewersTableId---" by clicking "New" :
+      | Reviewer Name | Role            | Description                 | Due Date |
+      | Automation FO | Fiscal Reviewer | Automation Test Description | 7        |
+    And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---progressReport:-:peerReviewersTableId---"
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "<Grant Name>" in "---progressReport:-:recipientActiveGrantId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:recipientActiveGrantId---"
+    When I navigate to "Responsibilites" sub tab
+    Then I see value "Submitted for Review" for title "Status" against the value "{SavedValue:EGMSID}" inside table "---progressReport:-:recipientGrantProgressReportTableId---"
+    Examples:
+      | Grant Name                 |
+      | Automation Permanent Award |
+
+  @60023 @validateReviewedProgressReportsAtManagementTabOnGrantAtInternalSide @mahadev
+  Scenario Outline: Validate Progress Reports Table at Management tab on Grant overview is getting updated with Progress report whose status is Reviewed at SR user end
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "EGMSID"
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 7      | 7             |
+    When I navigate to "Forms and Attachments" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
+    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    When I navigate to "Responsibilities" sub tab
+    And I enter the following values into flex table with id "---progressReport:-:peerReviewersTableId---" by clicking "New" :
+      | Reviewer Name | Role            | Description                 | Due Date |
+      | Automation FO | Fiscal Reviewer | Automation Test Description | 7        |
+    And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---progressReport:-:peerReviewersTableId---"
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside table
+    When I navigate to "Responsibilities" sub tab
+    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---"
+    And I enter a review as "Passed"
+    When I click modal button "Save"
+    And I click modal button "Submit Review"
+    When I close "Enter Review" modal by clicking the top right x button
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside table
+    When I click on "Complete Review" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "<Grant Name>" in "---progressReport:-:recipientActiveGrantId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:recipientActiveGrantId---"
+    When I navigate to "Responsibilites" sub tab
+    Then I see value "Reviewed" for title "Status" against the value "{SavedValue:EGMSID}" inside table "---progressReport:-:recipientGrantProgressReportTableId---"
+    Examples:
+      | Grant Name                 |
+      | Automation Permanent Award |
