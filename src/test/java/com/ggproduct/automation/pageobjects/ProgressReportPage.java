@@ -134,5 +134,20 @@ public class ProgressReportPage extends ProjectManager {
     public void assertFieldIsEditableOrNot(String fieldAPIName){
         Assert.assertFalse(isFieldEditable(fieldAPIName));
     }
+
+    public Boolean isCheckboxFieldEditable(String fieldApiName){
+        boolean flag=true;
+            try {
+                EyeThink.core().elementReference().onWeb(By.xpath("//span[@id='" + fieldApiName +"']/input[@type='checkbox']")).getAttribute("disabled");
+                    flag = false;
+            }catch (Exception e){
+                flag = true;
+            }
+        return flag;
+    }
+
+    public void assertCheckBoxFieldIsEditable(String fieldAPIName){
+        Assert.assertTrue(isCheckboxFieldEditable(fieldAPIName));
+    }
 }
 
