@@ -1,7 +1,6 @@
 package com.ggproduct.automation.steps;
 
 import com.ggproduct.automation.pageobjects.ProgressReportPage;
-import eyethink.automation.bots.Register.EyeThink;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -70,5 +69,11 @@ public class ProgressReportSteps {
     @Then("^I see field \"([^\"]*)\" is not editable$")
     public void iSeeFieldIsNotEditable(String fieldAPIName) {
         progressReportPage.assertFieldIsEditableOrNot(fieldAPIName);
+    }
+
+    @Description("To verify checkbox field is editable")
+    @Then("^I see checkbox field \"([^\"]*)\" is editable$")
+    public void iSeeCheckboxFieldIsEditable(String fieldAPIName) {
+        progressReportPage.assertCheckBoxFieldIsEditable(fieldAPIName);
     }
 }
