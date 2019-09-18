@@ -593,7 +593,6 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Department of Education" in "---home:-:internalOrganizationId---" panel
-    When I switch to Parent iframe
     And I expand nested table containing column value "Department of Education"
     Then I see values "Teaching and Learning" and "Agency" inside table
     Examples:
@@ -649,15 +648,12 @@ Feature: Validate all scenarios in the home tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
     When I click "Add" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
-    And I switch to Parent iframe
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
     When I click "Add" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
-    And I switch to Parent iframe
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
     When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
     When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
-    And I switch to Parent iframe
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
@@ -702,15 +698,12 @@ Feature: Validate all scenarios in the home tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
     When I click "Add" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
-    And I switch to Parent iframe
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
     When I click "Add" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
-    And I switch to Parent iframe
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
     When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
     When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
-    And I switch to Parent iframe
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
@@ -810,15 +803,12 @@ Feature: Validate all scenarios in the home tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
     When I click "Add" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
-    And I switch to Parent iframe
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
     When I click "Add" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
-    And I switch to Parent iframe
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
     When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
     When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
-    And I switch to Parent iframe
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
@@ -868,15 +858,12 @@ Feature: Validate all scenarios in the home tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
     When I click "Add" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
-    And I switch to Parent iframe
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
     When I click "Add" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
-    And I switch to Parent iframe
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
     When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
     When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
-    And I switch to Parent iframe
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |

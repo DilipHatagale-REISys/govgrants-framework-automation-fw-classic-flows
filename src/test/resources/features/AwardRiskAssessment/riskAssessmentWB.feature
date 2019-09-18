@@ -37,11 +37,9 @@ Feature: Risk Assessment scenarios without background
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
     When I click "Add" after selection of "Automation EXE" in the table "---announcement:-:annoucementContactTableId---"
-    And I switch to Parent iframe
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
-    And I switch to Parent iframe
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
       | Role               | Name           | Description                 |
@@ -510,11 +508,9 @@ Feature: Risk Assessment scenarios without background
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
     When I click "Add" after selection of "Automation EXE" in the table "---announcement:-:annoucementContactTableId---"
-    And I switch to Parent iframe
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
-    And I switch to Parent iframe
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
       | Role               | Name           | Description                 |
