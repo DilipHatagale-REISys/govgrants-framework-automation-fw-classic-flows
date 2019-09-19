@@ -162,4 +162,17 @@ public class GenericSteps {
         }
         Assert.assertTrue(yes);
     }
+
+    @Then("I verify that field {string} is not editable by entering {string} value")
+    public void iVerifyThatFieldIsNotEditableByEnteringValue(String fieldApi, String value) {
+
+        boolean verify = true;
+        try {
+            EyeThink.saas().inputForms().inputFormDataByFieldApiName(fieldApi, value);
+            verify = false;
+        } catch (Exception ex){
+
+        }
+        Assert.assertTrue(verify);
+    }
 }
