@@ -149,5 +149,19 @@ public class ProgressReportPage extends ProjectManager {
     public void assertCheckBoxFieldIsEditable(String fieldAPIName){
         Assert.assertTrue(isCheckboxFieldEditable(fieldAPIName));
     }
+
+    /**
+     * To verify radio button on approval decision box
+     * @param radioButtonOption
+     * @return
+     */
+    public Boolean isbuttonDisplayedOnApprovalDecisionBox(String radioButtonOption){
+        boolean flag;
+        if (EyeThink.core().is().onWeb().isDisplayed(By.xpath("//div/span/input[@name='myRadio' and @value='" + radioButtonOption + "']")))
+            flag=true;
+        else
+            flag=false;
+        return flag;
+    }
 }
 
