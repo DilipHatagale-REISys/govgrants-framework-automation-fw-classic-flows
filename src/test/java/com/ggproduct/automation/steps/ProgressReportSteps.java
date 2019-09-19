@@ -4,6 +4,7 @@ import com.ggproduct.automation.pageobjects.ProgressReportPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.springframework.context.annotation.Description;
 
 public class ProgressReportSteps {
@@ -52,7 +53,7 @@ public class ProgressReportSteps {
     @Description("To verify row level action button inside attachments flex table")
     @Then("^I cannot see row level action button \"([^\"]*)\" against Value \"([^\"]*)\" inside \"([^\"]*)\" flex table$")
     public void iCannotSeeRowLevelActionButtonAgainstValueInsideFlexTable(String buttonName, String uniqueValue, String flextableHeaderName) {
-        progressReportPage.assertRowLevelActionButtonInsideFlexTable(buttonName,uniqueValue,flextableHeaderName);
+        progressReportPage.assertRowLevelActionButtonInsideFlexTable(buttonName, uniqueValue, flextableHeaderName);
     }
 
     @When("I download the attachment present in attachment table")
@@ -75,5 +76,15 @@ public class ProgressReportSteps {
     @Then("^I see checkbox field \"([^\"]*)\" is editable$")
     public void iSeeCheckboxFieldIsEditable(String fieldAPIName) {
         progressReportPage.assertCheckBoxFieldIsEditable(fieldAPIName);
+    }
+
+    @Description("To verify radiobutton on approval decison box")
+    @Then("^I (see|do not see) \"([^\"]*)\" option on approval decision box$")
+    public void iDoNotSeeOptionOnApprovalDecisionBox(String seeornot,String radiobuttonOption) {
+        if (seeornot.equals("see")){
+            Assert.assertTrue(progressReportPage.isbuttonDisplayedOnApprovalDecisionBox(radiobuttonOption));
+        } else {
+            Assert.assertFalse(progressReportPage.isbuttonDisplayedOnApprovalDecisionBox(radiobuttonOption));
+        }
     }
 }
