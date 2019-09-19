@@ -156,12 +156,12 @@ public class ProgressReportPage extends ProjectManager {
      * @return
      */
     public Boolean isbuttonDisplayedOnApprovalDecisionBox(String radioButtonOption){
-        boolean flag;
-        if (EyeThink.core().is().onWeb().isDisplayed(By.xpath("//div/span/input[@name='myRadio' and @value='" + radioButtonOption + "']")))
-            flag=true;
-        else
-            flag=false;
-        return flag;
+        try {
+            if (EyeThink.core().is().onWeb().isDisplayed(By.xpath("//div/span/input[@name='myRadio' and @value='" + radioButtonOption + "']")))
+                return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 }
 
