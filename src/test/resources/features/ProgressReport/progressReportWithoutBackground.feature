@@ -7526,3 +7526,34 @@ Feature: Validate scenarios in Progress Report
     Examples:
       | Award Name                 |
       | Automation Permanent Award |
+
+  @59195 @validateErrorMessageForForm @Keerti
+  Scenario: Validate SR User is not allowed to submit progress report to Grantor When All forms Percentage is less than 100%
+    Given I delete the record "Automation Permanent Award" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c"
+    And I am on "SUBPORTAL" portal
+    When I login as "SPI" user
+    And I navigate to "Grants" tab
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I perform quick search for "Automation Permanent Award" in "---progressReport:-:recipientActiveGrantId---" panel
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---progressReport:-:recipientActiveGrantId---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---progressReport:-:subawardsTableId---"
+    And I navigate to "Performance" sub tab
+    And I click on "View" icon for "Record Id" inside flex table with id "---progressReport:-:recipientAwardProgressReportTableId---"
+    And I navigate to "Overview" sub tab
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 7      | 7             |
+    When I navigate to "Forms and Attachments" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
+    And I enter "ErrorForm" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I click on "Back" in the page details
+    And I click on "Submit to Grantor" in the page details
+    Then I see the following messages in the page details contains:
+      | Forms and Attachments Tab - Fill all the required data in the form before submitting to Grantor. |
