@@ -40,11 +40,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
     When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
-    And I switch to Parent iframe
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
-    And I switch to Parent iframe
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
@@ -217,15 +215,12 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
     When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
-    And I switch to Parent iframe
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
-    And I switch to Parent iframe
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    And I switch to Parent iframe
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
       | Role               | Name           | Description                 |
@@ -399,11 +394,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
     When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
-    And I switch to Parent iframe
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
-    And I switch to Parent iframe
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
@@ -577,11 +570,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
     When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
-    And I switch to Parent iframe
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
-    And I switch to Parent iframe
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
@@ -755,11 +746,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
     When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
-    And I switch to Parent iframe
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
-    And I switch to Parent iframe
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
@@ -951,11 +940,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
     When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
-    And I switch to Parent iframe
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
-    And I switch to Parent iframe
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
@@ -1138,11 +1125,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
     When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
-    And I switch to Parent iframe
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
-    And I switch to Parent iframe
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
@@ -1324,11 +1309,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
     When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
-    And I switch to Parent iframe
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
-    And I switch to Parent iframe
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
@@ -1507,11 +1490,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
     When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
-    And I switch to Parent iframe
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
-    And I switch to Parent iframe
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
@@ -1694,11 +1675,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
     When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
-    And I switch to Parent iframe
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
-    And I switch to Parent iframe
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
@@ -1878,11 +1857,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
     When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
-    And I switch to Parent iframe
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
-    And I switch to Parent iframe
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
@@ -2062,11 +2039,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
     When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
-    And I switch to Parent iframe
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
-    And I switch to Parent iframe
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
@@ -2249,11 +2224,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
     When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
-    And I switch to Parent iframe
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
-    And I switch to Parent iframe
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
@@ -2435,11 +2408,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
     When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
-    And I switch to Parent iframe
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
-    And I switch to Parent iframe
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
@@ -2622,11 +2593,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
     When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
-    And I switch to Parent iframe
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
-    And I switch to Parent iframe
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
@@ -2806,11 +2775,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
     When I click "Add" after selection of "Automation EXE" in the table "AssociateAnnouncementContacts"
-    And I switch to Parent iframe
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
-    And I switch to Parent iframe
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
