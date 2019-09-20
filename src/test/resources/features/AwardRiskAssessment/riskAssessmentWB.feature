@@ -1,4 +1,4 @@
-@riskAssessment @regression @wip
+@riskAssessment @regression
 Feature: Risk Assessment scenarios without background
 
   @59253 @riskAssessmentSetasYesAtAnnouncementSettings @deepika
@@ -33,7 +33,6 @@ Feature: Risk Assessment scenarios without background
       | {SavedValue:fundingAccount} | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
-    When I refresh the page
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
     When I click "Add" after selection of "Automation EXE" in the table "---announcement:-:annoucementContactTableId---"
@@ -504,8 +503,7 @@ Feature: Risk Assessment scenarios without background
       | {SavedValue:fundingAccount} | 100             |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
-    When I refresh the page
-    When I navigate to "Overview" sub tab
+        When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
     When I click "Add" after selection of "Automation EXE" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
