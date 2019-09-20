@@ -168,7 +168,6 @@ Feature: Validate all scenarios in Closeout
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     And I click on "Save" in the page details
-    When I navigate to "Financials" sub tab
     And I save the field labeled "EGMS ID" as "EGMSID"
     And I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---"
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
