@@ -2380,11 +2380,8 @@ Feature: Validate all scenarios in the Risk Assessment
       When I click modal button "Save"
       And I click modal button "Submit Review"
       When I close "Review" modal by clicking the top right x button
-      When I click on "Edit" in the page details
-      When I navigate to "Assessment" sub tab
-      And I enter "RiskAssessmentValues1" values from "RiskAssessment_Field_Values.xlsx"
-      When I click on "Save" in the page details
-      Then I see that "Record Id" is in "Submitted for Review" status
+      And I pause execution
+      Then I can see top right button "Edit" in page detail
 
       @onceReviewIsCompleteThePeerReviewerCannotResubmitComemnts @deepika
       Scenario: Validate system does not allow the peer reviewer to do submit review activities if the  risk assessment marked as complete review by the risk assessment owner.
