@@ -60,7 +60,6 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on top right button "Associate" in flex table with id "---amendment:-:goalsAndObjectivesTableId---"
     When I perform quick search for "<Objectives>" in "---amendment:-:objectivesTableId---" panel
     And I click "Associate" after selection of "<Objectives>" in the table "---amendment:-:objectivesTableId---"
-    When I switch to Parent iframe
     Then I see that "<Objectives>" has been added in flextable with Id "---amendment:-:goalsAndObjectivesTableId---"
     Examples:
       | Objectives                      |
@@ -1548,7 +1547,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter "PaymentRequestEdition" values from "AmendmentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:paymentRequestAdvanceTableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
     When I get the "EGMS ID"
