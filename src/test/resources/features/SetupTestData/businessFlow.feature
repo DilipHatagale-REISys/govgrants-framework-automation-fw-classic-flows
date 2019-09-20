@@ -837,9 +837,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | EGMS ID                                 | Target |
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Attachments" sub tab
-    And I click on "Attach" icon for "Active" inside flex table with id "---applicationIntake:-:attachmentsTableId---"
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close "Add Attachments" modal by clicking the top right x button
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -891,8 +888,8 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementTableId---" with wait for record
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Logs" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
@@ -920,8 +917,8 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementTableId---"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
     And I navigate to "Related Logs" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
@@ -986,8 +983,8 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementTableId---"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
     And I navigate to "Related Logs" sub tab
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
@@ -1019,8 +1016,8 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Review" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementTableId---"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
     And I navigate to "Related Logs" sub tab
     When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
