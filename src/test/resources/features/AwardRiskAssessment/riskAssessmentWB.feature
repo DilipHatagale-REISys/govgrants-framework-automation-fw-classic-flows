@@ -1,4 +1,4 @@
-@riskAssessment @regression
+@riskAssessment @regression @wip
 Feature: Risk Assessment scenarios without background
 
   @59253 @errorMessageValidation @deepika
