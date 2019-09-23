@@ -996,7 +996,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Automation Announcement for Application Review | Automation Application |
 
   @negotiationComplete
-  Scenario: validate whther user is able to view the completed Negotiation on left Navigation under Completed Negotiations
+  Scenario: Complete Negotiation Request
     Given I delete the record "Automation Announcement for FDM" from the object "FDM"
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -2217,7 +2217,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
 
   @activeRiskAssessment
-  Scenario: Validate whether user is able to View Active Risk Assessment under Monitoring
+  Scenario: Active Risk Assessment
     When I delete the record "Automation Award for Risk Assessment" from the object "Award"
     When I delete the record "Automation Award for Risk Assessment" from the object "Grant"
     Given I login to "As a Grantor" app as "dynamicUser" user
