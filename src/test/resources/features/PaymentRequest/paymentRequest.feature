@@ -1437,7 +1437,6 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     And I click on "Send Back to Subrecipient" in the page details
-    And I pause execution for "100" seconds
     Then I can see mail notification for "EXTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Sent Back for Revisions |
 
@@ -1457,7 +1456,6 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice"
     And I click on "Submit to Grantor" in the page details
-    And I pause execution for "100" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> from <subrecipient name> has been Submitted |
 
@@ -1477,7 +1475,6 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        | 0                 | 0               | 0                        | 100        | 100            |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    And I pause execution for "100" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> from <subrecipient name> has been Submitted |
 
@@ -1502,7 +1499,6 @@ Feature: Validate all scenarios in Payment Request
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     When I click on "Send Back to Subrecipient" in the page details
-    And I pause execution for "100" seconds
     Then I can see mail notification for "EXTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Sent Back for Revisions |
 
@@ -1535,7 +1531,6 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    And I pause execution for "100" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> from <subrecipient name> has been Submitted for Approval |
 
@@ -1581,7 +1576,6 @@ Feature: Validate all scenarios in Payment Request
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Approve" on the approval decision box
-    And I pause execution for "100" seconds
     Then I can see mail notification for "EXTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Approved |
     Examples:
@@ -1624,7 +1618,6 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
-    And I pause execution for "100" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> from <subrecipient name> has been Submitted for Approval |
     Examples:
@@ -1661,7 +1654,6 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I click on "Reassign,Automation EXE" on the approval decision box
-    And I pause execution for "100" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Forwarded |
 
@@ -1695,7 +1687,6 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I click on "Approve" on the approval decision box
-    And I pause execution for "100" seconds
     Then I can see mail notification for "EXTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Approved |
 
@@ -1729,7 +1720,6 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I click on "Send to Owner" on the approval decision box
-    And I pause execution for "100" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> from <subrecipient name> has been Sent Back |
 
@@ -1769,7 +1759,6 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I click on "Send to Owner" on the approval decision box
-    And I pause execution for "100" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> from <subrecipient name> has been Sent Back |
     Examples:
@@ -1812,7 +1801,6 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I click on "Reassign,Automation EXE" on the approval decision box
-    And I pause execution for "100" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Forwarded |
     Examples:
@@ -1855,7 +1843,6 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I click on "Disapprove" on the approval decision box
-    And I pause execution for "100" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Rejected |
     Examples:
@@ -1892,7 +1879,6 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I click on "Disapprove" on the approval decision box
-    And I pause execution for "100" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Rejected |
 
