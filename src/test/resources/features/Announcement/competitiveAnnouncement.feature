@@ -350,7 +350,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
-    And I pause execution for "1" seconds
     And I enter value "Justified" into field "Justification__c"
     When I get the "EGMS ID"
     When I navigate to "Financials" sub tab

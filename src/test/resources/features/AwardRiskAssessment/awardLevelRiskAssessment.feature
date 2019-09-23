@@ -306,7 +306,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Management" sub tab
-    Then I cannot see field "Risk Assessment" inside page block
+    Then I cannot see page block "Risk Assessment"
 
   @58173 @validationsBeforeSubmitForApproval @deepika
   Scenario: Validate whether system generates an error message if the user tries to proceed on the risk assessment without  entering all required fields before submitting for approval process
@@ -806,7 +806,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    Then I see that "Record Id" has been added in flextable with Id "PhasePendingTasks"
+    Then I see that "EGMS ID" has been added in flextable with Id "PhasePendingTasks"
 
   @58821 @validateEditionOfRiskAssessment @deepika
   Scenario: Validate whether user can Edit the created Risk Assessment
@@ -874,6 +874,10 @@ Feature: Validate all scenarios in the Risk Assessment
       | EGMS ID                                 | Target |
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
+    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
@@ -906,19 +910,19 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
+    And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
+    And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
+    And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"

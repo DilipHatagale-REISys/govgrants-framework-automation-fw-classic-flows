@@ -20,7 +20,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
-    And I pause execution for "10" seconds
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
@@ -28,7 +27,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Given I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
-    And I pause execution for "10" seconds
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
     When I refresh the page
@@ -175,7 +173,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "flexGridAnnouncementReviewTemplates"
     And I click on "Edit" in the page details
-    When I pause execution for "10" seconds
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
     And I click on "Save" in the page details
