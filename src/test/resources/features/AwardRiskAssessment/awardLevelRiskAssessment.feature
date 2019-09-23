@@ -100,7 +100,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click modal button "Save and Continue"
     And I navigate to "Subawards" sub tab
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
-    And I get the "EGMS ID"
+    When I get the "EGMS ID"
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -129,7 +129,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Approve" on the approval decision box
-    Then I see that "Record Id" is in "Approved" status
+    Then I see that "EGMS ID" is in "Active" status
 
   @58168 @rejectRiskAssessmenttoOwner @deepika
   Scenario: Validate whether First Approver is able to reject the Risk Assessment. Also status in Progress bar is Rejected.
@@ -201,7 +201,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    Then I see that "Record Id" has been added in flextable with Id "---subAwardStandAlone:-:pendingTaskTableId---"
+    Then I see that "Approve Subaward Risk Assessment" has been added in flextable with Id "---subAwardStandAlone:-:pendingTaskTableId---"
 
   @58170 @sendtoOwnerRiskAssesment @deepika
   Scenario: Validate whether user is to able to Send to Owner for Risk Assessment
@@ -287,7 +287,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Reassign,Automation EXE" on the approval decision box
-    Then I see that "Record Id" is in "Submitted for Approval" status
+    Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
 
   @58172 @riskAssesmentSetToNowhileAwardCreation @deepika
   Scenario: Validate filling/creating risk assessment is not applicable when setting is No while creation of Award
