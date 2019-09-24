@@ -3884,6 +3884,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     And I navigate to "Grants" tab
+<<<<<<< HEAD
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
     When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
@@ -3904,6 +3905,16 @@ Feature: Validate all scenarios in the Risk Assessment
       | Fiscal Approver  | Automation FO | Automation Test Description |
       | Program Approver | Automation PM | Automation Test Description |
     When I click on "Submit for Approval" in the page details
+=======
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
+    And I navigate to "Overview" sub tab
+    When I click on "Edit" icon for "{SavedValue:fundingAccount}" inside flex table with id "---amendment:-:amendmentFundingAccountsTableId---"
+    When I enter Revised Encumbrance for award "Automation Award for Amendment Request"
+    And I click on top right button "Save" in flex table with id "---amendment:-:amendmentFundingAccountsTableId---"
+    And I click on "Submit for Approval" in the page details
+>>>>>>> 045982bd17cb13df9101be442e89b336dc8aa4a6
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel

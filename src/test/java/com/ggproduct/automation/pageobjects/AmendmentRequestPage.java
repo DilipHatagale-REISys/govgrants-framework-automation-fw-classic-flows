@@ -15,9 +15,9 @@ public class AmendmentRequestPage extends ProjectManager {
      * @return - Revised Encumbrance balance
      * @Author - Mahadev.hanme
      */
-    public Double calculateRevisedEncumbrance() {
-        String awardBudget = getFieldValueFromAPI("Automation Award for Amendment Request", "GrantAwardName__c", "Award__c", "AmountAvailable__c");
-        String requestedChangeInBudget = getFieldValueFromAPI("Automation Award for Amendment Request", "GrantAwardName__c", "AmendmentRequest__c", "RequestedChangeInBudget__c");
+    public Double calculateRevisedEncumbrance(String awardName) {
+        String awardBudget = getFieldValueFromAPI(awardName, "GrantAwardName__c", "Award__c", "AmountAvailable__c");
+        String requestedChangeInBudget = getFieldValueFromAPI(awardName, "GrantAwardName__c", "AmendmentRequest__c", "RequestedChangeInBudget__c");
         double awardBudgetInDouble = Double.parseDouble(awardBudget);
         double requestedChangeInBudgetDouble = Double.parseDouble(requestedChangeInBudget);
         if (Double.parseDouble(requestedChangeInBudget) >= 0.0) {
@@ -30,9 +30,9 @@ public class AmendmentRequestPage extends ProjectManager {
      * handles to enter revised encumbrance balance on amendment request
      * @Author - Mahadev.hanme
       */
-    public void enterRevisedEncumbrance() {
+    public void enterRevisedEncumbrance(String awardName) {
         EyeThink.core().enterText().onWeb().clear(By.xpath("//field[@field-name='ActualEncumbrance__c']/input"));
-        EyeThink.core().enterText().onWeb().enter(By.xpath("//field[@field-name='ActualEncumbrance__c']/input"),calculateRevisedEncumbrance().toString());
+        EyeThink.core().enterText().onWeb().enter(By.xpath("//field[@field-name='ActualEncumbrance__c']/input"),calculateRevisedEncumbrance(awardName).toString());
     }
 
     public void updatedBudgetPeriodEndDate() {
