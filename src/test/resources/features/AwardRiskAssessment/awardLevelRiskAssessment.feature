@@ -3796,7 +3796,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
     And I navigate to "Overview" sub tab
     When I click on "Edit" icon for "{SavedValue:fundingAccount}" inside flex table with id "---amendment:-:amendmentFundingAccountsTableId---"
-    When I enter Revised Encumbrance
+    When I enter Revised Encumbrance for award "Automation Award for Amendment Request"
     And I click on top right button "Save" in flex table with id "---amendment:-:amendmentFundingAccountsTableId---"
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal

@@ -307,12 +307,12 @@ Feature: Amendment Request scenarios without background
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Subaward Budget Category" modal by clicking the top right x button
+    When I close "Add Line Items" modal by clicking the top right x button
     When I click on "Add Line Items" icon for "Project inspection fees" inside flex table with id "---amendment:-:budgetChangeTableId---"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
-    When I close "Subaward Budget Category" modal by clicking the top right x button
+    When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -658,7 +658,7 @@ Feature: Amendment Request scenarios without background
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 300            |
-     When I close "Subaward Budget Category" modal by clicking the top right x button
+     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     Then I see the following messages in the page details contains:
       | Overview Tab - You have a requested a change of $300.0, but the required change is -$-500.00. |
@@ -1533,7 +1533,7 @@ Feature: Amendment Request scenarios without background
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---amendment:-:internalActiveGrants---"
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Activated" inside flex table with id "---amendment:-:internalRelatedAwards1---"
-    When I navigate to "Actual" sub tab
+    When I navigate to "Actuals" sub tab
     Then I see value "$3,000.00" for title "Encumbrance Balance" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
     Examples:
       | Award Name                                       | Grant Name                                       |
