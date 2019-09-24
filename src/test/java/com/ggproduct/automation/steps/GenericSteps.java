@@ -4,6 +4,7 @@ import com.ggproduct.automation.projectmanager.ProjectManager;
 import eyethink.automation.bots.Register.EyeThink;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.springframework.context.annotation.Description;
 import javax.mail.MessagingException;
 import java.io.File;
@@ -174,5 +175,10 @@ public class GenericSteps {
 
         }
         Assert.assertTrue(verify);
+    }
+
+    @Then("I see snapshot with name containing {string} as name")
+    public void iSeeSnapshotWithNameContainingAsName(String snapshotName) {
+        Assert.assertTrue(EyeThink.core().elementReference().onWeb(By.xpath("//div[contains(@id,'Attachments')]//span[contains(text(),'"+snapshotName+"')]")).isDisplayed());
     }
 }
