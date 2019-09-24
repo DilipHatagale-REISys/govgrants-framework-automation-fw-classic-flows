@@ -105,7 +105,6 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Terms and Conditions"
-    When I wait for "5" seconds
     Then I see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
 
   @53201 @sendToSubrecipientToSOWAmendmentRequest
