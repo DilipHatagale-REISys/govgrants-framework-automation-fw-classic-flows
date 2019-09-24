@@ -13,9 +13,9 @@ public class AmendmentRequestSteps  {
     }
 
     @Description("To enter revised encumbrance balance on amendment request page")
-    @When("I enter Revised Encumbrance")
-    public void iEnterRevisedEncumbrance() {
-        amendmentRequestPage.enterRevisedEncumbrance();
+    @When("^I enter Revised Encumbrance for award \"([^\"]*)\"$")
+    public void iEnterRevisedEncumbranceForAward(String awardName) {
+        amendmentRequestPage.enterRevisedEncumbrance(awardName);
     }
 
     @And("^I get the updated budget end date$")
