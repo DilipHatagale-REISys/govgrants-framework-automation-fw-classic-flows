@@ -1,6 +1,50 @@
 @setupdata
 Feature: Validate creation of data in new Org
 
+  @CreateMultipleFocusArea
+  Scenario Outline: Create Multiple Focus Area
+    When I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Planning" tab
+    And I create multiple records from sheet "Focus Area" of "data.xlsx" with following data
+      |          | Navigation | FlexTableId                        | PageDetailsButton | ModalButton       | subHeader | subHeaderContent |
+      | testData | Planning   | ---focusarea:-:focusAreaTableId--- | New               | Save and Continue | Setup     | Focus Areas      |
+    Examples:
+      | User |
+      | PM   |
+
+  @CreateMultipleFundingAccount
+  Scenario Outline: Create Multiple Focus Area
+    When I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Planning" tab
+    And I create multiple records from sheet "Funding Account" of "data.xlsx" with following data
+      |          | Navigation | FlexTableId                                | PageDetailsButton | ModalButton       | subHeader | subHeaderContent |
+      | testData | Planning   | ---fundingsource:-:fundingSourceTableId--- | New               | Save and Continue | Setup     | Funding Sources  |
+    Examples:
+      | User |
+      | EXE  |
+
+  @CreateMultipleStrategicPlan
+  Scenario Outline: Create Multiple Focus Area
+    When I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Planning" tab
+    And I create multiple records from sheet "Strategic Plan" of "data.xlsx" with following data
+      |          | Navigation | FlexTableId                                 | PageDetailsButton | ModalButton    | subHeader | subHeaderContent |
+      | testData | Planning   | ---strategicplan:-:StrategicPlansTableId--- | New               | Save and Close | Setup     | Strategic Plans  |
+    Examples:
+      | User |
+      | EXE  |
+
+  @CreateMultipleKPI
+  Scenario Outline: Create Multiple Focus Area
+    When I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Planning" tab
+    And I create multiple records from sheet "KPI" of "data.xlsx" with following data
+      |          | Navigation | FlexTableId                                | PageDetailsButton | ModalButton    | subHeader | subHeaderContent                 |
+      | testData | Planning   | ---keyperformanceindicator:-:kpiTableId--- | New               | Save and Close | Setup     | Key Performance Indicators (KPI) |
+    Examples:
+      | User |
+      | EXE  |
+
   @focusAreaActivation-setupdata
   Scenario Outline: Activate Focus Area
     Given I delete the record "<focus area name>" from the object "Focus Area"
