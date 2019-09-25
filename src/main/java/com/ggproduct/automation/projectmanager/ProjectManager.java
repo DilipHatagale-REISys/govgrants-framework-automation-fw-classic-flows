@@ -166,7 +166,6 @@ public class ProjectManager extends ProjectWebServices {
      */
     public void uploadAttachmentFromWorkspace(String fileNameFromWorkSpace) {
         EyeThink.core().click().onWeb(By.xpath("//div[@id='myTabbedContent']//span[contains(text(),'Attachment')]/..//div[@class='panel-heading']//*[text()='Add']"));
-        EyeThink.core().switchTo().switchToFrame(By.xpath("//iframe[contains(@ng-src, 'apex') or contains(@src,'apex')]"));
         EyeThink.core().click().onWeb(By.xpath("//div[@id='Attachmentadd']//span[text()='Upload file from Workspace']"));
         EyeThink.core().click().onWeb((By.xpath("//div[@id='Attachmentadd']//td[text()='" + fileNameFromWorkSpace + "']/..//input")));
         EyeThink.saas().modal().clickModalContentSpecificButton("Attach");
