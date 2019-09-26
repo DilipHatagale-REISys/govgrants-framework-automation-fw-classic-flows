@@ -2994,7 +2994,6 @@ Feature: Validate all scenarios in the Risk Assessment
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
     When I navigate to "Attachments" sub tab
-    And I click on top right button "Add" in flex table with id "riskassessment:-:attachmentsFlextableId---"
     When I upload attachment "Announcement_Field_Values.xlsx" of type "AGENCY DETAILS"
     Then I see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
 
