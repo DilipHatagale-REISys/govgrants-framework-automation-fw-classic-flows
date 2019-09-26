@@ -11486,3 +11486,101 @@ Feature: Validate scenarios in Progress Report
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
+
+    @60919 @fundingorgOnPROverviewTab @jitendra
+    Scenario: Validate on Progress report Funding Organization field at Report Overview table under Overview tab is same as Award.
+      Given I delete the record "Automation Permanent Award" from the object "Progress Report"
+      When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c"
+      Given I am on "SUBPORTAL" portal
+      When I login as "SPI" user
+      And I navigate to "Grants" tab
+      When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+      And I click toggle button to select "Grants - Active"
+      When I perform quick search for "Automation Permanent Award" in "---paymentRequest:-:recipientGrantTableId---" panel
+      And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
+      When I navigate to "Management" sub tab
+      And I click on "View" icon for "Record Id" inside flex table with id "---progressreport:-:recipientGrantProgressReportTableId---"
+      And I navigate to "Overview" sub tab
+      Then I see field "Funding Organization" as "Test Automation Organization"
+
+  @60920 @subawardTtitleOnPROverviewTab @jitendra
+  Scenario: Validate on Progress report Subaward Title field at Report Overview table under Overview tab is same as Award.
+    Given I delete the record "Automation Permanent Award" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c"
+    Given I am on "SUBPORTAL" portal
+    When I login as "SPI" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "Automation Permanent Award" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
+    When I navigate to "Management" sub tab
+    And I click on "View" icon for "Record Id" inside flex table with id "---progressreport:-:recipientGrantProgressReportTableId---"
+    And I navigate to "Overview" sub tab
+    Then I see field "Subaward Title" as "Automation Permanent Award"
+
+  @60921 @budgetPeriodOnPROverviewTab @jitendra
+  Scenario: Validate on Progress report Budget Period field at Report Overview table under Overview tab is same as Award.
+    Given I delete the record "Automation Permanent Award" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c"
+    Given I am on "SUBPORTAL" portal
+    When I login as "SPI" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "Automation Permanent Award" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---progressReport:-:subawardsTableId---"
+    And I navigate to "Budget" sub tab
+    And I save the field labeled "Budget Period" as "BudgetPeriod"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "Automation Permanent Award" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
+    When I navigate to "Management" sub tab
+    And I click on "View" icon for "Record Id" inside flex table with id "---progressreport:-:recipientGrantProgressReportTableId---"
+    And I navigate to "Overview" sub tab
+    Then I see field "Budget Period" as "{savedValue:BudgetPeriod}"
+
+  @60922 @budgetPeriodOnPROverviewTab @jitendra
+  Scenario: Validate on Progress report Awarded Budget field at Subaward Spending table under Performance tab is same as Award.
+    Given I delete the record "Automation Permanent Award" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c"
+    Given I am on "SUBPORTAL" portal
+    When I login as "SPI" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "Automation Permanent Award" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---progressReport:-:subawardsTableId---"
+    And I navigate to "Budget" sub tab
+    And I save the field labeled "Total Subaward Amount this Budget Period" as "BudgetPeriodAmount"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "Automation Permanent Award" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
+    When I navigate to "Management" sub tab
+    And I click on "View" icon for "Record Id" inside flex table with id "---progressreport:-:recipientGrantProgressReportTableId---"
+    And I navigate to "Performance" sub tab
+    Then I see field "Awarded Budget" as "{savedValue:BudgetPeriodAmount}"
+
+  @60924 @orgNameOnPROverviewTab @jitendra
+  Scenario: Validate on Progress report Organization Name field at Report Overview table under Overview tab is same as at Award.
+    Given I delete the record "Automation Permanent Award" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c"
+    Given I am on "SUBPORTAL" portal
+    When I login as "SPI" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "Automation Permanent Award" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
+    When I navigate to "Management" sub tab
+    And I click on "View" icon for "Record Id" inside flex table with id "---progressreport:-:recipientGrantProgressReportTableId---"
+    And I navigate to "Overview" sub tab
+    Then I see field "Organization Name" as "SAN DIEGO ELECTRICAL TRAINING TRUST"
