@@ -1457,8 +1457,120 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Menu" in the page details
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
-    And I click on hyperlink containing value "SiteVisit - Notified"
+    And I click on hyperlink containing value "Site_Visit_Submit_For_Approval"
     When I download the file
     Then I see "Automation Site Visit" on page "1" of "govgrants" pdf file
 
+  @60833 @RecordOwnerCanviewTheSnapshotAfterSiteVisitsIsAcceptedAndClosed @keerti
+  Scenario: Validate whether record Owner is able to view the Snapshot after Site Visits is Accepted and Closed
+    Given I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
+      | Role             | Name           | Description                 |
+      | Program Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver  | Automation FO  | Automation Test Description |
+    When I get the "EGMS ID"
+    Given I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
+    When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I click on "Notify" in the page details
+    When I click on "Conduct" in the page details
+    Given I am on "SUBPORTAL" portal
+    When I login as "SPI" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "Record Id" inside table
+    And I navigate to "Reports and Outcomes" sub tab
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---sitevisits:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
+      | Title                  | Description            | Type        |
+      | Automation Finding     | Automation Description | Finding     |
+      | Automation Concern     | Automation Description | Concern     |
+      | Automation Observation | Automation Description | Observation |
+    When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "Record Id" inside table
+    Given I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    When I navigate to "Reports and Outcomes" sub tab
+    And I expand nested table containing column value "Automation Observation"
+    When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
+      | Title                               | Description            | Status      | Due Date | Assigned To    |
+      | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
+    When I collapse nested table containing column value "Automation Observation"
+    And I expand nested table containing column value "Automation Concern"
+    When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
+      | Title                           | Description            | Status      | Due Date | Assigned To    |
+      | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
+    When I collapse nested table containing column value "Automation Concern"
+    And I expand nested table containing column value "Automation Finding"
+    When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
+      | Title                           | Description            | Status      | Due Date | Assigned To    |
+      | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
+    And I collapse nested table containing column value "Automation Finding"
+    When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    And I click on "View" icon for "Automation Site Visit" inside table
+    And I click on "Accept And Close" in the page details
+    And I click on "Menu" in the page details
+    And I select "Take Snapshot" from dropdown
+    When I navigate to "History" sub tab
+    And I click on hyperlink containing value "Site Visit - Accept And Close"
+    When I download the file
+    Then I see "Automation Site Visit" on page "1" of "govgrants" pdf file
+
+  @60834 @AdditionOfAttachmentForAwardSiteVisits @keerti
+  Scenario: Validating addition of attachment to Award Site Visits
+    When I navigate to "Attachments" sub tab
+    And I upload attachment "Announcement_Field_Values.xlsx" from workspace
+    Then I see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
+
+  @60837 @RecordOwnerCannotEditSiteVisitsDatesAfterSitvisitsIsConducted @keerti
+  Scenario: Validate Once Sit visits is conducted then Edit Button on page is Hidden and Record Owner cannot edit the Site Visits Dates under Overview tab
+    Given I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
+      | Role             | Name           | Description                 |
+      | Program Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver  | Automation FO  | Automation Test Description |
+    When I get the "EGMS ID"
+    Given I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
+    When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I click on "Notify" in the page details
+    When I click on "Conduct" in the page details
+    Given I navigate to "Overview" sub tab
+    Then I see field "StartDate__c" is not editable
 
