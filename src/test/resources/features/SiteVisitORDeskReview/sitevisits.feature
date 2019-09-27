@@ -1457,7 +1457,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Menu" in the page details
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
-    And I click on hyperlink containing value "SiteVisit - Notified"
+    And I click on hyperlink containing value "Site_Visit_Submit_For_Approval"
     When I download the file
     Then I see "Automation Site Visit" on page "1" of "govgrants" pdf file
 
@@ -1541,12 +1541,12 @@ Feature: Validate all scenarios in the Site Visit
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "<Site Visit Name>" inside table
+    And I click on "View" icon for "Automation Site Visit" inside table
     And I click on "Accept And Close" in the page details
     And I click on "Menu" in the page details
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
-    And I click on hyperlink containing value "SiteVisit - Notified"
+    And I click on hyperlink containing value "Site Visit - Accept And Close"
     When I download the file
     Then I see "Automation Site Visit" on page "1" of "govgrants" pdf file
 
