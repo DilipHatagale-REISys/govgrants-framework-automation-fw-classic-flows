@@ -3970,7 +3970,8 @@ Feature: Validate all scenarios in the Risk Assessment
       | Responsibility   | Name           | Description                 |
       | Fiscal Approver  | Automation FO  | Automation Test Description |
       | Program Approver | Automation EXE | Automation Test Description |
-    And I click on "Submit for Approval" in the page detailAnd I click on "Menu" in the page details
+    And I click on "Submit for Approval" in the page details
+    And I click on "Menu" in the page details
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
     And I click on "Menu" in the page details
@@ -3978,86 +3979,3 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on hyperlink containing value "Subaward Risk Assessment.pdf"
     When I download the file
     Then I see snapshot with name containing "Subaward Risk Assessment.pdf" as name
-
-  @60967 @riskscoreSRSide @deepika
-  Scenario: Validate whether SR user can view the Risk Score which remained as is when Award Risk Assessment is copied to new created award when amendment type - Funding Change
-    Given I delete the record "Automation Award for Amendment Request" from the object "Amendment Request"
-    And I delete the record "Automation Award for Amendment Request" from the object "Payment Request"
-    And I delete the record "Automation Award for Amendment Request" from the object "subaward"
-    When I login to "As a Grantor" app as "dynamicUser" user
-    And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Automation Award for Amendment Request" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
-    When I navigate to "Subawards" sub tab
-    When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
-    And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
-    When I navigate to "Management" sub tab
-    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
-    When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
-    And I click modal button "Save and Continue"
-    When I enter values into fields
-      | Value                       | Field                              |
-      | Automation Test Description | fieldFundingChangeJustification__c |
-      | 100                         | fieldRequestedChangeInBudget__c    |
-    And I click on "Save" in the page details
-    When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
-      | Role             | Name          | Description                 |
-      | Program Approver | Automation PM | Automation Test Description |
-      | Fiscal Approver  | Automation FO | Automation Test Description |
-    When I get the "EGMS ID"
-    And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
-    When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
-    When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
-      | Title        | Narrative     | Awarded Budget |
-      | Extra Salary | The narrative | 100            |
-    When I close "Add Line Items" modal by clicking the top right x button
-    And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
-    And I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "{SavedValue:fundingAccount}" inside flex table with id "---amendment:-:amendmentFundingAccountsTableId---"
-    When I enter Revised Encumbrance
-    And I click on top right button "Save" in flex table with id "---amendment:-:amendmentFundingAccountsTableId---"
-    And I click on "Submit for Approval" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
-    And I click on "Approve" on the approval decision box
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
-    And I click on "Approve" on the approval decision box
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Amendment Requests - Approved"
-    And I perform quick search for "Record Id" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
-    When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---"
-    And I click on "Amend Subaward" in the page details
-    When I click on "Activate" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-    And I navigate to "Home" tab
-    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
-    And I navigate to "Risk Assessment" sub tab
-    When I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-    And I navigate to "Home" tab
-    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
-    And I navigate to "Risk Assessment" sub tab
-    When I navigate to "Overview" sub tab
-    Then I see field "OverAll Risk" as "44.0%"
