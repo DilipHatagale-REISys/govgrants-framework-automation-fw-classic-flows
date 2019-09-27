@@ -560,7 +560,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---riskassessment:-:homePendingTaskTableId---" panel
     Then I do not see values "Record Id" and "Automation Award for Risk Assessment" inside table
 
-  @58817 @activeRAisRequiredToIssueAward @deepika
+  @58817 @activeRiskAssesmentRequiredToIssueAward @deepika
   Scenario Outline: Validate system generates a message to enforce the user to activate risk assessment before issuing an award when Risk Assessment Required =Yes.
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -609,7 +609,6 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Save and Continue" in the page details
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
@@ -3970,7 +3969,8 @@ Feature: Validate all scenarios in the Risk Assessment
       | Responsibility   | Name           | Description                 |
       | Fiscal Approver  | Automation FO  | Automation Test Description |
       | Program Approver | Automation EXE | Automation Test Description |
-    And I click on "Submit for Approval" in the page detailAnd I click on "Menu" in the page details
+    And I click on "Submit for Approval" in the page details
+    And I click on "Menu" in the page details
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
     And I click on "Menu" in the page details
