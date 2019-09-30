@@ -1,51 +1,7 @@
-@setupdata
+@createTestData
 Feature: Validate creation of data in new Org
 
-  @CreateMultipleFocusArea
-  Scenario Outline: Create Multiple Focus Area
-    When I login to "As a Grantor" app as "<User>" user
-    And I navigate to "Planning" tab
-    And I create multiple records from sheet "Focus Area" of "data.xlsx" with following data
-      |          | Navigation | FlexTableId                        | PageDetailsButton | ModalButton       | subHeader | subHeaderContent |
-      | testData | Planning   | ---focusarea:-:focusAreaTableId--- | New               | Save and Continue | Setup     | Focus Areas      |
-    Examples:
-      | User |
-      | PM   |
-
-  @CreateMultipleFundingAccount
-  Scenario Outline: Create Multiple Focus Area
-    When I login to "As a Grantor" app as "<User>" user
-    And I navigate to "Planning" tab
-    And I create multiple records from sheet "Funding Account" of "data.xlsx" with following data
-      |          | Navigation | FlexTableId                                | PageDetailsButton | ModalButton       | subHeader | subHeaderContent |
-      | testData | Planning   | ---fundingsource:-:fundingSourceTableId--- | New               | Save and Continue | Setup     | Funding Sources  |
-    Examples:
-      | User |
-      | EXE  |
-
-  @CreateMultipleStrategicPlan
-  Scenario Outline: Create Multiple Focus Area
-    When I login to "As a Grantor" app as "<User>" user
-    And I navigate to "Planning" tab
-    And I create multiple records from sheet "Strategic Plan" of "data.xlsx" with following data
-      |          | Navigation | FlexTableId                                 | PageDetailsButton | ModalButton    | subHeader | subHeaderContent |
-      | testData | Planning   | ---strategicplan:-:StrategicPlansTableId--- | New               | Save and Close | Setup     | Strategic Plans  |
-    Examples:
-      | User |
-      | EXE  |
-
-  @CreateMultipleKPI
-  Scenario Outline: Create Multiple Focus Area
-    When I login to "As a Grantor" app as "<User>" user
-    And I navigate to "Planning" tab
-    And I create multiple records from sheet "KPI" of "data.xlsx" with following data
-      |          | Navigation | FlexTableId                                | PageDetailsButton | ModalButton    | subHeader | subHeaderContent                 |
-      | testData | Planning   | ---keyperformanceindicator:-:kpiTableId--- | New               | Save and Close | Setup     | Key Performance Indicators (KPI) |
-    Examples:
-      | User |
-      | EXE  |
-
-  @focusAreaActivation-setupdata
+  @focusAreaActivation-createTestData
   Scenario Outline: Activate Focus Area
     Given I delete the record "<focus area name>" from the object "Focus Area"
     When I login to "As a Grantor" app as "<User>" user
@@ -63,7 +19,7 @@ Feature: Validate creation of data in new Org
       | User | focus area name                 |
       | PM   | Automation Execution Focus Area1 |
 
-  @fundingSourceActivation-setupdata
+  @fundingSourceActivation-createTestData
   Scenario Outline: Activate Funding Source
     Given I delete the record "<funding source name>" from the object "Funding Source"
     When I login to "As a Grantor" app as "<User>" user
@@ -88,7 +44,7 @@ Feature: Validate creation of data in new Org
       | User | funding source name                 | funding account name                 |
       | EXE  | Automation Execution Funding Source | Automation Execution Funding Account |
 
-  @kpiActivation-setupdata
+  @kpiActivation-createTestData
   Scenario Outline: Activate KPI
     Given I delete the record "<kpi name>" from the object "KPI"
     When I login to "As a Grantor" app as "<User>" user
@@ -104,7 +60,7 @@ Feature: Validate creation of data in new Org
       | User | kpi name                 |
       | EXE  | Automation Execution KPI |
 
-  @strategicPlanActivation-setupdata
+  @strategicPlanActivation-createTestData
   Scenario Outline: Activating Strategic Plan Activation
     Given I delete the record "<strategic plan name>" from the object "Strategic Plan"
     When I login to "As a Grantor" app as "<User>" user
@@ -140,7 +96,7 @@ Feature: Validate creation of data in new Org
       | User | strategic plan name                 |
       | PM   | Automation Execution Strategic Plan |
 
-  @activationOfProgram-setupdata
+  @activationOfProgram-createTestData
   Scenario Outline: Validate the activation of Internal Program
     Given I delete the record "<program name>" from the object "Program"
     When I login to "As a Grantor" app as "<User>" user
@@ -213,7 +169,7 @@ Feature: Validate creation of data in new Org
       | User | program name |
       | PM   | my program   |
 
-  @competitiveAnnouncementActivation-setupdata
+  @competitiveAnnouncementActivation-createTestData
   Scenario Outline: Validate the activation of Competitive Announcement
     Given I delete the record "<competitive announcement name>" from the object "Announcement"
     When I login to "As a Grantor" app as "<User>" user
@@ -425,7 +381,7 @@ Feature: Validate creation of data in new Org
       | competitive announcement name | User |
       | my Competitive announcement   | EXE  |
 
-  @directedAnnouncementActivation-setupdata
+  @directedAnnouncementActivation-createTestData
   Scenario Outline: Validate the activation of Directed Announcement
     When I delete the record "<directed announcement name>" from the object "Announcement"
     And I login to "As a Grantor" app as "<User>" user
@@ -658,7 +614,7 @@ Feature: Validate creation of data in new Org
       | directed announcement name | User |
       | my Directed announcement   | EXE  |
 
-  @formulaAnnouncementActivation-setupdata
+  @formulaAnnouncementActivation-createTestData
   Scenario Outline: Validate the activation of Formula Announcement
     Given I delete the record "<formula announcement name>" from the object "Announcement"
     When I login to "As a Grantor" app as "<User>" user
@@ -879,7 +835,7 @@ Feature: Validate creation of data in new Org
       | EXE  | my formula announcement   |
 
     # Run this after creating competitive announcement
-  @submitApplication-setupdata
+  @submitApplication-createTestData
   Scenario Outline: Validate the submission of application
     Given I delete the record "<competitive announcement name>" from the object "Application"
     And I delete the record "<competitive announcement name>" from the object "Qualified Announcement"
@@ -921,7 +877,7 @@ Feature: Validate creation of data in new Org
       | competitive announcement name | User |
       | my Competitive announcement   | EXE  |
 
-  @applicationReviewAndFDMHappyPath-setupdata
+  @applicationReviewAndFDMHappyPath-createTestData
   Scenario Outline: complete review process for an application
     Given I delete the record "<Announcement Name>" from the object "APPLICATION REVIEWS"
     And I delete the record "<Announcement Name>" from the object "Qualified Announcement"
@@ -1102,7 +1058,7 @@ Feature: Validate creation of data in new Org
       | Announcement Name           | Application Name       | User |
       | my Competitive announcement | Automation Application | EXE  |
 
-  @awardActivation-setupdata
+  @awardActivation-createTestData
   Scenario Outline: Validate Activation of award
     Given I delete the record "Automation Payment Request" from the object "Payment Request"
     When I delete the record "<award name>" from the object "Payment Request"
