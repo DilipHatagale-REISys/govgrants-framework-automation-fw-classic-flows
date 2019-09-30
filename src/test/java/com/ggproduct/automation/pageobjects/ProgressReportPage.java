@@ -163,5 +163,14 @@ public class ProgressReportPage extends ProjectManager {
             return false;
         }
     }
+
+    /**
+     * To click on link containging text + today's date
+     * @param linkName - link text
+     */
+
+    public void clickOnHyperLink(String linkName){
+        clickOnLink(linkName + " " + EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("MM/dd/yyyy")).replaceAll("^0","") );
+    }
 }
 
