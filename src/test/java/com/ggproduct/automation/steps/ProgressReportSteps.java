@@ -87,4 +87,10 @@ public class ProgressReportSteps {
             Assert.assertFalse(progressReportPage.isbuttonDisplayedOnApprovalDecisionBox(radiobuttonOption));
         }
     }
+
+    @Description("To click on hyperlink containing some text + todays date")
+    @And("I click on hyperlink which contains todays date with text {string}")
+    public void iClickOnHyperlinkForSnapshotContainingValue(String linkName) {
+        progressReportPage.clickOnHyperLinkContainingDate(linkName);
+    }
 }

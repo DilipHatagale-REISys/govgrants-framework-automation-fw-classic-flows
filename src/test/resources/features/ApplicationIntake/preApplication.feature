@@ -82,7 +82,7 @@ Feature: Validate all scenarios in the Pre-Application
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "---preApplication:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record id" inside table
+    And I click on "Start" icon for "Record id" inside flex table with id "---preApplication:-:pendingTaskTableId---"
     When I click on "Accept" in the page details
     Given I am on "SUBPORTAL" portal
     And I login as "SPI" user
