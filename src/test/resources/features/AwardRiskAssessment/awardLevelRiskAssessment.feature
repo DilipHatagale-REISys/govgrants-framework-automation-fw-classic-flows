@@ -2904,7 +2904,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I see "Submitted for Approval" on page "1" of "govgrants" pdf file
 
   @60209 @validateRecordOwnerISAbleToViewActiveRASnapshot @deepika
-  Scenario: Validate record Owner is able to view the Snapshot of Active Risk Assessment
+  Scenario: Validate whether Snapshot is captured/(taken) automatically  by the system in the table Snapshot History when Risk Assessment is Activated
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
