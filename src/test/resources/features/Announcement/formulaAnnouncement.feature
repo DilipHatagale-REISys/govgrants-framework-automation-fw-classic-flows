@@ -51,7 +51,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record id" inside table
+    And I click on "Start" icon for "Record id" inside flex table with id "PhasePendingTasks"
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
@@ -228,7 +228,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record id" inside table
+    And I click on "Start" icon for "Record id" inside flex table with id "PhasePendingTasks"
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
@@ -396,7 +396,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record id" inside table
+    And I click on "Start" icon for "Record id" inside flex table with id "PhasePendingTasks"
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
@@ -577,7 +577,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record id" inside table
+    And I click on "Start" icon for "Record id" inside flex table with id "PhasePendingTasks"
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
@@ -756,7 +756,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record id" inside table
+    And I click on "Start" icon for "Record id" inside flex table with id "PhasePendingTasks"
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
@@ -955,7 +955,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record id" inside table
+    And I click on "Start" icon for "Record id" inside flex table with id "PhasePendingTasks"
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
@@ -1144,7 +1144,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record id" inside table
+    And I click on "Start" icon for "Record id" inside flex table with id "PhasePendingTasks"
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
@@ -1333,7 +1333,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record id" inside table
+    And I click on "Start" icon for "Record id" inside flex table with id "PhasePendingTasks"
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
@@ -1519,7 +1519,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record id" inside table
+    And I click on "Start" icon for "Record id" inside flex table with id "PhasePendingTasks"
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
@@ -1709,7 +1709,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record id" inside table
+    And I click on "Start" icon for "Record id" inside flex table with id "PhasePendingTasks"
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
@@ -1896,7 +1896,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record id" inside table
+    And I click on "Start" icon for "Record id" inside flex table with id "PhasePendingTasks"
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
@@ -2082,7 +2082,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record id" inside table
+    And I click on "Start" icon for "Record id" inside flex table with id "PhasePendingTasks"
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
@@ -2272,7 +2272,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record id" inside table
+    And I click on "Start" icon for "Record id" inside flex table with id "PhasePendingTasks"
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
@@ -2461,7 +2461,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record id" inside table
+    And I click on "Start" icon for "Record id" inside flex table with id "PhasePendingTasks"
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
@@ -2651,7 +2651,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record id" inside table
+    And I click on "Start" icon for "Record id" inside flex table with id "PhasePendingTasks"
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
@@ -2838,7 +2838,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record id" inside table
+    And I click on "Start" icon for "Record id" inside flex table with id "PhasePendingTasks"
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
@@ -3030,7 +3030,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record id" inside table
+    And I click on "Start" icon for "Record id" inside flex table with id "PhasePendingTasks"
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridApproverRoles"
     And I enter values into fields
