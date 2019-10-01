@@ -95,7 +95,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    When I close "Invite Recipient Organizations" modal by clicking the top right x button
+    When I close "Add Organizations" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Agency                              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
@@ -106,7 +106,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
     When I click "Add" after selection of "<EGMS Id>" in the table "SelectAnnFundingAccounts"
-    When I close "Funding Accounts" modal by clicking the top right x button
+    When I close "Associate" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -120,7 +120,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Add" after selection of "<EGMS Id>" in the table "SelectAnnFundingAccounts"
-    When I close "Funding Accounts" modal by clicking the top right x button
+    When I close "Associate" modal by clicking the top right x button
     When I click on "Remove" icon for "<EGMS Id>" inside flex table with id "---announcement:-:fundingAccountsTableId---"
     Then I do not see value "<EGMS Id>" for title "EGMS ID" inside table "---announcement:-:fundingAccountsTableId---"
     Examples:
@@ -174,7 +174,7 @@ Feature: Validate all common scenarios in the  Announcement tab
       | Automation test description | Mandatory | Award      | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---announcement:-:annChecklist---"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
-    When I close "Add Attachments" modal by clicking the top right x button
+    When I close "Upload Template" modal by clicking the top right x button
     Then I see that "Active" has been added in flextable with Id "---announcement:-:annChecklist---"
 
   @52411 @announcementApproverSelectionFA
