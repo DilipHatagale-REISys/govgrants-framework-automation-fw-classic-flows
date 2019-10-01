@@ -1234,6 +1234,21 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     Then I see that "Automation Desk Review Org Level" has been added in flextable with Id "---deskreview:-:deskReviewGridViewTableId---"
 
+  @61061 @RecordOwnerCanViewSnapshotAfterDeskReviewIsAcceptedAndClosed @Keerti
+  Scenario: Validating addition of attachment to Award Desk Review
+    Given I navigate to "Related Log" sub tab
+    And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
+    And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    When I click on "Cancel" in the page details
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Given I navigate to "Overview" sub tab
+    When I navigate to "Attachments" sub tab
+    When I upload attachment "Announcement_Field_Values.xlsx" from workspace
+    Then I see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
+
   @56041 @submittingForApprovalButtonOrgLevelDeskReview @deepika
   Scenario: User will be able to view the Submit for Approval button for Org Level Desk Review
     Given I navigate to "Related Log" sub tab
