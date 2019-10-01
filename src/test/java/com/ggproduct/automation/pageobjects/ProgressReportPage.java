@@ -169,7 +169,7 @@ public class ProgressReportPage extends ProjectManager {
      * @param linkName - link text
      */
 
-    public void clickOnHyperLink(String linkName){
+    public void clickOnHyperLinkContainingDate(String linkName){
         clickOnLink(linkName + " " + EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("MM/dd/yyyy")).replaceAll("^0","") );
     }
 }

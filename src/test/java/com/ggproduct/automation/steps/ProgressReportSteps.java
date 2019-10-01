@@ -89,8 +89,8 @@ public class ProgressReportSteps {
     }
 
     @Description("To click on hyperlink containing some text + todays date")
-    @And("I click on hyperlink for snapshot containing value {string}")
+    @And("I click on hyperlink which contains todays date with text {string}")
     public void iClickOnHyperlinkForSnapshotContainingValue(String linkName) {
-        progressReportPage.clickOnHyperLink(linkName);
+        progressReportPage.clickOnHyperLinkContainingDate(linkName);
     }
 }

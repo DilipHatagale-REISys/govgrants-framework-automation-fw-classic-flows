@@ -1483,7 +1483,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "Menu" in the page details
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
-    And I click on hyperlink for snapshot containing value "SnapShot on"
+    And I click on hyperlink which contains todays date with text "SnapShot on"
     When I download the file
     Then I see "{SavedValue:EGMSID}" on page "1" of "govgrants" pdf file
 
