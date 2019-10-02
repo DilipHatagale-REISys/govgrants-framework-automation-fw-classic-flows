@@ -2552,7 +2552,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "History" sub tab
     Then I see value "Rejected" for title "New Value" inside table "History"
 
-  @59876 @reviewerCanEditAssessmentFormWhenAllowRecordEditingIsSetAsYes @deepika
+  @59876 @reviewerCanEditAssessmentFormWhenAllowRecordEditingIsSetAsYes @deepika @wip
   Scenario: Validate when Allow Record Editing is set to 'Yes' then reviewer can Edit the Risk Assessment form
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2590,15 +2590,15 @@ Feature: Validate all scenarios in the Risk Assessment
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     When I navigate to "Responsibilities" sub tab
+    When I click on "Edit" in the page details
+    When I navigate to "Assessment" sub tab
+    And I enter "RiskAssessmentValues1" values from "RiskAssessment_Field_Values.xlsx"
+    When I click on "Save" in the page details
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridRiskAssessmentApproverRoles"
     And I enter a review as "Passed"
     When I click modal button "Save"
     And I click modal button "Submit Review"
     When I close "Review" modal by clicking the top right x button
-    When I click on "Edit" in the page details
-    When I navigate to "Assessment" sub tab
-    And I enter "RiskAssessmentValues1" values from "RiskAssessment_Field_Values.xlsx"
-    When I click on "Save" in the page details
     Then I see status in Progress-bar is "Submitted for Review" and is "Green"
 
   @onceReviewIsCompleteThePeerReviewerCannotResubmitComemnts @deepika
@@ -3119,13 +3119,12 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Save and Continue" in the page details
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
-    When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
       | Responsibility   | Name          | Description                 |
       | Fiscal Approver  | Automation FO | Automation Test Description |
       | Program Approver | Automation PM | Automation Test Description |
-    When I click on "Submit for Approval" in the page details
+    And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -3184,7 +3183,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
-    Then I see value "Submitted for Approval" for title "Status" against the value "Record ID" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"
+    Then I see value "Submitted for Approval" for title "Status" against the value "Record Id" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"
 
   @60232 @deletionOfCreatedRiskAssessment @deepika
   Scenario: Validate when Record owner deletes the Created Risk Assessment then it gets deleted from Monitoring Table
@@ -3493,7 +3492,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
-    Then I see field "OverAll Risk" as "44.0%"
+    Then I see field "OverAll Risk" as "44.00%"
 
   @60566 @ViewActiveRAFromOrganizationProfilePage @deepika
   Scenario Outline: Validate Risk Assessment Active Status should be displayed to SR user from Organizational Profile page.
@@ -3828,7 +3827,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Save and Continue" in the page details
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
-    When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "EGMSID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
       | Responsibility   | Name          | Description                 |
@@ -3851,7 +3850,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
-    When I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
+    When I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     Then I see status in Progress-bar is "Expired" and is "Green"
 
   @60817 @recipientCanViewExpiredRiskAssessment @deepika

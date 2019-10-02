@@ -778,10 +778,10 @@ Feature: Risk Assessment scenarios without background
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Automation Award for Amendment Request" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I perform quick search for "Automation Execution Award" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "Automation Execution Award" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "View" icon for "Automation Execution Award" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     Then I cannot see top right button "Submit for approval" in page detail
@@ -974,10 +974,10 @@ Feature: Risk Assessment scenarios without background
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Automation Award for Amendment Request" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I perform quick search for "Automation Execution Award" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "Automation Execution Award" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "View" icon for "Automation Execution Award" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
     And I click on "View" icon for "Submitted for Review" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     Then I cannot see top right button "Complete Review" in page detail
@@ -1516,7 +1516,7 @@ Feature: Risk Assessment scenarios without background
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
-    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "EGMSID"
     When I click on "Edit" in the page details
     And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -1572,6 +1572,7 @@ Feature: Risk Assessment scenarios without background
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
+    When I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     Then I see field "Overall Risk" as "{SavedValue:OverAllRisk}"
 
   @61040 @riskscoreSRSideforBudgetPeriodChange @deepika
