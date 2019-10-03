@@ -1,7 +1,7 @@
 package com.ggproduct.automation.projectmanager;
 
+import eyethink.automation.bots.Register.EnvironmentFetcher;
 import eyethink.automation.bots.Register.EyeThink;
-import eyethink.automation.bots.controller.EnvironmentFetcher;
 import eyethink.automation.bots.corelib.Emails;
 import eyethink.automation.bots.objects.Elements;
 import org.junit.Assert;
@@ -260,7 +260,7 @@ public class ProjectManager extends ProjectWebServices {
      */
     public void initData() {
         Properties p = new Properties();
-        if (null != EnvironmentFetcher.environmentName && !"".equalsIgnoreCase(EnvironmentFetcher.environmentName) && EnvironmentFetcher.environmentName.equalsIgnoreCase("QA")) {
+        if (null != EnvironmentFetcher.getEnvironmentName() && !"".equalsIgnoreCase(EnvironmentFetcher.getEnvironmentName()) && EnvironmentFetcher.getEnvironmentName().equalsIgnoreCase("QA")) {
             try {
                 p.load(this.getClass().getResourceAsStream("/properties/QAEnvData.properties"));
             } catch (IOException e) {

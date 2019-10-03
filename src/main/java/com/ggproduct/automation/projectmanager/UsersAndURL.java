@@ -1,6 +1,6 @@
 package com.ggproduct.automation.projectmanager;
 
-import eyethink.automation.bots.controller.EnvironmentFetcher;
+import eyethink.automation.bots.Register.EnvironmentFetcher;
 import eyethink.automation.bots.controller.UsersController;
 import eyethink.automation.bots.corelib.Properties_Logs;
 
@@ -29,7 +29,7 @@ public class UsersAndURL implements UsersController {
     @Override
     public String getUserName(String userLevel) {
         String userName = null;
-        if ((EnvironmentFetcher.environmentName != null) && (EnvironmentFetcher.environmentName.contains("QA"))) {
+        if ((EnvironmentFetcher.getEnvironmentName() != null) && (EnvironmentFetcher.getEnvironmentName().contains("QA"))) {
             userName = getQAEnvironmentUser(setUpUserLevel(userLevel));
         } else {
             userName = getAUTOEnvironmentUser(setUpUserLevel(userLevel));
@@ -40,7 +40,7 @@ public class UsersAndURL implements UsersController {
     @Override
     public String getPassword(String userLevel) {
         String password = null;
-        if (EnvironmentFetcher.environmentName.contains("QA")) {
+        if (EnvironmentFetcher.getEnvironmentName().contains("QA")) {
             password = getQAEnvironmentPassword(setUpUserLevel(userLevel));
         } else {
             password = getAUTOEnvironmentPassword(setUpUserLevel(userLevel));
