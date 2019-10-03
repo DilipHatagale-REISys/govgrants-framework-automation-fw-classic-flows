@@ -3219,3 +3219,28 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     Then I see value "Automation Permanent Objective" for title "Title" inside table "---progressReport:-:objectivesTableId---"
+
+  @61091 @validateNoEditActionForObjectives @mahadev
+  Scenario: Validate Objectives table at Performance Tab on Progress report should not be editable at SR user end
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    Then I cannot see row level action button "Edit" against "Automation Permanent Objective" in flex table with id "---progressReport:-:objectivesTableId---"
+
+  @61094 @validateDownloadOfObjectivesInPDF @mahadev
+  Scenario: Validate SR User can Download the Objectives associated at award on progress report in PDF format
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I select "Download as PDF" from parallel lines dropdown of "Objectives"
+    When I download the file
+    Then I see "Test Automation Organization" on page "1" of "govgrants" pdf file
+
+  @61095 @validateDownloadOfObjectivesInCSV @mahadev
+  Scenario: Validate SR User can Download the Objectives associated at award on progress report in CSV format
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I select "Download as CSV" from parallel lines dropdown of "Objectives"
+    And I download the file
+    Then I verify that "xls" file is downloaded

@@ -3,11 +3,11 @@ package com.ggproduct.automation.projectmanager;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import com.jayway.restassured.response.Response;
+import eyethink.automation.bots.Register.EnvironmentFetcher;
 import eyethink.automation.bots.Register.EyeThink;
-import eyethink.automation.bots.controller.EnvironmentFetcher;
 
 public class ProjectWebServices {
-    private static String endPoint = EnvironmentFetcher.environment;
+    private static String endPoint = EnvironmentFetcher.getEnvironmentUrl();
     private String defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9ic.6IFhNpPq_k9vYkenIh973gbcI2GBHkEu4.ukW4PZidcRmrQ6ma0lg.fdcZRtLB4IL1HgKKB87Y5Ab&client_secret=6105591870206036129&username=manu.sa@ggp.test7&password=GoProduct@123";
     private static String tokenString;
     private String jobID;
