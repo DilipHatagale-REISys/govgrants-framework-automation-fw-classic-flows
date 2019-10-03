@@ -110,7 +110,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     When I click on "Conduct" in the page details
     Then I see status in Progress-bar is "In Progress" and is "green"
 
@@ -138,7 +138,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
@@ -172,7 +172,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
@@ -211,7 +211,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
@@ -250,7 +250,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
@@ -301,7 +301,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
@@ -330,7 +330,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Send to Subrecipient" in the page details
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
 
@@ -358,7 +358,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
@@ -387,7 +387,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
@@ -436,7 +436,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
@@ -466,7 +466,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
@@ -516,7 +516,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
@@ -562,7 +562,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
@@ -614,7 +614,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
@@ -670,7 +670,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Conduct" in the page details
     When I click on "Submit for Approval" in the page details
     Then I see the following messages in the page details :
@@ -700,7 +700,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
@@ -730,7 +730,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Then I can see top right button "Send to Subrecipient" in page detail
 
   @55284 @deskReviewWithOutAddingCorerctiveItems @deepika
@@ -757,7 +757,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
@@ -787,7 +787,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
@@ -822,7 +822,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
@@ -884,7 +884,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
@@ -953,7 +953,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Then I cannot see top right button "Conduct" in page detail
 
   @55368 @reportsAndOutcomesEditAccessDeskReview @deepika
@@ -981,7 +981,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     And I navigate to "Reports and Outcomes" sub tab
     Then I cannot see row level action button "Edit" against "General Review Form" in flex table with id "---deskreview:-:deskReviewGridViewTableId---"
 
@@ -1009,7 +1009,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
@@ -1039,7 +1039,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
@@ -1067,7 +1067,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Then I can see top right button "Accept and Close" in page detail
 
   @55791 @internalUserParticipantAssociationDeskReview @deepika
@@ -1190,7 +1190,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     When I click on "Complete Review" in the page details
     Then I see status in Progress-bar is "In Progress" and is "green"
 
@@ -1224,7 +1224,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
@@ -1281,7 +1281,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
@@ -1319,7 +1319,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
@@ -1363,7 +1363,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
@@ -1411,7 +1411,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
@@ -1465,7 +1465,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
@@ -1511,7 +1511,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
@@ -1542,13 +1542,13 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Given I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside table
+    And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
@@ -1570,7 +1570,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    And I click on "View" icon for "Record Id" inside table
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     And I click on "Accept And Close" in the page details
     And I click on "Menu" in the page details
     And I select "Take Snapshot" from dropdown

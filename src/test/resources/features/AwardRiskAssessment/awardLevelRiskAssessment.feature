@@ -1114,7 +1114,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
       | Automation SPI | Project Director/Manager | Checked          |
-    When I navigate to "Responsibilities" sub tabf
+    When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
@@ -2915,6 +2915,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click modal button "Save and Continue"
     And I navigate to "Subawards" sub tab
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I get the "EGMS ID"
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -2924,13 +2925,35 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Save and Continue" in the page details
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
-    And I get the "EGMS ID"
+    When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name           | Description                 |
-      | Fiscal Approver  | Automation FO  | Automation Test Description |
-      | Program Approver | Automation EXE | Automation Test Description |
-    And I click on "Submit for Approval" in the page details
+      | Responsibility   | Name          | Description                 |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+      | Program Approver | Automation PM | Automation Test Description |
+    When I navigate to "Responsibilities" sub tab
+    And I enter the following values into flex table with id "flexGridRiskAssessmentApproverRoles" by clicking "New" :
+      | Name          | Responsibility  | Description                 | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Automation Test Description | 7        | No                   |
+    And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "flexGridRiskAssessmentApproverRoles"
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridRiskAssessmentApproverRoles"
+    And I enter a review as "Passed"
+    When I click modal button "Save"
+    And I click modal button "Submit Review"
+    When I close "Review" modal by clicking the top right x button
+    When I re-login to "As a Grantor" app as "DynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    And I perform quick search for "Record Id" in "flexGridRiskAssessmentGridViewInternal" panel
+    When I click on "View" icon for "Record Id" inside flex table with id "flexGridRiskAssessmentGridViewInternal"
+    And I click on "Complete Review" in the page details
+    When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2948,10 +2971,15 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
+    When I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     And I click on "Menu" in the page details
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
-    And I click on hyperlink containing value "Subaward Risk Assessment"
+    And I click on hyperlink containing value "Risk Assessment Activation/Rejection.pdf"
     When I download the file
     Then I see "Active" on page "1" of "govgrants" pdf file
 
@@ -3937,7 +3965,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Expired" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
     Then I see "Expired" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
 
-  @60965 @fieldCompares @deepika @wip
+  @60965 @fieldCompares @deepika
   Scenario: Validate whether Record Owner user is able to view and Compare field values on UI and PDF match
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -3968,11 +3996,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "Menu" in the page details
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
-    And I click on "Menu" in the page details
-    And I select "Take Snapshot" from dropdown
-    And I click on hyperlink containing value "Subaward Risk Assessment.pdf"
-    When I download the file
-    Then I see snapshot with name containing "Subaward Risk Assessment.pdf" as name
+    Then I see snapshot with name containing "Subaward Risk Assessment" as name
 
   @61383 @approverCompletedTask @deepika
   Scenario: Validate whether user is able to view the Completed task once approved under Monitoring Tab
@@ -4009,9 +4033,10 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Approve" on the approval decision box
+    And I navigate to "Monitoring" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---riskassessment:-:completedTaskTableId---" panel
-    Then I see that "Record Id" has been added in flextable with Id "---riskassessment:-:completedTaskTableId---"
+    Then I see value "Record Id" for title "EGMS ID" inside table "---riskassessment:-:completedTaskTableId---"
 
     @61384 @addButtonAvailabilityafterSubmitforApproval
     Scenario: Validate the add button on attachments flextable is not available for Risk Assessment Owner once submitted for Approval
@@ -4040,7 +4065,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
       | Responsibility   | Name          | Description                 |
       | Fiscal Approver  | Automation FO | Automation Test Description |
-      | Program Approver | Automation PM | Automation Test Description |
+      | Program Approver | Automation EXE | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     When I navigate to "Attachments" sub tab
-    Then I cannot see top right button "Add" in flex table with id "riskassessment:-:attachmentsFlextableId---"
+      Then I cannot see top right button "Add" for "Attachments" flex table
