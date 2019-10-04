@@ -1912,6 +1912,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     When I navigate to "Reports and Outcomes" sub tab
+    And I pause execution
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To    |
@@ -2188,7 +2189,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Responsibility   | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
-    And I pause execution
     Given I click on "Send To Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Closeout" tab
