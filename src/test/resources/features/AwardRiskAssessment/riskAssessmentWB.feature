@@ -1,7 +1,7 @@
 @riskAssessment @regression
 Feature: Risk Assessment scenarios without background
 
-  @59253 @errorMessageValidation @deepika
+  @59253 @errorMessageValidation @deepika @wip
   Scenario: Validate whether the system generates an error message while activating the award if user doesn't fill in the risk assessment but the setting on the announcement is yes.
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
@@ -169,7 +169,7 @@ Feature: Risk Assessment scenarios without background
     Then I see the following messages in the page details :
       | Management Tab - Create and activate a Risk Assessment as the Subaward cannot be issued without an active Risk Assessment. |
 
-  @59252 @riskAssessmentSetasNoAtAnnouncementSettings @deepika
+  @59252 @riskAssessmentSetasNoAtAnnouncementSettings @deepika @wip
   Scenario:Given Award is created from FDM, Validate filling/creating risk assessment is not applicable when setting is No
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     And I delete the record "Automation Competitive Announcement" from the object "Qualified Announcement"
