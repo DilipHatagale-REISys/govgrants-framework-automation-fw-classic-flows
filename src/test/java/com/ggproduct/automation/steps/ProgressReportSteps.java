@@ -45,9 +45,9 @@ public class ProgressReportSteps {
     }
 
     @Description("To verify top right button on attachments flex table")
-    @Then("^I cannot see top right button \"([^\"]*)\" for \"([^\"]*)\" flex table$")
-    public void iCannotSeeTopRightButtonForFlexTable(String buttonName, String flextableHeaderName) {
-        progressReportPage.assertTopRightButtonOnFlexTable(buttonName, flextableHeaderName);
+    @Then("^I (see|cannot see) top right button \"([^\"]*)\" for \"([^\"]*)\" flex table$")
+    public void iCannotSeeTopRightButtonForFlexTable(String shouldBeDisplayed, String buttonName, String flextableHeaderName) {
+        progressReportPage.assertTopRightButtonOnFlexTable(shouldBeDisplayed,buttonName, flextableHeaderName);
     }
 
     @Description("To verify row level action button inside attachments flex table")

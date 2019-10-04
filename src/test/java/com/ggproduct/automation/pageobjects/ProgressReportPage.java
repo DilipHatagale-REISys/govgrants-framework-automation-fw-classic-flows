@@ -80,15 +80,16 @@ public class ProgressReportPage extends ProjectManager {
      * @param flextableHeaderName
      * @return
      */
-    public Boolean isTopRightButtonDisplayed(String buttonName, String flextableHeaderName){
-        if (EyeThink.core().is().onWeb().isDisplayed(By.xpath("//a[text()='"+ flextableHeaderName +"']/../../div/button[text()='"+ buttonName +"']")))
-            return true;
-        else
+    public Boolean isTopRightButtonDisplayed(String buttonName, String flextableHeaderName) {
+        try {
+            return EyeThink.core().is().onWeb().isDisplayed(By.xpath("//a[text()='" + flextableHeaderName + "']/../../div/button[text()='" + buttonName + "']"));
+        } catch (Exception e) {
             return false;
+        }
     }
 
-    public void assertTopRightButtonOnFlexTable(String buttonName, String flextableHeaderName){
-        Assert.assertFalse(isTopRightButtonDisplayed(buttonName,flextableHeaderName));
+    public void assertTopRightButtonOnFlexTable(String shouldBeDisplayed, String buttonName, String flextableHeaderName) {
+        Assert.assertEquals("see".equalsIgnoreCase(shouldBeDisplayed), isTopRightButtonDisplayed(buttonName, flextableHeaderName));
     }
 
     /**

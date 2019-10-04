@@ -3201,6 +3201,7 @@ Feature: Validate all scenarios in the Risk Assessment
       | Responsibility   | Name           | Description                 |
       | Fiscal Approver  | Automation FO  | Automation Test Description |
       | Program Approver | Automation EXE | Automation Test Description |
+    When I save the field labeled "EGMS ID" as "RISKID"
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -3211,7 +3212,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
-    Then I see value "Submitted for Approval" for title "Status" against the value "Record Id" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"
+    Then I see value "Submitted for Approval" for title "Status" against the value "{SavedValue:RISKID}" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"
 
   @60232 @deletionOfCreatedRiskAssessment @deepika
   Scenario: Validate when Record owner deletes the Created Risk Assessment then it gets deleted from Monitoring Table
@@ -3520,7 +3521,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
-    Then I see field "OverAll Risk" as "44.00%"
+    Then I see field "OverAll Risk" as "46.00%"
 
   @60566 @ViewActiveRAFromOrganizationProfilePage @deepika
   Scenario Outline: Validate Risk Assessment Active Status should be displayed to SR user from Organizational Profile page.
@@ -3613,7 +3614,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
-    When I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
+    When I click on "View" icon for "Active" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     Then I see status in Progress-bar is "Active" and is "Green"
     Examples:
       | Award Name                           | Grant Name                           |
@@ -4038,8 +4039,8 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---riskassessment:-:completedTaskTableId---" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "---riskassessment:-:completedTaskTableId---"
 
-    @61384 @addButtonAvailabilityafterSubmitforApproval
-    Scenario: Validate the add button on attachments flextable is not available for Risk Assessment Owner once submitted for Approval
+  @61384 @addButtonAvailabilityafterSubmitforApproval
+  Scenario: Validate the add button on attachments flextable is not available for Risk Assessment Owner once submitted for Approval
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -4050,7 +4051,6 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click modal button "Save and Continue"
     And I navigate to "Subawards" sub tab
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
-    And I get the "EGMS ID"
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -4060,12 +4060,11 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Save and Continue" in the page details
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
-    When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
-      | Fiscal Approver  | Automation FO | Automation Test Description |
+      | Responsibility   | Name           | Description                 |
+      | Fiscal Approver  | Automation FO  | Automation Test Description |
       | Program Approver | Automation EXE | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     When I navigate to "Attachments" sub tab
-      Then I cannot see top right button "Add" for "Attachments" flex table
+    Then I cannot see top right button "Add" for "Attachments" flex table
