@@ -71,7 +71,11 @@ public class ProgressReportPage extends ProjectManager {
      * returns true if field contains todays date
      */
     public void compareDateFieldWithTodaysDate(String fieldLabel){
-        Assert.assertEquals(EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("MM/dd/yyyy")).replaceAll("^0",""),EyeThink.saas().pageDetails().getFieldValue(fieldLabel));
+        String fieldValue =  EyeThink.saas().pageDetails().getFieldValue(fieldLabel);
+        if (fieldValue.contains(" ")){
+            fieldValue =fieldValue.replaceAll("\\s.*","");
+        }
+        Assert.assertEquals(EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")), fieldValue);
     }
 
     /**
@@ -117,7 +121,7 @@ public class ProgressReportPage extends ProjectManager {
      * To verify reported date field contains today's date
      */
     public void assertReportedDateField(){
-        Assert.assertEquals(EyeThink.core().Properties().getValue("ReportedDate"),EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("MM/dd/yyyy")).replaceAll("^0",""));
+        Assert.assertEquals(EyeThink.core().Properties().getValue("ReportedDate"),EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")));
     }
 
     public Boolean isFieldEditable(String fieldAPIName){
@@ -170,7 +174,7 @@ public class ProgressReportPage extends ProjectManager {
      */
 
     public void clickOnHyperLinkContainingDate(String linkName){
-        clickOnLink(linkName + " " + EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("MM/dd/yyyy")).replaceAll("^0","") );
+        clickOnLink(linkName + " " + EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")));
     }
 }
 
