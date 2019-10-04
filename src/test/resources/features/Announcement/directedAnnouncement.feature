@@ -1,4 +1,4 @@
-@directedAnnouncements @regression
+@directedAnnouncements @regression @wip
 Feature: Validate all scenarios in the directed Announcement tab
 
   Background: Create Announcement
