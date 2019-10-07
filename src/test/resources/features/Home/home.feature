@@ -38,7 +38,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
       | PM    |
-      |EXE    |
+      | EXE   |
 
   @56709 @internalOrganizationADMINEdit
   Scenario: Validate system allows Edit access to Internal Organizations to the ADMIN/DA
@@ -888,3 +888,46 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I click on "My_Workspace_File"
     Then I see "Record Id" has been added in My Workspace Files
+
+  @pageBlockSections @deepika
+  Scenario Outline: Verify whether the Overview Tab has the sections: Related Contacts and Indirect rates
+    Given I login to "As a Grantor" app as "<User>" user
+    When I navigate to "Home" tab
+    And I navigate to "Internal" content inside "Organization" subheader on left panel
+    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
+    When I click on "View" icon for "Test Automation Organization" inside flex table with id "---home:-:internalOrganizationId---" with wait for record
+    And I navigate to "Overview" sub tab
+    Then I can see page block "Related Contacts"
+    Then I can see page block "Indirect Cost Rates"
+    Examples:
+      | User  |
+      | ADMIN |
+      | EXE   |
+      | PM    |
+
+  @pageBlockSectionsRelatedLog @deepika
+  Scenario Outline:  Validate whether the Related Log displays Active Federal/NGO Applications (Grantee) and Active Federal/NGO Grants (Grantee).
+    Given I login to "As a Grantor" app as "<User>" user
+    When I navigate to "Home" tab
+    And I navigate to "Internal" content inside "Organization" subheader on left panel
+    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
+    When I click on "View" icon for "Test Automation Organization" inside flex table with id "---home:-:internalOrganizationId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    Then I can see page block "Active Federal/NGO Applications"
+    Then I can see page block "Active Federal/NGO Grants"
+    Examples:
+      | User  |
+      | ADMIN |
+      | EXE   |
+      | PM    |
+
+  @indProfileEditAccess @deepika
+  Scenario: Verify whether the Individual Sub Profile Users can edit their own subrecipient profile Information
+    Given I login to "As a Grantor" app as "Ind" user
+    When I navigate to "Home" tab
+    And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
+    When I perform quick search for "Automation ind123" in "ActiveAccountIndApplicant" panel
+    And I click on "Edit" icon for "Automation ind123" inside flex table with id "ActiveAccountIndApplicant"
+    And I click on "Save" in the page details
+    Then I see that "Automation ind123" is in "Active" status
+

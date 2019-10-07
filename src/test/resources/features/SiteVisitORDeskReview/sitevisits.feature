@@ -1989,6 +1989,3 @@ Feature: Validate all scenarios in the Site Visit
    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
    And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
    Then I cannot see top right button "Submit for Approval" in page detail
-
-
-
