@@ -1722,3 +1722,28 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Save" in the page details
     And I navigate to "Overview" sub tab
     Then I see field "Created Date" is getting updated with todays date
+
+  @61407 @RecordOwnerCanNotEditSVDatesUnderOverviewTab @keerti
+  Scenario: Validate Once Sit visits is conducted then Edit Button on page is Hidden and Record Owner cannot edit the Site Visits Dates under Overview tab
+    Given I navigate to "Related log" sub tab
+    And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
+    And I enter "Creation" values from "Organizational_SiteVisit_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    When I click on "Cancel" in the page details
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Organizational_SiteVisit_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
+      | Responsibilities | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
+    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Application" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    And I click on "Notify" in the page details
+    When I click on "Conduct" in the page details
+    Given I navigate to "Overview" sub tab
+    Then I see field "StartDate__c" is not editable
