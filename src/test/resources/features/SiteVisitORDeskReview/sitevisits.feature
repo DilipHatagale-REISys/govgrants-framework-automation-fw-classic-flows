@@ -1989,3 +1989,11 @@ Feature: Validate all scenarios in the Site Visit
    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
    And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
    Then I cannot see top right button "Submit for Approval" in page detail
+<<<<<<< HEAD
+=======
+
+  @61201 @CreatedDatedisplayedOnOverviewTab @keerti
+  Scenario: Validate the Created Date of Site Visits display on Overview Tab
+    When I navigate to "Overview" sub tab
+    Then I see field "Created Date" is getting updated with todays date
+>>>>>>> 1e5c255fee04949f3dab0e358c87dc0d1967a311
