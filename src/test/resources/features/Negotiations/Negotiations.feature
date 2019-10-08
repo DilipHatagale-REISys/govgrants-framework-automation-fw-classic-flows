@@ -10,7 +10,7 @@ Feature: Validate all scenarios in Negotiations
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
-    When I perform quick search for "" in "---subAwardFromFDM:-:fdmTableId---" panel
+    When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "Automation Announcement for FDM " inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I navigate to "Negotiations" sub tab

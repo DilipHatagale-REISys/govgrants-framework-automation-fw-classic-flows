@@ -1702,7 +1702,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
+    Then I do not see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
 
   @59613 @ownerToAddProgramReviewer @deepika
   Scenario: Validate owner is allowed to add a peer reviewer of type Program Reviewer in the peer reviewers table in Award Risk Assessment
