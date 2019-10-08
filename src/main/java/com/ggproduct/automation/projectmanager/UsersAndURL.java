@@ -104,12 +104,12 @@ public class UsersAndURL implements UsersController {
 
     private String getAUTOEnvironmentUser(String userLevel) {
         Map<String, String> username = new HashMap<>();
-        username.put("ADMIN", "nakul@admin.test7.automation");
-        username.put("EXE", "test@gmaildemo.com.automation");
-        username.put("PM", "donald_pm@ggp.test7.automation");
-        username.put("FO", "auto.fm@auto.com.automation");
-        username.put("SPI", "spiautomation@yopmail.com");
-        username.put("SPA", "spaautomation@yopmail.com");
+        username.put("ADMIN", "manu.admin@ggp.test7.atm");
+        username.put("EXE", "test@gmaildemo.com.atm");
+        username.put("PM", "donald_pm@ggp.test7.atm");
+        username.put("FO", "auto.fm@auto.com.atm");
+        username.put("SPI", "kyle.farrell@reisystems.com21.atm");
+        username.put("SPA", "spaautomation@yopmail.com.atm");
 
         username.put("SIMON PM", "simon_pm@ggp.test7.automation");
         username.put("ALEX FO", "alex_fo@ggp.test7.automation");

@@ -61,9 +61,13 @@ public class ProjectWebServices {
 
     private void setDefaultEndPointGetToken(String defaultEndPointGetToken) {
         if (System.getProperty("env") != null && System.getProperty("env").equalsIgnoreCase("QA")) {
-            this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9dZJodJWITSuFoeXeOau_jPysAF1tDTnpScZyZwXUGhS_ZudVpjPfvLFrO78TVtOgK6flv6R5a4OV8QnR&client_secret=1408645120361878326&username=mayuresh.g@ggp.test7&password=Salesforce_2019";
+            this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password" +
+                    "&client_id=3MVG9dZJodJWITSuFoeXeOau_jPysAF1tDTnpScZyZwXUGhS_ZudVpjPfvLFrO78TVtOgK6flv6R5a4OV8QnR" +
+                    "&client_secret=1408645120361878326" +
+                    "&username=mayuresh.g@ggp.test7" +
+                    "&password=Salesforce_2019";
         } else {
-            this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9dCCPs.KiE4SymniyHC6UlMIAR0YvAXol5FuMHzSJqbOVMTccQ38dL.hKCIoEsFGgNLDt8rESz_Kj4agG&client_secret=44C0443943FD6112314BEE069C8C6680E3106B5F4B86E46EBB84D60B4435CB90&username=nakul@admin.test7.automation&password=Product@123";
+            this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9zJJ_hX_0bb8yUWurIZ11JwpQ3xRQa3fdQZvVgPIaFuhkm9u3rePUeB9c10k_Cf3gxuAyJ3nl9Q7kZpst&client_secret=8EFE7BB41D889DF5731E00526750FF8C98F62FE903703DEB4DE1DCAF0ACA4820&username=manu.admin@ggp.test7.atm&password=1508@Govgrants";
         }
     }
 
