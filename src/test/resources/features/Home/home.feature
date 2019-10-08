@@ -40,8 +40,6 @@ Feature: Validate all scenarios in the home tab
       | PM    |
       |EXE    |
 
-
-
   @56709 @internalOrganizationADMINEdit
   Scenario: Validate system allows Edit access to Internal Organizations to the ADMIN/DA
     Given I login to "As a Grantor" app as "ADMIN" user
@@ -77,9 +75,9 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Automation Ind" in "ActiveAccountIndApplicant" panel
-    And I click on "View" icon for "Automation Ind" inside flex table with id "ActiveAccountIndApplicant"
-    Then I see that "Automation Ind" is in "Active" status
+    When I perform quick search for "Automation ind123" in "ActiveAccountIndApplicant" panel
+    And I click on "View" icon for "Automation ind123" inside flex table with id "ActiveAccountIndApplicant"
+    Then I see that "Automation ind123" is in "Active" status
     Examples:
       | User  |
       | ADMIN |
@@ -91,8 +89,8 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Automation Ind" in "ActiveAccountIndApplicant" panel
-    Then I can see row level action button "Edit" against "Automation Ind" in flex table with id "ActiveAccountIndApplicant"
+    When I perform quick search for "Automation ind123" in "ActiveAccountIndApplicant" panel
+    Then I can see row level action button "Edit" against "Automation ind123" in flex table with id "ActiveAccountIndApplicant"
     Examples:
       | User  |
       | ADMIN |
@@ -224,7 +222,8 @@ Feature: Validate all scenarios in the home tab
   Scenario Outline: Verify that system allows user to see the detail page of Active SME Reviewer contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
-    And I navigate to "SME ---home:-:reviewersTableId---" content inside "Contacts" subheader on left panel
+    And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
+    When I perform quick search for "Automation SME" in "---home:-:reviewersTableId---" panel
     Then I can see row level action button "View" against "Automation SME" in flex table with id "---home:-:reviewersTableId---"
     Examples:
       | User  |
@@ -241,8 +240,8 @@ Feature: Validate all scenarios in the home tab
     And I enter "Creation" values from "TermsandConditions_Field_Values.xlsx"
     When I click modal button "Save"
     When I close "New" modal by clicking the top right x button
-    When I perform quick search for "TC-5885" in "---home:-:termsAndConditionsTableId---" panel
-    Then I can see row level action button "View" against "TC-5885" in flex table with id "---home:-:termsAndConditionsTableId---"
+    When I perform quick search for "TC-598383" in "---home:-:termsAndConditionsTableId---" panel
+    Then I can see row level action button "View" against "TC-598383" in flex table with id "---home:-:termsAndConditionsTableId---"
     Examples:
       | User  |
       | ADMIN |
@@ -367,7 +366,6 @@ Feature: Validate all scenarios in the home tab
     When I click on "Edit" icon for "Automation Manager" inside flex table with id "---home:-:subrecipientContactTableId---"
     And I enter "Edition" values from "SubrecipientContact_Field_Values.xlsx"
     And I click modal button "Save"
-    And I perform quick search for "Automation Manager" in "---home:-:subrecipientContactTableId---" panel
     Then I see value "New" for title "Status" inside table "---home:-:subrecipientContactTableId---"
     Examples:
       | User  |
@@ -582,7 +580,7 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
     When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "---home:-:subrecipientActiveAccountId---" panel
     When I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table without waiting for record
-    Then I see values "SAM.Gov" and "Entity Validation" inside table
+    Then I see field "SAM.Gov Expiration Date" is not editable
     Examples:
       | User  |
       | ADMIN |
@@ -593,7 +591,6 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Department of Education" in "---home:-:internalOrganizationId---" panel
-    When I switch to Parent iframe
     And I expand nested table containing column value "Department of Education"
     Then I see values "Teaching and Learning" and "Agency" inside table
     Examples:
@@ -649,15 +646,12 @@ Feature: Validate all scenarios in the home tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
     When I click "Add" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
-    And I switch to Parent iframe
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
     When I click "Add" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
-    And I switch to Parent iframe
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
     When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
     When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
-    And I switch to Parent iframe
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
@@ -702,15 +696,12 @@ Feature: Validate all scenarios in the home tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
     When I click "Add" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
-    And I switch to Parent iframe
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
     When I click "Add" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
-    And I switch to Parent iframe
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
     When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
     When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
-    And I switch to Parent iframe
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
@@ -740,7 +731,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
     When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
-    Then I see values "953072483" and "148549041" inside table
+    Then I see values "473105667" and "148549041" inside table
     Examples:
       | User  |
       | ADMIN |
@@ -779,8 +770,8 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Automation Ind" in "ActiveAccountIndApplicant" panel
-    Then I can see row level action button "View" against "Automation Ind" in flex table with id "ActiveAccountIndApplicant"
+    When I perform quick search for "Automation ind123" in "ActiveAccountIndApplicant" panel
+    Then I can see row level action button "View" against "Automation ind123" in flex table with id "ActiveAccountIndApplicant"
     Examples:
       | User  |
       | ADMIN |
@@ -810,15 +801,12 @@ Feature: Validate all scenarios in the home tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
     When I click "Add" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
-    And I switch to Parent iframe
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
     When I click "Add" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
-    And I switch to Parent iframe
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
     When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
     When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
-    And I switch to Parent iframe
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
@@ -868,15 +856,12 @@ Feature: Validate all scenarios in the home tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
     When I click "Add" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
-    And I switch to Parent iframe
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
     When I click "Add" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
-    And I switch to Parent iframe
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
     When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
     When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
-    And I switch to Parent iframe
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |

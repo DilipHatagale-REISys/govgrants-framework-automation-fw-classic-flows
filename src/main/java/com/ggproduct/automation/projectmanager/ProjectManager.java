@@ -1,7 +1,7 @@
 package com.ggproduct.automation.projectmanager;
 
+import eyethink.automation.bots.Register.EnvironmentFetcher;
 import eyethink.automation.bots.Register.EyeThink;
-import eyethink.automation.bots.controller.EnvironmentFetcher;
 import eyethink.automation.bots.corelib.Emails;
 import eyethink.automation.bots.objects.Elements;
 import org.junit.Assert;
@@ -166,7 +166,6 @@ public class ProjectManager extends ProjectWebServices {
      */
     public void uploadAttachmentFromWorkspace(String fileNameFromWorkSpace) {
         EyeThink.core().click().onWeb(By.xpath("//div[@id='myTabbedContent']//span[contains(text(),'Attachment')]/..//div[@class='panel-heading']//*[text()='Add']"));
-        EyeThink.core().switchTo().switchToFrame(By.xpath("//iframe[contains(@ng-src, 'apex') or contains(@src,'apex')]"));
         EyeThink.core().click().onWeb(By.xpath("//div[@id='Attachmentadd']//span[text()='Upload file from Workspace']"));
         EyeThink.core().click().onWeb((By.xpath("//div[@id='Attachmentadd']//td[text()='" + fileNameFromWorkSpace + "']/..//input")));
         EyeThink.saas().modal().clickModalContentSpecificButton("Attach");
@@ -261,7 +260,7 @@ public class ProjectManager extends ProjectWebServices {
      */
     public void initData() {
         Properties p = new Properties();
-        if (null != EnvironmentFetcher.environmentName && !"".equalsIgnoreCase(EnvironmentFetcher.environmentName) && EnvironmentFetcher.environmentName.equalsIgnoreCase("QA")) {
+        if (null != EnvironmentFetcher.getEnvironmentName() && !"".equalsIgnoreCase(EnvironmentFetcher.getEnvironmentName()) && EnvironmentFetcher.getEnvironmentName().equalsIgnoreCase("QA")) {
             try {
                 p.load(this.getClass().getResourceAsStream("/properties/QAEnvData.properties"));
             } catch (IOException e) {
@@ -339,7 +338,6 @@ public class ProjectManager extends ProjectWebServices {
     public void addNotesToPR(){
         By addBtnNotes= By.xpath("//div[contains(@id,'Notes')]//*[text()='Add']");
         EyeThink.core().click().onWeb(addBtnNotes);
-        EyeThink.core().switchTo().switchToFrame(By.xpath("//iframe[contains(@id,'iframeAddNote')]"));
         EyeThink.core().enterText().onWeb().enter(By.xpath("//label[@for='Title']/following-sibling::input"),  "Note Title");
         EyeThink.core().enterText().onWeb().enter(By.xpath("//label[@for='Description']/following-sibling::textarea"), "Note Description");
         EyeThink.saas().modal().clickModalContentSpecificButton("Save");

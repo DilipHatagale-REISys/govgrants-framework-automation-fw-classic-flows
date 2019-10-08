@@ -71,7 +71,11 @@ public class ProgressReportPage extends ProjectManager {
      * returns true if field contains todays date
      */
     public void compareDateFieldWithTodaysDate(String fieldLabel){
-        Assert.assertEquals(EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("MM/dd/yyyy")).replaceAll("^0",""),EyeThink.saas().pageDetails().getFieldValue(fieldLabel));
+        String fieldValue =  EyeThink.saas().pageDetails().getFieldValue(fieldLabel);
+        if (fieldValue.contains(" ")){
+            fieldValue =fieldValue.replaceAll("\\s.*","");
+        }
+        Assert.assertEquals(EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")), fieldValue);
     }
 
     /**
@@ -80,15 +84,16 @@ public class ProgressReportPage extends ProjectManager {
      * @param flextableHeaderName
      * @return
      */
-    public Boolean isTopRightButtonDisplayed(String buttonName, String flextableHeaderName){
-        if (EyeThink.core().is().onWeb().isDisplayed(By.xpath("//a[text()='"+ flextableHeaderName +"']/../../div/button[text()='"+ buttonName +"']")))
-            return true;
-        else
+    public Boolean isTopRightButtonDisplayed(String buttonName, String flextableHeaderName) {
+        try {
+            return EyeThink.core().is().onWeb().isDisplayed(By.xpath("//a[text()='" + flextableHeaderName + "']/../../div/button[text()='" + buttonName + "']"));
+        } catch (Exception e) {
             return false;
+        }
     }
 
-    public void assertTopRightButtonOnFlexTable(String buttonName, String flextableHeaderName){
-        Assert.assertFalse(isTopRightButtonDisplayed(buttonName,flextableHeaderName));
+    public void assertTopRightButtonOnFlexTable(String shouldBeDisplayed, String buttonName, String flextableHeaderName) {
+        Assert.assertEquals("see".equalsIgnoreCase(shouldBeDisplayed), isTopRightButtonDisplayed(buttonName, flextableHeaderName));
     }
 
     /**
@@ -117,7 +122,7 @@ public class ProgressReportPage extends ProjectManager {
      * To verify reported date field contains today's date
      */
     public void assertReportedDateField(){
-        Assert.assertEquals(EyeThink.core().Properties().getValue("ReportedDate"),EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("MM/dd/yyyy")).replaceAll("^0",""));
+        Assert.assertEquals(EyeThink.core().Properties().getValue("ReportedDate"),EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")));
     }
 
     public Boolean isFieldEditable(String fieldAPIName){
@@ -148,6 +153,29 @@ public class ProgressReportPage extends ProjectManager {
 
     public void assertCheckBoxFieldIsEditable(String fieldAPIName){
         Assert.assertTrue(isCheckboxFieldEditable(fieldAPIName));
+    }
+
+    /**
+     * To verify radio button on approval decision box
+     * @param radioButtonOption
+     * @return
+     */
+    public Boolean isbuttonDisplayedOnApprovalDecisionBox(String radioButtonOption){
+        try {
+            EyeThink.core().is().onWeb().isDisplayed(By.xpath("//div/span/input[@name='myRadio' and @value='" + radioButtonOption + "']"));
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    /**
+     * To click on link containging text + today's date
+     * @param linkName - link text
+     */
+
+    public void clickOnHyperLinkContainingDate(String linkName){
+        clickOnLink(linkName + " " + EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")));
     }
 }
 

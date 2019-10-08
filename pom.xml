@@ -24,9 +24,9 @@
 		<java.version>1.8</java.version>
 		<saas.version>2.0.0</saas.version>
 		<eyeThink.version>2.0.0</eyeThink.version>
-		<selenium.version>3.10.0</selenium.version>
-		<selenium-server.version>3.10.0</selenium-server.version>
-		<appium.version>5.0.4</appium.version>
+		<selenium.version>3.141.59</selenium.version>
+		<selenium-server.version>3.141.59</selenium-server.version>
+		<appium.version>7.2.0</appium.version>
 		<cucumber.version>4.5.4</cucumber.version>
 		<cucable.version>1.5.2</cucable.version>
 		<picocontainer.version>4.7.1</picocontainer.version>
@@ -34,6 +34,7 @@
 		<testng.version>6.14.3</testng.version>
 		<junit.version>4.13-beta-3</junit.version>
 		<junit.surefire.version>3.0.0-M3</junit.surefire.version>
+        <assertj.version>3.11.1</assertj.version>
 		<webdrivermanager.version>3.6.2</webdrivermanager.version>
 		<rest-assured.version>2.9.0</rest-assured.version>
 		<maven.failsafe.plugin.version>3.0.0-M3</maven.failsafe.plugin.version>
@@ -71,6 +72,11 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
+		</dependency>
+        <dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>${assertj.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.maven.surefire</groupId>

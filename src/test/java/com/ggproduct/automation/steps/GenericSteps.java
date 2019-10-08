@@ -4,10 +4,12 @@ import com.ggproduct.automation.projectmanager.ProjectManager;
 import eyethink.automation.bots.Register.EyeThink;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.springframework.context.annotation.Description;
 import javax.mail.MessagingException;
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 public class GenericSteps {
     ProjectManager projectManager;
@@ -161,5 +163,58 @@ public class GenericSteps {
             }
         }
         Assert.assertTrue(yes);
+    }
+
+    @Then("I verify that field {string} is not editable by entering {string} value")
+    public void iVerifyThatFieldIsNotEditableByEnteringValue(String fieldApi, String value) {
+
+        boolean verify = true;
+        try {
+            EyeThink.saas().inputForms().inputFormDataByFieldApiName(fieldApi, value);
+            verify = false;
+        } catch (Exception ex){
+
+        }
+        Assert.assertTrue(verify);
+    }
+
+    @Then("I see snapshot with name containing {string} as name")
+    public void iSeeSnapshotWithNameContainingAsName(String snapshotName) {
+        Assert.assertTrue(EyeThink.core().elementReference().onWeb(By.xpath("//div[contains(@id,'Attachments')]//span[contains(text(),'"+snapshotName+"')]")).isDisplayed());
+    }
+
+    @And("I create multiple records from sheet {string} of {string} with following data")
+    public void createMultipleData(String sheetName, String spreadsheetName, List<List<String>> testData) {
+        String [][] data = EyeThink.core().file().excel().readExcelFile(spreadsheetName, sheetName);
+        String currentSubTab = "";
+        Map<String, Map<String,String>> map= EyeThink.core().convert().convertListOfListsToMapOfMaps(testData);
+
+        String key = map.keySet().iterator().next();
+        Map<String, String> testDataMap = map.get(key);
+
+        if (data != null) {
+
+            for (int i = 2; i < data.length; i++) {
+                int colLen = data[i].length;
+                EyeThink.saas().mainPage().clickMainMenuBar(testDataMap.get("Navigation"));
+                EyeThink.saas().sideBar().clickSideBarContent(testDataMap.get("subHeader"), testDataMap.get("subHeaderContent"));
+                EyeThink.saas().flexTable().clickTableTopRightButton(testDataMap.get("FlexTableId"), testDataMap.get("PageDetailsButton"));
+
+                for (int j = 0; j < colLen; j++) {
+                    String subTab = data[0][j].trim();
+                    String apiName = data[1][j].trim();
+                    String value = data[i][j].trim();
+
+                    if (subTab != null && !"None".equalsIgnoreCase(subTab) && !subTab.equalsIgnoreCase(currentSubTab)) {
+                        EyeThink.saas().pageDetails().clickSubTabsInsideTableView(subTab);
+                        currentSubTab = subTab;
+                    }
+                    EyeThink.saas().inputForms().inputFormDataByFieldApiName(apiName, value);
+                }
+
+                EyeThink.saas().modal().clickModalContentSpecificButton(testDataMap.get("ModalButton"));
+                EyeThink.saas().pageDetails().clickAnyTopRightButton("Save");
+            }
+        }
     }
 }
