@@ -70,7 +70,7 @@ public class UsersAndURL implements UsersController {
                 password = "test72018";
                 break;
             case "ADMIN":
-                password = "Product@123";
+                password = "1508@Govgrants";
                 break;
             default:
                 password = "SALESFORCE2019";
