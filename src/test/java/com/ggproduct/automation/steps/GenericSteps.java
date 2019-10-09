@@ -95,13 +95,13 @@ public class GenericSteps {
     @Description("To verify no of rows checked for field name")
     @Then("^I can see \"([^\"]*)\" record value is checked for field name \"([^\"]*)\"$")
     public void iCanSeeRecordValueIsCheckedForFieldName(String count, String fieldName) {
-        projectManager.AssertFieldValueIsChecked(fieldName, count);
+        projectManager.AssertFieldValueIsChecked(fieldName,count);
     }
 
     @Given("^I can see mail notification for \"([^\"]*)\" user with following subject:$")
     public void iSeeMailSubject(String userType, List<String> subjectList) throws MessagingException {
         String subject = subjectList.get(0);
-        Assert.assertTrue(projectManager.validateMailSubject(userType, subject));
+        Assert.assertTrue(projectManager.validateMailSubject(userType,subject));
     }
 
     @Description("Navigate to last page of the flex table")
@@ -109,7 +109,7 @@ public class GenericSteps {
     public void iNavigateToLastPageInFlexTable(String flexTableId) {
         try {
             EyeThink.saas().flexTable().flexTablePagination(flexTableId, "Last");
-        } catch (Exception e) {
+        } catch (Exception e){
             // eating exception....
         }
     }
@@ -117,7 +117,7 @@ public class GenericSteps {
     @Description("Get last value for specified column name in the flex table")
     @And("I get the value from row {string} for column name {string} in flex table {string}")
     public void iGetTheSpecifiedValueForColumnNameInFlexTable(String columnValueFromRow, String columnName, String flexTableId) {
-        projectManager.iSavedSpecificValueFromFlexTable(columnValueFromRow, columnName, flexTableId);
+        projectManager.iSavedSpecificValueFromFlexTable(columnValueFromRow, columnName,flexTableId);
     }
 
     @Description("Validation of equality for values of Schedule end date AND Reporting Period End Date")
@@ -140,7 +140,7 @@ public class GenericSteps {
 
     @Then("^I (see|do not see) that the fields in flex table title as \"([^\"]*)\" are editable$")
     public void iSeeThatTheFieldsInFlexTableTitleAsAreEditable(String editable, String tableTitle) {
-        if (editable.equals("see")) {
+        if (editable.equals("see")){
             Assert.assertTrue(projectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle));
         } else {
             Assert.assertFalse(projectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle));
@@ -156,9 +156,9 @@ public class GenericSteps {
     public void iVerifyThatTheFileIsDownloaded(String fileName) {
         EyeThink.core().WaitFor().makeThreadSleep(10000);
         boolean yes = false;
-        File[] list = EyeThink.core().file().getCompleteFilesListOnLocalDirectory(System.getProperty("user.dir") + "/target");
-        for (File f : list) {
-            if (fileName.equalsIgnoreCase(f.getName())) {
+        File[] list = EyeThink.core().file().getCompleteFilesListOnLocalDirectory(System.getProperty("user.dir")+"/target");
+        for (File f : list){
+            if (fileName.equalsIgnoreCase(f.getName())){
                 yes = true;
             }
         }
@@ -172,7 +172,7 @@ public class GenericSteps {
         try {
             EyeThink.saas().inputForms().inputFormDataByFieldApiName(fieldApi, value);
             verify = false;
-        } catch (Exception ex) {
+        } catch (Exception ex){
 
         }
         Assert.assertTrue(verify);
@@ -180,14 +180,14 @@ public class GenericSteps {
 
     @Then("I see snapshot with name containing {string} as name")
     public void iSeeSnapshotWithNameContainingAsName(String snapshotName) {
-        Assert.assertTrue(EyeThink.core().elementReference().onWeb(By.xpath("//div[contains(@id,'Attachments')]//span[contains(text(),'" + snapshotName + "')]")).isDisplayed());
+        Assert.assertTrue(EyeThink.core().elementReference().onWeb(By.xpath("//div[contains(@id,'Attachments')]//span[contains(text(),'"+snapshotName+"')]")).isDisplayed());
     }
 
     @And("I create multiple records from sheet {string} of {string} with following data")
     public void createMultipleData(String sheetName, String spreadsheetName, List<List<String>> testData) {
-        String[][] data = EyeThink.core().file().excel().readExcelFile(spreadsheetName, sheetName);
+        String [][] data = EyeThink.core().file().excel().readExcelFile(spreadsheetName, sheetName);
         String currentSubTab = "";
-        Map<String, Map<String, String>> map = EyeThink.core().convert().convertListOfListsToMapOfMaps(testData);
+        Map<String, Map<String,String>> map= EyeThink.core().convert().convertListOfListsToMapOfMaps(testData);
 
         String key = map.keySet().iterator().next();
         Map<String, String> testDataMap = map.get(key);
