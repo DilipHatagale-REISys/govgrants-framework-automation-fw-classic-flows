@@ -1847,7 +1847,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click on "Cancel" in the page details
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_SiteVisit_Field_Values.xlsx"
-    When I get the "EGMS ID"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
@@ -1859,6 +1858,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Automation Announcement for Application" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal

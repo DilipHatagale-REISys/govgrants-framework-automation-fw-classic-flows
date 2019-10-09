@@ -13,6 +13,6 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "Save" in the page details
     When I get the "EGMS ID"
 
- @orgRiskAssessmentTaskCreationForSubrecipient @smoke
+  @orgRiskAssessmentTaskCreationForSubrecipient @smoke @deepika
   Scenario: To assert the task creation for Risk Assessment
     Then I see status in Progress-bar is "Created" and is "green"
