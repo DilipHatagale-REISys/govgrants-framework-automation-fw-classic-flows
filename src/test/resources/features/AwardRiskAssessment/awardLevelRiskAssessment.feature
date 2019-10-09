@@ -1702,7 +1702,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    Then I do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
+    Then I do not see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
 
   @59613 @ownerToAddProgramReviewer @deepika
   Scenario: Validate owner is allowed to add a peer reviewer of type Program Reviewer in the peer reviewers table in Award Risk Assessment
@@ -2340,7 +2340,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "View" icon for "Record Id" inside flex table with id "flexGridRiskAssessmentGridViewInternal"
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @59956 @recordOwnerCannotCreateNewRAWhenInSubmittedForApproval @deepika @wip
+  @59956 @recordOwnerCannotCreateNewRAWhenInSubmittedForApproval @deepika
   Scenario Outline: Validate when an award was activated with one active risk assessment and has other risk assessment which in created state should not get submitted for approval
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2509,7 +2509,8 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Management" sub tab
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     Then I see the following messages in the page details contains:
-      | Management Tab - An award risk assessment has already been created or is in progress. Another risk assessment can only be created once the current assessment expires or if a revision to an active risk assessment is required. |
+    | This Subaward risk assessment cannot be processed further as the related Subaward has been activated and is associated with an active Subaward risk assessment. |
+      #  | Management Tab - An award risk assessment has already been created or is in progress. Another risk assessment can only be created once the current assessment expires or if a revision to an active risk assessment is required. |
     Examples:
       | Award Name                           | Grant Name                           |
       | Automation Award for Risk Assessment | Automation Award for Risk Assessment |
@@ -3345,7 +3346,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     Then I can see top right button "Complete Review" in page detail
 
-  @60345 @riskLevelFieldAddedtoOverViewOnceRiskAssessmentIsActive @deepika @wip
+  @60345 @riskLevelFieldAddedtoOverViewOnceRiskAssessmentIsActive @deepika
   Scenario: Validate to check the newly added field 'Risk Level' in overview tab post the changes are done on Risk Assessment Record
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -3394,7 +3395,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Overview" sub tab
     Then I see field "Risk Level" inside page block
 
-  @60344 @riskLevelFieldAddedtoOverViewOnceRiskAssessmentIsActive @deepika @wip
+  @60344 @riskLevelFieldAddedtoOverViewOnceRiskAssessmentIsActive @deepika
   Scenario: Validate to check the newly added field 'Risk Level' in overview tab post the changes are done on Risk Assessment Record
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
