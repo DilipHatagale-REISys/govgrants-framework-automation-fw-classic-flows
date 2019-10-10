@@ -82,7 +82,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -135,7 +134,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -193,7 +191,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -269,7 +266,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -348,7 +344,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -458,7 +453,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -524,7 +518,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     Then I see that "Promoted to Management Review Step" has been added in flextable with Id "---applicationReview:-:appTableId---"
     Examples:
       | Announcement Name                              | Application Name       |
@@ -571,7 +564,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -637,7 +629,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -688,7 +679,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -754,7 +744,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -808,7 +797,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -874,7 +862,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -933,7 +920,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -999,7 +985,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -1060,7 +1045,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -1126,7 +1110,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -1203,7 +1186,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -1269,7 +1251,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -1302,7 +1283,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     Then I see that "Review Step" is in "Completed" status
     Examples:
       | Announcement Name                              | Application Name       |
@@ -1349,7 +1329,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -1415,7 +1394,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -1448,7 +1426,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     When I click on "Funding Decision Memo" in the page details
     And I click on "Edit" in the page details
     When I enter value "AuGr" into field "GrantCode__c"
@@ -1499,7 +1476,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -1565,7 +1541,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -1598,7 +1573,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     When I click on "Funding Decision Memo" in the page details
     And I click on "Edit" in the page details
     When I enter value "AuGr" into field "GrantCode__c"
@@ -1652,7 +1626,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -1718,7 +1691,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -1751,7 +1723,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     When I click on "Funding Decision Memo" in the page details
     And I click on "Edit" in the page details
     When I enter value "AuGr" into field "GrantCode__c"
@@ -1813,7 +1784,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -1879,7 +1849,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -1912,7 +1881,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     When I click on "Funding Decision Memo" in the page details
     And I click on "Edit" in the page details
     When I enter value "AuGr" into field "GrantCode__c"
@@ -1975,7 +1943,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -2041,7 +2008,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -2074,7 +2040,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableIdreviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     When I click on "Funding Decision Memo" in the page details
     And I click on "Edit" in the page details
     When I enter value "AuGr" into field "GrantCode__c"

@@ -798,10 +798,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000   | 100        | 100            | 100            |
-    When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "Automation SPI" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
-    And I enter value "Checked" into field "IsKeyContact__c"
-    And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
@@ -834,15 +830,15 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Contact |
+      | Automation SPI | Project Director/Manager | Checked        |
     And I navigate to "Budget" sub tab
     When I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match |
       | Construction  | 1000   | 100        | 100            |
-    When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "Automation SPI" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
-    And I enter value "Checked" into field "IsKeyContact__c"
-    And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
@@ -897,7 +893,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -963,7 +958,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -996,7 +990,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
-    And I click modal button "Yes"
     When I click on "Funding Decision Memo" in the page details
     Then I can see top right button "Submit for Approval" in page detail
     Examples:
@@ -1158,8 +1151,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---"
     And I click on "Complete Review" in the page details
-    When I navigate to "Terms" sub tab
-    When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
@@ -1335,8 +1326,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
-    When I navigate to "Terms" sub tab
-    When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
