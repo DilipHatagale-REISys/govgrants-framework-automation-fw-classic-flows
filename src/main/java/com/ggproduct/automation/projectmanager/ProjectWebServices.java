@@ -1,10 +1,11 @@
 package com.ggproduct.automation.projectmanager;
 
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import com.jayway.restassured.response.Response;
 import eyethink.automation.bots.Register.EnvironmentFetcher;
 import eyethink.automation.bots.Register.EyeThink;
+
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 public class ProjectWebServices {
     private static String endPoint = EnvironmentFetcher.getEnvironmentUrl();
