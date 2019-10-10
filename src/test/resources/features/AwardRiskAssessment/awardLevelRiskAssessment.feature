@@ -2509,7 +2509,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Management" sub tab
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     Then I see the following messages in the page details contains:
-    | This Subaward risk assessment cannot be processed further as the related Subaward has been activated and is associated with an active Subaward risk assessment. |
+      | This Subaward risk assessment cannot be processed further as the related Subaward has been activated and is associated with an active Subaward risk assessment. |
       #  | Management Tab - An award risk assessment has already been created or is in progress. Another risk assessment can only be created once the current assessment expires or if a revision to an active risk assessment is required. |
     Examples:
       | Award Name                           | Grant Name                           |

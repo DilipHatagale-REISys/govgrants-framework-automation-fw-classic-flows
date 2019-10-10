@@ -12,10 +12,10 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
 
   @orgRiskAssessmentTaskcreatedForSubrecipient @smoke @deepika
   Scenario: Validate whether the task is created for SPI User for Organization Risk Assessment
-   Then I see that "SAN DIEGO ELECTRICAL TRAINING TRUST" has been added in flextable with Id "---orgRiskAssessment:-:pendingTaskTableId---"
+    Then I see that "SAN DIEGO ELECTRICAL TRAINING TRUST" has been added in flextable with Id "---orgRiskAssessment:-:pendingTaskTableId---"
 
   @creationOfOrgRiskAssessmentTaskSubrecipient @smoke @deepika
-    Scenario: Validate once the pending is created, the spi user can create the org risk asssesment
+  Scenario: Validate once the pending is created, the spi user can create the org risk asssesment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
