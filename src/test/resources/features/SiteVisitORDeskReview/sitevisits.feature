@@ -1460,6 +1460,12 @@ Feature: Validate all scenarios in the Site Visit
     And I click on hyperlink containing value "Site_Visit_Submit_For_Approval"
     When I download the file
     Then I see "Automation Site Visit" on page "1" of "govgrants" pdf file
+    And I click on "Menu" in the page details
+    And I select "Take Snapshot" from dropdown
+    When I navigate to "History" sub tab
+    And I click on hyperlink containing value "Site_Visit_Submit_For_Approval"
+    When I download the file
+    Then I see "Automation Site Visit" on page "1" of "govgrants" pdf file
 
   @60833 @RecordOwnerCanviewTheSnapshotAfterSiteVisitsIsAcceptedAndClosed @keerti
   Scenario: Validate whether record Owner is able to view the Snapshot after Site Visits is Accepted and Closed
