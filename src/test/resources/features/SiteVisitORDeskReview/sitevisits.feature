@@ -1759,11 +1759,6 @@ Feature: Validate all scenarios in the Site Visit
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Other"
     Then I see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
 
-  @61201 @createdDateOfSiteVisits @deepika @wip
-  Scenario: Validate the Created Date of Site Visits display on Overview Tab
-    And I navigate to "Overview" sub tab
-    Then I see field "Created Date" is getting updated with todays date
-
   @61200 @locationDetailsAndDate
   Scenario: Validate whetehr PM user will be able to provide the location and date of performance
     And I navigate to "Overview" sub tab

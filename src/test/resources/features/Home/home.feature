@@ -75,8 +75,8 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Automation ind123" in "ActiveAccountIndApplicant" panel
-    And I click on "View" icon for "Automation ind123" inside flex table with id "ActiveAccountIndApplicant"
+    When I perform quick search for "Automation ind123" in "---home:-:indActiveAccountId---" panel
+    And I click on "View" icon for "Automation ind123" inside flex table with id "---home:-:indActiveAccountId---"
     Then I see that "Automation ind123" is in "Active" status
     Examples:
       | User  |
@@ -89,8 +89,8 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Automation ind123" in "ActiveAccountIndApplicant" panel
-    Then I can see row level action button "Edit" against "Automation ind123" in flex table with id "ActiveAccountIndApplicant"
+    When I perform quick search for "Automation ind123" in "---home:-:indActiveAccountId---" panel
+    Then I can see row level action button "Edit" against "Automation ind123" in flex table with id "---home:-:indActiveAccountId---"
     Examples:
       | User  |
       | ADMIN |
@@ -286,6 +286,7 @@ Feature: Validate all scenarios in the home tab
       | ADMIN |
       | EXE   |
       | PM    |
+      | SPI   |
 
   @56728 @dunsRegistrationView
   Scenario Outline: Validate whether all users have view access to DUNS Registration
@@ -297,6 +298,7 @@ Feature: Validate all scenarios in the home tab
       | ADMIN |
       | EXE   |
       | PM    |
+      | SPI   |
 
   @56729 @samgovRegistrationView
   Scenario Outline: Validate whether all users have view access to SAM.gov Registration
@@ -308,6 +310,7 @@ Feature: Validate all scenarios in the home tab
       | ADMIN |
       | EXE   |
       | PM    |
+      | SPI   |
 
   @56730 @contactUsView
   Scenario Outline: Validate whether all users have view access to Contact Us
@@ -319,6 +322,7 @@ Feature: Validate all scenarios in the home tab
       | ADMIN |
       | EXE   |
       | PM    |
+      | SPI   |
 
   @56732 @subrecipientOrganizationEdition @smoke
   Scenario Outline: Validate whether ADMIN and DA users can Edit the Subrecipient Organization
@@ -608,13 +612,13 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @57343 @individualSubrecipientContactCreation @wip
-  Scenario Outline: Validate whether ADMIN/DA have Edit access to Active Individual Subrecipients
+  @57343 @individualSubrecipientContactCreation
+  Scenario Outline: Validate whether ADMIN/DA have can new address details to Ind Subrecipient org
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Automation SPI" in "ActiveAccountIndApplicant" panel
-    When I click on "View" icon for "Automation SPI" inside table without waiting for record
+    When I perform quick search for "Automation ind123" in "ActiveAccountIndApplicant" panel
+    When I click on "View" icon for "Automation ind123" inside table without waiting for record
     And I click on top right button "New" in flex table with id "AdditionalAddressInternal"
     And I enter "AdditionalAddressesCreation" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
@@ -834,7 +838,7 @@ Feature: Validate all scenarios in the home tab
     Then I see that "Approve Program" has been added in flextable with Id "HomePendingTasks"
 
   @59015 @pendingTaskCount
-  Scenario: Validate whether user is able to view the total acount of pending Tasks assigned to user
+  Scenario: Validate whether user is able to view the total count of pending Tasks assigned to user
     Given I delete the record "Automation Execution Internal Program" from the object "Program"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
@@ -889,7 +893,7 @@ Feature: Validate all scenarios in the home tab
     And I click on "My_Workspace_File"
     Then I see "Record Id" has been added in My Workspace Files
 
-  @pageBlockSections @deepika
+  @62102 @pageBlockSections @deepika
   Scenario Outline: Verify whether the Overview Tab has the sections: Related Contacts and Indirect rates
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -905,7 +909,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @pageBlockSectionsRelatedLog @deepika
+  @62103 @pageBlockSectionsRelatedLog @deepika
   Scenario Outline:  Validate whether the Related Log displays Active Federal/NGO Applications (Grantee) and Active Federal/NGO Grants (Grantee).
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -921,13 +925,60 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @indProfileEditAccess @deepika
-  Scenario: Verify whether the Individual Sub Profile Users can edit their own subrecipient profile Information
-    Given I login to "As a Grantor" app as "Ind" user
+  @62104 @indProfileEditAccess @deepika
+  Scenario: Verify other than Admin and Ind Profile Users, other users cannot edit the Ind subrecipient profile Information
+    Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Automation ind123" in "ActiveAccountIndApplicant" panel
-    And I click on "Edit" icon for "Automation ind123" inside flex table with id "ActiveAccountIndApplicant"
-    And I click on "Save" in the page details
-    Then I see that "Automation ind123" is in "Active" status
+    When I perform quick search for "Automation ind123" in "---home:-:indActiveAccountId---" panel
+    Then I cannot see row level action button "Edit" against Value "Automation ind123" inside "---home:-:indActiveAccountId---" flex table
+
+  @62105 @externalUserhomePendingTask
+  Scenario: The Pending Task on the left Navigation shows Pending Tasks that are created for Subrecipient Users
+    Given I delete the record "Automation Site Visit" from the object "Site Visit"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
+    Given I navigate to "Management" sub tab
+    And I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
+    And I enter "Creation" values from "SiteVisit_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter "Edition" values from "SiteVisit_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "EGMSID"
+    Given I navigate to "Responsibilities" sub tab
+    When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
+      | Role             | Name           | Description                 |
+      | Program Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver  | Automation FO  | Automation Test Description |
+    When I get the "EGMS ID"
+    Given I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
+    When I click "Associate" after selection of "Automation EXE" in the table "---sitevisits:-:siteVisitContactsTableId---"
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I click on "Notify" in the page details
+    Given I am on "SUBPORTAL" portal
+    When I login as "SPI" user
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:EGMSID}" in "---sitevisits:-:homePendingTasksTableId---" panel
+    Then I see that "{SavedValue:EGMSID}" has been added in flextable with Id "---sitevisits:-:homePendingTasksTableId---"
+
+  @62105 @indUserEditProfile @deepika
+  Scenario: Verify whether the Individual Sub Profile Users can view their own contact information under Overview Tab
+    Given I am on "SUBPORTAL" portal
+    When I login as "IND" user
+    And I navigate to "Home" tab
+    When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
+    When I navigate to "Overview" sub tab
+    When I perform quick search for "Automation ind123" in "---home:-:indContactTableId---" panel
+    Then I see that "Automation ind123" has been added in flextable with Id "---home:-:indContactTableId---"
+
+
 
