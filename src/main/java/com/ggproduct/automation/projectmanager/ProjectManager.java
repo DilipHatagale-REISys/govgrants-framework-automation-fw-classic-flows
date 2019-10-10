@@ -173,7 +173,7 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     public void clickRightHeaderBars(String title) {
-        EyeThink.saas().phasePannel().clickParallelMenuBars(title);
+        EyeThink.saas().phasePanel().clickParallelMenuBars(title);
     }
 
     public void assertThatFileIsDownloaded(String fileType){
