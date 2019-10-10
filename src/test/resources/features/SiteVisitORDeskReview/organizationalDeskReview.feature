@@ -1315,7 +1315,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Overview" sub tab
     Then I see field "Created Date" is not editable
 
-  @61993 @RecordOwnerCanViewSnapshotAfterRAIsSubmittedForApproval @keerti
+  @61992 @RecordOwnerCanViewSnapshotAfterRAIsSubmittedForApproval @keerti
   Scenario: Validate Record Owner user is able to view the Snapshot after Risk Assessment is Submitted for Approval status - Organizational Desk Review
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
