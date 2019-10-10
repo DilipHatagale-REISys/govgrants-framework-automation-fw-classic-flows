@@ -511,7 +511,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
     And I click on "Approve" on the approval decision box
-        When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
     When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
@@ -667,7 +667,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
-    When I click on "Back" in the page details   
+    When I click on "Back" in the page details
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
       | Automation Finding     | Automation Description | Finding     |
@@ -724,7 +724,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
     Then I can see top right button "Accept and Close" in page detail
 
-   @59011 @siteVisitOrgLevelSendBackToOwner @deepika
+  @59011 @siteVisitOrgLevelSendBackToOwner @deepika
   Scenario: User will be able to return the Site Visit Org Level record back to Recipients when outcomes are not properly addressed
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -750,8 +750,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-     And I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:homePendingTaskTableId---" panel
-     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:homePendingTaskTableId---"
+    And I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:homePendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:homePendingTaskTableId---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
@@ -1219,7 +1219,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I navigate to "Applications" tab
     When I navigate to "Application Site Visits" content inside "Application Reviews" subheader on left panel
     Then I see that "Automation Site Visit Org Level" has been added in flextable with Id "ApplicationsSiteVisitReportsGrid"
-    
+
   @56044 @submittingForApprovalButtonOrgLevelSiteVisit @deepika
   Scenario: User will be able to view the Submit for Approval button for Org Level Site Visit
     Given I navigate to "Related log" sub tab

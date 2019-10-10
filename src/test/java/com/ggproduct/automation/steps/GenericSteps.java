@@ -217,4 +217,9 @@ public class GenericSteps {
             }
         }
     }
+
+    @When("I create a risk assessment record for organization {string}")
+    public void iCreateARiskAssessmentRecordForOrganization(String organizationName) {
+        projectManager.riskAssessmentApi(organizationName);
+    }
 }

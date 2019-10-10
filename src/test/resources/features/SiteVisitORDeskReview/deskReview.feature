@@ -1340,7 +1340,7 @@ Feature: Validate all scenarios in Desk Review
     Then I see that "Approve Desk Review" has been added in flextable with Id "---deskreview:-:monitoringTabPhasePendingTasks---"
 
   @61053 @FieldHistoryUpdatePostAwardLevelDeskReviewIsSendBackToOwnerByProgramApprover @Keerti
-    Scenario: To Validate field history update post Award level Desk Review is send back to owner by program approver.
+  Scenario: To Validate field history update post Award level Desk Review is send back to owner by program approver.
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
@@ -1442,7 +1442,7 @@ Feature: Validate all scenarios in Desk Review
     Then I see value "Active" for title "New Value" inside table "History"
 
   @61055 @FieldHistoryUpdatePostAwardLevelDeskReviewIsSendBackToOwnerByProgramApprover @Keerti
-    Scenario: Validate Record Owner user is able to view the Snapshot after Desk Review is Submitted for Approval status
+  Scenario: Validate Record Owner user is able to view the Snapshot after Desk Review is Submitted for Approval status
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |

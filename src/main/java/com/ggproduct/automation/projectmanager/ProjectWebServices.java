@@ -159,4 +159,12 @@ public class ProjectWebServices {
             return response;
         }
     }
+    public Response riskAssessmentApi(String organizationName) {
+        getAuthToken();
+        String finalEndPoint = endPoint + "/services/apexrest/productAutomationRiskAssessmentApi?recordName=" + organizationName;
+        Response response = EyeThink.core().apiCall().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
+        response.prettyPrint();
+        assertStatusCode(response);
+        return response;
+    }
 }
