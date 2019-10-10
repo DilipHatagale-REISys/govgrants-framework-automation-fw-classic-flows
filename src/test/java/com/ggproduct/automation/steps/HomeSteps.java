@@ -1,7 +1,6 @@
 package com.ggproduct.automation.steps;
 
 import com.ggproduct.automation.pageobjects.HomePage;
-
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.springframework.context.annotation.Description;

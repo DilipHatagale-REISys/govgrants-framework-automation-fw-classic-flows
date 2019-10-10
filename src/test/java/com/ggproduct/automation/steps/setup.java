@@ -1,7 +1,5 @@
 package com.ggproduct.automation.steps;
 
-import java.awt.AWTException;
-import java.io.IOException;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 import com.ggproduct.automation.projectmanager.UsersAndURL;
 import eyethink.automation.bots.Register.AuthorizedProject;
@@ -9,6 +7,9 @@ import eyethink.automation.bots.Register.EyeThink;
 import eyethink.automation.bots.Report.CSS;
 import eyethink.automation.bots.controller.TestSetupController;
 import io.cucumber.java.Before;
+
+import java.awt.*;
+import java.io.IOException;
 
 /**
  * @author nauman.shahid
