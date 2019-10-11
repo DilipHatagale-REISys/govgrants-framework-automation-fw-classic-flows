@@ -74,5 +74,14 @@ public class HomePage extends ProjectManager {
         Assert.assertTrue(isFileDisplayedInWorkspace(recordId));
     }
 
+/**
+  * click on description field and enter value and then perform Save
+  */
+    public void enterCompleteFieldValues(String value1, String value2, String orderType) {
+    if(!"onlyDescription".equals(orderType)) {
+        EyeThink.core().enterText().onWeb().enter(By.xpath("//*[contains(@placeholder,'Title')]"), value1);
+    }
+    EyeThink.core().enterText().onWeb().enter(By.xpath("//*[contains(@placeholder,'Description')]"), value2);
+    }
 
 }
