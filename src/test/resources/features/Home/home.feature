@@ -31,6 +31,9 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
+
+
+
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     Then I see that "Internal Organization" is in "Active" status
@@ -876,7 +879,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     Then I see task count for "Planning" phase with the total records of flex table id "PhasePendingTasks"
 
-  @59016 @validateFilesOnHome
+  @59016 @validateFilesOnHome @deepika
   Scenario: Addition of Attachment to Focus Area by User - Admin/EXE/PM
     Given I delete the record "Automation Execution Focus Area" from the object "Focus Area"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -933,7 +936,7 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "Automation ind123" in "---home:-:indActiveAccountId---" panel
     Then I cannot see row level action button "Edit" against Value "Automation ind123" inside "---home:-:indActiveAccountId---" flex table
 
-  @62105 @externalUserhomePendingTask
+  @62105 @externalUserhomePendingTask @deepika
   Scenario: The Pending Task on the left Navigation shows Pending Tasks that are created for Subrecipient Users
     Given I delete the record "Automation Site Visit" from the object "Site Visit"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -978,7 +981,5 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
     When I navigate to "Overview" sub tab
     When I perform quick search for "Automation ind123" in "---home:-:indContactTableId---" panel
-    Then I see that "Automation ind123" has been added in flextable with Id "---home:-:indContactTableId---"
-
-
+    Then I see that "Automation ind123" has been added in flextable with Id "---home:-:indContactTableId---
 
