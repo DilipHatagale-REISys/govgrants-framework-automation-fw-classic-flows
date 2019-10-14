@@ -84,4 +84,13 @@ public class HomePage extends ProjectManager {
     EyeThink.core().enterText().onWeb().enter(By.xpath("//*[contains(@placeholder,'Description')]"), value2);
     }
 
+    /**
+     * To select value from global search drop down
+     * @param dropDownValue - value to be selected
+     */
+    public void selectValueFromGlobalSearchDropDown(String dropDownValue) {
+        By globalDropdownSelector = By.xpath("//*[@id='selectSearchId']");
+        EyeThink.core().select().onWeb(globalDropdownSelector).selectByVisibleText(dropDownValue);
+    }
+
 }

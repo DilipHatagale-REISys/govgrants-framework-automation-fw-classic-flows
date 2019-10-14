@@ -27,9 +27,16 @@ public  class HomeSteps {
     public void iSeeHasBeenAddedInMyWorkspaceFiles(String recordID) {
         homePage.assertFileInWorkspace(recordID);
     }
+
     @Description("To verify Notes has been added in My Workspace Notes")
     @And("^I enter details as \"([^\"]*)\"\"([^\"]*)\" on Add New Notes Modal for \"([^\"]*)\"$")
     public void enterValuesForAddNotesModal(String value1, String value2, String orderType) {
         homePage.enterCompleteFieldValues(value1, value2, orderType);
+    }
+
+    @Description("To select value from global drop down selector")
+    @And("I select {string} from dropdown for Global search")
+    public void iSelectFromDropdownForGlobalSearch(String dropDownValue) {
+        homePage.selectValueFromGlobalSearchDropDown(dropDownValue);
     }
 }
