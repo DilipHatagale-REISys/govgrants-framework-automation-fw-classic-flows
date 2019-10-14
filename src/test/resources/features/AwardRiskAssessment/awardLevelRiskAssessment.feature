@@ -3967,7 +3967,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Expired" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
     Then I see "Expired" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
 
-  @60965 @fieldCompares @deepika
+  @60965 @fieldCompares @deepika @wip
   Scenario: Validate whether Record Owner user is able to view and Compare field values on UI and PDF match
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
