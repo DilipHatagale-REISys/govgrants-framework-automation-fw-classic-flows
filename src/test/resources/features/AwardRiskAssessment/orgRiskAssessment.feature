@@ -148,8 +148,91 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "---riskassessment:-:homePendingTaskTableId---" panel
     Then I do not see values "SAN DIEGO ELECTRICAL TRAINING TRUST" and "Automation Award for Risk Assessment" inside table
 
-  @62198 @grantorApprovalforRevision @deepika @wip
+  @62198 @grantorApprovalforRevision @deepika
   Scenario: Validate whether Grantor can approve the revision request for org level risk Assessment
+    When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I click on "Save" in the page details
+    When I get the "EGMS ID"
+    When I click on "Submit" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---riskassessment:-:homePendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---riskassessment:-:homePendingTaskTableId---"
+    And I click on "Approve" on the approval decision box
+    Then I see that "EGMS ID" is in "Approved" status
+
+  @62312 @deleteIconfCreatedRiskAssessment @deepika
+  Scenario: Validate whether Authorized Signatory can view the delete button across the created Risk Assessment
+    When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I click on "Save" in the page details
+    When I get the "EGMS ID"
+    And I navigate to "Home" tab
+    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
+    And I navigate to "Risk Assessment" sub tab
+    When I perform quick search for "Created" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
+    Then I can see row level action button "Delete" against "Created" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+
+  @62313 @deleteMessageDisplayed @deepika
+  Scenario: Validate whether Authorized Signatory has capable to delete the created Risk Assessment
+    When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I click on "Save" in the page details
+    When I get the "EGMS ID"
+    And I navigate to "Home" tab
+    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
+    And I navigate to "Risk Assessment" sub tab
+    When I perform quick search for "Created" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
+    And I click on "Delete" icon for "Record Id" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    Then I see the following messages in the page details contains:
+      | Record deleted successfully. |
+
+  @62314 @editRiskAssessment @deepika
+  Scenario: Validate whether Authorized Signatory can Edit the Created Risk Assessment.
+    When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I click on "Save" in the page details
+    When I get the "EGMS ID"
+    And I navigate to "Home" tab
+    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
+    And I navigate to "Risk Assessment" sub tab
+    When I perform quick search for "Created" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
+    Then I can see row level action button "Edit" against "Created" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+
+  @62315 @snapHistoryOfOrgRA @deepika @wip
+  Scenario: Validate whether Snapshot is captured/(taken) automatically  by the system in the table Snapshot History when Risk Assessment is Activated
+    When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I click on "Save" in the page details
+    When I get the "EGMS ID"
+    When I click on "Submit" in the page details
+    And I click on "Menu" in the page details
+    And I select "Take Snapshot" from dropdown
+    When I navigate to "History" sub tab
+    And I click on hyperlink containing value "Risk Assessment Snapshot.pdf"
+    When I download the file
+    Then I see "Organization Risk Assessment" on page "1" of "govgrants" pdf file
+
+  @62316 @historyOfRiskAssessment @deepika
+  Scenario: To Validate field history update post Risk Assessment is clicked on Submit and is Active
+    When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I click on "Save" in the page details
+    When I get the "EGMS ID"
+    When I click on "Submit" in the page details
+    When I navigate to "History" sub tab
+    Then I see field "New Value" is getting updated with todays date
+
+  @62317 @messageInfoToAuthorizedSignatory @deepika @wip
+  Scenario: Validate when Request New Assessment button is clicked a message is displayed to Authrozed Signatory
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
@@ -160,10 +243,5 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
     When I click on top right button "Request New Assessment" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Home" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---riskassessment:-:homePendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---riskassessment:-:homePendingTaskTableId---"
-    And I click on "Approve" on the approval decision box
-    Then I see that "EGMS ID" is in "Approved" status
+    Then I see the following messages in the page details contains:
+      | A request to create new assessment has been sent to the Grantor. Once the request has been approved, you will receive an email and can proceed with an assessment revision |
