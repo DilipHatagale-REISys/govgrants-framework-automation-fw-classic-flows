@@ -981,5 +981,32 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
     When I navigate to "Overview" sub tab
     When I perform quick search for "Automation ind123" in "---home:-:indContactTableId---" panel
-    Then I see that "Automation ind123" has been added in flextable with Id "---home:-:indContactTableId---
+    Then I see that "Automation ind123" has been added in flextable with Id "---home:-:indContactTableId---"
 
+  @62255 @CreatedNotes @keerti
+  Scenario: Verify created notes on Home Tab
+    Given I login to "As a Grantor" app as "PM" user
+    When I navigate to "Home" tab
+    And I click on "My_Workspace_Notes"
+    And I click on user notes content with icon name "fa fa-plus"
+    When I enter notes with title "Automation Title" and description "Automation Description"
+    And I click modal button "Save and Close"
+    Then I see the text containing "title"
+
+  @62254 @PerformGloabalSearchOnHomeTab @keerti
+  Scenario: Verify Global search on Home Tab
+    Given I delete the record "Automation Execution Internal Program" from the object "Program"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I save the field labeled "EGMS ID" as "ProgramID"
+    And I click on "Save" in the page details
+    And I navigate to "Home" tab
+    And I select "Programs" from dropdown for Global search
+    And I perform quick search inside global search "{SavedValue:ProgramID}"
+    And I click toggle button to select "Internal Programs"
+    Then I see value "{SavedValue:ProgramID}" for title "EGMS ID" inside table "Program__c"

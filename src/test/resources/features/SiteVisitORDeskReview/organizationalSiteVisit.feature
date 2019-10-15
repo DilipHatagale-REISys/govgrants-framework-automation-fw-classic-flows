@@ -1758,7 +1758,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     Given I navigate to "Overview" sub tab
     Then I see field "StartDate__c" is not editable
 
-  @61993 @RecordOwnerCanViewSnapshotAfterRAIsSubmittedForApproval @keerti
+  @61993 @RecordOwnerCanViewSnapshotAfterOSVIsSubmittedForApproval @keerti
   Scenario: Validate Record Owner user is able to view the Snapshot after Risk Assessment is Submitted for Approval status - Org Site Visits
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
