@@ -3270,15 +3270,13 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Draft"
+    And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Permanent Award" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
-    When I navigate to "Performance" sub tab
-    And I click on "View" icon for "Automation Permanent Objective" inside table
+    And I click on "View" icon for "Automation Permanent Award" inside table
     And I navigate to "Performance" sub tab
-    And I navigate to "Overview" sub tab
-    Then I cannot see row level action button "Edit" against "Record id" in flex table with id "AwardStrategicGoalsObjectives"
+    Then I cannot see row level action button "Edit" against "{SavedValue:Record Id}" in flex table with id "AwardStrategicGoalsObjectives"
 
   @61097 @PRISNoteditableAtPAOnPerformaceTab @keerti
     Scenario: Validate Objectives table at Performance Tab on Progress report should not be editable at Program approver end when Progress report status is Submitted for Approval.
@@ -3313,7 +3311,5 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     When I navigate to "Performance" sub tab
-    And I click on "View" icon for "Automation Permanent Objective" inside table
-    And I navigate to "Overview" sub tab
-    Then I cannot see row level action button "Edit" against "Record id" in flex table with id "AwardStrategicGoalsObjectives"
+    Then I cannot see row level action button "Edit" against "{SavedValue:Record Id}" in flex table with id "AwardStrategicGoalsObjectives"
 
