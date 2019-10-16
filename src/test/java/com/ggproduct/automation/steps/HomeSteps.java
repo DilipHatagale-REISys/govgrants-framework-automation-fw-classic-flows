@@ -3,6 +3,7 @@ package com.ggproduct.automation.steps;
 import com.ggproduct.automation.pageobjects.HomePage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.springframework.context.annotation.Description;
 
 public  class HomeSteps {
@@ -26,5 +27,17 @@ public  class HomeSteps {
     @Then("^I see \"([^\"]*)\" has been added in My Workspace Files$")
     public void iSeeHasBeenAddedInMyWorkspaceFiles(String recordID) {
         homePage.assertFileInWorkspace(recordID);
+    }
+
+    @Description("To select value from global drop down selector")
+    @And("I select {string} from dropdown for Global search")
+    public void iSelectFromDropdownForGlobalSearch(String dropDownValue) {
+        homePage.selectValueFromGlobalSearchDropDown(dropDownValue);
+    }
+
+    @Description("To add notes on home tab")
+    @When("I enter notes with title {string} and description {string}")
+    public void iEnterNotesWithTitleAndDescription(String title, String description) {
+        homePage.enterNotesValues(title, description);
     }
 }

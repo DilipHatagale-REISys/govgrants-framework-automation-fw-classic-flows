@@ -1600,3 +1600,15 @@ Feature: Validate all scenarios in Desk Review
       | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "Automation FO" inside table
     Then I see that "Sent for Review" has been added in flextable with Id "---deskreview:-:reviewersFlexTableId---"
+
+  @62109 @CreatedDateDisplayedOnOverviewTabForDR @keerti
+  Scenario: Validate the Created Date of Desk Review display on Overview Tab
+    Given I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
+      | Role             | Name           | Description                 |
+      | Program Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver  | Automation FO  | Automation Test Description |
+    When I get the "EGMS ID"
+    Given I navigate to "Overview" sub tab
+    Then I see field "Created Date" is not editable
+
