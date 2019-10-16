@@ -4,6 +4,7 @@ import com.ggproduct.automation.projectmanager.ProjectManager;
 import eyethink.automation.bots.Register.EyeThink;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -92,5 +93,13 @@ public class HomePage extends ProjectManager {
     public void selectValueFromGlobalSearchDropDown(String dropDownValue) {
         By globalDropdownSelector = By.xpath("//*[@id='selectSearchId']");
         EyeThink.core().select().onWeb(globalDropdownSelector).selectByVisibleText(dropDownValue);
+    }
+
+    /**
+     * To save the todays date as well as date after one year
+     */
+    public void saveTodaysDate(){
+        EyeThink.core().Properties().saveValue("Todays Date",EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")));
+        EyeThink.core().Properties().saveValue("Expiration Date",EyeThink.core().get().dateWithOffsetFromGivenDate(EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")),365,DateTimeFormatter.ofPattern("M/d/yyyy")));
     }
 }
