@@ -40,4 +40,9 @@ public  class HomeSteps {
     public void iEnterNotesWithTitleAndDescription(String title, String description) {
         homePage.enterNotesValues(title, description);
     }
+
+    @And("I save Todays Date")
+    public void iSaveTodaysDate() {
+        homePage.saveTodaysDate();
+    }
 }
