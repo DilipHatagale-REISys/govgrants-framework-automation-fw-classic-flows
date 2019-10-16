@@ -31,6 +31,8 @@ public class UsersAndURL implements UsersController {
         String userName = null;
         if ((EnvironmentFetcher.getEnvironmentName() != null) && (EnvironmentFetcher.getEnvironmentName().contains("QA"))) {
             userName = getQAEnvironmentUser(setUpUserLevel(userLevel));
+        } else if ((EnvironmentFetcher.getEnvironmentName() != null) && (EnvironmentFetcher.getEnvironmentName().contains("TEST8"))){
+            userName = getTest8EnvironmentUser(setUpUserLevel(userLevel));
         } else {
             userName = getAUTOEnvironmentUser(setUpUserLevel(userLevel));
         }
@@ -42,9 +44,10 @@ public class UsersAndURL implements UsersController {
         String password = null;
         if (EnvironmentFetcher.getEnvironmentName().contains("QA")) {
             password = getQAEnvironmentPassword(setUpUserLevel(userLevel));
-        } else {
+        } else if (EnvironmentFetcher.getEnvironmentName().contains("TEST8")){
+            password = getTest8EnvironmentPassword(setUpUserLevel(userLevel));
+        }else
             password = getAUTOEnvironmentPassword(setUpUserLevel(userLevel));
-        }
         return password;
     }
 
@@ -56,6 +59,18 @@ public class UsersAndURL implements UsersController {
                 break;
             case "ADMIN":
                 password = "Salesforce_2019";
+                break;
+            default:
+                password = "SALESFORCE2019";
+        }
+        return password;
+    }
+
+    private String getTest8EnvironmentPassword(String userLevel) {
+        String password;
+        switch (userLevel.toUpperCase()) {
+            case "ADMIN":
+                password = "GoProduct@1234";
                 break;
             default:
                 password = "SALESFORCE2019";
@@ -103,6 +118,29 @@ public class UsersAndURL implements UsersController {
     }
 
     private String getAUTOEnvironmentUser(String userLevel) {
+        Map<String, String> username = new HashMap<>();
+        username.put("ADMIN", "manu.admin@ggp.test7.atm");
+        username.put("EXE", "test@gmaildemo.com.atm");
+        username.put("PM", "donald_pm@ggp.test7.atm");
+        username.put("FO", "auto.fm@auto.com.atm");
+        username.put("SPI", "kyle.farrell@reisystems.com21.atm");
+        username.put("SPA", "spaautomation@yopmail.com.atm");
+        username.put("IND", "automationind123@yopmail.com");
+
+        username.put("SIMON PM", "simon_pm@ggp.test7.automation");
+        username.put("ALEX FO", "alex_fo@ggp.test7.automation");
+        username.put("CATHY PM", "cathy_pm@ggp.test7.automation");
+        username.put("OSCAR PM", "oscar_pm@ggp.test7.automation");
+        username.put("Bill PM", "bill_pm@ggp.test7.automation");
+
+        if (userLevel.toUpperCase() != null) {
+            return username.get(userLevel.toUpperCase());
+        } else {
+            return username.get("ADMIN");
+        }
+    }
+
+    private String getTest8EnvironmentUser(String userLevel) {
         Map<String, String> username = new HashMap<>();
         username.put("ADMIN", "manu.admin@ggp.test7.atm");
         username.put("EXE", "test@gmaildemo.com.atm");
