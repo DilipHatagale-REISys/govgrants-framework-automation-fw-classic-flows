@@ -627,3 +627,25 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
     Then I cannot see top right button "Request New Assessment" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+
+  @62629 @RevisedRiskAssessmentShouldMarkFirstAsExpired @keerti
+  Scenario: Validate the Revised Risk Assessment should mark the Initial Risk Assessment as Expired.
+    When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I click on "Save" in the page details
+    When I save the field labeled "EGMS ID" as "NewID"
+    When I navigate to "Home" tab
+    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
+    And I navigate to "Risk Assessment" sub tab
+    When I click on "View" icon for "Active" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    When I save the field labeled "EGMS ID" as "OLDID"
+    When I navigate to "Home" tab
+    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
+    And I navigate to "Risk Assessment" sub tab
+    When I click on "View" icon for "Created" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    When I click on "Submit" in the page details
+    When I navigate to "Home" tab
+    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
+    And I navigate to "Risk Assessment" sub tab
+    Then I see value "Expired" for title "Status" against the value "{SavedValue:OLDID}" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
