@@ -2039,7 +2039,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     And I click on "Accept And Close" in the page details

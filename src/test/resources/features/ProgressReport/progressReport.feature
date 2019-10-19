@@ -1250,7 +1250,7 @@ Feature: Validate all scenarios in Progress Report
       | Program Approver | Automation PM | Automation Test Description |
     Then I see value "Automation PM" for title "Name" against the value "Automation Test Description" inside table "---progressReport:-:approversTableId---"
 
-  @58893 @validateInitiallyGeneratedProgressReportRemainsSameAtProgressReportsTableWhenAnotherProgressReportIsGenerated  @mahadev
+  @58893 @validateMultipleProgressReports  @mahadev
   Scenario Outline: Validate initially generated progress report remains the same at progress reports table when another Progress report is generated on active award
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
@@ -1267,28 +1267,24 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Submit to Grantor" in the page details
     When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c,false"
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "<Grant Name>" in "---progressReport:-:recipientActiveGrantId---" panel
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:recipientActiveGrantId---"
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---progressReport:-:recipientsRelatedSubAwardsTableId---"
+    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    When I perform quick search for "<Award Name>" in "---progressReport:-:recipientAwardsTableId---" panel
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---progressReport:-:recipientAwardsTableId---"
     When I navigate to "Performance" sub tab
     And I click on "View" icon for "Created" inside flex table with id "---progressReport:-:recipientAwardProgressReportTableId---"
     When I save the field labeled "EGMS ID" as "ProgressReport2"
     And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "<Grant Name>" in "---progressReport:-:recipientActiveGrantId---" panel
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:recipientActiveGrantId---"
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---progressReport:-:recipientsRelatedSubAwardsTableId---"
+    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    When I perform quick search for "<Award Name>" in "---progressReport:-:recipientAwardsTableId---" panel
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---progressReport:-:recipientAwardsTableId---"
     When I navigate to "Performance" sub tab
     Then I see value "{SavedValue:Record Id}" for title "EGMS ID" against the value "Submitted to Grantor" inside table "---progressReport:-:recipientAwardProgressReportTableId---"
     Then I see value "{SavedValue:ProgressReport2}" for title "EGMS ID" against the value "Created" inside table "---progressReport:-:recipientAwardProgressReportTableId---"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Permanent Award | Automation Permanent Award |
+      | Award Name                 |
+      | Automation Permanent Award |
 
   @58753 @PMNoPRshown @jitendra
   Scenario: Validate Internal user should not see progress report under Sub-award performance tab when Progress report is in Draft status.
@@ -2269,7 +2265,7 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "Management" sub tab
     And I click on "Edit" icon for "Created" inside flex table with id "---progressReport:-:recipientGrantProgressReportTableId---"
     And I navigate to "Performance" sub tab
-    Then I see value "200.00" for title "Actual" against the value "Created" inside table "---progressReport:-:kpiTableId---"
+    Then I see value "200.00" for title "Actual" against the value "Automation Permanent KPI for Regression" inside table "---progressReport:-:kpiTableId---"
     Examples:
       | Grant Name                 |
       | Automation Permanent Award |
@@ -2600,7 +2596,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Performance" sub tab
     And I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:grantorProgressReportsTableId---"
-    Then I see value "7.00" for title "Actual" inside table "---progressReport:-:kpiTableId---"
+    And I navigate to "Performance" sub tab
+    Then I see value "7.00" for title "Actual" against the value "{SavedValue:Record Id}" inside table "---progressReport:-:kpiTableId---"
 
   @59904 @updateKPIValue @jitendra
   Scenario: Validate Progress Reports Table at Management tab on Grant overview is getting updated with Progress report whose status is Approved at SR User End
@@ -2695,7 +2692,7 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "Automation Permanent Award" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
     And I navigate to "Management" sub tab
-    Then I see value "Sent Back to sub Recipient" for title "Status" inside table "---progressReport:-:recipientGrantProgressReportTableId---"
+    Then I see value "Sent Back to Subrecipient" for title "Status" inside table "---progressReport:-:recipientGrantProgressReportTableId---"
 
   @59905 @validateProgressReportsTableAtManagementTabWithStatusIsSubmittedToGrantor @Keerti
   Scenario: Validate Progress Reports Table at Management tab on Grant overview is getting updated with Progress report whose status is Submitted to Grantor at SR User End
