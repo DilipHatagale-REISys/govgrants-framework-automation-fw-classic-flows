@@ -205,7 +205,7 @@ Feature: Validate all scenarios in the home tab
     And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
     When I click modal button "Save"
     Then I see values "Automation SME" and "New" inside table
-    Examples:
+    Examples:c
       | User  |
       | ADMIN |
 
