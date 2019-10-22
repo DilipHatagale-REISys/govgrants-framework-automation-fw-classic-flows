@@ -1,9 +1,8 @@
 package com.ggproduct.automation.projectmanager;
 
+import com.jayway.restassured.response.Response;
 import eyethink.automation.bots.Register.EnvironmentFetcher;
 import eyethink.automation.bots.Register.EyeThink;
-import io.restassured.response.Response;
-
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
