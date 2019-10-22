@@ -34,13 +34,14 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
-    Then I can see top right button "Request New Assessment" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    Then I cannot see top right button "Request New Assessment" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
   @61975 @createdRAfromOrgProfilePage @deepika
   Scenario: Validate whether User can view the created risk asssessment from Organization profile page
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
@@ -69,6 +70,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
@@ -84,6 +86,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
@@ -100,6 +103,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     And I navigate to "Home" tab
@@ -112,6 +116,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Edit" in the page details
@@ -125,6 +130,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "AGENCY DETAILS"
@@ -135,6 +141,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
@@ -153,6 +160,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
@@ -173,6 +181,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     And I navigate to "Home" tab
@@ -186,6 +195,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     And I navigate to "Home" tab
@@ -201,6 +211,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     And I navigate to "Home" tab
@@ -214,6 +225,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
@@ -229,6 +241,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
@@ -240,6 +253,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
@@ -255,6 +269,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
@@ -275,6 +290,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
@@ -296,6 +312,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
@@ -316,6 +333,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
@@ -339,6 +357,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
@@ -356,6 +375,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
@@ -382,6 +402,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
@@ -408,6 +429,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
@@ -428,6 +450,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
@@ -446,6 +469,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I save the field labeled "EGMS ID" as "EGMSID"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
@@ -463,6 +487,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I save the field labeled "EGMS ID" as "EGMSID"
     And I save Todays Date
@@ -479,6 +504,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
@@ -505,6 +531,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
@@ -519,6 +546,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
@@ -547,6 +575,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     Then I see field "Organization Type" is not editable
 
@@ -556,6 +585,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I save the field labeled "EGMS ID" as "EGMSID"
     When I click on "Submit" in the page details
@@ -587,6 +617,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I save the field labeled "EGMS ID" as "EGMSID"
     When I click on "Submit" in the page details
@@ -618,6 +649,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
@@ -633,6 +665,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I save the field labeled "EGMS ID" as "NewID"
     When I navigate to "Home" tab
@@ -650,11 +683,12 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Risk Assessment" sub tab
     Then I see value "Expired" for title "Status" against the value "{SavedValue:OLDID}" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
-  @requestNewAssessmnetButtonIsNotAvailbleOnceClicked @deepika
+  @62945 @requestNewAssessmnetButtonIsNotAvailbleOnceClicked @deepika
   Scenario: Validate once 'Request New Assessmnet' Button is clicked then the button is not available once clicked
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
@@ -666,11 +700,12 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Risk Assessment" sub tab
     Then I cannot see top right button "Request New Assessment" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
-  @acknowledgeOrgRiskAssessment @deepika
+  @62946 @acknowledgeOrgRiskAssessment @deepika
   Scenario: Validate whether user can proceed without checkin 'Acknowledment' field for Org Level Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I save the field labeled "EGMS ID" as "EGMSID"
     When I click on "Submit" in the page details
@@ -695,11 +730,12 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     Then I see the following messages in the page details contains:
       | Acknowledgement is required. |
 
-  @disagreeAcknowledgeForRA @deepika
+  @62947 @disagreeAcknowledgeForRA @deepika
   Scenario: Validate whether user is able to proceed further process without Acknowledging the Org Level Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I save the field labeled "EGMS ID" as "EGMSID"
     When I click on "Submit" in the page details
@@ -728,11 +764,12 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I perform quick search for "Created" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
-  @onceAcknowledgedRiskAssessmentISCreated @deepika
+  @62948 @onceAcknowledgedRiskAssessmentISCreated @deepika
   Scenario: Validate whether user is see the Acknowledge checkout and is Editable for Org Level Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I save the field labeled "EGMS ID" as "EGMSID"
     When I click on "Submit" in the page details
@@ -759,11 +796,12 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I get the "EGMS ID"
     Then I see that "Record Id" has been added in flextable with Id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
-  @assessmentValuesareEditable @deepika
+  @62949 @assessmentValuesareEditable @deepika
   Scenario: Validate whether user is able to edit the assessment form once Grantor Provided Access for Revision
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I save the field labeled "EGMS ID" as "EGMSID"
     When I click on "Submit" in the page details
@@ -791,11 +829,12 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "Green"
 
-  @AScanEditAssessment @deepika
+  @62950 @AScanEditAssessment @deepika
   Scenario: Validate whether user is able to edit the assessment form once Grantor Provided Access for Revision
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I save the field labeled "EGMS ID" as "EGMSID"
     When I click on "Submit" in the page details
@@ -821,11 +860,12 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "Save" in the page details
     Then I can see top right button "Edit" in page detail
 
-  @RAinCreatedStatusImpactOnAward @deepika
+  @62951 @RAinCreatedStatusImpactOnAward @deepika
   Scenario Outline: Validate if SA has requested for revision of initial Risk Assessment  and it is being revised and present in Created sttaus does not make an impact on Award Activation system will always refer the active Risk Assessment.
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I save the field labeled "EGMS ID" as "EGMSID"
     When I click on "Submit" in the page details
@@ -999,11 +1039,12 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @orRiskAssessmentIsNotDisplayedForINDUser @deepika
+  @62952 @orRiskAssessmentIsNotDisplayedForINDUser @deepika
   Scenario:  Validate Data related to organization risk assessment should not be displayed on the Individual Profile view .
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I save the field labeled "EGMS ID" as "EGMSID"
     When I click on "Submit" in the page details
@@ -1020,6 +1061,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I save the field labeled "EGMS ID" as "EGMSID"
     When I click on "Submit" in the page details
@@ -1048,6 +1090,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
@@ -1059,6 +1102,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
