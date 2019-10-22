@@ -820,14 +820,14 @@ Feature: The feature is only designed for ensuring all business flows are workin
 
   @applicationReviewHappyPath
   Scenario Outline: complete review process for an application
-    Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
-    And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
+    Given I delete the record "Automation Announcement for Application Reviews" from the object "APPLICATION REVIEWS"
+    And I delete the record "Automation Announcement for Application Reviews" from the object "Qualified Announcement"
     When I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "Automation Announcement for Application Review" in "---applicationReview:-:reviewsTableId---" panel
-    When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    And I perform quick search for "Automation Announcement for Application Reviews" in "---applicationReview:-:reviewsTableId---" panel
+    When I click on "View" icon for "Automation Announcement for Application Reviews" inside flex table with id "---applicationReview:-:reviewsTableId---"
     When I click on "Qualify" in the page details
     When I click on "Create Application" in the page details
     When I enter value "Automation Application" into field "Title__c"
@@ -860,7 +860,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click on "Submit Application" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
@@ -889,7 +889,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -954,7 +954,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -986,7 +986,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -1043,7 +1043,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I delete the record "Automation Announcement for FDM" from the object "FDM"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
-    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Review" subheader on left panel
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
     When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
@@ -1935,7 +1935,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     And I click on "Accept And Close" in the page details
