@@ -1010,3 +1010,29 @@ Feature: Validate all scenarios in the home tab
     And I perform quick search inside global search "{SavedValue:ProgramID}"
     And I click toggle button to select "Internal Programs"
     Then I see value "{SavedValue:ProgramID}" for title "EGMS ID" inside table "Program__c"
+
+  @62912 @VerifyrecentlyViewedRecordAndDetailsOnMiniPageLayoutAndHoverLink @keerti @wip
+  Scenario: The Internal User should be able to view the recently viewed record and details on the Mini pagelayout and the hover link  will take to the record
+    Given I login to "As a Grantor" app as "<User>" user
+    When I navigate to "Home" tab
+    And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
+    When I navigate to "Planning" tab
+    And I click on recently viewed record of "Sme Reviewers"
+    Then I click on the hover link  will take to the record on Minipagelayout
+    Then I see "Sme Reviewers" page
+
+  @62911 @VerifyStatusIsNewForInvitation/BulkInvitationISentStatusChanges @keerti
+  Scenario Outline: Validate once Contact has registered the status will be New , when the Invitation/Bulk Invitation is sent, the status changes from Invitation Sent
+    Given I login to "As a Grantor" app as "<User>" user
+    When I navigate to "Home" tab
+    And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
+    And I click on "Send Invitation" icon for "Automation SME" inside flex table with id "---home:-:reviewersTableId---"
+    And  I click modal button "Send"
+    When I close "Send Invitation" modal by clicking the top right x button
+    And I perform quick search for "Automation SME" in "---home:-:reviewersTableId---" panel
+    Then I see value "Invitation Sent" for title "Status" inside table "---home:-:reviewersTableId---"
+    Examples:
+      | User  |
+      | ADMIN |
+      | EXE   |
+      | PM    |
