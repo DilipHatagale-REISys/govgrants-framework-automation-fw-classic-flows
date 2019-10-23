@@ -18,12 +18,8 @@ Feature: Validate all scenarios in the Site Visit
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @51081 @siteVisitCreation @smoke
-  Scenario: Creation of Site Visit
-    Then I see status in Progress-bar is "Created" and is "green"
-
-  @51082 @siteVisitEdition @notFunctional
-  Scenario: Edition of Site Visit
+  @51081 @51082 @51083 @61201 @siteVisitCreationEditionParticipantAssociationCreatedDate @smoke
+  Scenario: Validate Creation and Edition of Site Visits
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "SiteVisit_Field_Values.xlsx"
     When I click on "Save" in the page details
