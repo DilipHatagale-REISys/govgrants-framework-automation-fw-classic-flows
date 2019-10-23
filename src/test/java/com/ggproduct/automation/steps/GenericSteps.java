@@ -34,26 +34,38 @@ public class GenericSteps {
     }
 
     @Description("To verify field value is blank in flex table")
-    @Then("^I see field name \"([^\"]*)\" is blank in flex table$")
-    public void iSeeFieldNameIsBlank(String fieldname) {
-        projectManager.assertColumnValuIsBlank(fieldname);
+    @Then("^I (softly see|see) field name \"([^\"]*)\" is blank in flex table$")
+    public void iSeeFieldNameIsBlank(String usage, String fieldname) {
+        projectManager.assertColumnValuIsBlank(fieldname,
+                usage.contains("softly")
+                );
     }
 
     @Description("To verify total records available under flex table")
-    @Then("^I see total records count \"([^\"]*)\" in flex table \"([^\"]*)\"$")
-    public void iSeeTotalRecordsCountInFlexTable(String totalRecords, String tableId) {
-        projectManager.AssertTotalRecordsCountInFlexTable(totalRecords, tableId);
+    @Then("^I (softly see|see) total records count \"([^\"]*)\" in flex table \"([^\"]*)\"$")
+    public void iSeeTotalRecordsCountInFlexTable(String usage, String totalRecords, String tableId) {
+        projectManager.AssertTotalRecordsCountInFlexTable(totalRecords,
+                tableId,
+                usage.contains("softly")
+                );
     }
 
-    @Then("^I (can see|cannot see) page block \"([^\"]*)\"$")
+    @Then("^I (softly can see|can see|cannot see|softly cannot see) page block \"([^\"]*)\"$")
     public void iCanSeeCannotSeePageBlock(String usage, String pageblockName) {
-        projectManager.AssertPageBlockDisplayed(pageblockName, "can see".equalsIgnoreCase(usage));
+        projectManager.AssertPageBlockDisplayed(pageblockName,
+                "can see".equalsIgnoreCase(usage) || "softly can see".equalsIgnoreCase(usage),
+                usage.contains("softly")
+        );
     }
 
     @Description("To capture message on approval decision box")
-    @Then("^I see the message \"([^\"]*)\" on approval decision box$")
-    public void iSeeTheMessageOnApprovalDecisionBox(String message) {
-        projectManager.captureMessageOnApprovalDecisionBox(message);
+    @Then("^I (softly see|see) the message \"([^\"]*)\" on approval decision box$")
+    public void iSeeTheMessageOnApprovalDecisionBox(String usage, String message) {
+        if (usage.contains("softly")){
+            EyeThink.core().assertion().assertThat(projectManager.captureMessageOnApprovalDecisionBox(message)).isTrue();
+        } else {
+            Assert.assertTrue(projectManager.captureMessageOnApprovalDecisionBox(message));
+        }
     }
 
     @Description("To get the field value from page block")
@@ -63,21 +75,31 @@ public class GenericSteps {
     }
 
     @Description("To compare two different field values")
-    @Then("^I compare field \"([^\"]*)\" from sub tab \"([^\"]*)\" with expected field$")
-    public void iCompareFieldFromSubTabWithExpectedField(String fieldName, String subTabName) {
-        projectManager.assertTwoFieldValues(fieldName, subTabName);
+    @Then("^I (compare|softly compare) field \"([^\"]*)\" from sub tab \"([^\"]*)\" with expected field$")
+    public void iCompareFieldFromSubTabWithExpectedField(String usage, String fieldName, String subTabName) {
+        projectManager.assertTwoFieldValues(fieldName,
+                subTabName,
+                usage.contains("softly")
+        );
     }
 
     @Description("To check no records displayed in flex table")
-    @Then("^I see \"([^\"]*)\" inside flex table with id \"([^\"]*)\"$")
-    public void iSeeInsideFlexTableWithId(String text, String tableID) {
-        Assert.assertTrue(projectManager.isRecordPresentInTheFlexTable(text, tableID));
+    @Then("^I (softly see|see) \"([^\"]*)\" inside flex table with id \"([^\"]*)\"$")
+    public void iSeeInsideFlexTableWithId(String usage, String text, String tableID) {
+        if (usage.contains("softly")){
+            EyeThink.core().assertion().assertThat(projectManager.isRecordPresentInTheFlexTable(text, tableID)).isTrue();
+        } else {
+            Assert.assertTrue(projectManager.isRecordPresentInTheFlexTable(text, tableID));
+        }
     }
 
     @Description("To verify text under attachment flex table")
-    @Then("^I see \"([^\"]*)\" has been added in \"([^\"]*)\" flex table$")
-    public void iSeeHasBeenAddedInFlexTable(String valueToBeSearch, String flexTableHeader) {
-        projectManager.AssertFieldValueIsPresentInFlexTable(valueToBeSearch, flexTableHeader);
+    @Then("^I (softly see|see) \"([^\"]*)\" has been added in \"([^\"]*)\" flex table$")
+    public void iSeeHasBeenAddedInFlexTable(String usage, String valueToBeSearch, String flexTableHeader) {
+        projectManager.AssertFieldValueIsPresentInFlexTable(valueToBeSearch,
+                flexTableHeader,
+                usage.contains("softly")
+        );
     }
 
     @Description("To upload attachment from default workspace")
@@ -91,21 +113,30 @@ public class GenericSteps {
         projectManager.clickRightHeaderBars(title);
     }
 
-    @Then("^I verify that \"([^\"]*)\" file is downloaded$")
-    public void iVerifyThatPdfFileIsDownloaded(String fileType) {
-        projectManager.assertThatFileIsDownloaded(fileType);
+    @Then("^I (verify|softly verify) that \"([^\"]*)\" file is downloaded$")
+    public void iVerifyThatPdfFileIsDownloaded(String usage, String fileType) {
+        projectManager.assertThatFileIsDownloaded(fileType,
+                usage.contains("softly")
+        );
     }
 
     @Description("To verify no of rows checked for field name")
-    @Then("^I can see \"([^\"]*)\" record value is checked for field name \"([^\"]*)\"$")
-    public void iCanSeeRecordValueIsCheckedForFieldName(String count, String fieldName) {
-        projectManager.AssertFieldValueIsChecked(fieldName,count);
+    @Then("^I can (softly see|see) \"([^\"]*)\" record value is checked for field name \"([^\"]*)\"$")
+    public void iCanSeeRecordValueIsCheckedForFieldName(String usage, String count, String fieldName) {
+        projectManager.AssertFieldValueIsChecked(fieldName,
+                count,
+                usage.contains("softly")
+        );
     }
 
-    @Given("^I can see mail notification for \"([^\"]*)\" user with following subject:$")
-    public void iSeeMailSubject(String userType, List<String> subjectList) throws MessagingException {
+    @Given("^I (softly can see|can see) mail notification for \"([^\"]*)\" user with following subject:$")
+    public void iSeeMailSubject(String usage, String userType, List<String> subjectList) throws MessagingException {
         String subject = subjectList.get(0);
-        Assert.assertTrue(projectManager.validateMailSubject(userType,subject));
+        if (usage.contains("softly")){
+            EyeThink.core().assertion().assertThat(projectManager.validateMailSubject(userType,subject)).isTrue();
+        } else {
+            Assert.assertTrue(projectManager.validateMailSubject(userType, subject));
+        }
     }
 
     @Description("Navigate to last page of the flex table")
@@ -125,16 +156,26 @@ public class GenericSteps {
     }
 
     @Description("Validation of equality for values of Schedule end date AND Reporting Period End Date")
-    @Then("I verify that the Schedule end date is matching with Reporting Period End Date")
-    public void iVerifyThatTheScheduleEndDateIsMatchingWithReportingPeriodEndDate() {
-        Assert.assertEquals(EyeThink.core().Properties().getValue("lastValueFromTableForCol"),
-                EyeThink.core().Properties().getValue("ScheduleEndDate"));
+    @Then("I (verify|softly verify) that the Schedule end date is matching with Reporting Period End Date")
+    public void iVerifyThatTheScheduleEndDateIsMatchingWithReportingPeriodEndDate(String usage) {
+        if (usage.contains("softly")){
+            EyeThink.core().assertion().assertThat(EyeThink.core().Properties().getValue("lastValueFromTableForCol"))
+                    .isEqualTo(EyeThink.core().Properties().getValue("ScheduleEndDate"));
+        } else {
+            Assert.assertEquals(EyeThink.core().Properties().getValue("lastValueFromTableForCol"),
+                    EyeThink.core().Properties().getValue("ScheduleEndDate"));
+        }
     }
 
-    @Then("I verify that the Schedule start date is matching with Reporting Period start Date")
-    public void iVerifyThatTheScheduleStartDateIsMatchingWithReportingPeriodStartDate() {
-        Assert.assertEquals(EyeThink.core().Properties().getValue("lastValueFromTableForCol"),
-                EyeThink.core().Properties().getValue("ScheduleStartDate"));
+    @Then("I (verify|softly verify) that the Schedule start date is matching with Reporting Period start Date")
+    public void iVerifyThatTheScheduleStartDateIsMatchingWithReportingPeriodStartDate(String usage) {
+        if (usage.contains("softly")){
+            EyeThink.core().assertion().assertThat(EyeThink.core().Properties().getValue("lastValueFromTableForCol"))
+                    .isEqualTo(EyeThink.core().Properties().getValue("ScheduleStartDate"));
+        } else {
+            Assert.assertEquals(EyeThink.core().Properties().getValue("lastValueFromTableForCol"),
+                    EyeThink.core().Properties().getValue("ScheduleStartDate"));
+        }
     }
 
     @When("^I save the value from row \"([^\"]*)\" for column name \"([^\"]*)\" as \"([^\"]*)\" from flex table \"([^\"]*)\"$")
@@ -142,12 +183,16 @@ public class GenericSteps {
         projectManager.iSavedSpecificValueFromFlexTableInsideGivenKey(columnValueFromRow, columnName, key, flexTableId);
     }
 
-    @Then("^I (see|do not see) that the fields in flex table title as \"([^\"]*)\" are editable$")
+    @Then("^I (see|do not see|softly see|softly do not see) that the fields in flex table title as \"([^\"]*)\" are editable$")
     public void iSeeThatTheFieldsInFlexTableTitleAsAreEditable(String editable, String tableTitle) {
         if (editable.equals("see")){
             Assert.assertTrue(projectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle));
-        } else {
+        } else if(editable.equals("do not see")){
             Assert.assertFalse(projectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle));
+        } else if(editable.equals("softly see")){
+            EyeThink.core().assertion().assertThat(projectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle)).isTrue();
+        } else {
+            EyeThink.core().assertion().assertThat(projectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle)).isFalse();
         }
     }
 
@@ -156,8 +201,8 @@ public class GenericSteps {
         projectManager.addNotesToPR();
     }
 
-    @Then("I verify that the file {string} is downloaded")
-    public void iVerifyThatTheFileIsDownloaded(String fileName) {
+    @Then("I (softly verify|verify) that the file {string} is downloaded")
+    public void iVerifyThatTheFileIsDownloaded(String usage, String fileName) {
         EyeThink.core().WaitFor().makeThreadSleep(10000);
         boolean yes = false;
         File[] list = EyeThink.core().file().getCompleteFilesListOnLocalDirectory(System.getProperty("user.dir")+"/target");
@@ -166,11 +211,15 @@ public class GenericSteps {
                 yes = true;
             }
         }
-        Assert.assertTrue(yes);
+        if (usage.contains("softly")){
+            EyeThink.core().assertion().assertThat(yes).isTrue();
+        } else {
+            Assert.assertTrue(yes);
+        }
     }
 
-    @Then("I verify that field {string} is not editable by entering {string} value")
-    public void iVerifyThatFieldIsNotEditableByEnteringValue(String fieldApi, String value) {
+    @Then("I (softly verify|verify) that field {string} is not editable by entering {string} value")
+    public void iVerifyThatFieldIsNotEditableByEnteringValue(String usage, String fieldApi, String value) {
 
         boolean verify = true;
         try {
@@ -179,12 +228,20 @@ public class GenericSteps {
         } catch (Exception ex){
 
         }
-        Assert.assertTrue(verify);
+        if (usage.contains("softly")){
+            EyeThink.core().assertion().assertThat(verify).isTrue();
+        } else {
+            Assert.assertTrue(verify);
+        }
     }
 
-    @Then("I see snapshot with name containing {string} as name")
-    public void iSeeSnapshotWithNameContainingAsName(String snapshotName) {
-        Assert.assertTrue(EyeThink.core().elementReference().onWeb(By.xpath("//div[contains(@id,'Attachments')]//span[contains(text(),'"+snapshotName+"')]")).isDisplayed());
+    @Then("I (softly see|see) snapshot with name containing {string} as name")
+    public void iSeeSnapshotWithNameContainingAsName(String usage,String snapshotName) {
+        if (usage.contains("softly")){
+            EyeThink.core().assertion().assertThat(EyeThink.core().elementReference().onWeb(By.xpath("//div[contains(@id,'Attachments')]//span[contains(text(),'"+snapshotName+"')]")).isDisplayed()).isTrue();
+        } else {
+            Assert.assertTrue(EyeThink.core().elementReference().onWeb(By.xpath("//div[contains(@id,'Attachments')]//span[contains(text(),'" + snapshotName + "')]")).isDisplayed());
+        }
     }
 
     @And("I create multiple records from sheet {string} of {string} with following data")

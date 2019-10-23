@@ -49,9 +49,13 @@ public class HomePage extends ProjectManager {
         return pendingTaskCount;
     }
 
-    public void assertTaskCount(String tabName, String tableID) {
+    public void assertTaskCount(String tabName, String tableID, boolean isSoftly) {
         String finalCount = EyeThink.core().get().text(By.xpath("//div[@class='container-fluid']//li//span[text()='" + tabName + "']/../..//span[contains(@ng-bind,'taskCount')]"));
-        Assert.assertEquals(findTaskCount(tabName, tableID), finalCount);
+        if (isSoftly){
+            EyeThink.core().assertion().assertThat(finalCount).isEqualTo(findTaskCount(tabName, tableID));
+        } else {
+            Assert.assertEquals(findTaskCount(tabName, tableID), finalCount);
+        }
     }
 
     /**
@@ -72,8 +76,12 @@ public class HomePage extends ProjectManager {
         return false;
     }
 
-    public void assertFileInWorkspace(String recordId) {
-        Assert.assertTrue(isFileDisplayedInWorkspace(recordId));
+    public void assertFileInWorkspace(String recordId, boolean isSoftly) {
+        if (isSoftly){
+            EyeThink.core().assertion().assertThat(isFileDisplayedInWorkspace(recordId)).isTrue();
+        } else {
+            Assert.assertTrue(isFileDisplayedInWorkspace(recordId));
+        }
     }
 
     /**

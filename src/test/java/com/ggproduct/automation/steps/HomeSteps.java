@@ -18,15 +18,15 @@ public  class HomeSteps {
     }
 
     @Description("To verify task summary phase count on home module")
-    @Then("^I see task count for \"([^\"]*)\" phase with the total records of flex table id \"([^\"]*)\"$")
-    public void iSeeTaskCountForPhaseWithTheTotalRecordsOfFlexTableId(String phaseName, String tableID) {
-        homePage.assertTaskCount(phaseName,tableID);
+    @Then("^I (softly see|see) task count for \"([^\"]*)\" phase with the total records of flex table id \"([^\"]*)\"$")
+    public void iSeeTaskCountForPhaseWithTheTotalRecordsOfFlexTableId(String usage, String phaseName, String tableID) {
+        homePage.assertTaskCount(phaseName,tableID, usage.contains("softly"));
     }
 
     @Description("To verify files has been added in My Workspace Files")
-    @Then("^I see \"([^\"]*)\" has been added in My Workspace Files$")
-    public void iSeeHasBeenAddedInMyWorkspaceFiles(String recordID) {
-        homePage.assertFileInWorkspace(recordID);
+    @Then("^I (softly see|see) \"([^\"]*)\" has been added in My Workspace Files$")
+    public void iSeeHasBeenAddedInMyWorkspaceFiles(String usage, String recordID) {
+        homePage.assertFileInWorkspace(recordID, usage.contains("softly"));
     }
 
     @Description("To select value from global drop down selector")
