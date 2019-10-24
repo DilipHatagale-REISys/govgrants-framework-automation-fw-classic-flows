@@ -11,41 +11,17 @@ Feature: Validate all scenarios in Closeout
     When I perform quick search for "Automation Permanent Award" in "---closeout:-:grantsTableId---" panel
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---closeout:-:grantsTableId---"
 
-  @50971 @creationOfAdhocCloseout @smoke
-  Scenario: To create an Adhoc Closeout Request
+  @50971 @50973 @creationAndEditionOfAdhocCloseout @smoke
+  Scenario: To create and Edit an Adhoc Closeout Request
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
     When I enter "Creation" values from "Closeout_Field_Values.xlsx"
     And I click modal button "Save and Continue"
+    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "Green"
 
-  @50973 @editionOfCloseout
-  Scenario: To edit a Closout Request
-    When I navigate to "Requests" sub tab
-    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
-    When I enter "Creation" values from "Closeout_Field_Values.xlsx"
-    And I click modal button "Save and Continue"
-    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    Then I see status in Progress-bar is "Created" and is "green"
-
-  @50974 @assigningApproversInCloseout
-  Scenario: To assign approvers Closout Request
-    When I navigate to "Requests" sub tab
-    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
-    When I enter "Creation" values from "Closeout_Field_Values.xlsx"
-    And I click modal button "Save and Continue"
-    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
-      | Program Approver | Automation PM | Automation Test Description |
-      | Fiscal Approver  | Automation FO | Automation Test Description |
-    Then I see that "Automation FO" has been added in flextable with Id "---closeout:-:closeoutApproverTableId---"
-
-  @50975 @sendClosoutToSubrecipient @smoke
+  @50975 @50974 @assigningApproversAndsendClosoutToSubrecipient @smoke
   Scenario: Send Closout Request to Subrecipient
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
@@ -58,11 +34,13 @@ Feature: Validate all scenarios in Closeout
       | Responsibility   | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
+    Then I softly see that "Automation FO" has been added in flextable with Id "---closeout:-:closeoutApproverTableId---"
     When I click on "Send To Subrecipient" in the page details
-    Then I see status in Progress-bar is "Sent to Subrecipient" and is "Green"
+    Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "Green"
+    Then I collect all the soft asserts
 
-  @50976 @subrecipientEntersFielsInCloseout
-  Scenario: Subrecipient enters closeout fields
+  @50977 @50976 @subrecipientEntersFielsInCloseoutAndAcknowledges @smoke
+  Scenario: Validate whether Subrecipient enters closeout fields and acknowledges
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
     When I enter "Creation" values from "Closeout_Field_Values.xlsx"
@@ -84,71 +62,13 @@ Feature: Validate all scenarios in Closeout
     When I click on "Edit" in the page details
     And I enter "Subrecipient fields" values from "Closeout_Field_Values.xlsx"
     When I click on "Save" in the page details
-    Then I see status in Progress-bar is "Sent to Subrecipient" and is "green"
-
-  @50977 @subrecipientAcknowledgesCloseout @smoke
-  Scenario: Subrecipient acknowledges the closeout
-    When I navigate to "Requests" sub tab
-    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
-    When I enter "Creation" values from "Closeout_Field_Values.xlsx"
-    And I click modal button "Save and Continue"
-    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I get the "EGMS ID"
-    When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
-      | Program Approver | Automation PM | Automation Test Description |
-      | Fiscal Approver  | Automation FO | Automation Test Description |
-    Given I click on "Send To Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-    When I navigate to "Closeout" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---closeout:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---closeout:-:pendingTaskTableId---"
-    When I click on "Edit" in the page details
-    And I enter "Subrecipient fields" values from "Closeout_Field_Values.xlsx"
-    When I click on "Save" in the page details
+    Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "green"
     And I click on "Acknowledge" in the page details
-    Then I see that "Closeout View" is in "Acknowledged by Subrecipient" status
+    Then I softly see that "Closeout View" is in "Acknowledged by Subrecipient" status
+    Then I collect all the soft asserts
 
-  @50978 @overrideCloseout @smoke
-  Scenario: Grant owner overrides the closeout
-    When I navigate to "Requests" sub tab
-    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
-    When I enter "Creation" values from "Closeout_Field_Values.xlsx"
-    And I click modal button "Save and Continue"
-    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I get the "EGMS ID"
-    When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
-      | Program Approver | Automation PM | Automation Test Description |
-      | Fiscal Approver  | Automation FO | Automation Test Description |
-    Given I click on "Send To Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-    When I navigate to "Closeout" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---closeout:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---closeout:-:pendingTaskTableId---"
-    When I click on "Edit" in the page details
-    And I enter "Subrecipient fields" values from "Closeout_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    Given I click on "Acknowledge" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    When I navigate to "Closeout" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---closeout:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---closeout:-:pendingTaskTableId---"
-    When I click on "Edit" in the page details
-    And I enter "Override" values from "Closeout_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    When I click on "Override" in the page details
-    Then I see status in Progress-bar is "Overridden" and is "green"
-
-  @50979 @submitCloseoutForApproval
-  Scenario Outline: Closeout is submitted for approval
+  @50979 @50978 @overrideCloseoutAndsubmitForApproval @smoke
+  Scenario Outline: Grant owner overrides the Closeout and is submitted for approval
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
     When I enter "Creation" values from "Closeout_Field_Values.xlsx"
@@ -226,8 +146,10 @@ Feature: Validate all scenarios in Closeout
     And I enter "Override" values from "Closeout_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Override" in the page details
+    Then I see status in Progress-bar is "Overridden" and is "green"
     And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
+    Then I collect all the soft asserts
     Examples:
       | Award Name                 |
       | Automation Permanent Award |
