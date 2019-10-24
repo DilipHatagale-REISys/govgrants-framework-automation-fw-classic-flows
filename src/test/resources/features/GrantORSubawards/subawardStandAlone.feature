@@ -16,16 +16,14 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I get the "EGMS ID"
 
-  @51128 @awardCreation @smoke
-  Scenario: Creation of an award
-    Then I see status in Progress-bar is "Created" and is "Green"
-
-  @51129 @awardStandAloneEdition
-  Scenario: Edition of an award
+  @51128 @51129 @awardCreationAndEdition
+  Scenario: Creation of an award and edition of an award
+    Then I softly see status in Progress-bar is "Created" and is "Green"
     When I click on "Edit" in the page details
     And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
-    Then I see status in Progress-bar is "Created" and is "Green"
+    Then I softly see status in Progress-bar is "Created" and is "Green"
+    Then I collect all the soft asserts
 
   @51130 @awardStandAloneAddContactsKeyPersonnel
   Scenario Outline: Associate a Key Contact
@@ -1006,6 +1004,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Accept after Approval" in the page details
+    When I enter comments "Automation Test Description" and click "OK"
     Then I see status in Progress-bar is "Accepted" and is "Green"
     Examples:
       | Award Name                 | Grant Name                 |
@@ -1137,6 +1136,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Accept after Approval" in the page details
+    When I enter comments "Automation Test Description" and click "OK"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1328,6 +1328,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Accept after Approval" in the page details
+    When I enter comments "Automation Test Description" and click "OK"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1496,6 +1497,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Accept after Approval" in the page details
+    When I enter comments "Automation Test Description" and click "OK"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
