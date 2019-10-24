@@ -37,6 +37,7 @@ Feature: Validate all scenarios in Desk Review
     Then I softly see that "Automation EXE" has been added in flextable with Id "---deskreview:-:approverDeskReviewTableId---"
     Given I navigate to "Overview" sub tab
     Then I softly see field "Created Date" is not editable
+    Then I collect all the soft asserts
 
   @51014 @51015 @notifySubrecipientPendingTaskDeskReview @smoke
   Scenario: Notify Subrecipient about the respective POC from the applicant organization will receive a pending task about the Desk Review
@@ -70,6 +71,7 @@ Feature: Validate all scenarios in Desk Review
     And I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     Then I softly see that "Automation Desk Review" is in "Notified" status
+    Then I collect all the soft asserts
 
   @51016 @51017 @conductAddingOutcomeDeskReview
   Scenario: Conduct and Adding outcomes to Desk Review
@@ -128,6 +130,7 @@ Feature: Validate all scenarios in Desk Review
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
     Then I softly see that "Automation Finding" has been added in flextable with Id "---deskreview:-:correctiveTableId---"
+    Then I collect all the soft asserts
 
   @51018 @51019 @formFillingSubmittingForApprovalDeskReview
   Scenario: Filling up of form and Submitting Desk Review for approval in Desk Review
@@ -203,6 +206,7 @@ Feature: Validate all scenarios in Desk Review
     When I click on "Back" in the page details
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    Then I collect all the soft asserts
 
   @51020 @approvalOfDeskReview @smoke
   Scenario: Approval of Desk Review
@@ -335,6 +339,7 @@ Feature: Validate all scenarios in Desk Review
     Then I softly see that "Automation Desk Review" is in "Sent to Subrecipient" status
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
+    Then I collect all the soft asserts
 
   @55279 @approverSendBackToUserDeskReview @deepika
   Scenario: Validate whether the approver will be able to SendBack to Owner
@@ -438,6 +443,7 @@ Feature: Validate all scenarios in Desk Review
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
     Then I softly see that "Approve Desk Review" has been added in flextable with Id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    Then I collect all the soft asserts
 
   @55282 @deskReviewWithoutFormFilling @deepika
   Scenario: User will not be able to submit the Desk Review for approval without completed forms
@@ -534,6 +540,7 @@ Feature: Validate all scenarios in Desk Review
     When I click on "Submit to Grantor" in the page details
     Then I softly see the following messages in the page details :
       | Reports and Outcomes Tab - Enter corrective actions on all Findings outcomes using the "+" icons. |
+    Then I collect all the soft asserts
 
   @55364 @deskReviewDeleteAccesstoOwner @smoke @deepika
   Scenario Outline: Verify that record owner can delete created state desk review from Award level
@@ -601,6 +608,7 @@ Feature: Validate all scenarios in Desk Review
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
     Then I softly see that "Automation Desk Review" has been added in flextable with Id "---deskreview:-:deskReviewGridViewTableId---"
+    Then I collect all the soft asserts
 
   @55366 @detailsOnDeskReviewBeforeNotification @deepika
   Scenario: Verify user is not able to delete desk review record if it is not in Created state (Negative TC)
@@ -668,6 +676,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     And I navigate to "Reports and Outcomes" sub tab
     Then I softly cannot see row level action button "Edit" against "General Review Form" in flex table with id "---deskreview:-:deskReviewGridViewTableId---"
+    Then I collect all the soft asserts
 
   @55791 @internalUserParticipantAssociationDeskReview @deepika
   Scenario Outline: Internal User participant Association of Desk Review
@@ -744,6 +753,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     When I click on "Complete Review" in the page details
     Then I softly see status in Progress-bar is "In Progress" and is "green"
+    Then I collect all the soft asserts
 
   @56015 @sendBacktoOwnerReceivePendingTaskdv @deepika
   Scenario: Validate the supporting document checklist submitted by the subrecipient and record sent back to Recipients when outcomes are not properly addressed and recipients receive a pending task
@@ -848,6 +858,7 @@ Feature: Validate all scenarios in Desk Review
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
     Then I softly see that "Approve Desk Review" has been added in flextable with Id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    Then I collect all the soft asserts
 
   @61053 @FieldHistoryUpdatePostAwardLevelDeskReviewIsSendBackToOwnerByProgramApprover @Keerti
   Scenario: To Validate field history update post Award level Desk Review is send back to owner by program approver.
@@ -1049,3 +1060,4 @@ Feature: Validate all scenarios in Desk Review
     And I click on hyperlink containing value "Desk Review - Accept And Close"
     When I download the file
     Then I softly see "{SavedValue:EGMSID}" on page "1" of "govgrants" pdf file
+    Then I collect all the soft asserts

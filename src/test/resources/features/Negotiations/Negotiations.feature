@@ -55,6 +55,7 @@ Feature: Validate all scenarios in Negotiations
     And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:phasePendingTasksTableId---"
     When I click on "Complete Negotiation" in the page details
     Then I softly see status in Progress-bar is "Negotiated" and is "green"
+    Then I collect all the soft asserts
 
   @57035 @pendingTaskCreatedforSubrecipient @deepika
   Scenario: Validate the Applicants receive the Negotiation request from the Internal Agency
@@ -120,6 +121,7 @@ Feature: Validate all scenarios in Negotiations
     Then I softly see that "Review Negotiation" has been added in flextable with Id "---negotiation:-:phasePendingTasksTableId---"
     When I click on "Send Back to Subrecipient" in the page details
     Then I softly see status in Progress-bar is "Negotiation Initiated" and is "green"
+    Then I collect all the soft asserts
 
   @57211 @awardIconAfterNotAvilablOncenegotiationInitiated @deepika
   Scenario: User will not be able to view the Award icon on the FDM once the Negotiation has been initiated for the Application
@@ -174,6 +176,7 @@ Feature: Validate all scenarios in Negotiations
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---negotiation:-:negotiationCompletedTaskTableId---"
     Then I softly can see top right button "Create Subaward" in page detail
+    Then I collect all the soft asserts
 
   @57217 @57212 @createEditNegotiationButton @deepika
   Scenario: Validate whether users Applicant try to edit the Application after Submit to Grantor and will not be able to perform Negotiation on the Application once it is completed
@@ -213,6 +216,7 @@ Feature: Validate all scenarios in Negotiations
     When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     Then I softly cannot see row level action button "Initiate Negotiation" against "Automation Announcement for FDM" in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
+    Then I collect all the soft asserts
 
   @57218 @57219 @pendingTaskActionIconApplicantEditNegotiationRequest @deepika
   Scenario: Validate whether users will review the information and Applicant will be able to edit the respective application section(s) that the Agency mentioned
@@ -238,6 +242,7 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Save" in the page details
     Then I softly see the following messages in the page details :
       | Details is Required to save under Negotiations. |
+    Then I collect all the soft asserts
 
   @34387 @negotiationWhenOpenUserCannotCreateOther @deepika
   Scenario: Verify that with open negotiation request user can not Complete Negotiation (Negative TC)
