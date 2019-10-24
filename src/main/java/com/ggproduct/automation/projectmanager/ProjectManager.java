@@ -62,8 +62,12 @@ public class ProjectManager extends ProjectWebServices {
         return false;
     }
 
-    public void assertColumnValuIsBlank(String fieldName) {
-        Assert.assertTrue(isColumnValueBlank(fieldName));
+    public void assertColumnValuIsBlank(String fieldName, boolean isSoftly) {
+        if (isSoftly){
+            EyeThink.core().assertion().assertThat(isColumnValueBlank(fieldName)).isTrue();
+        } else {
+            Assert.assertTrue(isColumnValueBlank(fieldName));
+        }
     }
 
     /* handles to veify total records present in flex table */
@@ -71,8 +75,12 @@ public class ProjectManager extends ProjectWebServices {
         return (EyeThink.core().get().text(By.xpath("//div[@id='" + tableId + "']//following-sibling::span[contains(text(),'Total Records')]")));
     }
 
-    public void AssertTotalRecordsCountInFlexTable(String totalRecord, String tableId) {
-        Assert.assertEquals(totalRecord, totalRecordsCount(tableId));
+    public void AssertTotalRecordsCountInFlexTable(String totalRecord, String tableId, boolean isSoftly) {
+        if (isSoftly){
+            EyeThink.core().assertion().assertThat(totalRecordsCount(tableId)).isEqualTo(totalRecord);
+        } else {
+            Assert.assertEquals(totalRecord, totalRecordsCount(tableId));
+        }
     }
 
     public By pageBlock(String pageBlockName) {
@@ -84,13 +92,20 @@ public class ProjectManager extends ProjectWebServices {
      * @param assertcan     - can see|cannot see
      * @Author - Mahadev.hanme
      */
-    public void AssertPageBlockDisplayed(String pageblockName, boolean assertcan) {
+    public void AssertPageBlockDisplayed(String pageblockName, boolean assertcan, boolean isSoftly) {
         List<Elements> elements = EyeThink.core().elementReference().listOfElements().onWeb(pageBlock(pageblockName),false);
-
         if (assertcan) {
-            Assert.assertNotEquals(elements.size(), 0);
+            if (isSoftly){
+                EyeThink.core().assertion().assertThat(0).isNotEqualTo(elements.size());
+            } else {
+                Assert.assertNotEquals(elements.size(), 0);
+            }
         } else {
-            Assert.assertEquals(elements.size(), 0);
+            if (isSoftly){
+                EyeThink.core().assertion().assertThat(0).isEqualTo(elements.size());
+            } else {
+                Assert.assertEquals(elements.size(), 0);
+            }
         }
     }
 
@@ -137,8 +152,12 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     @Description("To verify two different field values are equal or not")
-    public void assertTwoFieldValues(String targetValue, String subTabName) {
-        Assert.assertTrue(compareTwoFieldValues(targetValue, subTabName));
+    public void assertTwoFieldValues(String targetValue, String subTabName, boolean isSoftly) {
+        if (isSoftly) {
+            EyeThink.core().assertion().assertThat(compareTwoFieldValues(targetValue, subTabName)).isTrue();
+        } else {
+            Assert.assertTrue(compareTwoFieldValues(targetValue, subTabName));
+        }
     }
 
     /**
@@ -156,8 +175,12 @@ public class ProjectManager extends ProjectWebServices {
             return false;
     }
 
-    public void AssertFieldValueIsPresentInFlexTable(String valueToBeSearch, String flexTableHeader) {
-        Assert.assertTrue(iSeeValueInFlexTable(valueToBeSearch, flexTableHeader));
+    public void AssertFieldValueIsPresentInFlexTable(String valueToBeSearch, String flexTableHeader, boolean isSoftly) {
+        if (isSoftly){
+            EyeThink.core().assertion().assertThat(iSeeValueInFlexTable(valueToBeSearch, flexTableHeader)).isTrue();
+        } else {
+            Assert.assertTrue(iSeeValueInFlexTable(valueToBeSearch, flexTableHeader));
+        }
     }
 
     /**
@@ -176,7 +199,7 @@ public class ProjectManager extends ProjectWebServices {
         EyeThink.saas().phasePanel().clickParallelMenuBars(title);
     }
 
-    public void assertThatFileIsDownloaded(String fileType){
+    public void assertThatFileIsDownloaded(String fileType, boolean isSoftly){
         File file = new File(System.getProperty("user.dir") + "\\target");
         File[] directory = EyeThink.core().file().getCompleteFilesListOnLocalDirectory(file.getAbsolutePath());
         for (File files : directory) {
@@ -186,11 +209,19 @@ public class ProjectManager extends ProjectWebServices {
                 break;
             }
         }
-        Assert.assertTrue(new File(file.getAbsolutePath() + "govgrant."+fileType+"").exists());
+        if (isSoftly){
+            EyeThink.core().assertion().assertThat(new File(file.getAbsolutePath() + "govgrant."+fileType+"").exists()).isTrue();
+        } else {
+            Assert.assertTrue(new File(file.getAbsolutePath() + "govgrant." + fileType + "").exists());
+        }
     }
 
-    public void AssertFieldValueIsChecked(String fieldName,String count){
-        Assert.assertEquals(Integer.parseInt(count),getCheckedFieldValueCount(fieldName));
+    public void AssertFieldValueIsChecked(String fieldName,String count, boolean isSoftly){
+        if (isSoftly){
+            EyeThink.core().assertion().assertThat(Integer.parseInt(count)).isEqualTo(getCheckedFieldValueCount(fieldName));
+        } else {
+            Assert.assertEquals(Integer.parseInt(count), getCheckedFieldValueCount(fieldName));
+        }
     }
     
        /**
