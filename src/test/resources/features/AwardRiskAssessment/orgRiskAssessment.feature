@@ -1201,7 +1201,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     Then I see value "{SavedValue:Todays Date}" for title "Effective Date" against the value "{SavedValue:EGMSID}" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     Then I see value "{SavedValue:Expiration Date}" for title "Expiration Date" against the value "{SavedValue:EGMSID}" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
-  @63077 @UserCannotEditExpiredRA @keerti
+  @63077 @VerifyTaskForNoPopUpWhenClickedOnRequestNewAssessment @keerti
     Scenario: Validate task is not created for Grantor when the SA user clicks as 'No' on pop up when clicked on Request New Assessment
     When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
