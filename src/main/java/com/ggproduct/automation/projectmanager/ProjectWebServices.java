@@ -118,7 +118,7 @@ public class ProjectWebServices {
         getAuthToken();
         String finalEndPoint = endPoint + "/services/apexrest/productAutomationGetFieldValue?objectType=" + objectType
                 + "&fieldValue=" + recordName + "&fieldName=" + fieldName + "&outputFieldName=" + outputFieldName;
-        Response response = EyeThink.core().apiCall().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
+        Response response =  EyeThink.core().apiCall().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
         response.prettyPrint();
         assertStatusCode(response);
         return response;
