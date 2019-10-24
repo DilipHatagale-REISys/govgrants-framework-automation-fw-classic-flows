@@ -13,16 +13,14 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     When I get the "EGMS ID"
 
-  @51097 @taskCreationForSubrecipientProgressReport @smoke
-  Scenario: To assert the task creation for Progress Report
-    Then I see status in Progress-bar is "Created" and is "green"
-
-  @51098 @editProgressReport
-  Scenario: To edit Progress Report
+  @51097 @51098 @createAndEditProgressReport
+  Scenario: To assert the task creation and edition for Progress Report
+    Then I softly see status in Progress-bar is "Created" and is "green"
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
-    Then I see status in Progress-bar is "Created" and is "Green"
+    Then I softly see status in Progress-bar is "Created" and is "Green"
+    Then I collect all the soft asserts
 
   @51099 @editKPIProgressReport
   Scenario: To edit KPI in Progress Report
@@ -42,7 +40,7 @@ Feature: Validate all scenarios in Progress Report
     Then I see that "100%" has been added in flextable with Id "---progressReport:-:formTableId---"
 
   @51101 @kpiOfProgressReportsnoteditable
-  Scenario: To validate  KPI for progress report are not editable post submission of prog report to grantor.
+  Scenario: To validate KPI for progress report are not editable post submission of prog report to grantor.
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
