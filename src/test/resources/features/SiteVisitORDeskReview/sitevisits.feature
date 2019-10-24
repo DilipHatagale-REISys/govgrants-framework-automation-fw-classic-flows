@@ -19,6 +19,7 @@ Feature: Validate all scenarios in the Site Visit
     And I get the "EGMS ID"
 
   @51081 @51082 @51083 @61201 @siteVisitCreationEditionParticipantAssociationCreatedDate @smoke
+    Scenario: Validate the creation, edition, created date and ParticipantAsociation
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "SiteVisit_Field_Values.xlsx"
     When I click on "Save" in the page details
