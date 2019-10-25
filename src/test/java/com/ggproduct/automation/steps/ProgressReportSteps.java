@@ -47,7 +47,7 @@ public class ProgressReportSteps {
     }
 
     @Description("To compare date field with todays date")
-    @Then("I (softly see|see) field \"([^\"]*)\" is getting updated with todays date")
+    @Then("^I (softly see|see) field \"([^\"]*)\" is getting updated with todays date$")
     public void iSeeFieldIsGettingUpdatedWithTodaysDate(String usage, String fieldLabel) {
         progressReportPage.compareDateFieldWithTodaysDate(fieldLabel, usage.contains("softly"));
     }
