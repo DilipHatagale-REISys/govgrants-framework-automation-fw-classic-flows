@@ -1165,7 +1165,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
 
   @63072 @VerifyErrorMessageForAssessmentForm @keerti
   Scenario: Validate whether the system throws an error message to the user and cannot proceed further without completing the assessment form.
-    When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
+    When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
@@ -1176,7 +1176,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
 
   @63075 @VerifyEffectiveDateAndExpirationDate @keerti
     Scenario: Validate whether the Active Org Risk Assessment for Organization is updated for one year under Effective Date and Expiration Date fields inside flextable
-    When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
+    When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
     And I navigate to "Assessment" sub tab
@@ -1193,7 +1193,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
 
   @63077 @VerifyTaskForNoPopUpWhenClickedOnRequestNewAssessment @keerti
     Scenario: Validate task is not created for Grantor when the SA user clicks as 'No' on pop up when clicked on Request New Assessment
-    When I click on "Start" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
+    When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
     And I navigate to "Assessment" sub tab
@@ -1209,5 +1209,5 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "---riskassessment:-:homePendingTaskTableId---" panel
-    Then I do not see values "SAN DIEGO ELECTRICAL TRAINING TRUST" and "Provide or Decline Risk Assessment Access" inside table
+    And I perform quick search for "Bayside Community Center" in "---riskassessment:-:homePendingTaskTableId---" panel
+    Then I do not see values "Bayside Community Center" and "Provide or Decline Risk Assessment Access" inside table
