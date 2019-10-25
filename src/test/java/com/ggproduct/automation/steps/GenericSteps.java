@@ -201,7 +201,7 @@ public class GenericSteps {
         projectManager.addNotesToPR();
     }
 
-    @Then("^I (softly verify|verify) that the file {string} is downloaded$")
+    @Then("^I (softly verify|verify) that the file \"([^\"]*)\" is downloaded$")
     public void iVerifyThatTheFileIsDownloaded(String usage, String fileName) {
         EyeThink.core().WaitFor().makeThreadSleep(10000);
         boolean yes = false;
@@ -218,7 +218,7 @@ public class GenericSteps {
         }
     }
 
-    @Then("^I (softly verify|verify) that field {string} is not editable by entering {string} value$")
+    @Then("^I (softly verify|verify) that field \"([^\"]*)\" is not editable by entering \"([^\"]*)\" value$")
     public void iVerifyThatFieldIsNotEditableByEnteringValue(String usage, String fieldApi, String value) {
 
         boolean verify = true;
@@ -235,7 +235,7 @@ public class GenericSteps {
         }
     }
 
-    @Then("^I (softly see|see) snapshot with name containing {string} as name$")
+    @Then("^I (softly see|see) snapshot with name containing \"([^\"]*)\" as name$")
     public void iSeeSnapshotWithNameContainingAsName(String usage,String snapshotName) {
         if (usage.contains("softly")){
             EyeThink.core().assertion().assertThat(EyeThink.core().elementReference().onWeb(By.xpath("//div[contains(@id,'Attachments')]//span[contains(text(),'"+snapshotName+"')]")).isDisplayed()).isTrue();
