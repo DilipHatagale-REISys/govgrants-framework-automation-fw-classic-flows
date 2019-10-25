@@ -84,6 +84,7 @@ Feature: Validate all scenarios in the Pre-Application
     When I perform quick search for "Record id" in "---preApplication:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record id" inside flex table with id "---preApplication:-:pendingTaskTableId---"
     When I click on "Accept" in the page details
+    And I enter comments "Automation Description" and click "OK"
     Given I am on "SUBPORTAL" portal
     And I login as "SPI" user
     When I navigate to "Applications" tab

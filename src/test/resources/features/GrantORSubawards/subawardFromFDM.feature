@@ -13,6 +13,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     And I click on "Create Subaward" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I enter value "Automation Test Description" into field "fieldGrantAwardDescription__c"
+    When I click modal button "Yes"
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
@@ -229,6 +230,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---"
     And I click on "Accept" in the page details
+    When I enter comments "Automation Test Description" and click "OK"
     Then I see status in Progress-bar is "Created" and is "Green"
     Examples:
       | Award Name                      | Grant Name                      |
@@ -321,6 +323,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---"
     And I click on "Accept" in the page details
+    When I enter comments "Automation Test Description" and click "OK"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -415,6 +418,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---"
     And I click on "Accept" in the page details
+    When I enter comments "Automation Test Description" and click "OK"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -519,6 +523,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---"
     And I click on "Accept" in the page details
+    When I enter comments "Automation Test Description" and click "OK"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -635,6 +640,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---"
     And I click on "Accept" in the page details
+    When I enter comments "Automation Test Description" and click "OK"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -769,6 +775,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---"
     And I click on "Accept" in the page details
+    When I enter comments "Automation Test Description" and click "OK"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -913,6 +920,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---"
     And I click on "Accept" in the page details
+    When I enter comments "Automation Test Description" and click "OK"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1039,6 +1047,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---"
     And I click on "Accept" in the page details
+    When I enter comments "Automation Test Description" and click "OK"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1180,6 +1189,7 @@ Feature: Validate all scenarios in the Award from FDM
     And I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---"
     And I click on "Accept" in the page details
+    When I enter comments "Automation Test Description" and click "OK"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel

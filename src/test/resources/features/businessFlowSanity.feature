@@ -774,6 +774,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I perform quick search for "Record id" in "---preApplication:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record id" inside table
     When I click on "Accept" in the page details
+    And I enter comments "Automation Description" and click "OK"
     Then I see status in Progress-bar is "Accepted" and is "Green"
 
   @submitApplication
@@ -1048,6 +1049,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     And I click on "Create Subaward" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    When I click modal button "Yes"
     And I enter value "Automation Test Description" into field "fieldGrantAwardDescription__c"
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -1069,11 +1071,12 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---" without waiting for record
-    And I enter "Payment Request Schedule_FDM" values from "Award_Field_Values.xlsx"
+    And I pause execution
+    And I enter in modal "Payment Request Schedule_FDM" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardFromFDM:-:progressReportSchedulesTableId---" without waiting for record
-    And I enter "Progress Report Schedule_FDM" values from "Award_Field_Values.xlsx"
+    And I enter in modal "Progress Report Schedule_FDM" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I navigate to "Management" sub tab
@@ -1123,6 +1126,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---"
     And I click on "Accept" in the page details
+    When I enter comments "Automation Test Description" and click "OK"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1323,6 +1327,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     When I click on "Accept" in the page details
+    When I enter comments "Automation Test Description" and click "OK"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
