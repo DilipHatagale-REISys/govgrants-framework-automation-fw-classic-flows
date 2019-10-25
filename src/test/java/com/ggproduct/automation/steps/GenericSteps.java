@@ -174,7 +174,7 @@ public class GenericSteps {
 
         boolean verify = true;
         try {
-            EyeThink.saas().inputForms().inputFormDataByFieldApiName(fieldApi, value);
+            EyeThink.saas().inputForms().inputFormDataByFieldApiName(fieldApi, value,false);
             verify = false;
         } catch (Exception ex){
 
@@ -213,7 +213,7 @@ public class GenericSteps {
                         EyeThink.saas().pageDetails().clickSubTabsInsideTableView(subTab);
                         currentSubTab = subTab;
                     }
-                    EyeThink.saas().inputForms().inputFormDataByFieldApiName(apiName, value);
+                    EyeThink.saas().inputForms().inputFormDataByFieldApiName(apiName, value,false);
                 }
 
                 EyeThink.saas().modal().clickModalContentSpecificButton(testDataMap.get("ModalButton"));
