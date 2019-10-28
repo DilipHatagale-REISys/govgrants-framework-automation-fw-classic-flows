@@ -114,6 +114,7 @@ Feature: Validate all scenarios in the Pre-Application
     Given I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
     Given I click on "Back" in the page details
+    When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
       | Name           | Project Role             | Is Key Contact |
       | Automation SPI | Project Director/Manager | Checked        |
