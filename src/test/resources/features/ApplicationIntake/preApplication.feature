@@ -84,7 +84,6 @@ Feature: Validate all scenarios in the Pre-Application
     When I perform quick search for "Record id" in "---preApplication:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record id" inside flex table with id "---preApplication:-:pendingTaskTableId---"
     When I click on "Accept" in the page details
-    And I enter comments "Automation Description" and click "OK"
     Given I am on "SUBPORTAL" portal
     And I login as "SPI" user
     When I navigate to "Applications" tab
@@ -115,6 +114,7 @@ Feature: Validate all scenarios in the Pre-Application
     Given I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
     Given I click on "Back" in the page details
+    When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
       | Name           | Project Role             | Is Key Contact |
       | Automation SPI | Project Director/Manager | Checked        |
