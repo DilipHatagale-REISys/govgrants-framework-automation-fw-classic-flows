@@ -1,6 +1,7 @@
 package com.ggproduct.automation.steps;
 
 import com.ggproduct.automation.pageobjects.ProgressReportPage;
+import eyethink.automation.bots.Register.EyeThink;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -15,21 +16,28 @@ public class ProgressReportSteps {
     }
 
     @Description("To verify progress report schedules getting updated")
-    @Then("^I see progress report table is getting updated with count \"([^\"]*)\" inside flextable with Id \"([^\"]*)\"$")
-    public void iSeeProgressReportTableIsGettingUpdatedWithCountInsideFlextableWithId(String totalRecords, String tableID) {
-        progressReportPage.verifyProgressReportSchedulesUpdated(totalRecords, tableID);
+    @Then("^I (softly see|see) progress report table is getting updated with count \"([^\"]*)\" inside flextable with Id \"([^\"]*)\"$")
+    public void iSeeProgressReportTableIsGettingUpdatedWithCountInsideFlextableWithId(String usage, String totalRecords, String tableID) {
+        progressReportPage.verifyProgressReportSchedulesUpdated(totalRecords, tableID, usage.contains("softly"));
     }
 
     @Description("To verify toggle option is not present on flex table")
-    @Then("^I cannot see toggle option \"([^\"]*)\" inside flex table id \"([^\"]*)\"$")
-    public void iCannotSeeToggleOptionInsideFlexTableId(String anyItemToBeCheck, String flexTableId) {
-        progressReportPage.assertToggleOptionNotDisplayed(anyItemToBeCheck, flexTableId);
+    @Then("^I (cannot see|softly cannot see) toggle option \"([^\"]*)\" inside flex table id \"([^\"]*)\"$")
+    public void iCannotSeeToggleOptionInsideFlexTableId(String usage, String anyItemToBeCheck, String flexTableId) {
+        progressReportPage.assertToggleOptionNotDisplayed(anyItemToBeCheck,
+                flexTableId,
+                usage.contains("softly")
+                );
     }
 
     @Description("To verify specified column values inside flex table")
-    @Then("^I see all values \"([^\"]*)\" under column \"([^\"]*)\" inside flextable with id \"([^\"]*)\"$")
-    public void iSeeAllValuesUnderColumnInsideFlextableWithId(String columnValue, String columnName, String flexTableId) {
-        progressReportPage.verifyColumnValuesInFlexTable(columnValue, columnName, flexTableId);
+    @Then("^I (see|softly see) all values \"([^\"]*)\" under column \"([^\"]*)\" inside flextable with id \"([^\"]*)\"$")
+    public void iSeeAllValuesUnderColumnInsideFlextableWithId(String usage, String columnValue, String columnName, String flexTableId) {
+        progressReportPage.verifyColumnValuesInFlexTable(columnValue,
+                columnName,
+                flexTableId,
+                usage.contains("softly")
+                );
     }
 
     @Description("To click on any hyperlink inside page details")
@@ -39,21 +47,27 @@ public class ProgressReportSteps {
     }
 
     @Description("To compare date field with todays date")
-    @Then("I see field \"([^\"]*)\" is getting updated with todays date")
-    public void iSeeFieldIsGettingUpdatedWithTodaysDate(String fieldLabel) {
-        progressReportPage.compareDateFieldWithTodaysDate(fieldLabel);
+    @Then("^I (softly see|see) field \"([^\"]*)\" is getting updated with todays date$")
+    public void iSeeFieldIsGettingUpdatedWithTodaysDate(String usage, String fieldLabel) {
+        progressReportPage.compareDateFieldWithTodaysDate(fieldLabel, usage.contains("softly"));
     }
 
     @Description("To verify top right button on attachments flex table")
-    @Then("^I (see|cannot see) top right button \"([^\"]*)\" for \"([^\"]*)\" flex table$")
+    @Then("^I (softly see|see|cannot see|softly cannot see) top right button \"([^\"]*)\" for \"([^\"]*)\" flex table$")
     public void iCannotSeeTopRightButtonForFlexTable(String shouldBeDisplayed, String buttonName, String flextableHeaderName) {
-        progressReportPage.assertTopRightButtonOnFlexTable(shouldBeDisplayed,buttonName, flextableHeaderName);
+        progressReportPage.assertTopRightButtonOnFlexTable(shouldBeDisplayed,
+                buttonName,
+                flextableHeaderName,
+                shouldBeDisplayed.contains("softly")
+        );
     }
 
     @Description("To verify row level action button inside attachments flex table")
-    @Then("^I cannot see row level action button \"([^\"]*)\" against Value \"([^\"]*)\" inside \"([^\"]*)\" flex table$")
-    public void iCannotSeeRowLevelActionButtonAgainstValueInsideFlexTable(String buttonName, String uniqueValue, String flextableHeaderName) {
-        progressReportPage.assertRowLevelActionButtonInsideFlexTable(buttonName, uniqueValue, flextableHeaderName);
+    @Then("^I (softly cannot see|cannot see) row level action button \"([^\"]*)\" against Value \"([^\"]*)\" inside \"([^\"]*)\" flex table$")
+    public void iCannotSeeRowLevelActionButtonAgainstValueInsideFlexTable(String usage, String buttonName, String uniqueValue, String flextableHeaderName) {
+        progressReportPage.assertRowLevelActionButtonInsideFlexTable(buttonName, uniqueValue, flextableHeaderName,
+                usage.contains("softly")
+        );
     }
 
     @When("I download the attachment present in attachment table")
@@ -62,29 +76,33 @@ public class ProgressReportSteps {
     }
 
     @Description("To verify reported date field contains todays date")
-    @Then("^I see the Reported Date field contains todays date$")
-    public void iSeeTheReportedDateFieldContainsTodaysDate() {
-        progressReportPage.assertReportedDateField();
+    @Then("^I (softly see|see) the Reported Date field contains todays date$")
+    public void iSeeTheReportedDateFieldContainsTodaysDate(String usage) {
+        progressReportPage.assertReportedDateField(usage.contains("softly"));
     }
 
-    @Then("^I see field \"([^\"]*)\" is not editable$")
-    public void iSeeFieldIsNotEditable(String fieldAPIName) {
-        progressReportPage.assertFieldIsEditableOrNot(fieldAPIName);
+    @Then("^I (softly see|see) field \"([^\"]*)\" is not editable$")
+    public void iSeeFieldIsNotEditable(String usage, String fieldAPIName) {
+        progressReportPage.assertFieldIsEditableOrNot(fieldAPIName, usage.contains("softly"));
     }
 
     @Description("To verify checkbox field is editable")
-    @Then("^I see checkbox field \"([^\"]*)\" is editable$")
-    public void iSeeCheckboxFieldIsEditable(String fieldAPIName) {
-        progressReportPage.assertCheckBoxFieldIsEditable(fieldAPIName);
+    @Then("^I (softly see|see) checkbox field \"([^\"]*)\" is editable$")
+    public void iSeeCheckboxFieldIsEditable(String usage, String fieldAPIName) {
+        progressReportPage.assertCheckBoxFieldIsEditable(fieldAPIName, usage.contains("softly"));
     }
 
     @Description("To verify radiobutton on approval decison box")
-    @Then("^I (see|do not see) \"([^\"]*)\" option on approval decision box$")
+    @Then("^I (softly see|see|do not see|softly do not see) \"([^\"]*)\" option on approval decision box$")
     public void iDoNotSeeOptionOnApprovalDecisionBox(String seeornot,String radiobuttonOption) {
         if (seeornot.equals("see")){
             Assert.assertTrue(progressReportPage.isbuttonDisplayedOnApprovalDecisionBox(radiobuttonOption));
-        } else {
+        } else if (seeornot.equalsIgnoreCase("do not se")){
             Assert.assertFalse(progressReportPage.isbuttonDisplayedOnApprovalDecisionBox(radiobuttonOption));
+        } else if (seeornot.equalsIgnoreCase("softly see")){
+            EyeThink.core().assertion().assertThat(progressReportPage.isbuttonDisplayedOnApprovalDecisionBox(radiobuttonOption)).isTrue();
+        } else if (seeornot.equalsIgnoreCase("softly do not see")) {
+            EyeThink.core().assertion().assertThat(progressReportPage.isbuttonDisplayedOnApprovalDecisionBox(radiobuttonOption)).isFalse();
         }
     }
 

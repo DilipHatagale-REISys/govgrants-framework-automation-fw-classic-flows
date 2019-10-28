@@ -39,11 +39,11 @@ Feature: Amendment Request scenarios without background
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     When I navigate to "Overview" sub tab
@@ -223,11 +223,11 @@ Feature: Amendment Request scenarios without background
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     When I navigate to "Overview" sub tab
@@ -400,11 +400,11 @@ Feature: Amendment Request scenarios without background
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     When I navigate to "Overview" sub tab
@@ -454,6 +454,7 @@ Feature: Amendment Request scenarios without background
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I click on "Accept after Approval" in the page details
+
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -578,11 +579,11 @@ Feature: Amendment Request scenarios without background
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     When I navigate to "Overview" sub tab
@@ -713,11 +714,11 @@ Feature: Amendment Request scenarios without background
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     When I navigate to "Overview" sub tab
@@ -891,11 +892,11 @@ Feature: Amendment Request scenarios without background
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     When I navigate to "Overview" sub tab
@@ -1067,11 +1068,11 @@ Feature: Amendment Request scenarios without background
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     When I navigate to "Overview" sub tab
@@ -1242,11 +1243,11 @@ Feature: Amendment Request scenarios without background
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     When I navigate to "Overview" sub tab
@@ -1419,11 +1420,11 @@ Feature: Amendment Request scenarios without background
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     When I navigate to "Overview" sub tab
@@ -1596,11 +1597,11 @@ Feature: Amendment Request scenarios without background
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     When I navigate to "Overview" sub tab
@@ -1780,11 +1781,11 @@ Feature: Amendment Request scenarios without background
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     When I navigate to "Overview" sub tab

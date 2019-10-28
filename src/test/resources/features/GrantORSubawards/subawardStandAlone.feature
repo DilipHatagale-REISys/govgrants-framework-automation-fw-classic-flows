@@ -16,16 +16,14 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I get the "EGMS ID"
 
-  @51128 @awardCreation @smoke
-  Scenario: Creation of an award
-    Then I see status in Progress-bar is "Created" and is "Green"
-
-  @51129 @awardStandAloneEdition
-  Scenario: Edition of an award
+  @51128 @51129 @awardCreationAndEdition
+  Scenario: Creation of an award and edition of an award
+    Then I softly see status in Progress-bar is "Created" and is "Green"
     When I click on "Edit" in the page details
     And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
-    Then I see status in Progress-bar is "Created" and is "Green"
+    Then I softly see status in Progress-bar is "Created" and is "Green"
+    Then I collect all the soft asserts
 
   @51130 @awardStandAloneAddContactsKeyPersonnel
   Scenario Outline: Associate a Key Contact
@@ -165,11 +163,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I navigate to "Management" sub tab
@@ -245,12 +243,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I navigate to "Management" sub tab
@@ -333,11 +331,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I navigate to "Management" sub tab
@@ -406,11 +404,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I navigate to "Management" sub tab
@@ -480,11 +478,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I navigate to "Management" sub tab
@@ -565,11 +563,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I navigate to "Management" sub tab
@@ -663,11 +661,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I navigate to "Management" sub tab
@@ -779,11 +777,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I navigate to "Management" sub tab
@@ -904,11 +902,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I navigate to "Management" sub tab
@@ -1035,11 +1033,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I navigate to "Management" sub tab
@@ -1163,7 +1161,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     When I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I expand nested table containing column value "Payment Request"
@@ -1176,7 +1174,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     When I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     When I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
@@ -1192,7 +1190,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     When I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     When I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
@@ -1226,11 +1224,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I navigate to "Management" sub tab
@@ -1393,11 +1391,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I navigate to "Management" sub tab
@@ -1507,7 +1505,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Activate" in the page details
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "ProgressReport_Edition" values from "Award_Field_Values.xlsx"
+    When I enter in modal "ProgressReport_Edition" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
@@ -1520,7 +1518,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   Scenario: Validate user can edit progress report schedule on draft award
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
@@ -1532,7 +1530,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   Scenario: Validate user can view progress report schedule on draft award
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I click on "View" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
@@ -1547,7 +1545,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   Scenario: Validate user can Download the progress created Report in PDF format.
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     When I click on top right parallel lines bar for "Progress Reports Schedule"
@@ -1559,7 +1557,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   Scenario: Validate user can Download the progress created Report in XLS format
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     When I click on top right parallel lines bar for "Progress Reports Schedule"
@@ -1571,7 +1569,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   Scenario: Verify While creating schedule user should be allowed to select the Desired Frequency as Monthly
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
@@ -1581,7 +1579,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   Scenario: Verify While creating schedule user should be allowed to select the Desired Frequency as Quarterly.
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Quarterly" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Quarterly" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
@@ -1591,7 +1589,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   Scenario: Verify While creating schedule user is not allowed to select the Schedule End Date after Project Period End Date.
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "ScheduledEndDateAfterStartDate" values from "Award_Field_Values.xlsx"
+    When I enter in modal "ScheduledEndDateAfterStartDate" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     Then I see the following messages in the page details contains:
       | Schedule End date cannot be after Project Period End Date |
@@ -1600,7 +1598,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   Scenario: Verify While creating schedule user should be allowed to select the Desired Frequency as Bi Monthly.
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report BiMonthly" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report BiMonthly" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
@@ -1610,7 +1608,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   Scenario: Verify While creating schedule user should be allowed to select the Desired Frequency as annually.
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Annually" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Annually" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
@@ -1620,7 +1618,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   Scenario: Verify While creating schedule user should be allowed to select the Desired Frequency as semi-annually.
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Semi-Annually" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Semi-Annually" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
@@ -1630,7 +1628,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   Scenario: Verify While creating schedule user should be allowed to select the Desired Frequency as monthly.
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Monthly" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Monthly" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
@@ -1640,7 +1638,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   Scenario: Verify While creating schedule user should be allowed to select the Desired Frequency as monthly
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Monthly" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Monthly" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     Then I see field "Schedule Base" as "Reporting Period"
 
@@ -1648,7 +1646,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   Scenario: Verify While creating schedule user is not allowed to select the Schedule Start Date which is before Budget period start date on draft award
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Error" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Error" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     Then I see the text containing :
       | Schedule Start date cannot be before Budget Period Start Date. |
@@ -1657,7 +1655,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   Scenario: Verify While creating progress report schedule user should be allowed to select the start date
     When I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Fixed Date" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Fixed Date" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     Then I see field "Schedule Start Date" as "2/2/2024"
 
@@ -1685,7 +1683,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I navigate to "Management" sub tab
@@ -1763,7 +1761,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Monthly" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Monthly" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
@@ -1789,7 +1787,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Monthly" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Monthly" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1813,7 +1811,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report StartDate Error" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report StartDate Error" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     Then I see the following messages in the page details contains:
       | Schedule Start date cannot be before Budget Period Start Date |
@@ -1825,7 +1823,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report MoreThanOneyear" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report MoreThanOneyear" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
@@ -1838,7 +1836,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "ProgressReportQuartelyReporting" values from "Award_Field_Values.xlsx"
+    When I enter in modal "ProgressReportQuartelyReporting" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
@@ -1851,7 +1849,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "ProgressReportCalendarSchedule" values from "ProgressReport_Field_Values.xlsx"
+    When I enter in modal "ProgressReportCalendarSchedule" values from "ProgressReport_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
@@ -1881,11 +1879,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I navigate to "Management" sub tab
@@ -1962,11 +1960,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I navigate to "Management" sub tab
@@ -2027,7 +2025,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "AnnualError" values from "Errors.xlsx"
+    When I enter in modal "AnnualError" values from "Errors.xlsx"
     And I click modal button "Save"
     Then I see the following messages in the page details contains:
       | The time between Schedule Start Date and Schedule End Date must be greater than or equal to 365 days if Annually frequency is selected. |
@@ -2039,7 +2037,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "MonthlyError" values from "Errors.xlsx"
+    When I enter in modal "MonthlyError" values from "Errors.xlsx"
     And I click modal button "Save"
     Then I see the following messages in the page details contains:
       | The time between Schedule Start Date and Schedule End Date must be greater than or equal to 28 days if Monthly frequency is selected. |
@@ -2048,7 +2046,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   Scenario: Verify functionality of Desired Frequency as Bi Monthly with Schedule Base type as Reporting period.
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Bi-MonthlyForEightRecord" values from "Errors.xlsx"
+    When I enter in modal "Bi-MonthlyForEightRecord" values from "Errors.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
@@ -2058,7 +2056,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   Scenario: Verify the functionality of Desired Frequency as Semi-Annually with Schedule Base type as Reporting period.
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Bi-MonthlyForEightRecord" values from "Errors.xlsx"
+    When I enter in modal "Bi-MonthlyForEightRecord" values from "Errors.xlsx"
     And I enter value "Semi-Annually" into field "Frequency__c"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
@@ -2072,7 +2070,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "ProgressReportQuartelyReporting" values from "Award_Field_Values.xlsx"
+    When I enter in modal "ProgressReportQuartelyReporting" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     And I save the field labeled "Schedule End Date" as "ScheduleEndDate"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
@@ -2120,7 +2118,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I navigate to "Management" sub tab
@@ -2226,11 +2224,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    When I enter "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I navigate to "Management" sub tab

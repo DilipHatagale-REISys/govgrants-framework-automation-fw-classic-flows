@@ -14,9 +14,15 @@ import java.util.Map;
 
 public class ProgressReportPage extends ProjectManager {
 
-    public void verifyProgressReportSchedulesUpdated(String totalRecords, String tableID) {
-        Assert.assertEquals(EyeThink.core().Properties().getValue("EGMSID1"), EyeThink.core().Properties().getValue("EGMSID2"));
-        AssertTotalRecordsCountInFlexTable(totalRecords, tableID);
+    public void verifyProgressReportSchedulesUpdated(String totalRecords, String tableID, boolean isSoftly) {
+        if (isSoftly){
+            EyeThink.core().assertion().assertThat(EyeThink.core().Properties().getValue("EGMSID1")).isEqualTo(
+                    EyeThink.core().Properties().getValue("EGMSID2")
+            );
+        } else {
+            Assert.assertEquals(EyeThink.core().Properties().getValue("EGMSID1"), EyeThink.core().Properties().getValue("EGMSID2"));
+        }
+        AssertTotalRecordsCountInFlexTable(totalRecords, tableID, isSoftly);
     }
 
     /**
@@ -38,8 +44,12 @@ public class ProgressReportPage extends ProjectManager {
         return false;
     }
 
-    public void assertToggleOptionNotDisplayed(String anyItemToBeCheck, String flexTableId) {
-        Assert.assertFalse(isGivenToggleOptionPresent(anyItemToBeCheck, flexTableId));
+    public void assertToggleOptionNotDisplayed(String anyItemToBeCheck, String flexTableId, boolean isSoftly) {
+        if (isSoftly){
+            EyeThink.core().assertion().assertThat(isGivenToggleOptionPresent(anyItemToBeCheck, flexTableId)).isFalse();
+        } else {
+            Assert.assertFalse(isGivenToggleOptionPresent(anyItemToBeCheck, flexTableId));
+        }
     }
 
     /**
@@ -58,8 +68,12 @@ public class ProgressReportPage extends ProjectManager {
         return true;
     }
 
-    public void verifyColumnValuesInFlexTable(String valueToBeCheck, String columnName, String tableId){
-        Assert.assertTrue(isColumnValuePresentInsideFlexTable(valueToBeCheck,columnName,tableId));
+    public void verifyColumnValuesInFlexTable(String valueToBeCheck, String columnName, String tableId, boolean isSoftly){
+        if (isSoftly){
+            EyeThink.core().assertion().assertThat(isColumnValuePresentInsideFlexTable(valueToBeCheck,columnName,tableId)).isTrue();
+        } else {
+            Assert.assertTrue(isColumnValuePresentInsideFlexTable(valueToBeCheck, columnName, tableId));
+        }
     }
 
     /**
@@ -73,12 +87,16 @@ public class ProgressReportPage extends ProjectManager {
     /**
      * returns true if field contains todays date
      */
-    public void compareDateFieldWithTodaysDate(String fieldLabel){
+    public void compareDateFieldWithTodaysDate(String fieldLabel, boolean isSoftly){
         String fieldValue =  EyeThink.saas().pageDetails().getFieldValue(fieldLabel);
         if (fieldValue.contains(" ")){
             fieldValue =fieldValue.replaceAll("\\s.*","");
         }
-        Assert.assertEquals(EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")), fieldValue);
+        if (isSoftly){
+            EyeThink.core().assertion().assertThat(EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy"))).isEqualTo(fieldValue);
+        } else {
+            Assert.assertEquals(EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")), fieldValue);
+        }
     }
 
     /**
@@ -95,8 +113,12 @@ public class ProgressReportPage extends ProjectManager {
         }
     }
 
-    public void assertTopRightButtonOnFlexTable(String shouldBeDisplayed, String buttonName, String flextableHeaderName) {
-        Assert.assertEquals("see".equalsIgnoreCase(shouldBeDisplayed), isTopRightButtonDisplayed(buttonName, flextableHeaderName));
+    public void assertTopRightButtonOnFlexTable(String shouldBeDisplayed, String buttonName, String flextableHeaderName, boolean isSoftly) {
+        if (isSoftly){
+            EyeThink.core().assertion().assertThat("softly see".equalsIgnoreCase(shouldBeDisplayed)).isEqualTo(isTopRightButtonDisplayed(buttonName, flextableHeaderName));
+        } else {
+            Assert.assertEquals("see".equalsIgnoreCase(shouldBeDisplayed), isTopRightButtonDisplayed(buttonName, flextableHeaderName));
+        }
     }
 
     /**
@@ -112,8 +134,12 @@ public class ProgressReportPage extends ProjectManager {
             return false;
     }
 
-    public void assertRowLevelActionButtonInsideFlexTable(String buttonName, String uniqueColumnValue, String flextableHeaderName){
-        Assert.assertFalse(isRowLevelActionButtonDisplayed(buttonName,uniqueColumnValue,flextableHeaderName));
+    public void assertRowLevelActionButtonInsideFlexTable(String buttonName, String uniqueColumnValue, String flextableHeaderName, boolean isSoftly){
+        if (isSoftly){
+            EyeThink.core().assertion().assertThat(isRowLevelActionButtonDisplayed(buttonName,uniqueColumnValue,flextableHeaderName)).isFalse();
+        } else {
+            Assert.assertFalse(isRowLevelActionButtonDisplayed(buttonName, uniqueColumnValue, flextableHeaderName));
+        }
     }
 
     public void downloadAttachment(){
@@ -124,8 +150,12 @@ public class ProgressReportPage extends ProjectManager {
     /**
      * To verify reported date field contains today's date
      */
-    public void assertReportedDateField(){
-        Assert.assertEquals(EyeThink.core().Properties().getValue("ReportedDate"),EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")));
+    public void assertReportedDateField(boolean isSoftly){
+        if (isSoftly) {
+            EyeThink.core().assertion().assertThat(EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy"))).isEqualTo(EyeThink.core().Properties().getValue("ReportedDate"));
+        } else {
+            Assert.assertEquals(EyeThink.core().Properties().getValue("ReportedDate"), EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")));
+        }
     }
 
     public Boolean isFieldEditable(String fieldAPIName){
@@ -139,8 +169,12 @@ public class ProgressReportPage extends ProjectManager {
         return flag;
     }
 
-    public void assertFieldIsEditableOrNot(String fieldAPIName){
-        Assert.assertFalse(isFieldEditable(fieldAPIName));
+    public void assertFieldIsEditableOrNot(String fieldAPIName, boolean isSoftly){
+        if (isSoftly){
+            EyeThink.core().assertion().assertThat(isFieldEditable(fieldAPIName)).isFalse();
+        } else {
+            Assert.assertFalse(isFieldEditable(fieldAPIName));
+        }
     }
 
     public Boolean isCheckboxFieldEditable(String fieldApiName){
@@ -154,8 +188,12 @@ public class ProgressReportPage extends ProjectManager {
         return flag;
     }
 
-    public void assertCheckBoxFieldIsEditable(String fieldAPIName){
-        Assert.assertTrue(isCheckboxFieldEditable(fieldAPIName));
+    public void assertCheckBoxFieldIsEditable(String fieldAPIName, boolean isSoftly){
+        if (isSoftly){
+            EyeThink.core().assertion().assertThat(isCheckboxFieldEditable(fieldAPIName)).isTrue();
+        } else {
+            Assert.assertTrue(isCheckboxFieldEditable(fieldAPIName));
+        }
     }
 
     /**
