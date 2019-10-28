@@ -774,7 +774,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I perform quick search for "Record id" in "---preApplication:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record id" inside table
     When I click on "Accept" in the page details
-    And I enter comments "Automation Description" and click "OK"
     Then I see status in Progress-bar is "Accepted" and is "Green"
 
   @submitApplication
@@ -1049,7 +1048,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     And I click on "Create Subaward" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
-    When I click modal button "Yes"
     And I enter value "Automation Test Description" into field "fieldGrantAwardDescription__c"
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -1125,7 +1123,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---"
     And I click on "Accept" in the page details
-    When I enter comments "Automation Test Description" and click "OK"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1192,7 +1189,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I click on "Accept after Approval" in the page details
-    When I enter comments "Automation Test Description" and click "OK"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1326,7 +1322,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     When I click on "Accept" in the page details
-    When I enter comments "Automation Test Description" and click "OK"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1369,7 +1364,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I click on "Accept after Approval" in the page details
-    When I enter comments "Automation Test Description" and click "OK"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
