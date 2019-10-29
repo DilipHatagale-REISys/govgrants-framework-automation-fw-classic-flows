@@ -65,7 +65,11 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
+    When I click on "Cancel" in the page details
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "<User>" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     Then I see that "<User>" has been added in flextable with Id "---orgLevelDeskReview:-:associateContactsId---"
@@ -188,6 +192,7 @@ Feature: Validate all scenarios in Organizational Desk Review
 
   @54886 @54571 @submittingForAprovalOfDeskReviewOrgLevel @deepika
   Scenario: Validate the org level Desk Review Submitting for Approval
+    Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
@@ -338,7 +343,6 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Title                           | Description            | Status      | Due Date | Assigned To    |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     And I collapse nested table containing column value "Automation Finding"
-    Then I softly see that "Automation Desk Review Org level" is in "Submit to Grantor" status
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     Then I collect all the soft asserts
@@ -435,7 +439,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
     Then I can see top right button "Accept and Close" in page detail
@@ -645,10 +649,12 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
     And I click on "Reassign,Automation EXE" on the approval decision box
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
+    And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
-    Then I see that "Approve Desk Review Org" has been added in flextable with Id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
+    And I click on "Approve" on the approval decision box
+    Then I see status in Progress-bar is "Approved" and is "Green"
 
   @55793 @internalUserParticipantOrganizationalDeskReview @smoke @deepika
   Scenario Outline: Internal User participant Association of Organizational Desk Review
@@ -819,7 +825,8 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click modal button "Submit Review"
-    When I close "Desk Review Reviewers" modal by clicking the top right x button
+    When I close modal by clicking the top right x button
+    #When I close "Site Visit Reviewers" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
@@ -904,7 +911,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "History" sub tab
     And I click on hyperlink which contains todays date with text "SnapShot on"
     When I download the file
-    Then I see "{SavedValue:Record Id}" on page "1" of "govgrants" pdf file
+    Then I softly see "{SavedValue:Record Id}" on page "1" of "govgrants" pdf file
 
   @61990 @RecordOwnerCanViewSnapshotAfterRAIsSubmittedForApproval @keerti
   Scenario: Validate whether user is able to view the Completed task once approved under Monitoring Tab - Org Level Desk reviewDesk Review
@@ -953,13 +960,13 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
     When I click on "Submit for Approval" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
     And I click on "Approve" on the approval decision box
-    And I navigate to "Monitoring" tab
+    And I navigate to "Applications" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---riskassessment:-:completedTaskTableId---" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "---riskassessment:-:completedTaskTableId---"
