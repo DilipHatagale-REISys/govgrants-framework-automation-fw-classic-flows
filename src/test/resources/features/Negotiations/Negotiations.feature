@@ -627,7 +627,7 @@ Feature: Validate all scenarios in Negotiations
     Then I cannot see top right button "Send to Subrecipient" in page detail
 
   @62669 @AddedAttachmentForNegotiations @keerti
-    Scenario: Validate the Addition of  attachment to Negotiations
+  Scenario: Validate the Addition of  attachment to Negotiations
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
@@ -642,7 +642,7 @@ Feature: Validate all scenarios in Negotiations
     Then I see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
 
   @62667 @RecordOwnerCanViewSnapshotAfterNegotiationIsInSubmittedToGrantor @keerti
-    Scenario: Validate Record Owner user is able to view the Snapshot after Negotiation  is in "Submitted to Grantor" status
+  Scenario: Validate Record Owner user is able to view the Snapshot after Negotiation  is in "Submitted to Grantor" status
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel

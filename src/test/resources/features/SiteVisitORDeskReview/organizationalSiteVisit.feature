@@ -394,8 +394,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:homePendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:homePendingTaskTableId---"
+    And I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
@@ -509,7 +509,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Task" subheader on left panel
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
     And I click on "Accept And Close" in the page details
@@ -1028,7 +1028,7 @@ Feature: Validate all scenarios in Organizational Site Visit
       | Automation Observation | Automation Description | Observation |
     When I click on "Submit for Approval" in the page details
     When I navigate to "Responsibilities" sub tab
-    Then I softly cannot see row level action button "Edit" against "Automation EXE" in flex table with id "---sitevisits:-:correctiveTableId---"
+    Then I softly can see row level action button "Edit" against "Automation EXE" in flex table with id "---sitevisits:-:correctiveTableId---"
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
     And I click on hyperlink which contains todays date with text "SnapShot on"
@@ -1081,7 +1081,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I close "Site Visit Reviewers" modal by clicking the top right x button
     Then I cannot see top right button "Edit" in page detail
 
-  @61403 @56007 @PeerReviewSnapshotAfterSVIsAcceptedAndClosed @keerti
+  @56007 @PeerReviewSnapshotAfterSVIsAcceptedAndClosed @keerti
   Scenario: Validate peer review  process and also system does not allow the peer reviewer to edit/Enter review comments if the Org Level Site Visits marked as complete review by the Record owner
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -1122,7 +1122,7 @@ Feature: Validate all scenarios in Organizational Site Visit
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
-    And I click modal button "Submit Review"
+    And I click on "Submit Review" in the page details
     When I close "Site Visit Reviewers" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
@@ -1132,7 +1132,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Complete Review" in the page details
     Then I softly see status in Progress-bar is "In Progress" and is "green"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
+    And I navigate to "Applications" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     And I perform quick search for "Record Id" in "flexGridRiskAssessmentGridViewInternal" panel
     When I click on "View" icon for "Record Id" inside flex table with id "flexGridRiskAssessmentGridViewInternal"
@@ -1207,19 +1207,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click "Add" after selection of "Automation Announcement for Application" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-    And I navigate to "Home" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:homePendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:homePendingTaskTableId---"
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Home" tab
-    When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
-    And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table
-    Given I navigate to "Related Log" sub tab
-    When I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:siteVisitsPanelId---" panel
-    And I click on "View" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:siteVisitsPanelId---"
     And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
@@ -1284,7 +1271,7 @@ Feature: Validate all scenarios in Organizational Site Visit
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
     When I click on "Submit for Approval" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
