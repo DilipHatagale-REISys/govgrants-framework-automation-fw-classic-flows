@@ -33,8 +33,8 @@ public class AmendmentRequestPage extends ProjectManager {
         EyeThink.core().enterText().onWeb().enter(By.xpath("//field[@field-name='ActualEncumbrance__c']/input"),calculateRevisedEncumbrance(awardName).toString());
     }
 
-    public void updatedBudgetPeriodEndDate() {
-        String rawDate = getFieldValueFromAPI("Automation Award for Amendment Request", "GrantAwardName__c", "Award__c", "BudgetPeriodEndDate__c");
+    public void updatedBudgetPeriodEndDate(String awardName) {
+        String rawDate = getFieldValueFromAPI(awardName, "GrantAwardName__c", "Award__c", "BudgetPeriodEndDate__c");
         String[] rawDateSplitted = rawDate.split(" ")[0].split("-");
         String fieldValue = rawDateSplitted[1] + "/" + rawDateSplitted[2] + "/" + rawDateSplitted[0];
         EyeThink.core().Properties().saveValue("updatedBudgetPeriodDate", EyeThink.core().get().dateWithOffsetFromGivenDate(fieldValue,1,DateTimeFormatter.ofPattern("M/d/uuuu")));
