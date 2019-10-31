@@ -418,7 +418,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     Then I collect all the soft asserts
 
   @55462 @61403 @viewnapshotOrgSiteVisitAcceptButtonAfterSRecipientsSubmission @deepika
-  Scenario: Validate User will be able to view the  SnapshotSite Visit Accept button after review the submission by Recipients
+  Scenario: Validate User will be able to view the SnapshotSite Visit Accept button after review the submission by Recipients
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
     And I enter "Creation" values from "Organizational_SiteVisit_Field_Values.xlsx"
@@ -514,6 +514,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
     And I click on "Accept And Close" in the page details
     Then I softly can see top right button "Accept and Close" in page detail
+    And I click on "Menu" in the page details
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
     And I click on hyperlink which contains todays date with text "SnapShot on"
@@ -1029,6 +1030,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Submit for Approval" in the page details
     When I navigate to "Responsibilities" sub tab
     Then I softly can see row level action button "Edit" against "Automation EXE" in flex table with id "---sitevisits:-:correctiveTableId---"
+    And I click on "Menu" in the page details
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
     And I click on hyperlink which contains todays date with text "SnapShot on"

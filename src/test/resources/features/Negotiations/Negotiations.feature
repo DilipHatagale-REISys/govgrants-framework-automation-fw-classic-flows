@@ -21,6 +21,7 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     Then I see that "Automation Announcement for FDM" is in "Negotiation Initiated" status
+    Then I collect all the soft asserts
 
   @57034 @57033 @submitToGrantorbySubrecipientCompleteNegotiation @deepika
   Scenario: Validate the Applicants able to submit the Application after edit and Internal Agency user decision on Completing the Negotiation
@@ -325,7 +326,7 @@ Feature: Validate all scenarios in Negotiations
     When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
-    Then I softlycan see top right button "Edit Negotiation" in page detail
+    Then I softly can see top right button "Edit Negotiation" in page detail
     When I click on "Send to Subrecipient" in the page details
     Then I softly cannot see top right button "Edit Negotiation" in page detail
     Then I collect all the soft asserts

@@ -913,7 +913,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I download the file
     Then I softly see "{SavedValue:Record Id}" on page "1" of "govgrants" pdf file
 
-  @61990 @RecordOwnerCanViewSnapshotAfterRAIsSubmittedForApproval @keerti
+  @61990 @RecordOwnerCanViewCompletedTask @keerti
   Scenario: Validate whether user is able to view the Completed task once approved under Monitoring Tab - Org Level Desk reviewDesk Review
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -961,7 +961,7 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Observation | Automation Description | Observation |
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Applications" tab
+    And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
