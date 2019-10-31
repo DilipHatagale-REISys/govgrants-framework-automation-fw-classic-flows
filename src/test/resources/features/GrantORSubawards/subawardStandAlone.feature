@@ -2,9 +2,6 @@
 Feature: Validate all scenarios in the Stand Alone Award and Grant
 
   Background: Create Award
-    Given I delete the record "Automation Execution Award" from the object "Progress Report"
-    Given I delete the record "Automation Execution Award" from the object "Payment Request"
-    When I delete the record "Automation Execution Award" from the object "Amendment Request"
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -65,6 +62,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                            | Start Date | End Date |
       | Automation Permanent Focus Area  | 0          | 3650     |
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
+      | Title                            | Start Date | End Date |
       | Automation Permanent Focus Area2 | 0          | 3650     |
     Then I see that "<Focus Area>" has been added in flextable with Id "---subAwardStandAlone:-:focusAreaTableId---"
     Examples:
@@ -1179,12 +1178,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close "Edit Payment Request Schedule" modal by clicking the top right x button
-    When I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    And I enter value "Quarterly" into field "Frequency__c"
-    And I click modal button "Save"
-    When I close "Edit Payment Request Schedule" modal by clicking the top right x button
-    Then I see value "Quarterly" for title "Frequency" against the value "Payment Request" inside table "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
+    Then I see field "Description" as "Automation Test Description"
 
   @53840 @paymentRequestSchedulesUpdateOnDraftAward @mahadev
   Scenario: Verify that Payment Request Schedule is editable to internal user on draft award
@@ -1201,7 +1195,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I expand nested table containing column value "Payment Request"
-    Then I see total records count "Total Records:40" in flex table "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
+    Then I see total records count "Total Records:120" in flex table "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
 
   @53911 @ValidateAdvancePaymentRequestcreation @mahadev
   Scenario Outline: Advance Payment Request creation when Advance Payment Allowed selected as Yes
@@ -2089,7 +2083,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter "ProgressReportQuartelyReporting" values from "Award_Field_Values.xlsx"
+    When I enter "Progress Report Monthly" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     And I save the field labeled "Schedule Start Date" as "ScheduleStartDate"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
