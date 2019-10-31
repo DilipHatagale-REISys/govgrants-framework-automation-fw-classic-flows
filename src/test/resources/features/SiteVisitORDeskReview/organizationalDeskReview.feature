@@ -913,7 +913,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I download the file
     Then I softly see "{SavedValue:Record Id}" on page "1" of "govgrants" pdf file
 
-  @61990 @RecordOwnerCanViewSnapshotAfterRAIsSubmittedForApproval @keerti
+  @61990 @RecordOwnerCanViewCompletedTask @keerti
   Scenario: Validate whether user is able to view the Completed task once approved under Monitoring Tab - Org Level Desk reviewDesk Review
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
