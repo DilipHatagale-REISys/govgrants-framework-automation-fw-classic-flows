@@ -19,7 +19,7 @@ public class AmendmentRequestSteps  {
     }
 
     @And("^I get the updated budget end date for award \"([^\"]*)\"$")
-    public void iGetTheUpdatedBudgetEndDateForAward(String awardName) {
+    public void getEndDate(String awardName) {
         amendmentRequestPage.updatedBudgetPeriodEndDate(awardName);
     }
 }
