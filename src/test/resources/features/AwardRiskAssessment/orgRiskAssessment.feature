@@ -1197,3 +1197,34 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Bayside Community Center" in "---riskassessment:-:homePendingTaskTableId---" panel
     Then I do not see values "Bayside Community Center" and "Provide or Decline Risk Assessment Access" inside table
+
+  @63232 @VerifyDraftRAIsActivated @keerti
+  Scenario: Verify task is marked completed if the user chooses to activate the risk assesment using the draft risk assessment instead of using the task
+    When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "EGMSID"
+    And I navigate to "Home" tab
+    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
+    And I navigate to "Risk Assessment" sub tab
+    When I perform quick search for "{SavedValue:EGMSID}" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
+    And I click on "Edit" icon for "Record Id" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    And I navigate to "Assessment" sub tab
+    And I enter "OrgAssessmentValues" values from "RiskAssessment_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I get the "EGMS ID"
+    When I click on "Submit" in the page details
+    Then I see status in Progress-bar is "Active" and is "Green"
+
+  @63229 @VerifyDraftORAIsPresentOnOrganizationalProfilePage @keerti
+  Scenario: Verify Draft Organization Risk Assessment is present on Organizational Profile Page for a Signing Authority of the Organization
+    When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "EGMSID"
+    And I navigate to "Home" tab
+    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
+    And I navigate to "Risk Assessment" sub tab
+    Then I see that "{SavedValue:EGMSID}" has been added in flextable with Id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
