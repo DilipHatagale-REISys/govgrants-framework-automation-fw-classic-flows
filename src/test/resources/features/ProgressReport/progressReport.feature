@@ -3102,7 +3102,7 @@ Feature: Validate all scenarios in Progress Report
       | Review Successfully Initiated |
 
   @60574 @AwardOwnerCanAddMultiplePeerReviewerForPR @Keerti
-    Scenario: Validate Award owner can add Multiple Peer reviewer for Progress report whose status is Submitted to grantor
+  Scenario: Validate Award owner can add Multiple Peer reviewer for Progress report whose status is Submitted to grantor
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -3127,7 +3127,7 @@ Feature: Validate all scenarios in Progress Report
       | Reviewer Name | Responsibility  | Description                 | Due Date |
       | Automation FO | Fiscal Reviewer | Automation Test Description | 7        |
     And I enter the following values into flex table with id "---progressReport:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description                 | Due Date |
+      | Reviewer Name | Responsibility   | Description                 | Due Date |
       | Automation PM | Program Reviewer | Automation Test Description | 7        |
     Then I see value "Automation FO" for title "Reviewer Name" inside table "---progressReport:-:peerReviewersTableId---"
     Then I see value "Automation PM" for title "Reviewer Name" inside table "---progressReport:-:peerReviewersTableId---"
@@ -3155,7 +3155,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     When I navigate to "Responsibilities" sub tab
     And I enter the following values into flex table with id "---progressReport:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description                 | Due Date |
+      | Reviewer Name  | Responsibility   | Description                 | Due Date |
       | Automation EXE | Program Reviewer | Automation Test Description | 7        |
     And I click on "Send for Review" icon for "Program Reviewer" inside flex table with id "---progressReport:-:peerReviewersTableId---"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -3274,7 +3274,7 @@ Feature: Validate all scenarios in Progress Report
     Then I cannot see row level action button "Edit" against "{SavedValue:Record Id}" in flex table with id "AwardStrategicGoalsObjectives"
 
   @61097 @PRISNoteditableAtPAOnPerformaceTab @keerti
-    Scenario: Validate Objectives table at Performance Tab on Progress report should not be editable at Program approver end when Progress report status is Submitted for Approval.
+  Scenario: Validate Objectives table at Performance Tab on Progress report should not be editable at Program approver end when Progress report status is Submitted for Approval.
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details

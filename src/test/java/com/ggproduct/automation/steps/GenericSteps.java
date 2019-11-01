@@ -238,9 +238,9 @@ public class GenericSteps {
     @Then("^I (softly see|see) snapshot with name containing \"([^\"]*)\" as name$")
     public void iSeeSnapshotWithNameContainingAsName(String usage,String snapshotName) {
         if (usage.contains("softly")){
-            EyeThink.core().assertion().assertThat(EyeThink.core().elementReference().onWeb(By.xpath("//div[contains(@id,'Attachments')]//span[contains(text(),'"+snapshotName+"')]")).isDisplayed()).isTrue();
+            EyeThink.core().assertion().assertThat(EyeThink.core().elementReference().onWeb(By.xpath("//tbody//tr//*[contains(text(),'" + snapshotName + "')]")).isDisplayed()).isTrue();
         } else {
-            Assert.assertTrue(EyeThink.core().elementReference().onWeb(By.xpath("//div[contains(@id,'Attachments')]//span[contains(text(),'" + snapshotName + "')]")).isDisplayed());
+            Assert.assertTrue(EyeThink.core().elementReference().onWeb(By.xpath("//tbody//tr//*[contains(text(),'" + snapshotName + "')]")).isDisplayed());
         }
     }
 
