@@ -39,25 +39,8 @@ Feature: Validate all scenarios in Payment Request
     When I close "Add Line Items" modal by clicking the top right x button
     Then I see value "$20.00" for title "Spent This Action" against the value "Construction" inside table "---paymentRequest:-:paymentRequestBudgetTableId---"
 
-  @51069 @paymentRequestSendToGrantor
-  Scenario: Send Reimbursement Payment Request to Grantor
-    When I navigate to "Actuals" sub tab
-    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
-    And I click modal button "Save and Continue"
-    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
-    When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
-      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
-      | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 10                       | 10         | 10             |
-    When I close "Add Line Items" modal by clicking the top right x button
-    When I click on "Submit to Grantor" in the page details
-    Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
-
-  @51070 @enterFundingAccountAmountPaymentRequest @smoke
-  Scenario Outline: Enter Funding Account amount in Reimbursement Payment Request
+  @51069 @51070 @pRSubmitToGrantorAndEnterFAAmountInPR
+  Scenario Outline: Submit Reimbursement Payment Request to Grantor | Enter Funding Account amount in Reimbursement Payment Request
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
@@ -71,6 +54,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 100        | 100            |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
+    Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -85,13 +69,14 @@ Feature: Validate all scenarios in Payment Request
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
       | {SavedValue:fundingAccount} | 20                    |
-    Then I see value "$20.00" for title "Net Spent This Action" inside table "---paymentRequest:-:fundingAccountTableId---"
+    Then I softly see value "$20.00" for title "Net Spent This Action" inside table "---paymentRequest:-:fundingAccountTableId---"
+    Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Permanent Award | Automation Permanent Award |
 
-  @51071 @approverSelectionPaymentRequest
-  Scenario Outline: Selection of approvers in Reimbursement Payment Request
+  @51072 @51071 @addApproverInPRAndSubmitPaymentRequestForApproval @smoke
+  Scenario Outline: Selection of approvers in Reimbursement Payment Request | Submitting Reimbursement Payment Request for approval
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
@@ -123,51 +108,15 @@ Feature: Validate all scenarios in Payment Request
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
-    Then I see that "Automation FO" has been added in flextable with Id "---paymentRequest:-:approversTableId---"
-    Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Permanent Award | Automation Permanent Award |
-
-  @51072 @submitPaymentRequestForApproval @smoke
-  Scenario Outline: Submitting Reimbursement Payment Request for approval
-    When I navigate to "Actuals" sub tab
-    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
-    And I click modal button "Save and Continue"
-    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
-    When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
-      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
-      | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 100        | 100            |
-    When I close "Add Line Items" modal by clicking the top right x button
-    And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside table
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:grantorAwardTableId---"
-    And I navigate to "Actuals" sub tab
-    And I click on "View" icon for "Submitted to Grantor" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---"
-    And I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
-      | Funding Account             | Net Spent This Action |
-      | {SavedValue:fundingAccount} | 20                    |
-    When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+    Then I softly see that "Automation FO" has been added in flextable with Id "---paymentRequest:-:approversTableId---"
     When I click on "Submit for Approval" in the page details
-    Then I see status in Progress-bar is "Submitted for Approval" and is "green"
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Permanent Award | Automation Permanent Award |
 
-  @51073 @approversApprovePaymentRequest
+  @51073 @approvalOfPaymentRequest
   Scenario Outline: Approval of Reimbursement Payment Request
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -257,8 +206,8 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Disapprove" on the approval decision box
     Then I see status in Progress-bar is "Rejected" and is "Red"
 
-  @38838 @paymentRequestReSubmitAfterCorrection @mahadev @smoke
-  Scenario: Approval of Payment Request
+  @38838 @paymentRequestReSubmitAfterCorrection @mahadev
+  Scenario: Re-Submit Payment Request to grantor after correction
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
@@ -304,7 +253,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
 
-  @38837 @pRsendBackToOwner @mahadev
+  @38837 @pRSendBackToOwner @mahadev
   Scenario: Approver send back payment request to owner
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -334,11 +283,13 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     And I click on "Submit for Approval" in the page details
+    Then I softly cannot see top right button "Edit" in page detail
     When I click on "Send to Owner" on the approval decision box
-    Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
+    Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
+    Then I collect all the soft asserts
 
-  @38742 @taskCreationforFOUser @mahadev
-  Scenario: Validate task creation for fiscal user
+  @38742 @54587 @taskCreationforFOUser @validateFiscalApprovalCannotEditAdvancePRAfterSubmittingForApproval @mahadev
+  Scenario: Validate fiscal approver can not edit advance payment request after submitting for approval |Validate task creation for fiscal user
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
@@ -422,17 +373,19 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "Green"
 
-  @53844 @editionOfAdvancePaymentRequestBySPIUser @mahadev
+  @53844 @53841 @CreateAndEditAdvancePaymentRequestBySPIUser @mahadev
   Scenario: edition of advance payment request
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
+    Then I softly see status in Progress-bar is "Created" and is "Green"
     When I click on "Edit" in the page details
     And I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
-    Then I see field "Acknowledgement" as "I Agree"
+    Then I softly see field "Acknowledgement" as "I Agree"
+    Then I collect all the soft asserts
 
   @53969 @advancePaymentRequestSubmitToGrantorBySPI @mahadev
   Scenario: verify that advance payment request should be able to submit by SPI user
@@ -596,28 +549,8 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Disapprove,false" on the approval decision box
     Then I see the message "Successfully disapproved" on approval decision box
 
-  @53984 @advancePaymentRequestShouldNotReceiveToPM @mahadev
-  Scenario: Advance Payment Request should not receive to Program Approver
-    When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
-    And I click modal button "Save and Continue"
-    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
-      | Budget Category | Advance Requested This Action |
-      | Construction    | 10                            |
-    When I get the "EGMS ID"
-    And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
-    Then I see "No Records Found" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
-
-  @53985 @advancePaymentRequestShouldNotReceiveToEXE @mahadev
-  Scenario: Advance Payment Request should not receive to Program Approver
+  @53985 @53984 @advancePaymentRequestShouldNotReceiveToEXE/PM  @mahadev
+  Scenario: Advance Payment Request should not receive to Program Approver/Executive Approver
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
@@ -634,7 +567,13 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
-    Then I see "No Records Found" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
+    Then I softly see "No Records Found" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    Then I softly see "No Records Found" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
+    Then I collect all the soft asserts
 
   @54175 @validateErrorOnEnteringAdvanceRequestedAmountGreaterThanBalance @mahadev
   Scenario: Advance Payment Request should not receive to Program Approver
@@ -651,8 +590,8 @@ Feature: Validate all scenarios in Payment Request
     Then I see the following messages in the page details contains:
       | Advance Requested cannot be greater than the Advance Request Balance |
 
-  @38839 @approvalOfAdvancePaymentRequestByForwardedUser @mahadev
-  Scenario: Validate advance payment request approval by forwarded user
+  @38839 @54585 @approvalOfAdvancePaymentRequestByForwardedUser @mahadev
+  Scenario: Advance Payment request should not be editable after submitting to grantor | Validate advance payment request approval by forwarded user
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
@@ -665,6 +604,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 10                            |
     When I get the "EGMS ID"
     And I click on "Submit to Grantor" in the page details
+    Then I softly cannot see top right button "Edit" in page detail
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -687,39 +627,8 @@ Feature: Validate all scenarios in Payment Request
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I click on "Approve" on the approval decision box
-    Then I see status in Progress-bar is "Approved" and is "Green"
-
-  @54586 @ReimbursementPaymentRequestNotEditableAfterSubmitToGrantor
-  Scenario: Reimbursement Payment request should not be editable after submitting to grantor
-    When I navigate to "Actuals" sub tab
-    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
-    And I click modal button "Save and Continue"
-    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I navigate to "Financials" sub tab
-    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
-    When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
-      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
-      | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 10                       | 10         | 10             |
-    When I close "Add Line Items" modal by clicking the top right x button
-    When I click on "Submit to Grantor" in the page details
-    Then I cannot see top right button "Edit" in page detail
-
-  @54585 @AdvancePaymentRequestNotEditableAfterSubmittedToGrantor
-  Scenario: Advance Payment request should not be editable after submitting to grantor
-    When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
-    And I click modal button "Save and Continue"
-    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
-      | Budget Category | Advance Requested This Action |
-      | Construction    | 10                            |
-    When I click on "Submit to Grantor" in the page details
-    Then I cannot see top right button "Edit" in page detail
+    Then I softly see status in Progress-bar is "Approved" and is "Green"
+    Then I collect all the soft asserts
 
   @54593 @validatePaidButtonNotDisplayedAfterRejectingReimbursementPR @mahadev
   Scenario: Validate the paid button not displayed on reimbursement Payment request after rejection
@@ -790,37 +699,6 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Submit for Approval" in the page details
     And I click on "Disapprove" on the approval decision box
     Then I cannot see top right button "Mark as Paid" in page detail
-
-  @54587 @validateFiscalApprovalCannotEditAdvancePRAfterSubmittingForApproval @mahadev
-  Scenario: Validate fiscal approver can not edit advance payment request after submitting for approval
-    When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
-    And I click modal button "Save and Continue"
-    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
-      | Budget Category | Advance Requested This Action |
-      | Construction    | 10                            |
-    When I get the "EGMS ID"
-    And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
-    And I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountsAdvTableId---" by clicking "Edit" :
-      | Funding Account             | Advance Requested This Action |
-      | {SavedValue:fundingAccount} | 10                            |
-    When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
-    When I get the "EGMS ID"
-    When I click on "Submit for Approval" in the page details
-    Then I cannot see top right button "Edit" in page detail
 
   @54588 @ValidateFiscalApprovalCannotEditReimbursementPRAfterSubmittingForApproval @smoke
   Scenario: Validate fiscal approver can not edit Reimbursement payment request after submitting for approval
@@ -1534,7 +1412,7 @@ Feature: Validate all scenarios in Payment Request
       | Payment Request <payment id> from <subrecipient name> has been Submitted for Approval |
 
   @55636 @approversApprovePaymentRequestEmailNotificationReimbursement @jitendra
-  Scenario Outline: Verify that on Approved , user will receive email notifications for Payment Request (Reimbursement)
+  Scenario Outline: Verify that on Approved, user will receive email notifications for Payment Request (Reimbursement)
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"

@@ -2663,7 +2663,11 @@ Feature: Payment Request scenarios without background
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Actuals" sub tab
-    And I click on "View" icon for "Approved" inside flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
     And I navigate to "Financials" sub tab
     Then I see value "$980.00" for title "Reimbursement Balance" against the value "Total" inside table "---paymentRequest:-:paymentRequestBudgetTableId---"
     Examples:
