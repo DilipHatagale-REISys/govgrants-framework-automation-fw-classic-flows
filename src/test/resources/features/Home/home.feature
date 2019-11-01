@@ -1,4 +1,4 @@
-@home @regression
+@home @regression @wip
 Feature: Validate all scenarios in the home tab
 
   @35024 @internalOrganizationCreate @smoke @nonFunctional
@@ -34,8 +34,6 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     Then I softly can see row level action button "View" against "Test Automation Organization" in flex table with id "---home:-:internalOrganizationId---"
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
-    Then I softly see that "Internal Organization" is in "Active" status
-    When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
     Then I softly see that "Internal Organization" is in "Active" status
     Then I collect all the soft asserts
     Examples:
@@ -82,14 +80,14 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
-    When I click on top right button "New" in flex table with id "---home:-:subrecipientContactTableId---"
+    When I click on top right button "New" in flex table with id "---home:-:internalContactTableId---"
     And I enter "Creation" values from "InternalContact_Field_Values.xlsx"
     When I click modal button "Save"
-    When I perform quick search for "Automation PO" in "---home:-:subrecipientContactTableId---" panel
+    When I perform quick search for "Automation PO" in "---home:-:internalContactTableId---" panel
     Then I softly can see row level action button "View" against "Automation PO" in flex table with id "flexTableRandomID"
-    And I click on "View" icon for "Automation PO" inside flex table with id "---home:-:subrecipientContactTableId---"
+    And I click on "View" icon for "Automation PO" inside flex table with id "---home:-:internalContactTableId---"
     Then I softly see field "Organization" as "Test Automation Organization"
-    Then I softly can see row level action button "Edit" against "Automation PO" in flex table with id "---home:-:subrecipientContactTableId---"
+    Then I softly can see row level action button "Edit" against "Automation PO" in flex table with id "---home:-:internalContactTableId---"
     Then I collect all the soft asserts
     Examples:
       | User  |
@@ -152,10 +150,8 @@ Feature: Validate all scenarios in the home tab
     When I close "New" modal by clicking the top right x button
     When I perform quick search for "TC-598383" in "---home:-:termsAndConditionsTableId---" panel
     Then I softly can see row level action button "View" against "TC-598383" in flex table with id "---home:-:termsAndConditionsTableId---"
-    When I perform quick search for "AutomationT&C" in "---home:-:termsAndConditionsTableId---" panel
-    Then I softly see value "Active" for title "Status" against the value "AutomationT&C" inside table "---home:-:termsAndConditionsTableId---"
-    When I perform quick search for "TC-5885" in "---home:-:termsAndConditionsTableId---" panel
-    Then I can see row level action button "Edit" against "TC-5885" in flex table with id "---home:-:termsAndConditionsTableId---"
+    Then I softly see value "Active" for title "Status" against the value "TC-598383" inside table "---home:-:termsAndConditionsTableId---"
+    Then I softly can see row level action button "Edit" against "TC-598383" in flex table with id "---home:-:termsAndConditionsTableId---"
     Then I collect all the soft asserts
     Examples:
       | User  |
@@ -174,13 +170,13 @@ Feature: Validate all scenarios in the home tab
       | ADMIN |
       | EXE   |
       | PM    |
-      | SPI   |
 
   @56732 @subrecipientOrganizationEdition @smoke
   Scenario Outline: Validate whether ADMIN and DA users can Edit the Subrecipient Organization
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
+    And I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "---home:-:subrecipientActiveAccountId---" panel
     When I click on "Edit" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---home:-:subrecipientActiveAccountId---"
     And I enter "Edition" values from "SubrecipientOrganization_Field_Values"
     When I click on "Save" in the page details
@@ -195,7 +191,7 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
-    When I click on top right button "New" in flex table with id "---home:-:subrecipientContactTableId---"
+    When I click on top right button "New" in flex table with id "---home:-:internalContactTableId---"
     And I enter "Creation" values from "InternalContact_Field_Values.xlsx"
     When I click modal button "Save"
     When I perform quick search for "Automation PO" in "flexTableRandomID" panel
@@ -216,15 +212,15 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
-    When I click on top right button "New" in flex table with id "---home:-:subrecipientContactTableId---"
+    When I click on top right button "New" in flex table with id "---home:-:internalContactTableId---"
     And I enter "Creation" values from "SubrecipientContact_Field_Values.xlsx"
     When I click modal button "Save"
-    When I click on "View" icon for "Automation Manager" inside flex table with id "---home:-:subrecipientContactTableId---"
+    When I click on "View" icon for "Automation Manager" inside flex table with id "---home:-:internalContactTableId---"
     Then I softly see field "Organization" as "SAN DIEGO ELECTRICAL TRAINING TRUST"
-    When I click on "Edit" icon for "Automation Manager" inside flex table with id "---home:-:subrecipientContactTableId---"
+    When I click on "Edit" icon for "Automation Manager" inside flex table with id "---home:-:internalContactTableId---"
     And I enter "Edition" values from "SubrecipientContact_Field_Values.xlsx"
     And I click modal button "Save"
-    Then I softly see value "New" for title "Status" inside table "---home:-:subrecipientContactTableId---"
+    Then I softly see value "New" for title "Status" inside table "---home:-:internalContactTableId---"
     Then I collect all the soft asserts
     Examples:
       | User  |
@@ -457,7 +453,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
     When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
-    Then I see values "473105667" and "148549041" inside table
+    Then I see values "953072483" and "148549041" inside table
     Examples:
       | User  |
       | ADMIN |
@@ -467,9 +463,9 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
+    When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "---home:-:subrecipientActiveAccountId---" panel
     When I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---home:-:subrecipientActiveAccountId---"
     And I navigate to "Related Log" sub tab
-    Then I softly can see row level action button "View" against "Automation Application" in flex table with id "RecipientAppReviewList"
     When I perform quick search for "Automation Application" in "ActiveGrantsByOrganization" panel
     Then I softly can see row level action button "View" against "Automation Application" in flex table with id "RecipientAppReviewList"
     Then I collect all the soft asserts
