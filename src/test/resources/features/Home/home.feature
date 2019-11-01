@@ -466,7 +466,7 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "---home:-:subrecipientActiveAccountId---" panel
     When I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---home:-:subrecipientActiveAccountId---"
     And I navigate to "Related Log" sub tab
-    When I perform quick search for "Automation Application" in "ActiveGrantsByOrganization" panel
+    When I perform quick search for "Automation Application" in "RecipientAppReviewList" panel
     Then I softly can see row level action button "View" against "Automation Application" in flex table with id "RecipientAppReviewList"
     Then I collect all the soft asserts
     Examples:
