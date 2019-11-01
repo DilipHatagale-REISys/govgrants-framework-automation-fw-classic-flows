@@ -266,8 +266,8 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @56738 @56739 @56907 @relatedContactsCreationEditionAndDeletionOfContact
-  Scenario Outline: The Internal Users should be able to Create, Edit and Delete Related Contacts
+  @56739 @56907 @relatedContactsCreationEditionAnd
+  Scenario Outline: The Internal Users should be able to Create and Edit Related Contacts
     Given I delete the record "Automation Contact" from the object "Contact"
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -278,20 +278,32 @@ Feature: Validate all scenarios in the home tab
     And I enter "RelatedContactsCreation" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
     When I perform quick search for "Automation Contact" in "---home:-:relatedContactsTableId---" panel
-    Then I softly see values "Automation Contact" and "Active" inside table
     And I click on "Edit" icon for "Automation Contact" inside flex table with id "---home:-:relatedContactsTableId---"
     When I enter "RelatedContactsEdition" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit" modal by clicking the top right x button
     Then I softly see that "Internal Organization" is in "Active" status
-    When I perform quick search for "Automation Contact" in "---home:-:relatedContactsTableId---" panel
-    And I click on "Delete" icon for "Automation Contact" inside flex table with id "---home:-:relatedContactsTableId---"
-    Then I softly do not see value "Automation Contact" for title "Full Name" inside table "---home:-:relatedContactsTableId---"
     Then I collect all the soft asserts
     Examples:
       | User |
       | EXE  |
       | PM   |
+
+  @56738 @deletionOfRelatedContact
+  Scenario:  Validate whether the admin is able to Delete Related Contacts
+    Given I delete the record "Automation Contact" from the object "Contact"
+    Given I login to "As a Grantor" app as "ADMIN" user
+    When I navigate to "Home" tab
+    And I navigate to "Internal" content inside "Organization" subheader on left panel
+    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
+    When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
+    And I click on top right button "New" in flex table with id "---home:-:relatedContactsTableId---"
+    And I enter "RelatedContactsCreation" values from "InternalOrganization_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I perform quick search for "Automation Contact" in "---home:-:relatedContactsTableId---" panel
+    And I click on "Delete" icon for "Automation Contact" inside flex table with id "---home:-:relatedContactsTableId---"
+    When I perform quick search for "Automation Contact" in "---home:-:relatedContactsTableId---" panel
+    Then I see "No Records Found" inside flex table with id "---home:-:relatedContactsTableId---"
 
   @56740 @56741 @56742 @dunsNumberCreationEditionAndDeletion @smoke
   Scenario Outline: Validate whether ADMIN and DA users can Create, Edit and delete the DUNS Number
