@@ -110,9 +110,9 @@ Feature: Validate all scenarios in Negotiations
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:phasePendingTasksTableId---" panel
-    And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:phasePendingTasksTableId---"
     Then I softly see that "Review Negotiation" has been added in flextable with Id "---negotiation:-:phasePendingTasksTableId---"
-    When I click on "Send Back to Subrecipient" in the page details
+    And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:phasePendingTasksTableId---"
+    When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Negotiation Initiated" and is "green"
     Then I collect all the soft asserts
 
@@ -302,7 +302,6 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     Then I softly can see top right button "Initiate Negotiation" in page detail
     When I click on "Initiate Negotiation" in the page details
-    When I save the field labeled "EGMS ID" as "EGMSID"
     And I navigate to "Negotiations" sub tab
     When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
@@ -432,7 +431,7 @@ Feature: Validate all scenarios in Negotiations
       | Automation Negotiation Initiated | ApplicantResponse__c |
     When I click on "Save" in the page details
     Then I softly see status in Progress-bar is "Negotiation Initiated" and is "green"
-    When I click on "Send Back to Subrecipient" in the page details
+    When I click on "Submit to Grantor" in the page details
     Then I softly cannot see top right button "Edit Negotiation" in page detail
     Then I collect all the soft asserts
 
@@ -590,7 +589,8 @@ Feature: Validate all scenarios in Negotiations
     And I navigate to "Applications" tab
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:negotiationCompletedTaskTableId---" panel
-    Then I do not see values "{SavedValue:EGMSID}" and "Automation Announcement for FDM" inside table
+    #Then I do not see values "{SavedValue:EGMSID}" and "Automation Announcement for FDM" inside table
+    Then I softly see "No Records Found" inside flex table with id "---negotiation:-:negotiationCompletedTaskTableId---"
 
   @58034 @userCannotSeeIntiationButtonAfterIntiated @deepika
   Scenario: Verify that after creating Negotiation Request, user can see “Not Initiated” status of Negotiation Request
@@ -667,7 +667,6 @@ Feature: Validate all scenarios in Negotiations
     And I click on "Menu" in the page details
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
-    And I click on hyperlink which contains todays date with text "SnapShot on"
+    And I click on hyperlink containing value "Submit_Negotiation.pdf"
     When I download the file
     Then I see "{SavedValue:EGMSID}" on page "1" of "govgrants" pdf file
-
