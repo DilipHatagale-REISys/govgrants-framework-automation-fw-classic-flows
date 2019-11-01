@@ -1229,7 +1229,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Risk Assessment" sub tab
     Then I see that "{SavedValue:EGMSID}" has been added in flextable with Id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
-  @63233 @VerifyRiskAssessmemt @deepika @wip
+  @63233 @VerifyRiskAssessmemt @deepika
   Scenario Outline: Validate system generates generates an exception at award activation if Organizational Risk Assessment is Created and not Active
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"

@@ -670,4 +670,3 @@ Feature: Validate all scenarios in Negotiations
     And I click on hyperlink containing value "Submit_Negotiation.pdf"
     When I download the file
     Then I see "{SavedValue:EGMSID}" on page "1" of "govgrants" pdf file
-
