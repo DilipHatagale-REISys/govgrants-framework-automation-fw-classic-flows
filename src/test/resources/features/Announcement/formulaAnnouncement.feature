@@ -374,7 +374,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Agency                              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
-    And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     Then I see the following messages in the page details :
       | Financial Tab - Correct Budget Periods Start Date and End Dates. Budget Periods should be continuous and together should form a Project Period. |
