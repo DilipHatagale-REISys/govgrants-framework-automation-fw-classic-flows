@@ -1471,7 +1471,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly see status in Progress-bar is "Active" and is "Green"
     Then I collect all the soft asserts
 
-  @59956 @recordOwnerCannotCreateNewRAWhenInSubmittedForApproval @deepika
+   @recordOwnerCannotCreateNewRAWhenInSubmittedForApproval @deepika
   Scenario Outline: Validate when an award was activated with one active risk assessment and has other risk assessment which in created state should not get submitted for approval
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab

@@ -158,7 +158,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @56727 @56728 @56729 @56730 @eindunsRegistrationSamgovRegistrationcontactUsView
+  @56727 @56728 @56729 @56730 @eindunsRegistrationSamgovRegistrationcontactUsView @wip
   Scenario Outline: Validate whether all users have view access to EINRegistration,DUNSRegistration,SAM.Gov and Contactview
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -341,13 +341,13 @@ Feature: Validate all scenarios in the home tab
     When I click on "Delete" icon for "New IDC" inside flex table with id "inlineEditGridIndirectRateGrid"
     Then I do not see values "New IDC" and "Title" inside table
 
-  @56883 @56912 @adminOrPMEditAccessToOwnOrgInternalOrganizationPageHeader
+  @56883 @56912 @adminOrPMEditAccessToOwnOrgInternalOrganizationPageHeader @wip
   Scenario Outline: Users with Admin/ PM profiles can edit their own organizations and Internal organization page has Header
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
-    When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
+    When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     Then I see that "Internal Organization" is in "Active" status
     Examples:
       | User  |
@@ -358,8 +358,8 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "FO" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I perform quick search for "Department of Education" in "---home:-:internalOrganizationId---" panel
-    Then I cannot see row level action button "Edit" against "Department of Education" in flex table with id "---home:-:internalOrganizationId---"
+    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
+    Then I cannot see row level action button "Edit" against "Test Automation Organization" in flex table with id "---home:-:internalOrganizationId---"
 
   @57340 @thirdPartyVerification @nonFunctional
   Scenario Outline: Verifying if the Internal Users has Edit access to Subrecipient Contact
@@ -378,8 +378,8 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I perform quick search for "Department of Education" in "---home:-:internalOrganizationId---" panel
-    And I expand nested table containing column value "Department of Education"
+    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
+    And I expand nested table containing column value "Test Automation Organization"
     Then I see values "Teaching and Learning" and "Agency" inside table
     Examples:
       | User  |
@@ -390,8 +390,8 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I perform quick search for "Department of Education" in "---home:-:internalOrganizationId---" panel
-    Then I see values "Department of Education" and "Executive" inside table
+    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
+    Then I see values "Test Automation Organization" and "Executive" inside table
     Examples:
       | User  |
       | ADMIN |
@@ -573,7 +573,7 @@ Feature: Validate all scenarios in the home tab
     And I click on "My_Workspace_File"
     Then I see "Record Id" has been added in My Workspace Files
 
-  @62102 @pageBlockSections @deepika
+  @62102 @pageBlockSections @deepika @wip
   Scenario Outline: Verify whether the Overview Tab has the sections: Related Contacts and Indirect rates
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -582,7 +582,7 @@ Feature: Validate all scenarios in the home tab
     When I click on "View" icon for "Test Automation Organization" inside flex table with id "---home:-:internalOrganizationId---" with wait for record
     And I navigate to "Overview" sub tab
     Then I can see page block "Related Contacts"
-    Then I can see page block "Indirect Cost Rates"
+    And I can see page block "Indirect Cost Rates"
     Examples:
       | User  |
       | ADMIN |
