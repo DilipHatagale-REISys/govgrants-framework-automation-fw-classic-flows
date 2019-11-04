@@ -2868,7 +2868,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly see field "OverAll Risk" as "46.00%"
     Then I collect all the soft asserts
 
-  @deleteAttachmentForRecordOnwer @deepika @wip
+  @deleteAttachmentForRecordOnwer @deepika
   Scenario: Validating delete attachment buttons should be available with respect to owners until submiting the risk assessment for approval.
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2889,7 +2889,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Save and Continue" in the page details
     When I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "AGENCY DETAILS"
-    Then I can see row level action button "Delete" against "Announcement_Field_Values.xlsx"
+    Then I can see row level action button "Delete" against "Announcement_Field_Values.xlsx" in flex table with id "a150b000001ruMZAAY"
 
   @58825 @monitoringTabListViewsOfRiskAssessment @deepika
   Scenario: Monitoring Tab List Views for all Award level risk assessments in the internal portal
