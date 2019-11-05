@@ -4,6 +4,7 @@ import eyethink.automation.bots.Register.EnvironmentFetcher;
 import eyethink.automation.bots.Register.EyeThink;
 import eyethink.automation.bots.corelib.Emails;
 import eyethink.automation.bots.objects.Elements;
+import org.assertj.core.util.Files;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -84,7 +85,7 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     public By pageBlock(String pageBlockName) {
-        return By.xpath("//h3//a[contains(text(),'" + pageBlockName + "')]");
+        return By.xpath("//div[contains(@class,'panel-title') or contains(@class,'panel-heading')]//*[text()='"+pageBlockName+"' or @title='"+pageBlockName+"']");
     }
 
     /**
@@ -210,7 +211,7 @@ public class ProjectManager extends ProjectWebServices {
             }
         }
         if (isSoftly){
-            EyeThink.core().assertion().assertThat(new File(file.getAbsolutePath() + "govgrant."+fileType+"").exists()).isTrue();
+            EyeThink.core().assertion().assertThat(Files.fileNamesIn(file.getAbsolutePath(), false)).contains("govgrant."+fileType);
         } else {
             Assert.assertTrue(new File(file.getAbsolutePath() + "govgrant." + fileType + "").exists());
         }

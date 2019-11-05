@@ -112,7 +112,6 @@ Feature: Validate all scenarios in Negotiations
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:phasePendingTasksTableId---" panel
     Then I softly see that "Review Negotiation" has been added in flextable with Id "---negotiation:-:phasePendingTasksTableId---"
     And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:phasePendingTasksTableId---"
-    When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Negotiation Initiated" and is "green"
     Then I collect all the soft asserts
 
@@ -551,7 +550,7 @@ Feature: Validate all scenarios in Negotiations
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
     And I click toggle button to select "Applications - All"
-    When I perform quick search for "" in "---negotiation:-:negotiationAppReviewListTableId---" panel
+    When I perform quick search for "Automation Announcement for FDM" in "---negotiation:-:negotiationAppReviewListTableId---" panel
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     When I click on "Initiate Negotiation" in the page details
     When I save the field labeled "EGMS ID" as "EGMSID"
@@ -559,7 +558,7 @@ Feature: Validate all scenarios in Negotiations
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
     And I click toggle button to select "Applications - All"
-    When I perform quick search for "" in "---negotiation:-:negotiationAppReviewListTableId---" panel
+    When I perform quick search for "Automation Announcement for FDM" in "---negotiation:-:negotiationAppReviewListTableId---" panel
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     Then I see that "Automation Announcement for FDM" is in "Reviewed" status
 
@@ -669,4 +668,4 @@ Feature: Validate all scenarios in Negotiations
     When I navigate to "History" sub tab
     And I click on hyperlink containing value "Submit_Negotiation.pdf"
     When I download the file
-    Then I see "{SavedValue:EGMSID}" on page "1" of "govgrants" pdf file
+    Then I see "Negotiation Initiated" on page "1" of "govgrants" pdf file
