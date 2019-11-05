@@ -186,7 +186,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Management" sub tab
-    Then I softly cannot see page block "Risk Assessment"
+    Then I softly cannot see page block "Subaward Risk Assessments"
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---riskassessment:-:homePendingTaskTableId---" panel
@@ -2497,7 +2497,7 @@ Feature: Validate all scenarios in the Risk Assessment
       | Award Name                           | Grant Name                           |
       | Automation Award for Risk Assessment | Automation Award for Risk Assessment |
 
-  @60787@60785  @intialRiskAssessmentToExpiredRAViewedFromMonitoringTable @deepika
+  @60787 @60785  @intialRiskAssessmentToExpiredRAViewedFromMonitoringTable @deepika
   Scenario:  Validate when the succeeding Risk Assessments are made active then the  Initial Risk Assessment should be marked as Expired and can be viewed from Risk Asessment table and from the Monitoring table
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2886,7 +2886,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Management" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
-    When I click on "Save and Continue" in the page details
+    When I click on "Save and Continue" in the page detail
     When I navigate to "Attachments" sub tab
     And I upload attachment "Announcement_Field_Values.xlsx" from workspace
     Then I see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
