@@ -2888,8 +2888,8 @@ Feature: Validate all scenarios in the Risk Assessment
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
     When I navigate to "Attachments" sub tab
-    When I upload attachment "Announcement_Field_Values.xlsx" of type "AGENCY DETAILS"
-    Then I can see row level action button "Delete" against "Announcement_Field_Values.xlsx" in flex table with id "a150b000001ruMZAAY"
+    And I upload attachment "Announcement_Field_Values.xlsx" from workspace
+    Then I see "Announcement_Field_Values.xlsx" has been added in "Attachment" flex table
 
   @58825 @monitoringTabListViewsOfRiskAssessment @deepika
   Scenario: Monitoring Tab List Views for all Award level risk assessments in the internal portal

@@ -1137,7 +1137,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click toggle button to select "Application Site Visits - All"
     And I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:latestSiteVisitReportsGridTableId---" panel
     When I click on "View" icon for "Automation Site Visit Org level" inside flex table with id "---orgLevelSiteVisits:-:latestSiteVisitReportsGridTableId---"
-   # When I click on "View" icon for "Record Id" inside flex table with id "flexGridRiskAssessmentGridViewInternal"
     When I navigate to "Responsibilities" sub tab
     Then I softly cannot see row level action button "Enter Review" against "Automation FO" in flex table with id "flexGridRiskAssessmentApproverRoles"
     Then I collect all the soft asserts
