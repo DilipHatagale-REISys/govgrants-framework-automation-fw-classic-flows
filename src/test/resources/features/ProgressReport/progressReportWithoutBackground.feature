@@ -20242,7 +20242,6 @@ Feature: Validate scenarios in Progress Report without background
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---progressReport:-:activeGrantsTableId---" panel
     When I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:activeGrantsTableId---"
-    And I navigate to "Management" sub tab
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
     When I enter "Creation" values from "Closeout_Field_Values.xlsx"
