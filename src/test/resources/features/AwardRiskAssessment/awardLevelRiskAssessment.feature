@@ -2868,8 +2868,8 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly see field "OverAll Risk" as "46.00%"
     Then I collect all the soft asserts
 
-  @deleteAttachmentForRecordOnwer @deepika
-  Scenario: Validating delete attachment buttons should be available with respect to owners until submiting the risk assessment for approval.
+  @addAttachmentForRecordOnwerInTable @deepika
+  Scenario: Validate attachment is added to the flex table after submiting the risk assessment for approval.
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -2889,7 +2889,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Save and Continue" in the page details
     When I navigate to "Attachments" sub tab
     And I upload attachment "Announcement_Field_Values.xlsx" from workspace
-    Then I see "Announcement_Field_Values.xlsx" has been added in "Attachment" flex table
+    Then I see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
 
   @58825 @monitoringTabListViewsOfRiskAssessment @deepika
   Scenario: Monitoring Tab List Views for all Award level risk assessments in the internal portal
