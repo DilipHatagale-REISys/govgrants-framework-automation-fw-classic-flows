@@ -47,7 +47,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Fiscal Approver    | Automation FO  | Automation Test Description |
     Then I see that "Automation EXE" has been added in flextable with Id "---subAwardFromFDM:-:awardApproverTableId---"
 
-  @awardRiskAssessmentActivationAndSendToRecipientAndAcceptanceBeforeApproval
+  @riskAssessmentActivationAndAwardAcceptanceBySPI
   Scenario Outline: Send an award to sub-recipient before approval
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
@@ -110,6 +110,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---"
+    When I get the "EGMS ID"
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
