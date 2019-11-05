@@ -186,7 +186,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Management" sub tab
-    Then I softly cannot see page block "Risk Assessment"
+    Then I softly cannot see page block "Subaward Risk Assessments"
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---riskassessment:-:homePendingTaskTableId---" panel
@@ -2868,7 +2868,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly see field "OverAll Risk" as "46.00%"
     Then I collect all the soft asserts
 
-  @deleteAttachmentForRecordOnwer @deepika @wip
+  @deleteAttachmentForRecordOnwer @deepika
   Scenario: Validating delete attachment buttons should be available with respect to owners until submiting the risk assessment for approval.
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2889,7 +2889,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Save and Continue" in the page details
     When I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "AGENCY DETAILS"
-    Then I can see row level action button "Delete" against "Announcement_Field_Values.xlsx"
+    Then I see row level action button "Delete" against Value "Announcement_Field_Values.xlsx" inside "Attachments" flex table
 
   @58825 @monitoringTabListViewsOfRiskAssessment @deepika
   Scenario: Monitoring Tab List Views for all Award level risk assessments in the internal portal
