@@ -1724,7 +1724,7 @@ Feature: Amendment Request scenarios without background
     When I click on "Activate" in the page details
     And I re-login to "Grants Portal" app as "<User>" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---amendment:-:recipientActiveGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---amendment:-:recipientActiveGrantsTableId---"

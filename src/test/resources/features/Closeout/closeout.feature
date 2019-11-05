@@ -75,6 +75,7 @@ Feature: Validate all scenarios in Closeout
     And I click modal button "Save and Continue"
     And I enter "Edition" values from "Closeout_Field_Values.xlsx"
     And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "closeoutID"
     When I click on "Save" in the page details
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
@@ -96,12 +97,10 @@ Feature: Validate all scenarios in Closeout
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Subawards  - Active"
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
-    When I navigate to "Actuals" sub tab
-    And I click on "View" icon for "Submitted to Grantor" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---"
+    When I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
@@ -120,8 +119,8 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Closeout" tab
     When I navigate to "Project Period Closeouts" content inside "Closeouts" subheader on left panel
     And I click toggle button to select "Project Period Closeouts - All"
-    And I perform quick search for "Record Id" in "ProjectPeriodCloseoutGrantor" panel
-    And I click on "View" icon for "Record Id" inside flex table with id "ProjectPeriodCloseoutGrantor"
+    And I perform quick search for "{SavedValue:closeoutID}" in "ProjectPeriodCloseoutGrantor" panel
+    And I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "ProjectPeriodCloseoutGrantor"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "Edit" :
       | Responsibility   | Name          | Description                 |
@@ -131,8 +130,8 @@ Feature: Validate all scenarios in Closeout
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Closeout" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---closeout:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---closeout:-:pendingTaskTableId---"
+    When I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     When I click on "Edit" in the page details
     And I enter "Subrecipient fields" values from "Closeout_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -140,8 +139,8 @@ Feature: Validate all scenarios in Closeout
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Closeout" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---closeout:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---closeout:-:pendingTaskTableId---"
+    And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     When I click on "Edit" in the page details
     And I enter "Override" values from "Closeout_Field_Values.xlsx"
     When I click on "Save" in the page details
