@@ -41,7 +41,7 @@ Feature: Validate all scenarios in the Application Review
     And I get the "EGMS ID"
     When I click on "Submit Application" in the page details
 
-  @51066 @smeReviewEnterDueInDays @smoke @38463 @smeReviewAddReviewer @38462 @smeReviewAssignApplicationToReviewer @38464 @smeReviewSendForReview
+  @51066 @38463 @38462 @38464 @smeReviewEnterDueInDays @smeReviewAddReviewer @smeReviewAssignApplicationToReviewer @smeReviewSendForReview @smoke @jitendra
   Scenario Outline: Enter Due in Days for all review forms in SME-review
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
