@@ -1,4 +1,4 @@
-@commonAnnouncements @regression @wip
+@commonAnnouncements @regression
 Feature: Validate all common scenarios in the  Announcement tab
 
   Background: Create Announcement
