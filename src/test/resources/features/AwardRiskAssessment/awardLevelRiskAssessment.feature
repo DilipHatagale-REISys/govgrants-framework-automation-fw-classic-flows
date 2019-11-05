@@ -2497,7 +2497,7 @@ Feature: Validate all scenarios in the Risk Assessment
       | Award Name                           | Grant Name                           |
       | Automation Award for Risk Assessment | Automation Award for Risk Assessment |
 
-  @60787@60785  @intialRiskAssessmentToExpiredRAViewedFromMonitoringTable @deepika
+  @60787 @60785  @intialRiskAssessmentToExpiredRAViewedFromMonitoringTable @deepika
   Scenario:  Validate when the succeeding Risk Assessments are made active then the  Initial Risk Assessment should be marked as Expired and can be viewed from Risk Asessment table and from the Monitoring table
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
