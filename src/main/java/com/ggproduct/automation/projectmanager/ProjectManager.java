@@ -85,7 +85,7 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     public By pageBlock(String pageBlockName) {
-        return By.xpath("//h3//a[contains(text(),'" + pageBlockName + "')]");
+        return By.xpath("//div[contains(@class,'panel-title') or contains(@class,'panel-heading')]//*[text()='"+pageBlockName+"' or @title='"+pageBlockName+"']");
     }
 
     /**

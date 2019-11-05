@@ -573,7 +573,7 @@ Feature: Validate all scenarios in the home tab
     And I click on "My_Workspace_File"
     Then I see "Record Id" has been added in My Workspace Files
 
-  @62102 @pageBlockSections @deepika @wip
+  @62102 @pageBlockSections @deepika
   Scenario Outline: Verify whether the Overview Tab has the sections: Related Contacts and Indirect rates
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -581,8 +581,9 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I click on "View" icon for "Test Automation Organization" inside flex table with id "---home:-:internalOrganizationId---" with wait for record
     And I navigate to "Overview" sub tab
-    Then I can see page block "Related Contacts"
-    And I can see page block "Indirect Cost Rates"
+    Then I softly can see page block "Related Contacts"
+    And I softly can see page block "Indirect Cost Rates"
+    Then I collect all the soft asserts
     Examples:
       | User  |
       | ADMIN |
