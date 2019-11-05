@@ -41,11 +41,11 @@ Feature: Validate all scenarios in the Application Review
     And I get the "EGMS ID"
     When I click on "Submit Application" in the page details
 
-  @51066 @smeReviewEnterDueInDays @smoke
+  @51066 @38463 @38462 @38464 @smeReviewEnterDueInDays @smeReviewAddReviewer @smeReviewAssignApplicationToReviewer @smeReviewSendForReview @smoke @jitendra
   Scenario Outline: Enter Due in Days for all review forms in SME-review
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
@@ -74,7 +74,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -88,120 +88,13 @@ Feature: Validate all scenarios in the Application Review
       | Program Review    | 5           |
       | Fiscal Review     | 10          |
       | Compliance Review | 15          |
-    Then I see that "10" has been added in flextable with Id "---applicationReview:-:formTableId---"
-    Examples:
-      | Announcement Name                              | Application Name       |
-      | Automation Announcement for Application Review | Automation Application |
-
-  @38463 @smeReviewAddReviewer
-  Scenario Outline: Add a reviewer to each review step under SME Review
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    When I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
-    And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
-    When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
-      | Form Name  | Due in Days |
-      | Pre-Screen | 5           |
-    When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
-      | Reviewer      |
-      | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "---applicationReview:-:reviewersTableId---"
-    When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
-    And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
-    When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
-    When I close "Assign Applications" modal by clicking the top right x button
-    When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
-    And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Applications" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record ID" in "---applicationReview:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
-    When I complete filling in the Review form with recommendation "Recommended"
-    And I click on "Save" in the page details
-    And I click on "Submit" in the page details
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    When I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
-    And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
-    When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
-    And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click on "Next Review Step" in the page details
-    When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
-      | Form Name         | Due in Days |
-      | Program Review    | 5           |
-      | Fiscal Review     | 5           |
-      | Compliance Review | 5           |
+    Then I softly see that "10" has been added in flextable with Id "---applicationReview:-:formTableId---"
     When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
       | Reviewer       |
       | Automation EXE |
       | Automation FO  |
       | Automation PM  |
-    Then I see that "Automation PM" has been added in flextable with Id "---applicationReview:-:reviewersTableId---"
-    Examples:
-      | Announcement Name                              | Application Name       |
-      | Automation Announcement for Application Review | Automation Application |
-
-  @38462 @smeReviewAssignApplicationToReviewer @smoke
-  Scenario Outline: Verify that user is able to assign applications of a particular announcement to its reviewers
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    When I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
-    And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
-    When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
-      | Form Name  | Due in Days |
-      | Pre-Screen | 5           |
-    When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
-      | Reviewer      |
-      | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "---applicationReview:-:reviewersTableId---"
-    When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
-    And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
-    When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
-    When I close "Assign Applications" modal by clicking the top right x button
-    When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
-    And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Applications" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record ID" in "---applicationReview:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
-    When I complete filling in the Review form with recommendation "Recommended"
-    And I click on "Save" in the page details
-    And I click on "Submit" in the page details
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    When I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
-    And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
-    When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
-    And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click on "Next Review Step" in the page details
-    When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
-      | Form Name         | Due in Days |
-      | Program Review    | 5           |
-      | Fiscal Review     | 5           |
-      | Compliance Review | 5           |
-    When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
-      | Reviewer       |
-      | Automation EXE |
-      | Automation FO  |
-      | Automation PM  |
+    Then I softly see that "Automation PM" has been added in flextable with Id "---applicationReview:-:reviewersTableId---"
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Program Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
     And I perform quick search for "Automation PM" in "---applicationReview:-:panelAppTableId---" panel
@@ -220,85 +113,12 @@ Feature: Validate all scenarios in the Application Review
     And I check "Automation EXE" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
     When I close "Assign Reviewers" modal by clicking the top right x button
-    Then I see that "Assigned" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
-    Examples:
-      | Announcement Name                              | Application Name       |
-      | Automation Announcement for Application Review | Automation Application |
-
-  @38464 @smeReviewSendForReview @smoke
-  Scenario Outline: Choose the reviewers and send for review in SME Review
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    When I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
-    And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
-    When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
-      | Form Name  | Due in Days |
-      | Pre-Screen | 5           |
-    When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
-      | Reviewer      |
-      | Automation FO |
-    And I click on "Assign" icon for "Automation FO" inside flex table with id "---applicationReview:-:reviewersTableId---"
-    When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
-    And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
-    When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
-    When I close "Assign Applications" modal by clicking the top right x button
-    When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
-    And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Applications" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record ID" in "---applicationReview:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record ID" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
-    When I complete filling in the Review form with recommendation "Recommended"
-    And I click on "Save" in the page details
-    And I click on "Submit" in the page details
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
-    When I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
-    And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
-    When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
-    And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click on "Next Review Step" in the page details
-    When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
-      | Form Name         | Due in Days |
-      | Program Review    | 5           |
-      | Fiscal Review     | 5           |
-      | Compliance Review | 5           |
-    When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
-      | Reviewer       |
-      | Automation EXE |
-      | Automation FO  |
-      | Automation PM  |
-    When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Program Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
-    And I perform quick search for "Automation PM" in "---applicationReview:-:panelAppTableId---" panel
-    And I check "Automation PM" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
-    When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
-    When I close "Assign Reviewers" modal by clicking the top right x button
-    When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
-    And I perform quick search for "Automation FO" in "---applicationReview:-:panelAppTableId---" panel
-    And I check "Automation FO" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
-    When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
-    When I close "Assign Reviewers" modal by clicking the top right x button
-    When I expand nested table containing column value "<Application Name>"
-    And I click on "Assign" icon for "Compliance Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
-    And I perform quick search for "Automation EXE" in "---applicationReview:-:panelAppTableId---" panel
-    And I check "Automation EXE" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
-    When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
-    When I close "Assign Reviewers" modal by clicking the top right x button
+    Then I softly see that "Assigned" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
     And I check "All" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
     When I refresh the page
-    Then I see that "Sent for Review" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
+    Then I softly see that "Sent for Review" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
+    And I collect all the soft asserts
     Examples:
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
@@ -307,7 +127,7 @@ Feature: Validate all scenarios in the Application Review
   Scenario Outline: Complete Review form as Various reviewers in SME Review
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
@@ -336,7 +156,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -401,7 +221,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -416,7 +236,7 @@ Feature: Validate all scenarios in the Application Review
   Scenario Outline:Promoting from SME Review to the next review step for an application
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
@@ -445,7 +265,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -510,7 +330,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -527,7 +347,7 @@ Feature: Validate all scenarios in the Application Review
   Scenario Outline: Enter Due in Days for all review forms in Management review
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
@@ -556,7 +376,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -621,7 +441,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -642,7 +462,7 @@ Feature: Validate all scenarios in the Application Review
   Scenario Outline: Add a reviewer to each review step in Management Review
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
@@ -671,7 +491,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -736,7 +556,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -760,7 +580,7 @@ Feature: Validate all scenarios in the Application Review
   Scenario Outline: Assign Application to Reviewer in management Review
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
@@ -789,7 +609,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -854,7 +674,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -883,7 +703,7 @@ Feature: Validate all scenarios in the Application Review
   Scenario Outline: Choose the reviewers and send for review in Management Review
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
@@ -912,7 +732,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -977,7 +797,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -1008,7 +828,7 @@ Feature: Validate all scenarios in the Application Review
   Scenario Outline: Complete Review form as Various reviewers in Management Review
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
@@ -1037,7 +857,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -1102,7 +922,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -1134,7 +954,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -1149,7 +969,7 @@ Feature: Validate all scenarios in the Application Review
   Scenario Outline:Promoting from Last review step review to the FDM step for an application
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
@@ -1178,7 +998,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -1243,7 +1063,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -1275,7 +1095,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -1292,7 +1112,7 @@ Feature: Validate all scenarios in the Application Review
   Scenario Outline: Adding a sub-award abbreviation in FDM
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
@@ -1321,7 +1141,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -1386,7 +1206,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -1418,7 +1238,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -1439,7 +1259,7 @@ Feature: Validate all scenarios in the Application Review
   Scenario Outline: Adding a recommendation for an application in FDM
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
@@ -1468,7 +1288,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -1533,7 +1353,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -1565,7 +1385,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -1589,7 +1409,7 @@ Feature: Validate all scenarios in the Application Review
   Scenario Outline: Assigning an approver in FDM
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
@@ -1618,7 +1438,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -1683,7 +1503,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -1715,7 +1535,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -1747,7 +1567,7 @@ Feature: Validate all scenarios in the Application Review
   Scenario Outline: Submitting the FDM for approval
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
@@ -1776,7 +1596,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -1841,7 +1661,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -1873,7 +1693,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -1906,7 +1726,7 @@ Feature: Validate all scenarios in the Application Review
   Scenario Outline: Approving FDM as the assigned user
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
@@ -1935,7 +1755,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -2000,7 +1820,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -2032,7 +1852,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
