@@ -3647,7 +3647,7 @@ Feature: Validate scenarios in Progress Report without background
     When I click toggle button to select "Progress Reports - All"
     And I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:progressReportFlexTableId---"
     When I navigate to "Forms and Attachments" sub tab
-    Then I cannot see row level action button "Attach" against "Automation" in flex table with id "---progressReport:-:progressReportChecklistsTableId---"
+    Then I can see row level action button "Attach" against "Automation" in flex table with id "---progressReport:-:progressReportChecklistsTableId---"
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
