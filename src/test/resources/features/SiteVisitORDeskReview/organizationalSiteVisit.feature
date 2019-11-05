@@ -517,9 +517,9 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on "Menu" in the page details
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
-    And I click on hyperlink which contains todays date with text "SnapShot on"
+    And I click on hyperlink containing value "Site Visit - Accept And Close"
     When I download the file
-    Then I softly see "{SavedValue:Record Id}" on page "1" of "govgrants" pdf file
+    Then I see "Closed" on page "1" of "govgrants" pdf file
     Then I collect all the soft asserts
 
   @59011 @56004 @sendBacktoOwnerReceivePendingTaskSVOrgLevel @deepika
@@ -913,7 +913,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
     And I click on "Send to Owner" on the approval decision box
-    When I navigate to "History" tab
+    When I navigate to "History" sub tab
     When I perform quick search for "{SavedValue:Record Id}" in "History" panel
     Then I softly see value "Created" for title "Old Value" inside table "History"
     Then I collect all the soft asserts
@@ -977,7 +977,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
     And I click on "Send to Owner" on the approval decision box
-    When I navigate to "History" tab
+    When I navigate to "History" sub tab
     When I perform quick search for "{SavedValue:Record Id}" in "History" panel
     Then I see value "Active" for title "New Value" inside table "History"
 
@@ -1029,13 +1029,11 @@ Feature: Validate all scenarios in Organizational Site Visit
       | Automation Observation | Automation Description | Observation |
     When I click on "Submit for Approval" in the page details
     When I navigate to "Responsibilities" sub tab
-    Then I softly can see row level action button "Edit" against "Automation EXE" in flex table with id "---sitevisits:-:correctiveTableId---"
+    Then I softly can see row level action button "Edit" against "Automation FO" in flex table with id "---sitevisits:-:approverSiteVisitTableId---"
     And I click on "Menu" in the page details
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
-    And I click on hyperlink which contains todays date with text "SnapShot on"
-    When I download the file
-    Then I softly see "{SavedValue:Record Id}" on page "1" of "govgrants" pdf file
+    Then I see snapshot with name containing "Sitevisit" as name
     Then I collect all the soft asserts
 
   @61402 @SiteVisitsReviewerCanNotEditAfterSubmittingTheReview @keerti
@@ -1135,9 +1133,10 @@ Feature: Validate all scenarios in Organizational Site Visit
     Then I softly see status in Progress-bar is "In Progress" and is "green"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I perform quick search for "Record Id" in "flexGridRiskAssessmentGridViewInternal" panel
-    When I click on "View" icon for "Record Id" inside flex table with id "flexGridRiskAssessmentGridViewInternal"
+    When I navigate to "Application Site Visits" content inside "Application Reviews" subheader on left panel
+    And I click toggle button to select "Application Site Visits - All"
+    And I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:latestSiteVisitReportsGridTableId---" panel
+    When I click on "View" icon for "Automation Site Visit Org level" inside flex table with id "---orgLevelSiteVisits:-:latestSiteVisitReportsGridTableId---"
     When I navigate to "Responsibilities" sub tab
     Then I softly cannot see row level action button "Enter Review" against "Automation FO" in flex table with id "flexGridRiskAssessmentApproverRoles"
     Then I collect all the soft asserts
@@ -1223,9 +1222,10 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on "Menu" in the page details
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
+    And I click on hyperlink containing value "Sitevisit_submit_for_approval"
     And I click on hyperlink which contains todays date with text "SnapShot on"
     When I download the file
-    Then I see "{SavedValue:Record Id}" on page "1" of "govgrants" pdf file
+    Then I see "Submitted for Approval" on page "1" of "govgrants" pdf file
 
   @61988 @RecordOwnerCanViewSnapshotAfterRAIsSubmittedForApproval @keerti
   Scenario: Validate whether user is able to view the Completed task once approved under Monitoring Tab - Org Site visits
@@ -1249,19 +1249,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click "Add" after selection of "Automation Announcement for Application" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-    And I navigate to "Home" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:homePendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:homePendingTaskTableId---"
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Home" tab
-    When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
-    And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table
-    Given I navigate to "Related Log" sub tab
-    When I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:siteVisitsPanelId---" panel
-    And I click on "View" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:siteVisitsPanelId---"
     And I navigate to "Reports and Outcomes" sub tab
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"

@@ -92,7 +92,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
     And I navigate to "Assessment" sub tab
-    And I enter "OrgAssessmentValues1" values from "RiskAssessment_Field_Values.xlsx"
+    And I enter "OrgAssessmentValues" values from "RiskAssessment_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Edit" in the page details
     When I click on "Save" in the page details
@@ -151,8 +151,8 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Bayside Community Center" in "---riskassessment:-:homePendingTaskTableId---" panel
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---riskassessment:-:homePendingTaskTableId---"
-    And I click on "Approve" on the approval decision box
-    Then I see that "EGMS ID" is in "Approved" status
+    When I click on top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    Then I cannot see top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
   @62312 @deleteIconfCreatedRiskAssessment @deepika
   Scenario: Validate whether Authorized Signatory can view the delete button across the created Risk Assessment
@@ -229,7 +229,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
     When I navigate to "History" sub tab
-    Then I see field "New Value" is getting updated with todays date
+    Then I see value "Active" for title "New Value" inside table "History"
 
   @62317 @messageInfoToAuthorizedSignatory @deepika @wip
   Scenario: Validate when Request New Assessment button is clicked a message is displayed to Authrozed Signatory
@@ -453,7 +453,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I perform quick search for "Bayside Community Center" in "---orgRiskAssessment:-:activeOrgTableID---" panel
     When I click on "View" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:activeOrgTableID---"
     And I navigate to "Risk Assessment" sub tab
-    When I perform quick search for "Active" in "---orgRiskAssessment:-:orgRiskAssessmentFlexTableId---" panel
+    When I perform quick search for "Active" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     And I navigate to "Attachments" sub tab
     Then I see top right button "Add" for "Attachments" flex table
 
@@ -472,7 +472,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I perform quick search for "Bayside Community Center" in "---orgRiskAssessment:-:activeOrgTableID---" panel
     When I click on "View" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:activeOrgTableID---"
     And I navigate to "Risk Assessment" sub tab
-    When I perform quick search for "Created" in "---orgRiskAssessment:-:orgRiskAssessmentFlexTableId---" panel
+    When I perform quick search for "Created" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     Then I see value "" for title "Effective Date" against the value "{SavedValue:EGMSID}" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     Then I see value "" for title "Expiration Date" against the value "{SavedValue:EGMSID}" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
@@ -612,7 +612,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Bayside Community Center" in "---orgRiskAssessment:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
-    And I enter "Risk Assessment Creation1" values from "Award_Field_Values.xlsx"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
@@ -1145,7 +1145,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Revise Risk Assessment" in "---orgRiskAssessment:-:pendingTaskTableId---" panel
-    When I click on "View" icon for "Revise Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
+    When I click on "Start" icon for "Revise Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I perform quick search for "Expired" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     When I click on "View" icon for "Revise Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     Then I cannot see top right button "Edit" in page detail
@@ -1348,9 +1348,8 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @deleteIconfActiveRiskAssessment @deepika
-  Scenario: Validate whether Authorized Signatory cannot see the delete button across the Active Risk Assessment
-    Given I delete the record "Automation Desk Review Org level" from the object "Desk Review"
+  @63979 @grantorCanViewOverallRisk @deepika
+  Scenario: Validate Internal User can also View the OverallRisk field on Risk Assessment Tab
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
@@ -1359,7 +1358,100 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
+    And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
+    When I click on top right button "Request New Assessment" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
+    When I perform quick search for "Bayside Community Center" in "---orgRiskAssessment:-:activeOrgTableID---" panel
+    When I click on "View" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:activeOrgTableID---"
+    And I navigate to "Risk Assessment" sub tab
+    Then I see field "Overall Risk" as "38.00%"
+
+  @63980 @validateRiskAssesmentActiveInPDF @deepika
+  Scenario: Verify that user can check PDF files with validation for Org Risk Assessment
+    When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I navigate to "Assessment" sub tab
+    And I enter "OrgAssessmentValues" values from "RiskAssessment_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I get the "EGMS ID"
+    When I click on "Submit" in the page details
+    And I navigate to "Home" tab
+    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
+    And I navigate to "Risk Assessment" sub tab
+    When I click on top right button "Request New Assessment" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
+    When I perform quick search for "Bayside Community Center" in "---orgRiskAssessment:-:activeOrgTableID---" panel
+    When I click on "View" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:activeOrgTableID---"
+    And I navigate to "Risk Assessment" sub tab
+    And I click on "Menu" in the page details
+    And I select "Download As PDF" from dropdown
+    And I download the file
+    Then I see "Active" on page "1" of "govgrants" pdf file
+
+  @63981 @totalRecordsofOrgRiskAssesment @deepika
+  Scenario: Validate whether user is able is see total record when first risk assessment is expired and second is active
+    Given I delete the record "Automation Desk Review Org level" from the object "Desk Review"
+    When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I navigate to "Assessment" sub tab
+    And I enter "OrgAssessmentValues" values from "RiskAssessment_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I save the field labeled "EGMS ID" as "EGMSID"
+    When I click on "Submit" in the page details
+    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
+    And I navigate to "Risk Assessment" sub tab
+    When I click on top right button "Request New Assessment" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
+    When I perform quick search for "Bayside Community Center" in "---orgRiskAssessment:-:activeOrgTableID---" panel
+    When I click on "View" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:activeOrgTableID---"
+    And I navigate to "Risk Assessment" sub tab
     When I perform quick search for "Active" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
-    Then I cannot see row level action button "Delete" against "Record Id" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    And I click on top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    When I re-login as "SPI2" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Bayside Community Center" in "---orgRiskAssessment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I click on "Save" in the page details
+    And I click on "Submit" in the page details
+    And I navigate to "Home" tab
+    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
+    And I navigate to "Risk Assessment" sub tab
+    Then I see total records count "Total Records:2" in flex table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+
+  @63982 @effectiveDatesOnOrgRiskAssessmentIsBlackDraftOnCreated @deepika
+  Scenario: Verify that Effective and Expiration dates are blank when Org riskassessment is in created state
+    Given I delete the record "Automation Desk Review Org level" from the object "Desk Review"
+    When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I navigate to "Assessment" sub tab
+    And I enter "OrgAssessmentValues" values from "RiskAssessment_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
+    And I navigate to "Risk Assessment" sub tab
+    Then I see value "" for title "Effective Date" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    And I see value "" for title "Expiration Date" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+
+  @63983 @acknowledgementOfRiskAssessment @deepika
+  Scenario:  Validate that no records has been added to the Org Risk Assessment table when record is cancelled
+    Given I delete the record "Automation Desk Review Org level" from the object "Desk Review"
+    When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Cancel" in the page details
+    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
+    And I navigate to "Risk Assessment" sub tab
+    Then I softly see "No Records Found" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+

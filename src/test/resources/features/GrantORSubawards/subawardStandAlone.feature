@@ -1088,6 +1088,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on top right parallel lines bar for "Progress Reports Schedule"
     And I select "Download as XLS" from parallel lines dropdown of "Progress Reports Schedule"
     And I download the file
+
     Then I verify that "xls" file is downloaded
 
   @55290 @SelectDesiredFrequencyAsMonth @jitendra
