@@ -651,8 +651,8 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:pendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Approved" and is "Green"
 

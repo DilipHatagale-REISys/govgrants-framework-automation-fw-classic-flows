@@ -1061,3 +1061,12 @@ Feature: Validate all scenarios in Desk Review
     When I download the file
     Then I softly see "{SavedValue:EGMSID}" on page "1" of "govgrants" pdf file
     Then I collect all the soft asserts
+
+  @validateDownloadDeskReviewInCSV @deepika @wip
+  Scenario: Validate Internal User can Download the Desk Review associated in CSV format
+    Given I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
+    When I click "Associate" after selection of "Automation EXE" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I select "Download as CSV" from parallel lines dropdown of "Participants"
+    And I download the file
+    Then I verify that "xls" file is downloaded
