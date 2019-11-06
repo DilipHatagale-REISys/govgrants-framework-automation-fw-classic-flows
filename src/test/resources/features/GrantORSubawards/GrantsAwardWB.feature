@@ -8,9 +8,9 @@ Feature: Validate all scenarios of grants and award without background
     Then  I can see top right button "New" in flex table with id "ActiveGrants"
     Examples:
       | User  |
-      |PM|
-      |EXE|
-      |FO|
+      | PM    |
+      | EXE   |
+      | FO    |
 
   @35556 @VerifyOnFDMViewPageSubawardInCreatedStatus @keerti
   Scenario Outline: Verify that on FDM View page when user click on Create Subaward action , then Subaward get creates in created status
@@ -29,6 +29,6 @@ Feature: Validate all scenarios of grants and award without background
     Then I see status in Progress-bar is "Created" and is "green"
     Examples:
       | User  |
-      |PM|
-      |EXE|
-      |FO|
+      | PM    |
+      | EXE   |
+      | FO    |

@@ -243,7 +243,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
-  @awardApprovalAndSendToRecipientAfterApproval @smoke
+  @38222 @awardApprovalAndSendToRecipientAfterApproval @smoke
   Scenario Outline: Validate award approval and send to subrecipient after approval
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
@@ -706,35 +706,69 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                      | Award Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
-  @38222 @VerifyRrecordOwnerCanSubmitSubawardForInternalApprovalForItIsAcceptedByS/R @keerti
-  Scenario: Verify record owner is able to submit subaward for internal approval after it is accepted by S/R
+  @45745 @VerifyAwardRejectionByS/R   @keerti
+    Scenario Outline: Validate the rejection of award by recipient after approval
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    And I navigate to "Budget" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fundingAccountsTableId---" by clicking "Edit" :
+    When I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---subAwardFromFDM:-:associateContactTableId---"
+    When I perform quick search for "Automation SPA" in "---subAwardFromFDM:-:keyContactsTableId---" panel
+    When I click "Add" after selection of "Automation SPA" in the table "---subAwardFromFDM:-:keyContactsTableId---"
+    When I close "Associate Contacts" modal by clicking the top right x button
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
+      | Title          | Project Role   | Is Key Personnel |
+      | Automation SPA | Fiscal Contact | Checked          |
+    When I navigate to "Budget" sub tab
+    Given I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:subAwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
-      | Construction    | 1000           | 100        | 100            |
-    When I navigate to "Overview" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | Automation SPI | Project Director/Manager | Checked          |
-    When I navigate to "Performance" sub tab
+      | Construction    | 1000           | 10         | 10             |
+    Given I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
-      | Title                                   | Target |
+      | EGMS ID                                 | Target |
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
-    When I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---"
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---" without waiting for record
     And I enter in modal "Payment Request Schedule_FDM" values from "Award_Field_Values.xlsx"
-    When I click modal button "Save"
+    And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
-    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardFromFDM:-:progressReportSchedulesTableId---"
-    When I enter in modal "Progress Report Schedule_FDM" values from "Award_Field_Values.xlsx"
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardFromFDM:-:progressReportSchedulesTableId---" without waiting for record
+    And I enter in modal "Progress Report Schedule_FDM" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---subAwardFromFDM:-:riskAssessmentTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I get the "EGMS ID"
+    And I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:riskAssessmentApproverTableId---" by clicking "Edit" :
+      | Responsibility   | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+    And I click on "Submit for Approval" in the page details
+    And I "Approve" in approval decision
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---"
+    And I "Approve" in approval decision
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---subAwardFromFDM:-:grantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---"
+    When I get the "EGMS ID"
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
@@ -747,22 +781,8 @@ Feature: Validate all scenarios in the award created from FDM
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---"
-    And I click on "Accept" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---"
-    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
-    When I click on "Save and Continue" in the page details
-    When I navigate to "Assessment" sub tab
-    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    When I get the "EGMS ID"
-    And I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
-      | Program Approver | Automation PM | Automation Test Description |
-      | Fiscal Approver  | Automation FO | Automation Test Description |
-    And I click on "Submit for Approval" in the page details
-    Then I see status in Progress-bar is "Submit For Approval" and is "green"
+    And I click on "Reject" in the page details
+    Then I see status in Progress-bar is "Rejected" and is "Red"
+    Examples:
+      | Award Name                      | Grant Name                      |
+      | Automation Announcement for FDM | Automation Announcement for FDM |

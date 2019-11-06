@@ -713,3 +713,4 @@ Feature: Validate all scenarios in the home tab
       | ADMIN |
       | EXE   |
       | PM    |
+
