@@ -707,7 +707,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
   @45745 @VerifyAwardRejectionByS/R   @keerti
-    Scenario Outline: Validate the rejection of award by recipient after approval
+  Scenario Outline: Validate the rejection of award by recipient after approval
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
