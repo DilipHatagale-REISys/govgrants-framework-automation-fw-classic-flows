@@ -1,7 +1,7 @@
-@orgAwardLevelRiskAssessmentWB @regression
+@orgAwardLevelRiskAssessmentWB @regression @wip
 Feature: Validate all scenarios when the Organizational Risk Assessment is in expired status
 
-  @expiredOrgRiskassementValidation
+  @64384 @expiredOrgRiskassementValidation
   Scenario Outline: Validate system generates an exception at award activation if Organizational Risk Assessment is expired.
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -177,7 +177,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @scopeofWorkAmendmentWhenORAIsExpired
+  @64385 @scopeofWorkAmendmentWhenORAIsExpired
   Scenario: Validate user is able to activate newly created award post performing amendment of type - Scope Of Work
     Given I delete the record "Automation Award for Organizational Risk Assessment" from the object "Amendment Request"
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "Payment Request"
@@ -264,7 +264,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
     Then I see that "Activated" has been added in flextable with Id "---subAwardStandAlone:-:subawardsTableId---"
 
-  @periodicRenewalAmendmentWhenORAIsExpired
+  @64387 @periodicRenewalAmendmentWhenORAIsExpired
   Scenario: Validate user is able to activate newly created award post performing amendment of type - Periodic Renewal
     Given I delete the record "Automation Award for Organizational Risk Assessment" from the object "Amendment Request"
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "Payment Request"
@@ -346,12 +346,11 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I click on "View" icon for "Record ID" inside flex table with id "---amendment:-:amendmentRequestTableId---"
     And I click on "Amend Subaward" in the page details
     Then I see the following messages in the page details contains:
-    |The subrecipient organization risk assessment is expired. Please notify the subrecipient to renew their organization risk assessment. |
+      | The subrecipient organization risk assessment is expired. Please notify the subrecipient to renew their organization risk assessment. |
 
-  @fundingChangeAmendmentWhenORAIsExpired
+  @64388 @fundingChangeAmendmentWhenORAIsExpired
   Scenario: Validate user is able to activate newly created award post performing amendment of type - Funding Change
     Given I delete the record "Automation Award for Organizational Risk Assessment" from the object "Amendment Request"
-    And I delete the record "Automation Award for Organizational Risk Assessment" from the object "Payment Request"
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "subaward"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
@@ -359,7 +358,6 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I navigate to "Risk Assessment" sub tab
     When I perform quick search for "Expired" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     And I click on "View" icon for "Expired" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
-    And I get the "EGMS ID"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -376,14 +374,14 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     When I enter values into fields
       | Value                       | Field                              |
       | Automation Test Description | fieldFundingChangeJustification__c |
-      | 100                         | fieldRequestedChangeInBudget__c    |
+      | 1000                        | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
+    And I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
-      | Program Approver   | Automation PM  | Automation Test Description |
-      | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description |
+      | Role             | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
     And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -402,12 +400,6 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I click on "Submit for Approval" in the page details
     And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
-    And I "Approve" in approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
@@ -435,7 +427,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
     Then I see that "Activated" has been added in flextable with Id "---subAwardStandAlone:-:subawardsTableId---"
 
-  @budgetPeriodChangeAmendmentWhenORAIsExpired
+  @64389 @budgetPeriodChangeAmendmentWhenORAIsExpired
   Scenario: Validate user is able to activate newly created award post performing amendment of type - Budget Period Change
     Given I delete the record "Automation Award for Organizational Risk Assessment" from the object "Amendment Request"
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "Payment Request"
@@ -457,24 +449,23 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
     And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
-    And I click on top right button "New" in flex table with id "---riskassessment:-:amendmendRequestCreationTableId---"
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    When I click on "Save" in the page details
-    And I get the updated budget end date for award "Automation Award for Amendment Request"
+    And I click on "Save" in the page details
+    And I get the updated budget end date for award "Automation Award for Organizational Risk Assessment"
     When I click on "Edit" in the page details
     And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "{SavedValue:updatedBudgetPeriodDate}" into field "NewBudgetPeriodEndDate__c"
-    And I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
       | Title                           | End Date                             |
       | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
+    When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description |
     And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -493,12 +484,6 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I click on "Submit for Approval" in the page details
     And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
-    And I "Approve" in approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
