@@ -47,7 +47,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Fiscal Approver    | Automation FO  | Automation Test Description |
     Then I see that "Automation EXE" has been added in flextable with Id "---subAwardFromFDM:-:awardApproverTableId---"
 
-  @riskAssessmentActivationAndAwardAcceptanceBySPI
+  @50990 @riskAssessmentActivationAndAwardAcceptanceBySPI
   Scenario Outline: Send an award to sub-recipient before approval
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
@@ -243,7 +243,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
-  @38222 @awardApprovalAndSendToRecipientAfterApproval @smoke
+  @38222  @50994  @awardApprovalAndSendToRecipientAfterApproval @smoke
   Scenario Outline: Validate award approval and send to subrecipient after approval
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
@@ -379,7 +379,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
-  @awardAcceptanceByRecipientAfterApproval
+  @50997 @awardAcceptanceByRecipientAfterApproval
   Scenario Outline: Validate award acceptance by sub-recipient after approval
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
@@ -786,3 +786,50 @@ Feature: Validate all scenarios in the award created from FDM
     Examples:
       | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
+
+  @45765 @validateNoDeleteActionDisplayedforGrant
+  Scenario Outline:  Validate award is not deleted for application initiated grant
+    Then I softly see status in Progress-bar is "Created" and is "Green"
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Terms" sub tab
+    When I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---"
+    When I enter in modal "Payment Request Schedule_FDM" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close "Edit Payment Request Schedule" modal by clicking the top right x button
+    Then I softly see that "Payment Request" has been added in flextable with Id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---"
+    When I navigate to "Terms" sub tab
+    When I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardFromFDM:-:progressReportSchedulesTableId---"
+    When I enter in modal "Progress Report Schedule_FDM" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close "Edit Progress Report Schedule" modal by clicking the top right x button
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    Then I cannot see row level action button "Delete" against "<Grant Name>" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    Examples:
+      | Grant Name                      |
+      | Automation Announcement for FDM |
+
+  @38214 @validateViewAccessToDraftGrantForInternalUsers  @mahadev
+  Scenario Outline: Verify all internal users can view draft grants
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    Then I softly see field "Status" as "Draft"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    Then I softly see field "Status" as "Draft"
+    Then I collect all the soft asserts
+    Examples:
+      | Grant Name                      |
+      | Automation Announcement for FDM |
