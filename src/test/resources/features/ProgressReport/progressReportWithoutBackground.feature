@@ -19461,7 +19461,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                   | Grant Name                 |
       | Automation   Execution Award | Automation Execution Award |
 
-  @62240 @validateSubmittedForApprovalPRAfterTCAmendmentIsCarryForwardedAonGrantAtInternalportal @jitendra
+  @62240 @62247 @validateSubmittedForApprovalPRAfterTCAmendmentIsCarryForwardedAonGrantAtInternalportalAndPM @jitendra
   Scenario Outline: Validate Progress reports with Submitted for approval Status is carried forward at Performance Tab Subaward Overview at SR user end when Award owner performed Terms and Conditions Change Amendment.
     Given I delete the record "Automation Execution Award" from the object "Progress Report"
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
@@ -19640,6 +19640,8 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---"
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
+    When I navigate to "Performance" sub tab
+    Then I softly see value "Submitted for approval" for title "Status" against the value "{SavedValue:ProgresReportID}" inside table "---progressreport:-:grantorProgressReportsTableId---"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -19647,7 +19649,8 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "<Award Name>" in "---paymentRequest:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Performance" sub tab
-    Then I see value "Submitted for approval" for title "Status" against the value "{SavedValue:ProgresReportID}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
+    Then I softly see value "Submitted for approval" for title "Status" against the value "{SavedValue:ProgresReportID}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
+    And I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -19871,7 +19874,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @62241 @validateSentBackToSRPRAfterTCAmendmentIsCarryForwardedA @mahadev
+  @62241 @62248 @validateSentBackToSRPRAfterTCAmendmentIsCarryForwardedAAtPM @mahadev @jitendra
   Scenario Outline: Validate progress report with sent back to SR status is carry forwarded at subportal portal on award after Terms and conditions amendment
     Given I delete the record "Automation Execution Award" from the object "Progress Report"
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
@@ -20050,6 +20053,8 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---"
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
+    When I navigate to "Performance" sub tab
+    Then I softly see value "Sent Back to Sub-recipient" for title "Status" against the value "{SavedValue:ProgresReportID}" inside table "---progressreport:-:grantorProgressReportsTableId---"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -20057,12 +20062,13 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "<Award Name>" in "---paymentRequest:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Performance" sub tab
-    Then I see value "Sent Back to Subrecipient" for title "Status" against the value "{SavedValue:ProgresReportID}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
+    Then I softly see value "Sent Back to Subrecipient" for title "Status" against the value "{SavedValue:ProgresReportID}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
+    And I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @62244 @validateSubmittedToGrantorPRAfterTCAmendmentIsCarryForwardedA @mahadev
+  @62244 @62236 @62250 @validateSubmittedToGrantorPRAfterTCAmendmentIsCarryForwardedA @mahadev
   Scenario Outline: Validate progress report with submitted to grantor status is carry forwarded at internal portal on award after Terms and conditions amendment
     Given I delete the record "Automation Execution Award" from the object "Progress Report"
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
@@ -20238,12 +20244,27 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
     When I navigate to "Performance" sub tab
-    Then I see value "Submitted to Grantor" for title "Status" against the value "{SavedValue:ProgresReportID}" inside table "---progressreport:-:grantorProgressReportsTableId---"
+    Then I softly see value "Submitted to Grantor" for title "Status" against the value "{SavedValue:ProgresReportID}" inside table "---progressreport:-:grantorProgressReportsTableId---"
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    When I perform quick search for "<Award Name>" in "---paymentRequest:-:recipientsSubawardTableId---" panel
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
+    When I navigate to "Performance" sub tab
+    Then I softly see value "Submitted to Grantor" for title "Status" against the value "{SavedValue:ProgresReportID}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
+    When I navigate to "Management" sub tab
+    Then I softly see value "Submitted to Grantor" for title "Status" against the value "{SavedValue:ProgresReportID}" inside table "---progressreport:-:recipientGrantProgressReportTableId---"
+    And I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @62245 @validateSubmittedForReviewPRAfterTCAmendmentIsCarryForwardedAonAwardAtInternalportal @mahadev
+  @62245 @62238 @validateSubmittedForReviewPRAfterTCAmendmentIsCarryForwardedAonAwardAtInternalportal @mahadev
   Scenario Outline: Validate progress report with Submitted for Review status is carry forwarded at internal portal on award after Terms and conditions amendment
     Given I delete the record "Automation Execution Award" from the object "Progress Report"
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
@@ -20428,7 +20449,16 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
     When I navigate to "Performance" sub tab
-    Then I see value "Submitted for Review" for title "Status" against the value "{SavedValue:ProgresReportID}" inside table "---progressreport:-:grantorProgressReportsTableId---"
+    Then I softly see value "Submitted for Review" for title "Status" against the value "{SavedValue:ProgresReportID}" inside table "---progressreport:-:grantorProgressReportsTableId---"
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    When I perform quick search for "<Award Name>" in "---paymentRequest:-:recipientsSubawardTableId---" panel
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
+    When I navigate to "Performance" sub tab
+    Then I softly see value "Submitted for Review" for title "Status" against the value "{SavedValue:ProgresReportID}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
+    And I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
