@@ -2196,3 +2196,10 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Performance" sub tab
     When I click on "Remove" icon for "Automation Permanent KPI for Regression" inside flex table with id "---subAwardStandAlone:-:kpiTableId---"
     Then I do not see value "Automation Permanent KPI for Regression" for title "Title" inside table "---subAwardStandAlone:-:kpiTableId---"
+
+  @45742 @validateRemovalOfFocusArea  @mahadev
+  Scenario: Validate removal of focus area
+    When I navigate to "Budget" sub tab
+    When I click on "Remove" icon for "Automation Permanent Focus Area" inside flex table with id "---subAwardStandAlone:-:focusAreaTableId---"
+    Then I do not see value "Automation Permanent Focus Area" for title "Title" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+
