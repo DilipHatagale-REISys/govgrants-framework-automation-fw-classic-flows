@@ -131,7 +131,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
-  @awardReviewInitiationAndCompletion
+  @38219  @awardReviewInitiationAndCompletion
   Scenario Outline: Validate review initiation and completion for the award
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
