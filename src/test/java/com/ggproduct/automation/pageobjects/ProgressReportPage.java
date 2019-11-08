@@ -214,9 +214,19 @@ public class ProgressReportPage extends ProjectManager {
      * To click on link containging text + today's date
      * @param linkName - link text
      */
-
     public void clickOnHyperLinkContainingDate(String linkName){
         clickOnLink(linkName + " " + EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")));
     }
+
+    public boolean compareTwoFieldValues(String savedValue1, String compare, String savedValue2){
+        Double value1 = Double.valueOf(EyeThink.core().Properties().getValue(savedValue1).replaceAll("[^0-9.]", ""));
+        System.out.println("+++++++++++"+value1);
+        Double value2 = Double.valueOf(EyeThink.core().Properties().getValue(savedValue2).replaceAll("[^0-9.]", ""));
+        System.out.println("+++++++++++"+value2);
+
+        return compare.equalsIgnoreCase("Less Than") ? value1<value2 : compare.equalsIgnoreCase("Greater Than") && value1 > value2;
+    }
+
+
 }
 

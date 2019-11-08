@@ -111,4 +111,10 @@ public class ProgressReportSteps {
     public void iClickOnHyperlinkForSnapshotContainingValue(String linkName) {
         progressReportPage.clickOnHyperLinkContainingDate(linkName);
     }
+
+    @Description("To compare two saved values")
+    @Then("^I see value \"([^\"]*)\" is \"([^\"]*)\" the value \"([^\"]*)\"$")
+    public void iSeeValueIsTheValue(String savedValue1, String compare, String savedValue2) {
+        Assert.assertTrue(progressReportPage.compareTwoFieldValues(savedValue1,compare,savedValue2));
+    }
 }
