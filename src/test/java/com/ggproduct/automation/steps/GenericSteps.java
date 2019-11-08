@@ -38,7 +38,7 @@ public class GenericSteps {
     public void iSeeFieldNameIsBlank(String usage, String fieldname) {
         projectManager.assertColumnValuIsBlank(fieldname,
                 usage.contains("softly")
-                );
+        );
     }
 
     @Description("To verify total records available under flex table")
@@ -47,7 +47,7 @@ public class GenericSteps {
         projectManager.AssertTotalRecordsCountInFlexTable(totalRecords,
                 tableId,
                 usage.contains("softly")
-                );
+        );
     }
 
     @Then("^I (softly can see|can see|cannot see|softly cannot see) page block \"([^\"]*)\"$")
@@ -61,7 +61,7 @@ public class GenericSteps {
     @Description("To capture message on approval decision box")
     @Then("^I (softly see|see) the message \"([^\"]*)\" on approval decision box$")
     public void iSeeTheMessageOnApprovalDecisionBox(String usage, String message) {
-        if (usage.contains("softly")){
+        if (usage.contains("softly")) {
             EyeThink.core().assertion().assertThat(projectManager.captureMessageOnApprovalDecisionBox(message)).isTrue();
         } else {
             Assert.assertTrue(projectManager.captureMessageOnApprovalDecisionBox(message));
@@ -86,7 +86,7 @@ public class GenericSteps {
     @Description("To check no records displayed in flex table")
     @Then("^I (softly see|see) \"([^\"]*)\" inside flex table with id \"([^\"]*)\"$")
     public void iSeeInsideFlexTableWithId(String usage, String text, String tableID) {
-        if (usage.contains("softly")){
+        if (usage.contains("softly")) {
             EyeThink.core().assertion().assertThat(projectManager.isRecordPresentInTheFlexTable(text, tableID)).isTrue();
         } else {
             Assert.assertTrue(projectManager.isRecordPresentInTheFlexTable(text, tableID));
@@ -132,8 +132,8 @@ public class GenericSteps {
     @Given("^I (softly can see|can see) mail notification for \"([^\"]*)\" user with following subject:$")
     public void iSeeMailSubject(String usage, String userType, List<String> subjectList) throws MessagingException {
         String subject = subjectList.get(0);
-        if (usage.contains("softly")){
-            EyeThink.core().assertion().assertThat(projectManager.validateMailSubject(userType,subject)).isTrue();
+        if (usage.contains("softly")) {
+            EyeThink.core().assertion().assertThat(projectManager.validateMailSubject(userType, subject)).isTrue();
         } else {
             Assert.assertTrue(projectManager.validateMailSubject(userType, subject));
         }
@@ -144,7 +144,7 @@ public class GenericSteps {
     public void iNavigateToLastPageInFlexTable(String flexTableId) {
         try {
             EyeThink.saas().flexTable().flexTablePagination(flexTableId, "Last");
-        } catch (Exception e){
+        } catch (Exception e) {
             // eating exception....
         }
     }
@@ -152,13 +152,13 @@ public class GenericSteps {
     @Description("Get last value for specified column name in the flex table")
     @And("I get the value from row {string} for column name {string} in flex table {string}")
     public void iGetTheSpecifiedValueForColumnNameInFlexTable(String columnValueFromRow, String columnName, String flexTableId) {
-        projectManager.iSavedSpecificValueFromFlexTable(columnValueFromRow, columnName,flexTableId);
+        projectManager.iSavedSpecificValueFromFlexTable(columnValueFromRow, columnName, flexTableId);
     }
 
     @Description("Validation of equality for values of Schedule end date AND Reporting Period End Date")
     @Then("^I (verify|softly verify) that the Schedule end date is matching with Reporting Period End Date$")
     public void iVerifyThatTheScheduleEndDateIsMatchingWithReportingPeriodEndDate(String usage) {
-        if (usage.contains("softly")){
+        if (usage.contains("softly")) {
             EyeThink.core().assertion().assertThat(EyeThink.core().Properties().getValue("lastValueFromTableForCol"))
                     .isEqualTo(EyeThink.core().Properties().getValue("ScheduleEndDate"));
         } else {
@@ -169,7 +169,7 @@ public class GenericSteps {
 
     @Then("^I (verify|softly verify) that the Schedule start date is matching with Reporting Period start Date$")
     public void iVerifyThatTheScheduleStartDateIsMatchingWithReportingPeriodStartDate(String usage) {
-        if (usage.contains("softly")){
+        if (usage.contains("softly")) {
             EyeThink.core().assertion().assertThat(EyeThink.core().Properties().getValue("lastValueFromTableForCol"))
                     .isEqualTo(EyeThink.core().Properties().getValue("ScheduleStartDate"));
         } else {
@@ -185,11 +185,11 @@ public class GenericSteps {
 
     @Then("^I (see|do not see|softly see|softly do not see) that the fields in flex table title as \"([^\"]*)\" are editable$")
     public void iSeeThatTheFieldsInFlexTableTitleAsAreEditable(String editable, String tableTitle) {
-        if (editable.equals("see")){
+        if (editable.equals("see")) {
             Assert.assertTrue(projectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle));
-        } else if(editable.equals("do not see")){
+        } else if (editable.equals("do not see")) {
             Assert.assertFalse(projectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle));
-        } else if(editable.equals("softly see")){
+        } else if (editable.equals("softly see")) {
             EyeThink.core().assertion().assertThat(projectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle)).isTrue();
         } else {
             EyeThink.core().assertion().assertThat(projectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle)).isFalse();
@@ -205,13 +205,13 @@ public class GenericSteps {
     public void iVerifyThatTheFileIsDownloaded(String usage, String fileName) {
         EyeThink.core().WaitFor().makeThreadSleep(10000);
         boolean yes = false;
-        File[] list = EyeThink.core().file().getCompleteFilesListOnLocalDirectory(System.getProperty("user.dir")+"/target");
-        for (File f : list){
-            if (fileName.equalsIgnoreCase(f.getName())){
+        File[] list = EyeThink.core().file().getCompleteFilesListOnLocalDirectory(System.getProperty("user.dir") + "/target");
+        for (File f : list) {
+            if (fileName.equalsIgnoreCase(f.getName())) {
                 yes = true;
             }
         }
-        if (usage.contains("softly")){
+        if (usage.contains("softly")) {
             EyeThink.core().assertion().assertThat(yes).isTrue();
         } else {
             Assert.assertTrue(yes);
@@ -225,10 +225,10 @@ public class GenericSteps {
         try {
             EyeThink.saas().inputForms().inputFormDataByFieldApiName(fieldApi, value, false);
             verify = false;
-        } catch (Exception ex){
+        } catch (Exception ex) {
 
         }
-        if (usage.contains("softly")){
+        if (usage.contains("softly")) {
             EyeThink.core().assertion().assertThat(verify).isTrue();
         } else {
             Assert.assertTrue(verify);
@@ -236,8 +236,8 @@ public class GenericSteps {
     }
 
     @Then("^I (softly see|see) snapshot with name containing \"([^\"]*)\" as name$")
-    public void iSeeSnapshotWithNameContainingAsName(String usage,String snapshotName) {
-        if (usage.contains("softly")){
+    public void iSeeSnapshotWithNameContainingAsName(String usage, String snapshotName) {
+        if (usage.contains("softly")) {
             EyeThink.core().assertion().assertThat(EyeThink.core().elementReference().onWeb(By.xpath("//tbody//tr//*[contains(text(),'" + snapshotName + "')]")).isDisplayed()).isTrue();
         } else {
             Assert.assertTrue(EyeThink.core().elementReference().onWeb(By.xpath("//tbody//tr//*[contains(text(),'" + snapshotName + "')]")).isDisplayed());
@@ -246,9 +246,9 @@ public class GenericSteps {
 
     @And("I create multiple records from sheet {string} of {string} with following data")
     public void createMultipleData(String sheetName, String spreadsheetName, List<List<String>> testData) {
-        String [][] data = EyeThink.core().file().excel().readExcelFile(spreadsheetName, sheetName);
+        String[][] data = EyeThink.core().file().excel().readExcelFile(spreadsheetName, sheetName);
         String currentSubTab = "";
-        Map<String, Map<String,String>> map= EyeThink.core().convert().convertListOfListsToMapOfMaps(testData);
+        Map<String, Map<String, String>> map = EyeThink.core().convert().convertListOfListsToMapOfMaps(testData);
 
         String key = map.keySet().iterator().next();
         Map<String, String> testDataMap = map.get(key);
@@ -283,4 +283,5 @@ public class GenericSteps {
     public void iCreateARiskAssessmentRecordForOrganization(String organizationName) {
         projectManager.riskAssessmentApi(organizationName);
     }
+
 }
