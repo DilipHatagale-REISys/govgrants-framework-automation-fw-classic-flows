@@ -33,7 +33,7 @@ Feature: Validate all scenarios of grants and award without background
       | EXE   |
       | FO    |
 
-    @64415 @VerifyOnFDMViewPageSubawardInCreatedStatus @keerti
+    @64415 @VerifyGrantTitleField @keerti
     Scenario: Verify validation message is displayed when award owner did not enter Grant Title field while creating direct grant.
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -46,7 +46,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I see the following messages in the page details :
       | Grant Title is required. |
 
-  @64416 @VerifyOnFDMViewPageSubawardInCreatedStatus @keerti
+  @64416 @VerifyGrantAbbreviationField @keerti
       Scenario: Verify validation message is displayed when award owner did not enter Grant Abbreviation field.
       Given I delete the record "Automation Execution Award" from the object "Award"
       And I delete the record "Automation Execution Award" from the object "Grant"
@@ -59,8 +59,8 @@ Feature: Validate all scenarios of grants and award without background
       Then I see the following messages in the page details :
         | Grant Abbreviation is required. |
 
-  @64417 @VerifyOnFDMViewPageSubawardInCreatedStatus @keerti
-  Scenario: Verify validation message is displayed when award owner did not enter Grant Abbreviation field.
+  @64417 @VerifyProjectPeriodStartDate @keerti
+  Scenario: Verify validation message is displayed when award owner did not enter Project Period Start Date while creating direct grant.
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -72,8 +72,8 @@ Feature: Validate all scenarios of grants and award without background
     Then I see the following messages in the page details :
       | Project Period Start Date is required. |
 
-  @64418 @VerifyOnFDMViewPageSubawardInCreatedStatus @keerti
-  Scenario: Verify validation message is displayed when award owner did not enter Grant Abbreviation field.
+  @64418 @VerifyProjectPeriodEndDate @keerti
+  Scenario: Verify validation message is displayed when award owner did not enter Project Period End Date while creating direct grant.
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
