@@ -32,3 +32,55 @@ Feature: Validate all scenarios of grants and award without background
       | PM    |
       | EXE   |
       | FO    |
+
+    @64415 @VerifyOnFDMViewPageSubawardInCreatedStatus @keerti
+    Scenario: Verify validation message is displayed when award owner did not enter Grant Title field while creating direct grant.
+    Given I delete the record "Automation Execution Award" from the object "Award"
+    And I delete the record "Automation Execution Award" from the object "Grant"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Creation_Title_Error" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    Then I see the following messages in the page details :
+      | Grant Title is required. |
+
+  @64416 @VerifyOnFDMViewPageSubawardInCreatedStatus @keerti
+      Scenario: Verify validation message is displayed when award owner did not enter Grant Abbreviation field.
+      Given I delete the record "Automation Execution Award" from the object "Award"
+      And I delete the record "Automation Execution Award" from the object "Grant"
+      When I login to "As a Grantor" app as "dynamicUser" user
+      And I navigate to "Grants" tab
+      When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+      And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+      And I enter "Grant_Creation_Error_2" values from "Award_Field_Values.xlsx"
+      And I click modal button "Continue"
+      Then I see the following messages in the page details :
+        | Grant Abbreviation is required. |
+
+  @64417 @VerifyOnFDMViewPageSubawardInCreatedStatus @keerti
+  Scenario: Verify validation message is displayed when award owner did not enter Grant Abbreviation field.
+    Given I delete the record "Automation Execution Award" from the object "Award"
+    And I delete the record "Automation Execution Award" from the object "Grant"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Creation _Error" values from "Errors.xlsx"
+    And I click modal button "Continue"
+    Then I see the following messages in the page details :
+      | Project Period Start Date is required. |
+
+  @64418 @VerifyOnFDMViewPageSubawardInCreatedStatus @keerti
+  Scenario: Verify validation message is displayed when award owner did not enter Grant Abbreviation field.
+    Given I delete the record "Automation Execution Award" from the object "Award"
+    And I delete the record "Automation Execution Award" from the object "Grant"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Creation _Error2" values from "Errors.xlsx"
+    And I click modal button "Continue"
+    Then I see the following messages in the page details :
+      | Project Period End Date is required. |
