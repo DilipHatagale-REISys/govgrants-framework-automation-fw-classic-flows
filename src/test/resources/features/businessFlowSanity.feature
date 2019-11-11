@@ -9,7 +9,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
-    When I enter value "Automation Execution Focus Area" into field "Title__c"
+    When I enter in modal value "Automation Execution Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
     When I enter value "Automation Test Description" into field "Description__c"
     And I click on "Save" in the page details
