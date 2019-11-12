@@ -706,6 +706,23 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                      | Award Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
+  @64560 @64561 @64571 @64715 @64716 @validateFieldsOnGrant
+  Scenario Outline: Verify (Subrecipient Match Required? | Advance Payment Allowed? | Required Match% setting | Are Expense Details Required on Reimbursements? | Risk Assessment Required?) entered at announcement is same on grant
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    Then I softly see field "Subrecipient Match Required?" as "Yes"
+    Then I softly see field "Required Match %" as "10%"
+    Then I softly see field "Risk Assessment Required?" as "Yes"
+    Then I softly see field "Are Expense Details Required on Reimbursements?" as "Yes"
+    Then I softly see field "Advance Payment Allowed?" as "Yes"
+    Then I collect all the soft asserts
+    Examples:
+      | Grant Name                      |
+      | Automation Announcement for FDM |
+
   @45745 @VerifyAwardRejectionByS/R   @keerti
   Scenario Outline: Validate the rejection of award by recipient after approval
     When I click on "Edit" in the page details
