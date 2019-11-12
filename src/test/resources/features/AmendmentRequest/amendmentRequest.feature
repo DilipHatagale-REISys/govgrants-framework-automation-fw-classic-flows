@@ -43,10 +43,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I click on top right button "Associate" in flex table with id "---amendment:-:keyOutcomesTableId---"
-    And I enter values into fields
-      | Value                                    | Field        |
-      | Automation Permanent KPI for Regression2 | MasterKPI__c |
-      | 10                                       | Target__c    |
+    When I enter "KPI" values from "Award_Field_Values.xlsx"
     When I click modal button "Save"
     Then I see that "Automation Permanent KPI for Regression2" has been added in flextable with Id "---amendment:-:keyOutcomesTableId---"
 

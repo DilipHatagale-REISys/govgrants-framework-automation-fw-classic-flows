@@ -224,7 +224,7 @@ public class ProgressReportPage extends ProjectManager {
         Double value2 = Double.valueOf(EyeThink.core().Properties().getValue(savedValue2).replaceAll("[^0-9.]", ""));
         System.out.println("+++++++++++"+value2);
 
-        return compare.equalsIgnoreCase("Less Than") ? value1<value2 : compare.equalsIgnoreCase("Greater Than") && value1 > value2;
+        return compare.equalsIgnoreCase("Less Than") ? value1<value2 : compare.equalsIgnoreCase("Greater Than") ? value1 > value2 : value1 == value2;
     }
 
 

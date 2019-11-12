@@ -144,6 +144,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | {SavedValue:fundingAccount} | 20000           |
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
     When I navigate to "Overview" sub tab
+    When I pause execution for "1" seconds
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
     When I click "Add" after selection of "Automation EXE" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
@@ -350,6 +351,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 500      |
     When I navigate to "Overview" sub tab
+    When I pause execution for "1" seconds
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
     When I click "Add" after selection of "Automation EXE" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
@@ -555,6 +557,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
     When I navigate to "Overview" sub tab
+    When I pause execution for "1" seconds
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
     When I click "Add" after selection of "Automation EXE" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
