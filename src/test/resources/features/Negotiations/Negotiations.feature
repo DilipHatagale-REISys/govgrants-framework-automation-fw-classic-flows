@@ -670,7 +670,7 @@ Feature: Validate all scenarios in Negotiations
     When I download the file
     Then I see "Negotiation Initiated" on page "1" of "govgrants" pdf file
 
-  @downloadNegotiationsRequestInPDF @deepika
+  @64851 @downloadNegotiationsRequestInPDF @deepika
   Scenario: Validate whether user can Download the Completed Negotiations in PDF format.
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -708,7 +708,7 @@ Feature: Validate all scenarios in Negotiations
     And I select "Download as PDF" from parallel lines dropdown of "Completed Negotiations"
     Then I verify that "pdf" file is downloaded
 
-  @downloadCompletedNegotiationsInXLS @deepika
+  @64852 @downloadCompletedNegotiationsInXLS @deepika
   Scenario: Validate whether user can Download the Completed Negotiations in XLS format
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
