@@ -850,3 +850,17 @@ Feature: Validate all scenarios in the award created from FDM
     Examples:
       | Grant Name                      |
       | Automation Announcement for FDM |
+
+  @64570 @VerifyWorkPlanRequiredField  @keerti
+    Scenario Outline: Verify Work Plan Required? field setting entered at announcement is same on grant which is created with application.
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Overview" sub tab
+    Then I see field "Work Plan Required?" as "Yes"
+    Examples:
+      | Grant Name                      |
+      | Automation Announcement for FDM |
+
