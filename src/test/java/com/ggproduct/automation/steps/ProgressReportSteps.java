@@ -113,8 +113,12 @@ public class ProgressReportSteps {
     }
 
     @Description("To compare two saved values")
-    @Then("^I see value \"([^\"]*)\" is \"([^\"]*)\" the value \"([^\"]*)\"$")
-    public void iSeeValueIsTheValue(String savedValue1, String compare, String savedValue2) {
-        Assert.assertTrue(progressReportPage.compareTwoFieldValues(savedValue1,compare,savedValue2));
+    @Then("^I (see|softly see) value \"([^\"]*)\" is \"([^\"]*)\" the value \"([^\"]*)\"$")
+    public void iSeeValueIsTheValue(String usage, String savedValue1, String compare, String savedValue2) {
+        if (usage.contains("softly")){
+            EyeThink.core().assertion().assertThat(progressReportPage.compareTwoFieldValues(savedValue1,compare,savedValue2)).isTrue();
+        } else {
+            Assert.assertTrue(progressReportPage.compareTwoFieldValues(savedValue1, compare, savedValue2));
+        }
     }
 }
