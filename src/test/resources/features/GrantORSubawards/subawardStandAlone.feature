@@ -1087,8 +1087,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     When I click on top right parallel lines bar for "Progress Reports Schedule"
     And I select "Download as XLS" from parallel lines dropdown of "Progress Reports Schedule"
-    And I download the file
-
     Then I verify that "xls" file is downloaded
 
   @55290 @SelectDesiredFrequencyAsMonth @jitendra
@@ -1904,11 +1902,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Disapprove" on the approval decision box
     Then I see status in Progress-bar is "Rejected" and is "Red"
     Examples:
@@ -1959,11 +1952,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Fiscal Approver  | Automation FO | Automation Test Description |
       | Program Approver | Automation PM | Automation Test Description |
     And I click on "Submit for Approval" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -2009,7 +1997,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -2027,7 +2016,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Automation Execution Award | Automation Execution Award |
 
   @45762 @VarifyAwardRejectionByFiscalApprover @keerti
-  Scenario: Validate award Rejection by Fiscal approver
+  Scenario Outline: Validate award Rejection by Fiscal approver
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -2097,12 +2086,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Fiscal Approver    | Automation FO  | Automation Test Description |
     And I click on "Submit for Approval" in the page details
     When I click on "Approve" on the approval decision box
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
-    When I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2110,9 +2093,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Disapprove" on the approval decision box
     Then I see status in Progress-bar is "Rejected" and is "red"
+    Examples:
+      | Award Name                 | Grant Name                 |
+      | Automation Execution Award | Automation Execution Award |
 
   @45739 @VarifyAwardRejectionByRecipientBeforeApproval @keerti
-  Scenario: Validate the rejection of award by recipient before approval
+  Scenario Outline: Validate the rejection of award by recipient before approval
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -2190,6 +2176,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     When I click on "Reject" in the page details
     Then I see status in Progress-bar is "Rejected" and is "Red"
+    Examples:
+      | Award Name                 | Grant Name                 |
+      | Automation Execution Award | Automation Execution Award |
 
   @45754 @VarifyKPIRemovingFromAward @keerti
   Scenario: Validate removing KPI from Award
@@ -2202,4 +2191,3 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Budget" sub tab
     When I click on "Remove" icon for "Automation Permanent Focus Area" inside flex table with id "---subAwardStandAlone:-:focusAreaTableId---"
     Then I do not see value "Automation Permanent Focus Area" for title "Title" inside table "---subAwardStandAlone:-:focusAreaTableId---"
-

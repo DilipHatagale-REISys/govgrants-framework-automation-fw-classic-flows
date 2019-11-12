@@ -3027,8 +3027,8 @@ Feature: Payment Request scenarios without background
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I click on "Activate" in the page details
-    When I create a post award record "PaymentRequest" for the Award "<Award Name>" having object api name as "PaymentRequest__c"
     And I navigate to "Terms" sub tab
+    When I create a post award record "PaymentRequest" for the Award "<Award Name>" having object api name as "PaymentRequest__c"
     When I expand nested table containing column value "Payment Request"
     Then I can see "1" record value is checked for field name "TaskCreated__c"
     Examples:
