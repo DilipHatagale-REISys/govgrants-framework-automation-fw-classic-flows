@@ -1,4 +1,4 @@
-@regression @PaymentRequest
+@regression @paymentRequest
 Feature: Payment Request scenarios without background
 
   @53910 @ValidateAdvancePaymentRequestButton @mahadev

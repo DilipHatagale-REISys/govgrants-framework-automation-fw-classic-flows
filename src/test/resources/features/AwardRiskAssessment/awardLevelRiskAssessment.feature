@@ -1,4 +1,4 @@
-@awardLevelRiskAssessment @regression
+@riskAssessment @awardLevelRiskAssessment @regression
 Feature: Validate all scenarios in the Risk Assessment
 
   Background: To setup data
