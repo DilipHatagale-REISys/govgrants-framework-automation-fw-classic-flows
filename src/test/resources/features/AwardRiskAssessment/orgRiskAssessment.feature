@@ -1,4 +1,4 @@
-@orgAwardLevelRiskAssessment @regression
+@riskAssessment @orgAwardLevelRiskAssessment @regression
 Feature: Validate all scenarios in the Organizational Risk Assessment
 
   Background: To create a Organizational Risk Assessment
