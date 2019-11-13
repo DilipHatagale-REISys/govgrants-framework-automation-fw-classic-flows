@@ -1,4 +1,4 @@
-@organizationalDeskReview @regression
+@organizationalDeskReview @regression @siteVisit
 Feature: Validate all scenarios in Organizational Desk Review
 
   Background: Creation of Organizational Desk Review

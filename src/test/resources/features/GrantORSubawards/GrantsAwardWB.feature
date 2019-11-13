@@ -1,4 +1,4 @@
-@GrantsAwardWB @regression
+@grantAndAward @GrantsAwardWB @regression
 Feature: Validate all scenarios of grants and award without background
 
   @35555 @VerifyUsersCanSeeNewButtonOnGrantListView @keerti
@@ -76,3 +76,20 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see the following messages in the page details :
       | Budget Category Type is required. |
     Then I collect all the soft asserts
+
+  @64424 @VerifyRequiredMatch%Filed @keerti
+   Scenario: Verify If you select Subrecipient Match Required setting as Yes and award owner did not enter Required Match % field then it should show validation message.
+    Given I delete the record "Automation Execution Award" from the object "Award"
+    And I delete the record "Automation Execution Award" from the object "Grant"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition1" values from "Award_Field_Values.xlsx"
+    And I clear the value from field "GranteeMatch__c"
+    And I click modal button "Save and Continue"
+    And I pause execution
+    Then I see the following messages in the page details :
+      | If you select Subrecipient Match Required setting as Yes then you need to set value for Required Match % |

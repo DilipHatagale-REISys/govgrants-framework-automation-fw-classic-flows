@@ -1,4 +1,4 @@
-@deskReview @regression
+@deskReview @regression @siteVisit
 Feature: Validate all scenarios in Desk Review
 
   Background: Create Desk Review
