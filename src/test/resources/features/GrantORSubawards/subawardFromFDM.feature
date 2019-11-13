@@ -851,16 +851,27 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                      |
       | Automation Announcement for FDM |
 
-  @64570 @VerifyWorkPlanRequiredField  @keerti
+  @64570 @64566 @64720 @64721 @VerifyWorkPlanRequiredFocusAreaRequiredProjectPeriodStartDateProjectPeriodEndDate  @keerti
     Scenario Outline: Verify Work Plan Required? field setting entered at announcement is same on grant which is created with application.
+    When I navigate to "Announcements" tab
+    When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Overview" sub tab
+    And I save the field labeled "Work Plan Required?" as "WPR"
+    And I save the field labeled "Focus Area Required?" as "FAR"
+    And I save the field labeled "Project Period Start Date" as "PPSD"
+    And I save the field labeled "Project Period End DateProject Period End Date" as "PPED"
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Overview" sub tab
-    Then I see field "Work Plan Required?" as "Yes"
+    Then I softly see field "Work Plan Required?" as "{SavedValue:WPR}"
+    Then I softly see field "Focus Area Required?" as "{SavedValue:FAR}"
+    Then I softly see field "Project Period Start Date" as "{SavedValue:PPSD}"
+    Then I softly see field "Project Period End Date" as "{SavedValue:PPED}"
+    Then I collect all the soft asserts
     Examples:
       | Grant Name                      |
       | Automation Announcement for FDM |
-
