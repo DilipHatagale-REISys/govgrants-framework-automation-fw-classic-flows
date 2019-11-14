@@ -33,7 +33,7 @@ Feature: Validate all scenarios of grants and award without background
       | EXE   |
       | FO    |
 
-  @64415 @64416 @64417 @64418 @64420 @64421 @64422 @GrantTitleFieldGrantAbbreviationFieldProjectPeriodStartDateProjectPeriodEndDateFundingOrganizationInternalProgramBudgetCategoryType @keerti
+  @64415 @64416 @64417 @64418 @64420 @64421 @64422 @64419 @GrantTitleFieldGrantAbbreviationFieldProjectPeriodStartDateProjectPeriodEndDateFundingOrganizationInternalProgramBudgetCategoryType @keerti
   Scenario: Verify validation message is displayed when award owner did not enter Grant Title field while creating direct grant.
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -90,6 +90,5 @@ Feature: Validate all scenarios of grants and award without background
     And I enter "Grant_Edition1" values from "Award_Field_Values.xlsx"
     And I clear the value from field "GranteeMatch__c"
     And I click modal button "Save and Continue"
-    And I pause execution
     Then I see the following messages in the page details :
       | If you select Subrecipient Match Required setting as Yes then you need to set value for Required Match % |
