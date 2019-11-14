@@ -49,7 +49,7 @@ public class ProjectManager extends ProjectWebServices {
     /* handles to verify no record is present in flex table */
     public boolean isRecordPresentInTheFlexTable(String text, String tableId) {
         try {
-            return EyeThink.core().is().onWeb().isDisplayed(By.xpath("//div[@id='" + tableId + "']//*[" + EyeThink.core().xpath().contains("text()", text) + "]"));
+            return EyeThink.core().is().isDisplayed(By.xpath("//div[@id='" + tableId + "']//*[" + EyeThink.core().xpath().contains("text()", text) + "]"));
         } catch (Exception e) {
         }
         return false;
@@ -94,7 +94,7 @@ public class ProjectManager extends ProjectWebServices {
      * @Author - Mahadev.hanme
      */
     public void AssertPageBlockDisplayed(String pageblockName, boolean assertcan, boolean isSoftly) {
-        List<Elements> elements = EyeThink.core().elementReference().listOfElements().onWeb(pageBlock(pageblockName),false);
+        List<Elements> elements = EyeThink.core().elementReference().listOfElements().of(pageBlock(pageblockName),false);
         if (assertcan) {
             if (isSoftly){
                 EyeThink.core().assertion().assertThat(0).isNotEqualTo(elements.size());
@@ -119,7 +119,7 @@ public class ProjectManager extends ProjectWebServices {
         By expectedMsg = By.xpath("//div[@id='ApprovalDecisionComponent']//span[contains(text(),'" + message + "')]");
 
         try {
-            EyeThink.core().elementReference().onWeb(expectedMsg);
+            EyeThink.core().elementReference().of(expectedMsg);
             return true;
         } catch (Exception ex) {
             return false;
@@ -169,8 +169,8 @@ public class ProjectManager extends ProjectWebServices {
      * @return
      */
     public Boolean iSeeValueInFlexTable(String value, String flexTableHeader) {
-        WebElement elementValueFlexTable = EyeThink.core().elementReference().onWeb(By.xpath("//div[@id='myTabbedContent']//a[@title='" + flexTableHeader + "']/../../../following-sibling::div//tbody//td//span[text()='" + value + "']"));
-        if (EyeThink.core().is().onWeb().isDisplayed(elementValueFlexTable))
+        WebElement elementValueFlexTable = EyeThink.core().elementReference().of(By.xpath("//div[@id='myTabbedContent']//a[@title='" + flexTableHeader + "']/../../../following-sibling::div//tbody//td//span[text()='" + value + "']"));
+        if (EyeThink.core().is().isDisplayed(elementValueFlexTable))
             return true;
         else
             return false;
@@ -189,9 +189,9 @@ public class ProjectManager extends ProjectWebServices {
      * @param fileNameFromWorkSpace - file which is to be upload
      */
     public void uploadAttachmentFromWorkspace(String fileNameFromWorkSpace) {
-        EyeThink.core().click().onWeb(By.xpath("//div[@id='myTabbedContent']//span[contains(text(),'Attachment')]/..//div[@class='panel-heading']//*[text()='Add']"));
-        EyeThink.core().click().onWeb(By.xpath("//div[@id='Attachmentadd']//span[text()='Upload file from Workspace']"));
-        EyeThink.core().click().onWeb((By.xpath("//div[@id='Attachmentadd']//td[text()='" + fileNameFromWorkSpace + "']/..//input")));
+        EyeThink.core().click().on(By.xpath("//div[@id='myTabbedContent']//span[contains(text(),'Attachment')]/..//div[@class='panel-heading']//*[text()='Add']"));
+        EyeThink.core().click().on(By.xpath("//div[@id='Attachmentadd']//span[text()='Upload file from Workspace']"));
+        EyeThink.core().click().on((By.xpath("//div[@id='Attachmentadd']//td[text()='" + fileNameFromWorkSpace + "']/..//input")));
         EyeThink.saas().modal().clickModalContentSpecificButton("Attach");
         EyeThink.saas().modal().closeModalByClickingTopRightCloseButton("Add Attachments");
     }
@@ -231,7 +231,7 @@ public class ProjectManager extends ProjectWebServices {
      * @return
      */
     private int getCheckedFieldValueCount(String fieldName){
-        List<Elements> checkSymbol = EyeThink.core().elementReference().listOfElements().onWeb(By.xpath("//field[@field-name='"+fieldName+"']/i[contains(@class,'fa-check')]"));
+        List<Elements> checkSymbol = EyeThink.core().elementReference().listOfElements().of(By.xpath("//field[@field-name='"+fieldName+"']/i[contains(@class,'fa-check')]"));
         return checkSymbol.size();
     }
 
@@ -325,7 +325,7 @@ public class ProjectManager extends ProjectWebServices {
         int columnValueFromRowInInt = 0;
         int counter = 1;
         By columnHeaders = By.xpath("//div[@id='"+flexTableId+"']//th//span[@ng-bind='fieldLabel']");
-        List<Elements> columnList = EyeThink.core().elementReference().listOfElements().onWeb(columnHeaders);
+        List<Elements> columnList = EyeThink.core().elementReference().listOfElements().of(columnHeaders);
 
         // get the column index of required column.
         for (Elements columnEle : columnList){
@@ -335,7 +335,7 @@ public class ProjectManager extends ProjectWebServices {
             counter++;
         }
 
-        List<Elements> listOfDataInColumn = EyeThink.core().elementReference().listOfElements().onWeb(By.xpath("//div[@id='"+flexTableId+"']//th//span[text()='"+columnName+"']/ancestor::thead/parent::table//tr//td["+counter+"]/span/field/span"));
+        List<Elements> listOfDataInColumn = EyeThink.core().elementReference().listOfElements().of(By.xpath("//div[@id='"+flexTableId+"']//th//span[text()='"+columnName+"']/ancestor::thead/parent::table//tr//td["+counter+"]/span/field/span"));
         columnValueFromRowInInt = rowNumber.equalsIgnoreCase("last row") ? listOfDataInColumn.size()
                 : Integer.parseInt(rowNumber);
 
@@ -353,11 +353,11 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     public boolean verifyIfFieldsAreEditableInFlexTable(String headingTitle){
-        String tableId = EyeThink.core().elementReference().onWeb(By.xpath("//*[contains(@class, 'panel-heading')]//a[text()='"+headingTitle+"']")).getAttribute("data-target");
+        String tableId = EyeThink.core().elementReference().of(By.xpath("//*[contains(@class, 'panel-heading')]//a[text()='"+headingTitle+"']")).getAttribute("data-target");
         tableId = tableId.substring(1);
         By editableFields = By.xpath("//*[@id='"+tableId+"']//textarea");
         try {
-            EyeThink.core().elementReference().onWeb(editableFields);
+            EyeThink.core().elementReference().of(editableFields);
             return true;
         } catch (Exception e){
             return false;
@@ -369,9 +369,9 @@ public class ProjectManager extends ProjectWebServices {
      */
     public void addNotesToPR(){
         By addBtnNotes= By.xpath("//div[contains(@id,'Notes')]//*[text()='Add']");
-        EyeThink.core().click().onWeb(addBtnNotes);
-        EyeThink.core().enterText().onWeb().enter(By.xpath("//label[@for='Title']/following-sibling::input"),  "Note Title");
-        EyeThink.core().enterText().onWeb().enter(By.xpath("//label[@for='Description']/following-sibling::textarea"), "Note Description");
+        EyeThink.core().click().on(addBtnNotes);
+        EyeThink.core().enterText().in(By.xpath("//label[@for='Title']/following-sibling::input"),  "Note Title");
+        EyeThink.core().enterText().in(By.xpath("//label[@for='Description']/following-sibling::textarea"), "Note Description");
         EyeThink.saas().modal().clickModalContentSpecificButton("Save");
         EyeThink.saas().modal().closeModalByClickingTopRightCloseButton("Add Notes");
     }
@@ -384,10 +384,10 @@ public class ProjectManager extends ProjectWebServices {
         String tableId = EyeThink.core().get().attribute(By.xpath("//*[contains(@class, 'panel-heading')]//button[text()='Add']"), "data-target");
         tableId = tableId.substring(tableId.length() - 18);
         EyeThink.saas().flexTable().clickTableActionIcon(tableId, iconName, new String[]{fileName});
-        EyeThink.core().select().onWeb(attachmentClassificationPath).selectByValue(fileType);
-        EyeThink.core().enterText().onWeb().clear(attachmentDescriptionPath);
-        EyeThink.core().enterText().onWeb().enter(attachmentDescriptionPath, "T&CDefault Comment");
-        EyeThink.core().enterText().onWeb().enter(attachmentFilePath, defaultFilePath + fileName);
-        EyeThink.core().click().onWeb(By.xpath("//input[@value='Save']"));
+        EyeThink.core().select().from(attachmentClassificationPath).selectByValue(fileType);
+        EyeThink.core().enterText().clear(attachmentDescriptionPath);
+        EyeThink.core().enterText().in(attachmentDescriptionPath, "T&CDefault Comment");
+        EyeThink.core().enterText().in(attachmentFilePath, defaultFilePath + fileName);
+        EyeThink.core().click().on(By.xpath("//input[@value='Save']"));
     }
 }

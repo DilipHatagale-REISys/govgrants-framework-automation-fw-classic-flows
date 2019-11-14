@@ -29,8 +29,8 @@ public class AmendmentRequestPage extends ProjectManager {
      * @Author - Mahadev.hanme
       */
     public void enterRevisedEncumbrance(String awardName) {
-        EyeThink.core().enterText().onWeb().clear(By.xpath("//field[@field-name='ActualEncumbrance__c']/input"));
-        EyeThink.core().enterText().onWeb().enter(By.xpath("//field[@field-name='ActualEncumbrance__c']/input"),calculateRevisedEncumbrance(awardName).toString());
+        EyeThink.core().enterText().clear(By.xpath("//field[@field-name='ActualEncumbrance__c']/input"));
+        EyeThink.core().enterText().in(By.xpath("//field[@field-name='ActualEncumbrance__c']/input"),calculateRevisedEncumbrance(awardName).toString());
     }
 
     public void updatedBudgetPeriodEndDate(String awardName) {

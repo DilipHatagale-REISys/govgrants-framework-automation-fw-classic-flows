@@ -18,9 +18,9 @@ public class HomePage extends ProjectManager {
      */
     public void reassignUser(String userName) {
         try {
-            EyeThink.core().click().onWeb(By.xpath("//div[contains(@class,'panel-body')]//span[@class='select2-chosen']"));
-            EyeThink.core().enterText().onWeb().enter(By.xpath("//div[@id='select2-drop']//div/input"), userName);
-            EyeThink.core().click().onWeb(By.xpath("//div[contains(@class,'select2-search')]/following-sibling::ul//li//span[text()='" + userName + "']"));
+            EyeThink.core().click().on(By.xpath("//div[contains(@class,'panel-body')]//span[@class='select2-chosen']"));
+            EyeThink.core().enterText().in(By.xpath("//div[@id='select2-drop']//div/input"), userName);
+            EyeThink.core().click().on(By.xpath("//div[contains(@class,'select2-search')]/following-sibling::ul//li//span[text()='" + userName + "']"));
         } catch (Exception e) {
         }
     }
@@ -66,11 +66,11 @@ public class HomePage extends ProjectManager {
      */
     public boolean isFileDisplayedInWorkspace(String recordID) {
         Boolean flag = false;
-        EyeThink.core().enterText().onWeb().enter(By.xpath("//input[@id='FilesSearchText0' or name='FilesSearchText']"), EyeThink.saas().pageDetails().idOfRecord);
-        EyeThink.core().click().onWeb(By.xpath("//input[@id='FilesSearchButton0']"));
+        EyeThink.core().enterText().in(By.xpath("//input[@id='FilesSearchText0' or name='FilesSearchText']"), EyeThink.saas().pageDetails().idOfRecord);
+        EyeThink.core().click().on(By.xpath("//input[@id='FilesSearchButton0']"));
 
         try {
-            return EyeThink.core().is().onWeb().isDisplayed(By.xpath("//div[@id='FilesDataTable']//a[text()='" + EyeThink.saas().pageDetails().idOfRecord + "']"));
+            return EyeThink.core().is().isDisplayed(By.xpath("//div[@id='FilesDataTable']//a[text()='" + EyeThink.saas().pageDetails().idOfRecord + "']"));
         } catch (Exception e) {
         }
         return false;
@@ -90,8 +90,8 @@ public class HomePage extends ProjectManager {
      * @param description
      */
     public void enterNotesValues(String title, String description) {
-        EyeThink.core().enterText().onWeb().enter(By.xpath("//*[contains(@placeholder,'Title')]"), title);
-        EyeThink.core().enterText().onWeb().enter(By.xpath("//*[contains(@placeholder,'Description')]"), description);
+        EyeThink.core().enterText().in(By.xpath("//*[contains(@placeholder,'Title')]"), title);
+        EyeThink.core().enterText().in(By.xpath("//*[contains(@placeholder,'Description')]"), description);
     }
 
     /**
@@ -100,7 +100,7 @@ public class HomePage extends ProjectManager {
      */
     public void selectValueFromGlobalSearchDropDown(String dropDownValue) {
         By globalDropdownSelector = By.xpath("//*[@id='selectSearchId']");
-        EyeThink.core().select().onWeb(globalDropdownSelector).selectByVisibleText(dropDownValue);
+        EyeThink.core().select().from(globalDropdownSelector).selectByVisibleText(dropDownValue);
     }
 
     /**
