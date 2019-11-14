@@ -6,7 +6,6 @@ import eyethink.automation.bots.objects.Elements;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
@@ -227,6 +226,12 @@ public class ProgressReportPage extends ProjectManager {
         return compare.equalsIgnoreCase("Less Than") ? value1<value2 : compare.equalsIgnoreCase("Greater Than") ? value1 > value2 : value1 == value2;
     }
 
-
+    /**
+     * Two concatenate two saved values with hyphen(-)
+     * @param savedValue1
+     * @param savedValue2
+     */
+    public void concatTwoValues(String savedValue1, String savedValue2) {
+        EyeThink.core().Properties().saveValue("ExpectedValue",EyeThink.core().Properties().getValue(savedValue1) + " - " +EyeThink.core().Properties().getValue(savedValue2));
+    }
 }
-
