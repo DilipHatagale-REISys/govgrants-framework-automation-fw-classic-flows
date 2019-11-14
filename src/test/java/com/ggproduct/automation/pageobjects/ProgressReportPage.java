@@ -6,7 +6,6 @@ import eyethink.automation.bots.objects.Elements;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
@@ -220,13 +219,7 @@ public class ProgressReportPage extends ProjectManager {
 
     public boolean compareTwoFieldValues(String savedValue1, String compare, String savedValue2){
         Double value1 = Double.valueOf(EyeThink.core().Properties().getValue(savedValue1).replaceAll("[^0-9.]", ""));
-        System.out.println("+++++++++++"+value1);
         Double value2 = Double.valueOf(EyeThink.core().Properties().getValue(savedValue2).replaceAll("[^0-9.]", ""));
-        System.out.println("+++++++++++"+value2);
-
         return compare.equalsIgnoreCase("Less Than") ? value1<value2 : compare.equalsIgnoreCase("Greater Than") ? value1 > value2 : value1 == value2;
     }
-
-
 }
-
