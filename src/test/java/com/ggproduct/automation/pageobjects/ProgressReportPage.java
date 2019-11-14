@@ -219,19 +219,7 @@ public class ProgressReportPage extends ProjectManager {
 
     public boolean compareTwoFieldValues(String savedValue1, String compare, String savedValue2){
         Double value1 = Double.valueOf(EyeThink.core().Properties().getValue(savedValue1).replaceAll("[^0-9.]", ""));
-        System.out.println("+++++++++++"+value1);
         Double value2 = Double.valueOf(EyeThink.core().Properties().getValue(savedValue2).replaceAll("[^0-9.]", ""));
-        System.out.println("+++++++++++"+value2);
-
         return compare.equalsIgnoreCase("Less Than") ? value1<value2 : compare.equalsIgnoreCase("Greater Than") ? value1 > value2 : value1 == value2;
-    }
-
-    /**
-     * Two concatenate two saved values with hyphen(-)
-     * @param savedValue1
-     * @param savedValue2
-     */
-    public void concatTwoValues(String savedValue1, String savedValue2) {
-        EyeThink.core().Properties().saveValue("ExpectedValue",EyeThink.core().Properties().getValue(savedValue1) + " - " +EyeThink.core().Properties().getValue(savedValue2));
     }
 }

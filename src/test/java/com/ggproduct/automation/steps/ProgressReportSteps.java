@@ -121,10 +121,4 @@ public class ProgressReportSteps {
             Assert.assertTrue(progressReportPage.compareTwoFieldValues(savedValue1, compare, savedValue2));
         }
     }
-
-    @Description("To concat two saved values with hyphen(-)")
-    @When("^I concat two values \"([^\"]*)\" and \"([^\"]*)\"$")
-    public void concatTwoSavedValues(String savedValue1, String savedValue2) {
-        progressReportPage.concatTwoValues(savedValue1, savedValue2);
-    }
 }

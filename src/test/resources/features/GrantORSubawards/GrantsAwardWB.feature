@@ -1,4 +1,4 @@
-@grantAndAward @GrantsAwardWB @regression
+@grantsAwardWB @regression
 Feature: Validate all scenarios of grants and award without background
 
   @35555 @VerifyUsersCanSeeNewButtonOnGrantListView @keerti
@@ -60,14 +60,13 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "<Annoucement>" inside flex table with id "ActiveFundingOpportunitiesCompitive"
     And I save the field labeled "Estimated Project Period Start Date" as "PPStartDate"
     And I save the field labeled "Estimated Project Period End Date" as "PPEndDate"
-    When I concat two values "PPStartDate" and "PPEndDate"
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
     When I perform quick search for "<Annoucement>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Annoucement>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
-    Then I see value "{SavedValue:ExpectedValue}" for title "Budget Period Dates" against the value "<Annoucement>" inside table "---progressreport:-:subawardsTableId---"
+    Then I see value "{SavedValue:PPStartDate} - {SavedValue:PPEndDate}" for title "Budget Period Dates" against the value "<Annoucement>" inside table "---progressreport:-:subawardsTableId---"
     Examples:
       | Annoucement                     |
       | Automation Announcement for FDM |
