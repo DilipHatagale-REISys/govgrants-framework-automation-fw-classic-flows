@@ -875,3 +875,15 @@ Feature: Validate all scenarios in the award created from FDM
     Examples:
       | Grant Name                      |
       | Automation Announcement for FDM |
+
+  @64785  @verifyAnnoucementNameCarryForwardedOnGrant
+  Scenario Outline: Verify Announcement Name is carried forward to Grant Title on grant which is created with application
+    When I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Annoucement>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Annoucement>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    Then I see field "Grant" as "<Annoucement>"
+    Examples:
+      | Annoucement                     |
+      | Automation Announcement for FDM |
