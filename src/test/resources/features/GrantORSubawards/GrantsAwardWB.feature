@@ -128,7 +128,7 @@ Feature: Validate all scenarios of grants and award without background
       | EXE  |
       | FO   |
 
-  @64415 @64416 @64417 @64418 @64420 @64421 @64422 @GrantTitleFieldGrantAbbreviationFieldProjectPeriodStartDateProjectPeriodEndDateFundingOrganizationInternalProgramBudgetCategoryType @keerti
+  @64415 @64416 @64417 @64418 @64420 @64421 @64422 @64419 @GrantTitleFieldGrantAbbreviationFieldProjectPeriodStartDateProjectPeriodEndDateFundingOrganizationInternalProgramBudgetCategoryType @keerti
   Scenario: Verify validation message is displayed when award owner did not enter Grant Title field while creating direct grant.
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"

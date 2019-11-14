@@ -851,16 +851,19 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                      |
       | Automation Announcement for FDM |
 
-  @64570 @64566 @64720 @64721 @VerifyWorkPlanRequiredFocusAreaRequiredProjectPeriodStartDateProjectPeriodEndDate  @keerti
+  @64570 @64566 @64720 @64721 @64569 @64719 @64723 @VerifyWorkPlanRequiredFocusAreaRequiredProjectPeriodStartDateProjectPeriodEndDate  @keerti
     Scenario Outline: Verify Work Plan Required? field setting entered at announcement is same on grant which is created with application.
     When I navigate to "Announcements" tab
     When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Overview" sub tab
+    And I save the field labeled "Internal Organization" as "InternalOrg"
+    And I save the field labeled "KPI" as "KPI"
     And I save the field labeled "Work Plan Required?" as "WPR"
     And I save the field labeled "Focus Area Required?" as "FAR"
     And I save the field labeled "Project Period Start Date" as "PPSD"
-    And I save the field labeled "Project Period End DateProject Period End Date" as "PPED"
+    And I save the field labeled "Project Period End Date" as "PPED"
+    And I save the field labeled "Created By" as "CreatedBy"
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
@@ -871,6 +874,9 @@ Feature: Validate all scenarios in the award created from FDM
     Then I softly see field "Focus Area Required?" as "{SavedValue:FAR}"
     Then I softly see field "Project Period Start Date" as "{SavedValue:PPSD}"
     Then I softly see field "Project Period End Date" as "{SavedValue:PPED}"
+    Then I softly see field "Created by" as "{SavedValue:CreatedBy}"
+    Then I softly see field "KPI's Required?" as "{SavedValue:KPI}"
+    Then I softly see field "Funding Organization" as "{SavedValue:InternalOrg}"
     Then I collect all the soft asserts
     Examples:
       | Grant Name                      |
@@ -887,3 +893,47 @@ Feature: Validate all scenarios in the award created from FDM
     Examples:
       | Annoucement                     |
       | Automation Announcement for FDM |
+
+    @64788 @VerifyWorkPlanRequiredFocusAreaRequiredProjectPeriodStartDateProjectPeriodEndDate  @keerti
+    Scenario Outline: Verify Funding Account field on Budget Tab Subaward overview is same as announcement financial tab.
+    When I navigate to "Announcements" tab
+    When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Financials" sub tab
+    And I get the value from row "1" for column name "Funding Account" in flex table "flexGridAnnouncementFundingAccountGrantor"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    When I perform quick search for "<Award Name>" in "flexGridRelatedAwards1" panel
+    And I click on "View" icon for "<Award Name>" inside table
+    When I navigate to "Budget" sub tab
+    Then I see value "{SavedValue:lastValueFromTableForCol}" for title "Funding Account" inside table "flexGridAwardFundingAccounts"
+    Examples:
+      | Grant Name                      | Award Name                      |
+      | Automation Announcement for FDM | Automation Announcement for FDM |
+
+  @64791 @VerifyWorkPlanRequiredFocusAreaRequiredProjectPeriodStartDateProjectPeriodEndDate  @keerti
+  Scenario Outline: Verify Key Performance Indicators (KPIs) value Performance tab Subaward overview is same as announcement Key Performance Indicators (KPIs) table setup Tab.
+    When I navigate to "Announcements" tab
+    When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Setup" sub tab
+    When I perform quick search for "Information Technology" in "AnnouncementKeyOutcomes" panel
+    And I click on "View" icon for "Information Technology" inside table
+    And I save the field labeled "Domain" as "Domain"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    When I perform quick search for "<Award Name>" in "flexGridRelatedAwards1" panel
+    And I click on "View" icon for "<Award Name>" inside table
+    When I navigate to "Performance" sub tab
+    Then I see value "{SavedValue:Domain}" for title "Domain" inside table "inlineEditGridGrantorAwardKeyOutcomes"
+    Examples:
+      | Grant Name                      | Award Name                      |
+      | Automation Announcement for FDM | Automation Announcement for FDM |
