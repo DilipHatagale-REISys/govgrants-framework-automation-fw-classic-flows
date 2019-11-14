@@ -22,8 +22,8 @@
 		<env/>
 		<!-- Versions -->
 		<java.version>11</java.version>
-		<saas.version>2.2.0</saas.version>
-		<eyeThink.version>2.1.0</eyeThink.version>
+		<saas.version>2.1.0</saas.version>
+		<eyeThink.version>2.2.0</eyeThink.version>
 		<selenium.version>3.141.59</selenium.version>
 		<selenium-server.version>3.141.59</selenium-server.version>
 		<appium.version>7.2.0</appium.version>
