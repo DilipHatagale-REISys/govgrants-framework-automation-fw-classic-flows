@@ -71,8 +71,8 @@ Feature: Validate all scenarios of grants and award without background
       | Annoucement                     |
       | Automation Announcement for FDM |
 
-  @64786  @64789 @VerifyAnnouncementIDAndFocusAreaCarryForwarded @mahadev
-  Scenario Outline: Verify EGMS ID of announcement and focus Area is carried forward to Announcement ID at grant overview which is created with application
+  @64786 @64563 @64717 @64789 @VerifyFieldsFromAnnoucement @mahadev
+  Scenario Outline: Verify (EGMS ID of announcement | Leverage Allowed?) and focus Area is carried forward to Announcement ID at grant overview which is created with application
     Given I delete the record "Automation Desk Review" from the object "Desk Review"
     When I delete the record "Automation Site Visit" from the object "Site Visit"
     And I delete the record "Automation Announcement for FDM" from the object "FDM"
@@ -91,12 +91,16 @@ Feature: Validate all scenarios of grants and award without background
     When I perform quick search for "<Annoucement>" in "ActiveFundingOpportunitiesCompitive" panel
     And I click on "View" icon for "<Annoucement>" inside flex table with id "ActiveFundingOpportunitiesCompitive"
     When I save the field labeled "EGMS ID" as "AnnouncementID"
+    And I save the field labeled "Leverage Allowed?" as "LeverageAllowed"
+    And I save the field labeled "Negotiations Allowed?" as "NegotiationsAllowed"
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
     When I perform quick search for "<Annoucement>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Annoucement>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     Then I softly see field "Announcement ID" as "{SavedValue:AnnouncementID}"
+    Then I softly see field "Leverage Allowed?" as "{SavedValue:LeverageAllowed}"
+    Then I softly cannot see field "Negotiations Allowed?" inside page block
     And I navigate to "Subawards" sub tab
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Budget" sub tab

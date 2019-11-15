@@ -658,6 +658,14 @@ Feature: Validate all scenarios in the award created from FDM
       | Annoucement Name                | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
+  @64943 @verifyApproversCarryForwardedFromAnnoucementToAward @mahadev @wip
+  Scenario: Verify Approvers added at announcement is same on subaward when grant which is created with application
+    When I navigate to "Responsibilities" sub tab
+    Then I softly see value "Automation PM" for title "Name" inside table "---subAwardStandAlone:-:awardApproversTableId---"
+    Then I softly see value "Automation EXE" for title "Name" inside table "---subAwardStandAlone:-:awardApproversTableId---"
+    Then I softly see value "Automation FO" for title "Name" inside table "---subAwardStandAlone:-:awardApproversTableId---"
+    Then I collect all the soft asserts
+
   @45743 @VerifyProjectPeriodStartDateIsSameAsScheduleStartDateOnAwardCreatedFromFDM @mahadev
   Scenario Outline: Verify if award is created from FDM then Project Period Start Date populated is same as progress report schedule start date
     And I navigate to "Applications" tab
