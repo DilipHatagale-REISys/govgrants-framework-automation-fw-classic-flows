@@ -6,7 +6,6 @@ import eyethink.automation.bots.objects.Elements;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
@@ -34,7 +33,7 @@ public class ProgressReportPage extends ProjectManager {
      */
     public Boolean isGivenToggleOptionPresent(String anyItemToBeCheck, String flexTableId) {
         EyeThink.saas().phasePanel().clickDoubleArrowToggle("#toggleFlexTableGrantorProgressReportsInternal");
-        List<Elements> toggleOptions = EyeThink.core().elementReference().listOfElements().onWeb(By.xpath("//div[@id='" + flexTableId + "']//div[@id='dropdownListView']//ul/li/a/span[contains(@class,'ng-binding')]"));
+        List<Elements> toggleOptions = EyeThink.core().elementReference().listOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//div[@id='dropdownListView']//ul/li/a/span[contains(@class,'ng-binding')]"));
 
         for (Elements el : toggleOptions) {
             if (el.getText().equalsIgnoreCase(anyItemToBeCheck)) {
@@ -56,11 +55,11 @@ public class ProgressReportPage extends ProjectManager {
      * @return true if specified column value present inside flex table
      */
     public boolean isColumnValuePresentInsideFlexTable(String valueToBeCheck, String columnName, String tableId) {
-        WebElement row = EyeThink.core().elementReference().onWeb(By.xpath("//div[@id='" + tableId + "']//table//tbody//tr"));
+        WebElement row = EyeThink.core().elementReference().of(By.xpath("//div[@id='" + tableId + "']//table//tbody//tr"));
         Map<String, Integer> columnMapping = EyeThink.saas().flexTable().constructColumnMapping(row, Collections.singleton(columnName));
         By columnSelector = By.xpath("//div[@id='" + tableId + "']//table//tr//td[not(contains(@class, 'ng-hide')) and contains(@class,'tableCell')][" + columnMapping.get(columnName) + "]//descendant-or-self :: *[text()='" + valueToBeCheck + "']");
 
-        List<Elements> rowValues = EyeThink.core().elementReference().listOfElements().onWeb(columnSelector);
+        List<Elements> rowValues = EyeThink.core().elementReference().listOfElements().of(columnSelector);
         for (Elements value : rowValues) {
             if (!"".equalsIgnoreCase(valueToBeCheck) && !value.getText().equalsIgnoreCase(valueToBeCheck))
                 return false;
@@ -81,7 +80,7 @@ public class ProgressReportPage extends ProjectManager {
      * @param linkName
      */
     public void clickOnLink(String linkName){
-        EyeThink.core().click().onWeb(By.xpath("//a[contains(text(),'"+linkName+"')] | //span[contains(text(),'"+ linkName +"')]"));
+        EyeThink.core().click().on(By.xpath("//a[contains(text(),'"+linkName+"')] | //span[contains(text(),'"+ linkName +"')]"));
     }
 
     /**
@@ -107,7 +106,7 @@ public class ProgressReportPage extends ProjectManager {
      */
     public Boolean isTopRightButtonDisplayed(String buttonName, String flextableHeaderName) {
         try {
-            return EyeThink.core().is().onWeb().isDisplayed(By.xpath("//a[text()='" + flextableHeaderName + "']/../../div/button[text()='" + buttonName + "']"));
+            return EyeThink.core().is().isDisplayed(By.xpath("//a[text()='" + flextableHeaderName + "']/../../div/button[text()='" + buttonName + "']"));
         } catch (Exception e) {
             return false;
         }
@@ -128,7 +127,7 @@ public class ProgressReportPage extends ProjectManager {
      * @return
      */
     public Boolean isRowLevelActionButtonDisplayed(String buttonName, String uniqueColumnValue, String flextableHeaderName){
-        if (EyeThink.core().is().onWeb().isDisplayed(By.xpath("//a[@title='"+ flextableHeaderName +"']/../../../following-sibling::div//tbody//td//span[text()='"+ uniqueColumnValue +"']/../following-sibling::td//a[contains(@title,'"+ buttonName +"')]")))
+        if (EyeThink.core().is().isDisplayed(By.xpath("//a[@title='"+ flextableHeaderName +"']/../../../following-sibling::div//tbody//td//span[text()='"+ uniqueColumnValue +"']/../following-sibling::td//a[contains(@title,'"+ buttonName +"')]")))
             return true;
         else
             return false;
@@ -144,7 +143,7 @@ public class ProgressReportPage extends ProjectManager {
 
     public void downloadAttachment(){
         By downloadBtn = By.xpath("//div[contains(@id,'Attachments')]//a[@title='Download'] ");
-        EyeThink.core().click().onWeb(downloadBtn);
+        EyeThink.core().click().on(downloadBtn);
     }
 
     /**
@@ -161,7 +160,7 @@ public class ProgressReportPage extends ProjectManager {
     public Boolean isFieldEditable(String fieldAPIName){
         boolean flag=true;
         try {
-            if (EyeThink.core().is().onWeb().isDisplayed(By.xpath("//field[@field-name='"+ fieldAPIName +"']/input")))
+            if (EyeThink.core().is().isDisplayed(By.xpath("//field[@field-name='"+ fieldAPIName +"']/input")))
                 flag = true;
         }catch (Exception e){
             flag = false;
@@ -180,7 +179,7 @@ public class ProgressReportPage extends ProjectManager {
     public Boolean isCheckboxFieldEditable(String fieldApiName){
         boolean flag=true;
             try {
-                EyeThink.core().elementReference().onWeb(By.xpath("//span[@id='" + fieldApiName +"']/input[@type='checkbox']")).getAttribute("disabled");
+                EyeThink.core().elementReference().of(By.xpath("//span[@id='" + fieldApiName +"']/input[@type='checkbox']")).getAttribute("disabled");
                     flag = false;
             }catch (Exception e){
                 flag = true;
@@ -203,7 +202,7 @@ public class ProgressReportPage extends ProjectManager {
      */
     public Boolean isbuttonDisplayedOnApprovalDecisionBox(String radioButtonOption){
         try {
-            EyeThink.core().is().onWeb().isDisplayed(By.xpath("//div/span/input[@name='myRadio' and @value='" + radioButtonOption + "']"));
+            EyeThink.core().is().isDisplayed(By.xpath("//div/span/input[@name='myRadio' and @value='" + radioButtonOption + "']"));
             return true;
         }catch (Exception e){
             return false;
@@ -220,13 +219,7 @@ public class ProgressReportPage extends ProjectManager {
 
     public boolean compareTwoFieldValues(String savedValue1, String compare, String savedValue2){
         Double value1 = Double.valueOf(EyeThink.core().Properties().getValue(savedValue1).replaceAll("[^0-9.]", ""));
-        System.out.println("+++++++++++"+value1);
         Double value2 = Double.valueOf(EyeThink.core().Properties().getValue(savedValue2).replaceAll("[^0-9.]", ""));
-        System.out.println("+++++++++++"+value2);
-
         return compare.equalsIgnoreCase("Less Than") ? value1<value2 : compare.equalsIgnoreCase("Greater Than") ? value1 > value2 : value1 == value2;
     }
-
-
 }
-

@@ -2,7 +2,9 @@
 Feature: Validate all scenarios in Negotiations
 
   Background: To setup data
-    Given I delete the record "Automation Announcement for FDM" from the object "FDM"
+    Given I delete the record "Automation Desk Review" from the object "Desk Review"
+    When I delete the record "Automation Site Visit" from the object "Site Visit"
+    And I delete the record "Automation Announcement for FDM" from the object "FDM"
 
   @57032 @57031 @negotiationInitiatedAndSendToRecipient @deepika
   Scenario: Validate the the Negotiation option on the Approved FDM and Announcement Owner can send the Negotiation request to the Applicant

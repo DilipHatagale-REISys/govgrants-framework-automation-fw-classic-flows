@@ -27,7 +27,7 @@ public class ProgressReportSteps {
         progressReportPage.assertToggleOptionNotDisplayed(anyItemToBeCheck,
                 flexTableId,
                 usage.contains("softly")
-                );
+        );
     }
 
     @Description("To verify specified column values inside flex table")
@@ -37,7 +37,7 @@ public class ProgressReportSteps {
                 columnName,
                 flexTableId,
                 usage.contains("softly")
-                );
+        );
     }
 
     @Description("To click on any hyperlink inside page details")
@@ -94,12 +94,12 @@ public class ProgressReportSteps {
 
     @Description("To verify radiobutton on approval decison box")
     @Then("^I (softly see|see|do not see|softly do not see) \"([^\"]*)\" option on approval decision box$")
-    public void iDoNotSeeOptionOnApprovalDecisionBox(String seeornot,String radiobuttonOption) {
-        if (seeornot.equals("see")){
+    public void iDoNotSeeOptionOnApprovalDecisionBox(String seeornot, String radiobuttonOption) {
+        if (seeornot.equals("see")) {
             Assert.assertTrue(progressReportPage.isbuttonDisplayedOnApprovalDecisionBox(radiobuttonOption));
-        } else if (seeornot.equalsIgnoreCase("do not se")){
+        } else if (seeornot.equalsIgnoreCase("do not se")) {
             Assert.assertFalse(progressReportPage.isbuttonDisplayedOnApprovalDecisionBox(radiobuttonOption));
-        } else if (seeornot.equalsIgnoreCase("softly see")){
+        } else if (seeornot.equalsIgnoreCase("softly see")) {
             EyeThink.core().assertion().assertThat(progressReportPage.isbuttonDisplayedOnApprovalDecisionBox(radiobuttonOption)).isTrue();
         } else if (seeornot.equalsIgnoreCase("softly do not see")) {
             EyeThink.core().assertion().assertThat(progressReportPage.isbuttonDisplayedOnApprovalDecisionBox(radiobuttonOption)).isFalse();
@@ -115,8 +115,8 @@ public class ProgressReportSteps {
     @Description("To compare two saved values")
     @Then("^I (see|softly see) value \"([^\"]*)\" is \"([^\"]*)\" the value \"([^\"]*)\"$")
     public void iSeeValueIsTheValue(String usage, String savedValue1, String compare, String savedValue2) {
-        if (usage.contains("softly")){
-            EyeThink.core().assertion().assertThat(progressReportPage.compareTwoFieldValues(savedValue1,compare,savedValue2)).isTrue();
+        if (usage.contains("softly")) {
+            EyeThink.core().assertion().assertThat(progressReportPage.compareTwoFieldValues(savedValue1, compare, savedValue2)).isTrue();
         } else {
             Assert.assertTrue(progressReportPage.compareTwoFieldValues(savedValue1, compare, savedValue2));
         }
