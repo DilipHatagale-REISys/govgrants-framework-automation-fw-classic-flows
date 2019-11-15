@@ -590,7 +590,6 @@ Feature: Validate all scenarios in Negotiations
     And I navigate to "Applications" tab
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:negotiationCompletedTaskTableId---" panel
-    #Then I do not see values "{SavedValue:EGMSID}" and "Automation Announcement for FDM" inside table
     Then I softly see "No Records Found" inside flex table with id "---negotiation:-:negotiationCompletedTaskTableId---"
 
   @58034 @userCannotSeeIntiationButtonAfterIntiated @deepika
@@ -672,8 +671,8 @@ Feature: Validate all scenarios in Negotiations
     When I download the file
     Then I see "Negotiation Initiated" on page "1" of "govgrants" pdf file
 
-  @64851 @downloadNegotiationsRequestInPDF @deepika @wip
-  Scenario: Validate whether user can Download the Completed Negotiations in PDF format.
+  @64851 @historyBeforeAndAfterNegotitionComplete @deepika
+  Scenario: Validate whether user is able to Create Subaward from the Applications Tab Once Negitiation is completed and user is able to view the completed Negotiation from it
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
@@ -702,16 +701,14 @@ Feature: Validate all scenarios in Negotiations
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:phasePendingTasksTableId---" panel
     And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:phasePendingTasksTableId---"
+    When I navigate to "History" sub tab
+    Then I softly see value "Negotiation Initiated" for title "New Value" inside table "History"
     When I click on "Complete Negotiation" in the page details
-    Then I softly can see top right button "Create Subaward" in page detail
-    And I navigate to "Applications" tab
-    When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
-    When I click on top right parallel lines bar for "Completed Negotiations"
-    And I select "Download as PDF" from parallel lines dropdown of "Completed Negotiations"
-    Then I verify that "pdf" file is downloaded
+    Then I softly see value "Negotiated" for title "New Value" inside table "History"
+    Then I collect all the soft asserts
 
-  @64852 @downloadCompletedNegotiationsInXLS @deepika @wip
-  Scenario: Validate whether user can Download the Completed Negotiations in XLS format
+  @fieldValuesAFterNegotiationComplete @deepika
+  Scenario: Validate whether user is able to see the fields that after Negotiation is Completed
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
@@ -741,9 +738,35 @@ Feature: Validate all scenarios in Negotiations
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:phasePendingTasksTableId---" panel
     And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:phasePendingTasksTableId---"
     When I click on "Complete Negotiation" in the page details
-    Then I softly can see top right button "Create Subaward" in page detail
+    And I navigate to "Negitiations" sub tab
+    Then I softly see field "Created Date" is getting updated with todays date
+    Then I softly see field "Status" as "Complete"
+    Then I collect all the soft asserts
+
+  @65074 @fieldupdateBySPI @deepika
+  Scenario: Validate whether SPI user can edit the field of Negotiation Request from Application tab
+    Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
-    When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
-    When I click on top right parallel lines bar for "Completed Negotiations"
-    And I select "Download as XLS" from parallel lines dropdown of "Organization Risk Assessments"
-    Then I verify that "xls" file is downloaded
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    When I click on "Initiate Negotiation" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    When I get the "EGMS ID"
+    And I navigate to "Negotiations" sub tab
+    When I clear the value from field "ApplicationSectionsForRevision__c"
+    When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Applications" tab
+    When I navigate to "Negotiations" content inside "Applications" subheader on left panel
+    And I perform quick search for "Record Id" in "---negotiation:-:applicationsflexTableId---" panel
+    When I click on "View" icon for "Record Id" inside flex table with id "---negotiation:-:applicationsflexTableId---"
+    When I navigate to "Negotiations" sub tab
+    And I click on "Edit" in the page details
+    And I enter values into fields
+      | Value                              | Field                |
+      | Automation Negotiation Iniatiation | ApplicantResponse__c |
+    When I click on "Save" in the page details
+    Then I see field "Details" as "Automation Negotiation Iniatiation"
