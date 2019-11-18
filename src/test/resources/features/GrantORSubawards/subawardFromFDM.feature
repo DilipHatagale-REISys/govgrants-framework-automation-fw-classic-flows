@@ -977,32 +977,3 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                      | Award Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
-  @64722 @VerifyRelatedFocusAreasField  @keerti
-    Scenario Outline: Verify Related Focus Areas field value setup tab overview at announcement is same on grant which is created with application Overview Tab.
-    When I navigate to "Announcements" tab
-    When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
-    And I click on "View" icon for "<Grant Name>" inside table
-    When I navigate to "Setup" sub tab
-    When I perform quick search for "Automation Permanent Focus Area" in "AnnouncementServiceArea1" panel
-    And I click on "View" icon for "Automation Permanent Focus Area" inside table
-    And I save the field labeled "Title" as "title"
-    And I close modal by clicking the top right x button
-    And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Draft"
-    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside table
-    When I navigate to "Overview" sub tab
-    And I pause execution
-    Then I see value "{SavedValue:title}" for title "Title" inside table "GrantFocusAreas"
-    Examples:
-      | Grant Name                      | Award Name                      |
-      | Automation Announcement for FDM | Automation Announcement for FDM |
-
-  @64793 @VerifyObjectivesFieldValueOnPerformanceTab  @keerti
-    Scenario: Verify SR user is not able to view the grant whose status is draft.
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-    When I navigate to "Grants" tab
-    And I click toggle button to select "Grants - All"
-    And I perform quick search for "Record id" in "GrantsList" panel
-    Then I do not see value "Record id" for title "EGMS ID" inside table "GrantsList"
