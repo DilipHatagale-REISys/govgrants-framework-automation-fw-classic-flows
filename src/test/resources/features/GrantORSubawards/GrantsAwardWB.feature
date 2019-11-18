@@ -173,6 +173,11 @@ Feature: Validate all scenarios of grants and award without background
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
       | Budget Category Type is required. |
+    And I clear the value from field "InternalOrganization__c"
+    When I enter value "Construction" into field "BudgetCategoryPackage__c"
+    And I click modal button "Continue"
+    Then I softly see the following messages in the page details :
+      | Subrecipient Organization is required. |
     Then I collect all the soft asserts
 
   @64424 @VerifyRequiredMatch%Filed @keerti
