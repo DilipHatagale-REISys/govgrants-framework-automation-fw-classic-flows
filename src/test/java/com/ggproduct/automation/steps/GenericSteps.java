@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Description;
 
 import javax.mail.MessagingException;
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -284,4 +285,8 @@ public class GenericSteps {
         projectManager.riskAssessmentApi(organizationName);
     }
 
+    @Then("I see {string} image as {string}")
+    public void compareImages(String fieldLabel,String imageName) throws IOException, IOException {
+        projectManager.assertRiskLevelImage(fieldLabel,imageName);
+    }
 }
