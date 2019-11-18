@@ -195,3 +195,17 @@ Feature: Validate all scenarios of grants and award without background
     And I click modal button "Save and Continue"
     Then I see the following messages in the page details :
       | If you select Subrecipient Match Required setting as Yes then you need to set value for Required Match % |
+
+  @64951 @VerifyPreviousReviewStepbuttonOnFDM @mahadev
+  Scenario: Verify when user click on Previous Review Step button it navigate to Management Review Page
+    Given I delete the record "Automation Desk Review" from the object "Desk Review"
+    When I delete the record "Automation Site Visit" from the object "Site Visit"
+    And I delete the record "Automation Announcement for FDM" from the object "FDM"
+    When I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    And I click on "Previous Review Step" in the page details
+    Then I see field "Status" as "Completed"

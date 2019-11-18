@@ -1,23 +1,23 @@
 @riskAssessment @regression
 Feature: Risk Assessment scenarios without background
 
-  @59252 @riskAssessmentSetasNoAtAnnouncementSettings @deepika
+  @59252 @64792 @riskAssessmentSetasNoAtAnnouncementSettings @deepika
   Scenario Outline: Validate filling/creating risk assessment is not applicable when setting is No
     Given I delete the record "Automation Desk Review" from the object "Desk Review"
     When I delete the record "Automation Site Visit" from the object "Site Visit"
-    And I delete the record "Automation Competitive Announcement" from the object "Subaward"
-    When I delete the record "Automation Competitive Announcement" from the object "Grant"
-    And I delete the record "Automation Competitive Announcement" from the object "FDM"
-    When I delete the record "Automation Competitive Announcement" from the object "APPLICATION REVIEWS"
-    And I delete the record "Automation Competitive Announcement" from the object "Application"
-    When I delete the record "Automation Competitive Announcement" from the object "Qualified Announcement"
-    And  I delete the record "Automation Competitive Announcement" from the object "Announcement"
+    And I delete the record "<Announcement Name>" from the object "Subaward"
+    When I delete the record "<Announcement Name>" from the object "Grant"
+    And I delete the record "<Announcement Name>" from the object "FDM"
+    When I delete the record "<Announcement Name>" from the object "APPLICATION REVIEWS"
+    And I delete the record "<Announcement Name>" from the object "Application"
+    When I delete the record "<Announcement Name>" from the object "Qualified Announcement"
+    And  I delete the record "<Announcement Name>" from the object "Announcement"
     And I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
-    And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I enter in modal "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
     When I enter "RiskAssessmentNo" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -40,142 +40,16 @@ Feature: Risk Assessment scenarios without background
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I navigate to "Setup" sub tab
+    When I enter the following values into flex table with id "flexGridAnnouncementChecklists" by clicking "Add" :
+      | Description | Required | Applies To | Status |
+      | Automation  | Optional | Award      | Active |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
-    When I enter the following values into flex table with id "---announcement:-:reviewersTableId---" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
-      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
-    And I click on "Send for Review" icon for "Automation FO" inside table
-    And I get the "EGMS ID"
-    And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    When I navigate to "Announcements" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record id" in "---announcement:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record id" inside table
-    When I navigate to "Responsibilities" tab
-    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---announcement:-:reviewersTableId---"
-    And I enter values into fields
-      | Value  | Field             |
-      | Passed | Rating__c         |
-      | Passed | ReviewComments__c |
-    When I click modal button "Save"
-    And I click modal button "Submit Review"
-    When I close "Enter Review" modal by clicking the top right x button
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Announcements" tab
-    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Competitive Announcements"
-    And I perform quick search for "Record Id" in "---announcement:-:competitiveAnnouncementTableId---" panel
-    And I click on "View" icon for "Record Id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
-    Given I click on "Complete Review" in the page details
-    And I navigate to "Setup" sub tab
-    And I expand nested table containing column value "Pre-Screen Review"
-    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Eligibility    | 50                 |
-      | Completeness   | 50                 |
-    And I expand nested table containing column value "Eligibility"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Eligibility"
-    And I expand nested table containing column value "Completeness"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    When I close "Review Form" modal by clicking the top right x button
-    When I collapse nested table containing column value "Pre-Screen Review"
-    And I expand nested table containing column value "SME Review"
-    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Schedule       | 30                 |
-      | Environment    | 30                 |
-      | Permits        | 40                 |
-    And I expand nested table containing column value "Schedule"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Schedule"
-    And I expand nested table containing column value "Environment"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Environment"
-    And I expand nested table containing column value "Permits"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Permits"
-    When I close "Review Form" modal by clicking the top right x button
-    When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Budget         | 30                 |
-      | Match          | 40                 |
-      | Program Income | 30                 |
-    And I expand nested table containing column value "Budget"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Budget"
-    And I expand nested table containing column value "Match"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Match"
-    And I expand nested table containing column value "Program Income"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Program Income"
-    When I close "Review Form" modal by clicking the top right x button
-    When I click on "Review Form" icon for "Program Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Capability     | 30                 |
-      | Approach       | 30                 |
-      | Impact         | 40                 |
-    And I expand nested table containing column value "Capability"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Capability"
-    And I expand nested table containing column value "Approach"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Approach"
-    And I expand nested table containing column value "Impact"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Impact"
-    When I close "Review Form" modal by clicking the top right x button
-    When I collapse nested table containing column value "SME Review"
-    And I expand nested table containing column value "Management Review"
-    When I click on "Review Form" icon for "Management Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header             | Section Weight (%) |
-      | Return on Investment (ROI) | 50                 |
-      | Strategic Alignment        | 50                 |
-    And I expand nested table containing column value "Return on Investment (ROI)"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I collapse nested table containing column value "Return on Investment (ROI)"
-    And I expand nested table containing column value "Strategic Alignment"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    When I close "Review Form" modal by clicking the top right x button
-    When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     When I get the "EGMS ID"
@@ -184,11 +58,6 @@ Feature: Risk Assessment scenarios without background
       | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Announcements" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
     And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -212,8 +81,8 @@ Feature: Risk Assessment scenarios without background
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "Automation Competitive Announcement" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
-    When I click on "View" icon for "Automation Competitive Announcement" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    And I perform quick search for "<Announcement Name>" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "Qualify" in the page details
     When I click on "Create Application" in the page details
     And I click modal button "Save and Continue"
@@ -373,6 +242,7 @@ Feature: Risk Assessment scenarios without background
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     When I click on "Funding Decision Memo" in the page details
+    Then I softly see field "Status" as "Created"
     And I click on "Edit" in the page details
     When I enter values into fields
       | Value                       | Field                 |
@@ -404,7 +274,10 @@ Feature: Risk Assessment scenarios without background
     And I enter value "Automation Test Description" into field "fieldGrantAwardDescription__c"
     When I click on "Save" in the page details
     And I navigate to "Management" sub tab
-    Then I cannot see page block "Subaward Risk Assessments"
+    Then I softly cannot see page block "Subaward Risk Assessments"
+    And I navigate to "Attachments" sub tab
+    Then I softly see value "Not Applicable" for title "Template Link" against the value "Automation" inside table "flexGridAwardChecklists"
+    Then I collect all the soft asserts
     Examples:
       | Announcement Name                   | Application Name                    |
       | Automation Competitive Announcement | Automation Competitive Announcement |
@@ -1494,4 +1367,3 @@ Feature: Risk Assessment scenarios without background
     And I navigate to "Risk Assessment" sub tab
     Then I softly see field "OverAll Risk" as "{SavedValue:OverAllRisk}"
     Then I collect all the soft asserts
-

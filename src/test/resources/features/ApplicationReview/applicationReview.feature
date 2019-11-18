@@ -1110,8 +1110,8 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
 
-  @51056 @subAwardAbbreviationInFDM
-  Scenario Outline: Adding a sub-award abbreviation in FDM
+  @51056  @64949 @subAwardAbbreviationInFDM
+  Scenario Outline: Adding a sub-award abbreviation in FDM | Verify when user click on Funding Decision Memo button it navigate to Funding Decision Memo Page
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
@@ -1249,10 +1249,12 @@ Feature: Validate all scenarios in the Application Review
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     When I click on "Funding Decision Memo" in the page details
+    Then I softly see field "Status" as "Created"
     And I click on "Edit" in the page details
     When I enter value "AuGr" into field "GrantCode__c"
     And I click on "Save" in the page details
-    Then I see that "Funding Decision Memo" is in "Created" status
+    Then I softly see that "Funding Decision Memo" is in "Created" status
+    Then I collect all the soft asserts
     Examples:
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
