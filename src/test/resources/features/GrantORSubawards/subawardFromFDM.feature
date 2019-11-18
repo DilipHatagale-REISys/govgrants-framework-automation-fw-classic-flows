@@ -859,7 +859,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                      |
       | Automation Announcement for FDM |
 
-  @64570 @64566 @64720 @64721 @64569 @64719 @64723 @64568 @64564 @64718 @VerifyWorkPlanRequiredFocusAreaRequiredProjectPeriodStartDateProjectPeriodEndDate  @keerti
+  @64570 @64566 @64720 @64721 @64569 @64719 @64723 @64568 @64564 @64718 @64562 @VerifyWorkPlanRequiredFocusAreaRequiredProjectPeriodStartDateProjectPeriodEndDate  @keerti
     Scenario Outline: Verify Work Plan Required? field setting entered at announcement is same on grant which is created with application.
     When I navigate to "Announcements" tab
     When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
@@ -869,6 +869,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I save the field labeled "Program ID" as "ProgramID"
     And I save the field labeled "KPI" as "KPI"
     And I save the field labeled "Work Plan Required?" as "WPR"
+    And I save the field labeled "Program Income Allowed?" as "PIA"
     And I save the field labeled "Focus Area Required?" as "FAR"
     And I save the field labeled "Project Period Start Date" as "PPSD"
     And I save the field labeled "Project Period End Date" as "PPED"
@@ -884,6 +885,7 @@ Feature: Validate all scenarios in the award created from FDM
     Then I softly see field "Work Plan Required?" as "{SavedValue:WPR}"
     Then I softly see field "Focus Area Required?" as "{SavedValue:FAR}"
     Then I softly see field "Project Period Start Date" as "{SavedValue:PPSD}"
+    Then I softly see field "Program Income Allowed?" as "{SavedValue:PIA}"
     Then I softly see field "Project Period End Date" as "{SavedValue:PPED}"
     Then I softly see field "Created by" as "{SavedValue:CreatedBy}"
     Then I softly see field "KPI" as "{SavedValue:KPI}"
@@ -974,3 +976,33 @@ Feature: Validate all scenarios in the award created from FDM
     Examples:
       | Grant Name                      | Award Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
+
+  @64722 @VerifyRelatedFocusAreasField  @keerti
+    Scenario Outline: Verify Related Focus Areas field value setup tab overview at announcement is same on grant which is created with application Overview Tab.
+    When I navigate to "Announcements" tab
+    When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Setup" sub tab
+    When I perform quick search for "Automation Permanent Focus Area" in "AnnouncementServiceArea1" panel
+    And I click on "View" icon for "Automation Permanent Focus Area" inside table
+    And I save the field labeled "Title" as "title"
+    And I close modal by clicking the top right x button
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Overview" sub tab
+    And I pause execution
+    Then I see value "{SavedValue:title}" for title "Title" inside table "GrantFocusAreas"
+    Examples:
+      | Grant Name                      | Award Name                      |
+      | Automation Announcement for FDM | Automation Announcement for FDM |
+
+  @64793 @VerifyObjectivesFieldValueOnPerformanceTab  @keerti
+    Scenario: Verify SR user is not able to view the grant whose status is draft.
+    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I navigate to "Grants" tab
+    And I click toggle button to select "Grants - All"
+    And I perform quick search for "Record id" in "GrantsList" panel
+    Then I do not see value "Record id" for title "EGMS ID" inside table "GrantsList"
