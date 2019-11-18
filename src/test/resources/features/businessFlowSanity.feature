@@ -89,8 +89,8 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I get the "EGMS ID"
     When I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "---program:-:checklistTableId---" by clicking "Add" :
-      | Description                 | Required  | Applies To  | Status |
-      | Automation test description | Mandatory | Application | Active |
+      | Description                 | Required | Applies To  | Status |
+      | Automation test description | Optional | Application | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---"
     And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
     When I close "Upload Template" modal by clicking the top right x button
@@ -118,7 +118,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @publishingCompetitiveAnnouncementCA
+  @publishingCompetitiveAnnouncementCA @65077
   Scenario: Validate the activation of Competitive Announcement
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -318,8 +318,10 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click toggle button to select "Draft Competitive Announcements"
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "View" icon for "Record id" inside table
+    Then I softly can see top right button "Publish" in page detail
     And I click on "Publish" in the page details
-    Then I see status in Progress-bar is "Published" and is "green"
+    Then I softly see status in Progress-bar is "Published" and is "green"
+    Then I collect all the soft asserts
 
   @publishingDirectedAnnouncement
   Scenario: Validate the activation of Directed Announcement
