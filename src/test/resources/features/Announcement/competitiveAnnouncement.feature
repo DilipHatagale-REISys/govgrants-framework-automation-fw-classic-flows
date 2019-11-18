@@ -59,7 +59,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
-    And I click modal button "Submit Review"
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -249,7 +248,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
-    And I click modal button "Submit Review"
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -426,7 +424,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
-    And I click modal button "Submit Review"
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -616,7 +613,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
-    And I click modal button "Submit Review"
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -801,7 +797,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
-    And I click modal button "Submit Review"
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     Given I am on "INTERNAL" portal
