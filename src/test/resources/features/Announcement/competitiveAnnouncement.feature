@@ -753,8 +753,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Type |
       | Competitive       |
 
-  @announcementRejectPendingTaskForNextApproverCA @announcementPostRejectionCheckInListViewCA @announcementPostRejectCompletedTaskForUserCA @announcementPostRejectPendingTaskForUserCA
-  Scenario Outline: Validate that after rejection of an Announcement task get added to it's completed task table. || Validate that after rejection from 1st approver, 2nd user should not get pending task || Validate that after rejection of an Announcement task get deleted from pending task table.
+  @65080 @VerifyDraftAnnouncementIsNotDisplayedForSRUer @keerti
+  Scenario Outline: Verify Draft announcement is not displayed at SR user end.
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -799,13 +799,11 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click modal button "Save"
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    Given I am on "INTERNAL" portal
-    When I login as "EXE" user
     And I navigate to "Announcements" tab
-    And I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Draft Competitive Announcements"
-    When I perform quick search for "Record Id" in "<Active Funding Opportunities id>" panel
-    When I click on "View" icon for "Record Id" inside flex table with id "<Active Funding Opportunities id>"
+    When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
+    When I click toggle button to select "Draft Competitive Announcements"
+    And I perform quick search for "Record Id" in "ActiveFundingOpportunitiesCompitive" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "ActiveFundingOpportunitiesCompitive"
     Given I click on "Complete Review" in the page details
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
@@ -921,31 +919,10 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Announcements" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
-    And I "Disapprove" in approval decision
-    When I navigate to "Announcements" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    Then I softly do not see values "Record Id" and "Automation Competitive Announcement" inside table
-    And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "PhaseCompletedTasks" panel
-    Then I softly see value "Record Id" for title "EGMS ID" inside table "PhaseCompletedTasks"
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Announcements" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    Then I softly do not see value "Record Id" for title "EGMS ID" inside table "PhasePendingTasks"
-    And I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    When I navigate to "Announcements" tab
-    And I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Rejected Competitive Announcements"
-    And I perform quick search for "Record id" in "ActiveFundingOpportunitiesCompitive" panel
-    Then I softly see value "Record Id" for title "EGMS ID" inside table "ActiveFundingOpportunitiesCompitive"
-    And I collect all the soft asserts
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Opportunities" tab
+    And I perform quick search for "Record Id" in "popupflextable" panel
+    Then I do not see value "Record Id" for title "Announcement ID" inside table "popupflextable"
     Examples:
-      | Announcement Type | Active Funding Opportunities id     |
-      | Competitive       | ActiveFundingOpportunitiesCompitive |
+      | Announcement Type |
+      | Competitive       |

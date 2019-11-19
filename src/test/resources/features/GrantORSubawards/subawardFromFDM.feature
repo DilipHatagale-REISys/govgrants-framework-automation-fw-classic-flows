@@ -993,7 +993,6 @@ Feature: Validate all scenarios in the award created from FDM
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Overview" sub tab
-    And I pause execution
     Then I see value "{SavedValue:title}" for title "Title" inside table "GrantFocusAreas"
     Examples:
       | Grant Name                      | Award Name                      |
