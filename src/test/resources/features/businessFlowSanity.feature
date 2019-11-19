@@ -386,7 +386,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
-    And I click modal button "Submit Review"
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -588,7 +587,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
-    And I click modal button "Submit Review"
     When I close "Enter Review" modal by clicking the top right x button
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab

@@ -915,7 +915,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     Then I softly see "{SavedValue:Record Id}" on page "1" of "govgrants" pdf file
 
   @61990 @RecordOwnerCanViewCompletedTask @keerti
-  Scenario: Validate whether user is able to view the Completed task once approved under Monitoring Tab - Org Level Desk reviewDesk Review
+  Scenario: Validate whether user is able to view the Completed task once approved under Monitoring Tab - Org Level Desk review
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
@@ -1141,7 +1141,7 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Due date must be past date |
 
   @65072 @foUserCannotDeleteCreatedOrgDesskReview @deepika
-  Scenario: Validate whether other than record onwer Fo user can delete the created Org Level Desk Review
+  Scenario: Validate the Created Date of Risk Assessment display on Overview Tab and other than record onwer Fo user can delete the created Org Level Desk Review
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Creation" values from "Organizational_DeskReview_Field_Values.xlsx"
@@ -1150,6 +1150,8 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
+    Given I navigate to "Overview" sub tab
+    Then I softly see field "StartDate__c" is not editable
     And I get the "EGMS ID"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Home" tab
@@ -1158,7 +1160,8 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table
     When I navigate to "Related log" sub tab
     When I perform quick search for "Record Id" in "DeskReview" panel
-    Then I see "No Records Found" inside flex table with id "DeskReview"
+    Then I softly see "No Records Found" inside flex table with id "DeskReview"
+    Then I collect all the soft asserts
 
   @65073 @recordOwnerhasAccesstoDeleteassociatedContactand @deepika @wip
   Scenario: Validate whether record owner has access to delete the asoociated Contact and Award to Desk Review Org Level
@@ -1180,3 +1183,50 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on "Remove" icon for "Automation Award for Amendment Request" inside flex table with id "---orgLevelDeskReview:-:selectAwardId---"
     Then I softly see "No Records Found" inside flex table with id "---orgLevelDeskReview:-:selectAwardId---"
     Then I collect all the soft asserts
+
+  @65150 @reviewerCanNotEditAfterSubmittingtheReviewOrgLevel @deepika
+  Scenario: Validate after submitting the review comments for Org Level Desk Review, the Edit button should will be unavailable for the reviewer
+    Given I navigate to "Related Log" sub tab
+    And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
+    And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    When I click on "Cancel" in the page details
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "Edit" :
+      | Responsibilities | Name          | Description                 |
+      | Program Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver  | Automation PM | Automation Test Description |
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
+    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I get the "EGMS ID"
+    And I click on "Notify" in the page details
+    When I click on "Conduct" in the page details
+    And I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "flexGridSiteVisitReviewerRoles" by clicking "New" :
+      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "Automation FO" inside table
+    And I get the "EGMS ID"
+    And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
+    When I navigate to "Responsibilities" tab
+    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridSiteVisitReviewerRoles"
+    And I enter values into fields
+      | Value  | Field             |
+      | Passed | Rating__c         |
+      | Passed | ReviewComments__c |
+    When I click modal button "Save"
+    And I click modal button "Submit Review"
+    When I close "Site Visit Reviewers" modal by clicking the top right x button
+    Then I cannot see top right button "Edit" in page detail
+
+
