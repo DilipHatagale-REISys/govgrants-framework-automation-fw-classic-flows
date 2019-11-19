@@ -17,7 +17,7 @@ Feature: Risk Assessment scenarios without background
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
-    And I enter in modal "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I enter in modal "competitive1" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
     When I enter "RiskAssessmentNo" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -277,8 +277,8 @@ Feature: Risk Assessment scenarios without background
       | Automation Test Description | fieldJustification__c |
     And I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
-      | Application Title                   | Recommended Budget | Recommend for Funding | Comments    |
-      | Automation Competitive Announcement | 500                | Yes                   | Recommended |
+      | Application Title         | Recommended Budget | Recommend for Funding | Comments    |
+      | Automation  Announcement1 | 500                | Yes                   | Recommended |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
@@ -295,9 +295,9 @@ Feature: Risk Assessment scenarios without background
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
-    When I perform quick search for "Automation Competitive Announcement" in "---subAwardFromFDM:-:fdmTableId---" panel
-    And I click on "View" icon for "Automation Competitive Announcement" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
-    And I click on "Create Subaward" icon for "Automation Competitive Announcement" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    When I perform quick search for "<Announcement Name>" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    And I click on "Create Subaward" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I enter value "Automation Test Description" into field "fieldGrantAwardDescription__c"
     When I click on "Save" in the page details
     And I navigate to "Management" sub tab
@@ -310,8 +310,8 @@ Feature: Risk Assessment scenarios without background
     Then I softly see value "Automation FO" for title "Reviewer Name" inside table "flexGridGrantorAwardReviewer"
     Then I collect all the soft asserts
     Examples:
-      | Announcement Name                   | Application Name                    |
-      | Automation Competitive Announcement | Automation Competitive Announcement |
+      | Announcement Name         | Application Name          |
+      | Automation  Announcement1 | Automation  Announcement1 |
 
   @59955 @awardIsActiveSecondRiskAssessmentIsInCreatedState @deepika @wip
   Scenario Outline: Validate when an award was activated with one active risk assessment and has other risk assessment which in created state should not get submitted for approval
