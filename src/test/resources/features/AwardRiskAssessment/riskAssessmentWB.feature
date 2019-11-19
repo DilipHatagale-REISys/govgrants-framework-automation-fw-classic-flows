@@ -1,8 +1,8 @@
 @riskAssessment @regression
 Feature: Risk Assessment scenarios without background
 
-  @59252 @64792 @riskAssessmentSetasNoAtAnnouncementSettings @deepika
-  Scenario Outline: Validate filling/creating risk assessment is not applicable when setting is No
+  @59252 @64792 @64942 @64944 @64944 @validateDataOnGrantAward @deepika
+  Scenario Outline: Validate (risk assessment | Notes | Peer Reviewer) on grant/award
     Given I delete the record "Automation Desk Review" from the object "Desk Review"
     When I delete the record "Automation Site Visit" from the object "Site Visit"
     And I delete the record "<Announcement Name>" from the object "Subaward"
@@ -21,11 +21,9 @@ Feature: Risk Assessment scenarios without background
     And I click modal button "Continue"
     When I enter "RiskAssessmentNo" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    When I click on "Save" in the page details
-    And I get the "EGMS ID"
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
+    And I get the "EGMS ID"
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
@@ -37,9 +35,8 @@ Feature: Risk Assessment scenarios without background
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
     When I click "Add" after selection of "Automation EXE" in the table "---announcement:-:annoucementContactTableId---"
-    When I navigate to "Setup" sub tab
-    And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I navigate to "Attachments" sub tab
+    When I add the Notes for progress report
     When I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "flexGridAnnouncementChecklists" by clicking "Add" :
       | Description | Required | Applies To | Status |
@@ -50,6 +47,33 @@ Feature: Risk Assessment scenarios without background
       | Program Approver   | Automation PM  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
+    When I enter the following values into flex table with id "---announcement:-:reviewersTableId---" by clicking "New" :
+      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "Automation FO" inside table
+    And I get the "EGMS ID"
+    And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I navigate to "Announcements" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record id" in "---announcement:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record id" inside table
+    When I navigate to "Responsibilities" tab
+    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---announcement:-:reviewersTableId---"
+    And I enter values into fields
+      | Value  | Field             |
+      | Passed | Rating__c         |
+      | Passed | ReviewComments__c |
+    When I click modal button "Save"
+    And I pause execution for "15" seconds
+    And I click modal button "Submit Review"
+    When I close "Enter Review" modal by clicking the top right x button
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    When I click toggle button to select "Draft Competitive Announcements"
+    And I perform quick search for "Record Id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    Given I click on "Complete Review" in the page details
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     When I get the "EGMS ID"
@@ -88,6 +112,10 @@ Feature: Risk Assessment scenarios without background
     And I click modal button "Save and Continue"
     And I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    When I click on "Edit" icon for "Automation SPI" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    And I enter value "Checked" into field "IsKeyContact__c"
+    And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
@@ -110,10 +138,10 @@ Feature: Risk Assessment scenarios without background
     When I click on "Submit Application" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
-    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I perform quick search for "<Announcement Name>" in "AnnouncementList" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "AnnouncementList"
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name  | Due in Days |
@@ -138,7 +166,7 @@ Feature: Risk Assessment scenarios without background
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -203,7 +231,7 @@ Feature: Risk Assessment scenarios without background
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -234,7 +262,7 @@ Feature: Risk Assessment scenarios without background
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Review" subheader on left panel
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
@@ -277,6 +305,10 @@ Feature: Risk Assessment scenarios without background
     Then I softly cannot see page block "Subaward Risk Assessments"
     And I navigate to "Attachments" sub tab
     Then I softly see value "Not Applicable" for title "Template Link" against the value "Automation" inside table "flexGridAwardChecklists"
+    Then I softly see "Note Description" has been added in "Notes" flex table
+    When I navigate to "Responsibilities" sub tab
+    Then I softly see value "Automation PM" for title "Name" inside table "GrantorAwardOwnerRoles"
+    Then I softly see value "Automation FO" for title "Reviewer Name" inside table "flexGridGrantorAwardReviewer"
     Then I collect all the soft asserts
     Examples:
       | Announcement Name                   | Application Name                    |
