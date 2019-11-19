@@ -1665,7 +1665,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     Then I softly see field "Risk Level" as "Orange"
     Then I collect all the soft asserts
 
-  @64515 @overallRiSKScoreWhenAssessmentSelectedDiffQuestions@deepika
+  @64515 @overallRiSKScoreWhenAssessmentSelectedDiffQuestions @deepika
   Scenario: Validate the Low Risk Score of Risk Assessment, that shows the Overall Score as per the provided Assessment once Risk Assessment is Active
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
