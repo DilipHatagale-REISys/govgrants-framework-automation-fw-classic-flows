@@ -1415,7 +1415,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Management" sub tab
     Then I see that "{SavedValue:secID}" has been added in flextable with Id "---sitevisits:-:grantorSiteVisitsTableID---"
 
-  @deleteCreateSiteVisit @deepika
+  @65239 @deleteCreateSiteVisit @deepika
   Scenario: Validate whether user will be able to delete the created Site Visit
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1430,7 +1430,7 @@ Feature: Validate all scenarios in the Site Visit
       | Record deleted successfully. |
     Then I collect all the soft asserts
 
-  @historyOfSiteVisitsendbacktoOwner @deepika
+  @65240 @historyOfSiteVisitsendbacktoOwner @deepika
   Scenario: Validate History Field is getting Updated at Award owner End when Site Visit status is Submitted to Grantor.
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
@@ -1482,7 +1482,7 @@ Feature: Validate all scenarios in the Site Visit
     When I navigate to "History" sub tab
     Then I see value "Active" for title "New Value" inside table "History"
 
-  @ @corerctiveActionsDueDateSiteVisit @deepika
+  @65241 @corerctiveActionsDueDateSiteVisit @deepika
   Scenario: Validate Site Visit Submit to Grantor and Corrective Actions By Subrecipient
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
@@ -1551,7 +1551,7 @@ Feature: Validate all scenarios in the Site Visit
     Then I softly see the following messages in the page details :
       | Due date must be past date |
 
-  @foUserCannotDeleteCreatedSiteVisit @deepika
+  @65242 @foUserCannotDeleteCreatedSiteVisit @deepika
   Scenario: Validate whether other than record owner can Fo user view the created Site Visit by Pm
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab

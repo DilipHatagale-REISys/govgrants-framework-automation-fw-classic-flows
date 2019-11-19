@@ -1071,7 +1071,7 @@ Feature: Validate all scenarios in Desk Review
     And I download the file
     Then I verify that "xls" file is downloaded
 
-  @deleteCreateDeskReview @deepika @wip
+  @65244 @deleteCreateDeskReview @deepika
   Scenario: Validate whether user will be able to delete the created Desk Review
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1086,7 +1086,7 @@ Feature: Validate all scenarios in Desk Review
       | Record deleted successfully. |
     Then I collect all the soft asserts
 
-  @historyOfDeskReviewsendbacktoOwner @deepika
+  @65245 @historyOfDeskReviewsendbacktoOwner @deepika
   Scenario: Validate History Field is getting Updated at Award owner End when Desk Review status is Submitted to Grantor.
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
@@ -1133,7 +1133,7 @@ Feature: Validate all scenarios in Desk Review
     When I navigate to "History" sub tab
     Then I see value "Active" for title "New Value" inside table "History"
 
-  @corerctiveActionsDueDateDeskReview @deepika
+  @65246 @corerctiveActionsDueDateDeskReview @deepika
   Scenario: Validate Desk Review Submit to Grantor and Corrective Actions By Subrecipient
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
@@ -1203,7 +1203,7 @@ Feature: Validate all scenarios in Desk Review
     Then I softly see the following messages in the page details :
       | Due date must be past date |
 
-  @foUserCannotDeleteCreatedDeskReview @deepika
+  @65247 @foUserCannotDeleteCreatedDeskReview @deepika
   Scenario: Validate whether other than record owner can Fo user view the created Desk Review by PM
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
