@@ -6,7 +6,7 @@ Feature: Validate all scenarios of grants and award without background
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Grants" tab
     Then  I can see top right button "New" in flex table with id "ActiveGrants"
-    Examples:z
+    Examples:
       | User |
       | PM   |
       | EXE  |
