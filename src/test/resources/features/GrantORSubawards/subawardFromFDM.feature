@@ -37,6 +37,16 @@ Feature: Validate all scenarios in the award created from FDM
     Then I softly see that "Progress Report" has been added in flextable with Id "---subAwardFromFDM:-:progressReportSchedulesTableId---"
     Then I collect all the soft asserts
 
+  @64947 @BusinessFormProgressReport @jitendra
+  Scenario: Verify Business Forms for Progress report on announcement is same on grant Attachments Tab.
+    When I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:grantsTableId---" panel
+    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:grantsTableId---"
+    And I navigate to "Attachments" sub tab
+    And I see value "Progress Report" for title "Package Type" inside table "---subAwardFromFDM:-:grantPackagesTableId---"
+
   @awardApproverSelection
   Scenario: Validate the assignment of Approvers for the award
     When I navigate to "Responsibilities" sub tab
