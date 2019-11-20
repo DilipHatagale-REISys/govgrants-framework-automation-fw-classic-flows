@@ -4,9 +4,11 @@ import eyethink.automation.bots.Register.EnvironmentFetcher;
 import eyethink.automation.bots.Register.EyeThink;
 import eyethink.automation.bots.corelib.Emails;
 import eyethink.automation.bots.objects.Elements;
+import org.aspectj.util.FileUtil;
 import org.assertj.core.util.Files;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
 import org.springframework.context.annotation.Description;
 
@@ -396,6 +398,7 @@ public class ProjectManager extends ProjectWebServices {
      */
     public Boolean assertRiskLevelImage(String fieldLabel,String imageName) throws IOException {
         WebElement pathForRiskLevel = EyeThink.core().elementReference().of(By.xpath("//span[@class='customLabelstyle' and contains(text(),'"+fieldLabel+"')]/ancestor::dl[1]//dd//img"));
+        EyeThink.core().screenCapture().takeElementScreenShot(pathForRiskLevel, "green");
         return EyeThink.core().compare().image().isElementImage(pathForRiskLevel,imageName);
     }
 
