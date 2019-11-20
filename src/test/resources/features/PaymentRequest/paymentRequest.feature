@@ -10,6 +10,7 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
+    When I perform quick search for "Automation Permanent Award" in "---paymentRequest:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
 
   @38840 @creationOfAdhocReimbursementPaymentRequest @smoke
