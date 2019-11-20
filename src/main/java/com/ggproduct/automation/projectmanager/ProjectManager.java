@@ -390,4 +390,15 @@ public class ProjectManager extends ProjectWebServices {
         EyeThink.core().enterText().in(attachmentFilePath, defaultFilePath + fileName);
         EyeThink.core().click().on(By.xpath("//input[@value='Save']"));
     }
+
+    /**
+     * To verify RIsk level image
+     */
+    public Boolean assertRiskLevelImage(String fieldLabel,String imageName) throws IOException {
+        WebElement pathForRiskLevel = EyeThink.core().elementReference().of(By.xpath("//span[@class='customLabelstyle' and contains(text(),'"+fieldLabel+"')]/ancestor::dl[1]//dd//img"));
+        EyeThink.core().screenCapture().takeElementScreenShot(pathForRiskLevel, "green");
+        return EyeThink.core().compare().image().isElementImage(pathForRiskLevel,imageName);
+    }
+
+
 }

@@ -1139,7 +1139,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Overview" sub tab
     Then I see field "Risk Level" as "Orange"
 
-  @59807 @highRiskRAAssessmentFieldColorRed @deepika @wip
+  @59807 @highRiskRAAssessmentFieldColorRed @deepika
   Scenario: Validate after selecting certain combinations of answers on the  Form and submitting RA for approval, system sets high Risk with color as red
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1185,7 +1185,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     When I navigate to "Overview" sub tab
-    Then I see field "Risk Level" as "Red"
+    Then I see "Risk Level" image as "Red.png"
 
   @59808 @historyOfRiskAssessmentWhenSendBacktoOwnerbyPM @deepika
   Scenario: To Validate field history update post Risk Assessment is send back to owner by program approver.
@@ -2917,3 +2917,33 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     Then I see that "Automation Award for Risk Assessment" has been added in flextable with Id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
+
+  @testCompareImagesYellow
+  Scenario: To Test Compare Images of Risk Assessment - Yellow
+    Given I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    And I perform quick search for "RA-4203" in "flexGridRiskAssessmentGridViewInternal" panel
+    When I click on "View" icon for "RA-4203" inside flex table with id "flexGridRiskAssessmentGridViewInternal"
+    And I navigate to "Overview" sub tab
+    Then I see "Risk Level" image as "yellow.png"
+
+  @testCompareImagesRed
+  Scenario: To Test Compare Images of Risk Assessment - Red
+    Given I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    And I perform quick search for "RA-2480" in "flexGridRiskAssessmentGridViewInternal" panel
+    When I click on "View" icon for "RA-2480" inside flex table with id "flexGridRiskAssessmentGridViewInternal"
+    And I navigate to "Overview" sub tab
+    Then I see "Risk Level" image as "red.png"
+
+  @testCompareImagesGreen
+  Scenario: To Test Compare Images of Risk Assessment - Green
+    Given I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    And I perform quick search for "RA-4210" in "flexGridRiskAssessmentGridViewInternal" panel
+    When I click on "View" icon for "RA-4210" inside flex table with id "flexGridRiskAssessmentGridViewInternal"
+    And I navigate to "Overview" sub tab
+    Then I see "Risk Level" image as "green.png"
