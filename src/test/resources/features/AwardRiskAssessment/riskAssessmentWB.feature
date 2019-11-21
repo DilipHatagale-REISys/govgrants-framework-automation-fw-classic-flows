@@ -307,7 +307,7 @@ Feature: Risk Assessment scenarios without background
     Then I softly see "Note Description" has been added in "Notes" flex table
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Automation PM" for title "Name" inside table "GrantorAwardOwnerRoles"
-    Then I softly see value "Automation FO" for title "Reviewer Name" inside table "flexGridGrantorAwardReviewer"
+    Then I softly do not see value "Automation FO" for title "Reviewer Name" inside table "flexGridGrantorAwardReviewer"
     Then I collect all the soft asserts
     Examples:
       | Announcement Name         | Application Name          |
