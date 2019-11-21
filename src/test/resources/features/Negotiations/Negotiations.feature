@@ -313,7 +313,7 @@ Feature: Validate all scenarios in Negotiations
     Then I cannot see top right button "Create Subaward" in page detail
     Then I collect all the soft asserts
 
-  @57496 @57495 @userEditNegotiationIntitiatededitButtonHiddenOnceSendtoSubrecipient @deepika
+  @57496 @57495 @65293 @userEditNegotiationIntitiatededitButtonHiddenOnceSendtoSubrecipient @deepika
   Scenario: Validate whether user to able to see the Edit Negotiation Button once created and Send to Subrecipient
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -328,11 +328,15 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I softly can see top right button "Edit Negotiation" in page detail
+    When I click on "Edit Negotiation" in the page details
+    When I enter value "Negoatiation Initiated" into field "fieldExplanationOfRevisionsNeeded__c"
+    And I click on "Save" in the page details
+    Then I softly see field "Details" as "Negoatiation Initiated"
     When I click on "Send to Subrecipient" in the page details
     Then I softly cannot see top right button "Edit Negotiation" in page detail
     Then I collect all the soft asserts
 
-  @57500 @subrecipientCanEditNegotiations
+  @57500 @65196 @subrecipientCanEditNegotiations
   Scenario: Validate whether Subrecipient User can edit Negotiations once Send to Subrecipient
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -341,6 +345,7 @@ Feature: Validate all scenarios in Negotiations
     When I perform quick search for "Automation Announcement for FDM" in "---negotiation:-:negotiationAppReviewListTableId---" panel
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     When I click on "Initiate Negotiation" in the page details
+    Then I softly see selected element "Negotiation"
     When I save the field labeled "EGMS ID" as "EGMSID"
     And I navigate to "Negotiations" sub tab
     When I clear the value from field "ApplicationSectionsForRevision__c"
@@ -357,6 +362,7 @@ Feature: Validate all scenarios in Negotiations
       | Automation Negotiation Iniatiation | ApplicantResponse__c |
     When I click on "Save" in the page details
     Then I can see top right button "Edit" in page detail
+    Then I collect all the soft asserts
 
   @57502 @viewApplicationStatusOnceSubmitToGrantorFromApplicationListViewPage
   Scenario: Validate whether the user is able to see the Negotiation Initiated from the Application List View Page
@@ -376,7 +382,7 @@ Feature: Validate all scenarios in Negotiations
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     Then I can see row level action button "View" against "Automation Announcement for FDM" in flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
 
-  @57503 @subrecipientCannotEditNegotiationRequestOnceSubmitToGrantor
+  @57503 @65296 @subrecipientCannotEditNegotiationRequestOnceSubmitToGrantor
   Scenario: Validate whether Subrecipient user can edit Negotiations Details once Submit to Grantor
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -401,7 +407,10 @@ Feature: Validate all scenarios in Negotiations
       | Automation Negotiation Iniatiation | ApplicantResponse__c |
     When I click on "Save" in the page details
     When I click on "Submit to Grantor" in the page details
-    Then I cannot see top right button "Edit Negotiation" in page detail
+    Then I softly see the following messages in the page details :
+      | Are you sure you are ready to submit the Negotiation to the Grantor? |
+    Then I softly cannot see top right button "Edit Negotiation" in page detail
+    Then I collect all the soft asserts
 
   @57504 @57501 @userCanEditandSendToSubrecipientEvenAfterSubmitToGrantor
   Scenario: Verify that applicant able to see application status as “Negotiation Initiated” and user is able to Edit and Send to Subrecipient once Submit to Grantor
@@ -514,7 +523,7 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Save" in the page details
     Then I can see "Negotiations" sub tab at view detail page
 
-  @58030 @completedNegotiationAttachmentsNotes @deepika
+  @58030 @65324 @completedNegotiationAttachmentsNotes @deepika
   Scenario: Validate whether user is able to view the completed Negotiation on Applications Tab for Attachments Notes
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -545,7 +554,9 @@ Feature: Validate all scenarios in Negotiations
     And I navigate to "Applications" tab
     And I click toggle button to select "Applications - All"
     When I perform quick search for "Automation Announcement for FDM" in "---negotiation:-:negotiationAppReviewListTableId---" panel
-    Then I see values "Automation Announcement for FDM" and "Negotiated" inside table
+    Then I softly see values "Automation Announcement for FDM" and "Negotiated" inside table
+    Then I softly see status in Progress-bar is "Negotiated" and is "Green"
+    Then I collect all the soft asserts
 
   @58031 @applicationStatusReviewedAfterIntiationofNegotiation @deepika
   Scenario: Verify that on FDM View page when user click on Initiate Negotiation action then user is able to see status of application to “Reviewed”

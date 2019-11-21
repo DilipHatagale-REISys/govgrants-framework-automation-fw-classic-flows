@@ -289,4 +289,9 @@ public class GenericSteps {
     public void compareImages(String fieldLabel,String imageName) throws IOException, IOException {
         projectManager.assertRiskLevelImage(fieldLabel,imageName);
     }
+
+    @Then("I softly see selected element {string}")
+    public void SaveCurrentSelectedElementValue(String elementText) {
+        projectManager.getSelectedSubTab(elementText);
+    }
 }
