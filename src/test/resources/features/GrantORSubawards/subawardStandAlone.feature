@@ -2191,3 +2191,71 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Budget" sub tab
     When I click on "Remove" icon for "Automation Permanent Focus Area" inside flex table with id "---subAwardStandAlone:-:focusAreaTableId---"
     Then I do not see value "Automation Permanent Focus Area" for title "Title" inside table "---subAwardStandAlone:-:focusAreaTableId---"
+
+  @65228 @VerifyRelatedFocusAreasField  @keerti
+  Scenario Outline: Verify Key Performance Indicators (KPIs) value Performance tab Subaward overview is same as Program Key Performance Indicators (KPIs) table setup Tab.
+    When I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    When I perform quick search for "Automation Permanent Internal Program" in "Programs" panel
+    And I click on "View" icon for "Automation Permanent Internal Program" inside table
+    When I navigate to "Setup" sub tab
+    When I perform quick search for "Information Technology" in "ProgramKeyOutcomes" panel
+    And I click on "View" icon for "Information Technology" inside table
+    And I save the field labeled "Domain" as "Domain"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    When I perform quick search for "<Award Name>" in "flexGridRelatedAwards1" panel
+    And I click on "View" icon for "<Award Name>" inside table
+    When I navigate to "Performance" sub tab
+    Then I see value "{SavedValue:domain}" for title "Domain" inside table "inlineEditGridGrantorAwardKeyOutcomes"
+    Examples:
+      | Award Name                 | Grant Name                 |
+      | Automation Execution Award | Automation Execution Award |
+
+  @65227 @VerifyRelatedFocusAreasField  @keerti
+  Scenario Outline: Verify Key Performance Indicators (KPIs) value Performance tab Subaward overview is same as Program Key Performance Indicators (KPIs) table setup Tab.
+    When I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    When I perform quick search for "Automation Permanent Internal Program" in "Programs" panel
+    And I click on "View" icon for "Automation Permanent Internal Program" inside table
+    When I navigate to "Setup" sub tab
+    And I get the value from row "1" for column name "Organization Name" in flex table "RelatedProgramGoalsandObjectives"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    When I perform quick search for "<Award Name>" in "flexGridRelatedAwards1" panel
+    And I click on "View" icon for "<Award Name>" inside table
+    When I navigate to "Performance" sub tab
+    Then I see value "{SavedValue:lastValueFromTableForCol}" for title "Organization Name" inside table "GrantorAwardGoalsObjectives"
+    Examples:
+      | Award Name                 | Grant Name                 |
+      | Automation Execution Award | Automation Execution Award |
+
+  @65226 @VerifyRelatedFocusAreasField  @keerti
+  Scenario Outline: Verify Focus Area field value Budget tab Subaward overview is same as Program Related Focus Areas table setup Tab.
+    When I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    When I perform quick search for "Automation Permanent Internal Program" in "Programs" panel
+    And I click on "View" icon for "Automation Permanent Internal Program" inside table
+    When I navigate to "Setup" sub tab
+    And I get the value from row "1" for column name "Title" in flex table "flexGridGrantorServiceAreasProgram"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    When I perform quick search for "<Award Name>" in "flexGridRelatedAwards1" panel
+    And I click on "View" icon for "<Award Name>" inside table
+    When I navigate to "Budget " sub tab
+    Then I see value "{SavedValue:lastValueFromTableForCol}" for title "Title" inside table "flexGridEnhancedGrantorAwardServiceAreas"
+    Examples:
+      | Award Name                 | Grant Name                 |
+      | Automation Execution Award | Automation Execution Award |
