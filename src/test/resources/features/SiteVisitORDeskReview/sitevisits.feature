@@ -918,8 +918,8 @@ Feature: Validate all scenarios in the Site Visit
     When I download the file
     Then I see "Sent to Subrecipient" on page "1" of "govgrants" pdf file
 
-  @60832 @theSnapshotAfterSubmitForApproval @keerti
-  Scenario: Validate whether record Owner is able to view the Snapshot after Site Visits Accepted and Closed
+  @60832 @65385 @theSnapshotAfterSubmitForApproval @deepika
+  Scenario: Validate whether record Owner is able to view the Snapshot after Site Visits Accepted and Closed | Also whether the Subrecipient can view the site viist that is accepted and closed by record owner
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
@@ -999,12 +999,20 @@ Feature: Validate all scenarios in the Site Visit
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     And I click on "View" icon for "Automation Site Visit" inside table
     And I click on "Accept And Close" in the page details
+    Then I softly see status in Progress-bar is "Closed" and is "Green"
     And I click on "Menu" in the page details
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
     And I click on hyperlink containing value "Site Visit - Accept And Close"
     When I download the file
-    Then I see "Closed" on page "1" of "govgrants" pdf file
+    Then I softly see "Closed" on page "1" of "govgrants" pdf file
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    And I perform quick search for "Automation Site Visit" in "ApplicantSiteVisitReports" panel
+    When I click on "View" icon for "Automation Site Visit" inside flex table with id "ApplicantSiteVisitReports"
+    Then I softly see status in Progress-bar is "Closed" and is "Green"
+    Then I collect all the soft asserts
 
   @60834 @AdditionOfAttachmentForAwardSiteVisits @keerti
   Scenario: Validating addition of attachment to Award Site Visits
