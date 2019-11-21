@@ -2233,7 +2233,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I perform quick search for "<Award Name>" in "flexGridRelatedAwards1" panel
     And I click on "View" icon for "<Award Name>" inside table
     When I navigate to "Performance" sub tab
-    And I pause execution
     Then I see value "{SavedValue:lastValueFromTableForCol}" for title "Organization Name" inside table "GrantorAwardGoalsObjectives"
     Examples:
       | Award Name                 | Grant Name                 |
