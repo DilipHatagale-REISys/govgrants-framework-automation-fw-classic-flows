@@ -1091,8 +1091,8 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     Then I can see top right button "Edit" in page detail
 
-  @59806 @riskAssessmentFieldColorChangestoOrange @deepika @wip
-  Scenario: Validate the moderate level of Risk Assessment, that changes to Orange color as per the provided Assessment.
+  @59806 @riskAssessmentFieldColorChangestoYellow @deepika
+  Scenario: Validate the moderate level of Risk Assessment, that changes to Yellow color as per the provided Assessment.
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1137,7 +1137,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     When I navigate to "Overview" sub tab
-    Then I see field "Risk Level" as "Orange"
+    Then I see "Risk Level" image as "yellow.png"
 
   @59807 @highRiskRAAssessmentFieldColorRed @deepika
   Scenario: Validate after selecting certain combinations of answers on the  Form and submitting RA for approval, system sets high Risk with color as red
@@ -1185,7 +1185,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     When I navigate to "Overview" sub tab
-    Then I see "Risk Level" image as "Red.png"
+    Then I see "Risk Level" image as "red.png"
 
   @59808 @historyOfRiskAssessmentWhenSendBacktoOwnerbyPM @deepika
   Scenario: To Validate field history update post Risk Assessment is send back to owner by program approver.
@@ -2781,8 +2781,8 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Overview" sub tab
     Then I see field "RiskIndicator__c" as "Red"
 
-  @59806 @RAChangedtoOrangeAfterSubmitForApproval @keerti
-  Scenario: Validate the moderate level of Risk Assessment, that changes to Orange color as per the provided Assessment after submit for approval
+  @RAChangedtoYellowAfterSubmitForApproval @keerti
+  Scenario: Validate the moderate level of Risk Assessment, that changes to yellow color as per the provided Assessment after submit for approval
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -2813,7 +2813,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     When I navigate to "Overview" sub tab
-    Then I see field "RiskIndicator__c" as "Orange"
+    Then I see field "RiskIndicator__c" as "Yellow"
 
   @62093 @59255 @overallRiskFieldAvailabilityToSRindProfileUserk @deepika
   Scenario:  Verify whether SPI and IND profile User can view the section Overview for Overall Risk Calculation for a Sub Recipient Organization
@@ -2886,7 +2886,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Management" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
-    When I click on "Save and Continue" in the page detail
+    When I click on "Save and Continue" in the page details
     When I navigate to "Attachments" sub tab
     And I upload attachment "Announcement_Field_Values.xlsx" from workspace
     Then I see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
@@ -2918,32 +2918,104 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     Then I see that "Automation Award for Risk Assessment" has been added in flextable with Id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
 
-  @testCompareImagesYellow
-  Scenario: To Test Compare Images of Risk Assessment - Yellow
+  @65460 @riskLevelISNAforCreatedStatusRA @deepika
+  Scenario: Validate for the Risk Assessment that is in created state the Risk Level is shown as NA inside table
     Given I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Creation1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Management" sub tab
+    When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I save the field labeled "EGMS ID" as "EGMSID"
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
-    And I perform quick search for "RA-4203" in "flexGridRiskAssessmentGridViewInternal" panel
-    When I click on "View" icon for "RA-4203" inside flex table with id "flexGridRiskAssessmentGridViewInternal"
-    And I navigate to "Overview" sub tab
-    Then I see "Risk Level" image as "yellow.png"
+    And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
+    Then I see value "NA" for title "Risk Level" against the value "{SavedValue:EGMSID}" inside table "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
 
-  @testCompareImagesRed
-  Scenario: To Test Compare Images of Risk Assessment - Red
+  @65461 @downloadRiskAssessmentInXLS @deepika
+  Scenario: Validate whether user can Download the Active Risk Assessment in XLS format from Monitoring Tab
     Given I login to "As a Grantor" app as "dynamicUser" user
-    And I navigate to "Monitoring" tab
-    When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
-    And I perform quick search for "RA-2480" in "flexGridRiskAssessmentGridViewInternal" panel
-    When I click on "View" icon for "RA-2480" inside flex table with id "flexGridRiskAssessmentGridViewInternal"
-    And I navigate to "Overview" sub tab
-    Then I see "Risk Level" image as "red.png"
+    When I navigate to "Monitoring" tab
+    And I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    When I click on top right parallel lines bar for "Risk Assessments - All"
+    And I select "Download as XLS" from parallel lines dropdown of "Risk Assessments - All"
+    Then I verify that "xls" file is downloaded
 
-  @testCompareImagesGreen
-  Scenario: To Test Compare Images of Risk Assessment - Green
+  @65462 @downloadRiskAssessmentInPDF @deepika
+  Scenario: Validate whether user can Download the Active Risk Assessment in PDF format from Monitoring Tab
     Given I login to "As a Grantor" app as "dynamicUser" user
-    And I navigate to "Monitoring" tab
-    When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
-    And I perform quick search for "RA-4210" in "flexGridRiskAssessmentGridViewInternal" panel
-    When I click on "View" icon for "RA-4210" inside flex table with id "flexGridRiskAssessmentGridViewInternal"
+    When I navigate to "Monitoring" tab
+    And I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    When I click on top right parallel lines bar for "Risk Assessments - All"
+    And I select "Download as PDF" from parallel lines dropdown of "Risk Assessments - All"
+    And I download the file
+    Then I verify that "pdf" file is downloaded
+
+  @65463 @verifyOnlyOneRiskAssessmentInTable @deepika
+  Scenario: Validate when the risk assessment is intiated for draft award then only one risk assessment must be available in the table
+    Given I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Creation1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Management" sub tab
+    When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I navigate to "Subawards" sub tab
+    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:subawardsTableId---" panel
+    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I navigate to "Management" sub tab
+    Then I see total records count "Total Records:1" in flex table "---subAwardStandAlone:-:riskAssessmentTableId---"
+
+  @65464 @riskFieldAvailbilityOnOverviewTab @deepika
+  Scenario: Validate Risk Level field on Overview Tab is not availbale for Risk Assessment that is in Created Status
+    Given I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Creation1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Management" sub tab
+    When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
     And I navigate to "Overview" sub tab
-    Then I see "Risk Level" image as "green.png"
+    Then I cannot see field "Risk Level" inside page block

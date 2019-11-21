@@ -1962,7 +1962,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     Then I can see top right button "Request New Assessment" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
   @65387 @verifyAllInternalUsersCanViewActiveOrgRA @deepika
-  Scenario Outline: Validate when internal user can see view the Active Risk Assessment from Internal Subrecipient Profile View Page
+  Scenario Outline: Validate whether internal user can see view the Active Risk Assessment from Internal Subrecipient Profile View Page
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
@@ -2023,5 +2023,3 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Risk Assessment" sub tab
     When I perform quick search for "Created" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     Then I see value "NA" for title "Risk Level" against the value "{SavedValue:EGMSID}" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
-
-
