@@ -196,6 +196,16 @@ Feature: Validate all scenarios of grants and award without background
     Then I see the following messages in the page details :
       | If you select Subrecipient Match Required setting as Yes then you need to set value for Required Match % |
 
+  @65084 @VerifyActiveGrantsOnSubportal @mahadev
+  Scenario: Verify SR user can view Active grant
+    And I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "Automation Permanent Award" in "---amendment:-:recipientActiveGrantsTableId---" panel
+    Then I see value "Automation Permanent Award" for title "Grant Title" inside table "---amendment:-:recipientActiveGrantsTableId---"
+
   @64951 @VerifyPreviousReviewStepbuttonOnFDM @mahadev
   Scenario: Verify when user click on Previous Review Step button it navigate to Management Review Page
     Given I delete the record "Automation Desk Review" from the object "Desk Review"

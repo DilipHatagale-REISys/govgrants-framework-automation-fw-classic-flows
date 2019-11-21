@@ -2254,7 +2254,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Responsibility   | Name          | Description                 |
       | Fiscal Approver  | Automation FO | Automation Test Description |
       | Program Approver | Automation PM | Automation Test Description |
-    When I navigate to "Responsibilities" sub tab
     And I enter the following values into flex table with id "flexGridRiskAssessmentApproverRoles" by clicking "New" :
       | Name          | Responsibility  | Description                 | Due Date | Allow Record Editing |
       | Automation FO | Fiscal Reviewer | Automation Test Description | 7        | No                   |

@@ -1,7 +1,7 @@
 @riskAssessment @regression
 Feature: Risk Assessment scenarios without background
 
-  @59252 @64792 @64942 @64944 @64944 @validateDataOnGrantAward @deepika
+  @59252 @64792 @64942 @64944 @validateDataOnGrantAward @deepika
   Scenario Outline: Validate (risk assessment | Notes | Peer Reviewer) on grant/award
     Given I delete the record "Automation Desk Review" from the object "Desk Review"
     When I delete the record "Automation Site Visit" from the object "Site Visit"
