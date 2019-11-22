@@ -24,7 +24,7 @@ Feature: Validate all scenarios in Negotiations
     Then I softly see that "Automation Announcement for FDM" is in "Negotiation Initiated" status
     Then I collect all the soft asserts
 
-  @57034 @57033  @65295 @65310 @submitToGrantorbySubrecipientCompleteNegotiation @deepika
+  @57034 @57033  @65295 @65310 @65356 @submitToGrantorbySubrecipientCompleteNegotiation @deepika
   Scenario: Validate the Applicants able to submit the Application after edit and Internal Agency user decision on Completing the Negotiation | Validate task for SR user
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -59,6 +59,7 @@ Feature: Validate all scenarios in Negotiations
     Then I softly can see top right button "Complete Negotiation" in page detail
     When I click on "Complete Negotiation" in the page details
     Then I softly see status in Progress-bar is "Negotiated" and is "green"
+    Then I softly can see top right button "Create Subaward" in page detail
     Then I collect all the soft asserts
 
   @57035 @57036 @TaskCreatedforSPinegotiationIconAfterFDMApproved @deepika
@@ -797,3 +798,19 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I clear the value from field "ApplicationSectionsForRevision__c"
     Then I see multipicklist field "fieldApplicationSectionsForRevision__c" contains value "Overview: Project Information" under list "Application Sections for Revision - Available"
+
+  @65267 @VerifyCalendarFieldValue  @keerti
+    Scenario: Verify Calendar field value at negotiation tab when award owner initiated the negotiation by clicking on initiate negotiation after FDM.
+    Given I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    When I navigate to "Applications" content inside "Applications" subheader on left panel
+    And I click toggle button to select "Applications - All"
+    When I perform quick search for "Automation Announcement for FDM" in "---negotiation:-:negotiationAppReviewListTableId---" panel
+    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
+    Then I softly can see top right button "Initiate Negotiation" in page detail
+    When I click on "Initiate Negotiation" in the page details
+    And I navigate to "Negotiations" sub tab
+    And I enter value "7" into field "NegotiationDueDate__c"
+    And I save the field labeled "Due Date" as "DueDate"
+    And I click on "Save" in the page details
+    Then I see field "Due Date" as "{SavedValue:DueDate}"

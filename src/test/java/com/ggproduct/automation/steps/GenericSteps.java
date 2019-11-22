@@ -290,8 +290,12 @@ public class GenericSteps {
         projectManager.assertRiskLevelImage(fieldLabel,imageName);
     }
 
-    @Then("I softly see selected element {string}")
-    public void SaveCurrentSelectedElementValue(String elementText) {
-        projectManager.getSelectedSubTab(elementText);
+    @Then("I (softly see|see) selected element {string}")
+    public void saveCurrentSelectedElementValue(String usage, String elementText) {
+        if (usage.contains("softly")){
+            EyeThink.core().assertion().assertThat(projectManager.getSelectedSubTab(elementText)).isTrue();
+        } else {
+            Assert.assertTrue(projectManager.getSelectedSubTab(elementText));
+        }
     }
 }
