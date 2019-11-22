@@ -2250,6 +2250,66 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Permanent Award | Automation Permanent Award |
 
+  @65419 @checkSheduleCreatedAfternegotiationAccepted @jitendra
+  Scenario Outline: Verify Once Batch is run and User edit the Frequency then the Schedule should be generated accordingly
+    When I delete the record "<Award Name>" from the object "Amendment Request"
+    Given I delete the record "<Award Name>" from the object "Award"
+    And I delete the record "<Grant Name>" from the object "Grant"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
+    And I enter value "<Grant Name>" into field "ProjectTitle__c"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition1" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I get the "EGMS ID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
+    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
+    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
+      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
+      | Construction    | 1000           | 100        | 100            |
+    And I click on "Send to Subrecipient" in the page details
+    And I pause execution
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:recipientsRelatedAwards2FlexToggleTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:recipientsRelatedAwards2FlexToggleTableId---"
+    And I click on "Accept" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter in modal "Progress Report Monthly" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close "Edit Progress Report Schedule" modal by clicking the top right x button
+    Then I see value "Monthly" for title "Frequency" inside table "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    Examples:
+      | Award Name            | Grant Name            |
+      | Automation Award Bash | Automation Award Bash |
+
   @55397 @VerifyOnceBatchIsRunAndUserEditFrequencyThenSchedulesShouldBeGeneratedAccordingly  @mahadev
   Scenario Outline: Verify Once Batch is run and User edit the Frequency then the Schedule should be generated accordingly
     When I delete the record "Automation Execution Award" from the object "Amendment Request"
