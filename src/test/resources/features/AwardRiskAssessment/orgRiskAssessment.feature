@@ -171,7 +171,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
 
   @62313 @deleteMessageDisplayed @deepika
   Scenario: Validate whether Authorized Signatory has capable to delete the created Risk Assessment
-    When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
+    When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---a"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
     And I navigate to "Assessment" sub tab
@@ -1962,7 +1962,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     Then I can see top right button "Request New Assessment" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
   @65387 @verifyAllInternalUsersCanViewActiveOrgRA @deepika
-  Scenario Outline: Validate when internal user can see view the Active Risk Assessment from Internal Subrecipient Profile View Page
+  Scenario Outline: Validate whether internal user can see view the Active Risk Assessment from Internal Subrecipient Profile View Page
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
@@ -2024,4 +2024,17 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I perform quick search for "Created" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     Then I see value "NA" for title "Risk Level" against the value "{SavedValue:EGMSID}" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
-
+  @65549 @recordOwnerCannotEditEffectiveandExpirationDatesOfRA @deepika
+  Scenario: Validate Record Owner is not able to edit the Effective Dates under Overview tab of Risk Assessment
+    When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I navigate to "Assessment" sub tab
+    And I enter "OrgAssessmentValues" values from "RiskAssessment_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I save the field labeled "EGMS ID" as "EGMSID"
+    When I click on "Submit" in the page details
+    And I navigate to "Overview" sub tab
+    Then I see field "Effective Date" is not editable
+    Then I see field "Expiration Date" is not editable
+    Then I collect all the soft asserts
