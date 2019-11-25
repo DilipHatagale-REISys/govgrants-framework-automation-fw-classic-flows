@@ -53,18 +53,6 @@ Feature: Validate all scenarios in Desk Review
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I click on "Notify" in the page details
     Then I softly see that "Automation Desk Review" is in "Notified" status
-    Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
-      | Program Approver | Automation EXE | Automation Test Description |
-      | Fiscal Approver  | Automation FO  | Automation Test Description |
-    When I get the "EGMS ID"
-    Given I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
-    When I click "Associate" after selection of "Automation EXE" in the table "---deskreview:-:deskReviewContactsTableId---"
-    And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
-    And I click on "Notify" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel

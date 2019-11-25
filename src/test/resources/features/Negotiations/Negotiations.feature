@@ -739,7 +739,7 @@ Feature: Validate all scenarios in Negotiations
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:phasePendingTasksTableId---" panel
     And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:phasePendingTasksTableId---"
     When I click on "Complete Negotiation" in the page details
-    And I navigate to "Negitiations" sub tab
+    And I navigate to "Negotiations" sub tab
     Then I softly see field "Created Date" is getting updated with todays date
     Then I softly see field "Status" as "Complete"
     Then I collect all the soft asserts

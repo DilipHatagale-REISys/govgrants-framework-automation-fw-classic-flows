@@ -391,7 +391,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
-    Then I see values "Test Automation Organization" and "Executive" inside table
+    Then I see values "Test Automation Organization" and "Agency" inside table
     Examples:
       | User  |
       | ADMIN |
@@ -427,8 +427,8 @@ Feature: Validate all scenarios in the home tab
     When I enter "Edition" values from "Program_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
+    And I click on top right button "Associate" in flex table with id "---home:-:contactsTableId---"
+    When I click "Add" after selection of "Automation EXE" in the table "---home:-:associateContactsTableId---"
     When I close "Associate" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
