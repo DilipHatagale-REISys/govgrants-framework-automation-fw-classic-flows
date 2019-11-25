@@ -171,7 +171,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
 
   @62313 @deleteMessageDisplayed @deepika
   Scenario: Validate whether Authorized Signatory has capable to delete the created Risk Assessment
-    When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---a"
+    When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
     And I navigate to "Assessment" sub tab
