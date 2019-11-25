@@ -129,15 +129,18 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly see status in Progress-bar is "Active" and is "Green"
     Then I collect all the soft asserts
 
-  @51137 @allApproverSelection
-  Scenario: Validate the assignment of Approvers for the award
+  @51137 @65397 @allApproverSelection
+  Scenario: Validate the assignment of Approvers for the award | To verify that approvers can be added in the subaward phase when login by award owner as a PM
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
-    Then I see that "Automation EXE" has been added in flextable with Id "---subAwardStandAlone:-:awardApproversTableId---"
+    Then I softly see the following messages in the page details contains:
+    | Saved Successfully! |
+    Then I softly see that "Automation EXE" has been added in flextable with Id "---subAwardStandAlone:-:awardApproversTableId---"
+    Then I collect all the soft asserts
 
   @51147  @51148 @allSendToRecipientAndAcceptanceBySRBeforeApproval @smoke
   Scenario Outline: Validate the award send to recipient and acceptance by recipient before approval
