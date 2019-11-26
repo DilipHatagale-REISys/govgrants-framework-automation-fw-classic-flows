@@ -289,4 +289,13 @@ public class GenericSteps {
     public void compareImages(String fieldLabel,String imageName) throws IOException, IOException {
         projectManager.assertRiskLevelImage(fieldLabel,imageName);
     }
+
+    @Then("I (softly see|see) selected element {string}")
+    public void saveCurrentSelectedElementValue(String usage, String elementText) {
+        if (usage.contains("softly")){
+            EyeThink.core().assertion().assertThat(projectManager.getSelectedSubTab(elementText)).isTrue();
+        } else {
+            Assert.assertTrue(projectManager.getSelectedSubTab(elementText));
+        }
+    }
 }

@@ -400,5 +400,15 @@ public class ProjectManager extends ProjectWebServices {
         return EyeThink.core().compare().image().isElementImage(pathForRiskLevel,imageName);
     }
 
+    /**
+     * To verify Active Sub Tab
+     */
+    public boolean getSelectedSubTab(String elementText) {
+        String activeSubTab=EyeThink.core().elementReference().of(By.xpath("//div[@id='myTabs']/ul//li[contains(@class,'active')]/span")).getText();
+        if(elementText.equals(activeSubTab)){
+            return true;
+        }
+        return false;
+    }
 
 }
