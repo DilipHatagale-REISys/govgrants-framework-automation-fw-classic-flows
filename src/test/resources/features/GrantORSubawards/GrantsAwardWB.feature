@@ -229,3 +229,85 @@ Feature: Validate all scenarios of grants and award without background
     When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     Then I can see top right button "Previous Review Step" in page detail
+
+  @65576 @VerifyDraftStatusOnGrant  @mahadev
+  Scenario: Verify Draft status on grant
+    Given I delete the record "Automation Execution Award" from the object "Award"
+    And I delete the record "Automation Execution Award" from the object "Grant"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter value "Automation" into field "GrantDescription__c"
+    And I click on "Save" in the page details
+    Then I see field "Status" as "Draft"
+
+  @65584 @VerifyGrantModalFieldsAfterSaved  @mahadev
+  Scenario: To verify that the program settings that was made while creating the draft are enforced on the created draft through the award owner profile as PM profile
+    Given I delete the record "Automation Execution Award" from the object "Award"
+    And I delete the record "Automation Execution Award" from the object "Grant"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter value "Automation" into field "GrantDescription__c"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    Then I softly see field "Subrecipient Match Required?" as "Yes"
+    Then I softly see field "Required Match %" as "10%"
+    Then I softly see field "Program Income Allowed?" as "Yes"
+    Then I softly see field "Advance Payment Allowed?" as "Yes"
+    Then I softly see field "Is Detailed Budget Required on the Subaward?" as "No"
+    Then I softly see field "Focus Area Required?" as "Yes"
+    Then I softly see field "Objectives Required?" as "Yes"
+    Then I softly see field "KPI" as "Yes"
+    Then I softly see field "Are Expense Details Required on Reimbursements?" as "Yes"
+    Then I softly see field "Risk Assessment Required?" as "Yes"
+    Then I softly see field "Work Plan Required?" as "No"
+    Then I softly see field "Grant Abbreviation" as "GA"
+    Then I collect all the soft asserts
+
+  @65582 @verifyGrantTypes  @mahadev
+  Scenario: To verify that the type of grant in drop down is Project grant, formula and block grant
+    Given I delete the record "Automation Execution Award" from the object "Award"
+    And I delete the record "Automation Execution Award" from the object "Grant"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Overview" sub tab
+    And I enter value "Automation" into field "GrantDescription__c"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    Then I see field dropdown "fieldGrantType__c" contains values "Project Grant,Formula Grant,Block Grant"
+
+  @65602 @verifySubtabNavigation  @mahadev
+  Scenario: Verify when Award owner click on edit action at sub award it should navigate to subawards Tab with Progress bar status as Created
+    Given I delete the record "Automation Execution Award" from the object "Award"
+    And I delete the record "Automation Execution Award" from the object "Grant"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Overview" sub tab
+    And I enter value "Automation" into field "GrantDescription__c"
+    And I click on "Save" in the page details
+    Then I softly see selected element "Overview"
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    Then I collect all the soft asserts

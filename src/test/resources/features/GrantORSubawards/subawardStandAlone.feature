@@ -138,7 +138,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Fiscal Approver    | Automation FO  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
     Then I softly see the following messages in the page details contains:
-    | Saved Successfully! |
+      | Saved Successfully! |
     Then I softly see that "Automation EXE" has been added in flextable with Id "---subAwardStandAlone:-:awardApproversTableId---"
     Then I collect all the soft asserts
 
@@ -2262,3 +2262,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
+
+  @65679 @verifyTopRightButtonsOnTndCTable  @mahadev
+  Scenario: Verify Terms and Conditions Table have New, Associate and Associate Mandatory Terms and Conditions button on top of the table on Grant
+    When I navigate to "Terms" sub tab
+    Then I softly can see top right button "New" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
+    Then I softly can see top right button "Associate" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
+    Then I softly can see top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
+    Then I collect all the soft asserts
