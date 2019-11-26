@@ -2749,7 +2749,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Attachments" sub tab
     Then I cannot see top right button "Add" for "Attachments" flex table
 
-  @59807 @SystemSetsHighRiskIsRedAfterFormAndSubmittingRAForApproval @keerti
+  @systemSetsHighRiskIsRedAfterFormAndSubmittingRAForApproval @keerti
   Scenario: Validate after selecting certain combinations of answers on the  Form and submitting RA for approval, system sets high Risk with color as red
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2761,6 +2761,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click modal button "Save and Continue"
     And I navigate to "Subawards" sub tab
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I get the "EGMS ID"
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -2770,12 +2771,26 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Save and Continue" in the page details
     And I enter "RiskAssessmentValues1" values from "RiskAssessment_Field_Values.xlsx"
     When I click on "Save" in the page details
+    When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name           | Description                 |
-      | Fiscal Approver  | Automation FO  | Automation Test Description |
-      | Program Approver | Automation EXE | Automation Test Description |
+      | Responsibility   | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
@@ -2783,8 +2798,8 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Overview" sub tab
     Then I see field "RiskIndicator__c" as "Red"
 
-  @RAChangedtoYellowAfterSubmitForApproval @keerti
-  Scenario: Validate the moderate level of Risk Assessment, that changes to yellow color as per the provided Assessment after submit for approval
+  @RAChangedtoYellowAfterRAisApproved @keerti
+  Scenario: Validate the moderate level of Risk Assessment, that changes to yellow color as per the provided Assessment once Risk Assessment is approved
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -2804,12 +2819,26 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Save and Continue" in the page details
     And I enter "RiskAssessmentValues" values from "RiskAssessment_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
       | Responsibility   | Name           | Description                 |
       | Fiscal Approver  | Automation FO  | Automation Test Description |
       | Program Approver | Automation EXE | Automation Test Description |
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
@@ -2817,8 +2846,8 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Overview" sub tab
     Then I see field "RiskIndicator__c" as "Yellow"
 
-  @62093 @59255 @overallRiskFieldAvailabilityToSRindProfileUserk @deepika
-  Scenario:  Verify whether SPI and IND profile User can view the section Overview for Overall Risk Calculation for a Sub Recipient Organization
+  @62093 @59255 @overallRiskFieldAvailabilityToSRProfileUserk @deepika
+  Scenario:  Verify whether SPI profile User can view the section Overview for Overall Risk Calculation for a Sub Recipient Organization
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -2862,13 +2891,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
-    Then I softly see field "OverAll Risk" as "46.00%"
-    When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
-    And I navigate to "Home" tab
-    When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
-    And I navigate to "Risk Assessment" sub tab
-    Then I softly see field "OverAll Risk" as "46.00%"
-    Then I collect all the soft asserts
+    Then I see field "OverAll Risk" as "42.00%"
 
   @addAttachmentForRecordOnwerInTable @deepika
   Scenario: Validate attachment is added to the flex table after submiting the risk assessment for approval.

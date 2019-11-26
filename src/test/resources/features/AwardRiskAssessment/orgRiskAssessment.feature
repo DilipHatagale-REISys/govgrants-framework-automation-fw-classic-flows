@@ -37,8 +37,8 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     Then I softly see that "Created" has been added in flextable with Id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     Then I collect all the soft asserts
 
-  @61977 @moderateRiskLevelColorChangesToOrange @deepika
-  Scenario: Validate the moderate level of Risk Assessment, that changes to Orange color as per the provided Assessment.
+  @61977 @moderateRiskLevelColorChangesToYellow @deepika
+  Scenario: Validate the moderate level of Risk Assessment, that changes to Yellow color as per the provided Assessment.
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
@@ -50,7 +50,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
-    Then I see field "Risk Level" as "Orange"
+    Then I see "Risk Level" image as "yellow.png"
 
   @61982 @61978 @additonOfAttachmentWhenRAISActive @deepika
   Scenario: Validate one the Org RA is Active then there will be no add or Edit button on attachments flextable
@@ -1642,8 +1642,8 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Automation ind123" in "---home:-:indActiveAccountId---" panel
-    And I click on "View" icon for "Automation ind123" inside flex table with id "---home:-:indActiveAccountId---"
+    When I perform quick search for "Automation ind23" in "---home:-:indActiveAccountId---" panel
+    And I click on "View" icon for "Automation ind23" inside flex table with id "---home:-:indActiveAccountId---"
     Then I can see "Risk Assessment" sub tab at view detail page
 
   @64514 @overallRiSKScoreWhenAssessmentSelectedDiffTypeQuestions @deepika
@@ -1662,8 +1662,8 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I perform quick search for "Record Id" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     When I navigate to "Overview" sub tab
+    Then I see "Risk Level" image as "red.png"
     Then I softly see field "Overall Score" as "76.0%"
-    Then I softly see field "Risk Level" as "Orange"
     Then I collect all the soft asserts
 
   @64515 @overallRiSKScoreWhenAssessmentSelectedDiffQuestions @deepika
@@ -1702,8 +1702,8 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I perform quick search for "Record Id" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     When I navigate to "Overview" sub tab
+    Then I see "Risk Level" image as "red.png"
     Then I softly see field "Overall Score" as "77.0%%"
-    Then I softly see field "Risk Level" as "Red"
     Then I collect all the soft asserts
 
   @64602 @taskIScreatedforSAOnceInternalUserProvideAccess @deepika

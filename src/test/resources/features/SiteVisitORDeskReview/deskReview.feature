@@ -609,8 +609,12 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation EXE" in the table "---deskreview:-:deskReviewContactsTableId---"
+    When I click on "Remove" icon for "Automation EXE" inside flex table with id "---deskreview:-:participantsTableId---"
+    Then I do not see value "Automation EXE" for title "Subaward Title" inside table "---deskreview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
+    When I click on "Remove" icon for "Automation Award for Amendment Request" inside flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    Then I do not see value "Automation Award for Amendment Request" for title "Subaward Title" inside table "---deskreview:-:associateAwardDeskReviewTableId---"
     And I click on "Notify" in the page details
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
