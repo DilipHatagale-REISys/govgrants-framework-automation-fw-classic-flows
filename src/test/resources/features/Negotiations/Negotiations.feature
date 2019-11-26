@@ -362,7 +362,7 @@ Feature: Validate all scenarios in Negotiations
       | Value                              | Field                |
       | Automation Negotiation Iniatiation | ApplicantResponse__c |
     When I click on "Save" in the page details
-    Then I can see top right button "Edit" in page detail
+    Then I softly can see top right button "Edit" in page detail
     Then I collect all the soft asserts
 
   @57502 @viewApplicationStatusOnceSubmitToGrantorFromApplicationListViewPage
