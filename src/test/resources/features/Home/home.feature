@@ -651,14 +651,13 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "{SavedValue:EGMSID}" in "---sitevisits:-:homePendingTasksTableId---" panel
     Then I see that "{SavedValue:EGMSID}" has been added in flextable with Id "---sitevisits:-:homePendingTasksTableId---"
 
-   @indUserEditProfile @deepika
+  @indUserEditProfile @deepika
   Scenario: Verify whether the Individual Sub Profile Users can view their own contact information under Overview Tab
     Given I am on "SUBPORTAL" portal
     When I login as "IND" user
     And I navigate to "Home" tab
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
     When I navigate to "Overview" sub tab
-     And I pause execution
     When I perform quick search for "Automation ind23" in "---home:-:indContactTableId---" panel
     Then I see that "Automation ind23" has been added in flextable with Id "---home:-:indContactTableId---"
 
