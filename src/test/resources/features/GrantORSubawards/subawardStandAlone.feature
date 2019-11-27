@@ -2366,3 +2366,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
+
+  @65680  @addNewTermsAndConditionsAndValidateNoEditActionForIt @mahadev
+  Scenario: Verify award owner can add new Terms and Conditions on subaward Terms Tab
+    And I navigate to "Terms" sub tab
+    When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
+    And I enter values into fields
+      | Value                  | Field            |
+      | Automation Title       | Title__c         |
+      | Automation Description | Description__c   |
+      | 1                      | Sequence__c      |
+      | 265                    | EffectiveTill__c |
+    When I click modal button "Save"
+    When I close "New" modal by clicking the top right x button
+    Then I see value "Automation Title" for title "Title" inside table "---subAwardStandAlone:-:termsndConditionsTableId---"
