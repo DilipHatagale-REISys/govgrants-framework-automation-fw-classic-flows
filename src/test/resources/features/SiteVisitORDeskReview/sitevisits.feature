@@ -721,9 +721,10 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "<Internal>" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    Then I see that "<Internal>" has been added in flextable with Id "---sitevisits:-:participantsTableId---"
+    Then I softly see that "<Internal>" has been added in flextable with Id "---sitevisits:-:participantsTableId---"
     When I click on "Remove" icon for "<Internal>" inside flex table with id "---sitevisits:-:participantsTableId---"
     Then I softly do not see value "<Internal>" for title "Name" inside table "---sitevisits:-:participantsTableId---"
+    Then I collect all the soft asserts
     Examples:
       | Internal       |
       | Automation EXE |

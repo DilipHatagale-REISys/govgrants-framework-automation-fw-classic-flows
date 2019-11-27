@@ -1662,7 +1662,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I perform quick search for "Record Id" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     When I navigate to "Overview" sub tab
-    Then I see "Risk Level" image as "red.png"
+    Then I softly see "Risk Level" image as "red.png"
     Then I softly see field "Overall Score" as "76.0%"
     Then I collect all the soft asserts
 
@@ -1683,7 +1683,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "View" icon for "Record Id" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     When I navigate to "Overview" sub tab
     Then I softly see field "Overall Score" as "27.0%"
-    Then I softly see field "Risk Level" as "Green"
+    Then I softly see "Risk Level" image as "yellow.png"
     Then I collect all the soft asserts
 
   @64516 @overallRiSKScoreWhenAssessmentSelectedDiffSetQuestions @deepika
@@ -1702,7 +1702,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I perform quick search for "Record Id" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     When I navigate to "Overview" sub tab
-    Then I see "Risk Level" image as "red.png"
+    Then I softly see "Risk Level" image as "red.png"
     Then I softly see field "Overall Score" as "77.0%%"
     Then I collect all the soft asserts
 

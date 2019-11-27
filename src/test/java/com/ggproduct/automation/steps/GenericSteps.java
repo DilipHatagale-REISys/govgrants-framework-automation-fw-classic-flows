@@ -285,9 +285,13 @@ public class GenericSteps {
         projectManager.riskAssessmentApi(organizationName);
     }
 
-    @Then("I see {string} image as {string}")
-    public void compareImages(String fieldLabel,String imageName) throws IOException, IOException {
-        projectManager.assertRiskLevelImage(fieldLabel,imageName);
+    @Then("^I (softly see|see) \"([^\"]*)\" image as \"([^\"]*)\"$")
+    public void compareImages(String usage, String fieldLabel,String imageName) throws IOException {
+        if (usage.contains("softly")){
+            EyeThink.core().assertion().assertThat(projectManager.assertRiskLevelImage(fieldLabel,imageName)).isTrue();
+        } else {
+            Assert.assertTrue(projectManager.assertRiskLevelImage(fieldLabel,imageName));
+        }
     }
 
     @Then("I (softly see|see) selected element {string}")

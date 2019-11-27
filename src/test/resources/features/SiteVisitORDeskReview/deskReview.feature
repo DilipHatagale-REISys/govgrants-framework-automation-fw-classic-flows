@@ -610,7 +610,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation EXE" in the table "---deskreview:-:deskReviewContactsTableId---"
     When I click on "Remove" icon for "Automation EXE" inside flex table with id "---deskreview:-:participantsTableId---"
-    Then I do not see value "Automation EXE" for title "Subaward Title" inside table "---deskreview:-:deskReviewContactsTableId---"
+    Then I softly do not see value "Automation EXE" for title "Subaward Title" inside table "---deskreview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     When I click on "Remove" icon for "Automation Award for Amendment Request" inside flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
@@ -619,7 +619,8 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    Then I cannot see row level action button "Delete" against "Record id" in flex table with id "---deskreview:-:deskReviewGridViewTableId---"
+    Then I softly cannot see row level action button "Delete" against "Record id" in flex table with id "---deskreview:-:deskReviewGridViewTableId---"
+    Then I collect all the soft asserts
 
   @55369 @submittedToGrantorOptionallySendBackToSubrecipientDeskReview @deepika
   Scenario: Verify other than record owner can FO user would be able to conduct created desk review
