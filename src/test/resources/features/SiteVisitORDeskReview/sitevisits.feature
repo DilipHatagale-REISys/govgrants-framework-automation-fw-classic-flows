@@ -752,7 +752,7 @@ Feature: Validate all scenarios in the Site Visit
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
-    Then I cannot see "Reports and Outcomes" sub tab at view detail page
+    Then I softly cannot see "Reports and Outcomes" sub tab at view detail page
     Then I collect all the soft asserts
 
   @56009 @55212 @sendBacktoOwnerReceivePendingTaskSV @deepika

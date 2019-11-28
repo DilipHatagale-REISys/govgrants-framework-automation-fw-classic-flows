@@ -294,7 +294,7 @@ public class GenericSteps {
         }
     }
 
-    @Then("I (softly see|see) selected element {string}")
+    @Then("^I (softly see|see) selected element \"([^\"]*)\"$")
     public void saveCurrentSelectedElementValue(String usage, String elementText) {
         if (usage.contains("softly")){
             EyeThink.core().assertion().assertThat(projectManager.getSelectedSubTab(elementText)).isTrue();
