@@ -1303,7 +1303,7 @@ Feature: Risk Assessment scenarios without background
     Then I softly see field "OverAll Risk" as "{SavedValue:OverAllRisk}"
     Then I collect all the soft asserts
 
-   @61040 @riskscoreSRSideforBudgetPeriodChangeWhenCopiedToamendedAward @deepika
+  @61040 @riskscoreSRSideforBudgetPeriodChangeWhenCopiedToamendedAward @deepika
   Scenario: Validate whether SR user can view the Risk Score which remained as is when Award Risk Assessment is copied to new created award when amendment type-Budget Period Change
     Given I delete the record "Automation Award for Amendment Request" from the object "Amendment Request"
     And I delete the record "Automation Award for Amendment Request" from the object "Payment Request"
@@ -1361,11 +1361,6 @@ Feature: Risk Assessment scenarios without background
     And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
     When I click on "Submit for Approval" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab

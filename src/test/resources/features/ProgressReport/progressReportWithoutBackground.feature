@@ -2285,7 +2285,6 @@ Feature: Validate scenarios in Progress Report without background
       | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
       | Construction    | 1000           | 100        | 100            |
     And I click on "Send to Subrecipient" in the page details
-    And I pause execution
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel

@@ -381,9 +381,11 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     Then I softly see field "Country" is not editable
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
-    When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "Automation EXE" in the table "---sitevisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    When I click on "Remove" icon for "Automation Award for Amendment Request" inside flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    Then I softly do not see value "Automation Award for Amendment Request" for title "Subaward Title" inside table "---sitevisits:-:associateAwardSiteVisitsTableId---"
     And I click on "Notify" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -719,7 +721,10 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "<Internal>" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    Then I see that "<Internal>" has been added in flextable with Id "---sitevisits:-:participantsTableId---"
+    Then I softly see that "<Internal>" has been added in flextable with Id "---sitevisits:-:participantsTableId---"
+    When I click on "Remove" icon for "<Internal>" inside flex table with id "---sitevisits:-:participantsTableId---"
+    Then I softly do not see value "<Internal>" for title "Name" inside table "---sitevisits:-:participantsTableId---"
+    Then I collect all the soft asserts
     Examples:
       | Internal       |
       | Automation EXE |
@@ -1571,3 +1576,4 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Management" sub tab
     When I perform quick search for "Record Id" in "GrantorSiteVisitsAward" panel
     Then I see that "Automation Site Visit" has been added in flextable with Id "GrantorSiteVisitsAward"
+
