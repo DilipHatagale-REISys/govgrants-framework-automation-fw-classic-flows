@@ -410,4 +410,50 @@ public class ProjectManager extends ProjectWebServices {
         }
         return false;
     }
+
+    /**
+     * To verify button is present on modal or not
+     * @param buttonName
+     * @return
+     */
+    public Boolean isButtonDisplayedOnModal(String buttonName) {
+        try {
+            return EyeThink.core().is().isDisplayed(By.xpath("//div[@class='panel-body']//button[@title='"+buttonName+"'] | //div[@class='panel-body']//span[text()='"+buttonName+"']"));
+        } catch (Exception e) {
+        }
+        return false;
+    }
+
+    /**
+     * upload digital signature document
+     * @param fileName
+     * @param fileType
+     */
+    public void uploadDocument(String fileName,String fileType){
+        By attachmentClassificationPath = By.xpath("//select[@title='Classification' or text()='Classification']");
+        By attachmentDescriptionPath = By.xpath("//div//label[text()='Description']/..//textarea");
+        By attachmentFilePath = By.xpath(""
+                + "//td//label[text()='File']/../..//input[@type='file']"
+                + " | //div//label[text()='File']/..//input[@type='file']"
+                + " | //div//span[text()='File']/../..//input[@type='file']");
+        String defaultFilePath = System.getProperty("user.dir") + "/src/main/resources/";
+
+        // Step 1
+        String tableId = EyeThink.core().get().attribute(By.xpath("//*[contains(@class, 'panel-heading')]//button[text()='Add']"), "data-target");
+        tableId = tableId.substring(tableId.length() - 18);
+
+        // Step 2
+        EyeThink.core().click().on(By.xpath("//div[@class='panel-heading']//button[text()='Add Document']"));
+
+        // Step 3
+        EyeThink.core().select().from(attachmentClassificationPath).selectByValue(fileType);
+        EyeThink.core().enterText().in(attachmentDescriptionPath, "Default Comment");
+        EyeThink.core().enterText().in(attachmentFilePath, defaultFilePath + fileName);
+
+        // Step 4
+        EyeThink.core().click().on(By.xpath("//input[@value='Save']"));
+
+        // Step 5
+        EyeThink.saas().modal().closeModalByClickingTopRightCloseButton();
+    }
 }

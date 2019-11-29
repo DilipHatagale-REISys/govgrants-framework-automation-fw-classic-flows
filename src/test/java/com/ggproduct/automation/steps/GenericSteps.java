@@ -298,4 +298,18 @@ public class GenericSteps {
             Assert.assertTrue(projectManager.getSelectedSubTab(elementText));
         }
     }
+
+    @Then("^I can (softly see|see) modal button \"([^\"]*)\"$")
+    public void iCanSeeModalButton(String usage,String buttonName) {
+        if (usage.contains("softly")){
+            EyeThink.core().assertion().assertThat(projectManager.isButtonDisplayedOnModal(buttonName)).isTrue();
+        } else {
+            Assert.assertTrue(projectManager.isButtonDisplayedOnModal(buttonName));
+        }
+    }
+
+    @And("I upload document {string} of type {string}")
+    public void iUploadDocumentOfType(String fileName, String fileType) {
+        projectManager.uploadDocument(fileName,fileType);
+    }
 }
