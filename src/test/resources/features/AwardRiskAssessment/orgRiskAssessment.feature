@@ -571,7 +571,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     Then I see that "Expired" has been added in flextable with Id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
   @62673 @recordOwnerCannotEditDates @deepika
-  Scenario: Validate Record Owner is not able to edit the Effective Dates under Overview tab of Risk Assessment
+  Scenario: Validate Record Owner cannot edit the Organization Type under Overview tab of Risk Assessment
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
