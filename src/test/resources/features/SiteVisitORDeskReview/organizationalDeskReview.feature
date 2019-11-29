@@ -23,8 +23,8 @@ Feature: Validate all scenarios in Organizational Desk Review
     Then I softly see status in Progress-bar is "Created" and is "green"
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPA" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    Then I softly see that "Automation SPA" has been added in flextable with Id "---orgLevelDeskReview:-:associateContactsId---"
+    When I click "Associate" after selection of "Automation EXE" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
+    Then I softly see that "Automation EXE" has been added in flextable with Id "---orgLevelDeskReview:-:associateContactsId---"
     Then I collect all the soft asserts
 
   @54210 @monitoringTypeFiscalDR @deepika
@@ -651,10 +651,10 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
     And I click on "Reassign,Automation EXE" on the approval decision box
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Applications" tab
+    And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:pendingTaskTableId---"
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     Then I see status in Progress-bar is "Approved" and is "Green"
 
