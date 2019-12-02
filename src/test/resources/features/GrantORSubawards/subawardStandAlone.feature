@@ -16,13 +16,19 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I get the "EGMS ID"
 
-  @51128 @51129 @awardCreationAndEdition
+  @51128 @51129 @65592 @awardCreationAndEdition
   Scenario: Creation of an award and edition of an award
     Then I softly see status in Progress-bar is "Created" and is "Green"
     When I click on "Edit" in the page details
     And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I softly see status in Progress-bar is "Created" and is "Green"
+    And I click on "Edit" in the page details
+    And I enter value "Test Automation" into field "GrantAwardDescription__c"
+    And I enter value "Project Grant" into field "GrantType__c"
+    And I click on "Save" in the page details
+    Then I softly see field "Grant Type" as "Project Grant"
+    And I softly see field "Brief information about the grant." as "Test Automation"
     Then I collect all the soft asserts
 
   @51130 @awardStandAloneAddContactsKeyPersonnel
@@ -142,7 +148,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly see that "Automation EXE" has been added in flextable with Id "---subAwardStandAlone:-:awardApproversTableId---"
     Then I collect all the soft asserts
 
-  @51147  @51148 @65415 @allSendToRecipientAndAcceptanceBySRBeforeApproval @smoke
+  @51147 @65491 @51148 @65415 @allSendToRecipientAndAcceptanceBySRBeforeApproval @smoke
   Scenario Outline: Validate the award send to recipient and acceptance by recipient before approval
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -234,6 +240,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "GrantorTermsandConditions"
     Then I softly see the following messages in the page details contains:
       | All mandatory terms & conditions within Project Period are already associated. |
+    And I navigate to "Budget" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 5000        |
+    Then I softly see the following messages in the page details contains:
+      | Budget Tab - Associate Funding Account with proper Encumbrance value as per Total Subaward Amount This Budget Period |
     Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
