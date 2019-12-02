@@ -14,6 +14,7 @@ Feature: Validate all scenarios in Negotiations
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
     When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    Then I softly see that "Initiate Negotiation" has been added in flextable with Id "---subAwardFromFDM:-:recommendedAppTableId---"
     When I click on "Initiate Negotiation" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     Then I softly can see "Negotiations" sub tab at view detail page
     And I navigate to "Negotiations" sub tab
@@ -800,7 +801,7 @@ Feature: Validate all scenarios in Negotiations
     Then I see multipicklist field "fieldApplicationSectionsForRevision__c" contains value "Overview: Project Information" under list "Application Sections for Revision - Available"
 
   @65267 @VerifyCalendarFieldValue  @keerti
-    Scenario: Verify Calendar field value at negotiation tab when award owner initiated the negotiation by clicking on initiate negotiation after FDM.
+  Scenario: Verify Calendar field value at negotiation tab when award owner initiated the negotiation by clicking on initiate negotiation after FDM.
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
@@ -814,3 +815,20 @@ Feature: Validate all scenarios in Negotiations
     And I save the field labeled "Due Date" as "DueDate"
     And I click on "Save" in the page details
     Then I see field "Due Date" as "{SavedValue:DueDate}"
+
+  @66068 @negotiationInitiatedWithBlankDueDate @deepika
+  Scenario: Validate whether record owner can save the negotiation request without Due date on Overview Tab
+    Given I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    When I click on "Initiate Negotiation" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    And I navigate to "Negotiations" sub tab
+    When I clear the value from field "ApplicationSectionsForRevision__c"
+    When I clear the value from field "NegotiationDueDate__c"
+    When  I enter "Due Date" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I see the following messages in the page details :
+      | Due Date is Required to save under Negotiations. |
