@@ -1100,9 +1100,9 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalActiveGrants---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
     Given I navigate to "Management" sub tab
     Then I softly can see row level action button "Delete" against "Automation Desk Review" in flex table with id "GrantorDeskReviewAward"
     When I click on "Delete" icon for "Automation Desk Review" inside flex table with id "GrantorDeskReviewAward"
@@ -1233,9 +1233,9 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalActiveGrants---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
     Given I navigate to "Management" sub tab
     When I perform quick search for "Record Id" in "GrantorDeskReviewAward" panel
     Then I see that "Automation Desk Review" has been added in flextable with Id "GrantorDeskReviewAward"
