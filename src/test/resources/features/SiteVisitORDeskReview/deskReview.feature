@@ -39,7 +39,7 @@ Feature: Validate all scenarios in Desk Review
     Then I softly see field "Created Date" is not editable
     Then I collect all the soft asserts
 
-  @51014 @51015 @notifySubrecipientPendingTaskDeskReview @smoke
+  @51014 @51015 @66147 @notifySubrecipientPendingTaskDeskReview @smoke
   Scenario: Notify Subrecipient about the respective POC from the applicant organization will receive a pending task about the Desk Review
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
@@ -53,6 +53,12 @@ Feature: Validate all scenarios in Desk Review
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I click on "Notify" in the page details
     Then I softly see that "Automation Desk Review" is in "Notified" status
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
+    Then I softly see status in Progress-bar is "Created" and is "Green"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -196,8 +202,8 @@ Feature: Validate all scenarios in Desk Review
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     Then I collect all the soft asserts
 
-  @51020 @approvalOfDeskReview @smoke
-  Scenario: Approval of Desk Review
+  @51020 @66145 @approvalOfDeskReview @smoke
+  Scenario: Approval of Desk Review | Validate Non award owner does not have permission to Submit the Desk Review for Approval
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
@@ -232,6 +238,17 @@ Feature: Validate all scenarios in Desk Review
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
+    Then I softly cannot see top right button "Submit for Approval" in page detail
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -245,10 +262,11 @@ Feature: Validate all scenarios in Desk Review
     When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     And I click on "Approve" on the approval decision box
-    Then I see status in Progress-bar is "Approved" and is "green"
+    Then I softly see status in Progress-bar is "Approved" and is "green"
+    Then I collect all the soft asserts
 
-  @51021 @51022 @51023 @deskReviewSendToSubrecipientdAndCorrectiveActionsBySubrecipient
-  Scenario: Send Desk Review to Subrecipient, Corrective Actions and Submit to Grantor by Subrecipient
+  @51021 @51022 @51023 @66146 @deskReviewSendToSubrecipientdAndCorrectiveActionsBySubrecipient
+  Scenario: Send Desk Review to Subrecipient, Corrective Actions and Submit to Grantor by Subrecipient |Validate whether pending task is created for Program approver under Home Tab when the award owner submits the Desk Review for approval
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
@@ -285,9 +303,10 @@ Feature: Validate all scenarios in Desk Review
     When I click on "Back" in the page details
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
+    And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    Then I softly see that "Approve Desk Review" has been added in flextable with Id "---sitevisits:-:homePendingTasksTableId---"
     And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -329,8 +348,8 @@ Feature: Validate all scenarios in Desk Review
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     Then I collect all the soft asserts
 
-  @55279 @approverSendBackToUserDeskReview @deepika
-  Scenario: Validate whether the approver will be able to SendBack to Owner
+  @55279 @66148 @approverSendBackToUserDeskReview @deepika
+  Scenario: Validate whether the approver will be able to SendBack to Owner |Validate Pending task is not created to fiscal approver when program approver performs send to the owner.
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
@@ -373,7 +392,13 @@ Feature: Validate all scenarios in Desk Review
     When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     And I click on "Send to Owner" on the approval decision box
-    Then I see status in Progress-bar is "Created" and is "green"
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    Then I softly do not see value "Record Id" for title "EGMS ID" inside table "---deskreview:-:monitoringTabPhasePendingTasks---"
+    Then I collect all the soft asserts
 
   @55280 @55281 @approverForwardUserReceivePendingTaskDeskReview @deepika
   Scenario: Validate when the approver forward Site Visit to other user, the Pending Task will be created to the User
@@ -955,8 +980,8 @@ Feature: Validate all scenarios in Desk Review
     When I perform quick search for "{SavedValue:Record Id}" in "History" panel
     Then I see value "Active" for title "New Value" inside table "History"
 
-  @61057 @61055 @55370 @snapshotAfterSubmitForApprovalDeskReviewIsAcceptedAndClosed @Keerti
-  Scenario: Validate whether record Owner is able to view the Accepte and Close Button and User can view the Snapshot after Desk Review is Submitted for Approval status and Accepted and Closed
+  @61057 @61055 @55370 @66139 @snapshotAfterSubmitForApprovalDeskReviewIsAcceptedAndClosed @Keerti
+  Scenario: Validate whether record Owner is able to view the Accept and Close Button and User view the Snapshot after Desk Review is Submitted for Approval status also after Accepted and Closed |Subrecipient can view Closed Desk Review
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
@@ -1053,6 +1078,12 @@ Feature: Validate all scenarios in Desk Review
     And I click on hyperlink containing value "Desk Review - Accept And Close"
     When I download the file
     Then I softly see "{SavedValue:EGMSID}" on page "1" of "govgrants" pdf file
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
+    And I perform quick search for "Automation Desk Review" in "---deskreview:-:monitoringTabDeskReviewTableId---" panel
+    When I click on "View" icon for "Automation Desk Review" inside flex table with id "---deskreview:-:monitoringTabDeskReviewTableId---"
+    Then I softly see status in Progress-bar is "Closed" and is "Green"
     Then I collect all the soft asserts
 
   @validateDownloadDeskReviewInCSV @deepika @wip
@@ -1069,9 +1100,9 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalActiveGrants---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
     Given I navigate to "Management" sub tab
     Then I softly can see row level action button "Delete" against "Automation Desk Review" in flex table with id "GrantorDeskReviewAward"
     When I click on "Delete" icon for "Automation Desk Review" inside flex table with id "GrantorDeskReviewAward"
@@ -1202,9 +1233,9 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalActiveGrants---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
     Given I navigate to "Management" sub tab
     When I perform quick search for "Record Id" in "GrantorDeskReviewAward" panel
     Then I see that "Automation Desk Review" has been added in flextable with Id "GrantorDeskReviewAward"
