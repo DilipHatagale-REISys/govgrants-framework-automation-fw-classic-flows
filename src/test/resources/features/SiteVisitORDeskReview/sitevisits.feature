@@ -1228,7 +1228,7 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "---sitevisits:-:homePendingTasksTableId---" panel
     Then I see that "Approve Site Visit" has been added in flextable with Id "---sitevisits:-:homePendingTasksTableId---"
 
-  @61864 @61862 @61865 @otherThanRecordOnwerFoUserCannotSubmitForApproval @deepika
+  @61864 @61865 @otherThanRecordOnwerFoUserCannotSubmitForApproval @deepika
   Scenario: Validate Non award owner can't / does not have permission to Site Visits for Approval and is able to view created Site Visits under Monitoring tab
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
