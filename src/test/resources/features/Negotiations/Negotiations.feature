@@ -830,5 +830,5 @@ Feature: Validate all scenarios in Negotiations
     When I clear the value from field "NegotiationDueDate__c"
     When  I enter "Due Date" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
-    Then I see the following messages in the page details :sub
+    Then I see the following messages in the page details :
       | Due Date is Required to save under Negotiations. |

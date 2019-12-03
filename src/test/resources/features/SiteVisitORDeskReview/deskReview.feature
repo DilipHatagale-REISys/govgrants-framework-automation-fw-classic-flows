@@ -1019,12 +1019,12 @@ Feature: Validate all scenarios in Desk Review
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "EGMSID"
     When I click on "Submit for Approval" in the page details
-#    And I click on "Menu" in the page details
-#    And I select "Take Snapshot" from dropdown
-#    When I navigate to "History" sub tab
-#    And I click on hyperlink which contains todays date with text "SnapShot on"
-#    When I download the file
-#    Then I softly see "{SavedValue:EGMSID}" on page "1" of "govgrants" pdf file
+    And I click on "Menu" in the page details
+    And I select "Take Snapshot" from dropdown
+    When I navigate to "History" sub tab
+    And I click on hyperlink which contains todays date with text "SnapShot on"
+    When I download the file
+    Then I softly see "{SavedValue:EGMSID}" on page "1" of "govgrants" pdf file
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1072,12 +1072,12 @@ Feature: Validate all scenarios in Desk Review
     And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Then I softly can see top right button "Accept and Close" in page detail
     And I click on "Accept And Close" in the page details
-#    And I click on "Menu" in the page details
-#    And I select "Take Snapshot" from dropdown
-#    When I navigate to "History" sub tab
-#    And I click on hyperlink containing value "Desk Review - Accept And Close"
-#    When I download the file
-#    Then I softly see "{SavedValue:EGMSID}" on page "1" of "govgrants" pdf file
+    And I click on "Menu" in the page details
+    And I select "Take Snapshot" from dropdown
+    When I navigate to "History" sub tab
+    And I click on hyperlink containing value "Desk Review - Accept And Close"
+    When I download the file
+    Then I softly see "{SavedValue:EGMSID}" on page "1" of "govgrants" pdf file
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
