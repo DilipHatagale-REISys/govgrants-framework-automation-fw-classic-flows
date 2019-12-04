@@ -1227,8 +1227,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I download the file
     Then I see "Submitted for Approval" on page "1" of "govgrants" pdf file
 
-  @61988 @RecordOwnerCanViewSnapshotAfterRAIsSubmittedForApproval @keerti
-  Scenario: Validate whether user is able to view the Completed task once approved under Monitoring Tab - Org Site visits
+  @61988 @66273 @RecordOwnerCanViewSnapshotAfterRAIsSubmittedForApproval @keerti
+  Scenario: Validate whether user is able to view the Completed task once approved under Monitoring Tab |Validate whether record owner has access to delete the asoociated Contact and Application- Org Site visits
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
     And I enter "Creation" values from "Organizational_SiteVisit_Field_Values.xlsx"
@@ -1245,8 +1245,10 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
-    When I click "Add" after selection of "Automation Announcement for FDM" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    And I click on "Remove" icon for "Automation SPI" inside flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
+    Then I softly see "No Records Found" inside flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
+    And I click on "Remove" icon for "Automation Announcement for FDM" inside flex table with id "---orgLevelSiteVisits:-:selectApplicationId---"
+    Then I softly see "No Records Found" inside flex table with id "---orgLevelSiteVisits:-:selectApplicationId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
@@ -1269,7 +1271,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I navigate to "Monitoring" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---riskassessment:-:completedTaskTableId---" panel
-    Then I see value "Record Id" for title "EGMS ID" inside table "---riskassessment:-:completedTaskTableId---"
+    Then I softly see value "Record Id" for title "EGMS ID" inside table "---riskassessment:-:completedTaskTableId---"
+    Then I collect all the soft asserts
 
   @65151 @deleteCreatedOrgSiteVisit @deepika
   Scenario: Validate whether user will be able to delete the created Org Site Visits

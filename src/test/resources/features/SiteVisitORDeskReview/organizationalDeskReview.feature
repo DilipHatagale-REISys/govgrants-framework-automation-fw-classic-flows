@@ -593,6 +593,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click on "Submit to Grantor" in the page details
     Then I softly see the following messages in the page details :
       | Reports and Outcomes Tab - Enter corrective actions on all Findings outcomes using the "+" icons. |
+    Then I collect all the soft asserts
 
   @55460 @approverForwardUserGetPendingTaskDeskReview @deepika
   Scenario: Validate when the Approver forward Org Level Desk Review to other user, the Pending Task will be created to the User
@@ -1167,7 +1168,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     Then I collect all the soft asserts
 
   @65073 @recordOwnerhasAccesstoDeleteassociatedContactand @deepika @wip
-  Scenario: Validate whether record owner has access to delete the asoociated Contact and Award to Desk Review Org Level
+  Scenario: Validate whether record owner has access to delete the asoociated Contact and Award to Desk Review Org Level |
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
