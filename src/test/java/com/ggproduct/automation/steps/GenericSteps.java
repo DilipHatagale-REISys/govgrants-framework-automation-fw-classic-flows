@@ -316,4 +316,13 @@ public class GenericSteps {
     public void iUploadDocumentOfType(String fileName, String fileType) {
         projectManager.uploadDocument(fileName,fileType);
     }
+
+    @Then("^I (see|softly see) that Budget Period field contains the updated Budget Period End Date$")
+    public void iSeeThatBudgetPeriodFieldContainsTheUpdatedBudgetPeriodEndDate(String usage) {
+        if (usage.contains("softly")) {
+            EyeThink.core().assertion().assertThat(EyeThink.saas().pageDetails().getFieldValue("Budget Period")).contains(EyeThink.saas().pageDetails().getFieldValue("Budget Period End Date"));
+        } else {
+            Assert.assertTrue(EyeThink.saas().pageDetails().getFieldValue("Budget Period").contains(EyeThink.saas().pageDetails().getFieldValue("Budget Period End Date")));
+        }
+    }
 }
