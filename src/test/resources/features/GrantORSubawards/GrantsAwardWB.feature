@@ -12,6 +12,67 @@ Feature: Validate all scenarios of grants and award without background
       | EXE  |
       | FO   |
 
+  @65619 @65578 @65586 @validateFieldsAtGrant @jitendra
+  Scenario Outline: To verify Budget period end date entered by Award owner should be same when owner click on save button.
+    Given I delete the record "<Award Name>" from the object "Award"
+    And I delete the record "<Grant Name>" from the object "Grant"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Create_less_date" values from "Award_Field_Values.xlsx"
+    And I enter value "<Award Name>" into field "ProjectTitle__c"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Overview" sub tab
+    Then I softly see field "Leverage Allowed?" as "Yes"
+    And I get the "EGMS ID"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I softly see that Budget Period field contains the updated Budget Period End Date
+    And I navigate to "Grants" tab
+    And I click toggle button to select "Grants - All" in "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    Then I softly see value "Draft" for title "Status" against the value "<Award Name>" inside table "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I collect all the soft asserts
+    Examples:
+      | Award Name                            | Grant Name                            |
+      | Automation Award for field validation | Automation Grant for field validation |
+
+  @65688 @validateTnCAssociate @jitendra
+  Scenario Outline: Verify Associated Terms and Conditions are Editable by award owner on Subaward.
+    Given I delete the record "<Award Name>" from the object "Award"
+    And I delete the record "<Grant Name>" from the object "Grant"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Create_less_date" values from "Award_Field_Values.xlsx"
+    And I enter value "<Award Name>" into field "ProjectTitle__c"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I navigate to "Terms" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
+    And I perform quick search for "Non - Mandatory TnC 1" in "---subAwardStandAlone:-:termsAndConditionModalId---" panel
+    When I click "Add" after selection of "Non - Mandatory TnC 1" in the table "---subAwardStandAlone:-:termsAndConditionModalId---"
+    And I close modal by clicking the top right x button
+    And I click on "Edit" icon for "Standard" inside flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
+    And I enter value "2" into field "Sequence__c"
+    And I click modal button "Save"
+    Then I softly see field "Sequence" as "2"
+    And I collect all the soft asserts
+    Examples:
+      | Award Name                            | Grant Name                            |
+      | Automation Award for field validation | Automation Grant for field validation |
+
   @38215  @VerifyActiveGrantsAccessToAllUsers @mahadev
   Scenario Outline: Verify all internal users can view active grants
     When I login to "As a Grantor" app as "dynamicUser" user
