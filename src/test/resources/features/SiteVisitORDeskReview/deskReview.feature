@@ -202,8 +202,8 @@ Feature: Validate all scenarios in Desk Review
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     Then I collect all the soft asserts
 
-  @51020 @66145 @approvalOfDeskReview @smoke
-  Scenario: Approval of Desk Review | Validate Non award owner does not have permission to Submit the Desk Review for Approval
+  @51020 @66145 @66269 @approvalOfDeskReview @smoke
+  Scenario: Approval of Desk Review | Validate Non award owner does not have permission to Submit the Desk Review for Approval |Validate whether user is able to view the Completed task once approved under Monitoring Tab
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
@@ -256,6 +256,10 @@ Feature: Validate all scenarios in Desk Review
     When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     And I click on "Approve" on the approval decision box
+    And I navigate to "Monitoring" tab
+    When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---riskassessment:-:completedTaskTableId---" panel
+    Then I softly see value "Record Id" for title "EGMS ID" inside table "---riskassessment:-:completedTaskTableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
