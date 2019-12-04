@@ -2385,8 +2385,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @65680  @addNewTermsAndConditionsAndValidateNoEditActionForIt @mahadev
-  Scenario: Verify award owner can add new Terms and Conditions on subaward Terms Tab
+  @65680 @65687 @addNewTermsAndConditionsAndValidateNoEditActionForIt @mahadev
+  Scenario: Verify award owner can add new Terms and Conditions on subaward Terms Tab |
+  Verify New added Terms and Conditions are Editable by award owner on Subaward.
     And I navigate to "Terms" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I enter values into fields
@@ -2397,7 +2398,14 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | 265                    | EffectiveTill__c |
     When I click modal button "Save"
     When I close "New" modal by clicking the top right x button
-    Then I see value "Automation Title" for title "Title" inside table "---subAwardStandAlone:-:termsndConditionsTableId---"
+    Then I softly see value "Automation Title" for title "Title" inside table "---subAwardStandAlone:-:termsndConditionsTableId---"
+    And I click on "Edit" icon for "Automation Title" inside flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
+    And I enter values into fields
+      | Value                  | Field            |
+      | Updated Automation Description | Description__c   |
+    When I click modal button "Save"
+    Then I softly see field "Description" as "Updated Automation Description"
+    And I collect all the soft asserts
 
   @65821  @verifyButtonsAfterSentForReview
   Scenario Outline: To verify that when status is sent for review in peer reviewer table by the award owner then Complete Review and Edit must also appear on the top right corner of the page
