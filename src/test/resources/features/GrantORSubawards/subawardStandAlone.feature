@@ -562,7 +562,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Accept after Approval" in the page details
     Then I softly see status in Progress-bar is "Accepted" and is "Green"
-    Then I softly can see top right button "View Noga" in page detail
+    Then I softly can see top right button "View NOGA" in page detail
     Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
@@ -704,7 +704,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     Then I softly can see top right button "Activate" in page detail
-    Then I softly can see top right button "View Noga" in page detail
+    Then I softly can see top right button "View NOGA" in page detail
     And I click on "Activate" in the page details
     Then I softly see that "Subaward" is in "Activated" status
     Then I collect all the soft asserts
@@ -2591,8 +2591,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @65909  @validateUploadingDigitalSignatureDocument  @mahadev
-  Scenario Outline: To verify that the attachment can be added by the award owner profile after peer review completion.
+  @65909 @65898  @validateUploadingDigitalSignatureDocument  @mahadev
+  Scenario Outline: To verify that the attachment can be added by the award owner profile after peer review completion | Validate status after peer review
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -2690,9 +2690,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I click on "Complete Review" in the page details
+    Then I softly see field "Status" as "Reviewed"
     When I navigate to "Attachments" sub tab
     And I upload document "Award_Field_Values.xlsx" of type "Digitally Signed Original"
-    Then I see "Award_Field_Values.xlsx" has been added in "Digital Signature Document" flex table
+    Then I softly see "Award_Field_Values.xlsx" has been added in "Digital Signature Document" flex table
+    Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -2821,8 +2823,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @65957 @65816 @validatePendingTaskForEXEAndAddingReviewers  @mahadev
-  Scenario Outline: Validate Pending Task for executive approver | To verify that the peer reviewers can be added
+  @65957 @65816 @66029 @66036  @66034 @validatePendingTaskForEXEAndAddingReviewers  @mahadev
+  Scenario Outline: validate adding approvers in risk assessment | validate status for risk assessment | Validate Pending Task for executive approver | To verify that the peer reviewers can be added
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -2859,12 +2861,14 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save and Continue" in the page details
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
+    Then I softly see field "Status" as "Created"
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
       | Responsibility   | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
+    Then I see value "Automation FO" for title "Name" inside table "---subAwardStandAlone:-:riskAssessmentApproverTableId---"
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -2902,6 +2906,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Automation FO | Fiscal Reviewer | Automation Test Description | 7        | No                   |
     Then I softly see value "Automation FO" for title "Reviewer Name" inside table "---subAwardStandAlone:-:peerReviewersTableId---"
     And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Review initiated successfully! |
+    Then I softly see field "Status" as "Sent for Review"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2957,4 +2964,3 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
-
