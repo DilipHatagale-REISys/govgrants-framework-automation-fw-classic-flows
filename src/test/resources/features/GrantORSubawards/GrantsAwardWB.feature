@@ -786,3 +786,58 @@ Feature: Validate all scenarios of grants and award without background
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
+
+  @65978 @verifyPackagesONaward  @mahadev
+  Scenario Outline: To Verify that the Default package associated with subaward should be displayed correctly
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    And I navigate to "Attachments" sub tab
+    Then I softly see value "Organization Desk Review" for title "Package Name" inside table "---subAwardStandAlone:-:grantpkagestableid---"
+    Then I softly see value "Grantor Site Visit Forms" for title "Package Name" inside table "---subAwardStandAlone:-:grantpkagestableid---"
+    Then I softly see value "Grantor Progress Report Forms" for title "Package Name" inside table "---subAwardStandAlone:-:grantpkagestableid---"
+    Then I collect all the soft asserts
+    Examples:
+      | Grant Name                 |
+      | Automation Permanent Award |
+
+  @66224 @validateSourceNdInstructionField  @mahadev
+  Scenario: To verify that if source and instruction field  unfilled in site visit review and upon clicking on the save button by the award owner (Pm profile) on the top right corner of the page validation error must be thrown.
+    And I delete the record "Automation Site Visit" from the object "Site Visit"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
+    Given I navigate to "Management" sub tab
+    And I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
+    And I enter "Creation" values from "SiteVisit_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter "SourceError" values from "SiteVisit_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I see the following messages in the page details :
+      | Source is Required to save under Overview. |
+
+  @66219 @validateInstructionField  @mahadev
+  Scenario: To verify that if instruction field is left unfilled in site visit review and upon clicking on the save button by the award owner (Pm profile) on the top right corner of the page validation error must be throw
+    And I delete the record "Automation Site Visit" from the object "Site Visit"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
+    Given I navigate to "Management" sub tab
+    And I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
+    And I enter "Creation" values from "SiteVisit_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter "InstructionError" values from "SiteVisit_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I see the following messages in the page details :
+      | Instructions for Subrecipient is Required to save under Overview. |
