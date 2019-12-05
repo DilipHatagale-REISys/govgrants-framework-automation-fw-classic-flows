@@ -62,7 +62,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Assessment" sub tab
     And I enter "OrgAssessmentValues" values from "RiskAssessment_Field_Values.xlsx"
     And I click on "Save" in the page details
-    And I get the "EGMS ID"
+    When I get the "EGMS ID"
     When I click on "Submit" in the page details
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
@@ -340,7 +340,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
       | Assessment Access granted. The subrecipient has received an email and access to revise the assessment. |
 
   @62518 @grantorCannotEditCreatedRA @deepika
-  Scenario: Validate whether Grantor user cannot edit or modify the created Org Level Risk Assessment from Org View Page.
+  Scenario: Validate whether Grantor user can edit or modify the created Org Level Risk Assessment from Org View Page.
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
@@ -359,7 +359,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     Then I cannot see top right button "Edit" in page detail
 
   @62519 @declineButtonViewForGrantor @deepika
-  Scenario: Validate the task is not created for subrecipient user when grantor declines the Risk Assessment
+  Scenario: Validate the task is not created for subrecipient user when when grantor declines the Risk Assessment
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
@@ -1488,7 +1488,6 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
 
   @64128 @grantorViewOrgRA @deepika
   Scenario: Validate Risk Assessment data/status should be displayed to internal user irrespective of the state of Risk Assessment.
-    Given I delete the record "Automation Desk Review Org level" from the object "Desk Review"
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
