@@ -145,7 +145,8 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    Then I see that "Automation Finding" has been added in flextable with Id "---orgLevelDeskReview:-:correctiveTableId---"
+    Then I softly see that "Automation Finding" has been added in flextable with Id "---orgLevelDeskReview:-:correctiveTableId---"
+    Then I collect all the soft asserts
 
   @54572 @formFillingDeskReviewOrgLevel @smoke @deepika
   Scenario: Filling up of form in Desk Review Org Level
@@ -190,8 +191,8 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click on "Back" in the page details
     Then I see that "100.00%" has been added in flextable with Id "---orgLevelDeskReview:-:reportsTableId---"
 
-  @54886 @54571 @submittingForAprovalOfDeskReviewOrgLevel @deepika
-  Scenario: Validate the org level Desk Review Submitting for Approval
+  @54886 @54571 @66270 @submittingForAprovalOfDeskReviewOrgLevel @deepika
+  Scenario: Validate the org level Desk Review Submitting for Approval | Validate Approvers Table is not editable for record owner and award owner end when the status of Org Level Desk Review is Submitted to Approval
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
@@ -239,6 +240,8 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Observation | Automation Description | Observation |
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    When I navigate to "Responsibilities" sub tab
+    Then I softly cannot see row level action button "Edit" against "Automation PM" in flex table with id "---orgLevelDeskReview:-:correctiveTableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -590,6 +593,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click on "Submit to Grantor" in the page details
     Then I softly see the following messages in the page details :
       | Reports and Outcomes Tab - Enter corrective actions on all Findings outcomes using the "+" icons. |
+    Then I collect all the soft asserts
 
   @55460 @approverForwardUserGetPendingTaskDeskReview @deepika
   Scenario: Validate when the Approver forward Org Level Desk Review to other user, the Pending Task will be created to the User
@@ -1164,7 +1168,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     Then I collect all the soft asserts
 
   @65073 @recordOwnerhasAccesstoDeleteassociatedContactand @deepika @wip
-  Scenario: Validate whether record owner has access to delete the asoociated Contact and Award to Desk Review Org Level
+  Scenario: Validate whether record owner has access to delete the asoociated Contact and Award to Desk Review Org Level |
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
@@ -1228,5 +1232,3 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click modal button "Submit Review"
     When I close "Site Visit Reviewers" modal by clicking the top right x button
     Then I cannot see top right button "Edit" in page detail
-
-
