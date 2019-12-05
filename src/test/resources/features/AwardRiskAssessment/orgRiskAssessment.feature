@@ -695,7 +695,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I perform quick search for "Expired" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     Then I see value "Expired" for title "Status" against the value "{SavedValue:EGMSID}" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
-  @62945 @requestNewAssessmnetButtonIsNotAvailbleOnceClicked @deepika @wip
+  @62945 @requestNewAssessmnetButtonIsNotAvailbleOnceClicked @deepika
   Scenario: Validate once 'Request New Assessmnet' Button is clicked then the button is not available once clicked
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -780,7 +780,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     Then I see value "Record Id" for title "EGMS ID" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
   @62948 @onceAcknowledgedRiskAssessmentISCreated @deepika
-  Scenario: Validate whether user is see the Acknowledge checkout and is Editable for Org Level Risk Assessment |Validate when the acknowledge is checked and saved then the Risk Assessment will be still in Created Status
+  Scenario: Validate whether user is see the Acknowledge checkout and is Editable for Org Level Risk Assessment
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
@@ -1488,6 +1488,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
 
   @64128 @grantorViewOrgRA @deepika
   Scenario: Validate Risk Assessment data/status should be displayed to internal user irrespective of the state of Risk Assessment.
+    Given I delete the record "Automation Desk Review Org level" from the object "Desk Review"
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
