@@ -538,7 +538,8 @@ Feature: Validate all scenarios in Negotiations
     Then I can see "Negotiations" sub tab at view detail page
 
   @58030 @65324 @completedNegotiationAttachmentsNotes @deepika
-  Scenario: Validate whether user is able to view the completed Negotiation on Applications Tab for Attachments Notes
+  Scenario: Validate whether user is able to view the completed Negotiation on Applications Tab /
+    To verify that after clicking on complete negotiation button from the award owner profile  the progress bar  shows negotiated
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
