@@ -2595,7 +2595,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @65909 @65898 @65902 @validateUploadingDigitalSignatureDocument @mahadev
+  @65909 @65898 @65902 @65910 @validateUploadingDigitalSignatureDocument @mahadev
   Scenario Outline: To verify that the attachment can be added by the award owner profile after peer review completion | Validate status after peer review
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
