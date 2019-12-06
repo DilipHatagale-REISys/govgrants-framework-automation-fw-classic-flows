@@ -92,6 +92,7 @@ Feature: Validate all scenarios of grants and award without background
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     Then I softly see value "true" for title "Mandatory" against the value "Term" inside table "---subAwardStandAlone:-:termsndConditionsTableId---"
     Then I softly cannot see row level action button "Delete" against "Term" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
+    Then I collect all the soft asserts
 
   @65780 @65800 @65814 @StatusNotStartedSentToSubrecipient @jitendra
   Scenario: To verify on click "send to sub recipient button" by  Award owner profile (PM user) it must appear in the pending task of sub-recipient.
