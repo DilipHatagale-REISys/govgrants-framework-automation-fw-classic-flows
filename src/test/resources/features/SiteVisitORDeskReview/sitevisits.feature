@@ -699,7 +699,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Then I softly can see top right button "Accept and Close" in page detail
 
-  @55461 @60838 @reportsAndOutcomesTabAfterNotifiedStatus @deepika
+  @55461 @60838 @66234 @reportsAndOutcomesTabAfterNotifiedStatus @deepika
   Scenario: Validate Validate Approvers Table is not editable for record owner and Reports and Outcome Tab visibility after Notified Status
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
@@ -715,6 +715,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
     Then I softly can see top right button "Conduct" in page detail
+    Then I collect all the soft asserts
 
   @55792 @internalParticipantAssociationSiteVisit @deepika
   Scenario Outline: Internal Participant Association of Site Visit
