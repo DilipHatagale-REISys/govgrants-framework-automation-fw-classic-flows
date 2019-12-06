@@ -2595,7 +2595,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @65909 @65898 @65902 @validateUploadingDigitalSignatureDocument  @mahadev
+  @65909 @65898 @65902 @validateUploadingDigitalSignatureDocument @mahadev
   Scenario Outline: To verify that the attachment can be added by the award owner profile after peer review completion | Validate status after peer review
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -2701,6 +2701,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Attachments" sub tab
     And I upload document "Award_Field_Values.xlsx" of type "Digitally Signed Original"
     Then I softly see "Award_Field_Values.xlsx" has been added in "Digital Signature Document" flex table
+    And I click on "Delete" icon for "Award_Field_Values.xlsx" inside flex table with id "---subAwardStandAlone:-:digiSignDivTableId---"
+    Then I softly see "No Records" inside flex table with id "---subAwardStandAlone:-:digiSignDivTableId---"
     Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
