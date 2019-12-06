@@ -40,8 +40,8 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
     Then I collect all the soft asserts
 
-  @58167 @59625 @PendingTaskCreationAndapprovalProcessofRiskAssessment @deepika
-  Scenario: Validate the Approval process of Risk Assessment and whether the pending task is created for Program approver under Home Tab when the award owner submits the Risk Assessment for approval
+  @58167 @59625 @66378 @PendingTaskCreationAndapprovalProcessofRiskAssessment @deepika
+  Scenario: Validate the Approval process of Risk Assessment and whether the pending task is created for Program approver under Home Tab when the award owner submits the Risk Assessment for approval |Validate the System should capture field history post activation.
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -73,7 +73,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    Then I softly see that "Approve Subaward Risk Assessment" has been added in flextable with Id "---riskassessment:-:homePendingTaskTableId---"
+    Then I softly see that "Approve Subaward Risk Assessment" has been added in flextable with Id "---subAwardStandAlone:-:pendingTaskTableId---"
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -83,6 +83,8 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     Then I softly see that "EGMS ID" is in "Active" status
+    When I navigate to "History" sub tab
+    Then I softly see value "Active" for title "New Value" inside table "History"
     Then I collect all the soft asserts
 
   @58168 @58169 @59875 @pendingTaskCreationforRiskAssesmentostRejectCheckFieldHistory @deepika

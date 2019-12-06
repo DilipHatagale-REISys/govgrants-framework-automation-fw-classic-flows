@@ -26,15 +26,17 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
+    And I navigate to "Assessment" sub tab
+    And I enter "OrgAssessmentValues" values from "RiskAssessment_Field_Values.xlsx"
     And I click on "Save" in the page details
-    When I get the "EGMS ID"
+    And I get the "EGMS ID"
     When I click on "Submit" in the page details
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
-    Then I softly cannot see top right button "Request New Assessment" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    Then I softly can see top right button "Request New Assessment" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     When I perform quick search for "Record Id" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
-    Then I softly see that "Created" has been added in flextable with Id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    Then I softly see that "Active" has been added in flextable with Id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     Then I collect all the soft asserts
 
   @61977 @moderateRiskLevelColorChangesToYellow @deepika
@@ -54,7 +56,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
 
   @61982 @61978 @additonOfAttachmentWhenRAISActive @deepika
   Scenario: Validate one the Org RA is Active then there will be no add or Edit button on attachments flextable
-    When I click on "Start" icon for "" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
+    When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
     And I navigate to "Assessment" sub tab
@@ -96,7 +98,6 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "Save" in the page details
     When I click on "Edit" in the page details
     When I click on "Save" in the page details
-    Then I see status in Progress-bar is "Active" and is "Green"
     Then I can see top right button "Submit" in page detail
 
   @61980 @addingAnAttachmentToOrgRA @deepika
@@ -151,8 +152,11 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Bayside Community Center" in "---riskassessment:-:homePendingTaskTableId---" panel
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---riskassessment:-:homePendingTaskTableId---"
+    Then I softly can see top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     When I click on top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
-    Then I cannot see top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    When I refresh the page
+    Then I softly cannot see top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    Then I collect all the soft asserts
 
   @62312 @deleteIconfCreatedRiskAssessment @deepika
   Scenario: Validate whether Authorized Signatory can view the delete button across the created Risk Assessment
@@ -258,11 +262,6 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
-    And I navigate to "Home" tab
-    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
-    And I navigate to "Risk Assessment" sub tab
-    When I perform quick search for "Record Id" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
-    And I click on "View" icon for "Record Id" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     Then I see status in Progress-bar is "Active" and is "Green"
 
   @62514 @saveAndContinueButtons @smoke @deepika
@@ -291,7 +290,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "View" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:activeOrgTableID---"
     And I navigate to "Risk Assessment" sub tab
     When I perform quick search for "Active" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
-    Then I see top right button "Provide Access" for "---orgRiskAssessment:-:orgRiskAssessmentTableId---" flex table
+    Then I can see top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
   @62516 @declineButtonViewForGrantor @deepika
   Scenario: Validate whether Grantor can Decline the revision request for org level risk Assessment
@@ -425,17 +424,13 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
-    And I navigate to "Home" tab
-    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
-    And I navigate to "Risk Assessment" sub tab
-    When I click on top right button "Request New Assessment" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
     When I perform quick search for "Bayside Community Center" in "---orgRiskAssessment:-:activeOrgTableID---" panel
     When I click on "View" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:activeOrgTableID---"
     And I navigate to "Risk Assessment" sub tab
-    Then I can see top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    Then I cannot see top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
   @62306 @GrantorAddedAttachmentsSentForRevisionRequestOfOrgLevelRA @keerti
   Scenario: Validate whether Grantor is able add attachments when sent for revision request of org level risk Assessment
@@ -658,7 +653,6 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
     When I re-login as "SPA" user on "SUBPORTAL" portal
-    And I navigate to "Home" tab
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
@@ -916,10 +910,9 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I enter value "Checked" into field "Signature__c"
     When I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
-    When I login to "As a Grantor" app as "dynamicUser" user
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
@@ -1028,7 +1021,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I click on "Complete Review" in the page details
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SA" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -1070,7 +1063,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SA" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -1240,7 +1233,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I perform quick search for "Bayside Community Center" in "---riskassessment:-:homePendingTaskTableId---" panel
     Then I see values "Bayside Community Center" and "Provide or Decline Risk Assessment Access" inside table
 
-  @63232 @VerifyDraftRAIsActivated @keerti
+  @63232 @VerifyDraftRAIsActivated @keerti @wip @cannotbeAutomated
   Scenario: Verify task is marked completfed if the user chooses to activate the risk assesment using the draft risk assessment instead of using the task
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -1386,9 +1379,6 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
-    Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
 
   @63979 @grantorCanViewOverallRisk @deepika
   Scenario: Validate Internal User can also View the OverallRisk field on Risk Assessment Tab
@@ -1489,7 +1479,6 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
 
   @63983 @acknowledgementOfRiskAssessment @deepika
   Scenario:  Validate that no records has been added to the Org Risk Assessment table when record is cancelled
-    Given I delete the record "Automation Desk Review Org level" from the object "Desk Review"
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Cancel" in the page details
