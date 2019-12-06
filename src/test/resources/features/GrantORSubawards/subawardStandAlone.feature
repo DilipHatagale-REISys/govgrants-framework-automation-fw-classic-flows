@@ -2494,7 +2494,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @65819 @65891 @validateStatusAfterSendForReviewAndButtonsAfterSavingReview  @mahadev
+  @65819 @65897 @65891 @65890 @validateStatusAfterSendForReviewAndButtonsAfterSavingReview  @mahadev
   Scenario Outline: Verify status after send for review | verify buttons on modal after saving review by reviewer
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -2570,6 +2570,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Executive Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
     When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "egmsId"
     And I enter the following values into flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" by clicking "New" :
       | Reviewer Name | Role            | Description                 | Due Date | Allow Record Editing |
       | Automation FO | Fiscal Reviewer | Automation Test Description | 7        | No                   |
@@ -2579,6 +2580,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    Then I softly see value "Not Started" for title "Status" against the value "{SavedValue:egmsId}" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
     When I click on "Start" icon for "Record Id" inside table
     When I navigate to "Responsibilities" sub tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---"
@@ -2586,12 +2588,14 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click modal button "Save"
     Then I can softly see modal button "Submit Review"
     Then I can softly see modal button "Edit"
+    And I click modal button "Submit Review"
+    Then I softly see value "Submitted" for title "Status" against the value "Automation FO" inside table "---subAwardStandAlone:-:peerReviewersTableId---"
     Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @65909 @65898  @validateUploadingDigitalSignatureDocument  @mahadev
+  @65909 @65898 @65902 @65910 @validateUploadingDigitalSignatureDocument @mahadev
   Scenario Outline: To verify that the attachment can be added by the award owner profile after peer review completion | Validate status after peer review
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -2691,9 +2695,14 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I click on "Complete Review" in the page details
     Then I softly see field "Status" as "Reviewed"
+    Then I softly can see top right button "Edit" in page detail
+    Then I softly can see top right button "Send to Subrecipient" in page detail
+    Then I softly can see top right button "Submit for Approval" in page detail
     When I navigate to "Attachments" sub tab
     And I upload document "Award_Field_Values.xlsx" of type "Digitally Signed Original"
     Then I softly see "Award_Field_Values.xlsx" has been added in "Digital Signature Document" flex table
+    And I click on "Delete" icon for "Award_Field_Values.xlsx" inside flex table with id "---subAwardStandAlone:-:digiSignDivTableId---"
+    Then I softly see "No Records" inside flex table with id "---subAwardStandAlone:-:digiSignDivTableId---"
     Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
