@@ -133,8 +133,8 @@ Feature: Validate all scenarios in the Site Visit
     Then I see that "100.00%" has been added in flextable with Id "---sitevisits:-:reportsTableId---"
     Then I collect all the soft asserts
 
-  @51091 @51092 @approvalOfSiteVisit
-  Scenario: Approval of Site Visit and Send Site Visit to Subrecipient
+  @51091 @51092  @66314 @approvalOfSiteVisit
+  Scenario: Approval of Site Visit and Send Site Visit to Subrecipient | validate task for program approver
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
@@ -174,6 +174,7 @@ Feature: Validate all scenarios in the Site Visit
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:EGMSID}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    Then I softly see value "{SavedValue:EGMSID}" for title "EGMS ID" inside table "---sitevisits:-:monitoringTabPhasePendingTasks---"
     And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal

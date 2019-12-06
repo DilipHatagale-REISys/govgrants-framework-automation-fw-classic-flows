@@ -1232,13 +1232,13 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
-    When I click on top right button "Request New Assessment" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    When I click table top right button "Request New Assessment" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     And I click "No" on modal confirmation box
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Bayside Community Center" in "---riskassessment:-:homePendingTaskTableId---" panel
-    Then I see values "Bayside Community Center" and "Provide or Decline Risk Assessment Access" inside table
+    Then I do not see values "Bayside Community Center" and "Provide or Decline Risk Assessment Access" inside table
 
   @63232 @VerifyDraftRAIsActivated @keerti
   Scenario: Verify task is marked completfed if the user chooses to activate the risk assesment using the draft risk assessment instead of using the task

@@ -325,4 +325,10 @@ public class GenericSteps {
             Assert.assertTrue(EyeThink.saas().pageDetails().getFieldValue("Budget Period").contains(EyeThink.saas().pageDetails().getFieldValue("Budget Period End Date")));
         }
     }
+
+    @Description("handles to click on table Top right button which will not accept any alert if any")
+    @When("I click table top right button {string} in flex table with id {string}")
+    public void iClickTableTopRightButtonInFlexTableWithId(String buttonName, String flexTableId) {
+        projectManager.clickTableTopRightButton(buttonName,flexTableId);
+    }
 }

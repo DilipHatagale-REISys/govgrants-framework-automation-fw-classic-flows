@@ -456,4 +456,13 @@ public class ProjectManager extends ProjectWebServices {
         // Step 5
         EyeThink.saas().modal().closeModalByClickingTopRightCloseButton();
     }
+
+    /**
+     * To click on table top right button
+     * @param buttonName
+     * @param flexTableId
+     */
+    public void clickTableTopRightButton(String buttonName, String flexTableId){
+        EyeThink.core().click().on( EyeThink.saas().flexTable().getTopRightButtonLocatorByTableId(flexTableId, buttonName));
+    }
 }
