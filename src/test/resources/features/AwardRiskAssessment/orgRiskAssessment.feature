@@ -1636,7 +1636,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     Then I can see "Risk Assessment" sub tab at view detail page
 
   @64514 @overallRiSKScoreWhenAssessmentSelectedDiffTypeQuestions @deepika
-  Scenario: Validate the Low level Risk Score, that shows the Overall Score as per the provided Assessment once Risk Assessment is Active
+  Scenario: Validate the High level Risk Score, that shows the Overall Score as per the provided Assessment once Risk Assessment is Active
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
@@ -1656,7 +1656,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     Then I collect all the soft asserts
 
   @64515 @overallRiSKScoreWhenAssessmentSelectedDiffQuestions @deepika
-  Scenario: Validate the Low Risk Score of Risk Assessment, that shows the Overall Score as per the provided Assessment once Risk Assessment is Active
+  Scenario: Validate the Moderate Risk Score of Risk Assessment, that shows the Overall Score as per the provided Assessment once Risk Assessment is Active
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
@@ -2027,3 +2027,4 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     Then I see field "Effective Date" is not editable
     Then I see field "Expiration Date" is not editable
     Then I collect all the soft asserts
+    
