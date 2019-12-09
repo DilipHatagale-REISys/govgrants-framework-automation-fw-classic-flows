@@ -88,13 +88,12 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Subawards" sub tab
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I get the "EGMS ID"
-    And I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     Then I softly see value "true" for title "Mandatory" against the value "Term" inside table "---subAwardStandAlone:-:termsndConditionsTableId---"
     Then I softly cannot see row level action button "Delete" against "Term" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     Then I collect all the soft asserts
 
-  @65780 @65800 @65814 @StatusNotStartedSentToSubrecipient @jitendra
+  @65780 @65800 @65814 @65804 @StatusNotStartedSentToSubrecipient @jitendra
   Scenario: To verify on click "send to sub recipient button" by  Award owner profile (PM user) it must appear in the pending task of sub-recipient.
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -139,6 +138,12 @@ Feature: Validate all scenarios of grants and award without background
       | EGMS ID                                 | Target |
       | Automation Permanent KPI for Regression | 7     |
     Then I softly see value "7" for title "Target" against the value "Automation Permanent KPI for Regression" inside table "---subAwardStandAlone:-:kpiTableId---"
+    When I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
+    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
+    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
+    Then I softly see value "{SavedValue:fundingAccount}" for title "Funding Account" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
     And I collect all the soft asserts
 
   @38215  @VerifyActiveGrantsAccessToAllUsers @mahadev
