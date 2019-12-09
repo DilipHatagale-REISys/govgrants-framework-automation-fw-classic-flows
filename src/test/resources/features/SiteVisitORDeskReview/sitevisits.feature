@@ -414,8 +414,8 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Then I cannot see top right button "Notify" in page detail
 
-  @55211 @siteVisitsWithOutAddingCorerctiveItems @deepika
-  Scenario:  User will not be able to submit the Site Visit to Grantor without adding corrective actions to findings.
+  @55211  @66322  @siteVisitsWithOutAddingCorerctiveItems @deepika
+  Scenario:  User will not be able to submit the Site Visit to Grantor without adding corrective actions to findings | To verify that submit to grantor button appear on site visit page at SR end
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
@@ -474,9 +474,11 @@ Feature: Validate all scenarios in the Site Visit
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    Then I softly can see top right button "Accept and Close" in page detail
     When I click on "Submit to Grantor" in the page details
-    Then I see the following messages in the page details :
+    Then I softly see the following messages in the page details :
       | Reports and Outcomes Tab - Enter corrective actions on all Findings outcomes using the "+" icons. |
+    Then I collect all the soft asserts
 
   @55209 @55208 @subrecipientCannotSeeReportAndOutcomesWhenInNotifiedStatus @deepika
   Scenario:  Applicant is not able to view the report or outcomes while in the Notified status and User will not be able to submit the Site Visit for approval without completed forms
