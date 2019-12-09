@@ -971,10 +971,10 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:phasePendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
     And I click on "Approve" on the approval decision box
-    And I navigate to "Applications" tab
+    And I navigate to "Home" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---riskassessment:-:completedTaskTableId---" panel
-    Then I see value "Record Id" for title "EGMS ID" inside table "---riskassessment:-:completedTaskTableId---"
+    And I perform quick search for "Record Id" in "---orgLevelDeskReview:-:homeCompletedTaskTableId---" panel
+    Then I see value "Record Id" for title "EGMS ID" inside table "---orgLevelDeskReview:-:homeCompletedTaskTableId---"
 
   @65069 @deleteCreatedOrgDeskReview @deepika
   Scenario: Validate whether user will be able to delete the created Org Desk Review
