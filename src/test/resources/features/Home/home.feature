@@ -1,7 +1,7 @@
 @home @regression
 Feature: Validate all scenarios in the home tab
 
-  @35024 @internalOrganizationCreate @smoke @nonFunctional
+  @35024 @internalOrganizationCreate @nonFunctional @wip
   Scenario: Verifying if the Admin has create access to Internal Organization
     Given I delete the record "Product Automation permanent Orgtn" from the object "ACCOUNT"
     Given I login to "As Administrator" app as "Admin" user
@@ -12,7 +12,7 @@ Feature: Validate all scenarios in the home tab
     And I click on "Save" in the page details
     Then I see that "State Organization" is in "Created" status
 
-  @35637 @internalOrganizationAdminEdit @nonFunctional
+  @35637 @internalOrganizationAdminEdit @nonFunctional @wip
   Scenario Outline: Verifying if the Admin has edit access to Internal Organization
     Given I login to "As Administrator" app as "Admin" user
     When I navigate to "Setup" tab
@@ -187,7 +187,7 @@ Feature: Validate all scenarios in the home tab
       | ADMIN |
 
   @56733 @internalContactsEdition @smoke
-  Scenario Outline: Validate whether all Internal Users can edit the
+  Scenario Outline: Validate whether all Internal Users can edit the Contacts
     Given I delete the record "Automation PO" from the object "Contact"
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -404,7 +404,7 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "Automation ind23" in "ActiveAccountIndApplicant" panel
     When I click on "View" icon for "Automation ind23" inside table without waiting for record
     And I click on top right button "New" in flex table with id "AdditionalAddressInternal"
-    And I enter "AdditionalAddressesCreation" values from "InternalOrganization_Field_Values.xlsx"
+    And I enter "AdditioanlAddressesCreation" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
     Then I see values "Billing Address" and "VA" inside table
     Examples:
@@ -429,7 +429,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---home:-:contactsTableId---"
     When I click "Add" after selection of "Automation EXE" in the table "---home:-:associateContactsTableId---"
-    When I close "Associate" modal by clicking the top right x button
+    When I close "Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -454,6 +454,7 @@ Feature: Validate all scenarios in the home tab
     Then I softly see values "Approve Program" and "Not Started" inside table
     And I click on "Start" icon for "Record Id" inside flex table with id "HomePendingTasks"
     When I click on "Approve" on the approval decision box
+    When I navigate to "Home" tab
     And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "HomePhaseCompletedTasks" panel
     Then I softly see values "Approve Program" and "Completed" inside table
@@ -517,9 +518,9 @@ Feature: Validate all scenarios in the home tab
     When I enter "Edition" values from "Program_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate" modal by clicking the top right x button
+    And I click on top right button "Associate" in flex table with id "---home:-:contactsTableId---"
+    When I click "Add" after selection of "Automation EXE" in the table "---home:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -535,14 +536,6 @@ Feature: Validate all scenarios in the home tab
       | Responsibility     | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
-    When I get the "EGMS ID"
-    When I navigate to "Setup" sub tab
-    When I enter the following values into flex table with id "---program:-:checklistTableId---" by clicking "Add" :
-      | Description                 | Required  | Applies To  | Status |
-      | Automation test description | Mandatory | Application | Active |
-    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---"
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close "Upload Template" modal by clicking the top right x button
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Home" tab
@@ -598,8 +591,10 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I click on "View" icon for "Test Automation Organization" inside flex table with id "---home:-:internalOrganizationId---" with wait for record
     And I navigate to "Related Log" sub tab
-    Then I can see page block "Active Federal/NGO Applications"
-    Then I can see page block "Active Federal/NGO Grants"
+    Then I can see page block "Internal Programs"
+    Then I can see page block "Announcements"
+    Then I can see page block "Applications"
+    Then I can see page block "Active Grants"
     Examples:
       | User  |
       | ADMIN |
@@ -705,13 +700,13 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     And I click on "Send Invitation" icon for "Automation SME" inside flex table with id "---home:-:reviewersTableId---"
-    And  I click modal button "Send"
+    When I click on "Send" in the page details
     When I close "Send Invitation" modal by clicking the top right x button
     And I perform quick search for "Automation SME" in "---home:-:reviewersTableId---" panel
     Then I see value "Invitation Sent" for title "Status" inside table "---home:-:reviewersTableId---"
     Examples:
       | User  |
       | ADMIN |
-      | EXE   |
-      | PM    |
+#      | EXE   |
+#      | PM    |
 
