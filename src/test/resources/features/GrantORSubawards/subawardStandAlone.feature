@@ -449,7 +449,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @51140 @51141 @65983 @66005 @66003 @66008 @allSendToRecipientAndAcceptanceAfterApproval
+  @51140 @51141 @66006 @65983 @66005 @66003 @66008 @allSendToRecipientAndAcceptanceAfterApproval
   Scenario Outline: Acceptance of award by receipient after approval| Validate view Noga button on SPI side |To verify after Send to Subrecipient button the status should change to Sent to Subrecipient after Approval and the progress bar approved
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -576,7 +576,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @51139 @66009 @65975 @66012 @allActivation @smoke
+  @51139 @66009 @65975 @66012 @66013 @allActivation @smoke
   Scenario Outline: all activation | Validate activate and View Noga button on award
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -713,6 +713,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     Then I softly can see top right button "Activate" in page detail
     Then I softly can see top right button "View NOGA" in page detail
+    Then I softly can see top right button "Send for Signature" in page detail
     And I click on "Activate" in the page details
     Then I softly see that "Subaward" is in "Activated" status
     Then I collect all the soft asserts
