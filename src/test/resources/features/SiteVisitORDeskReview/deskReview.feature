@@ -7,6 +7,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
+    When I perform quick search for "Automation Permanent Award" in "---deskreview:-:internalActiveGrants---" panel
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalActiveGrants---"
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
@@ -126,8 +127,8 @@ Feature: Validate all scenarios in Desk Review
     Then I softly see that "Automation Finding" has been added in flextable with Id "---deskreview:-:correctiveTableId---"
     Then I collect all the soft asserts
 
-  @51018 @51019 @formFillingSubmittingForApprovalDeskReview
-  Scenario: Filling up of form and Submitting Desk Review for approval in Desk Review
+  @51018 @51019 @66481 @66468 @66483 @66472 @formFillingSubmittingForApprovalDeskReview
+  Scenario: Filling up of form and Submitting Desk Review for approval in Desk Review | To verify that program review form can be filled successfully in reports and outcomes tab | Validate Notified status and pending task after submitting for approval
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
@@ -140,6 +141,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I click on "Notify" in the page details
+    Then I softly see status in Progress-bar is "Notified" and is "Green"
     Given I am on "SUBPORTAL" portal
     When I login as "SPI" user
     And I navigate to "Monitoring" tab
@@ -162,6 +164,8 @@ Feature: Validate all scenarios in Desk Review
     When I click on "Edit" icon for "General Review Form" inside flex table with id "---deskreview:-:reportsTableId---"
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
+    Then I softly see the following messages in the page details :
+    | Form saved successfully. |
     When I click on "Back" in the page details
     Then I softly see that "100.00%" has been added in flextable with Id "---deskreview:-:reportsTableId---"
     Given I navigate to "Responsibilities" sub tab
@@ -188,6 +192,7 @@ Feature: Validate all scenarios in Desk Review
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     When I click on "Conduct" in the page details
+    Then I softly can see top right button "Submit for Approval" in page detail
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
       | Title                  | Description            | Type        |
@@ -200,6 +205,11 @@ Feature: Validate all scenarios in Desk Review
     When I click on "Back" in the page details
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:homePendingTasksTableId---" panel
+    Then I softly see value "Record Id" for title "EGMS ID" inside table "---deskreview:-:homePendingTasksTableId---"
     Then I collect all the soft asserts
 
   @51020 @66145 @66269 @approvalOfDeskReview @smoke
@@ -269,7 +279,7 @@ Feature: Validate all scenarios in Desk Review
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I collect all the soft asserts
 
-  @51021 @51022 @51023 @66146 @deskReviewSendToSubrecipientdAndCorrectiveActionsBySubrecipient
+  @51021 @51022 @51023 @66146 @66485  @deskReviewSendToSubrecipientdAndCorrectiveActionsBySubrecipient
   Scenario: Send Desk Review to Subrecipient, Corrective Actions and Submit to Grantor by Subrecipient |Validate whether pending task is created for Program approver under Home Tab when the award owner submits the Desk Review for approval
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
@@ -324,7 +334,8 @@ Feature: Validate all scenarios in Desk Review
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
-    Given I click on "Send to Subrecipient" in the page details
+    Then I softly can see top right button "Send to Subrecipient" in page detail
+    When I click on "Send to Subrecipient" in the page details
     Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "green"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
