@@ -120,7 +120,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
-    When I click "Add" after selection of "Automation Announcement for FDM" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     And I click on "Notify" in the page details
     Then I softly see that "Automation Site Visit Org level" is in "Notified" status
     When I click on "Conduct" in the page details
@@ -146,7 +146,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
-    When I click "Add" after selection of "Automation Announcement for FDM" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -175,7 +175,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
-    When I click "Add" after selection of "Automation Announcement for FDM" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -218,7 +218,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
-    When I click "Add" after selection of "Automation Announcement for FDM" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -269,7 +269,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
-    When I click "Add" after selection of "Automation Announcement for FDM" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -342,7 +342,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
-    When I click "Add" after selection of "Automation Announcement for FDM" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -436,7 +436,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
-    When I click "Add" after selection of "Automation Announcement for FDM" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -541,7 +541,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
-    When I click "Add" after selection of "Automation Announcement for FDM" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -607,7 +607,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
-    When I click "Add" after selection of "Automation Announcement for FDM" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -684,7 +684,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
-    When I click "Add" after selection of "Automation Announcement for FDM" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -730,7 +730,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
     Then I see that "Approve Site Visit Org" has been added in flextable with Id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
 
-  @55793 @internalParticipantAssociationOrganizationalSiteVisit @smoke @deepika
+  @internalParticipantAssociationOrganizationalSiteVisit @smoke @deepika
   Scenario Outline: Internal User participant Association of Organizational Site Visit
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -790,7 +790,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
-    When I click "Add" after selection of "Automation Announcement for FDM" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     Then I softly can see top right button "Notify" in page detail
     And I click on "Notify" in the page details
     Then I softly can see top right button "Conduct" in page detail
@@ -815,7 +815,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
-    When I click "Add" after selection of "Automation Announcement for FDM" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -845,7 +845,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
-    When I click "Add" after selection of "Automation Announcement for FDM" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -878,7 +878,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
-    When I click "Add" after selection of "Automation Announcement for FDM" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -937,7 +937,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
-    When I click "Add" after selection of "Automation Announcement for FDM" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -1001,7 +1001,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
-    When I click "Add" after selection of "Automation Announcement for FDM" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -1056,7 +1056,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
-    When I click "Add" after selection of "Automation Announcement for FDM" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     And I navigate to "Responsibilities" sub tab
@@ -1100,7 +1100,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
-    When I click "Add" after selection of "Automation Announcement for FDM" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -1179,7 +1179,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
-    When I click "Add" after selection of "Automation Announcement for FDM" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I navigate to "Overview" sub tab
@@ -1205,7 +1205,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
-    When I click "Add" after selection of "Automation Announcement for FDM" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
@@ -1247,7 +1247,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on "Remove" icon for "Automation SPI" inside flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     Then I softly see "No Records Found" inside flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    And I click on "Remove" icon for "Automation Announcement for FDM" inside flex table with id "---orgLevelSiteVisits:-:selectApplicationId---"
+    And I click on "Remove" icon for "Automation Announcement for Site Visit" inside flex table with id "---orgLevelSiteVisits:-:selectApplicationId---"
     Then I softly see "No Records Found" inside flex table with id "---orgLevelSiteVisits:-:selectApplicationId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
