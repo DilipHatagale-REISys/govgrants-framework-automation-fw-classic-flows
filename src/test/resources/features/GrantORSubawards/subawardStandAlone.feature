@@ -31,7 +31,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I softly see field "Brief information about the grant." as "Test Automation"
     Then I collect all the soft asserts
 
-  @51130 @awardStandAloneAddContactsKeyPersonnel
+  @51130 @65606 @awardStandAloneAddContactsKeyPersonnel
   Scenario Outline: Associate a Key Contact
     And I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---"
@@ -42,12 +42,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name           | Project Role             | Is Key Personnel |
       | Automation SPI | Project Director/Manager | Checked          |
       | Automation SPA | Other                    |                  |
-    Then I see that "Automation SPA" has been added in flextable with Id "---subAwardStandAlone:-:associatedContactsTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Saved Successfully! |
+    Then I softly see that "Automation SPA" has been added in flextable with Id "---subAwardStandAlone:-:associatedContactsTableId---"
+    And I collect all the soft asserts
     Examples:
       | Contact        |
       | Automation SPA |
 
-  @51131 @awardStandAloneAddFundingAccount @smoke
+  @51131 @awardStandAloneAddFundingAccount @smokez
   Scenario: Funding Account budget addition to award
     When I navigate to "Budget" sub tab
     And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
