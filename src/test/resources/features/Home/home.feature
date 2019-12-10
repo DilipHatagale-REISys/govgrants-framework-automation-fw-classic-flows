@@ -373,14 +373,14 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @57341 @listpageViewChildOrganizations @wip
+  @57341 @listpageViewChildOrganizations
   Scenario Outline:: Verify system allows access to all Internal users to view the List page
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
-    And I expand nested table containing column value "Test Automation Organization"
-    Then I see values "Teaching and Learning" and "Agency" inside table
+    When I perform quick search for "Teaching and Learning" in "---home:-:internalOrganizationId---" panel
+    And I expand nested table containing column value "Teaching and Learning"
+    Then I see values "Career and College Transition Division" and "Division" inside table
     Examples:
       | User  |
       | ADMIN |
@@ -454,12 +454,10 @@ Feature: Validate all scenarios in the home tab
     Then I softly see values "Approve Program" and "Not Started" inside table
     And I click on "Start" icon for "Record Id" inside flex table with id "HomePendingTasks"
     When I click on "Approve" on the approval decision box
-    When I navigate to "Home" tab
     And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "HomePhaseCompletedTasks" panel
     Then I softly see values "Approve Program" and "Completed" inside table
     Then I collect all the soft asserts
-
 
   @57346 @subrecipientOrganizationDUNSandEINS
   Scenario Outline: Verify whether the Organization has at least one DUNS Numbers
@@ -707,6 +705,6 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-#      | EXE   |
-#      | PM    |
+      | EXE   |
+      | PM    |
 
