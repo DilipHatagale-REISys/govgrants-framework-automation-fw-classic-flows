@@ -50,7 +50,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Contact        |
       | Automation SPA |
 
-  @51131 @awardStandAloneAddFundingAccount @smokez
+  @51131 @awardStandAloneAddFundingAccount @smoke
   Scenario: Funding Account budget addition to award
     When I navigate to "Budget" sub tab
     And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
