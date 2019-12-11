@@ -373,8 +373,10 @@ Feature: Validate all scenarios in the Site Visit
     And I navigate to "Reports and Outcomes" sub tab
     Then I can see row level action button "Edit" against "General Review Form" in flex table with id "---sitevisits:-:reportsTableId---"
 
-  @35666 @54225 @61200 @recordOnwerConductSiteVisit @deepika
+  @35666 @54225 @61200 @66227 @recordOnwerConductSiteVisit @deepika
   Scenario: Verify that PM user (other than record owner) is able to conduct or Notify and user can view location and date of performance
+    Then I softly can see top right button "Edit" in page detail
+    Then I softly can see top right button "Notify" in page detail
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
@@ -397,6 +399,7 @@ Feature: Validate all scenarios in the Site Visit
     Then I softly cannot see row level action button "Delete" against "Record id" in flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Then I softly cannot see top right button "Conduct" in page detail
+    And I collect all the soft asserts
 
   @54221 @siteVisitNotifiedByFOuser @deepika
   Scenario: Verify user (record owner only) is able to plan and notify created site visit to subrecipient and other user cannot notify  - Award Level

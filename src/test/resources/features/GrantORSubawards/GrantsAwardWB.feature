@@ -897,6 +897,26 @@ Feature: Validate all scenarios of grants and award without background
     Then I see the following messages in the page details :
       | Source is Required to save under Overview. |
 
+  @66223 @ErrorMsgForPurposeField  @jitendra
+  Scenario: TTo verify that if Purpose field in plan table is left unfilled in site visit review and upon clicking on the save button by the award owner (Pm profile) on the top right corner of the page validation error must be thrown
+    And I delete the record "Automation Site Visit" from the object "Site Visit"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
+    Given I navigate to "Management" sub tab
+    And I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
+    And I enter "Creation" values from "SiteVisit_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter value "Automation Desc" into field "fieldPointsdiscussedwithofficials__c"
+    And I enter value "To fulfill pass-through monitoring responsibilities" into field "fieldSourceSiteVisit__c"
+    When I click on "Save" in the page details
+    Then I see the following messages in the page details :
+      | Purpose is Required to save under Overview. |
+
   @66219 @validateInstructionField  @mahadev
   Scenario: To verify that if instruction field is left unfilled in site visit review and upon clicking on the save button by the award owner (Pm profile) on the top right corner of the page validation error must be throw
     And I delete the record "Automation Site Visit" from the object "Site Visit"
