@@ -456,7 +456,7 @@ Feature: Validate all scenarios in Progress Report
     Then I see "No Records Found" inside flex table with id "---progressReport:-:pendingTaskTableId---"
 
   @51117 @approvalofProgressReportSendbacktoOwnerOfProgressReportbyProgramApprover @smoke
-  Scenario: To validate  Progress Report approval is successful post Program Approver Sends back the progress report to Owner.
+  Scenario: To validate  Progress Report approval is successful post Program Approver Sends back the progress report to Owner
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -489,15 +489,11 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Send to Owner" on the approval decision box
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
-    And I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
+    And I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
     When I click toggle button to select "Progress Reports - Submitted"
+    And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:internalProgressReportFlexTableId---" panel
     And I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:internalProgressReportFlexTableId---"
     When I click on "Submit for Approval" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -699,7 +695,7 @@ Feature: Validate all scenarios in Progress Report
     Then I see "No Records Found" inside flex table with id "---progressReport:-:pendingTaskTableId---"
 
   @51123 @approvalofProgressReportSendbacktOwnerOfProgressReportbyFiscalApprover
-  Scenario: To validate  Progress Report approval is successful post Program Approver Sends back the progress report to Owner.
+  Scenario: To validate  Progress Report approval is successful post Fiscal Approver Sends back the progress report to Owner
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -723,12 +719,7 @@ Feature: Validate all scenarios in Progress Report
       | Responsibility   | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
-    Given I click on "Submit for Approval" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    When I click on "Submit for Approval" in the page details
     And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
@@ -738,8 +729,9 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Send to Owner" on the approval decision box
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
-    And I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
+    And I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
     When I click toggle button to select "Progress Reports - Submitted"
+    And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:internalProgressReportFlexTableId---" panel
     And I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:internalProgressReportFlexTableId---"
     Given I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -930,7 +922,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
-    When I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
+    When I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
     And I click toggle button to select "Progress Reports - Submitted"
     And I click on "View" icon for "Submitted to Grantor" inside flex table with id "---progressreport:-:internalProgressReportFlexTableId---"
     Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
@@ -1018,7 +1010,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I click on "Send Back to Subrecipient" in the page details
     When I navigate to "Monitoring" tab
-    When I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
+    When I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
     And I click toggle button to select "Progress Reports - All"
     And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:internalProgressReportFlexTableId---" panel
     Then I cannot see row level action button "Edit" against "{SavedValue:Record Id}" in flex table with id "---progressreport:-:internalProgressReportFlexTableId---"
@@ -1154,7 +1146,7 @@ Feature: Validate all scenarios in Progress Report
     And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
-    When I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
+    When I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
     And I click toggle button to select "Progress Reports - Approved"
     Then I see all values "Approved" under column "Status" inside flextable with id "---progressReport:-:internalProgressReportFlexTableId---"
 
@@ -1263,7 +1255,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     When I click on "Submit to Grantor" in the page details
-    When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c,false"
+    When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c,false"
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
@@ -1278,8 +1270,9 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "<Award Name>" in "---progressReport:-:recipientAwardsTableId---" panel
     And I click on "View" icon for "<Award Name>" inside flex table with id "---progressReport:-:recipientAwardsTableId---"
     When I navigate to "Performance" sub tab
-    Then I see value "{SavedValue:Record Id}" for title "EGMS ID" against the value "Submitted to Grantor" inside table "---progressReport:-:recipientAwardProgressReportTableId---"
-    Then I see value "{SavedValue:ProgressReport2}" for title "EGMS ID" against the value "Created" inside table "---progressReport:-:recipientAwardProgressReportTableId---"
+    Then I softly see value "Submitted to Grantor" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressReport:-:recipientAwardProgressReportTableId---"
+    Then I softly see value "Created" for title "Status" against the value "{SavedValue:ProgressReport2}" inside table "---progressReport:-:recipientAwardProgressReportTableId---"
+    Then I collect all the soft asserts
     Examples:
       | Award Name                 |
       | Automation Permanent Award |
@@ -1447,7 +1440,7 @@ Feature: Validate all scenarios in Progress Report
     And I "Approve" in approval decision
     Given I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
-    And I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
+    And I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
     When I click toggle button to select "Progress Reports - Approved"
     And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:internalProgressReportFlexTableId---" panel
     Then I see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:internalProgressReportFlexTableId---"
@@ -1475,7 +1468,7 @@ Feature: Validate all scenarios in Progress Report
     Given I click on "Send Back to Subrecipient" in the page details
     Given I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
-    And I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
+    And I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
     When I click toggle button to select "Progress Reports - Submitted"
     And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:internalProgressReportFlexTableId---" panel
     Then I see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:internalProgressReportFlexTableId---"
@@ -1536,7 +1529,7 @@ Feature: Validate all scenarios in Progress Report
     Given I click on "Submit to Grantor" in the page details
     Given I re-login to "As a Grantor" app as "SIMON PM" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
-    And I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
+    And I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
     When I click toggle button to select "Progress Reports - All"
     And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:internalProgressReportFlexTableId---" panel
     Then I do not see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:internalProgressReportFlexTableId---"
@@ -2236,7 +2229,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Send to Owner" on the approval decision box
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
-    And I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
+    And I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
     When I click toggle button to select "Progress Reports - Submitted"
     And I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:internalProgressReportFlexTableId---"
     When I click on "Submit for Approval" in the page details
@@ -2301,7 +2294,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Send to Owner" on the approval decision box
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
-    And I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
+    And I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
     When I click toggle button to select "Progress Reports - Submitted"
     And I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:internalProgressReportFlexTableId---"
     When I click on "Submit for Approval" in the page details
@@ -2334,7 +2327,7 @@ Feature: Validate all scenarios in Progress Report
       | Automation Permanent Award |
 
   @60024 @defaultKPIValueTest @jitendra
-  Scenario: Validate Final Report? field under Report Overview table at overview tab on Progress report is present.
+  Scenario: Validate Final Report? field under Report Overview table at overview tab on Progress report is present
     When I navigate to "Overview" sub tab
     Then I see field "Final Report?" inside page block
 
@@ -2461,7 +2454,7 @@ Feature: Validate all scenarios in Progress Report
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---progressReport:-:recipientActiveGrantId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:recipientActiveGrantId---"
-    When I navigate to "Responsibilites" sub tab
+    When I navigate to "Management" sub tab
     Then I see value "Submitted for Review" for title "Status" against the value "{SavedValue:EGMSID}" inside table "---progressReport:-:recipientGrantProgressReportTableId---"
     Examples:
       | Grant Name                 |
@@ -2516,7 +2509,7 @@ Feature: Validate all scenarios in Progress Report
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---progressReport:-:recipientActiveGrantId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:recipientActiveGrantId---"
-    When I navigate to "Responsibilites" sub tab
+    When I navigate to "Management" sub tab
     Then I see value "Reviewed" for title "Status" against the value "{SavedValue:EGMSID}" inside table "---progressReport:-:recipientGrantProgressReportTableId---"
     Examples:
       | Grant Name                 |
@@ -2594,9 +2587,9 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Performance" sub tab
     And I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:grantorProgressReportsTableId---"
     And I navigate to "Performance" sub tab
-    Then I see value "7.00" for title "Actual" against the value "{SavedValue:Record Id}" inside table "---progressReport:-:kpiTableId---"
+    Then I see value "7.00" for title "Actual" against the value "Automation Permanent KPI for Regression" inside table "---progressReport:-:kpiTableId---"
 
-  @59904 @updateKPIValue @jitendra
+  @59904 @validatePRStatusAfterApprovedOn @jitendra
   Scenario: Validate Progress Reports Table at Management tab on Grant overview is getting updated with Progress report whose status is Approved at SR User End
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
@@ -3163,7 +3156,7 @@ Feature: Validate all scenarios in Progress Report
     And I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     Then I see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:pendingTaskTableId---"
 
-  @45741 @PendingTaskSubmitToReview @jitendra
+  @45741 @PendingTaskSubmitToReview @jitendra @wip
   Scenario: Validate on Progress report, Report Frequency field at Report Overview table under Overview tab is same as Award.
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
