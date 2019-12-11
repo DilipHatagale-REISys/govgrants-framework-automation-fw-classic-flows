@@ -255,6 +255,11 @@ public class ProjectManager extends ProjectWebServices {
             subject = subject.replace("<payment id>",EyeThink.core().Properties().getValue("PaymentId"));
         }
 
+        if (subject.contains("SavedValue")){
+            String expected = subject.split(">")[0].split("<")[1];
+            subject = subject.replace("<"+expected+">", EyeThink.core().Properties().getValue(expected.split(":")[1]));
+        }
+
         if(subject.toLowerCase().contains("<subrecipient name>")){
             if(System.getProperty("env").equalsIgnoreCase("auto")){
                 subject = subject.replace("<subrecipient name>","Automation SPI");

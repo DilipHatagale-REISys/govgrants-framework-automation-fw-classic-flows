@@ -34,7 +34,7 @@ Feature: Validate all scenarios in the Site Visit
     Then I softly see field "Created Date" is not editable
     Then I collect all the soft asserts
 
-  @51084 @51085 @51086 @notifyPendingTaskForSubrecipientSiteVisit @smoke
+  @51084 @66229 @66232 @51085 @51086 @66283 @notifyPendingTaskForSubrecipientSiteVisit @smoke
   Scenario: Notify Subrecipient and the respective POC from the applicant organization will receive a pending task about the Site Visit
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
@@ -48,7 +48,14 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
+    And I save the field labeled "EGMS ID" as "SiteVisitId"
     Then I softly see that "Automation Site Visit" is in "Notified" status
+    Then I softly see status in Progress-bar is "Notified" and is "green"
+    And I pause execution for "100" seconds
+    Then I softly can see mail notification for "EXTERNAL" user with following subject:
+      |Site Visit for {SavedValue:SiteVisitId} has been scheduled|
+    Then I softly can see mail notification for "INTERNAL" user with following subject:
+      |Desk Review Approval Requested|
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
