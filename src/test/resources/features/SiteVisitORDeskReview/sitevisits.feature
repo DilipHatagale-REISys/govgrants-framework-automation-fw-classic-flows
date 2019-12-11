@@ -55,7 +55,7 @@ Feature: Validate all scenarios in the Site Visit
     Then I softly can see mail notification for "EXTERNAL" user with following subject:
       |Site Visit for {SavedValue:SiteVisitId} has been scheduled|
     Then I softly can see mail notification for "INTERNAL" user with following subject:
-      |Desk Review Approval Requested|
+      |Site Visit Approval Requested|
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
