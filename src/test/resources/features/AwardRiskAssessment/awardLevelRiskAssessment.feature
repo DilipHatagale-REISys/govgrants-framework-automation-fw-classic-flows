@@ -164,11 +164,12 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Send to Owner" on the approval decision box
     Then I softly see status in Progress-bar is "Created" and is "Green"
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
+    And I click on "Submit for Approval" in the page details
     And I click on "Reassign,Automation EXE" on the approval decision box
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
     Then I collect all the soft asserts
@@ -2205,11 +2206,11 @@ Feature: Validate all scenarios in the Risk Assessment
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
       | Responsibility   | Name          | Description                 |
       | Fiscal Approver  | Automation FO | Automation Test Description |
-      | Program Approver | Automation PM | Automation Test Description |
+      | Program Approver | Automation EXE | Automation Test Description |
     And I click on "Submit for Approval" in the page details
     When I navigate to "Responsibilities" sub tab
     Then I softly cannot see row level action button "Edit" against "Automation EXE" in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---"
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -2398,7 +2399,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
-    When I click on "Remove" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
+    When I click on "Delete" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     Then I softly do not see values "Automation risk Assessment" and "Created" inside table
     Then I softly see "No Records Found" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     Then I collect all the soft asserts
@@ -2494,7 +2495,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
-    When I click on "View" icon for "Active" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
+    When I click on "View" icon for "Active" inside flex table with id "---riskassessment:-:organizationprofileviewTableId---"
     Then I see status in Progress-bar is "Active" and is "Green"
     Examples:
       | Award Name                           | Grant Name                           |
@@ -2595,7 +2596,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Management" sub tab
     And I perform quick search for "{SavedValue:ExpiredID}" in "---subAwardStandAlone:-:riskAssessmentTableId---" panel
     And I click on "View" icon for "{SavedValue:ExpiredID}" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
-    Then I see status in Progress-bar is "{SavedValue:ExpiredID}" and is "Green"
+    Then I see status in Progress-bar is "Expired" and is "Green"
 
   @60811 @60817 @viewExpiredRAFromOrganizationProfilePage @deepika
   Scenario:  Validate whether Subrecipients can view the Expired Risk Assessment from the Monitoring Phase level table and  Expired Status should be displayed to SR user from Organizational Profile page.
@@ -2679,7 +2680,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
-    When I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
+    When I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---riskassessment:-:organizationprofileviewTableId---"
     Then I softly see status in Progress-bar is "Expired" and is "Green"
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
@@ -2845,7 +2846,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     When I navigate to "Overview" sub tab
-    Then I see field "RiskIndicator__c" as "Yellow"
+    Then I see "Risk Level" image as "yellow.png"
 
   @62093 @59255 @overallRiskFieldAvailabilityToSRProfileUserk @deepika
   Scenario:  Verify whether SPI profile User can view the section Overview for Overall Risk Calculation for a Sub Recipient Organization
@@ -2892,7 +2893,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
-    Then I see field "OverAll Risk" as "42.00%"
+    Then I see field "OverAll Risk" as "44.00%"
 
   @addAttachmentForRecordOnwerInTable @deepika
   Scenario: Validate attachment is added to the flex table after submiting the risk assessment for approval.
@@ -2914,7 +2915,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
     When I navigate to "Attachments" sub tab
-    And I upload attachment "Announcement_Field_Values.xlsx" from workspace
+    When I upload attachment "Announcement_Field_Values.xlsx" from workspace
     Then I see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
 
   @58825 @monitoringTabListViewsOfRiskAssessment @deepika
@@ -3117,7 +3118,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
-    Then I softly see that "Record Id" has been added in flextable with Id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
+    Then I softly see that "Created" has been added in flextable with Id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
