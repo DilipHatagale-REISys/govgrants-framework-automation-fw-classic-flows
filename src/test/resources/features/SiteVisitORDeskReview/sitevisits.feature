@@ -34,7 +34,7 @@ Feature: Validate all scenarios in the Site Visit
     Then I softly see field "Created Date" is not editable
     Then I collect all the soft asserts
 
-  @51084 @51085 @51086 @notifyPendingTaskForSubrecipientSiteVisit @smoke
+  @51084 @66229 @66232 @51085 @51086 @66283 @notifyPendingTaskForSubrecipientSiteVisit @smoke
   Scenario: Notify Subrecipient and the respective POC from the applicant organization will receive a pending task about the Site Visit
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
@@ -48,7 +48,14 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
+    And I save the field labeled "EGMS ID" as "SiteVisitId"
     Then I softly see that "Automation Site Visit" is in "Notified" status
+    Then I softly see status in Progress-bar is "Notified" and is "green"
+    And I pause execution for "100" seconds
+    Then I softly can see mail notification for "EXTERNAL" user with following subject:
+      |Site Visit for {SavedValue:SiteVisitId} has been scheduled|
+    Then I softly can see mail notification for "INTERNAL" user with following subject:
+      |Desk Review Approval Requested|
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -373,8 +380,10 @@ Feature: Validate all scenarios in the Site Visit
     And I navigate to "Reports and Outcomes" sub tab
     Then I can see row level action button "Edit" against "General Review Form" in flex table with id "---sitevisits:-:reportsTableId---"
 
-  @35666 @54225 @61200 @recordOnwerConductSiteVisit @deepika
+  @35666 @54225 @61200 @66227 @recordOnwerConductSiteVisit @deepika
   Scenario: Verify that PM user (other than record owner) is able to conduct or Notify and user can view location and date of performance
+    Then I softly can see top right button "Edit" in page detail
+    Then I softly can see top right button "Notify" in page detail
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
@@ -397,6 +406,7 @@ Feature: Validate all scenarios in the Site Visit
     Then I softly cannot see row level action button "Delete" against "Record id" in flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Then I softly cannot see top right button "Conduct" in page detail
+    And I collect all the soft asserts
 
   @54221 @siteVisitNotifiedByFOuser @deepika
   Scenario: Verify user (record owner only) is able to plan and notify created site visit to subrecipient and other user cannot notify  - Award Level
