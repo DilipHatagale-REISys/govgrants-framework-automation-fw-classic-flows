@@ -516,12 +516,13 @@ Feature: Validate all scenarios in Negotiations
       | Automation Negotiation Iniatiation | ExplanationOfRevisionsNeeded__c |
     When I click on "Save" in the page details
     When I click on "Send Back to Subrecipient" in the page details
+    Then I see that "{SavedValue:EGMSID}" is in "Negotiation Initiated" status
     Then I softly see status in Progress-bar is "Negotiation Initiated" and is "green"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
-    Then I softly see value "{SavedValue:EGMSID}" for title "EGMS ID" inside table "---negotiation:-:homePendingTasks---"
+    Then I softly see value "{SavedValue:EGMSID}" for title "EGMS ID" against the value "Negotiation Request" inside table "---negotiation:-:homePendingTasks---"
     Then I collect all the soft asserts
 
   @58029 @initiateNegotiationForAttachmentsNotes @deepika

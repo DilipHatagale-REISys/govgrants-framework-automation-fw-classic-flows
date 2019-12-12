@@ -82,7 +82,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name            | Project Role             | Is Key Personnel |
-      | Automation SPI3 | Project Director/Manager | Checked          |
+      |PatrickM SA      | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
       | Role               | Name           | Description                 |
