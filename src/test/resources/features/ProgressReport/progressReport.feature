@@ -3156,8 +3156,8 @@ Feature: Validate all scenarios in Progress Report
     And I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     Then I see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:pendingTaskTableId---"
 
-  @45741 @PendingTaskSubmitToReview @jitendra @wip
-  Scenario: Validate on Progress report, Report Frequency field at Report Overview table under Overview tab is same as Award.
+  @45741 @validateReportFrequencyField   @jitendra
+  Scenario: Validate on Progress report, Report Frequency field at Report Overview table under Overview tab is same as Award
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"

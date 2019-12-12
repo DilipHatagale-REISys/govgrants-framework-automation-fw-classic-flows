@@ -38,9 +38,9 @@ public class ProjectManager extends ProjectWebServices {
 
     /*handles to get the record id of a record */
     public void getRecordIdFromResponse(String objectType, String recordName, String objectApiName) {
-       String response ="";
+        String response = "";
         response = (automationBatchExecuteApi(objectType, recordName, objectApiName.split(","))).asString().replace("\"", "");
-        if(!response.equalsIgnoreCase("Completed")) {
+        if (!response.equalsIgnoreCase("Completed")) {
             EyeThink.saas().pageDetails().idOfRecord = response;
             EyeThink.core().Properties().saveValue("Record Id", EyeThink.saas().pageDetails().idOfRecord);
         }
@@ -64,7 +64,7 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     public void assertColumnValuIsBlank(String fieldName, boolean isSoftly) {
-        if (isSoftly){
+        if (isSoftly) {
             EyeThink.core().assertion().assertThat(isColumnValueBlank(fieldName)).isTrue();
         } else {
             Assert.assertTrue(isColumnValueBlank(fieldName));
@@ -77,7 +77,7 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     public void AssertTotalRecordsCountInFlexTable(String totalRecord, String tableId, boolean isSoftly) {
-        if (isSoftly){
+        if (isSoftly) {
             EyeThink.core().assertion().assertThat(totalRecordsCount(tableId)).isEqualTo(totalRecord);
         } else {
             Assert.assertEquals(totalRecord, totalRecordsCount(tableId));
@@ -85,7 +85,7 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     public By pageBlock(String pageBlockName) {
-        return By.xpath("//div[contains(@class,'panel-title') or contains(@class,'panel-heading')]//*[text()='"+pageBlockName+"' or @title='"+pageBlockName+"']");
+        return By.xpath("//div[contains(@class,'panel-title') or contains(@class,'panel-heading')]//*[text()='" + pageBlockName + "' or @title='" + pageBlockName + "']");
     }
 
     /**
@@ -94,15 +94,15 @@ public class ProjectManager extends ProjectWebServices {
      * @Author - Mahadev.hanme
      */
     public void AssertPageBlockDisplayed(String pageblockName, boolean assertcan, boolean isSoftly) {
-        List<Elements> elements = EyeThink.core().elementReference().listOfElements().of(pageBlock(pageblockName),false);
+        List<Elements> elements = EyeThink.core().elementReference().listOfElements().of(pageBlock(pageblockName), false);
         if (assertcan) {
-            if (isSoftly){
+            if (isSoftly) {
                 EyeThink.core().assertion().assertThat(0).isNotEqualTo(elements.size());
             } else {
                 Assert.assertNotEquals(elements.size(), 0);
             }
         } else {
-            if (isSoftly){
+            if (isSoftly) {
                 EyeThink.core().assertion().assertThat(0).isEqualTo(elements.size());
             } else {
                 Assert.assertEquals(elements.size(), 0);
@@ -168,24 +168,17 @@ public class ProjectManager extends ProjectWebServices {
      * @param flexTableHeader
      * @return
      */
-    public Boolean iSeeValueInFlexTable(String value, String flexTableHeader) {
-        WebElement elementValueFlexTable = EyeThink.core().elementReference().of(By.xpath("//div[@id='myTabbedContent']//a[@title='" + flexTableHeader + "']/../../../following-sibling::div//tbody//td//span[text()='" + value + "']"));
-        if (EyeThink.core().is().isDisplayed(elementValueFlexTable))
-            return true;
-        else
-            return false;
-    }
-
-    public void AssertFieldValueIsPresentInFlexTable(String valueToBeSearch, String flexTableHeader, boolean isSoftly) {
-        if (isSoftly){
-            EyeThink.core().assertion().assertThat(iSeeValueInFlexTable(valueToBeSearch, flexTableHeader)).isTrue();
-        } else {
-            Assert.assertTrue(iSeeValueInFlexTable(valueToBeSearch, flexTableHeader));
+    public Boolean isValueInsideFlexTable(String value, String flexTableHeader) {
+        try {
+            return EyeThink.core().is().isDisplayed(By.xpath("//div[@id='myTabbedContent']//a[@title='" + flexTableHeader + "']/../../../following-sibling::div//tbody//td//span[text()='" + value + "']"));
+        } catch (Exception e) {
         }
+        return false;
     }
 
     /**
      * Handles to upload the file from workspace
+     *
      * @param fileNameFromWorkSpace - file which is to be upload
      */
     public void uploadAttachmentFromWorkspace(String fileNameFromWorkSpace) {
@@ -200,69 +193,68 @@ public class ProjectManager extends ProjectWebServices {
         EyeThink.saas().phasePanel().clickParallelMenuBars(title);
     }
 
-    public void assertThatFileIsDownloaded(String fileType, boolean isSoftly){
+    public void assertThatFileIsDownloaded(String fileType, boolean isSoftly) {
         File file = new File(System.getProperty("user.dir") + "\\target");
         File[] directory = EyeThink.core().file().getCompleteFilesListOnLocalDirectory(file.getAbsolutePath());
         for (File files : directory) {
             if (files.getName().endsWith(".tmp")) {
                 new File(files.getAbsolutePath().toString())
-                        .renameTo(new File(file.getAbsolutePath() + "govgrant."+fileType+""));
+                        .renameTo(new File(file.getAbsolutePath() + "govgrant." + fileType + ""));
                 break;
             }
         }
-        if (isSoftly){
-            EyeThink.core().assertion().assertThat(Files.fileNamesIn(file.getAbsolutePath(), false)).contains("govgrant."+fileType);
+        if (isSoftly) {
+            EyeThink.core().assertion().assertThat(Files.fileNamesIn(file.getAbsolutePath(), false)).contains("govgrant." + fileType);
         } else {
             Assert.assertTrue(new File(file.getAbsolutePath() + "govgrant." + fileType + "").exists());
         }
     }
 
-    public void AssertFieldValueIsChecked(String fieldName,String count, boolean isSoftly){
-        if (isSoftly){
+    public void AssertFieldValueIsChecked(String fieldName, String count, boolean isSoftly) {
+        if (isSoftly) {
             EyeThink.core().assertion().assertThat(Integer.parseInt(count)).isEqualTo(getCheckedFieldValueCount(fieldName));
         } else {
             Assert.assertEquals(Integer.parseInt(count), getCheckedFieldValueCount(fieldName));
         }
     }
-    
-       /**
+
+    /**
      * To get the count of row values checked for field available in flex table
+     *
      * @param fieldName - Field API name
      * @return
      */
-    private int getCheckedFieldValueCount(String fieldName){
-        List<Elements> checkSymbol = EyeThink.core().elementReference().listOfElements().of(By.xpath("//field[@field-name='"+fieldName+"']/i[contains(@class,'fa-check')]"));
+    private int getCheckedFieldValueCount(String fieldName) {
+        List<Elements> checkSymbol = EyeThink.core().elementReference().listOfElements().of(By.xpath("//field[@field-name='" + fieldName + "']/i[contains(@class,'fa-check')]"));
         return checkSymbol.size();
     }
 
 
     /**
-     *
      * @param userType e.g (INTERNAL,EXTERNAL)
-     * @param subject e.g Subject of mail that needs to be verified
-     *
+     * @param subject  e.g Subject of mail that needs to be verified
      * @return true if we get expected Subject in mail notification
      * @throws MessagingException
      */
     public boolean validateMailSubject(String userType, String subject) throws MessagingException {
-        Map<String,String> credentials = usersAndURL.getUserCredentialsForMailNotification(userType);
+        Map<String, String> credentials = usersAndURL.getUserCredentialsForMailNotification(userType);
 
-        if (subject.toLowerCase().contains("<award id>")){
-            subject = subject.replace("<award id>",automateGetApi("Automation Permanent Award","GrantAwardName__c","Award__c").asString().replaceAll("^\"|\"$", ""));
+        if (subject.toLowerCase().contains("<award id>")) {
+            subject = subject.replace("<award id>", automateGetApi("Automation Permanent Award", "GrantAwardName__c", "Award__c").asString().replaceAll("^\"|\"$", ""));
         }
 
-        if (subject.toLowerCase().contains("<payment id>")){
-            subject = subject.replace("<payment id>",EyeThink.core().Properties().getValue("PaymentId"));
+        if (subject.toLowerCase().contains("<payment id>")) {
+            subject = subject.replace("<payment id>", EyeThink.core().Properties().getValue("PaymentId"));
         }
 
-        if (subject.contains("SavedValue")){
+        if (subject.contains("SavedValue")) {
             String expected = subject.split(">")[0].split("<")[1];
-            subject = subject.replace("<"+expected+">", EyeThink.core().Properties().getValue(expected.split(":")[1]));
+            subject = subject.replace("<" + expected + ">", EyeThink.core().Properties().getValue(expected.split(":")[1]));
         }
 
-        if(subject.toLowerCase().contains("<subrecipient name>")){
-            if(System.getProperty("env").equalsIgnoreCase("auto")){
-                subject = subject.replace("<subrecipient name>","Automation SPI");
+        if (subject.toLowerCase().contains("<subrecipient name>")) {
+            if (System.getProperty("env").equalsIgnoreCase("auto")) {
+                subject = subject.replace("<subrecipient name>", "Automation SPI");
             }
         }
 
@@ -273,7 +265,7 @@ public class ProjectManager extends ProjectWebServices {
                 Emails.MailClient.GMAIL,
                 Emails.EmailFolder.INBOX).getSubjectOfLatestMessage();
 
-        if (subjectString.contains(subject)){
+        if (subjectString.contains(subject)) {
             return true;
         }
 
@@ -281,19 +273,18 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     /**
-     *
-     * @param recordName - the name or title of the record
-     * @param fieldName - the name of the field that stores the title like e.g. Title__c.
-     * @param objectType - the object API name of the record from which you want to
+     * @param recordName      - the name or title of the record
+     * @param fieldName       - the name of the field that stores the title like e.g. Title__c.
+     * @param objectType      - the object API name of the record from which you want to
      * @param outputFieldName - Field API name of which you want to get the value
      * @return
      */
-    public String getFieldValueFromAPI(String recordName, String fieldName, String objectType,String outputFieldName ){
-        return automateGetApi(recordName,fieldName,objectType,outputFieldName).asString().replaceAll("\"","");
+    public String getFieldValueFromAPI(String recordName, String fieldName, String objectType, String outputFieldName) {
+        return automateGetApi(recordName, fieldName, objectType, outputFieldName).asString().replaceAll("\"", "");
     }
 
     /**
-     *  Initialise the data based on environment
+     * Initialise the data based on environment
      */
     public void initData() {
         Properties p = new Properties();
@@ -319,52 +310,52 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     /**
-     * @param rowNumber  Specify the row number such as 1,2,3 and so on. and if you want column value from last row then mention "last row"
-     * @param columnName Name of the column from which you want a value
+     * @param rowNumber   Specify the row number such as 1,2,3 and so on. and if you want column value from last row then mention "last row"
+     * @param columnName  Name of the column from which you want a value
      * @param flexTableId Id of flex table
      * @return value from specified row for specified column from the Flex Table.
      * @author jitendra.pisal
      */
-    private String getValueOfSpecifiedColFromTableHavingColumnNameAs(String rowNumber, String columnName, String flexTableId){
+    private String getValueOfSpecifiedColFromTableHavingColumnNameAs(String rowNumber, String columnName, String flexTableId) {
 
         int columnValueFromRowInInt = 0;
         int counter = 1;
-        By columnHeaders = By.xpath("//div[@id='"+flexTableId+"']//th//span[@ng-bind='fieldLabel']");
+        By columnHeaders = By.xpath("//div[@id='" + flexTableId + "']//th//span[@ng-bind='fieldLabel']");
         List<Elements> columnList = EyeThink.core().elementReference().listOfElements().of(columnHeaders);
 
         // get the column index of required column.
-        for (Elements columnEle : columnList){
-            if (columnEle.getText().equalsIgnoreCase(columnName)){
+        for (Elements columnEle : columnList) {
+            if (columnEle.getText().equalsIgnoreCase(columnName)) {
                 break;
             }
             counter++;
         }
 
-        List<Elements> listOfDataInColumn = EyeThink.core().elementReference().listOfElements().of(By.xpath("//div[@id='"+flexTableId+"']//th//span[text()='"+columnName+"']/ancestor::thead/parent::table//tr//td["+counter+"]/span/field/span"));
+        List<Elements> listOfDataInColumn = EyeThink.core().elementReference().listOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//th//span[text()='" + columnName + "']/ancestor::thead/parent::table//tr//td[" + counter + "]/span/field/span"));
         columnValueFromRowInInt = rowNumber.equalsIgnoreCase("last row") ? listOfDataInColumn.size()
                 : Integer.parseInt(rowNumber);
 
-        return listOfDataInColumn.get(columnValueFromRowInInt-1).getText();
+        return listOfDataInColumn.get(columnValueFromRowInInt - 1).getText();
     }
 
-    public void iSavedSpecificValueFromFlexTable(String columnValueFromRow, String columnName, String flexTableId){
-        EyeThink.core().Properties().saveValue("lastValueFromTableForCol",getValueOfSpecifiedColFromTableHavingColumnNameAs(columnValueFromRow,
+    public void iSavedSpecificValueFromFlexTable(String columnValueFromRow, String columnName, String flexTableId) {
+        EyeThink.core().Properties().saveValue("lastValueFromTableForCol", getValueOfSpecifiedColFromTableHavingColumnNameAs(columnValueFromRow,
                 columnName, flexTableId));
     }
 
-    public void iSavedSpecificValueFromFlexTableInsideGivenKey(String columnValueFromRow, String columnName, String key, String flexTableId){
-        EyeThink.core().Properties().saveValue(key,getValueOfSpecifiedColFromTableHavingColumnNameAs(columnValueFromRow,
+    public void iSavedSpecificValueFromFlexTableInsideGivenKey(String columnValueFromRow, String columnName, String key, String flexTableId) {
+        EyeThink.core().Properties().saveValue(key, getValueOfSpecifiedColFromTableHavingColumnNameAs(columnValueFromRow,
                 columnName, flexTableId));
     }
 
-    public boolean verifyIfFieldsAreEditableInFlexTable(String headingTitle){
-        String tableId = EyeThink.core().elementReference().of(By.xpath("//*[contains(@class, 'panel-heading')]//a[text()='"+headingTitle+"']")).getAttribute("data-target");
+    public boolean verifyIfFieldsAreEditableInFlexTable(String headingTitle) {
+        String tableId = EyeThink.core().elementReference().of(By.xpath("//*[contains(@class, 'panel-heading')]//a[text()='" + headingTitle + "']")).getAttribute("data-target");
         tableId = tableId.substring(1);
-        By editableFields = By.xpath("//*[@id='"+tableId+"']//textarea");
+        By editableFields = By.xpath("//*[@id='" + tableId + "']//textarea");
         try {
             EyeThink.core().elementReference().of(editableFields);
             return true;
-        } catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
@@ -372,16 +363,16 @@ public class ProjectManager extends ProjectWebServices {
     /***
      *  Add note to progress report
      */
-    public void addNotesToPR(){
-        By addBtnNotes= By.xpath("//div[contains(@id,'Notes')]//*[text()='Add']");
+    public void addNotesToPR() {
+        By addBtnNotes = By.xpath("//div[contains(@id,'Notes')]//*[text()='Add']");
         EyeThink.core().click().on(addBtnNotes);
-        EyeThink.core().enterText().in(By.xpath("//label[@for='Title']/following-sibling::input"),  "Note Title");
+        EyeThink.core().enterText().in(By.xpath("//label[@for='Title']/following-sibling::input"), "Note Title");
         EyeThink.core().enterText().in(By.xpath("//label[@for='Description']/following-sibling::textarea"), "Note Description");
         EyeThink.saas().modal().clickModalContentSpecificButton("Save");
         EyeThink.saas().modal().closeModalByClickingTopRightCloseButton("Add Notes");
     }
 
-    public void editDataInAttachment(String iconName, String fileName, String fileType){
+    public void editDataInAttachment(String iconName, String fileName, String fileType) {
         By attachmentClassificationPath = By.xpath("//select[@title='Classification' or text()='Classification']");
         By attachmentDescriptionPath = By.xpath("//div//label[text()='Description']/..//textarea");
         By attachmentFilePath = By.xpath("//td//input[@type='file']");
@@ -399,18 +390,18 @@ public class ProjectManager extends ProjectWebServices {
     /**
      * To verify RIsk level image
      */
-    public Boolean assertRiskLevelImage(String fieldLabel,String imageName) throws IOException {
-        WebElement pathForRiskLevel = EyeThink.core().elementReference().of(By.xpath("//span[@class='customLabelstyle' and contains(text(),'"+fieldLabel+"')]/ancestor::dl[1]//dd//img"));
+    public Boolean assertRiskLevelImage(String fieldLabel, String imageName) throws IOException {
+        WebElement pathForRiskLevel = EyeThink.core().elementReference().of(By.xpath("//span[@class='customLabelstyle' and contains(text(),'" + fieldLabel + "')]/ancestor::dl[1]//dd//img"));
         EyeThink.core().screenCapture().takeElementScreenShot(pathForRiskLevel, "green");
-        return EyeThink.core().compare().image().isElementImage(pathForRiskLevel,imageName);
+        return EyeThink.core().compare().image().isElementImage(pathForRiskLevel, imageName);
     }
 
     /**
      * To verify Active Sub Tab
      */
     public boolean getSelectedSubTab(String elementText) {
-        String activeSubTab=EyeThink.core().elementReference().of(By.xpath("//div[@id='myTabs']/ul//li[contains(@class,'active')]/span")).getText();
-        if(elementText.equals(activeSubTab)){
+        String activeSubTab = EyeThink.core().elementReference().of(By.xpath("//div[@id='myTabs']/ul//li[contains(@class,'active')]/span")).getText();
+        if (elementText.equals(activeSubTab)) {
             return true;
         }
         return false;
@@ -418,12 +409,13 @@ public class ProjectManager extends ProjectWebServices {
 
     /**
      * To verify button is present on modal or not
+     *
      * @param buttonName
      * @return
      */
     public Boolean isButtonDisplayedOnModal(String buttonName) {
         try {
-            return EyeThink.core().is().isDisplayed(By.xpath("//div[@class='panel-body']//button[@title='"+buttonName+"'] | //div[@class='panel-body']//span[text()='"+buttonName+"']"));
+            return EyeThink.core().is().isDisplayed(By.xpath("//div[@class='panel-body']//button[@title='" + buttonName + "'] | //div[@class='panel-body']//span[text()='" + buttonName + "']"));
         } catch (Exception e) {
         }
         return false;
@@ -431,10 +423,11 @@ public class ProjectManager extends ProjectWebServices {
 
     /**
      * upload digital signature document
+     *
      * @param fileName
      * @param fileType
      */
-    public void uploadDocument(String fileName,String fileType){
+    public void uploadDocument(String fileName, String fileType) {
         By attachmentClassificationPath = By.xpath("//select[@title='Classification' or text()='Classification']");
         By attachmentDescriptionPath = By.xpath("//div//label[text()='Description']/..//textarea");
         By attachmentFilePath = By.xpath(""
@@ -464,10 +457,11 @@ public class ProjectManager extends ProjectWebServices {
 
     /**
      * To click on table top right button
+     *
      * @param buttonName
      * @param flexTableId
      */
-    public void clickTableTopRightButton(String buttonName, String flexTableId){
-        EyeThink.core().click().on( EyeThink.saas().flexTable().getTopRightButtonLocatorByTableId(flexTableId, buttonName));
+    public void clickTableTopRightButton(String buttonName, String flexTableId) {
+        EyeThink.core().click().on(EyeThink.saas().flexTable().getTopRightButtonLocatorByTableId(flexTableId, buttonName));
     }
 }
