@@ -70,11 +70,6 @@ public class ProgressReportSteps {
         );
     }
 
-    @When("I download the attachment present in attachment table")
-    public void iDownloadTheAttachmentPresentInAttachmentTable() {
-        progressReportPage.downloadAttachment();
-    }
-
     @Description("To verify reported date field contains todays date")
     @Then("^I (softly see|see) the Reported Date field contains todays date$")
     public void iSeeTheReportedDateFieldContainsTodaysDate(String usage) {
@@ -88,8 +83,8 @@ public class ProgressReportSteps {
 
     @Description("To verify checkbox field is editable")
     @Then("^I (softly see|see) checkbox field \"([^\"]*)\" is editable$")
-    public void iSeeCheckboxFieldIsEditable(String usage, String fieldAPIName) {
-        progressReportPage.assertCheckBoxFieldIsEditable(fieldAPIName, usage.contains("softly"));
+    public void iSeeCheckboxFieldIsEditable(String usage, String fieldLabel) {
+        progressReportPage.assertCheckBoxFieldIsEditable(fieldLabel, usage.contains("softly"));
     }
 
     @Description("To verify radiobutton on approval decison box")
@@ -120,5 +115,10 @@ public class ProgressReportSteps {
         } else {
             Assert.assertTrue(progressReportPage.compareTwoFieldValues(savedValue1, compare, savedValue2));
         }
+    }
+
+    @When("^I click on \"([^\"]*)\" icon under attachment flex table$")
+    public void clickOnRowLevelButton(String buttonName) {
+        progressReportPage.clickRowLevelActionIconUnderAttachmentFlexTable(buttonName);
     }
 }
