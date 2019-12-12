@@ -5434,7 +5434,7 @@ Feature: Validate scenarios in Progress Report without background
       | Automation Execution Award | Automation Execution Award |
 
   @59572 @SRDeleteDoc @jitendra
-  Scenario Outline: Validate SR user is able to Delete the documents uploaded at supporting document checklist table at progress report.
+  Scenario Outline: Validate SR user is able to Delete the documents uploaded at supporting document checklist table at progress report
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -5557,14 +5557,15 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---"
     And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
     When I close "Upload Document" modal by clicking the top right x button
-    When I click on "Delete" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---"
-    Then I do not see value "Mandatory" for title "Required" inside table "---progressreport:-:progressReportChecklistsTableId---"
+    And I refresh the page
+    When I click on "Delete" icon under attachment flex table
+    Then I do not see "Program_Field_Values.xlsx" has been added in "Attachments" flex table
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
   @59574 @dowloadAttachment @jitendra
-  Scenario Outline: Validate SR user is able to Delete the documents uploaded at supporting document checklist table at progress report.
+  Scenario Outline: Validate SR User is able to download the uploaded document from attachment table on Progress report
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -5687,12 +5688,12 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---"
     And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
     When I close "Upload Document" modal by clicking the top right x button
-    When I download the attachment present in attachment table
+    And I refresh the page
+    When I click on "Download" icon under attachment flex table
     Then I verify that the file "Program_Field_Values.xlsx" is downloaded
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
-
 
   @59188 @downloadPRthroughLink @jitendra
   Scenario Outline: Validate SR user is able to download the document from Subrecipient Document Link field when document is uploaded.
@@ -6223,7 +6224,7 @@ Feature: Validate scenarios in Progress Report without background
       | Automation Execution Award | Automation Execution Award |
 
   @60025  @validateFinalProgressReport @mahadev
-  Scenario Outline: Validate SR User is able to submit progress report by Selecting the checkbox and marking the Progress report as final
+  Scenario Outline: Validate SR User is able to submit final progress report by selecting the checkbox and marking the Progress report as final
     When I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Grant Name>" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -6480,7 +6481,7 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
-    Then I see checkbox field "IsFinalReport__c" is editable
+    Then I see checkbox field "Final Report?" is editable
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -17657,8 +17658,8 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @60660 @60730 @validateApprovedPRAfterFCAmendmentIsCarryForwardedA @jitendra
-  Scenario Outline: Validate Progress reports with Approved Status carried forward after FC Amendment
+  @60660 @60730 @validateApprovedPRAfterFCAmendmentIsNotCarryForwardedA @jitendra
+  Scenario Outline: Validate Progress reports with Approved Status not carried forward after FC Amendment
     And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -17851,7 +17852,7 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
     And I navigate to "Performance" sub tab
-    Then I softly see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:grantorProgressReportsTableId---"
+    Then I softly do not see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:grantorProgressReportsTableId---"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -17861,7 +17862,7 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Activated" inside flex table with id "---progressReport:-:recipientsRelatedSubAwardsTableId---"
     When I navigate to "Performance" sub tab
-    Then I softly see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
+    Then I softly do not see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
     Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
@@ -17964,8 +17965,9 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I click on "Activate" in the page details
-    When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    Given I delete the record "<Award Name>" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
@@ -18023,7 +18025,6 @@ Feature: Validate scenarios in Progress Report without background
       | Construction    | 10                            |
     When I get the "EGMS ID"
     And I click on "Submit to Grantor" in the page details
-    Then I softly cannot see top right button "Edit" in page detail
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -18039,12 +18040,6 @@ Feature: Validate scenarios in Progress Report without background
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
-    And I click on "Reassign,Automation EXE" on the approval decision box
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -18420,8 +18415,6 @@ Feature: Validate scenarios in Progress Report without background
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     When I navigate to "Management" sub tab
     Then I see value "Reviewed" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:grantorGrantProgressReportTableId---"
     Examples:

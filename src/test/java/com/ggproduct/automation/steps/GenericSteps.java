@@ -85,7 +85,7 @@ public class GenericSteps {
     }
 
     @Description("To check no records displayed in flex table")
-    @Then("^I (softly see|see) \"([^\"]*)\" inside flex table with id \"([^\"]*)\"$")
+    @Then("^I (softly see|see|do not see|softly do not see) \"([^\"]*)\" inside flex table with id \"([^\"]*)\"$")
     public void iSeeInsideFlexTableWithId(String usage, String text, String tableID) {
         if (usage.contains("softly")){
             EyeThink.core().assertion().assertThat(projectManager.isRecordPresentInTheFlexTable(text, tableID)).isTrue();
@@ -95,12 +95,17 @@ public class GenericSteps {
     }
 
     @Description("To verify text under attachment flex table")
-    @Then("^I (softly see|see) \"([^\"]*)\" has been added in \"([^\"]*)\" flex table$")
+    @Then("^I (softly see|see|do not see|softly do not see) \"([^\"]*)\" has been added in \"([^\"]*)\" flex table$")
     public void iSeeHasBeenAddedInFlexTable(String usage, String valueToBeSearch, String flexTableHeader) {
-        projectManager.AssertFieldValueIsPresentInFlexTable(valueToBeSearch,
-                flexTableHeader,
-                usage.contains("softly")
-        );
+        if (usage.equals("see")){
+            Assert.assertTrue(projectManager.isValueInsideFlexTable(valueToBeSearch,flexTableHeader));
+        } else if(usage.equals("do not see")){
+            Assert.assertFalse(projectManager.isValueInsideFlexTable(valueToBeSearch,flexTableHeader));
+        } else if(usage.equals("softly see")){
+            EyeThink.core().assertion().assertThat(projectManager.isValueInsideFlexTable(valueToBeSearch,flexTableHeader)).isTrue();
+        }else {
+            EyeThink.core().assertion().assertThat(projectManager.isValueInsideFlexTable(valueToBeSearch,flexTableHeader)).isFalse();
+        }
     }
 
     @Description("To upload attachment from default workspace")
