@@ -1,4 +1,4 @@
-@regression @progressReport
+@regression @progressReport @wip
 Feature: Validate scenarios in Progress Report without background
 
   @37184 @ValidateScheduleFrequencyQuarterlyScheduleBaseAsCalendar @mahadev
@@ -27754,3 +27754,4 @@ Feature: Validate scenarios in Progress Report without background
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
+

@@ -108,7 +108,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Title                                   |
       | Automation Permanent KPI for Regression |
 
-  @51136 @51128 @51129 @65974 @awardCreateAndEdit @allRiskAssessmentApprovalAndActivation @smoke
+  @51136 @51129 @65974 @awardCreateAndEdit @allRiskAssessmentApprovalAndActivation @smoke
   Scenario: Risk Assessment approval in an award
     Then I softly see status in Progress-bar is "Created" and is "Green"
     When I click on "Edit" in the page details
