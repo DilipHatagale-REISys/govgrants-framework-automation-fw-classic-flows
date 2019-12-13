@@ -516,7 +516,7 @@ Feature: Validate all scenarios in Negotiations
       | Automation Negotiation Iniatiation | ExplanationOfRevisionsNeeded__c |
     When I click on "Save" in the page details
     When I click on "Send Back to Subrecipient" in the page details
-    Then I see that "{SavedValue:EGMSID}" is in "Negotiation Initiated" status
+    Then I softly see that "{SavedValue:EGMSID}" is in "Negotiation Initiated" status
     Then I softly see status in Progress-bar is "Negotiation Initiated" and is "green"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
@@ -618,7 +618,7 @@ Feature: Validate all scenarios in Negotiations
     And I navigate to "Applications" tab
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:negotiationCompletedTaskTableId---" panel
-    Then I softly see "No Records Found" inside flex table with id "---negotiation:-:negotiationCompletedTaskTableId---"
+    Then I see "No Records Found" inside flex table with id "---negotiation:-:negotiationCompletedTaskTableId---"
 
   @58034 @userCannotSeeIntiationButtonAfterIntiated @deepika
   Scenario: Verify that after creating Negotiation Request, user can see “Not Initiated” status of Negotiation Request
