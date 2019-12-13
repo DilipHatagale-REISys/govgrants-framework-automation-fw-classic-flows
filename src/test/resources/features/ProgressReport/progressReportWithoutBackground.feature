@@ -11848,6 +11848,7 @@ Feature: Validate scenarios in Progress Report without background
     And I navigate to "Performance" sub tab
     Then I softly see value "Automation Permanent Objective" for title "Title" inside table "---progressReport:-:objectivesTableId---"
     Then I softly see value "Automation Permanent Objective2" for title "Title" inside table "---progressReport:-:objectivesTableId---"
+    Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |

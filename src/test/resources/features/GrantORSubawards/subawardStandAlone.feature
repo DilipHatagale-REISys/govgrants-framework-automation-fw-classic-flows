@@ -1045,8 +1045,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "{SavedValue:subawardID}" inside flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
-      | Fiscal Approver  | Automation FO | Automation Test Description |
+      | Responsibility  | Name          | Description                 |
+      | Fiscal Approver | Automation FO | Automation Test Description |
     Then I softly see the following messages in the page details contains:
       | Review initiated successfully! |
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
@@ -2816,8 +2816,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly see value "Automation Title" for title "Title" inside table "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Edit" icon for "Automation Title" inside flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I enter values into fields
-      | Value                  | Field            |
-      | Updated Automation Description | Description__c   |
+      | Value                          | Field          |
+      | Updated Automation Description | Description__c |
     When I click modal button "Save"
     Then I softly see field "Description" as "Updated Automation Description"
     And I collect all the soft asserts
@@ -3644,3 +3644,18 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
+
+  @66644   @verifyDraftGrantNotDisplayedAtSubportal  @mahadev
+  Scenario Outline: To verify that if Grant is in Draft state and" not sent to the Sub recipient " must not be visible to the Sub recipient(SPI User)
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
+    Then I do not see value "<Grant Name>" for title "Grant Title" inside table "---paymentRequest:-:recipientGrantTableId---"
+    Examples:
+      | Grant Name                 |
+      | Automation Execution Award |
