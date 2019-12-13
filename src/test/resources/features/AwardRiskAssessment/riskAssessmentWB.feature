@@ -1116,7 +1116,7 @@ Feature: Risk Assessment scenarios without background
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
     When I navigate to "Overview" sub tab
-    Then I see field "OverAll Risk" as "{SavedValue:OverAllRisk}"
+    Then I softly see field "OverAll Risk" as "{SavedValue:OverAllRisk}"
     Then I collect all the soft asserts
 
   @62964 @62963 @riskScoreWhenCopiedToTermsAndConditionsAmendment @deepika
