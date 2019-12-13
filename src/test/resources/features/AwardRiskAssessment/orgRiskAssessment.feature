@@ -1279,7 +1279,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     And I enter in modal "Grant_Creation4" values from "Award_Field_Values.xlsx"
     And I click modal button "Continue"
-    And I enter in modal "Grant_Edition" values from "Award_Field_Values.xlsx"
+    And I enter in modal "Grant_Edition1" values from "Award_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I navigate to "Subawards" sub tab
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
@@ -1317,7 +1317,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name            | Project Role             | Is Key Personnel |
-      | Automation SPI3 | Project Director/Manager | Checked          |
+      | PatrickM SA     | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
       | Role               | Name           | Description                 |

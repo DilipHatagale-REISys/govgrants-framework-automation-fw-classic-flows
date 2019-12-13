@@ -12,7 +12,7 @@ Feature: Validate all scenarios in Desk Review
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
     Given I navigate to "Management" sub tab
-    And I click on top right button "Initiate Desk Review" in flex table with id "GrantorDeskReviewAward"
+    And I click on top right button "Initiate Desk Review" in flex table with id "---deskreview:-:managementInitiateDRtableid---"
     And I enter "Creation" values from "DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I enter "Edition" values from "DeskReview_Field_Values.xlsx"
@@ -1131,8 +1131,8 @@ Feature: Validate all scenarios in Desk Review
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
     Given I navigate to "Management" sub tab
-    Then I softly can see row level action button "Delete" against "Automation Desk Review" in flex table with id "GrantorDeskReviewAward"
-    When I click on "Delete" icon for "Automation Desk Review" inside flex table with id "GrantorDeskReviewAward"
+    Then I softly can see row level action button "Delete" against "Automation Desk Review" in flex table with id "---deskreview:-:managementInitiateDRtableid---"
+    When I click on "Delete" icon for "Automation Desk Review" inside flex table with id "---deskreview:-:managementInitiateDRtableid---"
     Then I softly see the following messages in the page details contains:
       | Record deleted successfully. |
     Then I collect all the soft asserts
@@ -1264,6 +1264,6 @@ Feature: Validate all scenarios in Desk Review
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
     Given I navigate to "Management" sub tab
-    When I perform quick search for "Record Id" in "GrantorDeskReviewAward" panel
-    Then I see that "Automation Desk Review" has been added in flextable with Id "GrantorDeskReviewAward"
+    When I perform quick search for "Record Id" in "---deskreview:-:managementInitiateDRtableid---" panel
+    Then I see that "Automation Desk Review" has been added in flextable with Id "---deskreview:-:managementInitiateDRtableid---"
 
