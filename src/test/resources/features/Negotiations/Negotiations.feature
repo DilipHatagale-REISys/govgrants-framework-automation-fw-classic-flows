@@ -516,7 +516,6 @@ Feature: Validate all scenarios in Negotiations
       | Automation Negotiation Iniatiation | ExplanationOfRevisionsNeeded__c |
     When I click on "Save" in the page details
     When I click on "Send Back to Subrecipient" in the page details
-    Then I softly see that "{SavedValue:EGMSID}" is in "Negotiation Initiated" status
     Then I softly see status in Progress-bar is "Negotiation Initiated" and is "green"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
