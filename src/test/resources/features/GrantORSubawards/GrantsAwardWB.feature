@@ -1139,3 +1139,27 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
     Given I navigate to "Management" sub tab
     Then I see value "Submitted to Grantor" for title "Stauts" against the value "{SavedValue:EGMSID}" inside table "GrantorSiteVisitsAward"
+
+  @66655 @66750  @validateBlockGrantCreation   @mahadev
+  Scenario: To verify that Subaward is created state on progress bar when the Grant type is “Block Grant” | To verify that if the Budget Period End Date is left blank and send to subrecipient button is clicked on the top right corner of the page validation message appear
+    Given I delete the record "Automation Execution Award" from the object "Award"
+    And I delete the record "Automation Execution Award" from the object "Grant"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Overview" sub tab
+    When I enter value "Block Grant" into field "fieldGrantType__c"
+    When I enter value "Description" into field "fieldGrantDescription__c"
+    When I click on "Save" in the page details
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    Then I softly see status in Progress-bar is "Created" and is "Green"
+    And I click on "Send to Subrecipient" in the page details
+    Then I softly see the following messages in the page details :
+      | Budget Tab - Specify a Budget Period End Date for the subaward. |
+    Then I collect all the soft asserts
