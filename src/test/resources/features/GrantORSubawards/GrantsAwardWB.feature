@@ -94,7 +94,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly cannot see row level action button "Delete" against "Term" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     Then I collect all the soft asserts
 
-  @65780 @65800 @65814 @65804 @StatusNotStartedSentToSubrecipient @jitendra
+  @65780 @65800 @65814 @65804 @66751 @66745 @StatusNotStartedSentToSubrecipient @jitendra
   Scenario: To verify on click "send to sub recipient button" by  Award owner profile (PM user) it must appear in the pending task of sub-recipient.
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -114,12 +114,16 @@ Feature: Validate all scenarios of grants and award without background
     And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Budget" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
-      | Title                           | Start Date | End Date |
-      | Automation Permanent Focus Area | 0          | 3650     |
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
       | Construction    | 1000           | 100        | 100            |
+    Then I softly see value "$1,200.00" for title "Total Project Cost" against the value "Construction" inside table "---subAwardStandAlone:-:subAwardBudgetTableId---"
+    And I click on "Send to Subrecipient" in the page details
+    Then I softly see the following messages in the page details :
+      | Budget Tab - Enter Start Date and End Date for Focus Area. |
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
