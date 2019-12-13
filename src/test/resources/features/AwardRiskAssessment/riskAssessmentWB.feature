@@ -265,20 +265,21 @@ Feature: Risk Assessment scenarios without background
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
-    When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    And I navigate to "Related Logs" sub tab
+    When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableIdreviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     When I click on "Funding Decision Memo" in the page details
-    Then I softly see field "Status" as "Created"
     And I click on "Edit" in the page details
+    When I enter value "AuGr" into field "GrantCode__c"
     When I enter values into fields
       | Value                       | Field                 |
       | AuGr                        | GrantCode__c          |
       | Automation Test Description | fieldJustification__c |
     And I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
-      | Application Title         | Recommended Budget | Recommend for Funding | Comments    |
-      | Automation  Announcement1 | 500                | Yes                   | Recommended |
+      | Application Title      | Recommended Budget | Recommend for Funding | Comments    |
+      | Automation Application | 500                | Yes                   | Recommended |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
@@ -812,7 +813,7 @@ Feature: Risk Assessment scenarios without background
       | Automation Award for Amendment Request |
 
   @61038 @60332 @60335 @riskScoreSameOnAmendmentAwardSRSideforScopeofWorkChange @deepika
-  Scenario: Validate alidate the Risk Score which should remain as is when Award Risk Assessment is copied to new created award when amendment type and SR user can view the Risk Score - Scope of Work Change
+  Scenario: Validate the Risk Score which should remain as is when Award Risk Assessment is copied to new created award when amendment type and SR user can view the Risk Score - Scope of Work Change
     Given I delete the record "Automation Award for Amendment Request" from the object "Amendment Request"
     And I delete the record "Automation Award for Amendment Request" from the object "Payment Request"
     And I delete the record "Automation Award for Amendment Request" from the object "subaward"
@@ -896,7 +897,7 @@ Feature: Risk Assessment scenarios without background
     When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
     And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
-    Then I softly see value "Active" for title "Status" against the value "{SavedValue:RiskAssessmentID}" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"
+    Then I see "Active" has been added in "---subAwardStandAlone:-:riskAssessmentTableId---" flex table
     When I click on "View" icon for "Active" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     Then I softly see field "OverAll Risk" as "{SavedValue:OverAllRisk}"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -1013,7 +1014,7 @@ Feature: Risk Assessment scenarios without background
     Then I softly see field "OverAll Risk" as "{SavedValue:OverAllRisk}"
     Then I collect all the soft asserts
 
-  @62956 @62957 @62958 @awardRACopiedToperiodicRenewalOverallRisk @deepika
+  @62956 @62957 @62958 @awardRACopiedToperiodicRenewalOverallRisk @deepika @wip
   Scenario: Validate the Risk Score which should remain as is when Award Risk Assessment is copied to new created award an SR can view same scrore when amendment type-  Periodic Renewal Amendment
     Given I delete the record "Automation Award for Amendment Request" from the object "Amendment Request"
     And I delete the record "Automation Award for Amendment Request" from the object "Payment Request"
