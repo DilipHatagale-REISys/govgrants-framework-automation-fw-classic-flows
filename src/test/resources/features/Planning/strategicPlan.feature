@@ -65,8 +65,8 @@ Feature: Validate all scenarios in Strategic Plan
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
-    When I upload attachment "Announcement_Field_Values.xlsx" of type "Strategic Plan"
-    Then I see "Strategic Plan" has been added in "Attachments" flex table
+    When I upload attachment "Announcement_Field_Values.xlsx" of type "Strategic Goal"
+    Then I see "Strategic Goal" has been added in "Attachments" flex table
 
   @51047 @creationOfObjective @smoke
   Scenario: Creation of Objective inside a Strategic Goal by User - Admin/EXE/PM
@@ -100,7 +100,7 @@ Feature: Validate all scenarios in Strategic Plan
     When I click modal button "Save and Close"
     And I click on "Save" in the page details
     When I click on "Edit" in the page details
-    When I enter value "Automation Execution Objective" into field "StrategyDescription__c"
+    When I enter in modal value "Automation Execution Objective" into field "StrategyDescription__c"
     When I click on "Save" in the page details
 
   @51049 @additionOfAttachmentToObjective
@@ -126,7 +126,7 @@ Feature: Validate all scenarios in Strategic Plan
     When I click modal button "Save and Close"
     When I click on "Save" in the page details
     When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"
-    When I enter value "Automation Execution Objective" into field "StrategyTitle__c"
+    When I enter in modal value "Automation Execution Objective" into field "StrategyTitle__c"
     When I click modal button "Save and Close"
     And I click on "Save" in the page details
     When I navigate to "Related Logs" sub tab
