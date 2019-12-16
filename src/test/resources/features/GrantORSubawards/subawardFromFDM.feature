@@ -271,7 +271,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Automation SPI | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
     And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "goalsTableId"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---subAwardStandAlone:-:goalsTableId---"
     Then I softly see that "Automation Permanent Objective2" has been added in flextable with Id "---subAwardStandAlone:-:objectivesTableId---"
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Target |

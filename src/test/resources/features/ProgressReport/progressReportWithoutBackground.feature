@@ -132,7 +132,7 @@ Feature: Validate scenarios in Progress Report without background
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
-    Then I see total records count "Total Records:5" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
+    Then I see total records count "Total Records:13" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -2243,7 +2243,8 @@ Feature: Validate scenarios in Progress Report without background
     And I expand nested table containing column value "Progress Report"
     When I save the value from row "1" for column name "EGMS ID" as "EGMSID" from flex table "---progressreport:-:progressReportsTaskScheduleId---"
     And I navigate to "Monitoring" tab
-    When I navigate to "Schedule" content inside "Monitoring Activities" subheader on left panel
+    When I navigate to "Monitoring Schedules" content inside "Monitoring Activities" subheader on left panel
+    And I click toggle button to select "Scheduled Activities - All"
     When I perform quick search for "{SavedValue:EGMSID}" in "---progressreport:-:monitoringScheduleGrantorTableId---" panel
     Then I see value "{SavedValue:EGMSID}" for title "EGMS ID" inside table "---progressReport:-:monitoringScheduleGrantorTableId---"
     Examples:
