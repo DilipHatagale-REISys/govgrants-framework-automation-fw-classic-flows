@@ -36,7 +36,9 @@ Feature: Validate all scenarios in Focus Area
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
+    And I pause execution for "6" seconds
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Supporting Documents"
+    And I refresh the page
     Then I see "Supporting Documents" has been added in "Attachments" flex table
 
   @34729 @activateFocusArea @smoke

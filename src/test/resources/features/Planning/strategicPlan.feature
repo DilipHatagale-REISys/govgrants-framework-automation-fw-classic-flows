@@ -65,7 +65,9 @@ Feature: Validate all scenarios in Strategic Plan
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
+    And I pause execution for "6" seconds
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Strategic Goal"
+    And I refresh the page
     Then I see "Strategic Goal" has been added in "Attachments" flex table
 
   @51047 @creationOfObjective @smoke
