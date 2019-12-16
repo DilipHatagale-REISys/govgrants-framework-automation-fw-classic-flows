@@ -178,7 +178,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
       | Automation Execution Award | Automation Execution Award |
 
   @64385 @scopeofWorkAmendmentWhenORAIsExpired
-  Scenario: Validate user is able to activate newly created award post performing amendment of type - Scope Of Work
+  Scenario: Validate when Org Risk Assessment is expired and user is able to activate newly created award post performing amendment of type - Scope Of Work
     Given I delete the record "Automation Award for Organizational Risk Assessment" from the object "Amendment Request"
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "Payment Request"
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "subaward"
@@ -265,7 +265,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     Then I see that "Activated" has been added in flextable with Id "---subAwardStandAlone:-:subawardsTableId---"
 
   @64387 @periodicRenewalAmendmentWhenORAIsExpired
-  Scenario: Validate user is able to activate newly created award post performing amendment of type - Periodic Renewal
+  Scenario: Validate when Org Risk Assessment is expired user is able to activate newly created award post performing amendment of type - Periodic Renewal
     Given I delete the record "Automation Award for Organizational Risk Assessment" from the object "Amendment Request"
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "Payment Request"
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "subaward"
