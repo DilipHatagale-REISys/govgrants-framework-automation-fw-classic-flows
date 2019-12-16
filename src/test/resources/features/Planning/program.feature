@@ -38,6 +38,7 @@ Feature: Validate all scenarios for program
   @contactAssociation
   Scenario Outline: Associate contact on program
     When I navigate to "Overview" sub tab
+    When I pause execution
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
     When I close "Contacts" modal by clicking the top right x button
@@ -60,6 +61,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I click "Add" after selection of "<Title>" in the table "---program:-:associateFocusAreaTableId---"
+    When I pause execution
     Then I see that "<Title>" has been added in flextable with Id "---program:-:focusAreaTableId---"
     Examples:
       | Title                           |

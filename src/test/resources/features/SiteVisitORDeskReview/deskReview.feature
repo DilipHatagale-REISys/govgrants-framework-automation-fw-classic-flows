@@ -1001,7 +1001,7 @@ Feature: Validate all scenarios in Desk Review
     When I perform quick search for "{SavedValue:Record Id}" in "History" panel
     Then I see value "Active" for title "New Value" inside table "History"
 
-  @61057 @61055 @55370 @66139 @66274 @snapshotAfterSubmitForApprovalDeskReviewIsAcceptedAndClosed @Keerti @headlessmode
+  @61057 @61055 @55370 @66139 @66274 @snapshotAfterSubmitForApprovalDeskReviewIsAcceptedAndClosed @Keerti
   Scenario: Validate whether record Owner is able to view the Accept and Close Button and User view the Snapshot after Desk Review is Submitted for Approval status also after Accepted and Closed |Subrecipient can view Closed Desk Review
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
