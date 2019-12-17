@@ -1111,7 +1111,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
 
-  @51056  @64949 @subAwardAbbreviationInFDM
+  @51056 @64949 @subAwardAbbreviationInFDM
   Scenario Outline: Adding a sub-award abbreviation in FDM | Verify when user click on Funding Decision Memo button it navigate to Funding Decision Memo Page
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
