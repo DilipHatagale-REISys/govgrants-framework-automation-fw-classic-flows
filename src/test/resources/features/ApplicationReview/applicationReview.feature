@@ -1862,7 +1862,7 @@ Feature: Validate all scenarios in the Application Review
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
     And I navigate to "Related Logs" sub tab
-    When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableIdreviewStepsTableId---"
+    When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     When I click on "Funding Decision Memo" in the page details
