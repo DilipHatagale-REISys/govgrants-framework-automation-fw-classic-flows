@@ -969,8 +969,8 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     Then I softly do not see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
-    And I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
-    Then I cannot see top right button "Edit" in page detail
+   # And I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
+   # Then I cannot see top right button "Edit" in page detail
     Then I collect all the soft asserts
 
   @59613 @ownerToAddProgramReviewer @deepika
@@ -1100,8 +1100,8 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     Then I can see top right button "Edit" in page detail
 
-  @59806 @riskAssessmentFieldColorChangestoYellow @deepika
-  Scenario: Validate the moderate level of Risk Assessment, that changes to Yellow color as per the provided Assessment.
+  @59806 @riskAssessmentFieldColorChangestoGreen @deepika
+  Scenario: Validate the moderate level of Risk Assessment, that changes to Green color as per the provided Assessment.
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1146,7 +1146,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     When I navigate to "Overview" sub tab
-    Then I see "Risk Level" image as "yellow.png"
+    Then I see "Risk Level" image as "green.png"
 
   @59807 @highRiskRAAssessmentFieldColorRed @deepika
   Scenario: Validate after selecting certain combinations of answers on the  Form and submitting RA for approval, system sets high Risk with color as red
@@ -1648,6 +1648,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
+    And I pause execution for "5" seconds
     Then I see the following messages in the page details contains:
       |This Subaward risk assessment cannot be processed further as the related Subaward has been activated and is associated with an active Subaward risk assessment.|
     Examples:
@@ -1696,6 +1697,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Assessment" sub tab
     And I enter "RiskAssessmentValues1" values from "RiskAssessment_Field_Values.xlsx"
     When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridRiskAssessmentApproverRoles"
     And I enter a review as "Passed"
     When I click modal button "Save"
@@ -1973,7 +1975,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Created" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
     Then I do not see value "Created" for title "Status" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
 
-  @60208 @validateRecordOwnerISAbleToViewRASnapshot @deepika
+  @60208 @validateRecordOwnerISAbleToViewRASnapshot @deepika @headlessmode
   Scenario: Validate Record Owner user is able to view the Snapshot after Risk Assessment is Submitted for Approval status
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2008,7 +2010,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I download the file
     Then I see "Submitted for Approval" on page "1" of "govgrants" pdf file
 
-  @60209 @validateRecordOwnerISAbleToViewActiveRASnapshot @deepika
+  @60209 @validateRecordOwnerISAbleToViewActiveRASnapshot @deepika @headlessmode
   Scenario: Validate whether Snapshot is captured/(taken) automatically  by the system in the table Snapshot History when Risk Assessment is Activated
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab

@@ -605,7 +605,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
     When I perform quick search for "Automation ind23" in "---home:-:indActiveAccountId---" panel
-    Then I cannot see row level action button "Edit" against Value "Automation ind23" inside "---home:-:indActiveAccountId---" flex table
+    Then I cannot see row level action button "Edit" against "Automation ind23" in flex table with id "---home:-:indActiveAccountId---"
 
   @62105 @externalUserhomePendingTask @deepika
   Scenario: The Pending Task on the left Navigation shows Pending Tasks that are created for Subrecipient Users
@@ -624,13 +624,11 @@ Feature: Validate all scenarios in the home tab
     And I enter "Edition" values from "SiteVisit_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I get the "EGMS ID"
-    And I save the field labeled "EGMS ID" as "EGMSID"
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
       | Program Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver  | Automation FO  | Automation Test Description |
-    When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation EXE" in the table "---sitevisits:-:siteVisitContactsTableId---"
@@ -641,8 +639,8 @@ Feature: Validate all scenarios in the home tab
     When I login as "SPI" user
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:EGMSID}" in "---sitevisits:-:homePendingTasksTableId---" panel
-    Then I see that "{SavedValue:EGMSID}" has been added in flextable with Id "---sitevisits:-:homePendingTasksTableId---"
+    When I perform quick search for "Record Id" in "---home:-:externalPendingTasktableId---" panel
+    Then I see value "Record id" for title "EGMS ID" inside table "---home:-:externalPendingTasktableId---"
 
   @indUserEditProfile @deepika
   Scenario: Verify whether the Individual Sub Profile Users can view their own contact information under Overview Tab
@@ -698,7 +696,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     And I click on "Send Invitation" icon for "Automation SME" inside flex table with id "---home:-:reviewersTableId---"
-    When I click on "Send" in the page details
+    When I click modal button "Send"
     When I close "Send Invitation" modal by clicking the top right x button
     And I perform quick search for "Automation SME" in "---home:-:reviewersTableId---" panel
     Then I see value "Invitation Sent" for title "Status" inside table "---home:-:reviewersTableId---"
