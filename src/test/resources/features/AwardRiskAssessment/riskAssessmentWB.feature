@@ -817,12 +817,20 @@ Feature: Risk Assessment scenarios without background
     Given I delete the record "Automation Award for Amendment Request" from the object "Amendment Request"
     And I delete the record "Automation Award for Amendment Request" from the object "Payment Request"
     And I delete the record "Automation Award for Amendment Request" from the object "subaward"
-    And I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI" user
-    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
-    And I navigate to "Risk Assessment" sub tab
-    And I save the field labeled "Overall Risk" as "OverAllRisk"
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "Automation Award for Amendment Request" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I navigate to "Subawards" sub tab
+    When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
+    And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I navigate to "Management" sub tab
+    When I perform quick search for "Active" in "---amendment:-:amendmentRequestTableId---" panel
+    And I click on "View" icon for "Active" inside flex table with id "---amendment:-:amendmentRequestTableId---"
+    And I navigate to "Overview" sub tab
+    When I save the field labeled "Overall Risk" as "OverAllRisk"
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -836,7 +844,7 @@ Feature: Risk Assessment scenarios without background
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
-    And I save the field labeled "EGMS ID" as "EGMSID"
+    When I get the "EGMS ID"
     When I click on "Edit" in the page details
     And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -899,12 +907,13 @@ Feature: Risk Assessment scenarios without background
     And I navigate to "Management" sub tab
     Then I softly see "Active" has been added in "---subAwardStandAlone:-:riskAssessmentTableId---" flex table
     When I click on "View" icon for "Active" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
-    #Then I softly see field "OverAll Risk" as "{SavedValue:OverAllRisk}"
+    Then I softly see field "OverAll Risk" as "{SavedValue:OverAllRisk}"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
-    When I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
+    And I perform quick search for "Active" in "organizationprofileviewTableId" panel
+    When I click on "View" icon for "Active" inside flex table with id "---riskassessment:-:organizationprofileviewTableId---"
     Then I softly see field "Overall Risk" as "{SavedValue:OverAllRisk}"
     Then I collect all the soft asserts
 

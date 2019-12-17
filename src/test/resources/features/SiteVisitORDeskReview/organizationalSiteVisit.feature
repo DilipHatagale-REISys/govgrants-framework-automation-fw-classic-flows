@@ -1081,7 +1081,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I close "Site Visit Reviewers" modal by clicking the top right x button
     Then I cannot see top right button "Edit" in page detail
 
-  @56007 @PeerReviewSnapshotAfterSVIsAcceptedAndClosed @keerti
+  @56007 @PeerReviewAfterSVIsAcceptedAndClosed @keerti
   Scenario: Validate peer review  process and also system does not allow the peer reviewer to edit/Enter review comments if the Org Level Site Visits marked as complete review by the Record owner
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -1187,7 +1187,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     Then I collect all the soft asserts
 
   @61993 @RecordOwnerCanViewSnapshotAfterOSVIsSubmittedForApproval @keerti
-  Scenario: Validate Record Owner user is able to view the Snapshot after Risk Assessment is Submitted for Approval status - Org Site Visits
+  Scenario: Validate Record Owner user is able to view the Snapshot after Site Visit is Submitted for Approval status - Org Site Visits
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
     And I enter "Creation" values from "Organizational_SiteVisit_Field_Values.xlsx"
@@ -1247,6 +1247,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on "Remove" icon for "Automation SPI" inside flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     Then I softly see "No Records Found" inside flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
+    When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     And I click on "Remove" icon for "Automation Announcement for Site Visit" inside flex table with id "---orgLevelSiteVisits:-:selectApplicationId---"
     Then I softly see "No Records Found" inside flex table with id "---orgLevelSiteVisits:-:selectApplicationId---"
     And I click on "Notify" in the page details

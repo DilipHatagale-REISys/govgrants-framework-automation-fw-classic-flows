@@ -336,4 +336,9 @@ public class GenericSteps {
     public void iClickTableTopRightButtonInFlexTableWithId(String buttonName, String flexTableId) {
         projectManager.clickTableTopRightButton(buttonName,flexTableId);
     }
+
+    @And("I click {string} button in modal")
+    public void iClickButtonInModal(String buttonName) {
+        EyeThink.core().click().on(By.xpath("//div[@id='ModalDivID']//button[contains(text(),'"+buttonName+"')]"));
+    }
 }

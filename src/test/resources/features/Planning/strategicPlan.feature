@@ -63,9 +63,9 @@ Feature: Validate all scenarios in Strategic Plan
     When I click on "Save" in the page details
     And I click on "Edit" in the page details
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
-    And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Strategic Goal"
+    And I click on "Save" in the page details
     Then I see "Strategic Goal" has been added in "Attachments" flex table
 
   @51047 @creationOfObjective @smoke
@@ -183,4 +183,4 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Save" in the page details
     When I click on "Activate" in the page details
     Then I see the following messages in the page details contains:
-    | Overview Tab - Strategic Plan must at least have a goal. |
+      | Overview Tab - Strategic Plan must at least have a goal. |
