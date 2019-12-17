@@ -123,8 +123,8 @@ Feature: Validate all scenarios in the Pre-Application
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"
-    And I perform quick search for "Record Id" in "---applicationIntake:-:appAllTableId---" panel
-    And I click on "View" icon for "Record Id" inside flex table with id "---applicationIntake:-:appAllTableId---"
+    And I perform quick search for "Record Id" in "---applicationIntake:-:applicantGrantorApplicationsTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---applicationIntake:-:applicantGrantorApplicationsTableId---"
     Then I see status in Progress-bar is "Submitted" and is "Green"
     Examples:
       | Announcement Name                       |
