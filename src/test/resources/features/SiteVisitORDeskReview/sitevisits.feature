@@ -60,8 +60,7 @@ Feature: Validate all scenarios in the Site Visit
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
-    Then I softly see that "Automation Site Visit" is in "Notified" status
+    Then I softly see value "Record Id" for title "EGMS ID" inside table "---sitevisits:-:monitoringTabPhasePendingTasks---"
     Then I collect all the soft asserts
 
   @51087 @51088 @51090 @addingOutcomeSiteVisitAndSubmittingForApprovalSiteVisit
@@ -876,7 +875,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Send to Owner" on the approval decision box
     When I navigate to "History" sub tab
     When I perform quick search for "{SavedValue:Record Id}" in "History" panel
-    Then I softly see value "Created" for title "Old Value" inside table "History"
+    Then I softly see value "Active" for title "New Value" inside table "History"
     Then I collect all the soft asserts
 
   @60833 @theSnapshotAfterSiteVisitsIsSendToSubrecipient @keerti
@@ -1172,8 +1171,8 @@ Feature: Validate all scenarios in the Site Visit
     When I login as "SPI" user
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---sitevisits:-:homePendingTasksTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:homePendingTasksTableId---"
+    When I perform quick search for "Record Id" in "---sitevisits:-:externalHomePendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:externalHomePendingTaskTableId---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
@@ -1220,8 +1219,8 @@ Feature: Validate all scenarios in the Site Visit
     When I login as "SPI" user
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---sitevisits:-:homePendingTasksTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:homePendingTasksTableId---"
+    When I perform quick search for "Record Id" in "---sitevisits:-:externalHomePendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:externalHomePendingTaskTableId---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
@@ -1308,8 +1307,8 @@ Feature: Validate all scenarios in the Site Visit
     When I login as "SPI" user
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---sitevisits:-:homePendingTasksTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:homePendingTasksTableId---"
+    When I perform quick search for "Record Id" in "---sitevisits:-:externalHomePendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:externalHomePendingTaskTableId---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
@@ -1351,8 +1350,8 @@ Feature: Validate all scenarios in the Site Visit
     When I login as "SPI" user
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---sitevisits:-:homePendingTasksTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:homePendingTasksTableId---"
+    When I perform quick search for "Record Id" in "---sitevisits:-:externalHomePendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:externalHomePendingTaskTableId---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel

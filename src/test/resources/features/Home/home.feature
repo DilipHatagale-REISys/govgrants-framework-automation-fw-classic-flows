@@ -696,7 +696,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     And I click on "Send Invitation" icon for "Automation SME" inside flex table with id "---home:-:reviewersTableId---"
-    When I click modal button "Send"
+    And I click "Send" button in modal
     When I close "Send Invitation" modal by clicking the top right x button
     And I perform quick search for "Automation SME" in "---home:-:reviewersTableId---" panel
     Then I see value "Invitation Sent" for title "Status" inside table "---home:-:reviewersTableId---"
