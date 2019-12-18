@@ -2,13 +2,13 @@
 Feature: Validate all scenarios in the Stand Alone Award and Grant
 
   Background: Create Award
-    Given I delete the record "Automation Execution Award" from the object "Award"
-    And I delete the record "Automation Execution Award" from the object "Grant"
+    Given I delete the record "Automation Direct Award" from the object "Award"
+    And I delete the record "Automation Direct Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
-    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
     And I click modal button "Continue"
     And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
     When I click modal button "Save and Continue"
@@ -253,8 +253,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Budget Tab - Associate Funding Account with proper Encumbrance value as per Total Subaward Amount This Budget Period |
     Then I collect all the soft asserts
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @51144 @51145 @51146 @allReviewerAssignmentAndInitiationAndCompletion  @smoke
   Scenario Outline: Validate reviewer assignment, initiation of review and completion of review
@@ -336,8 +336,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly see that "Submitted" has been added in flextable with Id "---subAwardStandAlone:-:peerReviewersTableId---"
     Then I collect all the soft asserts
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @51142 @65492 @51143 @65798 @allSubmissionForApproval @allApproval
   Scenario Outline: Validate award submission for approval and approval of award | To verify that the status of the subaward in SR side from sent to subrecipient to Accepted
@@ -449,8 +449,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly see status in Progress-bar is "Approved" and is "Green"
     Then I collect all the soft asserts
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @51140 @51141 @66006 @65983 @66005 @66003 @66008 @allSendToRecipientAndAcceptanceAfterApproval
   Scenario Outline: Acceptance of award by receipient after approval| Validate view Noga button on SPI side |To verify after Send to Subrecipient button the status should change to Sent to Subrecipient after Approval and the progress bar approved
@@ -576,8 +576,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly can see top right button "View NOGA" in page detail
     Then I collect all the soft asserts
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @51139 @66009 @65975 @66012 @66013 @allActivation @smoke
   Scenario Outline: all activation | Validate activate and View Noga button on award
@@ -721,8 +721,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly see that "Subaward" is in "Activated" status
     Then I collect all the soft asserts
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @53835 @paymentRequestScheduleBlankOnDraftAward @mahadev
   Scenario: Verify that Payment Request Schedule is blank on draft award
@@ -921,8 +921,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly see status in Progress-bar is "Created" and is "Green"
     And I collect all the soft asserts
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @66031 @66035 @peerReviewAddForRiskAssementAfterAcceptedafterApprovalAward @jitendra
   Scenario Outline: To verify that the peer reviewers can be added in the responsibility tab of Sub Award Risk Assessment phase by the Award owner(PM profile)
@@ -1052,8 +1052,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Review initiated successfully! |
     And I collect all the soft asserts
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @66087 @UnableToActivateSubAwardIfRiskAssesmentApprovePMHasNotApprovedIt @jitendra
   Scenario Outline: To validate that if risk assessment record is not approved by the approver (PM Profile) Subaward (PM) is not able to Activate Subaward and validation error appears
@@ -1181,8 +1181,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see the following messages in the page details contains:
       | Management Tab - Create and activate a Risk Assessment as the Subaward cannot be issued without an active Risk Assessment. |
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @38205 @DraftAwardNavigation @mahadev
   Scenario Outline: Navigation to draft award by FO User
@@ -1196,9 +1196,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     Then I see status in Progress-bar is "Created" and is "Green"
     Examples:
-      | Award Name                 | Grant Name                 | User |
-      | Automation Execution Award | Automation Execution Award | PM   |
-      | Automation Execution Award | Automation Execution Award | FO   |
+      | Award Name              | Grant Name              | User |
+      | Automation Direct Award | Automation Direct Award | PM   |
+      | Automation Direct Award | Automation Direct Award | FO   |
 
   @55311 @ProgressReportScheduleUpdateOnActiveAward @mahadev
   Scenario Outline: Validate progress report schedules update on active award
@@ -1344,8 +1344,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I expand nested table containing column value "Progress Report"
     Then I see total records count "Total Records:10" in flex table "---subAwardStandAlone:-:progressReportScheduleTableId---"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @66023 @errorMsgForRiskAssementAfterActivateAward @jitendra
   Scenario Outline: To verify that after Activate Button on the award owner (PM ) profile is clicked without completing risk assessment validation error must appear
@@ -1480,8 +1480,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see the following messages in the page details contains:
       | Management Tab - Create and activate a Risk Assessment as the Subaward cannot be issued without an active Risk Assessment. |
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @55297 @EditProgressReportSchedule @mahadev
   Scenario: Validate user can edit progress report schedule on draft award
@@ -1719,8 +1719,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see the following messages in the page details contains:
       | Terms Tab - Provide the Payment Request Schedule details before submitting for approval |
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @55295 @veifyViewAccessForProgressReportsSchedulesOnDraftAward @mahadev
   Scenario Outline: Verify that system allows EXE, PO, FD, and FO can see the created Progress Report Schedules
@@ -1744,9 +1744,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     Then I see field "Frequency" as "Monthly"
     Examples:
-      | User | Grant Name                 | Award Name                 |
-      | EXE  | Automation Execution Award | Automation Execution Award |
-      | FO   | Automation Execution Award | Automation Execution Award |
+      | User | Grant Name              | Award Name              |
+      | EXE  | Automation Direct Award | Automation Direct Award |
+      | FO   | Automation Direct Award | Automation Direct Award |
 
   @45728 @veifyNonAwardOwnerCanNotEditSchedule @mahadev
   Scenario Outline: Verify non award owner cannot edit Progress Report Schedule
@@ -1769,8 +1769,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I navigate to "Terms" sub tab
     Then I cannot see row level action button "Edit" against "Progress Report" in flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     Examples:
-      | Grant Name                 | Award Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Grant Name              | Award Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @45735 @validateUserCannotSelectschdeuleStartDateBeforeBudgetPeriodStartDate @mahadev
   Scenario: Verify While creating schedule user is not allowed to select the Schedule Start Date before Budget Period Start Date
@@ -1896,8 +1896,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I navigate to "Terms" sub tab
     Then I cannot see row level action button "Edit" against "Progress Report" in flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     Examples:
-      | Grant Name                 | Award Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Grant Name              | Award Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @51110 @validateSubRecipientCannotEditSchedule
   Scenario Outline: Verify If Subaward is Send to Sub-recipient for Edit action than external user should not have access to modify Schedule.
@@ -1973,8 +1973,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I navigate to "Terms" sub tab
     Then I cannot see row level action button "Edit" against "Progress Report" in flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     Examples:
-      | Grant Name                 | Award Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Grant Name              | Award Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @45729 @progressReportAnnuallyWithLessThan365DateError @jitendra
   Scenario: Verify if annually frequency is selected and schedule dates are less than year it show validation message.
@@ -2139,8 +2139,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I navigate to "Terms" sub tab
     Then I see value "Not Applicable" for title "Frequency" against the value "Progress Report" inside table "---subAwardStandAlone:-:progressReportScheduleTableId---"
     Examples:
-      | Grant Name                 | Award Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Grant Name              | Award Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @34933 @SelectDesiredFrequencyAsAnnuallyBasedOnGivenDate @jitendra
   Scenario: Verify the functionality of Desired Frequency as Annually with Schedule Base type as Reporting period.
@@ -2231,8 +2231,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "Green"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @45752 @awardDeletion  @mahadev
   Scenario Outline: Deletion of award by owner
@@ -2243,8 +2243,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Delete" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     Then I do not see value "<Grant Name>" for title "Grant Title" inside table "---subAwardStandAlone:-:activeGrantsTableId---"
     Examples:
-      | Grant Name                 |
-      | Automation Execution Award |
+      | Grant Name              |
+      | Automation Direct Award |
 
   @45755 @removeObjectivesFromAward  @mahadev
   Scenario: Validate the removing of objectives from award
@@ -2349,8 +2349,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Disapprove" on the approval decision box
     Then I see status in Progress-bar is "Rejected" and is "Red"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @45764 @66893  @validateAwardRejectionByExecutiveApprover @mahadev
   Scenario Outline: Validate award Rejection by Executive approver | To verify that after subaward is sent for approval no changes can be made in the Award owner (PM) profile
@@ -2458,8 +2458,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly see status in Progress-bar is "Rejected" and is "Red"
     Then I collect all the soft asserts
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @45762 @VarifyAwardRejectionByFiscalApprover @keerti
   Scenario Outline: Validate award Rejection by Fiscal approver
@@ -2540,8 +2540,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Disapprove" on the approval decision box
     Then I see status in Progress-bar is "Rejected" and is "red"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @45739 @VarifyAwardRejectionByRecipientBeforeApproval @keerti
   Scenario Outline: Validate the rejection of award by recipient before approval
@@ -2623,8 +2623,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Reject" in the page details
     Then I see status in Progress-bar is "Rejected" and is "Red"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @45754 @VarifyKPIRemovingFromAward @keerti
   Scenario: Validate removing KPI from Award
@@ -2659,8 +2659,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Performance" sub tab
     Then I see value "{SavedValue:domain}" for title "Domain" inside table "inlineEditGridGrantorAwardKeyOutcomes"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @65227 @VerifyRelatedFocusAreasField  @keerti
   Scenario Outline: Verify Key Performance Indicators (KPIs) value Performance tab Subaward overview is same as Program Key Performance Indicators (KPIs) table setup Tab.
@@ -2681,8 +2681,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Performance" sub tab
     Then I see value "{SavedValue:lastValueFromTableForCol}" for title "Organization Name" inside table "GrantorAwardGoalsObjectives"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @65226 @VerifyRelatedFocusAreasField  @keerti
   Scenario Outline: Verify Focus Area field value Budget tab Subaward overview is same as Program Related Focus Areas table setup Tab.
@@ -2703,8 +2703,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Budget " sub tab
     Then I see value "{SavedValue:lastValueFromTableForCol}" for title "Title" inside table "flexGridEnhancedGrantorAwardServiceAreas"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @65679 @verifyTopRightButtonsOnTndCTable  @mahadev
   Scenario: Verify Terms and Conditions Table have New, Associate and Associate Mandatory Terms and Conditions button on top of the table on Grant
@@ -2795,8 +2795,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I perform quick search for "Record Id" in "flexGridRecipientActiveGrants" panel
     Then I see value "Draft" for title "Status" inside table "flexGridRecipientActiveGrants"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @65680 @65687 @addNewTermsAndConditionsAndValidateNoEditActionForIt @mahadev
   Scenario: Verify award owner can add new Terms and Conditions on subaward Terms Tab |
@@ -2904,8 +2904,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly can see top right button "Complete Review" in page detail
     Then I collect all the soft asserts
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @65819 @65897 @65891 @65890 @validateStatusAfterSendForReviewAndButtonsAfterSavingReview  @mahadev
   Scenario Outline: Verify status after send for review | verify buttons on modal after saving review by reviewer
@@ -3005,8 +3005,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly see value "Submitted" for title "Status" against the value "Automation FO" inside table "---subAwardStandAlone:-:peerReviewersTableId---"
     Then I collect all the soft asserts
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @65909 @65898 @65902 @65894 @65910 @validateUploadingDigitalSignatureDocument @mahadev
   Scenario Outline: To verify that the attachment can be added by the award owner profile after peer review completion | Validate status after peer review
@@ -3119,8 +3119,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly see "No Records" inside flex table with id "---subAwardStandAlone:-:digiSignDivTableId---"
     Then I collect all the soft asserts
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @65954 @validateLessMatch @jitendra
   Scenario Outline: To verify that if the subrecipient match is less than the % match validation error must be thrown in the award owner profile
@@ -3225,8 +3225,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see the following messages in the page details contains:
       | Budget Tab - The Subrecipient Match cannot be less than the given %. |
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @65955 @65958 @65956 @validatePendingTaskForPA  @mahadev
   Scenario Outline: To verify that after the program approver is assigned task by the award owner from the Subaward in the created state it must appear in the pending task of the approver
@@ -3351,8 +3351,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @65970 @validateSendBackTOpmbyFO @jitendra
   Scenario Outline: To verify that after Fiscal Approver (David FO Profile) clicks on the Send back radio button the progress bar changes from “Submitted for Approval” to “created”
@@ -3497,8 +3497,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     Then I see status in Progress-bar is "Created" and is "Green"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @65957 @65816 @66029 @66036  @66034 @validatePendingTaskForEXEAndAddingReviewers  @mahadev
   Scenario Outline: validate adding approvers in risk assessment | validate status for risk assessment | Validate Pending Task for executive approver | To verify that the peer reviewers can be added
@@ -3630,8 +3630,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
     Then I collect all the soft asserts
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @65966   @validateSendBackByFO  @mahadev
   Scenario Outline: To verify that if Send Back radio button in the Fiscal Approver(David FO) is clicked it returns back to the Award owner(Pm Profile) and the action in the Grant Draft table changes from View  lock  to  view , Edit, Delete
@@ -3738,8 +3738,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly can see row level action button "Delete" against "<Grant Name>" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     Then I collect all the soft asserts
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @66644   @verifyDraftGrantNotDisplayedAtSubportal  @mahadev
   Scenario Outline: To verify that if Grant is in Draft state and" not sent to the Sub recipient " must not be visible to the Sub recipient(SPI User)
@@ -3753,8 +3753,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
     Then I do not see value "<Grant Name>" for title "Grant Title" inside table "---paymentRequest:-:recipientGrantTableId---"
     Examples:
-      | Grant Name                 |
-      | Automation Execution Award |
+      | Grant Name              |
+      | Automation Direct Award |
 
   @66931   @validateActivateButtonNotDisplayedAfterRejectedBYSPI  @mahadev
   Scenario Outline: To Validate that after Subaward is rejected by the Recipient (SPI) user, activate Button do not appear on the Award owner (PM) profile
@@ -3843,8 +3843,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     Then I cannot see top right button "Activate" in page detail
     Examples:
-      | Grant Name                 | Award Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Grant Name              | Award Name              |
+      | Automation Direct Award | Automation Direct Award |
 
   @66881 @validateBPDateCannotBeLessThanProjectPeriodEndDate @mahadev
   Scenario Outline: To verify that the budget period end date is set ahead of the project period end date validation message must appear on clicking submit for approval button
@@ -3941,5 +3941,5 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see the following messages in the page details :
       | Budget Tab - The Budget Period End Date cannot occur after the Project Period End Date. |
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
