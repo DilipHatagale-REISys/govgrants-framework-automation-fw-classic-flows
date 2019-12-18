@@ -879,8 +879,8 @@ Feature: Validate all scenarios in Negotiations
     Then I softly see status in Progress-bar is "Created" and is "Green"
     And I navigate to "Applications" tab
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
-    And I perform quick search for "Record Id" in "---negotiation:-:applicationsflexTableId---" panel
-    When I click on "View" icon for "Record Id" inside flex table with id "---negotiation:-:applicationsflexTableId---"
+    And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:negotiationCompletedTaskTableId---" panel
+    When I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:negotiationCompletedTaskTableId---"
     Then I softly see that "Automation Announcement for FDM" is in "Converted to Award" status
     Then I collect all the soft asserts
 
