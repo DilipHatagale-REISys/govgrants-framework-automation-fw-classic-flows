@@ -2,7 +2,6 @@ package com.ggproduct.automation.projectmanager;
 
 import eyethink.automation.bots.Register.EnvironmentFetcher;
 import eyethink.automation.bots.Register.EyeThink;
-import eyethink.automation.bots.controller.EyeThinkGlobal;
 import eyethink.automation.bots.corelib.Emails;
 import eyethink.automation.bots.objects.Elements;
 import org.assertj.core.util.Files;
@@ -393,7 +392,6 @@ public class ProjectManager extends ProjectWebServices {
      */
     public Boolean assertRiskLevelImage(String fieldLabel, String imageName) throws IOException {
         WebElement pathForRiskLevel = EyeThink.core().elementReference().of(By.xpath("//span[@class='customLabelstyle' and contains(text(),'" + fieldLabel + "')]/ancestor::dl[1]//dd//img"));
-        EyeThinkGlobal.setVariable("pathForRiskLevel","off");
         EyeThink.core().screenCapture().takeElementScreenShot(pathForRiskLevel, "green");
         return EyeThink.core().compare().image().isElementImage(pathForRiskLevel, imageName);
     }
