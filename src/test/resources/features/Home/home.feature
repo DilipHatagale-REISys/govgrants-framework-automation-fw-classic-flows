@@ -605,7 +605,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
     When I perform quick search for "Automation ind23" in "---home:-:indActiveAccountId---" panel
-    Then I cannot see row level action button "" against "Automation ind23" in flex table with id "---home:-:indActiveAccountId---"
+    Then I cannot see row level action button "Edit" against "Automation ind23" in flex table with id "---home:-:indActiveAccountId---"
 
   @62105 @externalUserhomePendingTask @deepika
   Scenario: The Pending Task on the left Navigation shows Pending Tasks that are created for Subrecipient Users
