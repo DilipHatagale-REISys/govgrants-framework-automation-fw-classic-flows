@@ -738,8 +738,8 @@ Feature: Risk Assessment scenarios without background
 
   @60334 @60333 @awardRACopiedToFundingChangeAmendmentRiskScoreOnNewAward @deepika @wip
   Scenario Outline: Validate the Award Risk Assessment is copied to new created award and Risk Score which should remain as is whencopied to new created award when amendment type - Funding Change
-    Given I delete the record "Automation Award for Risk Assessment" from the object "Amendment Request"
-    And I delete the record "Automation Award for Risk Assessment" from the object "Payment Request"
+    Given I delete the record "Automation Award for Amendment Request" from the object "Amendment Request"
+    And I delete the record "Automation Award for Amendment Request" from the object "Payment Request"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -793,7 +793,7 @@ Feature: Risk Assessment scenarios without background
     And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
     When I click on "Edit" icon for "{SavedValue:fundingAccount}" inside flex table with id "---amendment:-:amendmentFundingAccountsTableId---"
-    When I enter Revised Encumbrance for award "Automation Award for Risk Assessment"
+    When I enter Revised Encumbrance for award "Automation Award for Amendment Request"
     And I click on top right button "Save" in flex table with id "---amendment:-:amendmentFundingAccountsTableId---"
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -849,7 +849,6 @@ Feature: Risk Assessment scenarios without background
     And I navigate to "Management" sub tab
     When I perform quick search for "Active" in "---subAwardStandAlone:-:riskAssessmentTableId---" panel
     And I click on "View" icon for "Active" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
-    And I save the field labeled "EGMS ID" as "RiskValue"
     When I save the field labeled "OverAll Risk" as "OverAllRisk"
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -920,20 +919,19 @@ Feature: Risk Assessment scenarios without background
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
     When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
     And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
-    Then I softly see value "Active" for title "Status" against the value "{SavedValue:RiskValue}" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"
+    Then I softly see "Active" has been added in "---subAwardStandAlone:-:riskAssessmentTableId---" flex table
     When I click on "View" icon for "Active" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
-    And I save the field labeled "EGMS ID" as "RISKID"
     Then I softly see field "OverAll Risk" as "{SavedValue:OverAllRisk}"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
-    And I perform quick search for "{SavedValue:RISKID}" in "---riskassessment:-:organizationprofileviewTableId---" panel
+    And I perform quick search for "Active" in "---riskassessment:-:organizationprofileviewTableId---" panel
     When I click on "View" icon for "Active" inside flex table with id "---riskassessment:-:organizationprofileviewTableId---"
     Then I softly see field "OverAll Risk" as "{SavedValue:OverAllRisk}"
     Then I collect all the soft asserts
@@ -954,13 +952,12 @@ Feature: Risk Assessment scenarios without background
     And I navigate to "Management" sub tab
     When I perform quick search for "Active" in "---subAwardStandAlone:-:riskAssessmentTableId---" panel
     And I click on "View" icon for "Active" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
-    And I save the field labeled "EGMS ID" as "RiskValue"
     When I save the field labeled "OverAll Risk" as "OverAllRisk"
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
     When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
     And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
@@ -971,7 +968,7 @@ Feature: Risk Assessment scenarios without background
     When I enter values into fields
       | Value                       | Field                              |
       | Automation Test Description | fieldFundingChangeJustification__c |
-      | 1000                        | fieldRequestedChangeInBudget__c    |
+      | 100                         | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
@@ -982,32 +979,32 @@ Feature: Risk Assessment scenarios without background
     And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
-    When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
-    When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
-      | Title        | Narrative     | Awarded Budget |
-      | Extra Salary | The narrative | 1000           |
-    When I close "Add Line Items" modal by clicking the top right x button
+    When I edit the following rows inline in flex table with id "---amendment:-:recipientKeyOutComes---" by clicking "Edit" :
+      | Title                                   | Target |
+      | Automation Permanent KPI for Regression | 20     |
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
-    And I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "{SavedValue:fundingAccount}" inside flex table with id "---amendment:-:amendmentFundingAccountsTableId---"
-    When I enter Revised Encumbrance for award "Automation Award for Risk Assessment"
-    And I click on top right button "Save" in flex table with id "---amendment:-:amendmentFundingAccountsTableId---"
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
     And I click on "Submit for Approval" in the page details
-    And I click on "Approve" on the approval decision box
+    And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
-    And I click on "Approve" on the approval decision box
+    And I "Approve" in approval decision
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
+    And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1015,11 +1012,11 @@ Feature: Risk Assessment scenarios without background
     When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
-    And I get the "EGMS ID"
+    When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
     And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
-    And I click on "View" icon for "Approved" inside flex table with id "---amendment:-:amendmentRequestTableId---"
-    When I click on "Amend Subaward" in the page details
+    And I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:amendmentRequestTableId---"
+    And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1030,15 +1027,14 @@ Feature: Risk Assessment scenarios without background
     When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
     And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
-    Then I softly see value "Active" for title "Status" against the value "{SavedValue:RiskValue}" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"
+    Then I softly see "Active" has been added in "---subAwardStandAlone:-:riskAssessmentTableId---" flex table
     When I click on "View" icon for "Active" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
-    And I save the field labeled "EGMS ID" as "RISKID"
     Then I softly see field "OverAll Risk" as "{SavedValue:OverAllRisk}"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
-    And I perform quick search for "{SavedValue:RISKID}" in "---riskassessment:-:organizationprofileviewTableId---" panel
+    And I perform quick search for "Active" in "---riskassessment:-:organizationprofileviewTableId---" panel
     When I click on "View" icon for "Active" inside flex table with id "---riskassessment:-:organizationprofileviewTableId---"
     Then I softly see field "OverAll Risk" as "{SavedValue:OverAllRisk}"
     Then I collect all the soft asserts
@@ -1165,7 +1161,6 @@ Feature: Risk Assessment scenarios without background
     And I navigate to "Management" sub tab
     When I perform quick search for "Active" in "---subAwardStandAlone:-:riskAssessmentTableId---" panel
     And I click on "View" icon for "Active" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
-    And I save the field labeled "EGMS ID" as "RiskValue"
     When I save the field labeled "OverAll Risk" as "OverAllRisk"
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1241,7 +1236,7 @@ Feature: Risk Assessment scenarios without background
     When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
     And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
-    Then I softly see value "Active" for title "Status" against the value "{SavedValue:RiskValue}" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"
+    Then I softly see "Active" has been added in "---subAwardStandAlone:-:riskAssessmentTableId---" flex table
     When I click on "View" icon for "Active" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     Then I softly see field "OverAll Risk" as "{SavedValue:OverAllRisk}"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -1269,7 +1264,6 @@ Feature: Risk Assessment scenarios without background
     And I navigate to "Management" sub tab
     When I perform quick search for "Active" in "---subAwardStandAlone:-:riskAssessmentTableId---" panel
     And I click on "View" icon for "Active" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
-    And I save the field labeled "EGMS ID" as "RiskValue"
     When I save the field labeled "OverAll Risk" as "OverAllRisk"
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1283,7 +1277,7 @@ Feature: Risk Assessment scenarios without background
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    And I click on "Save" in the page details
+    When I click on "Save" in the page details
     And I get the updated budget end date for award "Automation Award for Risk Assessment"
     When I click on "Edit" in the page details
     And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
@@ -1301,10 +1295,13 @@ Feature: Risk Assessment scenarios without background
     And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
-    And I click on "Acknowledge" in the page details
+    When I edit the following rows inline in flex table with id "---amendment:-:recipientKeyOutComes---" by clicking "Edit" :
+      | Title                                   | Target |
+      | Automation Permanent KPI for Regression | 20     |
+    And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1318,12 +1315,23 @@ Feature: Risk Assessment scenarios without background
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
     And I "Approve" in approval decision
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
+    And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Amendment Requests - Approved"
-    And I perform quick search for "Record Id" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
-    When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I navigate to "Subawards" sub tab
+    When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
+    And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I navigate to "Management" sub tab
+    And I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:amendmentRequestTableId---"
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
     And I navigate to "Grants" tab
@@ -1335,16 +1343,15 @@ Feature: Risk Assessment scenarios without background
     When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
     And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
-    Then I softly see value "Active" for title "Status" against the value "{SavedValue:RiskValue}" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"
+    Then I softly see "Active" has been added in "---subAwardStandAlone:-:riskAssessmentTableId---" flex table
     When I click on "View" icon for "Active" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
-    And I save the field labeled "EGMS ID" as "RiskID"
     Then I softly see field "OverAll Risk" as "{SavedValue:OverAllRisk}"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
-    And I perform quick search for "{SavedValue:RiskID}" in "---riskassessment:-:organizationprofileviewTableId---" panel
-    When I click on "View" icon for "Active" inside flex table with id "---riskassessment:-:organizationprofileviewTableId---"
+    And I perform quick search for "Record Id" in "---riskassessment:-:organizationprofileviewTableId---" panel
+    When I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:organizationprofileviewTableId---"
     Then I softly see field "OverAll Risk" as "{SavedValue:OverAllRisk}"
     Then I collect all the soft asserts
 
@@ -1484,8 +1491,8 @@ Feature: Risk Assessment scenarios without background
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
     When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
     And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
@@ -1494,7 +1501,7 @@ Feature: Risk Assessment scenarios without background
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
-    And I get the updated budget end date for award "Automation Execution Award"
+    And I get the updated budget end date for award "Automation Award for Amendment Request"
     When I click on "Edit" in the page details
     And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "{SavedValue:updatedBudgetPeriodDate}" into field "NewBudgetPeriodEndDate__c"
@@ -1545,7 +1552,7 @@ Feature: Risk Assessment scenarios without background
     When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
     And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
-    Then I see value "Active" for title "Status" against the value "{SavedValue:EGMSID}" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"
+    Then I see value "Active" for title "Status" against the value "{SavedValue:EGMSID}" inside table "flexGridAwardRiskAssessmentView"
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
