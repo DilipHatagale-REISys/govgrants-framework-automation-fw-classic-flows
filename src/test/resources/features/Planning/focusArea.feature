@@ -27,17 +27,22 @@ Feature: Validate all scenarios in Focus Area
     Then I see status in Progress-bar is "Created" and is "green"
 
   @50961 @addAttachmentToFocusArea
-  Scenario: Addition of Attachment to Focus Area by User - Admin/EXE/PM
-    Given I login to "As a Grantor" app as "dynamicUser" user
+  Scenario Outline: Addition of Attachment to Focus Area by User - Admin/EXE/PM
+    Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
     When I enter value "Automation Execution Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
-    And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Supporting Documents"
+    And I click on "Save" in the page details
     Then I see "Supporting Documents" has been added in "Attachments" flex table
+    Examples:
+      | User  |
+      | ADMIN |
+      | EXE   |
+      | PM    |
 
   @34729 @activateFocusArea @smoke
   Scenario: Activate Focus Area by User - Admin/EXE/PM
