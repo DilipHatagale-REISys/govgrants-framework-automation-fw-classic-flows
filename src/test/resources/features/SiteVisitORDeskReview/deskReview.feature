@@ -656,7 +656,7 @@ Feature: Validate all scenarios in Desk Review
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     And I navigate to "Reports and Outcomes" sub tab
-    Then I softly cannot see row level action button "Edit" against Value "General Review Form" inside "---deskreview:-:reportsTableId---" flex table
+    Then I softly cannot see row level action button "Edit" against "General Review Form" in flex table with id "---deskreview:-:reportsTableId---"
     Then I collect all the soft asserts
 
   @55791 @internalUserParticipantAssociationDeskReview @deepika

@@ -488,7 +488,7 @@ Feature: Validate all scenarios in the Site Visit
     Then I softly can see top right button "Accept and Close" in page detail
     When I click on "Submit to Grantor" in the page details
     Then I softly see the following messages in the page details :
-      | Reports and Outcomes Tab - Enter corrective actions on all Findings outcomes using the "+" icons. |
+      | Reports and Outcomes Tab - Enter corrective actions on all Findings outcomes using the "+" icons.|
     Then I collect all the soft asserts
 
   @55209 @55208 @subrecipientCannotSeeReportAndOutcomesWhenInNotifiedStatus @deepika
@@ -1330,7 +1330,7 @@ Feature: Validate all scenarios in the Site Visit
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
-    Then I see that "Record Id" has been added in flextable with Id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    Then I see value "Record Id" for title "EGMS ID" against the value "Approve Site Visit" inside table "---sitevisits:-:monitoringTabPhasePendingTasks---"
 
   @61870 @61867 @peerReviewIntiationownerToAddProgramReviewerInSiteVisit @deepika
   Scenario: Validate whether user is to able to intiate the peer review process and  owner is allowed to add a peer reviewer of type Program Reviewer for Site Visits

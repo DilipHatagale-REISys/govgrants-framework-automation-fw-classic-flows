@@ -39,7 +39,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     Then I softly see that "Active" has been added in flextable with Id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     Then I collect all the soft asserts
 
-  @61977 @moderateRiskLevelColorChangesToYellow @deepika
+  @61977 @moderateRiskLevelColorChangesToYellow @deepika @wip
   Scenario: Validate the moderate level of Risk Assessment, that changes to Yellow color as per the provided Assessment.
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -997,29 +997,6 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
       | Executive Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
     When I get the "EGMS ID"
-    And I enter the following values into flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name | Role            | Description                 | Due Date | Allow Record Editing |
-      | Automation FO | Fiscal Reviewer | Automation Test Description | 7        | No                   |
-    And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---"
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside table
-    When I navigate to "Responsibilities" sub tab
-    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---"
-    And I enter a review as "Passed"
-    When I click modal button "Save"
-    And I click modal button "Submit Review"
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Draft"
-    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside table
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
-    And I click on "Complete Review" in the page details
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SA" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
@@ -1651,7 +1628,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I perform quick search for "Record Id" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     When I navigate to "Overview" sub tab
-    Then I softly see "Risk Level" image as "red.png"
+    #Then I softly see "Risk Level" image as "red.png"
     Then I softly see field "Overall Score" as "76.0%"
     Then I collect all the soft asserts
 
@@ -1672,11 +1649,10 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "View" icon for "Record Id" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     When I navigate to "Overview" sub tab
     Then I softly see field "Overall Score" as "27.0%"
-    Then I softly see "Risk Level" image as "green.png"
     Then I collect all the soft asserts
 
   @64516 @overallRiSKScoreWhenAssessmentSelectedDiffSetQuestions @deepika
-  Scenario: Validate the High level of Risk Assessment, that shows the Overall Score as per the provided Assessment once Risk Assessment is Active
+  Scenario: Validate the Risk level of Risk Assessment, that shows the Overall Score as per the provided Assessment once Risk Assessment is Active
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
@@ -1691,9 +1667,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I perform quick search for "Record Id" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     When I navigate to "Overview" sub tab
-    Then I softly see "Risk Level" image as "red.png"
-    Then I softly see field "Overall Score" as "77.0%%"
-    Then I collect all the soft asserts
+    Then I see "Risk Level" image as "yellow.png"
 
   @64602 @taskIScreatedforSAOnceInternalUserProvideAccess @deepika
   Scenario: Validate the Revise Risk Assessment Button should not be present for SPI users that are not the SA.
