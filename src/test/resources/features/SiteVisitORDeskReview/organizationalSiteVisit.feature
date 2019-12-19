@@ -793,7 +793,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     Then I softly can see top right button "Notify" in page detail
     And I click on "Notify" in the page details
-    Then I softly can see top right button "Conduct" in page detail
+    Then I softly see status in Progress-bar is "Notified" and is "green"
     When I click on "Conduct" in the page details
     Then I softly see status in Progress-bar is "In Progress" and is "green"
     Then I collect all the soft asserts
