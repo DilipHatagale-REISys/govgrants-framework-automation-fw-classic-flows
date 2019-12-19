@@ -9239,7 +9239,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @60726 @60727 @60721 @60656 @60657 @validateReviewedPRAfterFundingChangeAmendmentIsCarryForwarded @mahadev   @wip-forChange
+  @60726 @60727 @60721 @60656 @60657 @validateReviewedPRAfterFundingChangeAmendmentIsCarryForwarded @mahadev   @wip-forChange  @wip
   Scenario Outline: Validate Progress report with Reviewed/Submitted for Review Status is carried forwarded on grant and  Subaward Overview at SR user end when Award owner performed Funding Change Amendment
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
     And I delete the record "Automation Execution Award" from the object "Award"
@@ -9493,7 +9493,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @60658 @validateSubmittedForApprovalPRAfterFundingChangeAmendmentIsCarryForwarded @mahadev @wip-forChange
+  @60658 @validateSubmittedForApprovalPRAfterFundingChangeAmendmentIsCarryForwarded @mahadev @wip-forChange  @wip
   Scenario Outline: Validate Progress report with Submitted For Approval Status is carried forward at Performance Tab Subaward Overview at SR user end when Award owner performed Funding Change Amendment
     When I delete the record "Automation Execution Award" from the object "Amendment Request"
     And I delete the record "Automation Execution Award" from the object "Award"
@@ -12253,7 +12253,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @61438 @61444 @validateSubmittedToGrantorPRAfterBPCAmendmentIsCarryForwarded @jitendra  @wip-forChange
+  @61438 @61444 @validateSubmittedToGrantorPRAfterBPCAmendmentIsCarryForwarded @jitendra  @wip-forChange  @wip
   Scenario Outline: Validate submitted to grantor Progress reports is carried forward after BPC amendment
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
     And I delete the record "Automation Execution Award" from the object "Award"
@@ -12817,7 +12817,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @61450 @61449 @62251 @validateApprovedPRAfterBPCAmendmentIsCarryForwarded @jitendra  @wip-forChange
+  @61450 @61449 @62251 @validateApprovedPRAfterBPCAmendmentIsCarryForwarded @jitendra  @wip-forChange  @wip
   Scenario Outline: Validate Approved Progress reports is not carried forward after BPC Amendment
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
     And I delete the record "Automation Execution Award" from the object "Award"
@@ -13028,7 +13028,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @61442 @61448 @validateSentBackToRecipientPRAfterBPCAmendmentIsCarryForwarded @jitendra  @wip-forChange
+  @61442 @61448 @validateSentBackToRecipientPRAfterBPCAmendmentIsCarryForwarded @jitendra  @wip-forChange  @wip
   Scenario Outline: Validate Send Back to Subrecipient Progress reports is carried forward after BPC amendment
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
     And I delete the record "Automation Execution Award" from the object "Award"
@@ -13219,7 +13219,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @61439 @61445 @validateSubmittedForReviewPRAfterBPCAmendmentIsCarryForwarded @mahadev  @wip-forChange
+  @61439 @61445 @validateSubmittedForReviewPRAfterBPCAmendmentIsCarryForwarded @mahadev  @wip-forChange  @wip
   Scenario Outline: Validate Submitted for Review Progress report is carried forward after BPC amendment
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
     And I delete the record "Automation Execution Award" from the object "Award"
@@ -13415,7 +13415,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @62925 @62926 @62927 @BudgerPeriodFieldUpdateAfterFundingChangeAmendment @PercentageRemainSameAfterFundingChangeAmmendment @jitendra    @wip-forChange
+  @62925 @62926 @62927 @BudgerPeriodFieldUpdateAfterFundingChangeAmendment @PercentageRemainSameAfterFundingChangeAmmendment @jitendra    @wip-forChange  @wip
   Scenario Outline: Verify Budget Period field value at Overview Tab on progress report get updated when award owner performed Periodic renewal amendment on subaward at SR user end.
     Given I delete the record "Automation Execution1 Award" from the object "Amendment Request"
     And I delete the record "Automation Execution1 Award" from the object "Award"
@@ -13589,7 +13589,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                  | Grant Name                  |
       | Automation Execution1 Award | Automation Execution1 Award |
 
-  @61887 @61894 @validateCreatedPRAfterPeriodicAmendmentIsCarryForwardedAonAward @mahadev @jitendra  @wip-forChange
+  @61887 @61894 @validateCreatedPRAfterPeriodicAmendmentIsCarryForwardedAonAward @mahadev @jitendra  @wip-forChange  @wip
   Scenario Outline: Validate Progress reports with Created Status is not displayed at Performance Tab Subaward Overview at Award Owner end when Award owner performed periodic renewal Amendment
     And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -13764,7 +13764,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @61888 @validateSubmittedToGrantorPRAfterPeriodicAmendmentIsCarryForwardedAonAward @mahadev  @wip-forChange
+  @61888 @validateSubmittedToGrantorPRAfterPeriodicAmendmentIsCarryForwardedAonAward @mahadev  @wip-forChange  @wip
   Scenario Outline: Validate Progress reports with Submitted to Grantor Status is not displayed at Performance Tab Subaward Overview at Award Owner end when Award owner performed periodic renewal Amendment
     And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -13950,7 +13950,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @61889 @validateSubmittedforReviewPRAfterPeriodicAmendmentIsCarryForwardedAonAward @mahadev   @wip-forChange
+  @61889 @validateSubmittedforReviewPRAfterPeriodicAmendmentIsCarryForwardedAonAward @mahadev   @wip-forChange  @wip
   Scenario Outline: Validate Progress reports with Submitted for Review Status is not displayed at Performance Tab Subaward Overview at Award Owner end when Award owner performed periodic renewal Amendment
     And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -14145,7 +14145,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @61891 @validateSubmittedForApprovalPRAfterPeriodicAmendmentIsCarryForwardedAonAward @jitendra   @wip-forChange
+  @61891 @validateSubmittedForApprovalPRAfterPeriodicAmendmentIsCarryForwardedAonAward @jitendra   @wip-forChange  @wip
   Scenario Outline: Validate Submitted for approval Progress reports is not carried forward at Performance Tab Subaward Overview at Award Owner end when Award owner performed periodic renewal Amendment.
     And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -14341,7 +14341,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @61892 @validateSentBackToSubrecipientPRAfterPeriodicAmendmentIsCarryForwardedAonAward @jitendra  @wip-forChange
+  @61892 @validateSentBackToSubrecipientPRAfterPeriodicAmendmentIsCarryForwardedAonAward @jitendra  @wip-forChange  @wip
   Scenario Outline: Validate Submitted for approval Progress reports is not carried forward at Performance Tab Subaward Overview at Award Owner end when Award owner performed periodic renewal Amendment.
     And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -14532,7 +14532,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @61893 @validateAPPROVEDPRAfterPeriodicAmendmentIsCarryForwardedAonAward @jitendra @wip-forChange
+  @61893 @validateAPPROVEDPRAfterPeriodicAmendmentIsCarryForwardedAonAward @jitendra @wip-forChange  @wip
   Scenario Outline: Validate Progress reports with Approved Status is not carried forward at Performance Tab Subaward Overview at Award Owner end when Award owner performed periodic renewal Amendment.
     And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -14748,7 +14748,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @61890 @validateReviewedPRAfterPeriodicAmendmentIsCarryForwardedAonAward @mahadev  @wip-forChange
+  @61890 @validateReviewedPRAfterPeriodicAmendmentIsCarryForwardedAonAward @mahadev  @wip-forChange  @wip
   Scenario Outline: Validate Progress reports with Reviewed Status is not displayed at Performance Tab Subaward Overview at Award Owner end after periodic renewal Amendment
     And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -15120,7 +15120,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @60390 @NoCarryForwardSentBackToSubRecipient @jitendra  @wip-forChange
+  @60390 @NoCarryForwardSentBackToSubRecipient @jitendra  @wip-forChange  @wip
   Scenario Outline: Validate Progress reports with Sent Back to SR user Status is not displayed at Performance Tab Subaward Overview at Award Owner end when Award owner performed periodic renewal Amendment
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
@@ -15319,7 +15319,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @62268 @62266 @62269 @62267 @reportingPeriodStartDateSameAfterPeriodicRenewal @reportingPeriodEndDateSameAfterPeriodicRenewal @jitendra   @wip-forChange
+  @62268 @62266 @62269 @62267 @reportingPeriodStartDateSameAfterPeriodicRenewal @reportingPeriodEndDateSameAfterPeriodicRenewal @jitendra   @wip-forChange  @wip
   Scenario Outline: Validate Progress reports with Approved Status is not carried forward at Performance Tab Subaward Overview at SR user end when Award owner performed periodic renewal Amendment.
     And I delete the record "Automation Execution1 Award" from the object "Award"
     And I delete the record "Automation Execution1 Award" from the object "Grant"
@@ -15507,7 +15507,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                  | Grant Name                  |
       | Automation Execution1 Award | Automation Execution1 Award |
 
-  @62922 @BudgerPeriodFieldUpdateAfterPeriodicRenewalAmendment @jitendra  @wip-forChange
+  @62922 @BudgerPeriodFieldUpdateAfterPeriodicRenewalAmendment @jitendra  @wip-forChange  @wip
   Scenario Outline: Verify Budget Period field value at Overview Tab on progress report get updated when award owner performed Periodic renewal amendment on subaward at SR user end.
     And I delete the record "Automation Execution1 Award" from the object "Award"
     And I delete the record "Automation Execution1 Award" from the object "Grant"
@@ -15685,7 +15685,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                  | Grant Name                  |
       | Automation Execution1 Award | Automation Execution1 Award |
 
-  @62923 @BudgerPeriodFieldUpdateAfterPeriodicRenewalAmendment @jitendra  @wip-forChange
+  @62923 @BudgerPeriodFieldUpdateAfterPeriodicRenewalAmendment @jitendra  @wip-forChange  @wip
   Scenario Outline: Verify Budget Period field value at Overview Tab on progress report get updated when award owner performed Periodic renewal amendment on subaward at Award Owner end.
     And I delete the record "Automation Execution1 Award" from the object "Award"
     And I delete the record "Automation Execution1 Award" from the object "Grant"
@@ -15883,7 +15883,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                  | Grant Name                  |
       | Automation Execution1 Award | Automation Execution1 Award |
 
-  @60391 @NoCarryForwardApprovedPR @jitendra   @wip-forChange
+  @60391 @NoCarryForwardApprovedPR @jitendra   @wip-forChange  @wip
   Scenario Outline: Validate Progress reports with Approved Status is not carried forward at Performance Tab Subaward Overview at SR user end when Award owner performed periodic renewal Amendment.
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
@@ -16098,7 +16098,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @60389 @NoCarryForwardSubmittedForApproval @jitendra  @wip-forChange
+  @60389 @NoCarryForwardSubmittedForApproval @jitendra  @wip-forChange  @wip
   Scenario Outline: Validate Progress reports with Submitted for approval Status is not carried forward at Performance Tab Subaward Overview at SR user end when Award owner performed periodic renewal Amendment
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
@@ -16305,7 +16305,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @62146 @61940 @62147 @validateApprovedPRAfterScopeOfWorKIsCarryForwardedAonGrantAndSPIAndPMuSER @jitendra  @wip-forChange
+  @62146 @61940 @62147 @validateApprovedPRAfterScopeOfWorKIsCarryForwardedAonGrantAndSPIAndPMuSER @jitendra  @wip-forChange  @wip
   Scenario Outline: Validate Approved Progress reports is carried forward at Management Tab Grant Overview at Award Owner end when Award owner performed Scope of Work Change Amendment
     Given I delete the record "Automation Execution Award" from the object "Progress Report"
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
@@ -16717,7 +16717,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @61936 @validateSubmittedforReviewPRAfterSWAmendmentIsCarryForwardedAonAward @mahadev  @wip-forChange
+  @61936 @validateSubmittedforReviewPRAfterSWAmendmentIsCarryForwardedAonAward @mahadev  @wip-forChange  @wip
   Scenario Outline: Validate progress report with submitted for review status is carry forwarded at subportal on award after scope of work change amendment
     And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -17275,7 +17275,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @60729 @60659 @validateSentBackToSubrecipientPRAfterFundingChangeAmendmentIsCarryForwarded @mahadev  @wip-forChange
+  @60729 @60659 @validateSentBackToSubrecipientPRAfterFundingChangeAmendmentIsCarryForwarded @mahadev  @wip-forChange  @wip
   Scenario Outline: Validate Progress report with Sent Back to Subrecipient Status is carried forward at Performance tab on award at Internal end when Award owner performed Funding Change Amendment
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
     And I delete the record "Automation Execution Award" from the object "Award"
@@ -17473,7 +17473,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @62064 @validateSubmittedToGrantorPRAfterSWAmendmentIsCarryForwardedAonAward @mahadev  @wip-forChange
+  @62064 @validateSubmittedToGrantorPRAfterSWAmendmentIsCarryForwardedAonAward @mahadev  @wip-forChange  @wip
   Scenario Outline: Validate progress report with submitted to grantor status is carry forwarded at internal portal on award after scope of work change amendment
     And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -17655,7 +17655,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @60660 @60730 @validateApprovedPRAfterFCAmendmentIsNotCarryForwardedA @jitendra  @wip-forChange
+  @60660 @60730 @validateApprovedPRAfterFCAmendmentIsNotCarryForwardedA @jitendra  @wip-forChange  @wip
   Scenario Outline: Validate Progress reports with Approved Status not carried forward after FC Amendment
     And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -18202,7 +18202,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                  | Grant Name                  |
       | Automation Execution1 Award | Automation Execution1 Award |
 
-  @60732 @validateReviewedPRAfterFCAmendmentIsNOTCarryForwardedAonAward @jitendra @wip-forChange
+  @60732 @validateReviewedPRAfterFCAmendmentIsNOTCarryForwardedAonAward @jitendra @wip-forChange  @wip
   Scenario Outline: Validate Reviewed Progress reports is carried forward at Management Tab Grant Overview at Award Owner end when Award owner performed Funding Change Amendment.
     And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -18418,7 +18418,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @62065 @validateSubmittedforReviewPRAfterSWAmendmentIsCarryForwardedAonAward @mahadev @wip-forChange
+  @62065 @validateSubmittedforReviewPRAfterSWAmendmentIsCarryForwardedAonAward @mahadev @wip-forChange  @wip
   Scenario Outline: Validate progress report with submitted for review status is carry forwarded at internal portal on award after scope of work change amendment
     Given I delete the record "Automation Execution Award" from the object "Progress Report"
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
@@ -18606,7 +18606,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @62066 @validateReviewedPRAfterSWAmendmentIsCarryForwardedAonAward @mahadev  @wip-forChange
+  @62066 @validateReviewedPRAfterSWAmendmentIsCarryForwardedAonAward @mahadev  @wip-forChange  @wip
   Scenario Outline: Validate progress report with reviewed status is carry forwarded at internal portal on award after scope of work change amendment
     And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -18812,7 +18812,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @62142 @61938 @validateSubmittedForApprovalPRAfterSWAmendmentIsCarryForwardedAonAward @mahadev @jitendra  @wip-forChange
+  @62142 @61938 @validateSubmittedForApprovalPRAfterSWAmendmentIsCarryForwardedAonAward @mahadev @jitendra  @wip-forChange  @wip
   Scenario Outline: Validate progress report with submitted for approval status is carry forwarded at internal portal on award after scope of work change amendment
     And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -19199,7 +19199,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @62144 @validateCreatedPRAfterSWAmendmentIsNotCarryForwardedAonAward @mahadev  @wip-forChange
+  @62144 @validateCreatedPRAfterSWAmendmentIsNotCarryForwardedAonAward @mahadev  @wip-forChange  @wip
   Scenario Outline: Validate progress report with Created status is not carry forwarded at internal portal on grant after scope of work change amendment
     And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -19360,7 +19360,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @62145 @validateSubmittedToGrantorPRAfterSWAmendmentIsCarryForwardedAonGrantAtSubportal @mahadev  @wip-forChange
+  @62145 @validateSubmittedToGrantorPRAfterSWAmendmentIsCarryForwardedAonGrantAtSubportal @mahadev  @wip-forChange  @wip
   Scenario Outline: Validate progress report with submitted to grantor status is carry forwarded at external portal on grant after scope of work change amendment
     And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -19543,7 +19543,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @62373 @validateFrequencyAfterPeriodicAmendmentIsSameAsMonthlyOnAward @mahadev  @wip-forChange
+  @62373 @validateFrequencyAfterPeriodicAmendmentIsSameAsMonthlyOnAward @mahadev  @wip-forChange  @wip
   Scenario Outline: Validate frequency remains the same for Progress report schedules after Periodic renewal amendment when frequency type is Monthly at Award Owner end
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
     And I delete the record "Automation Execution Award" from the object "Award"
@@ -19707,7 +19707,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @62376 @validateFrequencyAfterPeriodicAmendmentIsSameAsSemiAnnuallyOnAward @jitendra  @wip-forChange
+  @62376 @validateFrequencyAfterPeriodicAmendmentIsSameAsSemiAnnuallyOnAward @jitendra  @wip-forChange  @wip
   Scenario Outline: Validate frequency remains the same for Progress report schedules after Periodic renewal amendment when frequency type is Semi-annual at Award Owner end.
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
     And I delete the record "Automation Execution Award" from the object "Award"
@@ -19871,7 +19871,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @62374 @validateFrequencyAfterPeriodicAmendmentIsSameAsBiMonthlyOnAward @mahadev   @wip-forChange
+  @62374 @validateFrequencyAfterPeriodicAmendmentIsSameAsBiMonthlyOnAward @mahadev   @wip-forChange  @wip
   Scenario Outline: Validate frequency remains the same for Progress report schedules after Periodic renewal amendment when frequency type is Bi-Monthly at Award Owner end
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
     And I delete the record "Automation Execution Award" from the object "Award"
@@ -20035,7 +20035,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @62377 @validateFrequencyAfterPeriodicAmendmentIsSameAsAnnuallyOnAwardAtInternalPortal @mahadev @wip-forChange
+  @62377 @validateFrequencyAfterPeriodicAmendmentIsSameAsAnnuallyOnAwardAtInternalPortal @mahadev @wip-forChange  @wip
   Scenario Outline: Validate frequency remains the same for Progress report schedules after Periodic renewal amendment when frequency type is Annually at award Owner end
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
     And I delete the record "Automation Execution Award" from the object "Award"
@@ -20199,7 +20199,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @62381 @validateFrequencyAfterPeriodicAmendmentIsSameAsAnnuallyOnAwardAtExternalPortal @mahadev  @wip-forChange
+  @62381 @validateFrequencyAfterPeriodicAmendmentIsSameAsAnnuallyOnAwardAtExternalPortal @mahadev  @wip-forChange  @wip
   Scenario Outline: Validate frequency remains the same for Progress report schedules after Periodic renewal amendment when frequency type is Annually at SPI end
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
     And I delete the record "Automation Execution Award" from the object "Award"
@@ -20369,7 +20369,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @60387 @validateReviewedPRAfterPeriodicAmendmentIsNotCarryForwardedAonAwardAtSubportal @mahadev  @wip-forChange
+  @60387 @validateReviewedPRAfterPeriodicAmendmentIsNotCarryForwardedAonAwardAtSubportal @mahadev  @wip-forChange  @wip
   Scenario Outline: Validate Progress reports with Reviewed Status is not displayed at Performance Tab Subaward Overview at subportal when Award owner performed periodic renewal Amendment
     Given I delete the record "Automation Execution Award" from the object "Progress Report"
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
@@ -20594,7 +20594,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @62243 @62249 @62235 @validateCreatedPRAfterTCAmendmentIsCarryForwardedAonGrantAtInternalportalAndSPI @mahadev @wip-forChange
+  @62243 @62249 @62235 @validateCreatedPRAfterTCAmendmentIsCarryForwardedAonGrantAtInternalportalAndSPI @mahadev @wip-forChange  @wip
   Scenario Outline: Validate progress report with Created status is not carry forwarded at internal portal on award after Terms and conditions amendment
     And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -20762,7 +20762,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                   | Grant Name                 |
       | Automation   Execution Award | Automation Execution Award |
 
-  @62240 @62247 @validateSubmittedForApprovalPRAfterTCAmendmentIsCarryForwardedAonGrantAtInternalportalAndPM @jitendra   @wip-forChange
+  @62240 @62247 @validateSubmittedForApprovalPRAfterTCAmendmentIsCarryForwardedAonGrantAtInternalportalAndPM @jitendra   @wip-forChange  @wip
   Scenario Outline: Validate Progress reports with Submitted for approval Status is carried forward at Performance Tab Subaward Overview at SR user end when Award owner performed Terms and Conditions Change Amendment.
     Given I delete the record "Automation Execution Award" from the object "Progress Report"
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
@@ -21175,7 +21175,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @62241 @62248 @validateSentBackToSRPRAfterTCAmendmentIsCarryForwardedAAtPM @mahadev @jitendra  @wip-forChange
+  @62241 @62248 @validateSentBackToSRPRAfterTCAmendmentIsCarryForwardedAAtPM @mahadev @jitendra  @wip-forChange  @wip
   Scenario Outline: Validate progress report with sent back to SR status is carry forwarded at subportal portal on award after Terms and conditions amendment
     Given I delete the record "Automation Execution Award" from the object "Progress Report"
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
@@ -21764,7 +21764,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @62375 @62380 @validateFrequencyAfterPeriodicAmendmentIsSameAsQuartelyOnAwardAtInternalPortal @mahadev  @wip-forChange
+  @62375 @62380 @validateFrequencyAfterPeriodicAmendmentIsSameAsQuartelyOnAwardAtInternalPortal @mahadev  @wip-forChange  @wip
   Scenario Outline: Validate frequency remains the same for Progress report schedules after Periodic renewal amendment when frequency type is Quarterly at Award Owner end
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
     And I delete the record "Automation Execution Award" from the object "Award"
@@ -21937,7 +21937,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @62379 @validateFrequencyAfterPeriodicAmendmentIsSameAsMonthlyOnAwardAtSubPortal @mahadev  @wip-forChange
+  @62379 @validateFrequencyAfterPeriodicAmendmentIsSameAsMonthlyOnAwardAtSubPortal @mahadev  @wip-forChange  @wip
   Scenario Outline: Validate frequency remains the same for Progress report schedules after Periodic renewal amendment when frequency type is Monthly at SPI end
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
     And I delete the record "Automation Execution Award" from the object "Award"
@@ -22107,7 +22107,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @62382 @62378 @validateFrequencyAfterPeriodicAmendmentIsSameAsNotApplicableOnAward @mahadev  @wip-forChange
+  @62382 @62378 @validateFrequencyAfterPeriodicAmendmentIsSameAsNotApplicableOnAward @mahadev  @wip-forChange  @wip
   Scenario Outline: Validate frequency remains the same for Progress report schedules after Periodic renewal amendment when frequency type is Not-applicable at both portals
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
     And I delete the record "Automation Execution Award" from the object "Award"
@@ -27394,7 +27394,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name              | Grant Name              |
       | Automation award for PR | Automation award for PR |
 
-  @62928 @validateAwardedBudgetAfterFCAmendmentOnInternalPortal @mahadev  @wip-forChange
+  @62928 @validateAwardedBudgetAfterFCAmendmentOnInternalPortal @mahadev  @wip-forChange  @wip
   Scenario Outline: Verify Awarded Budget field value on Progress report should get updated after funding change amendment is done by award owner at Award owner end
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
@@ -27575,7 +27575,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name              | Grant Name              |
       | Automation award for PR | Automation award for PR |
 
-  @62924 @validateFrequencyAfterPeriodicAmendmentIsSameOnPR @mahadev  @wip-forChange
+  @62924 @validateFrequencyAfterPeriodicAmendmentIsSameOnPR @mahadev  @wip-forChange  @wip
   Scenario Outline: Verify Report Frequency field value at Overview Tab on progress report get updated when award owner performed Periodic renewal amendment on subaward and Frequency is updated
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
     And I delete the record "Automation Execution Award" from the object "Award"
