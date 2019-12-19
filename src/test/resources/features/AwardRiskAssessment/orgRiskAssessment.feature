@@ -205,7 +205,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I perform quick search for "Created" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     Then I can see row level action button "Edit" against "Created" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
-  @62315 @snapHistoryOfOrgRA @deepika
+  @62315 @snapHistoryOfOrgRA @deepika @snapshotheadlessmode
   Scenario: Validate whether Snapshot is captured/(taken) automatically  by the system in the table Snapshot History when Risk Assessment is Activated
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -1369,7 +1369,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Risk Assessment" sub tab
     Then I see field "Overall Risk" as "38.00%"
 
-  @63980 @validateRiskAssesmentActiveInPDF @deepika
+  @63980 @validateRiskAssesmentActiveInPDF @deepika @snapshotheadlessmode
   Scenario: Verify that user can check PDF files with validation for Org Risk Assessment
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -1865,7 +1865,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Risk Assessment" sub tab
     Then I cannot see top right button "Request New Assessment" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
-  @64733 @downloadOrgRaInPDF @deepika
+  @64733 @downloadOrgRaInPDF @snapshotheadlessmode
   Scenario: Validate whether user can Download the Active Org Risk assessment in PDF format.
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -1882,7 +1882,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I select "Download as PDF" from parallel lines dropdown of "Organization Risk Assessments"
     Then I verify that "pdf" file is downloaded
 
-  @64734 @downloadOrgRAInXLS @deepika
+  @64734 @downloadOrgRAInXLS @deepika @snapshotheadlessmode
   Scenario: Validate whether user can Download the Active Org Risk Assessment in XLS format
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"

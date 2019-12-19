@@ -1891,7 +1891,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "{SavedValue:SecID}" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
     Then I do not see value "{SavedValue:SecID}" for title "Status" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
 
-  @60208 @validateRecordOwnerISAbleToViewRASnapshot @deepika @headlessmode
+  @60208 @validateRecordOwnerISAbleToViewRASnapshot @deepika @snapshotheadlessmode
   Scenario: Validate Record Owner user is able to view the Snapshot after Risk Assessment is Submitted for Approval status
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1926,7 +1926,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I download the file
     Then I see "Submitted for Approval" on page "1" of "govgrants" pdf file
 
-  @60209 @validateRecordOwnerISAbleToViewActiveRASnapshot @deepika @headlessmode
+  @60209 @validateRecordOwnerISAbleToViewActiveRASnapshot @deepika @@snapshotheadlessmode
   Scenario: Validate whether Snapshot is captured/(taken) automatically  by the system in the table Snapshot History when Risk Assessment is Activated
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2601,7 +2601,7 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly see value "{SavedValue:EGMSID}" for title "EGMS ID" against the value "Expired" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     Then I collect all the soft asserts
 
-  @60965 @fieldCompares @deepika
+  @60965 @fieldCompares @deepika @@snapshotheadlessmode
   Scenario: Validate whether Record Owner user is able to view and Compare field values on UI and PDF match
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2836,7 +2836,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     Then I see value "NA" for title "Risk Level" against the value "{SavedValue:EGMSID}" inside table "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
 
-  @65461 @downloadRiskAssessmentInXLS @deepika
+  @65461 @downloadRiskAssessmentInXLS @deepika @snapshotheadlessmode
   Scenario: Validate whether user can Download the Active Risk Assessment in XLS format from Monitoring Tab
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Monitoring" tab
@@ -2845,7 +2845,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I select "Download as XLS" from parallel lines dropdown of "Risk Assessments - All"
     Then I verify that "xls" file is downloaded
 
-  @65462 @downloadRiskAssessmentInPDF @deepika
+  @65462 @downloadRiskAssessmentInPDF @deepika @snapshotheadlessmode
   Scenario: Validate whether user can Download the Active Risk Assessment in PDF format from Monitoring Tab
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Monitoring" tab

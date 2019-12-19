@@ -667,7 +667,7 @@ Feature: Validate all scenarios in Negotiations
     When I upload attachment "Announcement_Field_Values.xlsx" from workspace
     Then I see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
 
-  @62667 @RecordOwnerCanViewSnapshotAfterNegotiationIsInSubmittedToGrantor @keerti @headlessmode
+  @62667 @RecordOwnerCanViewSnapshotAfterNegotiationIsInSubmittedToGrantor @keerti @snapshotheadlessmode
   Scenario: Validate Record Owner user is able to view the Snapshot after Negotiation  is in "Submitted to Grantor" status
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab

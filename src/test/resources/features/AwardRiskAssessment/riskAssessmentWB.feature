@@ -1,4 +1,4 @@
-@riskAssessment @regression
+@riskAssessmentWB @regression
 Feature: Risk Assessment scenarios without background
 
   @59252 @64792 @64942 @64944 @validateDataOnGrantAward @deepika
