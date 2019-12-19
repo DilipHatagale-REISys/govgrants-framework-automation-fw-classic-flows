@@ -794,6 +794,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     Then I softly can see top right button "Notify" in page detail
     And I click on "Notify" in the page details
     Then I softly can see top right button "Conduct" in page detail
+    When I click on "Conduct" in the page details
+    Then I softly see status in Progress-bar is "In Progress" and is "green"
     Then I collect all the soft asserts
 
   @55871 @55868 @recipientsCannotCreateOutcomesSeeReportsANdoutcomesInNotified @deepika
