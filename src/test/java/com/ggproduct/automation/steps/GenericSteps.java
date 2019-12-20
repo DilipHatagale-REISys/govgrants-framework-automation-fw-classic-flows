@@ -8,6 +8,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.springframework.context.annotation.Description;
 
 import javax.mail.MessagingException;
@@ -340,5 +341,19 @@ public class GenericSteps {
     @And("I click {string} button in modal")
     public void iClickButtonInModal(String buttonName) {
         EyeThink.core().click().on(By.xpath("//div[@id='ModalDivID']//button[contains(text(),'"+buttonName+"')]"));
+    }
+
+    @Then("I see that approver is not present after searching in dropdown")
+    public void iSeeThatApproverIsNotPresentAfterSearchingInDropdown() {
+        WebElement ll = EyeThink.core().elementReference().of(By.xpath("//div[@id='select2-drop' and contains(@style,'block')]//li"));
+        Assert.assertTrue(ll.getText().equalsIgnoreCase("No matches found"));
+    }
+
+    @And("I search {string} approver in flex table with id {string}")
+    public void iSearchApproverInFlexTaableWithId(String user, String flexTableDivId) {
+        EyeThink.core().elementReference().of((By.xpath("//div[@id='" + flexTableDivId + "']//td")));
+        EyeThink.saas().flexTable().clickTableActionIcon(flexTableDivId,"Edit");
+        EyeThink.core().click().on(By.xpath("//*[@id='"+flexTableDivId+"']//td[1]//span[@class='select2-chosen']"));
+        EyeThink.core().enterText().in(By.xpath("//div[@id='select2-drop']//input[@class='select2-input']"), user);
     }
 }
