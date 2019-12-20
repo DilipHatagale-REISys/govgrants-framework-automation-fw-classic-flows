@@ -1202,3 +1202,24 @@ Feature: Validate all scenarios in the award created from FDM
     And I click toggle button to select "Grants - All"
     And I perform quick search for "Record id" in "GrantsList" panel
     Then I do not see value "Record id" for title "EGMS ID" inside table "GrantsList"
+
+  @67250  @validateApplicationHyperlink
+  Scenario: To verify that after clicking on the Application Hyperlink present application id of the Grant all table it redirects to the Application page with the progress bar showing Converted to award
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Published Competitive Announcements"
+    And I perform quick search for "Automation Announcement for FDM" in "ActiveFundingOpportunitiesCompitive" panel
+    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "ActiveFundingOpportunitiesCompitive"
+    When I navigate to "Related Logs" sub tab
+    And I click on "View" icon for "Converted to Award" inside flex table with id "RelatedFOApplications"
+    When I save the field labeled "EGMS ID" as "APPID"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:grantsTableId---" panel
+    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:grantsTableId---"
+    When I click on hyperlink containing value "{SavedValue:APPID}"
+    Then I see status in Progress-bar is "Converted to Award" and is "green"
