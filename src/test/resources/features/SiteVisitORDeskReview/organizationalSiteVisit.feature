@@ -417,7 +417,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     Then I collect all the soft asserts
 
-  @55462 @61403 @viewnapshotOrgSiteVisitAcceptButtonAfterSRecipientsSubmission @deepika
+  @55462 @61403 @viewnapshotOrgSiteVisitAcceptButtonAfterSRecipientsSubmission @deepika @snapshotheadlessmode
   Scenario: Validate User will be able to view the SnapshotSite Visit Accept button after review the submission by Recipients
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -793,7 +793,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     Then I softly can see top right button "Notify" in page detail
     And I click on "Notify" in the page details
-    Then I softly can see top right button "Conduct" in page detail
+    Then I softly see status in Progress-bar is "Notified" and is "green"
     When I click on "Conduct" in the page details
     Then I softly see status in Progress-bar is "In Progress" and is "green"
     Then I collect all the soft asserts
@@ -983,7 +983,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I perform quick search for "{SavedValue:Record Id}" in "History" panel
     Then I see value "Active" for title "New Value" inside table "History"
 
-  @61400 @61401 @ViewSnapshotandApproversTableIsNotEditableAfterSiteVisitsIsSubmittedToApproval @keerti
+  @61400 @61401 @ViewSnapshotandApproversTableIsNotEditableAfterSiteVisitsIsSubmittedToApproval @keerti @snapshotheadlessmode
   Scenario: ValidateR ecord Owner user is able to view the Snapshot and Approvers Table is not editable for record owner and award owner end when the status of Org Level Site Visits is Submitted to Approval
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -1188,7 +1188,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     Then I softly see field "StartDate__c" is not editable
     Then I collect all the soft asserts
 
-  @61993 @RecordOwnerCanViewSnapshotAfterOSVIsSubmittedForApproval @keerti
+  @61993 @RecordOwnerCanViewSnapshotAfterOSVIsSubmittedForApproval @keerti @snapshotheadlessmode
   Scenario: Validate Record Owner user is able to view the Snapshot after Site Visit is Submitted for Approval status - Org Site Visits
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
