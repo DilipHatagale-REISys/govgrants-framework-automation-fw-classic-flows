@@ -23,6 +23,36 @@ Feature: Validate all scenarios in the Pre-Application
   Scenario: Creating a Pre Application
     Then I see status in Progress-bar is "Created" and is "Green"
 
+  @67063 @validateVariousRolesAppearsPreApplication @jitendra
+  Scenario: To Validate that various roles appear in the project roles dropdown in contact tableon preapplication of  SPI profile
+    When I navigate to "Overview" sub tab
+    When I click on "Edit" icon for "Automation SPI" inside flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
+    Then I verify that All the following projects roles are available in picklist :
+      | Principal Investigator   |
+      | Fiscal Contact           |
+      | Grants Administrator     |
+      | Ebiz POC                 |
+      | Other                    |
+      | Project Director/Manager |
+      | Authorized Signatory     |
+
+  @67077 @contactsAtPreApplicationFromSameOrganisation @jitendra
+  Scenario: To verify that the contacts appearing in the Associate button in Contact table of preapplication is of the Same organisation
+    When I navigate to "Overview" sub tab
+    And I click table top right button "Associate" in flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
+    And I perform quick search for "Automation SPA" in "---preApplication:-:associatePreAppContactsTableId---" panel
+    When I click "Add" after selection of "Automation SPA" in the table "---preApplication:-:associatePreAppContactsTableId---"
+    And I close modal by clicking the top right x button
+    When I click on "View" icon for "Automation SPI" inside flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
+    And I save the field labeled "Organization" as "orgName1"
+    And I navigate to "Applications" tab
+    And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
+    And I perform quick search for "Record Id" in "---preApplication:-:recipientPreApplicationsTableId---" panel
+    When I click on "View" icon for "Record Id" inside flex table with id "---preApplication:-:recipientPreApplicationsTableId---"
+    When I click on "View" icon for "Automation SPA" inside flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
+    And I save the field labeled "Organization" as "orgName2"
+    Then I see that the saved value "SavedValue:orgName1" and "SavedValue:orgName2" are equal
+
   @53153 @preApplicationEdition
   Scenario: Validate edition of pre-application
     When I click on "Edit" in the page details
