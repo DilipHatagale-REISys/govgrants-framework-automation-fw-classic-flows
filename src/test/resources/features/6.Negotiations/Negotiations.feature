@@ -732,7 +732,7 @@ Feature: Validate all scenarios in Negotiations
     Then I softly see value "Negotiated" for title "New Value" inside table "History"
     Then I collect all the soft asserts
 
-  @fieldValuesAFterNegotiationComplete @deepika
+  @64852 @fieldValuesAFterNegotiationComplete @deepika
   Scenario: Validate whether user is able to see the fields that after Negotiation is Completed
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab

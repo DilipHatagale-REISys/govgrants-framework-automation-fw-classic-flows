@@ -1055,7 +1055,7 @@ Feature: Validate all scenarios in Desk Review
     Then I softly see status in Progress-bar is "Closed" and is "Green"
     Then I collect all the soft asserts
 
-  @validateDownloadDeskReviewInCSV @deepika @snapshotheadlessmode
+  @67834 @validateDownloadDeskReviewInCSV @deepika @snapshotheadlessmode
   Scenario: Validate Internal User can Download the Desk Review associated in CSV format
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"

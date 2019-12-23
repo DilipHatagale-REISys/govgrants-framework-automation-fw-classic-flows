@@ -454,6 +454,7 @@ Feature: Validate all scenarios in the home tab
     Then I softly see values "Approve Program" and "Not Started" inside table
     And I click on "Start" icon for "Record Id" inside flex table with id "HomePendingTasks"
     When I click on "Approve" on the approval decision box
+    And I navigate to "Planning" tab
     And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "HomePhaseCompletedTasks" panel
     Then I softly see values "Approve Program" and "Completed" inside table
