@@ -24,11 +24,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     Then I softly see status in Progress-bar is "Created" and is "Green"
     And I click on "Edit" in the page details
-    And I enter value "Test Automation" into field "GrantAwardDescription__c"
-    And I enter value "Project Grant" into field "GrantType__c"
-    And I click on "Save" in the page details
-    Then I softly see field "Grant Type" as "Project Grant"
-    And I softly see field "Brief information about the grant." as "Test Automation"
     Then I collect all the soft asserts
 
   @51130 @65606 @awardStandAloneAddContactsKeyPersonnel
@@ -2667,7 +2662,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
-    Then I softly can see top right button "Edit" in page detail
+    Then I softly cannot see top right button "Edit" in page detail
     And I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -2757,6 +2752,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Executive Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
     And I click on "Submit for Approval" in the page details
+    When I get the "EGMS ID"
     When I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Grants" tab
@@ -3009,6 +3005,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name           | Project Role             | Is Key Personnel |
       | Automation SPI | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
+    When I get the "EGMS ID"
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
@@ -3838,7 +3835,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I click on "Submit for Approval" in the page details
