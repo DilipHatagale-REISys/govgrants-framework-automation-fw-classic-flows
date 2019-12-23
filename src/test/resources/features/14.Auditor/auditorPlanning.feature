@@ -1,16 +1,6 @@
 @auditorPlanning
 Feature: Validate all scenarios for Auditor Profile in Planning Module
 
-  @67761 @auditorCannotCreateProgram @deepika
-  Scenario Outline: Verify that Auditor user cannot create a Focus Area
-    When I login to "As a Grantor" app as "<User>" user
-    And I navigate to "Planning" tab
-    When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
-    Then I cannot see top right button "New" for "---focusarea:-:focusAreaTableId---" flex table
-    Examples:
-      | User    |
-      | AUDITOR |
-
   @67762 @auditorCannotCreateEditFocusArea
   Scenario Outline: Validate Auditor should not be able to  Create/Edit Focus area
     Given I login to "As a Grantor" app as "AUDITOR" user
@@ -22,7 +12,7 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
     Then I softly cannot see top right button "Activate" in page detail
     Then I collect all the soft asserts
     Examples:
-      | User    | FocusArea                               |
+      | User    | FocusArea                       |
       | AUDITOR | Automation Permanent Focus Area |
 
   @67763 @otherUsersCanCreateFocusArea
@@ -36,6 +26,16 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
       | PM    |
       | EXE   |
       | ADMIN |
+
+  @67761 @auditorCannotCreateProgram @deepika
+  Scenario Outline: Verify that Auditor user cannot create a Focus Area
+    When I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Planning" tab
+    When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
+    Then I cannot see top right button "New" for "---focusarea:-:focusAreaTableId---" flex table
+    Examples:
+      | User    |
+      | AUDITOR |
 
   @67764 @auditorCannotCreateProgram @deepika
   Scenario Outline: Verify that Auditor user cannot create a new Program
@@ -84,3 +84,100 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
     Examples:
       | User    | Program                               |
       | AUDITOR | Automation Permanent Internal Program |
+
+  @67845 @auditorCannotCreateFundingSource @deepika
+  Scenario Outline: Verify Auditor profile user cannot create a new Funding Source
+    When I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Planning" tab
+    When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
+    Then I cannot see top right button "New" for "---fundingsource:-:fundingSourceTableId---" flex table
+    Examples:
+      | User    |
+      | AUDITOR |
+
+  @67846 @auditorProfileCannotCReateEditReviewFundingSource
+  Scenario Outline: Validate Auditor user should not be able to Create/Edit Funding Source and Funding Account
+    When I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Planning" tab
+    When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Internal Funding Sources - Active"
+    When I perform quick search for "<FundingSource>" in "---fundingsource:-:fundingSourceTableId---" panel
+    Then I softly cannot see row level action button "Edit" against "<FundingSource>" in flex table with id "---fundingsource:-:fundingSourceTableId---"
+    And I click on "View" icon for "<FundingSource>" inside flex table with id "---fundingsource:-:fundingSourceTableId---"
+    When I navigate to "Overview" sub tab
+    Then I softly cannot see top right button "New" for "---fundingsource:-:fundingAccountTableId---" flex table
+    Then I softly cannot see top right button "Activate" in page detail
+    Then I collect all the soft asserts
+    Examples:
+      | User    | FundingSource                       |
+      | AUDITOR | Automation Permanent Funding Source |
+
+  @67847 @auditorCannotCreateKPI @deepika
+  Scenario Outline: Verify Auditor profile user cannot create a new Funding Source
+    When I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Planning" tab
+    When I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
+    Then I cannot see top right button "New" for "---keyperformanceindicator:-:kpiTableId---" flex table
+    Examples:
+      | User    |
+      | AUDITOR |
+
+  @67848 @auditorProfileCannotCReateEditKPI
+  Scenario Outline: Validate Auditor user should not be able to Create/Edit KPI's
+    When I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Planning" tab
+    When I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Key Performance Indicators (KPI) -Active"
+    When I perform quick search for "<KPI>" in "---keyperformanceindicator:-:kpiTableId---" panel
+    Then I softly cannot see row level action button "Edit" against "<KPI>" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
+    And I click on "View" icon for "<KPI>" inside flex table with id "---keyperformanceindicator:-:kpiTableId---"
+    Then I softly cannot see top right button "Activate" in page detail
+    Then I collect all the soft asserts
+    Examples:
+      | User    | KPI                                     |
+      | AUDITOR | Automation Permanent KPI for Regression |
+
+  @67849 @otherUsersCanCreateKPI
+  Scenario Outline: Verify that other than Auditor user all other users can create a KPI's
+    When I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Planning" tab
+    When I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
+    Then I see top right button "New" for "---keyperformanceindicator:-:kpiTableId---" flex table
+    Examples:
+      | User  |
+      | PM    |
+      | EXE   |
+      | ADMIN |
+
+  @67850 @auditorCannotCreateEditActivateOrDeactivateStrategicPlan
+  Scenario Outline: Validate Auditor should not be  able to  Create/Edit/Activate/Deactivate Strategic plan
+    When I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Planning" tab
+    When I navigate to "Strategic Plans" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Strategic Plans - Active"
+    When I perform quick search for "<StrategicPlan>" in "---strategicplan:-:StrategicPlansTableId---" panel
+    Then I softly cannot see row level action button "Edit" against "<StrategicPlan>" in flex table with id "---strategicplan:-:StrategicPlansTableId---"
+    And I click on "View" icon for "<StrategicPlan>" inside flex table with id "---strategicplan:-:StrategicPlansTableId---"
+    Then I softly cannot see top right button "New" for "---strategicplan:-:StrategicPlansTableId---" flex table
+    And I click on "View" icon for "Automation Permanent Strategic Goal" inside flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
+    Then I softly cannot see top right button "New" for "---strategicplan:-:strategicGoalRelatedObjectivesTableId---" flex table
+    And I click on "View" icon for "Automation Permanent Objective" inside flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"
+    And I click on "Back To Strategic Goal" in the page details
+    When I click on "Back To Strategic Plan" in the page details
+    Then I softly cannot see top right button "Activate" in page detail
+    Then I collect all the soft asserts
+    Examples:
+      | User    | StrategicPlan                       |
+      | Auditor | Automation Permanent Strategic Plan |
+
+  @67851 @auditorCannotCreateStrategicPlan @deepika
+  Scenario Outline: Verify Auditor profile user cannot create a new Strategic Plan
+    When I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Planning" tab
+    When I navigate to "Strategic Plans" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Strategic Plans - Draft"
+    Then I cannot see top right button "New" for "---strategicplan:-:StrategicPlansTableId---" flex table
+    Examples:
+      | User    |
+      | AUDITOR |
+
