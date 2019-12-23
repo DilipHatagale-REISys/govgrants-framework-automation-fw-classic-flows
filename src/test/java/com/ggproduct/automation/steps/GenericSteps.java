@@ -14,8 +14,7 @@ import org.springframework.context.annotation.Description;
 import javax.mail.MessagingException;
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class GenericSteps {
     ProjectManager projectManager;
@@ -355,5 +354,15 @@ public class GenericSteps {
         EyeThink.saas().flexTable().clickTableActionIcon(flexTableDivId,"Edit");
         EyeThink.core().click().on(By.xpath("//*[@id='"+flexTableDivId+"']//td[1]//span[@class='select2-chosen']"));
         EyeThink.core().enterText().in(By.xpath("//div[@id='select2-drop']//input[@class='select2-input']"), user);
+    }
+
+    @Then("^I (softly verify|verify) that All the following projects roles are available in picklist :$")
+    public void iVerifyThatAllProjectsRolesAreAvailableInPicklist(String usage, List<String> projectRoles) {
+        projectManager.compareContactListEquality(usage, projectRoles);
+    }
+
+    @Then("^I (softly see|see) that the saved value \"([^\"]*)\" and \"([^\"]*)\" are equal$")
+    public void iSeeThatTheSavedValueAndAreEqual(String usage, String savedValue1, String savedValue2) {
+        projectManager.compareTwoSavedStringValueEquality(usage,savedValue1,savedValue2);
     }
 }
