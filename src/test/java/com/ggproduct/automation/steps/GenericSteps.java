@@ -358,34 +358,11 @@ public class GenericSteps {
 
     @Then("^I (softly verify|verify) that All the following projects roles are available in picklist :$")
     public void iVerifyThatAllProjectsRolesAreAvailableInPicklist(String usage, List<String> projectRoles) {
-        List<String> listofRoles = new ArrayList<>();
-        List<WebElement> ll = EyeThink.core().select().from(By.xpath("//field[@field-name='ProjectRole__c']//select")).getOptions();
-        for (WebElement e:
-             ll) {
-            listofRoles.add(e.getText().trim());
-        }
-        if (usage.contains("softly")){
-            EyeThink.core().assertion().assertThat(
-                    listofRoles.containsAll(projectRoles)
-            ).isTrue();
-        } else {
-            Assert.assertTrue(
-                    listofRoles.containsAll(projectRoles)
-            );
-        }
+        projectManager.compareContactListEquality(usage, projectRoles);
     }
 
     @Then("^I (softly see|see) that the saved value \"([^\"]*)\" and \"([^\"]*)\" are equal$")
     public void iSeeThatTheSavedValueAndAreEqual(String usage, String savedValue1, String savedValue2) {
-        if(savedValue1.contains("SavedValue")
-                && savedValue2.contains("SavedValue")){
-            savedValue1 = EyeThink.core().Properties().getValue(savedValue1.split(":")[1]);
-            savedValue2 = EyeThink.core().Properties().getValue(savedValue2.split(":")[1]);
-        }
-        if (usage.contains("softly")){
-            EyeThink.core().assertion().assertThat(savedValue1).isEqualToIgnoringCase(savedValue2);
-        } else {
-            Assert.assertEquals("Saved value :"+savedValue1+" is not equals to saved value "+savedValue2,savedValue1,savedValue2);
-        }
+        projectManager.compareTwoSavedStringValueEquality(usage,savedValue1,savedValue2);
     }
 }

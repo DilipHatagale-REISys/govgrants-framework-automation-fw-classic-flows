@@ -13,10 +13,7 @@ import org.springframework.context.annotation.Description;
 import javax.mail.MessagingException;
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 
 /**
@@ -463,5 +460,49 @@ public class ProjectManager extends ProjectWebServices {
      */
     public void clickTableTopRightButton(String buttonName, String flexTableId) {
         EyeThink.core().click().on(EyeThink.saas().flexTable().getTopRightButtonLocatorByTableId(flexTableId, buttonName));
+    }
+
+    /**
+     *
+     * @param usage softly or not
+     * @param projectRoles - list of roles
+     * @author jitendra.pisal
+     */
+    public void compareContactListEquality(String usage, List<String> projectRoles){
+        List<String> listofRoles = new ArrayList<>();
+        List<WebElement> ll = EyeThink.core().select().from(By.xpath("//field[@field-name='ProjectRole__c']//select")).getOptions();
+        for (WebElement e:
+                ll) {
+            listofRoles.add(e.getText().trim());
+        }
+        if (usage.contains("softly")){
+            EyeThink.core().assertion().assertThat(
+                    listofRoles.containsAll(projectRoles)
+            ).isTrue();
+        } else {
+            Assert.assertTrue(
+                    listofRoles.containsAll(projectRoles)
+            );
+        }
+    }
+
+    /**
+     *
+     * @param usage - softly or not
+     * @param savedValue1 - Saved field 1 value from page
+     * @param savedValue2 Saved field 2 value from page
+     * @author jitendra.pisal
+     */
+    public void compareTwoSavedStringValueEquality(String usage, String savedValue1, String savedValue2){
+        if(savedValue1.contains("SavedValue")
+                && savedValue2.contains("SavedValue")){
+            savedValue1 = EyeThink.core().Properties().getValue(savedValue1.split(":")[1]);
+            savedValue2 = EyeThink.core().Properties().getValue(savedValue2.split(":")[1]);
+        }
+        if (usage.contains("softly")){
+            EyeThink.core().assertion().assertThat(savedValue1).isEqualToIgnoringCase(savedValue2);
+        } else {
+            Assert.assertEquals("Saved value :"+savedValue1+" is not equals to saved value "+savedValue2,savedValue1,savedValue2);
+        }
     }
 }
