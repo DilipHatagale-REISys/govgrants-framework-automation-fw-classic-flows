@@ -3,6 +3,7 @@ Feature: Validate all scenarios in the Application Review
 
   Background: Submit the application for Review
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
+    Given I delete the record "Automation Application" from the object "APPLICATION"
     And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
     When I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
