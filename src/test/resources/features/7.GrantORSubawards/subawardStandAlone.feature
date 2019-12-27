@@ -577,7 +577,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
 
-  @51139 @66009 @65975 @66012 @66013 @allActivation @smoke
+  @51139 @67821 @67819 @67822 @67818 @66009 @65975 @66012 @66013 @allActivation @smoke
   Scenario Outline: all activation | Validate activate and View Noga button on award
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -589,6 +589,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
+    And I save the value from row "1" for column name "Available Balance" as "award available balance" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
@@ -697,6 +698,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I softly can see "Actuals" sub tab at view detail page
     And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -712,11 +714,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    Then I softly cannot see top right button "Edit" in page detail
     Then I softly can see top right button "Activate" in page detail
     Then I softly can see top right button "View NOGA" in page detail
     Then I softly can see top right button "Send for Signature" in page detail
+    And I navigate to "Management" sub tab
+    Then I softly cannot see top right button "New" for "---deskreview:-:managementInitiateDRtableid---" flex table
     And I click on "Activate" in the page details
     Then I softly see that "Subaward" is in "Activated" status
+    And I navigate to "Budget" sub tab
+    And I save the value from row "1" for column name "Available Balance" as "award available balance after deduction" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    Then I softly see initial budget balance "SavedValue:award available balance" is decreased by "1000" and is matched with current budget balance "SavedValue:award available balance after deduction"
     Then I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |

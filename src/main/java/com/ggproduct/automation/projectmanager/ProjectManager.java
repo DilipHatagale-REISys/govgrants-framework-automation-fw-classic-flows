@@ -13,6 +13,8 @@ import org.springframework.context.annotation.Description;
 import javax.mail.MessagingException;
 import java.io.File;
 import java.io.IOException;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.*;
 
 
@@ -503,6 +505,35 @@ public class ProjectManager extends ProjectWebServices {
             EyeThink.core().assertion().assertThat(savedValue1).isEqualToIgnoringCase(savedValue2);
         } else {
             Assert.assertEquals("Saved value :"+savedValue1+" is not equals to saved value "+savedValue2,savedValue1,savedValue2);
+        }
+    }
+
+    /**
+     *
+     * @param usage softly or not
+     * @param iniBudgetBalance
+     * @param decreasedBy
+     * @param currentBalance
+     * @Author jitendra pisal
+     */
+    public void verifyBalanceBudget(String usage, String iniBudgetBalance, String decreasedBy, String currentBalance){
+        if (iniBudgetBalance.contains("SavedValue")){
+            iniBudgetBalance = EyeThink.core().Properties().getValue(iniBudgetBalance);
+        }
+        if (currentBalance.contains("SavedValue")){
+            currentBalance = EyeThink.core().Properties().getValue(currentBalance);
+        }
+        try {
+            Number a = NumberFormat.getCurrencyInstance(Locale.US).parse(iniBudgetBalance);
+            Number b = NumberFormat.getCurrencyInstance(Locale.US).parse(currentBalance);
+            if (usage.contains("softly")){
+                EyeThink.core().assertion().assertThat(a.intValue() - Integer.parseInt(decreasedBy)).isEqualTo(b.intValue());
+            } else {
+                Assert.assertEquals(a.longValue() - Long.parseLong(decreasedBy), b.longValue());
+            }
+        } catch (ParseException p){
+            throw new RuntimeException("Please provide valid amount in us dollar. Given budget amount is "+iniBudgetBalance+ "" +
+                    "or "+currentBalance);
         }
     }
 }
