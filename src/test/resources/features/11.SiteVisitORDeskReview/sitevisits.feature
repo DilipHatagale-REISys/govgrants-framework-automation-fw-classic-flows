@@ -1332,7 +1332,7 @@ Feature: Validate all scenarios in the Site Visit
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
-    Then I see value "Record Id" for title "EGMS ID" against the value "Approve Site Visit" inside table "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    Then I see value "Record Id" for title "EGMS ID" inside table "---sitevisits:-:monitoringTabPhasePendingTasks---"
 
   @61870 @61867 @peerReviewIntiationownerToAddProgramReviewerInSiteVisit @deepika
   Scenario: Validate whether user is to able to intiate the peer review process and  owner is allowed to add a peer reviewer of type Program Reviewer for Site Visits
