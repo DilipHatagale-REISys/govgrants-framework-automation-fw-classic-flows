@@ -370,11 +370,24 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
-    Given "3" Approvers "PM,FO,EXE" approve the record "Record id"
-      | Actions    | Step 1        | Step 2        | Step 3            |
-      | Navigation | As a Grantor  | Announcements |                   |
-      | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
-      | Approval   | Start         | Approve       |                   |
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I "Approve" in approval decision
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I "Approve" in approval decision
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I "Approve" in approval decision
     Then I see status in Progress-bar is "Approved" and is "green"
     Examples:
       | Announcement Type |
@@ -735,11 +748,12 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
-    Given "1" Approvers "PM" approve the record "Record Id"
-      | Actions    | Step 1        | Step 2        | Step 3            |
-      | Navigation | As a Grantor  | Announcements |                   |
-      | FlexTable  | Pending Tasks | My Tasks      | PhasePendingTasks |
-      | Approval   | Start         | Send to Owner | Continue          |
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "PhasePendingTasks" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I "Send to Owner" in approval decision
     Then I softly see status in Progress-bar is "Created" and is "green"
     When I navigate to "History" sub tab
     Then I softly see that "Announcement" is in "Created" status
