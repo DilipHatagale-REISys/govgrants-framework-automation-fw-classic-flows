@@ -7,6 +7,7 @@ Feature: Validate all scenarios in the Site Visit
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
+    And I perform quick search for "Automation Permanent Award" in "ActiveGrants" panel
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
@@ -51,12 +52,11 @@ Feature: Validate all scenarios in the Site Visit
     And I save the field labeled "EGMS ID" as "SiteVisitId"
     Then I softly see that "Automation Site Visit" is in "Notified" status
     Then I softly see status in Progress-bar is "Notified" and is "green"
-    And I pause execution for "100" seconds
     Then I softly can see mail notification for "EXTERNAL" user with following subject:
       |Site Visit for {SavedValue:SiteVisitId} has been scheduled|
     Then I softly can see mail notification for "INTERNAL" user with following subject:
       |Site Visit Approval Requested|
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -486,7 +486,9 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     Then I softly can see top right button "Accept and Close" in page detail
+    And I pause execution for "5" seconds
     When I click on "Submit to Grantor" in the page details
+    And I refresh the page
     Then I softly see the following messages in the page details :
       | Reports and Outcomes Tab - Enter corrective actions on all Findings outcomes using the "+" icons.|
     Then I collect all the soft asserts
@@ -634,7 +636,7 @@ Feature: Validate all scenarios in the Site Visit
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
-    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    And I click on top right button "Associate" in flex table with id "---sitevgit isits:-:associateAwardSiteVisitsTableId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
@@ -721,7 +723,7 @@ Feature: Validate all scenarios in the Site Visit
       | Role             | Name           | Description                 |
       | Program Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver  | Automation FO  | Automation Test Description |
-    Then I softly can see row level action button "Edit" against "Automation EXE" in flex table with id "---sitevisits:-:approverSiteVisitTableId---"
+    Then I softly can see row level action button "Edit" against "Program Approver" in flex table with id "---sitevisits:-:approverSiteVisitTableId---"
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
@@ -865,8 +867,8 @@ Feature: Validate all scenarios in the Site Visit
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
-    When I click on "Submit for Approval" in the page details
     Then I softly can see top right button "Submit for Approval" in page detail
+    When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1330,7 +1332,7 @@ Feature: Validate all scenarios in the Site Visit
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
-    Then I see value "Record Id" for title "EGMS ID" against the value "Approve Site Visit" inside table "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    Then I see value "Record Id" for title "EGMS ID" inside table "---sitevisits:-:monitoringTabPhasePendingTasks---"
 
   @61870 @61867 @peerReviewIntiationownerToAddProgramReviewerInSiteVisit @deepika
   Scenario: Validate whether user is to able to intiate the peer review process and  owner is allowed to add a peer reviewer of type Program Reviewer for Site Visits

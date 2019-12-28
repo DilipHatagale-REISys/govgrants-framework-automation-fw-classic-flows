@@ -153,6 +153,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I perform quick search for "Bayside Community Center" in "---riskassessment:-:homePendingTaskTableId---" panel
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---riskassessment:-:homePendingTaskTableId---"
     Then I softly can see top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    And I pause execution for "5" seconds
     When I click on top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     When I refresh the page
     Then I softly cannot see top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
