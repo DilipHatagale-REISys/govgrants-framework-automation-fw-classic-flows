@@ -105,6 +105,8 @@ Feature: Validate all scenarios in Strategic Plan
 
   @51049 @additionOfAttachmentToObjective
   Scenario: Addition of Attachment to Objective inside a Strategic Goal by User - Admin/EXE/PM
+    When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
+    And I click on "Save" in the page details
     And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
     When I enter value "Automation Execution Strategic Goal" into field "fieldStrategyTitle__c"
     When I click modal button "Save and Close"
@@ -114,8 +116,8 @@ Feature: Validate all scenarios in Strategic Plan
     When I click modal button "Save and Close"
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
-    When I upload attachment "Announcement_Field_Values.xlsx" of type "Strategic Plan"
-    Then I see "Strategic Plan" has been added in "Attachments" flex table
+    When I upload attachment "Announcement_Field_Values.xlsx" of type "Strategic Objective"
+    Then I see "Strategic Objective" has been added in "Attachments" flex table
 
   @34724 @associatingKPIToObjective @smoke
   Scenario: Associating KPI to Objective inside a Strategic Goal by User - Admin/EXE/PM
