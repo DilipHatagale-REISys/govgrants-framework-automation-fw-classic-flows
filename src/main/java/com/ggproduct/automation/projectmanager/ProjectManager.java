@@ -319,7 +319,7 @@ public class ProjectManager extends ProjectWebServices {
 
         int columnValueFromRowInInt = 0;
         int counter = 1;
-        By columnHeaders = By.xpath("//div[@id='" + flexTableId + "']//th//span[@ng-bind='fieldLabel']");
+        By columnHeaders = By.xpath("//div[@id='" + flexTableId + "']//th//span[@ng-bind='fieldLabel'] | //div[@id='" + flexTableId + "']//th//a[contains(@class,'tableColumnHeader')]");
         List<Elements> columnList = EyeThink.core().elementReference().listOfElements().of(columnHeaders);
 
         // get the column index of required column.
@@ -331,6 +331,9 @@ public class ProjectManager extends ProjectWebServices {
         }
 
         List<Elements> listOfDataInColumn = EyeThink.core().elementReference().listOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//th//span[text()='" + columnName + "']/ancestor::thead/parent::table//tr//td[" + counter + "]/span/field/span"));
+        if (listOfDataInColumn.size() == 0){
+            listOfDataInColumn = EyeThink.core().elementReference().listOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//th//span[text()='" + columnName + "']/ancestor::thead/parent::table//tr//td[" + counter + "]/span/span/span"));
+        }
         columnValueFromRowInInt = rowNumber.equalsIgnoreCase("last row") ? listOfDataInColumn.size()
                 : Integer.parseInt(rowNumber);
 
