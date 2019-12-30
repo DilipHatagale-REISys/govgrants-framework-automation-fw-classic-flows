@@ -518,10 +518,10 @@ public class ProjectManager extends ProjectWebServices {
      */
     public void verifyBalanceBudget(String usage, String iniBudgetBalance, String decreasedBy, String currentBalance){
         if (iniBudgetBalance.contains("SavedValue")){
-            iniBudgetBalance = EyeThink.core().Properties().getValue(iniBudgetBalance);
+            iniBudgetBalance = EyeThink.core().Properties().getValue(iniBudgetBalance.split(":")[1]);
         }
         if (currentBalance.contains("SavedValue")){
-            currentBalance = EyeThink.core().Properties().getValue(currentBalance);
+            currentBalance = EyeThink.core().Properties().getValue(currentBalance.split(":")[1]);
         }
         try {
             Number a = NumberFormat.getCurrencyInstance(Locale.US).parse(iniBudgetBalance);
