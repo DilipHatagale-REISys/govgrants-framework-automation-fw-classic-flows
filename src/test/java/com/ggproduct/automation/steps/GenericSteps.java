@@ -365,4 +365,9 @@ public class GenericSteps {
     public void iSeeThatTheSavedValueAndAreEqual(String usage, String savedValue1, String savedValue2) {
         projectManager.compareTwoSavedStringValueEquality(usage,savedValue1,savedValue2);
     }
+
+    @Then("^I (softly see|see) initial budget balance \"([^\"]*)\" is decreased by \"([^\"]*)\" and is matched with current budget balance \"([^\"]*)\"$")
+    public void iSeeInitialBudgetBalanceIsDecreasedByAndIsMatchedWithCurrentBudgetBalance(String usage, String iniBudgetBalance, String decreasedBy, String currentBalance) {
+        projectManager.verifyBalanceBudget(usage,iniBudgetBalance,decreasedBy,currentBalance);
+    }
 }
