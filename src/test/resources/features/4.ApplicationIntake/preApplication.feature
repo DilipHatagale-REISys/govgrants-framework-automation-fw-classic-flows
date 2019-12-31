@@ -52,7 +52,7 @@ Feature: Validate all scenarios in the Pre-Application
     When I click on "View" icon for "Record Id" inside flex table with id "---preApplication:-:recipientPreApplicationsTableId---"
     When I click on "View" icon for "Automation SPA" inside flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
     And I save the field labeled "Organization" as "orgName2"
-    Then I softly see that the saved value "SavedValue:orgName1" and "SavedValue:orgName2" are equal
+    Then I softly see that the saved value "{SavedValue:orgName1}" and "{SavedValue:orgName2}" are equal
     And I collect all the soft asserts
 
   @53153 @preApplicationEdition
