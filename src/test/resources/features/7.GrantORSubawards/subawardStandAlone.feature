@@ -724,7 +724,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly see that "Subaward" is in "Activated" status
     And I navigate to "Budget" sub tab
     And I save the value from row "1" for column name "Available Balance" as "award available balance after deduction" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
-    Then I softly see initial budget balance "SavedValue:award available balance" is decreased by "1000" and is matched with current budget balance "SavedValue:award available balance after deduction"
+    Then I softly see initial budget balance "{SavedValue:award available balance}" is decreased by "1000" and is matched with current budget balance "{SavedValue:award available balance after deduction}"
     Then I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
