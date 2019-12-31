@@ -13,6 +13,8 @@ import org.springframework.context.annotation.Description;
 import javax.mail.MessagingException;
 import java.io.File;
 import java.io.IOException;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.*;
 
 
@@ -317,7 +319,7 @@ public class ProjectManager extends ProjectWebServices {
 
         int columnValueFromRowInInt = 0;
         int counter = 1;
-        By columnHeaders = By.xpath("//div[@id='" + flexTableId + "']//th//span[@ng-bind='fieldLabel']");
+        By columnHeaders = By.xpath("//div[@id='" + flexTableId + "']//th//span[@ng-bind='fieldLabel'] | //div[@id='" + flexTableId + "']//th//a[contains(@class,'tableColumnHeader')]");
         List<Elements> columnList = EyeThink.core().elementReference().listOfElements().of(columnHeaders);
 
         // get the column index of required column.
@@ -329,6 +331,9 @@ public class ProjectManager extends ProjectWebServices {
         }
 
         List<Elements> listOfDataInColumn = EyeThink.core().elementReference().listOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//th//span[text()='" + columnName + "']/ancestor::thead/parent::table//tr//td[" + counter + "]/span/field/span"));
+        if (listOfDataInColumn.size() == 0){
+            listOfDataInColumn = EyeThink.core().elementReference().listOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//th//span[text()='" + columnName + "']/ancestor::thead/parent::table//tr//td[" + counter + "]/span/span/span"));
+        }
         columnValueFromRowInInt = rowNumber.equalsIgnoreCase("last row") ? listOfDataInColumn.size()
                 : Integer.parseInt(rowNumber);
 
@@ -503,6 +508,29 @@ public class ProjectManager extends ProjectWebServices {
             EyeThink.core().assertion().assertThat(savedValue1).isEqualToIgnoringCase(savedValue2);
         } else {
             Assert.assertEquals("Saved value :"+savedValue1+" is not equals to saved value "+savedValue2,savedValue1,savedValue2);
+        }
+    }
+
+    /**
+     *
+     * @param usage softly or not
+     * @param iniBudgetBalance
+     * @param decreasedBy
+     * @param currentBalance
+     * @Author jitendra pisal
+     */
+    public void verifyBalanceBudget(String usage, String iniBudgetBalance, String decreasedBy, String currentBalance){
+        try {
+            Number a = NumberFormat.getCurrencyInstance(Locale.US).parse(iniBudgetBalance);
+            Number b = NumberFormat.getCurrencyInstance(Locale.US).parse(currentBalance);
+            if (usage.contains("softly")){
+                EyeThink.core().assertion().assertThat(a.intValue() - Integer.parseInt(decreasedBy)).isEqualTo(b.intValue());
+            } else {
+                Assert.assertEquals(a.longValue() - Long.parseLong(decreasedBy), b.longValue());
+            }
+        } catch (ParseException p){
+            throw new RuntimeException("Please provide valid amount in us dollar. Given budget amount is "+iniBudgetBalance+ "" +
+                    "or "+currentBalance);
         }
     }
 }

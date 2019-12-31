@@ -36,13 +36,14 @@ Feature: Validate all scenarios in the Pre-Application
       | Project Director/Manager |
       | Authorized Signatory     |
 
-  @67077 @contactsAtPreApplicationFromSameOrganisation @jitendra
+  @67077 @67065 @contactsAtPreApplicationFromSameOrganisation @jitendra
   Scenario: To verify that the contacts appearing in the Associate button in Contact table of preapplication is of the Same organisation
     When I navigate to "Overview" sub tab
     And I click table top right button "Associate" in flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
     And I perform quick search for "Automation SPA" in "---preApplication:-:associatePreAppContactsTableId---" panel
     When I click "Add" after selection of "Automation SPA" in the table "---preApplication:-:associatePreAppContactsTableId---"
     And I close modal by clicking the top right x button
+    Then I softly see value "Automation SPA" for title "Name" inside table "---preApplication:-:flexGridPreAppContactTableId---"
     When I click on "View" icon for "Automation SPI" inside flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
     And I save the field labeled "Organization" as "orgName1"
     And I navigate to "Applications" tab
@@ -51,7 +52,8 @@ Feature: Validate all scenarios in the Pre-Application
     When I click on "View" icon for "Record Id" inside flex table with id "---preApplication:-:recipientPreApplicationsTableId---"
     When I click on "View" icon for "Automation SPA" inside flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
     And I save the field labeled "Organization" as "orgName2"
-    Then I see that the saved value "SavedValue:orgName1" and "SavedValue:orgName2" are equal
+    Then I softly see that the saved value "{SavedValue:orgName1}" and "{SavedValue:orgName2}" are equal
+    And I collect all the soft asserts
 
   @53153 @preApplicationEdition
   Scenario: Validate edition of pre-application

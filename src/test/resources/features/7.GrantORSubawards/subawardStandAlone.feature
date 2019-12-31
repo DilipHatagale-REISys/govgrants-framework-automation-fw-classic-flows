@@ -447,7 +447,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
 
-  @51140 @51141 @66897 @66006 @65983 @66005 @66003 @66008 @allSendToRecipientAndAcceptanceAfterApproval
+  @51140 @51141 @66897 @66006 @65983 @66005 @66003 @66008 @66019 @@66016 @allSendToRecipientAndAcceptanceAfterApproval
   Scenario Outline: Acceptance of award by receipient after approval| Validate view Noga button on SPI side |To verify after Send to Subrecipient button the status should change to Sent to Subrecipient after Approval and the progress bar approved
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -462,6 +462,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
+    And I save the field labeled "Total Subaward Amount this Budget Period" as "BudgetPeriodAmount"
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
       | Construction    | 1000           | 100        | 100            |
@@ -572,12 +573,30 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Accept after Approval" in the page details
     Then I softly see status in Progress-bar is "Accepted" and is "Green"
     Then I softly can see top right button "View NOGA" in page detail
+    And I navigate to "Actuals" sub tab
+    And I save the field labeled "Awarded Budget" as "total awarded budget"
+    And I click on "View NOGA" in the page details
+    And I download the file
+    Then I softly see "{SavedValue:BudgetPeriodAmount}" on page "1" of "govgrants" pdf file
+    Then I softly see "{SavedValue:total awarded budget}" on page "1" of "govgrants" pdf file
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "Generate NOGA" in the page details
+    And I download the file
+    Then I softly see "{SavedValue:BudgetPeriodAmount}" on page "1" of "govgrants" pdf file
+    Then I softly see "{SavedValue:total awarded budget}" on page "1" of "govgrants" pdf file
     Then I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
 
-  @51139 @66009 @65975 @66012 @66013 @allActivation @smoke
+  @51139 @67821 @67819 @67822 @67818 @66009 @65975 @66012 @66013 @allActivation @smoke
   Scenario Outline: all activation | Validate activate and View Noga button on award
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -589,6 +608,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
+    And I save the value from row "1" for column name "Available Balance" as "award available balance" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
@@ -697,6 +717,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I softly can see "Actuals" sub tab at view detail page
     And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -712,11 +733,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    Then I softly cannot see top right button "Edit" in page detail
     Then I softly can see top right button "Activate" in page detail
     Then I softly can see top right button "View NOGA" in page detail
     Then I softly can see top right button "Send for Signature" in page detail
+    And I navigate to "Management" sub tab
+    Then I softly cannot see top right button "New" for "---deskreview:-:managementInitiateDRtableid---" flex table
     And I click on "Activate" in the page details
     Then I softly see that "Subaward" is in "Activated" status
+    And I navigate to "Budget" sub tab
+    And I save the value from row "1" for column name "Available Balance" as "award available balance after deduction" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    Then I softly see initial budget balance "{SavedValue:award available balance}" is decreased by "1000" and is matched with current budget balance "{SavedValue:award available balance after deduction}"
     Then I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
