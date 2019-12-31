@@ -13,6 +13,33 @@ Feature: Validate all scenarios of grants and award without background
       | EXE  |
       | FO   |
 
+    @68057 @createGrantEXE @jitendra
+      Scenario: Valiadate EXE user can create Direct Grant
+      Given I delete the record "Automation Direct Award" from the object "Award"
+      And I delete the record "Automation Direct Award" from the object "Grant"
+      When I login to "As a Grantor" app as "EXE" user
+      And I navigate to "Grants" tab
+      When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+      And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+      And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+      And I click modal button "Continue"
+      And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+      When I click modal button "Save and Continue"
+      And I navigate to "Subawards" sub tab
+      And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+      And I get the "EGMS ID"
+      Then I see status in Progress-bar is "Created" and is "Green"
+
+  @68058 @cannotCreateGrantFOUser @jitendra
+  Scenario Outline: validate that FO user cannot create Direct Grant
+    When I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    Then  I cannot see top right button "New" in flex table with id "ActiveGrants"
+    Examples:
+      | User |
+      | FO   |
+
   @65619 @65578 @65586 @validateFieldsAtGrant @jitendra
   Scenario Outline: To verify Budget period end date entered by Award owner should be same when owner click on save button.
     Given I delete the record "<Award Name>" from the object "Award"
