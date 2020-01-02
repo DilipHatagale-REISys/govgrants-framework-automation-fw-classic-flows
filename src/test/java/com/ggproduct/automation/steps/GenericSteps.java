@@ -370,4 +370,14 @@ public class GenericSteps {
     public void iSeeInitialBudgetBalanceIsDecreasedByAndIsMatchedWithCurrentBudgetBalance(String usage, String iniBudgetBalance, String decreasedBy, String currentBalance) {
         projectManager.verifyBalanceBudget(usage,iniBudgetBalance,decreasedBy,currentBalance);
     }
+
+    @Then("^I (softly see|see) grant details on modal and it gets enlarge$")
+    public void iSeeGrantDetailsOnModalAndItGetsEnlarge(String usage) {
+        projectManager.validateModalEnlargeAndGrantDetails(usage);
+    }
+
+    @And("^I (softly see|see) all the fields are present for site visit while initializing it$")
+    public void iSeeAllTheFieldsArePresentForSiteVisit(String usage) {
+        projectManager.allFieldsCheckSiteVisit(usage);
+    }
 }
