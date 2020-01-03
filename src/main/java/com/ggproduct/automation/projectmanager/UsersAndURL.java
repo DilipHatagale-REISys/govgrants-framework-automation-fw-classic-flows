@@ -31,7 +31,7 @@ public class UsersAndURL implements UsersController {
         String userName = null;
         if ((EnvironmentFetcher.getEnvironmentName() != null) && (EnvironmentFetcher.getEnvironmentName().contains("QA"))) {
             userName = getQAEnvironmentUser(setUpUserLevel(userLevel));
-        } else if ((EnvironmentFetcher.getEnvironmentName() != null) && (EnvironmentFetcher.getEnvironmentName().contains("TEST8"))){
+        } else if ((EnvironmentFetcher.getEnvironmentName() != null) && (EnvironmentFetcher.getEnvironmentName().contains("TEST8"))) {
             userName = getTest8EnvironmentUser(setUpUserLevel(userLevel));
         } else {
             userName = getAUTOEnvironmentUser(setUpUserLevel(userLevel));
@@ -44,9 +44,9 @@ public class UsersAndURL implements UsersController {
         String password = null;
         if (EnvironmentFetcher.getEnvironmentName().contains("QA")) {
             password = getQAEnvironmentPassword(setUpUserLevel(userLevel));
-        } else if (EnvironmentFetcher.getEnvironmentName().contains("TEST8")){
+        } else if (EnvironmentFetcher.getEnvironmentName().contains("TEST8")) {
             password = getTest8EnvironmentPassword(setUpUserLevel(userLevel));
-        }else
+        } else
             password = getAUTOEnvironmentPassword(setUpUserLevel(userLevel));
         return password;
     }
@@ -85,7 +85,7 @@ public class UsersAndURL implements UsersController {
                 password = "test72018";
                 break;
             case "ADMIN":
-                password = "1508@Govgrants";
+                password = "GoProduct@1234";
                 break;
             default:
                 password = "SALESFORCE2019";
@@ -146,13 +146,17 @@ public class UsersAndURL implements UsersController {
 
     private String getTest8EnvironmentUser(String userLevel) {
         Map<String, String> username = new HashMap<>();
-        username.put("ADMIN", "manu.admin@ggp.test7.atm");
-        username.put("EXE", "test@gmaildemo.com.atm");
-        username.put("PM", "donald_pm@ggp.test7.atm");
-        username.put("FO", "auto.fm@auto.com.atm");
-        username.put("SPI", "kyle.farrell@reisystems.com21.atm");
-        username.put("SPA", "spaautomation@yopmail.com.atm");
+        username.put("ADMIN", "manu.admin@ggp.test8.automation");
+        username.put("EXE", "test@gmaildemo.com.atm.automation");
+        username.put("PM", "donald_pm@ggp.test7.atm.automation");
+        username.put("FO", "auto.fm@auto.com.atm.automation");
+        username.put("SPI", "automationspi@yopmail.com");
+        username.put("SPA", "automation.spa@yopmail.com");
         username.put("IND", "automationind123@yopmail.com");
+        username.put("SA", "christopher.sa@yopmail.com.atm");
+        username.put("SPI2", "david.schim@yopmail.com");
+        username.put("SPI3", "automation.patricksa@yopmail.com20.atm");
+        username.put("AUDITOR", "automation.auditor@yopmail.com");
 
         username.put("SIMON PM", "simon_pm@ggp.test7.automation");
         username.put("ALEX FO", "alex_fo@ggp.test7.automation");
@@ -169,6 +173,7 @@ public class UsersAndURL implements UsersController {
 
     /**
      * setup userLevel based on jvm property or default value or as passed from feature
+     *
      * @param userType dynamicUser or EXE/PM
      * @return userLevel
      * @author nauman.shahid
@@ -178,21 +183,20 @@ public class UsersAndURL implements UsersController {
     }
 
     /**
-     *
      * @param userType e.g (INTERNAL,EXTERNAL)
      * @return Will return map<username,password> of corresponding type of user saved in mail.properties file.
      */
-    public Map<String, String> getUserCredentialsForMailNotification(String userType){
+    public Map<String, String> getUserCredentialsForMailNotification(String userType) {
         Map<String, String> credentials = new HashMap();
         String userAndPassword;
         String env = System.getProperty("env");
-        if (env == null || "".equalsIgnoreCase(env)){
+        if (env == null || "".equalsIgnoreCase(env)) {
             env = "QA";
         }
         try {
-            userAndPassword = (new Properties_Logs()).ReadPropertyFile("mail.properties",env.toUpperCase()+userType.toUpperCase());
-            credentials.put("username",userAndPassword.split(":")[0]);
-            credentials.put("password",userAndPassword.split(":")[1]);
+            userAndPassword = (new Properties_Logs()).ReadPropertyFile("mail.properties", env.toUpperCase() + userType.toUpperCase());
+            credentials.put("username", userAndPassword.split(":")[0]);
+            credentials.put("password", userAndPassword.split(":")[1]);
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException("Property file mail.properties is not present");
