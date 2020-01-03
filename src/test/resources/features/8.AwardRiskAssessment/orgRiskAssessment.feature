@@ -111,6 +111,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "AGENCY DETAILS"
     Then I see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
+    And I refresh the page
     Then I see "AGENCY DETAILS" has been added in "Attachments" flex table
 
   @62197 @pendingTaskCreatedForGrantor @deepika
