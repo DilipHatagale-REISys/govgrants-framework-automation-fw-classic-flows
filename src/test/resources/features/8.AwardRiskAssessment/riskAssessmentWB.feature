@@ -820,7 +820,7 @@ Feature: Risk Assessment scenarios without background
     Then I softly see field "OverAll Risk" as "{SavedValue:OverAllRisk}"
     Then I collect all the soft asserts
 
-  @60967 @60336 @60334 @60333 @FundingChangeAmendmentRiskScore @deepika
+  @60967 @60336 @60334 @60333 @FundingChangeAmendmentRiskScore @deepika @bug-ticketNumber-68419
   Scenario: Validate the Risk Score which should remain as is when Award Risk Assessment is copied to new created award when amendment type - Funding Change
     Given I delete the record "Automation Grant/Award for Risk Assessment" from the object "Amendment Request"
     And I delete the record "Automation Grant/Award for Risk Assessment" from the object "Payment Request"

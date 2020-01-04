@@ -78,7 +78,7 @@ public class ProjectWebServices {
                         "&password=1508@Govgrants";
                 break;
             case "TEST8":
-                this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9GYWKbMgBvbyCDACA.1wChOefQowEw_0xv3au_8wn2ehlFc5MDSsyGVhxl0BZai_gKr6J4fPaaBCR8Bal&client_secret=A5BE765FC5735EF5B73E55BBA5A0F916FFCDB14977FA092644BC78134B1FD6BB&username=manu.admin@ggp.test8&password=GoProduct@1234";
+                this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG90D5vR7Utjboc8b3nxgWl_TIAtGV_TgV2OQsaOZNGnhetFSjnMGSvL67KfRN99.Z0ne32YZHHlzdyCb_a&client_secret=F1F4C218C1E6AB1ECA2DD46CDCFB204D66FCEFA2DB939003C5C4B207DAF0A736&username=manu.admin@ggp.test8.automation&password=GoProduct@1234";
                 break;
             default:
                 this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9dZJodJWITSuFoeXeOau_jPysAF1tDTnpScZyZwXUGhS_ZudVpjPfvLFrO78TVtOgK6flv6R5a4OV8QnR&client_secret=1408645120361878326&username=mayuresh.g@ggp.test7&password=Salesforce_2019";
