@@ -70,12 +70,7 @@ public class ProjectWebServices {
                 this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9dZJodJWITSuFoeXeOau_jPysAF1tDTnpScZyZwXUGhS_ZudVpjPfvLFrO78TVtOgK6flv6R5a4OV8QnR&client_secret=1408645120361878326&username=mayuresh.g@ggp.test7&password=Salesforce_2019";
                 break;
             case "AUTO":
-                this.defaultEndPointGetToken = "/services/oauth2/token" +
-                        "?grant_type=password" +
-                        "&client_id=3MVG9dCCPs.KiE4SymniyHC6UlPOAWaJDuqD_M7LWy9daNlDLrLsi9h7tLJRAf0YW3PWOFEWtV8pcKMB7Oo1b" +
-                        "&client_secret=6E3117AC147D7F2C4A26D2AEA867EB9565439BC89D2D49C219FA4B5DCF68513B" +
-                        "&username=manu.admin@ggp.test7.atm" +
-                        "&password=1508@Govgrants";
+                this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG90D5vR7Utjboc8b3nxgWl_TIAtGV_TgV2OQsaOZNGnhetFSjnMGSvL67KfRN99.Z0ne32YZHHlzdyCb_a&client_secret=F1F4C218C1E6AB1ECA2DD46CDCFB204D66FCEFA2DB939003C5C4B207DAF0A736&username=manu.admin@ggp.test8.automation&password=GoProduct@1234";
                 break;
             case "TEST8":
                 this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG90D5vR7Utjboc8b3nxgWl_TIAtGV_TgV2OQsaOZNGnhetFSjnMGSvL67KfRN99.Z0ne32YZHHlzdyCb_a&client_secret=F1F4C218C1E6AB1ECA2DD46CDCFB204D66FCEFA2DB939003C5C4B207DAF0A736&username=manu.admin@ggp.test8.automation&password=GoProduct@1234";
