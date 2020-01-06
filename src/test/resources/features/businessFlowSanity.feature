@@ -70,7 +70,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate" modal by clicking the top right x button
+    When I close "Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -793,7 +793,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click on "Create Application" in the page details
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
-    When I click on "Edit" in the page detailsz
+    When I click on "Edit" in the page details
     And I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
