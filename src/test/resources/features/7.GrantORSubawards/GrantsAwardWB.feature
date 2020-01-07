@@ -179,7 +179,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see value "{SavedValue:fundingAccount}" for title "Funding Account" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
     And I collect all the soft asserts
 
-  @38215  @VerifyActiveGrantsAccessToAllUsers @mahadev
+  @38215 @68038 @VerifyActiveGrantsAccessToAllUsers @mahadev
   Scenario Outline: Verify all internal users can view active grants
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -187,7 +187,14 @@ Feature: Validate all scenarios of grants and award without background
     When I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---progressReport:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
-    Then I see field "Status" as "Active"
+    Then I softly see field "Status" as "Active"
+    And I navigate to "Budget" sub tab
+    And I save the value from row "1" for column name "Start Date" as "startDate" from flex table "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---"
+    And I save the value from row "1" for column name "End Date" as "endDate" from flex table "---subAwardStandAlone:-:GrantBudgetCategoryFlexGridgridTableId---"
+    And I navigate to "Overview" sub tab
+    Then I softly see value "{SavedValue:startDate}" for title "Start Date" against the value "BP01" inside table "---subAwardStandAlone:-:GrantorBudgetPeriodTableId---"
+    And I softly see value "{SavedValue:endDate}" for title "End Date" against the value "BP01" inside table "---subAwardStandAlone:-:GrantorBudgetPeriodTableId---"
+    And I collect all the soft asserts
     Examples:
       | Grant Name                 |
       | Automation Permanent Award |

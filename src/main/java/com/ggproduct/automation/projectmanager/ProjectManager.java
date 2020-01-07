@@ -319,7 +319,7 @@ public class ProjectManager extends ProjectWebServices {
 
         int columnValueFromRowInInt = 0;
         int counter = 1;
-        By columnHeaders = By.xpath("//div[@id='" + flexTableId + "']//th//span[@ng-bind='fieldLabel'] | //div[@id='" + flexTableId + "']//th//a[contains(@class,'tableColumnHeader')]");
+        By columnHeaders = By.xpath("//div[@id='"+flexTableId+"']//th");
         List<Elements> columnList = EyeThink.core().elementReference().listOfElements().of(columnHeaders);
 
         // get the column index of required column.
