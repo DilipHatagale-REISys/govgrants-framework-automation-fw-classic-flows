@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.*;
+import java.util.stream.Stream;
 
 
 /**
@@ -536,7 +537,7 @@ public class ProjectManager extends ProjectWebServices {
 
     public void validateModalEnlargeAndGrantDetails(String usage) {
         By modalEnlarge = By.xpath("//div[@id='editDiv']/div[2]");
-        String[] ids = {
+        List<String> ids = List.of(
                 "LaverageAllowed__c",
                 "IsProgramIncomeAnticipated__c",
                 "IsAdvancePermitted__c",
@@ -550,48 +551,38 @@ public class ProjectManager extends ProjectWebServices {
                 "IsMatchRequired__c",
                 "GranteeMatch__c",
                 "BudgetRedirectionThreshhold__c"
-        };
+        );
         if (usage.contains("softly")){
-            EyeThink.core().assertion().assertThat(EyeThink.core().elementReference().of(modalEnlarge)
-            .isDisplayed()).isTrue();
-            for (String id : Arrays.asList(ids)){
-                By idToLookFor = By.xpath("//*[@id='"+id+"']");
-                EyeThink.core().assertion().assertThat(EyeThink.core()
-                .elementReference().of(idToLookFor).isDisplayed()).isTrue();
-            }
+            EyeThink.core().assertion().assertThat(EyeThink.core().is().isDisplayed(modalEnlarge)).isTrue();
+            ids.forEach(
+                    id -> EyeThink.core().assertion().assertThat(EyeThink.core().is().isDisplayed(By.id(id))).isTrue()
+            );
         } else {
-            Assert.assertTrue(EyeThink.core().elementReference().of(modalEnlarge)
-                    .isDisplayed());
-            for (String id : Arrays.asList(ids)){
-                By idToLookFor = By.xpath("//*[@id='"+id+"']");
-                Assert.assertTrue(EyeThink.core().elementReference().of(idToLookFor)
-                        .isDisplayed());
-            }
+            Assert.assertTrue(EyeThink.core().is().isDisplayed(modalEnlarge));
+            ids.forEach(
+                    id -> Assert.assertTrue(EyeThink.core().is().isDisplayed(By.id(id)))
+            );
         }
     }
 
     public void allFieldsCheckSiteVisit(String usage) {
-        String[] ids = {
-                "Title__c",
+        List<String> ids = List.of("Title__c",
                 "GranteePOCContact__c",
-                "MonitoringType__c"
-        };
+                "MonitoringType__c");
 
         if (usage.contains("softly")){
-            for (String id : Arrays.asList(ids)){
-                EyeThink.core().assertion().assertThat(
-                        EyeThink.core().elementReference()
-                                .of(By.id(id)).isDisplayed()
-                ).isTrue().as("Field having Id "+id+" is not present on page");
-            }
+            ids.forEach(
+                    id -> EyeThink.core().assertion().assertThat(
+                            EyeThink.core().is().isDisplayed(By.id(id))
+                    ).isTrue().as("Field having Id "+id+" is not present on page")
+            );
         } else {
-            for (String id : Arrays.asList(ids)){
-                Assert.assertTrue(
-                        "Field having Id "+id+" is not present on page",
-                        EyeThink.core().elementReference()
-                                .of(By.id(id)).isDisplayed()
-                );
-            }
+            ids.forEach(
+                    id -> Assert.assertTrue(
+                            "Field having Id "+id+" is not present on page",
+                            EyeThink.core().is().isDisplayed(By.id(id))
+                    )
+            );
         }
     }
 }
