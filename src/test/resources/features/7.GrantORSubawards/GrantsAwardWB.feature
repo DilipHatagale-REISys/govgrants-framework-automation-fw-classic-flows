@@ -87,7 +87,6 @@ Feature: Validate all scenarios of grants and award without background
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     Then I softly see value "Draft" for title "Status" against the value "<Award Name>" inside table "---subAwardStandAlone:-:activeGrantsTableId---"
     And I collect all the soft asserts
-    And I see value "<string>" for title "" against the value "<string>" inside table "<string>"
     Examples:
       | Award Name                            | Grant Name                            |
       | Automation Award for field validation | Automation Grant for field validation |
