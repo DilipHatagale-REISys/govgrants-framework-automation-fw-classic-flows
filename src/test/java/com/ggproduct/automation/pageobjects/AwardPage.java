@@ -44,25 +44,6 @@ public class AwardPage extends ProjectManager {
 
     /**
      *
-     * @param usage softly
-     * @param text to be look for in tooltip title
-     * @author jitendra.pisal
-     */
-    public void assertToSeeTextAfterHoveringOnLinkTooltip(String usage, String text){
-        By textToBeSeen = By.xpath("//p[contains(@class,'tooltip-title') and text()='"+text+"']");
-        if (usage.contains("softly")){
-            EyeThink.core().assertion().assertThat(
-                    EyeThink.core().is().isDisplayed(textToBeSeen)
-            ).isTrue();
-        } else {
-            Assert.assertTrue(
-                    EyeThink.core().is().isDisplayed(textToBeSeen)
-            );
-        }
-    }
-
-    /**
-     *
      * @param label label name
      * @param fieldKey key to be save
      * @author jitendra.pisal

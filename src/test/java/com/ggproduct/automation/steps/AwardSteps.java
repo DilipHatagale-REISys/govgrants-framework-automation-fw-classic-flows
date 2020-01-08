@@ -36,11 +36,6 @@ public class AwardSteps {
         .elementReference().of(By.xpath("//a[text()='"+link+"']")));
     }
 
-    @Then("^I (softly see|see) \"([^\"]*)\" in hovered link tooltip$")
-    public void iSeeInHoveredLinkTooltip(String usage, String text) {
-       awardPage.assertToSeeTextAfterHoveringOnLinkTooltip(usage,text);
-    }
-
     @And("I save the field value having link labeled \"([^\"]*)\" as \"([^\"]*)\"")
     public void iSaveTheFieldValueHavingLinkLabeledAs(String label, String fieldKey) {
         awardPage.saveFieldValueHavingLinkLabeledAs(label,fieldKey);

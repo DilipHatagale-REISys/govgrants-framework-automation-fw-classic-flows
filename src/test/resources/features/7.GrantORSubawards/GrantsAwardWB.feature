@@ -951,7 +951,7 @@ Feature: Validate all scenarios of grants and award without background
     And I save the field value having link labeled "Grant  ID" as "grantID"
     And I softly see "Automation PM" is present after mouse hover for active subaward
     And I mouse hover to link contains "{SavedValue:grantID}"
-    Then I softly see "Grant" in hovered link tooltip
+    Then I softly see "Grant" shown inside mini page layout on hover
     Given I navigate to "Management" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
     And I enter "Creation" values from "SiteVisit_Field_Values.xlsx"
