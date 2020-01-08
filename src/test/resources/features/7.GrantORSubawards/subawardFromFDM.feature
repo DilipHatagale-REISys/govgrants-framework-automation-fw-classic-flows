@@ -515,7 +515,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
-  @66938 @doNotSeeSubawardButtonAfterRejectingByEXE @jitendra
+  @66938 @67698 @doNotSeeSubawardButtonAfterRejectingByEXE @jitendra
   Scenario Outline: To Validate that if FDM is rejected by EXE user, subaward button in Action column cannot be seen for the Application. in Recommended Application table.
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
@@ -623,6 +623,9 @@ Feature: Validate all scenarios in the award created from FDM
     When I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
+    And I pause execution for "100" seconds
+    And I softly can see mail notification for "EXTERNAL" user with following subject:
+      | FW: Notification: Subaward <award id> has been Assigned for Program Approval. |
     When I click on "Approve" on the approval decision box
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Grants" tab
@@ -642,7 +645,8 @@ Feature: Validate all scenarios in the award created from FDM
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
     When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
-    Then I cannot see row level action button "Create Subaward" against "Automation Announcement for FDM" in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
+    Then I softly cannot see row level action button "Create Subaward" against "Automation Announcement for FDM" in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
+    And I collect all the soft asserts
     Examples:
       | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |

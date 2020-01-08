@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.*;
+import java.util.stream.Stream;
 
 
 /**
@@ -531,6 +532,57 @@ public class ProjectManager extends ProjectWebServices {
         } catch (ParseException p){
             throw new RuntimeException("Please provide valid amount in us dollar. Given budget amount is "+iniBudgetBalance+ "" +
                     "or "+currentBalance);
+        }
+    }
+
+    public void validateModalEnlargeAndGrantDetails(String usage) {
+        By modalEnlarge = By.xpath("//div[@id='editDiv']/div[2]");
+        List<String> ids = List.of(
+                "LaverageAllowed__c",
+                "IsProgramIncomeAnticipated__c",
+                "IsAdvancePermitted__c",
+                "FocusAreaRequired__c",
+                "IsGoalsRequired__c",
+                "KPIsRequired__c",
+                "RiskAssessmentRequired__c",
+                "WBSRequired__c",
+                "IsBuildUpFunctionality__c",
+                "AreExpensesBuildIUpLevel__c",
+                "IsMatchRequired__c",
+                "GranteeMatch__c",
+                "BudgetRedirectionThreshhold__c"
+        );
+        if (usage.contains("softly")){
+            EyeThink.core().assertion().assertThat(EyeThink.core().is().isDisplayed(modalEnlarge)).isTrue();
+            ids.forEach(
+                    id -> EyeThink.core().assertion().assertThat(EyeThink.core().is().isDisplayed(By.id(id))).isTrue()
+            );
+        } else {
+            Assert.assertTrue(EyeThink.core().is().isDisplayed(modalEnlarge));
+            ids.forEach(
+                    id -> Assert.assertTrue(EyeThink.core().is().isDisplayed(By.id(id)))
+            );
+        }
+    }
+
+    public void allFieldsCheckSiteVisit(String usage) {
+        List<String> ids = List.of("Title__c",
+                "GranteePOCContact__c",
+                "MonitoringType__c");
+
+        if (usage.contains("softly")){
+            ids.forEach(
+                    id -> EyeThink.core().assertion().assertThat(
+                            EyeThink.core().is().isDisplayed(By.id(id))
+                    ).isTrue().as("Field having Id "+id+" is not present on page")
+            );
+        } else {
+            ids.forEach(
+                    id -> Assert.assertTrue(
+                            "Field having Id "+id+" is not present on page",
+                            EyeThink.core().is().isDisplayed(By.id(id))
+                    )
+            );
         }
     }
 }
