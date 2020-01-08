@@ -40,7 +40,7 @@ Feature: Validate all scenarios of grants and award without background
       | User |
       | FO   |
 
-  @65619 @65578 @65586 @validateFieldsAtGrant @jitendra
+  @65619 @65578 @65586 @65573 @validateFieldsAtGrant @jitendra
   Scenario Outline: To verify Budget period end date entered by Award owner should be same when owner click on save button.
     Given I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Grant Name>" from the object "Grant"
@@ -51,6 +51,7 @@ Feature: Validate all scenarios of grants and award without background
     And I enter "Grant_Create_less_date" values from "Award_Field_Values.xlsx"
     And I enter value "<Award Name>" into field "ProjectTitle__c"
     And I click modal button "Continue"
+    Then I softly see grant details on modal and it gets enlarge
     And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I navigate to "Overview" sub tab
@@ -179,7 +180,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see value "{SavedValue:fundingAccount}" for title "Funding Account" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
     And I collect all the soft asserts
 
-  @38215  @VerifyActiveGrantsAccessToAllUsers @mahadev
+  @38215 @67913 @VerifyActiveGrantsAccessToAllUsers @mahadev
   Scenario Outline: Verify all internal users can view active grants
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -187,7 +188,11 @@ Feature: Validate all scenarios of grants and award without background
     When I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---progressReport:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
-    Then I see field "Status" as "Active"
+    Then I softly see field "Status" as "Active"
+    And I select "Download As PDF" from dropdown
+    And I download the file
+    Then I softly verify that "pdf" file is downloaded
+    And I collect all the soft asserts
     Examples:
       | Grant Name                 |
       | Automation Permanent Award |
@@ -912,7 +917,7 @@ Feature: Validate all scenarios of grants and award without background
       | Grant Name                 |
       | Automation Permanent Award |
 
-  @66224 @validateSourceNdInstructionField  @mahadev
+  @66224 @66210 @validateSourceNdInstructionField  @mahadev
   Scenario: To verify that if source and instruction field  unfilled in site visit review and upon clicking on the save button by the award owner (Pm profile) on the top right corner of the page validation error must be thrown.
     And I delete the record "Automation Site Visit" from the object "Site Visit"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -924,12 +929,14 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
     Given I navigate to "Management" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
+    And I softly see all the fields are present for site visit while initializing it
     And I enter "Creation" values from "SiteVisit_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I enter "SourceError" values from "SiteVisit_Field_Values.xlsx"
     When I click on "Save" in the page details
-    Then I see the following messages in the page details :
+    Then I softly see the following messages in the page details :
       | Source is Required to save under Overview. |
+    And I collect all the soft asserts
 
   @66223 @ErrorMsgForPurposeField  @jitendra
   Scenario: TTo verify that if Purpose field in plan table is left unfilled in site visit review and upon clicking on the save button by the award owner (Pm profile) on the top right corner of the page validation error must be thrown

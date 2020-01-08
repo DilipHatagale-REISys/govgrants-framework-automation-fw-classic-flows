@@ -533,4 +533,65 @@ public class ProjectManager extends ProjectWebServices {
                     "or "+currentBalance);
         }
     }
+
+    public void validateModalEnlargeAndGrantDetails(String usage) {
+        By modalEnlarge = By.xpath("//div[@id='editDiv']/div[2]");
+        String[] ids = {
+                "LaverageAllowed__c",
+                "IsProgramIncomeAnticipated__c",
+                "IsAdvancePermitted__c",
+                "FocusAreaRequired__c",
+                "IsGoalsRequired__c",
+                "KPIsRequired__c",
+                "RiskAssessmentRequired__c",
+                "WBSRequired__c",
+                "IsBuildUpFunctionality__c",
+                "AreExpensesBuildIUpLevel__c",
+                "IsMatchRequired__c",
+                "GranteeMatch__c",
+                "BudgetRedirectionThreshhold__c"
+        };
+        if (usage.contains("softly")){
+            EyeThink.core().assertion().assertThat(EyeThink.core().elementReference().of(modalEnlarge)
+            .isDisplayed()).isTrue();
+            for (String id : Arrays.asList(ids)){
+                By idToLookFor = By.xpath("//*[@id='"+id+"']");
+                EyeThink.core().assertion().assertThat(EyeThink.core()
+                .elementReference().of(idToLookFor).isDisplayed()).isTrue();
+            }
+        } else {
+            Assert.assertTrue(EyeThink.core().elementReference().of(modalEnlarge)
+                    .isDisplayed());
+            for (String id : Arrays.asList(ids)){
+                By idToLookFor = By.xpath("//*[@id='"+id+"']");
+                Assert.assertTrue(EyeThink.core().elementReference().of(idToLookFor)
+                        .isDisplayed());
+            }
+        }
+    }
+
+    public void allFieldsCheckSiteVisit(String usage) {
+        String[] ids = {
+                "Title__c",
+                "GranteePOCContact__c",
+                "MonitoringType__c"
+        };
+
+        if (usage.contains("softly")){
+            for (String id : Arrays.asList(ids)){
+                EyeThink.core().assertion().assertThat(
+                        EyeThink.core().elementReference()
+                                .of(By.id(id)).isDisplayed()
+                ).isTrue().as("Field having Id "+id+" is not present on page");
+            }
+        } else {
+            for (String id : Arrays.asList(ids)){
+                Assert.assertTrue(
+                        "Field having Id "+id+" is not present on page",
+                        EyeThink.core().elementReference()
+                                .of(By.id(id)).isDisplayed()
+                );
+            }
+        }
+    }
 }

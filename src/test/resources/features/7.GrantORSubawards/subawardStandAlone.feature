@@ -2500,7 +2500,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Remove" icon for "Automation Permanent Objective" inside flex table with id "---subAwardStandAlone:-:objectivesTableId---"
     Then I do not see value "Automation Permanent Objective" for title "Title" inside table "---subAwardStandAlone:-:objectivesTableId---"
 
-  @45756 @validateAwardRejectionByProgramApprover @mahadev
+  @45756 @67969 @validateAwardRejectionByProgramApprover @mahadev
   Scenario Outline: Validate award Rejection by Program approver
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -2512,6 +2512,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
+    And I save the value from row "1" for column name "Available Balance" as "award available balance" from flex table "---subAwardStandAlone:-:fundingAccountsTableId---"
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
@@ -2595,7 +2596,10 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
     And I click on "Disapprove" on the approval decision box
-    Then I see status in Progress-bar is "Rejected" and is "Red"
+    Then I softly see status in Progress-bar is "Rejected" and is "Red"
+    And I navigate to "Budget" sub tab
+    Then I softly see value "{SavedValue:award available balance}" for title "Available Balance" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    And I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
