@@ -2,8 +2,10 @@ package com.ggproduct.automation.steps;
 
 import com.ggproduct.automation.pageobjects.AwardPage;
 import eyethink.automation.bots.Register.EyeThink;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.springframework.context.annotation.Description;
 
 public class AwardSteps {
@@ -21,5 +23,31 @@ public class AwardSteps {
         } else {
             Assert.assertTrue(awardPage.isFieldEditable(fieldAPIName));
         }
+    }
+
+    @And("^I (softly see|see) \"([^\"]*)\" is present after mouse hover for active subaward$")
+    public void iSeeIsPresentAfterMouseHoverForActiveSubaward(String usage, String createdUser) {
+        awardPage.assertSeeTextAfterHoveringOnAward(usage,createdUser);
+    }
+
+    @And("^I mouse hover to link contains \"([^\"]*)\"$")
+    public void iMouseHoverToLinkContains(String link) {
+        EyeThink.core().scroll().moveToElement(EyeThink.core()
+        .elementReference().of(By.xpath("//a[text()='"+link+"']")));
+    }
+
+    @And("I save the field value having link labeled \"([^\"]*)\" as \"([^\"]*)\"")
+    public void iSaveTheFieldValueHavingLinkLabeledAs(String label, String fieldKey) {
+        awardPage.saveFieldValueHavingLinkLabeledAs(label,fieldKey);
+    }
+
+    @And("I click \"([^\"]*)\" link present on hovered tooltip")
+    public void iClickLinkPresentOnHoveredTooltip(String text) {
+        EyeThink.core().click().on(By.xpath("//div[contains(@class,'form-group')]//a[text()='"+text+"']"));
+    }
+
+    @Then("^I (softly see|see) page title contains as \"([^\"]*)\"$")
+    public void iSeeWindowTitleContainsAs(String usage, String textContains) {
+        awardPage.assertToSeeWindowTitleContains(usage, textContains);
     }
 }
