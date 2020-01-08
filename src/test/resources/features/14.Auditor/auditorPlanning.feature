@@ -112,8 +112,21 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
       | User    | FundingSource                       |
       | AUDITOR | Automation Permanent Funding Source |
 
+  @auditorCanViewActiveFundingSource
+  Scenario Outline: Validate Auditor should have view / read  only access to Active Funding Source
+    When I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Planning" tab
+    When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Internal Funding Sources - Active"
+    When I perform quick search for "<FundingSource>" in "---fundingsource:-:fundingSourceTableId---" panel
+    Then I softly can see row level action button "View" against "<FundingSource>" in flex table with id "---fundingsource:-:fundingSourceTableId---"
+    Examples:
+      | User    | FundingSource                       |
+      | AUDITOR | Automation Permanent Funding Source |
+
+
   @67847 @auditorCannotCreateKPI @deepika
-  Scenario Outline: Verify Auditor profile user cannot create a new Funding Source
+  Scenario Outline: Verify Auditor profile user cannot create a new KPI
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
     When I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
@@ -180,4 +193,61 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
     Examples:
       | User    |
       | AUDITOR |
+
+  @auditorCannotCreateTermsAndConditions @deepika
+  Scenario Outline: Verify Auditor profile user cannot create a new Terms and Conditions
+    When I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Planning" tab
+    When I navigate to "Terms and Conditions" content inside "Setup" subheader on left panel
+    Then I cannot see top right button "New" for "---auditor:-:termsandconditionstableID---" flex table
+    Examples:
+      | User    |
+      | AUDITOR |
+
+  @auditorViewTermsAndConditions @deepika
+  Scenario Outline: Auditor should have view / read  only access to Active Terms and Conditions
+    When I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Planning" tab
+    When I navigate to "Terms and Conditions" content inside "Setup" subheader on left panel
+    When I perform quick search for "Active" in "---auditor:-:termsandconditionstableID---" panel
+    Then I softly can see row level action button "View" against "Active" in flex table with id "---auditor:-:termsandconditionstableID---"
+    Then I softly cannot see row level action button "Edit" against "Active" in flex table with id "---auditor:-:termsandconditionstableID---"
+    Then I collect all the soft asserts
+    Examples:
+      | User    |
+      | AUDITOR |
+
+  @auditorCannotCreateFormsandPackages @deepika
+  Scenario Outline: Verify Auditor profile user cannot create a new Terms and Conditions
+    When I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Planning" tab
+    When I navigate to "Forms and Packages" content inside "Setup" subheader on left panel
+    Then I cannot see top right button "New" for "---auditor:-:formsflextableID---" flex table
+    Examples:
+      | User    |
+      | AUDITOR |
+
+  @auditorViewCannotEditFormsandPackages  @deepika
+  Scenario Outline: Auditor should have view / read  only access to Active Terms and Conditions
+    When I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Planning" tab
+    When I navigate to "Forms and Packages" content inside "Setup" subheader on left panel
+    When I perform quick search for "PSAF - 001" in "---auditor:-:termsandconditionstableID---" panel
+    Then I softly can see row level action button "View" against "PSAF - 001" in flex table with id "---auditor:-:termsandconditionstableID---"
+    Then I softly cannot see row level action button "Edit" against "Active" in flex table with id "---auditor:-:termsandconditionstableID---"
+    Then I collect all the soft asserts
+    Examples:
+      | User    |
+      | AUDITOR |
+
+  @auditorCannotCreateExternalPrograms @deepika
+  Scenario Outline: Verify Auditor should not be  able to Create NGO program
+    When I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    Then I cannot see top right button "New" for "---auditor:-:externalProgramTableID---" flex table
+    Examples:
+      | User    |
+      | AUDITOR |
+
 

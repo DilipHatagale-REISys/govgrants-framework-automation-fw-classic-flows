@@ -1148,6 +1148,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---"
     And I enter a review as "Passed"
     When I click modal button "Save"
+    And I pause execution for "20" seconds
     And I click modal button "Submit Review"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
