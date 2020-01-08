@@ -13,22 +13,22 @@ Feature: Validate all scenarios of grants and award without background
       | EXE  |
       | FO   |
 
-    @68057 @createGrantEXE @jitendra
-      Scenario: Valiadate EXE user can create Direct Grant
-      Given I delete the record "Automation Direct Award" from the object "Award"
-      And I delete the record "Automation Direct Award" from the object "Grant"
-      When I login to "As a Grantor" app as "EXE" user
-      And I navigate to "Grants" tab
-      When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-      And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
-      And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
-      And I click modal button "Continue"
-      And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
-      When I click modal button "Save and Continue"
-      And I navigate to "Subawards" sub tab
-      And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
-      And I get the "EGMS ID"
-      Then I see status in Progress-bar is "Created" and is "Green"
+  @68057 @createGrantEXE @jitendra
+  Scenario: Valiadate EXE user can create Direct Grant
+    Given I delete the record "Automation Direct Award" from the object "Award"
+    And I delete the record "Automation Direct Award" from the object "Grant"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I get the "EGMS ID"
+    Then I see status in Progress-bar is "Created" and is "Green"
 
   @68058 @cannotCreateGrantFOUser @jitendra
   Scenario Outline: validate that FO user cannot create Direct Grant
@@ -39,6 +39,25 @@ Feature: Validate all scenarios of grants and award without background
     Examples:
       | User |
       | FO   |
+
+    @67891 @68036 @68025 @68019 @calculateAwardTotal @jitendra
+    Scenario: Validate that subaward amount in Grant Draft table is the Sum of all Subaward
+      When I login to "As a Grantor" app as "dynamicUser" user
+      And I navigate to "Grants" tab
+      When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+      And I click toggle button to select "Grants - Draft"
+      And I calculate the total from the column header "Subaward Amount" and saved it as "total" from the flex table "---subAwardStandAlone:-:activeGrantsTableId---"
+      Then I softly see total as "{SavedValue:total}" against column name "Subaward Amount" from flex table "---subAwardStandAlone:-:activeGrantsTableId---"
+      And I click toggle button to select "Grants - All"
+      And I calculate the total from the column header "Subaward Amount" and saved it as "allTotal" from the flex table "---subAwardStandAlone:-:activeGrantsTableId---"
+      Then I softly see total as "{SavedValue:allTotal}" against column name "Subaward Amount" from flex table "---subAwardStandAlone:-:activeGrantsTableId---"
+      And I click toggle button to select "Grants - Active"
+      And I calculate the total from the column header "Subaward Amount" and saved it as "activeTotal" from the flex table "---subAwardStandAlone:-:activeGrantsTableId---"
+      Then I softly see total as "{SavedValue:activeTotal}" against column name "Subaward Amount" from flex table "---subAwardStandAlone:-:activeGrantsTableId---"
+      And I click toggle button to select "Grants - Rejected"
+      And I calculate the total from the column header "Subaward Amount" and saved it as "rejectTotal" from the flex table "---subAwardStandAlone:-:activeGrantsTableId---"
+      Then I softly see total as "{SavedValue:rejectTotal}" against column name "Subaward Amount" from flex table "---subAwardStandAlone:-:activeGrantsTableId---"
+      And I collect all the soft asserts
 
   @65619 @65578 @65586 @65573 @validateFieldsAtGrant @jitendra
   Scenario Outline: To verify Budget period end date entered by Award owner should be same when owner click on save button.
@@ -68,6 +87,7 @@ Feature: Validate all scenarios of grants and award without background
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     Then I softly see value "Draft" for title "Status" against the value "<Award Name>" inside table "---subAwardStandAlone:-:activeGrantsTableId---"
     And I collect all the soft asserts
+    And I see value "<string>" for title "" against the value "<string>" inside table "<string>"
     Examples:
       | Award Name                            | Grant Name                            |
       | Automation Award for field validation | Automation Grant for field validation |
@@ -170,7 +190,7 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 7     |
+      | Automation Permanent KPI for Regression | 7      |
     Then I softly see value "7" for title "Target" against the value "Automation Permanent KPI for Regression" inside table "---subAwardStandAlone:-:kpiTableId---"
     When I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
@@ -1083,7 +1103,7 @@ Feature: Validate all scenarios of grants and award without background
     And I enter "SourceError" values from "DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see the following messages in the page details :
-    | Source is Required to save under Overview.|
+      | Source is Required to save under Overview. |
 
   @66410 @validateInstructionFieldInDeskReview  @mahadev
   Scenario: To verify that if instruction field is left unfilled in Desk review and upon clicking on the save button by the award owner (Pm profile) on the top right corner of the page validation message must be thrown
@@ -1102,7 +1122,7 @@ Feature: Validate all scenarios of grants and award without background
     And I enter "InstructionError" values from "DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see the following messages in the page details :
-      | Instructions for Subrecipient is Required to save under Overview.|
+      | Instructions for Subrecipient is Required to save under Overview. |
 
   @66389 @validateStatusOnAwardAfterSVSubmitToGrantor  @mahadev
   Scenario:To verify that “submit to grantor” button is clicked by SR than progress bar changes submitted to grantor from sent to subrecipient at award owner.

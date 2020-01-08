@@ -585,4 +585,25 @@ public class ProjectManager extends ProjectWebServices {
             );
         }
     }
+
+    public void validateTotalFromGivenColumnInFlexTable(String usage, String keyValue, String colName, String tableId) {
+        try {
+            WebElement row = EyeThink.core().elementReference().of(By.xpath("//div[@id='" + tableId + "']//table//tbody//tr"));
+            Map<String, Integer> columnMapping = EyeThink.saas().flexTable().constructColumnMapping(row, Collections.singleton(colName));
+            By specificColumnValue = By.xpath("//div[@id='" + tableId + "']//table//tbody//tr[last()]//td[contains(@class,'headerCell')][" + columnMapping.get(colName) + "]");
+            Number valueFromLocator = NumberFormat.getCurrencyInstance(Locale.US).parse(
+                    EyeThink.core().get().text(specificColumnValue)
+            );
+            if (usage.contains("softly")) {
+                EyeThink.core().assertion().assertThat(valueFromLocator.longValue()).isEqualTo(
+                        NumberFormat.getIntegerInstance().parse(keyValue).longValue()
+                );
+            } else {
+                Assert.assertEquals(valueFromLocator.longValue(), NumberFormat.getIntegerInstance().parse(keyValue)
+                );
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
 }
