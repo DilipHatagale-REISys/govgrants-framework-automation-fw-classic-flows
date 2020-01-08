@@ -69,17 +69,18 @@ public class AwardSteps {
         By specificColumnValue = By.xpath("//div[@id='ActiveGrants']//th//span[text()='"+colName+"']/ancestor::thead/following-sibling::tbody/tr[not(contains(@ng-if,'noRecords'))]//td["+columnMapping.get(colName)+"]/span/span");
         EyeThink.core().WaitFor().WaitForElementListToBePresent(specificColumnValue);
         List<Elements> rowValues = EyeThink.core().elementReference().listOfElements().of(specificColumnValue);
-        AtomicReference<Double> total = new AtomicReference<>(0.00);
-        rowValues.forEach(
-                rowEle -> {
+        double total = rowValues.stream().mapToDouble(
+                locator-> {
                     try {
-                        EyeThink.core().elementReference().of(rowEle);
-                        total.set(total.get() + NumberFormat.getCurrencyInstance(Locale.US).parse(rowEle.getText()).doubleValue());
+                        EyeThink.core().elementReference().of(locator);
+                        return NumberFormat.getCurrencyInstance(Locale.US).parse(locator.getText()).doubleValue();
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
+                    return 0.0;
                 }
-        );
-        EyeThink.core().Properties().saveValue(key,total.toString());
+        ).sum();
+
+        EyeThink.core().Properties().saveValue(key,String.valueOf(total));
     }
 }
