@@ -27,19 +27,7 @@ public class AwardSteps {
 
     @And("^I (softly see|see) \"([^\"]*)\" is present after mouse hover for active subaward$")
     public void iSeeIsPresentAfterMouseHoverForActiveSubaward(String usage, String createdUser) {
-        By createdBy = By.xpath("//span[text()='Activated' and @class='progressStatusText']/parent::span[contains(@onmouseover,'"+createdUser+"')]");
-        By createdOnDate = By.xpath("//span[text()='Activated' and @class='progressStatusText']/parent::span[contains(@onmouseover,'Date')]");
-        if (usage.contains("softly")){
-            EyeThink.core().assertion().assertThat(
-                    EyeThink.core().elementReference().of(createdBy).isDisplayed() &&
-                    EyeThink.core().elementReference().of(createdOnDate).isDisplayed()).isTrue();
-        } else {
-            Assert.assertTrue(
-                    EyeThink.core().elementReference().of(createdBy).isDisplayed() &&
-                            EyeThink.core().elementReference().of(createdOnDate).isDisplayed()
-            );
-        }
-
+        awardPage.assertSeeTextAfterHoveringOnAward(usage,createdUser);
     }
 
     @And("^I mouse hover to link contains \"([^\"]*)\"$")
@@ -50,25 +38,12 @@ public class AwardSteps {
 
     @Then("^I (softly see|see) \"([^\"]*)\" in hovered link tooltip$")
     public void iSeeInHoveredLinkTooltip(String usage, String text) {
-       By textToBeSeen = By.xpath("//p[contains(@class,'tooltip-title') and text()='"+text+"']");
-       if (usage.contains("softly")){
-           EyeThink.core().assertion().assertThat(
-                   EyeThink.core().elementReference().of(textToBeSeen)
-                   .isDisplayed()
-           ).isTrue();
-       } else {
-           Assert.assertTrue(
-                   EyeThink.core().elementReference().of(textToBeSeen)
-                   .isDisplayed()
-           );
-       }
+       awardPage.assertToSeeTextAfterHoveringOnLinkTooltip(usage,text);
     }
 
     @And("I save the field value having link labeled \"([^\"]*)\" as \"([^\"]*)\"")
     public void iSaveTheFieldValueHavingLinkLabeledAs(String label, String fieldKey) {
-        By value = By.xpath("//dt/span[contains(.,'"+label+"')]/ancestor::dl[1]/dd//a[text()] | //dt/span[contains(.,'"+label+"')]/ancestor::dl[1]/following-sibling::dd//a[text()]");
-        EyeThink.core().Properties().saveValue(fieldKey, EyeThink.core().get()
-        .text(value));
+        awardPage.saveFieldValueHavingLinkLabeledAs(label,fieldKey);
     }
 
     @And("I click \"([^\"]*)\" link present on hovered tooltip")
@@ -78,14 +53,6 @@ public class AwardSteps {
 
     @Then("^I (softly see|see) page title contains as \"([^\"]*)\"$")
     public void iSeeWindowTitleContainsAs(String usage, String textContains) {
-        if (usage.contains("softly")){
-            EyeThink.core().assertion().assertThat(
-                    EyeThink.core().get().text(By.xpath("//*[@id='pageHeaderId']//span[@class='overview-title']")).contains(textContains)
-            ).isTrue();
-        } else {
-            Assert.assertTrue(
-                    EyeThink.core().get().text(By.xpath("//*[@id='pageHeaderId']//span[@class='overview-title']")).contains(textContains)
-            );
-        }
+        awardPage.assertToSeeWindowTitleContains(usage, textContains);
     }
 }
