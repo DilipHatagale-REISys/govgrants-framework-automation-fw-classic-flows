@@ -380,9 +380,4 @@ public class GenericSteps {
     public void iSeeAllTheFieldsArePresentForSiteVisit(String usage) {
         projectManager.allFieldsCheckSiteVisit(usage);
     }
-
-    @Then("^I (softly see|see) total as \"([^\"]*)\" against column name \"([^\"]*)\" from flex table \"([^\"]*)\"$")
-    public void iSeeTotalAsAgainstColumnName(String usage, String keyValue, String colName, String tableId) {
-        projectManager.validateTotalFromGivenColumnInFlexTable(usage,keyValue,colName,tableId);
-    }
 }
