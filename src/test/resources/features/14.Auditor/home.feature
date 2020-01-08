@@ -204,4 +204,13 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     When I navigate to "Home" tab
     Then I see task count for "Planning" phase with the total records of flex table id "PhasePendingTasks"
 
+    @auditorCompletedTask
+    Scenario: Verify Auditor does not have any completed tasks
+      Given I login to "As a Grantor" app as "dynamicUser" user
+      And I navigate to "Home" tab
+      When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+      Then I softly see "No Records Found" inside flex table with id "---home:-:completedAssignedToMe---"
+      Then I softly see "No Records Found" inside flex table with id "---home:-:completedAssignedByMe---"
+      Then I collect all the soft asserts
+
 

@@ -1148,6 +1148,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---"
     And I enter a review as "Passed"
     When I click modal button "Save"
+    And I pause execution for "20" seconds
     And I click modal button "Submit Review"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1681,6 +1682,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I pause execution
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
