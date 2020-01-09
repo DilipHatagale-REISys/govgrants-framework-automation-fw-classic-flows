@@ -62,9 +62,9 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Automation ind23" in "---home:-:indActiveAccountId---" panel
-    And I click on "View" icon for "Automation ind23" inside flex table with id "---home:-:indActiveAccountId---"
-    Then I see that "Automation ind23" is in "Active" status
+    When I perform quick search for "Automation ind123" in "---home:-:indActiveAccountId---" panel
+    And I click on "View" icon for "Automation ind123" inside flex table with id "---home:-:indActiveAccountId---"
+    Then I see that "Automation ind123" is in "Active" status
     Examples:
       | User    |
       | AUDITOR |
@@ -74,8 +74,8 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Automation ind23" in "---home:-:indActiveAccountId---" panel
-    Then I cannot see row level action button "Edit" against "Automation ind23" in flex table with id "---home:-:indActiveAccountId---"
+    When I perform quick search for "Automation ind123" in "---home:-:indActiveAccountId---" panel
+    Then I cannot see row level action button "Edit" against "Automation ind123" in flex table with id "---home:-:indActiveAccountId---"
     Examples:
       | User    |
       | AUDITOR |

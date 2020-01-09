@@ -610,7 +610,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     Then I can see row level action button "Edit" against "Record Id" in flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
 
-  @58822 @58823 @riskAssessmentRevisionBeforeAwardActivation @deepika
+  @58822 @riskAssessmentRevisionBeforeAwardActivation @deepika
   Scenario Outline: Validate the 'New' Button  availability to create  a new Risk Assessment is not available to Award Owner after award activation
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
