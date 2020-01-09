@@ -75,10 +75,13 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
     When I click "Add" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
     When I click "Add" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
+    And I pause execution
     When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
     When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
@@ -148,6 +151,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
     When I click "Add" after selection of "Automation EXE" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
@@ -357,6 +361,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
     When I click "Add" after selection of "Automation EXE" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Overview" sub tab
@@ -562,6 +567,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
     When I click "Add" after selection of "Automation EXE" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
