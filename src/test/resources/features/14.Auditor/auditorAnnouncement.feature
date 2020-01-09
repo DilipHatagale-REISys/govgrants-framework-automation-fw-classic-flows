@@ -1,8 +1,8 @@
-@auditorAnnouncement
+@auditorAnnouncement @auditor
 Feature: Validate all scenarios for Auditor Profile in Announcement Module
 
   @auditorCannotCreateAnnouncement
-  Scenario: Validate Auditor should not be able to  Create/Edit Focus area
+  Scenario: Validate Auditor should not be able to  Create/Edit Announcement
     Given I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -46,7 +46,7 @@ Feature: Validate all scenarios for Auditor Profile in Announcement Module
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Competitive Announcements"
-    And I perform quick search for "Announcement" in "<string>" panel
+    And I perform quick search for "Announcement" in "ActiveFundingOpportunitiesCompitive" panel
     Then I cannot see row level action button "Edit" against "<Announcement>" in flex table with id "ActiveFundingOpportunitiesCompitive"
     Examples:
       | User    | Announcement                        |
@@ -73,4 +73,3 @@ Feature: Validate all scenarios for Auditor Profile in Announcement Module
     Then I softly cannot see top right button "Submit For Approval" in page detail
     Then I softly cannot see top right button "Publish" in page detail
     Then I collect all the soft asserts
-

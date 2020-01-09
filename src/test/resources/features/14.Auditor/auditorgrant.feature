@@ -1,0 +1,37 @@
+@auditorGrant/Award @auditor
+Feature: Validate all scenarios for Auditor Profile in Grant/Award
+
+  @auditorCannotCreateGrantandSubaward
+  Scenario: Validate Auditor should not be able to  Create/Edit Grant
+    Given I login to "As a Grantor" app as "AUDITOR" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    Then I cannot see top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+
+  @auditorCannotEDitActiveGrantAward
+  Scenario: Validate Auditor do not have permission Edit permission for Grant/Subaward
+    Given I login to "As a Grantor" app as "AUDITOR" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I perform quick search for "Automation Permanent Award" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    Then I softly cannot see row level action button "Edit" against "Automation Permanent Award" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I click on "View" icon for "Automation Permanent Award" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I navigate to "Subawards" sub tab
+    And I perform quick search for "Automation Permanent Award" in "---subAwardStandAlone:-:subawardsTableId---" panel
+    Then I softly cannot see row level action button "Edit" against "Automation Permanent Award" in flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    Then I collect all the soft asserts
+
+  @auditorCanViewActiveGrantAward
+  Scenario: Validate Auditor should have view / read  only access to record.
+      Given I login to "As a Grantor" app as "AUDITOR" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I perform quick search for "Automation Permanent Award" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    When I click on "View" icon for "Automation Permanent Award" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    Then I softly see status in Progress-bar is "Active" and is "green"
+    And I navigate to "Subawards" sub tab
+    And I perform quick search for "Automation Permanent Award" in "---subAwardStandAlone:-:subawardsTableId---" panel
+    When I click on "View" icon for "Automation Permanent Award" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    Then I softly see status in Progress-bar is "Activated" and is "green"
+   Then I collect all the soft asserts
+

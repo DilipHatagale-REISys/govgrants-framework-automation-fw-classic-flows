@@ -1,4 +1,4 @@
-@auditorApplication  @auditorNegotiations
+@auditorApplication  @auditorNegotiations @auditor
 Feature: Validate all scenarios for Auditor Profile in Application Module
 
   @Auditorapplication @wip
