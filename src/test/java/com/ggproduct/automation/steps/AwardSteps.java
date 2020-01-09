@@ -2,11 +2,21 @@ package com.ggproduct.automation.steps;
 
 import com.ggproduct.automation.pageobjects.AwardPage;
 import eyethink.automation.bots.Register.EyeThink;
+import eyethink.automation.bots.objects.Elements;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.springframework.context.annotation.Description;
+
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class AwardSteps {
     AwardPage awardPage;
@@ -49,5 +59,28 @@ public class AwardSteps {
     @Then("^I (softly see|see) page title contains as \"([^\"]*)\"$")
     public void iSeeWindowTitleContainsAs(String usage, String textContains) {
         awardPage.assertToSeeWindowTitleContains(usage, textContains);
+    }
+
+    @And("I calculate the total from the column header \"([^\"]*)\" and saved it as \"([^\"]*)\" from the flex table \"([^\"]*)\"")
+    public void iCalculateTheTotalFromTheColumnHeaderAndSavedItAsFromTheFlexTable(String colName, String key, String tableId) {
+        EyeThink.core().WaitFor().makeThreadSleep(5000);
+        WebElement row = EyeThink.core().elementReference().of(By.xpath("//div[@id='" + tableId + "']//table//tbody//tr"));
+        Map<String, Integer> columnMapping = EyeThink.saas().flexTable().constructColumnMapping(row, Collections.singleton(colName));
+        By specificColumnValue = By.xpath("//div[@id='ActiveGrants']//th//span[text()='"+colName+"']/ancestor::thead/following-sibling::tbody/tr[not(contains(@ng-if,'noRecords'))]//td["+columnMapping.get(colName)+"]/span/span");
+        EyeThink.core().WaitFor().WaitForElementListToBePresent(specificColumnValue);
+        List<Elements> rowValues = EyeThink.core().elementReference().listOfElements().of(specificColumnValue);
+        double total = rowValues.stream().mapToDouble(
+                locator-> {
+                    try {
+                        EyeThink.core().elementReference().of(locator);
+                        return NumberFormat.getCurrencyInstance(Locale.US).parse(locator.getText()).doubleValue();
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    return 0.0;
+                }
+        ).sum();
+
+        EyeThink.core().Properties().saveValue(key,String.valueOf(total));
     }
 }
