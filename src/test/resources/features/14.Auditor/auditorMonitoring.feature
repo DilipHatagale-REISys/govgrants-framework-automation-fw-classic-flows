@@ -56,12 +56,4 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
       | User    |
       | AUDITOR |
 
-  @auditorOrgLevelDeskReview
-  Scenario Outline: Validate Auditor should have view / read  only access to Organization level Desk Review
-    Given I login to "As a Grantor" app as "<User>" user
-    When I navigate to "Monitoring" tab
-
-    Examples:
-      | User    |
-      | AUDITOR |
 
