@@ -573,16 +573,26 @@ public class ProjectManager extends ProjectWebServices {
         if (usage.contains("softly")){
             ids.forEach(
                     id -> EyeThink.core().assertion().assertThat(
-                            EyeThink.core().is().isDisplayed(By.id(id))
+                            EyeThink.core().is().isDisplayed(By.xpath("//*[@id='"+id+"']"))
                     ).isTrue().as("Field having Id "+id+" is not present on page")
             );
         } else {
             ids.forEach(
                     id -> Assert.assertTrue(
                             "Field having Id "+id+" is not present on page",
-                            EyeThink.core().is().isDisplayed(By.id(id))
+                            EyeThink.core().is().isDisplayed(By.xpath("//*[@id='"+id+"']"))
                     )
             );
         }
+    }
+
+    public boolean assertToCheckFieldPresentOnPageUnderSpecificTable(String fieldLabel, String tableHeaderTitle){
+       By fieldToFindOnPage = By.xpath("//a[text()='"+tableHeaderTitle+"']//ancestor::div[@class='tab-inner-content']//span[text()='"+fieldLabel+"']");
+       try{
+           EyeThink.core().elementReference().of(fieldToFindOnPage);
+           return true;
+       }catch (Exception ee){
+           return false;
+       }
     }
 }

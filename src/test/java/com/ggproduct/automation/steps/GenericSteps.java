@@ -380,4 +380,27 @@ public class GenericSteps {
     public void iSeeAllTheFieldsArePresentForSiteVisit(String usage) {
         projectManager.allFieldsCheckSiteVisit(usage);
     }
+
+    @Then("^I (softly cannot see|cannot see|softly see|see) field label \"([^\"]*)\" present on page under \"([^\"]*)\" table$")
+    public void iDoNotSeeFieldLabelPresentOnPageUnderTable(String usage, String fieldLabel, String tableHeaderTitle) {
+        if (usage.contains("softly")) {
+            if (usage.contains("not")) {
+                EyeThink.core().assertion().assertThat(projectManager.assertToCheckFieldPresentOnPageUnderSpecificTable(fieldLabel, tableHeaderTitle))
+                        .isFalse().as("Field " + fieldLabel + " is still present on the page under table " + tableHeaderTitle);
+            } else {
+                EyeThink.core().assertion().assertThat(projectManager.assertToCheckFieldPresentOnPageUnderSpecificTable(fieldLabel, tableHeaderTitle))
+                        .isTrue().as("Field " + fieldLabel + " is not present on the page under table " + tableHeaderTitle);
+            }
+        } else {
+            if (usage.contains("not")){
+                Assert.assertFalse(
+                        projectManager.assertToCheckFieldPresentOnPageUnderSpecificTable(fieldLabel, tableHeaderTitle)
+                );
+            } else {
+                Assert.assertTrue(
+                        projectManager.assertToCheckFieldPresentOnPageUnderSpecificTable(fieldLabel, tableHeaderTitle)
+                );
+            }
+        }
+    }
 }
