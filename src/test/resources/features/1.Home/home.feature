@@ -51,9 +51,9 @@ Feature: Validate all scenarios in the home tab
     And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---home:-:subrecipientActiveAccountId---"
     Then I softly see that "Subrecipient Organization" is in "Active" status
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Automation ind123" in "---home:-:indActiveAccountId---" panel
-    And I click on "View" icon for "Automation ind123" inside flex table with id "---home:-:indActiveAccountId---"
-    Then I softly see that "Automation ind123" is in "Active" status
+    When I perform quick search for "{user:fullName}" in "---home:-:indActiveAccountId---" panel
+    And I click on "View" icon for "{user:fullName}" inside flex table with id "---home:-:indActiveAccountId---"
+    Then I softly see that "{user:fullName}" is in "Active" status
     Then I collect all the soft asserts
     Examples:
       | User  |
@@ -68,8 +68,8 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
     When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "---home:-:subrecipientActiveAccountId---" panel
     Then I softly can see row level action button "Edit" against "SAN DIEGO ELECTRICAL TRAINING TRUST" in flex table with id "---home:-:subrecipientActiveAccountId---"
-    When I perform quick search for "Automation ind123" in "---home:-:indActiveAccountId---" panel
-    Then I softly can see row level action button "Edit" against "Automation ind123" in flex table with id "---home:-:indActiveAccountId---"
+    When I perform quick search for "{user:fullName}" in "---home:-:indActiveAccountId---" panel
+    Then I softly can see row level action button "Edit" against "{user:fullName}" in flex table with id "---home:-:indActiveAccountId---"
     Then I collect all the soft asserts
     Examples:
       | User  |
@@ -401,8 +401,8 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Automation ind123" in "ActiveAccountIndApplicant" panel
-    When I click on "View" icon for "Automation ind123" inside table without waiting for record
+    When I perform quick search for "{user:fullName}" in "---home:-:indActiveAccountId---" panel
+    When I click on "View" icon for "{user:fullName}" inside table without waiting for record
     And I click on top right button "New" in flex table with id "AdditionalAddressInternal"
     And I enter "AdditioanlAddressesCreation" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
@@ -493,8 +493,8 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Automation ind123" in "ActiveAccountIndApplicant" panel
-    Then I can see row level action button "View" against "Automation ind123" in flex table with id "ActiveAccountIndApplicant"
+    When I perform quick search for "{user:fullName}" in "---home:-:indActiveAccountId---" panel
+    Then I can see row level action button "View" against "{user:fullName}" in flex table with id "---home:-:indActiveAccountId---"
     Examples:
       | User  |
       | ADMIN |
@@ -605,8 +605,8 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Automation ind123" in "---home:-:indActiveAccountId---" panel
-    Then I cannot see row level action button "Edit" against "Automation ind123" in flex table with id "---home:-:indActiveAccountId---"
+    When I perform quick search for "{user:fullName}" in "---home:-:indActiveAccountId---" panel
+    Then I cannot see row level action button "Edit" against "{user:fullName}" in flex table with id "---home:-:indActiveAccountId---"
 
   @62105 @externalUserhomePendingTask @deepika
   Scenario: The Pending Task on the left Navigation shows Pending Tasks that are created for Subrecipient Users
@@ -650,8 +650,8 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Home" tab
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
     When I navigate to "Overview" sub tab
-    When I perform quick search for "Automation ind123" in "---home:-:indContactTableId---" panel
-    Then I see that "Automation ind123" has been added in flextable with Id "---home:-:indContactTableId---"
+    When I perform quick search for "{user:fullName}" in "---home:-:indContactTableId---" panel
+    Then I see that "{user:fullName}" has been added in flextable with Id "---home:-:indContactTableId---"
 
   @62255 @CreatedNotes @keerti
   Scenario: Verify created notes on Home Tab

@@ -1604,8 +1604,8 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Automation ind123" in "---home:-:indActiveAccountId---" panel
-    And I click on "View" icon for "Automation ind123" inside flex table with id "---home:-:indActiveAccountId---"
+    When I perform quick search for "{user:fullName}" in "---home:-:indActiveAccountId---" panel
+    And I click on "View" icon for "{user:fullName}" inside flex table with id "---home:-:indActiveAccountId---"
     Then I can see "Risk Assessment" sub tab at view detail page
 
   @64514 @overallRiSKScoreWhenAssessmentSelectedDiffTypeQuestions @deepika @wip
