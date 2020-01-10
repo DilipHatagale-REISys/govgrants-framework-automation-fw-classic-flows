@@ -62,7 +62,9 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
     When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
-    Then I cannot see row level action button "Create Subaward" against Value "Automation Announcement for FDM" inside "---subAwardFromFDM:-:recommendedAppTableId---" flex table
+    Then I softly see status in Progress-bar is "Approved" and is "green"
+    Then I softly cannot see row level action button "Create Subaward" against Value "Automation Announcement for FDM" inside "---subAwardFromFDM:-:recommendedAppTableId---" flex table
+    Then I collect all the soft asserts
 
   @auditorApplication
   Scenario: Validate Auditor should be  able to View submitted application details
