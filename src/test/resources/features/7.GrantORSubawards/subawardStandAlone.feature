@@ -148,7 +148,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly see that "Automation EXE" has been added in flextable with Id "---subAwardStandAlone:-:awardApproversTableId---"
     Then I collect all the soft asserts
 
-  @51147 @65491 @51148 @65415 @allSendToRecipientAndAcceptanceBySRBeforeApproval @smoke
+  @51147 @65491 @65415 @allSendToRecipientAndAcceptanceBySRBeforeApproval @smoke
   Scenario Outline: Validate the award send to recipient and acceptance by recipient before approval
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
