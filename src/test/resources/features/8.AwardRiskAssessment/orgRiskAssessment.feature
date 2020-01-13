@@ -1004,6 +1004,8 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    When I navigate to "Terms" sub tab
+    When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1309,6 +1311,8 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    When I navigate to "Terms" sub tab
+    When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1600,8 +1604,8 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Automation ind23" in "---home:-:indActiveAccountId---" panel
-    And I click on "View" icon for "Automation ind23" inside flex table with id "---home:-:indActiveAccountId---"
+    When I perform quick search for "{user:fullName}" in "---home:-:indActiveAccountId---" panel
+    And I click on "View" icon for "{user:fullName}" inside flex table with id "---home:-:indActiveAccountId---"
     Then I can see "Risk Assessment" sub tab at view detail page
 
   @64514 @overallRiSKScoreWhenAssessmentSelectedDiffTypeQuestions @deepika @wip
