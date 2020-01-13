@@ -112,8 +112,8 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Terms" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
-    And I perform quick search for "Non - Mandatory TnC 1" in "---subAwardStandAlone:-:termsAndConditionModalId---" panel
-    When I click "Add" after selection of "Non - Mandatory TnC 1" in the table "---subAwardStandAlone:-:termsAndConditionModalId---"
+    And I perform quick search for "Non - Mandatory TnC 1" in "---subAwardStandAlone:-:termsndConditionsTableId---" panel
+    When I click "Add" after selection of "Non - Mandatory TnC 1" in the table "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Standard" inside flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I enter value "2" into field "Sequence__c"
@@ -823,7 +823,7 @@ Feature: Validate all scenarios of grants and award without background
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     Then I softly cannot see row level action button "Edit" against "Mandatory TnC 10" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
-    When I click "Add" after selection of "Non - Mandatory TnC 1" in the table "---subAwardStandAlone:-:termsAndConditionModalId---"
+    When I click "Add" after selection of "Non - Mandatory TnC 1" in the table "---subAwardStandAlone:-:termsndConditionsTableId---"
     When I close "Associate Terms and Conditions" modal by clicking the top right x button
     Then I softly see value "Non - Mandatory TnC 1" for title "Title" inside table "---subAwardStandAlone:-:termsndConditionsTableId---"
     Then I collect all the soft asserts
