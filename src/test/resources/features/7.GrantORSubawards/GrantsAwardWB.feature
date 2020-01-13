@@ -40,7 +40,7 @@ Feature: Validate all scenarios of grants and award without background
       | User |
       | FO   |
 
-    @67891 @68036 @68025 @68019 @calculateAwardTotal @jitendra
+    @67891 @68036 @68025 @68019 @68021 @calculateAwardTotal @jitendra
     Scenario: Validate that subaward amount in Grant Draft table is the Sum of all Subaward
       When I login to "As a Grantor" app as "dynamicUser" user
       And I navigate to "Grants" tab
@@ -57,6 +57,9 @@ Feature: Validate all scenarios of grants and award without background
       And I click toggle button to select "Grants - Rejected"
       And I calculate the total from the column header "Subaward Amount" and saved it as "rejectTotal" from the flex table "---subAwardStandAlone:-:activeGrantsTableId---"
       Then I softly see total as "{SavedValue:rejectTotal}" against column name "Subaward Amount" from flex table "---subAwardStandAlone:-:activeGrantsTableId---"
+      And I click toggle button to select "Grants - Closed"
+      And I calculate the total from the column header "Subaward Amount" and saved it as "closedTotal" from the flex table "---subAwardStandAlone:-:activeGrantsTableId---"
+      Then I softly see total as "{SavedValue:closedTotal}" against column name "Subaward Amount" from flex table "---subAwardStandAlone:-:activeGrantsTableId---"
       And I collect all the soft asserts
 
   @65619 @65578 @65586 @65573 @validateFieldsAtGrant @jitendra
@@ -241,7 +244,7 @@ Feature: Validate all scenarios of grants and award without background
     When I click on "Save" in the page details
     Then I see field "Status" as "Draft"
 
-  @64784  @VerifyBPDatesOnGrant @mahadev
+  @64784 @68054 @VerifyBPDatesOnGrant @mahadev
   Scenario Outline: Verify Budget Period Dates value on grant subaward Tab is same as the Estimated Project Period Start Date and End date on announcement
     Given I delete the record "Automation Desk Review" from the object "Desk Review"
     When I delete the record "Automation Site Visit" from the object "Site Visit"
@@ -255,6 +258,8 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "Create Subaward" icon for "<Annoucement>" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I enter value "Automation Test Description" into field "fieldGrantAwardDescription__c"
     When I click on "Save" in the page details
+    Then I softly see field "Subaward Type" as "Initial"
+    Then I softly see field "Version Number" as "1"
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Published Competitive Announcements"
@@ -268,7 +273,8 @@ Feature: Validate all scenarios of grants and award without background
     When I perform quick search for "<Annoucement>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Annoucement>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
-    Then I see value "{SavedValue:PPStartDate} - {SavedValue:PPEndDate}" for title "Budget Period Dates" against the value "<Annoucement>" inside table "---progressreport:-:subawardsTableId---"
+    Then I softly see value "{SavedValue:PPStartDate} - {SavedValue:PPEndDate}" for title "Budget Period Dates" against the value "<Annoucement>" inside table "---progressreport:-:subawardsTableId---"
+    And I collect all the soft asserts
     Examples:
       | Annoucement                     |
       | Automation Announcement for FDM |
@@ -947,16 +953,20 @@ Feature: Validate all scenarios of grants and award without background
       | Grant Name                 |
       | Automation Permanent Award |
 
-  @66224 @66210 @validateSourceNdInstructionField  @mahadev
+  @66224 @66210 @67895 @validateSourceNdInstructionField  @mahadev
   Scenario: To verify that if source and instruction field  unfilled in site visit review and upon clicking on the save button by the award owner (Pm profile) on the top right corner of the page validation error must be thrown.
+    | @67895 Validate BP number from subaward is updating the BP number on Grant upon activation of Subaward
     And I delete the record "Automation Site Visit" from the object "Site Visit"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I navigate to "Overview" sub tab
+    And I save the value from row "1" for column name "Budget Period" as "budgetPeriodAcronym" from flex table "---subAwardStandAlone:-:GrantorBudgetPeriodTableId---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
+    Then I softly see value "{SavedValue:budgetPeriodAcronym}" for title "Budget Period" against the value "Automation Permanent Award" inside table "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     Given I navigate to "Management" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
     And I softly see all the fields are present for site visit while initializing it
@@ -1225,7 +1235,7 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Management" sub tab
     Then I see value "Submitted to Grantor" for title "Status" against the value "{SavedValue:EGMSID}" inside table "GrantorSiteVisitsAward"
 
-  @66655 @66750  @validateBlockGrantCreation   @mahadev
+  @66655 @66750 @68152 @validateBlockGrantCreation   @mahadev
   Scenario: To verify that Subaward is created state on progress bar when the Grant type is “Block Grant” | To verify that if the Budget Period End Date is left blank and send to subrecipient button is clicked on the top right corner of the page validation message appear
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -1241,6 +1251,7 @@ Feature: Validate all scenarios of grants and award without background
     When I enter value "Block Grant" into field "fieldGrantType__c"
     When I enter value "Description" into field "fieldGrantDescription__c"
     When I click on "Save" in the page details
+    Then I softly cannot see field label "Grant Issue Date" present on page under "Grant Information" table
     And I navigate to "Subawards" sub tab
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     Then I softly see status in Progress-bar is "Created" and is "Green"

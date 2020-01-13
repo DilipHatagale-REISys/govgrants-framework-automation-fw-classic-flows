@@ -157,7 +157,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Executive Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
     When I enter the following values into flex table with id "---announcement:-:reviewersTableId---" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Name          | Responsibility  | Description              | Due Date | Allow Record Editing |
       | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "Automation FO" inside table
     And I get the "EGMS ID"
@@ -370,7 +370,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Executive Approver | Automation EXE | Automation Test Description |
       | Program Approver   | Automation PM  | Automation Test Description |
     When I enter the following values into flex table with id "---announcement:-:reviewersTableId---" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      |  Name | Responsibility  | Description              | Due Date | Allow Record Editing |
       | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "Automation FO" inside table
     And I get the "EGMS ID"
@@ -571,7 +571,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Executive Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
     When I enter the following values into flex table with id "---announcement:-:reviewersTableId---" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      |  Name | Responsibility  | Description              | Due Date | Allow Record Editing |
       | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "Automation FO" inside table
     And I get the "EGMS ID"

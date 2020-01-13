@@ -191,7 +191,7 @@ Feature: Validate all common scenarios in the  Announcement tab
   Scenario: Validate the assignment of Reviewer for the Announcement
     Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:reviewersTableId---" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Name          | Responsibility  | Description              | Due Date | Allow Record Editing |
       | Automation FO | Fiscal Reviewer | Review Financial details | 20       | No                   |
     Then I see that "Automation FO" has been added in flextable with Id "---announcement:-:reviewersTableId---"
 
@@ -199,7 +199,7 @@ Feature: Validate all common scenarios in the  Announcement tab
   Scenario: Validate the Reviewer initiation for the Announcement
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:reviewersTableId---" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Name          | Responsibility  | Description              | Due Date | Allow Record Editing |
       | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "Automation FO" inside table
     And I get the "EGMS ID"
@@ -209,7 +209,7 @@ Feature: Validate all common scenarios in the  Announcement tab
   Scenario Outline: Validate the review for the Announcement
     Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:reviewersTableId---" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Name          | Responsibility  | Description              | Due Date | Allow Record Editing |
       | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "Automation FO" inside table
     And I get the "EGMS ID"

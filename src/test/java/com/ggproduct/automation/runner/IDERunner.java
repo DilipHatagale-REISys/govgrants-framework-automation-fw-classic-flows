@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         glue = {"setup","com.ggproduct.automation.steps","com.automation.rei.govgrantsSteps","eyethink.automation.bots.bdd","eyethink.automation.bots.Register"},
         features = {"src/test/resources/features"},
-        plugin = {"json:target/cucumber-report/cucumber.json","pretty","html:target/cucumber-html"},
+        plugin = {"json:target/cucumber-report/cucumber.json","html:target/cucumber-html","eyethink.automation.bots.controller.ReportingLogsPlugin"},
         tags = {"@testCompareImagesYellow"},
         monochrome = true
 )
