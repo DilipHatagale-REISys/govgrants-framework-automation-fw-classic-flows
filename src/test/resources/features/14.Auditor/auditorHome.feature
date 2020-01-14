@@ -1,4 +1,4 @@
-@auditorHome
+@auditorHome @auditor
 Feature: Validate all scenarios for Auditor Profile in Home Module
 
   @auditorCannotCreateEditInternalOrganizations
@@ -62,9 +62,9 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Automation ind23" in "---home:-:indActiveAccountId---" panel
-    And I click on "View" icon for "Automation ind23" inside flex table with id "---home:-:indActiveAccountId---"
-    Then I see that "Automation ind23" is in "Active" status
+    When I perform quick search for "{user:fullName}" in "---home:-:indActiveAccountId---" panel
+    And I click on "View" icon for "{user:fullName}" inside flex table with id "---home:-:indActiveAccountId---"
+    Then I see that "{user:fullName}" is in "Active" status
     Examples:
       | User    |
       | AUDITOR |
@@ -74,8 +74,8 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "Automation ind23" in "---home:-:indActiveAccountId---" panel
-    Then I cannot see row level action button "Edit" against "Automation ind23" in flex table with id "---home:-:indActiveAccountId---"
+    When I perform quick search for "{user:fullName}" in "---home:-:indActiveAccountId---" panel
+    Then I cannot see row level action button "Edit" against "{user:fullName}{user:fullName}" in flex table with id "---home:-:indActiveAccountId---"
     Examples:
       | User    |
       | AUDITOR |
@@ -208,9 +208,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     Scenario: Verify Auditor does not have any completed tasks
       Given I login to "As a Grantor" app as "dynamicUser" user
       And I navigate to "Home" tab
-      When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+      When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
       Then I softly see "No Records Found" inside flex table with id "---home:-:completedAssignedToMe---"
       Then I softly see "No Records Found" inside flex table with id "---home:-:completedAssignedByMe---"
       Then I collect all the soft asserts
-
-
