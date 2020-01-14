@@ -34,9 +34,9 @@ Feature: Validate all scenarios in Focus Area
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
     When I enter value "Automation Execution Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
+    And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Supporting Documents"
-    And I click on "Save" in the page details
     Then I see "Supporting Documents" has been added in "Attachments" flex table
     Examples:
       | User  |
