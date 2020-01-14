@@ -1,7 +1,7 @@
 @auditorMonitoring @auditor
 Feature: Validate all scenarios for Auditor Profile in Monitoring module
 
-  @auditorPaymentRequest
+  @69178 @auditorPaymentRequest
   Scenario Outline: Validate Auditor should have view / read  only access to advances Paid Payment Request under Monitoring Tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Monitoring" tab
@@ -14,7 +14,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
       | User    |
       | AUDITOR |
 
-  @auditorOrgRiskAssessment
+  @69179 @auditorOrgRiskAssessment
   Scenario Outline: Validate Auditor should have view / read  only access to Organizational Risk Assessment
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -29,7 +29,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
       | User    |
       | AUDITOR |
 
-  @auditorMonitoringSchedule
+  @69180 @auditorMonitoringSchedule
   Scenario Outline: Validate Auditor should have view Monitoring Scheduled Activities of award
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Monitoring" tab
@@ -41,7 +41,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
       | User    |
       | AUDITOR |
 
-  @auditorCannotCreateOrgSiteVisitDeskReview
+  @69181 @auditorCannotCreateOrgSiteVisitDeskReview
   Scenario Outline: Validate Auditor should have view / read  only access to Organizational level Site Visit
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
