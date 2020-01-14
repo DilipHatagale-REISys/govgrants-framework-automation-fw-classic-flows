@@ -1,7 +1,7 @@
 @auditorHome @auditor
 Feature: Validate all scenarios for Auditor Profile in Home Module
 
-  @auditorCannotCreateEditInternalOrganizations
+  @69181 @auditorCannotCreateEditInternalOrganizations
   Scenario Outline: Validate Auditor should not be  able to Create/Edit internal organization.
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -14,7 +14,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
       | User    |
       | AUDITOR |
 
-  @auditorCanViewInternalOrganizations
+  @69119 @auditorCanViewInternalOrganizations
   Scenario Outline: Validate Auditor should have view / read  only access to record.
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -27,14 +27,14 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
       | User    |
       | AUDITOR |
 
-  @auditorPendingTask
+  @69120 @auditorPendingTask
   Scenario: Verify Auditor do not have any pending tasks by any phase and by any due date filter.
     When I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Home" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     Then I softly see "No Records Found" inside flex table with id "HomePendingTasks"
 
-  @auditorCanViewSubrecipientOrganization
+  @69121 @auditorCanViewSubrecipientOrganization
   Scenario Outline: Validate Auditor should have view / read  only access to record for subrecipient organization
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -46,7 +46,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
       | User    |
       | AUDITOR |
 
-  @auditorCannotEditSubrecipientOrganization
+  @69122 @auditorCannotEditSubrecipientOrganization
   Scenario Outline:  Auditor should not be  able to  Edit subrecipient organization
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -57,7 +57,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
       | User    |
       | AUDITOR |
 
-  @auditorCanViewIndividualOrganization
+  @69123 @auditorCanViewIndividualOrganization
   Scenario Outline: Validate Auditor should have view / read  only access to record for Individual organization
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -69,7 +69,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
       | User    |
       | AUDITOR |
 
-  @auditorCannotEditSubrecipientOrganization
+  @69124 @auditorCannotEditSubrecipientOrganization
   Scenario Outline:  Auditor should not be  able to  Edit Individual organization
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -80,19 +80,20 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
       | User    |
       | AUDITOR |
 
-  @auditorCannotCreateEDitContact
+  @69125 @auditorCannotCreateEDitContact
   Scenario Outline: Validate Auditor should not be  able to Create/Edit any Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
     Then I softly cannot see top right button "New" in flex table with id "---home:-:internalContactTableId---"
     When I perform quick search for "Automation PO" in "---home:-:internalContactTableId---" panel
-    Then I softly can see row level action button "Edit" against "Automation PO" in flex table with id "flexTableRandomID"
+    Then I softly cannot see row level action button "Edit" against "Automation PO" in flex table with id "flexTableRandomID"
+    Then I collect all the soft asserts
     Examples:
       | User    |
       | AUDITOR |
 
-  @auditorCanViewCreatedContact
+  @69126 @auditorCanViewCreatedContact
   Scenario Outline: Validate Auditor should have view / read  only access to record.
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -106,17 +107,21 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
       | User    |
       | AUDITOR |
 
-  @auditorCannotSendInvitation
-  Scenario Outline: Verify Auditor do not have access to send invitation (Bulk or single clicking paper aeroplane icon)
+  @69128 @69132 @69144 @auditorCannotSendInvitationCanViewSMEReviewersContactDetails
+  Scenario Outline: Verify Auditor  Cannot create SME conatct and do not have access to send invitation (Bulk or single clicking paper aeroplane icon)/ Verify Auditor can view / read  only access to SME Reviewers Contact details
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
-    Then I softly can see row level action button "Send Invitation" against "Automation SME" in flex table with id "---home:-:reviewersTableId---"
+    Then I softly cannot see top right button "New" in flex table with id "---home:-:reviewersTableId---"
+    When I perform quick search for "Automation SME" in "---home:-:reviewersTableId---" panel
+    Then I softly can see row level action button "View" against "Automation SME" in flex table with id "---home:-:reviewersTableId---"
+    Then I softly cannot see row level action button "Send Invitation" against "Automation SME" in flex table with id "---home:-:reviewersTableId---"
+    Then I collect all the soft asserts
     Examples:
       | User    |
       | AUDITOR |
 
-  @auditorReassign
+  @69129 @auditorReassign
   Scenario: Verify Auditor profile would not have tasks assigned,  Re assign will populate no tasks to reassign
     Given I delete the record "Automation Execution Internal Program" from the object "Program"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -161,7 +166,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     When I perform quick search for "Approve Program" in "HomePendingTasks" panel
     Then I see "No Records Found" inside flex table with id "HomePendingTasks"
 
-  @auditorTaskSummaryPhase
+  @69130 @auditorTaskSummaryPhase
   Scenario: Validate Auditor should have no pending task in any of the filter.
     Given I delete the record "Automation Execution Internal Program" from the object "Program"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -204,11 +209,38 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     When I navigate to "Home" tab
     Then I see task count for "Planning" phase with the total records of flex table id "PhasePendingTasks"
 
-    @auditorCompletedTask
-    Scenario: Verify Auditor does not have any completed tasks
-      Given I login to "As a Grantor" app as "dynamicUser" user
-      And I navigate to "Home" tab
-      When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
-      Then I softly see "No Records Found" inside flex table with id "---home:-:completedAssignedToMe---"
-      Then I softly see "No Records Found" inside flex table with id "---home:-:completedAssignedByMe---"
-      Then I collect all the soft asserts
+  @69131 @auditorCompletedTask
+  Scenario: Verify Auditor does not have any completed tasks
+    Given I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Home" tab
+    When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
+    Then I softly see "No Records Found" inside flex table with id "---home:-:completedAssignedToMe---"
+    Then I softly see "No Records Found" inside flex table with id "---home:-:completedAssignedByMe---"
+    Then I collect all the soft asserts
+
+  @69142 @auditorCannotCreateEditSubrecipientContact
+  Scenario Outline: Validate Auditor cannot Create/Edit any subrecipient contact user
+    Given I login to "As a Grantor" app as "<User>" user
+    When I navigate to "Home" tab
+    And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
+    Then I softly cannot see top right button "New" in flex table with id "---home:-:internalContactTableId---"
+    When I perform quick search for "Automation SME" in "---home:-:internalContactTableId---" panel
+    Then I softly cannot see row level action button "Edit" against "Automation SME" in flex table with id "---home:-:internalContactTableId---"
+    Then I collect all the soft asserts
+    Examples:
+      | User    |
+      | AUDITOR |
+
+  @69143 @auditorViewSubrecipientContacts
+  Scenario Outline: Validate Auditor should have view / read  only access to subrecipient contacts
+    Given I login to "As a Grantor" app as "<User>" user
+    When I navigate to "Home" tab
+    And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
+    When I perform quick search for "Automation SME" in "---home:-:internalContactTableId---" panel
+    Then I softly can see row level action button "View" against "Automation SME" in flex table with id "---home:-:internalContactTableId---"
+    And I click on "View" icon for "Automation SME" inside flex table with id "---home:-:internalContactTableId---"
+    Then I softly see field "Organization" as "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    Then I collect all the soft asserts
+    Examples:
+      | User    |
+      | AUDITOR |
