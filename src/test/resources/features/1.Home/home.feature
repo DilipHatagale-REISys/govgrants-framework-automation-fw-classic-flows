@@ -26,7 +26,7 @@ Feature: Validate all scenarios in the home tab
       | Organization name                     |
       | Internal Automation Organization Test |
 
-  @56708 @56709 @56710 @internalOrganizationViewADMINEditPMView @bug-TFS69292
+  @56708 @56709 @56710 @internalOrganizationViewADMINEditPMView
   Scenario Outline: Validate whether all users have view access to Internal Organization
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -140,7 +140,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @56724 @56725 @56726 @termsandConditionsViewCreateAdminEdit @bug-TFS69291
+  @56724 @56725 @56726 @termsandConditionsViewCreateAdminEdit
   Scenario Outline: Verifying all Internal Users has View, Create and Edit access to Terms and Conditions
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Planning" tab
@@ -385,7 +385,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @57342 @agencyBelongsToOneParent @bug-TFS69293
+  @57342 @agencyBelongsToOneParent
   Scenario Outline: Verify whether an Agency belongs to only one Parent
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -548,7 +548,7 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "Approve Program" in "---home:-:internalHomePendingTaskTableId---" panel
     Then I see that "Approve Program" has been added in flextable with Id "---home:-:internalHomePendingTaskTableId---"
 
-  @59016 @validateFilesOnHome @deepika @bug-TFS66960
+  @59016 @validateFilesOnHome @deepika
   Scenario: Addition of Attachment to Focus Area by User - Admin/EXE/PM
     Given I delete the record "Automation Execution Focus Area" from the object "Focus Area"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -582,7 +582,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @62103 @pageBlockSectionsRelatedLog @deepika @bug-TFS69294
+  @62103 @pageBlockSectionsRelatedLog @deepika
   Scenario Outline:  Validate whether the Related Log displays Active Federal/NGO Applications (Grantee) and Active Federal/NGO Grants (Grantee).
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
