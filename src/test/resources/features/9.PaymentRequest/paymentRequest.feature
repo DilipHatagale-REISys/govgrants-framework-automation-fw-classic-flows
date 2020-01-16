@@ -576,7 +576,7 @@ Feature: Validate all scenarios in Payment Request
     Then I softly see "No Records Found" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     Then I collect all the soft asserts
 
-  @54175 @validateErrorOnEnteringAdvanceRequestedAmountGreaterThanBalance @mahadev
+  @54175 @54177 @validateErrorOnEnteringAdvanceRequestedAmountGreaterThanBalance @mahadev
   Scenario: Advance Payment Request should not receive to Program Approver
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -588,8 +588,15 @@ Feature: Validate all scenarios in Payment Request
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10000000                      |
-    Then I see the following messages in the page details contains:
-      | Advance Requested cannot be greater than the Advance Request Balance |
+    Then I softly see the following messages in the page details contains:
+      | Advance Requested cannot be greater than the Advance Request Balance :|
+    And I refresh the page
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
+      | Budget Category | Advance Requested This Action |
+      | Construction    | 100                      |
+    And I refresh the page
+    Then I softly see field "Advance Requested This Action" as "$100.00"
+    And I collect all the soft asserts
 
   @38839 @54585 @approvalOfAdvancePaymentRequestByForwardedUser @mahadev
   Scenario: Advance Payment request should not be editable after submitting to grantor | Validate advance payment request approval by forwarded user
@@ -631,7 +638,7 @@ Feature: Validate all scenarios in Payment Request
     Then I softly see status in Progress-bar is "Approved" and is "Green"
     Then I collect all the soft asserts
 
-  @54593 @validatePaidButtonNotDisplayedAfterRejectingReimbursementPR @mahadev
+  @54593 @54352 @validatePaidButtonNotDisplayedAfterRejectingReimbursementPR @mahadev
   Scenario: Validate the paid button not displayed on reimbursement Payment request after rejection
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -641,6 +648,13 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     And I get the "EGMS ID"
     And I navigate to "Financials" sub tab
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
+    When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) |
+      | Extra Salary | The narrative | 100000000         | 1        | Feet        | 10                |
+    Then I softly see the following messages in the page details contains:
+      | Advance applied cannot be greater than the Net Payment.|
+    When I close "Add Line Items" modal by clicking the top right x button
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) |
@@ -667,7 +681,8 @@ Feature: Validate all scenarios in Payment Request
     And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I click on "Disapprove" on the approval decision box
-    Then I cannot see top right button "Mark as Paid" in page detail
+    Then I softly cannot see top right button "Mark as Paid" in page detail
+    And I collect all the soft asserts
 
   @54589 @validatePaidButtonNotDisplayedAfterRejectingAdvancePR @mahadev
   Scenario: Validate the paid button not displayed on advance Payment request after rejection
