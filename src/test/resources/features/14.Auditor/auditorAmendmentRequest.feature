@@ -1,7 +1,7 @@
 @auditorAmendmentRequest @auditor
 Feature: Validate all scenarios for Auditor Profile in Amendment Request module
 
-  @auditorCannotCreateAmendmentRequest
+  @69172 @auditorCannotCreateAmendmentRequest
   Scenario: Validate Auditor should not be  able to  Create Amendment request
     Given I login to "As a Grantor" app as "Auditor" user
     And I navigate to "Grants" tab
@@ -15,8 +15,8 @@ Feature: Validate all scenarios for Auditor Profile in Amendment Request module
     And I navigate to "Management" sub tab
     Then I cannot see top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
 
-  @auditorViewAccessToAmendmentRequest
-  Scenario: Auditor should have view Amendment Request Record that is created by PM user - Budget Period Change
+  @69174 @auditorViewAccessToAmendmentRequest
+  Scenario: Validate Auditor should have view Amendment Request Record that is created by PM user - Budget Period Change
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
