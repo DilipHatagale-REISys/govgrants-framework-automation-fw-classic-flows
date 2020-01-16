@@ -4005,7 +4005,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
 
-  @65966   @validateSendBackByFO  @mahadev
+  @65966 @validateSendBackByFO @mahadev
   Scenario Outline: To verify that if Send Back radio button in the Fiscal Approver(David FO) is clicked it returns back to the Award owner(Pm Profile) and the action in the Grant Draft table changes from View  lock  to  view , Edit, Delete
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -4315,3 +4315,25 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
+
+  @68482 @validatePeerReviewIsOptional @aashish
+  Scenario: Validate that Peer Review on Sub award is optional and users can proceed with approval of Sub award
+    When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I softly see status in Progress-bar is "Created" and is "Green"
+    And I navigate to "Management" sub tab
+    When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "egmsId"
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
+      | Responsibility   | Name          | Description                 |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+      | Program Approver | Automation PM | Automation Test Description |
+    And I click on "Submit for Approval" in the page details
+    Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
