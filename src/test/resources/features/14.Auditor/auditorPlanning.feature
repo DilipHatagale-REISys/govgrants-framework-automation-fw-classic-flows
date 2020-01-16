@@ -85,12 +85,14 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
       | User    | Program                               |
       | AUDITOR | Automation Permanent Internal Program |
 
-  @67845 @auditorCannotCreateFundingSource @deepika
-  Scenario Outline: Verify Auditor profile user cannot create a new Funding Source
+  @67845 @69297 @auditorCannotCreateFundingSource @deepika
+  Scenario Outline: Verify Auditor profile user cannot create a new external/ internal Funding Source
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
     When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
-    Then I cannot see top right button "New" for "---fundingsource:-:fundingSourceTableId---" flex table
+    Then I softly cannot see top right button "New" for "---fundingsource:-:fundingSourceTableId---" flex table
+    Then I softly cannot see top right button "New" for "---auditor:-:fundingSourceExternalTableId---" flex table
+    Then I collect all the soft asserts
     Examples:
       | User    |
       | AUDITOR |
@@ -243,14 +245,16 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
       | User    |
       | AUDITOR |
 
-  @69154 @69156 @auditorCannotCreateExternalPrograms @deepika
-  Scenario Outline: Verify Auditor should not be  able to Create External Program and View any federal program
+  @69154 @69156 @69298 @auditorCannotCreateFederalandNon-FederalPrograms @deepika
+  Scenario Outline: Verify Auditor should not be  able to Create External federal or non-federal Programs and View any federal program
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
     When I navigate to "External Programs" content inside "Programs" subheader on left panel
     Then I softly cannot see top right button "New" for "---auditor:-:externalProgramTableID---" flex table
     When I perform quick search for "BBG" in "---auditor:-:federalProgramFlexTableId---" panel
     Then I softly can see row level action button "View" against "BBG" in flex table with id "---auditor:-:federalProgramFlexTableId---"
+    When I perform quick search for "NGO Program 2" in "---auditor:-:nonfederaltableId---" panel
+    Then I softly can see row level action button "View" against "NGO Program 2" in flex table with id "---auditor:-:nonfederaltableId---"
     Then I collect all the soft asserts
     Examples:
       | User    |
