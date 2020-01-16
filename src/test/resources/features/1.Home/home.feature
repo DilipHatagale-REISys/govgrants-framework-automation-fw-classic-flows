@@ -26,7 +26,7 @@ Feature: Validate all scenarios in the home tab
       | Organization name                     |
       | Internal Automation Organization Test |
 
-  @56708 @56709 @56710 @internalOrganizationViewADMINEditPMView
+  @56708 @56709 @56710 @internalOrganizationViewADMINEditPMView @bug-TFS69292
   Scenario Outline: Validate whether all users have view access to Internal Organization
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -140,7 +140,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @56724 @56725 @56726 @termsandConditionsViewCreateAdminEdit
+  @56724 @56725 @56726 @termsandConditionsViewCreateAdminEdit @bug-TFS69291
   Scenario Outline: Verifying all Internal Users has View, Create and Edit access to Terms and Conditions
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Planning" tab
@@ -334,11 +334,11 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
-    When I click on top right button "New" in flex table with id "inlineEditGridIndirectRateGrid"
+    When I click on top right button "New" in flex table with id "---home:-:indirectRateFlextableId---"
     And I enter "New IDC" values from "InternalOrganization_Field_Values.xlsx"
     When I click modal button "Save"
-    And I perform quick search for "New IDC" in "inlineEditGridIndirectRateGrid" panel
-    When I click on "Delete" icon for "New IDC" inside flex table with id "inlineEditGridIndirectRateGrid"
+    And I perform quick search for "New IDC" in "---home:-:indirectRateFlextableId---" panel
+    When I click on "Delete" icon for "New IDC" inside flex table with id "---home:-:indirectRateFlextableId---"
     Then I do not see values "New IDC" and "Title" inside table
 
   @56883 @56912 @adminOrPMEditAccessToOwnOrgInternalOrganizationPageHeader @wip
@@ -385,7 +385,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @57342 @agencyBelongsToOneParent
+  @57342 @agencyBelongsToOneParent @bug-TFS69293
   Scenario Outline: Verify whether an Agency belongs to only one Parent
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -448,15 +448,15 @@ Feature: Validate all scenarios in the home tab
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Home" tab
-    Then I softly see task count for "Planning" phase with the total records of flex table id "PhasePendingTasks"
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "HomePendingTasks" panel
+    Then I softly see task count for "Planning" phase with the total records of flex table id "---home:-:internalHomePendingTaskTableId---"
+    When I perform quick search for "Record Id" in "---home:-:internalHomePendingTaskTableId---" panel
     Then I softly see values "Approve Program" and "Not Started" inside table
-    And I click on "Start" icon for "Record Id" inside flex table with id "HomePendingTasks"
+    And I click on "Start" icon for "Record Id" inside flex table with id "---home:-:internalHomePendingTaskTableId---"
     When I click on "Approve" on the approval decision box
     And I navigate to "Planning" tab
     And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "HomePhaseCompletedTasks" panel
+    When I perform quick search for "Record Id" in "---home:-:completedAssignedToMe---" panel
     Then I softly see values "Approve Program" and "Completed" inside table
     Then I collect all the soft asserts
 
@@ -545,10 +545,10 @@ Feature: Validate all scenarios in the home tab
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Approve Program" in "HomePendingTasks" panel
-    Then I see that "Approve Program" has been added in flextable with Id "HomePendingTasks"
+    When I perform quick search for "Approve Program" in "---home:-:internalHomePendingTaskTableId---" panel
+    Then I see that "Approve Program" has been added in flextable with Id "---home:-:internalHomePendingTaskTableId---"
 
-  @59016 @validateFilesOnHome @deepika
+  @59016 @validateFilesOnHome @deepika @bug-TFS66960
   Scenario: Addition of Attachment to Focus Area by User - Admin/EXE/PM
     Given I delete the record "Automation Execution Focus Area" from the object "Focus Area"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -582,7 +582,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @62103 @pageBlockSectionsRelatedLog @deepika
+  @62103 @pageBlockSectionsRelatedLog @deepika @bug-TFS69294
   Scenario Outline:  Validate whether the Related Log displays Active Federal/NGO Applications (Grantee) and Active Federal/NGO Grants (Grantee).
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
