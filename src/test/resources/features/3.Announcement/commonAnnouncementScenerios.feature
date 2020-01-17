@@ -7,7 +7,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     And I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Formula Announcements - Draft"
-    And I click on top right button "New" in flex table with id "ActiveFundingOpportunitiesFormula"
+    And I click on top right button "New" in flex table with id "---announcement:-:formulaAnnouncementTableId---"
     And I enter "FormulaAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
     When I enter "Creation Second Modal" values from "Announcement_Field_Values.xlsx"
@@ -22,17 +22,17 @@ Feature: Validate all common scenarios in the  Announcement tab
   @33936 @announcementCreatedDeleteAccessToOwnerFA
   Scenario: Validate that owner can able to delete created status announcement
     When I navigate to "Announcements" tab
-    And I perform quick search for "Record id" in "ActiveFundingOpportunitiesAll" panel
-    When  I click on "Delete" icon for "Record id" inside flex table with id "ActiveFundingOpportunitiesAll"
-    And I perform quick search for "Record id" in "ActiveFundingOpportunitiesAll" panel
-    Then I do not see value "Record id" for title "Announcement Name" inside table "ActiveFundingOpportunitiesAll"
+    And I perform quick search for "Record id" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
+    When  I click on "Delete" icon for "Record id" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
+    And I perform quick search for "Record id" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
+    Then I do not see value "Record id" for title "Announcement Name" inside table "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
 
   @52397 @createdAnnouncementDeletionByOtherUserFA
   Scenario Outline: Validate that other users are not able to delete created announcement
     When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
-    When I perform quick search for "Record id" in "ActiveFundingOpportunitiesAll" panel
-    Then I cannot see row level action button "Delete" against "Record id" in flex table with id "ActiveFundingOpportunitiesAll"
+    When I perform quick search for "Record id" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
+    Then I cannot see row level action button "Delete" against "Record id" in flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
     Examples:
       | User |
       | PM   |
@@ -41,16 +41,16 @@ Feature: Validate all common scenarios in the  Announcement tab
   Scenario: Validate that Created Competitive announcement will not reflect under Draft Formula announcement list view
     When I navigate to "Announcements" tab
     And I navigate to "Directed" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Directed Announcements - Draft" in "ActiveFundingOpportunities"
-    When I perform quick search for "Record Id" in "ActiveFundingOpportunities" panel
+    And I click toggle button to select "Directed Announcements - Draft" in "---announcement:-:annoucementTableId---"
+    When I perform quick search for "Record Id" in "---announcement:-:annoucementTableId---" panel
     Then I do not see values "Record Id" and "Announcement Name" inside table
 
   @52399 @announcementEditionByOtherUserFA
   Scenario Outline: Validate that other users are not able to edit created announcement
     When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
-    And I perform quick search for "Record id" in "ActiveFundingOpportunitiesAll" panel
-    Then I cannot see row level action button "Edit" against "Record id" in flex table with id "ActiveFundingOpportunitiesAll"
+    And I perform quick search for "Record id" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
+    Then I cannot see row level action button "Edit" against "Record id" in flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
     Examples:
       | User |
       | PM   |
@@ -58,8 +58,8 @@ Feature: Validate all common scenarios in the  Announcement tab
   @52400 @createdAnnouncementEditionOnlyOwnerFA
   Scenario: Validate that only owner can able to edit created status announcement
     When I navigate to "Announcements" tab
-    And I perform quick search for "Record id" in "ActiveFundingOpportunitiesAll" panel
-    When I click on "Edit" icon for "Record id" inside flex table with id "ActiveFundingOpportunitiesAll"
+    And I perform quick search for "Record id" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
+    When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
     Then I can see top right button "Save" in page detail
 
   @34222 @announcementEditionFA
@@ -72,9 +72,9 @@ Feature: Validate all common scenarios in the  Announcement tab
   @37029 @announcementContactAssociationFA @smoke
   Scenario Outline: Contact association to an Announcement
     When I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
-    When I click "Add" after selection of "<Contact>" in the table "AssociateAnnouncementContacts"
-    Then I see that "<Contact>" has been added in flextable with Id "AnnouncementContacts"
+    And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
+    When I click "Add" after selection of "<Contact>" in the table "---announcement:-:annoucementContactTableId---"
+    Then I see that "<Contact>" has been added in flextable with Id "---announcement:-:contactTableId---"
     Examples:
       | Contact        |
       | Automation EXE |
@@ -82,8 +82,8 @@ Feature: Validate all common scenarios in the  Announcement tab
   @52401 @announcementContactDissociationFA
   Scenario Outline: Validate the dissociation of contact to the Announcement
     When I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "AnnouncementContacts"
-    When I click "Add" after selection of "<Contact>" in the table "AssociateAnnouncementContacts"
+    And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
+    When I click "Add" after selection of "<Contact>" in the table "---announcement:-:annoucementContactTableId---"
     When I click on "Remove" icon for "<Contact>" inside flex table with id "---announcement:-:contactTableId---"
     Then I do not see values "Record Id" and "<Contact>" inside table
     Examples:
@@ -95,22 +95,24 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
+    And I refresh the page
     When I close "Add Organizations" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
-      | Applicant Organization                              | Allocated Amount |
+      | Applicant Organization              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
     Then I see that "SAN DIEGO ELECTRICAL TRAINING TRUST" has been added in flextable with Id "---announcement:-:formulaInvitedApplicatsTableId---"
 
   @52403 @announcementFundingAccountAssociationFA
   Scenario Outline: Funding Account association to an Announcement
     When I navigate to "Financials" sub tab
-    And I click on top right button "Associate" in flex table with id "flexGridAnnouncementFundingAccountGrantor"
-    When I click "Add" after selection of "<EGMS Id>" in the table "SelectAnnFundingAccounts"
+    And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
+    When I click "Add" after selection of "<EGMS Id>" in the table "---announcement:-:fundingAccTableId---"
+    And I refresh the page
     When I close "Associate" modal by clicking the top right x button
-    When I edit the following rows inline in flex table with id "flexGridAnnouncementFundingAccountGrantor" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
-    Then I see that "<EGMS Id>" has been added in flextable with Id "flexGridAnnouncementFundingAccountGrantor"
+    Then I see that "<EGMS Id>" has been added in flextable with Id "---announcement:-:fundingAccountsTableId---"
     Examples:
       | EGMS Id                     |
       | {SavedValue:fundingAccount} |
@@ -119,7 +121,7 @@ Feature: Validate all common scenarios in the  Announcement tab
   Scenario Outline: Funding Account dissociation to an Announcement
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "<EGMS Id>" in the table "SelectAnnFundingAccounts"
+    When I click "Add" after selection of "<EGMS Id>" in the table "---announcement:-:fundingAccTableId---"
     When I close "Associate" modal by clicking the top right x button
     When I click on "Remove" icon for "<EGMS Id>" inside flex table with id "---announcement:-:fundingAccountsTableId---"
     Then I do not see value "<EGMS Id>" for title "EGMS ID" inside table "---announcement:-:fundingAccountsTableId---"
@@ -130,41 +132,41 @@ Feature: Validate all common scenarios in the  Announcement tab
   @52405 @announcementBudgetPeriodAdditionFA
   Scenario: Budget Period Addition to an Announcement
     When I navigate to "Financials" sub tab
-    And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
+    And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
     When I refresh the page
-    And I edit the following rows inline in flex table with id "flexGridAnnouncementBudgetPeriod" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 0          | 500      |
-    Then I see that "BP01" has been added in flextable with Id "flexGridAnnouncementBudgetPeriod"
+    Then I see that "BP01" has been added in flextable with Id "---announcement:-:budgetPeriodTableId---"
 
   @52406 @announcementBudgetPeriodDissociationFA
   Scenario: Validate the dissociation of Budget Period to the Announcement
     When I navigate to "Financials" sub tab
-    And I click on top right button "Add Budget Period" in flex table with id "flexGridAnnouncementBudgetPeriod"
-    When I click on "Remove" icon for "BP01" inside flex table with id "flexGridAnnouncementBudgetPeriod"
-    Then I do not see value "BP01" for title "Budget Period Name" inside table "flexGridAnnouncementBudgetPeriod"
+    And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
+    When I click on "Remove" icon for "BP01" inside flex table with id "---announcement:-:budgetPeriodTableId---"
+    Then I do not see value "BP01" for title "Budget Period Name" inside table "---announcement:-:budgetPeriodTableId---"
 
   @52407 @announcementFocusAreaAssociationFA
   Scenario: Validate the association of Focus Area to Announcement
     When I navigate to "Setup" sub tab
-    And I click on top right button "Associate" in flex table with id "AnnouncementServiceArea1"
-    When I click "Add" after selection of "Automation Permanent Focus Area2" in the table "SelectAnnouncementServiceArea1"
-    Then I see that "Automation Permanent Focus Area2" has been added in flextable with Id "AnnouncementServiceArea1"
+    And I click on top right button "Associate" in flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
+    When I click "Add" after selection of "Automation Permanent Focus Area2" in the table "---announcement:-:selectAnnouncementServiceArea1TableId---"
+    Then I see that "Automation Permanent Focus Area2" has been added in flextable with Id "---announcement:-:AnnouncementServiceArea1TableId---"
 
   @34775 @announcementObjectiveAssociationFA
   Scenario: Validate the association of objective to the Announcement
     When I navigate to "Setup" sub tab
-    And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
-    When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
-    Then I see that "Automation Permanent Objective2" has been added in flextable with Id "AnnouncementGranteeStrategicGoalsObjectives"
+    And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
+    When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    Then I see that "Automation Permanent Objective2" has been added in flextable with Id "---announcement:-:objectivesTableId---"
 
   @52409 @announcementObjectiveDissociationFA
   Scenario: Validate the dissociation of objective to the Announcement
     When I navigate to "Setup" sub tab
-    And I click on top right button "Associate" in flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
-    When I click "Add" after selection of "Automation Permanent Objective2" in the table "SelectAnnGoals"
-    When I click on "Remove" icon for "Automation Permanent Objective2" inside flex table with id "AnnouncementGranteeStrategicGoalsObjectives"
-    Then I do not see value "Automation Permanent Objective2" for title "EGMS ID" inside table "AnnouncementGranteeStrategicGoalsObjectives"
+    And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
+    When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I click on "Remove" icon for "Automation Permanent Objective2" inside flex table with id "---announcement:-:objectivesTableId---"
+    Then I do not see value "Automation Permanent Objective2" for title "EGMS ID" inside table "---announcement:-:objectivesTableId---"
 
   @32410 @announcementAttachmentChecklistFA
   Scenario: Validate the attachment checklist of the announcement
@@ -180,12 +182,12 @@ Feature: Validate all common scenarios in the  Announcement tab
   @52411 @announcementApproverSelectionFA
   Scenario: Validate the assignment of Approvers for the Announcement
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "flexGridAnnouncementRolesandResponsibility" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
-    Then I see that "Automation EXE" has been added in flextable with Id "flexGridAnnouncementRolesandResponsibility"
+    Then I see that "Automation EXE" has been added in flextable with Id "---announcement:-:approversTableId---"
 
   @34232 @announcementReviewerAssignmentFA
   Scenario: Validate the assignment of Reviewer for the Announcement
@@ -206,19 +208,19 @@ Feature: Validate all common scenarios in the  Announcement tab
     Then I see that "Sent for Review" has been added in flextable with Id "---announcement:-:reviewersTableId---"
 
   @52413 @announcementReviewCompleteFA @wip
-  Scenario Outline: Validate the review for the Announcement
+  Scenario: Validate the review for the Announcement
     Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:reviewersTableId---" by clicking "New" :
       | Name          | Responsibility  | Description              | Due Date | Allow Record Editing |
       | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "Automation FO" inside table
     And I get the "EGMS ID"
-    And I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
+    And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record id" inside flex table with id "PhasePendingTasks"
-    When I click on "Start" icon for "Record id" inside flex table with id "PhasePendingTasks"
+    When I perform quick search for "Record id" in "---announcement:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record id" inside flex table with id "---announcement:-:pendingTaskTableId---"
+    When I click on "Start" icon for "Record id" inside flex table with id "---announcement:-:pendingTaskTableId---"
     When I navigate to "Responsibilities" tab
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---announcement:-:reviewersTableId---"
     And I enter values into fields
@@ -229,15 +231,12 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
-    And I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
+    And I navigate to "Formula" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Formula Announcements - Draft"
-    When I perform quick search for "Record id" in "<Active Funding Opportunities id>" panel
+    When I perform quick search for "Record id" in "---announcement:-:formulaAnnouncementTableId---" panel
     And I click on "View" icon for "Record id" inside table
     When I click on "Complete Review" in the page details
     Then I see status in Progress-bar is "Reviewed" and is "green"
-    Examples:
-      | User | Announcement Type | Active Funding Opportunities id   |
-      | FO   | Formula           | ActiveFundingOpportunitiesFormula |
 
   @35003 @announcementAddAttachmentFA @wip
   Scenario: Validate the attachment for an Announcement
