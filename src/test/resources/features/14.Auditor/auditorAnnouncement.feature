@@ -1,7 +1,7 @@
 @auditorAnnouncement @auditor
 Feature: Validate all scenarios for Auditor Profile in Announcement Module
 
-  @auditorCannotCreateAnnouncement
+  @69159 @auditorCannotCreateAnnouncement
   Scenario: Validate Auditor should not be able to  Create/Edit Announcement
     Given I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Announcements" tab
@@ -18,7 +18,7 @@ Feature: Validate all scenarios for Auditor Profile in Announcement Module
     Then I softly cannot see top right button "New" in flex table with id "ActiveFundingOpportunities"
     Then I collect all the soft asserts
 
-  @otherUsersCanCreateAnnouncement
+  @69160 @otherUsersCanCreateAnnouncement
   Scenario Outline: Verify that other than Auditor user all other users can create a Announcement
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Announcements" tab
@@ -40,8 +40,8 @@ Feature: Validate all scenarios for Auditor Profile in Announcement Module
       | EXE   |
       | ADMIN |
 
-  @auditorProfileCannotEditAnnouncement
-  Scenario Outline: Validate Auditor user should not be able to Create/Edit/ Review/Approve internal program
+  @69161 @auditorProfileCannotEditAnnouncement
+  Scenario Outline: Validate Auditor user should not be able to Edit Announcement
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -52,8 +52,8 @@ Feature: Validate all scenarios for Auditor Profile in Announcement Module
       | User    | Announcement                        |
       | AUDITOR | Automation Announcement for Auditor |
 
-  @auditorCompetitiveAnnouncement
-  Scenario: Validate Auditor should not be able to Create/Edit/Review/Approve
+  @69162 @auditorCompetitiveAnnouncement
+  Scenario: Validate Auditor should not be able to Create/Edit/Review/Approve announcement
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel

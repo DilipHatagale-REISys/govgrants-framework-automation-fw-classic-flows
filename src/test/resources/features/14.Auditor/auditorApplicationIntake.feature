@@ -13,7 +13,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     Then I softly cannot see top right button "Create Application" in page detail
     Then I collect all the soft asserts
 
-  @auditorCannotCreateNegotiation
+  @69163 @auditorCannotCreateNegotiation
   Scenario: Validate Auditor should not be  able to  Create Negotiation
     Given I login to "As a Grantor" app as "Auditor" user
     And I navigate to "Applications" tab
@@ -23,13 +23,14 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     Then I cannot see row level action button "Initiate Negotiation" against Value "Automation Announcement for FDM" inside "---subAwardFromFDM:-:recommendedAppTableId---" flex table
 
-  @auditorCannotSend/CompleteNegotiations
-  Scenario: Validate Auditor should not be  able to Complete Negotiation
+  @69164 @auditorCannotSend/CompleteNegotiations
+  Scenario: Validate Auditor should be able to View the record but shouldn't be able to Complete Negotiation
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
     When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
+    Then I softly can see row level action button "View" against "Automation Announcement for FDM" in flex table with id "---subAwardFromFDM:-:fdmTableId---"
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     When I save the field labeled "EGMS ID" as "EGMSID"
@@ -52,30 +53,33 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     And I navigate to "Applications" tab
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:negotiationPendingTaskTableId---" panel
-    Then I see "No Records Found" inside flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
+    Then I softly see "No Records Found" inside flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
+    Then I collect all the soft asserts
 
-  @auditorCannotCreateSubawardFromApprovedFDM
-  Scenario: Validate Auditor should not be  able to  Create Subaward From Approved FDM
+  @69165 @auditorViewRecordCannotCreateSubawardFromApprovedFDM
+  Scenario: Validate Auditor Can view the record but should not be  able to  Create Subaward From Approved FDM
     Given I login to "As a Grantor" app as "Auditor" user
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
     When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
+    Then I softly can see row level action button "View" against "Automation Announcement for FDM" in flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    Then I softly cannot see row level action button "Edit" against "Automation Announcement for FDM" in flex table with id "---subAwardFromFDM:-:fdmTableId---"
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I softly cannot see row level action button "Create Subaward" against Value "Automation Announcement for FDM" inside "---subAwardFromFDM:-:recommendedAppTableId---" flex table
     Then I collect all the soft asserts
 
-  @auditorApplication
-  Scenario: Validate Auditor should be  able to View submitted application details
+  @69166 @auditorApplication
+  Scenario Outline: Validate Auditor should be able to View submitted application details but cannot edit the submitted application
     Given I delete the record "Automation Announcement for Application Intake" from the object "Application"
     And I delete the record "Automation Announcement for Application Intake" from the object "Qualified Announcement"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "Automation Announcement for Application Intake" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
-    When I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    And I perform quick search for "<Application Name>" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "<Application Name>" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "Qualify" in the page details
     When I click on "Create Application" in the page details
     And I click modal button "Save and Continue"
@@ -110,8 +114,13 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"
+    When I perform quick search for "<Application Name>" in "---auditor:-:applicationTableId---" panel
+    Then I softly can see row level action button "Edit" against "<Application Name>" in flex table with id "---auditor:-:applicationTableId---"
     When I click on "View" icon for "<Application Name>" inside table
     Then I see status in Progress-bar is "Submitted" and is "Green"
+    Examples:
+      | Application Name                               |
+      | Automation Announcement for Application Intake |
 
 
 

@@ -1,15 +1,20 @@
 @auditorGrant/Award @auditor
 Feature: Validate all scenarios for Auditor Profile in Grant/Award
 
-  @auditorCannotCreateGrantandSubaward
-  Scenario: Validate Auditor should not be able to  Create/Edit Grant
+  @69168 @auditorCannotCreateGrantandSubaward
+  Scenario: Validate Auditor should not be able to  Create/Edit Grant/subaward
     Given I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     Then I cannot see top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I perform quick search for "Automation Permanent Award" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    When I click on "View" icon for "Automation Permanent Award" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I navigate to "Subawards" sub tab
+    Then I cannot see top right button "New" in flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    Then I collect all the soft asserts
 
-  @auditorCannotEDitActiveGrantAward
-  Scenario: Validate Auditor do not have permission Edit permission for Grant/Subaward
+  @69169 @auditorCannotEDitActiveGrantAward
+  Scenario: Validate Auditor do not have Edit permission for Grant/Subaward
     Given I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -21,9 +26,9 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
     Then I softly cannot see row level action button "Edit" against "Automation Permanent Award" in flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     Then I collect all the soft asserts
 
-  @auditorCanViewActiveGrantAward
-  Scenario: Validate Auditor should have view / read  only access to record.
-      Given I login to "As a Grantor" app as "AUDITOR" user
+  @69170 @auditorCanViewActiveGrantAward
+  Scenario: Validate Auditor should have view / read  only access to Active Grant/Award
+    Given I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I perform quick search for "Automation Permanent Award" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
@@ -33,5 +38,5 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
     And I perform quick search for "Automation Permanent Award" in "---subAwardStandAlone:-:subawardsTableId---" panel
     When I click on "View" icon for "Automation Permanent Award" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     Then I softly see status in Progress-bar is "Activated" and is "green"
-   Then I collect all the soft asserts
+    Then I collect all the soft asserts
 

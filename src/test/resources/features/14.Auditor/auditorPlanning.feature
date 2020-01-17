@@ -27,7 +27,7 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
       | EXE   |
       | ADMIN |
 
-  @67761 @auditorCannotCreateProgram @deepika
+  @67761 @auditorCannotCreatefocusArea @deepika
   Scenario Outline: Verify that Auditor user cannot create a Focus Area
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
@@ -112,7 +112,7 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
       | User    | FundingSource                       |
       | AUDITOR | Automation Permanent Funding Source |
 
-  @auditorCanViewActiveFundingSource
+  @67846 @auditorCanViewActiveFundingSource
   Scenario Outline: Validate Auditor should have view / read  only access to Active Funding Source
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
@@ -178,6 +178,7 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
     And I click on "Back To Strategic Goal" in the page details
     When I click on "Back To Strategic Plan" in the page details
     Then I softly cannot see top right button "Activate" in page detail
+    Then I softly cannot see top right button "Deactivate" in page detail
     Then I collect all the soft asserts
     Examples:
       | User    | StrategicPlan                       |
@@ -194,7 +195,7 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
       | User    |
       | AUDITOR |
 
-  @auditorCannotCreateTermsAndConditions @deepika
+ @69149 @auditorCannotCreateTermsAndConditions @deepika
   Scenario Outline: Verify Auditor profile user cannot create a new Terms and Conditions
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
@@ -204,7 +205,7 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
       | User    |
       | AUDITOR |
 
-  @auditorViewTermsAndConditions @deepika
+  @69150 @auditorViewTermsAndConditions @deepika
   Scenario Outline: Auditor should have view / read  only access to Active Terms and Conditions
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
@@ -217,18 +218,20 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
       | User    |
       | AUDITOR |
 
-  @auditorCannotCreateFormsandPackages @deepika
-  Scenario Outline: Verify Auditor profile user cannot create a new Terms and Conditions
+  @69151 @auditorCannotCreateFormsandPackages @deepika
+  Scenario Outline: Verify Auditor profile user cannot create a new Forms and Packages
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
     When I navigate to "Forms and Packages" content inside "Setup" subheader on left panel
-    Then I cannot see top right button "New" for "---auditor:-:formsflextableID---" flex table
+    Then I softly cannot see top right button "New" for "---auditor:-:formsflextableID---" flex table
+    Then I softly cannot see top right button "New" for "---auditor:-:packagesFlextableID---" flex table
+    Then I collect all the soft asserts
     Examples:
       | User    |
       | AUDITOR |
 
-  @auditorViewCannotEditFormsandPackages  @deepika
-  Scenario Outline: Auditor should have view / read  only access to Active Terms and Conditions
+  @69153 @auditorViewCannotEditFormsandPackages  @deepika
+  Scenario Outline: Auditor should have view / read  only access to Forms and Packages
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
     When I navigate to "Forms and Packages" content inside "Setup" subheader on left panel
@@ -240,12 +243,15 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
       | User    |
       | AUDITOR |
 
-  @auditorCannotCreateExternalPrograms @deepika
-  Scenario Outline: Verify Auditor should not be  able to Create NGO program
+  @69154 @69156 @auditorCannotCreateExternalPrograms @deepika
+  Scenario Outline: Verify Auditor should not be  able to Create External Program and View any federal program
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
     When I navigate to "External Programs" content inside "Programs" subheader on left panel
-    Then I cannot see top right button "New" for "---auditor:-:externalProgramTableID---" flex table
+    Then I softly cannot see top right button "New" for "---auditor:-:externalProgramTableID---" flex table
+    When I perform quick search for "BBG" in "---auditor:-:federalProgramFlexTableId---" panel
+    Then I softly can see row level action button "View" against "BBG" in flex table with id "---auditor:-:federalProgramFlexTableId---"
+    Then I collect all the soft asserts
     Examples:
       | User    |
       | AUDITOR |

@@ -1,7 +1,7 @@
 @auditorCloseout @auditor
 Feature: Validate all scenarios for Auditor Profile in Closeout Request module
 
-  @auditorCannotCreateCloseout
+  @69175 @auditorCannotCreateCloseout
   Scenario: Validate Auditor should not be  able to  Create Closeout Request
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -12,7 +12,7 @@ Feature: Validate all scenarios for Auditor Profile in Closeout Request module
     When I navigate to "Requests" sub tab
     Then I cannot see top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
 
-  @auditorCannotViewOverriddenCloseout
+  @69176 @auditorCannotViewOverriddenCloseout
   Scenario: Validate Auditor cannot have view access to "Overrridden Status" Closoeut Record
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Closeout" tab
@@ -22,7 +22,7 @@ Feature: Validate all scenarios for Auditor Profile in Closeout Request module
     And I click on "View" icon for "Overridden" inside flex table with id "ProjectPeriodCloseoutGrantor"
     Then I see "No Records Found" inside flex table with id "ProjectPeriodCloseoutGrantor"
 
-  @auditorCannotEditCreatedCloseoutRecordbyPM
+  @69177 @auditorCannotEditCreatedCloseoutRecordbyPM
   Scenario: Validate Auditor should not be  able to  Edit Closeout Request record created by PM
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -37,7 +37,7 @@ Feature: Validate all scenarios for Auditor Profile in Closeout Request module
     And I enter "Edition" values from "Closeout_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I get the "EGMS ID"
-    When I re-login to "As a Grantor" app as "Auditor" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
     And I navigate to "Closeout" tab
     When I navigate to "Project Period Closeouts" content inside "Closeouts" subheader on left panel
     And I click toggle button to select "Project Period Closeouts - All"
