@@ -40,3 +40,15 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
     Then I softly see status in Progress-bar is "Activated" and is "green"
     Then I collect all the soft asserts
 
+  @69304 @auditorCandownloadasPDF
+  Scenario: Validate Verify User with Auditor profile has ability to download PDF files of record.
+    Given I login to "As a Grantor" app as "AUDITOR" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I perform quick search for "Automation Permanent Award" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    Then I softly cannot see row level action button "Edit" against "Automation Permanent Award" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I click on "View" icon for "Automation Permanent Award" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I click on "Menu" in the page details
+    And I select "Download As PDF" from dropdown
+    And I download the file
+    Then I verify that "pdf" file is downloaded

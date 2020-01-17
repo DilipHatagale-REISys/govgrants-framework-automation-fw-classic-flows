@@ -122,5 +122,21 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
       | Application Name                               |
       | Automation Announcement for Application Intake |
 
+  @69301 @auditorCannotAddAttachmentsAndNotes @wip
+  Scenario Outline: Verify User with Auditor profile has no ability to add attachments and notes.
+    Given I login to "As a Grantor" app as "<User>" user
+    When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    When I click on "View" icon for "<Application Name>" inside table
+    And I navigate to "Attachments" sub tab
+    Then I softly cannot see top right button "Add" in flex table with id "Attachments"
+    Then I softly cannot see top right button "Add" in flex table with id "Notes"
+    Then I collect all the soft asserts
+    Examples:
+      | Application Name                               | User    |
+      | Automation Announcement for Application Intake | Auditor |
+
+
 
 

@@ -334,11 +334,11 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
-    When I click on top right button "New" in flex table with id "inlineEditGridIndirectRateGrid"
+    When I click on top right button "New" in flex table with id "---home:-:indirectRateFlextableId---"
     And I enter "New IDC" values from "InternalOrganization_Field_Values.xlsx"
     When I click modal button "Save"
-    And I perform quick search for "New IDC" in "inlineEditGridIndirectRateGrid" panel
-    When I click on "Delete" icon for "New IDC" inside flex table with id "inlineEditGridIndirectRateGrid"
+    And I perform quick search for "New IDC" in "---home:-:indirectRateFlextableId---" panel
+    When I click on "Delete" icon for "New IDC" inside flex table with id "---home:-:indirectRateFlextableId---"
     Then I do not see values "New IDC" and "Title" inside table
 
   @56883 @56912 @adminOrPMEditAccessToOwnOrgInternalOrganizationPageHeader @wip
@@ -448,15 +448,15 @@ Feature: Validate all scenarios in the home tab
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Home" tab
-    Then I softly see task count for "Planning" phase with the total records of flex table id "PhasePendingTasks"
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "HomePendingTasks" panel
+    Then I softly see task count for "Planning" phase with the total records of flex table id "---home:-:internalHomePendingTaskTableId---"
+    When I perform quick search for "Record Id" in "---home:-:internalHomePendingTaskTableId---" panel
     Then I softly see values "Approve Program" and "Not Started" inside table
-    And I click on "Start" icon for "Record Id" inside flex table with id "HomePendingTasks"
+    And I click on "Start" icon for "Record Id" inside flex table with id "---home:-:internalHomePendingTaskTableId---"
     When I click on "Approve" on the approval decision box
     And I navigate to "Planning" tab
     And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "HomePhaseCompletedTasks" panel
+    When I perform quick search for "Record Id" in "---home:-:completedAssignedToMe---" panel
     Then I softly see values "Approve Program" and "Completed" inside table
     Then I collect all the soft asserts
 
@@ -545,8 +545,8 @@ Feature: Validate all scenarios in the home tab
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Approve Program" in "HomePendingTasks" panel
-    Then I see that "Approve Program" has been added in flextable with Id "HomePendingTasks"
+    When I perform quick search for "Approve Program" in "---home:-:internalHomePendingTaskTableId---" panel
+    Then I see that "Approve Program" has been added in flextable with Id "---home:-:internalHomePendingTaskTableId---"
 
   @59016 @validateFilesOnHome @deepika
   Scenario: Addition of Attachment to Focus Area by User - Admin/EXE/PM
