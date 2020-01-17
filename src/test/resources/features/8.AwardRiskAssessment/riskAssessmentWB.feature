@@ -1,7 +1,7 @@
 @riskAssessment @regression
 Feature: Risk Assessment scenarios without background
 
-  @59252 @64792 @64942 @64944 @validateDataOnGrantAwardRA @deepika
+  @59252 @64792 @64942 @64944 @validateDataOnGrantAwardRA @deepika @wip @bug-69368
   Scenario Outline: Validate (risk assessment | Notes | Peer Reviewer) on grant/award
     Given I delete the record "Automation Desk Review" from the object "Desk Review"
     When I delete the record "Automation Site Visit" from the object "Site Visit"
@@ -48,8 +48,8 @@ Feature: Risk Assessment scenarios without background
       | Executive Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
     When I enter the following values into flex table with id "---announcement:-:reviewersTableId---" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
-      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+      | Name          | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Review Financial details | 20       | No                   |
     And I click on "Send for Review" icon for "Automation FO" inside table
     And I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal

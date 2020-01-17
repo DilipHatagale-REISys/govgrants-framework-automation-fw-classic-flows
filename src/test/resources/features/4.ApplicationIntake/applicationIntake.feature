@@ -34,7 +34,7 @@ Feature: Validate all scenarios in the Application Intake
       | EGMS Id                         |
       | Automation Permanent Focus Area |
 
-  @addBudgetDetailsToApplication @smoke
+  @50964 @addBudgetDetailsToApplication @smoke
   Scenario: Addition of budget in the budget grid to an application
     When I navigate to "Budget" sub tab
     And I expand nested table containing column value "BP01"
@@ -44,7 +44,7 @@ Feature: Validate all scenarios in the Application Intake
     Then I see the following messages in the page details contains:
       | Saved Successfully! |
 
-  @addTargetToKPIInApplication @smoke
+  @50967 @addTargetToKPIInApplication @smoke
   Scenario: Addition of KPI target to an application
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
@@ -53,9 +53,11 @@ Feature: Validate all scenarios in the Application Intake
     Then I see the following messages in the page details contains:
       | Saved Successfully! |
 
-  @formFillingApplication @smoke
-  Scenario: To fill and complete the form in Progress Report
+  @69367 @50969 @formFillingApplication @smoke
+  Scenario: To fill and complete the form in Application
     When I navigate to "Attachments" sub tab
+    Then I see only the following headers in table with id "FormEnhancedTable" :
+      | Form Name | Mandatory | Percentage | Last Modified By | Last Modified Date | Actions |
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
