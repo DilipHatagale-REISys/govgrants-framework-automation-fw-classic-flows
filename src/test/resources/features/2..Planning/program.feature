@@ -41,6 +41,7 @@ Feature: Validate all scenarios for program
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
     When I close "Contacts" modal by clicking the top right x button
+    And I refresh the page
     Then I see that "<Contact>" has been added in flextable with Id "---program:-:contactsTableId---"
     Examples:
       | Contact        |
