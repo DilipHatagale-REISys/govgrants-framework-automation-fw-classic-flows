@@ -15614,6 +15614,9 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "Activate" in the page details
     When I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
+    Examples:
+      | Grant Name                  | Award Name                  |
+      | Automation Execution1 Award | Automation Execution1 Award |
 
   @62922 @BudgerPeriodFieldUpdateAfterPeriodicRenewalAmendment @jitendra  @wip-forChange  @wip
   Scenario Outline: Verify Budget Period field value at Overview Tab on progress report get updated when award owner performed Periodic renewal amendment on subaward at SR user end.
