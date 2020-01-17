@@ -13415,7 +13415,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @62925 @62926 @62927 @BudgerPeriodFieldUpdateAfterFundingChangeAmendment @PercentageRemainSameAfterFundingChangeAmmendment @jitendra    @wip-forChange  @wip
+  @62925 @62926 @62927 @BudgerPeriodFieldUpdateAfterFundingChangeAmendment @PercentageRemainSameAfterFundingChangeAmmendment @jitendra @wip-forChange @wip
   Scenario Outline: Verify Budget Period field value at Overview Tab on progress report get updated when award owner performed Periodic renewal amendment on subaward at SR user end.
     Given I delete the record "Automation Execution1 Award" from the object "Amendment Request"
     And I delete the record "Automation Execution1 Award" from the object "Award"
@@ -13589,7 +13589,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                  | Grant Name                  |
       | Automation Execution1 Award | Automation Execution1 Award |
 
-  @61887 @60384 @61894 @validateCreatedPRAfterPeriodicAmendmentIsCarryForwardedAonAward @mahadev @jitendra  @wip-forChange  @wip
+  @61887 @60384 @61894 @validateCreatedPRAfterPeriodicAmendmentIsCarryForwardedAonAward @mahadev @jitendra
   Scenario Outline: Validate Progress reports with Created Status is not displayed at Performance Tab Subaward Overview at Award Owner end when Award owner performed periodic renewal Amendment
     And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -13771,7 +13771,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @61888 @validateSubmittedToGrantorPRAfterPeriodicAmendmentIsCarryForwardedAonAward @mahadev  @wip-forChange  @wip
+  @61888 @validateSubmittedToGrantorPRAfterPeriodicAmendmentIsCarryForwardedAonAward @mahadev @wip-forChange @wip
   Scenario Outline: Validate Progress reports with Submitted to Grantor Status is not displayed at Performance Tab Subaward Overview at Award Owner end when Award owner performed periodic renewal Amendment
     And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
