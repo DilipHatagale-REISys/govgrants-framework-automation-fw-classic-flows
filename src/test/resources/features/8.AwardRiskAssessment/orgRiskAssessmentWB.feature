@@ -461,7 +461,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
-    And I get the updated budget end date for award "Automation Award for Amendment Request"
+    And I get the updated budget end date by offset "1" for award "Automation Award for Amendment Request"
     When I click on "Edit" in the page details
     And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "{SavedValue:updatedBudgetPeriodDate}" into field "NewBudgetPeriodEndDate__c"

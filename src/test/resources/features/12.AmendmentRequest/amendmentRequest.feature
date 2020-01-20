@@ -433,6 +433,10 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Test Description | fieldFundingChangeJustification__c |
       | 1000                        | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
+    And I get the updated budget end date by offset "0" for award "Automation Award for Amendment Request"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     And I click on "Send to Subrecipient" in the page details
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "Green"
 
@@ -447,6 +451,10 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Test Description | fieldFundingChangeJustification__c |
       | -2000                       | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
+    And I get the updated budget end date by offset "0" for award "Automation Award for Amendment Request"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -500,6 +508,10 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Test Description | fieldFundingChangeJustification__c |
       | 1000                        | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
+    And I get the updated budget end date by offset "0" for award "Automation Award for Amendment Request"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     And I click on "Send to Subrecipient" in the page details
     When I get the "EGMS ID"
     And I navigate to "Grants" tab
@@ -557,6 +569,10 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Test Description | fieldFundingChangeJustification__c |
       | 1000                        | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
+    And I get the updated budget end date by offset "0" for award "Automation Award for Amendment Request"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     And I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I navigate to "Grants" tab
@@ -581,6 +597,10 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Test Description | fieldFundingChangeJustification__c |
       | 1000                        | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
+    And I get the updated budget end date by offset "0" for award "Automation Award for Amendment Request"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -612,6 +632,10 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Test Description | fieldFundingChangeJustification__c |
       | 2000                        | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
+    And I get the updated budget end date by offset "0" for award "Automation Award for Amendment Request"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -679,6 +703,10 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Test Description | fieldFundingChangeJustification__c |
       | 2000                        | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
+    And I get the updated budget end date by offset "0" for award "Automation Award for Amendment Request"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -737,6 +765,10 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Test Description | fieldFundingChangeJustification__c |
       | 2000                        | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
+    And I get the updated budget end date by offset "0" for award "Automation Award for Amendment Request"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -798,6 +830,10 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Test Description | fieldFundingChangeJustification__c |
       | 2000                        | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
+    And I get the updated budget end date by offset "0" for award "Automation Award for Amendment Request"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -851,6 +887,10 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Test Description | fieldFundingChangeJustification__c |
       | 1000                        | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
+    And I get the updated budget end date by offset "0" for award "Automation Award for Amendment Request"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -897,6 +937,10 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Test Description | fieldFundingChangeJustification__c |
       | 1000                        | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
+    And I get the updated budget end date by offset "0" for award "Automation Award for Amendment Request"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -958,6 +1002,10 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Test Description | fieldFundingChangeJustification__c |
       | 1000                        | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
+    And I get the updated budget end date by offset "0" for award "Automation Award for Amendment Request"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -1000,6 +1048,10 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Test Description | fieldFundingChangeJustification__c |
       | 1000                        | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
+    And I get the updated budget end date by offset "0" for award "Automation Award for Amendment Request"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -1045,6 +1097,10 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Test Description | fieldFundingChangeJustification__c |
       | 1000                        | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
+    And I get the updated budget end date by offset "0" for award "Automation Award for Amendment Request"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -1081,6 +1137,10 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Test Description | fieldFundingChangeJustification__c |
       | 1000                        | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
+    And I get the updated budget end date by offset "0" for award "Automation Award for Amendment Request"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -1123,6 +1183,10 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Test Description | fieldFundingChangeJustification__c |
       | 1000                        | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
+    And I get the updated budget end date by offset "0" for award "Automation Award for Amendment Request"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -1217,6 +1281,10 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Test Description | fieldFundingChangeJustification__c |
       | 100                         | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
+    And I get the updated budget end date by offset "0" for award "Automation Award for Amendment Request"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -1311,6 +1379,10 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Test Description | fieldFundingChangeJustification__c |
       | 100                         | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
+    And I get the updated budget end date by offset "0" for award "Automation Award for Amendment Request"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -1408,7 +1480,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
-    And I get the updated budget end date for award "Automation Award for Amendment Request"
+    And I get the updated budget end date by offset "1" for award "Automation Award for Amendment Request"
     When I click on "Edit" in the page details
     And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "{SavedValue:updatedBudgetPeriodDate}" into field "NewBudgetPeriodEndDate__c"
@@ -1549,6 +1621,10 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Test Description | fieldFundingChangeJustification__c |
       | 2000                        | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
+    And I get the updated budget end date by offset "0" for award "Automation Award for Amendment Request"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -1561,6 +1637,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
+    And I pause execution
     When I click on "Add Line Items" icon for "Supplies" inside flex table with id "---amendment:-:budgetChangeTableId---"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
@@ -1643,7 +1720,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
-    And I get the updated budget end date for award "Automation Award for Amendment Request"
+    And I get the updated budget end date by offset "1" for award "Automation Award for Amendment Request"
     When I click on "Edit" in the page details
     And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "{SavedValue:updatedBudgetPeriodDate}" into field "NewBudgetPeriodEndDate__c"
@@ -1714,7 +1791,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
-    And I get the updated budget end date for award "Automation Award for Amendment Request"
+    And I get the updated budget end date by offset "1" for award "Automation Award for Amendment Request"
     When I click on "Edit" in the page details
     And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "{SavedValue:updatedBudgetPeriodDate}" into field "NewBudgetPeriodEndDate__c"
@@ -1785,7 +1862,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
-    And I get the updated budget end date for award "Automation Award for Amendment Request"
+    And I get the updated budget end date by offset "1" for award "Automation Award for Amendment Request"
     When I click on "Edit" in the page details
     And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "{SavedValue:updatedBudgetPeriodDate}" into field "NewBudgetPeriodEndDate__c"
@@ -1863,7 +1940,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
-    And I get the updated budget end date for award "Automation Award for Amendment Request"
+    And I get the updated budget end date by offset "1" for award "Automation Award for Amendment Request"
     When I click on "Edit" in the page details
     And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "{SavedValue:updatedBudgetPeriodDate}" into field "NewBudgetPeriodEndDate__c"
@@ -1934,7 +2011,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
-    And I get the updated budget end date for award "Automation Award for Amendment Request"
+    And I get the updated budget end date by offset "1" for award "Automation Award for Amendment Request"
     When I click on "Edit" in the page details
     And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "{SavedValue:updatedBudgetPeriodDate}" into field "NewBudgetPeriodEndDate__c"
