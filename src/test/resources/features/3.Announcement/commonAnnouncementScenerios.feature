@@ -84,6 +84,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
     When I click "Add" after selection of "<Contact>" in the table "---announcement:-:annoucementContactTableId---"
+    And I refresh the page
     When I click on "Remove" icon for "<Contact>" inside flex table with id "---announcement:-:contactTableId---"
     Then I do not see values "Record Id" and "<Contact>" inside table
     Examples:
@@ -95,8 +96,8 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    And I refresh the page
     When I close "Add Organizations" modal by clicking the top right x button
+    And I refresh the page
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Applicant Organization              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
@@ -107,8 +108,8 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Add" after selection of "<EGMS Id>" in the table "---announcement:-:fundingAccTableId---"
-    And I refresh the page
     When I close "Associate" modal by clicking the top right x button
+    And I refresh the page
     When I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
