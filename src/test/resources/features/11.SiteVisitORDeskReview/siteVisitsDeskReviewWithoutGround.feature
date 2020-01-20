@@ -479,7 +479,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I softly see value "Approved" for title "Status" against the value "{SavedValue:DeskReviewID}" inside table "---deskreview:-:managementInitiateDRtableid---"
     Then I collect all the soft asserts
 
-    @initiateSiteVisitButtononFlextable
+  @69413 @initiateSiteVisitButtononFlextable
   Scenario: Validate whether initiate site visit button appear on site visit table of management tab of Award owner after Subaward is activated
     Given I delete the record "Automation Site Visit" from the object "Site Visit"
     When I login to "As a Grantor" app as "dynamicUser" user

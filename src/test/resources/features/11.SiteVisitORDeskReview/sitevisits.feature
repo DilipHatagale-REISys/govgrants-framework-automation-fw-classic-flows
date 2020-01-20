@@ -53,10 +53,10 @@ Feature: Validate all scenarios in the Site Visit
     Then I softly see that "Automation Site Visit" is in "Notified" status
     Then I softly see status in Progress-bar is "Notified" and is "green"
     Then I softly can see mail notification for "EXTERNAL" user with following subject:
-      |Site Visit for {SavedValue:SiteVisitId} has been scheduled|
+      | Site Visit for {SavedValue:SiteVisitId} has been scheduled |
     Then I softly can see mail notification for "INTERNAL" user with following subject:
-      |Site Visit Approval Requested|
-     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+      | Site Visit Approval Requested |
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -490,7 +490,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click on "Submit to Grantor" in the page details
     And I refresh the page
     Then I softly see the following messages in the page details :
-      | Reports and Outcomes Tab - Enter corrective actions on all Findings outcomes using the "+" icons.|
+      | Reports and Outcomes Tab - Enter corrective actions on all Findings outcomes using the "+" icons. |
     Then I collect all the soft asserts
 
   @55209 @55208 @subrecipientCannotSeeReportAndOutcomesWhenInNotifiedStatus @deepika

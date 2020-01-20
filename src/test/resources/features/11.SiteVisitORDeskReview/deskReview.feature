@@ -141,7 +141,7 @@ Feature: Validate all scenarios in Desk Review
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     Then I softly see the following messages in the page details :
-    | Form saved successfully. |
+      | Form saved successfully. |
     When I click on "Back" in the page details
     Then I softly see that "100.00%" has been added in flextable with Id "---deskreview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
