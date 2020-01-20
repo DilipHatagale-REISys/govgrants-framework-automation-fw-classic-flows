@@ -18,8 +18,8 @@ public class AmendmentRequestSteps  {
         amendmentRequestPage.enterRevisedEncumbrance(awardName);
     }
 
-    @And("^I get the updated budget end date for award \"([^\"]*)\"$")
-    public void getEndDate(String awardName) {
-        amendmentRequestPage.updatedBudgetPeriodEndDate(awardName);
+    @And("^I get the updated budget end date by offset \"([^\"]*)\" for award \"([^\"]*)\"$")
+    public void getEndDate(String offset, String awardName) {
+        amendmentRequestPage.updatedBudgetPeriodEndDate(offset, awardName);
     }
 }
