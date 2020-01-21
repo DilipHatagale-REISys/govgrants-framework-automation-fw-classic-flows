@@ -154,7 +154,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "Delete" icon for "Automation Permanent Funding Account" inside flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
     Then I cannot see row level action button "Delete" against "Automation Permanent Funding Account" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
 
-  @38219 @65402  @awardReviewInitiationAndCompletion
+  @38219 @65402 @awardReviewInitiationAndCompletion
   Scenario Outline: Validate review initiation and completion for the award | verify award acceptance
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
@@ -1184,7 +1184,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardFromFDM:-:progressReportSchedulesTableId---"
     When I enter in modal "Progress Report Schedule_FDM" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    Then I see field "Schedule Start Date" as "{SavedValue:ProjectPeriodStartDate}"
+    Then I see field "Reporting Period Start Date" as "{SavedValue:ProjectPeriodStartDate}"
     Examples:
       | Grant Name                      | Award Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
@@ -1208,7 +1208,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardFromFDM:-:progressReportSchedulesTableId---"
     When I enter in modal "Progress Report Schedule_FDM" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    Then I see field "Schedule End Date" as "{SavedValue:ProjectPeriodEndDate}"
+    Then I see field "Reporting Period End Date" as "{SavedValue:ProjectPeriodEndDate}"
     Examples:
       | Grant Name                      | Award Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
@@ -1230,7 +1230,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                      |
       | Automation Announcement for FDM |
 
-  @45745 @VerifyAwardRejectionByS/R   @keerti
+  @45745 @VerifyAwardRejectionByS/R @keerti
   Scenario Outline: Validate the rejection of award by recipient after approval
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
@@ -1430,7 +1430,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                      | Award Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
-  @64791 @VerifyKeyPerformanceIndicatorsValue  @keerti
+  @64791 @VerifyKeyPerformanceIndicatorsValue @keerti
   Scenario Outline: Verify Key Performance Indicators (KPIs) value Performance tab Subaward overview is same as announcement Key Performance Indicators (KPIs) table setup Tab.
     When I navigate to "Announcements" tab
     When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
@@ -1448,7 +1448,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I perform quick search for "<Award Name>" in "flexGridRelatedAwards1" panel
     And I click on "View" icon for "<Award Name>" inside table
     When I navigate to "Performance" sub tab
-    Then I see value "{SavedValue:Domain}" for title "Domain" inside table "inlineEditGridGrantorAwardKeyOutcomes"
+    Then I see value "{SavedValue:Domain}" for title "Domain" inside table "GrantorAwardKeyOutcomesgrid"
     Examples:
       | Grant Name                      | Award Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
@@ -1904,7 +1904,7 @@ Feature: Validate all scenarios in the award created from FDM
     Given I delete the record "Automation Desk Review" from the object "Desk Review"
     When I delete the record "Automation Site Visit" from the object "Site Visit"
     And I delete the record "Automation Announcement for FDM" from the object "FDM"
-    When I login to "As a Grantor" app as "dynamicUser" user
+    When I re-login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
