@@ -61,8 +61,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   Scenario Outline: Validate the association of Focus Area to Award
     When I navigate to "Budget" sub tab
     And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:focusAreaTableId---"
-    And I perform quick search for "<Focus Area>" in "---subAwardStandAlone:-:associateFocusAreaTableId---" panel
-    When I click "Associate" after selection of "<Focus Area>" in the table "---subAwardStandAlone:-:associateFocusAreaTableId---"
+    When I click "Associate" after selection of "<Focus Area>" in the table "---subAwardStandAlone:-:associateModalTableId---"
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
