@@ -6,6 +6,7 @@ Feature: Validate all scenarios of grants and award without background
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I pause execution for "3" seconds
     Then  I can see top right button "New" in flex table with id "ActiveGrants"
     Examples:
       | User |
@@ -134,7 +135,6 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Terms" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
-    And I perform quick search for "Non - Mandatory TnC 1" in "---subAwardStandAlone:-:termsndConditionsTableId---" panel
     When I click "Add" after selection of "Non - Mandatory TnC 1" in the table "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Standard" inside flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"

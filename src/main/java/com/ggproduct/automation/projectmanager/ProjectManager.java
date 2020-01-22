@@ -555,12 +555,12 @@ public class ProjectManager extends ProjectWebServices {
         if (usage.contains("softly")){
             EyeThink.core().assertion().assertThat(EyeThink.core().is().isDisplayed(modalEnlarge)).isTrue();
             ids.forEach(
-                    id -> EyeThink.core().assertion().assertThat(EyeThink.core().is().isDisplayed(By.id(id))).isTrue()
+                    id -> EyeThink.core().assertion().assertThat(EyeThink.core().is().isDisplayed(By.xpath("//*[@id='"+id+"']"))).isTrue()
             );
         } else {
             Assert.assertTrue(EyeThink.core().is().isDisplayed(modalEnlarge));
             ids.forEach(
-                    id -> Assert.assertTrue(EyeThink.core().is().isDisplayed(By.id(id)))
+                    id -> Assert.assertTrue(EyeThink.core().is().isDisplayed(By.xpath("//*[@id='"+id+"']")))
             );
         }
     }
