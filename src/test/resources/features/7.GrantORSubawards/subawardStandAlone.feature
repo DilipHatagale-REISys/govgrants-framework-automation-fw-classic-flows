@@ -1883,7 +1883,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter in modal "Progress Report Fixed Date" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    Then I see field "Schedule Start Date" as "2/2/2024"
+    Then I see field "Reporting Period Start Date" as "2/2/2024"
 
   @55309 @verifyUserCannotSubmitAwardforApprovalTillPaymentRequestScheduleNotAdded @mahadev
   Scenario Outline: Verify User cannot submit award for approval till Payment Request Schedule details is not added
@@ -2905,7 +2905,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Remove" icon for "Automation Permanent Focus Area" inside flex table with id "---subAwardStandAlone:-:focusAreaTableId---"
     Then I do not see value "Automation Permanent Focus Area" for title "Title" inside table "---subAwardStandAlone:-:focusAreaTableId---"
 
-  @65228 @VerifyRelatedFocusAreasField  @keerti
+  @65228 @VerifyRelatedFocusAreasField @keerti
   Scenario Outline: Verify Key Performance Indicators (KPIs) value Performance tab Subaward overview is same as Program Key Performance Indicators (KPIs) table setup Tab.
     When I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
@@ -2924,19 +2924,19 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I perform quick search for "<Award Name>" in "flexGridRelatedAwards1" panel
     And I click on "View" icon for "<Award Name>" inside table
     When I navigate to "Performance" sub tab
-    Then I see value "{SavedValue:domain}" for title "Domain" inside table "inlineEditGridGrantorAwardKeyOutcomes"
+    Then I see value "{SavedValue:Domain}" for title "Domain" inside table "GrantorAwardKeyOutcomesgrid"
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
 
-  @65227 @VerifyRelatedFocusAreasField  @keerti
+  @65227 @VerifyRelatedFocusAreasField @keerti
   Scenario Outline: Verify Key Performance Indicators (KPIs) value Performance tab Subaward overview is same as Program Key Performance Indicators (KPIs) table setup Tab.
     When I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
     When I perform quick search for "Automation Permanent Internal Program" in "Programs" panel
     And I click on "View" icon for "Automation Permanent Internal Program" inside table
     When I navigate to "Setup" sub tab
-    And I get the value from row "1" for column name "Organization Name" in flex table "RelatedProgramGoalsandObjectives"
+    And I get the value from row "1" for column name "Account Name" in flex table "RelatedProgramGoalsandObjectives"
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
@@ -2946,7 +2946,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I perform quick search for "<Award Name>" in "flexGridRelatedAwards1" panel
     And I click on "View" icon for "<Award Name>" inside table
     When I navigate to "Performance" sub tab
-    Then I see value "{SavedValue:lastValueFromTableForCol}" for title "Organization Name" inside table "GrantorAwardGoalsObjectives"
+    Then I see value "{SavedValue:lastValueFromTableForCol}" for title "Account Name" inside table "GrantorAwardGoalsObjectives"
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
