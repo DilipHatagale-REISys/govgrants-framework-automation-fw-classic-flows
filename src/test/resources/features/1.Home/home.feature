@@ -140,7 +140,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @56724 @56725 @56726 @termsandConditionsViewCreateAdminEdit
+  @56724 @56725 @56726 @termsandConditionsViewCreateAdminEdit @bug-69291
   Scenario Outline: Verifying all Internal Users has View, Create and Edit access to Terms and Conditions
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Planning" tab
@@ -305,7 +305,7 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "Automation Contact" in "---home:-:relatedContactsTableId---" panel
     Then I see "No Records Found" inside flex table with id "---home:-:relatedContactsTableId---"
 
-  @56740 @56741 @56742 @dunsNumberCreationEditionAndDeletion @smoke
+  @56740 @56741 @56742 @dunsNumberCreationEditionAndDeletion @smoke  @bug-69292
   Scenario Outline: Validate whether ADMIN and DA users can Create, Edit and delete the DUNS Number
     Given I delete the record "Test Automation Organization" from the object "DUNS"
     Given I login to "As a Grantor" app as "ADMIN" user
@@ -449,7 +449,6 @@ Feature: Validate all scenarios in the home tab
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Home" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    Then I softly see task count for "Planning" phase with the total records of flex table id "---home:-:internalHomePendingTaskTableId---"
     When I perform quick search for "Record Id" in "---home:-:internalHomePendingTaskTableId---" panel
     Then I softly see values "Approve Program" and "Not Started" inside table
     And I click on "Start" icon for "Record Id" inside flex table with id "---home:-:internalHomePendingTaskTableId---"
@@ -548,7 +547,8 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "Approve Program" in "---home:-:internalHomePendingTaskTableId---" panel
     Then I see that "Approve Program" has been added in flextable with Id "---home:-:internalHomePendingTaskTableId---"
 
-  @59016 @validateFilesOnHome @deepika
+# Files tab and Collab are rendered if the Chatter setting is enabled.Both are dependant on each other and if the chatter is disabled, the files and collab are not rendered. We are disabling the chatter on Automation to avoid conenct API's issues.
+  @59016 @validateFilesOnHome @deepika @bug-66960 @wip
   Scenario: Addition of Attachment to Focus Area by User - Admin/EXE/PM
     Given I delete the record "Automation Execution Focus Area" from the object "Focus Area"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -592,13 +592,13 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Related Log" sub tab
     Then I can see page block "Internal Programs"
     Then I can see page block "Announcements"
-    Then I can see page block "Applications"
+    Then I can see page block "Active Applications"
     Then I can see page block "Active Grants"
     Examples:
       | User  |
       | ADMIN |
-      | EXE   |
-      | PM    |
+#      | EXE   |
+#      | PM    |
 
   @62104 @indProfileEditAccess @deepika
   Scenario: Verify other than Admin and Ind Profile Users, other users cannot edit the Ind subrecipient profile Information

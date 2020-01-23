@@ -46,15 +46,6 @@ public class ProjectManager extends ProjectWebServices {
         }
     }
 
-    /* handles to verify no record is present in flex table */
-    public boolean isRecordPresentInTheFlexTable(String text, String tableId) {
-        try {
-            return EyeThink.core().is().isDisplayed(By.xpath("//div[@id='" + tableId + "']//*[" + EyeThink.core().xpath().contains("text()", text) + "]"));
-        } catch (Exception e) {
-        }
-        return false;
-    }
-
     /*handles to verify blank value is present inside flex table */
     public boolean isColumnValueBlank(String fieldName) {
         if (EyeThink.core().get().text(By.xpath("//*[@field-name='" + fieldName + "' or @id='" + fieldName + "']")).equals("")) {

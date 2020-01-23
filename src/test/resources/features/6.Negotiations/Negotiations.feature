@@ -475,8 +475,7 @@ Feature: Validate all scenarios in Negotiations
       | Details is Required to save under Negotiations. |
 
   @57840 @57839 @66445 @pendingNegotiationsViewAndSendToSubrecipientAfterSubmittingToGrantor
-  Scenario: Validate whether users able to Send to Subrecipient after Submit to Grantor for adjustments and view the record  inside Pending Negotaitions Table
-  Validate Task is craeted to Subrecipient even when the negotiation is send back to subrecipient
+  Scenario: Validate whether users able to Send to Subrecipient after Submit to Grantor for adjustments and view the record  inside Pending Negotaitions Table |Validate Task is craeted to Subrecipient even when the negotiation is send back to subrecipient
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
@@ -665,7 +664,7 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" from workspace
-    Then I see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
+    Then I see "Announcement_Field_Values.xlsx" has been added in "Attachment" flex table
 
   @62667 @RecordOwnerCanViewSnapshotAfterNegotiationIsInSubmittedToGrantor @keerti @snapshotheadlessmode
   Scenario: Validate Record Owner user is able to view the Snapshot after Negotiation  is in "Submitted to Grantor" status
@@ -844,7 +843,7 @@ Feature: Validate all scenarios in Negotiations
     Then I see the following messages in the page details :
       | Due Date is Required to save under Negotiations. |
 
-  @66381 @66451 @createSubawardFromNegotiation @deepika
+   @66451 @createSubawardFromNegotiation @deepika
   Scenario: Validate whether User will be able to create draft award created from Complete Negotiation | Validate when Negotiation Request is completed and user clicks on Create Subaward then the sttaus changes to 'Converted to Award'
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab

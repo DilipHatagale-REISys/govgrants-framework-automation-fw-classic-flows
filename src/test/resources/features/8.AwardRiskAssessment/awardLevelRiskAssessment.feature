@@ -3068,9 +3068,12 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     When I navigate to "Overview" sub tab
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---"
+    And I enter "Contact_Creation" values from "RiskAssessment_Field_Values.xlsx"
+    And I click modal button "Save"
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name        | Project Role             | Is Key Personnel |
-      | PatrickM SA | Project Director/Manager | Checked          |
+      | Project Role             | Is Key Personnel |
+      | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
       | Role               | Name           | Description                 |

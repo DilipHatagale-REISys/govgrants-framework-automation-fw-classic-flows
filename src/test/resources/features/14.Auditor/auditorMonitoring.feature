@@ -56,13 +56,18 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
       | User    |
       | AUDITOR |
 
-  @69303 @auditordownloadRiskAssessmentInXLS @bug @wip
-  Scenario: Verify User with Auditor profile has ability to download XLS files of record.
-    Given I login to "As a Grantor" app as "AUDITOR" user
+  @69303 @auditordownloadRiskAssessmentInXLS
+  Scenario Outline: Verify User with Auditor profile has ability to download XLS files of record and View the record
+    Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Monitoring" tab
     And I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
     When I click on top right parallel lines bar for "Risk Assessments - All"
     And I select "Download as XLS" from parallel lines dropdown of "Risk Assessments - All"
-    Then I verify that "xls" file is downloaded
-
+    Then I softly verify that "xls" file is downloaded
+    When I perform quick search for "Automation Direct Award" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
+    Then I softly can see row level action button "View" against "Automation Direct Award" in flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
+   Then I collect all the soft asserts
+    Examples:
+      | User    |
+      | AUDITOR |
 
