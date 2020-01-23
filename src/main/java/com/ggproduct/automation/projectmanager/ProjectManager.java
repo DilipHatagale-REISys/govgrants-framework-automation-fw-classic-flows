@@ -403,7 +403,7 @@ public class ProjectManager extends ProjectWebServices {
      * To verify Active Sub Tab
      */
     public boolean getSelectedSubTab(String elementText) {
-        String activeSubTab = EyeThink.core().elementReference().of(By.xpath("//div[@id='myTabs']/ul//li[contains(@class,'active')]/span")).getText();
+        String activeSubTab = EyeThink.core().elementReference().of(By.xpath("//div[@id='myTabs']/ul//li[contains(@class,'active')]//span[not(@class)]")).getText();
         if (elementText.equals(activeSubTab)) {
             return true;
         }

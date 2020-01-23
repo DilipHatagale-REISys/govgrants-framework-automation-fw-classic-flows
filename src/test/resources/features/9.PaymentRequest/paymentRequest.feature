@@ -800,6 +800,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     And I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Receipt"
+    And I refresh the page
     Then I see "Receipt" has been added in "Attachment" flex table
 
   @54412 @uploadAttachmentFromWorkspaceAdvancePR @mahadev
@@ -811,8 +812,8 @@ Feature: Validate all scenarios in Payment Request
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Attachments" sub tab
-    And I upload attachment "Announcement_Field_Values.xlsx" from workspace
-    Then I see "Announcement_Field_Values.xlsx" has been added in "Attachment" flex table
+    And I upload attachment "InternalOrganization_Field_Values.xlsx" from workspace
+    Then I see "InternalOrganization_Field_Values.xlsx" has been added in "Attachment" flex table
 
   @54416 @uploadAttachmentFromWorkspaceReimbursementPR @mahadev
   Scenario: verify that user can upload document from workspace for Reimbursement Payment Request
@@ -1395,7 +1396,7 @@ Feature: Validate all scenarios in Payment Request
     Then I can see mail notification for "EXTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Sent Back for Revisions |
 
-  @55628 @approvalOfAdvancePaymentRequestEmailNotification @jitendra
+  @55628 @approvalOfAdvancePaymentRequestEmailNotification @jitendra @aashish999
   Scenario: Verify that on submitting for approval , user is able to check email (Advance)
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"

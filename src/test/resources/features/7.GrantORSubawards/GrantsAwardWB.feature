@@ -135,7 +135,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Terms" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
-    When I click "Add" after selection of "Non - Mandatory TnC 1" in the table "---subAwardStandAlone:-:termsndConditionsTableId---"
+    When I click "Add" after selection of "Test TC" in the table "---subAwardStandAlone:-:grantTermConditionPopUp---"
     And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Standard" inside flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I enter value "2" into field "Sequence__c"
@@ -692,7 +692,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see field "Grant Abbreviation" as "GA"
     Then I collect all the soft asserts
 
-  @65582 @verifyGrantTypes  @mahadev
+  @65582 @verifyGrantTypes @mahadev
   Scenario: To verify that the type of grant in drop down is Project grant, formula and block grant
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -710,7 +710,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "Edit" in the page details
     Then I see field dropdown "fieldGrantType__c" contains values "Project Grant,Formula Grant,Block Grant"
 
-  @65602 @verifySubtabNavigation  @mahadev
+  @65602 @verifySubtabNavigation @mahadev
   Scenario: Verify when Award owner click on edit action at sub award it should navigate to subawards Tab with Progress bar status as Created
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -1014,7 +1014,7 @@ Feature: Validate all scenarios of grants and award without background
       | Announcement Name         | Application Name          |
       | Automation  Announcement1 | Automation  Announcement1 |
 
-  @65681 @65683 @verifyTermsAndConditions  @mahadev
+  @65681 @65683 @verifyTermsAndConditions @mahadev
   Scenario: Verify Award owner can Associate Terms and Conditions on Subaward Terms Tab | Verify Associated Mandatory Terms and Conditions are not Editable by award owner on Subaward
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -1030,7 +1030,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
-    Then I softly cannot see row level action button "Edit" against "Mandatory TnC 10" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
+    Then I softly cannot see row level action button "Edit" against "Test T&C" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     When I click "Add" after selection of "Non - Mandatory TnC 1" in the table "---subAwardStandAlone:-:termsndConditionsTableId---"
     When I close "Associate Terms and Conditions" modal by clicking the top right x button
@@ -1342,7 +1342,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I see the following messages in the page details :
       | Instructions for Subrecipient is Required to save under Overview. |
 
-  @66389 @validateStatusOnAwardAfterSVSubmitToGrantor  @mahadev
+  @66389 @validateStatusOnAwardAfterSVSubmitToGrantor @mahadev
   Scenario:To verify that “submit to grantor” button is clicked by SR than progress bar changes submitted to grantor from sent to subrecipient at award owner.
     And I delete the record "Automation Site Visit" from the object "Site Visit"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -1373,7 +1373,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI" user
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -1444,7 +1444,7 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Management" sub tab
     Then I see value "Submitted to Grantor" for title "Status" against the value "{SavedValue:EGMSID}" inside table "GrantorSiteVisitsAward"
 
-  @66655 @66750 @68152 @validateBlockGrantCreation   @mahadev
+  @66655 @66750 @68152 @validateBlockGrantCreation @mahadev
   Scenario: To verify that Subaward is created state on progress bar when the Grant type is “Block Grant” | To verify that if the Budget Period End Date is left blank and send to subrecipient button is clicked on the top right corner of the page validation message appear
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -1469,7 +1469,7 @@ Feature: Validate all scenarios of grants and award without background
       | Budget Tab - Specify a Budget Period End Date for the subaward. |
     Then I collect all the soft asserts
 
-  @65592   @validateGrantTypeAndGrantDescriptionFields   @mahadev
+  @65592 @validateGrantTypeAndGrantDescriptionFields @mahadev
   Scenario: To verify that after the new value is entered and clicked on the save button through the award owner profile as a PM profile the value must be retained
     Given I delete the record "Automation Direct Award" from the object "Award"
     And I delete the record "Automation Direct Award" from the object "Grant"
@@ -1482,7 +1482,7 @@ Feature: Validate all scenarios of grants and award without background
     And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I navigate to "Overview" sub tab
-    And I enter value "Test Automation" into field "GrantAwardDescription__c"
+    And I enter value "Test Automation" into field "fieldGrantDescription__c"
     And I enter value "Project Grant" into field "GrantType__c"
     And I click on "Save" in the page details
     Then I softly see field "Grant Type" as "Project Grant"
