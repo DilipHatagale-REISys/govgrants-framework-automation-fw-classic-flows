@@ -54,7 +54,7 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
     Then I verify that "pdf" file is downloaded
 
   @audiorCanViewAmendmentRecordsofAllStatus
-    Scenario: Validate whether Audior Profile all the amendment records created by Auditor profile
+  Scenario: Validate whether Audior Profile all the amendment records created by Auditor profile
     Given I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Grants" tab
     When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
