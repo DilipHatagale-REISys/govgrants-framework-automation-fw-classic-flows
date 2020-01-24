@@ -2,8 +2,15 @@ package com.ggproduct.automation.pageobjects;
 
 import com.ggproduct.automation.projectmanager.ProjectManager;
 import eyethink.automation.bots.Register.EyeThink;
+import eyethink.automation.bots.Report.LogLevel;
+import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.List;
+import java.util.Locale;
 
 public class AwardPage extends ProjectManager {
 
@@ -69,6 +76,53 @@ public class AwardPage extends ProjectManager {
             Assert.assertTrue(
                     EyeThink.core().get().text(By.xpath("//*[@id='pageHeaderId']//span[@class='overview-title']")).contains(textContains)
             );
+        }
+    }
+
+    public void verifyTotalObligation(String usage, String fieldToCompare, List<String> fieldsToSum) {
+        try {
+            double expectedSum = Double.parseDouble(EyeThink.saas().pageDetails().getFieldValue(fieldToCompare, true).replaceAll("[^0-9.]", ""));
+            double actualSum = 0;
+            for (String fieldToSum : fieldsToSum) {
+                actualSum += Double.parseDouble(EyeThink.saas().pageDetails().getFieldValue(fieldToSum, true).replaceAll("[^0-9.]", ""));
+            }
+
+            if (usage.contains("softly")) {
+                EyeThink.core().assertion().assertThat(actualSum)
+                        .as("Verifying that the field %s is equal to the sum of fields %s", fieldToCompare, fieldsToSum)
+                        .isEqualTo(expectedSum);
+            } else {
+                Assert.assertTrue(actualSum == expectedSum);
+            }
+        } catch (NumberFormatException e) {
+            EyeThink.core().report().write(LogLevel.BUSINESS_LAYER_ERROR, String.format("Either the total field '%s' or the summable fields %s were not able to be converted to double.", fieldToCompare, fieldsToSum));
+            throw e;
+        }
+    }
+
+    /**
+     * Here in this method we are finding the available balance by substracting Appropriation Amount(Saved in previous step)
+     * and TotalObligation(saved in previous step)
+     * @param usage
+     * @autor jitendra.pisal
+     */
+    public void validateAvailableBalance(String usage, String fieldToCompare, String initialFieldValue, List<String> fieldsToSum){
+        try {
+            double expectedSum = Double.parseDouble(EyeThink.saas().pageDetails().getFieldValue(fieldToCompare, true).replaceAll("[^0-9.]", ""));
+            double actualSum = Double.parseDouble(EyeThink.saas().pageDetails().getFieldValue(initialFieldValue, true).replaceAll("[^0-9.]", ""));
+            for (String fieldToSum : fieldsToSum) {
+                actualSum -= Double.parseDouble(EyeThink.saas().pageDetails().getFieldValue(fieldToSum, true).replaceAll("[^0-9.]", ""));
+            }
+            if(usage.contains("softly")) {
+                EyeThink.core().assertion().assertThat(actualSum)
+                        .as("Verifying that the field %s is equal to the difference of field %s and the fields %s", fieldToCompare, initialFieldValue, fieldsToSum)
+                        .isEqualTo(expectedSum);
+            } else {
+                Assert.assertTrue(expectedSum == actualSum);
+            }
+        } catch (NumberFormatException e) {
+            EyeThink.core().report().write(LogLevel.BUSINESS_LAYER_ERROR, String.format("Either the total field '%s', the initial field '%s', or the summable fields %s were not able to be converted to double.", fieldToCompare, initialFieldValue, fieldsToSum));
+            throw e;
         }
     }
 }

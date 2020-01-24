@@ -15617,7 +15617,7 @@ Feature: Validate scenarios in Progress Report without background
       | Grant Name                  | Award Name                  |
       | Automation Execution1 Award | Automation Execution1 Award |
 
-  @62922 @BudgerPeriodFieldUpdateAfterPeriodicRenewalAmendment @jitendra  @wip-forChange  @wip
+  @62922 @BudgerPeriodFieldUpdateAfterPeriodicRenewalAmendment @jitendra
   Scenario Outline: Verify Budget Period field value at Overview Tab on progress report get updated when award owner performed Periodic renewal amendment on subaward at SR user end.
     And I delete the record "Automation Execution1 Award" from the object "Award"
     And I delete the record "Automation Execution1 Award" from the object "Grant"

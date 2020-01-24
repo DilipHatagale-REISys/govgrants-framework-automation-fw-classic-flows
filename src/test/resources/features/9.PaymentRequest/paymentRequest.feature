@@ -223,8 +223,8 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I perform quick search for "Record Id" in "flexTableRandomID" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "flexTableRandomID"
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
@@ -270,8 +270,8 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I perform quick search for "Record Id" in "flexTableRandomID" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "flexTableRandomID"
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
@@ -305,8 +305,8 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I perform quick search for "Record Id" in "flexTableRandomID" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "flexTableRandomID"
     Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
 
   @53845 @paymentRequestAccessibleToSPIandSPA @mahadev
@@ -589,11 +589,11 @@ Feature: Validate all scenarios in Payment Request
       | Budget Category | Advance Requested This Action |
       | Construction    | 10000000                      |
     Then I softly see the following messages in the page details contains:
-      | Advance Requested cannot be greater than the Advance Request Balance :|
+      | Advance Requested cannot be greater than the Advance Request Balance : |
     And I refresh the page
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
-      | Construction    | 100                      |
+      | Construction    | 100                           |
     And I refresh the page
     Then I softly see field "Advance Requested This Action" as "$100.00"
     And I collect all the soft asserts
@@ -651,9 +651,9 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) |
-      | Extra Salary | The narrative | 100000000         | 1        | Feet        | 10                |
+      | Extra Salary | The narrative | 100000000  | 1        | Feet        | 10                |
     Then I softly see the following messages in the page details contains:
-      | Advance applied cannot be greater than the Net Payment.|
+      | Advance applied cannot be greater than the Net Payment. |
     When I close "Add Line Items" modal by clicking the top right x button
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
@@ -664,8 +664,8 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I perform quick search for "Record Id" in "flexTableRandomID" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "flexTableRandomID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name           | Description                 |
@@ -800,6 +800,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     And I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Receipt"
+    And I refresh the page
     Then I see "Receipt" has been added in "Attachment" flex table
 
   @54412 @uploadAttachmentFromWorkspaceAdvancePR @mahadev
@@ -811,8 +812,8 @@ Feature: Validate all scenarios in Payment Request
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Attachments" sub tab
-    And I upload attachment "Announcement_Field_Values.xlsx" from workspace
-    Then I see "Announcement_Field_Values.xlsx" has been added in "Attachment" flex table
+    And I upload attachment "InternalOrganization_Field_Values.xlsx" from workspace
+    Then I see "InternalOrganization_Field_Values.xlsx" has been added in "Attachment" flex table
 
   @54416 @uploadAttachmentFromWorkspaceReimbursementPR @mahadev
   Scenario: verify that user can upload document from workspace for Reimbursement Payment Request
@@ -1319,8 +1320,8 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I perform quick search for "Record Id" in "flexTableRandomID" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "flexTableRandomID"
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
@@ -1831,8 +1832,8 @@ Feature: Validate all scenarios in Payment Request
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "PhasePendingTasks" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "PhasePendingTasks"
+    And I perform quick search for "Record Id" in "flexTableRandomID" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "flexTableRandomID"
     And I click on "Submit for Approval" in the page details
     Then I see the following messages in the page details contains:
       | Responsibilities Tab - A Fiscal Approver is required in order to submit this Payment Request for approval. |
@@ -1863,6 +1864,7 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Net Spent This Action |
       | {SavedValue:fundingAccount} | 10                    |
     And I click on "Submit for Approval" in the page details
+    And I pause execution for "2" seconds
     Then I see the following messages in the page details contains:
       | Responsibilities Tab - A Fiscal Approver is required in order to submit this Payment Request for approval. |
 
@@ -1878,10 +1880,10 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
-      | Construction    | 10                            |
+      | Equipment       | 10                            |
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
-      | Supplies        | 10                            |
+      | Equipment       | 10                            |
     And I click on "Submit to Grantor" in the page details
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1900,7 +1902,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 10                            |
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
-      | Supplies        | 10                            |
+      | Equipment       | 10                            |
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab

@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.*;
-import java.util.stream.Stream;
 
 
 /**
@@ -394,7 +393,8 @@ public class ProjectManager extends ProjectWebServices {
      * To verify Active Sub Tab
      */
     public boolean getSelectedSubTab(String elementText) {
-        String activeSubTab = EyeThink.core().elementReference().of(By.xpath("//div[@id='myTabs']/ul//li[contains(@class,'active')]/span")).getText();
+        String activeSubTab = EyeThink.core().get().text(By.xpath("//div[@id='myTabs']/ul//li[contains(@class,'active')]//span[not(@class)]"));
+
         if (elementText.equals(activeSubTab)) {
             return true;
         }
