@@ -22,7 +22,7 @@ Feature: Validate all scenarios in Closeout
     Then I see status in Progress-bar is "Created" and is "Green"
 
   @50975 @50974 @assigningApproversAndsendClosoutToSubrecipient @smoke
-  Scenario: Send Closout Request to Subrecipient
+  Scenario: Send Closeout Request to Subrecipient and assigning approvers to the closeout Request
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
     When I enter "Creation" values from "Closeout_Field_Values.xlsx"

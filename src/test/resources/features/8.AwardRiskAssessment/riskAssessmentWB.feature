@@ -963,7 +963,7 @@ Feature: Risk Assessment scenarios without background
       | Automation Permanent Focus Area | 0          |  650     |
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Title    | Revised Encumbrance |
-      | FA-ST-89 | 2000                |
+      | FA-ST-02 | 2000                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:approversTableId---" by clicking "Edit" :
       | Role               | Name           | Description                 |

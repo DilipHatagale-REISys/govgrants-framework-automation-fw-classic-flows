@@ -197,7 +197,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    Then I see that "100.00%" has been added in flextable with Id "---orgLevelSiteVisits:-:reportsTableId---"
+    Then I see that "100%" has been added in flextable with Id "---orgLevelSiteVisits:-:reportsTableId---"
 
   @54569 @54457 @addingOutcomeAndpprovalSiteVisitOrgLevel @deepika
   Scenario: Validate Adding outcomes and Submitting Site Visit for approval Org level
@@ -791,7 +791,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
-    Then I softly can see top right button "Notify" in page detail
     And I click on "Notify" in the page details
     Then I softly see status in Progress-bar is "Notified" and is "green"
     When I click on "Conduct" in the page details
@@ -984,7 +983,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     Then I see value "Active" for title "New Value" inside table "History"
 
   @61400 @61401 @ViewSnapshotandApproversTableIsNotEditableAfterSiteVisitsIsSubmittedToApproval @keerti @snapshotheadlessmode
-  Scenario: ValidateR ecord Owner user is able to view the Snapshot and Approvers Table is not editable for record owner and award owner end when the status of Org Level Site Visits is Submitted to Approval
+  Scenario: Validate Record Owner user is able to view the Snapshot and Approvers Table is not editable for record owner and award owner end when the status of Org Level Site Visits is Submitted to Approval
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
     And I enter "Creation" values from "Organizational_SiteVisit_Field_Values.xlsx"
@@ -1137,7 +1136,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I navigate to "Applications" tab
     When I navigate to "Application Site Visits" content inside "Application Reviews" subheader on left panel
     And I click toggle button to select "Application Site Visits - All"
-    And I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:latestSiteVisitReportsGridTableId---" panel
+    And I perform quick search for "Automation Site Visit Org level" in "---orgLevelSiteVisits:-:latestSiteVisitReportsGridTableId---" panel
     When I click on "View" icon for "Automation Site Visit Org level" inside flex table with id "---orgLevelSiteVisits:-:latestSiteVisitReportsGridTableId---"
     When I navigate to "Responsibilities" sub tab
     Then I softly cannot see row level action button "Enter Review" against "Automation FO" in flex table with id "flexGridRiskAssessmentApproverRoles"
@@ -1288,6 +1287,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_SiteVisit_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I get the "EGMS ID"
     And I navigate to "Overview" sub tab
     Then I softly verify that field "Award__c" is not editable by entering "Select" value
     And I navigate to "Home" tab
@@ -1297,8 +1297,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Related log" sub tab
     Then I softly can see row level action button "Delete" against "Automation Site Visit Org level" in flex table with id "SiteVisit"
     When I click on "Delete" icon for "Automation Site Visit Org level" inside flex table with id "SiteVisit"
-    Then I softly see the following messages in the page details contains:
-      | Record deleted successfully. |
+    And I perform quick search for "Record Id" in "SiteVisit" panel
+    Then I softly see "No Records Found" inside flex table with id "SiteVisit"
     Then I collect all the soft asserts
 
   @65152 @historyOfOrgSiteVisitsendbacktoOwner @deepika

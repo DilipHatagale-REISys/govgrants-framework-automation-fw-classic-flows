@@ -56,13 +56,78 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
       | User    |
       | AUDITOR |
 
-  @69303 @auditordownloadRiskAssessmentInXLS @bug @wip
-  Scenario: Verify User with Auditor profile has ability to download XLS files of record.
-    Given I login to "As a Grantor" app as "AUDITOR" user
+  @69303 @auditordownloadRiskAssessmentInXLS
+  Scenario Outline: Verify User with Auditor profile has ability to download XLS files of record and View the record
+    Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Monitoring" tab
     And I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
     When I click on top right parallel lines bar for "Risk Assessments - All"
     And I select "Download as XLS" from parallel lines dropdown of "Risk Assessments - All"
-    Then I verify that "xls" file is downloaded
+    Then I softly verify that "xls" file is downloaded
+    When I perform quick search for "Automation Direct Award" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
+    Then I softly can see row level action button "View" against "Automation Direct Award" in flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
+    Then I collect all the soft asserts
+    Examples:
+      | User    |
+      | AUDITOR |
 
+  @69869 @auditorCannotCreateAwardLevelSiteVisit
+  Scenario Outline: Validate Auditor should not be able to Create, Edit, Delete and Accept and Close the Award Level Site Visit
+    When I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    And I perform quick search for "Automation Permanent Award" in "ActiveGrants" panel
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
+    Given I navigate to "Management" sub tab
+    Then I softly cannot see top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
+    When I perform quick search for "Automation Site Visit" in "GrantorSiteVisitsAward" panel
+    Then I softly cannot see row level action button "Edit" against Value "Automation Site Visit" inside "GrantorSiteVisitsAward" flex table
+    Then I softly cannot see row level action button "Delete" against Value "Automation Site Visit" inside "GrantorSiteVisitsAward" flex table
+    And I click on "View" icon for "Automation Site Visit" inside flex table with id "GrantorSiteVisitsAward"
+    Then I softly cannot see top right button "Accept and Close" in page detail
+    And I collect all the soft asserts
+    Examples:
+      | User    |
+      | AUDITOR |
 
+  @69870 @auditorCannotCreateAwardLevelDeskReview
+  Scenario Outline: Validate Auditor should not be able to Create, Edit, Delete and Accept and Close the Award Level Desk Review
+    When I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    And I perform quick search for "Automation Permanent Award" in "ActiveGrants" panel
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
+    Given I navigate to "Management" sub tab
+    Then I softly cannot see top right button "Initiate Desk Review" in flex table with id "GrantorDeskReviewAward"
+    When I perform quick search for "Automation Desk Review" in "GrantorDeskReviewAward" panel
+    Then I softly cannot see row level action button "Edit" against Value "Automation Desk Review" inside "GrantorDeskReviewAward" flex table
+    Then I softly cannot see row level action button "Delete" against Value "Automation Desk Review" inside "GrantorDeskReviewAward" flex table
+    And I click on "View" icon for "Automation Desk Review" inside flex table with id "GrantorDeskReviewAward"
+    Then I softly cannot see top right button "Accept and Close" in page detail
+    And I collect all the soft asserts
+    Examples:
+      | User    |
+      | AUDITOR |
+
+  @69872 @auditorCannotCreateAwardLevelRiskAssessment
+  Scenario Outline: Validate Auditor should not be able to Create Award Level Risk Assessment
+    When I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    And I perform quick search for "Automation Execution Award" in "ActiveGrants" panel
+    And I click on "View" icon for "Automation Execution Award" inside flex table with id "ActiveGrants"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Automation Execution Award" inside flex table with id "flexGridRelatedAwards1"
+    Given I navigate to "Management" sub tab
+    Then I softly cannot see top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
+    And I collect all the soft asserts
+    Examples:
+      | User    |
+      | AUDITOR |
