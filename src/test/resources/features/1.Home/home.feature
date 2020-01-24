@@ -597,8 +597,8 @@ Feature: Validate all scenarios in the home tab
     Examples:
       | User  |
       | ADMIN |
-#      | EXE   |
-#      | PM    |
+      | EXE   |
+      | PM    |
 
   @62104 @indProfileEditAccess @deepika
   Scenario: Verify other than Admin and Ind Profile Users, other users cannot edit the Ind subrecipient profile Information

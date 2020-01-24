@@ -143,7 +143,7 @@ Feature: Validate all scenarios in Desk Review
     Then I softly see the following messages in the page details :
       | Form saved successfully. |
     When I click on "Back" in the page details
-    Then I softly see that "100.00%" has been added in flextable with Id "---deskreview:-:reportsTableId---"
+    Then I softly see that "100%" has been added in flextable with Id "---deskreview:-:reportsTableId---"
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -634,9 +634,7 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation EXE" in the table "---deskreview:-:deskReviewContactsTableId---"
-    Then I softly can see top right button "Notify" in page detail
     And I click on "Notify" in the page details
-    Then I softly can see top right button "Conduct" in page detail
     And I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
@@ -1076,8 +1074,8 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Management" sub tab
     Then I softly can see row level action button "Delete" against "Automation Desk Review" in flex table with id "---deskreview:-:managementInitiateDRtableid---"
     When I click on "Delete" icon for "Automation Desk Review" inside flex table with id "---deskreview:-:managementInitiateDRtableid---"
-    Then I softly see the following messages in the page details contains:
-      | Record deleted successfully. |
+    And I perform quick search for "Automation Desk Review" in "---deskreview:-:managementInitiateDRtableid---" panel
+    Then I softly see "No Records Found" inside flex table with id "---deskreview:-:managementInitiateDRtableid---"
     Then I collect all the soft asserts
 
   @65245 @historyOfDeskReviewsendbacktoOwner @deepika

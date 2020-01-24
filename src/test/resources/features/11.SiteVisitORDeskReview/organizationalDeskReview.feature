@@ -189,7 +189,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    Then I see that "100.00%" has been added in flextable with Id "---orgLevelDeskReview:-:reportsTableId---"
+    Then I see that "100%" has been added in flextable with Id "---orgLevelDeskReview:-:reportsTableId---"
 
   @54886 @54571 @66270 @submittingForAprovalOfDeskReviewOrgLevel @deepika
   Scenario: Validate the org level Desk Review Submitting for Approval | Validate Approvers Table is not editable for record owner and award owner end when the status of Org Level Desk Review is Submitted to Approval
@@ -995,8 +995,8 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Related log" sub tab
     Then I softly can see row level action button "Delete" against "Automation Desk Review Org level" in flex table with id "DeskReview"
     When I click on "Delete" icon for "Automation Desk Review Org level" inside flex table with id "DeskReview"
-    Then I softly see the following messages in the page details contains:
-      | Record deleted successfully. |
+    And I perform quick search for "Automation Desk Review Org level" in "DeskReview" panel
+    Then I softly see "No Records Found" inside flex table with id "DeskReview"
     Then I collect all the soft asserts
 
   @65070 @historyOfOrgDeskReviewsendbacktoOwner @deepika

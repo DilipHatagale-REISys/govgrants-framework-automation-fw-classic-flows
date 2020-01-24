@@ -1,4 +1,4 @@
-@siteVisit @regression
+@siteVisits @regression
 Feature: Validate all scenarios in the Site Visit
 
   Background: Data setup for Site Visit
@@ -136,7 +136,7 @@ Feature: Validate all scenarios in the Site Visit
     And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    Then I softly see that "100.00%" has been added in flextable with Id "---sitevisits:-:reportsTableId---"
+    Then I softly see that "100%" has been added in flextable with Id "---sitevisits:-:reportsTableId---"
     Then I collect all the soft asserts
 
   @51091 @51092  @66314 @approvalOfSiteVisit
@@ -350,7 +350,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Verify that upon conduct,  Reports And Outcomes tab are editable to the internal user for an award  level site visit
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name           | Description      Validate conduct, adding outcomes and submitting site visits for approval           |
       | Program Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver  | Automation FO  | Automation Test Description |
     When I get the "EGMS ID"
@@ -420,7 +420,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Then I cannot see top right button "Notify" in page detail
 
-  @55211  @66322  @siteVisitsWithOutAddingCorerctiveItems @deepika
+  @55211 @66322 @siteVisitsWithOutAddingCorerctiveItems @deepika
   Scenario:  User will not be able to submit the Site Visit to Grantor without adding corrective actions to findings | To verify that submit to grantor button appear on site visit page at SR end
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
@@ -479,10 +479,7 @@ Feature: Validate all scenarios in the Site Visit
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
-    Then I softly can see top right button "Accept and Close" in page detail
-    And I pause execution for "5" seconds
     When I click on "Submit to Grantor" in the page details
-    And I refresh the page
     Then I softly see the following messages in the page details :
       | Reports and Outcomes Tab - Enter corrective actions on all Findings outcomes using the "+" icons. |
     Then I collect all the soft asserts
@@ -750,9 +747,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
-    Then I softly can see top right button "Notify" in page detail
     And I click on "Notify" in the page details
-    Then I softly can see top right button "Conduct" in page detail
     When I click on "Conduct" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
@@ -815,8 +810,7 @@ Feature: Validate all scenarios in the Site Visit
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
-    And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
-    Then I softly see status in Progress-bar is "In Progress" and is "green"
+    Then I softly see that "Automation Site Visit" has been added in flextable with Id "---sitevisits:-:manageSiteVisitTableId---"
     Then I collect all the soft asserts
 
   @60830 @56038 @FieldHistoryUpdatedSendBackToOwnerByPM @keerti
