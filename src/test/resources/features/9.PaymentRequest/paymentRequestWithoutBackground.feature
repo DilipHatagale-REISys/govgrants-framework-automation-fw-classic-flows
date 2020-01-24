@@ -2796,6 +2796,7 @@ Feature: Payment Request scenarios without background
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I navigate to "Attachments" sub tab
+    And I pause execution for "3" seconds
     When I enter the following values into flex table with id "flexGridGrantChecklists" by clicking "Add" :
       | Description | Required | Applies To      | Status |
       | Automation  | Optional | Advance Request | Active |
