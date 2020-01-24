@@ -28,6 +28,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I save the field labeled "Appropriation Amount" as "Appropriation Amount"
     Then I softly validate the total obligation is a sum of pre-encumberance,encumberance and spent
     Then I softly validate the total amount is substraction of appropriation amount and total obligation amount
+    And I collect all the soft asserts
 
   @38213 @38217 @awardCreateEditAndAddingSchedules
   Scenario: Award creation, edition and adding payment/progress report schedules
