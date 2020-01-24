@@ -8,7 +8,7 @@ Feature: Validate all scenarios in Negotiations
 
   @57032 @57031 @66071 @66448 @negotiationInitiatedAndSendToRecipient @deepika
   Scenario: Validate the the Negotiation option on the Approved FDM and Announcement Owner can send the Negotiation request to the Applicant
-    Validate the Status Field when the Negotiation Request is "Sent to Subrecipient"
+  Validate the Status Field when the Negotiation Request is "Sent to Subrecipient"
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
@@ -141,7 +141,7 @@ Feature: Validate all scenarios in Negotiations
 
   @57214 @57039 @66450 @createAwardButtonAfterNegotiationComplete @deepika
   Scenario: Validate whether user will be able to view and select the Create Award button after the negotiation is completed
-    Validate when the Negotiation Request is sent to Subrecipient, Application response page block is available for subrecipient to enter the details and provide them to Grantor and grantor can view them
+  Validate when the Negotiation Request is sent to Subrecipient, Application response page block is available for subrecipient to enter the details and provide them to Grantor and grantor can view them
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
@@ -476,7 +476,7 @@ Feature: Validate all scenarios in Negotiations
 
   @57840 @57839 @66445 @pendingNegotiationsViewAndSendToSubrecipientAfterSubmittingToGrantor
   Scenario: Validate whether users able to Send to Subrecipient after Submit to Grantor for adjustments and view the record  inside Pending Negotaitions Table
-    Validate Task is craeted to Subrecipient even when the negotiation is send back to subrecipient
+  Validate Task is craeted to Subrecipient even when the negotiation is send back to subrecipient
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
@@ -535,7 +535,7 @@ Feature: Validate all scenarios in Negotiations
 
   @58030 @65324 @completedNegotiationAttachmentsNotes @deepika
   Scenario: Validate whether user is able to view the completed Negotiation on Applications Tab /
-    To verify that after clicking on complete negotiation button from the award owner profile  the progress bar  shows negotiated
+  To verify that after clicking on complete negotiation button from the award owner profile  the progress bar  shows negotiated
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel

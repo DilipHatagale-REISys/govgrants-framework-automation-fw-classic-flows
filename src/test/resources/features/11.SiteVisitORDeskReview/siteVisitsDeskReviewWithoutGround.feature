@@ -478,3 +478,17 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "Approved" in "---deskreview:-:managementInitiateDRtableid---" panel
     Then I softly see value "Approved" for title "Status" against the value "{SavedValue:DeskReviewID}" inside table "---deskreview:-:managementInitiateDRtableid---"
     Then I collect all the soft asserts
+
+  @69413 @initiateSiteVisitButtononFlextable
+  Scenario: Validate whether initiate site visit button appear on site visit table of management tab of Award owner after Subaward is activated
+    Given I delete the record "Automation Site Visit" from the object "Site Visit"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    And I perform quick search for "Automation Permanent Award" in "ActiveGrants" panel
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
+    Given I navigate to "Management" sub tab
+    Then I can see top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
