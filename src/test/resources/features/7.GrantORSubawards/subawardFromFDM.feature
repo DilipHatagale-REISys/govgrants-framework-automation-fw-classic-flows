@@ -21,7 +21,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I navigate to "Budget" sub tab
     And I click on hyperlink containing value "{SavedValue:fundingAccount}"
     And I save the field labeled "Pre-Encumbrance" as "Pre-Encumbrance"
-    And I save the value for encumberance on page as "Encumbrance"
+    And I save the field containing "Encumbrance" as "Encumbrance"
     And I save the field labeled "Spent" as "Spent"
     And I save the field labeled "Available Balance" as "Available Balance"
     And I save the field labeled "Total Obligation" as "TotalObligation"

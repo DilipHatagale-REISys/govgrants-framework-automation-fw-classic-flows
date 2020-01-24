@@ -89,12 +89,6 @@ public class AwardSteps {
         awardPage.verifyTotalObligation(usage);
     }
 
-    @And("^I save the value for encumberance on page as \"([^\"]*)\"$")
-    public void iSaveTheValueForEncumberanceOnPage(String enc) {
-        String encumberance = EyeThink.core().get().text(By.xpath("//span[text()='Encumbrance']/ancestor::dt/following-sibling::dd//span"));
-        EyeThink.core().Properties().saveValue(enc,encumberance);
-    }
-
     @Then("^I (validate|softly validate) the total amount is substraction of appropriation amount and total obligation amount$")
     public void iValidateTheTotalAmountIsSubstractionOfAppropriationAmountAndTotalObligationAmount(String usage) {
         awardPage.validateAvailableBalance(usage);
