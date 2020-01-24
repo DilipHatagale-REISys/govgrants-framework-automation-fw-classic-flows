@@ -84,16 +84,6 @@ public class GenericSteps {
         );
     }
 
-    @Description("To check no records displayed in flex table")
-    @Then("^I (softly see|see|do not see|softly do not see) \"([^\"]*)\" inside flex table with id \"([^\"]*)\"$")
-    public void iSeeInsideFlexTableWithId(String usage, String text, String tableID) {
-        if (usage.contains("softly")){
-            EyeThink.core().assertion().assertThat(projectManager.isRecordPresentInTheFlexTable(text, tableID)).isTrue();
-        } else {
-            Assert.assertTrue(projectManager.isRecordPresentInTheFlexTable(text, tableID));
-        }
-    }
-
     @Description("To verify text under attachment flex table")
     @Then("^I (softly see|see|do not see|softly do not see) \"([^\"]*)\" has been added in \"([^\"]*)\" flex table$")
     public void iSeeHasBeenAddedInFlexTable(String usage, String valueToBeSearch, String flexTableHeader) {

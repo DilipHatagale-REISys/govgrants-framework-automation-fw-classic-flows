@@ -2,6 +2,7 @@ package com.ggproduct.automation.steps;
 
 import com.ggproduct.automation.pageobjects.AwardPage;
 import eyethink.automation.bots.Register.EyeThink;
+import eyethink.automation.bots.Report.LogLevel;
 import eyethink.automation.bots.objects.Elements;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -82,5 +83,15 @@ public class AwardSteps {
         ).sum();
 
         EyeThink.core().Properties().saveValue(key,String.valueOf(total));
+    }
+
+    @Then("^I (softly see|see) the field \"([^\"]*)\" is equal to the sum of the following fields :$")
+    public void verifySumOfFields(String usage, String fieldToCompare, List<String> fieldsToSum) {
+        awardPage.verifyTotalObligation(usage,fieldToCompare,fieldsToSum);
+
+    }
+    @Then("^I (softly see|see) the field \"([^\"]*)\" is equal to the field \"([^\"]*)\" minus the following fields :$")
+    public void verifyDifferenceOfFields(String usage, String fieldToCompare, String initialFieldValue, List<String> fieldsToSum) {
+        awardPage.validateAvailableBalance(usage,fieldToCompare,initialFieldValue, fieldsToSum);
     }
 }

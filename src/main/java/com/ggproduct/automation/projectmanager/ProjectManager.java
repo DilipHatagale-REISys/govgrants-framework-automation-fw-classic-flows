@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.*;
-import java.util.stream.Stream;
 
 
 /**
@@ -44,15 +43,6 @@ public class ProjectManager extends ProjectWebServices {
             EyeThink.saas().pageDetails().idOfRecord = response;
             EyeThink.core().Properties().saveValue("Record Id", EyeThink.saas().pageDetails().idOfRecord);
         }
-    }
-
-    /* handles to verify no record is present in flex table */
-    public boolean isRecordPresentInTheFlexTable(String text, String tableId) {
-        try {
-            return EyeThink.core().is().isDisplayed(By.xpath("//div[@id='" + tableId + "']//*[" + EyeThink.core().xpath().contains("text()", text) + "]"));
-        } catch (Exception e) {
-        }
-        return false;
     }
 
     /*handles to verify blank value is present inside flex table */
