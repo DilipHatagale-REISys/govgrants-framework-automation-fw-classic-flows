@@ -59,6 +59,27 @@ Feature: Validate all scenarios of grants and award without background
       | User |
       | FO   |
 
+  @68138 @takeSnapShotHistory @jitendra
+  Scenario: Validate that Snapshot of Grant page taken is saved in the History tab of the same
+    Given I delete the record "Automation Direct Award" from the object "Award"
+    And I delete the record "Automation Direct Award" from the object "Grant"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter value "abc" into field "fieldGrantDescription__c"
+    And I click on "Save" in the page details
+    And I click on "Menu" in the page details
+    And I select "Take Snapshot" from dropdown
+    When I navigate to "History" sub tab
+    And I click on hyperlink containing value "SnapShot"
+    When I download the file
+    Then I see "$0.00" on page "3" of "govgrants" pdf file
+
     @67891 @68036 @68025 @68019 @68021 @calculateAwardTotal @jitendra
     Scenario: Validate that subaward amount in Grant Draft table is the Sum of all Subaward
       When I login to "As a Grantor" app as "dynamicUser" user

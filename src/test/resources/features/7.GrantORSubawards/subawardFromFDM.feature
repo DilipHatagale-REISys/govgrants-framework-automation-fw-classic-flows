@@ -16,6 +16,19 @@ Feature: Validate all scenarios in the award created from FDM
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
+  @67486 @67485 @totalObligation @jitendra
+  Scenario: To validate that total obligation in the Financial table of funding account page navigated through the Funding account hyperlink present on the Subaward page of Grantor (Internal PM ) is the Sum of Pre-encumbrance, Encumbrance and the Spent value
+    And I navigate to "Budget" sub tab
+    And I click on hyperlink containing value "{SavedValue:fundingAccount}"
+    And I save the field labeled "Pre-Encumbrance" as "Pre-Encumbrance"
+    And I save the value for encumberance on page as "Encumbrance"
+    And I save the field labeled "Spent" as "Spent"
+    And I save the field labeled "Available Balance" as "Available Balance"
+    And I save the field labeled "Total Obligation" as "TotalObligation"
+    And I save the field labeled "Appropriation Amount" as "Appropriation Amount"
+    Then I softly validate the total obligation is a sum of pre-encumberance,encumberance and spent
+    Then I softly validate the total amount is substraction of appropriation amount and total obligation amount
+
   @38213 @38217 @awardCreateEditAndAddingSchedules
   Scenario: Award creation, edition and adding payment/progress report schedules
     Then I softly see status in Progress-bar is "Created" and is "Green"
