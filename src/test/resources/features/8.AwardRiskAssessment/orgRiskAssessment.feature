@@ -187,7 +187,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
-    When I perform quick search for "Created" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
+    When I perform quick search for "Record Id" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     And I click on "Delete" icon for "Record Id" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     Then I see the following messages in the page details contains:
       | Record deleted successfully. |
@@ -744,7 +744,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     When I click on "Save and Continue" in the page details
     Then I see the following messages in the page details contains:
-      | Acknowledgement is required. |
+      | Acknowledgement is Required to save.|
 
   @62947 @disagreeAcknowledgeForRA @deepika
   Scenario: Validate whether user is able to proceed further process without Acknowledging the Org Level Risk Assessment
@@ -1378,7 +1378,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I perform quick search for "Bayside Community Center" in "---orgRiskAssessment:-:activeOrgTableID---" panel
     When I click on "View" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:activeOrgTableID---"
     And I navigate to "Risk Assessment" sub tab
-    Then I see field "Overall Risk" as "38.00%"
+    Then I see field "Overall Risk" as "27.00%"
 
   @63980 @validateRiskAssesmentActiveInPDF @deepika @snapshotheadlessmode
   Scenario: Verify that user can check PDF files with validation for Org Risk Assessment

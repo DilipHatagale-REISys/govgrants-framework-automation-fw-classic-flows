@@ -53,10 +53,3 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
     And I download the file
     Then I verify that "pdf" file is downloaded
 
-  @audiorCanViewAmendmentRecordsofAllStatus
-  Scenario: Validate whether Audior Profile all the amendment records created by Auditor profile
-    Given I login to "As a Grantor" app as "AUDITOR" user
-    And I navigate to "Grants" tab
-    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I perform quick search for "Funding Change" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
-    Then I see values "	Funding Change" and "State" inside table

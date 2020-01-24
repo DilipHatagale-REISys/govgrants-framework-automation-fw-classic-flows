@@ -350,7 +350,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Verify that upon conduct,  Reports And Outcomes tab are editable to the internal user for an award  level site visit
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description      Validate conduct, adding outcomes and submitting site visits for approval           |
+      | Role             | Name           | Description                 |
       | Program Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver  | Automation FO  | Automation Test Description |
     When I get the "EGMS ID"

@@ -1063,7 +1063,7 @@ Feature: Validate all scenarios in Desk Review
     And I download the file
     Then I verify that "xls" file is downloaded
 
-  @65244 @deleteCreateDeskReview @deepika
+  @65244 @deleteCreateDeskReview @deepika @bug-69873
   Scenario: Validate whether user will be able to delete the created Desk Review
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
