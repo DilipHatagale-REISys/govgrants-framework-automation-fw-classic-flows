@@ -1637,7 +1637,6 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
-    And I pause execution
     When I click on "Add Line Items" icon for "Supplies" inside flex table with id "---amendment:-:budgetChangeTableId---"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
@@ -1855,7 +1854,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
 
-  @57377 @verifyAdvancePRCreatedAtRevisedAmendmentSubaward @jitendra
+  @57377 @68075 @verifyAdvancePRCreatedAtRevisedAmendmentSubaward @jitendra
   Scenario: Verify user can submit Advance Payment request to grantor after Budget Period Change Amendment is done on Subaward.
     When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -1905,6 +1904,9 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Subawards" sub tab
     And I get the "EGMS ID"
     And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I navigate to "Overview" sub tab
+    Then I softly see field "Subaward Type" as "Amendment"
+    Then I softly see field "Version Number" as "12"
     And I navigate to "Management" sub tab
     And I click on "View" icon for "Approved" inside flex table with id "---amendment:-:amendmentRequestTableId---"
     When I click on "Amend Subaward" in the page details
@@ -1931,7 +1933,8 @@ Feature: Validate all scenarios in the Amendment Request
     When I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I navigate to "Overview" sub tab
-    Then I see field "Payment Period End Date" as "{SavedValue:updatedBudgetPeriodDate}"
+    Then I softly see field "Payment Period End Date" as "{SavedValue:updatedBudgetPeriodDate}"
+    And I collect all the soft asserts
 
   @57367 @verifyRecipientCanSeeAmendedBudgetPeriodOnReimbursementPaymentRequestPage @mahadev
   Scenario Outline: Verify Sub-recipient user can see the amended Budget Period on Reimbursement Payment Request Page
