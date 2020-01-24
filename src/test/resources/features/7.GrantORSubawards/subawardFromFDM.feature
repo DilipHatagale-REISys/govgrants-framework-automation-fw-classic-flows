@@ -20,14 +20,10 @@ Feature: Validate all scenarios in the award created from FDM
   Scenario: To validate that total obligation in the Financial table of funding account page navigated through the Funding account hyperlink present on the Subaward page of Grantor (Internal PM ) is the Sum of Pre-encumbrance, Encumbrance and the Spent value
     And I navigate to "Budget" sub tab
     And I click on hyperlink containing value "{SavedValue:fundingAccount}"
-    And I save the field labeled "Pre-Encumbrance" as "Pre-Encumbrance"
-    And I save the field containing "Encumbrance" as "Encumbrance"
-    And I save the field labeled "Spent" as "Spent"
-    And I save the field labeled "Available Balance" as "Available Balance"
-    And I save the field labeled "Total Obligation" as "TotalObligation"
-    And I save the field labeled "Appropriation Amount" as "Appropriation Amount"
-    Then I softly validate the total obligation is a sum of pre-encumberance,encumberance and spent
-    Then I softly validate the total amount is substraction of appropriation amount and total obligation amount
+    Then I softly see the field "Total Obligation" is equal to the sum of the following fields :
+      | Pre-Encumbrance | Encumbrance | Spent |
+    Then I softly see the field "Available Balance" is equal to the field "Appropriation Amount" minus the following fields :
+      | Total Obligation |
     And I collect all the soft asserts
 
   @38213 @38217 @awardCreateEditAndAddingSchedules

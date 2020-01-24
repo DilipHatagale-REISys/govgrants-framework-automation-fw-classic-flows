@@ -2,12 +2,14 @@ package com.ggproduct.automation.pageobjects;
 
 import com.ggproduct.automation.projectmanager.ProjectManager;
 import eyethink.automation.bots.Register.EyeThink;
+import eyethink.automation.bots.Report.LogLevel;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.List;
 import java.util.Locale;
 
 public class AwardPage extends ProjectManager {
@@ -77,37 +79,24 @@ public class AwardPage extends ProjectManager {
         }
     }
 
-    public void verifyTotalObligation(String usage) {
+    public void verifyTotalObligation(String usage, String fieldToCompare, List<String> fieldsToSum) {
         try {
-            Number preEncumbrance = NumberFormat.getCurrencyInstance(Locale.US).parse(
-                    EyeThink.core().Properties().getValue("Pre-Encumbrance")
-            );
-            Number encumbrance = NumberFormat.getCurrencyInstance(Locale.US).parse(
-                    EyeThink.core().Properties().getValue("Encumbrance")
-            );
-            Number spent = NumberFormat.getCurrencyInstance(Locale.US).parse(
-                    EyeThink.core().Properties().getValue("Spent")
-            );
-
-            Number totalObligation = NumberFormat.getCurrencyInstance(Locale.US).parse(
-                    EyeThink.core().Properties().getValue("TotalObligation")
-            );
-
-            if (usage.contains("softly")) {
-                EyeThink.core().assertion().assertThat(
-                        preEncumbrance.intValue() + encumbrance.intValue() + spent.intValue()
-                ).isEqualTo(totalObligation.intValue()).as(
-                        "Total Obligation is : " + totalObligation +
-                                " preEncumbrance : " + preEncumbrance +
-                                " encumbrance : " + encumbrance +
-                                " spent : " + spent
-                );
-            } else {
-                Assert.assertEquals("Total obligation is not sum of preEncumbrance, spent and encumbrance",(preEncumbrance.intValue()+spent.intValue()+encumbrance.intValue()),totalObligation);
+            double expectedSum = Double.parseDouble(EyeThink.saas().pageDetails().getFieldValue(fieldToCompare, true).replaceAll("[^0-9.]", ""));
+            double actualSum = 0;
+            for (String fieldToSum : fieldsToSum) {
+                actualSum += Double.parseDouble(EyeThink.saas().pageDetails().getFieldValue(fieldToSum, true).replaceAll("[^0-9.]", ""));
             }
 
-        } catch (ParseException pe) {
-
+            if (usage.contains("softly")) {
+                EyeThink.core().assertion().assertThat(actualSum)
+                        .as("Verifying that the field %s is equal to the sum of fields %s", fieldToCompare, fieldsToSum)
+                        .isEqualTo(expectedSum);
+            } else {
+                Assert.assertTrue(actualSum == expectedSum);
+            }
+        } catch (NumberFormatException e) {
+            EyeThink.core().report().write(LogLevel.BUSINESS_LAYER_ERROR, String.format("Either the total field '%s' or the summable fields %s were not able to be converted to double.", fieldToCompare, fieldsToSum));
+            throw e;
         }
     }
 
@@ -117,39 +106,23 @@ public class AwardPage extends ProjectManager {
      * @param usage
      * @autor jitendra.pisal
      */
-    public void validateAvailableBalance(String usage){
-
-        int appropriationAmt = 0;
-        int totalObligation = 0;
-        int availableBalance = 0;
-
-        try{
-            appropriationAmt =  NumberFormat.getCurrencyInstance(Locale.US)
-                    .parse(
-                            EyeThink.core()
-                                    .Properties().getValue("Appropriation Amount")
-                    ).intValue();
-
-            totalObligation = NumberFormat.getCurrencyInstance(Locale.US)
-                    .parse(
-                            EyeThink.core()
-                                    .Properties().getValue("TotalObligation")
-                    ).intValue();
-
-            availableBalance = NumberFormat.getCurrencyInstance(Locale.US)
-                    .parse(
-                            EyeThink.core()
-                                    .Properties().getValue("Available Balance")
-                    ).intValue();
-
-        } catch (ParseException re){
-
-        }
-
-        if (usage.contains("softly")){
-            EyeThink.core().assertion().assertThat(
-                    appropriationAmt - totalObligation
-            ).isEqualTo(availableBalance);
+    public void validateAvailableBalance(String usage, String fieldToCompare, String initialFieldValue, List<String> fieldsToSum){
+        try {
+            double expectedSum = Double.parseDouble(EyeThink.saas().pageDetails().getFieldValue(fieldToCompare, true).replaceAll("[^0-9.]", ""));
+            double actualSum = Double.parseDouble(EyeThink.saas().pageDetails().getFieldValue(initialFieldValue, true).replaceAll("[^0-9.]", ""));
+            for (String fieldToSum : fieldsToSum) {
+                actualSum -= Double.parseDouble(EyeThink.saas().pageDetails().getFieldValue(fieldToSum, true).replaceAll("[^0-9.]", ""));
+            }
+            if(usage.contains("softly")) {
+                EyeThink.core().assertion().assertThat(actualSum)
+                        .as("Verifying that the field %s is equal to the difference of field %s and the fields %s", fieldToCompare, initialFieldValue, fieldsToSum)
+                        .isEqualTo(expectedSum);
+            } else {
+                Assert.assertTrue(expectedSum == actualSum);
+            }
+        } catch (NumberFormatException e) {
+            EyeThink.core().report().write(LogLevel.BUSINESS_LAYER_ERROR, String.format("Either the total field '%s', the initial field '%s', or the summable fields %s were not able to be converted to double.", fieldToCompare, initialFieldValue, fieldsToSum));
+            throw e;
         }
     }
 }
