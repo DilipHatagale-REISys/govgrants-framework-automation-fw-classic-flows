@@ -14,6 +14,27 @@ Feature: Validate all scenarios of grants and award without background
       | EXE  |
       | FO   |
 
+  @69453 @verifySupportingDocumentMustAddByOwner @aashish
+  Scenario: Validate that supporting document cannot be added by anyone except the award owner(Except FO user) |
+  Award owner can see add supporting document
+    Given I delete the record "Automation Direct Award" from the object "Award"
+    And I delete the record "Automation Direct Award" from the object "Grant"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    And I perform quick search for "Automation Direct Award"
+    And I click on "View" icon for "Automation Direct Award" inside table
+    And I navigate to "Attachments" sub tab
+    Then I can see top right button "Add" in flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
+
   @66740 @documentattacmentatgrant @jitendra
   Scenario: To verify that the document can be added in the Supporting Document checklist table in the Grant Attachment tab in the Draft state
     Given I delete the record "Automation Direct Award" from the object "Award"
@@ -1775,3 +1796,54 @@ Feature: Validate all scenarios of grants and award without background
     Examples:
       | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
+
+  @69453 @verifySupportingDocumentNotAddedByExe @aashish
+  Scenario: Validate that supporting document cannot be added by anyone except the award owner(Except FO user)
+    Given I delete the record "Automation Direct Award" from the object "Award"
+    And I delete the record "Automation Direct Award" from the object "Grant"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    And I perform quick search for "Automation Direct Award"
+    And I click on "View" icon for "Automation Direct Award" inside table
+    And I navigate to "Attachments" sub tab
+    Then I cannot see top right button "Add" in flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
+
+  @69453 @verifySupportingDocumentNotAddedByFOUser @aashish
+  Scenario: Validate that supporting document cannot be added by anyone except the award owner(Except FO user)
+    Given I delete the record "Automation Direct Award" from the object "Award"
+    And I delete the record "Automation Direct Award" from the object "Grant"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    And I perform quick search for "Automation Direct Award"
+    And I click on "View" icon for "Automation Direct Award" inside table
+    And I navigate to "Attachments" sub tab
+    Then I softly cannot see top right button "Add" in flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
+    When I re-login to "As a Grantor" app as "SIMON PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    And I perform quick search for "Automation Direct Award"
+    And I click on "View" icon for "Automation Direct Award" inside table
+    And I navigate to "Attachments" sub tab
+    Then I softly cannot see top right button "Add" in flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
+    Then I collect all the soft asserts
