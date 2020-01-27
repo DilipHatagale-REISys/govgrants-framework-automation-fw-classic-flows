@@ -4808,6 +4808,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     Then I softly see field "Brief information about the subaward." as "Automation Test1 Description"
+    Then I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |

@@ -1838,7 +1838,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "Automation Direct Award" inside table
     And I navigate to "Attachments" sub tab
     Then I softly cannot see top right button "Add" in flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
-    When I re-login to "As a Grantor" app as "SIMON PM" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "Automation PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
