@@ -2382,7 +2382,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter in modal "ProgressReportQuartelyReporting" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    And I save the field labeled "Schedule End Date" as "ScheduleEndDate"
+    And I save the field labeled "Reporting Period End Date" as "ScheduleEndDate"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
     And I navigate to last page in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
@@ -2398,7 +2398,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter in modal "ProgressReportQuartelyReporting" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    And I save the field labeled "Schedule Start Date" as "ScheduleStartDate"
+    And I save the field labeled "Reporting Period Start Date" as "ScheduleStartDate"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
     And I get the value from row "1" for column name "Reporting Period Start Date" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
@@ -4813,3 +4813,22 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
 
+  @69320 @verifyFederalProgramAssociateInSubAward @aashish
+  Scenario Outline: Validate that the Fedral program can be associated in Subaward
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    And I pause execution
+    And I perform quick search for "<Grant Name>"
+    And I click on "Edit" icon for "<Grant Name>" inside table
+    And I navigate to "Subawards" sub tab
+    And I click on "Edit" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:subawardFederalProgramTableId---"
+    When I perform quick search for "Wildlife Services" in "RelatedFederalProgramForAwardiframeContentId" panel
+    When I click "Add" after selection of "Wildlife Services" in the table "RelatedFederalProgramForAwardiframeContentId"
+    And I close modal by clicking the top right x button
+    Then I see value "Wildlife Services" for title "Program Title" inside table "---subAwardStandAlone:-:subawardFederalProgramTableId---"
+    Examples:
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |

@@ -1,7 +1,7 @@
 @grantsAwardWB @regression @grantAndAward
 Feature: Validate all scenarios of grants and award without background
 
-  @35555 @VerifyUsersCanSeeNewButtonOnGrantListView @keerti
+  @35555 @VerifyUsersCanSeeNewButtonOnGrantListView @keerti @aashish
   Scenario Outline: Verify that users can see new button on grant list view
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Grants" tab
@@ -12,7 +12,6 @@ Feature: Validate all scenarios of grants and award without background
       | User |
       | PM   |
       | EXE  |
-      | FO   |
 
   @69453 @verifySupportingDocumentMustAddByOwner @aashish
   Scenario: Validate that supporting document cannot be added by anyone except the award owner(Except FO user) |
@@ -1847,3 +1846,20 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Attachments" sub tab
     Then I softly cannot see top right button "Add" in flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
     Then I collect all the soft asserts
+
+  @67809 @createGrantADMIN @aashish
+  Scenario: Validate that the Admin user can create new Grant
+    Given I delete the record "Automation Direct Award" from the object "Award"
+    And I delete the record "Automation Direct Award" from the object "Grant"
+    When I login to "As a Grantor" app as "ADMIN" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I get the "EGMS ID"
+    Then I see status in Progress-bar is "Created" and is "Green"
