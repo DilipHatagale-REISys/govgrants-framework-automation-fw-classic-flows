@@ -14,8 +14,27 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
       | User    |
       | AUDITOR |
 
-  @69179 @auditorOrgRiskAssessment
-  Scenario Outline: Validate Auditor should have view / read  only access to Organizational Risk Assessment
+  @69179 @69942 @auditorOrgRiskAssessment
+  Scenario Outline: Validate Auditor should have view / read  only access to Organizational Risk Assessment |Validate Auditor should not be  able to Provide revision access
+    Given I delete the record "Bayside Community Center" from the object "ORGANIZATION RISKASSESSMENT"
+    When I create a risk assessment record for organization "Bayside Community Center"
+    Given I am on "SUBPORTAL" portal
+    When I login as "SA" user
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Bayside Community Center" in "---orgRiskAssessment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I navigate to "Assessment" sub tab
+    And I enter "OrgAssessmentValues" values from "RiskAssessment_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I get the "EGMS ID"
+    When I click on "Submit" in the page details
+    And I navigate to "Home" tab
+    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
+    And I navigate to "Risk Assessment" sub tab
+    When I click on top right button "Request New Assessment" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
@@ -24,7 +43,9 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     And I navigate to "Risk Assessment" sub tab
     And I perform quick search for "Active" in "---auditor:-:orgRiskAssessmentTableId---" panel
     And I click on "View" icon for "Active" inside flex table with id "---auditor:-:orgRiskAssessmentTableId---"
-    Then I see status in Progress-bar is "Active" and is "green"
+    Then I softly see status in Progress-bar is "Active" and is "green"
+    Then I softly cannot see top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    Then I collect all the soft asserts
     Examples:
       | User    |
       | AUDITOR |
