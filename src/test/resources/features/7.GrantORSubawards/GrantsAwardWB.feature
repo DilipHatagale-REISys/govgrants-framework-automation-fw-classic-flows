@@ -59,6 +59,55 @@ Feature: Validate all scenarios of grants and award without background
       | User |
       | FO   |
 
+  @69084 @createdGrantVisibleToUserFromSameOrganisation @jitendra
+  Scenario: Validate that  Grant in draft state created by one pm user is visible to the other user(PM/EXE) of the same organisation
+    Given I delete the record "Automation Direct Award" from the object "Award"
+    And I delete the record "Automation Direct Award" from the object "Grant"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "Automation Direct Award" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    Then I softly see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "Automation Direct Award" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    Then I softly see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I collect all the soft asserts
+
+
+  @68460 @adminUserRowLevelButton @jitendra
+  Scenario: Validate that Edit and View and Delete button appear for Admin in Grant Draft table after the Grant is Created and on clicking the respective icon it works.
+    Given I delete the record "Automation Direct Award" from the object "Award"
+    And I delete the record "Automation Direct Award" from the object "Grant"
+    When I login to "As a Grantor" app as "ADMIN" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "Automation Direct Award" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    Then I softly can see row level action button "Delete" against "Automation Direct Award" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    Then I softly can see row level action button "View" against "Automation Direct Award" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    Then I softly can see row level action button "Edit" against "Automation Direct Award" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I collect all the soft asserts
+
   @68138 @takeSnapShotHistory @jitendra
   Scenario: Validate that Snapshot of Grant page taken is saved in the History tab of the same
     Given I delete the record "Automation Direct Award" from the object "Award"
