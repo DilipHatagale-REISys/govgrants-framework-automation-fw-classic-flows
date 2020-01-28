@@ -378,24 +378,18 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Activated" and is "Green"
 
-  @53208 @creationOfBPCAmendmentRequest @smoke
-  Scenario: Creation of Budget Period change Amendment Request
-    Given I navigate to "Management" sub tab
-    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
-    When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
-    And I click modal button "Save and Continue"
-    Then I see status in Progress-bar is "Created" and is "Green"
-
-  @53209 @editionOfBPCAmendmentRequest
+  @53208 @66582 @53209 @creationOfBPCAmendmentRequest @editionOfBPCAmendmentRequest
   Scenario: Edition of Budget Period Change
     Given I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
+    Then I softly see status in Progress-bar is "Created" and is "Green"
     And I click on "Save" in the page details
     When I click on "Edit" in the page details
     And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
-    Then I see status in Progress-bar is "Created" and is "Green"
+    Then I softly see status in Progress-bar is "Created" and is "Green"
+    And I collect all the soft asserts
 
   @53210 @editionOfFocusAreaDatesBPCAmendmentRequest
   Scenario: Validate the edition of FocusArea Dates to BPC
@@ -422,7 +416,7 @@ Feature: Validate all scenarios in the Amendment Request
       | Focus Area                       |
       | Automation Permanent Focus Area2 |
 
-  @56843 @ValidateGranotrCanIncreaseAwardBudgetAmountInFundingchangeTypeRequest @mahadev
+  @56843 @66584 @ValidateGranotrCanIncreaseAwardBudgetAmountInFundingchangeTypeRequest @mahadev
   Scenario: Verify Internal user can send request to Sub-recipient for increase in the award budget amount using Funding change option.
     When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -433,12 +427,14 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Test Description | fieldFundingChangeJustification__c |
       | 1000                        | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
+    Then I softly can see top right button "Send to Subrecipient" in page detail
     And I get the updated budget end date by offset "0" for award "Automation Award for Amendment Request"
     And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
       | Title                           | End Date                             |
       | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     And I click on "Send to Subrecipient" in the page details
-    Then I see status in Progress-bar is "Sent to Subrecipient" and is "Green"
+    Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "Green"
+    And I collect all the soft asserts
 
   @56844 @ValidateGranotrCanDecreaseAwardBudgetAmountInFundingchangeTypeRequest @mahadev
   Scenario: Verify Internal user can send request to Sub-recipient for increase in the award budget amount using Funding change option.

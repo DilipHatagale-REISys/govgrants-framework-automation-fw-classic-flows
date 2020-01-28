@@ -1571,7 +1571,7 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "GrantorSiteVisitsAward" panel
     Then I see that "Automation Site Visit" has been added in flextable with Id "GrantorSiteVisitsAward"
 
-  @66392  @validateSendBackToSubRecipientButton @mahadev
+  @66392 @66384 @validateSendBackToSubRecipientButton @mahadev
   Scenario: To verify that Send back to subrecipient button appear on the top right corner of the page of award owner(PM) in site visit page when status is submitted to grantor
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
@@ -1648,8 +1648,14 @@ Feature: Validate all scenarios in the Site Visit
     And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    Then I softly see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:activeGrantsTableId---"
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
-    Then I can see top right button "Send Back to Subrecipient" in page detail
+    Then I softly can see top right button "Send Back to Subrecipient" in page detail
+    And I collect all the soft asserts
