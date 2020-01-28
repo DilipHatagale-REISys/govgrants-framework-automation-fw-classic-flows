@@ -700,7 +700,7 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Home" tab
     And I click on "My_Workspace_Notes"
-    And I click on user notes content with icon name "fa fa-plus"
+    And I click on user notes content with icon name "plus"
     When I enter notes with title "Automation Title" and description "Automation Description"
     And I click modal button "Save and Close"
     Then I see the text containing "title"
