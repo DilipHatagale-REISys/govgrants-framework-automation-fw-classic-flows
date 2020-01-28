@@ -3,7 +3,7 @@ Feature: Validate all scenarios for Auditor Profile in Closeout Request module
 
   @69175 @auditorCannotCreateCloseout
   Scenario: Validate Auditor should not be  able to  Create Closeout Request
-    When I login to "As a Grantor" app as "dynamicUser" user
+    When I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -14,7 +14,7 @@ Feature: Validate all scenarios for Auditor Profile in Closeout Request module
 
   @69176 @auditorCannotViewOverriddenCloseout
   Scenario: Validate Auditor cannot have view access to "Overrridden Status" Closoeut Record
-    When I login to "As a Grantor" app as "dynamicUser" user
+    When I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Closeout" tab
     When I navigate to "Project Period Closeouts" content inside "Closeouts" subheader on left panel
     And I click toggle button to select "Project Period Closeouts - All"
@@ -24,7 +24,7 @@ Feature: Validate all scenarios for Auditor Profile in Closeout Request module
 
   @69177 @auditorCannotEditCreatedCloseoutRecordbyPM
   Scenario: Validate Auditor should not be  able to  Edit Closeout Request record created by PM
-    When I login to "As a Grantor" app as "dynamicUser" user
+    When I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
