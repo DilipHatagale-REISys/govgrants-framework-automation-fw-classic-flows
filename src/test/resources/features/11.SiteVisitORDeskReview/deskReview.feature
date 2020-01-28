@@ -220,7 +220,7 @@ Feature: Validate all scenarios in Desk Review
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I collect all the soft asserts
 
-  @51021 @51022 @51023 @66146 @66485  @deskReviewSendToSubrecipientdAndCorrectiveActionsBySubrecipient
+  @51021 @66557 @51022 @51023 @66146 @66485  @deskReviewSendToSubrecipientdAndCorrectiveActionsBySubrecipient
   Scenario: Send Desk Review to Subrecipient, Corrective Actions and Submit to Grantor by Subrecipient |Validate whether pending task is created for Program approver under Home Tab when the award owner submits the Desk Review for approval
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
@@ -302,6 +302,17 @@ Feature: Validate all scenarios in Desk Review
     Then I softly see that "Automation Desk Review" is in "Sent to Subrecipient" status
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
+    And I re-login as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "Automation Permanent Award" in "---deskreview:-:internalActiveGrants---" panel
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalActiveGrants---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
+    Given I navigate to "Management" sub tab
+    And I click on "View" icon for "Automation Desk Review" inside flex table with id "---deskreview:-:managementInitiateDRtableid---"
+    Then I softly can see top right button "Send Back to Subrecipient" in page detail
     Then I collect all the soft asserts
 
   @55279 @66148 @approverSendBackToUserDeskReview @deepika

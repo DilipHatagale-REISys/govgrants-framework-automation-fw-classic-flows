@@ -540,7 +540,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
 
-  @51140 @51141 @66897 @66006 @65983 @66005 @66003 @66008 @66019 @@66016 @allSendToRecipientAndAcceptanceAfterApproval
+  @51140 @51141 @66897 @66006 @65983 @66005 @66003 @66008 @66019 @@66016 @66904 @allSendToRecipientAndAcceptanceAfterApproval
   Scenario Outline: Acceptance of award by receipient after approval| Validate view Noga button on SPI side |To verify after Send to Subrecipient button the status should change to Sent to Subrecipient after Approval and the progress bar approved
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -654,6 +654,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Send to Subrecipient" in the page details
     Then I softly see status in Progress-bar is "Approved" and is "Green"
     Then I softly see field "Status" as "Sent to Subrecipient after Approval"
+    And I pause execution for "100" seconds
+    Then I softly can see mail notification for "EXTERNAL" user with following subject:
+      | Sandbox: Notification:Subaward Review |
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -3592,7 +3595,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
 
-  @65955 @65958 @65956 @validatePendingTaskForPA  @mahadev
+  @65955 @65899 @65958 @65956 @validatePendingTaskForPA  @mahadev
   Scenario Outline: To verify that after the program approver is assigned task by the award owner from the Subaward in the created state it must appear in the pending task of the approver
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -3699,6 +3702,13 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     When I click on "Accept" in the page details
+    When I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---amendment:-:recipientActiveGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---amendment:-:recipientActiveGrantsTableId---"
+    When I navigate to "Subawards" sub tab
+    And I softly see value "Reviewed" for title "Status" inside table "---amendment:-:recipientActiveGrantsTableId---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -3715,7 +3725,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    Then I see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
+    Then I softly see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
