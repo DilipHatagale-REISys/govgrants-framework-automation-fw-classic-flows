@@ -219,8 +219,3 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     Examples:
       | Announcement Name                       |
       | Automation Announcement for Application |
-
-
-
-
-

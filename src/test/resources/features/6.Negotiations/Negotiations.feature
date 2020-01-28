@@ -822,7 +822,6 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Initiate Negotiation" in the page details
     And I navigate to "Negotiations" sub tab
     And I enter value "7" into field "NegotiationDueDate__c"
-    And I pause execution
     And I save the field labeled "Due Date" as "DueDate"
     And I click on "Save" in the page details
     Then I see field "Due Date" as "{SavedValue:DueDate}"
