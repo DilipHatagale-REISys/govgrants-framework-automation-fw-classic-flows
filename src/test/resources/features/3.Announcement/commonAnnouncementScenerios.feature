@@ -353,3 +353,17 @@ Feature: Validate all common scenarios in the  Announcement tab
     And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
     Then I see the following messages in the page details :
       | There are no errors with the review step templates. |
+
+  @45773 @announcementOtherNotAbleToDelete @smoke
+  Scenario: Validate that other users are not able to delete created announcement
+    When I re-login to "As a Grantor" app as "PM" user
+    When I navigate to "Announcements" tab
+    And I perform quick search for "Record id" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
+    Then I cannot see row level action button "Delete" against "Record id" in flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
+
+  @45774 @announcementOtherNotAbleToEdit @smoke
+  Scenario: Validate that other users are not able to Edit created announcement
+    When I re-login to "As a Grantor" app as "PM" user
+    When I navigate to "Announcements" tab
+    And I perform quick search for "Record id" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
+    Then I cannot see row level action button "Edit" against "Record id" in flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
