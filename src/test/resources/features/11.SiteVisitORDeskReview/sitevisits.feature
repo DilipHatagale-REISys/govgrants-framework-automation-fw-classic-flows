@@ -1,4 +1,4 @@
-@siteVisits @regression
+@siteVisits @regression @siteVisit
 Feature: Validate all scenarios in the Site Visit
 
   Background: Data setup for Site Visit

@@ -487,13 +487,13 @@ Feature: Validate all scenarios in Negotiations
     When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
-    When I get the "EGMS ID"
+    When I save the field labeled "EGMS ID" as "RecordId"
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---negotiation:-:homePendingTasks---"
+    And I perform quick search for "{SavedValue:RecordId}" in "---negotiation:-:homePendingTasks---" panel
+    When I click on "Start" icon for "{SavedValue:RecordId}" inside flex table with id "---negotiation:-:homePendingTasks---"
     And I enter values into fields
       | Value                              | Field                |
       | Automation Negotiation Iniatiation | ApplicantResponse__c |
@@ -502,9 +502,9 @@ Feature: Validate all scenarios in Negotiations
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
-    And I perform quick search for "Record Id" in "---negotiation:-:negotiationPendingTaskTableId---" panel
-    Then I softly see values "Automation Negotiation Iniatiation" and "Submitted" inside table
-    And I click on "View" icon for "Record Id" inside flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
+    And I perform quick search for "{SavedValue:RecordId}" in "---negotiation:-:negotiationPendingTaskTableId---" panel
+    Then I see values "Automation Negotiation Initiation" and "Submitted" inside table
+    And I click on "View" icon for "{SavedValue:RecordId}" inside flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
     When I click on "Edit Negotiation" in the page details
     And I enter values into fields
       | Value                              | Field                           |
@@ -515,8 +515,8 @@ Feature: Validate all scenarios in Negotiations
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
-    Then I softly see value "Record Id" for title "EGMS ID" against the value "Negotiation Request" inside table "---negotiation:-:homePendingTasks---"
+    And I perform quick search for "{SavedValue:RecordId}" in "---negotiation:-:homePendingTasks---" panel
+    Then I softly see value "{SavedValue:RecordId}" for title "EGMS ID" against the value "Negotiation Request" inside table "---negotiation:-:homePendingTasks---"
     Then I collect all the soft asserts
 
   @58029 @initiateNegotiationForAttachmentsNotes @deepika
@@ -822,6 +822,7 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Initiate Negotiation" in the page details
     And I navigate to "Negotiations" sub tab
     And I enter value "7" into field "NegotiationDueDate__c"
+    And I pause execution
     And I save the field labeled "Due Date" as "DueDate"
     And I click on "Save" in the page details
     Then I see field "Due Date" as "{SavedValue:DueDate}"
