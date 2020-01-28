@@ -503,7 +503,7 @@ Feature: Validate all scenarios in Negotiations
     And I navigate to "Applications" tab
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     And I perform quick search for "{SavedValue:RecordId}" in "---negotiation:-:negotiationPendingTaskTableId---" panel
-    Then I see values "Automation Negotiation Initiation" and "Submitted" inside table
+    Then I softly see values "Automation Announcement for FDM" and "Negotiation Initiated" inside table
     And I click on "View" icon for "{SavedValue:RecordId}" inside flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
     When I click on "Edit Negotiation" in the page details
     And I enter values into fields
@@ -810,7 +810,7 @@ Feature: Validate all scenarios in Negotiations
     When I clear the value from field "ApplicationSectionsForRevision__c"
     Then I see multipicklist field "fieldApplicationSectionsForRevision__c" contains value "Overview: Project Information" under list "Application Sections for Revision - Available"
 
-  @65267 @VerifyCalendarFieldValue  @keerti
+  @65267 @VerifyCalendarFieldValue @keerti
   Scenario: Verify Calendar field value at negotiation tab when award owner initiated the negotiation by clicking on initiate negotiation after FDM.
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -822,9 +822,8 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Initiate Negotiation" in the page details
     And I navigate to "Negotiations" sub tab
     And I enter value "7" into field "NegotiationDueDate__c"
-    And I save the field labeled "Due Date" as "DueDate"
     And I click on "Save" in the page details
-    Then I see field "Due Date" as "{SavedValue:DueDate}"
+    Then I see field "Due Date" as "{Date:M/d/yyyy::d+7}"
 
   @66068 @negotiationInitiatedWithBlankDueDate @deepika
   Scenario: Validate whether record owner can save the negotiation request without Due date on Overview Tab
