@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in Organizational Desk Review
 
   Background: Creation of Organizational Desk Review
-#    Given I delete the record "Automation Desk Review Org level" from the object "Desk Review"
+    Given I delete the record "Automation Desk Review Org level" from the object "Desk Review"
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
