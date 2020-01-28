@@ -219,3 +219,16 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     Examples:
       | Announcement Name                       |
       | Automation Announcement for Application |
+
+  @auditorApplicationReview
+  Scenario Outline: Validate auditor should have view / read  only access to completed status Application review
+    Given I login to "As a Grantor" app as "<User>" user
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    When I click on "View" icon for "<Application Name>" inside table
+    And I navigate to "Related Logs" tab
+    Then I see values "Pre-Screen Review" and "Completed" inside table
+    Examples:
+      | Application Name                | User    |
+      | Automation Announcement for FDM | AUDITOR |
