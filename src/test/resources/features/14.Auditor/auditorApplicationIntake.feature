@@ -220,7 +220,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
       | Announcement Name                       |
       | Automation Announcement for Application |
 
-  @auditorApplicationReview
+  @69984 @auditorApplicationReview
   Scenario Outline: Validate auditor should have view / read  only access to completed status Application review
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Applications" tab
