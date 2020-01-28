@@ -344,7 +344,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
 
-  @51144 @51145 @51146 @allReviewerAssignmentAndInitiationAndCompletion  @smoke
+  @51144 @51145 @51146 @allReviewerAssignmentAndInitiationAndCompletion @smoke
   Scenario Outline: Validate reviewer assignment, initiation of review and completion of review
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -540,7 +540,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
 
-  @51140 @51141 @66897 @66006 @65983 @66005 @66003 @66008 @66019 @@66016 @allSendToRecipientAndAcceptanceAfterApproval
+  @51140 @51141 @66897 @66006 @65983 @66005 @66003 @66008 @66019 @@66016 @66904 @allSendToRecipientAndAcceptanceAfterApproval
   Scenario Outline: Acceptance of award by receipient after approval| Validate view Noga button on SPI side |To verify after Send to Subrecipient button the status should change to Sent to Subrecipient after Approval and the progress bar approved
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -654,6 +654,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Send to Subrecipient" in the page details
     Then I softly see status in Progress-bar is "Approved" and is "Green"
     Then I softly see field "Status" as "Sent to Subrecipient after Approval"
+    And I pause execution for "100" seconds
+    Then I softly can see mail notification for "EXTERNAL" user with following subject:
+      | Sandbox: Notification:Subaward Review |
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -2382,7 +2385,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter in modal "ProgressReportQuartelyReporting" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    And I save the field labeled "Schedule End Date" as "ScheduleEndDate"
+    And I save the field labeled "Reporting Period End Date" as "ScheduleEndDate"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
     And I navigate to last page in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
@@ -2398,7 +2401,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter in modal "ProgressReportQuartelyReporting" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    And I save the field labeled "Schedule Start Date" as "ScheduleStartDate"
+    And I save the field labeled "Reporting Period Start Date" as "ScheduleStartDate"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
     And I get the value from row "1" for column name "Reporting Period Start Date" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
@@ -3592,7 +3595,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
 
-  @65955 @65958 @65956 @validatePendingTaskForPA  @mahadev
+  @65955 @65899 @65958 @65956 @validatePendingTaskForPA  @mahadev
   Scenario Outline: To verify that after the program approver is assigned task by the award owner from the Subaward in the created state it must appear in the pending task of the approver
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -3699,6 +3702,13 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     When I click on "Accept" in the page details
+    When I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---amendment:-:recipientActiveGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---amendment:-:recipientActiveGrantsTableId---"
+    When I navigate to "Subawards" sub tab
+    And I softly see value "Reviewed" for title "Status" inside table "---amendment:-:recipientActiveGrantsTableId---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -3715,7 +3725,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    Then I see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
+    Then I softly see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
@@ -4712,6 +4723,123 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     Then I softly see value "Completed" for title "Status" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
     And I collect all the soft asserts
+    Examples:
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
+
+  @68587 @verifySubrecepientCanEditAndSaveAward @smoke @aashish
+  Scenario Outline: Validate that Subaward sent to the Subrecipient can be Edited and Viewed by all the member of the Same Org and the Changes made must be affected in the Subaward of all profile.
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
+    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
+      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
+      | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close "Edit Payment Request Schedule" modal by clicking the top right x button
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close "Edit Progress Report Schedule" modal by clicking the top right x button
+    And I navigate to "Management" sub tab
+    When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I get the "EGMS ID"
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
+      | Responsibility   | Name          | Description                 |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
+      | Program Approver | Automation PM | Automation Test Description |
+    And I click on "Submit for Approval" in the page details
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Personnel |
+      | Automation SPI | Project Director/Manager | Checked          |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
+      | Role               | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+    When I get the "EGMS ID"
+    And I click on "Send to Subrecipient" in the page details
+    And I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
+    When I navigate to "Grants" tab
+    And I click toggle button to select "Grants - Pending"
+    And I perform quick search for "<Grant Name>"
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:grantPageTableId---"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    Then I softly can see top right button "Edit" in page detail
+    And I click on "Edit" in the page details
+    When I enter value "Automation Test1 Description" into field "fieldGrantAwardDescription__c"
+    And I click on "Save" in the page details
+    Then I softly see field "Brief information about the subaward." as "Automation Test1 Description"
+    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I navigate to "Grants" tab
+    And I click toggle button to select "Grants - Pending"
+    And I perform quick search for "<Grant Name>"
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:grantPageTableId---"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    Then I softly see field "Brief information about the subaward." as "Automation Test1 Description"
+    Then I collect all the soft asserts
+    Examples:
+      | Award Name              | Grant Name              |
+      | Automation Direct Award | Automation Direct Award |
+
+  @69320 @verifyFederalProgramAssociateInSubAward @aashish
+  Scenario Outline: Validate that the Fedral program can be associated in Subaward
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    And I pause execution
+    And I perform quick search for "<Grant Name>"
+    And I click on "Edit" icon for "<Grant Name>" inside table
+    And I navigate to "Subawards" sub tab
+    And I click on "Edit" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:subawardFederalProgramTableId---"
+    When I perform quick search for "Wildlife Services" in "RelatedFederalProgramForAwardiframeContentId" panel
+    When I click "Add" after selection of "Wildlife Services" in the table "RelatedFederalProgramForAwardiframeContentId"
+    And I close modal by clicking the top right x button
+    Then I see value "Wildlife Services" for title "Program Title" inside table "---subAwardStandAlone:-:subawardFederalProgramTableId---"
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
