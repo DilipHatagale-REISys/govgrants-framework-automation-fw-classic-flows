@@ -2526,7 +2526,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "View" icon for "{SavedValue:ExpiredID}" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     Then I see status in Progress-bar is "Expired" and is "Green"
 
-  @60811 @60817 @viewExpiredRAFromOrganizationProfilePage @deepika @bugg-ticketNumber-67999
+  @60811 @60817 @viewExpiredRAOnceAwardIsActivatedFromOrganizationProfilePage @deepika
   Scenario:  Validate whether Subrecipients can view the Expired Risk Assessment from the Monitoring Phase level table and  Expired Status should be displayed to SR user from Organizational Profile page.
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2651,6 +2651,65 @@ Feature: Validate all scenarios in the Risk Assessment
       | Executive Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
     And I click on "Send to Subrecipient" in the page details
+    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    When I click on "Accept" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "Automation Award for Risk Assessment" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    When I navigate to "Terms" sub tab
+    When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
+    And I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Approve" on the approval decision box
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "Automation Award for Risk Assessment" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside table
+    And I click on "Accept after Approval" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Draft"
+    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "Automation Award for Risk Assessment" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "Activate" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel

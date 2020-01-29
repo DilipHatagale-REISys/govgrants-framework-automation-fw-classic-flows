@@ -114,8 +114,8 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
       | User    |
       | AUDITOR |
 
-  @69870 @auditorCannotCreateAwardLevelDeskReview
-  Scenario Outline: Validate Auditor should not be able to Create, Edit, Delete and Accept and Close the Award Level Desk Review
+  @69870 @70076 @auditorCannotCreateDeleteAwardLevelDeskReview
+  Scenario Outline: Validate Auditor should not be able to Create, Accept and Close the Award Level Desk Review |Validate Auditor should not be able to delete the  created state Award Level Desk Review
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -127,10 +127,28 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     Given I navigate to "Management" sub tab
     Then I softly cannot see top right button "Initiate Desk Review" in flex table with id "GrantorDeskReviewAward"
     When I perform quick search for "Automation Desk Review" in "GrantorDeskReviewAward" panel
-    Then I softly cannot see row level action button "Edit" against Value "Automation Desk Review" inside "GrantorDeskReviewAward" flex table
-    Then I softly cannot see row level action button "Delete" against Value "Automation Desk Review" inside "GrantorDeskReviewAward" flex table
     And I click on "View" icon for "Automation Desk Review" inside flex table with id "GrantorDeskReviewAward"
     Then I softly cannot see top right button "Accept and Close" in page detail
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "Automation Permanent Award" in "---deskreview:-:internalActiveGrants---" panel
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalActiveGrants---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
+    Given I navigate to "Management" sub tab
+    And I click on top right button "Initiate Desk Review" in flex table with id "---deskreview:-:managementInitiateDRtableid---"
+    And I enter "Creation" values from "DeskReview_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter "Edition" values from "DeskReview_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
+    Given I navigate to "Monitoring" tab
+    When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Automation Desk Review" in "---auditor:-:deskreviewMonitoringTableId---" panel
+    Then I softly cannot see row level action button "Delete" against Value "Automation Desk Review" inside "---auditor:-:deskreviewMonitoringTableId---" flex table
     And I collect all the soft asserts
     Examples:
       | User    |
@@ -197,3 +215,48 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     Then I softly cannot see top right button "Send Back to Subrecipient" in page detail
     Then I collect all the soft asserts
+
+  @70075 @auditorCannotBeAnApprover
+  Scenario: Validate approver user is not allowed to reassign tasks their tasks to Auditor.
+    Given I delete the record "Automation Site Visit" from the object "Site Visit"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    And I perform quick search for "Automation Permanent Award" in "ActiveGrants" panel
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
+    Given I navigate to "Management" sub tab
+    And I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
+    And I enter "Creation" values from "SiteVisit_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter "Edition" values from "SiteVisit_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    Given I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
+      | Role             | Name           | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO  | Automation Test Description |
+    When I get the "EGMS ID"
+    Given I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
+    When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I click on "Notify" in the page details
+    When I click on "Conduct" in the page details
+    And I navigate to "Reports and Outcomes" sub tab
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---sitevisits:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
+      | Title                  | Description            | Type        |
+      | Automation Finding     | Automation Description | Finding     |
+      | Automation Concern     | Automation Description | Concern     |
+      | Automation Observation | Automation Description | Observation |
+    When I click on "Submit for Approval" in the page details
+    And I select radio button "Forward" in the approval decision
+    Then I cannot see user "Automation AUDITOR" in the user lookup in the approval decision
