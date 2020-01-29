@@ -136,19 +136,64 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
       | User    |
       | AUDITOR |
 
-  @69872 @auditorCannotCreateAwardLevelRiskAssessment
-  Scenario Outline: Validate Auditor should not be able to Create Award Level Risk Assessment
+  @69872 @69979 @auditorCannotCreateAwardLevelRiskAssessment
+  Scenario Outline: Validate Auditor should not be able to Create Award Level Risk Assessment/ Validate whether Auditor can View the active Risk assessment from Monitoring Tab
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
+    And I click toggle button to select "Grants - All"
     And I perform quick search for "Automation Execution Award" in "ActiveGrants" panel
     And I click on "View" icon for "Automation Execution Award" inside flex table with id "ActiveGrants"
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Automation Execution Award" inside flex table with id "flexGridRelatedAwards1"
     Given I navigate to "Management" sub tab
     Then I softly cannot see top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
+    When I navigate to "Monitoring" tab
+    And I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Risk Assessments - All"
+    When I perform quick search for "Automation Permanent Award" in "---auditor:-:monitoringtableid---" panel
+    Then I softly see that "Active" has been added in flextable with Id "---auditor:-:monitoringtableid---"
     And I collect all the soft asserts
     Examples:
       | User    |
       | AUDITOR |
+
+  @69985 @69986 @auditorCannotSendBackProgressReporttoSubrecipient
+  Scenario: Validate Auditor should not be  able to Send back progress report to S/R | Validate Auditor should have view / read  only access to the progress report record
+    Given I delete the record "Automation Permanent Award" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c"
+    Given I am on "SUBPORTAL" portal
+    When I login as "SPI" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    And I click on "Save" in the page details
+    When I get the "EGMS ID"
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Performance" sub tab
+    Given I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Actual | Reported Date |
+      | Automation Permanent KPI for Regression | 7      | 7             |
+    When I navigate to "Forms and Attachments" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
+    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I click on "Back" in the page details
+    Given I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
+    When I click toggle button to select "Progress Reports - All"
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    Then I softly can see row level action button "View" against "{SavedValue:Record Id}" in flex table with id "---progressReport:-:pendingTaskTableId---"
+    When I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    Then I softly cannot see top right button "Send Back to Subrecipient" in page detail
+    Then I collect all the soft asserts
