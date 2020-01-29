@@ -4833,7 +4833,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
-    And I pause execution
     And I perform quick search for "<Grant Name>"
     And I click on "Edit" icon for "<Grant Name>" inside table
     And I navigate to "Subawards" sub tab

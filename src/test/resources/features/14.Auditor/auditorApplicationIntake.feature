@@ -122,7 +122,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
       | Application Name                               |
       | Automation Announcement for Application Intake |
 
-  @69301 @auditorCannotAddAttachmentsAndNotes @wip
+  @69301 @auditorCannotAddAttachmentsAndNotes
   Scenario Outline: Verify User with Auditor profile has no ability to add attachments and notes.
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Applications" tab
