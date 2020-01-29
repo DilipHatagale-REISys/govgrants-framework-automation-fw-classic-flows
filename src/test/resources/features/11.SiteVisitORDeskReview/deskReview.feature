@@ -220,7 +220,7 @@ Feature: Validate all scenarios in Desk Review
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I collect all the soft asserts
 
-  @51021 @66557 @51022 @51023 @66146 @66485  @deskReviewSendToSubrecipientdAndCorrectiveActionsBySubrecipient
+  @51021 @66557 @51022 @66549 @51023 @66146 @66485 @deskReviewSendToSubrecipientdAndCorrectiveActionsBySubrecipient
   Scenario: Send Desk Review to Subrecipient, Corrective Actions and Submit to Grantor by Subrecipient |Validate whether pending task is created for Program approver under Home Tab when the award owner submits the Desk Review for approval
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
@@ -307,6 +307,7 @@ Feature: Validate all scenarios in Desk Review
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Permanent Award" in "---deskreview:-:internalActiveGrants---" panel
+    Then I softly see value "Automation Permanent Award" for title "Grant Title" inside table "---deskreview:-:internalActiveGrants---"
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalActiveGrants---"
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
@@ -315,7 +316,7 @@ Feature: Validate all scenarios in Desk Review
     Then I softly can see top right button "Send Back to Subrecipient" in page detail
     Then I collect all the soft asserts
 
-  @55279 @66148 @approverSendBackToUserDeskReview @deepika
+  @55279 @66469 @66148 @approverSendBackToUserDeskReview @deepika
   Scenario: Validate whether the approver will be able to SendBack to Owner |Validate Pending task is not created to fiscal approver when program approver performs send to the owner.
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
@@ -340,6 +341,7 @@ Feature: Validate all scenarios in Desk Review
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
+    Then I softly can see top right button "Conduct" in page detail
     Given I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
     When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
