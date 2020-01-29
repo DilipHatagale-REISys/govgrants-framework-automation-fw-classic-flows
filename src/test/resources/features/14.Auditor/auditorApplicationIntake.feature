@@ -130,7 +130,6 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     When I click toggle button to select "Applications - All"
     When I click on "View" icon for "<Application Name>" inside table
     And I navigate to "Attachments" sub tab
-    Then I top
     Then I softly cannot see top right button "Add" in flex table with id "Attachments"
     Then I softly cannot see top right button "Add" in flex table with id "Notes"
     Then I collect all the soft asserts
