@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in the Site Visit and Desk Review without background
 
   @66713 @inProgressSiteVisitAmendedForSiteVisits @deepika
-  Scenario: Validate In-progress award level site visit are carried forward to newly created award after amendment - Busdget Period Change type
+  Scenario: Validate In-progress award level site visit are carried forward to newly created award after amendment - Budget Period Change type
     Given I delete the record "Automation Award for Amendment Request" from the object "Amendment Request"
     And I delete the record "Automation Award for Amendment Request" from the object "Payment Request"
     And I delete the record "Automation Award for Amendment Request" from the object "subaward"
@@ -492,3 +492,23 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
     Given I navigate to "Management" sub tab
     Then I can see top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
+
+  @69443 @ValidateGrantFieldhistoryUpdated @aashish
+  Scenario: Validate that Grant field history gets updated after Budget period amendment
+    Given I delete the record "Automation Award for Amendment Request" from the object "Amendment Request"
+    And I delete the record "Automation Award for Amendment Request" from the object "Payment Request"
+    And I delete the record "Automation Award for Amendment Request" from the object "subaward"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "Automation Award for Amendment Request" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "Automation Award for Amendment Request" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "2" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I navigate to "Budget" sub tab
+    And I softly see field "Project Period End Date" as "1/25/2030"
+    And I click "Grant ID" lookup link
+    And I navigate to "History" sub tab
+    And I softly see value "2030-01-25" for title "New Value" against the value "Project Period End Date" inside table "---sitevisits:-:grantHistoryTableId---"
+    Then I collect all the soft asserts
