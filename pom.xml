@@ -28,9 +28,9 @@
 		<selenium-server.version>3.141.59</selenium-server.version>
 		<appium.version>7.2.0</appium.version>
 		<cucumber.version>4.5.4</cucumber.version>
-		<cucable.version>1.5.2</cucable.version>
+		<cucable.version>1.6.0</cucable.version>
 		<picocontainer.version>4.7.1</picocontainer.version>
-		<report.version>2.2.0</report.version>
+		<report.version>2.3.3</report.version>
 		<testng.version>6.14.3</testng.version>
 		<junit.version>4.13-beta-3</junit.version>
 		<junit.surefire.version>3.0.0-M3</junit.surefire.version>
