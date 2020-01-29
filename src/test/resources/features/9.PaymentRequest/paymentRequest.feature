@@ -159,7 +159,7 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
-    When I click on "Approve" on the approval decision box
+    When I "Approve" in the approval decision
     Then I see status in Progress-bar is "Approved" and is "green"
     Examples:
       | Award Name                 | Grant Name                 |
@@ -206,7 +206,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
-    And I click on "Disapprove" on the approval decision box
+    And I "Disapprove" in the approval decision
     Then I see status in Progress-bar is "Rejected" and is "Red"
 
   @38838 @paymentRequestReSubmitAfterCorrection @mahadev
@@ -287,7 +287,7 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     And I click on "Submit for Approval" in the page details
     Then I softly cannot see top right button "Edit" in page detail
-    When I click on "Send to Owner" on the approval decision box
+    When I "Send to Owner" in the approval decision
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
     Then I collect all the soft asserts
 
@@ -456,7 +456,7 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    And I click on "Approve,false" on the approval decision box
+    And I "Approve" in the approval decision
     Then I see the message "Successfully Approved" on approval decision box
 
   @53981 @sendBackAdvancePaymentRequest @mahadev
@@ -488,7 +488,7 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
-    And I click on "Send to Owner,false" on the approval decision box
+    And I "Send to Owner" in the approval decision
     Then I see the message "Successfully sent to Owner. It may take few mintues to process record." on approval decision box
 
   @53982 @forwardAdvancePaymentRequest @mahadev
@@ -520,7 +520,7 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
-    And I click on "Reassign,Automation EXE,false" on the approval decision box
+    And I "Reassign" to user "Automation EXE" in the approval decision
     Then I see the message "Successfully sent to Owner. It may take few mintues to process record." on approval decision box
 
   @53983 @rejectAdvancePaymentRequest @mahadev
@@ -552,7 +552,7 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
-    And I click on "Disapprove,false" on the approval decision box
+    And I "Disapprove" in the approval decision
     Then I see the message "Successfully disapproved" on approval decision box
 
   @53985 @53984 @advancePaymentRequestShouldNotReceiveToEXE/PM  @mahadev
@@ -633,13 +633,13 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
-    And I click on "Reassign,Automation EXE" on the approval decision box
+    And I "Reassign" to user "Automation EXE" in the approval decision
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
-    And I click on "Approve" on the approval decision box
+    And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "Green"
     Then I collect all the soft asserts
 
@@ -685,7 +685,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
-    And I click on "Disapprove" on the approval decision box
+    And I "Disapprove" in the approval decision
     Then I softly cannot see top right button "Mark as Paid" in page detail
     And I collect all the soft asserts
 
@@ -718,7 +718,7 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
-    And I click on "Disapprove" on the approval decision box
+    And I "Disapprove" in the approval decision
     Then I cannot see top right button "Mark as Paid" in page detail
 
   @54588 @ValidateFiscalApprovalCannotEditReimbursementPRAfterSubmittingForApproval @smoke
@@ -885,7 +885,7 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
-    When I click on "Approve" on the approval decision box
+    When I "Approve" in the approval decision
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -980,7 +980,7 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    And I click on "Approve,false" on the approval decision box
+    And I "Approve" in the approval decision
     Then I see the message "Successfully Approved" on approval decision box
 
   @54324 @validateSuccesfulReassignedmessageOnReimbursementPR @mahadev
@@ -1013,7 +1013,7 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    And I click on "Reassign,Automation EXE,false" on the approval decision box
+    And I "Reassign" to user "Automation EXE" in the approval decision
     Then I see the message "Successfully Re-Assigned" on approval decision box
 
   @54325 @validateRejectedMessageOnReimbursementPR @mahadev
@@ -1046,7 +1046,7 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    And I click on "Disapprove,false" on the approval decision box
+    And I "Disapprove" in the approval decision
     Then I see the message "Successfully disapproved" on approval decision box
 
   @54326 @validateSendBackMessageOnReimbursementPR @mahadev
@@ -1079,7 +1079,7 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    And I click on "Send to Owner,false" on the approval decision box
+    And I "Send to Owner" in the approval decision
     Then I see the message "Successfully sent to Owner. It may take few mintues to process record." on approval decision box
 
   @54368 @validateReimbursementPRSendBackToSubReceipient @mahadev
@@ -1474,7 +1474,7 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
-    When I click on "Approve" on the approval decision box
+    When I "Approve" in the approval decision
     Then I can see mail notification for "EXTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Approved |
     Examples:
@@ -1552,7 +1552,7 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    And I click on "Reassign,Automation EXE" on the approval decision box
+    And I "Reassign" to user "Automation EXE" in the approval decision
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Forwarded |
 
@@ -1585,7 +1585,7 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    And I click on "Approve" on the approval decision box
+    And I "Approve" in the approval decision
     Then I can see mail notification for "EXTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Approved |
 
@@ -1618,7 +1618,7 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    And I click on "Send to Owner" on the approval decision box
+    And I "Send to Owner" in the approval decision
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> from <subrecipient name> has been Sent Back |
 
@@ -1657,7 +1657,7 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    And I click on "Send to Owner" on the approval decision box
+    And I "Send to Owner" in the approval decision
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> from <subrecipient name> has been Sent Back |
     Examples:
@@ -1699,7 +1699,7 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    And I click on "Reassign,Automation EXE" on the approval decision box
+    And I "Reassign" to user "Automation EXE" in the approval decision
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Forwarded |
     Examples:
@@ -1741,7 +1741,7 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    And I click on "Disapprove" on the approval decision box
+    And I "Disapprove" in the approval decision
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Rejected |
     Examples:
@@ -1777,7 +1777,7 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    And I click on "Disapprove" on the approval decision box
+    And I "Disapprove" in the approval decision
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Rejected |
 
@@ -1812,7 +1812,7 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
-    And I "Send to Owner" in approval decision
+    And I "Send to Owner" in the approval decision
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -1923,7 +1923,7 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    And I "Approve" in approval decision
+    And I "Approve" in the approval decision
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -1972,7 +1972,7 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    And I click on "Reassign,Automation EXE" on the approval decision box
+    And I "Reassign" to user "Automation EXE" in the approval decision
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2014,7 +2014,7 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    And I click on "Send to Owner" on the approval decision box
+    And I "Send to Owner" in the approval decision
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -2059,7 +2059,7 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
-    When I click on "Approve" on the approval decision box
+    When I "Approve" in the approval decision
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
