@@ -1277,7 +1277,7 @@ Feature: Validate all scenarios of grants and award without background
       | Source is Required to save under Overview. |
     And I collect all the soft asserts
 
-  @66223 @67954 @67925 @67917 @ErrorMsgForPurposeField @jitendra
+  @66223 @67954 @67925 @67916 @67917 @ErrorMsgForPurposeField @jitendra
   Scenario: TTo verify that if Purpose field in plan table is left unfilled in site visit review and upon clicking on the save button by the award owner (Pm profile) on the top right corner of the page validation error must be thrown
     And I delete the record "Automation Site Visit" from the object "Site Visit"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -1291,6 +1291,7 @@ Feature: Validate all scenarios of grants and award without background
     And I softly see "Automation PM" is present after mouse hover for active subaward
     And I mouse hover to link contains "{SavedValue:grantID}"
     Then I softly see "Grant" shown inside mini page layout on hover
+    Then I softly see "SAN DIEGO ELECTRICAL TRAINING TRUST" shown inside mini page layout on hover
     Given I navigate to "Management" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
     And I enter "Creation" values from "SiteVisit_Field_Values.xlsx"

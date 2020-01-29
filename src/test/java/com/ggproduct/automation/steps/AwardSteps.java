@@ -94,4 +94,11 @@ public class AwardSteps {
     public void verifyDifferenceOfFields(String usage, String fieldToCompare, String initialFieldValue, List<String> fieldsToSum) {
         awardPage.validateAvailableBalance(usage,fieldToCompare,initialFieldValue, fieldsToSum);
     }
+
+    @And("^I save the total records from the flex table id \"([^\"]*)\" as \"([^\"]*)\"$")
+    public void iGetTheTotalRecordsFromTheFlexTableId(String flexTableId, String key) {
+       EyeThink.core().Properties().saveValue(key,EyeThink.core().get().text(By.xpath(
+             "//div[@id='"+flexTableId+"']//*[@ng-bind='totalRecords']"
+       )));
+    }
 }
