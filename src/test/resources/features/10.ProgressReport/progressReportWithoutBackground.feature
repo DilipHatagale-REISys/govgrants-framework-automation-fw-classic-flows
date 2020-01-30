@@ -5958,7 +5958,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @59196 @downloadPRthroughLinkPDF @jitendra
+  @59196 @downloadPRthroughLinkPDF @jitendra @skipOnJenkins @skipOnJenkins
   Scenario Outline: Validate SR User is able to download Supporting document checklist table in PDF format at Progress report with Status as Active.
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -6092,7 +6092,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @59197 @downloadPRthroughLinkXLS @jitendra
+  @59197 @downloadPRthroughLinkXLS @jitendra @skipOnJenkins
   Scenario Outline: Validate SR User is able to download Supporting document checklist table in XLS format when the table status is Active.
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
