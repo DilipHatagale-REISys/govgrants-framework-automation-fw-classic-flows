@@ -861,7 +861,7 @@ Feature: Validate all scenarios in the Site Visit
     Then I softly see value "Active" for title "New Value" inside table "History"
     Then I collect all the soft asserts
 
-  @60833 @theSnapshotAfterSiteVisitsIsSendToSubrecipient @keerti @snapshotheadlessmode
+  @60833 @theSnapshotAfterSiteVisitsIsSendToSubrecipient @keerti @skipOnJenkins
   Scenario: Validate whether record Owner is able to view the Snapshot after Site Visits Send to Subrecipient
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
@@ -922,7 +922,7 @@ Feature: Validate all scenarios in the Site Visit
     When I download the file
     Then I see "Sent to Subrecipient" on page "1" of "govgrants" pdf file
 
-  @60832 @65385 @theSnapshotAfterSubmitForApproval @deepika @snapshotheadlessmode
+  @60832 @65385 @theSnapshotAfterSubmitForApproval @deepika @skipOnJenkins
   Scenario: Validate whether record Owner is able to view the Snapshot after Site Visits Accepted and Closed | Also whether the Subrecipient can view the site viist that is accepted and closed by record owner
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
@@ -1571,7 +1571,7 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "GrantorSiteVisitsAward" panel
     Then I see that "Automation Site Visit" has been added in flextable with Id "GrantorSiteVisitsAward"
 
-  @66392 @66384 @validateSendBackToSubRecipientButton @mahadev
+  @66392 @66384 @66561 @validateSendBackToSubRecipientButton @mahadev
   Scenario: To verify that Send back to subrecipient button appear on the top right corner of the page of award owner(PM) in site visit page when status is submitted to grantor
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
@@ -1658,4 +1658,9 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Then I softly can see top right button "Send Back to Subrecipient" in page detail
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    Then I softly see that "Record Id" has been added in flextable with Id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     And I collect all the soft asserts
