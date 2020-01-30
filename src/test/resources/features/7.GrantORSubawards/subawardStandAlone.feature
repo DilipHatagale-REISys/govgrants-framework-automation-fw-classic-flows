@@ -810,7 +810,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
-    Then I softly see the message "Successfully Approved" on approval decision box
+    Then I can see the message "Successfully Approved" in the approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel

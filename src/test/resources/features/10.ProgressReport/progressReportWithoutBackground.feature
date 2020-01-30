@@ -7827,7 +7827,8 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     When I click on "Submit to Grantor" in the page details
-    Then I see the message "<Error Message>" on approval decision box
+    Then I can see the message "<Error Message>" in the approval decision
+    And I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 | Error Message                                                                                                                                                              |
       | Automation Execution Award | Automation Execution Award | This Progress Report cannot be approved because a report marked as the Final report has been approved. Send Back to Owner will allow the Owner to notify the Subrecipient. |
@@ -8046,7 +8047,8 @@ Feature: Validate scenarios in Progress Report without background
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    Then I see the message "<Error Message>" on approval decision box
+    Then I can see the message "<Error Message>" in the approval decision
+    And I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 | Error Message                                                                                                                                                              |
       | Automation Execution Award | Automation Execution Award | This Progress Report cannot be approved because a report marked as the Final report has been approved. Send Back to Owner will allow the Owner to notify the Subrecipient. |
@@ -8214,7 +8216,8 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
-    Then I see the message "Successfully Approved" on approval decision box
+    Then I can see the message "Successfully Approved" in the approval decision
+    And I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -8359,7 +8362,8 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
-    Then I see the message "Successfully Approved" on approval decision box
+    Then I can see the message "Successfully Approved" in the approval decision
+    And I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -10591,7 +10595,8 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Reassign" to user "Automation EXE" in the approval decision
-    Then I see the message "<Error Message>" on approval decision box
+    Then I can see the message "<Error Message>" in the approval decision
+    And I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 | Error Message                                                                                                                                                              |
       | Automation Execution Award | Automation Execution Award | This Progress Report cannot be approved because a report marked as the Final report has been approved. Send Back to Owner will allow the Owner to notify the Subrecipient. |
@@ -10775,7 +10780,8 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Send to Owner" in the approval decision
-    Then I see the message "Successfully sent to Owner. It may take few mintues to process record." on approval decision box
+    Then I can see the message "Successfully sent to Owner. It may take few mintues to process record." in the approval decision
+    And I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -10959,7 +10965,8 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Send to Owner" in the approval decision
-    Then I see the message "Successfully sent to Owner. It may take few mintues to process record." on approval decision box
+    Then I can see the message "Successfully sent to Owner. It may take few mintues to process record." in the approval decision
+    And I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -11146,7 +11153,8 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
-    Then I see the message "<Error Message>" on approval decision box
+    Then I can see the message "<Error Message>" in the approval decision
+    And I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 | Error Message                                                                                                                                                              |
       | Automation Execution Award | Automation Execution Award | This Progress Report cannot be approved because a report marked as the Final report has been approved. Send Back to Owner will allow the Owner to notify the Subrecipient. |
@@ -11615,7 +11623,8 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     When I "Approve" in the approval decision
-    Then I see the message "<Error Message>" on approval decision box
+    Then I can see the message "<Error Message>" in the approval decision
+    And I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 | Error Message                                                                                                                                                              |
       | Automation Execution Award | Automation Execution Award | This Progress Report cannot be approved because a report marked as the Final report has been approved. Send Back to Owner will allow the Owner to notify the Subrecipient. |
@@ -12028,7 +12037,8 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
-    Then I see the message "<Error Message>" on approval decision box
+    Then I can see the message "<Error Message>" in the approval decision
+    And I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 | Error Message                                                                                                                                                              |
       | Automation Execution Award | Automation Execution Award | This Progress Report cannot be approved because a report marked as the Final report has been approved. Send Back to Owner will allow the Owner to notify the Subrecipient. |

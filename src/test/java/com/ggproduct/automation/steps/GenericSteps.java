@@ -59,16 +59,6 @@ public class GenericSteps {
         );
     }
 
-    @Description("To capture message on approval decision box")
-    @Then("^I (softly see|see) the message \"([^\"]*)\" on approval decision box$")
-    public void iSeeTheMessageOnApprovalDecisionBox(String usage, String message) {
-        if (usage.contains("softly")){
-            EyeThink.core().assertion().assertThat(projectManager.captureMessageOnApprovalDecisionBox(message)).isTrue();
-        } else {
-            Assert.assertTrue(projectManager.captureMessageOnApprovalDecisionBox(message));
-        }
-    }
-
     @Description("To get the field value from page block")
     @And("^I get the field value \"([^\"]*)\" from sub tab \"([^\"]*)\"$")
     public void iGetTheFieldValueFromSubTab(String fieldName, String subTabName) {
