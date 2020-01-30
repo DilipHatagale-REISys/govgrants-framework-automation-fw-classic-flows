@@ -554,7 +554,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
-    And I "Approve" in approval decision
+    And I "Approve" in the approval decision
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
@@ -567,13 +567,13 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
-    And I "Approve" in approval decision
+    And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
-    And I "Approve" in approval decision
+    And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
     And I collect all the soft asserts
 
@@ -756,7 +756,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
-    And I "Send to Owner" in approval decision
+    And I "Send to Owner" in the approval decision
     Then I softly see status in Progress-bar is "Created" and is "green"
     When I navigate to "History" sub tab
     Then I softly see that "Announcement" is in "Created" status
@@ -944,7 +944,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
-    And I "Disapprove" in approval decision
+    And I "Disapprove" in the approval decision
     Then I softly see status in Progress-bar is "Rejected" and is "Red"
     When I navigate to "History" sub tab
     Then I softly see value "Rejected" for title "New Value" inside table "History"
