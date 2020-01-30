@@ -3061,6 +3061,7 @@ Feature: Payment Request scenarios without background
     When I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Invoice"
+    And I pause execution for "2" seconds
     Then I see "Invoice" has been added in "Attachment" flex table
     Examples:
       | User |
