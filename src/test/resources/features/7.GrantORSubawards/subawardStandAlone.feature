@@ -16,7 +16,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I get the "EGMS ID"
 
-  @51128 @51129 @65592 @awardCreationAndEdition
+  @51128 @51129 @65592 @69088 @awardCreationAndEdition
   Scenario: Creation of an award and edition of an award
     Then I softly see status in Progress-bar is "Created" and is "Green"
     When I click on "Edit" in the page details
@@ -24,6 +24,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     Then I softly see status in Progress-bar is "Created" and is "Green"
     And I click on "Edit" in the page details
+    And I navigate to "Budget" sub tab
+    And I perform quick search for "Administrative and legal expenses" in "---subAwardStandAlone:-:subAwardBudgetTableId---" panel
+    Then I softly see "Administrative and legal expenses" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---"
     Then I collect all the soft asserts
 
   @51130 @65606 @awardStandAloneAddContactsKeyPersonnel
