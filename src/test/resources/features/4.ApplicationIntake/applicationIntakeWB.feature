@@ -1,4 +1,4 @@
-@applicationIntakeWB @regression
+@applicationIntakeWB @regression @app
 Feature: Application Intake scenarios without background
 
   @65078 @69366 @VerifyCreateApplicationButton @keerti
