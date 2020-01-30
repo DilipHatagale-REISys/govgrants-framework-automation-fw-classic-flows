@@ -128,7 +128,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly can see row level action button "Edit" against "Automation Direct Award" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     And I collect all the soft asserts
 
-  @68138 @takeSnapShotHistory @jitendra
+  @68138 @takeSnapShotHistory @jitendra @skipOnJenkins
   Scenario: Validate that Snapshot of Grant page taken is saved in the History tab of the same
     Given I delete the record "Automation Direct Award" from the object "Award"
     And I delete the record "Automation Direct Award" from the object "Grant"
@@ -501,7 +501,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see value "{SavedValue:fundingAccount}" for title "Funding Account" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
     And I collect all the soft asserts
 
-  @38215 @68038 @67913 @VerifyActiveGrantsAccessToAllUsers @mahadev
+  @38215 @68038 @67913 @VerifyActiveGrantsAccessToAllUsers @mahadev @skipOnJenkins
   Scenario Outline: Verify all internal users can view active grants
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab

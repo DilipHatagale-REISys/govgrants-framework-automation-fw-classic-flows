@@ -864,7 +864,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     Then I softly see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
     Then I collect all the soft asserts
 
-  @61992 @RecordOwnerCanViewSnapshotAfterODRIsSubmittedForApproval @snapshotheadlessmode
+  @61992 @RecordOwnerCanViewSnapshotAfterODRIsSubmittedForApproval @skipOnJenkins
   Scenario: Validate Record Owner user is able to take Snapshot after Org Desk Review is Submitted for Approval status - Org Desk Review
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"

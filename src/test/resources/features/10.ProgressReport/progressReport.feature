@@ -1619,7 +1619,7 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Overview" sub tab
     Then I see field "Submitted By:" as "Automation SPI"
 
-  @59280 @validateSRUserIsAbleToViewSnapshot @mahadev
+  @59280 @validateSRUserIsAbleToViewSnapshot @mahadev @skipOnJenkins
   Scenario: Validate SR user is able to view the Snapshot after Progress report is Submitted to Grantor status
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
@@ -2147,7 +2147,7 @@ Feature: Validate all scenarios in Progress Report
       | Grant Name                 |
       | Automation Permanent Award |
 
-  @59898 @validateSRUserIsAbleToViewSnapshotHistory @mahadev
+  @59898 @validateSRUserIsAbleToViewSnapshotHistory @mahadev @skipOnJenkins
   Scenario: Validate SR user is able to view the Snapshot after Progress report is Submitted to Grantor status
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
@@ -3214,7 +3214,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     Then I cannot see row level action button "Edit" against "Automation Permanent Objective" in flex table with id "---progressReport:-:objectivesTableId---"
 
-  @61094 @validateDownloadOfObjectivesInPDF @mahadev
+  @61094 @validateDownloadOfObjectivesInPDF @mahadev @skipOnJenkins
   Scenario: Validate SR User can Download the Objectives associated at award on progress report in PDF format
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
@@ -3223,7 +3223,7 @@ Feature: Validate all scenarios in Progress Report
     When I download the file
     Then I see "Test Automation Organization" on page "1" of "govgrants" pdf file
 
-  @61095 @validateDownloadOfObjectivesInCSV @mahadev
+  @61095 @validateDownloadOfObjectivesInCSV @mahadev @skipOnJenkins
   Scenario: Validate SR User can Download the Objectives associated at award on progress report in CSV format
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"

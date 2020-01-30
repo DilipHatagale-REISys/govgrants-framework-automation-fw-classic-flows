@@ -40,7 +40,7 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
     Then I softly see status in Progress-bar is "Activated" and is "green"
     Then I collect all the soft asserts
 
-  @69304 @auditorCandownloadasPDF
+  @69304 @auditorCandownloadasPDF @skipOnJenkins
   Scenario: Validate Verify User with Auditor profile has ability to download PDF files of record.
     Given I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Grants" tab

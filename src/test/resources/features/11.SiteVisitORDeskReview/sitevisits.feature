@@ -861,7 +861,7 @@ Feature: Validate all scenarios in the Site Visit
     Then I softly see value "Active" for title "New Value" inside table "History"
     Then I collect all the soft asserts
 
-  @60833 @theSnapshotAfterSiteVisitsIsSendToSubrecipient @keerti @snapshotheadlessmode
+  @60833 @theSnapshotAfterSiteVisitsIsSendToSubrecipient @keerti @skipOnJenkins
   Scenario: Validate whether record Owner is able to view the Snapshot after Site Visits Send to Subrecipient
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
@@ -922,7 +922,7 @@ Feature: Validate all scenarios in the Site Visit
     When I download the file
     Then I see "Sent to Subrecipient" on page "1" of "govgrants" pdf file
 
-  @60832 @65385 @theSnapshotAfterSubmitForApproval @deepika @snapshotheadlessmode
+  @60832 @65385 @theSnapshotAfterSubmitForApproval @deepika @skipOnJenkins
   Scenario: Validate whether record Owner is able to view the Snapshot after Site Visits Accepted and Closed | Also whether the Subrecipient can view the site viist that is accepted and closed by record owner
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :

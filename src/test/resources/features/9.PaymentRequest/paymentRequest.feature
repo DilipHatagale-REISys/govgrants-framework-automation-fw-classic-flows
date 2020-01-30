@@ -2028,7 +2028,7 @@ Feature: Validate all scenarios in Payment Request
       | Award Name                 | Grant Name                 |
       | Automation Permanent Award | Automation Permanent Award |
 
-  @54597 @validateStatusAndAmountInPDF @jitendra
+  @54597 @validateStatusAndAmountInPDF @jitendra @skipOnJenkins
   Scenario Outline: Verify that user can check PDF files with validation for amount and status
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"

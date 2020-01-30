@@ -954,7 +954,7 @@ Feature: Validate all scenarios in Desk Review
     When I perform quick search for "{SavedValue:Record Id}" in "History" panel
     Then I see value "Active" for title "New Value" inside table "History"
 
-  @69411 @61057 @61055 @55370 @66139 @66274 @snapshotAfterSubmitForApprovalDeskReviewIsAcceptedAndClosed @Keerti @snapshotheadlessmode
+  @69411 @61057 @61055 @55370 @66139 @66274 @snapshotAfterSubmitForApprovalDeskReviewIsAcceptedAndClosed @Keerti @skipOnJenkins
   Scenario: Validate whether record Owner is able to view the Accept and Close Button and User view the Snapshot after Desk Review is Submitted for Approval status also after Accepted and Closed |Subrecipient can view Closed Desk Review
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
@@ -1067,7 +1067,7 @@ Feature: Validate all scenarios in Desk Review
     Then I softly see status in Progress-bar is "Closed" and is "Green"
     Then I collect all the soft asserts
 
-  @67834 @validateDownloadDeskReviewInCSV @deepika @snapshotheadlessmode
+  @67834 @validateDownloadDeskReviewInCSV @deepika @skipOnJenkins
   Scenario: Validate Internal User can Download the Desk Review associated in CSV format
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
@@ -1076,7 +1076,7 @@ Feature: Validate all scenarios in Desk Review
     And I download the file
     Then I verify that "xls" file is downloaded
 
-  @65244 @deleteCreateDeskReview @deepika @bug-69873
+  @65244 @deleteCreateDeskReview @deepika
   Scenario: Validate whether user will be able to delete the created Desk Review
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
