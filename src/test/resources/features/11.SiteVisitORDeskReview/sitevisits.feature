@@ -1571,7 +1571,7 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "GrantorSiteVisitsAward" panel
     Then I see that "Automation Site Visit" has been added in flextable with Id "GrantorSiteVisitsAward"
 
-  @66392 @66384 @validateSendBackToSubRecipientButton @mahadev
+  @66392 @66384 @66561 @validateSendBackToSubRecipientButton @mahadev
   Scenario: To verify that Send back to subrecipient button appear on the top right corner of the page of award owner(PM) in site visit page when status is submitted to grantor
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
@@ -1658,4 +1658,9 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Then I softly can see top right button "Send Back to Subrecipient" in page detail
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    Then I softly see that "Record Id" has been added in flextable with Id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     And I collect all the soft asserts
