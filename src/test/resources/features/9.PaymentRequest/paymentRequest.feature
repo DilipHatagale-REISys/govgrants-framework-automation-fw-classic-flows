@@ -457,7 +457,8 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
-    Then I see the message "Successfully Approved" on approval decision box
+    And I pause execution for "2" seconds
+    Then I see status in Progress-bar is "Approved" and is "Green"
 
   @53981 @sendBackAdvancePaymentRequest @mahadev
   Scenario: Validate confirmation message after sending back of advance payment request to owner
@@ -489,6 +490,7 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     And I "Send to Owner" in the approval decision
+    And I pause execution for "2" seconds
     Then I see the message "Successfully sent to Owner. It may take few mintues to process record." on approval decision box
 
   @53982 @forwardAdvancePaymentRequest @mahadev
@@ -793,6 +795,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     And I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice"
+    And I refresh the page
     Then I see "Invoice" has been added in "Attachment" flex table
 
   @54409 @uploadAttachmentOfTypeInvoiceAdvancePR @mahadev
@@ -829,8 +832,9 @@ Feature: Validate all scenarios in Payment Request
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
-    And I upload attachment "Announcement_Field_Values.xlsx" from workspace
-    Then I see "Announcement_Field_Values.xlsx" has been added in "Attachment" flex table
+    And I upload attachment "InternalOrganization_Field_Values.xlsx" from workspace
+    And I refresh the page
+    Then I see "InternalOrganization_Field_Values.xlsx" has been added in "Attachment" flex table
 
   @54685 @validateProgramIncomeTrackingFieldOnAdvancePaymentRequestGrantorSide @mahadev
   Scenario: Validate Program Income Tracking field on payment request at grantor side gets updated after submitting payment request to grantor
@@ -1104,6 +1108,7 @@ Feature: Validate all scenarios in Payment Request
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     When I click on "Send Back to Subrecipient" in the page details
+    And I pause execution for "2" seconds
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1130,6 +1135,7 @@ Feature: Validate all scenarios in Payment Request
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     When I click on "Send Back to Subrecipient" in the page details
+    And I pause execution for "2" seconds
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1303,6 +1309,7 @@ Feature: Validate all scenarios in Payment Request
       | Title        | Disallowed Amount | Disallowed Amount Reason    |
       | Extra Salary | 5                 | Automation Test Description |
     When I close "Disallow Amount" modal by clicking the top right x button
+    And I pause execution for "2" seconds
     Then I see that "$5.00" has been added in flextable with Id "---paymentRequest:-:paymentRequestBudgetTableId---"
 
   @55631 @PRSendBackToSubrecipientCheckMailNotification @jitendra
@@ -1781,7 +1788,7 @@ Feature: Validate all scenarios in Payment Request
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Rejected |
 
-  @55404 @advancePRSentBackToOwner @jitendra @wip
+  @55404 @advancePRSentBackToOwner @jitendra
   Scenario: Verify that Payment Approval can send back Payment request to Owner (Advance)
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -1886,9 +1893,7 @@ Feature: Validate all scenarios in Payment Request
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Equipment       | 10                            |
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
-      | Budget Category | Advance Requested This Action |
-      | Equipment       | 10                            |
+      | Fringe Benefits | 10                            |
     And I click on "Submit to Grantor" in the page details
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1979,7 +1984,7 @@ Feature: Validate all scenarios in Payment Request
     And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
-  @55403 @verifyReimbursementPRApprovalsendbackOwner @jitendra @wip
+  @55403 @verifyReimbursementPRApprovalsendbackOwner @jitendra
   Scenario Outline: Verify that Payment Approval can send back Payment request to Owner (Reimbursement)
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
