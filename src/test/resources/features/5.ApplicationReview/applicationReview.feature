@@ -1888,7 +1888,7 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---applicationReview:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
-    When I click on "Approve" on the approval decision box
+    When I "Approve" in the approval decision
     Then I see status in Progress-bar is "Approved" and is "green"
     Examples:
       | Announcement Name                              | Application Name       |
