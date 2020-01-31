@@ -664,7 +664,8 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" from workspace
-    Then I see "Announcement_Field_Values.xlsx" has been added in "Attachment" flex table
+    And I pause execution for "1" seconds
+    Then I see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
 
   @62667 @RecordOwnerCanViewSnapshotAfterNegotiationIsInSubmittedToGrantor @keerti @skipOnJenkins
   Scenario: Validate Record Owner user is able to view the Snapshot after Negotiation  is in "Submitted to Grantor" status
