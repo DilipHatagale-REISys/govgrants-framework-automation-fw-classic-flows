@@ -1087,6 +1087,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I enter in modal "Payment_Request_Wt_Frequency" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
+    And I refresh the page
     When I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardFromFDM:-:progressReportSchedulesTableId---" without waiting for record
     And I enter in modal "Progress Report Schedule_FDM" values from "Award_Field_Values.xlsx"
     When I click modal button "Save"
@@ -1368,7 +1369,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                      |
       | Automation Announcement for FDM |
 
-  @64570 @64566 @64720 @64721 @64569 @64719 @64723 @64568 @64564 @64718 @64562 @VerifyWorkPlanRequiredFocusAreaRequiredProjectPeriodStartDateProjectPeriodEndDate  @keerti
+  @64570 @64566 @64720 @64721 @64569 @64719 @64723 @64568 @64564 @64718 @64562 @VerifyWorkPlanRequiredFocusAreaRequiredProjectPeriodStartDateProjectPeriodEndDate @keerti
   Scenario Outline: Verify Work Plan Required? field setting entered at announcement is same on grant which is created with application.
     When I navigate to "Announcements" tab
     When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
@@ -1376,7 +1377,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I navigate to "Overview" sub tab
     And I save the field labeled "Internal Organization" as "InternalOrg"
     And I save the field labeled "Program ID" as "ProgramID"
-    And I save the field labeled "KPI" as "KPI"
+    And I save the field labeled "KPI's Required?" as "KPI"
     And I save the field labeled "Work Plan Required?" as "WPR"
     And I save the field labeled "Program Income Allowed?" as "PIA"
     And I save the field labeled "Focus Area Required?" as "FAR"
@@ -1397,7 +1398,7 @@ Feature: Validate all scenarios in the award created from FDM
     Then I softly see field "Program Income Allowed?" as "{SavedValue:PIA}"
     Then I softly see field "Project Period End Date" as "{SavedValue:PPED}"
     Then I softly see field "Created by" as "{SavedValue:CreatedBy}"
-    Then I softly see field "KPI" as "{SavedValue:KPI}"
+    Then I softly see field "KPI's Required?" as "{SavedValue:KPI}"
     Then I softly see field "Funding Organization" as "{SavedValue:InternalOrg}"
     Then I softly see field "Objectives Required?" as "{SavedValue:ObjRequired}"
     Then I softly see field "Internal Program" as "{SavedValue:ProgramID}"
@@ -1511,7 +1512,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                      | Award Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
-  @64722 @VerifyRelatedFocusAreasField @keerti
+  @64722 @VerifyRelatedFocusAreasField @keerti 
   Scenario Outline: Verify Related Focus Areas field value setup tab overview at announcement is same on grant which is created with application Overview Tab.
     When I navigate to "Announcements" tab
     When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
@@ -1685,6 +1686,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I click on "View" icon for "<Award Name>" inside table with wait for record
     And I click on top right button "Associate" in flex table with id "---subAwardFromFDM:-:federalProgramTableId---"
     When I click "Add" after selection of "Federal" in the table "---subAwardFromFDM:-:federalListTableId---"
+    And I pause execution for "3" seconds
     Then I see total records count "Total Records:1" in flex table "---subAwardStandAlone:-:federalProgramTableId---"
     Examples:
       | Award Name                      | Grant Name                      |
@@ -1914,7 +1916,6 @@ Feature: Validate all scenarios in the award created from FDM
     Given I delete the record "Automation Desk Review" from the object "Desk Review"
     When I delete the record "Automation Site Visit" from the object "Site Visit"
     And I delete the record "Automation Announcement for FDM" from the object "FDM"
-    When I re-login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"

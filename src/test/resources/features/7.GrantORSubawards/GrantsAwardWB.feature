@@ -416,7 +416,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardFromFDM:-:grantsTableId---"
     And I navigate to "Overview" sub tab
     And I save the field labeled "Announcement ID" as "Announcement ID"
-    And I click on hyperlink containing value "{SavedValue:Announcement ID}"
+    And I click "Announcement ID" lookup link
     And I navigate to "Financials" sub tab
     Then I see value "$0.00" for title "Spent" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
     Examples:
@@ -649,22 +649,21 @@ Feature: Validate all scenarios of grants and award without background
     And I enter "Grant_Creation_Title_Error" values from "Award_Field_Values.xlsx"
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
-      | Grant Title is required. |
+      | Grant Title is Required to save |
     And I clear the value from field "GrantAbbreviation__c"
     When I enter value "Automation Execution Award" into field "ProjectTitle__c"
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
-      | Grant Abbreviation is required. |
+      | Grant Abbreviation is Required to save. |
     And I clear the value from field "ProjectPeriodStartDate__c"
     When I enter value "GA" into field "GrantAbbreviation__c"
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
-      | Project Period Start Date is required. |
-    And I clear the value from field "ProjectPeriodEndDate__c"
+      | Project Period End Date is Required to save. |
     When I enter value "0" into field "ProjectPeriodStartDate__c"
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
-      | Project Period End Date is required. |
+      | Project Period Start Date is Required to save. |
     And I clear the value from field "ExternalOrganization__c"
     When I enter value "3650" into field "ProjectPeriodEndDate__c"
     And I click modal button "Continue"
@@ -1122,9 +1121,9 @@ Feature: Validate all scenarios of grants and award without background
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     Then I softly cannot see row level action button "Edit" against "Test T&C" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
-    When I click "Add" after selection of "Non - Mandatory TnC 1" in the table "---subAwardStandAlone:-:termsndConditionsTableId---"
+    When I click "Add" after selection of "Test TC" in the table "---subAwardStandAlone:-:termsndConditionsTableId---"
     When I close "Associate Terms and Conditions" modal by clicking the top right x button
-    Then I softly see value "Non - Mandatory TnC 1" for title "Title" inside table "---subAwardStandAlone:-:termsndConditionsTableId---"
+    Then I softly see value "Test TC" for title "Title" inside table "---subAwardStandAlone:-:termsndConditionsTableId---"
     Then I collect all the soft asserts
 
   @65794 @verifySRUserCanEnterBudgetDetails @mahadev
@@ -1604,7 +1603,7 @@ Feature: Validate all scenarios of grants and award without background
       | Construction    | 1000           | 100        | 100            |
     Then I softly see value "$1,200.00" for title "Total Project Cost" against the value "Construction" inside table "---subAwardFromFDM:-:subAwardBudgetTableId---"
 
-  @68650 @continuationAndVersionCheckAfterPeriodicRenewalAmendmentFromFDM @jitendra
+  @68650 @continuationAndVersionCheckAfterPeriodicRenewalAmendmentFromFDM @jitendra @aashish999
   Scenario Outline: Validate that after periodic renewal amendment Subaward type changes from Initial to Continuation and the Version number is still retained at 1 also the Status changes to pending Activation from Activated
     Given I delete the record "Automation Desk Review" from the object "Desk Review"
     When I delete the record "Automation Site Visit" from the object "Site Visit"
@@ -1648,6 +1647,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on top right button "New" in flex table with id "---subAwardFromFDM:-:riskAssessmentTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     And I click modal button "Save and Continue"
+    And I pause execution for "2" seconds
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I get the "EGMS ID"
@@ -1786,6 +1786,7 @@ Feature: Validate all scenarios of grants and award without background
     And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "{SavedValue:Project Period Start Date}" into field "ProposedBPStartDate__c"
     When I click on "Save" in the page details
+    And I pause execution for "2" seconds
     And I save the field labeled "Budget Period" as "updatedBudgetPeriod"
     And I get the "EGMS ID"
     And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
