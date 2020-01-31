@@ -101,22 +101,6 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     /*
-     * handles to capture message on approval decision box
-     * @param - message - message which needs to verify
-     * @Author - Mahadev.hanme
-     */
-    public Boolean captureMessageOnApprovalDecisionBox(String message) {
-        By expectedMsg = By.xpath("//div[@id='ApprovalDecisionComponent']//span[contains(text(),'" + message + "')]");
-
-        try {
-            EyeThink.core().elementReference().of(expectedMsg);
-            return true;
-        } catch (Exception ex) {
-            return false;
-        }
-    }
-
-    /*
      * To capture field value by passing field label
      * @param fieldName - Label of field
      * @param  subTabName - subTab Name
