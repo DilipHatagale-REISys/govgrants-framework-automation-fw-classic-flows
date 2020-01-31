@@ -2910,12 +2910,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
-<<<<<<< HEAD
-    And I click on "Disapprove" on the approval decision box
-    And I pause execution for "3" seconds
-=======
     And I "Disapprove" in the approval decision
->>>>>>> 59ef5e3cd5e8fb568ebe4b52d53faaa11afe8b39
     Then I see status in Progress-bar is "Rejected" and is "red"
     Examples:
       | Award Name              | Grant Name              |
