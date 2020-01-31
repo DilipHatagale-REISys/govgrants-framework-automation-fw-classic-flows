@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in the Organizational Risk Assessment
 
   Background: To create a Organizational Risk Assessment
-#    Given I delete the record "Bayside Community Center" from the object "ORGANIZATION RISKASSESSMENT"
+    Given I delete the record "Bayside Community Center" from the object "ORGANIZATION RISKASSESSMENT"
     When I create a risk assessment record for organization "Bayside Community Center"
     Given I am on "SUBPORTAL" portal
     When I login as "SA" user
