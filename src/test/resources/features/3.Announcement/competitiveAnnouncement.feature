@@ -15,6 +15,15 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
+  @70163 @userAllowToSelectEligibilityDetails @aashish
+  Scenario: To Verify that user is  allowed  to select the Eligibility Details while creating Announcement
+    When I navigate to "Announcements" tab
+    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I enter value "State governments" into field "fieldEligibleApplicantTypes__c"
+    And I click on "Save" in the page details
+    Then I see field "Eligible Applicant Types" as "State governments"
+
   @announcementForPastApplicationDueDateCA @announcementWithBlankBudgetPeriodCA @submittedAnnouncementDeletionCA
   Scenario Outline: Validate that user can not enter application due date as past date || Validate that user should not submit announcement with blank budget period dates
     When I click on "Edit" in the page details
