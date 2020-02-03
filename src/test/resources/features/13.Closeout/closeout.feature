@@ -64,7 +64,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Save" in the page details
     Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "green"
     And I click on "Acknowledge" in the page details
-    Then I softly see that "Closeout View" is in "Acknowledged by Subrecipient" status
+    Then I softly see status in Progress-bar is "Acknowledged by Subrecipient" and is "green"
     Then I collect all the soft asserts
 
   @50979 @50978 @overrideCloseoutAndsubmitForApproval @smoke

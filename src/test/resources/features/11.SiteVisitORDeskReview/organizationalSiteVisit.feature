@@ -1034,7 +1034,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on "Menu" in the page details
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
-    Then I see snapshot with name containing "Sitevisit" as name
+    Then I see snapshot with name containing "Sitevisit_submit_for_approval" as name
     Then I collect all the soft asserts
 
   @61402 @SiteVisitsReviewerCanNotEditAfterSubmittingTheReview @keerti
@@ -1250,8 +1250,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     Then I softly see "No Records Found" inside flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
-    And I click on "Remove" icon for "Automation Announcement for Site Visit" inside flex table with id "---orgLevelSiteVisits:-:selectApplicationId---"
-    Then I softly see "No Records Found" inside flex table with id "---orgLevelSiteVisits:-:selectApplicationId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab

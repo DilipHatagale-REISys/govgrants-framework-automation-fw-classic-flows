@@ -491,7 +491,8 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Submit for Approval" in the page details
     And I "Send to Owner" in the approval decision
     And I pause execution for "2" seconds
-    Then I see the message "Successfully sent to Owner. It may take few mintues to process record." on approval decision box
+    Then I can see the message "Successfully sent to Owner. It may take few mintues to process record." in the approval decision
+    And I collect all the soft asserts
 
   @53982 @forwardAdvancePaymentRequest @mahadev
   Scenario: validate approver can forward advance payment request
@@ -523,7 +524,8 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     And I "Reassign" to user "Automation EXE" in the approval decision
-    Then I see the message "Successfully sent to Owner. It may take few mintues to process record." on approval decision box
+    Then I can see the message "Successfully sent to Owner. It may take few mintues to process record." in the approval decision
+    And I collect all the soft asserts
 
   @53983 @rejectAdvancePaymentRequest @mahadev
   Scenario: validate Rejection of an advance payment request by approver
@@ -555,7 +557,8 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     And I "Disapprove" in the approval decision
-    Then I see the message "Successfully disapproved" on approval decision box
+    Then I can see the message "Successfully disapproved" in the approval decision
+    And I collect all the soft asserts
 
   @53985 @53984 @advancePaymentRequestShouldNotReceiveToEXE/PM  @mahadev
   Scenario: Advance Payment Request should not receive to Program Approver/Executive Approver
@@ -985,7 +988,8 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
-    Then I see the message "Successfully Approved" on approval decision box
+    Then I can see the message "Successfully Approved" in the approval decision
+    And I collect all the soft asserts
 
   @54324 @validateSuccesfulReassignedmessageOnReimbursementPR @mahadev
   Scenario: Validate succesfully reassigned message on Reimbursement Payment Request
@@ -1018,7 +1022,8 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Reassign" to user "Automation EXE" in the approval decision
-    Then I see the message "Successfully Re-Assigned" on approval decision box
+    Then I can see the message "Successfully Re-Assigned" in the approval decision
+    And I collect all the soft asserts
 
   @54325 @validateRejectedMessageOnReimbursementPR @mahadev
   Scenario: Validate succesfully rejected message on Reimbursement Payment Request
@@ -1051,7 +1056,8 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Disapprove" in the approval decision
-    Then I see the message "Successfully disapproved" on approval decision box
+    Then I can see the message "Successfully disapproved" in the approval decision
+    And I collect all the soft asserts
 
   @54326 @validateSendBackMessageOnReimbursementPR @mahadev
   Scenario: Validate succesfully send back payment request message on Reimbursement Payment Request
@@ -1084,7 +1090,8 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Send to Owner" in the approval decision
-    Then I see the message "Successfully sent to Owner. It may take few mintues to process record." on approval decision box
+    Then I can see the message "Successfully sent to Owner. It may take few mintues to process record." in the approval decision
+    And I collect all the soft asserts
 
   @54368 @validateReimbursementPRSendBackToSubReceipient @mahadev
   Scenario: Validate task is getting created for SPI user after send back reimbursement payment request to subreceipient
