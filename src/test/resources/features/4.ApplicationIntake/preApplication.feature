@@ -98,8 +98,10 @@ Feature: Validate all scenarios in the Pre-Application
     When I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted" and is "green"
 
-  @53162 @preApplicationToApplication
-  Scenario Outline: Validate Grantor accept the submitted pre-application and converted it to application
+  @53162 @70247 @70248 @70249 @70250 @70251 @preApplicationToApplication
+  Scenario Outline: Validate Grantor accept the submitted pre-application and converted it to application | Validate the subrecipient users able to create application from the approved Pre Application
+  Validate Announcement owner will be able to view the Accept and Reject button |Validate the subrecipient users able to create application from the approved Pre Application
+  Validate Announcement Owner will be able to view the pending task under announcement tab after every pre application submission happens.
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -114,7 +116,10 @@ Feature: Validate all scenarios in the Pre-Application
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "---preApplication:-:pendingTaskTableId---" panel
+    Then I softly see that "Record Id" has been added in flextable with Id "---preApplication:-:pendingTaskTableId---"
     And I click on "Start" icon for "Record id" inside flex table with id "---preApplication:-:pendingTaskTableId---"
+    Then I softly can see top right button "Accept" in page detail
+    Then I softly can see top right button "Reject" in page detail
     When I click on "Accept" in the page details
     Given I am on "SUBPORTAL" portal
     And I login as "SPI" user
@@ -123,6 +128,7 @@ Feature: Validate all scenarios in the Pre-Application
     When I click toggle button to select "Pre-Applications - Submitted"
     And I perform quick search for "<Announcement Name>" in "RecipientPreApplications" panel
     When I click on "View" icon for "<Announcement Name>" inside table
+    Then I softly can see top right button "Create Application" in page detail
     When I click on "Create Application" in the page details
     And I click modal button "Save and Continue"
     And I enter "Edition" values from "Application_Field_Values.xlsx"
@@ -157,7 +163,8 @@ Feature: Validate all scenarios in the Pre-Application
     When I click toggle button to select "Applications - All"
     And I perform quick search for "Record Id" in "---applicationIntake:-:applicantGrantorApplicationsTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---applicationIntake:-:applicantGrantorApplicationsTableId---"
-    Then I see status in Progress-bar is "Submitted" and is "Green"
+    Then I softly see status in Progress-bar is "Submitted" and is "Green"
+    Then I collect all the soft asserts
     Examples:
       | Announcement Name                       |
       | Automation Announcement for Application |
