@@ -15,9 +15,11 @@ Feature: Validate all scenarios in the Application Intake
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
 
-  @34044 @applicationCreation @smoke
-  Scenario: Creating an Application
-    Then I see status in Progress-bar is "Created" and is "Green"
+  @34044 @70332 @applicationCreation @smoke
+  Scenario: Validate creation of an Application |Validate once application is in created status, the user can view the Submit Application Button in page details
+    Then I softly see status in Progress-bar is "Created" and is "Green"
+    Then I softly can see top right button "Submit Application" in page detail
+    Then I collect all the soft asserts
 
   @34045 @applicationEdition
   Scenario: Edition of an application
@@ -53,8 +55,27 @@ Feature: Validate all scenarios in the Application Intake
     Then I see the following messages in the page details contains:
       | Saved Successfully! |
 
-  @69367 @50969 @formFillingApplication @smoke
-  Scenario: To fill and complete the form in Application
+  @69367 @50969 @70333 @formFillingApplication @smoke
+  Scenario: To fill and complete the form in Application | Validate whether user is allowed to proceed without filling Mandatory forms
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Application_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    Given I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
+      | Construction  | 1000   | 100        | 100            | 100            |
+    When I navigate to "Overview" sub tab
+    When I click on "Edit" icon for "Automation SPI" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    And I enter value "Checked" into field "IsKeyContact__c"
+    And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I navigate to "Proposal" sub tab
+    When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+    When I click on "Submit Application" in the page details
+    Then I softly see the following messages in the page details contains:
+      |Attachments Tab - All mandatory forms must be 100% completed. |
     When I navigate to "Attachments" sub tab
     Then I see only the following headers in table with id "FormEnhancedTable" :
       | Form Name | Mandatory | Percentage | Last Modified By | Last Modified Date | Actions |
@@ -66,7 +87,8 @@ Feature: Validate all scenarios in the Application Intake
     When I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    Then I see that "100%" has been added in flextable with Id "---applicationIntake:-:allFormsTableId---"
+    Then I softly see that "100%" has been added in flextable with Id "---applicationIntake:-:allFormsTableId---"
+    Then I collect all the soft asserts
 
   @34346 @viewSubmitedApplication @smoke
   Scenario Outline: Viewing the application submitted by sub-recipient as Internal user
