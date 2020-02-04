@@ -15,14 +15,53 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @70163 @userAllowToSelectEligibilityDetails @aashish
+  @70163 @70166 @70197 @userAllowToSelectEligibilityDetails @aashish
   Scenario: To Verify that user is  allowed  to select the Eligibility Details while creating Announcement
+  | To verify that  without selecting "Eligibility Details" user is able to see the validation message by clicking on "Submit for approval" button.
     When I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I enter value "State governments" into field "fieldEligibleApplicantTypes__c"
+    Then I softly see multiple selected options in "multiSelectPicklistCell":
+      | options           |
+      | State governments |
+    And I enter value "Unrestricted" into field "fieldEligibleApplicantTypes__c"
+    And I enter value "County governments" into field "fieldEligibleApplicantTypes__c"
+    And I clear the value from field "fieldEligibleApplicantTypes__c"
+    And I enter value "State governments" into field "fieldEligibleApplicantTypes__c"
+    Then I softly see multiple selected options in "---announcement:-:multiselectCellId---":
+      | options           |
+      | State governments |
+    And I clear the value from field "fieldEligibleApplicantTypes__c"
     And I click on "Save" in the page details
-    Then I see field "Eligible Applicant Types" as "State governments"
+    And I click on "Submit For Approval" in the page details
+    Then I softly see the following messages in the page details :
+      | Overview Tab - Select applicant types. |
+    Then I collect all the soft asserts
+    
+  @70211 @70216 @70217 @userAbletoAssociateActiveRelatedProgram @aashish
+  Scenario: To Verify that user is able to associate active Related Federal/NGO Program | To Verify that user is able to view active Related Federal/NGO Program
+    |To Verify that user is able to remove active Related Federal/NGO Program while creating Announcement.
+    When I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I click on top right button "Associate" in flex table with id "---announcement:-:relatedAnnouncementTableId--"
+    And I click "Add" after selection of "Cal Fires" in the table "---announcement:-:associateForRelated--"
+    And I close modal by clicking the top right x button
+    Then I softly see value "Cal Fires" for title "Program Title" inside table "---announcement:-:relatedAnnouncementTableId--"
+    And I click on "View" icon for "Cal Fires" inside flex table with id "---announcement:-:relatedAnnouncementTableId--"
+    Then I softly see field "Non-Federal Program" as "Cal Fires"
+    And I pause execution for "2" seconds
+    Then I softly see status in Progress-bar is "Active" and is "green"
+    When I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I click on "Remove" icon for "Cal Fires" inside flex table with id "---announcement:-:relatedAnnouncementTableId--"
+    Then I softly do not see value "Cal Fires" for title "Program Title" inside table "---announcement:-:relatedAnnouncementTableId--"
+    And I collect all the soft asserts
 
   @announcementForPastApplicationDueDateCA @announcementWithBlankBudgetPeriodCA @submittedAnnouncementDeletionCA
   Scenario Outline: Validate that user can not enter application due date as past date || Validate that user should not submit announcement with blank budget period dates

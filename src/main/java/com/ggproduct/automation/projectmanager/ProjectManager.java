@@ -490,7 +490,7 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     /**
-     * @param usage            softly or not
+     * @param usage softly or not
      * @param iniBudgetBalance
      * @param decreasedBy
      * @param currentBalance
@@ -511,6 +511,29 @@ public class ProjectManager extends ProjectWebServices {
         }
     }
 
+    /**
+     * @param usage    - softly or not
+     * @param cellName - MultiCell value
+     * @param options -List of selected option
+     * @author aashish pardeshi
+     */
+    public void verifyMultipleSelectedOption(String usage, String cellName, List<String> options) {
+        List<String> selectedOptions = new ArrayList<>();
+        List<WebElement> ll = EyeThink.core().select().from(By.xpath("//td[@class='"+cellName+"']//following::td/select")).getOptions();
+        for (WebElement e : ll) {
+            selectedOptions.add(e.getText().trim());
+        }
+        System.out.println(selectedOptions);
+        if (usage.contains("softly")) {
+            EyeThink.core().assertion().assertThat(
+                    options.containsAll(selectedOptions)
+            ).isTrue();
+        } else {
+            Assert.assertTrue(
+                    options.containsAll(selectedOptions)
+            );
+        }
+    }
     public void validateModalEnlargeAndGrantDetails(String usage) {
         By modalEnlarge = By.xpath("//div[@id='editDiv']/div[2]");
         List<String> ids = List.of(
