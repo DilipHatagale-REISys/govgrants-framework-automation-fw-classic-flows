@@ -289,12 +289,13 @@ public class ProjectManager extends ProjectWebServices {
      * @param flexTableId Id of flex table
      * @return value from specified row for specified column from the Flex Table.
      * @author jitendra.pisal
+     * @Updated by: Aashish P.
      */
     private String getValueOfSpecifiedColFromTableHavingColumnNameAs(String rowNumber, String columnName, String flexTableId) {
 
         int columnValueFromRowInInt = 0;
         int counter = 1;
-        By columnHeaders = By.xpath("//div[@id='"+flexTableId+"']//th");
+        By columnHeaders = By.xpath("//div[@id='" + flexTableId + "']//th");
         List<Elements> columnList = EyeThink.core().elementReference().listOfElements().of(columnHeaders);
 
         // get the column index of required column.
@@ -306,8 +307,11 @@ public class ProjectManager extends ProjectWebServices {
         }
 
         List<Elements> listOfDataInColumn = EyeThink.core().elementReference().listOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//th//span[text()='" + columnName + "']/ancestor::thead/parent::table//tr//td[" + counter + "]/span/field/span"));
-        if (listOfDataInColumn.size() == 0){
+        if (listOfDataInColumn.size() == 0) {
             listOfDataInColumn = EyeThink.core().elementReference().listOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//th//span[text()='" + columnName + "']/ancestor::thead/parent::table//tr//td[" + counter + "]/span/span/span"));
+            if (listOfDataInColumn.size() == 0) {
+                listOfDataInColumn = EyeThink.core().elementReference().listOfElements().of(By.xpath("//div[@id='" + flexTableId + "']//th//span[text()='" + columnName + "']/ancestor::thead/parent::table//tr//td[" + counter + "]/span"));
+            }
         }
         columnValueFromRowInInt = rowNumber.equalsIgnoreCase("last row") ? listOfDataInColumn.size()
                 : Integer.parseInt(rowNumber);
@@ -444,19 +448,18 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     /**
-     *
-     * @param usage softly or not
+     * @param usage        softly or not
      * @param projectRoles - list of roles
      * @author jitendra.pisal
      */
-    public void compareContactListEquality(String usage, List<String> projectRoles){
+    public void compareContactListEquality(String usage, List<String> projectRoles) {
         List<String> listofRoles = new ArrayList<>();
         List<WebElement> ll = EyeThink.core().select().from(By.xpath("//field[@field-name='ProjectRole__c']//select")).getOptions();
-        for (WebElement e:
+        for (WebElement e :
                 ll) {
             listofRoles.add(e.getText().trim());
         }
-        if (usage.contains("softly")){
+        if (usage.contains("softly")) {
             EyeThink.core().assertion().assertThat(
                     listofRoles.containsAll(projectRoles)
             ).isTrue();
@@ -468,45 +471,43 @@ public class ProjectManager extends ProjectWebServices {
     }
 
     /**
-     *
-     * @param usage - softly or not
+     * @param usage       - softly or not
      * @param savedValue1 - Saved field 1 value from page
      * @param savedValue2 Saved field 2 value from page
      * @author jitendra.pisal
      */
-    public void compareTwoSavedStringValueEquality(String usage, String savedValue1, String savedValue2){
-        if(savedValue1.contains("SavedValue")
-                && savedValue2.contains("SavedValue")){
+    public void compareTwoSavedStringValueEquality(String usage, String savedValue1, String savedValue2) {
+        if (savedValue1.contains("SavedValue")
+                && savedValue2.contains("SavedValue")) {
             savedValue1 = EyeThink.core().Properties().getValue(savedValue1.split(":")[1]);
             savedValue2 = EyeThink.core().Properties().getValue(savedValue2.split(":")[1]);
         }
-        if (usage.contains("softly")){
+        if (usage.contains("softly")) {
             EyeThink.core().assertion().assertThat(savedValue1).isEqualToIgnoringCase(savedValue2);
         } else {
-            Assert.assertEquals("Saved value :"+savedValue1+" is not equals to saved value "+savedValue2,savedValue1,savedValue2);
+            Assert.assertEquals("Saved value :" + savedValue1 + " is not equals to saved value " + savedValue2, savedValue1, savedValue2);
         }
     }
 
     /**
-     *
-     * @param usage softly or not
+     * @param usage            softly or not
      * @param iniBudgetBalance
      * @param decreasedBy
      * @param currentBalance
      * @Author jitendra pisal
      */
-    public void verifyBalanceBudget(String usage, String iniBudgetBalance, String decreasedBy, String currentBalance){
+    public void verifyBalanceBudget(String usage, String iniBudgetBalance, String decreasedBy, String currentBalance) {
         try {
             Number a = NumberFormat.getCurrencyInstance(Locale.US).parse(iniBudgetBalance);
             Number b = NumberFormat.getCurrencyInstance(Locale.US).parse(currentBalance);
-            if (usage.contains("softly")){
+            if (usage.contains("softly")) {
                 EyeThink.core().assertion().assertThat(a.intValue() - Integer.parseInt(decreasedBy)).isEqualTo(b.intValue());
             } else {
                 Assert.assertEquals(a.longValue() - Long.parseLong(decreasedBy), b.longValue());
             }
-        } catch (ParseException p){
-            throw new RuntimeException("Please provide valid amount in us dollar. Given budget amount is "+iniBudgetBalance+ "" +
-                    "or "+currentBalance);
+        } catch (ParseException p) {
+            throw new RuntimeException("Please provide valid amount in us dollar. Given budget amount is " + iniBudgetBalance + "" +
+                    "or " + currentBalance);
         }
     }
 
@@ -527,15 +528,15 @@ public class ProjectManager extends ProjectWebServices {
                 "GranteeMatch__c",
                 "BudgetRedirectionThreshhold__c"
         );
-        if (usage.contains("softly")){
+        if (usage.contains("softly")) {
             EyeThink.core().assertion().assertThat(EyeThink.core().is().isDisplayed(modalEnlarge)).isTrue();
             ids.forEach(
-                    id -> EyeThink.core().assertion().assertThat(EyeThink.core().is().isDisplayed(By.xpath("//*[@id='"+id+"']"))).isTrue()
+                    id -> EyeThink.core().assertion().assertThat(EyeThink.core().is().isDisplayed(By.xpath("//*[@id='" + id + "']"))).isTrue()
             );
         } else {
             Assert.assertTrue(EyeThink.core().is().isDisplayed(modalEnlarge));
             ids.forEach(
-                    id -> Assert.assertTrue(EyeThink.core().is().isDisplayed(By.xpath("//*[@id='"+id+"']")))
+                    id -> Assert.assertTrue(EyeThink.core().is().isDisplayed(By.xpath("//*[@id='" + id + "']")))
             );
         }
     }
@@ -545,29 +546,29 @@ public class ProjectManager extends ProjectWebServices {
                 "GranteePOCContact__c",
                 "MonitoringType__c");
 
-        if (usage.contains("softly")){
+        if (usage.contains("softly")) {
             ids.forEach(
                     id -> EyeThink.core().assertion().assertThat(
-                            EyeThink.core().is().isDisplayed(By.xpath("//*[@id='"+id+"']"))
-                    ).isTrue().as("Field having Id "+id+" is not present on page")
+                            EyeThink.core().is().isDisplayed(By.xpath("//*[@id='" + id + "']"))
+                    ).isTrue().as("Field having Id " + id + " is not present on page")
             );
         } else {
             ids.forEach(
                     id -> Assert.assertTrue(
-                            "Field having Id "+id+" is not present on page",
-                            EyeThink.core().is().isDisplayed(By.xpath("//*[@id='"+id+"']"))
+                            "Field having Id " + id + " is not present on page",
+                            EyeThink.core().is().isDisplayed(By.xpath("//*[@id='" + id + "']"))
                     )
             );
         }
     }
 
-    public boolean assertToCheckFieldPresentOnPageUnderSpecificTable(String fieldLabel, String tableHeaderTitle){
-       By fieldToFindOnPage = By.xpath("//a[text()='"+tableHeaderTitle+"']//ancestor::div[@class='tab-inner-content']//span[text()='"+fieldLabel+"']");
-       try{
-           EyeThink.core().elementReference().of(fieldToFindOnPage);
-           return true;
-       }catch (Exception ee){
-           return false;
-       }
+    public boolean assertToCheckFieldPresentOnPageUnderSpecificTable(String fieldLabel, String tableHeaderTitle) {
+        By fieldToFindOnPage = By.xpath("//a[text()='" + tableHeaderTitle + "']//ancestor::div[@class='tab-inner-content']//span[text()='" + fieldLabel + "']");
+        try {
+            EyeThink.core().elementReference().of(fieldToFindOnPage);
+            return true;
+        } catch (Exception ee) {
+            return false;
+        }
     }
 }
