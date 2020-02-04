@@ -683,7 +683,7 @@ Feature: Validate all scenarios in the award created from FDM
     Then I softly see that "Automation Permanent Objective2" has been added in flextable with Id "---subAwardStandAlone:-:objectivesTableId---"
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | Automation Permanent KPI for Regression |        |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---" without waiting for record
     When I enter in modal "Payment Request Schedule_FDM" values from "Award_Field_Values.xlsx"
@@ -705,6 +705,13 @@ Feature: Validate all scenarios in the award created from FDM
       | Responsibility   | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
+    And I click on "Submit for Approval" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Performance Tab - Enter Target values. |
+    When I navigate to "Performance" sub tab
+        And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Target |
+      | Automation Permanent KPI for Regression | 10     |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
