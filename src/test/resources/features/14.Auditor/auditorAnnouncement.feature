@@ -49,8 +49,8 @@ Feature: Validate all scenarios for Auditor Profile in Announcement Module
     And I perform quick search for "Announcement" in "ActiveFundingOpportunitiesCompitive" panel
     Then I cannot see row level action button "Edit" against "<Announcement>" in flex table with id "ActiveFundingOpportunitiesCompitive"
     Examples:
-      | User    | Announcement                        |
-      | AUDITOR | Automation Announcement for Auditor |
+      | User    | Announcement                                |
+      | AUDITOR | Automation Announcement for Pre-Application |
 
   @69162 @auditorCompetitiveAnnouncement
   Scenario: Validate Auditor should not be able to Create/Edit/Review/Approve announcement
