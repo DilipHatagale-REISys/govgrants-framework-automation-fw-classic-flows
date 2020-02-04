@@ -3282,7 +3282,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
 
-  @65819 @65897 @65891 @65890 @validateStatusAfterSendForReviewAndButtonsAfterSavingReview @mahadev
+  @65819 @65891 @65890 @validateStatusAfterSendForReviewAndButtonsAfterSavingReview  @mahadev
   Scenario Outline: Verify status after send for review | verify buttons on modal after saving review by reviewer
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
