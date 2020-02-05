@@ -34,17 +34,17 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I save the field labeled "Application Due Date" as "ADD"
     And I save the field labeled "Question Deadline" as "QDD"
     And I save the field labeled "Response Deadline" as "RDD"
-    And I softly see field "Application Due Date" as "{SavedValue:ADD}"
-    And I softly see field "Question Deadline" as "{SavedValue:QDD}"
-    And I softly see field "Response Deadline" as "{SavedValue:RDD}"
-    And I softly see field "Submit questions to:" as "reisystemsqa@yopmail.com"
+    Then I softly see field "Application Due Date" as "{SavedValue:ADD}"
+    Then I softly see field "Question Deadline" as "{SavedValue:QDD}"
+    Then I softly see field "Response Deadline" as "{SavedValue:RDD}"
+    Then I softly see field "Submit questions to:" as "reisystemsqa@yopmail.com"
     And I click on "Edit" in the page details
     And I enter value "2" into field "fieldApplicationDueDate__c"
     And I enter value "5" into field "QSubmissionDeadline__c"
     And I enter value "5" into field "AResponseDeadline__c"
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
-    And I softly see the following messages in the page details :
+    Then I softly see the following messages in the page details :
       | Overview Tab: The Question submission deadline cannot be greater than Application due date. |
       | Overview Tab: The Answer submission deadline cannot be greater than Application due date.   |
     And I click on "Edit" in the page details
