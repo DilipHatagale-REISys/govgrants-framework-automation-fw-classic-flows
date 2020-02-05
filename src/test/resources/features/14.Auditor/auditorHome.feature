@@ -100,7 +100,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
     When I perform quick search for "Automation PO" in "---home:-:internalContactTableId---" panel
-    Then I softly can see row level action button "View" against "Automation PO" in flex table with id "flexTableRandomID"
+    Then I softly can see row level action button "View" against "Automation PO" in flex table with id "---home:-:internalContactTableId---"
     And I click on "View" icon for "Automation PO" inside flex table with id "---home:-:internalContactTableId---"
     Then I softly see field "Organization" as "Test Automation Organization"
     Then I collect all the soft asserts

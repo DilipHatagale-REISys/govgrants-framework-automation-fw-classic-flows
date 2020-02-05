@@ -87,7 +87,6 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     And I download the file
     Then I softly verify that "xls" file is downloaded
     When I perform quick search for "Automation Permanent Award" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
-
     Then I softly can see row level action button "View" against "Automation Direct Award" in flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     Then I collect all the soft asserts
     Examples:

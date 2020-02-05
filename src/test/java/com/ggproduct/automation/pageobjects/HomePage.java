@@ -117,7 +117,7 @@ public class HomePage extends ProjectManager {
     }
 
     /**
-     * To verify ReassignTo to User from lookup field
+     * To verify User from ReassignTo lookup field
      */
     public void reassignTo(String userName) {
         By userLookupResultsLocator = By.xpath("//div[@id='select2-drop']//ul[contains(@class, 'select2-results')]/li/div");

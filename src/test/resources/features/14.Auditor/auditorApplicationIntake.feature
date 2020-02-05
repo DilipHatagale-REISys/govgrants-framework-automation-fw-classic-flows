@@ -21,7 +21,9 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
     When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
-    Then I cannot see row level action button "Initiate Negotiation" against Value "Automation Announcement for FDM" inside "---subAwardFromFDM:-:recommendedAppTableId---" flex table
+    Then I see the following rows under the following headers in table with id "---subAwardFromFDM:-:recommendedAppTableId---" :
+      | Application Title               | Actions              |
+      | Automation Announcement for FDM | Initiate Negotiation |
 
   @69164 @auditorCannotSend/CompleteNegotiations
   Scenario: Validate Auditor should be able to View the record but shouldn't be able to Complete Negotiation
