@@ -53,7 +53,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I enter value "10" into field "AResponseDeadline__c"
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
-    And I softly see the following messages in the page details :
+    Then I softly see the following messages in the page details :
       |Overview Tab: The Answer submission deadline cannot be earlier than Question submission deadline.|
     And I collect all the soft asserts
 
