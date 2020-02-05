@@ -45,4 +45,10 @@ public  class HomeSteps {
     public void iSaveTodaysDate() {
         homePage.saveTodaysDate();
     }
+
+    @Description("* To Add Reassign To in flex table")
+    @When("^I reassign to \"([^\"]*)\" user in flex table$")
+    public void reassignTo(String userName) {
+        homePage.reassignTo(userName);
+    }
 }

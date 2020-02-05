@@ -843,7 +843,7 @@ Feature: Validate all scenarios in Negotiations
     Then I see the following messages in the page details :
       | Due Date is Required to save under Negotiations. |
 
-   @66451 @createSubawardFromNegotiation @deepika
+   @66451 @66381 @createSubawardFromNegotiation @deepika
   Scenario: Validate whether User will be able to create draft award created from Complete Negotiation | Validate when Negotiation Request is completed and user clicks on Create Subaward then the sttaus changes to 'Converted to Award'
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab

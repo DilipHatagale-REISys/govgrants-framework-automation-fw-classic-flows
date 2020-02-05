@@ -111,4 +111,14 @@ public class HomePage extends ProjectManager {
         EyeThink.core().Properties().saveValue("Todays Date",EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")));
         EyeThink.core().Properties().saveValue("Expiration Date",EyeThink.core().get().dateWithOffsetFromGivenDate(EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")),365,DateTimeFormatter.ofPattern("M/d/yyyy")));
     }
+
+    /**
+     * To verify ReassignTo to User from lookup field
+     */
+    public void reassignTo(String userName) {
+        By userLookUpLocatorForReassign = By.xpath("//div[@id='targetUserId']//span[@class='select2-chosen']");
+        By userLookupSearchLocator = By.xpath("//div[@id='select2-drop']/div[@class='select2-search']/input");
+        EyeThink.core().click().on(userLookUpLocatorForReassign);
+        EyeThink.core().enterText().in(userLookupSearchLocator, userName);
+    }
 }
