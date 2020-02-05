@@ -27,7 +27,7 @@ Feature: Validate all scenarios in Negotiations
     Then I softly see that "Automation Announcement for FDM" is in "Negotiation Initiated" status
     Then I collect all the soft asserts
 
-  @57034 @57033  @65295 @65310 @65356 @submitToGrantorbySubrecipientCompleteNegotiation @deepika
+  @57034 @57033 @65295 @65310 @65356 @69318 @submitToGrantorbySubrecipientCompleteNegotiation @deepika
   Scenario: Validate the Applicants able to submit the Application after edit and Internal Agency user decision on Completing the Negotiation | Validate task for SR user
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -63,6 +63,9 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Complete Negotiation" in the page details
     Then I softly see status in Progress-bar is "Negotiated" and is "green"
     Then I softly can see top right button "Create Subaward" in page detail
+    And I click on "Create Subaward" in the page details
+    And I pause execution for "2" seconds
+    Then I softly see status in Progress-bar is "Created" and is "green"
     Then I collect all the soft asserts
 
   @57035 @57036 @TaskCreatedforSPinegotiationIconAfterFDMApproved @deepika

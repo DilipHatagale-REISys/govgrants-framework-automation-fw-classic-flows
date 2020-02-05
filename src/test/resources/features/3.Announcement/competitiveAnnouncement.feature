@@ -15,6 +15,48 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
+  @70290 @70298 @70302 @userAllowToEnterDataInQualityAndAvailibility @aashish
+  Scenario: To Verify that user able to see Text fields after select Q&A Availability  as "Yes"  And  user can enter and save all required fields while creating Announcement
+  | To Validate system generated validation message for  Q&A Availability section when "Question Deadline Date",and "Response Deadline date" is greater then Application Due Date.
+    When I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I enter value "Yes" into field "fieldQAAvailability__c"
+    Then I softly see the text containing "Question Deadline"
+    Then I softly see the text containing "Response Deadline"
+    Then I softly see the text containing "Submit questions to:"
+    And I enter value "20" into field "fieldApplicationDueDate__c"
+    And I enter value "3" into field "QSubmissionDeadline__c"
+    And I enter value "3" into field "AResponseDeadline__c"
+    And I enter value "reisystemsqa@yopmail.com" into field "fieldQAContactEmailAddress__c"
+    And I click on "Save" in the page details
+    And I save the field labeled "Application Due Date" as "ADD"
+    And I save the field labeled "Question Deadline" as "QDD"
+    And I save the field labeled "Response Deadline" as "RDD"
+    And I softly see field "Application Due Date" as "{SavedValue:ADD}"
+    And I softly see field "Question Deadline" as "{SavedValue:QDD}"
+    And I softly see field "Response Deadline" as "{SavedValue:RDD}"
+    And I softly see field "Submit questions to:" as "reisystemsqa@yopmail.com"
+    And I click on "Edit" in the page details
+    And I enter value "2" into field "fieldApplicationDueDate__c"
+    And I enter value "5" into field "QSubmissionDeadline__c"
+    And I enter value "5" into field "AResponseDeadline__c"
+    And I click on "Save" in the page details
+    And I click on "Submit For Approval" in the page details
+    And I softly see the following messages in the page details :
+      | Overview Tab: The Question submission deadline cannot be greater than Application due date. |
+      | Overview Tab: The Answer submission deadline cannot be greater than Application due date.   |
+    And I click on "Edit" in the page details
+    And I enter value "20" into field "fieldApplicationDueDate__c"
+    And I enter value "15" into field "QSubmissionDeadline__c"
+    And I enter value "10" into field "AResponseDeadline__c"
+    And I click on "Save" in the page details
+    And I click on "Submit For Approval" in the page details
+    And I softly see the following messages in the page details :
+      |Overview Tab: The Answer submission deadline cannot be earlier than Question submission deadline.|
+    And I collect all the soft asserts
+
   @70163 @70166 @70197 @userAllowToSelectEligibilityDetails @aashish
   Scenario: To Verify that user is  allowed  to select the Eligibility Details while creating Announcement
   | To verify that  without selecting "Eligibility Details" user is able to see the validation message by clicking on "Submit for approval" button.
@@ -39,10 +81,10 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see the following messages in the page details :
       | Overview Tab - Select applicant types. |
     Then I collect all the soft asserts
-    
+
   @70211 @70216 @70217 @userAbletoAssociateActiveRelatedProgram @aashish
   Scenario: To Verify that user is able to associate active Related Federal/NGO Program | To Verify that user is able to view active Related Federal/NGO Program
-    |To Verify that user is able to remove active Related Federal/NGO Program while creating Announcement.
+  |To Verify that user is able to remove active Related Federal/NGO Program while creating Announcement.
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
