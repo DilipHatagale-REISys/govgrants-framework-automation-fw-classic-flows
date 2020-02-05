@@ -46,8 +46,8 @@ public  class HomeSteps {
         homePage.saveTodaysDate();
     }
 
-    @Description("* To Add Reassign To in flex table")
-    @When("^I reassign to \"([^\"]*)\" user in flex table$")
+    @Description("* To verify the user in the ReassignTo box")
+    @When("^I cannot see user \"([^\"]*)\" in the reassign box$")
     public void reassignTo(String userName) {
         homePage.reassignTo(userName);
     }

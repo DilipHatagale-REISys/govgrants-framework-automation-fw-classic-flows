@@ -35,7 +35,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
     When I click on top right button "Request New Assessment" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
-    Given I login to "As a Grantor" app as "<User>" user
+    When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
     When I perform quick search for "Bayside Community Center" in "---auditor:-:subrecipientOrgTableId---" panel
@@ -56,8 +56,8 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I navigate to "Monitoring" tab
     And I navigate to "Monitoring Schedules" content inside "Monitoring Activities" subheader on left panel
     When I click toggle button to select "Scheduled Activities - All"
-    When I perform quick search for "SC-02321" in "---auditor:-:scheduledactivtiesTableId---" panel
-    Then I can see row level action button "View" against "SC-02321" in flex table with id "---auditor:-:scheduledactivtiesTableId---"
+    When I perform quick search for "SC-02317" in "---auditor:-:scheduledactivtiesTableId---" panel
+    Then I can see row level action button "View" against "SC-02317" in flex table with id "---auditor:-:scheduledactivtiesTableId---"
     Examples:
       | User    |
       | AUDITOR |
@@ -86,7 +86,8 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     And I select "Download as XLS" from parallel lines dropdown of "Risk Assessments - All"
     And I download the file
     Then I softly verify that "xls" file is downloaded
-    When I perform quick search for "Automation Direct Award" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
+    When I perform quick search for "Automation Permanent Award" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
+
     Then I softly can see row level action button "View" against "Automation Direct Award" in flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     Then I collect all the soft asserts
     Examples:
@@ -105,10 +106,30 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
     Given I navigate to "Management" sub tab
     Then I softly cannot see top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
-    When I perform quick search for "Automation Site Visit" in "GrantorSiteVisitsAward" panel
-    Then I softly cannot see row level action button "Edit" against Value "Automation Site Visit" inside "GrantorSiteVisitsAward" flex table
-    Then I softly cannot see row level action button "Delete" against Value "Automation Site Visit" inside "GrantorSiteVisitsAward" flex table
-    And I click on "View" icon for "Automation Site Visit" inside flex table with id "GrantorSiteVisitsAward"
+    Given I delete the record "Automation Site Visit" from the object "Site Visit"
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    And I perform quick search for "Automation Permanent Award" in "ActiveGrants" panel
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
+    Given I navigate to "Management" sub tab
+    And I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
+    And I enter "Creation" values from "SiteVisit_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter "Edition" values from "SiteVisit_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
+    Given I navigate to "Monitoring" tab
+    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Automation Site Visit" in "---auditor:-:sitevisitMonitoringTableId---" panel
+    Then I see the following rows under the following headers in table with id "---auditor:-:sitevisitMonitoringTableId---" :
+      | Title                  | Actions |
+      | Automation Site Visit  | View    |
+    And I click on "View" icon for "Automation Site Visit" inside flex table with id "---auditor:-:sitevisitMonitoringTableId---"
     Then I softly cannot see top right button "Accept and Close" in page detail
     And I collect all the soft asserts
     Examples:
@@ -117,7 +138,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
 
   @69870 @70076 @auditorCannotCreateDeleteAwardLevelDeskReview
   Scenario Outline: Validate Auditor should not be able to Create, Accept and Close the Award Level Desk Review |Validate Auditor should not be able to delete the  created state Award Level Desk Review
-    When I login to "As a Grantor" app as "<User>" user
+    Given I login to "As a Grantor" app as "<User>" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -127,9 +148,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
     Given I navigate to "Management" sub tab
     Then I softly cannot see top right button "Initiate Desk Review" in flex table with id "GrantorDeskReviewAward"
-    When I perform quick search for "Automation Desk Review" in "GrantorDeskReviewAward" panel
-    And I click on "View" icon for "Automation Desk Review" inside flex table with id "GrantorDeskReviewAward"
-    Then I softly cannot see top right button "Accept and Close" in page detail
+    Given I delete the record "Automation Desk Review" from the object "Desk Review"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -149,7 +168,11 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     Given I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Automation Desk Review" in "---auditor:-:deskreviewMonitoringTableId---" panel
-    Then I softly cannot see row level action button "Delete" against Value "Automation Desk Review" inside "---auditor:-:deskreviewMonitoringTableId---" flex table
+    Then I see the following rows under the following headers in table with id "---auditor:-:deskreviewMonitoringTableId---" :
+      | Title                  | Actions |
+      | Automation Desk Review | View    |
+    And I click on "View" icon for "Automation Desk Review" inside flex table with id "---auditor:-:deskreviewMonitoringTableId---"
+    Then I softly cannot see top right button "Accept and Close" in page detail
     And I collect all the soft asserts
     Examples:
       | User    |
@@ -161,10 +184,10 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    And I perform quick search for "Automation Execution Award" in "ActiveGrants" panel
-    And I click on "View" icon for "Automation Execution Award" inside flex table with id "ActiveGrants"
+    And I perform quick search for "Automation Permanent Award" in "ActiveGrants" panel
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Execution Award" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
     Given I navigate to "Management" sub tab
     Then I softly cannot see top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     When I navigate to "Monitoring" tab
@@ -209,11 +232,11 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
-    And I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
+    And I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
     When I click toggle button to select "Progress Reports - All"
-    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
-    Then I softly can see row level action button "View" against "{SavedValue:Record Id}" in flex table with id "---progressReport:-:pendingTaskTableId---"
-    When I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
+    When I perform quick search for "{SavedValue:Record Id}" in "---auditor:-:progressreportTableId---" panel
+    Then I softly can see row level action button "View" against "{SavedValue:Record Id}" in flex table with id "---auditor:-:progressreportTableId---"
+    When I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---auditor:-:progressreportTableId---"
     Then I softly cannot see top right button "Send Back to Subrecipient" in page detail
     Then I collect all the soft asserts
 
@@ -237,9 +260,9 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     And I get the "EGMS ID"
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
-      | Fiscal Approver  | Automation FO  | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
