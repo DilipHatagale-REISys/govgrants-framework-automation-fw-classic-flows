@@ -90,7 +90,7 @@ Feature: Validate all scenarios in the Application Intake
     Then I softly see that "100%" has been added in flextable with Id "---applicationIntake:-:allFormsTableId---"
     Then I collect all the soft asserts
 
-  @34346 @70459 @viewSubmitedApplication @smoke
+  @34346 @70459 @viewSubmitedApplication @smoke @deepika
   Scenario Outline: Viewing the application submitted by sub-recipient as Internal user | Validate whether user can view the edit button once application has been submitted to Grantor
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Application_Field_Values.xlsx"
@@ -134,7 +134,7 @@ Feature: Validate all scenarios in the Application Intake
       | Application Name                               |
       | Automation Announcement for Application Intake |
 
-  @70458 @70456 @acknowledgeReqiredToSave
+  @70458 @70456 @acknowledgeReqiredToSave @deepika
   Scenario: Validate the system should throw an validation message if the application is submitted with Acknowledging it
   Validate whether user has ability to add and remove new focus area while creating an application
     Given I click on "Edit" in the page details
@@ -165,11 +165,11 @@ Feature: Validate all scenarios in the Application Intake
     And I click on "Save" in the page details
     Given I click on "Back" in the page details
     When I click on "Submit Application" in the page details
-    Then I softly see the following messages in the page details contains:
+    Then I see the following messages in the page details :
       | Overview Tab - Enter an Acknowledgement before submitting this Application. |
     Then I collect all the soft asserts
 
-  @70455 @kpiValuesAreMandatoryToSubmitApplication
+  @70455 @kpiValuesAreMandatoryToSubmitApplication @deepika
   Scenario:  To verify that if KPI value is unfilled while creating and application and upon clicking on the Submit Application on the top right corner of the page validation error must be thrown.
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Application_Field_Values.xlsx"
@@ -195,3 +195,16 @@ Feature: Validate all scenarios in the Application Intake
     When I click on "Submit Application" in the page details
     Then I see the following messages in the page details contains:
       | Proposal Tab - Provide target values for all Key Performance Indicators. |
+
+  @70470 @validateVariousRolesAppearApplication @deepika
+  Scenario: To Validate that various roles appear in the project roles dropdown in contact table on application of  SPI profile
+    When I navigate to "Overview" sub tab
+    When I click on "Edit" icon for "Automation SPI" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    Then I verify that All the following projects roles are available in picklist :
+      | Principal Investigator   |
+      | Fiscal Contact           |
+      | Grants Administrator     |
+      | Ebiz POC                 |
+      | Other                    |
+      | Project Director/Manager |
+      | Authorized Signatory     |

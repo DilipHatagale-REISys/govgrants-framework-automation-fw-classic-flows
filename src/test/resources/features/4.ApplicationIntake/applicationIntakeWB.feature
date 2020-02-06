@@ -16,7 +16,7 @@ Feature: Application Intake scenarios without background
     Then I softly can see top right button "Create Application" in page detail
     Then I collect all the soft asserts
 
-  @70255 @70256 @70257 @spaUserCannotQualifyTheApplication
+  @70255 @70256 @70257 @spaUserCannotQualifyTheApplication @deepika
   Scenario: Validate as another SPI / SPA user should not be able to Qualify for the second time| Validate SPA user view the Create Application button in page details
   Validate SPA user can View the Qualified Application under 'Qualified' and not under 'Not Yet Qualified'
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
@@ -34,7 +34,7 @@ Feature: Application Intake scenarios without background
     Then I softly can see top right button "Create Application" in page detail
     Then I collect all the soft asserts
 
-  @70258 @spaUsersCannotSubmitAnApplication
+  @70258 @spaUsersCannotSubmitAnApplication @deepika
   Scenario: Validate the SPA users should not be able to Submit the Application
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
     And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
@@ -75,7 +75,7 @@ Feature: Application Intake scenarios without background
     Given I click on "Back" in the page details
     Then I cannot see top right button "Submit Application" in page detail
 
-  @70464 @userCannotQualifyApplicationSecondTime @wip
+  @70464 @userCannotQualifyApplicationSecondTime @wip @deepika
   Scenario: Validate whether an user should not able to qualify the announcement again for once it is Qualified
     Given I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
     Given I am on "SUBPORTAL" portal
@@ -85,11 +85,11 @@ Feature: Application Intake scenarios without background
     And I perform quick search for "Automation Announcement for Application Review" in "---applicationIntake:-:qualifiedTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationIntake:-:qualifiedTableId---"
     When I click on "Qualify" in the page details
-    Then I see the following messages in the page details contains:
+    Then I see the following messages in the page details :
       | This Opportunity has already been qualified for your Organization. |
 
-  @70462 @70463 @userCanEnterBudgetDetailsApplTitleasOppurtunityTitleField
-  Scenario: To verify that the budget field is editable for the Subrecipient (SPI User) under budget tab |
+  @70462 @70463 @userCanEnterBudgetDetailsApplTitleasOppurtunityTitleField @deepika
+  Scenario: To verify that the budget field is editable for the Subrecipient (SPI User) under budget tab on Application |
   To verify that the Application title is enforced on the created application on overview tab
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
     And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
@@ -116,7 +116,7 @@ Feature: Application Intake scenarios without background
     Then I softly see value "$1,300.00" for title "Total Project Cost" against the value "Construction" inside table "---applicationIntake:-:budgetPeriodTableId---"
     Then I collect all the soft asserts
 
-  @70460 @70461 @goalsAndObjectivesInApplication
+  @70460 @70461 @goalsAndObjectivesInApplication @deepika
   Scenario: To Verify that the Goals and Objectives are not editable and are added by default associated to the Application should be displayed correctly
   To validate that the Mini page layout appear when mouse is hovered to the link in Application and takes to associated Program
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
@@ -126,8 +126,8 @@ Feature: Application Intake scenarios without background
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "Automation Announcement for Application Review" in "---applicationIntake:-:qualifiedTableId---" panel
-    And I save the field value having link labeled "EGMS ID" as "oppurtunityId"
     When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationIntake:-:qualifiedTableId---"
+    And I save the field labeled "EGMS ID" as "oppurtunityId"
     When I click on "Qualify" in the page details
     When I click on "Create Application" in the page details
     And I click modal button "Save and Continue"

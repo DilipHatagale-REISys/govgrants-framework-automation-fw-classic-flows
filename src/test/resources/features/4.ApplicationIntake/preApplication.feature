@@ -78,14 +78,9 @@ Feature: Validate all scenarios in the Pre-Application
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
     Then I see "Active" has been added in "Attachments" flex table
 
-  @53159 @PreApplicationAttachmentCA
-  Scenario: Validate the attachment of the PreApplication
-    When I navigate to "Attachments" sub tab
-    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
-    Then I see "Other" has been added in "Attachments" flex table
-
-  @53160 @submitPreApplication @smoke
-  Scenario: Submitting an pre application to Grantor
+  @53160 @70466 @70467 @submitPreApplication @smoke @deepika
+  Scenario: Submitting an pre application to Grantor |To verify that the budget field is editable for the Subrecipient (SPI User) under budget tab on pre-application
+  Validate whether user can view the edit button once pre - application has been submitted to Grantor
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -93,12 +88,15 @@ Feature: Validate all scenarios in the Pre-Application
     And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
+    Then I softly see value "$10,150.00" for title "Total Project Cost" against the value "Construction" inside table "---preApplication:-:preApplicationAttachmentId---"
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
     When I click on "Submit to Grantor" in the page details
-    Then I see status in Progress-bar is "Submitted" and is "green"
+    Then I softly see status in Progress-bar is "Submitted" and is "green"
+    Then I softly cannot see top right button "Edit" in page detail
+    Then I collect all the soft asserts
 
-  @53162 @70247 @70248 @70249 @70250 @70251 @preApplicationToApplication
+  @53162 @70247 @70248 @70249 @70250 @70251 @preApplicationToApplication @deepika
   Scenario Outline: Validate Grantor accept the submitted pre-application and converted it to application | Validate the subrecipient users able to create application from the approved Pre Application
   Validate Announcement owner will be able to view the Accept and Reject button |Validate the subrecipient users able to create application from the approved Pre Application
   Validate Announcement Owner will be able to view the pending task under announcement tab after every pre application submission happens.
@@ -168,3 +166,17 @@ Feature: Validate all scenarios in the Pre-Application
     Examples:
       | Announcement Name                       |
       | Automation Announcement for Application |
+
+  @70468 @acknowledgeRequiredForPre-App @deepika
+  Scenario: Validate the system should throw an validation message if the pre-application is submitted with Acknowledging it
+    Given I click on "Edit" in the page details
+    And I enter "Edition1" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Given I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
+      | Construction  | 5000   | 5000       | 50             | 100            |
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see the following messages in the page details :
+      | Overview Tab - Enter an Acknowledgement before submitting this Pre-Application. |
+    Then I collect all the soft asserts
