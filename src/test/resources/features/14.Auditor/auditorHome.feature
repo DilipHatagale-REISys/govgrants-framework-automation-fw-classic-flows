@@ -75,7 +75,9 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
     When I perform quick search for "{user:fullName}" in "---home:-:indActiveAccountId---" panel
-    Then I cannot see row level action button "Edit" against "{user:fullName}{user:fullName}" in flex table with id "---home:-:indActiveAccountId---"
+    Then I see the following rows under the following headers in table with id "---home:-:indActiveAccountId---" :
+      | Full Name       | Actions |
+      | {user:fullName} | View    |
     Examples:
       | User    |
       | AUDITOR |
@@ -127,7 +129,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Home" tab
     And I navigate to "Reassign" content inside "My Tasks" subheader on left panel
-    Then I cannot see user "AUDITOR" in the reassign box
+    Then I softly cannot see user "AUDITOR" in the reassign box
 
   @69130 @auditorTaskSummaryPhase
   Scenario: Validate Auditor should have no pending task in any of the filter.

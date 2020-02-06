@@ -119,7 +119,7 @@ public class HomePage extends ProjectManager {
     /**
      * To verify User from ReassignTo lookup field
      */
-    public void reassignTo(String userName) {
+    public void reassignTo(String userName, boolean isSoftly, boolean canOrCannot) {
         By userLookupResultsLocator = By.xpath("//div[@id='select2-drop']//ul[contains(@class, 'select2-results')]/li/div");
         By userLookUpLocatorForReassign = By.xpath("//div[@id='targetUserId']//span[@class='select2-chosen']");
         By userLookupSearchLocator = By.xpath("//div[@id='select2-drop']/div[@class='select2-search']/input");
@@ -129,6 +129,18 @@ public class HomePage extends ProjectManager {
         List<String> presentUsers = EyeThink.core().elementReference().listOfElements().of(userLookupResultsLocator).stream().map(Elements::getText).collect(Collectors.toList());
         EyeThink.core().enterText().in(userLookupSearchLocator, Keys.ENTER.toString());
 
-        Assert.assertFalse(presentUsers.contains(userName));
+        if (isSoftly) {
+            if (canOrCannot){
+                EyeThink.core().assertion().assertThat(presentUsers.contains(userName)).isFalse();
+            }else {
+                EyeThink.core().assertion().assertThat(presentUsers.contains(userName)).isTrue();
+            }
+        } else {
+            if (canOrCannot){
+                Assert.assertFalse(presentUsers.contains(userName));
+            }else {
+                Assert.assertTrue(presentUsers.contains(userName));
+            }
+        }
     }
 }
