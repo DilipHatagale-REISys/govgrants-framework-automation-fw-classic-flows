@@ -72,7 +72,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I see the following rows under the following headers in table with id "---subAwardFromFDM:-:recommendedAppTableId---" :
       | Application Title               | Actions |
-      | Automation Announcement for FDM |         |
+      | Automation Announcement for FDM | View    |
     Then I collect all the soft asserts
 
   @69166 @auditorApplication

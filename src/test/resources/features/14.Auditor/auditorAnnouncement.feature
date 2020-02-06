@@ -64,14 +64,14 @@ Feature: Validate all scenarios for Auditor Profile in Announcement Module
     And I perform quick search for "Automation Announcement for Pre-Application" in "ActiveFundingOpportunitiesCompitive" panel
     When I click on "View" icon for "Automation Announcement for Pre-Application" inside flex table with id "ActiveFundingOpportunitiesCompitive"
     When I navigate to "Financials" sub tab
-    Then I softly cannot see top right button "Associate" for "---announcement:-:fundingAccountsTableId---" flex table
+    Then I softly cannot see top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I navigate to "Overview" sub tab
-    Then I softly cannot see top right button "Associate" for "---announcement:-:contactTableId---" flex table
+    Then I softly cannot see top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
     When I navigate to "Setup" sub tab
-    Then I softly cannot see top right button "Associate" for "---announcement:-:objectivesTableId---" flex table
+    Then I softly cannot see top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
     When I navigate to "Responsibilities" sub tab
-    Then I softly cannot see top right button "Edit" for "---announcement:-:approversTableId---" flex table
-    Then I softly cannot see top right button "New" for "---announcement:-:reviewersTableId---" flex table
+    Then I softly cannot see top right button "Edit" in flex table with id "---announcement:-:fundingAccountsTableId---"
+    Then I softly cannot see top right button "New" in flex table with id "---announcement:-:fundingAccountsTableId---"
     Then I softly cannot see top right button "Submit For Approval" in page detail
     Then I softly cannot see top right button "Publish" in page detail
     Then I collect all the soft asserts
