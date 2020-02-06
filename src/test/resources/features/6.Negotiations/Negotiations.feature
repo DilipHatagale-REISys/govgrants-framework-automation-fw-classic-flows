@@ -27,7 +27,7 @@ Feature: Validate all scenarios in Negotiations
     Then I softly see that "Automation Announcement for FDM" is in "Negotiation Initiated" status
     Then I collect all the soft asserts
 
-  @57034 @57033  @65295 @65310 @65356 @submitToGrantorbySubrecipientCompleteNegotiation @deepika
+  @57034 @57033 @65295 @65310 @65356 @submitToGrantorbySubrecipientCompleteNegotiation @deepika
   Scenario: Validate the Applicants able to submit the Application after edit and Internal Agency user decision on Completing the Negotiation | Validate task for SR user
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab

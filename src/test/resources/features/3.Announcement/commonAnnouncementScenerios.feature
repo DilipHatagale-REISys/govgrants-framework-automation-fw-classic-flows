@@ -15,9 +15,14 @@ Feature: Validate all common scenarios in the  Announcement tab
     And I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @34461 @announcementCreationFA @smoke
-  Scenario: Creation of an Announcement
-    Then I see status in Progress-bar is "Created" and is "green"
+  @34461 @70357 @announcementCreationFA @smoke
+  Scenario: Creation of an Announcement |To Verify that if user selects "Subrecipients Match Required"-yes then he can  enter "Subrecipient Match(%)" in the Subrecipient Match(%) field while creating Announcement
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    When I navigate to "Announcements" tab
+    When I navigate to "Formula" content inside "Announcements" subheader on left panel
+    And I perform quick search for "Record id" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
+    When  I click on "View" icon for "Record id" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
+    Then I softly see field "Subrecipient Match (%)" as "10.00%"
 
   @33936 @announcementCreatedDeleteAccessToOwnerFA
   Scenario: Validate that owner can able to delete created status announcement
@@ -55,12 +60,20 @@ Feature: Validate all common scenarios in the  Announcement tab
       | User |
       | PM   |
 
-  @52400 @createdAnnouncementEditionOnlyOwnerFA
-  Scenario: Validate that only owner can able to edit created status announcement
+  @52400 @70342 @70343 @createdAnnouncementEditionOnlyOwnerFA
+  Scenario: Validate that only owner can able to edit created status announcement | To verify user able to enter the description in the details field of overview tab while creating the Announcemennt
     When I navigate to "Announcements" tab
     And I perform quick search for "Record id" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
     When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
-    Then I can see top right button "Save" in page detail
+    Then I softly can see top right button "Save" in page detail
+    And I click on "Save" in the page details
+    And I click on "Submit For Approval" in the page details
+    Then I see the following messages in the page details :
+      | Overview Tab - Enter description for the Announcement. |
+    And I click on "Edit" in the page details
+    And I enter value "Atomation Description Field" into field "fieldAnnouncementDescription__c"
+    And I click on "Save" in the page details
+    Then I softly see field "Description" as "Atomation Description Field"
 
   @34222 @announcementEditionFA
   Scenario: Edition of an Announcement

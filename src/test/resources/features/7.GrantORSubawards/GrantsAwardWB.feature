@@ -1665,6 +1665,9 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I click on "Activate" in the page details
     Then I see that "Subaward" is in "Activated" status
+    And I pause execution for "100" seconds
+    Then I softly can see mail notification for "EXTERNAL" user with following subject:
+      | Award <award id> has been Issued |
     And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel

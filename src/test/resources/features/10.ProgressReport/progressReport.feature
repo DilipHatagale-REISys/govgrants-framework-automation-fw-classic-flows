@@ -489,7 +489,7 @@ Feature: Validate all scenarios in Progress Report
     When I "Send to Owner" in the approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
-    And I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
+    And I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
     When I click toggle button to select "Progress Reports - Submitted"
     And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:internalProgressReportFlexTableId---" panel
     And I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:internalProgressReportFlexTableId---"
@@ -729,7 +729,7 @@ Feature: Validate all scenarios in Progress Report
     When I "Send to Owner" in the approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
-    And I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
+    And I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
     When I click toggle button to select "Progress Reports - Submitted"
     And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:internalProgressReportFlexTableId---" panel
     And I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:internalProgressReportFlexTableId---"
@@ -922,7 +922,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
-    When I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
+    When I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
     And I click toggle button to select "Progress Reports - Submitted"
     And I click on "View" icon for "Submitted to Grantor" inside flex table with id "---progressreport:-:internalProgressReportFlexTableId---"
     Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
@@ -1010,7 +1010,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I click on "Send Back to Subrecipient" in the page details
     When I navigate to "Monitoring" tab
-    When I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
+    When I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
     And I click toggle button to select "Progress Reports - All"
     And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:internalProgressReportFlexTableId---" panel
     Then I cannot see row level action button "Edit" against "{SavedValue:Record Id}" in flex table with id "---progressreport:-:internalProgressReportFlexTableId---"
@@ -1146,7 +1146,7 @@ Feature: Validate all scenarios in Progress Report
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
-    When I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
+    When I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
     And I click toggle button to select "Progress Reports - Approved"
     Then I see all values "Approved" under column "Status" inside flextable with id "---progressReport:-:internalProgressReportFlexTableId---"
 
@@ -1440,7 +1440,7 @@ Feature: Validate all scenarios in Progress Report
     And I "Approve" in the approval decision
     Given I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
-    And I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
+    And I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
     When I click toggle button to select "Progress Reports - Approved"
     And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:internalProgressReportFlexTableId---" panel
     Then I see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:internalProgressReportFlexTableId---"
@@ -1468,7 +1468,7 @@ Feature: Validate all scenarios in Progress Report
     Given I click on "Send Back to Subrecipient" in the page details
     Given I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
-    And I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
+    And I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
     When I click toggle button to select "Progress Reports - Submitted"
     And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:internalProgressReportFlexTableId---" panel
     Then I see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:internalProgressReportFlexTableId---"
@@ -2229,7 +2229,7 @@ Feature: Validate all scenarios in Progress Report
     When I "Send to Owner" in the approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
-    And I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
+    And I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
     When I click toggle button to select "Progress Reports - Submitted"
     And I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:internalProgressReportFlexTableId---"
     When I click on "Submit for Approval" in the page details
@@ -2294,7 +2294,7 @@ Feature: Validate all scenarios in Progress Report
     When I "Send to Owner" in the approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
-    And I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
+    And I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
     When I click toggle button to select "Progress Reports - Submitted"
     And I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:internalProgressReportFlexTableId---"
     When I click on "Submit for Approval" in the page details
