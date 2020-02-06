@@ -45,4 +45,10 @@ public  class HomeSteps {
     public void iSaveTodaysDate() {
         homePage.saveTodaysDate();
     }
+
+    @Description("* To verify the user in the ReassignTo box")
+    @When("^I (softly cannot see|softly see|see|cannot) user \"([^\"]*)\" in the reassign box$")
+    public void iReassignTo(String usage, String userName) {
+        homePage.assertReassignedTo(userName, usage.contains("softly"), usage.contains("cannot"));
+    }
 }

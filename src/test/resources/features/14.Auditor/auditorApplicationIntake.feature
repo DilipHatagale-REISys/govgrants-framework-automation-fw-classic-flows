@@ -21,7 +21,9 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
     When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
-    Then I cannot see row level action button "Initiate Negotiation" against Value "Automation Announcement for FDM" inside "---subAwardFromFDM:-:recommendedAppTableId---" flex table
+    Then I see the following rows under the following headers in table with id "---subAwardFromFDM:-:recommendedAppTableId---" :
+      | Application Title               | Actions              |
+      | Automation Announcement for FDM | Initiate Negotiation |
 
   @69164 @auditorCannotSend/CompleteNegotiations
   Scenario: Validate Auditor should be able to View the record but shouldn't be able to Complete Negotiation
@@ -63,11 +65,14 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
     When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
-    Then I softly can see row level action button "View" against "Automation Announcement for FDM" in flex table with id "---subAwardFromFDM:-:fdmTableId---"
-    Then I softly cannot see row level action button "Edit" against "Automation Announcement for FDM" in flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    Then I see the following rows under the following headers in table with id "---subAwardFromFDM:-:fdmTableId---" :
+      | Announcement Title              | Actions |
+      | Automation Announcement for FDM | View    |
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     Then I softly see status in Progress-bar is "Approved" and is "green"
-    Then I softly cannot see row level action button "Create Subaward" against Value "Automation Announcement for FDM" inside "---subAwardFromFDM:-:recommendedAppTableId---" flex table
+    Then I see the following rows under the following headers in table with id "---subAwardFromFDM:-:recommendedAppTableId---" :
+      | Application Title               | Actions |
+      | Automation Announcement for FDM |         |
     Then I collect all the soft asserts
 
   @69166 @auditorApplication

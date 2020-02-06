@@ -2,12 +2,16 @@ package com.ggproduct.automation.pageobjects;
 
 import com.ggproduct.automation.projectmanager.ProjectManager;
 import eyethink.automation.bots.Register.EyeThink;
+import eyethink.automation.bots.objects.Elements;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class HomePage extends ProjectManager {
 
@@ -110,5 +114,33 @@ public class HomePage extends ProjectManager {
     public void saveTodaysDate(){
         EyeThink.core().Properties().saveValue("Todays Date",EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")));
         EyeThink.core().Properties().saveValue("Expiration Date",EyeThink.core().get().dateWithOffsetFromGivenDate(EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")),365,DateTimeFormatter.ofPattern("M/d/yyyy")));
+    }
+
+    /**
+     * To verify User from ReassignTo lookup field
+     */
+    public void assertReassignedTo(String userName, boolean isSoftly, boolean canOrCannot) {
+        By userLookupResultsLocator = By.xpath("//div[@id='select2-drop']//ul[contains(@class, 'select2-results')]/li/div");
+        By userLookUpLocatorForReassign = By.xpath("//div[@id='targetUserId']//span[@class='select2-chosen']");
+        By userLookupSearchLocator = By.xpath("//div[@id='select2-drop']/div[@class='select2-search']/input");
+        EyeThink.core().click().on(userLookUpLocatorForReassign);
+        EyeThink.core().enterText().in(userLookupSearchLocator, userName);
+
+        List<String> presentUsers = EyeThink.core().elementReference().listOfElements().of(userLookupResultsLocator).stream().map(Elements::getText).collect(Collectors.toList());
+        EyeThink.core().enterText().in(userLookupSearchLocator, Keys.ENTER.toString());
+
+        if (isSoftly) {
+            if (canOrCannot){
+                EyeThink.core().assertion().assertThat(presentUsers.contains(userName)).isFalse();
+            }else {
+                EyeThink.core().assertion().assertThat(presentUsers.contains(userName)).isTrue();
+            }
+        } else {
+            if (canOrCannot){
+                Assert.assertFalse(presentUsers.contains(userName));
+            }else {
+                Assert.assertTrue(presentUsers.contains(userName));
+            }
+        }
     }
 }

@@ -153,16 +153,16 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
       | AUDITOR | Automation Permanent KPI for Regression |
 
   @67849 @otherUsersCanCreateKPI
-  Scenario Outline: Verify that other than Auditor user all other users can create a KPI's
+  Scenario Outline: Verify that other than Auditor user other users EXE and ADMIN can create a KPI's
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
     When I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
-    Then I see top right button "New" for "---keyperformanceindicator:-:kpiTableId---" flex table
+    Then I can see top right button "New" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
     Examples:
       | User  |
-      | PM    |
       | EXE   |
       | ADMIN |
+
 
   @67850 @auditorCannotCreateEditActivateOrDeactivateStrategicPlan
   Scenario Outline: Validate Auditor should not be  able to  Create/Edit/Activate/Deactivate Strategic plan
@@ -197,7 +197,7 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
       | User    |
       | AUDITOR |
 
- @69149 @auditorCannotCreateTermsAndConditions @deepika
+  @69149 @auditorCannotCreateTermsAndConditions @deepika
   Scenario Outline: Verify Auditor profile user cannot create a new Terms and Conditions
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
@@ -220,26 +220,17 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
       | User    |
       | AUDITOR |
 
-  @69151 @auditorCannotCreateFormsandPackages @deepika
-  Scenario Outline: Verify Auditor profile user cannot create a new Forms and Packages
+  @69153 @69151 @auditorViewCannotCreateEditFormsandPackages  @deepika
+  Scenario Outline: Auditor should have view / read  only access to Forms and Packages
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
     When I navigate to "Forms and Packages" content inside "Setup" subheader on left panel
     Then I softly cannot see top right button "New" for "---auditor:-:formsflextableID---" flex table
     Then I softly cannot see top right button "New" for "---auditor:-:packagesFlextableID---" flex table
-    Then I collect all the soft asserts
-    Examples:
-      | User    |
-      | AUDITOR |
-
-  @69153 @auditorViewCannotEditFormsandPackages  @deepika
-  Scenario Outline: Auditor should have view / read  only access to Forms and Packages
-    When I login to "As a Grantor" app as "<User>" user
-    And I navigate to "Planning" tab
-    When I navigate to "Forms and Packages" content inside "Setup" subheader on left panel
-    When I perform quick search for "PSAF - 001" in "---auditor:-:termsandconditionstableID---" panel
-    Then I softly can see row level action button "View" against "PSAF - 001" in flex table with id "---auditor:-:termsandconditionstableID---"
-    Then I softly cannot see row level action button "Edit" against "Active" in flex table with id "---auditor:-:termsandconditionstableID---"
+    When I perform quick search for "PSAF - 001" in "---auditor:-:formsflextableID---" panel
+    Then I see the following rows under the following headers in table with id "---auditor:-:formsflextableID---" :
+      | Form Number | Actions |
+      | PSAF - 001  | Preview |
     Then I collect all the soft asserts
     Examples:
       | User    |

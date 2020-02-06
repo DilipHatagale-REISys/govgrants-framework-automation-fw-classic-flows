@@ -75,7 +75,9 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
     When I perform quick search for "{user:fullName}" in "---home:-:indActiveAccountId---" panel
-    Then I cannot see row level action button "Edit" against "{user:fullName}{user:fullName}" in flex table with id "---home:-:indActiveAccountId---"
+    Then I see the following rows under the following headers in table with id "---home:-:indActiveAccountId---" :
+      | Full Name       | Actions |
+      | {user:fullName} | View    |
     Examples:
       | User    |
       | AUDITOR |
@@ -86,8 +88,9 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
     Then I softly cannot see top right button "New" in flex table with id "---home:-:internalContactTableId---"
-    When I perform quick search for "Automation PO" in "---home:-:internalContactTableId---" panel
-    Then I softly cannot see row level action button "Edit" against "Automation PO" in flex table with id "flexTableRandomID"
+    Then I see the following rows under the following headers in table with id "---home:-:internalContactTableId---" :
+      | Full Name     | Actions |
+      | Automation PO | View    |
     Then I collect all the soft asserts
     Examples:
       | User    |
@@ -99,7 +102,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
     When I perform quick search for "Automation PO" in "---home:-:internalContactTableId---" panel
-    Then I softly can see row level action button "View" against "Automation PO" in flex table with id "flexTableRandomID"
+    Then I softly can see row level action button "View" against "Automation PO" in flex table with id "---home:-:internalContactTableId---"
     And I click on "View" icon for "Automation PO" inside flex table with id "---home:-:internalContactTableId---"
     Then I softly see field "Organization" as "Test Automation Organization"
     Then I collect all the soft asserts
@@ -123,48 +126,10 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
 
   @69129 @auditorReassign
   Scenario: Verify Auditor profile would not have tasks assigned,  Re assign will populate no tasks to reassign
-    Given I delete the record "Automation Execution Internal Program" from the object "Program"
-    When I login to "As a Grantor" app as "dynamicUser" user
-    And I navigate to "Planning" tab
-    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-    And I click toggle button to select "Internal Programs - Draft"
-    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
-    When I enter "Creation" values from "Program_Field_Values.xlsx"
-    And I click modal button "Save and Continue"
-    And I get the "EGMS ID"
-    And I click on "Save" in the page details
-    And I click on "Edit" in the page details
-    When I enter "Edition" values from "Program_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "---home:-:contactsTableId---"
-    When I click "Add" after selection of "Automation EXE" in the table "---home:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
-    When I navigate to "Setup" sub tab
-    And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
-    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
-    When I click "Add" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
-    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
-    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
-    When I click "Add" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
-    And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
-    When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
-    When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
-    When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Responsibility     | Name           | Description                 |
-      | Program Approver   | Automation PM  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description |
-    And I click on "Submit For Approval" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Home" tab
     And I navigate to "Reassign" content inside "My Tasks" subheader on left panel
-    When I reassign task to "Automation Auditor"
-    When I re-login to "As a Grantor" app as "Auditor" user on "INTERNAL" portal
-    When I navigate to "Home" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Approve Program" in "HomePendingTasks" panel
-    Then I see "No Records Found" inside flex table with id "HomePendingTasks"
+    Then I softly cannot see user "AUDITOR" in the reassign box
 
   @69130 @auditorTaskSummaryPhase
   Scenario: Validate Auditor should have no pending task in any of the filter.
@@ -211,7 +176,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
 
   @69131 @auditorCompletedTask
   Scenario: Verify Auditor does not have any completed tasks
-    Given I login to "As a Grantor" app as "dynamicUser" user
+    Given I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Home" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     Then I softly see "No Records Found" inside flex table with id "---home:-:completedAssignedToMe---"
@@ -223,9 +188,9 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
-    Then I softly cannot see top right button "New" in flex table with id "---home:-:internalContactTableId---"
-    When I perform quick search for "Automation SME" in "---home:-:internalContactTableId---" panel
-    Then I softly cannot see row level action button "Edit" against "Automation SME" in flex table with id "---home:-:internalContactTableId---"
+    Then I softly cannot see top right button "New" in flex table with id "---home:-:subrecipientcontactTableId---"
+    When I perform quick search for "Automation Manager" in "---home:-:subrecipientcontactTableId---" panel
+    Then I softly cannot see row level action button "Edit" against "Automation Manager" in flex table with id "---home:-:subrecipientcontactTableId---"
     Then I collect all the soft asserts
     Examples:
       | User    |
@@ -236,9 +201,11 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
-    When I perform quick search for "Automation SME" in "---home:-:internalContactTableId---" panel
-    Then I softly can see row level action button "View" against "Automation SME" in flex table with id "---home:-:internalContactTableId---"
-    And I click on "View" icon for "Automation SME" inside flex table with id "---home:-:internalContactTableId---"
+    When I perform quick search for "Automation Manager" in "---home:-:subrecipientcontactTableId---" panel
+    Then I see the following rows under the following headers in table with id "---home:-:subrecipientcontactTableId---" :
+      | Full Name          | Actions |
+      | Automation Manager | View    |
+    And I click on "View" icon for "Automation Manager" inside flex table with id "---home:-:subrecipientcontactTableId---"
     Then I softly see field "Organization" as "SAN DIEGO ELECTRICAL TRAINING TRUST"
     Then I collect all the soft asserts
     Examples:

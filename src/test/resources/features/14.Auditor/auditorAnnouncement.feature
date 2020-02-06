@@ -46,8 +46,10 @@ Feature: Validate all scenarios for Auditor Profile in Announcement Module
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Competitive Announcements"
-    And I perform quick search for "Announcement" in "ActiveFundingOpportunitiesCompitive" panel
-    Then I cannot see row level action button "Edit" against "<Announcement>" in flex table with id "ActiveFundingOpportunitiesCompitive"
+    And I perform quick search for "<Announcement>" in "ActiveFundingOpportunitiesCompitive" panel
+    Then I see the following rows under the following headers in table with id "ActiveFundingOpportunitiesCompitive" :
+      | Full Name      | Actions |
+      | <Announcement> | View    |
     Examples:
       | User    | Announcement                                |
       | AUDITOR | Automation Announcement for Pre-Application |
@@ -59,8 +61,8 @@ Feature: Validate all scenarios for Auditor Profile in Announcement Module
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     When I click toggle button to select "Published Competitive Announcements"
     Then I softly cannot see top right button "New" in flex table with id "ActiveFundingOpportunitiesCompitive"
-    And I perform quick search for "Automation Announcement for Auditor" in "ActiveFundingOpportunitiesCompitive" panel
-    When I click on "View" icon for "Automation Announcement for Auditor" inside flex table with id "ActiveFundingOpportunitiesCompitive"
+    And I perform quick search for "Automation Announcement for Pre-Application" in "ActiveFundingOpportunitiesCompitive" panel
+    When I click on "View" icon for "Automation Announcement for Pre-Application" inside flex table with id "ActiveFundingOpportunitiesCompitive"
     When I navigate to "Financials" sub tab
     Then I softly cannot see top right button "Associate" for "---announcement:-:fundingAccountsTableId---" flex table
     When I navigate to "Overview" sub tab
