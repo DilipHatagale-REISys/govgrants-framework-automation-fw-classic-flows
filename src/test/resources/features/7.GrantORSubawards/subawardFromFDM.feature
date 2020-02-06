@@ -1693,7 +1693,6 @@ Feature: Validate all scenarios in the award created from FDM
     When I click on "View" icon for "<Award Name>" inside table with wait for record
     And I click on top right button "Associate" in flex table with id "---subAwardFromFDM:-:federalProgramTableId---"
     When I click "Add" after selection of "Federal" in the table "---subAwardFromFDM:-:federalListTableId---"
-    And I pause execution
     And I pause execution for "3" seconds
     Then I see total records count "Total Records:1" in flex table "---subAwardStandAlone:-:federalProgramTableId---"
     Examples:
