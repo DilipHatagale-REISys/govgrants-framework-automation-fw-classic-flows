@@ -220,7 +220,7 @@ Feature: Validate all scenarios in Desk Review
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I collect all the soft asserts
 
-  @51021 @66557 @51022 @66549 @51023 @66146 @66485 @deskReviewSendToSubrecipientdAndCorrectiveActionsBySubrecipient
+  @51021 @66557 @51022 @66549 @51023 @66146 @66485 @66550 @deskReviewSendToSubrecipientdAndCorrectiveActionsBySubrecipient
   Scenario: Send Desk Review to Subrecipient, Corrective Actions and Submit to Grantor by Subrecipient |Validate whether pending task is created for Program approver under Home Tab when the award owner submits the Desk Review for approval
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
@@ -314,6 +314,7 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Management" sub tab
     And I click on "View" icon for "Automation Desk Review" inside flex table with id "---deskreview:-:managementInitiateDRtableid---"
     Then I softly can see top right button "Send Back to Subrecipient" in page detail
+    Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     Then I collect all the soft asserts
 
   @55279 @66469 @66148 @approverSendBackToUserDeskReview @deepika
