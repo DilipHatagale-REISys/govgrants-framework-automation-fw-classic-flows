@@ -2492,7 +2492,7 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     When I navigate to "Responsibilities" sub tab
-    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---"
+    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardStandAlone:-:peerReviewersMonitoringTableId---"
     And I enter a review as "Passed"
     When I click modal button "Save"
     And I click modal button "Submit Review"
@@ -2741,7 +2741,7 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "Management" sub tab
     Then I see value "{SavedValue:Record Id}" for title "EGMS ID" against the value "Submitted for Approval" inside table "---progressReport:-:grantorGrantProgressReportTableId---"
 
-  @60297  @validateForwardProgressReportByProgramApprover @mahadev
+  @60297 @validateForwardProgressReportByProgramApprover @mahadev
   Scenario: Validate Progress report Approver can Forward Progress report to anyone from same organisation
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
@@ -2773,8 +2773,8 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Reassign" to user "Automation EXE" in the approval decision
+    And I pause execution for "1" seconds
     Then I can see the message "Successfully Re-Assigned" in the approval decision
-    And I collect all the soft asserts
 
   @60298 @validateApprovalofProgressReportByForwardedApprover @mahadev
   Scenario: Validate Progress report can be approved by the approver to whom Progress report is forwarded
@@ -2815,7 +2815,6 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve,false" in the approval decision
     Then I can see the message "Successfully Approved" in the approval decision
-    And I collect all the soft asserts
 
   @60306 @FinalPREXENotAvailable @jitendra
   Scenario: Validate other Internal user else than Approver did not receive pending Task for Final marked Progress report.
