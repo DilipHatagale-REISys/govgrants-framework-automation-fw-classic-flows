@@ -2436,10 +2436,8 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     And I enter "Grant_CreationDate" values from "Award_Field_Values.xlsx"
-    And I pause execution
     And I click modal button "Continue"
     And I enter "GrantEditionYes" values from "Award_Field_Values.xlsx"
-    And I pause execution
     When I click modal button "Save and Continue"
     And I navigate to "Subawards" sub tab
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
