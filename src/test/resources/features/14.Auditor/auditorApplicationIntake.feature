@@ -27,6 +27,9 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
 
   @69164 @auditorCannotSend/CompleteNegotiations
   Scenario: Validate Auditor should be able to View the record but shouldn't be able to Complete Negotiation
+    Given I delete the record "Automation Desk Review" from the object "Desk Review"
+    When I delete the record "Automation Site Visit" from the object "Site Visit"
+    And I delete the record "Automation Announcement for FDM" from the object "FDM"
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
@@ -72,7 +75,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I see the following rows under the following headers in table with id "---subAwardFromFDM:-:recommendedAppTableId---" :
       | Application Title               | Actions |
-      | Automation Announcement for FDM |         |
+      | Automation Announcement for FDM | View    |
     Then I collect all the soft asserts
 
   @69166 @auditorApplication

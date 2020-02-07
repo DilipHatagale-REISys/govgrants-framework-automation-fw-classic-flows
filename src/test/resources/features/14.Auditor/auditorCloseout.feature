@@ -12,7 +12,7 @@ Feature: Validate all scenarios for Auditor Profile in Closeout Request module
     When I navigate to "Requests" sub tab
     Then I cannot see top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
 
-  @69176 @auditorCannotViewOverriddenCloseout
+  @69176 @auditorCannotViewOverriddenCloseout @wip
   Scenario: Validate Auditor cannot have view access to "Overrridden Status" Closoeut Record
     When I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Closeout" tab

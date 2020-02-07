@@ -7,9 +7,8 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I navigate to "Monitoring" tab
     And I navigate to "Advances" content inside "Payments" subheader on left panel
     When I click toggle button to select "Advances - All"
-    When I perform quick search for "Paid" in "---auditor:-:paymentrequestAdvancesTableId---" panel
-    And I click on "View" icon for "Paid" inside flex table with id "---auditor:-:paymentrequestAdvancesTableId---"
-    Then I see status in Progress-bar is "Paid" and is "green"
+    When I perform quick search for "Created" in "---auditor:-:paymentrequestAdvancesTableId---" panel
+    Then I see values "Created" and "Advance" inside table
     Examples:
       | User    |
       | AUDITOR |

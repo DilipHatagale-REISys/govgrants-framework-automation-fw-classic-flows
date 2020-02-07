@@ -27,13 +27,6 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
       | User    |
       | AUDITOR |
 
-  @69120 @auditorPendingTask
-  Scenario: Verify Auditor do not have any pending tasks by any phase and by any due date filter.
-    When I login to "As a Grantor" app as "AUDITOR" user
-    And I navigate to "Home" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    Then I softly see "No Records Found" inside flex table with id "HomePendingTasks"
-
   @69121 @auditorCanViewSubrecipientOrganization
   Scenario Outline: Validate Auditor should have view / read  only access to record for subrecipient organization
     Given I login to "As a Grantor" app as "<User>" user
@@ -131,48 +124,12 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     And I navigate to "Reassign" content inside "My Tasks" subheader on left panel
     Then I softly cannot see user "AUDITOR" in the reassign box
 
-  @69130 @auditorTaskSummaryPhase
-  Scenario: Validate Auditor should have no pending task in any of the filter.
-    Given I delete the record "Automation Execution Internal Program" from the object "Program"
-    When I login to "As a Grantor" app as "dynamicUser" user
-    And I navigate to "Planning" tab
-    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-    And I click toggle button to select "Internal Programs - Draft"
-    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
-    When I enter "Creation" values from "Program_Field_Values.xlsx"
-    And I click modal button "Save and Continue"
-    And I get the "EGMS ID"
-    And I click on "Save" in the page details
-    And I click on "Edit" in the page details
-    When I enter "Edition" values from "Program_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "---home:-:contactsTableId---"
-    When I click "Add" after selection of "Automation EXE" in the table "---home:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
-    When I navigate to "Setup" sub tab
-    And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
-    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
-    When I click "Add" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
-    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
-    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
-    When I click "Add" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
-    And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
-    When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
-    When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
-    When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Responsibility     | Name           | Description                 |
-      | Program Approver   | Automation PM  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description |
-    And I click on "Submit For Approval" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    When I navigate to "Home" tab
-    And I navigate to "Reassign" content inside "My Tasks" subheader on left panel
-    When I reassign task to "Automation Auditor"
-    When I re-login to "As a Grantor" app as "Auditor" user on "INTERNAL" portal
-    When I navigate to "Home" tab
-    Then I see task count for "Planning" phase with the total records of flex table id "PhasePendingTasks"
+  @69130 @69120 @auditorPendingTaskSummaryPhase
+  Scenario: Validate Auditor should have no pending task in any of the filter.| Verify Auditor do not have any pending tasks by any phase and by any due date filter.
+    Given I login to "As a Grantor" app as "AUDITOR" user
+    When I navigate to "Planning" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    Then I softly see "No Records Found" inside flex table with id "---home:-:completedAssignedToMe---"
 
   @69131 @auditorCompletedTask
   Scenario: Verify Auditor does not have any completed tasks

@@ -96,10 +96,10 @@ Feature: Validate all scenarios in the Pre-Application
     Then I softly cannot see top right button "Edit" in page detail
     Then I collect all the soft asserts
 
-  @53162 @70247 @70248 @70249 @70250 @70251 @preApplicationToApplication @deepika
+  @53162 @70247 @70248 @70249 @70250 @70251 @70524 @preApplicationToApplication @deepika
   Scenario Outline: Validate Grantor accept the submitted pre-application and converted it to application | Validate the subrecipient users able to create application from the approved Pre Application
   Validate Announcement owner will be able to view the Accept and Reject button |Validate the subrecipient users able to create application from the approved Pre Application
-  Validate Announcement Owner will be able to view the pending task under announcement tab after every pre application submission happens.
+  Validate Announcement Owner will be able to view the pending task under announcement tab after every pre application submission happens. |Validate pre-application is converted to Application
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -155,6 +155,7 @@ Feature: Validate all scenarios in the Pre-Application
       | Name           | Project Role             | Is Key Contact |
       | Automation SPI | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
+    Then I softly see that "Record Id" is in "Converted to Application" status
     Given I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
@@ -180,3 +181,23 @@ Feature: Validate all scenarios in the Pre-Application
     Then I softly see the following messages in the page details :
       | Overview Tab - Enter an Acknowledgement before submitting this Pre-Application. |
     Then I collect all the soft asserts
+
+  @70523 @snapshotAfterPreApplicationIsSubmitted @deepika
+  Scenario:  Validate SR user is able to view the Snapshot after Pre- Application is Submitted to Grantor status
+    Given I click on "Edit" in the page details
+    And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Given I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
+      | Construction  | 5000   | 5000       | 50             | 100            |
+    Then I softly see value "$10,150.00" for title "Total Project Cost" against the value "Construction" inside table "---preApplication:-:preApplicationAttachmentId---"
+    When I navigate to "Attachments" sub tab
+    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
+    When I click on "Submit to Grantor" in the page details
+    And I click on "Menu" in the page details
+    And I select "Take Snapshot" from dropdown
+    When I navigate to "History" sub tab
+    And I click on hyperlink containing value "Snapshot_Pre-Application_Submission.pdf"
+    When I download the file
+    Then I see "Submitted to Grantor" on page "1" of "govgrants" pdf file
