@@ -57,6 +57,52 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       |Overview Tab: The Answer submission deadline cannot be earlier than Question submission deadline.|
     And I collect all the soft asserts
 
+  @70479 @70481 @70503 @userDeleteSupportingDocument @aashish
+  Scenario: To Verify that user can delete supporting document checklist While creating the Announcement |
+  To Verify that user can Edit fields in supporting document checklist While creating the Announcement | To Verify that user can preview business forms while creating Announcement
+    When I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I navigate to "Setup" sub tab
+    When I enter the following values into flex table with id "---announcement:-:annChecklist---" by clicking "Add" :
+      | Description                 | Required  | Applies To | Status |
+      | Automation test description | Mandatory | Award      | Active |
+    When I click on "Upload Template" icon for " Automation test description" inside flex table with id "---announcement:-:annChecklist---"
+    And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
+    When I close "Upload Template" modal by clicking the top right x button
+    Given I edit the following rows inline in flex table with id "---announcement:-:annChecklist---" by clicking "Edit" :
+      | Description                 | Required  | Applies To | Status |
+      | Automation test description02 | Mandatory | Award      | Active |
+    Then I softly see value "Automation test description02" for title "Description" inside table "---announcement:-:annChecklist---"
+    When I click on "Delete" icon for "Automation test description02" inside flex table with id "---announcement:-:annChecklist---"
+    Then I softly see the following messages in the page details :
+      |Record deleted successfully.|
+    And I navigate to "Setup" sub tab
+    When I click on "Preview" icon for "Organization Desk Review" inside flex table with id "---announcement:-:businessFormlistTableId---"
+    Then I softly see field "Package Name" as "Organization Desk Review"
+    And I navigate to "Attachments" sub tab
+    When I add notes records
+    Then I softly see value "Notes Record" for title "Title" inside table "toggleNotes"
+    And I collect all the soft asserts
+
+  @70483 @userDeleteSupportingDocumentViewHyperlink @aashish @wip
+  Scenario: To Verify that user can view Template Link in supporting document checklist While creating the Announcement
+    When I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I navigate to "Setup" sub tab
+    When I enter the following values into flex table with id "---announcement:-:annChecklist---" by clicking "Add" :
+      | Description                 | Required  | Applies To | Status |
+      | Automation test description | Mandatory | Award      | Active |
+    When I click on "Upload Template" icon for " Automation test description" inside flex table with id "---announcement:-:annChecklist---"
+    And I choose the file "sample.pdf" to upload for "Checklist" of type "Announcement"
+    When I close "Upload Template" modal by clicking the top right x button
+    And I refresh the page
+    And I click on hyperlink containing value "View"
+    Then I see "A Simple PDF File" on page "1" of "govgrants" pdf file
+
   @70163 @70166 @70197 @userAllowToSelectEligibilityDetails @aashish
   Scenario: To Verify that user is  allowed  to select the Eligibility Details while creating Announcement
   | To verify that  without selecting "Eligibility Details" user is able to see the validation message by clicking on "Submit for approval" button.

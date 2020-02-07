@@ -644,10 +644,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I select radio button "Reassign" in the approval decision
-    And I search user "Andy Carrol" in the approval decision
-    Then I softly cannot see user "Andy Carrol" in the user lookup in the approval decision
-    And I search user "Automation PM" in the approval decision
-    Then I softly can see user "Automation PM" in the user lookup in the approval decision
+    Then I cannot see user "Andy Carrol" in the user lookup in the approval decision
+    And I can see user "Automation PM" in the user lookup in the approval decision
     And I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
