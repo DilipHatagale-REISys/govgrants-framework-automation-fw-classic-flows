@@ -29,7 +29,6 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Save" in the page details
     Then I softly see status in Progress-bar is "Created" and is "Green"
     When I navigate to "Responsibilities" sub tab
-    And I pause execution
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
       | Responsibility   | Name          | Description                 |
       | Fiscal Approver  | Automation FO | Automation Test Description |
