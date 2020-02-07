@@ -27,6 +27,9 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
 
   @69164 @auditorCannotSend/CompleteNegotiations
   Scenario: Validate Auditor should be able to View the record but shouldn't be able to Complete Negotiation
+    Given I delete the record "Automation Desk Review" from the object "Desk Review"
+    When I delete the record "Automation Site Visit" from the object "Site Visit"
+    And I delete the record "Automation Announcement for FDM" from the object "FDM"
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
