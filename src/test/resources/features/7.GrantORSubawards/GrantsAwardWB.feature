@@ -1307,7 +1307,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see value "Test TC" for title "Title" inside table "---subAwardStandAlone:-:termsndConditionsTableId---"
     Then I collect all the soft asserts
 
-  @65794 @verifySRUserCanEnterBudgetDetails @mahadev
+  @65794 @65822 @verifySRUserCanEnterBudgetDetails @mahadev
   Scenario Outline: To verify that the Sub Award budget field is editable in the Subrecipient (SPI User) under budget tab
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -1410,12 +1410,24 @@ Feature: Validate all scenarios of grants and award without background
     When I close "Add Line Items" modal by clicking the top right x button
     Then I softly see value "$1,000.00" for title "Subaward  Budget" against the value "Construction" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
     Then I softly see value "$100.00" for title "Cash Match" against the value "Construction" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
+    When I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    When I click on "Accept" in the page details
+    When I click on "Add Line Items" icon for "Project inspection fees" inside flex table with id "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
+      | Title        | Narrative     | Subaward Budget | Cash Match | Non-Cash Match |
+      | Extra Salary | The narrative | 10000           | 100        | 100            |
+    When I close "Add Line Items" modal by clicking the top right x button
+    Then I softly see value "$10,000.00" for title "Subaward  Budget" against the value "Project inspection fees" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
+    Then I softly see value "$100.00" for title "Cash Match" against the value "Project inspection fees" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
     Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @65978 @verifyPackagesONaward  @mahadev
+  @65978 @verifyPackagesONaward @mahadev
   Scenario Outline: To Verify that the Default package associated with subaward should be displayed correctly
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
