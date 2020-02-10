@@ -101,4 +101,9 @@ public class AwardSteps {
              "//div[@id='"+flexTableId+"']//*[@ng-bind='totalRecords']"
        )));
     }
+
+    @Then("^I (softly see|see) table with header \"([^\"]*)\" contains records \"([^\"]*)\"$")
+    public void assertMultipleRecordsInsideTable(String usage, String flexTableHeader, String recordsName) {
+        awardPage.assertExpectedRecordsInsideTable(usage.contains("softly"), flexTableHeader, recordsName);
+    }
 }

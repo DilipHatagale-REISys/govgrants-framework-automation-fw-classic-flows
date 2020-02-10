@@ -57,7 +57,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       |Overview Tab: The Answer submission deadline cannot be earlier than Question submission deadline.|
     And I collect all the soft asserts
 
-  @70479 @70481 @70503 @userDeleteSupportingDocument @aashish
+  @70479 @70481 @70503 @70427 @userDeleteSupportingDocument @aashish
   Scenario: To Verify that user can delete supporting document checklist While creating the Announcement |
   To Verify that user can Edit fields in supporting document checklist While creating the Announcement | To Verify that user can preview business forms while creating Announcement
     When I navigate to "Announcements" tab
@@ -83,7 +83,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see field "Package Name" as "Organization Desk Review"
     And I navigate to "Attachments" sub tab
     When I add notes records
-    Then I softly see value "Notes Record" for title "Title" inside table "toggleNotes"
+    And I close "Add Notes" modal by clicking the top right x button
+    Then I softly see table with header "Notes" contains records "Notes Record"
     And I collect all the soft asserts
 
   @70483 @userDeleteSupportingDocumentViewHyperlink @aashish @wip
