@@ -651,7 +651,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
 
-  @51140 @51141 @66897 @66006 @65983 @66005 @66003 @66008 @66019 @@66016 @66904 @66299 @allSendToRecipientAndAcceptanceAfterApproval @skipOnJenkins
+  @51140 @51141 @66897 @66006 @65983 @66005 @66003 @66008 @66019 @@66016 @66904 @66299 @66404 @66582 @66483 @allSendToRecipientAndAcceptanceAfterApproval @skipOnJenkins
   Scenario Outline: Acceptance of award by receipient after approval| Validate view Noga button on SPI side |To verify after Send to Subrecipient button the status should change to Sent to Subrecipient after Approval and the progress bar approved
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -768,6 +768,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I pause execution for "100" seconds
     Then I softly can see mail notification for "EXTERNAL" user with following subject:
       | Sandbox: Notification:Subaward Review |
+    When I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I perform quick search for "<Award Name>" in "---paymentRequest:-:recipientsSubawardTableId---" panel
+    When I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
+    Then I softly can see top right button "Edit" in page detail
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    Then I softly do not see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -788,6 +797,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I download the file
     Then I softly see "{SavedValue:BudgetPeriodAmount}" on page "1" of "govgrants" pdf file
     Then I softly see "{SavedValue:total awarded budget}" on page "1" of "govgrants" pdf file
+    And I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
+    When I navigate to "Grants" tab
+    When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    Then I softly see value "Completed" for title "Status" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
