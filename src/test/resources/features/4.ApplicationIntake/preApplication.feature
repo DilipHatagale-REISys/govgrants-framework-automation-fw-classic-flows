@@ -62,15 +62,18 @@ Feature: Validate all scenarios in the Pre-Application
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "Green"
 
-  @53154 @addBudgetDetailsToPreApplication @smoke
-  Scenario: Addition of budget in the budget grid to an pre-application
+  @53154 @70664 @addBudgetDetailsToPreApplication @smoke
+  Scenario: Addition of budget in the budget grid to an pre-application |
+  Validate User will be able to view the opportunity focus area in the application budget grid when the focus area settings as Yes while announcement creation
     When I navigate to "Budget" sub tab
     And I expand nested table containing column value "BP01"
+    Then I softly see field "Focus Area : Automation Permanent Focus Area" inside page block
     When I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 1000       | 5000           | 100            |
-    Then I see the following messages in the page details contains:
+    Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
+    Then I collect all the soft asserts
 
   @53155 @PreApplicationAttachmentChecklistCA
   Scenario: Validate the attachment checklist of the PreApplication
