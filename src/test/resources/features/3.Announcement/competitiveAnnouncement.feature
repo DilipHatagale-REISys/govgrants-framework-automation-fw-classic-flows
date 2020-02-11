@@ -73,7 +73,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Overview Tab: The Answer submission deadline cannot be earlier than Question submission deadline. |
     And I collect all the soft asserts
 
-  @70479 @70481 @70503 @70422 @70507 @userDeleteSupportingDocument @aashish
+  @70479 @70481 @70503 @70422 @70507 @70542 @70543 @userDeleteSupportingDocument @aashish
   Scenario: To Verify that user can delete supporting document checklist While creating the Announcement |
   To Verify that user can Edit fields in supporting document checklist While creating the Announcement | To Verify that user can preview business forms while creating Announcement
     When I navigate to "Announcements" tab
@@ -89,6 +89,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Automation test description | Mandatory | Award      | Active |
     When I click on "Upload Template" icon for " Automation test description" inside flex table with id "---announcement:-:annChecklist---"
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
+    Then I softly see the following messages in the page details :
+      | Attachement saved successfully. |
     When I close "Upload Template" modal by clicking the top right x button
     Given I edit the following rows inline in flex table with id "---announcement:-:annChecklist---" by clicking "Edit" :
       | Description                   | Required  | Applies To | Status |
@@ -122,6 +124,25 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I refresh the page
     And I click on hyperlink containing value "View"
     Then I see "A Simple PDF File" on page "1" of "govgrants" pdf file
+
+  @70563 @70556 @70554 @userCanViewAndDeleteKPI @aashish
+  Scenario: To  Verify that after associating objectives, related KPIs should be automatically populate while  creating the Announcement
+    When I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I navigate to "Setup" sub tab
+    Then I softly see value "Automation Permanent KPI for Regression" for title "Title" inside table "---announcement:-:kpiflextableid---"
+    When I click on "View" icon for "Automation Permanent KPI for Regression" inside flex table with id "---announcement:-:kpiflextableid---"
+    Then I softly see field "Key Performance Indicator" as "Automation Permanent KPI for Regression"
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I navigate to "Setup" sub tab
+    When I click on "Remove" icon for "Automation Permanent KPI for Regression" inside flex table with id "---announcement:-:kpiflextableid---"
+    Then I softly see the following messages in the page details :
+      | Record deleted successfully. |
+    And I collect all the soft asserts
 
   @70163 @70166 @70197 @userAllowToSelectEligibilityDetails @aashish
   Scenario: To Verify that user is  allowed  to select the Eligibility Details while creating Announcement
