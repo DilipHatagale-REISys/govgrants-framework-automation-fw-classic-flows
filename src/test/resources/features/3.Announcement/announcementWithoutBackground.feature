@@ -28,4 +28,4 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I enter "Creation Second Modal4" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I navigate to "Setup" sub tab
-    Then I see "Related Focus Areas" page block is not displayed
+    Then I see "Related Focus Areas" page block displayed
