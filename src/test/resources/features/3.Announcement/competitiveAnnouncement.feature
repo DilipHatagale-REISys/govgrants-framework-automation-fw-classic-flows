@@ -93,8 +93,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Attachement saved successfully. |
     When I close "Upload Template" modal by clicking the top right x button
     Given I edit the following rows inline in flex table with id "---announcement:-:annChecklist---" by clicking "Edit" :
-      | Description                   | Required  | Applies To | Status |
-      | Automation test description02 | Mandatory | Award      | Active |
+      | Required  | Description                   | Applies To | Status |
+      | Mandatory | Automation test description02 | Award      | Active |
     Then I softly see value "Automation test description02" for title "Description" inside table "---announcement:-:annChecklist---"
     When I click on "Delete" icon for "Automation test description02" inside flex table with id "---announcement:-:annChecklist---"
     Then I softly see the following messages in the page details :
@@ -125,8 +125,9 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on hyperlink containing value "View"
     Then I see "A Simple PDF File" on page "1" of "govgrants" pdf file
 
-  @70563 @70556 @70554 @userCanViewAndDeleteKPI @aashish
+  @70563 @70556 @70554 @70606 @70718 @userCanViewAndDeleteKPI @aashish
   Scenario: To  Verify that after associating objectives, related KPIs should be automatically populate while  creating the Announcement
+  | To Verify that user is able to view Objective While creating the Announcement
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
@@ -142,6 +143,13 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on "Remove" icon for "Automation Permanent KPI for Regression" inside flex table with id "---announcement:-:kpiflextableid---"
     Then I softly see the following messages in the page details :
       | Record deleted successfully. |
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I navigate to "Setup" sub tab
+    Then I softly see value "Automation Permanent Objective" for title "Title" inside table "---announcement:-:objectivesTableId---"
+    When I click on "View" icon for "Automation Permanent Objective" inside flex table with id "---announcement:-:objectivesTableId---"
+    Then I softly see field "Objective" as "Automation Permanent Objective"
     And I collect all the soft asserts
 
   @70163 @70166 @70197 @userAllowToSelectEligibilityDetails @aashish
@@ -176,11 +184,11 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
-    And I click on top right button "Associate" in flex table with id "---announcement:-:relatedAnnouncementTableId--"
-    And I click "Add" after selection of "Cal Fires" in the table "---announcement:-:associateForRelated--"
+    And I click on top right button "Associate" in flex table with id "---announcement:-:relatedAnnouncementTableId---"
+    And I click "Add" after selection of "Cal Fires" in the table "---announcement:-:associateForRelated---"
     And I close modal by clicking the top right x button
-    Then I softly see value "Cal Fires" for title "Program Title" inside table "---announcement:-:relatedAnnouncementTableId--"
-    And I click on "View" icon for "Cal Fires" inside flex table with id "---announcement:-:relatedAnnouncementTableId--"
+    Then I softly see value "Cal Fires" for title "Program Title" inside table "---announcement:-:relatedAnnouncementTableId---"
+    And I click on "View" icon for "Cal Fires" inside flex table with id "---announcement:-:relatedAnnouncementTableId---"
     Then I softly see field "Non-Federal Program" as "Cal Fires"
     And I pause execution for "2" seconds
     Then I softly see status in Progress-bar is "Active" and is "green"
@@ -188,8 +196,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
-    And I click on "Remove" icon for "Cal Fires" inside flex table with id "---announcement:-:relatedAnnouncementTableId--"
-    Then I softly do not see value "Cal Fires" for title "Program Title" inside table "---announcement:-:relatedAnnouncementTableId--"
+    And I click on "Remove" icon for "Cal Fires" inside flex table with id "---announcement:-:relatedAnnouncementTableId---"
+    Then I softly do not see value "Cal Fires" for title "Program Title" inside table "---announcement:-:relatedAnnouncementTableId---"
     And I collect all the soft asserts
 
   @announcementForPastApplicationDueDateCA @announcementWithBlankBudgetPeriodCA @submittedAnnouncementDeletionCA
