@@ -46,7 +46,7 @@ Feature: Validate all scenarios in Negotiations
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
-    Then I softly see value "{SavedValue:EGMSID}" for title "ID" inside table "---negotiation:-:homePendingTasks---"
+    Then I softly see value "{SavedValue:EGMSID}" for title "EGMS ID" inside table "---negotiation:-:homePendingTasks---"
     And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:homePendingTasks---"
     And I enter values into fields
       | Value                              | Field                |
@@ -516,7 +516,7 @@ Feature: Validate all scenarios in Negotiations
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:RecordId}" in "---negotiation:-:homePendingTasks---" panel
-    Then I softly see value "{SavedValue:RecordId}" for title "ID" against the value "Negotiation Request" inside table "---negotiation:-:homePendingTasks---"
+    Then I softly see value "{SavedValue:RecordId}" for title "EGMS ID" against the value "Negotiation Request" inside table "---negotiation:-:homePendingTasks---"
     Then I collect all the soft asserts
 
   @58029 @initiateNegotiationForAttachmentsNotes @deepika

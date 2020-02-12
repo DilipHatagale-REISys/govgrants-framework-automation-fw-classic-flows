@@ -129,6 +129,7 @@ Feature: Pre-Application scenarios without background
     When I click on "Qualify" in the page details
     Then I softly see that "Automation Pre-App Announcement" is in "Qualified" status
     Then I softly can see top right button "Create Pre-Application" in page detail
+    And I click on "Create Pre-Application" in the page details
     When I enter value "Automation Pre-App Announcement" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
