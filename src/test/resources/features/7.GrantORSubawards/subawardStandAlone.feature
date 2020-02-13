@@ -820,7 +820,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
 
-  @51139 @68127 @67821 @67819 @67822 @67818 @66009 @65975 @66012 @66013 @68145 @allActivation @smoke
+  @51139 @68127 @67821 @67819 @67822 @67818 @66009 @65975 @66012 @66013 @68145 @64787 @allActivation @smoke
   Scenario Outline: all activation | Validate activate and View Noga button on award
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -977,6 +977,21 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Overview" sub tab
     And I save Todays Date
     Then I softly see field "Grant Issue Date" is getting updated with todays date
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    And I navigate to "Attachments" sub tab
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---" by clicking "Add" :
+      | Description | Required  | Applies To | Status |
+      | Automation  | Mandatory | Closeout   | Active |
+    When I click on "Upload Template" icon for "Automation" inside flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Template" modal by clicking the top right x button
+    Then I softly see value "View" for title "Template Link" inside table "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
+    And I click on Link containing value "View" in flex table id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
+    Then I softly see page title contains as "FileDownload"
     Then I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
