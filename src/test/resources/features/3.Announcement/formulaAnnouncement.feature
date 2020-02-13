@@ -15,7 +15,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @34461 @submittingAnnouncementForApprovalFA @announcementForPastApplicationDueDateFA @submittedAnnouncementDeletionFA @aashish999
+  @34461 @submittingAnnouncementForApprovalFA @announcementForPastApplicationDueDateFA @submittedAnnouncementDeletionFA
   Scenario: Validate that user can not enter application due date as past date | Validate the submission of Announcement for Approval || Validate that only record owner cannot delete Submitted for Approval status announcements
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"

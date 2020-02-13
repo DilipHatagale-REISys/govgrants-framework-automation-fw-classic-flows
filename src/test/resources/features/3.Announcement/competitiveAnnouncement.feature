@@ -15,8 +15,11 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @70551 @70552 @userCanViewAddAndDeleteFocusArea @aashish
+  @70551 @70552 @70800 @userCanViewAddAndDeleteFocusArea @aashish
   Scenario: To Verify that user is able to remove associated focus areas While creating the Announcement
+    When I navigate to "Announcements" tab
+    And I click toggle button to select "Announcements - Published"
+    Then I softly see value "Published" for title "Status" inside table "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
@@ -31,9 +34,15 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see confirmation box with body "Record deleted successfully." is displayed
     And I collect all the soft asserts
 
-  @70290 @70298 @70302 @userAllowToEnterDataInQualityAndAvailibility @aashish
+  @70290 @70298 @70302 @70799 @userAllowToEnterDataInQualityAndAvailibility @aashish
   Scenario: To Verify that user able to see Text fields after select Q&A Availability  as "Yes"  And  user can enter and save all required fields while creating Announcement
   | To Validate system generated validation message for  Q&A Availability section when "Question Deadline Date",and "Response Deadline date" is greater then Application Due Date.
+    When I navigate to "Announcements" tab
+    And I click toggle button to select "Announcements - Draft"
+    Then I softly see value "Created" for title "Status" inside table "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
+    Then I softly see value "Reviewed" for title "Status" inside table "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
+    Then I softly see value "Submitted for Review" for title "Status" inside table "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
+    Then I softly see value "Submitted for Approval" for title "Status" inside table "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
@@ -73,7 +82,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Overview Tab: The Answer submission deadline cannot be earlier than Question submission deadline. |
     And I collect all the soft asserts
 
-  @70479 @70481 @70503 @70422 @70507 @70542 @70543 @userDeleteSupportingDocument @aashish
+  @70479 @70722 @70481 @70503 @70422 @70507 @70542 @70543 @userDeleteSupportingDocument @aashish
   Scenario: To Verify that user can delete supporting document checklist While creating the Announcement |
   To Verify that user can Edit fields in supporting document checklist While creating the Announcement | To Verify that user can preview business forms while creating Announcement
     When I navigate to "Announcements" tab
@@ -81,6 +90,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I navigate to "Setup" sub tab
+    Then I softly see value "Automation" for title "Description" inside table "---announcement:-:annChecklist---"
     Then I softly see value "Grantor Application Forms" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
     Then I softly see value "Organization Desk Review" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
     Then I softly see value "Grantor Progress Report Forms" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
@@ -200,8 +210,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly do not see value "Cal Fires" for title "Program Title" inside table "---announcement:-:relatedAnnouncementTableId---"
     And I collect all the soft asserts
 
-  @announcementForPastApplicationDueDateCA @announcementWithBlankBudgetPeriodCA @submittedAnnouncementDeletionCA
-  Scenario Outline: Validate that user can not enter application due date as past date || Validate that user should not submit announcement with blank budget period dates
+  @70727 @70723 @announcementForPastApplicationDueDateCA @announcementWithBlankBudgetPeriodCA @submittedAnnouncementDeletionCA
+  Scenario Outline: Validate that user can not enter application due date as past date | Validate that user should not submit announcement with blank budget period dates|To Verify that user can view contact while creating Announcement
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -216,6 +226,26 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
     When I refresh the page
     When I navigate to "Overview" sub tab
+    And I click on top right button "New" in flex table with id "---announcement:-:contactTableId---"
+    And I enter values into fields
+      | Value         | Fields           |
+      | TestFirst     | fieldFirstName   |
+      | TestLast      | fieldLastName    |
+      | abc@test.mail | fieldEmail       |
+      | Primary       | fieldUserRole__c |
+    And I click on "Save" in the page details
+    And I refresh the page
+    Then I softly see value "TestFirst TestLast" for title "Name" inside table "---announcement:-:contactTableId---"
+    And I click on "View" icon for "TestFirst TestLast" inside flex table with id "---announcement:-:contactTableId---"
+    Then I softly see field "Contact" as "TestFirst TestLast"
+    When I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    When I navigate to "Overview" sub tab
+    And I click on "Remove" icon for "TestFirst TestLast" inside flex table with id "---announcement:-:contactTableId---"
+    And I refresh the page
+    Then I softly do not see value "TestFirst TestLast" for title "Name" inside table "---announcement:-:contactTableId---"
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
     When I click "Add" after selection of "Automation EXE" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
@@ -579,7 +609,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Competitive       |
 
   @announcementPendingTaskPostApprovalCA @announcementCompletedTaskPostApprovalCA
-  Scenario Outline: Validate that after approval of an Announcement task get deleted from pending task table || Validate that after approval of an Announcement task get added to its completed task table ||
+  Scenario Outline: Validate that after approval of an Announcement task get deleted from pending task table | Validate that after approval of an Announcement task get added to its completed task table ||
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
