@@ -836,7 +836,6 @@ Feature: Validate all scenarios of grants and award without background
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
       | Grant Abbreviation is Required to save. |
-    And I clear the value from field "ProjectPeriodStartDate__c"
     When I enter value "GA" into field "GrantAbbreviation__c"
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
@@ -1302,8 +1301,9 @@ Feature: Validate all scenarios of grants and award without background
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     Then I softly cannot see row level action button "Edit" against "Test T&C" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
-    When I click "Add" after selection of "Test TC" in the table "---subAwardStandAlone:-:termsndConditionsTableId---"
+    When I click "Add" after selection of "Test TC" in the table "---subAwardStandAlone:-:grantTermConditionPopUp---"
     When I close "Associate Terms and Conditions" modal by clicking the top right x button
+    And I refresh the page
     Then I softly see value "Test TC" for title "Title" inside table "---subAwardStandAlone:-:termsndConditionsTableId---"
     Then I collect all the soft asserts
 
@@ -1812,7 +1812,6 @@ Feature: Validate all scenarios of grants and award without background
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    Given I am on "SUBPORTAL" portal
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2137,7 +2136,7 @@ Feature: Validate all scenarios of grants and award without background
     And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "{SavedValue:Project Period Start Date}" into field "ProposedBPStartDate__c"
     When I click on "Save" in the page details
-    And I pause execution for "2" seconds
+    And I refresh the page
     And I save the field labeled "Budget Period" as "updatedBudgetPeriod"
     And I get the "EGMS ID"
     And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
@@ -2303,7 +2302,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter in modal "Progress Report Error" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    Then I see the text containing :
+    Then Then I see the following messages in the page details contains:
       | Schedule Start date cannot be before Budget Period Start Date. |
 
   @67690 @pendingTaskToPMAfterSubmitToApprover @jitendra
