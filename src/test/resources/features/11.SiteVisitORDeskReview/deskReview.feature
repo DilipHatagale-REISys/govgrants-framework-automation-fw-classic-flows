@@ -762,7 +762,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     When I navigate to "Attachments" sub tab
-    And I upload attachment "InternalOrganization_Field_Values.xlsx" from workspace
+    And I upload attachment "Announcement_Field_Values.xlsx" from workspace
     Then I softly see "InternalOrganization_Field_Values.xlsx" has been added in "Attachment" flex table
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
