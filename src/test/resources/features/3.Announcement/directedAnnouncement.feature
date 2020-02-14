@@ -19,8 +19,8 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @submittingAnnouncementForApprovalDR @submittedAnnouncementDeletion @announcementForPastApplicationDueDate
-  Scenario Outline: Validate the submission of Announcement for Approval || Validate that only record owner cannot delete Submitted for Approval status announcements || Validate that user can not enter application due date as past date
+  @70717 @submittingAnnouncementForApprovalDR @submittedAnnouncementDeletion @announcementForPastApplicationDueDate
+  Scenario Outline: Validate the submission of Announcement for Approval | Validate that only record owner cannot delete Submitted for Approval status announcements || Validate that user can not enter application due date as past date
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -45,6 +45,8 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
+    And I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST1" in "---announcement:-:directedAddInviteApplicantTableId---" panel
+    Then I softly do not see value "SAN DIEGO ELECTRICAL TRAINING TRUST1" for title "Organization" inside table "---announcement:-:directedAddInviteApplicantTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
     When I navigate to "Responsibilities" sub tab
