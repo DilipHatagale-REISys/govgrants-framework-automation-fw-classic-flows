@@ -570,7 +570,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    And I pause execution for "3" seconds
     When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
@@ -766,7 +765,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Send to Subrecipient" in the page details
     Then I softly see status in Progress-bar is "Approved" and is "Green"
     Then I softly see field "Status" as "Sent to Subrecipient after Approval"
-    And I pause execution for "100" seconds
+    And I pause execution for "125" seconds
     Then I softly can see mail notification for "EXTERNAL" user with following subject:
       | Sandbox: Notification:Subaward Review |
     When I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
@@ -1055,7 +1054,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
-    And I pause execution for "3" seconds
+    And I refresh the page
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
@@ -2768,7 +2767,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    And I pause execution for "3" seconds
     When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
@@ -4512,7 +4510,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I navigate to "Management" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
-    And I pause execution for "2" seconds
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
