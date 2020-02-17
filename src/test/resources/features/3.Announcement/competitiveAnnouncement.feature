@@ -15,7 +15,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @70551 @70552 @70800 @userCanViewAddAndDeleteFocusArea @aashish
+  @70551 @70552 @70800 @70885 @userCanViewAddAndDeleteFocusArea @aashish
   Scenario: To Verify that user is able to remove associated focus areas While creating the Announcement
     When I navigate to "Announcements" tab
     And I click toggle button to select "Announcements - Published"
@@ -32,6 +32,9 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see field "GAT Title" as "Automation Permanent Focus Area2"
     And I click on "Delete" icon for "Automation Permanent Focus Area2" inside flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
     Then I softly see confirmation box with body "Record deleted successfully." is displayed
+    When I navigate to "Financials" sub tab
+    And I click on "Remove" icon for "BP01" inside flex table with id "---announcement:-:budgetPeriodTableId---"
+    Then I softly do not see value "BP01" for title "Budget Period Name" inside table "---announcement:-:budgetPeriodTableId---"
     And I collect all the soft asserts
 
   @70290 @70298 @70302 @70799 @userAllowToEnterDataInQualityAndAvailibility @aashish
@@ -82,9 +85,12 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Overview Tab: The Answer submission deadline cannot be earlier than Question submission deadline. |
     And I collect all the soft asserts
 
-  @70479 @70722 @70481 @70503 @70422 @70507 @70542 @70543 @userDeleteSupportingDocument @aashish
+  @70479 @70722 @70481 @70819 @70503 @70422 @70507 @70542 @70543 @userDeleteSupportingDocument @aashish
   Scenario: To Verify that user can delete supporting document checklist While creating the Announcement |
   To Verify that user can Edit fields in supporting document checklist While creating the Announcement | To Verify that user can preview business forms while creating Announcement
+    When I navigate to "Announcements" tab
+    And I click toggle button to select "Announcements - Closed and Archived"
+    Then I softly see value "Closed" for title "Status" inside table "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
@@ -612,7 +618,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Type |
       | Competitive       |
 
-  @70803 @70817 @70893 @announcementApprovalCA @verifyApproverCanNotEdit @aashish
+  @70803 @70817 @70893 @34768 @70898 @announcementApprovalCA @verifyApproverCanNotEdit @aashish
   Scenario Outline: Validate the approval of an Announcement | To verify that after unpublished announcement , user can not create application from that announcement
    | To Verify that after submitting for approval, approver can not edit anything on announcement
     When I click on "Edit" in the page details
@@ -801,8 +807,14 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I softly can see top right button "Revise" in page detail
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+    Then I softly see value "Record Id" for title "EGMS ID" inside table "---announcement:-:pendingTaskTableId---"
+    And I click on "View" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
     And I click on "Publish" in the page details
     And I click on "Unpublish" in the page details
+    Then I softly see status in Progress-bar is "Created" and is "green"
     And I pause execution for "2" seconds
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Opportunities" tab
