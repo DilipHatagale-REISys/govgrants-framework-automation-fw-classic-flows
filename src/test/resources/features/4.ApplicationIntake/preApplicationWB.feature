@@ -218,9 +218,9 @@ Feature: Pre-Application scenarios without background
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Competitive Announcements"
-    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
-    When I click on "View" icon for "Record id" inside table
+    When I click toggle button to select "Announcements - All"
+    And I perform quick search for "Record Id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "View" icon for "Record Id" inside table
     And I click on "Publish" in the page details
     When I am on "SUBPORTAL" portal
     And I login as "SPI" user
@@ -233,20 +233,20 @@ Feature: Pre-Application scenarios without background
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Competitive Announcements"
-    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
-    When I click on "View" icon for "Record id" inside table
+    When I click toggle button to select "Announcements - All"
+    And I perform quick search for "Record Id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "View" icon for "Record Id" inside table
     And I click on "Unpublish" in the page details
     When I am on "SUBPORTAL" portal
     And I login as "SPI" user
     When I navigate to "Opportunities" tab
-    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "Automation Competitive Announcement" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
-    Then I softly do not see "Automation Competitive Announcement" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    And I perform quick search for "Automation Competitive Announcement" in "---applicationIntake:-:publishedOpputunityTableId---" panel
+    Then I softly do not see "Automation Competitive Announcement" has been added in "---applicationIntake:-:publishedOpputunityTableId---" flex table
     Then I collect all the soft asserts
 
   @preappDueDateValidation @deepika
   Scenario: Validate whether User will be able to submit the pre- application on the last date for submission.
+  Validate once the Announcement is published and Pre-Application is in created status, later the announcement is unpublished then the User will not be able to see the Submit to Grantor on pre-application
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
@@ -255,18 +255,20 @@ Feature: Pre-Application scenarios without background
     And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
-    When I enter "Creation Second Modal" values from "Announcement_Field_Values.xlsx"
+    When I enter "Creation Second Modal1" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
     And I get the "EGMS ID"
     When I click on "Edit" in the page details
     And I enter "PreAppDueDate" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
+    And I navigate to "Overview" sub tab
     Then I softly see field "PreApplication Due Date" is getting updated with todays date
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
     When I close "Associate" modal by clicking the top right x button
+    And I refresh the page
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 20000           |
@@ -285,12 +287,13 @@ Feature: Pre-Application scenarios without background
       | Executive Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
     And I click on "Edit" in the page details
-    When I navigate to "Financials" sub tab
     When I get the "EGMS ID"
     And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
     And I click on "Save" in the page details
+    When I navigate to "Financials" sub tab
+    And I enter value "Justified" into field "Justification__c"
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -325,4 +328,22 @@ Feature: Pre-Application scenarios without background
     When I click on "View" icon for "Automation Competitive Announcement" inside table
     When I click on "Qualify" in the page details
     Then I softly can see top right button "Create Pre-Application" in page detail
+    And I click on "Create Pre-Application" in the page details
+    When I enter value "Automation Announcement for Application" into field "Title__c"
+    When I click modal button "Save and Continue"
+    And I click on "Save" in the page details
+    And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I navigate to "Announcements" tab
+    And I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    When I click toggle button to select "Announcements - Published"
+    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "View" icon for "Record id" inside table
+    And I click on "Unpublish" in the page details
+    When I am on "SUBPORTAL" portal
+    And I login as "SPI" user
+    And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
+    And I perform quick search for "Automation Competitive Announcement" in "---preApplication:-:recipientPreApplicationsTableId---" panel
+    When I click on "View" icon for "Automation Competitive Announcement" inside table
+    Then I softly cannot see top right button "Submit to Grantor" in page detail
     Then I collect all the soft asserts
+
