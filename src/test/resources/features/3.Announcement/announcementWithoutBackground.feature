@@ -47,3 +47,21 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly do not see "Related Focus Areas" page block displayed
     Then I softly do not see "Objectives" page block displayed
     And I collect all the soft asserts
+
+  @70999 @validationForErrorMessageOfPreApplication @aashish
+  Scenario: To validate system generated error message when Pre Application Due Date is greater than Application Due Date while submitting information
+    Given I delete the record "Automation Formula Announcement" from the object "Announcement"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Directed" content inside "Announcements" subheader on left panel
+    And I click on top right button "New" in flex table with id "---announcement:-:annoucementTableId---"
+    And I enter "FormulaAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Continue"
+    When I enter "Pre-Application Modal" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I navigate to "Overview" sub tab
+    And I enter value "30" into field "fieldApplicationDueDate__c"
+    And I enter value "40" into field "fieldPreApplicationDueDate__c"
+    And I click on "Save" in the page details
+    Then I see the following messages in the page details :
+      | Pre-Application Due Date cannot be after Application Due Date |

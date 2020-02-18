@@ -2357,7 +2357,6 @@ Feature: Payment Request scenarios without background
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
-    And I pause execution for "3" seconds
     And I enter "GrantFields2" values from "Award_Field_Values.xlsx"
     And I click modal button "Continue"
     And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
@@ -3510,7 +3509,6 @@ Feature: Payment Request scenarios without background
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
-    And I pause execution for "3" seconds
     And I enter "GrantFields2" values from "Award_Field_Values.xlsx"
     And I click modal button "Continue"
     And I enter "AdvPaymentGrandEdition" values from "Award_Field_Values.xlsx"
