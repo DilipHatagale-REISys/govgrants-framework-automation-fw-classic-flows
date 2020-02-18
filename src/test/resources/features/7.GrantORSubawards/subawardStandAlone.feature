@@ -570,7 +570,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    And I pause execution for "3" seconds
     When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
@@ -766,7 +765,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Send to Subrecipient" in the page details
     Then I softly see status in Progress-bar is "Approved" and is "Green"
     Then I softly see field "Status" as "Sent to Subrecipient after Approval"
-    And I pause execution for "100" seconds
+    And I pause execution for "125" seconds
     Then I softly can see mail notification for "EXTERNAL" user with following subject:
       | Sandbox: Notification:Subaward Review |
     When I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
@@ -1070,7 +1069,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
-    And I pause execution for "3" seconds
+    And I refresh the page
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
@@ -2798,7 +2797,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
-    And I pause execution for "3" seconds
     When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
@@ -3363,6 +3361,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
     When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
@@ -4541,7 +4540,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I navigate to "Management" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
-    And I pause execution for "2" seconds
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
     And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
@@ -4888,13 +4886,13 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     When I click on "Accept" in the page details
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    Then I softly see value "Completed" for title "Status" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:completeTaskTableId---" panel
+    Then I softly see value "Completed" for title "Status" inside table "---subAwardStandAlone:-:completeTaskTableId---"
     And I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    Then I softly see value "Completed" for title "Status" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:completeTaskTableId---" panel
+    Then I softly see value "Completed" for title "Status" inside table "---subAwardStandAlone:-:completeTaskTableId---"
     And I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
@@ -5008,9 +5006,10 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I navigate to "Subawards" sub tab
     And I click on "Edit" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:subawardFederalProgramTableId---"
-    When I perform quick search for "Wildlife Services" in "RelatedFederalProgramForAwardiframeContentId" panel
-    When I click "Add" after selection of "Wildlife Services" in the table "RelatedFederalProgramForAwardiframeContentId"
+    When I perform quick search for "Wildlife Services" in "---subAwardStandAlone:-:federalListTableId---" panel
+    When I click "Add" after selection of "Wildlife Services" in the table "---subAwardStandAlone:-:federalListTableId---"
     And I close modal by clicking the top right x button
+    And I refresh the page
     Then I see value "Wildlife Services" for title "Program Title" inside table "---subAwardStandAlone:-:subawardFederalProgramTableId---"
     Examples:
       | Award Name              | Grant Name              |
