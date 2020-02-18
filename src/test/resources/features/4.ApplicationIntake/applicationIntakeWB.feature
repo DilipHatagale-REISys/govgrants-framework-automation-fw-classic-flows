@@ -143,7 +143,7 @@ Feature: Application Intake scenarios without background
     Then I softly see page title contains as "Automation Permanent Internal Program"
     Then I collect all the soft asserts
 
-  @appdueDateValidation @deepika
+  @71110 @appdueDateValidation @deepika
   Scenario: Validate whether User will be able to submit the application on the last date for submission.
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -227,10 +227,10 @@ Feature: Application Intake scenarios without background
     Then I softly can see top right button "Create Application" in page detail
     Then I collect all the soft asserts
 
-  @unpublishedAnnouncementCannotSubmitApplication
+  @71104 @71107 @71108 @71109 @unpublishedAnnouncementCannotSubmitApplication @deepika
   Scenario: Validate once the Announcement is published and Application is in created status, later the announcement is unpublished then the User will not be able to see the Submit Application
   Validate whether the Applicant will be able to view qualify button on the same funding opportunity after republish
-    Validate whether the Applicant will be able to create a New Application from the republish announcement and oppurtunity
+  Validate whether the Applicant will be able to create a New Application from the republish announcement and oppurtunity |Validate whether the Applicant will be able to Submit the New Application from the republish announcement and oppurtunity
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
@@ -325,7 +325,7 @@ Feature: Application Intake scenarios without background
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     And I perform quick search for "Automation Competitive Announcement" in "---applicationIntake:-:recipientApplications---" panel
     When I click on "View" icon for "Automation Competitive Announcement" inside table
-    Then I cannot see top right button "Submit Application" in page detail
+    Then I softly cannot see top right button "Submit Application" in page detail
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -364,6 +364,7 @@ Feature: Application Intake scenarios without background
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "Automation Competitive Announcement" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "Automation Competitive Announcement" inside table
+    Then I softly can see top right button "Qualify" in page detail
     When I click on "Qualify" in the page details
     Then I softly can see top right button "Create Application" in page detail
     When I click on "Create Application" in the page details
@@ -398,119 +399,119 @@ Feature: Application Intake scenarios without background
     Then I see status in Progress-bar is "Submitted" and is "Green"
     Then I collect all the soft asserts
 
-    @appDueDateValidation
-    Scenario: Validate the Application Submission before the due date | Validate whether thr application sue date on Announcement is reflecting same while creating an application
-      Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
-      When I login to "As a Grantor" app as "dynamicUser" user
-      And I navigate to "Announcements" tab
-      When I navigate to "Competitive" content inside "Announcements" subheader on left panel
-      And I click toggle button to select "Draft Competitive Announcements"
-      And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
-      And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
-      And I click modal button "Continue"
-      When I enter "Creation Second Modal" values from "Announcement_Field_Values.xlsx"
-      And I click modal button "Save and Continue"
-      When I click on "Save" in the page details
-      And I get the "EGMS ID"
-      When I click on "Edit" in the page details
-      And I enter "Edition" values from "Announcement_Field_Values.xlsx"
-      And I click on "Save" in the page details
-      Then I save the field labeled "Application Due Date" as "AppDueDate"
-      When I navigate to "Financials" sub tab
-      And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-      When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
-      When I close "Associate" modal by clicking the top right x button
-      Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
-        | Funding Account             | Pre-Encumbrance |
-        | {SavedValue:fundingAccount} | 20000           |
-      And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
-      When I navigate to "Overview" sub tab
-      When I pause execution for "1" seconds
-      And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-      When I click "Add" after selection of "Automation EXE" in the table "---announcement:-:annoucementContactTableId---"
-      When I navigate to "Setup" sub tab
-      And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-      When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
-      When I navigate to "Responsibilities" sub tab
-      And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
-        | Role               | Name           | Description                 |
-        | Program Approver   | Automation PM  | Automation Test Description |
-        | Executive Approver | Automation EXE | Automation Test Description |
-        | Fiscal Approver    | Automation FO  | Automation Test Description |
-      And I click on "Edit" in the page details
-      When I navigate to "Financials" sub tab
-      When I get the "EGMS ID"
-      And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
-        | Budget Period Name | Start Date | End Date |
-        | BP01               | 50         | 150      |
-      And I click on "Save" in the page details
-      And I click on "Submit For Approval" in the page details
-      When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-      And I navigate to "Announcements" tab
-      When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-      When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
-      When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
-      And I "Approve" in the approval decision
-      When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-      And I navigate to "Announcements" tab
-      When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-      When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
-      When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
-      And I "Approve" in the approval decision
-      When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-      And I navigate to "Announcements" tab
-      When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-      When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
-      When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
-      And I "Approve" in the approval decision
-      And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-      When I navigate to "Announcements" tab
-      And I navigate to "Competitive" content inside "Announcements" subheader on left panel
-      When I click toggle button to select "Draft Competitive Announcements"
-      And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
-      When I click on "View" icon for "Record id" inside table
-      And I click on "Publish" in the page details
-      Given I delete the record "Automation Announcement for Application Intake" from the object "Application"
-      And I delete the record "Automation Announcement for Application Intake" from the object "Qualified Announcement"
-      Given I am on "SUBPORTAL" portal
-      When I login to "Grants Portal" app as "SPI" user
-      And I navigate to "Opportunities" tab
-      When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-      And I perform quick search for "Automation Competitive Announcement" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
-      When I click on "View" icon for "Automation Competitive Announcement" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
-      When I click on "Qualify" in the page details
-      When I click on "Create Application" in the page details
-      And I click modal button "Save and Continue"
-      When I click on "Save" in the page details
-      When I click on "Edit" in the page details
-      And I enter "Edition" values from "Application_Field_Values.xlsx"
-      When I click on "Save" in the page details
-      And I save the field labeled "Application Due Date" as "ApplDueDate"
-     Then I softly see that the saved value "AppDueDate" and "ApplDueDate" are equal
-      And I navigate to "Budget" sub tab
-      Given I expand nested table containing column value "BP01"
-      And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
-        | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
-        | Construction  | 1000   | 100        | 100            | 100            |
-      When I navigate to "Proposal" sub tab
-      When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
-        | EGMS ID                                 | Target |
-        | Automation Permanent KPI for Regression | 10     |
-      And I navigate to "Attachments" sub tab
-      And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
-      Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
-      And I click on "Save" in the page details
-      Given I click on "Back" in the page details
-      And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
-      Given I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
-      And I click on "Save" in the page details
-      Given I click on "Back" in the page details
-      When I navigate to "Overview" sub tab
-      And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
-        | Name           | Project Role             | Is Key Contact |
-        | Automation SPI | Project Director/Manager | Checked        |
-      When I click on "Submit Application" in the page details
-      Then I see status in Progress-bar is "Submitted" and is "Green"
+  @71112 @71113 @appDueDateValidation
+  Scenario: Validate the Application Submission before the due date | Validate whether the application due date on Announcement is reflecting same while creating an application
+    Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Competitive Announcements"
+    And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Continue"
+    When I enter "Creation Second Modal" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Announcement_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    Then I save the field labeled "Application Due Date" as "AppDueDate"
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
+    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I close "Associate" modal by clicking the top right x button
+    Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Pre-Encumbrance |
+      | {SavedValue:fundingAccount} | 20000           |
+    And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
+    When I navigate to "Overview" sub tab
+    When I pause execution for "1" seconds
+    And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
+    When I click "Add" after selection of "Automation EXE" in the table "---announcement:-:annoucementContactTableId---"
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
+    When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
+      | Role               | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
+    When I get the "EGMS ID"
+    And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 50         | 150      |
+    And I click on "Save" in the page details
+    And I click on "Submit For Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
+    And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
+    And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
+    And I "Approve" in the approval decision
+    And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I navigate to "Announcements" tab
+    And I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    When I click toggle button to select "Draft Competitive Announcements"
+    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "View" icon for "Record id" inside table
+    And I click on "Publish" in the page details
+    Given I delete the record "Automation Announcement for Application Intake" from the object "Application"
+    And I delete the record "Automation Announcement for Application Intake" from the object "Qualified Announcement"
+    Given I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Automation Competitive Announcement" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "Automation Competitive Announcement" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    When I click on "Qualify" in the page details
+    When I click on "Create Application" in the page details
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Application_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I save the field labeled "Application Due Date" as "ApplDueDate"
+    Then I softly see that the saved value "AppDueDate" and "ApplDueDate" are equal
+    And I navigate to "Budget" sub tab
+    Given I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
+      | Construction  | 1000   | 100        | 100            | 100            |
+    When I navigate to "Proposal" sub tab
+    When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+    And I navigate to "Attachments" sub tab
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
+    Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    Given I click on "Back" in the page details
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
+    Given I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    Given I click on "Back" in the page details
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
+      | Name           | Project Role             | Is Key Contact |
+      | Automation SPI | Project Director/Manager | Checked        |
+    When I click on "Submit Application" in the page details
+    Then I see status in Progress-bar is "Submitted" and is "Green"
 
 
 

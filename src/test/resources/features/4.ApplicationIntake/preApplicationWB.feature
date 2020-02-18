@@ -152,7 +152,6 @@ Feature: Pre-Application scenarios without background
 
   @70663 @preApplRequiredIsNoAnnouncementCreation @deepika
   Scenario: Validate whether the User is able to create Pre Application only when the Opportunity setting for Pre Application (No)
-  Validate whether the user can submit the Pre Application Submission before the due date
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
@@ -244,7 +243,7 @@ Feature: Pre-Application scenarios without background
     Then I softly do not see "Automation Competitive Announcement" has been added in "---applicationIntake:-:publishedOpputunityTableId---" flex table
     Then I collect all the soft asserts
 
-  @preappDueDateValidation @deepika
+  @71114 @71115 @preappDueDateValidation @deepika
   Scenario: Validate whether User will be able to submit the pre- application on the last date for submission.
   Validate once the Announcement is published and Pre-Application is in created status, later the announcement is unpublished then the User will not be able to see the Submit to Grantor on pre-application
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"

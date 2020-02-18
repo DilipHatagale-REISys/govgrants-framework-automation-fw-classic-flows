@@ -81,9 +81,9 @@ Feature: Validate all scenarios in the Pre-Application
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
     Then I see "Active" has been added in "Attachments" flex table
 
-  @53160 @70466 @70467 @submitPreApplication @smoke @deepika
+  @53160 @70466 @70467 @71116 @submitPreApplication @smoke @deepika
   Scenario: Submitting an pre application to Grantor |To verify that the budget field is editable for the Subrecipient (SPI User) under budget tab on pre-application
-  Validate whether user can view the edit button once pre - application has been submitted to Grantor
+  Validate whether user can view the edit button once pre - application has been submitted to Grantor |  Validate whether the user can submit the Pre Application Submission before the due date
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
