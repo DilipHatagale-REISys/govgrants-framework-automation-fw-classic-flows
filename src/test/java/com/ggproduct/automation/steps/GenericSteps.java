@@ -394,12 +394,6 @@ public class GenericSteps {
         EyeThink.core().click().on(By.xpath("//*[contains(@id,'"+tableId+"')]/preceding-sibling::div[@class='panel-heading']//button[text()='"+buttonName+"' or @title='"+buttonName+"']"));
     }
 
-    @And("^I enter description in Notes")
-    public void enterDescriptionInNotes(){
-        By notesDescriptionPath = By.xpath("//div[@id='addAtt']//label[text()='Description']/..//textarea");
-        EyeThink.core().enterText().in(notesDescriptionPath, "Automation Notes");
-    }
-
     @And("^I edit the notes$")
     public void iEditTheNotes() {
         EyeThink.core().click().on(By.xpath("//div[contains(@id,'toggleNotes')]//a[@title='Edit']"));
