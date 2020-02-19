@@ -48,9 +48,9 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly do not see "Objectives" page block displayed
     And I collect all the soft asserts
 
-  @70999 @70997 @70980 @71010 @71011 @71012 @71022 @71023 @validationForErrorMessageOfPreApplication @aashish
+  @70999 @70997 @70980 @71010 @71011 @71012 @71022 @71023 @71037 @71027 @validationForErrorMessageOfPreApplication @aashish
   Scenario: To validate system generated error message when Pre Application Due Date is greater than Application Due Date while submitting information
-    Given I delete the record "Automation Formula Announcement" from the object "Announcement"
+    Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -86,6 +86,24 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Setup Tab - The total Review Step weight must equal 100%, it is currently 50.00%. |
     And I click on "Edit" in the page details
     And I navigate to "Setup" sub tab
+    When I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 0               |
+      | SME Review        | 0               |
+      | Pre-Screen Review | 0               |
+    And I click on "Save" in the page details
+    And I click on "Submit For Approval" in the page details
+    Then I softly see the following messages in the page details :
+      | Setup Tab - The total Review Step weight must equal 100%, it is currently 0.00%. |
+    And I click on "Edit" in the page details
+    And I navigate to "Setup" sub tab
+    When I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 50              |
+      | SME Review        | 50              |
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    And I navigate to "Setup" sub tab
     And I click on "Delete" icon for "Pre-Screen Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
     Then I softly do not see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:preScreenReviewFormTableId---"
     And I navigate to "Overview" sub tab
@@ -108,3 +126,51 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Overview Tab - Application Due Date cannot be in the past.     |
     And I collect all the soft asserts
 
+  @71150 @71151 @71152 @verifyTotalReviewFormWeight @aashish
+  Scenario: To validate system generated error message when total Review Form  weight(%) is more than 100 % while creating Announcement
+    Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Continue"
+    When I enter "Pre-Application Modal" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I navigate to "Setup" sub tab
+    When I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 50              |
+      | SME Review        | 50              |
+    And I expand nested table containing column value "SME Review"
+    And I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
+      | Form Name      | Form Weight (%) |
+      | Fiscal Review  | 75              |
+      | Program Review | 75              |
+    And I click on "Save" in the page details
+    And I click on "Submit For Approval" in the page details
+    Then I softly see the following messages in the page details :
+      | Setup Tab - The total Review Step weight must equal 100%, it is currently 150.00%. |
+    And I click on "Edit" in the page details
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "SME Review"
+    And I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
+      | Form Name      | Form Weight (%) |
+      | Fiscal Review  | 20              |
+      | Program Review | 20              |
+    And I click on "Save" in the page details
+    And I click on "Submit For Approval" in the page details
+    Then I softly see the following messages in the page details :
+      | Setup Tab - The total Review Step weight must equal 100%, it is currently 40.00%. |
+    And I click on "Edit" in the page details
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "SME Review"
+    And I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
+      | Form Name      | Form Weight (%) |
+      | Fiscal Review  | 0               |
+      | Program Review | 0               |
+    And I click on "Save" in the page details
+    And I click on "Submit For Approval" in the page details
+    Then I softly see the following messages in the page details :
+      | Setup Tab - The total Review Step weight must equal 100%, it is currently 0.00%. |
+    And I collect all the soft asserts
