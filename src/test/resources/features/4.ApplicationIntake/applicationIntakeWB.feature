@@ -399,8 +399,9 @@ Feature: Application Intake scenarios without background
     Then I see status in Progress-bar is "Submitted" and is "Green"
     Then I collect all the soft asserts
 
-  @71112 @71113 @appDueDateValidation
+  @71112 @71113 @appDueDateValidation @deepika
   Scenario: Validate the Application Submission before the due date | Validate whether the application due date on Announcement is reflecting same while creating an application
+    Given I delete the record "Automation Competitive Announcement" from the object "Application"
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
@@ -471,8 +472,8 @@ Feature: Application Intake scenarios without background
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "View" icon for "Record id" inside table
     And I click on "Publish" in the page details
-    Given I delete the record "Automation Announcement for Application Intake" from the object "Application"
-    And I delete the record "Automation Announcement for Application Intake" from the object "Qualified Announcement"
+    Given I delete the record "Automation Competitive Announcement" from the object "Application"
+    And I delete the record "Automation Competitive Announcement" from the object "Qualified Announcement"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
