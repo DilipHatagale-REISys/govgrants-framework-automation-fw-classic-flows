@@ -1,9 +1,9 @@
 @preAplicationWB @regression @app
 Feature: Pre-Application scenarios without background
 
-  @70252 @70254 @verifyCreateApplicationandQualifyButtons
+  @70252 @70254 @71410 @71411 @71412 @verifyCreateApplicationandQualifyButtons
   Scenario: Verify whether SPI user is able to qualify opportunity a Pre-Application| Verify Create Pre- Application button is displayed to SR User when User click on Qualify Button.
-  Validate whether user is able to view the qualify button and qualify the opportunity before creating the pre-application |
+  Validate whether user is able to view the qualify button and qualify the opportunity before creating the pre-application
   Validate the user is able to create Pre Application only when the Opportunity setting for Pre Applciation Required (Yes)
   Validate whether User will be able to enter the required information for the creation on Pre Application before the Due date
     Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
@@ -352,7 +352,7 @@ Feature: Pre-Application scenarios without background
     Then I softly cannot see top right button "Submit to Grantor" in page detail
     Then I collect all the soft asserts
 
-  @userCannotCreatePreAppWhenSettingIsNo
+  @71413 @userCannotCreatePreAppWhenSettingIsNo @deepika
   Scenario: Validate whether User is able to create Pre Application only when the Opportunity setting for Pre Application (No)
     Given I delete the record "Automation Announcement for Application Intake" from the object "Application"
     And I delete the record "Automation Announcement for Application Intake" from the object "Qualified Announcement"

@@ -514,7 +514,7 @@ Feature: Application Intake scenarios without background
     When I click on "Submit Application" in the page details
     Then I see status in Progress-bar is "Submitted" and is "Green"
 
-  @preApplicationSettinsAsNowhileAnnouncementCreation @deepika
+  @71408 @preApplicationSettinsAsNowhileAnnouncementCreation @deepika
   Scenario: Validate whether user is able to create Application only when the Opportunity setting for Pre Application (No)
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
     And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
