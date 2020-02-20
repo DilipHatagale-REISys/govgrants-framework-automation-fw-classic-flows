@@ -388,4 +388,20 @@ public class GenericSteps {
             }
         }
     }
+
+    @And("^I click on top right button \"([^\"]*)\" in notes flex table having header \"([^\"]*)\"$")
+    public void clickOnTopButtonInFlexTable(String buttonName, String flextTableHeader){
+        EyeThink.core().click().on(By.xpath("//*["+EyeThink.core().xpath().translate(flextTableHeader)+"]//ancestor::div[(@id and @class='ng-scope')]//button[text()='"+buttonName+"' or @title='"+buttonName+"']"));
+    }
+
+    @And("^I edit the notes$")
+    public void iEditTheNotes() {
+        EyeThink.core().click().on(By.xpath("//div[contains(@id,'toggleNotes')]//a[@title='Edit']"));
+        By notesTitle = By.xpath("//div[@id='addAtt']//label[text()='Title']/..//input");
+        By notesDescriptionPath = By.xpath("//div[@id='addAtt']//label[text()='Description']/..//textarea");
+        EyeThink.core().enterText().clear(notesDescriptionPath);
+        EyeThink.core().enterText().clear(notesTitle);
+        EyeThink.core().enterText().in(notesTitle, "Updated Notes Record");
+        EyeThink.core().enterText().in(notesDescriptionPath, "Updated Automation Notes");
+    }
 }

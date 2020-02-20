@@ -85,7 +85,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Overview Tab: The Answer submission deadline cannot be earlier than Question submission deadline. |
     And I collect all the soft asserts
 
-  @70479 @70722 @70481 @70819 @70503 @70422 @70507 @70542 @70543 @userDeleteSupportingDocument @aashish
+  @70479 @70481 @70503 @70422 @70507 @70542 @70543 @70425 @70424 @70426 @70419 @70417 @70418 @userDeleteSupportingDocument @aashish
   Scenario: To Verify that user can delete supporting document checklist While creating the Announcement |
   To Verify that user can Edit fields in supporting document checklist While creating the Announcement | To Verify that user can preview business forms while creating Announcement
     When I navigate to "Announcements" tab
@@ -113,15 +113,34 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Mandatory | Automation test description02 | Award      | Active |
     Then I softly see value "Automation test description02" for title "Description" inside table "---announcement:-:annChecklist---"
     When I click on "Delete" icon for "Automation test description02" inside flex table with id "---announcement:-:annChecklist---"
-    Then I softly see the following messages in the page details :
-      | Record deleted successfully. |
+    And I softly do not see "Automation test description02" inside flex table with id "---announcement:-:annChecklist---"
     And I navigate to "Setup" sub tab
     When I click on "Preview" icon for "Organization Desk Review" inside flex table with id "---announcement:-:businessFormlistTableId---"
     Then I softly see field "Package Name" as "Organization Desk Review"
+    And I close "Preview Package" modal by clicking the top right x button
     And I navigate to "Attachments" sub tab
     When I add notes records
     And I close "Add Notes" modal by clicking the top right x button
     Then I softly see table with header "Notes" contains records "Notes Record"
+    And I edit the notes
+    And I click modal button "Save"
+    And I close "Edit Notes" modal by clicking the top right x button
+    Then I softly see table with header "Notes" contains records "Updated Notes Record"
+    Then I softly see table with header "Notes" contains records "Updated Automation Notes"
+    And I click on top right button "Add" in notes flex table having header "Notes"
+    And I enter title in Notes
+    And I click modal button "Save"
+    Then I softly see the following messages in the page details :
+      | Please enter Required fields |
+    When I upload attachment "Announcement_Field_Values.xlsx" from workspace
+    Then I softly see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
+    When I navigate to "Attachments" sub tab
+    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Funding Opportunity Announcement"
+    Then I softly see "Funding Opportunity Announcement" has been added in "Attachments" flex table
+    When I click on "Download" icon under attachment flex table
+    Then I softly verify that the file "InternalOrganization_Field_Values.xlsx" is downloaded
+    And I click on "Delete" icon under attachment flex table
+    Then I softly do not see "InternalOrganization_Field_Values.xlsx" has been added in "Attachments" flex table
     And I collect all the soft asserts
 
   @70483 @userDeleteSupportingDocumentViewHyperlink @aashish @wip
