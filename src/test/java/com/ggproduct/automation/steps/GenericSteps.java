@@ -389,9 +389,9 @@ public class GenericSteps {
         }
     }
 
-    @And("^I click on top right button \"([^\"]*)\" in notes flex table containing id \"([^\"]*)\"$")
-    public void clickOnTopButtonInFlexTable(String buttonName, String tableId){
-        EyeThink.core().click().on(By.xpath("//*[contains(@id,'"+tableId+"')]/preceding-sibling::div[@class='panel-heading']//button[text()='"+buttonName+"' or @title='"+buttonName+"']"));
+    @And("^I click on top right button \"([^\"]*)\" in notes flex table having header \"([^\"]*)\"$")
+    public void clickOnTopButtonInFlexTable(String buttonName, String flextTableHeader){
+        EyeThink.core().click().on(By.xpath("//*["+EyeThink.core().xpath().translate(flextTableHeader)+"]//ancestor::div[(@id and @class='ng-scope')]//button[text()='"+buttonName+"' or @title='"+buttonName+"']"));
     }
 
     @And("^I edit the notes$")
