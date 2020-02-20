@@ -24,6 +24,16 @@ Feature: Validate all scenarios for program
       | Program flextable Header  | Program                               |
       | Internal Programs - Draft | Automation Execution Internal Program |
 
+  @66389 @updateFieldsValidationCheck @jitendra
+  Scenario: To verify that the user is able to modified created internal program settings and view the added setting by the creating a direct grant.
+    Then I click on "Edit" in the page details
+    And I enter "Edition1" values from "Program_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I softly see field "Focus Area Required?" as "No"
+    Then I softly see field "KPI" as "No"
+    Then I softly see field "Objectives Required?" as "No"
+    And I collect all the soft asserts
+
   @34503 @programCreation @smoke
   Scenario: Verifying if the EXE, PM, PO has create access to Internal Program
     Then I see status in Progress-bar is "Created" and is "Green"

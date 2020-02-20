@@ -6,6 +6,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.springframework.context.annotation.Description;
 
 public class ProgressReportSteps {
@@ -44,6 +45,11 @@ public class ProgressReportSteps {
     @And("^I click on hyperlink containing value \"([^\"]*)\"$")
     public void iClickOnHyperlinkContainingValue(String linkName) {
         progressReportPage.clickOnLink(linkName);
+    }
+
+    @And("^I click on Link containing value \"([^\"]*)\" in flex table id \"([^\"]*)\"$")
+    public void clickOnLink(String linkText, String tableId) {
+        EyeThink.core().click().on(By.xpath("//*[@id='"+tableId+"']//a[contains(text(),'"+linkText+"')]"));
     }
 
     @Description("To compare date field with todays date")
