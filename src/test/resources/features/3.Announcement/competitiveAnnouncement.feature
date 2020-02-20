@@ -127,8 +127,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I close "Edit Notes" modal by clicking the top right x button
     Then I softly see table with header "Notes" contains records "Updated Notes Record"
     Then I softly see table with header "Notes" contains records "Updated Automation Notes"
-    And I delete record against value "Updated Notes Record" from the flex table contains the id "toggleNotes"
-    And I softly cannot see notes in the flex table
     And I click on top right button "Add" in notes flex table having header "Notes"
     And I enter title in Notes
     And I click modal button "Save"
