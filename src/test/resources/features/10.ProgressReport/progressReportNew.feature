@@ -9814,7 +9814,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                  | Grant Name                  |
       | Automation Execution1 Award | Automation Execution1 Award |
 
-
   @61887 @60384 @61894 @validateCreatedPRAfterPeriodicAmendmentIsCarryForwardedAonAward @mahadev @jitendra
   Scenario Outline: Validate Progress reports with Created Status is not displayed at Performance Tab Subaward Overview at Award Owner end when Award owner performed periodic renewal Amendment
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
