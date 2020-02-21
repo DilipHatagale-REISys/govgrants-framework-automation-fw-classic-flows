@@ -514,11 +514,11 @@ Feature: Application Intake scenarios without background
     When I click on "Submit Application" in the page details
     Then I see status in Progress-bar is "Submitted" and is "Green"
 
-  @71408 @preApplicationSettinsAsNowhileAnnouncementCreation @deepika
+  @71408 @71488 @71489 @71490 @preApplicationSettinsAsNowhileAnnouncementCreation @deepika
   Scenario: Validate whether user is able to create Application only when the Opportunity setting for Pre Application (No)
   Validate whether User will be able to view the Match column in the budget grid when the value set as Yes
   Validate whether User will be able to view the Leverage column in the budget grid when the value set as Yes.
-  Validate whether User should be able to view the focus area settings as Yes
+  Validate whether User should be able to view the focus area page block when the focus are is sett as Yes while announcement creation
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
     And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
     When I am on "SUBPORTAL" portal
@@ -529,6 +529,7 @@ Feature: Application Intake scenarios without background
     When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationReview:-:reviewsTableId---"
     Then I softly see field "Leverage Allowed?" as "Yes"
     Then I softly see field "Pre-Application Required?" as "No"
+    Then I softly see field "Focus Area Required?" as "Yes"
     When I click on "Qualify" in the page details
     Then I softly can see top right button "Create Application" in page detail
     When I click on "Create Application" in the page details
