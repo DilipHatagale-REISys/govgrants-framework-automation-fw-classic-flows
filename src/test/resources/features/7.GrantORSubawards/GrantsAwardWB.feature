@@ -201,7 +201,7 @@ Feature: Validate all scenarios of grants and award without background
     And I collect all the soft asserts
     Examples:
       | Award Name                            | Grant Name                            |
-      | Automation Award for field validation | Automation Grant for field validation |
+      | Automation Award for field validation | Automation Award for field validation |
 
   @65688 @validateTnCAssociate @jitendra
   Scenario Outline: Verify Associated Terms and Conditions are Editable by award owner on Subaward.

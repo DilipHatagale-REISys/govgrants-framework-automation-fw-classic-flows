@@ -1,8 +1,11 @@
 @preAplicationWB @regression @app
 Feature: Pre-Application scenarios without background
 
-  @70252 @70254 @verifyCreateApplicationandQualifyButtons
+  @70252 @70254 @71410 @71411 @71412 @verifyCreateApplicationandQualifyButtons
   Scenario: Verify whether SPI user is able to qualify opportunity a Pre-Application| Verify Create Pre- Application button is displayed to SR User when User click on Qualify Button.
+  Validate whether user is able to view the qualify button and qualify the opportunity before creating the pre-application
+  Validate the user is able to create Pre Application only when the Opportunity setting for Pre Applciation Required (Yes)
+  Validate whether User will be able to enter the required information for the creation on Pre Application before the Due date
     Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
     When I delete the record "Automation Announcement for Application" from the object "PreApplication"
     And I delete the record "Automation Announcement for Pre-Application" from the object "Qualified Announcement"
@@ -13,6 +16,9 @@ Feature: Pre-Application scenarios without background
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "Automation Announcement for Pre-Application" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "Automation Announcement for Pre-Application" inside table
+    Then I softly see field "Pre-Application Required?" as "Yes"
+    Then I save the field labeled "Application Due Date" as "AppDueDate"
+    Then I softly can see top right button "Qualify" in page detail
     When I click on "Qualify" in the page details
     Then I softly see that "Automation Announcement for Pre-Application" is in "Qualified" status
     Then I softly can see top right button "Create Pre-Application" in page detail
@@ -346,3 +352,17 @@ Feature: Pre-Application scenarios without background
     Then I softly cannot see top right button "Submit to Grantor" in page detail
     Then I collect all the soft asserts
 
+  @71413 @userCannotCreatePreAppWhenSettingIsNo @deepika
+  Scenario: Validate whether User is able to create Pre Application only when the Opportunity setting for Pre Application (No)
+    Given I delete the record "Automation Announcement for Application Intake" from the object "Application"
+    And I delete the record "Automation Announcement for Application Intake" from the object "Qualified Announcement"
+    Given I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Automation Announcement for Application Intake" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    Then I softly see field "Pre-Application Required?" as "No"
+    When I click on "Qualify" in the page details
+    Then I softly cannot see top right button "Create Pre-Application" in page detail
+    Then I collect all the soft asserts
