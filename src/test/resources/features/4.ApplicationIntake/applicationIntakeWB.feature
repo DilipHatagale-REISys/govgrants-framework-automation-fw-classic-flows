@@ -516,6 +516,9 @@ Feature: Application Intake scenarios without background
 
   @71408 @preApplicationSettinsAsNowhileAnnouncementCreation @deepika
   Scenario: Validate whether user is able to create Application only when the Opportunity setting for Pre Application (No)
+  Validate whether User will be able to view the Match column in the budget grid when the value set as Yes
+  Validate whether User will be able to view the Leverage column in the budget grid when the value set as Yes.
+  Validate whether User should be able to view the focus area settings as Yes
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
     And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
     When I am on "SUBPORTAL" portal
@@ -524,7 +527,20 @@ Feature: Application Intake scenarios without background
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "Automation Announcement for Application Review" in "---applicationReview:-:reviewsTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    Then I softly see field "Leverage Allowed?" as "Yes"
     Then I softly see field "Pre-Application Required?" as "No"
     When I click on "Qualify" in the page details
     Then I softly can see top right button "Create Application" in page detail
+    When I click on "Create Application" in the page details
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Application_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I softly see field "Match Required?" as "Yes"
+    And I navigate to "Budget" sub tab
+    Then I softly can see page block "Focus Area"
+    When I expand nested table containing column value "BP01"
+    Then I softly see all values "$0.00" under column "Total Match" inside flextable with id "---applicationIntake:-:budgetPeriodTableId---"
+    Then I softly see all values "$0.00" under column "Other Leverage" inside flextable with id "---applicationIntake:-:budgetPeriodTableId---"
     Then I collect all the soft asserts
