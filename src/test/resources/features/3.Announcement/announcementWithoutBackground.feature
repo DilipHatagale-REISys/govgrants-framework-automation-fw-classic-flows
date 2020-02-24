@@ -129,7 +129,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Overview Tab - Application Due Date cannot be in the past.     |
     And I collect all the soft asserts
 
-  @71150 @71303 @71151 @71152 @71153 @71056 @71314 @71307 @verifyTotalReviewFormWeight @aashish
+  @71150 @71303 @71497 @71500 @71503 @71523 @71518 @71151 @71152 @71540 @71153 @71056 @71314 @71307 @verifyTotalReviewFormWeight @aashish999
   Scenario: To validate system generated error message when total Review Form  weight(%) is more than 100 % while creating Announcement
     Given I delete the record "Automation Directed Announcement" from the object "APPLICATION REVIEWS"
     Given I delete the record "Automation Directed Announcement" from the object "PreApplication"
@@ -139,7 +139,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Directed" content inside "Announcements" subheader on left panel
-    And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I click on top right button "New" in flex table with id "---announcement:-:annoucementTableId---"
     And I enter "DirectedAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
     When I enter "Pre-Application Modal" values from "Announcement_Field_Values.xlsx"
@@ -184,12 +184,74 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Program Review | 70              |
     And I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
       | Form Weight (%) | Form Name           |
-      | 70              | Program Review Form |
+      | 70.00%          | Program Review Form |
     Then I softly see value "Program Review Form" for title "Form Name" inside table "---announcement:-:preScreenReviewFormTableId---"
-    And I click on "Review Forms" icon for "Program Review Form" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    Then I softly see value "75%" for title "Section Weight (%)" against the value "Budget" inside table "---announcement:-:reviewPanelTableId---"
+    Then I softly see value "15%" for title "Section Weight (%)" against the value "Match" inside table "---announcement:-:reviewPanelTableId---"
+    Then I softly see value "10%" for title "Section Weight (%)" against the value "Program Income" inside table "---announcement:-:reviewPanelTableId---"
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Order | Section Header   | Section Weight (%) |
-      | 1             | Capability Forms | 50                 |
+      | Section Weight (%) | Section Header         |
+      | 10%                | Program Income updated |
+    Then I softly see value "Program Income updated" for title "Section Header" inside table "---announcement:-:reviewPanelTableId---"
+    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
+      | Section Weight (%) | Section Header |
+      | 10%                | Program Income |
+    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Budget         | 50                 |
+      | Match          | 60                 |
+      | Program Income | 70                 |
+    Then I softly see the following messages in the page details :
+      | Saved Successfully! |
+    And I close modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    Then I softly see the following messages in the page details :
+      | Setup Tab - Management Review - Management Review: The total section weight must equal 100% or 0%, it is currently 180%. |
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Budget         | 0                  |
+      | Match          | 0                  |
+      | Program Income | 0                  |
+    And I close modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    Then I softly see the following messages in the page details :
+      | Setup Tab - SME Review - Fiscal Review: A score cannot be associated to a question in the Program Income section because it does not have a weight. |
+      | Setup Tab - SME Review - Fiscal Review: A score cannot be associated to a question in the Match section because it does not have a weight.          |
+      | Setup Tab - SME Review - Fiscal Review: A score cannot be associated to a question in the Budget section because it does not have a weight.         |
+      | Setup Tab - SME Review - Fiscal Review: A weighted form must contain weighted sections.                                                             |
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Budget         | 25                 |
+      | Match          | 25                 |
+      | Program Income | 50                 |
+    Then I softly see the following messages in the page details :
+      | Saved Successfully! |
+    And I close modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    Then I softly see the following messages in the page details :
+      | There are no errors with the review step templates. |
+    And I collapse nested table containing column value "SME Review"
+    And I expand nested table containing column value "Management Review"
+    And I click on "Review Form" icon for "Management Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 50                 |
+      | Strategic Alignment        | 30                 |
+    Then I softly see the following messages in the page details :
+      | Saved Successfully! |
+    And I close modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    Then I softly see the following messages in the page details :
+      | Setup Tab - Management Review - Management Review: The total section weight must equal 100% or 0%, it is currently 80%. |
+    And I pause execution for "3" seconds
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Program Review Form" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
+      | Section Weight (%) | Section Header   |
+      | 15%                | Capability Forms |
     Then I softly see value "Capability Forms" for title "Section Header" inside table "---announcement:-:reviewPanelTableId---"
     And I expand nested table containing column value "1"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
@@ -252,7 +314,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Saved Successfully! |
     And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
     Then I softly see the following messages in the page details :
-      | There are no errors with the review step templates.|
+      | There are no errors with the review step templates. |
     When I enter the following values into flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Add" :
       | Reviewer |
       | David FO |
