@@ -2,7 +2,7 @@
 Feature: Validate creation of data in new Org
 
   @automationPermanentFocusArea               
-  Scenario: Activate Focus Area
+  Scenario: Validate the creation and Activation of Permanent Focus Area
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
@@ -17,7 +17,7 @@ Feature: Validate creation of data in new Org
     Then I see status in Progress-bar is "Active" and is "Green"
 
   @automationPermanentFocusArea2
-  Scenario: Permanent Record 2 - Activate Focus Area
+  Scenario: Validate the creation and Activation of Permanent Focus Area 2
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
@@ -32,7 +32,7 @@ Feature: Validate creation of data in new Org
     Then I see status in Progress-bar is "Active" and is "Green"
 
   @automationPermanentFundingAccount        
-  Scenario: Activate Funding Source
+  Scenario: Validate the creation and Activation of Permanent Funding Account
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
     When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
@@ -51,7 +51,7 @@ Feature: Validate creation of data in new Org
     Then I see status in Progress-bar is "Active" and is "Green"
 
   @automationPermanentKPIforRegression      
-  Scenario : Activate KPI
+  Scenario : Validate the creation and Activation of Permanent KPI
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
     When I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
@@ -64,7 +64,7 @@ Feature: Validate creation of data in new Org
     Then I see status in Progress-bar is "Active" and is "Green"
 
   @automationPermanentKPIForRegression2
-  Scenario : Activate KPI Record 2
+  Scenario : Validate the creation and Activation of Permanent KPI 2
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
     When I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
@@ -77,7 +77,7 @@ Feature: Validate creation of data in new Org
     Then I see status in Progress-bar is "Active" and is "Green"
 
   @automationPermanentStrategicPlan
-  Scenario: Activating Strategic Plan Activation
+  Scenario: Validate the creation and Activation of Permanent Strategic Plan Activation
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
     When I navigate to "Strategic Plans" content inside "Setup" subheader on left panel
@@ -189,7 +189,7 @@ Feature: Validate creation of data in new Org
     Then I see status in Progress-bar is "Active" and is "Green"
 
   @competitiveAnnouncementActivationAnnouncementforFDM
-  Scenario: Validate the activation of Competitive Announcement
+  Scenario: Validate the activation of permanent record of Competitive Announcement for FDM
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -254,7 +254,7 @@ Feature: Validate creation of data in new Org
     Then I see status in Progress-bar is "Published" and is "green"
 
   @automationAnnouncementforApplicationReview    
-  Scenario: Validate the activation of Competitive Announcement
+  Scenario: Validate the activation of permanent record of Competitive Announcement for Application Review 
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -319,7 +319,7 @@ Feature: Validate creation of data in new Org
     Then I see status in Progress-bar is "Published" and is "green"
 
   @automationAnnouncementforApplicationIntake
-  Scenario: Validate the activation of Announcement
+  Scenario: Validate the activation of permanent record of Competitive Announcement for Application Intake 
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -384,7 +384,7 @@ Feature: Validate creation of data in new Org
     Then I see status in Progress-bar is "Published" and is "green"
 
   @automationAnnouncementforPre-Application  
-  Scenario: Validate the creation of Permanent record of Pre-app announcement
+  Scenario: Validate the activation of permanent record of Competitive Automation Announcement for Pre-Application   
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -449,7 +449,7 @@ Feature: Validate creation of data in new Org
     Then I see status in Progress-bar is "Published" and is "green"
 
   @applicationSubmissionAutomationAnnouncementforApplicationReview    
-  Scenario: Validate the submission of application
+  Scenario: Validate the submission of application of Announcement for Application Review record
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
@@ -670,7 +670,7 @@ Feature: Validate creation of data in new Org
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
   @automationGrant/AwardforRiskAssessment
-  Scenario Outline: Validate subaward Happy path stand alone for Automation Grant/Award for Risk Assessment
+  Scenario Outline: Validate Creation and Activation of Automation Grant/Award for Risk Assessment Award
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -822,7 +822,7 @@ Feature: Validate creation of data in new Org
       | Automation Grant/Award for Risk Assessment | Automation Grant/Award for Risk Assessment |
 
   @automationAwardforAmendmentRequest
-  Scenario Outline: Validate subaward Happy path stand alone
+  Scenario Outline: Validate Creation and Activation of Automation Award for Amendment Request
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -974,7 +974,7 @@ Feature: Validate creation of data in new Org
       | Automation Award for Amendment Request | Automation Award for Amendment Request |
 
   @automationPermanentAward 
-  Scenario Outline: Validate Permanent record creation of Automation Permanent Award 
+  Scenario Outline: Validate the creation and Activation of Automation Permanent Award 
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
