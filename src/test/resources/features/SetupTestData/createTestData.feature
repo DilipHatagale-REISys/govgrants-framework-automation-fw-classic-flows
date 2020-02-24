@@ -50,8 +50,8 @@ Feature: Validate creation of data in new Org
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @automationPermanentKPIforRegression      
-  Scenario : Validate the creation and Activation of Permanent KPI
+  @automationPermanentKPIForRegression    
+  Scenario: Validate the creation and Activation of Permanent KPI
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
     When I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
@@ -64,7 +64,7 @@ Feature: Validate creation of data in new Org
     Then I see status in Progress-bar is "Active" and is "Green"
 
   @automationPermanentKPIForRegression2
-  Scenario : Validate the creation and Activation of Permanent KPI 2
+  Scenario: Validate the creation and Activation of Permanent KPI 2
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
     When I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel

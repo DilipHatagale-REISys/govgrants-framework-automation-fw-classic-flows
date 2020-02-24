@@ -85,10 +85,10 @@ public class UsersAndURL implements UsersController {
                 password = "test72018";
                 break;
             case "ADMIN":
-                password = "GoProduct@1234";
+                password = "GoProduct@12345";
                 break;
             default:
-                password = "SALESFORCE2019";
+                password = "SALESFORCE2020";
         }
         return password;
     }
@@ -119,11 +119,11 @@ public class UsersAndURL implements UsersController {
 
     private String getAUTOEnvironmentUser(String userLevel) {
         Map<String, String> username = new HashMap<>();
-        username.put("ADMIN", "manu.admin@ggp.test8.automation");
+        username.put("ADMIN", "ajinath.g@ggp.test8.automation");
         username.put("EXE", "test@gmaildemo.com.atm.automation");
         username.put("PM", "donald_pm@ggp.test7.atm.automation");
         username.put("FO", "auto.fm@auto.com.atm.automation");
-        username.put("SPI", "automationspi@yopmail.com");
+        username.put("SPI", "spiautomation@yopmail.com");
         username.put("SPA", "automationspa@yopmail.com");
         username.put("IND", "automationind123@yopmail.com");
         username.put("SA", "christopher.sa@yopmail.com");
