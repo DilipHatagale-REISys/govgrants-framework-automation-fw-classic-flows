@@ -35,7 +35,6 @@ Feature: Validate all scenarios in the home tab
     Then I softly can see row level action button "View" against "Test Automation Organization" in flex table with id "---home:-:internalOrganizationId---"
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     Then I softly see that "Internal Organization" is in "Active" status
-    Then I collect all the soft asserts
     Examples:
       | User  |
       | ADMIN |
@@ -54,7 +53,6 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "{user:fullName}" in "---home:-:indActiveAccountId---" panel
     And I click on "View" icon for "{user:fullName}" inside flex table with id "---home:-:indActiveAccountId---"
     Then I softly see that "{user:fullName}" is in "Active" status
-    Then I collect all the soft asserts
     Examples:
       | User  |
       | ADMIN |
@@ -70,7 +68,6 @@ Feature: Validate all scenarios in the home tab
     Then I softly can see row level action button "Edit" against "SAN DIEGO ELECTRICAL TRAINING TRUST" in flex table with id "---home:-:subrecipientActiveAccountId---"
     When I perform quick search for "{user:fullName}" in "---home:-:indActiveAccountId---" panel
     Then I softly can see row level action button "Edit" against "{user:fullName}" in flex table with id "---home:-:indActiveAccountId---"
-    Then I collect all the soft asserts
     Examples:
       | User  |
       | ADMIN |
@@ -89,7 +86,6 @@ Feature: Validate all scenarios in the home tab
     And I click on "View" icon for "Automation PO" inside flex table with id "---home:-:internalContactTableId---"
     Then I softly see field "Organization" as "Test Automation Organization"
     Then I softly can see row level action button "Edit" against "Automation PO" in flex table with id "---home:-:internalContactTableId---"
-    Then I collect all the soft asserts
     Examples:
       | User  |
       | ADMIN |
@@ -108,7 +104,6 @@ Feature: Validate all scenarios in the home tab
     Then I softly see values "Automation SME" and "New" inside table
     When I perform quick search for "Automation SME" in "---home:-:reviewersTableId---" panel
     Then I softly can see row level action button "View" against "Automation SME" in flex table with id "---home:-:reviewersTableId---"
-    Then I collect all the soft asserts
     Examples:
       | User  |
       | ADMIN |
@@ -153,7 +148,6 @@ Feature: Validate all scenarios in the home tab
     Then I softly can see row level action button "View" against "TC-598383" in flex table with id "---home:-:termsAndConditionsTableId---"
     Then I softly see value "Active" for title "Status" against the value "TC-598383" inside table "---home:-:termsAndConditionsTableId---"
     Then I softly can see row level action button "Edit" against "TC-598383" in flex table with id "---home:-:termsAndConditionsTableId---"
-    Then I collect all the soft asserts
     Examples:
       | User  |
       | ADMIN |
@@ -222,7 +216,6 @@ Feature: Validate all scenarios in the home tab
     And I enter "Edition" values from "SubrecipientContact_Field_Values.xlsx"
     And I click modal button "Save"
     Then I softly see value "New" for title "Status" inside table "---home:-:internalContactTableId---"
-    Then I collect all the soft asserts
     Examples:
       | User  |
       | ADMIN |
@@ -261,7 +254,6 @@ Feature: Validate all scenarios in the home tab
     And I enter "AdditioanlAddressesEdition" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
     Then I softly see that "Test Automation Organization" is in "Active" status
-    Then I collect all the soft asserts
     Examples:
       | User  |
       | ADMIN |
@@ -283,7 +275,6 @@ Feature: Validate all scenarios in the home tab
     And I click modal button "Save"
     When I close "Edit" modal by clicking the top right x button
     Then I softly see that "Internal Organization" is in "Active" status
-    Then I collect all the soft asserts
     Examples:
       | User |
       | EXE  |
@@ -322,7 +313,6 @@ Feature: Validate all scenarios in the home tab
     Then I softly see values "138047990" and "HernNdon" inside table
     When I click on "delete" icon for "138047990" inside flex table with id "---home:-:dunsTableId---"
     Then I softly do not see values "138047990" and "DUNSNumber" inside table
-    Then I collect all the soft asserts
     Examples:
       | User |
       | PM   |
@@ -457,7 +447,6 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---home:-:completedAssignedToMe---" panel
     Then I softly see values "Approve Program" and "Completed" inside table
-    Then I collect all the soft asserts
 
   @57346 @subrecipientOrganizationDUNSandEINS
   Scenario Outline: Verify whether the Organization has at least one DUNS Numbers
@@ -522,7 +511,6 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Related Log" sub tab
     When I perform quick search for "Automation Announcement for Application Intake" in "RecipientAppReviewList" panel
     Then I softly can see row level action button "View" against "Automation Announcement for Application Intake" in flex table with id "RecipientAppReviewList"
-    Then I collect all the soft asserts
     Examples:
       | User  |
       | ADMIN |
@@ -617,7 +605,6 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Overview" sub tab
     Then I softly can see page block "Related Contacts"
     And I softly can see page block "Indirect Cost Rates"
-    Then I collect all the soft asserts
     Examples:
       | User  |
       | ADMIN |

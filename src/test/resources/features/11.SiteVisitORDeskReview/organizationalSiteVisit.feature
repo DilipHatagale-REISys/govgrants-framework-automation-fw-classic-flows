@@ -21,7 +21,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I enter "Edition" values from "Organizational_SiteVisit_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I softly see status in Progress-bar is "Created" and is "green"
-    Then I collect all the soft asserts
 
   @51080 @participantAssociationOrganizationalSiteVisitExternallUser @smoke
   Scenario Outline: Participant Association of Organizational Site Visit
@@ -125,7 +124,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     Then I softly see that "Automation Site Visit Org level" is in "Notified" status
     When I click on "Conduct" in the page details
     Then I softly see status in Progress-bar is "In Progress" and is "green"
-    Then I collect all the soft asserts
 
   @54455 @notifyPendingTaskForSubrecipientSiteVisitOrgLevel @deepika
   Scenario: The respective POC from the applicant organization will receive a pending task about the Site Visit
@@ -248,7 +246,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     Then I softly see that "Automation Finding" has been added in flextable with Id "---orgLevelSiteVisits:-:correctiveTableId---"
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
-    Then I collect all the soft asserts
 
   @54890 @54889 @siteVisitapprovalAndSendToSubrecipientOrgLevel @deepika
   Scenario: Approval and Send Site Visit to Subrecipient Org Level
@@ -321,7 +318,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I navigate to "Reports and Outcomes" sub tab
     Given I click on "Send to Subrecipient" in the page details
     Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "green"
-    Then I collect all the soft asserts
 
   @56355 @55206 @siteVisitSubmitToGrantorAndCorrectiveActionsBySubrecipient @smoke @deepika
   Scenario: Validate the Site Visit Submit to Grantor and Corrective Actions By Subrecipients
@@ -415,7 +411,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     Then I softly see that "Automation Site Visit Org level" is in "Sent to Subrecipient" status
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
-    Then I collect all the soft asserts
 
   @55462 @61403 @viewnapshotOrgSiteVisitAcceptButtonAfterSRecipientsSubmission @deepika @skipOnJenkins
   Scenario: Validate User will be able to view the SnapshotSite Visit Accept button after review the submission by Recipients
@@ -520,7 +515,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on hyperlink containing value "Site Visit - Accept And Close"
     When I download the file
     Then I see "Closed" on page "1" of "govgrants" pdf file
-    Then I collect all the soft asserts
 
   @59011 @56004 @sendBacktoOwnerReceivePendingTaskSVOrgLevel @deepika
   Scenario:  Validate when Site Visit record sent back to Recipients when outcomes are not properly addressed and recipients will be able to receive a pending task
@@ -586,7 +580,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I navigate to "Applications" tab
     When I navigate to "Application Site Visits" content inside "Application Reviews" subheader on left panel
     Then I softly see that "Automation Site Visit Org Level" has been added in flextable with Id "ApplicationsSiteVisitReportsGrid"
-    Then I collect all the soft asserts
 
   @55464 @siteVisitsOrgLevelWithOutAddingCorerctiveItems @deepika
   Scenario: User will not be able to submit the Site Visits Org Level to Grantor without adding corrective actions to findings.
@@ -795,7 +788,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     Then I softly see status in Progress-bar is "Notified" and is "green"
     When I click on "Conduct" in the page details
     Then I softly see status in Progress-bar is "In Progress" and is "green"
-    Then I collect all the soft asserts
 
   @55871 @55868 @recipientsCannotCreateOutcomesSeeReportsANdoutcomesInNotified @deepika
   Scenario: Validate Site Visit Applicant is not able to view the report or outcomes while in the Notified status and Recipients will not be able to create / edit the Outcomes.
@@ -825,7 +817,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:homePendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:homePendingTaskTableId---"
     Then I softly cannot see "Reports and Outcomes" sub tab at view detail page
-    Then I collect all the soft asserts
 
   @56008 @siteVisitWithoutFormFillingOrgLevel @deepika
   Scenario: User will not be able to submit the Site Visit for approval without completed forms
@@ -917,7 +908,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "History" sub tab
     When I perform quick search for "{SavedValue:Record Id}" in "History" panel
     Then I softly see value "Created" for title "Old Value" inside table "History"
-    Then I collect all the soft asserts
 
   @61399 @FieldHistoryUpdatedForSiteVisitIsSendBackToOwnerByFiscalApprover @keerti
   Scenario: To Validate field history update for Org Level Site Visits  is send back to owner by Fiscal Approver
@@ -1035,7 +1025,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
     Then I see snapshot with name containing "Sitevisit_submit_for_approval" as name
-    Then I collect all the soft asserts
 
   @61402 @SiteVisitsReviewerCanNotEditAfterSubmittingTheReview @keerti
   Scenario: Validate after submitting the review comments for Org Level Site Visits, the Edit button should will be unavailable for the reviewer
@@ -1140,7 +1129,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "View" icon for "Automation Site Visit Org level" inside flex table with id "---orgLevelSiteVisits:-:latestSiteVisitReportsGridTableId---"
     When I navigate to "Responsibilities" sub tab
     Then I softly cannot see row level action button "Enter Review" against "Automation FO" in flex table with id "flexGridRiskAssessmentApproverRoles"
-    Then I collect all the soft asserts
 
   @61406 @61405 @66273 @CreatedDatedisplayedOnOverviewTabAddAttchments @keerti
   Scenario: Validate whether the PM user can add the attachments to Org Level Site Visits and view the Created Date on Overview Tab |Validate whether record owner has access to delete the asoociated Contact and Application- Org Site visits
@@ -1162,7 +1150,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" from workspace
     Then I softly see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
-    Then I collect all the soft asserts
 
   @61407 @61994 @CreatedDateCanNotEditSVDatesUnderOverviewTab @keerti
   Scenario: Validate the Created Date of Risk Assessment display on Overview Tab and owner cannot edit the Site Visits Dates under Overview tab
@@ -1190,7 +1177,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Conduct" in the page details
     Given I navigate to "Overview" sub tab
     Then I softly see field "StartDate__c" is not editable
-    Then I collect all the soft asserts
 
   @61993 @RecordOwnerCanViewSnapshotAfterOSVIsSubmittedForApproval @keerti @skipOnJenkins
   Scenario: Validate Record Owner user is able to view the Snapshot after Site Visit is Submitted for Approval status - Org Site Visits
@@ -1313,7 +1299,6 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Delete" icon for "Automation Site Visit Org level" inside flex table with id "SiteVisit"
     And I perform quick search for "Record Id" in "SiteVisit" panel
     Then I softly see "No Records Found" inside flex table with id "SiteVisit"
-    Then I collect all the soft asserts
 
   @65152 @historyOfOrgSiteVisitsendbacktoOwner @deepika
   Scenario: Validate History Field is getting Updated at Award owner End when Org Site Visit status is Submitted to Grantor.

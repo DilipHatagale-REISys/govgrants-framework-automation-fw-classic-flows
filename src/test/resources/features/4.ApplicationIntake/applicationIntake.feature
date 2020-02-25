@@ -19,7 +19,6 @@ Feature: Validate all scenarios in the Application Intake
   Scenario: Validate creation of an Application |Validate once application is in created status, the user can view the Submit Application Button in page details
     Then I softly see status in Progress-bar is "Created" and is "Green"
     Then I softly can see top right button "Submit Application" in page detail
-    Then I collect all the soft asserts
 
   @34045 @applicationEdition
   Scenario: Edition of an application
@@ -88,7 +87,6 @@ Feature: Validate all scenarios in the Application Intake
     And I click on "Save" in the page details
     When I click on "Back" in the page details
     Then I softly see that "100%" has been added in flextable with Id "---applicationIntake:-:allFormsTableId---"
-    Then I collect all the soft asserts
 
   @34346 @70459 @viewSubmitedApplication @smoke @deepika
   Scenario Outline: Viewing the application submitted by sub-recipient as Internal user | Validate whether user can view the edit button once application has been submitted to Grantor
@@ -129,7 +127,6 @@ Feature: Validate all scenarios in the Application Intake
     When I click on "View" icon for "<Application Name>" inside table
     Then I softly see status in Progress-bar is "Submitted" and is "Green"
     Then I softly cannot see top right button "Edit" in page detail
-    Then I collect all the soft asserts
     Examples:
       | Application Name                               |
       | Automation Announcement for Application Intake |
@@ -167,7 +164,6 @@ Feature: Validate all scenarios in the Application Intake
     When I click on "Submit Application" in the page details
     Then I see the following messages in the page details :
       | Overview Tab - Enter an Acknowledgement before submitting this Application. |
-    Then I collect all the soft asserts
 
   @70455 @kpiValuesAreMandatoryToSubmitApplication @deepika
   Scenario:  To verify that if KPI value is unfilled while creating and application and upon clicking on the Submit Application on the top right corner of the page validation error must be thrown.
@@ -210,7 +206,6 @@ Feature: Validate all scenarios in the Application Intake
       | Other                    |
       | Project Director/Manager |
       | Authorized Signatory     |
-    Then I collect all the soft asserts
 
   @70527 @applicationAttachmentAndNotes @wip @deepika
   Scenario: Validate whether user can add attachment checklist and Notes on the Application
@@ -220,7 +215,6 @@ Feature: Validate all scenarios in the Application Intake
     And I add notes records
     When I enter notes with title "Automation Title" and description "Automation Description"
     Then I softly see value "Notes Record" for title "Title" inside table "toggleNotes"
-    And I collect all the soft asserts
 
   @70526 @snapshotAfterApplicationIsSubmitted @deepika
   Scenario Outline: Validate SR user is able to view the Snapshot after Application is Submitted to Grantor status

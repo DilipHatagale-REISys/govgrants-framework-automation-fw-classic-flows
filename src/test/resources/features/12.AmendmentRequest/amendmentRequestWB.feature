@@ -2087,4 +2087,3 @@ Feature: Amendment Request scenarios without background
     And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Monitoring" tab
     Then I softly see value "In progress" for title "Status" against the value "Record Id" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"
-    And I collect all the soft asserts

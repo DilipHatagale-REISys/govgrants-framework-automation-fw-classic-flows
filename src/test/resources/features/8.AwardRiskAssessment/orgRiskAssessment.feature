@@ -19,7 +19,6 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     Then I softly see status in Progress-bar is "Created" and is "Green"
-    Then I collect all the soft asserts
 
   @61976 @61975 @requestNewAssessmentActiveRA @deepika @smoke
   Scenario: Validate whether Request New Assessment button is available for Authorized Signatory and  User can view the Active risk asssessment from Organization profile page
@@ -37,7 +36,6 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     Then I softly can see top right button "Request New Assessment" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     When I perform quick search for "Record Id" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     Then I softly see that "Active" has been added in flextable with Id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
-    Then I collect all the soft asserts
 
   @61977 @moderateRiskLevelColorChangesToYellow @deepika @wip
   Scenario: Validate the moderate level of Risk Assessment, that changes to Yellow color as per the provided Assessment.
@@ -72,7 +70,6 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     Then I softly cannot see top right button "Edit" in page detail
     When I navigate to "Attachments" sub tab
     Then I softly cannot see top right button "Add" for "Attachments" flex table
-    Then I collect all the soft asserts
 
   @61983 @completedTaskOnceOrgRAIsCreated @deepika
   Scenario: Validate whether SPI user is able to view the Completed task once Org Risk Assessment is Created
@@ -158,7 +155,6 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     When I refresh the page
     Then I softly cannot see top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
-    Then I collect all the soft asserts
 
   @62312 @deleteIconfCreatedRiskAssessment @deepika
   Scenario: Validate whether Authorized Signatory can view the delete button across the created Risk Assessment
@@ -1554,7 +1550,6 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I perform quick search for "Created" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     Then I softly can see row level action button "Delete" against "Created" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     And I softly can see row level action button "Edit" against "Created" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
-    Then I collect all the soft asserts
 
   @64125 @taskMarkedCompletedUsingDraftRA
   Scenario: Verify task is marked completed if the user chooses to activate the risk assesment using the draft risk assessment instead of using the task
@@ -1631,7 +1626,6 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I navigate to "Overview" sub tab
     #Then I softly see "Risk Level" image as "red.png"
     Then I softly see field "Overall Score" as "76.0%"
-    Then I collect all the soft asserts
 
   @64515 @overallRiSKScoreWhenAssessmentSelectedDiffQuestions @deepika
   Scenario: Validate the Moderate Risk Score of Risk Assessment, that shows the Overall Score as per the provided Assessment once Risk Assessment is Active
@@ -1650,7 +1644,6 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "View" icon for "Record Id" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     When I navigate to "Overview" sub tab
     Then I softly see field "Overall Score" as "27.0%"
-    Then I collect all the soft asserts
 
   @64516 @overallRiSKScoreWhenAssessmentSelectedDiffSetQuestions @deepika @wip
   Scenario: Validate the Risk level of Risk Assessment, that shows the Overall Score as per the provided Assessment once Risk Assessment is Active
@@ -2001,5 +1994,4 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Overview" sub tab
     Then I see field "Effective Date" is not editable
     Then I see field "Expiration Date" is not editable
-    Then I collect all the soft asserts
     

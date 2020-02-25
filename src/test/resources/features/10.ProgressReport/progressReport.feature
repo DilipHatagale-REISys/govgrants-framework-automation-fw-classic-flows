@@ -20,7 +20,6 @@ Feature: Validate all scenarios in Progress Report
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     Then I softly see status in Progress-bar is "Created" and is "Green"
-    Then I collect all the soft asserts
 
   @51099 @editKPIProgressReport
   Scenario: To edit KPI in Progress Report
@@ -1272,7 +1271,6 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "Performance" sub tab
     Then I softly see value "Submitted to Grantor" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressReport:-:recipientAwardProgressReportTableId---"
     Then I softly see value "Created" for title "Status" against the value "{SavedValue:ProgressReport2}" inside table "---progressReport:-:recipientAwardProgressReportTableId---"
-    Then I collect all the soft asserts
     Examples:
       | Award Name                 |
       | Automation Permanent Award |

@@ -214,7 +214,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click toggle button to select "Formula Announcements - Draft"
     When I perform quick search for "Record id" in "---announcement:-:formulaAnnouncementTableId---" panel
     Then I softly cannot see row level action button "Delete" against "Record id" in flex table with id "---announcement:-:formulaAnnouncementTableId---"
-    And I collect all the soft asserts
 
   @70613 @70677 @announcementWithBlankBudgetPeriodFA
   Scenario: Validate that user should not submit announcement with blank budget period dates | To verify that if announcement type is -Formula then user can remove applicant organization in Invited Applicants section while creating the  Announcement
@@ -597,7 +596,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
-    And I collect all the soft asserts
 
   @announcementSendBackToOwnerFA @announcementPostSendBackCheckFieldHistoryFA @announcementSendBackPendingTaskToOwnerFA
   Scenario: Validate the send back functionality of an Announcement || Validate that after send back from approvers owner should not get pending task
@@ -784,7 +782,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     Then I softly do not see values "Record Id" and "Automation Formula Announcement" inside table
-    And I collect all the soft asserts
 
   @announcementPostRejectionCheckInListViewFA @announcementPostRejectCompletedTaskForUserFA @announcementApprovalRejectionFA @announcementRejectPendingTaskForNextApproverFA @announcementPostRejectPendingTaskForUserFA @announcementPostRejectCheckFieldHistoryFA
   Scenario: Validate the rejected announcement will reflect under "Rejected Announcements" list view || Validate the field history after rejection of an announcement || Validate that after rejection of an Announcement task get added to it's completed task table. || Validate that after rejection of an Announcement task get deleted from pending task table.|| Validate the reject functionality of an Announcement || Validate that after rejection from 1st approver, 2nd user should not get pending task
@@ -985,4 +982,3 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     Then I softly do not see values "Record Id" and "Automation Formula Announcement" inside table
-    And I collect all the soft asserts

@@ -11,7 +11,6 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
     When I click on "View" icon for "Automation Permanent Award" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     And I navigate to "Subawards" sub tab
     Then I cannot see top right button "New" in flex table with id "---subAwardStandAlone:-:subawardsTableId---"
-    Then I collect all the soft asserts
 
   @69169 @auditorCannotEDitActiveGrantAward
   Scenario: Validate Auditor do not have Edit permission for Grant/Subaward
@@ -24,7 +23,6 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
     And I navigate to "Subawards" sub tab
     And I perform quick search for "Automation Permanent Award" in "---subAwardStandAlone:-:subawardsTableId---" panel
     Then I softly cannot see row level action button "Edit" against "Automation Permanent Award" in flex table with id "---subAwardStandAlone:-:subawardsTableId---"
-    Then I collect all the soft asserts
 
   @69170 @auditorCanViewActiveGrantAward
   Scenario: Validate Auditor should have view / read  only access to Active Grant/Award
@@ -38,7 +36,6 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
     And I perform quick search for "Automation Permanent Award" in "---subAwardStandAlone:-:subawardsTableId---" panel
     When I click on "View" icon for "Automation Permanent Award" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     Then I softly see status in Progress-bar is "Activated" and is "green"
-    Then I collect all the soft asserts
 
   @69304 @auditorCandownloadasPDF @skipOnJenkins
   Scenario: Validate Verify User with Auditor profile has ability to download PDF files of record.

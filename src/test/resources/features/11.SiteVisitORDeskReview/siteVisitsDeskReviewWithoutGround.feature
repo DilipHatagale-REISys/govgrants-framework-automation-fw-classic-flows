@@ -335,7 +335,6 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Given I navigate to "Management" sub tab
     When I perform quick search for "Approved" in "---sitevisits:-:grantorSiteVisitsTableID---" panel
     Then I softly see value "In Progress" for title "Status" against the value "{SavedValue:EGMSID}" inside table "---sitevisits:-:grantorSiteVisitsTableID---"
-    Then I collect all the soft asserts
 
   @66716 @approvedStatusDeskReviewCannotCarriedForwardToNewAward @deepika
   Scenario: Validate if desk review is in Approved status and amendment is done for base award, final state desk review should not be moved to newly created subaward after amendment.
@@ -478,7 +477,6 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Given I navigate to "Management" sub tab
     When I perform quick search for "Approved" in "---deskreview:-:managementInitiateDRtableid---" panel
     Then I softly see value "Approved" for title "Status" against the value "{SavedValue:DeskReviewID}" inside table "---deskreview:-:managementInitiateDRtableid---"
-    Then I collect all the soft asserts
 
   @69413 @initiateSiteVisitButtononFlextable
   Scenario: Validate whether initiate site visit button appear on site visit table of management tab of Award owner after Subaward is activated
@@ -512,4 +510,3 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I click "Grant ID" lookup link
     And I navigate to "History" sub tab
     And I softly see value "2030-01-25" for title "New Value" against the value "Project Period End Date" inside table "---sitevisits:-:grantHistoryTableId---"
-    Then I collect all the soft asserts

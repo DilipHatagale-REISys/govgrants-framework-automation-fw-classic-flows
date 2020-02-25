@@ -38,7 +38,6 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Responsibilities" sub tab
     Then I softly cannot see top right button "New" in flex table with id "---riskassessment:-:raPeerReviewFlexTableId---"
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
-    Then I collect all the soft asserts
 
   @58167 @59625 @66378 @PendingTaskCreationAndapprovalProcessofRiskAssessment @deepika
   Scenario: Validate the Approval process of Risk Assessment and whether the pending task is created for Program approver under Home Tab when the award owner submits the Risk Assessment for approval |Validate the System should capture field history post activation.
@@ -85,7 +84,6 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly see that "EGMS ID" is in "Active" status
     When I navigate to "History" sub tab
     Then I softly see value "Active" for title "New Value" inside table "History"
-    Then I collect all the soft asserts
 
   @58168 @58169 @59875 @pendingTaskCreationforRiskAssesmentostRejectCheckFieldHistory @deepika
   Scenario: Validate the field history after rejection of Risk Assessment and whether user is able to view the pending task once submitted for approval under Monitoring Tab and First Approver is able to reject the Risk Assessment then status in Progress bar is Rejected.
@@ -126,7 +124,6 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly see status in Progress-bar is "Rejected" and is "Red"
     When I navigate to "History" sub tab
     Then I softly see value "Rejected" for title "New Value" inside table "History"
-    Then I collect all the soft asserts
 
   @58170 @58171 @forwardToOtherUsersendtoOwnerRiskAssesment @deepika
   Scenario: Validate whether user is to able to forward Risk Assessment for Approval and Send to Owner
@@ -172,7 +169,6 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "Submit for Approval" in the page details
     And I "Reassign" to user "Automation EXE" in the approval decision
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
-    Then I collect all the soft asserts
 
   @58172 @58816 @riskAssesmentSetToNowhileAwardCreation @deepika
   Scenario: Validate Activation of Award Risk Assessment is not required and filling/creating risk assessment is not applicable if Grant has setting Risk Assessment=No.
@@ -196,7 +192,6 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---riskassessment:-:homePendingTaskTableId---" panel
     Then I softly do not see values "Record Id" and "Automation Award for Risk Assessment" inside table
-    Then I collect all the soft asserts
 
   @58173 @validationsBeforeSubmitForApproval @deepika
   Scenario: Validate whether system generates an error message if the user tries to proceed on the risk assessment without  entering all required fields before submitting for approval process
@@ -265,7 +260,6 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly see that "Automation FO" has been added in flextable with Id "flexGridRiskAssessmentApproverRoles"
     And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "flexGridRiskAssessmentApproverRoles"
     Then I softly see that "Sent for Review" has been added in flextable with Id "flexGridRiskAssessmentApproverRoles"
-    Then I collect all the soft asserts
 
   @58176 @58819 @60342 @riskAssessmentOwnercompletesPeerReviewforRiskAssessment @deepika
   Scenario: Validate whether the complete Review Button is available for PM user to complete peer review process and is Reviewed for Award Risk Assessment
@@ -320,7 +314,6 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly can see top right button "Complete Review" in page detail
     When I click on "Complete Review" in the page details
     Then I softly see status in Progress-bar is "Reviewed" and is "green"
-    Then I collect all the soft asserts
 
   @58177 @58181 @viewDeletionOfRiskAssessmentstatusUnderMonitoring @deepika
   Scenario: Validate whether owner has the availability (permission) of View and delete icon across created Award Risk Assessment under Monitoring Tab
@@ -350,7 +343,6 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly can see row level action button "Delete" against "Record Id" in flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     When I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     Then I softly see status in Progress-bar is "Created" and is "Green"
-    Then I collect all the soft asserts
 
   @58817 @59253 @activeRiskAssesmentRequiredToIssueAward @deepika
   Scenario Outline: Validate system generates a message to enforce the user to activate risk assessment before issuing an award or the system generates an error message when Risk Assessment Required =Yes.
@@ -582,7 +574,6 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
     And I perform quick search for "{SavedValue:ActiveID}" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
     Then I softly see "{SavedValue:ActiveID}" inside flex table with id "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
-    Then I collect all the soft asserts
 
   @58821 @validateEditionOfRiskAssessment @deepika
   Scenario: Validate whether user can Edit the created Risk Assessment
@@ -935,7 +926,6 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     Then I cannot see top right button "Edit" in page detail
     Then I cannot see top right button "Submit for Approval" in page detail
-    Then I collect all the soft asserts
 
   @59628 @59626 @59706 @PMSendBackToOwnertaskIsNotCreatedToSecondApproverWhenPMRejectsfoUserCannotEditRA @deepika
   Scenario: Validate whether PM is to able to Send Risk Assessment Back to Owner and Pending task is not created to fiscal approver when program approver performs send to the owner and also cannot view Edit Button
@@ -977,7 +967,6 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     Then I softly do not see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
-    Then I collect all the soft asserts
 
   @59613 @ownerToAddProgramReviewer @deepika
   Scenario: Validate owner is allowed to add a peer reviewer of type Program Reviewer in the peer reviewers table in Award Risk Assessment
@@ -1484,7 +1473,6 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "flexGridRiskAssessmentGridViewInternal" panel
     When I click on "View" icon for "Record Id" inside flex table with id "flexGridRiskAssessmentGridViewInternal"
     Then I softly see status in Progress-bar is "Active" and is "Green"
-    Then I collect all the soft asserts
 
   @63985 @recordOwnerCannotCreateNewRAWhenInSubmittedForApproval @deepika
   Scenario Outline: Validate when an award was activated with one active risk assessment and has other risk assessment which in created state should not get submitted for approval
@@ -1771,7 +1759,6 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "View" icon for "Record Id" inside flex table with id "flexGridRiskAssessmentGridViewInternal"
     When I navigate to "Responsibilities" sub tab
     Then I softly cannot see row level action button "Enter Review" against "Automation FO" in flex table with id "flexGridRiskAssessmentApproverRoles"
-    Then I collect all the soft asserts
 
   @59960 @intialRiskAssessmentMarkedAsExpired @deepika
   Scenario Outline: Validate when the Award is activated whether SR user can view the second Risk Assessment that was in Created Status
@@ -2086,7 +2073,6 @@ Feature: Validate all scenarios in the Risk Assessment
     When I get the "EGMS ID"
     And I navigate to "Overview" sub tab
     Then I see field "Created Date" is not editable
-    Then I collect all the soft asserts
 
   @60219 @addAttachmentToRiskAssessment @deepika
   Scenario: Add attachment to Risk Assessment
@@ -2200,7 +2186,6 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     When I navigate to "Overview" sub tab
     Then I softly see field "OverAll Risk" as "44.0%"
-    Then I collect all the soft asserts
 
   @60226 @submittedRAAtManagementTabOnAwardAtInternalSide @deepika
   Scenario: Validate Risk Assessment table on Management tab is getting updated with Risk Assessments whose status is Submitted to Approval at Award owner End
@@ -2343,7 +2328,6 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Overview" sub tab
     Then I softly see field "Risk Level" inside page block
     Then I softly see field "OverAll Risk" inside page block
-    Then I collect all the soft asserts
 
   @59619 @60232 @deletionOfCreatedRiskAssessmentFromTable @deepika
   Scenario: Validate when the Record owner deletes the Created Risk Assessment then it gets deleted from Monitoring Table deleted record is removed/ not present in the table
@@ -2374,7 +2358,6 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly do not see values "Automation risk Assessment" and "Created" inside table
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     Then I softly see "No Records Found" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
-    Then I collect all the soft asserts
 
   @60566 @ViewActiveRAFromOrganizationProfilePage @deepika
   Scenario Outline: Validate Risk Assessment Active Status should be displayed to SR user from Organizational Profile page.
@@ -2759,7 +2742,6 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
     Then I softly see value "{SavedValue:EGMSID}" for title "EGMS ID" against the value "Expired" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
-    Then I collect all the soft asserts
 
   @60965 @fieldCompares @deepika @skipOnJenkins
   Scenario: Validate whether Record Owner user is able to view and Compare field values on UI and PDF match
@@ -3148,7 +3130,6 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
     And I perform quick search for "Created" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
     Then I softly do not see value "Created" for title "Status" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
-    Then I collect all the soft asserts
 
   @65878 @newButtonISNotAvilbaleforActiveRA @deepika
   Scenario Outline: Verify whether New button on Management is not available for active awards

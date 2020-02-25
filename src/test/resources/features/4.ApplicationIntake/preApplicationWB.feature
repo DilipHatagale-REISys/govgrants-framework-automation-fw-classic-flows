@@ -22,7 +22,6 @@ Feature: Pre-Application scenarios without background
     When I click on "Qualify" in the page details
     Then I softly see that "Automation Announcement for Pre-Application" is in "Qualified" status
     Then I softly can see top right button "Create Pre-Application" in page detail
-    Then I collect all the soft asserts
 
   @70253 @spaUserCannotSubmitanPre-application
   Scenario: Validate the SPA users should not be able to Submit the Pre Application
@@ -154,7 +153,6 @@ Feature: Pre-Application scenarios without background
     And I perform quick search for "Automation Pre-App Announcement" in "---preApplication:-:recipientPreApplicationsTableId---" panel
     When I click on "View" icon for "Automation Pre-App Announcement" inside table
     Then I softly cannot see top right button "Create Pre-Application" in page detail
-    Then I collect all the soft asserts
 
   @70663 @preApplRequiredIsNoAnnouncementCreation @deepika
   Scenario: Validate whether the User is able to create Pre Application only when the Opportunity setting for Pre Application (No)
@@ -247,7 +245,6 @@ Feature: Pre-Application scenarios without background
     When I navigate to "Opportunities" tab
     And I perform quick search for "Automation Competitive Announcement" in "---applicationIntake:-:publishedOpputunityTableId---" panel
     Then I softly do not see "Automation Competitive Announcement" has been added in "---applicationIntake:-:publishedOpputunityTableId---" flex table
-    Then I collect all the soft asserts
 
   @71114 @71115 @preappDueDateValidation @deepika
   Scenario: Validate whether User will be able to submit the pre- application on the last date for submission.
@@ -350,7 +347,6 @@ Feature: Pre-Application scenarios without background
     And I perform quick search for "Automation Competitive Announcement" in "---preApplication:-:recipientPreApplicationsTableId---" panel
     When I click on "View" icon for "Automation Competitive Announcement" inside table
     Then I softly cannot see top right button "Submit to Grantor" in page detail
-    Then I collect all the soft asserts
 
   @71413 @userCannotCreatePreAppWhenSettingIsNo @deepika
   Scenario: Validate whether User is able to create Pre Application only when the Opportunity setting for Pre Application (No)
@@ -365,4 +361,3 @@ Feature: Pre-Application scenarios without background
     Then I softly see field "Pre-Application Required?" as "No"
     When I click on "Qualify" in the page details
     Then I softly cannot see top right button "Create Pre-Application" in page detail
-    Then I collect all the soft asserts

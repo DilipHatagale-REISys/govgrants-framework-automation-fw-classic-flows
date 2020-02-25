@@ -214,7 +214,6 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click toggle button to select "Directed Announcements - Draft"
     When I perform quick search for "Record id" in "---announcement:-:annoucementTableId---" panel
     Then I softly cannot see row level action button "Delete" against "Record id" in flex table with id "---announcement:-:annoucementTableId---"
-    And I collect all the soft asserts
     Examples:
       | Announcement Type |
       | Directed          |
@@ -587,7 +586,6 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
-    And I collect all the soft asserts
     Examples:
       | Announcement Type |
       | Directed          |
@@ -775,7 +773,6 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     Then I softly do not see values "Record Id" and "Automation Directed Announcement" inside table
-    And I collect all the soft asserts
     Examples:
       | Announcement Type |
       | Directed          |
@@ -975,7 +972,6 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click toggle button to select "Directed Announcements - Rejected"
     When I perform quick search for "Record Id" in "---announcement:-:annoucementTableId---" panel
     Then I softly see value "Record Id" for title "EGMS ID" inside table "---announcement:-:annoucementTableId---"
-    And I collect all the soft asserts
     Examples:
       | Announcement Type |
       | Directed          |

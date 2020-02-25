@@ -11,7 +11,6 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     When I click on "View" icon for "Automation Announcement for Auditor" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     Then I softly cannot see top right button "Qualify" in page detail
     Then I softly cannot see top right button "Create Application" in page detail
-    Then I collect all the soft asserts
 
   @69163 @auditorCannotCreateNegotiation
   Scenario: Validate Auditor should not be  able to  Create Negotiation
@@ -59,7 +58,6 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:negotiationPendingTaskTableId---" panel
     Then I softly see "No Records Found" inside flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
-    Then I collect all the soft asserts
 
   @69165 @auditorViewRecordCannotCreateSubawardFromApprovedFDM
   Scenario: Validate Auditor Can view the record but should not be  able to  Create Subaward From Approved FDM
@@ -76,7 +74,6 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     Then I see the following rows under the following headers in table with id "---subAwardFromFDM:-:recommendedAppTableId---" :
       | Application Title               | Actions |
       | Automation Announcement for FDM | View    |
-    Then I collect all the soft asserts
 
   @69166 @auditorApplication
   Scenario Outline: Validate Auditor should be able to View submitted application details but cannot edit the submitted application
@@ -140,7 +137,6 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     And I navigate to "Attachments" sub tab
     Then I softly cannot see top right button "Add" in flex table with id "Attachments"
     Then I softly cannot see top right button "Add" in flex table with id "Notes"
-    Then I collect all the soft asserts
     Examples:
       | Application Name                               | User    |
       | Automation Announcement for Application Intake | Auditor |
@@ -223,7 +219,6 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     Then I softly see status in Progress-bar is "Submitted" and is "Green"
     Then I softly cannot see top right button "Reject" in page detail
     Then I softly cannot see top right button "Accept" in page detail
-    Then I collect all the soft asserts
     Examples:
       | Announcement Name                       |
       | Automation Announcement for Application |

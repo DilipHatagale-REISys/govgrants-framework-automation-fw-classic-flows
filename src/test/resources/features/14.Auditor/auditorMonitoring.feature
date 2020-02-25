@@ -44,7 +44,6 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     And I click on "View" icon for "Active" inside flex table with id "---auditor:-:orgRiskAssessmentTableId---"
     Then I softly see status in Progress-bar is "Active" and is "green"
     Then I softly cannot see top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
-    Then I collect all the soft asserts
     Examples:
       | User    |
       | AUDITOR |
@@ -71,7 +70,6 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     And I navigate to "Related Log" sub tab
     Then I softly cannot see top right button "Initiate Site Visit" in flex table with id "---auditor:-:siteVisitTableId---"
     Then I softly cannot see top right button "Initiate Desk Review" in flex table with id "---auditor:-:deskreviewTableId---"
-    And I collect all the soft asserts
     Examples:
       | User    |
       | AUDITOR |
@@ -87,7 +85,6 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     Then I softly verify that "xls" file is downloaded
     When I perform quick search for "Automation Permanent Award" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     Then I softly can see row level action button "View" against "Automation Direct Award" in flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
-    Then I collect all the soft asserts
     Examples:
       | User    |
       | AUDITOR |
@@ -129,7 +126,6 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
       | Automation Site Visit  | View    |
     And I click on "View" icon for "Automation Site Visit" inside flex table with id "---auditor:-:sitevisitMonitoringTableId---"
     Then I softly cannot see top right button "Accept and Close" in page detail
-    And I collect all the soft asserts
     Examples:
       | User    |
       | AUDITOR |
@@ -171,7 +167,6 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
       | Automation Desk Review | View    |
     And I click on "View" icon for "Automation Desk Review" inside flex table with id "---auditor:-:deskreviewMonitoringTableId---"
     Then I softly cannot see top right button "Accept and Close" in page detail
-    And I collect all the soft asserts
     Examples:
       | User    |
       | AUDITOR |
@@ -193,7 +188,6 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I click toggle button to select "Risk Assessments - All"
     When I perform quick search for "Automation Permanent Award" in "---auditor:-:monitoringtableid---" panel
     Then I softly see that "Active" has been added in flextable with Id "---auditor:-:monitoringtableid---"
-    And I collect all the soft asserts
     Examples:
       | User    |
       | AUDITOR |
@@ -236,7 +230,6 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     Then I softly can see row level action button "View" against "{SavedValue:Record Id}" in flex table with id "---auditor:-:progressreportTableId---"
     When I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---auditor:-:progressreportTableId---"
     Then I softly cannot see top right button "Send Back to Subrecipient" in page detail
-    Then I collect all the soft asserts
 
   @70075 @auditorCannotBeAnApprover
   Scenario: Validate approver user is not allowed to reassign tasks their tasks to Auditor.

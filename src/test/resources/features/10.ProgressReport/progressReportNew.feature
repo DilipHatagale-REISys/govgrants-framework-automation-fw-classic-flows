@@ -250,7 +250,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I navigate to "Performance" sub tab
     Then I softly see value "Submitted for Review" for title "Status" against the value "{SavedValue:PR2}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
     Then I softly see value "Reviewed" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
-    Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -663,7 +662,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:recipientAwardsTableId---"
     When I navigate to "Performance" sub tab
     Then I softly do not see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
-    Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -854,7 +852,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:recipientAwardsTableId---"
     When I navigate to "Performance" sub tab
     Then I softly see value "Sent Back to Subrecipient" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
-    Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -1224,7 +1221,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     Then I softly see field "Perentage of Budget Remaining" as "100.00%"
     Then I softly see field "YTD Expenditures" as "$0.00"
     Then I softly see value "{SavedValue:awardedBudget}" is "Equals to" the value "{SavedValue:remainingBudget}"
-    And I collect all the soft asserts
     Examples:
       | Award Name                  | Grant Name                  |
       | Automation Execution1 Award | Automation Execution1 Award |
@@ -2213,7 +2209,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:recipientActiveGrantId---"
     When I navigate to "Management" sub tab
     Then I softly see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientGrantProgressReportTableId---"
-    And I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -2817,7 +2812,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I expand nested table containing column value "Progress Report"
     Then I softly verify that the Schedule start date is matching with Reporting Period start Date
     Then I softly verify that the Schedule end date is matching with Reporting Period End Date
-    And I collect all the soft asserts
     Examples:
       | Award Name                  | Grant Name                  |
       | Automation Execution1 Award | Automation Execution1 Award |
@@ -3763,7 +3757,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     When I navigate to "Performance" sub tab
     Then I softly do not see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
-    And I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -4157,7 +4150,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "Activated" inside flex table with id "---progressReport:-:recipientsRelatedSubAwardsTableId---"
     When I navigate to "Performance" sub tab
     Then I softly see value "Sent back to sub-recipient" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
-    Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -4551,7 +4543,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "Activated" inside flex table with id "---progressReport:-:recipientsRelatedSubAwardsTableId---"
     When I navigate to "Performance" sub tab
     Then I softly do not see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
-    Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -4702,7 +4693,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Reassign, Automation FO" in the approval decision
-    Then I collect all the soft asserts
     Examples:
       | Award Name                  | Grant Name                  |
       | Automation Execution1 Award | Automation Execution1 Award |
@@ -5511,7 +5501,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Performance" sub tab
     Then I softly see value "Submitted for Approval" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
-    And I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -7077,7 +7066,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
     When I navigate to "Management" sub tab
     Then I softly see value "Created" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientGrantProgressReportTableId---"
-    Then I collect all the soft asserts
     Examples:
       | Award Name                   | Grant Name                 |
       | Automation   Execution Award | Automation Execution Award |
@@ -7272,7 +7260,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Performance" sub tab
     Then I softly see value "Submitted for approval" for title "Status" against the value "{SavedValue:ProgresReportID}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
-    And I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -7467,7 +7454,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Performance" sub tab
     Then I softly see value "Sent Back to Subrecipient" for title "Status" against the value "{SavedValue:ProgresReportID}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
-    And I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -7663,7 +7649,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
     When I navigate to "Management" sub tab
     Then I softly see value "Submitted to Grantor" for title "Status" against the value "{SavedValue:ProgresReportID}" inside table "---progressreport:-:recipientGrantProgressReportTableId---"
-    And I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -7836,7 +7821,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Terms" sub tab
     Then I softly see value "Quarterly" for title "Frequency" inside table "---progressreport:-:progressReportsScheduleId---"
-    And I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -8175,7 +8159,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Terms" sub tab
     Then I softly see value "Not Applicable" for title "Frequency" inside table "---progressreport:-:progressReportsScheduleId---"
-    Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -8727,7 +8710,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:recipientAwardsTableId---"
     When I navigate to "Performance" sub tab
     Then I softly see value "Submitted to Grantor" for title "Status" against the value "{SavedValue:ProgressReport1}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
-    Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -9630,7 +9612,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Performance" sub tab
     Then I softly see value "Sent Back to Subrecipient" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
-    And I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -9992,7 +9973,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Performance" sub tab
     Then I softly do not see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
-    And I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -10198,7 +10178,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:recipientActiveGrantId---"
     When I navigate to "Management" sub tab
     Then I softly see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientGrantProgressReportTableId---"
-    Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -10393,7 +10372,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:recipientActiveGrantId---"
     When I navigate to "Management" sub tab
     Then I softly see value "Submitted to Grantor" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientGrantProgressReportTableId---"
-    Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -11115,7 +11093,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I navigate to "Performance" sub tab
     Then I softly see value "Submitted to Grantor" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
     Then I softly see value "Created" for title "Status" against the value "{SavedValue:CreatedPR}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
-    Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -11279,7 +11256,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:recipientActiveGrantId---"
     When I navigate to "Management" sub tab
     Then I softly see value "Created" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientGrantProgressReportTableId---"
-    Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -11696,7 +11672,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:recipientAwardsTableId---"
     When I navigate to "Performance" sub tab
     Then I softly see value "Reviewed" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
-    Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -11868,7 +11843,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "Activated" inside flex table with id "---progressReport:-:recipientsRelatedSubAwardsTableId---"
     When I navigate to "Performance" sub tab
     Then I softly see value "Created" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
-    Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |

@@ -32,7 +32,6 @@ Feature: Validate all scenarios for program
     Then I softly see field "Focus Area Required?" as "No"
     Then I softly see field "KPI" as "No"
     Then I softly see field "Objectives Required?" as "No"
-    And I collect all the soft asserts
 
   @34503 @programCreation @smoke
   Scenario: Verifying if the EXE, PM, PO has create access to Internal Program
