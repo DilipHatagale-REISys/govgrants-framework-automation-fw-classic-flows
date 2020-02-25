@@ -823,17 +823,19 @@ Feature: The feature is only designed for ensuring all business flows are workin
 
   @applicationReviewHappyPath
   Scenario Outline: complete review process for an application
-    Given I am on "SUBPORTAL" portal
+    Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
+    And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
+    When I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "Autoamtion Announcement for FDM" in "---applicationReview:-:reviewsTableId---" panel
-    When I click on "View" icon for "Autoamtion Announcement for FDM" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    And I perform quick search for "Automation Announcement for Application Review" in "---applicationReview:-:reviewsTableId---" panel
+    When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationReview:-:reviewsTableId---"
     When I click on "Qualify" in the page details
     When I click on "Create Application" in the page details
-    When I enter value "Autoamtion Announcement for FDM" into field "Title__c"
+    When I enter value "Automation Application" into field "Title__c"
     And I click modal button "Save and Continue"
-    When I enter "AppEdition" values from "PermanentRecordSetup_Field_Values.xlsx"
+    When I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
@@ -850,11 +852,11 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Attachments" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
-    When I enter "Form Fields 1" values from "PermanentRecordSetup_Field_Values.xlsx"
+    When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
     And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
-    When I enter "Form Fields 2" values from "PermanentRecordSetup_Field_Values.xlsx"
+    When I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
     And I get the "EGMS ID"

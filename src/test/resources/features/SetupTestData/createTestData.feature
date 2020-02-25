@@ -471,8 +471,8 @@ Feature: Validate creation of data in new Org
       | Construction  | 1000   | 100        | 100            | 100            |
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                  | Target |
-      | Automation Permanent KPI | 10     |
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Attachments" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "PermanentRecordSetup_Field_Values.xlsx"
@@ -489,7 +489,7 @@ Feature: Validate creation of data in new Org
     When I click on "Submit Application" in the page details
     Then I see status in Progress-bar is "Submitted" and is "Green"
 
-  @applicationSubmission
+  @applicationSubmissionAutomationAnnouncementforFDM
   Scenario Outline: Validate the submission of application and complete review process for an application
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
@@ -514,8 +514,8 @@ Feature: Validate creation of data in new Org
       | Construction  | 1000   | 100        | 100            |
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                  | Target |
-      | Automation Permanent KPI | 10     |
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Attachments" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
     When I enter "Form Fields 1" values from "PermanentRecordSetup_Field_Values.xlsx"
