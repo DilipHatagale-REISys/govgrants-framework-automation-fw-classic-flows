@@ -1000,8 +1000,8 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click on "Funding Decision Memo" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
     Examples:
-      | Announcement Name               | Application Name                |
-      | Autoamtion Announcement for FDM | Autoamtion Announcement for FDM |
+      | Announcement Name                              | Application Name       |
+      | Automation Announcement for Application Review | Automation Application |
 
   @negotiationComplete
   Scenario: Complete Negotiation Request
