@@ -448,7 +448,7 @@ Feature: Validate creation of data in new Org
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
 
-  @applicationSubmissionAutomationAnnouncementforApplicationReview    
+  @applicationSubmissionAutomationAnnouncementforApplicationReview
   Scenario: Validate the submission of application of Announcement for Application Review record
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
@@ -471,8 +471,8 @@ Feature: Validate creation of data in new Org
       | Construction  | 1000   | 100        | 100            | 100            |
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
     And I navigate to "Attachments" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "PermanentRecordSetup_Field_Values.xlsx"
@@ -489,17 +489,17 @@ Feature: Validate creation of data in new Org
     When I click on "Submit Application" in the page details
     Then I see status in Progress-bar is "Submitted" and is "Green"
 
-  @applicationSubmissionAutomationAnnouncementforFDM 
+  @applicationSubmission
   Scenario Outline: Validate the submission of application and complete review process for an application
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "Automation Announcement for FDM" in "---applicationReview:-:reviewsTableId---" panel
-    When I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    And I perform quick search for "Autoamtion Announcement for FDM" in "---applicationReview:-:reviewsTableId---" panel
+    When I click on "View" icon for "Autoamtion Announcement for FDM" inside flex table with id "---applicationReview:-:reviewsTableId---"
     When I click on "Qualify" in the page details
     When I click on "Create Application" in the page details
-    When I enter value "Automation Announcement for FDM" into field "Title__c"
+    When I enter value "Autoamtion Announcement for FDM" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "AppEdition" values from "PermanentRecordSetup_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -514,8 +514,8 @@ Feature: Validate creation of data in new Org
       | Construction  | 1000   | 100        | 100            |
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
     And I navigate to "Attachments" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
     When I enter "Form Fields 1" values from "PermanentRecordSetup_Field_Values.xlsx"
@@ -528,12 +528,14 @@ Feature: Validate creation of data in new Org
     And I get the "EGMS ID"
     When I click on "Submit Application" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    Given I am on "Internal" portal
+    And I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
-    And I navigate to "Related Logs" sub tab
+    And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name  | Due in Days |
@@ -667,7 +669,7 @@ Feature: Validate creation of data in new Org
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
     Examples:
       | Announcement Name               | Application Name                |
-      | Automation Announcement for FDM | Automation Announcement for FDM |
+      | Autoamtion Announcement for FDM | Autoamtion Announcement for FDM |
 
   @automationGrant/AwardforRiskAssessment
   Scenario Outline: Validate Creation and Activation of Automation Grant/Award for Risk Assessment Award
@@ -693,6 +695,7 @@ Feature: Validate creation of data in new Org
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
+    And I refresh the page
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
@@ -845,6 +848,7 @@ Feature: Validate creation of data in new Org
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
+    And I refresh the page
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
@@ -997,6 +1001,7 @@ Feature: Validate creation of data in new Org
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
+    And I refresh the page
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |

@@ -823,19 +823,17 @@ Feature: The feature is only designed for ensuring all business flows are workin
 
   @applicationReviewHappyPath
   Scenario Outline: complete review process for an application
-    Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
-    And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
-    When I am on "SUBPORTAL" portal
+    Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "Automation Announcement for Application Review" in "---applicationReview:-:reviewsTableId---" panel
-    When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    And I perform quick search for "Autoamtion Announcement for FDM" in "---applicationReview:-:reviewsTableId---" panel
+    When I click on "View" icon for "Autoamtion Announcement for FDM" inside flex table with id "---applicationReview:-:reviewsTableId---"
     When I click on "Qualify" in the page details
     When I click on "Create Application" in the page details
-    When I enter value "Automation Application" into field "Title__c"
+    When I enter value "Autoamtion Announcement for FDM" into field "Title__c"
     And I click modal button "Save and Continue"
-    When I enter "Edition" values from "Application_Field_Values.xlsx"
+    When I enter "AppEdition" values from "PermanentRecordSetup_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
@@ -852,11 +850,11 @@ Feature: The feature is only designed for ensuring all business flows are workin
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Attachments" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
-    When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
+    When I enter "Form Fields 1" values from "PermanentRecordSetup_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
     And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
-    When I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
+    When I enter "Form Fields 2" values from "PermanentRecordSetup_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
     And I get the "EGMS ID"
@@ -867,7 +865,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
-    And I navigate to "Related Logs" sub tab
+    And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name  | Due in Days |
@@ -1000,19 +998,19 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click on "Funding Decision Memo" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
     Examples:
-      | Announcement Name                              | Application Name       |
-      | Automation Announcement for Application Review | Automation Application |
+      | Announcement Name               | Application Name                |
+      | Autoamtion Announcement for FDM | Autoamtion Announcement for FDM |
 
   @negotiationComplete
   Scenario: Complete Negotiation Request
-    Given I delete the record "Automation Announcement for FDM" from the object "FDM"
+    Given I delete the record "Autoamtion Announcement for FDM" from the object "FDM"
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
-    When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
-    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
-    When I click on "Initiate Negotiation" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    When I perform quick search for "Autoamtion Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "Autoamtion Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    When I click on "Initiate Negotiation" icon for "Autoamtion Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I navigate to "Negotiations" sub tab
     When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
@@ -1037,20 +1035,20 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click on "Complete Negotiation" in the page details
     And I navigate to "Applications" tab
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
-    Then I can see row level action button "View" against "Automation Announcement for FDM" in flex table with id "---negotiation:-:negotiationCompletedTaskTableId---"
+    Then I can see row level action button "View" against "Autoamtion Announcement for FDM" in flex table with id "---negotiation:-:negotiationCompletedTaskTableId---"
 
   @awardHappyPathFromFDM @38224
   Scenario Outline: Validate subaward from FDM happy path
     Given I delete the record "Automation Desk Review" from the object "Desk Review"
     When I delete the record "Automation Site Visit" from the object "Site Visit"
-    And I delete the record "Automation Announcement for FDM" from the object "FDM"
+    And I delete the record "Autoamtion Announcement for FDM" from the object "FDM"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
-    When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
-    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
-    And I click on "Create Subaward" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    When I perform quick search for "Autoamtion Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "Autoamtion Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    And I click on "Create Subaward" icon for "Autoamtion Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I enter value "Automation Test Description" into field "fieldGrantAwardDescription__c"
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -1207,7 +1205,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     Then I see status in Progress-bar is "Activated" and is "green"
     Examples:
       | Award Name                      | Grant Name                      |
-      | Automation Announcement for FDM | Automation Announcement for FDM |
+      | Autoamtion Announcement for FDM | Autoamtion Announcement for FDM |
 
   @awardHappyPathStandAlone
   Scenario Outline: Validate subaward Happy path stand alone
