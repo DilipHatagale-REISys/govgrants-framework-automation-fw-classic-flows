@@ -212,6 +212,10 @@ Feature: Validate creation of data in new Org
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 20000           |
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
+    And I refresh the page
+    And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 90         | 350      |
     When I navigate to "Overview" sub tab
     When I pause execution for "1" seconds
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
@@ -253,7 +257,7 @@ Feature: Validate creation of data in new Org
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
 
-  @automationAnnouncementforApplicationReview    
+  @automationAnnouncementforApplicationReview
   Scenario: Validate the activation of permanent record of Competitive Announcement for Application Review 
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
@@ -277,6 +281,10 @@ Feature: Validate creation of data in new Org
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 20000           |
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
+    And I refresh the page
+    And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 90         | 350      |
     When I navigate to "Overview" sub tab
     When I pause execution for "1" seconds
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
@@ -342,6 +350,10 @@ Feature: Validate creation of data in new Org
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 20000           |
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
+    And I refresh the page
+    And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 90         | 350      |
     When I navigate to "Overview" sub tab
     When I pause execution for "1" seconds
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
@@ -383,7 +395,7 @@ Feature: Validate creation of data in new Org
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
 
-  @automationAnnouncementforPre-Application  
+  @automationAnnouncementforPre-Application
   Scenario: Validate the activation of permanent record of Competitive Automation Announcement for Pre-Application   
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
@@ -407,6 +419,10 @@ Feature: Validate creation of data in new Org
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 20000           |
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
+    And I refresh the page
+    And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 90         | 350      |
     When I navigate to "Overview" sub tab
     When I pause execution for "1" seconds
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
