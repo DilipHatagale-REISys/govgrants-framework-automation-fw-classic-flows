@@ -129,7 +129,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Overview Tab - Application Due Date cannot be in the past.     |
     And I collect all the soft asserts
 
-  @71150 @71303 @71497 @71500 @71503 @71523 @71518 @71151 @71152 @71540 @71153 @71056 @71314 @71307 @verifyTotalReviewFormWeight @aashish999
+  @71150 @71303 @71497 @71500 @71503 @71523 @71518 @71151 @71152 @71540 @71153 @71056 @71314 @71307 @verifyTotalReviewFormWeight @aashish
   Scenario: To validate system generated error message when total Review Form  weight(%) is more than 100 % while creating Announcement
     Given I delete the record "Automation Directed Announcement" from the object "APPLICATION REVIEWS"
     Given I delete the record "Automation Directed Announcement" from the object "PreApplication"
