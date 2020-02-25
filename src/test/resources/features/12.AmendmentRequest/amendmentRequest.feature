@@ -389,7 +389,6 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Edit" in the page details
     And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     Then I softly see status in Progress-bar is "Created" and is "Green"
-    And I collect all the soft asserts
 
   @53210 @editionOfFocusAreaDatesBPCAmendmentRequest
   Scenario: Validate the edition of FocusArea Dates to BPC
@@ -434,7 +433,6 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     And I click on "Send to Subrecipient" in the page details
     Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "Green"
-    And I collect all the soft asserts
 
   @56844 @ValidateGranotrCanDecreaseAwardBudgetAmountInFundingchangeTypeRequest @mahadev
   Scenario: Verify Internal user can send request to Sub-recipient for increase in the award budget amount using Funding change option.
@@ -615,7 +613,6 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Submit to Grantor" in the page details
     Then I softly see the text containing :
       | You have a requested a change of $0.0, but the required change is $1000.00. |
-    Then I collect all the soft asserts
 
   @56973 @validateSubRecipientCanNotEditAmendmentRequestAfterSubmittingToGrantor @mahadev
   Scenario: Verify Sub-Recipient Can not edit funding type amendment request after submitting to Grantor
@@ -748,7 +745,6 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     Then I softly see value "Record Id" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
-    Then I collect all the soft asserts
 
   @57135 @57125 @VerifyAmendSubawardButtonAfterApprovalProcess @mahadev
   Scenario: Verify Once approval process is completed for Amendment Request then award owner can see Amend Subaward button |  Verify Internal user is able to check the funding change request submitted by Sub-recipient User
@@ -813,7 +809,6 @@ Feature: Validate all scenarios in the Amendment Request
     And I perform quick search for "Record Id" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---"
     Then I softly can see top right button "Amend Subaward" in page detail
-    Then I collect all the soft asserts
 
   @57287 @57269 @VerifyPendingTaskAtSubPortalAfterReviseAmendmentRequest @mahadev
   Scenario: Verify once grantor click on Revise button Amendment request Status changes to Created | Verify Sub-recipient can check revise amendment request in pending task
@@ -870,7 +865,6 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     Then I softly see value "Record Id" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
-    Then I collect all the soft asserts
 
   @57274 @57276 @VerifyRequestedChangeInBudgetFieldRemainsSameAfterReviseAmendmentRequest @mahadev
   Scenario: Verify When Grantor Revise the Amendment request the Budget Category amount updated by Sub-recipient is reflected the same | Verify when Grantor Revise the Amendment request the Requested Change in Budget field remains the same
@@ -920,7 +914,6 @@ Feature: Validate all scenarios in the Amendment Request
     Then I softly see value "$500.00" for title "Difference" against the value "Construction" inside table "---amendment:-:grantorBudgetChangeTableId---"
     And I softly see value "$500.00" for title "Difference" against the value "Supplies" inside table "---amendment:-:grantorBudgetChangeTableId---"
     Then I softly see field "Requested Change in Budget" as "$1,000.00"
-    Then I collect all the soft asserts
 
   @57139 @awardOwnerActivateAmendedSubAward @jitendra
   Scenario: Verify that award owner can active the Amended sub-award
@@ -1930,7 +1923,6 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I navigate to "Overview" sub tab
     Then I softly see field "Payment Period End Date" as "{SavedValue:updatedBudgetPeriodDate}"
-    And I collect all the soft asserts
 
   @57367 @verifyRecipientCanSeeAmendedBudgetPeriodOnReimbursementPaymentRequestPage @mahadev
   Scenario Outline: Verify Sub-recipient user can see the amended Budget Period on Reimbursement Payment Request Page

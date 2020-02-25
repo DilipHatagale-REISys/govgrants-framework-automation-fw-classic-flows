@@ -9,7 +9,6 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     Then I softly cannot see top right button "New" in flex table with id "---home:-:internalOrganizationId---"
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     Then I softly cannot see row level action button "Edit" against "Test Automation Organization" in flex table with id "---home:-:internalOrganizationId---"
-    Then I collect all the soft asserts
     Examples:
       | User    |
       | AUDITOR |
@@ -22,7 +21,6 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     Then I softly see that "Internal Organization" is in "Active" status
-    Then I collect all the soft asserts
     Examples:
       | User    |
       | AUDITOR |
@@ -84,7 +82,6 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     Then I see the following rows under the following headers in table with id "---home:-:internalContactTableId---" :
       | Full Name     | Actions |
       | Automation PO | View    |
-    Then I collect all the soft asserts
     Examples:
       | User    |
       | AUDITOR |
@@ -98,7 +95,6 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     Then I softly can see row level action button "View" against "Automation PO" in flex table with id "---home:-:internalContactTableId---"
     And I click on "View" icon for "Automation PO" inside flex table with id "---home:-:internalContactTableId---"
     Then I softly see field "Organization" as "Test Automation Organization"
-    Then I collect all the soft asserts
     Examples:
       | User    |
       | AUDITOR |
@@ -112,7 +108,6 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     When I perform quick search for "Automation SME" in "---home:-:reviewersTableId---" panel
     Then I softly can see row level action button "View" against "Automation SME" in flex table with id "---home:-:reviewersTableId---"
     Then I softly cannot see row level action button "Send Invitation" against "Automation SME" in flex table with id "---home:-:reviewersTableId---"
-    Then I collect all the soft asserts
     Examples:
       | User    |
       | AUDITOR |
@@ -138,7 +133,6 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     Then I softly see "No Records Found" inside flex table with id "---home:-:completedAssignedToMe---"
     Then I softly see "No Records Found" inside flex table with id "---home:-:completedAssignedByMe---"
-    Then I collect all the soft asserts
 
   @69142 @auditorCannotCreateEditSubrecipientContact
   Scenario Outline: Validate Auditor cannot Create/Edit any subrecipient contact user
@@ -148,7 +142,6 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     Then I softly cannot see top right button "New" in flex table with id "---home:-:subrecipientcontactTableId---"
     When I perform quick search for "Automation Manager" in "---home:-:subrecipientcontactTableId---" panel
     Then I softly cannot see row level action button "Edit" against "Automation Manager" in flex table with id "---home:-:subrecipientcontactTableId---"
-    Then I collect all the soft asserts
     Examples:
       | User    |
       | AUDITOR |
@@ -164,7 +157,6 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
       | Automation Manager | View    |
     And I click on "View" icon for "Automation Manager" inside flex table with id "---home:-:subrecipientcontactTableId---"
     Then I softly see field "Organization" as "SAN DIEGO ELECTRICAL TRAINING TRUST"
-    Then I collect all the soft asserts
     Examples:
       | User    |
       | AUDITOR |

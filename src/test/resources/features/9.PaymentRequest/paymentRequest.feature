@@ -72,7 +72,6 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Net Spent This Action |
       | {SavedValue:fundingAccount} | 20                    |
     Then I softly see value "$20.00" for title "Net Spent This Action" inside table "---paymentRequest:-:fundingAccountTableId---"
-    Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Permanent Award | Automation Permanent Award |
@@ -119,7 +118,6 @@ Feature: Validate all scenarios in Payment Request
     And I refresh the page
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
-    Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Permanent Award | Automation Permanent Award |
@@ -290,7 +288,6 @@ Feature: Validate all scenarios in Payment Request
     Then I softly cannot see top right button "Edit" in page detail
     When I "Send to Owner" in the approval decision
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
-    Then I collect all the soft asserts
 
   @38742 @54587 @taskCreationforFOUser @validateFiscalApprovalCannotEditAdvancePRAfterSubmittingForApproval @mahadev
   Scenario: Validate fiscal approver can not edit advance payment request after submitting for approval |Validate task creation for fiscal user
@@ -391,7 +388,6 @@ Feature: Validate all scenarios in Payment Request
     And I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I softly see field "Acknowledgement" as "I Agree"
-    Then I collect all the soft asserts
 
   @53969 @advancePaymentRequestSubmitToGrantorBySPI @mahadev
   Scenario: verify that advance payment request should be able to submit by SPI user
@@ -493,7 +489,6 @@ Feature: Validate all scenarios in Payment Request
     And I "Send to Owner" in the approval decision
     And I pause execution for "2" seconds
     Then I can see the message "Successfully sent to Owner. It may take few mintues to process record." in the approval decision
-    And I collect all the soft asserts
 
   @53982 @forwardAdvancePaymentRequest @mahadev
   Scenario: validate approver can forward advance payment request
@@ -526,7 +521,6 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Submit for Approval" in the page details
     And I "Reassign" to user "Automation EXE" in the approval decision
     Then I can see the message "Successfully sent to Owner. It may take few mintues to process record." in the approval decision
-    And I collect all the soft asserts
 
   @53983 @rejectAdvancePaymentRequest @mahadev
   Scenario: validate Rejection of an advance payment request by approver
@@ -559,7 +553,6 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Submit for Approval" in the page details
     And I "Disapprove" in the approval decision
     Then I can see the message "Successfully disapproved" in the approval decision
-    And I collect all the soft asserts
 
   @53985 @53984 @advancePaymentRequestShouldNotReceiveToEXE/PM  @mahadev
   Scenario: Advance Payment Request should not receive to Program Approver/Executive Approver
@@ -585,7 +578,6 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I softly see "No Records Found" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
-    Then I collect all the soft asserts
 
   @54175 @54177 @validateErrorOnEnteringAdvanceRequestedAmountGreaterThanBalance @mahadev
   Scenario: Advance Payment Request should not receive to Program Approver
@@ -607,7 +599,6 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 100                           |
     And I refresh the page
     Then I softly see field "Advance Requested This Action" as "$100.00"
-    And I collect all the soft asserts
 
   @38839 @54585 @approvalOfAdvancePaymentRequestByForwardedUser @mahadev
   Scenario: Advance Payment request should not be editable after submitting to grantor | Validate advance payment request approval by forwarded user
@@ -647,7 +638,6 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "Green"
-    Then I collect all the soft asserts
 
   @54593 @54352 @validatePaidButtonNotDisplayedAfterRejectingReimbursementPR @mahadev
   Scenario: Validate the paid button not displayed on reimbursement Payment request after rejection
@@ -693,7 +683,6 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I "Disapprove" in the approval decision
     Then I softly cannot see top right button "Mark as Paid" in page detail
-    And I collect all the soft asserts
 
   @54589 @validatePaidButtonNotDisplayedAfterRejectingAdvancePR @mahadev
   Scenario: Validate the paid button not displayed on advance Payment request after rejection
@@ -990,7 +979,6 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     Then I can see the message "Successfully Approved" in the approval decision
-    And I collect all the soft asserts
 
   @54324 @validateSuccesfulReassignedmessageOnReimbursementPR @mahadev
   Scenario: Validate succesfully reassigned message on Reimbursement Payment Request
@@ -1024,7 +1012,6 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Submit for Approval" in the page details
     And I "Reassign" to user "Automation EXE" in the approval decision
     Then I can see the message "Successfully Re-Assigned" in the approval decision
-    And I collect all the soft asserts
 
   @54325 @validateRejectedMessageOnReimbursementPR @mahadev
   Scenario: Validate succesfully rejected message on Reimbursement Payment Request
@@ -1058,7 +1045,6 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Submit for Approval" in the page details
     And I "Disapprove" in the approval decision
     Then I can see the message "Successfully disapproved" in the approval decision
-    And I collect all the soft asserts
 
   @54326 @validateSendBackMessageOnReimbursementPR @mahadev
   Scenario: Validate succesfully send back payment request message on Reimbursement Payment Request
@@ -1092,7 +1078,6 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Submit for Approval" in the page details
     And I "Send to Owner" in the approval decision
     Then I can see the message "Successfully sent to Owner. It may take few mintues to process record." in the approval decision
-    And I collect all the soft asserts
 
   @54368 @validateReimbursementPRSendBackToSubReceipient @mahadev
   Scenario: Validate task is getting created for SPI user after send back reimbursement payment request to subreceipient

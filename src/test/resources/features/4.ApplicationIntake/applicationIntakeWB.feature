@@ -14,7 +14,6 @@ Feature: Application Intake scenarios without background
     When I click on "Qualify" in the page details
     Then I softly see that "Automation Announcement for Application Review" is in "Qualified" status
     Then I softly can see top right button "Create Application" in page detail
-    Then I collect all the soft asserts
 
   @70255 @70256 @70257 @spaUserCannotQualifyTheApplication @deepika
   Scenario: Validate as another SPI / SPA user should not be able to Qualify for the second time| Validate SPA user view the Create Application button in page details
@@ -32,7 +31,6 @@ Feature: Application Intake scenarios without background
     When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationIntake:-:qualifiedTableId---"
     Then I softly cannot see top right button "Qualify" in page detail
     Then I softly can see top right button "Create Application" in page detail
-    Then I collect all the soft asserts
 
   @70258 @spaUsersCannotSubmitAnApplication @deepika
   Scenario: Validate the SPA users should not be able to Submit the Application
@@ -114,7 +112,6 @@ Feature: Application Intake scenarios without background
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000   | 100        | 100            | 100            |
     Then I softly see value "$1,300.00" for title "Total Project Cost" against the value "Construction" inside table "---applicationIntake:-:budgetPeriodTableId---"
-    Then I collect all the soft asserts
 
   @70460 @70461 @goalsAndObjectivesInApplication @deepika
   Scenario: To Verify that the Goals and Objectives are not editable and are added by default associated to the Application should be displayed correctly
@@ -141,7 +138,6 @@ Feature: Application Intake scenarios without background
     And I mouse hover to link contains "{SavedValue:oppurtunityId}"
     And I click "PG-TAO-0001" link present on hovered tooltip
     Then I softly see page title contains as "Automation Permanent Internal Program"
-    Then I collect all the soft asserts
 
   @71110 @appdueDateValidation @deepika
   Scenario: Validate whether User will be able to submit the application on the last date for submission.
@@ -225,7 +221,6 @@ Feature: Application Intake scenarios without background
     When I click on "View" icon for "Automation Competitive Announcement" inside table
     When I click on "Qualify" in the page details
     Then I softly can see top right button "Create Application" in page detail
-    Then I collect all the soft asserts
 
   @71104 @71107 @71108 @71109 @unpublishedAnnouncementCannotSubmitApplication @deepika
   Scenario: Validate once the Announcement is published and Application is in created status, later the announcement is unpublished then the User will not be able to see the Submit Application
@@ -397,7 +392,6 @@ Feature: Application Intake scenarios without background
       | Automation SPI | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
     Then I see status in Progress-bar is "Submitted" and is "Green"
-    Then I collect all the soft asserts
 
   @71112 @71113 @appDueDateValidation @deepika
   Scenario: Validate the Application Submission before the due date | Validate whether the application due date on Announcement is reflecting same while creating an application
@@ -544,4 +538,3 @@ Feature: Application Intake scenarios without background
     When I expand nested table containing column value "BP01"
     Then I softly see all values "$0.00" under column "Total Match" inside flextable with id "---applicationIntake:-:budgetPeriodTableId---"
     Then I softly see all values "$0.00" under column "Other Leverage" inside flextable with id "---applicationIntake:-:budgetPeriodTableId---"
-    Then I collect all the soft asserts

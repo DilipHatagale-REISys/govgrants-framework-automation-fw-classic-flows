@@ -24,7 +24,6 @@ Feature: Validate all scenarios in the award created from FDM
       | Pre-Encumbrance | Encumbrance | Spent |
     Then I softly see the field "Available Balance" is equal to the field "Appropriation Amount" minus the following fields :
       | Total Obligation |
-    And I collect all the soft asserts
 
   @38213 @38217 @awardCreateEditAndAddingSchedules
   Scenario: Award creation, edition and adding payment/progress report schedules
@@ -45,7 +44,6 @@ Feature: Validate all scenarios in the award created from FDM
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     Then I softly see that "Progress Report" has been added in flextable with Id "---subAwardFromFDM:-:progressReportSchedulesTableId---"
-    Then I collect all the soft asserts
 
   @64947 @BusinessFormProgressReport @jitendra
   Scenario: Verify Business Forms for Progress report on announcement is same on grant Attachments Tab.
@@ -146,7 +144,6 @@ Feature: Validate all scenarios in the award created from FDM
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---"
     And I click on "Accept" in the page details
     Then I softly see status in Progress-bar is "Created" and is "Green"
-    Then I collect all the soft asserts
     Examples:
       | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
@@ -271,7 +268,6 @@ Feature: Validate all scenarios in the award created from FDM
     When I click on "View" icon for "<Award Name>" inside table with wait for record
     When I click on "Complete Review" in the page details
     Then I softly see field "Status" as "Reviewed"
-    Then I collect all the soft asserts
     Examples:
       | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
@@ -407,7 +403,6 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
       | Budget Tab - Associate Funding Account with proper Encumbrance value as per Total Subaward Amount This Budget Period. |
-    And I collect all the soft asserts
 
   @67700 @emailNotificationAfterPMApproverSubaward @jitendra
   Scenario Outline: Validate that after program approver approves the subaward the mail generates for the Fiscal approver
@@ -656,7 +651,6 @@ Feature: Validate all scenarios in the award created from FDM
     When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     Then I softly cannot see row level action button "Create Subaward" against "Automation Announcement for FDM" in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
-    And I collect all the soft asserts
     Examples:
       | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
@@ -803,7 +797,6 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---"
     When I click on "Send to Subrecipient" in the page details
     Then I softly see that "Status" is in "Sent to Subrecipient after Approval" status
-    Then I collect all the soft asserts
     Examples:
       | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
@@ -1064,7 +1057,6 @@ Feature: Validate all scenarios in the award created from FDM
     And I enter "Edition" values from "DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I softly see status in Progress-bar is "Created" and is "green"
-    Then I collect all the soft asserts
     Examples:
       | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
@@ -1181,7 +1173,6 @@ Feature: Validate all scenarios in the award created from FDM
     Then I softly see value "Automation PM" for title "Name" inside table "---subAwardStandAlone:-:awardApproversTableId---"
     Then I softly see value "Automation EXE" for title "Name" inside table "---subAwardStandAlone:-:awardApproversTableId---"
     Then I softly see value "Automation FO" for title "Name" inside table "---subAwardStandAlone:-:awardApproversTableId---"
-    Then I collect all the soft asserts
 
   @45743 @VerifyProjectPeriodStartDateIsSameAsScheduleStartDateOnAwardCreatedFromFDM @mahadev
   Scenario Outline: Verify if award is created from FDM then Project Period Start Date populated is same as progress report schedule start date
@@ -1243,7 +1234,6 @@ Feature: Validate all scenarios in the award created from FDM
     Then I softly see field "Risk Assessment Required?" as "Yes"
     Then I softly see field "Are Expense Details Required on Reimbursements?" as "Yes"
     Then I softly see field "Advance Payment Allowed?" as "Yes"
-    Then I collect all the soft asserts
     Examples:
       | Grant Name                      |
       | Automation Announcement for FDM |
@@ -1371,7 +1361,6 @@ Feature: Validate all scenarios in the award created from FDM
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
     Then I softly see field "Status" as "Draft"
-    Then I collect all the soft asserts
     Examples:
       | Grant Name                      |
       | Automation Announcement for FDM |
@@ -1410,7 +1399,6 @@ Feature: Validate all scenarios in the award created from FDM
     Then I softly see field "Objectives Required?" as "{SavedValue:ObjRequired}"
     Then I softly see field "Internal Program" as "{SavedValue:ProgramID}"
     Then I softly cannot see field "Pre-Application Required?" inside page block
-    Then I collect all the soft asserts
     Examples:
       | Grant Name                      |
       | Automation Announcement for FDM |

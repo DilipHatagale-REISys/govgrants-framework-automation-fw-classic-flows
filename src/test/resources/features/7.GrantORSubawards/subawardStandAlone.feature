@@ -27,7 +27,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I navigate to "Budget" sub tab
     And I perform quick search for "Administrative and legal expenses" in "---subAwardStandAlone:-:subAwardBudgetTableId---" panel
     Then I softly see "Administrative and legal expenses" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---"
-    Then I collect all the soft asserts
 
   @51130 @65606 @awardStandAloneAddContactsKeyPersonnel
   Scenario Outline: Associate a Key Contact
@@ -43,7 +42,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
     Then I softly see that "Automation SPA" has been added in flextable with Id "---subAwardStandAlone:-:associatedContactsTableId---"
-    And I collect all the soft asserts
     Examples:
       | Contact        |
       | Automation SPA |
@@ -135,7 +133,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Active" and is "Green"
-    Then I collect all the soft asserts
 
   @51137 @65397 @allApproverSelection
   Scenario: Validate the assignment of Approvers for the award | To verify that approvers can be added in the subaward phase when login by award owner as a PM
@@ -148,7 +145,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
     Then I softly see that "Automation EXE" has been added in flextable with Id "---subAwardStandAlone:-:awardApproversTableId---"
-    Then I collect all the soft asserts
 
   @68591 @validateAcceptRejectButtonForSPISPAUsers @jitendra
   Scenario Outline: Validate that if Sub-award is Send to subrecipient before approval SPI user is only able to Accept, Reject the sub-award SPA user cannot in same organization
@@ -239,7 +235,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     Then I softly can see top right button "Accept" in page detail
     Then I softly can see top right button "Reject" in page detail
-    And I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
@@ -345,7 +340,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | {SavedValue:fundingAccount} | 5000        |
     Then I softly see the following messages in the page details contains:
       | Budget Tab - Associate Funding Account with proper Encumbrance value as per Total Subaward Amount This Budget Period |
-    Then I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
@@ -428,7 +422,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click modal button "Save"
     And I click modal button "Submit Review"
     Then I softly see that "Submitted" has been added in flextable with Id "---subAwardStandAlone:-:peerReviewersTableId---"
-    Then I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
@@ -541,7 +534,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "Green"
-    Then I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
@@ -646,7 +638,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I select radio button "Reassign" in the approval decision
     Then I cannot see user "Andy Carrol" in the user lookup in the approval decision
     And I can see user "Automation PM" in the user lookup in the approval decision
-    And I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
@@ -814,7 +805,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I download the file
     Then I softly see "{SavedValue:BudgetPeriodAmount}" on page "1" of "govgrants" pdf file
     Then I softly see "{SavedValue:total awarded budget}" on page "1" of "govgrants" pdf file
-    Then I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
@@ -991,7 +981,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly see value "View" for title "Template Link" inside table "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
     And I click on Link containing value "View" in flex table id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
     Then I softly see page title contains as "FileDownload"
-    Then I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
@@ -1213,7 +1202,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I softly see status in Progress-bar is "Created" and is "Green"
-    And I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
@@ -1344,7 +1332,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Program Approver | Automation PM | Automation Test Description |
     Then I softly see the following messages in the page details contains:
       | Review initiated successfully! |
-    And I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
@@ -2871,7 +2858,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly see status in Progress-bar is "Rejected" and is "Red"
     And I navigate to "Budget" sub tab
     Then I softly see value "{SavedValue:award available balance}" for title "Available Balance" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
@@ -2981,7 +2967,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I "Disapprove" in the approval decision
     Then I softly see status in Progress-bar is "Rejected" and is "Red"
-    Then I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
@@ -3241,7 +3226,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly can see top right button "New" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     Then I softly can see top right button "Associate" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     Then I softly can see top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
-    Then I collect all the soft asserts
 
   @65400  @validateAfterSendToSubreciepientSubreciepientCanViewRecord  @keerti
   Scenario Outline: To verify that  after clicking on the "send to subreciepient button " from the award owner profile after creating subaward is visible to the Subreciepient.
@@ -3349,7 +3333,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Updated Automation Description | Description__c |
     When I click modal button "Save"
     Then I softly see field "Description" as "Updated Automation Description"
-    And I collect all the soft asserts
 
   @65821  @verifyButtonsAfterSentForReview
   Scenario Outline: To verify that when status is sent for review in peer reviewer table by the award owner then Complete Review and Edit must also appear on the top right corner of the page
@@ -3434,7 +3417,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---"
     Then I softly can see top right button "Edit" in page detail
     Then I softly can see top right button "Complete Review" in page detail
-    Then I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
@@ -3535,7 +3517,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I can softly see modal button "Edit"
     And I click modal button "Submit Review"
     Then I softly see value "Submitted" for title "Status" against the value "Automation FO" inside table "---subAwardStandAlone:-:peerReviewersTableId---"
-    Then I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
@@ -3649,7 +3630,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly see "Award_Field_Values.xlsx" has been added in "Digital Signature Document" flex table
     And I click on "Delete" icon for "Award_Field_Values.xlsx" inside flex table with id "---subAwardStandAlone:-:digiSignDivTableId---"
     Then I softly see "No Records" inside flex table with id "---subAwardStandAlone:-:digiSignDivTableId---"
-    Then I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
@@ -3897,7 +3877,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     Then I softly see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
-    And I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
@@ -4286,7 +4265,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     Then I softly see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
-    Then I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
@@ -4394,7 +4372,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly can see row level action button "View" against "<Grant Name>" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     Then I softly can see row level action button "Edit" against "<Grant Name>" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     Then I softly can see row level action button "Delete" against "<Grant Name>" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
-    Then I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
@@ -4626,7 +4603,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I navigate to "Responsibilities" sub tab
     Then I softly cannot see top right button "New" in flex table with id "---riskassessment:-:raPeerReviewFlexTableId---"
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
-    Then I collect all the soft asserts
 
   @68606 @verifyUserCanSeeAwardInPendingTaskTable @smoke @aashish
   Scenario Outline: Validate that after Subaward is Sent to the Subrecipient it appears in the Pending task of SPI/SPA user and on acceptance of subaward by SPI user it appears in the Completed task of all.
@@ -4711,7 +4687,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     Then I softly see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
-    And I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
@@ -4801,7 +4776,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     Then I softly do not see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
-    And I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
@@ -4893,7 +4867,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:completeTaskTableId---" panel
     Then I softly see value "Completed" for title "Status" inside table "---subAwardStandAlone:-:completeTaskTableId---"
-    And I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
@@ -4990,7 +4963,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     Then I softly see field "Brief information about the subaward." as "Automation Test1 Description"
-    Then I collect all the soft asserts
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |

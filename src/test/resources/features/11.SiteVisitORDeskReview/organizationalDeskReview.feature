@@ -25,7 +25,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation EXE" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     Then I softly see that "Automation EXE" has been added in flextable with Id "---orgLevelDeskReview:-:associateContactsId---"
-    Then I collect all the soft asserts
 
   @54210 @monitoringTypeFiscalDR @deepika
   Scenario: Validate the Monitoring type 'Fiscal' for Organizational Desk Review
@@ -101,7 +100,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
     And I click on "Notify" in the page details
     Then I softly see that "Automation Desk Review Org level" is in "Notified" status
-    Then I collect all the soft asserts
 
   @54462 @addingOutcomeDeskReviewOrgLevel @deepika
   Scenario: Adding outcomes to Desk Review OrgLevel
@@ -146,7 +144,6 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
     Then I softly see that "Automation Finding" has been added in flextable with Id "---orgLevelDeskReview:-:correctiveTableId---"
-    Then I collect all the soft asserts
 
   @54572 @formFillingDeskReviewOrgLevel @smoke @deepika
   Scenario: Filling up of form in Desk Review Org Level
@@ -255,7 +252,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
-    Then I collect all the soft asserts
 
   @54888 @55203 @deskReviewCorrectiveActionsSubmitToGrantoBySubrecipientOrgLevel @smoke @deepika
   Scenario: Validate Org Level Desk Review Submit to Grantor and Corrective Actions By Subrecipient
@@ -348,7 +344,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
-    Then I collect all the soft asserts
 
   @55415 @viewOrgDeskReviewAcceptButtonAfterSRecipientsSubmission @deepika
   Scenario: Validate Submitted By field at Certification table should get updated on Org Desk Review at SR user end and User will be able to view the Desk Review Accept button after review the submission by Recipients
@@ -514,7 +509,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     Then I softly see that "Automation Desk Review Org Level" has been added in flextable with Id "---deskreview:-:deskReviewGridViewTableId---"
-    Then I collect all the soft asserts
 
   @55459 @54887 @deskReviewOrgLevelSendToSubrecipientWithOutAddingCorerctiveItems @deepika
   Scenario:  Validate User will not be able to submit the Desk Review Org Level to Grantor without adding corrective actions to findings.
@@ -593,7 +587,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click on "Submit to Grantor" in the page details
     Then I softly see the following messages in the page details :
       | Reports and Outcomes Tab - Enter corrective actions on all Findings outcomes using the "+" icons. |
-    Then I collect all the soft asserts
 
   @55460 @approverForwardUserGetPendingTaskDeskReview @deepika
   Scenario: Validate when the Approver forward Org Level Desk Review to other user, the Pending Task will be created to the User
@@ -729,7 +722,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     Then I softly can see top right button "Conduct" in page detail
     When I click on "Conduct" in the page details
     Then I softly see status in Progress-bar is "In Progress" and is "green"
-    Then I collect all the soft asserts
 
   @55867 @55873 @54460 @NotifyTaskRecipientCannotCreateAndSeeReportAndOutcomesWhenInNotifiedStatusOrgDR @deepika
   Scenario: Validate whether the respective POC from the applicant organization will receive a pending task D will not be able to create / edit the Outcomes and cannot view the report or outcomes while in the Notified status.
@@ -760,7 +752,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:homePhasePendingTasks---"
     Then I softly cannot see "Reports and Outcomes" sub tab at view detail page
     Then I softly see that "Automation Desk Review Org level" is in "Notified" status
-    Then I collect all the soft asserts
 
   @56001 @deskReviewWithoutFormFillingOrgLevel @deepika
   Scenario: User will not be able to submit the Desk Review for approval without completed forms
@@ -862,7 +853,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" from workspace
     Then I softly see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
-    Then I collect all the soft asserts
 
   @61992 @RecordOwnerCanViewSnapshotAfterODRIsSubmittedForApproval @skipOnJenkins
   Scenario: Validate Record Owner user is able to take Snapshot after Org Desk Review is Submitted for Approval status - Org Desk Review
@@ -997,7 +987,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click on "Delete" icon for "Automation Desk Review Org level" inside flex table with id "DeskReview"
     And I perform quick search for "Automation Desk Review Org level" in "DeskReview" panel
     Then I softly see "No Records Found" inside flex table with id "DeskReview"
-    Then I collect all the soft asserts
 
   @65070 @historyOfOrgDeskReviewsendbacktoOwner @deepika
   Scenario: Validate History Field is getting Updated at Award owner End when Org Desk Review status is Submitted to Grantor.
@@ -1165,7 +1154,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Related log" sub tab
     When I perform quick search for "Record Id" in "DeskReview" panel
     Then I softly see "No Records Found" inside flex table with id "DeskReview"
-    Then I collect all the soft asserts
 
   @65073 @recordOwnerhasAccesstoDeleteassociatedContactand @deepika @wip
   Scenario: Validate whether record owner has access to delete the asoociated Contact and Award to Desk Review Org Level |
@@ -1186,7 +1174,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
     And I click on "Remove" icon for "Automation Award for Amendment Request" inside flex table with id "---orgLevelDeskReview:-:selectAwardId---"
     Then I softly see "No Records Found" inside flex table with id "---orgLevelDeskReview:-:selectAwardId---"
-    Then I collect all the soft asserts
 
   @65150 @reviewerCanNotEditAfterSubmittingtheReviewOrgLevel @deepika
   Scenario: Validate after submitting the review comments for Org Level Desk Review, the Edit button should will be unavailable for the reviewer

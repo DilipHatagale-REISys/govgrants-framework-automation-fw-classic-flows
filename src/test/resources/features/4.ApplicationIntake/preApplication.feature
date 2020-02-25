@@ -53,7 +53,6 @@ Feature: Validate all scenarios in the Pre-Application
     When I click on "View" icon for "Automation SPA" inside flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
     And I save the field labeled "Organization" as "orgName2"
     Then I softly see that the saved value "{SavedValue:orgName1}" and "{SavedValue:orgName2}" are equal
-    And I collect all the soft asserts
 
   @53153 @preApplicationEdition
   Scenario: Validate edition of pre-application
@@ -73,7 +72,6 @@ Feature: Validate all scenarios in the Pre-Application
       | Construction  | 5000   | 1000       | 5000           | 100            |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
-    Then I collect all the soft asserts
 
   @53155 @PreApplicationAttachmentChecklistCA
   Scenario: Validate the attachment checklist of the PreApplication
@@ -97,7 +95,6 @@ Feature: Validate all scenarios in the Pre-Application
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted" and is "green"
     Then I softly cannot see top right button "Edit" in page detail
-    Then I collect all the soft asserts
 
   @53162 @70247 @70248 @70249 @70250 @70251 @70524 @preApplicationToApplication @deepika
   Scenario Outline: Validate Grantor accept the submitted pre-application and converted it to application | Validate the subrecipient users able to create application from the approved Pre Application
@@ -166,7 +163,6 @@ Feature: Validate all scenarios in the Pre-Application
     And I perform quick search for "Record Id" in "---applicationIntake:-:applicantGrantorApplicationsTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---applicationIntake:-:applicantGrantorApplicationsTableId---"
     Then I softly see status in Progress-bar is "Submitted" and is "Green"
-    Then I collect all the soft asserts
     Examples:
       | Announcement Name                       |
       | Automation Announcement for Application |
@@ -183,7 +179,6 @@ Feature: Validate all scenarios in the Pre-Application
     When I click on "Submit to Grantor" in the page details
     Then I softly see the following messages in the page details :
       | Overview Tab - Enter an Acknowledgement before submitting this Pre-Application. |
-    Then I collect all the soft asserts
 
   @70523 @snapshotAfterPreApplicationIsSubmitted @deepika
   Scenario:  Validate SR user is able to view the Snapshot after Pre- Application is Submitted to Grantor status

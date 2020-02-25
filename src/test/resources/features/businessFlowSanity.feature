@@ -321,7 +321,6 @@ Feature: The feature is only designed for ensuring all business flows are workin
     Then I softly can see top right button "Publish" in page detail
     And I click on "Publish" in the page details
     Then I softly see status in Progress-bar is "Published" and is "green"
-    Then I collect all the soft asserts
 
   @publishingDirectedAnnouncement
   Scenario: Validate the activation of Directed Announcement

@@ -35,7 +35,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "Financials" sub tab
     And I click on "Remove" icon for "BP01" inside flex table with id "---announcement:-:budgetPeriodTableId---"
     Then I softly do not see value "BP01" for title "Budget Period Name" inside table "---announcement:-:budgetPeriodTableId---"
-    And I collect all the soft asserts
 
   @70290 @70298 @70302 @70799 @userAllowToEnterDataInQualityAndAvailibility @aashish
   Scenario: To Verify that user able to see Text fields after select Q&A Availability  as "Yes"  And  user can enter and save all required fields while creating Announcement
@@ -83,7 +82,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Submit For Approval" in the page details
     Then I softly see the following messages in the page details :
       | Overview Tab: The Answer submission deadline cannot be earlier than Question submission deadline. |
-    And I collect all the soft asserts
 
   @70479 @70481 @70503 @70422 @70507 @70542 @70543 @70425 @70424 @70426 @70419 @70417 @70418 @userDeleteSupportingDocument @aashish
   Scenario: To Verify that user can delete supporting document checklist While creating the Announcement |
@@ -141,7 +139,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly verify that the file "InternalOrganization_Field_Values.xlsx" is downloaded
     And I click on "Delete" icon under attachment flex table
     Then I softly do not see "InternalOrganization_Field_Values.xlsx" has been added in "Attachments" flex table
-    And I collect all the soft asserts
 
   @70483 @userDeleteSupportingDocumentViewHyperlink @aashish @wip
   Scenario: To Verify that user can view Template Link in supporting document checklist While creating the Announcement
@@ -185,7 +182,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see value "Automation Permanent Objective" for title "Title" inside table "---announcement:-:objectivesTableId---"
     When I click on "View" icon for "Automation Permanent Objective" inside flex table with id "---announcement:-:objectivesTableId---"
     Then I softly see field "Objective" as "Automation Permanent Objective"
-    And I collect all the soft asserts
 
   @70163 @70166 @70197 @userAllowToSelectEligibilityDetails @aashish
   Scenario: To Verify that user is  allowed  to select the Eligibility Details while creating Announcement
@@ -210,7 +206,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Submit For Approval" in the page details
     Then I softly see the following messages in the page details :
       | Overview Tab - Select applicant types. |
-    Then I collect all the soft asserts
 
   @70211 @70216 @70217 @userAbletoAssociateActiveRelatedProgram @aashish
   Scenario: To Verify that user is able to associate active Related Federal/NGO Program | To Verify that user is able to view active Related Federal/NGO Program
@@ -233,7 +228,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I click on "Remove" icon for "Cal Fires" inside flex table with id "---announcement:-:relatedAnnouncementTableId---"
     Then I softly do not see value "Cal Fires" for title "Program Title" inside table "---announcement:-:relatedAnnouncementTableId---"
-    And I collect all the soft asserts
 
   @70727 @70723 @announcementForPastApplicationDueDateCA @announcementWithBlankBudgetPeriodCA @submittedAnnouncementDeletionCA
   Scenario Outline: Validate that user can not enter application due date as past date | Validate that user should not submit announcement with blank budget period dates|To Verify that user can view contact while creating Announcement
@@ -439,7 +433,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click toggle button to select "Draft Competitive Announcements"
     When I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     Then I softly cannot see row level action button "Delete" against "Record id" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
-    And I collect all the soft asserts
     Examples:
       | Announcement Type |
       | Competitive       |
@@ -632,7 +625,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Revise" in the page details
     Then I softly see status in Progress-bar is "Created" and is "green"
     Then I softly see field "Status" as "Under Revision"
-    And I collect all the soft asserts
     Examples:
       | Announcement Type |
       | Competitive       |
@@ -840,7 +832,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "Record Id" in "---announcement:-:opportunityNotQtableId---" panel
     Then I softly do not see value "Record Id" for title "Announcement ID" inside table "---announcement:-:opportunityNotQtableId---"
-    And I collect all the soft asserts
     Examples:
       | Announcement Type |
       | Competitive       |
@@ -1029,7 +1020,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     Then I softly do not see values "Record Id" and "Automation Competitive Announcement" inside table
-    And I collect all the soft asserts
     Examples:
       | Announcement Type |
       | Competitive       |
@@ -1214,7 +1204,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     Then I softly do not see values "Record Id" and "Automation Competitive Announcement" inside table
-    And I collect all the soft asserts
     Examples:
       | Announcement Type |
       | Competitive       |
@@ -1585,7 +1574,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click toggle button to select "Rejected Competitive Announcements"
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     Then I softly see value "Record Id" for title "EGMS ID" inside table "---announcement:-:competitiveAnnouncementTableId---"
-    And I collect all the soft asserts
     Examples:
       | Announcement Type | Active Funding Opportunities id                     |
       | Competitive       | ---announcement:-:competitiveAnnouncementTableId--- |

@@ -17,7 +17,6 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I enter value "No" into field "fieldFocusAreaRequired__c"
     And I click modal button "Save and Continue"
     Then I softly see field "Focus Area Required?" as "No"
-    And I collect all the soft asserts
 
   @70369 @validationForSubrecipientMatch @smoke @aashish
   Scenario: To Validate system generates validation message for  by keeping the "Subrecipient Match(%)" field as blank while creating Announcement
@@ -49,7 +48,6 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I navigate to "Setup" sub tab
     Then I softly do not see "Related Focus Areas" page block displayed
     Then I softly do not see "Objectives" page block displayed
-    And I collect all the soft asserts
 
   @70999 @70997 @70980 @71010 @71011 @71012 @71022 @71023 @71037 @71027 @validationForErrorMessageOfPreApplication @aashish
   Scenario: To validate system generated error message when Pre Application Due Date is greater than Application Due Date while submitting information
@@ -127,7 +125,6 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see the following messages in the page details :
       | Overview Tab - Pre-Application Due Date cannot be in the past. |
       | Overview Tab - Application Due Date cannot be in the past.     |
-    And I collect all the soft asserts
 
   @71150 @71303 @71497 @71500 @71503 @71523 @71518 @71151 @71152 @71540 @71153 @71056 @71314 @71307 @verifyTotalReviewFormWeight @aashish999
   Scenario: To validate system generated error message when total Review Form  weight(%) is more than 100 % while creating Announcement
@@ -268,7 +265,6 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see value "40" for title "Max Score" inside table "---announcement:-:reviewPanelQuestionsTableId---"
     And I click on "Delete" icon for "Review form question Edited" inside flex table with id "---announcement:-:reviewPanelQuestionsTableId---"
     Then I softly do not see value "Review form question Edited" for title "Question" inside table "---announcement:-:reviewPanelQuestionsTableId---"
-    And I collect all the soft asserts
 
   @71293 @71295 @71440 @71416 @verifyUserCanAddReviewers @aashish
   Scenario: To verify that user is allow to add reviewers to review forms while creating Announcement | To verify default review forms & reviewer section are populated on Draft announcement
@@ -324,5 +320,4 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on "Remove from Form" icon for "David FO" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
     Then I softly see the following messages in the page details :
       | Record deleted successfully. |
-    And I collect all the soft asserts
 

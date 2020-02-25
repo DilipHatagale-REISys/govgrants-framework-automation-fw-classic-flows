@@ -122,7 +122,6 @@ Feature: Validate all scenarios in the Application Review
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
     When I refresh the page
     Then I softly see that "Sent for Review" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
-    And I collect all the soft asserts
     Examples:
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
@@ -980,7 +979,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
     Then I softly can see top right button "Funding Decision Memo" in page detail
-    Then I collect all the soft asserts
     Examples:
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
@@ -1276,7 +1274,6 @@ Feature: Validate all scenarios in the Application Review
     When I enter value "AuGr" into field "GrantCode__c"
     And I click on "Save" in the page details
     Then I softly see that "Funding Decision Memo" is in "Created" status
-    Then I collect all the soft asserts
     Examples:
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |

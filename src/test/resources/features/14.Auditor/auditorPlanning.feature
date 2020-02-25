@@ -10,7 +10,6 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
     Then I softly cannot see row level action button "Edit" against "<FocusArea>" in flex table with id "---focusarea:-:focusAreaTableId---"
     And I click on "View" icon for "<FocusArea>" inside flex table with id "---focusarea:-:focusAreaTableId---"
     Then I softly cannot see top right button "Activate" in page detail
-    Then I collect all the soft asserts
     Examples:
       | User    | FocusArea                       |
       | AUDITOR | Automation Permanent Focus Area |
@@ -80,7 +79,6 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
     Then I softly cannot see top right button "Add" for "---program:-:approverTableId---" flex table
     Then I softly cannot see top right button "Submit For Approval" in page detail
     Then I softly cannot see top right button "Activate" in page detail
-    Then I collect all the soft asserts
     Examples:
       | User    | Program                               |
       | AUDITOR | Automation Permanent Internal Program |
@@ -92,7 +90,6 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
     When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     Then I softly cannot see top right button "New" for "---fundingsource:-:fundingSourceTableId---" flex table
     Then I softly cannot see top right button "New" for "---auditor:-:fundingSourceExternalTableId---" flex table
-    Then I collect all the soft asserts
     Examples:
       | User    |
       | AUDITOR |
@@ -109,7 +106,6 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
     When I navigate to "Overview" sub tab
     Then I softly cannot see top right button "New" for "---fundingsource:-:fundingAccountTableId---" flex table
     Then I softly cannot see top right button "Activate" in page detail
-    Then I collect all the soft asserts
     Examples:
       | User    | FundingSource                       |
       | AUDITOR | Automation Permanent Funding Source |
@@ -147,7 +143,6 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
     Then I softly cannot see row level action button "Edit" against "<KPI>" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
     And I click on "View" icon for "<KPI>" inside flex table with id "---keyperformanceindicator:-:kpiTableId---"
     Then I softly cannot see top right button "Activate" in page detail
-    Then I collect all the soft asserts
     Examples:
       | User    | KPI                                     |
       | AUDITOR | Automation Permanent KPI for Regression |
@@ -181,7 +176,6 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
     When I click on "Back To Strategic Plan" in the page details
     Then I softly cannot see top right button "Activate" in page detail
     Then I softly cannot see top right button "Deactivate" in page detail
-    Then I collect all the soft asserts
     Examples:
       | User    | StrategicPlan                       |
       | Auditor | Automation Permanent Strategic Plan |
@@ -215,7 +209,6 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
     When I perform quick search for "Active" in "---auditor:-:termsandconditionstableID---" panel
     Then I softly can see row level action button "View" against "Active" in flex table with id "---auditor:-:termsandconditionstableID---"
     Then I softly cannot see row level action button "Edit" against "Active" in flex table with id "---auditor:-:termsandconditionstableID---"
-    Then I collect all the soft asserts
     Examples:
       | User    |
       | AUDITOR |
@@ -231,7 +224,6 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
     Then I see the following rows under the following headers in table with id "---auditor:-:formsflextableID---" :
       | Form Number | Actions |
       | PSAF - 001  | Preview |
-    Then I collect all the soft asserts
     Examples:
       | User    |
       | AUDITOR |
@@ -246,7 +238,6 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
     Then I softly can see row level action button "View" against "BBG" in flex table with id "---auditor:-:federalProgramFlexTableId---"
     When I perform quick search for "NGO Program 2" in "---auditor:-:nonfederaltableId---" panel
     Then I softly can see row level action button "View" against "NGO Program 2" in flex table with id "---auditor:-:nonfederaltableId---"
-    Then I collect all the soft asserts
     Examples:
       | User    |
       | AUDITOR |

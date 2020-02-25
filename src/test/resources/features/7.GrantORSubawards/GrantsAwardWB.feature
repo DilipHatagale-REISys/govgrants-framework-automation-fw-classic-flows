@@ -104,7 +104,6 @@ Feature: Validate all scenarios of grants and award without background
     And I click toggle button to select "Grants - All"
     When I perform quick search for "Automation Direct Award" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     Then I softly see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:activeGrantsTableId---"
-    And I collect all the soft asserts
 
 
   @68460 @adminUserRowLevelButton @jitendra
@@ -126,7 +125,6 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly can see row level action button "Delete" against "Automation Direct Award" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     Then I softly can see row level action button "View" against "Automation Direct Award" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     Then I softly can see row level action button "Edit" against "Automation Direct Award" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
-    And I collect all the soft asserts
 
   @68138 @takeSnapShotHistory @jitendra @skipOnJenkins
   Scenario: Validate that Snapshot of Grant page taken is saved in the History tab of the same
@@ -169,7 +167,6 @@ Feature: Validate all scenarios of grants and award without background
     And I click toggle button to select "Grants - Closed"
     And I calculate the total from the column header "Subaward Amount" and saved it as "closedTotal" from the flex table "---subAwardStandAlone:-:activeGrantsTableId---"
     Then I softly see total as "{SavedValue:closedTotal}" against column name "Subaward Amount" from flex table "---subAwardStandAlone:-:activeGrantsTableId---"
-    And I collect all the soft asserts
 
   @65619 @65578 @65586 @65573 @validateFieldsAtGrant @jitendra
   Scenario Outline: To verify Budget period end date entered by Award owner should be same when owner click on save button.
@@ -198,7 +195,6 @@ Feature: Validate all scenarios of grants and award without background
     And I click toggle button to select "Grants - All" in "---subAwardStandAlone:-:activeGrantsTableId---"
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     Then I softly see value "Draft" for title "Status" against the value "<Award Name>" inside table "---subAwardStandAlone:-:activeGrantsTableId---"
-    And I collect all the soft asserts
     Examples:
       | Award Name                            | Grant Name                            |
       | Automation Award for field validation | Automation Award for field validation |
@@ -230,7 +226,6 @@ Feature: Validate all scenarios of grants and award without background
     And I enter value "2" into field "Sequence__c"
     And I click modal button "Save"
     Then I softly see field "Sequence" as "2"
-    And I collect all the soft asserts
     Examples:
       | Award Name                            | Grant Name                            |
       | Automation Award for field validation | Automation Grant for field validation |
@@ -623,7 +618,6 @@ Feature: Validate all scenarios of grants and award without background
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     Then I softly see value "true" for title "Mandatory" against the value "Term" inside table "---subAwardStandAlone:-:termsndConditionsTableId---"
     Then I softly cannot see row level action button "Delete" against "Term" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
-    Then I collect all the soft asserts
 
   @65780 @65800 @65814 @65804 @66751 @66745 @StatusNotStartedSentToSubrecipient @jitendra
   Scenario: To verify on click "send to sub recipient button" by  Award owner profile (PM user) it must appear in the pending task of sub-recipient.
@@ -680,7 +674,6 @@ Feature: Validate all scenarios of grants and award without background
     When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     Then I softly see value "{SavedValue:fundingAccount}" for title "Funding Account" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I collect all the soft asserts
 
   @38215 @68038 @67913 @VerifyActiveGrantsAccessToAllUsers @mahadev @skipOnJenkins
   Scenario Outline: Verify all internal users can view active grants
@@ -705,7 +698,6 @@ Feature: Validate all scenarios of grants and award without background
     And I select "Download As PDF" from dropdown
     And I download the file
     Then I softly verify that "pdf" file is downloaded
-    And I collect all the soft asserts
     Examples:
       | Grant Name                 |
       | Automation Permanent Award |
@@ -754,7 +746,6 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "<Annoucement>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
     Then I softly see value "{SavedValue:PPStartDate} - {SavedValue:PPEndDate}" for title "Budget Period Dates" against the value "<Annoucement>" inside table "---progressreport:-:subawardsTableId---"
-    And I collect all the soft asserts
     Examples:
       | Annoucement                     |
       | Automation Announcement for FDM |
@@ -793,7 +784,6 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Budget" sub tab
     Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "flexGridEnhancedGrantorAwardServiceAreas"
-    Then I collect all the soft asserts
     Examples:
       | Annoucement                     |
       | Automation Announcement for FDM |
@@ -864,7 +854,6 @@ Feature: Validate all scenarios of grants and award without background
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
       | Subrecipient Organization is required. |
-    Then I collect all the soft asserts
 
   @64424 @VerifyRequiredMatch%Filed @keerti
   Scenario: Verify If you select Subrecipient Match Required setting as Yes and award owner did not enter Required Match % field then it should show validation message.
@@ -959,7 +948,6 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see field "Risk Assessment Required?" as "Yes"
     Then I softly see field "Work Plan Required?" as "No"
     Then I softly see field "Grant Abbreviation" as "GA"
-    Then I collect all the soft asserts
 
   @65582 @verifyGrantTypes @mahadev
   Scenario: To verify that the type of grant in drop down is Project grant, formula and block grant
@@ -998,7 +986,6 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Automation Execution Award" inside table
     Then I softly see status in Progress-bar is "Created" and is "green"
-    Then I collect all the soft asserts
 
   @64953 @validateDataOnGrantAward @mahadev @wip
   Scenario Outline: Validate sent email on annoucement not carry forwarded on grant
@@ -1305,7 +1292,6 @@ Feature: Validate all scenarios of grants and award without background
     When I close "Associate Terms and Conditions" modal by clicking the top right x button
     And I refresh the page
     Then I softly see value "Test TC" for title "Title" inside table "---subAwardStandAlone:-:termsndConditionsTableId---"
-    Then I collect all the soft asserts
 
   @65794 @65822 @verifySRUserCanEnterBudgetDetails @mahadev
   Scenario Outline: To verify that the Sub Award budget field is editable in the Subrecipient (SPI User) under budget tab
@@ -1422,7 +1408,6 @@ Feature: Validate all scenarios of grants and award without background
     When I close "Add Line Items" modal by clicking the top right x button
     Then I softly see value "$10,000.00" for title "Subaward  Budget" against the value "Project inspection fees" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
     Then I softly see value "$100.00" for title "Cash Match" against the value "Project inspection fees" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
-    Then I collect all the soft asserts
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -1439,7 +1424,6 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see value "Organization Desk Review" for title "Package Name" inside table "---subAwardStandAlone:-:grantpkagestableid---"
     Then I softly see value "Grantor Site Visit Forms" for title "Package Name" inside table "---subAwardStandAlone:-:grantpkagestableid---"
     Then I softly see value "Grantor Progress Report Forms" for title "Package Name" inside table "---subAwardStandAlone:-:grantpkagestableid---"
-    Then I collect all the soft asserts
     Examples:
       | Grant Name                 |
       | Automation Permanent Award |
@@ -1467,7 +1451,6 @@ Feature: Validate all scenarios of grants and award without background
     When I click on "Save" in the page details
     Then I softly see the following messages in the page details :
       | Source is Required to save under Overview. |
-    And I collect all the soft asserts
 
   @66223 @67954 @67925 @67916 @67917 @ErrorMsgForPurposeField @jitendra
   Scenario: TTo verify that if Purpose field in plan table is left unfilled in site visit review and upon clicking on the save button by the award owner (Pm profile) on the top right corner of the page validation error must be thrown
@@ -1502,7 +1485,6 @@ Feature: Validate all scenarios of grants and award without background
     And I mouse hover to link contains "{SavedValue:grantID}"
     And I click "SAN DIEGO ELECTRICAL TRAINING TRUST" link present on hovered tooltip
     Then I softly see page title contains as "SAN DIEGO ELECTRICAL TRAINING TRUST"
-    And I collect all the soft asserts
 
   @53967 @NoIfAreExpenseDetailRequiredonReimbursements @jitendra
   Scenario Outline: Verify that If Are Expense Details Required on Reimbursements? field is No then user should see only edit action at Reimbursement Payment request Budget category table.
@@ -1998,7 +1980,6 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "Send to Subrecipient" in the page details
     Then I softly see the following messages in the page details :
       | Budget Tab - Specify a Budget Period End Date for the subaward. |
-    Then I collect all the soft asserts
 
   @65592 @validateGrantTypeAndGrantDescriptionFields @mahadev
   Scenario: To verify that after the new value is entered and clicked on the save button through the award owner profile as a PM profile the value must be retained
@@ -2018,7 +1999,6 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "Save" in the page details
     Then I softly see field "Grant Type" as "Project Grant"
     Then I softly see field "Brief information about the grant." as "Test Automation"
-    Then I collect all the soft asserts
 
   @67528 @totalBudgetCalculation @jitendra
   Scenario: To validate that the total project cost in the subaward budget table is the sum of the values in each row of the column
@@ -2283,7 +2263,6 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see field "Subaward Type" as "continuation"
     Then I softly see field "Version Number" as "1"
     Then I softly see that "Automation Award for Amendment Request" is in "Pending Activation" status
-    And I collect all the soft asserts
     Examples:
       | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
@@ -2337,7 +2316,6 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "Automation Direct Award" inside table
     And I navigate to "Attachments" sub tab
     Then I softly cannot see top right button "Add" in flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
-    Then I collect all the soft asserts
 
   @67809 @createGrantADMIN @aashish
   Scenario: Validate that the Admin user can create new Grant

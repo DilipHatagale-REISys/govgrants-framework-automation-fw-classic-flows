@@ -16,7 +16,6 @@ Feature: Validate all scenarios for Auditor Profile in Announcement Module
     When I navigate to "Directed" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Directed Announcements - Draft"
     Then I softly cannot see top right button "New" in flex table with id "ActiveFundingOpportunities"
-    Then I collect all the soft asserts
 
   @69160 @otherUsersCanCreateAnnouncement
   Scenario Outline: Verify that other than Auditor user all other users can create a Announcement
@@ -33,7 +32,6 @@ Feature: Validate all scenarios for Auditor Profile in Announcement Module
     When I navigate to "Directed" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Directed Announcements - Draft"
     Then I softly can see top right button "New" in flex table with id "ActiveFundingOpportunities"
-    Then I collect all the soft asserts
     Examples:
       | User  |
       | PM    |
@@ -74,4 +72,3 @@ Feature: Validate all scenarios for Auditor Profile in Announcement Module
     Then I softly cannot see top right button "New" in flex table with id "---announcement:-:fundingAccountsTableId---"
     Then I softly cannot see top right button "Submit For Approval" in page detail
     Then I softly cannot see top right button "Publish" in page detail
-    Then I collect all the soft asserts

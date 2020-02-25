@@ -37,7 +37,6 @@ Feature: Validate all scenarios in Closeout
     Then I softly see that "Automation FO" has been added in flextable with Id "---closeout:-:closeoutApproverTableId---"
     When I click on "Send To Subrecipient" in the page details
     Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "Green"
-    Then I collect all the soft asserts
 
   @50977 @50976 @subrecipientEntersFielsInCloseoutAndAcknowledges @smoke
   Scenario: Validate whether Subrecipient enters closeout fields and acknowledges
@@ -65,7 +64,6 @@ Feature: Validate all scenarios in Closeout
     Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "green"
     And I click on "Acknowledge" in the page details
     Then I softly see status in Progress-bar is "Acknowledged by Subrecipient" and is "green"
-    Then I collect all the soft asserts
 
   @50979 @50978 @overrideCloseoutAndsubmitForApproval @smoke
   Scenario Outline: Grant owner overrides the Closeout and is submitted for approval
@@ -148,7 +146,6 @@ Feature: Validate all scenarios in Closeout
     Then I see status in Progress-bar is "Overridden" and is "green"
     And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
-    Then I collect all the soft asserts
     Examples:
       | Award Name                 |
       | Automation Permanent Award |
