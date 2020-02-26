@@ -271,7 +271,7 @@ Feature: Validate all scenarios in the Application Intake
     When I click "Add" after selection of "Automation SPA" in the table "---applicationIntake:-:associateNewContactsTableId---"
     Then I see "Automation SPA" has been added in "---applicationReview:-:flexGridAppContactTableId---" flex table
 
-  @71409 @maxAppValidationError @deepika @wip
+  @71409 @maxAppValidationError @deepika
   Scenario: Validate whether User  will be able to view the following error message "Reached the Maximum number of Applications" when the limit has been reached.
     Given I save the field containing "EGMS ID" as "APPId"
     When I click on "Edit" in the page details
@@ -310,4 +310,4 @@ Feature: Validate all scenarios in the Application Intake
     And I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "cae"
     When I click on "Create Application" in the page details
     Then I see the following messages in the page details :
-      | Application cannot be created as you have reached the maximum limit for allowed applications for {SavedValue:APPId} |
+      | Application is already created for this Announcement |

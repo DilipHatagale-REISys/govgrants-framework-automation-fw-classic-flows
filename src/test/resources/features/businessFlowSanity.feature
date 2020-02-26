@@ -1148,7 +1148,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I enter a review as "Passed"
     When I click modal button "Save"
     And I pause execution for "20" seconds
-    And I click modal button "Submit Review"
+    And I click modal button "Grantor Subaward Review"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1311,7 +1311,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I enter a review as "Passed"
     When I click modal button "Save"
     And I pause execution for "20" seconds
-    And I click modal button "Submit Review"
+    And I click modal button "Grantor Subaward Review"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
