@@ -1,7 +1,7 @@
 @announcement @commonAnnouncements @regression
 Feature: Validate all common scenarios in the  Announcement tab (Announcement without background)
 
-  @70878 @70373 @validationOverrideProgramSetting @aashish
+  @70878 @70373 @70821 @validationOverrideProgramSetting @aashish
   Scenario: To Verify that user can override program settings at Announcement level
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "EXE" user
@@ -126,7 +126,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Overview Tab - Pre-Application Due Date cannot be in the past. |
       | Overview Tab - Application Due Date cannot be in the past.     |
 
-  @71150 @71303 @71497 @71500 @71503 @71523 @71518 @71151 @71152 @71540 @71153 @71056 @71314 @71307 @verifyTotalReviewFormWeight @aashish
+  @71150 @71303 @71051 @71054 @71497 @71500 @71503 @71523 @71518 @71151 @71152 @71540 @71153 @71056 @71314 @71307 @verifyTotalReviewFormWeight @aashish
   Scenario: To validate system generated error message when total Review Form  weight(%) is more than 100 % while creating Announcement
     Given I delete the record "Automation Directed Announcement" from the object "APPLICATION REVIEWS"
     Given I delete the record "Automation Directed Announcement" from the object "PreApplication"
@@ -148,6 +148,9 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | SME Review        | 50              |
     And I click on "Save" in the page details
     And I expand nested table containing column value "SME Review"
+    Then I softly see "Form Name" in flex table header "---announcement:-:preScreenReviewFormTableId---"
+    Then I softly see "Form Weight (%)" in flex table header "---announcement:-:preScreenReviewFormTableId---"
+    Then I softly see "Minimum Number of Reviews per Application" in flex table header "---announcement:-:preScreenReviewFormTableId---"
     And I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
       | Form Name      | Form Weight (%) |
       | Fiscal Review  | 75              |
@@ -183,6 +186,8 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Form Weight (%) | Form Name           |
       | 70.00%          | Program Review Form |
     Then I softly see value "Program Review Form" for title "Form Name" inside table "---announcement:-:preScreenReviewFormTableId---"
+    And I click on "Delete" icon for "Program Review Form" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    Then I softly do not see value "Program Review Form" for title "Form Name" inside table "---announcement:-:preScreenReviewFormTableId---"
     And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
     Then I softly see value "75%" for title "Section Weight (%)" against the value "Budget" inside table "---announcement:-:reviewPanelTableId---"
     Then I softly see value "15%" for title "Section Weight (%)" against the value "Match" inside table "---announcement:-:reviewPanelTableId---"
