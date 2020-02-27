@@ -1147,8 +1147,9 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---"
     And I enter a review as "Passed"
     When I click modal button "Save"
-    And I pause execution for "20" seconds
-    And I click modal button "Grantor Subaward Review"
+    And I pause execution for "10" seconds
+    And I click modal button "Submit Review"
+    And I close "Grantor Subaward Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1311,7 +1312,8 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I enter a review as "Passed"
     When I click modal button "Save"
     And I pause execution for "20" seconds
-    And I click modal button "Grantor Subaward Review"
+    And I click modal button "Submit Review"
+    And I close "Grantor Subaward Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -2146,7 +2148,7 @@ Feature: The feature is only designed for ensuring all business flows are workin
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---closeout:-:grantsTableId---"
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
-    When I enter "Creation" values from "Closeout_Field_Values.xlsx"
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter "Edition" values from "Closeout_Field_Values.xlsx"
     When I save the field labeled "EGMS ID" as "CloseoutID"
@@ -2307,8 +2309,8 @@ Feature: The feature is only designed for ensuring all business flows are workin
     When I login as "SA" user
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Bayside Community Center" in "---orgRiskAssessment:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Bayside Community Center" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
+    When I perform quick search for "Bayside Community Center Partner User" in "---orgRiskAssessment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Bayside Community Center Partner User" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
     And I navigate to "Assessment" sub tab
