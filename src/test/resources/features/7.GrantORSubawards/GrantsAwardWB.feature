@@ -334,7 +334,7 @@ Feature: Validate all scenarios of grants and award without background
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---"
     And I enter a review as "Passed"
     When I click modal button "Save"
-    And I pause execution for "20" seconds
+    And I pause execution for "5" seconds
     And I click modal button "Submit Review"
     When I re-login to "As a Grantor" app as "<user>" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -530,7 +530,7 @@ Feature: Validate all scenarios of grants and award without background
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---"
     And I enter a review as "Passed"
     When I click modal button "Save"
-    And I pause execution for "20" seconds
+    And I pause execution for "5" seconds
     And I click modal button "Submit Review"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1659,7 +1659,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I click on "Activate" in the page details
     Then I see that "Subaward" is in "Activated" status
-    And I pause execution for "100" seconds
+    And I pause execution for "5" seconds
     Then I softly can see mail notification for "EXTERNAL" user with following subject:
       | Award <award id> has been Issued |
     And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -1870,7 +1870,7 @@ Feature: Validate all scenarios of grants and award without background
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---"
     And I enter a review as "Passed"
     When I click modal button "Save"
-    And I pause execution for "20" seconds
+    And I pause execution for "5" seconds
     And I click modal button "Submit Review"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -2135,7 +2135,7 @@ Feature: Validate all scenarios of grants and award without background
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---"
     And I enter a review as "Passed"
     When I click modal button "Save"
-    And I pause execution for "20" seconds
+    And I pause execution for "5" seconds
     And I click modal button "Submit Review"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -2679,7 +2679,7 @@ Feature: Validate all scenarios of grants and award without background
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
-    And I pause execution for "100" seconds
+    And I pause execution for "5" seconds
     And I softly can see mail notification for "EXTERNAL" user with following subject:
       | Notification: Subaward <award id> has been Assigned for Executive Approval. |
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
