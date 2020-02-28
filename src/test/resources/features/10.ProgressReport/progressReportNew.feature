@@ -1,4 +1,4 @@
-@progressReportNew @regression @progressReport
+@progressReportNew @regression @progressReport @wip
 Feature: Validate all scenarios in Progress Report with respect to Amendment Request
 
   @60726 @60727 @60721 @60656 @60657 @validateReviewedPRAfterFundingChangeAmendmentIsCarryForwarded @mahadev
