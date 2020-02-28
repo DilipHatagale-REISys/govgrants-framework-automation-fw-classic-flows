@@ -1,4 +1,4 @@
-@grantAndAward @awardStandAlone @regression
+@grantAndAward @awardStandAlone @regression @wip
 Feature: Validate all scenarios in the Stand Alone Award and Grant
 
   Background: Create Award
