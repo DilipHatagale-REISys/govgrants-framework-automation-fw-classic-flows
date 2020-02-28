@@ -1,4 +1,4 @@
-@grantsAwardWB @regression @grantAndAward
+@grantsAwardWB @regression @grantAndAward @wip
 Feature: Validate all scenarios of grants and award without background
 
   @35555 @VerifyUsersCanSeeNewButtonOnGrantListView @keerti @aashish
