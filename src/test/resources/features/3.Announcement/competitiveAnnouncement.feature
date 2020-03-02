@@ -437,7 +437,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Type |
       | Competitive       |
 
-  @70894 @verifyReviseUnderRevision @aashish
+  @70894 @71722 @verifyReviseUnderRevision @aashish
   Scenario Outline: To Verify that after clicking on revise button, status changes to created.
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
@@ -622,6 +622,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
+    Then I softly can see top right button "Revise" in page detail
     And I click on "Revise" in the page details
     Then I softly see status in Progress-bar is "Created" and is "green"
     Then I softly see field "Status" as "Under Revision"

@@ -126,7 +126,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Overview Tab - Pre-Application Due Date cannot be in the past. |
       | Overview Tab - Application Due Date cannot be in the past.     |
 
-  @71150 @71303 @71051 @71054 @71497 @71500 @71503 @71523 @71518 @71151 @71152 @71540 @71153 @71056 @71314 @71307 @verifyTotalReviewFormWeight @aashish
+  @71150 @71578 @71303 @71051 @71054 @71497 @71500 @71503 @71523 @71518 @71151 @71152 @71540 @71153 @71056 @71314 @71307 @verifyTotalReviewFormWeight @aashish
   Scenario: To validate system generated error message when total Review Form  weight(%) is more than 100 % while creating Announcement
     Given I delete the record "Automation Directed Announcement" from the object "APPLICATION REVIEWS"
     Given I delete the record "Automation Directed Announcement" from the object "PreApplication"
@@ -187,6 +187,8 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | 70.00%          | Program Review Form |
     Then I softly see value "Program Review Form" for title "Form Name" inside table "---announcement:-:preScreenReviewFormTableId---"
     And I click on "Delete" icon for "Program Review Form" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    Then I softly see the following messages in the page details :
+      | Record deleted successfully. |
     Then I softly do not see value "Program Review Form" for title "Form Name" inside table "---announcement:-:preScreenReviewFormTableId---"
     And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
     Then I softly see value "75%" for title "Section Weight (%)" against the value "Budget" inside table "---announcement:-:reviewPanelTableId---"
