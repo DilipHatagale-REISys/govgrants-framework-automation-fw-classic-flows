@@ -81,8 +81,8 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name            | Project Role             | Is Key Personnel |
-      |PatrickM SA      | Project Director/Manager | Checked          |
+      | Name           | Project Role             | Is Key Personnel |
+      | Christopher sa | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
       | Role               | Name           | Description                 |
@@ -357,9 +357,9 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
-      | Program Approver   | Automation PM  | Automation Test Description |
-      | Fiscal Approver    | Automation FO  | Automation Test Description |
+      | Role             | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
     And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab

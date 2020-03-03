@@ -43,11 +43,11 @@ Feature: Validate all scenarios for Auditor Profile in Announcement Module
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Draft Competitive Announcements"
+    And I click toggle button to select "Published Competitive Announcements"
     And I perform quick search for "<Announcement>" in "ActiveFundingOpportunitiesCompitive" panel
     Then I see the following rows under the following headers in table with id "ActiveFundingOpportunitiesCompitive" :
-      | Full Name      | Actions |
-      | <Announcement> | View    |
+      | Announcement Name | Actions |
+      | <Announcement>    | View    |
     Examples:
       | User    | Announcement                                |
       | AUDITOR | Automation Announcement for Pre-Application |

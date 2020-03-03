@@ -36,12 +36,12 @@ Feature: Validate all scenarios in the Site Visit
 
   @51084 @66229 @66232 @51085 @51086 @66283 @notifyPendingTaskForSubrecipientSiteVisit @smoke
   Scenario: Notify Subrecipient and the respective POC from the applicant organization will receive a pending task about the Site Visit
-    Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
-      | Program Approver | Automation EXE | Automation Test Description |
-      | Fiscal Approver  | Automation FO  | Automation Test Description |
-    Then I softly see that "Automation EXE" has been added in flextable with Id "---sitevisits:-:approverSiteVisitTableId---"
+#    Given I navigate to "Responsibilities" sub tab
+#    And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
+#      | Role             | Name           | Description                 |
+#      | Program Approver | Automation EXE | Automation Test Description |
+#      | Fiscal Approver  | Automation FO  | Automation Test Description |
+#    Then I softly see that "Automation EXE" has been added in flextable with Id "---sitevisits:-:approverSiteVisitTableId---"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
@@ -1532,8 +1532,8 @@ Feature: Validate all scenarios in the Site Visit
       | Title                               | Description            | Status      | Due Date | Assigned To    |
       | Automation Observation Subrecipient | Automation Description | In-Progress | -10      | Automation SPI |
     When I collapse nested table containing column value "Automation Observation"
-    Then I see the following messages in the page details :
-      | Due date must be past date |
+    Then I see the following messages in the page details contains:
+      | Due date must be future date |
 
   @65242 @foUserCannotDeleteCreatedSiteVisit @deepika
   Scenario: Validate whether other than record owner can Fo user view the created Site Visit by Pm

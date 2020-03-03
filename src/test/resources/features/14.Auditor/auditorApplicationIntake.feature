@@ -57,7 +57,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     And I navigate to "Applications" tab
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:negotiationPendingTaskTableId---" panel
-    Then I softly see "No Records Found" inside flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
+    Then I see "Automation Announcement for FDM" inside flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
 
   @69165 @auditorViewRecordCannotCreateSubawardFromApprovedFDM
   Scenario: Validate Auditor Can view the record but should not be  able to  Create Subaward From Approved FDM
@@ -120,7 +120,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"
     When I perform quick search for "<Application Name>" in "---auditor:-:applicationTableId---" panel
-    Then I softly can see row level action button "Edit" against "<Application Name>" in flex table with id "---auditor:-:applicationTableId---"
+    Then I softly cannot see row level action button "Edit" against "<Application Name>" in flex table with id "---auditor:-:applicationTableId---"
     When I click on "View" icon for "<Application Name>" inside table
     Then I see status in Progress-bar is "Submitted" and is "Green"
     Examples:
@@ -151,11 +151,11 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     And I login as "SPI" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "Automation Announcement for Pre-Application" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    And I perform quick search for "Automation Announcement for Pre-Application" in "---preApplication:-:notYetQualifiedTable---" panel
     When I click on "View" icon for "Automation Announcement for Pre-Application" inside table
     When I click on "Qualify" in the page details
     And I click on "Create Pre-Application" in the page details
-    When I enter value "Automation Announcement for Application" into field "Title__c"
+    When I enter value "Automation Announcement for Application " into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I get the "EGMS ID"
@@ -163,7 +163,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
     Given I expand nested table containing column value "BP01"
-    And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---preApplication:-:budgetCategoryGridTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
     When I navigate to "Attachments" sub tab
@@ -173,7 +173,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "---preApplication:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record id" inside flex table with id "---preApplication:-:pendingTaskTableId---"
+    And I click on "Start" icon for "Record id" inside table
     When I click on "Accept" in the page details
     Given I am on "SUBPORTAL" portal
     And I login as "SPI" user
@@ -230,7 +230,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     When I click on "View" icon for "<Application Name>" inside table
-    And I navigate to "Related Logs" tab
+    And I navigate to "Related Log" tab
     Then I see values "Pre-Screen Review" and "Completed" inside table
     Examples:
       | Application Name                | User    |

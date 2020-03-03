@@ -302,7 +302,6 @@ Feature: Validate all scenarios in Desk Review
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Permanent Award" in "---deskreview:-:internalActiveGrants---" panel
-    Then I softly see value "Automation Permanent Award" for title "Grant Title" inside table "---deskreview:-:internalActiveGrants---"
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalActiveGrants---"
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
@@ -748,9 +747,6 @@ Feature: Validate all scenarios in Desk Review
     When I click "Associate" after selection of "Automation EXE" in the table "---deskreview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
-    When I navigate to "Attachments" sub tab
-    And I upload attachment "Announcement_Field_Values.xlsx" from workspace
-    Then I softly see "InternalOrganization_Field_Values.xlsx" has been added in "Attachment" flex table
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
     When I login as "SPI" user
@@ -1190,8 +1186,8 @@ Feature: Validate all scenarios in Desk Review
       | Title                               | Description            | Status      | Due Date | Assigned To    |
       | Automation Observation Subrecipient | Automation Description | In-Progress | -10      | Automation SPI |
     When I collapse nested table containing column value "Automation Observation"
-    Then I softly see the following messages in the page details :
-      | Due date must be past date |
+    Then I softly see the following messages in the page details contains:
+      | Due date must be future date |
 
   @65247 @foUserCannotDeleteCreatedDeskReview @deepika
   Scenario: Validate whether other than record owner can Fo user view the created Desk Review by PM

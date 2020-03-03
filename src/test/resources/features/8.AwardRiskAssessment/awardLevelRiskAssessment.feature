@@ -160,7 +160,6 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I "Send to Owner" in the approval decision
-    Then I softly see status in Progress-bar is "Created" and is "Green"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
@@ -2899,7 +2898,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
-    Then I see field "Overall Risk" as "46.00%"
+    Then I see field "Overall Risk" as "40.00%"
 
   @addAttachmentForRecordOnwerInTable @deepika
   Scenario: Validate attachment is added to the flex table after submiting the risk assessment for approval.

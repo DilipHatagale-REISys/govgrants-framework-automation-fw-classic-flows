@@ -153,7 +153,6 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     Then I softly can see top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     And I pause execution for "5" seconds
     When I click on top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
-    When I refresh the page
     Then I softly cannot see top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
   @62312 @deleteIconfCreatedRiskAssessment @deepika

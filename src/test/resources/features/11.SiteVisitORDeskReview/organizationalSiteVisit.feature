@@ -1071,7 +1071,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I close "Site Visit Reviewers" modal by clicking the top right x button
     Then I cannot see top right button "Edit" in page detail
 
-  @56007 @PeerReviewAfterSVIsAcceptedAndClosed @keerti
+  @56007 @PeerReviewAfterSVIsAcceptedAndClosed @keerti @bug-72227
   Scenario: Validate peer review  process and also system does not allow the peer reviewer to edit/Enter review comments if the Org Level Site Visits marked as complete review by the Record owner
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -1441,8 +1441,8 @@ Feature: Validate all scenarios in Organizational Site Visit
       | Title                               | Description            | Status      | Due Date | Assigned To    |
       | Automation Observation Subrecipient | Automation Description | In-Progress | -10      | Automation SPI |
     When I collapse nested table containing column value "Automation Observation"
-    Then I softly see the following messages in the page details :
-      | Due date must be past date |
+    Then I softly see the following messages in the page details contains:
+      | Due date must be future date |
 
   @65154 @foUserCannotDeleteCreatedOrgSiteVisit @deepika
   Scenario: Validate whether other than record owner Fo user can delete the created Org Level Site Visit
