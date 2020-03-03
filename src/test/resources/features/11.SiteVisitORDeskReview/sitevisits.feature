@@ -36,12 +36,12 @@ Feature: Validate all scenarios in the Site Visit
 
   @51084 @66229 @66232 @51085 @51086 @66283 @notifyPendingTaskForSubrecipientSiteVisit @smoke
   Scenario: Notify Subrecipient and the respective POC from the applicant organization will receive a pending task about the Site Visit
-#    Given I navigate to "Responsibilities" sub tab
-#    And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-#      | Role             | Name           | Description                 |
-#      | Program Approver | Automation EXE | Automation Test Description |
-#      | Fiscal Approver  | Automation FO  | Automation Test Description |
-#    Then I softly see that "Automation EXE" has been added in flextable with Id "---sitevisits:-:approverSiteVisitTableId---"
+    Given I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
+      | Role             | Name           | Description                 |
+      | Program Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver  | Automation FO  | Automation Test Description |
+    Then I softly see that "Automation EXE" has been added in flextable with Id "---sitevisits:-:approverSiteVisitTableId---"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
