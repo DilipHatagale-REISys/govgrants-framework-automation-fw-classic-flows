@@ -88,9 +88,9 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
-      | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 100000000              | 20                       | 100        | 100            |
+      | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 100000000       | 20                       | 100        | 100            |
     Then I softly see the following messages in the page details contains:
-      | Advance applied cannot be greater than the Net Payment. :|
+      | Advance applied cannot be greater than the Net Payment. : |
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 100        | 100            |
@@ -1275,7 +1275,7 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Overview" sub tab
     Then I cannot see field "Is Final Payment Request?" inside page block
 
-  @38744 @validateFiscalApproversCanAddDisallowanceAmountPaymentRequest
+  @38744 @validateFiscalApproversCanAddDisallowanceAmountPaymentRequest 
   Scenario: Validate the Fiscal Approvers can add Disallowance for Reimbursement Payment request
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -1336,6 +1336,7 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     And I click on "Send Back to Subrecipient" in the page details
+    And I pause execution for "120" seconds
     Then I can see mail notification for "EXTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Sent Back for Revisions |
 
@@ -1355,6 +1356,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice"
     And I click on "Submit to Grantor" in the page details
+    And I pause execution for "120" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> from <subrecipient name> has been Submitted |
 
@@ -1374,6 +1376,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        | 0                 | 0               | 0                        | 100        | 100            |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
+    And I pause execution for "120" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> from <subrecipient name> has been Submitted |
 
@@ -1398,6 +1401,7 @@ Feature: Validate all scenarios in Payment Request
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     When I click on "Send Back to Subrecipient" in the page details
+    And I pause execution for "120" seconds
     Then I can see mail notification for "EXTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Sent Back for Revisions |
 
@@ -1430,6 +1434,7 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
+    And I pause execution for "120" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> from <subrecipient name> has been Submitted for Approval |
 
@@ -1475,6 +1480,7 @@ Feature: Validate all scenarios in Payment Request
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     When I "Approve" in the approval decision
+    And I pause execution for "120" seconds
     Then I can see mail notification for "EXTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Approved |
     Examples:
@@ -1517,6 +1523,7 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
+    And I pause execution for "120" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> from <subrecipient name> has been Submitted for Approval |
     Examples:
@@ -1553,6 +1560,7 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Reassign" to user "Automation EXE" in the approval decision
+    And I pause execution for "120" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Forwarded |
 
@@ -1586,6 +1594,7 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
+    And I pause execution for "120" seconds
     Then I can see mail notification for "EXTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Approved |
 
@@ -1619,6 +1628,7 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Send to Owner" in the approval decision
+    And I pause execution for "120" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> from <subrecipient name> has been Sent Back |
 
@@ -1658,6 +1668,7 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Send to Owner" in the approval decision
+    And I pause execution for "120" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> from <subrecipient name> has been Sent Back |
     Examples:
@@ -1700,6 +1711,7 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Reassign" to user "Automation EXE" in the approval decision
+    And I pause execution for "120" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Forwarded |
     Examples:
@@ -1742,6 +1754,7 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | Automation FO | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Disapprove" in the approval decision
+    And I pause execution for "120" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Rejected |
     Examples:

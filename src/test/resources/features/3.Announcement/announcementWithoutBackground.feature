@@ -328,3 +328,13 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see the following messages in the page details :
       | Record deleted successfully. |
 
+  @70861 @70858 @profileNotAllowedToCreateAnnouncement @aashish
+  Scenario Outline: Verify user having FO/FD Profile are not allowed to create announcements
+    When I login to "As a Grantor" app as "<users>" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    Then I can see top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    Examples:
+      | users |
+      | FO    |
+      | FD    |
