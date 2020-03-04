@@ -10,7 +10,8 @@ import org.junit.runner.RunWith;
         features = {"target/parallel/features/[CUCABLE:FEATURE].feature"},
         plugin = {"json:target/cucumber-report/[CUCABLE:RUNNER].json","eyethink.automation.bots.controller.ReportingLogsPlugin"},
         tags = {"not @wip"},
-        monochrome = true
+        monochrome = true,
+        strict=true
 )
 public class CustomCreator {
 
