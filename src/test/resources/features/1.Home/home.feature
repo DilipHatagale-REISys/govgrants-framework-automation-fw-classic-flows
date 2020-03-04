@@ -145,8 +145,7 @@ Feature: Validate all scenarios in the home tab
     When I click modal button "Save"
     When I close "New" modal by clicking the top right x button
     When I perform quick search for "TC-598383" in "---home:-:termsAndConditionsTableId---" panel
-    Then I softly can see row level action button "View" against "TC-598383" in flex table with id "---home:-:termsAndConditionsTableId---"
-    Then I softly see value "Active" for title "Status" against the value "TC-598383" inside table "---home:-:termsAndConditionsTableId---"
+     Then I softly see value "Active" for title "Status" against the value "TC-598383" inside table "---home:-:termsAndConditionsTableId---"
     Then I softly can see row level action button "Edit" against "TC-598383" in flex table with id "---home:-:termsAndConditionsTableId---"
     Examples:
       | User  |
@@ -305,8 +304,8 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     When I enter the following values into flex table with id "---home:-:dunsTableId---" by clicking "New" :
-      | DUNS Number | Registered Entity Name | Location |
-      | 138047990   | Test132                | HernNdon |
+      | DUNS Number | Entity Name as Registered | Location |
+      | 138047990   | Test132                   | HernNdon |
     Then I softly see values "138047990" and "HernNdon" inside table
     When I click on "Edit" icon for "138047990" inside flex table with id "---home:-:dunsTableId---"
     And I click on top right button "Save" in flex table with id "---home:-:dunsTableId---"
@@ -454,7 +453,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
     When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
-    Then I see values "953072483" and "148549041" inside table
+    Then I see values "567890980" and "345678908" inside table
     Examples:
       | User  |
       | ADMIN |
@@ -692,7 +691,7 @@ Feature: Validate all scenarios in the home tab
     And I click modal button "Save and Close"
     Then I see the text containing "title"
 
-  @62254 @PerformGlobalSearchOnHomeTab @keerti
+  @62254 @PerformGlobalSearchOnHomeTab @keerti @bug-72220
   Scenario: Verify Global search on Home Tab
     Given I delete the record "Automation Execution Internal Program" from the object "Program"
     When I login to "As a Grantor" app as "dynamicUser" user

@@ -124,7 +124,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     Given I login to "As a Grantor" app as "AUDITOR" user
     When I navigate to "Planning" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    Then I softly see "No Records Found" inside flex table with id "---home:-:completedAssignedToMe---"
+    Then I softly see "No Records Found" inside flex table with id "---home:-:internalHomePendingTaskTableId---"
 
   @69131 @auditorCompletedTask
   Scenario: Verify Auditor does not have any completed tasks

@@ -435,8 +435,6 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
-    And I navigate to "Overview" sub tab
-    Then I softly see field "Submitted By:" as "Automation SPI"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1130,8 +1128,8 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Title                               | Description            | Status      | Due Date | Assigned To    |
       | Automation Observation Subrecipient | Automation Description | In-Progress | -10      | Automation SPI |
     When I collapse nested table containing column value "Automation Observation"
-    Then I softly see the following messages in the page details :
-      | Due date must be past date |
+    Then I softly see the following messages in the page details contains:
+      | Due date must be future date |
 
   @65072 @foUserCannotDeleteCreatedOrgDesskReview @deepika
   Scenario: Validate the Created Date of Risk Assessment display on Overview Tab and other than record onwer Fo user can delete the created Org Level Desk Review

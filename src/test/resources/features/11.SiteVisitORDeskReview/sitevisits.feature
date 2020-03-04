@@ -1532,8 +1532,8 @@ Feature: Validate all scenarios in the Site Visit
       | Title                               | Description            | Status      | Due Date | Assigned To    |
       | Automation Observation Subrecipient | Automation Description | In-Progress | -10      | Automation SPI |
     When I collapse nested table containing column value "Automation Observation"
-    Then I see the following messages in the page details :
-      | Due date must be past date |
+    Then I see the following messages in the page details contains:
+      | Due date must be future date |
 
   @65242 @foUserCannotDeleteCreatedSiteVisit @deepika
   Scenario: Validate whether other than record owner can Fo user view the created Site Visit by Pm

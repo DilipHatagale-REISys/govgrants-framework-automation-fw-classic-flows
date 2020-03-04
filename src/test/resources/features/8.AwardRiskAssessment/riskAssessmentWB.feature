@@ -1018,7 +1018,7 @@ Feature: Risk Assessment scenarios without background
     And I click on "View" icon for "Automation Grant/Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
     When I perform quick search for "Active" in "---subAwardStandAlone:-:riskAssessmentTableId---" panel
-    Then I softly do not see value "Active" for title "Status" against the value "{SavedValue:RiskAssessmentID}" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"
+    Then I softly see value "Active" for title "Status" against the value "{SavedValue:RiskAssessmentID}" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"
     Then I softly can see top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
