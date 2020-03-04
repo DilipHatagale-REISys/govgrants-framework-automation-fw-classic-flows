@@ -100,7 +100,7 @@ Feature: Validate all scenarios in Desk Review
       | Automation Observation | Automation Description | Observation |
     Then I softly see that "Automation Finding" has been added in flextable with Id "---deskreview:-:correctiveTableId---"
 
-  @51018 @51019 @66481 @66468 @66483 @66472 @formFillingSubmittingForApprovalDeskReview
+  @51018 @51019 @66481 @66468 @66483 @66472 @formFillingSubmittingForApprovalDeskReview @smoke
   Scenario: Filling up of form and Submitting Desk Review for approval in Desk Review | To verify that program review form can be filled successfully in reports and outcomes tab | Validate Notified status and pending task after submitting for approval
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
@@ -310,7 +310,7 @@ Feature: Validate all scenarios in Desk Review
     Then I softly can see top right button "Send Back to Subrecipient" in page detail
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
 
-  @55279 @66469 @66148 @approverSendBackToUserDeskReview @deepika
+  @55279 @66469 @66148 @approverSendBackToUserDeskReview @deepika @smoke
   Scenario: Validate whether the approver will be able to SendBack to Owner |Validate Pending task is not created to fiscal approver when program approver performs send to the owner.
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
@@ -419,7 +419,7 @@ Feature: Validate all scenarios in Desk Review
     When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
     Then I softly see that "Approve Desk Review" has been added in flextable with Id "---deskreview:-:monitoringTabPhasePendingTasks---"
 
-  @55282 @deskReviewWithoutFormFilling @deepika
+  @55282 @deskReviewWithoutFormFilling @deepika @smoke
   Scenario: User will not be able to submit the Desk Review for approval without completed forms
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
@@ -449,7 +449,7 @@ Feature: Validate all scenarios in Desk Review
     Then I see the following messages in the page details :
       | Reports and Outcomes Tab - Fill all the required data in the form before submitting. |
 
-  @55283 @55284 @viewSendToSubrecipientButtonDeskReview @deepika
+  @55283 @55284 @viewSendToSubrecipientButtonDeskReview @deepika @smoke
   Scenario:  Validate the Infomation send to the subrecipients and user will not be able to submit to Grantor without adding corrective actions to findings
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
@@ -690,7 +690,7 @@ Feature: Validate all scenarios in Desk Review
     When I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     Then I cannot see "Reports and Outcomes" sub tab at view detail page
 
-  @56017 @62112 @eerReviewIntiationfFDeskReview @deepika
+  @56017 @62112 @eerReviewIntiationfFDeskReview @deepika @smoke
   Scenario: Validate whether user is to able to initiate the peer review on their process for Desk Review
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
@@ -734,7 +734,7 @@ Feature: Validate all scenarios in Desk Review
     When I click on "Complete Review" in the page details
     Then I softly see status in Progress-bar is "In Progress" and is "green"
 
-  @56015 @sendBacktoOwnerReceivePendingTaskdv @deepika
+  @56015 @sendBacktoOwnerReceivePendingTaskdv @deepika @smoke
   Scenario: Validate the supporting document checklist submitted by the subrecipient and record sent back to Recipients when outcomes are not properly addressed and recipients receive a pending task
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
@@ -882,7 +882,7 @@ Feature: Validate all scenarios in Desk Review
     When I perform quick search for "{SavedValue:Record Id}" in "History" panel
     Then I see value "Created" for title "Old Value" inside table "History"
 
-  @61054 @FieldHistoryUpdatePostAwardLevelDeskReviewIsSendBackToOwnerByProgramApprover @Keerti
+  @61054 @FieldHistoryUpdatePostAwardLevelDeskReviewIsSendBackToOwnerByProgramApprover @Keerti @smoke
   Scenario: To Validate field history update post Award level Desk Review is send back to owner by program approver.
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :

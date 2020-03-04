@@ -1,7 +1,7 @@
 @auditorPlanning @auditor
 Feature: Validate all scenarios for Auditor Profile in Planning Module
 
-  @67762 @auditorCannotCreateEditFocusArea
+  @67762 @auditorCannotCreateEditFocusArea @smoke
   Scenario Outline: Validate Auditor should not be able to  Create/Edit Focus area
     Given I login to "As a Grantor" app as "AUDITOR" user
     When I navigate to "Planning" tab
@@ -28,8 +28,8 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
 
   @67761 @auditorCannotCreatefocusArea @deepika
   Scenario Outline: Verify that Auditor user cannot create a Focus Area
-    When I login to "As a Grantor" app as "<User>" user
-    And I navigate to "Planning" tab
+    Given I login to "As a Grantor" app as "<User>" user
+    When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     Then I cannot see top right button "New" for "---focusarea:-:focusAreaTableId---" flex table
     Examples:
@@ -60,7 +60,7 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
       | EXE   |
       | ADMIN |
 
-  @67766 @auditorProfileCannotCReateEditReviewApproveProgram
+  @67766 @auditorProfileCannotCReateEditReviewApproveProgram @smoke
   Scenario Outline: Validate Auditor user should not be able to Create/Edit/ Review/Approve internal program
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab

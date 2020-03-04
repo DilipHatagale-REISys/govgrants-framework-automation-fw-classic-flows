@@ -26,7 +26,7 @@ Feature: Validate all scenarios in the home tab
       | Organization name                     |
       | Internal Automation Organization Test |
 
-  @56708 @56709 @56710 @internalOrganizationViewADMINEditPMView
+  @56708 @56709 @56710 @internalOrganizationViewADMINEditPMView @smoke
   Scenario Outline: Validate whether all users have view access to Internal Organization
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -72,7 +72,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @56716 @56717 @56718 @internalContactsViewCreateEdit
+  @56716 @56717 @56718 @internalContactsViewCreateEdit @smoke
   Scenario Outline: Validate that Internal contacts are accessible across agencies and can be create, Edit and view access to Contacts by any Internal users
     Given I delete the record "Automation PO" from the object "Contact"
     Given I login to "As a Grantor" app as "<User>" user
@@ -92,7 +92,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @56720 @56721 @smeReviewersContactViewAndCreate
+  @56720 @56721 @smeReviewersContactViewAndCreate @smoke
   Scenario Outline: Verifying all Internal Users has View access to SME Reviewers Contact
     Given I delete the record "Automation SME" from the object "Contact"
     Given I login to "As a Grantor" app as "<User>" user
@@ -135,7 +135,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @56724 @56725 @56726 @termsandConditionsViewCreateAdminEdit @bug-69291
+  @56724 @56725 @56726 @termsandConditionsViewCreateAdminEdit @bug-69291 @smoke
   Scenario Outline: Verifying all Internal Users has View, Create and Edit access to Terms and Conditions
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Planning" tab
@@ -257,7 +257,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @56739 @56907 @relatedContactsCreationEditionAnd
+  @56739 @56907 @relatedContactsCreationEdition @smoke
   Scenario Outline: The Internal Users should be able to Create and Edit Related Contacts
     Given I delete the record "Automation Contact" from the object "Contact"
     Given I login to "As a Grantor" app as "<User>" user
@@ -295,7 +295,7 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "Automation Contact" in "---home:-:relatedContactsTableId---" panel
     Then I see "No Records Found" inside flex table with id "---home:-:relatedContactsTableId---"
 
-  @56740 @56741 @56742 @dunsNumberCreationEditionAndDeletion @smoke  @bug-69292
+  @56740 @56741 @56742 @dunsNumberCreationEditionAndDeletion @smoke @bug-69292 @smoke
   Scenario Outline: Validate whether ADMIN and DA users can Create, Edit and delete the DUNS Number
     Given I delete the record "Test Automation Organization" from the object "DUNS"
     Given I login to "As a Grantor" app as "ADMIN" user
@@ -529,7 +529,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @58245 @reassign
+  @58245 @reassign @smoke
   Scenario: The Reassign on the left Navigation allows the reassignment of tasks.
     Given I delete the record "Automation Execution Internal Program" from the object "Program"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -691,7 +691,7 @@ Feature: Validate all scenarios in the home tab
     And I click modal button "Save and Close"
     Then I see the text containing "title"
 
-  @62254 @PerformGlobalSearchOnHomeTab @keerti @bug-72220
+  @62254 @PerformGlobalSearchOnHomeTab @keerti @bug-72220 @smoke
   Scenario: Verify Global search on Home Tab
     Given I delete the record "Automation Execution Internal Program" from the object "Program"
     When I login to "As a Grantor" app as "dynamicUser" user

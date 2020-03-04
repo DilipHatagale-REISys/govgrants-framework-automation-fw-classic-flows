@@ -1,7 +1,7 @@
 @auditorGrant/Award @auditor
 Feature: Validate all scenarios for Auditor Profile in Grant/Award
 
-  @69168 @auditorCannotCreateGrantandSubaward
+  @69168 @auditorCannotCreateGrantandSubaward @smoke
   Scenario: Validate Auditor should not be able to  Create/Edit Grant/subaward
     Given I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Grants" tab

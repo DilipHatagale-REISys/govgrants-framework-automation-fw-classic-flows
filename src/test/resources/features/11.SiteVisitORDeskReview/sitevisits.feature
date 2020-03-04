@@ -603,7 +603,7 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     Then I softly see that "Approve Site Visit" has been added in flextable with Id "---sitevisits:-:monitoringTabPhasePendingTasks---"
 
-  @61861 @55278 @55210 @pmUserCanFOuserCannotViewAcceptandCloseSiteVisits @deepika
+  @61861 @55278 @55210 @pmUserCanFOuserCannotViewAcceptandCloseSiteVisits @deepika @smoke
   Scenario: Validate the Infomation send to the subrecipients other than record owner, Fo user cannot accept and close the site visits and PM can accept and close
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
@@ -1007,7 +1007,7 @@ Feature: Validate all scenarios in the Site Visit
     When I upload attachment "Announcement_Field_Values.xlsx" from workspace
     Then I see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
 
-  @60839 @56013 @60837 @60840 @peerReviewerCanNotEdit/EnterReviewComments @keerti
+  @60839 @56013 @60837 @60840 @peerReviewerCanNotEdit/EnterReviewComments @keerti @smoke
   Scenario: Validate system does not allow the peer reviewer to edit/Enter review comments and Edit button hidden if the Site Visits marked as complete review
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
@@ -1248,7 +1248,7 @@ Feature: Validate all scenarios in the Site Visit
     Then I softly see status in Progress-bar is "Created" and is "Green"
     Then I softly cannot see top right button "Submit for Approval" in page detail
 
-  @61866 @validatePendingTaskCreationforSiteVisits @deepika
+  @61866 @validatePendingTaskCreationforSiteVisits @deepika@smoke
   Scenario: Validate whether pending task is created for Program approver under Home Tab when the award owner submits the Site Visits for approval
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
@@ -1290,7 +1290,7 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "---sitevisits:-:monitoringTabPhasePendingTasks---"
 
-  @61870 @61867 @peerReviewIntiationownerToAddProgramReviewerInSiteVisit @deepika
+  @61870 @61867 @peerReviewIntiationownerToAddProgramReviewerInSiteVisit @deepika @smoke
   Scenario: Validate whether user is to able to intiate the peer review process and  owner is allowed to add a peer reviewer of type Program Reviewer for Site Visits
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
@@ -1322,7 +1322,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Send for Review" icon for "Automation FO" inside table
     Then I softly see that "Sent for Review" has been added in flextable with Id "---sitevisits:-:reviewersFlexTableId---"
 
-  @61868  @66305 @taskIsNotCreatedToSecondApproverWhenPORejectsInSiteVisits @deepika
+  @61868  @66305 @taskIsNotCreatedToSecondApproverWhenPORejectsInSiteVisits @deepika @smoke
   Scenario: Validate Pending task is not created to fiscal approver when program approver performs send to the owner | To verify that program review form can be filled successfully in reports and outcomes tab when filled by award owner(PM profile) in site review
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :

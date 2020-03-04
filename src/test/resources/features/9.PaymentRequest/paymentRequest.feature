@@ -109,7 +109,7 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
-      | {SavedValue:fundingAccount} | 20                    |
+      | {SavedValue:fundingAccount} | 0                     |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
@@ -1275,7 +1275,7 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Overview" sub tab
     Then I cannot see field "Is Final Payment Request?" inside page block
 
-  @38744 @validateFiscalApproversCanAddDisallowanceAmountPaymentRequest 
+  @38744 @validateFiscalApproversCanAddDisallowanceAmountPaymentRequest
   Scenario: Validate the Fiscal Approvers can add Disallowance for Reimbursement Payment request
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"

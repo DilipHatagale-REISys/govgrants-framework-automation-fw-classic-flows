@@ -1,7 +1,7 @@
 @riskAssessment @orgAwardLevelRiskAssessmentWB @regression
 Feature: Validate all scenarios when the Organizational Risk Assessment is in expired status
 
-  @64384 @expiredOrgRiskassementValidation
+  @64384 @expiredOrgRiskassementValidation @smoke
   Scenario Outline: Validate system generates an exception at award activation if Organizational Risk Assessment is expired.
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -241,7 +241,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
     Then I see that "Activated" has been added in flextable with Id "---subAwardStandAlone:-:subawardsTableId---"
 
-  @64387 @periodicRenewalAmendmentWhenORAIsExpired
+  @64387 @periodicRenewalAmendmentWhenORAIsExpired @smoke
   Scenario: Validate when Org Risk Assessment is expired user is able to activate newly created award post performing amendment of type - Periodic Renewal
     Given I delete the record "Automation Award for Organizational Risk Assessment" from the object "Amendment Request"
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "Payment Request"
@@ -407,7 +407,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     When I navigate to "Overview" sub tab
 
 
-  @64389 @budgetPeriodChangeAmendmentWhenORAIsExpired
+  @64389 @budgetPeriodChangeAmendmentWhenORAIsExpired @smoke
   Scenario: Validate user is able to activate newly created award post performing amendment of type - Budget Period Change
     Given I delete the record "Automation Award for Organizational Risk Assessment" from the object "Amendment Request"
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "Payment Request"

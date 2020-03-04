@@ -345,7 +345,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
 
-  @55415 @viewOrgDeskReviewAcceptButtonAfterSRecipientsSubmission @deepika
+  @55415 @viewOrgDeskReviewAcceptButtonAfterSRecipientsSubmission @deepika @smoke
   Scenario: Validate Submitted By field at Certification table should get updated on Org Desk Review at SR user end and User will be able to view the Desk Review Accept button after review the submission by Recipients
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -508,7 +508,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     Then I softly see that "Automation Desk Review Org Level" has been added in flextable with Id "---deskreview:-:deskReviewGridViewTableId---"
 
-  @55459 @54887 @deskReviewOrgLevelSendToSubrecipientWithOutAddingCorerctiveItems @deepika
+  @55459 @54887 @deskReviewOrgLevelSendToSubrecipientWithOutAddingCorerctiveItems @deepika @smoke
   Scenario:  Validate User will not be able to submit the Desk Review Org Level to Grantor without adding corrective actions to findings.
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -778,7 +778,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     Then I see the following messages in the page details :
       | Reports and Outcomes Tab - Fill all the required data in the form before submitting. |
 
-  @55999 @peerReviewDeskReviewOrgLevel @deepika
+  @55999 @peerReviewDeskReviewOrgLevel @deepika @smoke
   Scenario: Validate the peer review on their Org Level Desk Review
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -1049,7 +1049,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "History" sub tab
     Then I see value "Active" for title "New Value" inside table "History"
 
-  @65071 @corerctiveActionsDueDate @deepika
+  @65071 @corerctiveActionsDueDate @deepika @smoke
   Scenario: Validate Org Level Desk Review Submit to Grantor and Corrective Actions By Subrecipient
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"

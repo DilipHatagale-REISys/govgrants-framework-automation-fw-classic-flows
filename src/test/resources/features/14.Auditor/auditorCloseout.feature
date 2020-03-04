@@ -1,7 +1,7 @@
 @auditorCloseout @auditor
 Feature: Validate all scenarios for Auditor Profile in Closeout Request module
 
-  @69175 @auditorCannotCreateCloseout
+  @69175 @auditorCannotCreateCloseout @smoke
   Scenario: Validate Auditor should not be  able to  Create Closeout Request
     When I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Grants" tab
@@ -42,8 +42,4 @@ Feature: Validate all scenarios for Auditor Profile in Closeout Request module
     When I navigate to "Project Period Closeouts" content inside "Closeouts" subheader on left panel
     And I click toggle button to select "Project Period Closeouts - All"
     And I perform quick search for "Record Id" in "ProjectPeriodCloseoutGrantor" panel
-    Then I see "No Records Found" inside flex table with id "ProjectPeriodCloseoutGrantor"
-
-
-
-
+    Then I softly see value "Record Id" for title "EGMS ID" inside table "ProjectPeriodCloseoutGrantor"

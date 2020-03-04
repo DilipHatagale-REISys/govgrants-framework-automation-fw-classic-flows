@@ -9,7 +9,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
     And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table
 
-  @59010 @51079 @orgSiteVisitCreationEdition
+  @59010 @51079 @orgSiteVisitCreationEdition @smoke
   Scenario: Validate the Created and Edition of Site Visit
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -247,7 +247,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
 
-  @54890 @54889 @siteVisitapprovalAndSendToSubrecipientOrgLevel @deepika
+  @54890 @54889 @siteVisitapprovalAndSendToSubrecipientOrgLevel @deepika @smoke
   Scenario: Approval and Send Site Visit to Subrecipient Org Level
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -581,7 +581,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Application Site Visits" content inside "Application Reviews" subheader on left panel
     Then I softly see that "Automation Site Visit Org Level" has been added in flextable with Id "ApplicationsSiteVisitReportsGrid"
 
-  @55464 @siteVisitsOrgLevelWithOutAddingCorerctiveItems @deepika
+  @55464 @siteVisitsOrgLevelWithOutAddingCorerctiveItems @deepika @smoke
   Scenario: User will not be able to submit the Site Visits Org Level to Grantor without adding corrective actions to findings.
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -1300,7 +1300,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I perform quick search for "Record Id" in "SiteVisit" panel
     Then I softly see "No Records Found" inside flex table with id "SiteVisit"
 
-  @65152 @historyOfOrgSiteVisitsendbacktoOwner @deepika
+  @65152 @historyOfOrgSiteVisitsendbacktoOwner @deepika @smoke
   Scenario: Validate History Field is getting Updated at Award owner End when Org Site Visit status is Submitted to Grantor.
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"

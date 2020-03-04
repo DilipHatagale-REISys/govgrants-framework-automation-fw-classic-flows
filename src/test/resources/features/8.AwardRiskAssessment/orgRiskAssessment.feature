@@ -151,8 +151,8 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I perform quick search for "Automation Permanent Organization for Risk Assessment" in "---riskassessment:-:homePendingTaskTableId---" panel
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---riskassessment:-:homePendingTaskTableId---"
     Then I softly can see top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
-    And I pause execution for "5" seconds
     When I click on top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    And I pause execution for "90" seconds
     Then I softly cannot see top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
   @62312 @deleteIconfCreatedRiskAssessment @deepika
@@ -261,12 +261,12 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Submit" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @62514 @saveAndContinueButtons @smoke @deepika
+  @62514 @saveAndContinueButtons @deepika
   Scenario: Validate as soon as user clicks Start icon of pending task record to create Risk Assessment then user will land in Save and Continue Page.
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     Then I can see top right button "Save and Continue" in page detail
 
-  @62515 @provideRevisionAccess @deepika
+  @62515 @provideRevisionAccess @deepika @smoke
   Scenario: Validate whether Grantor can approve the revision request for org level risk Assessment
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -481,7 +481,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I navigate to "Overview" sub tab
     Then I see field "Created Date" is getting updated with todays date
 
-  @62670 @requestRevisionButtonAvailability @deepika
+  @62670 @requestRevisionButtonAvailability @deepika @smoke
   Scenario: Validate once grantor declines the Risk Assessment for Revision, the Request New Assessment button is again available for Signing Authority for new revision
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -525,7 +525,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on top right button "Request New Assessment" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     Then I cannot see top right button "Request New Assessment" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
-  @62672 @validateExpiredRAWhenSecIsActive @deepika
+  @62672 @validateExpiredRAWhenSecIsActive @deepika @smoke
   Scenario: Validate as soon as user can activate the second Risk Assessment the first Risk Assessment will go in Expired State
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -605,7 +605,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "Submit" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @62525 @UserCanviewCompletedTaskAfterProvideRevisionAccess @keerti
+  @62525 @UserCanviewCompletedTaskAfterProvideRevisionAccess @keerti @smoke
   Scenario: Validate whether user is able to view the Completed task once Risk Assessment is Active after provide Revision Access
     Given I delete the record "Automation Desk Review Org level" from the object "Desk Review"
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
@@ -710,7 +710,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Risk Assessment" sub tab
     Then I cannot see top right button "Request New Assessment" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
-  @62946 @acknowledgeOrgRiskAssessment @deepika
+  @62946 @acknowledgeOrgRiskAssessment @deepika @smoke
   Scenario: Validate whether user can proceed without checkin 'Acknowledment' field for Org Level Risk Assessment
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -843,7 +843,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "Green"
 
-  @62950 @AScanEditAssessment @deepika
+  @62950 @AScanEditAssessment @deepika @smoke
   Scenario: Validate whether AS have edit access for the assessment form
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -1113,7 +1113,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I navigate to "Overview" sub tab
     Then I see field "Created Date" is not editable
 
-  @62801 @UserCannotEditExpiredRA @keerti
+  @62801 @UserCannotEditExpiredRA @keerti @smoke
   Scenario: Validate the User Cannot Edit the Expired Risk Assessmnet
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -1230,7 +1230,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Risk Assessment" sub tab
     Then I see that "{SavedValue:EGMSID}" has been added in flextable with Id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
-  @63233 @verifyRiskAssessmemtException @deepika
+  @63233 @verifyRiskAssessmemtException @deepika @smoke
   Scenario Outline: Validate system generates generates an exception at award activation if Organizational Risk Assessment is Created and not Active
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -1478,7 +1478,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "View" icon for "Record Id" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     Then I see status in Progress-bar is "Created" and is "Green"
 
-  @64127 @cretedStateOrgRiskAssessment @deepika
+  @64127 @cretedStateOrgRiskAssessment @deepika @smoke
   Scenario: Validate Risk Assessment should remain in created State if the 'AS' Edit the Risk Assessment and fill in the questionnaire and click Save
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -1744,7 +1744,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I perform quick search for "Revise Risk Assessment" in "---orgRiskAssessment:-:pendingTaskTableId---" panel
     Then I do not see values "EGMS ID" and "Automation Permanent Organization for Risk Assessment" inside table
 
-  @64607 @validateRA1ActiveWhenRA2Created @deepika
+  @64607 @validateRA1ActiveWhenRA2Created @deepika @smoke
   Scenario: Validate a the second Risk Assessment is in created state when it is not submitted and first Risk Assessment is active
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -1819,7 +1819,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I perform quick search for "Record Id" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     Then I see "Active" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
-  @64612 @0rgRiskAssessmentIsnOtActiveIFQuestionsAreNotFilled @deepika
+  @64612 @0rgRiskAssessmentIsnOtActiveIFQuestionsAreNotFilled @deepika @smoke
   Scenario: Validate the Risk Assessment should not become active and also cannot be in Created Staus when prompt user to doesn't fill in all the questions.
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
