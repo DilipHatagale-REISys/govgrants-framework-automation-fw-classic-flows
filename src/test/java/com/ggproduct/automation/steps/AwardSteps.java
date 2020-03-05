@@ -62,7 +62,7 @@ public class AwardSteps {
         awardPage.assertToSeeWindowTitleContains(usage, textContains);
     }
 
-    @And("I calculate the total from the column header \"([^\"]*)\" and saved it as \"([^\"]*)\" from the flex table \"([^\"]*)\"")
+    @And("^I calculate the total from the column header \"([^\"]*)\" and saved it as \"([^\"]*)\" from the flex table \"([^\"]*)\"$")
     public void iCalculateTheTotalFromTheColumnHeaderAndSavedItAsFromTheFlexTable(String colName, String key, String tableId) {
         EyeThink.core().WaitFor().makeThreadSleep(5000);
         WebElement row = EyeThink.core().elementReference().of(By.xpath("//div[@id='" + tableId + "']//table//tbody//tr"));
@@ -98,7 +98,7 @@ public class AwardSteps {
     @And("^I save the total records from the flex table id \"([^\"]*)\" as \"([^\"]*)\"$")
     public void iGetTheTotalRecordsFromTheFlexTableId(String flexTableId, String key) {
        EyeThink.core().Properties().saveValue(key,EyeThink.core().get().text(By.xpath(
-             "//div[@id='"+flexTableId+"']//*[@ng-bind='totalRecords']"
+             "//div[@id='"+flexTableId+"']//*[@ng-bind='totalRecords'] | //div[@id='"+flexTableId+"']//table//tfoot//tr[last()]//*[contains(@class, 'ng-binding')]"
        )));
     }
 

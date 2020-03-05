@@ -487,7 +487,6 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     And I "Send to Owner" in the approval decision
-    And I pause execution for "2" seconds
     Then I can see the message "Successfully sent to Owner. It may take few mintues to process record." in the approval decision
 
   @53982 @forwardAdvancePaymentRequest @mahadev
