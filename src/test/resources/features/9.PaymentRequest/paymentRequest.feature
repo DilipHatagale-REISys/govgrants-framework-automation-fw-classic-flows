@@ -109,7 +109,7 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
-      | {SavedValue:fundingAccount} | 20                    |
+      | {SavedValue:fundingAccount} | 0                     |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
@@ -1274,7 +1274,7 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Overview" sub tab
     Then I cannot see field "Is Final Payment Request?" inside page block
 
-  @38744 @validateFiscalApproversCanAddDisallowanceAmountPaymentRequest 
+  @38744 @validateFiscalApproversCanAddDisallowanceAmountPaymentRequest
   Scenario: Validate the Fiscal Approvers can add Disallowance for Reimbursement Payment request
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -2083,6 +2083,158 @@ Feature: Validate all scenarios in Payment Request
     And I select "Download As PDF" from dropdown
     And I download the file
     Then I see "Approved" on page "1" of "govgrants" pdf file
+    Examples:
+      | Award Name                 | Grant Name                 |
+      | Automation Permanent Award | Automation Permanent Award |
+
+  @72349 @adhocReimbursementHappyPath @productBusinessFlowSanity
+  Scenario Outline: Validate the Reimbursement Payment Request happy path and the status changes to 'Paid'
+    Given I delete the record "Automation Payment Request2" from the object "Payment Request"
+    When I delete the record "Automation Payment Request" from the object "Payment Request"
+    And I delete the record "Automation Permanent Award" from the object "Payment Request"
+    And I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI" user
+    And I navigate to "Grants" tab
+    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
+    When I navigate to "Actuals" sub tab
+    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---"
+    When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
+      | Extra Salary | The narrative | 10         | 1        | Feet        | 0                 | 0               | 0                        | 100        | 100            |
+    When I close "Add Line Items" modal by clicking the top right x button
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:grantorAwardTableId---"
+    When I navigate to "Actuals" sub tab
+    And I click on "View" icon for "Submitted to Grantor" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---"
+    When I navigate to "Financials" sub tab
+    And I save the field labeled "EGMS ID" as "EGMSID"
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
+      | Funding Account             | Net Spent This Action |
+      | {SavedValue:fundingAccount} | 10                    |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
+      | Responsibility  | Name          | Description                 |
+      | Fiscal Approver | Automation FO | Automation Test Description |
+    When I click on "Submit for Approval" in the page details
+    And I "Approve" in the approval decision
+    When I click on "Mark As Paid" in the page details
+    And I enter "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
+    When I click modal button "Save"
+    When I close "{SavedValue:EGMSID}" modal by clicking the top right x button
+    Then I see status in Progress-bar is "Paid" and is "green"
+    Examples:
+      | Award Name                 | Grant Name                 |
+      | Automation Permanent Award | Automation Permanent Award |
+
+  @72350 @adhocAdvanceHappyPath @productBusinessFlowSanity
+  Scenario Outline: Validate the Advance Payment Request happy path and the status changes to 'Paid'
+    Given I delete the record "Automation Payment Request2" from the object "Payment Request"
+    When I delete the record "Automation Payment Request" from the object "Payment Request"
+    And I delete the record "Automation Permanent Award" from the object "Payment Request"
+    And I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI" user
+    And I navigate to "Grants" tab
+    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
+    When I navigate to "Actuals" sub tab
+    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
+      | Budget Category | Advance Requested This Action |
+      | Construction    | 10                            |
+    When I navigate to "Attachments" sub tab
+    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice"
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:grantorAwardTableId---"
+    And I navigate to "Actuals" sub tab
+    And I click on "View" icon for "Submitted to Grantor" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---"
+    And I navigate to "Financials" sub tab
+    And I save the field labeled "EGMS ID" as "EGMSID"
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:advanceFundingAccountTableId---" by clicking "Edit" :
+      | Funding Account             | Advance Requested This Action |
+      | {SavedValue:fundingAccount} | 10                            |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
+      | Responsibility  | Name          | Description                 |
+      | Fiscal Approver | Automation FO | Automation Test Description |
+    When I get the "EGMS ID"
+    And I click on "Submit for Approval" in the page details
+    When I "Approve" in the approval decision
+    When I click on "Mark As Paid" in the page details
+    And I enter "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
+    When I click modal button "Save"
+    When I close "{SavedValue:EGMSID}" modal by clicking the top right x button
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
+    When I navigate to "Actuals" sub tab
+    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Financials" sub tab
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
+    When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
+      | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 0                        | 10         | 10             |
+    When I close "Add Line Items" modal by clicking the top right x button
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---"
+    And I navigate to "Actuals" sub tab
+    And I click on "View" icon for "Submitted to Grantor" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---"
+    And I navigate to "Financials" sub tab
+    When I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
+      | Funding Account             | Net Spent This Action |
+      | {SavedValue:fundingAccount} | 20                    |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
+      | Responsibility  | Name          | Description                 |
+      | Fiscal Approver | Automation FO | Automation Test Description |
+    When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "EGMSID"
+    When I click on "Submit for Approval" in the page details
+    When I "Approve" in the approval decision
+    When I click on "Mark As Paid" in the page details
+    And I enter "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
+    When I click modal button "Save"
+    When I close "{SavedValue:EGMSID}" modal by clicking the top right x button
+    Then I see status in Progress-bar is "Paid" and is "green"
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Permanent Award | Automation Permanent Award |

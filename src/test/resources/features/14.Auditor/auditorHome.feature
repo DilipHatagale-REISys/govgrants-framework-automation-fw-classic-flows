@@ -1,7 +1,7 @@
 @auditorHome @auditor
 Feature: Validate all scenarios for Auditor Profile in Home Module
 
-  @69181 @auditorCannotCreateEditInternalOrganizations
+  @69181 @auditorCannotCreateEditInternalOrganizations @smoke
   Scenario Outline: Validate Auditor should not be  able to Create/Edit internal organization.
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -60,7 +60,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
       | User    |
       | AUDITOR |
 
-  @69124 @auditorCannotEditSubrecipientOrganization
+  @69124 @auditorCannotEditSubrecipientOrganization @smoke
   Scenario Outline:  Auditor should not be  able to  Edit Individual organization
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -134,7 +134,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     Then I softly see "No Records Found" inside flex table with id "---home:-:completedAssignedToMe---"
     Then I softly see "No Records Found" inside flex table with id "---home:-:completedAssignedByMe---"
 
-  @69142 @auditorCannotCreateEditSubrecipientContact
+  @69142 @auditorCannotCreateEditSubrecipientContact @smoke
   Scenario Outline: Validate Auditor cannot Create/Edit any subrecipient contact user
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab

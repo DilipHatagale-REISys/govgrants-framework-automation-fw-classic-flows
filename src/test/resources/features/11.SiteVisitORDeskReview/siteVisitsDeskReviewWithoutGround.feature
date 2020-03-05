@@ -1,7 +1,7 @@
 @siteVisitDeskReviewWB @regression @siteVisit
 Feature: Validate all scenarios in the Site Visit and Desk Review without background
 
-  @66713 @inProgressSiteVisitAmendedForSiteVisits @deepika
+  @66713 @inProgressSiteVisitAmendedForSiteVisits @deepika @smoke
   Scenario: Validate In-progress award level site visit are carried forward to newly created award after amendment - Budget Period Change type
     Given I delete the record "Automation Award for Amendment Request" from the object "Amendment Request"
     And I delete the record "Automation Award for Amendment Request" from the object "Payment Request"
@@ -97,7 +97,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I navigate to "Management" tab
     Then I see value "In Progress" for title "Status" against the value "{SavedValue:SiteVisitID}" inside table "---sitevisits:-:grantorSiteVisitsTableID---"
 
-  @66714 @inProgressSiteVisitAmendedForDeskReviews @deepika
+  @66714 @inProgressSiteVisitAmendedForDeskReviews @deepika @smoke
   Scenario: Validate In-progress award level desk review are carried forward to newly created award after amendment - bpc
     Given I delete the record "Automation Award for Amendment Request" from the object "Amendment Request"
     And I delete the record "Automation Award for Amendment Request" from the object "Payment Request"

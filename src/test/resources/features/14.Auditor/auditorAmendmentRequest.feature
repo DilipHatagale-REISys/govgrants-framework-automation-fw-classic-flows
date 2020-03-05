@@ -1,7 +1,7 @@
 @auditorAmendmentRequest @auditor
 Feature: Validate all scenarios for Auditor Profile in Amendment Request module
 
-  @69172 @auditorCannotCreateAmendmentRequest
+  @69172 @auditorCannotCreateAmendmentRequest @smoke
   Scenario: Validate Auditor should not be  able to  Create Amendment request
     Given I login to "As a Grantor" app as "Auditor" user
     And I navigate to "Grants" tab

@@ -13,7 +13,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
       | User    |
       | AUDITOR |
 
-  @69179 @69942 @auditorOrgRiskAssessment
+  @69179 @69942 @auditorOrgRiskAssessment @smoke @smoke
   Scenario Outline: Validate Auditor should have view / read  only access to Organizational Risk Assessment |Validate Auditor should not be  able to Provide revision access
     Given I delete the record "Automation Permanent Organization for Risk Assessment" from the object "ORGANIZATION RISKASSESSMENT"
     When I create a risk assessment record for organization "Automation Permanent Organization for Risk Assessment"
@@ -60,7 +60,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
       | User    |
       | AUDITOR |
 
-  @69181 @auditorCannotCreateOrgSiteVisitDeskReview
+  @69181 @auditorCannotCreateOrgSiteVisitDeskReview @smoke
   Scenario Outline: Validate Auditor should have view / read  only access to Organizational level Site Visit
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab

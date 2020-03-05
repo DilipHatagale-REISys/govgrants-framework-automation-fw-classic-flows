@@ -75,7 +75,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
       | Application Title               | Actions |
       | Automation Announcement for FDM | View    |
 
-  @69166 @auditorApplication
+  @69166 @auditorApplication @smoke
   Scenario Outline: Validate Auditor should be able to View submitted application details but cannot edit the submitted application
     Given I delete the record "Automation Announcement for Application Intake" from the object "Application"
     And I delete the record "Automation Announcement for Application Intake" from the object "Qualified Announcement"
@@ -155,7 +155,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     When I click on "View" icon for "Automation Announcement for Pre-Application" inside table
     When I click on "Qualify" in the page details
     And I click on "Create Pre-Application" in the page details
-    When I enter value "Automation Announcement for Application " into field "Title__c"
+    When I enter value "Automation Announcement for Application" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I get the "EGMS ID"
