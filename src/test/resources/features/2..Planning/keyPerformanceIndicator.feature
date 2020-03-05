@@ -180,3 +180,17 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     When I perform quick search for "Automation Execution KPI" in "---keyperformanceindicator:-:kpiTableId---" panel
     And I click on "View" icon for "Automation Execution KPI" inside table
     Then I see status in Progress-bar is "Inactive" and is "Green"
+
+  @72340 @activateKPI @productBusinessFlowSanity
+  Scenario: Validate the activation of KPI and the status changes to Active
+    Given I delete the record "Automation Execution KPI" from the object "KPI"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Planning" tab
+    When I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Key Performance Indicators (KPI) - Draft"
+    And I click on top right button "New" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
+    And I enter "Creation" values from "KPI_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I click on "Save" in the page details
+    When I click on "Activate" in the page details
+    Then I see status in Progress-bar is "Active" and is "Green"
