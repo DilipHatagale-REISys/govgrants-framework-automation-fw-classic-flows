@@ -72,8 +72,8 @@ Feature: Validate all scenarios in the award created from FDM
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---subAwardFromFDM:-:associateContactTableId---"
-    When I perform quick search for "Automation SPA" in "---subAwardFromFDM:-:keyContactsTableId---" panel
-    When I click "Add" after selection of "Automation SPA" in the table "---subAwardFromFDM:-:keyContactsTableId---"
+    When I perform quick search for "automation spa" in "---subAwardFromFDM:-:keyContactsTableId---" panel
+    When I click "Associate" after selection of "automation spa" in the table "---subAwardFromFDM:-:keyContactsTableId---"
     When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
@@ -154,10 +154,6 @@ Feature: Validate all scenarios in the award created from FDM
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
-    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
-    When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I click on "Delete" icon for "Automation Permanent Funding Account" inside flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
     Then I cannot see row level action button "Delete" against "Automation Permanent Funding Account" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
 
@@ -289,8 +285,6 @@ Feature: Validate all scenarios in the award created from FDM
       | Name           | Project Role             | Is Key Personnel |
       | Automation SPI | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
-    And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---subAwardStandAlone:-:goalsTableId---"
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Target |
       | Automation Permanent KPI for Regression | 10     |
@@ -421,8 +415,6 @@ Feature: Validate all scenarios in the award created from FDM
       | Name           | Project Role             | Is Key Personnel |
       | Automation SPI | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
-    And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---subAwardStandAlone:-:goalsTableId---"
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Target |
       | Automation Permanent KPI for Regression | 10     |
@@ -537,8 +529,6 @@ Feature: Validate all scenarios in the award created from FDM
       | Name           | Project Role             | Is Key Personnel |
       | Automation SPI | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
-    And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---subAwardStandAlone:-:goalsTableId---"
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Target |
       | Automation Permanent KPI for Regression | 10     |
@@ -672,8 +662,6 @@ Feature: Validate all scenarios in the award created from FDM
       | Name           | Project Role             | Is Key Personnel |
       | Automation SPI | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
-    And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---subAwardStandAlone:-:goalsTableId---"
     Then I softly see that "Automation Permanent Objective2" has been added in flextable with Id "---subAwardStandAlone:-:objectivesTableId---"
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Target |
@@ -1245,8 +1233,8 @@ Feature: Validate all scenarios in the award created from FDM
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---subAwardFromFDM:-:associateContactTableId---"
-    When I perform quick search for "Automation SPA" in "---subAwardFromFDM:-:keyContactsTableId---" panel
-    When I click "Add" after selection of "Automation SPA" in the table "---subAwardFromFDM:-:keyContactsTableId---"
+    When I perform quick search for "automation spa" in "---subAwardFromFDM:-:keyContactsTableId---" panel
+    When I click "Associate" after selection of "automation spa" in the table "---subAwardFromFDM:-:keyContactsTableId---"
     When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
@@ -1365,7 +1353,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                      |
       | Automation Announcement for FDM |
 
-  @64570 @64566 @64720 @64721 @64569 @64719 @64723 @64568 @64564 @64718 @64562 @VerifyWorkPlanRequiredFocusAreaRequiredProjectPeriodStartDateProjectPeriodEndDate @keerti
+   @64570 @64566 @64720 @64721 @64569 @64719 @64723 @64568 @64564 @64718 @64562 @VerifyWorkPlanRequiredFocusAreaRequiredProjectPeriodStartDateProjectPeriodEndDate @keerti
   Scenario Outline: Verify Work Plan Required? field setting entered at announcement is same on grant which is created with application.
     When I navigate to "Announcements" tab
     When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
@@ -1459,32 +1447,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                      | Award Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
-  @64787  @verifyTotalSubawardAmountthisBudgetPeriod @mahadev
-  Scenario Outline: Verify Total Subaward Amount this Budget Period on subaward Budget Period Details table Budget tab is same as Estimated Total Funding field on announcement financial Tab
-    When I click on "Edit" in the page details
-    And I enter "Edition" values from "Award_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    When I navigate to "Announcements" tab
-    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Published Competitive Announcements"
-    When I perform quick search for "<Grant Name>" in "---subAwardFromFDM:-:announcemetTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardFromFDM:-:announcemetTableId---"
-    When I navigate to "Financials" sub tab
-    And I save the field labeled "Estimated Total Funding" as "ETF"
-    And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Draft"
-    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside table
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Grant Name>" inside table
-    When I navigate to "Budget" sub tab
-    Then I see field "Total Subaward Amount this Budget Period" as "{SavedValue:ETF}"
-    Examples:
-      | Grant Name                      |
-      | Automation Announcement for FDM |
-
-  @64790 @VerifyObjectivesFieldValueOnPerformanceTab  @keerti
+    @64790 @VerifyObjectivesFieldValueOnPerformanceTab  @keerti
   Scenario Outline: Verify Objectives field value Performance tab Subaward overview is same as announcement Objectives table setup Tab.
     When I navigate to "Announcements" tab
     When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
@@ -1602,8 +1565,8 @@ Feature: Validate all scenarios in the award created from FDM
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---subAwardFromFDM:-:associateContactTableId---"
-    When I perform quick search for "Automation SPA" in "---subAwardFromFDM:-:keyContactsTableId---" panel
-    When I click "Add" after selection of "Automation SPA" in the table "---subAwardFromFDM:-:keyContactsTableId---"
+    When I perform quick search for "automation spa" in "---subAwardFromFDM:-:keyContactsTableId---" panel
+    When I click "Associate" after selection of "automation spa" in the table "---subAwardFromFDM:-:keyContactsTableId---"
     When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
@@ -1705,7 +1668,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I click toggle button to select "Published Competitive Announcements"
     And I perform quick search for "Automation Announcement for FDM" in "ActiveFundingOpportunitiesCompitive" panel
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "ActiveFundingOpportunitiesCompitive"
-    When I navigate to "Related Logs" sub tab
+    When I navigate to "Related Log" sub tab
     And I click on "View" icon for "Converted to Award" inside flex table with id "RelatedFOApplications"
     When I save the field labeled "EGMS ID" as "APPID"
     And I navigate to "Grants" tab
@@ -1722,10 +1685,10 @@ Feature: Validate all scenarios in the award created from FDM
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Budget" sub tab
-    And I click on hyperlink which contains todays date with text "{SavedValue:fundingAccount}"
+    And I click on hyperlink containing value "{SavedValue:fundingAccount}"
     Then I see field "Title" as "Automation Permanent Funding Account"
 
-  @67673  @validateFundingAccountEditActionNotDisplayed
+  @67673 @validateFundingAccountEditActionNotDisplayed
   Scenario Outline: Validate that Funding account table is not editable after submitted for approval
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
@@ -1742,8 +1705,6 @@ Feature: Validate all scenarios in the award created from FDM
       | Name           | Project Role             | Is Key Personnel |
       | Automation SPI | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
-    And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---subAwardStandAlone:-:goalsTableId---"
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Target |
       | Automation Permanent KPI for Regression | 10     |
@@ -1832,8 +1793,6 @@ Feature: Validate all scenarios in the award created from FDM
       | Name           | Project Role             | Is Key Personnel |
       | Automation SPI | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
-    And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---subAwardStandAlone:-:goalsTableId---"
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Target |
       | Automation Permanent KPI for Regression | 10     |

@@ -126,7 +126,7 @@ public class GenericSteps {
     }
 
     @Description("Navigate to last page of the flex table")
-    @And("I navigate to last page in flex table \"([^\"]*)\"")
+    @And("^I navigate to last page in flex table \"([^\"]*)\"$")
     public void iNavigateToLastPageInFlexTable(String flexTableId) {
         try {
             EyeThink.saas().flexTable().flexTablePagination(flexTableId, "Last");

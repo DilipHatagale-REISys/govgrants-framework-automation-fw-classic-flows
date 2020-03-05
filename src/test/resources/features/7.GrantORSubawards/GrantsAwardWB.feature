@@ -1,13 +1,13 @@
 @grantsAwardWB @regression @grantAndAward
 Feature: Validate all scenarios of grants and award without background
 
-  @35555 @VerifyUsersCanSeeNewButtonOnGrantListView @keerti @aashish
+  @35555 @VerifyUsersCanSeeNewButtonOnGrantListView @keerti
   Scenario Outline: Verify that users can see new button on grant list view
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I pause execution for "3" seconds
-    Then  I can see top right button "New" in flex table with id "ActiveGrants"
+    Then I can see top right button "New" in flex table with id "ActiveGrants"
     Examples:
       | User |
       | PM   |
@@ -220,7 +220,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Terms" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
-    When I click "Add" after selection of "Test TC" in the table "---subAwardStandAlone:-:grantTermConditionPopUp---"
+    When I click "Associate" after selection of "Test TC" in the table "---subAwardStandAlone:-:grantTermConditionPopUp---"
     And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Standard" inside flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I enter value "2" into field "Sequence__c"
