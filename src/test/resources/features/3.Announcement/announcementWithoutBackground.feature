@@ -158,7 +158,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
     Then I softly can see top right button "New" in flex table with id "---announcement:-:reviewPanelTableId---"
 
-  @71150 @71578 @71303 @71051 @71054 @71497 @71500 @71503 @71523 @71518 @71151 @71152 @71540 @71153 @71056 @71314 @71307 @verifyTotalReviewFormWeight @aashish
+  @71150 @71578 @71303 @71051 @71054 @71497 @71500 @71503 @71523 @71518 @71151 @71152 @71540 @71153 @71056 @71314 @71307 @verifyTotalReviewFormWeight @aashish @smoke
   Scenario: To validate system generated error message when total Review Form  weight(%) is more than 100 % while creating Announcement
     Given I delete the record "Automation Directed Announcement" from the object "APPLICATION REVIEWS"
     Given I delete the record "Automation Directed Announcement" from the object "PreApplication"

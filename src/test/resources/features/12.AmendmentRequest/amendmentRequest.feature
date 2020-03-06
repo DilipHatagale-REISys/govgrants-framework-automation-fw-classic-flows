@@ -581,7 +581,7 @@ Feature: Validate all scenarios in the Amendment Request
 
   @56971 @56859  @56855 @VerifyAlertMessageIfSubRecipientSendbackAmendmentRequestToGrantorWithoutUpdated @mahadev
   Scenario: Verify alert message if sub-recipient send backs amendment request without update to grantor |  Verify SPI user is able to check
-   the funding change request submitted by award owner |
+  the funding change request submitted by award owner |
     When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"

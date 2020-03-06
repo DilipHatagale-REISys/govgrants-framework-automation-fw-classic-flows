@@ -36,7 +36,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Remove" icon for "BP01" inside flex table with id "---announcement:-:budgetPeriodTableId---"
     Then I softly do not see value "BP01" for title "Budget Period Name" inside table "---announcement:-:budgetPeriodTableId---"
 
-  @70290 @70298 @70302 @70799 @userAllowToEnterDataInQualityAndAvailibility @aashish
+  @70290 @70298 @70302 @70799 @userAllowToEnterDataInQualityAndAvailibility @aashish @smoke
   Scenario: To Verify that user able to see Text fields after select Q&A Availability  as "Yes"  And  user can enter and save all required fields while creating Announcement
   | To Validate system generated validation message for  Q&A Availability section when "Question Deadline Date",and "Response Deadline date" is greater then Application Due Date.
     When I navigate to "Announcements" tab
@@ -437,7 +437,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Type |
       | Competitive       |
 
-  @70894 @71722 @verifyReviseUnderRevision @aashish
+  @70894 @71722 @verifyReviseUnderRevision @aashish @smoke
   Scenario Outline: To Verify that after clicking on revise button, status changes to created.
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
@@ -1025,7 +1025,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Type |
       | Competitive       |
 
-  @announcementPostSendBackCheckFieldHistoryCA @announcementSendBackPendingTaskToOwnerCA @announcementSendBackToOwnerCA
+  @announcementPostSendBackCheckFieldHistoryCA @announcementSendBackPendingTaskToOwnerCA @announcementSendBackToOwnerCA @smoke
   Scenario Outline: Validate the send back functionality of an Announcement || Validate the field history after send back of an announcement || Validate that after send back from approvers owner should not get pending task
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
