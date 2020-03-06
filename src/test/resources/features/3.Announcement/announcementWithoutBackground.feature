@@ -126,6 +126,38 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Overview Tab - Pre-Application Due Date cannot be in the past. |
       | Overview Tab - Application Due Date cannot be in the past.     |
 
+  @71445 @71580 @71593 @userCanValidateGeratedErrorMessage @aashish @bugged
+  Scenario: To validate system generates error message,when user giving form weight but review steps weight is 0 in Announcement
+    Given I delete the record "Automation Directed Announcement" from the object "APPLICATION REVIEWS"
+    Given I delete the record "Automation Directed Announcement" from the object "PreApplication"
+    Given I delete the record "Automation Directed Announcement" from the object "Application"
+    And I delete the record "Automation Directed Announcement" from the object "Qualified Announcement"
+    Given I delete the record "Automation Directed Announcement" from the object "Announcement"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Directed" content inside "Announcements" subheader on left panel
+    And I click on top right button "New" in flex table with id "---announcement:-:annoucementTableId---"
+    And I enter "DirectedAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Continue"
+    When I enter "Pre-Application Modal" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I navigate to "Setup" sub tab
+    When I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 100             |
+      | SME Review        | 0               |
+    And I expand nested table containing column value "SME Review"
+    And I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
+      | Form Name         | Form Weight (%) |
+      | Fiscal Review     | 25              |
+      | Program Review    | 25              |
+      | Compliance Review | 50              |
+    And I click on top right button "Save" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    Then I softly see the following messages in the page details :
+      | Saved Successfully! |
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    Then I softly can see top right button "New" in flex table with id "---announcement:-:reviewPanelTableId---"
+
   @71150 @71578 @71303 @71051 @71054 @71497 @71500 @71503 @71523 @71518 @71151 @71152 @71540 @71153 @71056 @71314 @71307 @verifyTotalReviewFormWeight @aashish
   Scenario: To validate system generated error message when total Review Form  weight(%) is more than 100 % while creating Announcement
     Given I delete the record "Automation Directed Announcement" from the object "APPLICATION REVIEWS"
@@ -328,7 +360,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see the following messages in the page details :
       | Record deleted successfully. |
 
-  @70861 @70858 @profileNotAllowedToCreateAnnouncement @aashish
+  @70861 @70858 @profileNotAllowedToCreateAnnouncement @aashish @bugged
   Scenario Outline: Verify user having FO/FD Profile are not allowed to create announcements
     When I login to "As a Grantor" app as "<users>" user
     And I navigate to "Announcements" tab

@@ -47,12 +47,12 @@ public class AwardSteps {
         .elementReference().of(By.xpath("//a[text()='"+link+"']")));
     }
 
-    @And("I save the field value having link labeled \"([^\"]*)\" as \"([^\"]*)\"")
+    @And("^I save the field value having link labeled \"([^\"]*)\" as \"([^\"]*)\"$")
     public void iSaveTheFieldValueHavingLinkLabeledAs(String label, String fieldKey) {
         awardPage.saveFieldValueHavingLinkLabeledAs(label,fieldKey);
     }
 
-    @And("I click \"([^\"]*)\" link present on hovered tooltip")
+    @And("^I click \"([^\"]*)\" link present on hovered tooltip$")
     public void iClickLinkPresentOnHoveredTooltip(String text) {
         EyeThink.core().click().on(By.xpath("//div[contains(@class,'form-group')]//a[text()='"+text+"']"));
     }

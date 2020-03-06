@@ -1,7 +1,7 @@
 @regression @paymentRequest
 Feature: Payment Request scenarios without background
 
-  @53910 @ValidateAdvancePaymentRequestButton @mahadev
+  @53910 @ValidateAdvancePaymentRequestButton @mahadev @smoke
   Scenario Outline: validate advance button not displayed to SPI user when Advance Payment Allowed selected as NO
     Given I delete the record "Automation Grant For PR" from the object "Award"
     And I delete the record "Automation Grant For PR" from the object "Grant"
@@ -520,7 +520,7 @@ Feature: Payment Request scenarios without background
       | Award Name              | Grant Name              |
       | Automation Grant For PR | Automation Grant For PR |
 
-  @53965 @validateProgramIncomeFieldIsDisplayedOnReimbursementPaymentRequest @mahadev
+  @53965 @validateProgramIncomeFieldIsDisplayedOnReimbursementPaymentRequest @mahadev @smoke
   Scenario Outline: Validate user can enter Program Income On Reimbursement Payment Request when program Income Allowed is Yes at Grant
     When I delete the record "Automation Grant For PR" from the object "Award"
     And I delete the record "Automation Grant For PR" from the object "Grant"
@@ -2201,7 +2201,7 @@ Feature: Payment Request scenarios without background
       | Award Name              | Grant Name              |
       | Automation Grant For PR | Automation Grant For PR |
 
-  @54707 @ValidateAdvanceRequestedAmountFieldOnAwardAtInternalPortalUpdatedAfterAdvancePRApproval @mahadev
+  @54707 @ValidateAdvanceRequestedAmountFieldOnAwardAtInternalPortalUpdatedAfterAdvancePRApproval @mahadev @smoke
   Scenario Outline: validate Advance Requested Amount field at Internal portal gets updated after Advance payment request approval
     When I delete the record "Automation Grant For PR" from the object "Award"
     And I delete the record "Automation Grant For PR" from the object "Grant"
@@ -3203,7 +3203,7 @@ Feature: Payment Request scenarios without background
       | Automation Grant For PR | Automation Grant For PR | SPI  |
       | Automation Grant For PR | Automation Grant For PR | SPA  |
 
-  @55809 @PRReimbursement2ndIsFinalPayment1stPRShouldShowValidMsg @jitendra
+  @55809 @PRReimbursement2ndIsFinalPayment1stPRShouldShowValidMsg @jitendra @smoke
   Scenario Outline: Verify that once final payment request is approved then Created status Payment should show validation message on Submit to Grantor Button.
     When I delete the record "Automation Grant For PR" from the object "Award"
     And I delete the record "Automation Grant For PR" from the object "Grant"
