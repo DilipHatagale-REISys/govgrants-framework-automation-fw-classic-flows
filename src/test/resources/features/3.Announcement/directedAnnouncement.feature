@@ -391,7 +391,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Announcement Type | Active Funding Opportunities id | User |
       | Directed          | ActiveFundingOpportunities      | EXE  |
 
-  @34763 @34765 @34766 @announcementApproval @announcementPendingTaskPostApproval @announcementCompletedTaskPostApproval
+  @34763 @34765 @34766 @announcementApproval @announcementPendingTaskPostApproval @announcementCompletedTaskPostApproval @smoke
   Scenario Outline: Validate that after approval of an Announcement task get added to its completed task table. || Validate the approval of an Announcement || Validate that after approval of an Announcement task get deleted from pending task table.
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"

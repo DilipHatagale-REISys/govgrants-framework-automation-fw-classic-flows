@@ -15,7 +15,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @34461 @70612 @submittingAnnouncementForApprovalFA @announcementForPastApplicationDueDateFA @submittedAnnouncementDeletionFA
+  @34461 @70612 @submittingAnnouncementForApprovalFA @announcementForPastApplicationDueDateFA @submittedAnnouncementDeletionFA @smoke
   Scenario: Validate that user can not enter application due date as past date | Validate the submission of Announcement for Approval || Validate that only record owner cannot delete Submitted for Approval status announcements
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
@@ -597,7 +597,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
 
-  @announcementSendBackToOwnerFA @announcementPostSendBackCheckFieldHistoryFA @announcementSendBackPendingTaskToOwnerFA
+  @announcementSendBackToOwnerFA @announcementPostSendBackCheckFieldHistoryFA @announcementSendBackPendingTaskToOwnerFA @smoke
   Scenario: Validate the send back functionality of an Announcement || Validate that after send back from approvers owner should not get pending task
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
