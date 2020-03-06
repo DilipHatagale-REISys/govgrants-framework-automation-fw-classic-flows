@@ -33,7 +33,7 @@ Feature: Validate all scenarios for program
     Then I softly see field "KPI" as "No"
     Then I softly see field "Objectives Required?" as "No"
 
-  @34503 @programCreation @smoke
+  @34503 @programCreation
   Scenario: Verifying if the EXE, PM, PO has create access to Internal Program
     Then I see status in Progress-bar is "Created" and is "Green"
 
@@ -65,7 +65,7 @@ Feature: Validate all scenarios for program
       | Program Approver   | Automation PM  | Automation Test Description |
     Then I see that "Automation EXE" has been added in flextable with Id "---program:-:approverTableId---"
 
-  @34616 @programFocusAreaAssociation @smoke
+  @34616 @programFocusAreaAssociation
   Scenario Outline: Validate the association of Focus Area for the Internal Program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
@@ -75,7 +75,7 @@ Feature: Validate all scenarios for program
       | Title                           |
       | Automation Permanent Focus Area |
 
-  @34737 @programObjectiveAssociation @smoke
+  @34737 @programObjectiveAssociation
   Scenario Outline: Validate the Association of Objective to the Internal Program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
@@ -85,7 +85,7 @@ Feature: Validate all scenarios for program
       | Objective                      |
       | Automation Permanent Objective |
 
-  @34738 @programKPIAssociation @smoke
+  @34738 @programKPIAssociation
   Scenario Outline: Validate the association of KPI
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
@@ -248,7 +248,7 @@ Feature: Validate all scenarios for program
       | Focus Area                      | Program Name                          |
       | Automation Permanent Focus Area | Automation Execution Internal Program |
 
-  @53690 @Verify_Relatedlogs_table_for_focusArea_for_Draft_Program @mahadev
+  @53690 @Verify_Relatedlogs_table_for_focusArea_for_Draft_Program @mahadev @smoke
   Scenario Outline: Verify related log table for focus area for draft Program
     And I click on "Edit" in the page details
     When I enter "Edition" values from "Program_Field_Values.xlsx"
@@ -332,16 +332,6 @@ Feature: Validate all scenarios for program
 
   @72341 @programActivation @productBusinessFlowSanity
   Scenario: Validate the activation of Internal Program and the status changes to Active
-    Given I delete the record "Automation Execution Internal Program" from the object "Program"
-    When I login to "As a Grantor" app as "dynamicUser" user
-    And I navigate to "Planning" tab
-    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-    And I click toggle button to select "Internal Programs - Draft"
-    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
-    When I enter "Creation" values from "Program_Field_Values.xlsx"
-    And I click modal button "Save and Continue"
-    And I get the "EGMS ID"
-    And I click on "Save" in the page details
     And I click on "Edit" in the page details
     When I enter "Edition" values from "Program_Field_Values.xlsx"
     And I click on "Save" in the page details

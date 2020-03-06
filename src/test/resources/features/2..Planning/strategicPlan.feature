@@ -11,7 +11,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I enter "StrategicPlanCreation" values from "StrategicPlan_Field_Values.xlsx"
     And I click modal button "Save and Close"
 
-  @50954 @creationOfStrategicPlan @smoke
+  @50954 @creationOfStrategicPlan
   Scenario: Creation of Strategic Plan by user - Admin/EXE/PM
     Then I see that "Status" is in "Draft" status
 
@@ -29,7 +29,7 @@ Feature: Validate all scenarios in Strategic Plan
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Strategic Plan"
     Then I see "Strategic Plan" has been added in "Attachments" flex table
 
-  @33798 @creationOfStrategicGoal @smoke
+  @33798 @creationOfStrategicGoal
   Scenario: Creation of Strategic Goal inside a Strategic Plan by User - Admin/EXE/PM
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
@@ -68,7 +68,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Save" in the page details
     Then I see "Strategic Goal" has been added in "Attachments" flex table
 
-  @51047 @creationOfObjective @smoke
+  @51047 @creationOfObjective
   Scenario: Creation of Objective inside a Strategic Goal by User - Admin/EXE/PM
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
@@ -138,7 +138,7 @@ Feature: Validate all scenarios in Strategic Plan
     Then I see that "Automation Permanent KPI for Regression" has been added in flextable with Id "---strategicplan:-:ObjectivesKPITableId---"
 
     #marking as notFunctional as we can not activate multiple strategic plan for one organization
-  @34721 @strategicPlanHappyPath @smoke @notFunctional @wip
+  @34721 @strategicPlanHappyPath @notFunctional @wip
   Scenario: strategic plan Happy Path
     And I click on "Edit" in the page details
     When I enter "StrategicPlanEdition" values from "StrategicPlan_Field_Values.xlsx"
