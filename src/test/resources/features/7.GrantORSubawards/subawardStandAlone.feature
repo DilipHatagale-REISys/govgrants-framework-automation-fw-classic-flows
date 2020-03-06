@@ -1,4 +1,4 @@
-@grantAndAward @awardStandAlone @regression @wip
+@grantAndAward @awardStandAlone @regression
 Feature: Validate all scenarios in the Stand Alone Award and Grant
 
   Background: Create Award
@@ -3176,7 +3176,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
 
-  @65227 @VerifyRelatedFocusAreasField @keerti 
+  @65227 @VerifyRelatedFocusAreasField @keerti
   Scenario Outline: Verify Key Performance Indicators (KPIs) value Performance tab Subaward overview is same as Program Key Performance Indicators (KPIs) table setup Tab.
     When I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel

@@ -56,14 +56,14 @@ Feature: Validate all scenarios in Focus Area
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @52455 @creationOFFocusAreaFOUser @smoke
+  @52455 @creationOFFocusAreaFOUser
   Scenario: Negative Scenario-Verify that FO is not able to create focus area
     Given I login to "As a Grantor" app as "FO" user
     When I navigate to "Planning" tab
     And I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     Then  I cannot see top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
 
-  @53219 @userFOEditfocusArea @smoke
+  @53219 @userFOEditfocusArea
   Scenario: Negative Case-Verfiy that FO user cannot Edit  the record
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
@@ -109,7 +109,7 @@ Feature: Validate all scenarios in Focus Area
     And I click on "Deactivate" in the page details
     Then I see status in Progress-bar is "Closed" and is "Green"
 
-  @53221 @foUserdeactivatingfocusArea @smoke
+  @53221 @foUserdeactivatingfocusArea
   Scenario: Negative Case- Verfiy that other users (other than Admin, EXE, PM) can not deactivate focus area
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab

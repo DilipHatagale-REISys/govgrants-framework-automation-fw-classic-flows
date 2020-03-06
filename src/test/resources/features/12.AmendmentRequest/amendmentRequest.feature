@@ -246,7 +246,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I "Approve" in the approval decision
     Then I see status in Progress-bar is "Approved" and is "Green"
 
-  @53205 @amendSubawardSOWAmendmentRequest @wip
+  @53205 @amendSubawardSOWAmendmentRequest @wip @smoke
   Scenario: Click on Amend of Amendment Request
     Given I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -614,7 +614,7 @@ Feature: Validate all scenarios in the Amendment Request
     Then I softly see the text containing :
       | You have a requested a change of $0.0, but the required change is $1000.00. |
 
-  @56973 @validateSubRecipientCanNotEditAmendmentRequestAfterSubmittingToGrantor @mahadev
+  @56973 @validateSubRecipientCanNotEditAmendmentRequestAfterSubmittingToGrantor @mahadev @smoke
   Scenario: Verify Sub-Recipient Can not edit funding type amendment request after submitting to Grantor
     When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -746,7 +746,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     Then I softly see value "Record Id" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
 
-  @57135 @57125 @VerifyAmendSubawardButtonAfterApprovalProcess @mahadev
+  @57135 @57125 @VerifyAmendSubawardButtonAfterApprovalProcess @mahadev @smoke
   Scenario: Verify Once approval process is completed for Amendment Request then award owner can see Amend Subaward button |  Verify Internal user is able to check the funding change request submitted by Sub-recipient User
     When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -866,7 +866,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     Then I softly see value "Record Id" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
 
-  @57274 @57276 @VerifyRequestedChangeInBudgetFieldRemainsSameAfterReviseAmendmentRequest @mahadev
+  @57274 @57276 @VerifyRequestedChangeInBudgetFieldRemainsSameAfterReviseAmendmentRequest @mahadev @smoke
   Scenario: Verify When Grantor Revise the Amendment request the Budget Category amount updated by Sub-recipient is reflected the same | Verify when Grantor Revise the Amendment request the Requested Change in Budget field remains the same
     When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -980,7 +980,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Activated" and is "green"
 
-  @57141 @differenceFieldAfterRevisedEncumberenceAmount @jitendra
+  @57141 @differenceFieldAfterRevisedEncumberenceAmount @jitendra @smoke
   Scenario: Verify Difference Field is getting Updated once Revised Encumbrance amount is entered by award owner.
     When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -1357,7 +1357,7 @@ Feature: Validate all scenarios in the Amendment Request
       | Grant Name                             |
       | Automation Award for Amendment Request |
 
-  @57444 @verifyPaymentApproverApproveReimbursementPaymentRequestActiveSubawardAfterFundingChangeAmendment @mahadev
+  @57444 @verifyPaymentApproverApproveReimbursementPaymentRequestActiveSubawardAfterFundingChangeAmendment @mahadev @smoke
   Scenario Outline: Verify Payment Request Approver can approve the Reimbursement Payment Request created on Active subaward after Funding change amendment
     When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -1531,7 +1531,7 @@ Feature: Validate all scenarios in the Amendment Request
       | Grant Name                             |
       | Automation Award for Amendment Request |
 
-  @57580 @creationOfAdvancePaymentRequestAfterScopeOfWorkChangeAmendmentRequest @mahadev
+  @57580 @creationOfAdvancePaymentRequestAfterScopeOfWorkChangeAmendmentRequest @mahadev @smoke
   Scenario Outline: creation of advance payment request after scope of work change amendment request
     When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -2075,7 +2075,7 @@ Feature: Validate all scenarios in the Amendment Request
       | Grant Name                             |
       | Automation Award for Amendment Request |
 
-  @62966 @SRUserCanViewRiskScoreForARACopiedToNewCreatedAndAmendmentTypeTermsAndConditionsAmendment
+  @62966 @SRUserCanViewRiskScoreForARACopiedToNewCreatedAndAmendmentTypeTermsAndConditionsAmendment @smoke
   Scenario: Validate whether SR user can view the Risk Score which remained as is when Award Risk Assessment is copied to new created award when amendment type -  Terms and conditions amendment
     And I navigate to "Management" sub tab
     When I click on "View" icon for "Active" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"

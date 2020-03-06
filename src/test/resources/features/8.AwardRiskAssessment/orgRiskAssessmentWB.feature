@@ -3,13 +3,13 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
 
   @64384 @expiredOrgRiskassementValidation @smoke
   Scenario Outline: Validate system generates an exception at award activation if Organizational Risk Assessment is expired.
-    Given I delete the record "Automation Execution Award" from the object "Award"
-    And I delete the record "Automation Execution Award" from the object "Grant"
+    Given I delete the record "Automation Award for Risk Assessment" from the object "Award"
+    And I delete the record "Automation Award for Risk Assessment" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
-    And I enter in modal "Grant_Creation4" values from "Award_Field_Values.xlsx"
+    And I enter in modal "Grant_Creation3" values from "Award_Field_Values.xlsx"
     And I click modal button "Continue"
     And I enter in modal "Grant_Edition" values from "Award_Field_Values.xlsx"
     When I click modal button "Save and Continue"
@@ -79,16 +79,20 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
-    When I navigate to "Overview" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | Christopher sa | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
+    When I navigate to "Overview" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---"
+    And I perform quick search for "automation patricksa" in "---subAwardStandAlone:-:keyContactsTableId---" panel
+    When I click "Add" after selection of "automation patricksa" in the table "---subAwardStandAlone:-:keyContactsTableId---"
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
+      | Name                  | Project Role             | Is Key Personnel |
+      | automation pratricksa | Project Director/Manager | Checked          |
+    And I refresh the page
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -149,10 +153,10 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I click on "Activate" in the page details
     Then I see the following messages in the page details contains:
-      | Org Risk Assessment is not Active |
+      | Management Tab - Create and activate a Risk Assessment as the Subaward cannot be issued without an active Risk Assessment. |
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                           | Grant Name                           |
+      | Automation Award for Risk Assessment | Automation Award for Risk Assessment |
 
   @64385 @scopeofWorkAmendmentWhenORAIsExpired
   Scenario: Validate when Org Risk Assessment is expired and user is able to activate newly created award post performing amendment of type - Scope Of Work
@@ -406,7 +410,6 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     When I navigate to "Overview" sub tab
 
-
   @64389 @budgetPeriodChangeAmendmentWhenORAIsExpired @smoke
   Scenario: Validate user is able to activate newly created award post performing amendment of type - Budget Period Change
     Given I delete the record "Automation Award for Organizational Risk Assessment" from the object "Amendment Request"
@@ -446,7 +449,6 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
       | Role               | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description |
     And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -465,12 +467,6 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
-    And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel

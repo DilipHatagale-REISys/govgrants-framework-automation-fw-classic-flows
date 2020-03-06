@@ -1,7 +1,7 @@
 @amendmentRequests @regression
 Feature: Amendment Request scenarios without background
 
-  @54853 @ValidateRevisedBudgetAmountBalanceUpdatedOnAdvancePaymentRequest @mahadev
+  @54853 @ValidateRevisedBudgetAmountBalanceUpdatedOnAdvancePaymentRequest @mahadev @smoke
   Scenario Outline: Verify that as per 'Revised Award Budget', "Balance" amount is updated on advance payment request
     Given I delete the record "Automation Execution Award for Amendment Request" from the object "Award"
     And I delete the record "Automation Execution Award for Amendment Request" from the object "Grant"
@@ -540,7 +540,7 @@ Feature: Amendment Request scenarios without background
       | Award Name                                       | Grant Name                                       |
       | Automation Execution Award for Amendment Request | Automation Execution Award for Amendment Request |
 
-  @57277 @verifyValidationErrorMessageIfRequestedBudgetFieldChangeEnteredLessThanRequestedAmount @mahadev
+  @57277 @verifyValidationErrorMessageIfRequestedBudgetFieldChangeEnteredLessThanRequestedAmount @mahadev @smoke
   Scenario Outline: Verify validation error message is shown if Requested Change in Budget field is given less than the requested amount at Sub-recipient
     Given I delete the record "Automation Execution Award for Amendment Request" from the object "Award"
     And I delete the record "Automation Execution Award for Amendment Request" from the object "Grant"
@@ -675,7 +675,7 @@ Feature: Amendment Request scenarios without background
       | Award Name                                       | Grant Name                                       |
       | Automation Execution Award for Amendment Request | Automation Execution Award for Amendment Request |
 
-  @54859 @ValidateRevisedBudgetAmountBalanceUpdatedOnAwardAtSubPortal @jitendra
+  @54859 @ValidateRevisedBudgetAmountBalanceUpdatedOnAwardAtSubPortal @jitendra @smoke
   Scenario Outline: Verify that as per 'Revised Awarded Amount', "Balance" amount is updated on Grant (SPI)
     Given I delete the record "Automation Execution Award for Amendment Request" from the object "Award"
     And I delete the record "Automation Execution Award for Amendment Request" from the object "Grant"
@@ -1029,7 +1029,7 @@ Feature: Amendment Request scenarios without background
       | Award Name                                       | Grant Name                                       |
       | Automation Execution Award for Amendment Request | Automation Execution Award for Amendment Request |
 
-  @54861 @ValidateRevisedBudgetAmountBalanceUpdatedOnGrantAtSubPortal @jitendra
+  @54861 @ValidateRevisedBudgetAmountBalanceUpdatedOnGrantAtSubPortal @jitendra @smoke
   Scenario Outline: Verify that as per 'Revised Awarded Amount', "Balance" amount is updated on Grant (SPI)
     Given I delete the record "Automation Execution Award for Amendment Request" from the object "Award"
     And I delete the record "Automation Execution Award for Amendment Request" from the object "Grant"
@@ -1558,7 +1558,7 @@ Feature: Amendment Request scenarios without background
       | Award Name                                       | Grant Name                                       |
       | Automation Execution Award for Amendment Request | Automation Execution Award for Amendment Request |
 
-  @54854 @ValidateRevisedBudgetAmountBalanceUpdatedOnReimbursementPaymentRequest @mahadev
+  @54854 @ValidateRevisedBudgetAmountBalanceUpdatedOnReimbursementPaymentRequest @mahadev @smoke
   Scenario Outline: Verify that as per 'Revised Award Budget', "Balance" amount is updated on Reimbursement payment request page
     Given I delete the record "Automation Execution Award for Amendment Request" from the object "Award"
     And I delete the record "Automation Execution Award for Amendment Request" from the object "Grant"
@@ -1912,7 +1912,7 @@ Feature: Amendment Request scenarios without background
       | Award Name                                       | Grant Name                                       |
       | Automation Execution Award for Amendment Request | Automation Execution Award for Amendment Request |
 
-  @61721 @SVCopiedToNewCreatedAwardForAmendmentTypBudgetPeriodChangeAmendment @keerti
+  @61721 @SVCopiedToNewCreatedAwardForAmendmentTypBudgetPeriodChangeAmendment @keerti @smoke
   Scenario: Validate Site Visits is carry forwarded in created status to new created award when amendment type is Budget Period Change Amendment
     Given I delete the record "Automation Award for Amendment Request" from the object "Amendment Request"
     And I delete the record "Automation Award for Amendment Request" from the object "Payment Request"
@@ -1996,7 +1996,7 @@ Feature: Amendment Request scenarios without background
     And I navigate to "Management" tab
     Then I see value "Created" for title "Status" against the value "{SavedValue:SiteVisitID}" inside table "---sitevisits:-:grantorSiteVisitsTableID---"
 
-  @61723 @68079 @SVcopiedToNewCreatedAwardForAmendmentTypeFundingChange @keerti
+  @61723 @68079 @SVcopiedToNewCreatedAwardForAmendmentTypeFundingChange @keerti @smoke
   Scenario:Validate Site Visits is copied to new created award when amendment type - Funding Change
     Given I delete the record "Automation Award for Amendment Request" from the object "Amendment Request"
     And I delete the record "Automation Award for Amendment Request" from the object "Payment Request"
