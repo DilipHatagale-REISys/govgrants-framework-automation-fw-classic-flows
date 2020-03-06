@@ -14,7 +14,7 @@ Feature: Validate all scenarios in Focus Area
     When I click modal button "Save and Continue"
     Then I see status in Progress-bar is "Created" and is "Green"
 
-  @50963 @editionOfFocusArea @smoke
+  @50963 @editionOfFocusArea
   Scenario: Edition of Focus Area by User - Admin/EXE/PM
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
@@ -56,14 +56,14 @@ Feature: Validate all scenarios in Focus Area
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @52455 @creationOFFocusAreaFOUser @smoke
+  @52455 @creationOFFocusAreaFOUser
   Scenario: Negative Scenario-Verify that FO is not able to create focus area
     Given I login to "As a Grantor" app as "FO" user
     When I navigate to "Planning" tab
     And I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     Then  I cannot see top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
 
-  @53219 @userFOEditfocusArea @smoke
+  @53219 @userFOEditfocusArea
   Scenario: Negative Case-Verfiy that FO user cannot Edit  the record
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
@@ -79,7 +79,7 @@ Feature: Validate all scenarios in Focus Area
     When I perform quick search for "Automation Execution Focus Area" in "---focusarea:-:focusAreaTableId---" panel
     Then I cannot see row level action button "Edit" against "Automation Execution Focus Area" in flex table with id "---focusarea:-:focusAreaTableId---"
 
-  @52620 @userFODeletefocusArea @smoke
+  @52620 @userFODeletefocusArea
   Scenario: Negative Case-Verfiy that FO user cannot Delete the record
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
@@ -95,7 +95,7 @@ Feature: Validate all scenarios in Focus Area
     When I perform quick search for "Automation Execution Focus Area" in "---focusarea:-:focusAreaTableId---" panel
     Then I cannot see row level action button "Delete" against "Automation Execution Focus Area" in flex table with id "---focusarea:-:focusAreaTableId---"
 
-  @53220 @deactivatingfocusArea @smoke
+  @53220 @deactivatingfocusArea
   Scenario: Verfiy deactivating focus area by user - Admin/EXE/PM
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
@@ -109,7 +109,7 @@ Feature: Validate all scenarios in Focus Area
     And I click on "Deactivate" in the page details
     Then I see status in Progress-bar is "Closed" and is "Green"
 
-  @53221 @foUserdeactivatingfocusArea @smoke
+  @53221 @foUserdeactivatingfocusArea
   Scenario: Negative Case- Verfiy that other users (other than Admin, EXE, PM) can not deactivate focus area
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
@@ -128,7 +128,7 @@ Feature: Validate all scenarios in Focus Area
     And I click on "View" icon for "Automation Execution Focus Area" inside table
     Then I cannot see top right button "Deactivate" in page detail
 
-  @52476 @closedfocusAreaListView @smoke
+  @52476 @closedfocusAreaListView
   Scenario: Verfiy that user can see Closed Focus Area under Inactive Focus Area list view (Admin/EXE/PM)
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
@@ -149,7 +149,6 @@ Feature: Validate all scenarios in Focus Area
 
   @72335 @activationOfFocusArea @productBusinessFlowSanity
   Scenario: Validate the activation of Focus Area by User - Admin/EXE/PM and the status is Active
-    Given I delete the record "Automation Execution Focus Area" from the object "Focus Area"
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Setup" subheader on left panel

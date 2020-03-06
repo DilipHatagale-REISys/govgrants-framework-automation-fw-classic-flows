@@ -43,7 +43,9 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I perform quick search for "Automation Permanent Award" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    Then I softly cannot see row level action button "Edit" against "Automation Permanent Award" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    Then I see the following rows under the following headers in table named "Grants - All" :
+      | Grant Title                | Actions |
+      | Automation Permanent Award | View    |
     When I click on "View" icon for "Automation Permanent Award" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     And I click on "Menu" in the page details
     And I select "Download As PDF" from dropdown

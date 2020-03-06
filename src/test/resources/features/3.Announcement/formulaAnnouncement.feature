@@ -985,18 +985,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
 
   @72343 @publishingFormulaAnnouncement @productBusinessFlowSanity
   Scenario: Validate the activation of Formula Announcement and the status changes to published
-    Given I delete the record "Automation Formula Announcement" from the object "Announcement"
-    When I login to "As a Grantor" app as "dynamicUser" user
-    And I navigate to "Announcements" tab
-    When I navigate to "Formula" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Formula Announcements - Draft"
-    And I click on top right button "New" in flex table with id "ActiveFundingOpportunitiesFormula"
-    And I enter "FormulaAnnouncement" values from "Announcement_Field_Values.xlsx"
-    And I click modal button "Continue"
-    When I enter "Creation Second Modal" values from "Announcement_Field_Values.xlsx"
-    And I click modal button "Save and Continue"
-    And I click on "Save" in the page details
-    And I get the "EGMS ID"
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details

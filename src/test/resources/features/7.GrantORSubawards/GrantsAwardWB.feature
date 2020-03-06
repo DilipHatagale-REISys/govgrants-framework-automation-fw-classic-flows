@@ -52,7 +52,7 @@ Feature: Validate all scenarios of grants and award without background
       | Automation  | Mandatory | Award      | Active |
     Then I see "Automation" inside flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
 
-  @68057 @createGrantEXE @jitendra @smoke
+  @68057 @createGrantEXE @jitendra
   Scenario: Valiadate EXE user can create Direct Grant
     Given I delete the record "Automation Direct Award" from the object "Award"
     And I delete the record "Automation Direct Award" from the object "Grant"
@@ -230,7 +230,7 @@ Feature: Validate all scenarios of grants and award without background
       | Award Name                            | Grant Name                            |
       | Automation Award for field validation | Automation Grant for field validation |
 
-  @66654 @66655 @65897 @activateAwardEXEUser @jitendra @smoke
+  @66654 @66655 @65897 @activateAwardEXEUser @jitendra
   Scenario Outline: To verify that user(exe) is able to activate award by clicking on active button using Grant type =" Formula Grant" | To verify that user(exe) is able to activate award by clicking on active button using Grant type = "Block Grant"
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -750,7 +750,7 @@ Feature: Validate all scenarios of grants and award without background
       | Annoucement                     |
       | Automation Announcement for FDM |
 
-  @64786 @64563 @64717 @64789 @VerifyFieldsFromAnnoucement @mahadev @smoke
+  @64786 @64563 @64717 @64789 @VerifyFieldsFromAnnoucement @mahadev
   Scenario Outline: Verify (EGMS ID of announcement | Leverage Allowed?) and focus Area is carried forward to Announcement ID at grant overview which is created with application
     Given I delete the record "Automation Desk Review" from the object "Desk Review"
     When I delete the record "Automation Site Visit" from the object "Site Visit"
@@ -2507,7 +2507,7 @@ Feature: Validate all scenarios of grants and award without background
       | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
-  @65409 @FocusAreaStartAndEndDate @smoke
+  @65409 @FocusAreaStartAndEndDate
   Scenario: To verify the action on adding a focus area start and end date in between the budget period date in the budget tab of subaward phase in the award owner profile PM User category
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"

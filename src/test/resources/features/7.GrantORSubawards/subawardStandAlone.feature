@@ -46,7 +46,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Contact        |
       | automation spa |
 
-  @51131 @awardStandAloneAddFundingAccount @smoke
+  @51131 @awardStandAloneAddFundingAccount
   Scenario: Funding Account budget addition to award
     When I navigate to "Budget" sub tab
     And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
@@ -3176,7 +3176,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
 
-  @65227 @VerifyRelatedFocusAreasField @keerti 
+  @65227 @VerifyRelatedFocusAreasField @keerti
   Scenario Outline: Verify Key Performance Indicators (KPIs) value Performance tab Subaward overview is same as Program Key Performance Indicators (KPIs) table setup Tab.
     When I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
@@ -4604,7 +4604,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly cannot see top right button "New" in flex table with id "---riskassessment:-:raPeerReviewFlexTableId---"
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
 
-  @68606 @verifyUserCanSeeAwardInPendingTaskTable @smoke @aashish
+  @68606 @verifyUserCanSeeAwardInPendingTaskTable @aashish
   Scenario Outline: Validate that after Subaward is Sent to the Subrecipient it appears in the Pending task of SPI/SPA user and on acceptance of subaward by SPI user it appears in the Completed task of all.
     | SPI and SPA user can see subrecipient in pendig tasks
     And I click on "Edit" in the page details
@@ -4780,7 +4780,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
 
-  @68606 @verifyUserCanSeeAwardAsCompletedStatusInCompletedTableTask @smoke @aashish
+  @68606 @verifyUserCanSeeAwardAsCompletedStatusInCompletedTableTask @aashish
   Scenario Outline: Validate that after Subaward is Sent to the Subrecipient it appears in the Pending task of SPI/SPA user and on acceptance of subaward by SPI user it appears in the Completed task of all.
   | SPI and SPA user can see subaward in completed status in Completed task table
     And I click on "Edit" in the page details
@@ -4987,7 +4987,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
 
-  @65406 @VerifyPaymentRequestScheduleIsGeneratedonMonthlyBasis @smoke @aashish @wip @Relook
+  @65406 @VerifyPaymentRequestScheduleIsGeneratedonMonthlyBasis @aashish @wip @Relook
   Scenario Outline: To verify that the payment request schedule is generated on the monthly basis in the award owner terms tab after the sub award is accepted by the Sub recipient.
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -5086,19 +5086,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
 
   @72348 @awardHappyPathStandAlone @productBusinessFlowSanity
   Scenario Outline: Validate the activation of subaward Happy path stand alone and status changes to Activated
-    Given I delete the record "Automation Execution Award" from the object "Award"
-    And I delete the record "Automation Execution Award" from the object "Grant"
-    When I login to "As a Grantor" app as "dynamicUser" user
-    And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
-    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
-    And I click modal button "Continue"
-    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
-    When I click modal button "Save and Continue"
-    And I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
-    And I get the "EGMS ID"
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details

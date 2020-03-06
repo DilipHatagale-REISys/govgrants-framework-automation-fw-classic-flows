@@ -2089,15 +2089,6 @@ Feature: Validate all scenarios in Payment Request
 
   @72349 @adhocReimbursementHappyPath @productBusinessFlowSanity
   Scenario Outline: Validate the Reimbursement Payment Request happy path and the status changes to 'Paid'
-    Given I delete the record "Automation Payment Request2" from the object "Payment Request"
-    When I delete the record "Automation Payment Request" from the object "Payment Request"
-    And I delete the record "Automation Permanent Award" from the object "Payment Request"
-    And I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI" user
-    And I navigate to "Grants" tab
-    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Subawards  - Active"
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
@@ -2142,15 +2133,6 @@ Feature: Validate all scenarios in Payment Request
 
   @72350 @adhocAdvanceHappyPath @productBusinessFlowSanity
   Scenario Outline: Validate the Advance Payment Request happy path and the status changes to 'Paid'
-    Given I delete the record "Automation Payment Request2" from the object "Payment Request"
-    When I delete the record "Automation Payment Request" from the object "Payment Request"
-    And I delete the record "Automation Permanent Award" from the object "Payment Request"
-    And I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI" user
-    And I navigate to "Grants" tab
-    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Subawards  - Active"
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"

@@ -978,18 +978,6 @@ Feature: Validate all scenarios in the directed Announcement tab
 
   @72342 @publishingDirectedAnnouncement @productBusinessFlowSanity
   Scenario: Validate the activation of Directed Announcement and the status changes to published and is green
-    When I delete the record "Automation Directed Announcement" from the object "Announcement"
-    And I login to "As a Grantor" app as "dynamicUser" user
-    And I navigate to "Announcements" tab
-    When I navigate to "Directed" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Directed Announcements - Draft"
-    And I click on top right button "New" in flex table with id "ActiveFundingOpportunities"
-    And I enter "DirectedAnnouncement" values from "Announcement_Field_Values.xlsx"
-    And I click modal button "Continue"
-    When I enter "Creation Second Modal" values from "Announcement_Field_Values.xlsx"
-    And I click modal button "Save and Continue"
-    When I click on "Save" in the page details
-    And I get the "EGMS ID"
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details

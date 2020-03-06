@@ -675,7 +675,7 @@ Feature: Amendment Request scenarios without background
       | Award Name                                       | Grant Name                                       |
       | Automation Execution Award for Amendment Request | Automation Execution Award for Amendment Request |
 
-  @54859 @ValidateRevisedBudgetAmountBalanceUpdatedOnAwardAtSubPortal @jitendra @smoke
+  @54859 @ValidateRevisedBudgetAmountBalanceUpdatedOnAwardAtSubPortal @jitendra
   Scenario Outline: Verify that as per 'Revised Awarded Amount', "Balance" amount is updated on Grant (SPI)
     Given I delete the record "Automation Execution Award for Amendment Request" from the object "Award"
     And I delete the record "Automation Execution Award for Amendment Request" from the object "Grant"
@@ -1029,7 +1029,7 @@ Feature: Amendment Request scenarios without background
       | Award Name                                       | Grant Name                                       |
       | Automation Execution Award for Amendment Request | Automation Execution Award for Amendment Request |
 
-  @54861 @ValidateRevisedBudgetAmountBalanceUpdatedOnGrantAtSubPortal @jitendra @smoke
+  @54861 @ValidateRevisedBudgetAmountBalanceUpdatedOnGrantAtSubPortal @jitendra
   Scenario Outline: Verify that as per 'Revised Awarded Amount', "Balance" amount is updated on Grant (SPI)
     Given I delete the record "Automation Execution Award for Amendment Request" from the object "Award"
     And I delete the record "Automation Execution Award for Amendment Request" from the object "Grant"

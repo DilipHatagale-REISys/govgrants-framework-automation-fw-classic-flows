@@ -11,7 +11,7 @@ Feature: Validate all scenarios in Closeout
     When I perform quick search for "Automation Permanent Award" in "---closeout:-:grantsTableId---" panel
     And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---closeout:-:grantsTableId---"
 
-  @50971 @50973 @creationAndEditionOfAdhocCloseout @smoke
+  @50971 @50973 @creationAndEditionOfAdhocCloseout
   Scenario: To create and Edit an Adhoc Closeout Request
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
@@ -38,7 +38,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Send To Subrecipient" in the page details
     Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "Green"
 
-  @50977 @50976 @subrecipientEntersFielsInCloseoutAndAcknowledges @smoke
+  @50977 @50976 @subrecipientEntersFielsInCloseoutAndAcknowledges
   Scenario: Validate whether Subrecipient enters closeout fields and acknowledges
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
@@ -234,15 +234,6 @@ Feature: Validate all scenarios in Closeout
 
   @72359 @completeCloseout @productBusinessFlowSanity
   Scenario: Validate the Closeout is submitted for approval and the status changes to Submitted for Approval
-    Given I delete the record "Automation Permanent Award" from the object "Closeout"
-    And I delete the record "Automation Payment Request" from the object "Payment Request"
-    And I delete the record "Automation Permanent Award" from the object "Payment Request"
-    When I login to "As a Grantor" app as "dynamicUser" user
-    And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Automation Permanent Award" in "---closeout:-:grantsTableId---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---closeout:-:grantsTableId---"
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
     When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
