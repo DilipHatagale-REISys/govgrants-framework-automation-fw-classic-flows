@@ -5851,7 +5851,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @62373 @validateFrequencyAfterPeriodicAmendmentIsSameAsMonthlyOnAward @mahadev @bugged
+  @62373 @validateFrequencyAfterPeriodicAmendmentIsSameAsMonthlyOnAward @mahadev @bugged @smoke
   Scenario Outline: Validate frequency remains the same for Progress report schedules after Periodic renewal amendment when frequency type is Monthly at Award Owner end
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
     And I delete the record "Automation Execution Award" from the object "Award"
@@ -8163,7 +8163,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @62928 @validateAwardedBudgetAfterFCAmendmentOnInternalPortal @mahadev
+  @62928 @validateAwardedBudgetAfterFCAmendmentOnInternalPortal @mahadev @smoke
   Scenario Outline: Verify Awarded Budget field value on Progress report should get updated after funding change amendment is done by award owner at Award owner end
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
@@ -10730,7 +10730,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name              | Grant Name              |
       | Automation award for PR | Automation award for PR |
 
-  @62921 @validateAwardedBudgetDecreasedAfterFCAmendment @mahadev
+  @62921 @validateAwardedBudgetDecreasedAfterFCAmendment @mahadev @smoke
   Scenario Outline: Verify Awarded Budget field values at performance tab on progress report decrease when award owner performed Funding change amendment on subaward
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"

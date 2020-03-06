@@ -25,7 +25,7 @@ Feature: Validate all scenarios in the award created from FDM
     Then I softly see the field "Available Balance" is equal to the field "Appropriation Amount" minus the following fields :
       | Total Obligation |
 
-  @38213 @38217 @awardCreateEditAndAddingSchedules
+  @38213 @38217 @awardCreateEditAndAddingSchedules @smoke
   Scenario: Award creation, edition and adding payment/progress report schedules
     Then I softly see status in Progress-bar is "Created" and is "Green"
     When I click on "Edit" in the page details
@@ -157,7 +157,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "Delete" icon for "Automation Permanent Funding Account" inside flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
     Then I cannot see row level action button "Delete" against "Automation Permanent Funding Account" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
 
-  @38219 @65402 @awardReviewInitiationAndCompletion
+  @38219 @65402 @awardReviewInitiationAndCompletion @smoke
   Scenario Outline: Validate review initiation and completion for the award | verify award acceptance
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
@@ -268,7 +268,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
-  @67671 @doNotSeeSubawardButtonAfterRejectingByEXE @jitendra
+  @67671 @doNotSeeSubawardButtonAfterRejectingByEXE @jitendra @smoke
   Scenario Outline: Validate User is allowed to utilize money greater than Pre En-cumbrance Balance but less than available Balance
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
@@ -512,7 +512,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
-  @66938 @67698 @doNotSeeSubawardButtonAfterRejectingByEXE @jitendra
+  @66938 @67698 @doNotSeeSubawardButtonAfterRejectingByEXE @jitendra @smoke
   Scenario Outline: To Validate that if FDM is rejected by EXE user, subaward button in Action column cannot be seen for the Application. in Recommended Application table.
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
@@ -789,7 +789,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
-  @50997 @awardAcceptanceByRecipientAfterApproval
+  @50997 @awardAcceptanceByRecipientAfterApproval @smoke
   Scenario Outline: Validate award acceptance by sub-recipient after approval
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
@@ -1137,7 +1137,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
 
-  @54166 @validatePaymentRelatedSettingOnAwardFromAnnouncement @mahadev
+  @54166 @validatePaymentRelatedSettingOnAwardFromAnnouncement @mahadev @smoke
   Scenario Outline: Validate payment related settings are get copied from announcement to grant
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -1865,7 +1865,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
-  @38224 @awardHappyPathFromFDM @productBusinessFlowSanity
+  @38224 @awardHappyPathFromFDM @productBusinessFlowSanity @smoke
   Scenario Outline: Validate  the activation of subaward from FDM happy path and the sttaus changes to Activated
     Given I delete the record "Automation Desk Review" from the object "Desk Review"
     When I delete the record "Automation Site Visit" from the object "Site Visit"

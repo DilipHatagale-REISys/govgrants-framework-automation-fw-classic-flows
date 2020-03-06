@@ -137,7 +137,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @37228 @ValidateScheduleFrequencyAnnuallyScheduleBaseAsCalendar @mahadev
+  @37228 @ValidateScheduleFrequencyAnnuallyScheduleBaseAsCalendar @mahadev @smoke
   Scenario Outline: Validate User is allowed to change frequency as Annually, schedule base as calendar on progress report schedule when the award is active
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -6768,7 +6768,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @60109 @validatePendingTaskForFinalProgressReportForFiscalApproval @mahadev
+  @60109 @validatePendingTaskForFinalProgressReportForFiscalApproval @mahadev @smoke
   Scenario Outline: Validate pending task for Fiscal approver for the Final Progress report when the status is Submitted for Approval
     When I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Grant Name>" from the object "Grant"
@@ -10030,7 +10030,7 @@ Feature: Validate scenarios in Progress Report without background
     And I navigate to "Overview" sub tab
     Then I see field "Organization Name" as "SAN DIEGO ELECTRICAL TRAINING TRUST"
 
-  @60879 @validateProgramApprovercannotApprovePRWhenFinalPRAlreadyApproved @mahadev
+  @60879 @validateProgramApprovercannotApprovePRWhenFinalPRAlreadyApproved @mahadev @smoke
   Scenario Outline: Validate Program approver is not allowed to approve the pending progress report if another Final Progress report is approved
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -13932,7 +13932,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                    | Grant Name                    |
       | Automation award for Closeout | Automation award for Closeout |
 
-  @62765 @VerifyYTDExpendituresFieldOnCreatedPR @keerti
+  @62765 @VerifyYTDExpendituresFieldOnCreatedPR @keerti @smoke
   Scenario Outline: Verify YTD Expenditures field get updated on Progress report at SR user end when the Payment request type is Reimbursement with Approved Status.
     Given I delete the record "Automation award for PR" from the object "Award"
     And I delete the record "Automation award for PR" from the object "Grant"
