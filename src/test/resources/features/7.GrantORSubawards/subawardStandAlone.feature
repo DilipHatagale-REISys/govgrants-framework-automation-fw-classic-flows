@@ -33,18 +33,18 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---"
     When I perform quick search for "<Contact>" in "---subAwardStandAlone:-:keyContactsTableId---" panel
-    When I click "Add" after selection of "<Contact>" in the table "---subAwardStandAlone:-:keyContactsTableId---"
+    When I click "Associate" after selection of "<Contact>" in the table "---subAwardStandAlone:-:keyContactsTableId---"
     When I close "Associate Contacts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
       | Automation SPI | Project Director/Manager | Checked          |
-      | Automation SPA | Other                    |                  |
+      | automation spa | Other                    |                  |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
-    Then I softly see that "Automation SPA" has been added in flextable with Id "---subAwardStandAlone:-:associatedContactsTableId---"
+    Then I softly see that "automation spa" has been added in flextable with Id "---subAwardStandAlone:-:associatedContactsTableId---"
     Examples:
       | Contact        |
-      | Automation SPA |
+      | automation spa |
 
   @51131 @awardStandAloneAddFundingAccount @smoke
   Scenario: Funding Account budget addition to award
@@ -239,7 +239,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
 
-  @51147 @67814 @65491 @65415 @allSendToRecipientAndAcceptanceBySRBeforeApproval @smoke @copy
+  @51147 @67814 @65491 @65415 @allSendToRecipientAndAcceptanceBySRBeforeApproval @smoke @jitendra
   Scenario Outline: Validate the award send to recipient and acceptance by recipient before approval
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -809,7 +809,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
 
-  @51139 @68127 @67821 @67819 @67822 @67818 @66009 @65975 @66012 @66013 @68145 @64787 @allActivation @smoke
+  @51139 @68127 @67821 @67819 @67822 @67818 @66009 @65975 @66012 @66013 @68145 @64787 @allActivation @smoke @jitendra
   Scenario Outline: all activation | Validate activate and View Noga button on award
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -3198,7 +3198,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |
 
-  @65226 @VerifyRelatedFocusAreasField  @keerti
+  @65226 @VerifyRelatedFocusAreasField @keerti
   Scenario Outline: Verify Focus Area field value Budget tab Subaward overview is same as Program Related Focus Areas table setup Tab.
     When I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
@@ -4771,8 +4771,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     When I click on "Accept" in the page details
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    Then I softly see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:completeTaskTableId---" panel
+    Then I softly see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:completeTaskTableId---"
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     Then I softly do not see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"

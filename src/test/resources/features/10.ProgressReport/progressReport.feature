@@ -290,7 +290,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
-  @51113 @approveProgressReportOnResubmission
+  @51113 @approveProgressReportOnResubmission @smoke
   Scenario: To validate Progress Report which were sent back to Sub Recipient by Grantor are approved successfully post revision
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
@@ -2587,7 +2587,7 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Performance" sub tab
     Then I see value "7.00" for title "Actual" against the value "Automation Permanent KPI for Regression" inside table "---progressReport:-:kpiTableId---"
 
-  @59904 @validatePRStatusAfterApprovedOn @jitendra
+  @59904 @validatePRStatusAfterApprovedOn @jitendra @smoke
   Scenario: Validate Progress Reports Table at Management tab on Grant overview is getting updated with Progress report whose status is Approved at SR User End
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"

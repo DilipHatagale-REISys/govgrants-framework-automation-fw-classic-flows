@@ -1,13 +1,13 @@
 @grantsAwardWB @regression @grantAndAward
 Feature: Validate all scenarios of grants and award without background
 
-  @35555 @VerifyUsersCanSeeNewButtonOnGrantListView @keerti @aashish
+  @35555 @VerifyUsersCanSeeNewButtonOnGrantListView @keerti
   Scenario Outline: Verify that users can see new button on grant list view
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I pause execution for "3" seconds
-    Then  I can see top right button "New" in flex table with id "ActiveGrants"
+    Then I can see top right button "New" in flex table with id "ActiveGrants"
     Examples:
       | User |
       | PM   |
@@ -52,7 +52,7 @@ Feature: Validate all scenarios of grants and award without background
       | Automation  | Mandatory | Award      | Active |
     Then I see "Automation" inside flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
 
-  @68057 @createGrantEXE @jitendra
+  @68057 @createGrantEXE @jitendra @smoke
   Scenario: Valiadate EXE user can create Direct Grant
     Given I delete the record "Automation Direct Award" from the object "Award"
     And I delete the record "Automation Direct Award" from the object "Grant"
@@ -79,7 +79,7 @@ Feature: Validate all scenarios of grants and award without background
       | User |
       | FO   |
 
-  @69084 @createdGrantVisibleToUserFromSameOrganisation @jitendra
+  @69084 @createdGrantVisibleToUserFromSameOrganisation @jitendra @smoke
   Scenario: Validate that  Grant in draft state created by one pm user is visible to the other user(PM/EXE) of the same organisation
     Given I delete the record "Automation Direct Award" from the object "Award"
     And I delete the record "Automation Direct Award" from the object "Grant"
@@ -147,7 +147,7 @@ Feature: Validate all scenarios of grants and award without background
     When I download the file
     Then I see "$0.00" on page "3" of "govgrants" pdf file
 
-  @67891 @68036 @68025 @68019 @68021 @calculateAwardTotal @jitendra
+  @67891 @68036 @68025 @68019 @68021 @calculateAwardTotal @jitendra @smoke
   Scenario: Validate that subaward amount in Grant Draft table is the Sum of all Subaward
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -220,7 +220,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Terms" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
-    When I click "Add" after selection of "Test TC" in the table "---subAwardStandAlone:-:grantTermConditionPopUp---"
+    When I click "Associate" after selection of "Test TC" in the table "---subAwardStandAlone:-:grantTermConditionPopUp---"
     And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Standard" inside flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I enter value "2" into field "Sequence__c"
@@ -230,7 +230,7 @@ Feature: Validate all scenarios of grants and award without background
       | Award Name                            | Grant Name                            |
       | Automation Award for field validation | Automation Grant for field validation |
 
-  @66654 @66655 @65897 @activateAwardEXEUser @jitendra
+  @66654 @66655 @65897 @activateAwardEXEUser @jitendra @smoke
   Scenario Outline: To verify that user(exe) is able to activate award by clicking on active button using Grant type =" Formula Grant" | To verify that user(exe) is able to activate award by clicking on active button using Grant type = "Block Grant"
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -619,7 +619,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see value "true" for title "Mandatory" against the value "Term" inside table "---subAwardStandAlone:-:termsndConditionsTableId---"
     Then I softly cannot see row level action button "Delete" against "Term" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
 
-  @65780 @65800 @65814 @65804 @66751 @66745 @StatusNotStartedSentToSubrecipient @jitendra
+  @65780 @65800 @65814 @65804 @66751 @66745 @StatusNotStartedSentToSubrecipient @jitendra @smoke
   Scenario: To verify on click "send to sub recipient button" by  Award owner profile (PM user) it must appear in the pending task of sub-recipient.
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -750,7 +750,7 @@ Feature: Validate all scenarios of grants and award without background
       | Annoucement                     |
       | Automation Announcement for FDM |
 
-  @64786 @64563 @64717 @64789 @VerifyFieldsFromAnnoucement @mahadev
+  @64786 @64563 @64717 @64789 @VerifyFieldsFromAnnoucement @mahadev @smoke
   Scenario Outline: Verify (EGMS ID of announcement | Leverage Allowed?) and focus Area is carried forward to Announcement ID at grant overview which is created with application
     Given I delete the record "Automation Desk Review" from the object "Desk Review"
     When I delete the record "Automation Site Visit" from the object "Site Visit"
@@ -806,8 +806,6 @@ Feature: Validate all scenarios of grants and award without background
     Examples:
       | User |
       | PM   |
-      | EXE  |
-      | FO   |
 
   @64415 @64416 @64417 @64418 @64420 @64421 @64422 @64419 @GrantTitleFieldGrantAbbreviationFieldProjectPeriodStartDateProjectPeriodEndDateFundingOrganizationInternalProgramBudgetCategoryType @keerti
   Scenario: Verify validation message is displayed when award owner did not enter Grant Title field while creating direct grant.
@@ -1388,6 +1386,7 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Edit" in the page details
     When I navigate to "Budget" sub tab
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
@@ -1453,7 +1452,7 @@ Feature: Validate all scenarios of grants and award without background
       | Source is Required to save under Overview. |
 
   @66223 @67954 @67925 @67916 @67917 @ErrorMsgForPurposeField @jitendra
-  Scenario: TTo verify that if Purpose field in plan table is left unfilled in site visit review and upon clicking on the save button by the award owner (Pm profile) on the top right corner of the page validation error must be thrown
+  Scenario: To verify that if Purpose field in plan table is left unfilled in site visit review and upon clicking on the save button by the award owner (Pm profile) on the top right corner of the page validation error must be thrown
     And I delete the record "Automation Site Visit" from the object "Site Visit"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1486,7 +1485,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click "SAN DIEGO ELECTRICAL TRAINING TRUST" link present on hovered tooltip
     Then I softly see page title contains as "SAN DIEGO ELECTRICAL TRAINING TRUST"
 
-  @53967 @NoIfAreExpenseDetailRequiredonReimbursements @jitendra
+  @53967 @NoIfAreExpenseDetailRequiredonReimbursements @jitendra @smoke
   Scenario Outline: Verify that If Are Expense Details Required on Reimbursements? field is No then user should see only edit action at Reimbursement Payment request Budget category table.
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -1708,7 +1707,7 @@ Feature: Validate all scenarios of grants and award without background
     When I click modal button "Save and Continue"
     Then I see status in Progress-bar is "Created" and is "Green"
 
-  @65911 @verifyDescriptionFieldIsEditable  @mahadev
+  @65911 @verifyDescriptionFieldIsEditable @mahadev
   Scenario: To verify that after the edit button is clicked on the Award owner profile (PM user) sub award description becomes editable
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -1764,7 +1763,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I see the following messages in the page details :
       | Instructions for Subrecipient is Required to save under Overview. |
 
-  @68078 @redirectionThresholdCheck @jitendra
+  @68078 @redirectionThresholdCheck @jitendra @smoke
   Scenario Outline: validate that Budget Redirection threshold is default set to 10% on amendment,For a Grant with No Budget redirection threshold set
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
     And I delete the record "Automation Execution Award" from the object "Payment Request"
@@ -2000,7 +1999,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see field "Grant Type" as "Project Grant"
     Then I softly see field "Brief information about the grant." as "Test Automation"
 
-  @67528 @totalBudgetCalculation @jitendra
+  @67528 @totalBudgetCalculation @jitendra @smoke
   Scenario: To validate that the total project cost in the subaward budget table is the sum of the values in each row of the column
     Given I delete the record "Automation Desk Review" from the object "Desk Review"
     When I delete the record "Automation Site Visit" from the object "Site Visit"
@@ -2025,7 +2024,7 @@ Feature: Validate all scenarios of grants and award without background
       | Construction    | 1000           | 100        | 100            |
     Then I softly see value "$1,200.00" for title "Total Project Cost" against the value "Construction" inside table "---subAwardFromFDM:-:subAwardBudgetTableId---"
 
-  @68650 @continuationAndVersionCheckAfterPeriodicRenewalAmendmentFromFDM @jitendra @aashish
+  @68650 @continuationAndVersionCheckAfterPeriodicRenewalAmendmentFromFDM @jitendra @aashish @smoke
   Scenario Outline: Validate that after periodic renewal amendment Subaward type changes from Initial to Continuation and the Version number is still retained at 1 also the Status changes to pending Activation from Activated
     Given I delete the record "Automation Desk Review" from the object "Desk Review"
     When I delete the record "Automation Site Visit" from the object "Site Visit"
@@ -2334,7 +2333,7 @@ Feature: Validate all scenarios of grants and award without background
     And I get the "EGMS ID"
     Then I see status in Progress-bar is "Created" and is "Green"
 
-  @69899 @verifyBudgetPeriodNotGreaterThanStartDate @aashish
+  @69899 @verifyBudgetPeriodNotGreaterThanStartDate @aashish @smoke
   Scenario: To verify that system throws validation message when a user entered start date as grater than budget period start date.
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -2372,7 +2371,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter in modal "Progress Report Error" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    Then Then I see the following messages in the page details contains:
+    Then I see the following messages in the page details contains:
       | Schedule Start date cannot be before Budget Period Start Date. |
 
   @67690 @pendingTaskToPMAfterSubmitToApprover @jitendra
@@ -2508,7 +2507,7 @@ Feature: Validate all scenarios of grants and award without background
       | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
-  @65409 @FocusAreaStartAndEndDate
+  @65409 @FocusAreaStartAndEndDate @smoke
   Scenario: To verify the action on adding a focus area start and end date in between the budget period date in the budget tab of subaward phase in the award owner profile PM User category
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
