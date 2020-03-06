@@ -245,7 +245,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
     Then I see that "Activated" has been added in flextable with Id "---subAwardStandAlone:-:subawardsTableId---"
 
-  @64387 @periodicRenewalAmendmentWhenORAIsExpired @smoke
+  @64387 @periodicRenewalAmendmentWhenORAIsExpired
   Scenario: Validate when Org Risk Assessment is expired user is able to activate newly created award post performing amendment of type - Periodic Renewal
     Given I delete the record "Automation Award for Organizational Risk Assessment" from the object "Amendment Request"
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "Payment Request"

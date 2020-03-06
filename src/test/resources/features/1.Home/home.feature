@@ -236,7 +236,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @56736 @56737 @additionalAddressesCreationEdition  @smoke
+  @56736 @56737 @additionalAddressesCreationEdition
   Scenario Outline: Validate whether ADMIN can Create and Edition of Additional Addresses
     Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
@@ -257,7 +257,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @56739 @56907 @relatedContactsCreationEdition @smoke
+  @56739 @56907 @relatedContactsCreationEdition
   Scenario Outline: The Internal Users should be able to Create and Edit Related Contacts
     Given I delete the record "Automation Contact" from the object "Contact"
     Given I login to "As a Grantor" app as "<User>" user
@@ -295,7 +295,7 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "Automation Contact" in "---home:-:relatedContactsTableId---" panel
     Then I see "No Records Found" inside flex table with id "---home:-:relatedContactsTableId---"
 
-  @56740 @56741 @56742 @dunsNumberCreationEditionAndDeletion @smoke @bug-69292 @smoke
+  @56740 @56741 @56742 @dunsNumberCreationEditionAndDeletion @smoke @bug-69292
   Scenario Outline: Validate whether ADMIN and DA users can Create, Edit and delete the DUNS Number
     Given I delete the record "Test Automation Organization" from the object "DUNS"
     Given I login to "As a Grantor" app as "ADMIN" user
@@ -691,7 +691,7 @@ Feature: Validate all scenarios in the home tab
     And I click modal button "Save and Close"
     Then I see the text containing "title"
 
-  @62254 @PerformGlobalSearchOnHomeTab @keerti @bug-72220 @smoke
+  @62254 @PerformGlobalSearchOnHomeTab @keerti @bug-72220
   Scenario: Verify Global search on Home Tab
     Given I delete the record "Automation Execution Internal Program" from the object "Program"
     When I login to "As a Grantor" app as "dynamicUser" user

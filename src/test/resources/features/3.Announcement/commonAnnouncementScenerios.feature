@@ -258,7 +258,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Funding Opportunity Announcement"
     Then I see "Funding Opportunity Announcement" has been added in "Attachments" flex table
 
-  @52414 @reviewStepsBeforeSubmitForApprovalFA @smoke
+  @52414 @reviewStepsBeforeSubmitForApprovalFA
   Scenario: Validate the Review steps of Announcement before submit for Approval
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
@@ -367,14 +367,14 @@ Feature: Validate all common scenarios in the  Announcement tab
     Then I see the following messages in the page details :
       | There are no errors with the review step templates. |
 
-  @45773 @announcementOtherNotAbleToDelete @smoke
+  @45773 @announcementOtherNotAbleToDelete
   Scenario: Validate that other users are not able to delete created announcement
     When I re-login to "As a Grantor" app as "PM" user
     When I navigate to "Announcements" tab
     And I perform quick search for "Record id" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
     Then I cannot see row level action button "Delete" against "Record id" in flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
 
-  @45774 @announcementOtherNotAbleToEdit @smoke
+  @45774 @announcementOtherNotAbleToEdit
   Scenario: Validate that other users are not able to Edit created announcement
     When I re-login to "As a Grantor" app as "PM" user
     When I navigate to "Announcements" tab

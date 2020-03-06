@@ -45,7 +45,7 @@ Feature: Pre-Application scenarios without background
       | Construction  | 5000   | 5000       | 50             | 100            |
     Then I cannot see top right button "Submit Application" in page detail
 
-  @70660 @70661 @70662 @preApplRequiredIsYesAnnouncementCreation @deepika
+  @70660 @70661 @70662 @preApplRequiredIsYesAnnouncementCreation @deepika @smoke
   Scenario: Validate whether the User is able to create a Pre Application only when the Opportunity setting for Pre Applciation Required (Yes) |
   Validate whether User is able to view the following error message "Reached the Maximum number of Applications" when the limit has been reached.
   Validate whether User is able to view the Leverage column in the budget grid when the value set as Yes.
@@ -434,7 +434,7 @@ Feature: Pre-Application scenarios without background
     Then I softly see selected element "{SavedValue:subawardcieling}"
     Then I softly see selected element "{SavedValue:matchrequired}"
 
-  @72522 @preapplicationQualifiedIsAddedToTheTable @deepika
+  @72522 @preapplicationQualifiedIsAddedToTheTable @deepika @smoke
   Scenario: Validate once Application is qualified then user can view the Qualified Application from Qualfied Table and it is removed from Non -yet qualified table
     Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
     When I delete the record "Automation Announcement for Application" from the object "PreApplication"

@@ -15,7 +15,7 @@ Feature: Validate all scenarios in the Application Intake
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
 
-  @34044 @70332 @applicationCreation @smoke
+  @34044 @70332 @applicationCreation
   Scenario: Validate creation of an Application |Validate once application is in created status, the user can view the Submit Application Button in page details
     Then I softly see status in Progress-bar is "Created" and is "Green"
     Then I softly can see top right button "Submit Application" in page detail
@@ -35,7 +35,7 @@ Feature: Validate all scenarios in the Application Intake
       | EGMS Id                         |
       | Automation Permanent Focus Area |
 
-  @50964 @addBudgetDetailsToApplication @smoke
+  @50964 @addBudgetDetailsToApplication
   Scenario: Addition of budget in the budget grid to an application
     When I navigate to "Budget" sub tab
     And I expand nested table containing column value "BP01"
@@ -45,7 +45,7 @@ Feature: Validate all scenarios in the Application Intake
     Then I see the following messages in the page details contains:
       | Saved Successfully! |
 
-  @50967 @addTargetToKPIInApplication @smoke
+  @50967 @addTargetToKPIInApplication
   Scenario: Addition of KPI target to an application
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :

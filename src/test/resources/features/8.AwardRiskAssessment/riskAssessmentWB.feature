@@ -717,7 +717,7 @@ Feature: Risk Assessment scenarios without background
     And I perform quick search for "Record Id" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
     Then I do not see value "Record Id" for title "EGMS ID" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
 
-  @61038 @60332 @60335 @riskScoreSameOnAmendmentAwardSRSideforScopeofWorkChange @deepika @smoke
+  @61038 @60332 @60335 @riskScoreSameOnAmendmentAwardSRSideforScopeofWorkChange @deepika
   Scenario: Validate the Risk Score which should remain as is when Award Risk Assessment is copied to new created award when amendment type and SR user can view the Risk Score - Scope of Work Change
     Given I delete the record "Automation Grant/Award for Risk Assessment" from the object "Amendment Request"
     And I delete the record "Automation Grant/Award for Risk Assessment" from the object "Payment Request"
@@ -821,7 +821,7 @@ Feature: Risk Assessment scenarios without background
     When I click on "View" icon for "Active" inside flex table with id "---riskassessment:-:organizationprofileviewTableId---"
     Then I softly see field "OverAll Risk" as "{SavedValue:OverAllRisk}"
 
-  @60967 @60336 @60334 @60333 @FundingChangeAmendmentRiskScore @deepika @bug-ticketNumber-68419 @smoke
+  @60967 @60336 @60334 @60333 @FundingChangeAmendmentRiskScore @deepika @bug-ticketNumber-68419
   Scenario: Validate the Risk Score which should remain as is when Award Risk Assessment is copied to new created award when amendment type - Funding Change
     Given I delete the record "Automation Grant/Award for Risk Assessment" from the object "Amendment Request"
     And I delete the record "Automation Grant/Award for Risk Assessment" from the object "Payment Request"
@@ -1027,7 +1027,7 @@ Feature: Risk Assessment scenarios without background
     And I perform quick search for "{SavedValue:Risk1ID}" in "---riskassessment:-:organizationprofileviewTableId---" panel
     Then I softly see "No Records Found" inside flex table with id "---riskassessment:-:organizationprofileviewTableId---"
 
-  @62964 @62963 @riskScoreWhenCopiedToTermsAndConditionsAmendment @deepika @smoke
+  @62964 @62963 @riskScoreWhenCopiedToTermsAndConditionsAmendment @deepika
   Scenario: Validate the Risk Score which should remain as is when Award Risk Assessment is copied to new created award when amendment type -Terms and Conditions Amendment
     Given I delete the record "Automation Grant/Award for Risk Assessment" from the object "Amendment Request"
     And I delete the record "Automation Grant/Award for Risk Assessment" from the object "Payment Request"

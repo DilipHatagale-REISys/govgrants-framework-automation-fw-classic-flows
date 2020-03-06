@@ -9,7 +9,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
     And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table
 
-  @59010 @51079 @orgSiteVisitCreationEdition @smoke
+  @59010 @51079 @orgSiteVisitCreationEdition
   Scenario: Validate the Created and Edition of Site Visit
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -22,7 +22,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Save" in the page details
     Then I softly see status in Progress-bar is "Created" and is "green"
 
-  @51080 @participantAssociationOrganizationalSiteVisitExternallUser @smoke
+  @51080 @participantAssociationOrganizationalSiteVisitExternallUser
   Scenario Outline: Participant Association of Organizational Site Visit
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -154,7 +154,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:homePendingTaskTableId---"
     Then I see that "Automation Site Visit Org level" is in "Notified" status
 
-  @54570 @formFillingSiteVisitOrgLevel @smoke @deepika
+  @54570 @formFillingSiteVisitOrgLevel @deepika
   Scenario: Filling up of form in Site Visit Org Level
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -581,7 +581,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Application Site Visits" content inside "Application Reviews" subheader on left panel
     Then I softly see that "Automation Site Visit Org Level" has been added in flextable with Id "ApplicationsSiteVisitReportsGrid"
 
-  @55464 @siteVisitsOrgLevelWithOutAddingCorerctiveItems @deepika @smoke
+  @55464 @siteVisitsOrgLevelWithOutAddingCorerctiveItems @deepika
   Scenario: User will not be able to submit the Site Visits Org Level to Grantor without adding corrective actions to findings.
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
@@ -1466,12 +1466,6 @@ Feature: Validate all scenarios in Organizational Site Visit
 
   @72355 @siteVisitAcceptAndCloseOrgLevel @productBusinessFlowSanity
   Scenario: Validate once the Org Level Site Visit is clicked on Accept and Close butted then status changes to closed
-    Given I delete the record "Automation Site Visit Org level" from the object "Site Visit"
-    Given I login to "As a Grantor" app as "dynamicUser" user
-    And I navigate to "Home" tab
-    When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
-    And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
     And I enter "Creation" values from "Organizational_SiteVisit_Field_Values.xlsx"

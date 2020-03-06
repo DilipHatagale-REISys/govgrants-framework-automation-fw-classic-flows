@@ -1,7 +1,7 @@
 @applicationIntakeWB @regression @app
 Feature: Application Intake scenarios without background
 
-  @65078 @69366 @VerifyCreateApplicationButton @keerti
+  @65078 @69366 @VerifyCreateApplicationButton @keerti @smoke
   Scenario: Verify whether SPI user is able to qualify opportunity | Verify Create Application button is displayed to SR User when User click on Qualify Button.
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
     And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
@@ -139,7 +139,7 @@ Feature: Application Intake scenarios without background
     And I click "PG-TAO-0001" link present on hovered tooltip
     Then I softly see page title contains as "Automation Permanent Internal Program"
 
-  @71110 @appdueDateValidation @deepika
+  @71110 @appdueDateValidation @deepika @smoke
   Scenario: Validate whether User will be able to submit the application on the last date for submission.
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user

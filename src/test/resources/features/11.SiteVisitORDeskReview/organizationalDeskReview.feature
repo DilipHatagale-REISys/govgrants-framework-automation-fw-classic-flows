@@ -9,7 +9,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
     And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table
 
-  @54291 @54293 @54294 @organizationalDeskReviewCreationEditionAndParticipantAssociation @smoke @deepika
+  @54291 @54293 @54294 @organizationalDeskReviewCreationEditionAndParticipantAssociation @deepika
   Scenario: Validate the Creation and Edition and Participant Association for Org Level Desk Review
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -253,7 +253,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
 
-  @54888 @55203 @deskReviewCorrectiveActionsSubmitToGrantoBySubrecipientOrgLevel @smoke @deepika
+  @54888 @55203 @deskReviewCorrectiveActionsSubmitToGrantoBySubrecipientOrgLevel @deepika
   Scenario: Validate Org Level Desk Review Submit to Grantor and Corrective Actions By Subrecipient
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -508,7 +508,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     Then I softly see that "Automation Desk Review Org Level" has been added in flextable with Id "---deskreview:-:deskReviewGridViewTableId---"
 
-  @55459 @54887 @deskReviewOrgLevelSendToSubrecipientWithOutAddingCorerctiveItems @deepika @smoke
+  @55459 @54887 @deskReviewOrgLevelSendToSubrecipientWithOutAddingCorerctiveItems @deepika
   Scenario:  Validate User will not be able to submit the Desk Review Org Level to Grantor without adding corrective actions to findings.
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -778,7 +778,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     Then I see the following messages in the page details :
       | Reports and Outcomes Tab - Fill all the required data in the form before submitting. |
 
-  @55999 @peerReviewDeskReviewOrgLevel @deepika @smoke
+  @55999 @peerReviewDeskReviewOrgLevel @deepika
   Scenario: Validate the peer review on their Org Level Desk Review
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -1220,12 +1220,6 @@ Feature: Validate all scenarios in Organizational Desk Review
 
   @72357 @deskReviewAcceptAndCloseOrgLevel @productBusinessFlowSanity
   Scenario: Validate once the Org level Desk Review is clicked on Accept and Close butted then status changes to closed
-    Given I delete the record "Automation Desk Review Org level" from the object "Desk Review"
-    Given I login to "As a Grantor" app as "dynamicUser" user
-    And I navigate to "Home" tab
-    When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
-    When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
-    And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
