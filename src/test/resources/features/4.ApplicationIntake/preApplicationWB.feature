@@ -24,7 +24,7 @@ Feature: Pre-Application scenarios without background
     Then I softly can see top right button "Create Pre-Application" in page detail
 
   @70253 @spaUserCannotSubmitanPre-application
-  Scenario: Validate the SPA users should not be able to Submit the Pre Application
+  Scenario: Validate the SPA users should not be able to Submit the Pre Application | Validate whether SPI user can continue to proceed without providing application title while creating a pre-application
     Given I am on "SUBPORTAL" portal
     And I login as "SPA" user
     When I navigate to "Opportunities" tab
@@ -32,6 +32,10 @@ Feature: Pre-Application scenarios without background
     And I perform quick search for "Automation Announcement for Pre-Application" in "---applicationIntake:-:qualifiedTableId---" panel
     When I click on "View" icon for "Automation Announcement for Pre-Application" inside flex table with id "---applicationIntake:-:qualifiedTableId---"
     And I click on "Create Pre-Application" in the page details
+    When I clear the value from field "Title__c"
+    When I click modal button "Save and Continue"
+    Then I softly see the following messages in the page details contains:
+      | Pre-Application Title is Required to save. |
     When I enter value "Automation Announcement for Application" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
@@ -455,7 +459,8 @@ Feature: Pre-Application scenarios without background
     Then I softly do not see "Automation Announcement for Pre-Application" has been added in "---preApplication:-:notYetQualifiedTable---" flex table
 
   @72344 @preApplicationSubmittedToGrantorPendingTask @productBusinessFlowSanity
-  Scenario: Validate once the Grantor accepts the submitted pre-application then the changes status to Accepted
+  Scenario: Validate once the Grantor accepts the submitted pre-application then the changes status to Accepted | Validate whether user can change the pre-application due date while creating the pre-application
+    Validate whether pre-application title field is editable while creating the pre-application
     Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
     When I delete the record "Automation Announcement for Application" from the object "PreApplication"
     And I delete the record "Automation Announcement for Pre-Application" from the object "Qualified Announcement"
@@ -467,6 +472,7 @@ Feature: Pre-Application scenarios without background
     And I perform quick search for "Automation Announcement for Pre-Application" in "---preApplication:-:notYetQualifiedTable---" panel
     When I click on "View" icon for "Automation Announcement for Pre-Application" inside table
     When I click on "Qualify" in the page details
+    Then I softly see field "Pre-Application Due Date" is not editable
     And I click on "Create Pre-Application" in the page details
     When I enter value "Automation Announcement for Application" into field "Title__c"
     When I click modal button "Save and Continue"
@@ -475,6 +481,9 @@ Feature: Pre-Application scenarios without background
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
+    When  I navigate to "Overview" sub tab
+    Then I softly see textarea field "Title__c" is editable
+    When I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---preApplication:-:budgetCategoryGridTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
