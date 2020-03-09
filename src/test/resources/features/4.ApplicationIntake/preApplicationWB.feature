@@ -23,7 +23,7 @@ Feature: Pre-Application scenarios without background
     Then I softly see that "Automation Announcement for Pre-Application" is in "Qualified" status
     Then I softly can see top right button "Create Pre-Application" in page detail
 
-  @70253 @spaUserCannotSubmitanPre-application
+  @70253 @72575 @spaUserCannotSubmitanPre-application
   Scenario: Validate the SPA users should not be able to Submit the Pre Application | Validate whether SPI user can continue to proceed without providing application title while creating a pre-application
     Given I am on "SUBPORTAL" portal
     And I login as "SPA" user
@@ -458,7 +458,7 @@ Feature: Pre-Application scenarios without background
     And I perform quick search for "Automation Announcement for Pre-Application" in "---preApplication:-:notYetQualifiedTable---" panel
     Then I softly do not see "Automation Announcement for Pre-Application" has been added in "---preApplication:-:notYetQualifiedTable---" flex table
 
-  @72344 @preApplicationSubmittedToGrantorPendingTask @productBusinessFlowSanity
+  @72576 @72344 @preApplicationSubmittedToGrantorPendingTask @productBusinessFlowSanity
   Scenario: Validate once the Grantor accepts the submitted pre-application then the changes status to Accepted | Validate whether user can change the pre-application due date while creating the pre-application
     Validate whether pre-application title field is editable while creating the pre-application
     Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
