@@ -32,8 +32,8 @@ Feature: Application Intake scenarios without background
     Then I softly cannot see top right button "Qualify" in page detail
     Then I softly can see top right button "Create Application" in page detail
 
-  @70258 @spaUsersCannotSubmitAnApplication @deepika
-  Scenario: Validate the SPA users should not be able to Submit the Application
+  @72579 @70258 @spaUsersCannotSubmitAnApplication @deepika
+  Scenario: Validate the SPA users should not be able to Submit the Application | Validate whether SPI user can continue to proceed without providing application title while creating a pre-application
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
     And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
     Given I am on "SUBPORTAL" portal
@@ -44,6 +44,10 @@ Feature: Application Intake scenarios without background
     When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationIntake:-:qualifiedTableId---"
     When I click on "Qualify" in the page details
     When I click on "Create Application" in the page details
+    When I clear the value from field "Title__c"
+    When I click modal button "Save and Continue"
+    Then I softly see the following messages in the page details contains:
+      | Application Title is Required to save. |
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
     When I click on "Edit" in the page details
@@ -222,10 +226,11 @@ Feature: Application Intake scenarios without background
     When I click on "Qualify" in the page details
     Then I softly can see top right button "Create Application" in page detail
 
-  @71104 @71107 @71108 @71109 @unpublishedAnnouncementCannotSubmitApplication @deepika
+  @71104 @71107 @71108 @71109 @72578 @unpublishedAnnouncementCannotSubmitApplication @deepika
   Scenario: Validate once the Announcement is published and Application is in created status, later the announcement is unpublished then the User will not be able to see the Submit Application
   Validate whether the Applicant will be able to view qualify button on the same funding opportunity after republish
   Validate whether the Applicant will be able to create a New Application from the republish announcement and oppurtunity |Validate whether the Applicant will be able to Submit the New Application from the republish announcement and oppurtunity
+    Validate whether User will be able to see the Unpublished status on the Application
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     And I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
@@ -320,6 +325,7 @@ Feature: Application Intake scenarios without background
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     And I perform quick search for "Automation Competitive Announcement" in "---applicationIntake:-:recipientApplications---" panel
     When I click on "View" icon for "Automation Competitive Announcement" inside table
+    Then I softly see that "Automation Competitive Announcement" is in "Unpublished" status
     Then I softly cannot see top right button "Submit Application" in page detail
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
