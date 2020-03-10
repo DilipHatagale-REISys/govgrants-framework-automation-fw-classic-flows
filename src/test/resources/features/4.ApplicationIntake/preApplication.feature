@@ -20,8 +20,12 @@ Feature: Validate all scenarios in the Pre-Application
     And I get the "EGMS ID"
 
   @53151 @preApplicationCreation @smoke
-  Scenario: Creating a Pre Application
-    Then I see status in Progress-bar is "Created" and is "Green"
+  Scenario: Creating a Pre Application | Validate the user  will be able to view the the Program Income field on the overview tab when the value set as No.
+    Then I softly see status in Progress-bar is "Created" and is "Green"
+    When I navigate to "Overview" sub tab
+    And I navigate to "Overview" sub tab
+    When I save the field containing "Program Income Allowed?" as "No"
+    Then I softly cannot see field "Estimated Program Income For Project Period" inside page block
 
   @67063 @validateVariousRolesAppearsPreApplication @jitendra
   Scenario: To Validate that various roles appear in the project roles dropdown in contact tableon preapplication of  SPI profile

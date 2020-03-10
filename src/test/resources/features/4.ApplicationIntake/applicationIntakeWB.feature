@@ -48,6 +48,7 @@ Feature: Application Intake scenarios without background
     When I click modal button "Save and Continue"
     Then I softly see the following messages in the page details contains:
       | Application Title is Required to save. |
+    When I enter value "Automation Announcement for Application" into field "Title__c"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
     When I click on "Edit" in the page details
@@ -230,7 +231,7 @@ Feature: Application Intake scenarios without background
   Scenario: Validate once the Announcement is published and Application is in created status, later the announcement is unpublished then the User will not be able to see the Submit Application
   Validate whether the Applicant will be able to view qualify button on the same funding opportunity after republish
   Validate whether the Applicant will be able to create a New Application from the republish announcement and oppurtunity |Validate whether the Applicant will be able to Submit the New Application from the republish announcement and oppurtunity
-    Validate whether User will be able to see the Unpublished status on the Application
+    Validate whether User will be able to see the Unpublished status on the Application | Validate whether when the user click on unpublish button of announcement status of announcement changes to created and SPI user cannot see announcement at external side
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     And I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
@@ -297,7 +298,7 @@ Feature: Application Intake scenarios without background
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Draft Competitive Announcements"
+    When I click toggle button to select "Announcements - All"
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "View" icon for "Record id" inside table
     And I click on "Publish" in the page details
@@ -318,15 +319,13 @@ Feature: Application Intake scenarios without background
     And I perform quick search for "Record Id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "View" icon for "Record Id" inside table
     And I click on "Unpublish" in the page details
-    Then I softly see that "Record Id" is in "Under Revision" status
-    When I am on "SUBPORTAL" portal
-    And I login as "SPI" user
-    When I navigate to "Applications" tab
-    And I navigate to "Applications" content inside "Applications" subheader on left panel
-    And I perform quick search for "Automation Competitive Announcement" in "---applicationIntake:-:recipientApplications---" panel
-    When I click on "View" icon for "Automation Competitive Announcement" inside table
-    Then I softly see that "Automation Competitive Announcement" is in "Unpublished" status
-    Then I softly cannot see top right button "Submit Application" in page detail
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    And I pause execution for "2" seconds
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Record Id" in "---announcement:-:opportunityNotQtableId---" panel
+    Then I softly do not see value "Record Id" for title "Announcement ID" inside table "---announcement:-:opportunityNotQtableId---"
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -747,3 +746,21 @@ Feature: Application Intake scenarios without background
       | Construction  | 1000   | 100        | 100            | 100            |
     When I click on "Submit Application" in the page details
     Then I softly see status in Progress-bar is "Submitted" and is "Green"
+
+ @errorMessageOfPreApplicationDueDate @deepika
+  Scenario: Validate whether system generates an error message when Pre Application Due Date is greater than Application Due Date while submitting information
+    Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Continue"
+    When I enter "Pre-Application Modal" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I navigate to "Overview" sub tab
+    And I enter value "30" into field "fieldApplicationDueDate__c"
+    And I enter value "40" into field "fieldPreApplicationDueDate__c"
+    And I click on "Save" in the page details
+    Then I softly see the following messages in the page details :
+      | Pre-Application Due Date cannot be after Application Due Date |
