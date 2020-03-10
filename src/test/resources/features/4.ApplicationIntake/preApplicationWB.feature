@@ -49,7 +49,7 @@ Feature: Pre-Application scenarios without background
       | Construction  | 5000   | 5000       | 50             | 100            |
     Then I cannot see top right button "Submit Application" in page detail
 
-  @70660 @70661 @70662 @preApplRequiredIsYesAnnouncementCreation @deepika @smoke
+  @70660 @70661 @70662 @72623 @preApplRequiredIsYesAnnouncementCreation @deepika @smoke
   Scenario: Validate whether the User is able to create a Pre Application only when the Opportunity setting for Pre Applciation Required (Yes) |
   Validate whether User is able to view the following error message "Reached the Maximum number of Applications" when the limit has been reached.
   Validate whether User is able to view the Leverage column in the budget grid when the value set as Yes. |Validate the user  will be able to view the the Program Income field on the overview tab when the value set as Yes.

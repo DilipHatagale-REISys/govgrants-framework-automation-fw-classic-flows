@@ -19,7 +19,7 @@ Feature: Validate all scenarios in the Pre-Application
     And I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @53151 @preApplicationCreation @smoke
+  @53151 @72622 @preApplicationCreationProgramIncomeValidation @smoke
   Scenario: Creating a Pre Application | Validate the user  will be able to view the the Program Income field on the overview tab when the value set as No.
     Then I softly see status in Progress-bar is "Created" and is "Green"
     When I navigate to "Overview" sub tab

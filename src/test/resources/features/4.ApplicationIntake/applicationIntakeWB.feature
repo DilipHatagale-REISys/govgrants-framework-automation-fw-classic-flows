@@ -227,7 +227,7 @@ Feature: Application Intake scenarios without background
     When I click on "Qualify" in the page details
     Then I softly can see top right button "Create Application" in page detail
 
-  @71104 @71107 @71108 @71109 @72578 @unpublishedAnnouncementCannotSubmitApplication @deepika
+  @71104 @71107 @71108 @71109 @72578 @72624 @unpublishedAnnouncementCannotSubmitApplication @deepika
   Scenario: Validate once the Announcement is published and Application is in created status, later the announcement is unpublished then the User will not be able to see the Submit Application
   Validate whether the Applicant will be able to view qualify button on the same funding opportunity after republish
   Validate whether the Applicant will be able to create a New Application from the republish announcement and oppurtunity |Validate whether the Applicant will be able to Submit the New Application from the republish announcement and oppurtunity
@@ -747,7 +747,7 @@ Feature: Application Intake scenarios without background
     When I click on "Submit Application" in the page details
     Then I softly see status in Progress-bar is "Submitted" and is "Green"
 
- @errorMessageOfPreApplicationDueDate @deepika
+ @72625 @errorMessageOfPreApplicationDueDate @deepika
   Scenario: Validate whether system generates an error message when Pre Application Due Date is greater than Application Due Date while submitting information
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
