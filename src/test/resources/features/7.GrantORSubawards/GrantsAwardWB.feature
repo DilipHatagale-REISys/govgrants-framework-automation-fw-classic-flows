@@ -34,18 +34,18 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Attachments" sub tab
     Then I can see top right button "Add" in flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
 
-    @71423 @71439 @71438 @jitendra @statusOfAllAndDraft
-      Scenario:  Verify that all and draft records are getting displayed proper post apply a filter "All and Drafts" on grants by SPI/SPA users.
-      Given I am on "SUBPORTAL" portal
-      And I login to "Grants Portal" app as "SPI" user
-      And I navigate to "Grants" tab
-      When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-      And I click toggle button to select "Grants - All"
-      Then I softly see value "Draft" for title "Status" inside table "flexGridRecipientActiveGrants"
-      And I click toggle button to select "Grants - Draft"
-      Then I softly see value "Draft" for title "Status" inside table "flexGridRecipientActiveGrants"
-      And I click toggle button to select "Grants - Rejected"
-      Then I softly do not see value "Active" for title "Status" inside table "flexGridRecipientActiveGrants"
+  @71423 @71439 @71438 @jitendra @statusOfAllAndDraft
+  Scenario:  Verify that all and draft records are getting displayed proper post apply a filter "All and Drafts" on grants by SPI/SPA users.
+    Given I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    Then I softly see value "Draft" for title "Status" inside table "flexGridRecipientActiveGrants"
+    And I click toggle button to select "Grants - Draft"
+    Then I softly see value "Draft" for title "Status" inside table "flexGridRecipientActiveGrants"
+    And I click toggle button to select "Grants - Rejected"
+    Then I softly do not see value "Active" for title "Status" inside table "flexGridRecipientActiveGrants"
 
   @66740 @documentattacmentatgrant @jitendra
   Scenario: To verify that the document can be added in the Supporting Document checklist table in the Grant Attachment tab in the Draft state
@@ -2737,3 +2737,12 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
     And I softly can see top right button "Initiate Desk Review" in flex table with id "GrantorDeskReviewAward"
+
+    @71436 @jitendra @activeAwardFilter
+    Scenario: Verify that Activated records are getting displayed proper post apply a filter "activated" on grants by SPI/SPA users.
+      When I login to "As a Grantor" app as "dynamicUser" user
+      And I navigate to "Grants" tab
+      When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+      And I click toggle button to select "Grants - Active"
+      And I perform quick search for "Automation Permanent Award"
+      Then I softly see value "Automation Permanent Award" for title "Grant Title" inside table "---subAwardStandAlone:-:activeGrantsTableId---"

@@ -2759,7 +2759,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Remove" icon for "Automation Permanent Objective" inside flex table with id "---subAwardStandAlone:-:objectivesTableId---"
     Then I do not see value "Automation Permanent Objective" for title "Title" inside table "---subAwardStandAlone:-:objectivesTableId---"
 
-  @45756 @67969 @validateAwardRejectionByProgramApprover @mahadev
+  @45756 @67969 @71182 @71431 @71437 @validateAwardRejectionByProgramApprover @mahadev
   Scenario Outline: Validate award Rejection by Program approver
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -2858,6 +2858,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly see status in Progress-bar is "Rejected" and is "Red"
     And I navigate to "Budget" sub tab
     Then I softly see value "{SavedValue:award available balance}" for title "Available Balance" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    And I navigate to "Budget" sub tab
+    Then I softly see value "$0.0" for title "Encumberance" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Closed"
+    Then I softly see value "Closed" for title "Status" inside table "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Closed"
+    Then I softly see value "Closed" for title "Status" inside table "flexGridRecipientActiveGrants"
     Examples:
       | Award Name              | Grant Name              |
       | Automation Direct Award | Automation Direct Award |

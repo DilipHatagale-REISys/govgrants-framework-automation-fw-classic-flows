@@ -406,8 +406,9 @@ public class GenericSteps {
         EyeThink.core().enterText().in(notesDescriptionPath, "Updated Automation Notes");
     }
 
+    @Description("Check the users status against value in Approval History table inside Hsitory Tab")
     @Then("I see {string} against {string} in approval history")
-    public void iSeeAgainstInApprovalHistory(String seeThisString, String againstThisString) {
+    public void seeStatusOfRecordInApprovalHistory(String seeThisString, String againstThisString) {
         By listOfsUsers = By.xpath("//div[@id='chevronBarId']//ul[1]//li//a");
         List<Elements> listOfLoc = EyeThink.core().elementReference().listOfElements().of(listOfsUsers);
         int expectedIndex = 0;
@@ -417,8 +418,6 @@ public class GenericSteps {
             }
         }
 
-        EyeThink.core().assertion().assertThat(EyeThink.core().elementReference().of(
-                By.xpath("//div[@id='chevronBarId']//ul[2]//li["+expectedIndex+"]//a")
-        ).getText().trim()).isEqualToIgnoringCase(seeThisString);
+        EyeThink.core().assertion().assertThat(EyeThink.core().get().text("//div[@id='chevronBarId']//ul[2]//li["+expectedIndex+"]//a").trim()).isEqualToIgnoringCase(seeThisString);
     }
 }
